@@ -64,6 +64,12 @@ public:
 			result = nullptr;
 
 			if (sesskey == sessionID) {
+				auto zoneServer = server->getZoneServer();
+
+				if (zoneServer == nullptr) {
+					return;
+				}
+
 				client->setSessionID(sessionID);
 				client->setAccountID(accountID);
 
@@ -72,14 +78,16 @@ public:
 				if (account == nullptr)
 					return;
 
+				// Lock the account object
 				Locker alocker(account);
 
 				AccountManager::expireSession(account, sessionID);
-
 				client->resetCharacters();
 
+				int galaxyID = zoneServer->getGalaxyID();
+
 				Reference<CharacterList*> characters = account->getCharacterList();
-				const GalaxyBanEntry* galaxyBan = account->getGalaxyBan(server->getZoneServer()->getGalaxyID());
+				const GalaxyBanEntry* galaxyBan = account->getGalaxyBan(galaxyID);
 
 				if (galaxyBan != nullptr) {
 					ErrorMessage* errMsg = new ErrorMessage("Login Error", "You are banned from this galaxy.\n\nReason:" + galaxyBan->getBanReason(), 0x0);
@@ -96,7 +104,10 @@ public:
 						client->addBannedCharacter(entry->getObjectID(), entry->getGalaxyID());
 				}
 
-				BaseMessage* cpm = new ClientPermissionsMessage();
+				auto maxchars = ConfigManager::instance()->getInt("Core3.PlayerCreationManager.MaxCharactersPerGalaxy", 10);
+
+				// Check if player has permission to create more characters
+				BaseMessage* cpm = new ClientPermissionsMessage(client->getCharacterCount(galaxyID) >= maxchars);
 				client->sendMessage(cpm);
 
 				return;

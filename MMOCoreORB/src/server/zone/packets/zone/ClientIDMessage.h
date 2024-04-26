@@ -9,14 +9,16 @@
 
 class ClientIDMessage : public BaseMessage {
 public:
-	ClientIDMessage(uint32 accid, uint32 session) : BaseMessage() {
+	ClientIDMessage(uint32 accountID, uint32 sessionKey) : BaseMessage() {
+		std::cout << "ClientIDMessage -- called";
+
 		insertShort(0x03);
 		insertInt(0xD5899226);
 
-		insertInt(0); // unk
+		insertInt(0); // Spacer
 		insertInt(0); // dataLen
-		insertInt(session); // session key
-		insertInt(accid);
+		insertInt(sessionKey); // Session Key
+		insertInt(accountID); // Account ID
 	}
 
 };

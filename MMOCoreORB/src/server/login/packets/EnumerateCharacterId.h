@@ -9,11 +9,11 @@
 #include "server/login/account/Account.h"
 #include "../objects/CharacterList.h"
 
-class EnumerateCharacterID : public BaseMessage {
+class EnumerateCharacterId : public BaseMessage {
 public:
-	EnumerateCharacterID(Account* account) : BaseMessage(100) {
+	EnumerateCharacterId(Account* account) : BaseMessage(100) {
 		insertShort(0x02);
-		insertInt(0x65EA4574);
+		insertInt(STRING_HASHCODE("EnumerateCharacterId"));
 
 		Reference<const CharacterList*> characters = account->getCharacterList();
 
@@ -24,17 +24,20 @@ public:
 			const GalaxyBanEntry* galaxyBan = account->getGalaxyBan(entry->getGalaxyID());
 			String name = entry->getFullName();
 
-			if(galaxyBan != nullptr)
+			if (galaxyBan != nullptr) {
 				name += " \\#FF0000(GALAXY BAN)";
-			else if(entry->isBanned())
+			} else if(entry->isBanned()) {
 				name += " \\#FF0000(BANNED)";
-			insertUnicode(name);
+			}
 
-			insertInt(entry->getRace()); //Player Race CRC
-			insertLong(entry->getObjectID()); //Player ID
+			// Character Information
+			insertUnicode(name); // Character Name
 
-			insertInt(entry->getGalaxyID()); //Server ID That Character Is On
-			insertInt(0x00000001); // server status?
+			insertInt(entry->getRace()); // Player Race CRC
+			insertLong(entry->getObjectID()); // Player ID
+
+			insertInt(entry->getGalaxyID()); // Server ID That Character Is On
+			insertInt(0x01); // Character Type - Regular Characters 1, Pre-Pub9 Jedi 2
 		}
 	}
 
