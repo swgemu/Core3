@@ -100,25 +100,22 @@ end
 function ThemeParkNym:spawnLootObjects()
 	local droidPointer = spawnSceneObject("lok", "object/tangible/container/loot/astromech_container.iff", -64.9, -66.0, -177.7, 5126336, 0, 0, -1, 0)
 	SceneObject(droidPointer):setCustomObjectName("A Defunct Astromech")
-	createObserver(OBJECTRADIALUSED, "ThemeParkNym", "notifyNymContainerUsed", droidPointer)
+	createObserver(OPENCONTAINER, "ThemeParkNym", "notifyNymContainerUsed", droidPointer)
 
 	local afuPointer = spawnSceneObject("lok", "object/tangible/container/loot/gas_filter_container.iff", -94.2, -69.6, -93.5, 5645592, 0.7071067811865476, 0, -0.7071067811865475, 0)
 	SceneObject(afuPointer):setCustomObjectName("Air Filtration Unit")
-	createObserver(OBJECTRADIALUSED, "ThemeParkNym", "notifyNymContainerUsed", afuPointer)
+	createObserver(OPENCONTAINER, "ThemeParkNym", "notifyNymContainerUsed", afuPointer)
 
 	local csuPointer = spawnSceneObject("lok", "object/tangible/container/loot/computer_container.iff", -57.6, -20.0, 46.8, 5126277, 0, 0, 0, 0)
 	SceneObject(csuPointer):setCustomObjectName("A Computer Storage Unit")
-	createObserver(OBJECTRADIALUSED, "ThemeParkNym", "notifyNymContainerUsed", csuPointer)
+	createObserver(OPENCONTAINER, "ThemeParkNym", "notifyNymContainerUsed", csuPointer)
 
 	local cratePointer = spawnSceneObject("lok", "object/tangible/container/loot/loot_crate.iff", -7.9, -20.0, 78.4, 5126291, 0, 0, -1, 0)
 	SceneObject(cratePointer):setCustomObjectName("Supply Crate")
-	createObserver(OBJECTRADIALUSED, "ThemeParkNym", "notifyNymContainerUsed", cratePointer)
+	createObserver(OPENCONTAINER, "ThemeParkNym", "notifyNymContainerUsed", cratePointer)
 end
 
-function ThemeParkNym:notifyNymContainerUsed(pDroid, pPlayer, radialSelected)
-	if (radialSelected ~= 16) then
-		return 0
-	end
+function ThemeParkNym:notifyNymContainerUsed(pDroid, pPlayer)
 
 	if not SceneObject(pPlayer):isPlayerCreature() then
 		return 0
