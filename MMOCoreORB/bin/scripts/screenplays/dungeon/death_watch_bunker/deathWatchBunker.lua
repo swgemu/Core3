@@ -510,7 +510,7 @@ function DeathWatchBunkerScreenPlay:spawnObjects()
 		spawnedSceneObject:setCustomObjectName("Chest")
 		writeData(spawnedSceneObject:getObjectID() .. ":dwb:lootbox", 1)
 		createEvent(1000, "DeathWatchBunkerScreenPlay", "refillContainer", spawnedPointer, "")
-		createObserver(OBJECTRADIALUSED, "DeathWatchBunkerScreenPlay", "boxLooted", spawnedPointer)
+		createObserver(OPENCONTAINER, "DeathWatchBunkerScreenPlay", "boxLooted", spawnedPointer)
 	end
 
 	spawnedPointer = spawnSceneObject("endor", "object/tangible/dungeon/coal_bin_container.iff",6.01353,-32,-102.05,5996337,0.707107,0,0.707107,0)
@@ -520,7 +520,7 @@ function DeathWatchBunkerScreenPlay:spawnObjects()
 		self:setLootBoxPermissions(spawnedPointer)
 		writeData(spawnedSceneObject:getObjectID() .. ":dwb:lootbox", 2)
 		createEvent(1000, "DeathWatchBunkerScreenPlay", "refillContainer", spawnedPointer, "")
-		createObserver(OBJECTRADIALUSED, "DeathWatchBunkerScreenPlay", "boxLooted", spawnedPointer)
+		createObserver(OPENCONTAINER, "DeathWatchBunkerScreenPlay", "boxLooted", spawnedPointer)
 	end
 
 	spawnedPointer = spawnSceneObject("endor", "object/tangible/container/loot/placable_loot_crate_tech_armoire.iff", -2.78947,-32,-27.1899,5996335,0,0,1,0)
@@ -530,7 +530,7 @@ function DeathWatchBunkerScreenPlay:spawnObjects()
 		self:setLootBoxPermissions(spawnedPointer)
 		writeData(spawnedSceneObject:getObjectID() .. ":dwb:lootbox", 3)
 		createEvent(1000, "DeathWatchBunkerScreenPlay", "refillContainer", spawnedPointer, "")
-		createObserver(OBJECTRADIALUSED, "DeathWatchBunkerScreenPlay", "boxLooted", spawnedPointer)
+		createObserver(OPENCONTAINER, "DeathWatchBunkerScreenPlay", "boxLooted", spawnedPointer)
 	end
 end
 
@@ -611,10 +611,7 @@ function DeathWatchBunkerScreenPlay:respawnHaldo(creatureObject)
 	end
 end
 
-function DeathWatchBunkerScreenPlay:boxLooted(pSceneObject, pCreature, radialID)
-	if (radialID ~= 16) then
-		return 0
-	end
+function DeathWatchBunkerScreenPlay:boxLooted(pSceneObject, pCreature)
 
 	local objectID = SceneObject(pSceneObject):getObjectID()
 
