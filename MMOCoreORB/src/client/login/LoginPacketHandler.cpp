@@ -10,22 +10,22 @@
 #include "LoginPacketHandler.h"
 
 void LoginPacketHandler::handleMessage(Message* pack) {
-	debug() << "parsing " << *pack;
-
 	sys::uint16 opcount = pack->parseShort();
 	sys::uint32 opcode = pack->parseInt();
+
+	// info(true) << "LoginPacketHandler::handleMessage -- opcount: " << opcount << " opcode: " << opcode << " Packet: " << *pack;
 
 	switch (opcount) {
 	case 02:
 		switch (opcode) {
-		case 0x65EA4574: // char create success
+		case STRING_HASHCODE("EnumerateCharacterId"): // 0x65EA4574 char create success
 			handleEnumerateCharacterId(pack);
 			break;
 		}
 		break;
 	case 04:
 		switch (opcode) {
-		case 0xAAB296C6: // client token
+		case STRING_HASHCODE("LoginClientToken"): // 0xAAB296C6 client token
 			handleLoginClientToken(pack);
 			break;
 		}
@@ -33,14 +33,14 @@ void LoginPacketHandler::handleMessage(Message* pack) {
 
 	case 03:
 		switch (opcode) {
-		case 0xB5ABF91A:
+		case STRING_HASHCODE("ErrorMessage"):
 			handleErrorMessage(pack);
 			break;
 		}
 		break;
 
 	default:
-		//error("unhandled operand count" + pack->toString());
+		error() << "unhandled operand count" << pack->toString();
 		break;
 	}
 }

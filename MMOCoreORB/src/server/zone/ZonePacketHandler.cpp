@@ -8,7 +8,7 @@
 #include "server/zone/ZoneClientSession.h"
 #include "server/zone/ZoneProcessServer.h"
 
-#include "packets/zone/ClientIDMessageCallback.h"
+#include "packets/zone/ClientIdMessageCallback.h"
 #include "packets/zone/SelectCharacterCallback.h"
 #include "packets/zone/CmdSceneReadyCallback.h"
 #include "packets/zone/ClientInactivityMessage.h"
@@ -123,7 +123,7 @@ ZonePacketHandler::~ZonePacketHandler() {
 void ZonePacketHandler::registerMessages() {
 	debug("registering Messages");
 
-	messageCallbackFactory.registerObject<ClientIDMessageCallback>(0xD5899226);
+	messageCallbackFactory.registerObject<ClientIdMessageCallback>(0xD5899226);
 	messageCallbackFactory.registerObject<ClientCreateCharacterCallback>(0xB97F3074);
 	messageCallbackFactory.registerObject<ClientRandomNameRequest>(0xD6D1B6D1);
 	messageCallbackFactory.registerObject<SelectCharacterCallback>(0xB5098D76);

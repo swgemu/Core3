@@ -11,7 +11,6 @@
 #include "server/zone/objects/player/Races.h"
 
 void ClientCreateCharacterCallback::parse(Message* message) {
-
 	message->parseAscii(customization);
 	message->parseUnicode(characterName);
 
@@ -46,7 +45,7 @@ void ClientCreateCharacterCallback::run() {
 		return;
 	}
 
-	client->info("ClientCreateCharacterCallback::run()");
+	// client->info("ClientCreateCharacterCallback::run()", true);
 
 	PlayerManager* playerManager = server->getPlayerManager();
 	bool success = playerManager->createPlayer(this);

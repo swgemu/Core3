@@ -135,7 +135,7 @@ void AccountManager::loginApprovedAccount(LoginClient* client, ManagedReference<
 	client->sendMessage(loginServer->getLoginEnumClusterMessage(account));
 	client->sendMessage(loginServer->getLoginClusterStatusMessage(account));
 
-	auto* eci = new EnumerateCharacterID(account);
+	auto eci = new EnumerateCharacterId(account);
 	client->sendMessage(eci);
 }
 

@@ -2,7 +2,7 @@
 #include "Zone.h"
 #include "ZoneClientThread.h"
 
-#include "server/zone/packets/zone/ClientIDMessage.h"
+#include "server/zone/packets/zone/ClientIdMessage.h"
 #include "client/zone/managers/objectcontroller/ObjectController.h"
 #include "client/zone/managers/object/ObjectManager.h"
 
@@ -55,7 +55,7 @@ void Zone::run() {
 
 		startTime.updateToCurrentTime();
 
-		BaseMessage* acc = new ClientIDMessage(accountID, sessionID);
+		BaseMessage* acc = new ClientIdMessage(accountID, sessionID);
 		client->sendMessage(acc);
 
 		client->getClient()->info("sent client id message");
