@@ -2460,6 +2460,15 @@ bool SceneObjectImplementation::isNearBank() {
 	}
 
 	uint64 parentID = getParentID();
+
+	if (parentID != 0 && isPlayerCreature()) {
+		ManagedReference<SceneObject*> parent = getParent();
+		
+		if (parent != nullptr && (parent->isMount() || parent->isVehicleObject())) {
+			parentID = parent->getParentID();
+		}
+	}
+
 	float bankRangeSq = 15.f * 15.f;
 	Vector3 thisWorldPos = getWorldPosition();
 
