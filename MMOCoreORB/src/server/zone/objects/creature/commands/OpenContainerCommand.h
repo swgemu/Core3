@@ -30,10 +30,6 @@ public:
 
 		// creature->info(true) << "OpenContainerCommand called Target = " << target << " Args = " << arguments.toString();
 
-		int counter = 0;
-		if (args.hasMoreTokens())
-			counter = args.getIntToken();
-
 		objectToOpen = server->getZoneServer()->getObject(target);
 
 		if (objectToOpen == nullptr) {
@@ -42,24 +38,24 @@ public:
 
 		ManagedReference<SceneObject*> objectParent = objectToOpen->getParent().get();
 
-		if (objectParent != nullptr && objectParent->isCraftingStation()) {
-			if (!creature->isInRange(objectParent, 12.0f)) {
-				StringIdChatParameter param;
-				param.setStringId("@container_error_message:container09_prose"); // You are out of range of %TT.
-				param.setTT(objectToOpen->getObjectName());
-				creature->sendSystemMessage(param);
+		float range = objectToOpen->isCraftingStation() ? 12.0f : 7.0f;
 
-				return TOOFAR;
-			}
+		if (!creature->isInRange(objectToOpen, range)) {
+			StringIdChatParameter param;
+			param.setStringId("@container_error_message:container09_prose"); // You are out of range of %TT.
+			param.setTT(objectToOpen->getObjectName());
+			creature->sendSystemMessage(param);
 
-			if (!CollisionManager::checkLineOfSight(objectParent, creature)) {
-				StringIdChatParameter msgParam;
-				msgParam.setStringId("@container_error_message:container18_prose"); // You can't see %TT. You may have to move closer to it.
-				msgParam.setTT(objectToOpen->getObjectName());
-				creature->sendSystemMessage(msgParam);
+			return TOOFAR;
+		}
 
-				return GENERALERROR;
-			}
+		if (!CollisionManager::checkLineOfSight(objectToOpen, creature)) {
+			StringIdChatParameter msgParam;
+			msgParam.setStringId("@container_error_message:container18_prose"); // You can't see %TT. You may have to move closer to it.
+			msgParam.setTT(objectToOpen->getObjectName());
+			creature->sendSystemMessage(msgParam);
+
+			return GENERALERROR;
 		}
 
 		Locker clocker(objectToOpen, creature);
