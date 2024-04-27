@@ -9,6 +9,7 @@
 
 #include "server/zone/objects/tangible/components/EventPerkActorMenuComponent.h"
 #include "server/zone/objects/tangible/components/EventPerkDataComponent.h"
+#include "server/zone/objects/tangible/components/vendor/VendorDataComponent.h"
 #include "server/zone/objects/tangible/deed/eventperk/EventPerkDeed.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
@@ -16,6 +17,7 @@
 #include "templates/tangible/EventPerkDeedTemplate.h"
 #include "server/chat/StringIdChatParameter.h"
 #include "server/chat/ChatManager.h"
+#include "server/zone/objects/player/sessions/vendor/VendorAdBarkingSession.h"
 
 void EventPerkActorMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) const {
 	if (sceneObject == nullptr || player == nullptr) {
@@ -73,12 +75,23 @@ void EventPerkActorMenuComponent::fillObjectMenuResponse(SceneObject* sceneObjec
 		return;
 	}
 
+	// Vendor Data for Performance
+	DataObjectComponentReference* vendorDataRef = sceneObject->getDataObjectComponent();
+
+	if (vendorDataRef == nullptr || vendorDataRef->get() == nullptr || !vendorDataRef->get()->isVendorData()) {
+		return;
+	}
+
+	VendorDataComponent* vendorData = cast<VendorDataComponent*>(vendorDataRef->get());
+
+	if (vendorData == nullptr) {
+		return;
+	}
+
 	// Main Menu
 	menuResponse->addRadialMenuItem(RadialOptions::SERVER_MENU1, 3, "@event_perk_npc_actor:actor_control"); // "Control Actor"
 
-	bool actorIsPerforming = false;
-
-	if (!actorIsPerforming) {
+	if (!vendorData->isAdBarkingEnabled()) {
 		// Enable Actor Performance
 		menuResponse->addRadialMenuItemToRadialID(RadialOptions::SERVER_MENU1, RadialOptions::SERVER_MENU2, 3, "@event_perk_npc_actor:actor_areabarks_on");
 	} else {
@@ -143,6 +156,19 @@ int EventPerkActorMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject
 		return 1;
 	}
 
+	// Vendor Data for Performance
+	DataObjectComponentReference* vendorDataRef = sceneObject->getDataObjectComponent();
+
+	if (vendorDataRef == nullptr || vendorDataRef->get() == nullptr || !vendorDataRef->get()->isVendorData()) {
+		return 1;
+	}
+
+	VendorDataComponent* vendorData = cast<VendorDataComponent*>(vendorDataRef->get());
+
+	if (vendorData == nullptr) {
+		return 1;
+	}
+
 	// Face the actor to the player
 	actorAgent->faceObject(player, true);
 
@@ -152,16 +178,21 @@ int EventPerkActorMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject
 			return 0;
 		// Toggle Performance
 		case(RadialOptions::SERVER_MENU2): {
-			bool actorIsPerforming = false;
-
-			if (actorIsPerforming) {
+			if (vendorData->isAdBarkingEnabled()) {
+				vendorData->setAdBarking(false);
 				player->sendSystemMessage("@event_perk_npc_actor:areabarks_disabled"); // The actor will no longer perform.
-
-				// TODO: Toggle area bark
 			} else {
-				player->sendSystemMessage("@event_perk_npc_actor:areabarks_enabled"); // When conversed with the actor will now perform.
+				if (player->containsActiveSession(SessionFacadeType::VENDORADBARKING)) {
+					return 0;
+				}
 
-				// TODO: Send list box to select animation, mood, and bark message
+				ManagedReference<VendorAdBarkingSession*> adBarkSession = new VendorAdBarkingSession(player, actorAgent);
+
+				if (adBarkSession == nullptr) {
+					return 0;
+				}
+
+				adBarkSession->initializeSession();
 			}
 
 			return 0;
