@@ -211,8 +211,6 @@ int EventPerkDeedImplementation::handleObjectMenuSelect(CreatureObject* player, 
 
 		// Handle UI for NPC Actor, where player will select their chosen NPC type
 		if (perkType == EventPerkDeedTemplate::NPCACTOR) {
-			info(true) << "NPC Actor Type Placement Initiated";
-
 			// Call placement UI
 			createNpcActorPerk(player);
 
@@ -351,8 +349,11 @@ void EventPerkDeedImplementation::parseChildObjects(SceneObject* parent) {
 						name = currentName;
 					}
 
-					// Reset the menu component
+					// Set the menu component for the actor
 					child->setObjectMenuComponent("EventPerkActorMenuComponent");
+
+					// Set the container component for the actor
+					child->setContainerComponent("EventPerkActorContainerComponent");
 				} else {
 					name = nameManager->makeCreatureName();
 
@@ -437,7 +438,8 @@ void EventPerkDeedImplementation::activateRemoveEvent(bool immediate) {
 
 		// Expiration time is in the past
 		if (currentMili >= expirationMili || immediate) {
-			removeEventPerkDeedTask->execute();
+			// Schedule removal 5 minutes out to account for server loading
+			removeEventPerkDeedTask->schedule(5 * 60 * 1000);
 		} else {
 			// Expiration time is in the future, schedule the task
 			uint64 timeDelta = expirationMili - currentMili;

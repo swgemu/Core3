@@ -66,7 +66,6 @@
 #include "server/zone/objects/tangible/components/generic/LootSchematicAttributeListComponent.h"
 #include "server/zone/objects/tangible/components/generic/XpPurchaseAttributeListComponent.h"
 #include "server/zone/objects/tangible/components/generic/XpPurchaseMenuComponent.h"
-#include "server/zone/objects/tangible/components/PersonnelPerkZoneComponent.h"
 #include "server/zone/objects/tangible/components/RingObjectMenuComponent.h"
 #include "server/zone/objects/tangible/components/HeroRingMenuComponent.h"
 #include "server/zone/objects/tangible/components/HeroRingAttributeListComponent.h"
@@ -134,9 +133,11 @@
 #include "server/zone/objects/tangible/components/generic/CoaMessageDataComponent.h"
 #include "server/zone/objects/tangible/components/generic/CoaEncodedDiskMenuComponent.h"
 #include "server/zone/objects/creature/components/FactionRecruiterContainerComponent.h"
+#include "server/zone/objects/tangible/components/PersonnelPerkZoneComponent.h"
 #include "server/zone/objects/tangible/components/EventPerkDataComponent.h"
 #include "server/zone/objects/tangible/components/EventPerkMenuComponent.h"
 #include "server/zone/objects/tangible/components/EventPerkActorMenuComponent.h"
+#include "server/zone/objects/tangible/components/EventPerkActorContainerComponent.h"
 #include "server/zone/objects/tangible/components/FlagGameDataComponent.h"
 #include "server/zone/objects/tangible/components/FlagGameMenuComponent.h"
 #include "server/zone/objects/tangible/components/EventPerkAttributeListComponent.h"
@@ -248,7 +249,6 @@ ComponentManager::ComponentManager() {
 	components.put("MinefieldZoneComponent", new MinefieldZoneComponent());
 	components.put("MinefieldContainerComponent", new MinefieldContainerComponent());
 	components.put("ScannerZoneComponent", new ScannerZoneComponent());
-	components.put("PersonnelPerkZoneComponent", new PersonnelPerkZoneComponent());
 
 	dataObjectFactory.registerObject<VendorDataComponent>("VendorDataComponent");
 	dataObjectFactory.registerObject<AuctionTerminalDataComponent>("AuctionTerminalDataComponent");
@@ -338,14 +338,18 @@ ComponentManager::ComponentManager() {
 	components.put("CoaEncodedDiskMenuComponent", new CoaEncodedDiskMenuComponent());
 
 	// Event Perks
-	components.put("EventPerkMenuComponent", new EventPerkMenuComponent() );
-	components.put("EventPerkActorMenuComponent", new EventPerkActorMenuComponent());
+	components.put("EventPerkMenuComponent", new EventPerkMenuComponent());
 
-	components.put("EventPerkAttributeListComponent", new EventPerkAttributeListComponent() );
+	components.put("EventPerkActorMenuComponent", new EventPerkActorMenuComponent());
+	components.put("EventPerkActorContainerComponent", new EventPerkActorContainerComponent());
+
+	components.put("EventPerkAttributeListComponent", new EventPerkAttributeListComponent());
 	dataObjectFactory.registerObject<EventPerkDataComponent>("EventPerkDataComponent");
 
 	components.put("FlagGameMenuComponent", new FlagGameMenuComponent() );
 	dataObjectFactory.registerObject<FlagGameDataComponent>("FlagGameDataComponent");
+
+	components.put("PersonnelPerkZoneComponent", new PersonnelPerkZoneComponent());
 
 	// Droid components
 	dataObjectFactory.registerObject<DroidMaintenanceModuleDataComponent>("DroidMaintenanceModuleDataComponent");

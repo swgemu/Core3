@@ -4597,6 +4597,17 @@ void AiAgentImplementation::sendDefaultConversationTo(SceneObject* player) {
 void AiAgentImplementation::selectConversationOption(int option, SceneObject* obj) {
 }
 
+bool AiAgentImplementation::isVendor() {
+	auto data = getDataObjectComponent()->get();
+
+	if (data == nullptr || !data->isVendorData() || !(getOptionsBitmask() & OptionBitmask::VENDOR)) {
+		return false;
+	}
+
+	return true;
+}
+
+
 AiAgent* AiAgentImplementation::asAiAgent() {
 	return _this.getReferenceUnsafeStaticCast();
 }

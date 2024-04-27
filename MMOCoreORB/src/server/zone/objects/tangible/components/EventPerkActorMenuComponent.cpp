@@ -31,6 +31,7 @@ void EventPerkActorMenuComponent::fillObjectMenuResponse(SceneObject* sceneObjec
 	}
 
 	const ContainerPermissions* permissions = sceneObject->getContainerPermissions();
+
 	if (permissions == nullptr) {
 		return;
 	}
@@ -54,7 +55,7 @@ void EventPerkActorMenuComponent::fillObjectMenuResponse(SceneObject* sceneObjec
 		return;
 	}
 
-	ManagedReference<CreatureObject*> owner = deed->getOwner().get();
+	auto owner = deed->getOwner().get();
 
 	if (owner == nullptr) {
 		return;
@@ -89,7 +90,10 @@ void EventPerkActorMenuComponent::fillObjectMenuResponse(SceneObject* sceneObjec
 	menuResponse->addRadialMenuItemToRadialID(RadialOptions::SERVER_MENU1, RadialOptions::SERVER_MENU3, 3, "@event_perk_npc_actor:customize_actor");
 
 	// Show Expiration Time
-	menuResponse->addRadialMenuItemToRadialID(RadialOptions::SERVER_MENU1, RadialOptions::SERVER_MENU8, 3, "@event_perk:mnu_show_exp_time");
+	menuResponse->addRadialMenuItemToRadialID(RadialOptions::SERVER_MENU1, RadialOptions::SERVER_MENU4, 3, "@event_perk:mnu_show_exp_time");
+
+	// Reclaim Rental Deed
+	menuResponse->addRadialMenuItem(RadialOptions::SERVER_MENU5, 3, "@event_perk:mnu_redeed");
 
 	if (privilegedAccess) {
 		menuResponse->addRadialMenuItem(RadialOptions::SERVER_OBSERVE, 3, "Display Perk Component");
@@ -139,6 +143,9 @@ int EventPerkActorMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject
 		return 1;
 	}
 
+	// Face the actor to the player
+	actorAgent->faceObject(player, true);
+
 	switch(selectedID) {
 		// Main Menu
 		case(RadialOptions::SERVER_MENU1):
@@ -180,7 +187,7 @@ int EventPerkActorMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject
 
 			return 0;
 		}
-		case(RadialOptions::SERVER_MENU8): {
+		case(RadialOptions::SERVER_MENU4): {
 			Time* purchaseTime = deed->getPurchaseTime();
 
 			if (purchaseTime == nullptr) {
@@ -200,8 +207,47 @@ int EventPerkActorMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject
 
 			return 0;
 		}
+		// Reclaim Deed
+		case(RadialOptions::SERVER_MENU5): {
+			ManagedReference<SceneObject*> inventory = player->getInventory();
+
+			if (inventory == nullptr || inventory->isContainerFullRecursive()) {
+				player->sendSystemMessage("@event_perk:redeed_failed"); // The rental could not be re-deeded.
+				return 1;
+			}
+
+			auto ghost = player->getPlayerObject();
+
+			if (ghost == nullptr || (!ghost->isPrivileged() && ghost->getEventPerkCount() > 5)) {
+				player->sendSystemMessage("@event_perk:redeed_too_many_deeds"); // You have too many rental deeds in your possession and cannot redeed this rental.
+				return 1;
+			}
+
+			if (!inventory->transferObject(deed, -1, true)) {
+				deed->destroyObjectFromWorld(true);
+				deed->destroyObjectFromDatabase(true);
+			}
+
+			deed->sendTo(player, true);
+			deed->setGenerated(false);
+
+			// Destroy the perk from the zone
+			ManagedReference<TangibleObject*> perkTano = deed->getGeneratedObject().get();
+
+			if (perkTano != nullptr) {
+				Locker perkLock(perkTano, actorAgent);
+
+				perkTano->destroyChildObjects();
+				perkTano->destroyObjectFromWorld(true);
+			}
+
+			 // Your Rental has been removed and the deed reclaimed.
+			player->sendSystemMessage("@event_perk:redeed_success");
+
+			return 0;
+		}
 		case (RadialOptions::SERVER_OBSERVE): {
-			auto perkTano = parentPerk->asTangibleObject();
+			ManagedReference<TangibleObject*> perkTano = parentPerk->asTangibleObject();
 
 			if (perkTano == nullptr) {
 				return 1;

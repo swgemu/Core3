@@ -1403,13 +1403,6 @@ class SceneObject extends TreeEntry implements Logger, Metrics {
 
 	@local
 	@read
-	public boolean isVendor() {
-		return dataObjectComponent.get() != null &&
-		dataObjectComponent.get().isVendorData();
-	}
-
-	@local
-	@read
 	public boolean isGCWBase(){
 		return dataObjectComponent.get() != null &&
 		dataObjectComponent.get().isGCWBaseData();
@@ -1556,6 +1549,12 @@ class SceneObject extends TreeEntry implements Logger, Metrics {
 	@nativeStub
 	@virtualStub
 	public native abstract boolean isAiAgent();
+
+	@dirty
+	@local
+	@nativeStub
+	@virtualStub
+	public abstract native boolean isVendor();
 
 	@mock
 	@dirty

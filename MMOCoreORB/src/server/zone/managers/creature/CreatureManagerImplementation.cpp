@@ -1231,33 +1231,48 @@ SpawnArea* CreatureManagerImplementation::getWorldSpawnArea() {
 	return nullptr;
 }
 
-bool CreatureManagerImplementation::addWearableItem(CreatureObject* creature, TangibleObject* clothing) {
+bool CreatureManagerImplementation::addWearableItem(CreatureObject* creature, TangibleObject* clothing, bool isVendor) {
+	if (creature == nullptr || clothing == nullptr) {
+		return false;
+	}
+
 	if (!clothing->isWearableObject() && !clothing->isWeaponObject())
 		return false;
 
-	ChatManager* chatMan = zoneServer->getChatManager();
-
+	ChatManager* chatManager = zoneServer->getChatManager();
 	SharedTangibleObjectTemplate* tanoData = dynamic_cast<SharedTangibleObjectTemplate*>(clothing->getObjectTemplate());
 
-	if (tanoData == nullptr || chatMan == nullptr)
+	if (tanoData == nullptr || chatManager == nullptr)
 		return false;
 
 	const Vector<uint32>* races = tanoData->getPlayerRaces();
-	const String& race = creature->getObjectTemplate()->getFullTemplateString();
+	const String race = creature->getObjectTemplate()->getFullTemplateString();
 
-	if (clothing->isWearableObject()) {
-		if (!races->contains(race.hashCode())) {
-			UnicodeString message;
+	if (clothing->isWearableObject() && !races->contains(race.hashCode())) {
+		int species = creature->getSpecies();
+		UnicodeString message;
 
-			if(creature->getObjectTemplate()->getFullTemplateString().contains("ithorian"))
+		// Vendor fail messages
+		if (isVendor) {
+			if (species == CreatureObject::ITHORIAN) {
 				message = "@player_structure:wear_not_ithorian";
-			else
+			} else {
 				message = "@player_structure:wear_no";
-
-			chatMan->broadcastChatMessage(creature, message, clothing->getObjectID(), 0, creature->getMoodID());
-
-			return false;
+			}
+		// NPC actor fail messages
+		} else {
+			if (species == CreatureObject::ITHORIAN) {
+				message = "@event_perk_npc_actor:wear_no_ithorian";
+			} else if (species == CreatureObject::WOOKIE) {
+				message = "@event_perk_npc_actor:wear_no_wookiee";
+			} else {
+				message = "@event_perk_npc_actor:wear_no";
+			}
 		}
+
+		chatManager->broadcastChatMessage(creature, message, clothing->getObjectID(), 0, creature->getMoodID());
+
+		return false;
 	}
 
 	ManagedReference<SceneObject*> clothingParent = clothing->getParent().get();
@@ -1273,6 +1288,7 @@ bool CreatureManagerImplementation::addWearableItem(CreatureObject* creature, Ta
 
 			if (slot != nullptr) {
 				Locker locker(slot);
+
 				slot->destroyObjectFromWorld(true);
 				slot->destroyObjectFromDatabase(true);
 			}
@@ -1280,16 +1296,27 @@ bool CreatureManagerImplementation::addWearableItem(CreatureObject* creature, Ta
 	}
 
 	creature->transferObject(clothing, 4, false);
-	creature->doAnimation("pose_proudly");
 	creature->broadcastObject(clothing, true);
 
-	UnicodeString message;
-	if (clothing->isWeaponObject())
-		message = "@player_structure:wear_yes_weapon";
-	else
-		message = "@player_structure:wear_yes";
+	creature->doAnimation("pose_proudly");
 
-	chatMan->broadcastChatMessage(creature, message, clothing->getObjectID(), 0, creature->getMoodID());
+	UnicodeString message;
+
+	if (isVendor) {
+		if (clothing->isWeaponObject()) {
+			message = "@player_structure:wear_yes_weapon";
+		} else {
+			message = "@player_structure:wear_yes";
+		}
+	} else {
+		if (clothing->isWeaponObject()) {
+			message = "@event_perk_npc_actor:wear_yes_weapon";
+		} else {
+			message = "@event_perk_npc_actor:wear_yes";
+		}
+	}
+
+	chatManager->broadcastChatMessage(creature, message, clothing->getObjectID(), 0, creature->getMoodID());
 
 	return true;
 }
