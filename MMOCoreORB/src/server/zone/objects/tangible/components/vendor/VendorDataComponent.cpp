@@ -368,52 +368,78 @@ void VendorDataComponent::setVendorSearchEnabled(bool enabled) {
 
 
 void VendorDataComponent::performVendorBark(SceneObject* target) {
-	if (isOnStrike()) {
+	ManagedReference<CreatureObject*> vendor = cast<CreatureObject*>(parent.get().get());
+
+	if (vendor == nullptr) {
 		return;
 	}
 
-	ManagedReference<CreatureObject*> vendor = cast<CreatureObject*>(parent.get().get());
-	if (vendor == nullptr)
+	if ((vendor->getOptionsBitmask() & OptionBitmask::VENDOR) && isOnStrike()) {
 		return;
+	}
 
 	ManagedReference<CreatureObject*> player = cast<CreatureObject*>(target);
+
 	if (player == nullptr || !player->isPlayerCreature() || player->isInvisible())
 		return;
 
 	resetLastBark();
-	addBarkTarget(target);
+	addBarkTarget(target->getObjectID());
 
-	Core::getTaskManager()->executeTask([=] () {
-		Locker locker(vendor);
+	Reference<CreatureObject*> vendorRef = vendor;
+	Reference<CreatureObject*> playerRef = player;
 
-		VendorDataComponent* data = cast<VendorDataComponent*>(vendor->getDataObjectComponent()->get());
+	Core::getTaskManager()->executeTask([vendorRef, playerRef] () {
+		if (vendorRef == nullptr || playerRef == nullptr) {
+			return;
+		}
+
+		Locker locker(vendorRef);
+
+		VendorDataComponent* data = cast<VendorDataComponent*>(vendorRef->getDataObjectComponent()->get());
 
 		if (data == nullptr)
 			return;
 
-		vendor->faceObject(player);
-		vendor->updateDirection(Math::deg2rad(vendor->getDirectionAngle()));
+		vendorRef->faceObject(playerRef);
+		vendorRef->updateDirection(Math::deg2rad(vendorRef->getDirectionAngle()));
+
+		auto zoneServer = vendorRef->getZoneServer();
+
+		if (zoneServer == nullptr) {
+			return;
+		}
+
+		auto chatManager = zoneServer->getChatManager();
+
+		if (chatManager == nullptr) {
+			return;
+		}
 
 		SpatialChat* chatMessage = nullptr;
 		String barkMessage = data->getAdPhrase();
-		ChatManager* chatManager = vendor->getZoneServer()->getChatManager();
 
 		if (barkMessage.beginsWith("@")) {
 			StringIdChatParameter message;
 			message.setStringId(barkMessage);
-			message.setTT(player->getObjectID());
-			chatMessage = new SpatialChat(vendor->getObjectID(), player->getObjectID(), player->getObjectID(), message, 50, 0, chatManager->getMoodID(data->getAdMood()), 0, 0);
+			message.setTT(playerRef->getObjectID());
 
+			chatMessage = new SpatialChat(vendorRef->getObjectID(), playerRef->getObjectID(), playerRef->getObjectID(), message, 50, 0, chatManager->getMoodID(data->getAdMood()), 0, 0);
 		} else {
 			UnicodeString uniMessage(barkMessage);
-			chatMessage = new SpatialChat(vendor->getObjectID(), player->getObjectID(), player->getObjectID(), uniMessage, 50, 0, chatManager->getMoodID(data->getAdMood()), 0, 0);
+
+			chatMessage = new SpatialChat(vendorRef->getObjectID(), playerRef->getObjectID(), playerRef->getObjectID(), uniMessage, 50, 0, chatManager->getMoodID(data->getAdMood()), 0, 0);
 		}
 
-		vendor->broadcastMessage(chatMessage, true);
-		vendor->doAnimation(data->getAdAnimation());
+		vendorRef->broadcastMessage(chatMessage, true);
+		vendorRef->doAnimation(data->getAdAnimation());
 
-		Reference<VendorReturnToPositionTask*> returnTask = new VendorReturnToPositionTask(vendor, data->getOriginalDirection());
-		vendor->addPendingTask("vendorreturn", returnTask, 3000);
+		Reference<VendorReturnToPositionTask*> returnTask = new VendorReturnToPositionTask(vendorRef, data->getOriginalDirection());
+
+		if (returnTask != nullptr) {
+			vendorRef->addPendingTask("vendorreturn", returnTask, 3000);
+		}
+
 	}, "VendorBarkLambda");
 }
 

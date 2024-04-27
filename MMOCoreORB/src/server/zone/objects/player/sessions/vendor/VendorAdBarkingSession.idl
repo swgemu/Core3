@@ -6,7 +6,7 @@ package server.zone.objects.player.sessions.vendor;
 
 import engine.log.Logger;
 import engine.util.Facade;
-import server.zone.objects.scene.SceneObject;
+import server.zone.objects.tangible.TangibleObject;
 import server.zone.objects.creature.CreatureObject;
 include server.zone.objects.scene.SessionFacadeType;
 include server.zone.objects.player.sui.inputbox.SuiInputBox;
@@ -15,27 +15,27 @@ include server.zone.objects.player.sui.inputbox.SuiInputBox;
 class VendorAdBarkingSession extends Facade {
 	@weakReference
 	protected CreatureObject owner;
-	
+
 	@weakReference
-	protected SceneObject vendor;
-	
+	protected TangibleObject weakVendor;
+
 	protected int advertisingMod;
-	
+
 	protected transient string message;
 	protected transient string mood;
 	protected transient string animation;
-		
-	public VendorAdBarkingSession(CreatureObject play, SceneObject vend) {
+
+	public VendorAdBarkingSession(CreatureObject player, TangibleObject vendor) {
 		Logger.setLoggingName("VendorAdBarkingSession");
 		Logger.setLogging(true);
 
-		owner = play;
-		vendor = vend;
+		owner = player;
+		weakVendor = vendor;
 	}
-	
+
 	// Session
 	public native int initializeSession();
-	
+
 	public int cancelSession() {
 		CreatureObject player = owner;
 		if (player)
@@ -44,33 +44,32 @@ class VendorAdBarkingSession extends Facade {
 		clearSession();
 		return 0;
 	}
-	
+
 	public int clearSession() {
 		owner = null;
 
 		return 0;
 	}
-	
+
 	public void setMessage(final string mess) {
 		message = mess;
 		sendMoodSelect();
 	}
-	
+
 	public void setMood(final string mo) {
 		mood = mo;
 		sendAnimationSelect();
 	}
-	
+
 	public void setAnimation(final string ani) {
 		animation = ani;
 		completeSession();
 	}
-	
+
 	public native void sendPhraseOptions();
 	public native void sendCustomMessageInput();
 	public native void sendMoodSelect();
 	public native void sendAnimationSelect();
-	
-	private native void completeSession();
 
+	private native void completeSession();
 }
