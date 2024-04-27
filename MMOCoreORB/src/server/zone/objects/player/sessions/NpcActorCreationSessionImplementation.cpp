@@ -26,7 +26,6 @@ int NpcActorCreationSessionImplementation::initializeSession() {
 	}
 
 	if (player->containsActiveSession(SessionFacadeType::NPCACTORCREATION)) {
-
 		return 0;
 	}
 
@@ -128,7 +127,7 @@ void NpcActorCreationSessionImplementation::setNpcActorSelection(int menuID) {
 		}
 	}
 
-	templatePath = "object/mobile/" + templatePath;
+	templatePath = "object/mobile/vendor/" + templatePath;
 
 	// Prompt for naming
 	promptNameSelection();
@@ -246,11 +245,17 @@ void NpcActorCreationSessionImplementation::createNpcActor(const String& name) {
 
 	Locker clocker(npcActor, player);
 
+	// Clear the vendor option bitmask
+	npcActor->clearOptionBit(OptionBitmask::VENDOR);
+
 	// Add the NPC as a child of Perk Object
 	perkObject->addChildObject(npcActor);
 
 	// Set the menu component for the actor
 	npcActor->setObjectMenuComponent("EventPerkActorMenuComponent");
+
+	// Set the container component for the actor
+	npcActor->setContainerComponent("EventPerkActorContainerComponent");
 
 	// Set the Actors name
 	npcActor->setCustomObjectName(name, false);

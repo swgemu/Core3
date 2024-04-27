@@ -2025,6 +2025,14 @@ bool SceneObject::isAiAgent() {
 	return false;
 }
 
+bool SceneObjectImplementation::isVendor() {
+	return false;
+}
+
+bool SceneObject::isVendor() {
+	return false;
+}
+
 bool SceneObjectImplementation::isShipAiAgent() {
 	return false;
 }

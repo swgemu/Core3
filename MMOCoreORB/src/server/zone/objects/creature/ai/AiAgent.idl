@@ -1321,6 +1321,9 @@ class AiAgent extends CreatureObject {
 	}
 
 	@dirty
+	public native boolean isVendor();
+
+	@dirty
 	@nativeStub
 	@local
 	public native AiAgent asAiAgent();
