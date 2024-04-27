@@ -53,67 +53,98 @@ public:
 
 		UniqueReference<ResultSet*> result(ServerDatabase::instance()->executeQuery(query));
 
-		if (result != nullptr && result->next()) {
-			String sesskey = result->getString(0);
+		if (result == nullptr || !result->next()) {
+			ErrorMessage* errMsg = new ErrorMessage("Login Error", "Unable to obtain a valid session key from the server, please login again.", 0x0);
+			client->sendMessage(errMsg);
 
-			client->debug() << "got session id from db: " << sesskey;
-			client->debug() << "parsed session id in packet: " << sessionID;
+			return;
+		}
 
-			result = nullptr;
+		// Get the Session Key the client is using
+		String sessionKey = result->getString(0);
 
-			if (sesskey == sessionID) {
-				auto zoneServer = server->getZoneServer();
+		/*
+			info(true) << "got session id from db: " << sessionKey;
+			info(true) << "parsed session id in packet: " << sessionID;
+			info(true) << "Client Version: " << version;
+		*/
 
-				if (zoneServer == nullptr) {
-					return;
+		// Set the result null
+		result = nullptr;
+
+		// Check client version
+		String validClient = ConfigManager::instance()->getString("Core3.PlayerManager.ValidClientVersion", "20050408-18:00");
+
+		if (!version.contains(validClient)) {
+			ErrorMessage* errMsg = new ErrorMessage("Login Error", "You are using an improper client version.", 0x0);
+			client->sendMessage(errMsg);
+
+			return;
+		}
+
+		// Invalid Session Key
+		if (sessionKey != sessionID) {
+			ErrorMessage* errMsg = new ErrorMessage("Login Error", "Your session key is invalid, or has expired. Please re-login", 0x0);
+			client->sendMessage(errMsg);
+
+			return;
+		}
+
+		auto zoneServer = server->getZoneServer();
+
+		if (zoneServer == nullptr) {
+			return;
+		}
+
+		client->setSessionID(sessionID);
+		client->setAccountID(accountID);
+
+		auto account = AccountManager::getAccount(accountID, true);
+
+		if (account == nullptr) {
+			return;
+		}
+
+		// Lock the account object
+		Locker alocker(account);
+
+		AccountManager::expireSession(account, sessionID);
+		client->resetCharacters();
+
+		int galaxyID = zoneServer->getGalaxyID();
+
+		Reference<CharacterList*> characters = account->getCharacterList();
+		const GalaxyBanEntry* galaxyBan = account->getGalaxyBan(galaxyID);
+
+		bool canConnect = true;
+
+		if (galaxyBan != nullptr) {
+			ErrorMessage* errMsg = new ErrorMessage("Login Error", "You are banned from this galaxy.\n\nReason:" + galaxyBan->getBanReason(), 0x0);
+			client->sendMessage(errMsg);
+
+			canConnect = false;
+		} else {
+			for (int i = 0; i < characters->size(); ++i) {
+				const CharacterListEntry* entry = &characters->get(i);
+
+				if (!entry->isBanned()) {
+					client->addCharacter(entry->getObjectID(), entry->getGalaxyID());
+				} else {
+					client->addBannedCharacter(entry->getObjectID(), entry->getGalaxyID());
 				}
+			}
 
-				client->setSessionID(sessionID);
-				client->setAccountID(accountID);
-
-				auto account = AccountManager::getAccount(accountID, true);
-
-				if (account == nullptr)
-					return;
-
-				// Lock the account object
-				Locker alocker(account);
-
-				AccountManager::expireSession(account, sessionID);
-				client->resetCharacters();
-
-				int galaxyID = zoneServer->getGalaxyID();
-
-				Reference<CharacterList*> characters = account->getCharacterList();
-				const GalaxyBanEntry* galaxyBan = account->getGalaxyBan(galaxyID);
-
-				if (galaxyBan != nullptr) {
-					ErrorMessage* errMsg = new ErrorMessage("Login Error", "You are banned from this galaxy.\n\nReason:" + galaxyBan->getBanReason(), 0x0);
-					client->sendMessage(errMsg);
-					return;
-				}
-
-				for (int i = 0; i < characters->size(); ++i) {
-					const CharacterListEntry* entry = &characters->get(i);
-
-					if (!entry->isBanned())
-						client->addCharacter(entry->getObjectID(), entry->getGalaxyID());
-					else
-						client->addBannedCharacter(entry->getObjectID(), entry->getGalaxyID());
-				}
-
-				auto maxchars = ConfigManager::instance()->getInt("Core3.PlayerCreationManager.MaxCharactersPerGalaxy", 10);
-
-				// Check if player has permission to create more characters
-				BaseMessage* cpm = new ClientPermissionsMessage(client->getCharacterCount(galaxyID) >= maxchars);
-				client->sendMessage(cpm);
-
-				return;
+			if (zoneServer->isServerLoading() || zoneServer->isServerShuttingDown()) {
+				canConnect = false;
 			}
 		}
 
-		ErrorMessage* errMsg = new ErrorMessage("Login Error", "Your session key is invalid, or has expired. Please re-login", 0x0);
-		client->sendMessage(errMsg);
+		auto allowedChars = ConfigManager::instance()->getInt("Core3.PlayerCreationManager.MaxCharactersPerGalaxy", 10);
+		bool canCreateCharacter = (client->getCharacterCount(galaxyID) < allowedChars);
+
+		// Check if player has permission to create more characters
+		auto permissionMessage = new ClientPermissionsMessage(canConnect, canCreateCharacter);
+		client->sendMessage(permissionMessage);
 	}
 
 	inline uint32 getDataLen() const {
