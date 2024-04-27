@@ -11,30 +11,36 @@ class ClientPermissionsMessage : public BaseMessage {
 public:
 	ClientPermissionsMessage() : BaseMessage() {
 		insertShort(0x04);
-		insertInt(0xE00730E5);
-		insertByte(0x01); // Galaxy_Open_Flag
+		insertInt(STRING_HASHCODE("ClientPermissionsMessage"));
 
-		// Send this as 0 disallows a player to create anymore players on the selected galaxy
-		insertByte(0x00); // CharacterSlot_Open_Flag
+		// Galaxy Available
+		insertBoolean(true);
 
-		// This flag will override the flag above and allow unlimited characters
-		insertByte(0x01); // Unlimited_CharCreation_Flag
+		// Allow to create character
+		insertBoolean(true);
+
+		// Ignores character creation max bool, possibly Jedi Slot
+		insertBoolean(false);
+
+		// Unknown
+		insertBoolean(false);
 	}
 
-	ClientPermissionsMessage(bool maxChars) : BaseMessage() {
-		insertShort(0x05);
-		insertInt(0xE00730E5);
+	ClientPermissionsMessage(bool canConnect, bool canCreateCharacter) : BaseMessage() {
+		insertShort(0x04);
+		insertInt(STRING_HASHCODE("ClientPermissionsMessage"));
 
-		insertByte(0x01); // Galaxy_Open_Flag
+		// Galaxy Available
+		insertBoolean(canConnect);
 
-		// Send this as 0 disallows a player to create anymore players on the selected galaxy
-		byte charsMax = (maxChars ? 0x00 : 0x01);
-		insertByte(charsMax); // CharacterSlot_Open_Flag
+		// Allow to create character
+		insertBoolean(canCreateCharacter);
 
-		// This flag will override the flag above and allow unlimited characters
-		insertByte(0x00); // Unlimited_CharCreation_Flag
+		// Ignores character creation max bool, possibly Jedi Slot
+		insertBoolean(false);
 
-		insertByte(0x01); // Unknown
+		// Unknown
+		insertBoolean(false);
 	}
 };
 
