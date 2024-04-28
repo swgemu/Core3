@@ -13,7 +13,6 @@ import server.zone.objects.creature.CreatureObject;
 import server.zone.Zone;
 import server.zone.managers.planet.PlanetManager;
 include server.zone.managers.planet.PlanetTravelPoint;
-include server.zone.TreeEntry;
 
 @json
 class TravelTerminal extends Terminal {
@@ -33,9 +32,6 @@ class TravelTerminal extends Terminal {
 	}
 
 	public native void notifyInsertToZone(Zone zone);
-
-	@local
-	public native void notifyInsert(TreeEntry obj);
 
 	/**
 	 * Handles the radial selection sent by the client

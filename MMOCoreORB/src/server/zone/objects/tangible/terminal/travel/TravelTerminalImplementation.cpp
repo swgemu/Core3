@@ -31,14 +31,3 @@ int TravelTerminalImplementation::handleObjectMenuSelect(CreatureObject* player,
 void TravelTerminalImplementation::notifyInsertToZone(Zone* zone) {
 	TerminalImplementation::notifyInsertToZone(zone);
 }
-
-void TravelTerminalImplementation::notifyInsert(TreeEntry* object) {
-	auto sceneO = static_cast<SceneObject*>(object);
-	uint64 scnoID = sceneO->getObjectID();
-
-	if (sceneO == nullptr) {
-		return;
-	}
-
-	sendTo(sceneO, true, false);
-}
