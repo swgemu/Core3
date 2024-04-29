@@ -250,15 +250,10 @@ public:
 
 		creature->setPvpStatusBitmask(originalMask, true);
 
-		if (creature->isAiAgent()) {
-			AiAgent* agent = cast<AiAgent*>(creature.get());
+		creature->removeObjectFlag(ObjectFlag::STATIONARY);
+		creature->setAITemplate();
 
-			if (agent == nullptr)
-				return;
-
-			agent->removeObjectFlag(ObjectFlag::STATIONARY);
-			agent->setAITemplate();
-		}
+		creature->setMovementState(AiAgent::FOLLOWING);
 	}
 };
 
