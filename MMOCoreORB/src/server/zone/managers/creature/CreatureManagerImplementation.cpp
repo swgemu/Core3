@@ -1034,17 +1034,28 @@ void CreatureManagerImplementation::harvest(Creature* creature, CreatureObject* 
 }
 
 void CreatureManagerImplementation::tame(Creature* creature, CreatureObject* player, bool force, bool adult) {
-	Zone* zone = creature->getZone();
-
-	if (zone == nullptr || !creature->isCreature())
+	if (creature == nullptr || player == nullptr) {
 		return;
+	}
 
-	if(player->getPendingTask("tame_pet") != nullptr) {
+	auto zoneServer = creature->getZoneServer();
+
+	if (zoneServer == nullptr) {
+		return;
+	}
+
+	auto zone = creature->getZone();
+
+	if (zone == nullptr || !creature->isCreature()) {
+		return;
+	}
+
+	if (player->getPendingTask("tame_pet") != nullptr) {
 		player->sendSystemMessage("You are already taming a pet");
 		return;
 	}
 
-	if(player->getPendingTask("call_pet") != nullptr) {
+	if (player->getPendingTask("call_pet") != nullptr) {
 		player->sendSystemMessage("You cannot tame a pet while another is being called");
 		return;
 	}
@@ -1134,12 +1145,15 @@ void CreatureManagerImplementation::tame(Creature* creature, CreatureObject* pla
 		}
 	}
 
-	if (force && !ghost->isPrivileged())
+	if (force && !ghost->isPrivileged()) {
 		force = false;
+	}
 
-	ChatManager* chatManager = player->getZoneServer()->getChatManager();
+	auto chatManager = zoneServer->getChatManager();
 
-	chatManager->broadcastChatMessage(player, "@hireling/hireling:taming_" + String::valueOf(System::random(4) + 1), 0, 0, player->getMoodID(), 0, ghost->getLanguageID());
+	if (chatManager != nullptr) {
+		chatManager->broadcastChatMessage(player, "@hireling/hireling:taming_" + String::valueOf(System::random(4) + 1), 0, 0, player->getMoodID(), 0, ghost->getLanguageID());
+	}
 
 	Locker clocker(creature);
 
@@ -1148,6 +1162,10 @@ void CreatureManagerImplementation::tame(Creature* creature, CreatureObject* pla
 
 	creature->clearPatrolPoints();
 	creature->addObjectFlag(ObjectFlag::STATIONARY);
+	creature->setFollowObject(nullptr);
+	creature->setMovementState(AiAgent::OBLIVIOUS);
+
+	// Update AI Behavior Tree
 	creature->setAITemplate();
 
 	Reference<TameCreatureTask*> task = new TameCreatureTask(creature, player, mask, force, adult);
