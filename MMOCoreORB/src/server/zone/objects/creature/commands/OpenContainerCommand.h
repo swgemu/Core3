@@ -36,26 +36,33 @@ public:
 			return GENERALERROR;
 		}
 
-		ManagedReference<SceneObject*> objectParent = objectToOpen->getParent().get();
+		ManagedReference<SceneObject*> player = objectToOpen->getParentRecursively(SceneObjectType::PLAYERCREATURE);
 
-		float range = objectToOpen->isCraftingStation() ? 12.0f : 7.0f;
+		if (player == nullptr) {  //Only perform checks if not in inventory/bank/bags
 
-		if (!creature->isInRange(objectToOpen, range)) {
-			StringIdChatParameter param;
-			param.setStringId("@container_error_message:container09_prose"); // You are out of range of %TT.
-			param.setTT(objectToOpen->getObjectName());
-			creature->sendSystemMessage(param);
+			ManagedReference<SceneObject*> objectsParent = objectToOpen->getParent();
 
-			return TOOFAR;
-		}
+			bool craftingStation = objectsParent != nullptr && objectsParent->isCraftingStation();
 
-		if (!CollisionManager::checkLineOfSight(objectToOpen, creature)) {
-			StringIdChatParameter msgParam;
-			msgParam.setStringId("@container_error_message:container18_prose"); // You can't see %TT. You may have to move closer to it.
-			msgParam.setTT(objectToOpen->getObjectName());
-			creature->sendSystemMessage(msgParam);
+			float range = craftingStation ? 12.0f : 7.0f;
 
-			return GENERALERROR;
+			if (!creature->isInRange(objectToOpen, range)) {
+				StringIdChatParameter param;
+				param.setStringId("@container_error_message:container09_prose"); // You are out of range of %TT.
+				param.setTT(objectToOpen->getObjectName());
+				creature->sendSystemMessage(param);
+
+				return TOOFAR;
+			}
+
+			if (!craftingStation && !CollisionManager::checkLineOfSight(objectToOpen, creature)) {
+				StringIdChatParameter msgParam;
+				msgParam.setStringId("@container_error_message:container18_prose"); // You can't see %TT. You may have to move closer to it.
+				msgParam.setTT(objectToOpen->getObjectName());
+				creature->sendSystemMessage(msgParam);
+
+				return GENERALERROR;
+			}
 		}
 
 		Locker clocker(objectToOpen, creature);
