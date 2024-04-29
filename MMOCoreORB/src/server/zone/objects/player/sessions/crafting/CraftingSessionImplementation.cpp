@@ -553,7 +553,7 @@ void CraftingSessionImplementation::addIngredient(TangibleObject* tano, int slot
 		return;
 	}
 
-	if (tano == nullptr) {
+	if (tano == nullptr || tano->getObjectID() == craftingTool->getObjectID()) {
 		sendSlotMessage(clientCounter, IngredientSlot::INVALIDINGREDIENT);
 		return;
 	}
