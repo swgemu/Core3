@@ -115,12 +115,15 @@ dantooine = {
 		{name = "Dantooine Mining Outpost", x = -637.0, z = 3, y = 2504.4, interplanetaryTravelAllowed = 1, incomingTravelAllowed = 1, landingRange = 3},
 		{name = "Dantooine Imperial Outpost", x = -4208.6602, z = 3, y = -2350.24, interplanetaryTravelAllowed = 1, incomingTravelAllowed = 1, landingRange = 3},
 		{name = "Dantooine Agro Outpost", x = 1569.66, z = 4, y = -6415.7598, interplanetaryTravelAllowed = 1, incomingTravelAllowed = 1, landingRange = 3},
+		{name = "Dantooine Agro Outpost", x = 1569.66, z = 4, y = -6415.7598, interplanetaryTravelAllowed = 1, incomingTravelAllowed = 1, landingRange = 3},
+		{name = "Abandoned Rebel Base", x = -6799.6, z = 46.0, y = 5574.3, interplanetaryTravelAllowed = 0, incomingTravelAllowed = 0, landingRange = 3}
 	},
 
 	jtlTravelPoints = {
 		{"Dantooine Mining Outpost", -640, 3, 2505},
 		{"Dantooine Imperial Outpost", -4205, 3, -2350},
-		{"Dantooine Agro Outpost", 1575, 4, -6420}
+		{"Dantooine Agro Outpost", 1575, 4, -6420},
+		{"Abandoned Rebel Base", -6799.6, 46.0, 5574.3}
 	},
 
 	jtlLaunchPoint = {"space_dantooine", 1380, -750, -5900},
@@ -319,14 +322,16 @@ naboo = {
 		{name = "Moenia Shuttleport", x = 4961.9409, z = 3.75, y = -4892.6997, interplanetaryTravelAllowed = 0, incomingTravelAllowed = 1, landingRange = 3},
 		{name = "Dee'ja Peak Shuttleport", x = 5331.9375, z = 327.02765, y = -1576.6733, interplanetaryTravelAllowed = 0, incomingTravelAllowed = 1, landingRange = 3},
 		{name = "Kaadara Starport", x = 5280.2002, z = -192, y = 6688.0498, interplanetaryTravelAllowed = 1, incomingTravelAllowed = 1, landingRange = 6},
-		{name = "Kaadara Shuttleport", x = 5123.3857, z = -192, y = 6616.0264, interplanetaryTravelAllowed = 0, incomingTravelAllowed = 1, landingRange = 3}
+		{name = "Kaadara Shuttleport", x = 5123.3857, z = -192, y = 6616.0264, interplanetaryTravelAllowed = 0, incomingTravelAllowed = 1, landingRange = 3},
+		{name = "Emperor's Retreat", x = 2442.8, z = 292.0, y = -3916.8, interplanetaryTravelAllowed = 0, incomingTravelAllowed = 0, landingRange = 3}
 	},
 
 	jtlTravelPoints = {
 		{"Theed Spaceport", -4860, 6, 4165},
 		{"Keren Starport", 1370, 13, 2750},
 		{"Kaadara Starport", 5280, -192, 6688},
-		{"Moenia", 4730, 5, -4678}
+		{"Moenia", 4730, 5, -4678},
+		{"Emperor's Retreat", 2442.8, 292.0, -3916.8}
 	},
 
 	jtlLaunchPoint = {"space_naboo", -2500, 900, -6500},
@@ -558,7 +563,8 @@ tatooine = {
 		{name = "Anchorhead Shuttleport", x = 47.565128, z = 52, y = -5338.9072, interplanetaryTravelAllowed = 0, incomingTravelAllowed = 1, landingRange = 3},
 		{name = "Mos Entha Starport", x = 1266.0996, z = 7, y = 3065.1392, interplanetaryTravelAllowed = 1, incomingTravelAllowed = 1, landingRange = 6},
 		{name = "Mos Entha Shuttle B", x = 1395.447, z = 7, y = 3467.0117, interplanetaryTravelAllowed = 0, incomingTravelAllowed = 1, landingRange = 6},
-		{name = "Mos Entha Shuttle A", x = 1730.8828, z = 7, y = 3184.6135, interplanetaryTravelAllowed = 0, incomingTravelAllowed = 1, landingRange = 6}
+		{name = "Mos Entha Shuttle A", x = 1730.8828, z = 7, y = 3184.6135, interplanetaryTravelAllowed = 0, incomingTravelAllowed = 1, landingRange = 6},
+		{name = "Jabba's Palace", x = -6171.6, z = 90.0, y = -6381.5, interplanetaryTravelAllowed = 0, incomingTravelAllowed = 0, landingRange = 3}
 	},
 
 	jtlTravelPoints = {
@@ -566,6 +572,7 @@ tatooine = {
 		{"Bestine Starport",-1360,12,-3600},
 		{"Mos Espa Starport",-2835,5,2105},
 		{"Mos Entha Starport",1265,7,3065},
+		{"Jabba's Palace", -6171.6, 90.0, -6381.5}
 	},
 
 	jtlLaunchPoint = {"space_tatooine",2300,-5900,1900},

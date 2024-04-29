@@ -13,7 +13,8 @@ dantooine = {
 	jtlTravelPoints = {
 		{"Dantooine Mining Outpost", -640, 3, 2505},
 		{"Dantooine Imperial Outpost", -4205, 3, -2350},
-		{"Dantooine Agro Outpost", 1575, 4, -6420}
+		{"Dantooine Agro Outpost", 1575, 4, -6420},
+		{"Abandoned Rebel Base", -6799.6, 46.0, 5574.3}
 	},
 
 	jtlLaunchPoint = {"space_dantooine", 1380, -750, -5900}
@@ -50,7 +51,8 @@ naboo = {
 		{"Theed Spaceport", -4860, 6, 4165},
 		{"Keren Starport", 1370, 13, 2750},
 		{"Kaadara Starport", 5280, -192, 6688},
-		{"Moenia", 4730, 5, -4678}
+		{"Moenia", 4730, 5, -4678},
+		{"Emperor's Retreat", 2442.8, 292.0, -3916.8}
 	},
 
 	jtlLaunchPoint = {"space_naboo", -2500, 900, -6500}
@@ -81,6 +83,7 @@ tatooine = {
 		{"Bestine Starport",-1360,12,-3600},
 		{"Mos Espa Starport",-2835,5,2105},
 		{"Mos Entha Starport",1265,7,3065},
+		{"Jabba's Palace", -6171.6, 90.0, -6381.5}
 	},
 
 	jtlLaunchPoint = {"space_tatooine",2300,-5900,1900},

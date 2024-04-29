@@ -45,12 +45,8 @@ public:
 
 		auto travelPoint = planetManager->getNearestPlanetTravelPoint(player->getWorldPosition(), 128.f);
 
-		if (travelPoint == nullptr) {
-			return;
-		}
-
 		// If this is a blank string it will just show the ships not at this location
-		auto travelPointName = travelPoint->getPointName();
+		auto travelPointName = travelPoint != nullptr ? travelPoint->getPointName() : "";
 
 		VectorMap<uint64, String> shipMap;
 		int datapadSize = datapad->getContainerObjectsSize();
