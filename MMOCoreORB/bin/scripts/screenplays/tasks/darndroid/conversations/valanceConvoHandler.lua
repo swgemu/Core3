@@ -52,7 +52,7 @@ function valance_serth_convo_handler:runScreenHandlers(pConvTemplate, pPlayer, p
 	end
 
 	if (screenID == "happy_help" or screenID == "expect_return") then
-		if (DarnDroid1:completeQuest(pPlayer)) then
+		if (not DarnDroid1:completeQuest(pPlayer)) then
 			return convoTemplate:getScreen("inventory_full")
 		end
 	elseif (screenID == "ill_help" or screenID == "will_help") then

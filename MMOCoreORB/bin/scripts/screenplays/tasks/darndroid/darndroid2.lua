@@ -28,7 +28,7 @@ end
 
 function DarnDroid2:spawnAreaObjects()
 	if (isZoneEnabled("talus")) then
-		local blackSunArea = spawnActiveArea("talus", "object/active_area.iff", 5353, 131, 5632, 10, 0)
+		local blackSunArea = spawnActiveArea("talus", "object/active_area.iff", 5353, 131, 5632, 64, 0)
 
 		if (blackSunArea ~= nil) then
 			createObserver(ENTEREDAREA, "DarnDroid2", "notifyEnteredBlackSunArea", blackSunArea)
