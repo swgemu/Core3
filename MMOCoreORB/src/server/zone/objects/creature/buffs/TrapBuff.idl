@@ -11,9 +11,26 @@ include server.zone.objects.creature.buffs.BuffType;
 import server.zone.objects.creature.CreatureObject;
 
 @json
-class TrapBuff extends StateBuff {
-	public TrapBuff(CreatureObject creo, unsigned long buffState, int duration) {
-		super(creo, Long.hashCode(buffState), duration, BuffType.TRAP);
+class TrapBuff extends Buff {
+	public TrapBuff(CreatureObject creO, unsigned long buffCRC, int duration, unsigned long secondaryCRC = 0) {
+		//super(creo, buffCrc, duration, BuffType.TRAP);
+		super(creO, buffCRC, duration, BuffType.TRAP, secondaryCRC);
+
+
+	}
+
+	@preLocked
+	public void activate(boolean applyModifiers) {
+		super.activate(applyModifiers);
+
+		super.creature.setState(stateApplied);
+	}
+
+	@preLocked
+	public void deactivate(boolean removeModifiers) {
+		super.deactivate(removeModifiers);
+
+		super.creature.clearState(stateApplied);
 	}
 
 	@read

@@ -83,23 +83,26 @@ void BuffList::addBuff(Buff* buff) {
 
 	uint32 buffcrc = buff->getBuffCRC();
 
-	//Remove the old buff if it exists. (Exists checked in removeBuff)
-	if ((buff->getBuffType() == BuffType::FOOD && !buff->isAttributeBuff())
-			|| (buff->getBuffType() != BuffType::FOOD))
+	// Remove the old buff if it exists. (Exists checked in removeBuff)
+	if ((buff->getBuffType() == BuffType::FOOD && !buff->isAttributeBuff()) || (buff->getBuffType() != BuffType::FOOD)) {
 		removeBuff(buffcrc);
+	}
 
-	if (!buff->isPersistent())
+	if (!buff->isPersistent()) {
 		ObjectManager::instance()->persistObject(buff, 1, "buffs");
+	}
 
 	buffList.put(buffcrc, buff);
 
 	guard.release();
 
-	if (buff->isSpiceBuff())
+	if (buff->isSpiceBuff()) {
 		spiceActive = true;
+	}
 
-	if (!buff->isActive())
+	if (!buff->isActive()) {
 		buff->activate();
+	}
 }
 
 bool BuffList::removeBuff(uint32 buffcrc) {

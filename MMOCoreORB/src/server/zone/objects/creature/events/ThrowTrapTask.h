@@ -192,8 +192,10 @@ public:
 					float damage = System::random(maxDamage - minDamage) + minDamage;
 					targetAgent->inflictDamage(attacker, hamPool, damage, true, true);
 
+
+
 					// Check the creature does not have the state
-					if ((state != 0 && targetAgent->hasState(state)) || targetAgent->hasBuff(crc)) {
+					if ((state > CreatureState::INVALID && targetAgent->hasState(state)) || targetAgent->hasBuff(crc)) {
 						continue;
 					}
 
@@ -206,8 +208,11 @@ public:
 
 						Locker locker(buff, attacker);
 
-						if (state != 0) {
+						if (state > CreatureState::INVALID) {
+							info(true) << " Trap adding state: " << state;
+
 							buff->addState(state);
+							buff->setModsApplied(true);
 						}
 
 						// Add skill mods to the buff
