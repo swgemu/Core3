@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9cc7332f_078029e3",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/OpenContainerCommand.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2024-04-30T23:03:18Z",
+      "side": 1,
+      "message": "Get a pointer to the zone server and null check it.",
+      "revId": "c162ccfc11fe1e1e347c83fb3e0d80e6d1ad1201",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ac889df_aa197244",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/OpenContainerCommand.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2024-04-30T23:03:18Z",
+      "side": 1,
+      "message": "There is a function for this bool already, which will yield the same results as getting the parent recursively. \n\nobjectToOpen-\u003eisASubChildOf(creature);",
+      "revId": "c162ccfc11fe1e1e347c83fb3e0d80e6d1ad1201",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "82bc7c46_78f4032a",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/OpenContainerCommand.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2024-04-30T23:03:18Z",
+      "side": 1,
+      "message": "We don\u0027t new line for else statements, common in C++ but not how we format in Core3.",
+      "revId": "c162ccfc11fe1e1e347c83fb3e0d80e6d1ad1201",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    }
+  ]
+}
