@@ -699,7 +699,7 @@ template<> bool CheckStopResting::check(AiAgent* agent) const {
 	if (agent == nullptr)
 		return false;
 
-	if (agent->isInCombat() || agent->getFollowObject() != nullptr)
+	if (agent->isInCombat() || agent->getFollowObject() != nullptr || agent->getMovementState() == AiAgent::STALKING)
 		return true;
 
 	Time* restDelay = agent->getRestDelay();

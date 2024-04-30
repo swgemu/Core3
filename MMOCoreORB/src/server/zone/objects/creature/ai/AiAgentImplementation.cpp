@@ -1958,16 +1958,21 @@ bool AiAgentImplementation::killPlayer(SceneObject* prospect) {
 }
 
 bool AiAgentImplementation::stalkProspect(SceneObject* prospect) {
-	if (prospect == nullptr || !prospect->isCreatureObject())
+	if (prospect == nullptr || !prospect->isCreatureObject()) {
 		return false;
+	}
 
-	CreatureObject* creature = prospect->asCreatureObject();
+	auto creature = prospect->asCreatureObject();
 
 	if (creature != nullptr && creature->isPlayerCreature() && creature->hasSkill("outdoors_ranger_novice")) {
 		StringIdChatParameter param;
 		param.setStringId("@skl_use:notify_stalked"); // "It seems that you are being stalked by %TO."
 		param.setTO(getObjectName());
 		creature->sendSystemMessage(param);
+	}
+
+	if (getPosture() != CreaturePosture::UPRIGHT) {
+		setPosture(CreaturePosture::UPRIGHT, true, true);
 	}
 
 	setStalkObject(prospect);
