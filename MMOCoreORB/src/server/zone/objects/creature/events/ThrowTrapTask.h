@@ -110,7 +110,7 @@ public:
 		uint64 state = trapData->getState();
 		const auto defenseString = trapData->getDefenseMod();
 		const auto animationString = trapData->getAnimation();
-		uint32 crc = animationString.hashCode();
+		uint32 trapCrc = animationString.hashCode();
 		bool isAoeTrap = trapData->isAoeTrap();
 
 		int debuffDuration = trapData->getDuration();
@@ -180,7 +180,7 @@ public:
 
 				// Broadcast combat action for main target
 				if (isPrimaryTarget) {
-					auto action = new CombatAction(attacker, targetAgent, crc, hit, 0L);
+					auto action = new CombatAction(attacker, targetAgent, trapCrc, hit, 0L);
 
 					if (action != nullptr) {
 						attacker->broadcastMessage(action, true, false);
@@ -193,11 +193,11 @@ public:
 					targetAgent->inflictDamage(attacker, hamPool, damage, true, true);
 
 					// Check the creature does not have the state
-					if ((state != 0 && targetAgent->hasState(state)) || targetAgent->hasBuff(crc)) {
+					if ((state > CreatureState::INVALID && targetAgent->hasState(state)) || targetAgent->hasBuff(trapCrc)) {
 						continue;
 					}
 
-					ManagedReference<TrapBuff*> buff = new TrapBuff(targetAgent, crc, debuffDuration);
+					ManagedReference<TrapBuff*> buff = new TrapBuff(targetAgent, trapCrc, state, debuffDuration);
 
 					if (buff != nullptr) {
 						if (isPrimaryTarget) {
@@ -206,7 +206,7 @@ public:
 
 						Locker locker(buff, attacker);
 
-						if (state != 0) {
+						if (state > CreatureState::INVALID) {
 							buff->addState(state);
 						}
 

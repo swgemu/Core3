@@ -5,15 +5,35 @@
 
 package server.zone.objects.creature.buffs;
 
-import server.zone.objects.creature.buffs.StateBuff;
+import server.zone.objects.creature.buffs.Buff;
 import system.lang.Long;
 include server.zone.objects.creature.buffs.BuffType;
 import server.zone.objects.creature.CreatureObject;
 
 @json
-class TrapBuff extends StateBuff {
-	public TrapBuff(CreatureObject creo, unsigned long buffState, int duration) {
-		super(creo, Long.hashCode(buffState), duration, BuffType.TRAP);
+class TrapBuff extends Buff {
+	protected unsigned long statesBitmask;
+
+	public TrapBuff(CreatureObject creO, unsigned int buffCrc, unsigned long buffState, int duration) {
+		super(creO, buffCrc, duration, BuffType.TRAP, 0);
+
+		statesBitmask = buffState;
+
+		Logger.setLoggingName("TrapBuff");
+	}
+
+	@preLocked
+	public void activate(boolean applyModifiers) {
+		super.activate(applyModifiers);
+
+		super.creature.setState(statesBitmask);
+	}
+
+	@preLocked
+	public void deactivate(boolean removeModifiers) {
+		super.deactivate(removeModifiers);
+
+		super.creature.clearState(statesBitmask);
 	}
 
 	@read
