@@ -147,7 +147,7 @@ function HeroOfTatooineScreenPlay:createAltruismEvent(event)
 	if (hasServerEvent("HeroOfTatAltruism")) then
 		rescheduleServerEvent("HeroOfTatAltruism", timer)
 
-		Logger:logEvent("Hero of Tatooine: Re-Scheduling EXISTING Event for Altruism spawn in " .. timer .. " Event Type: " .. event, LT_INFO)
+		Logger:logEvent("Hero of Tatooine: Rescheduling EXISTING Event for Altruism spawn in " .. timer .. " Event Type: " .. event, LT_INFO)
 	else
 		createServerEvent(timer, "HeroOfTatooineScreenPlay", "doAltruismChange", "HeroOfTatAltruism")
 
@@ -161,7 +161,7 @@ function HeroOfTatooineScreenPlay:createIntellectEvent(event)
 	if (hasServerEvent("HeroOfTatIntellect")) then
 		rescheduleServerEvent("HeroOfTatIntellect", timer)
 
-		Logger:logEvent("Hero of Tatooine: Re-Scheduling EXISTING Event for Intellect spawn in " .. timer .. " Event Type: " .. event, LT_INFO)
+		Logger:logEvent("Hero of Tatooine: Rescheduling EXISTING Event for Intellect spawn in " .. timer .. " Event Type: " .. event, LT_INFO)
 	else
 		createServerEvent(timer, "HeroOfTatooineScreenPlay", "doIntellectSpawn", "HeroOfTatIntellect")
 
@@ -175,7 +175,7 @@ function HeroOfTatooineScreenPlay:createHonorEvent(event)
 	if (hasServerEvent("HeroOfTatHonor")) then
 		rescheduleServerEvent("HeroOfTatHonor", timer)
 
-		Logger:logEvent("Hero of Tatooine: Re-Scheduling EXISTING Event for Honor spawn in " .. timer .. " Event Type: " .. event, LT_INFO)
+		Logger:logEvent("Hero of Tatooine: Rescheduling EXISTING Event for Honor spawn in " .. timer .. " Event Type: " .. event, LT_INFO)
 	else
 		createServerEvent(timer, "HeroOfTatooineScreenPlay", "doHonorChange", "HeroOfTatHonor")
 
@@ -235,7 +235,7 @@ function HeroOfTatooineScreenPlay:doCourageChange()
 	local y = self.courageSpawns[newLoc][2]
 
 	-- 	{zoneName, x, y, minDist, maxDist, force}
-	local spawnPoint = getSpawnPoint("tatooine", x, y, 10, 128)
+	local spawnPoint = getSpawnPoint("tatooine", x, y, 10, 128, true)
 
 	local z = getWorldFloor(spawnPoint[1], spawnPoint[3], "tatooine")
 

@@ -3493,22 +3493,26 @@ int DirectorManager::getSpawnPoint(lua_State* L) {
 	}
 
 	bool found = false;
-	Vector3 position;
 	int retries = 50;
+
+	Vector3 position;
+	Vector3 testPosition(0.f, 0.f, 0.f);
 
 	while (!found && retries > 0) {
 		position = generateSpawnPoint(zoneName, x, y, minimumDistance, maximumDistance, 5.0, 20, false);
 
-		if (position != Vector3(0, 0, 0))
+		if (fabs(position.getX() - testPosition.getX()) > 0.1 && fabs(position.getY() - testPosition.getY()) > 0.1) {
 			found = true;
+		}
 
 		retries--;
 	}
 
-	if (!found && forceSpawn)
+	if (!found && forceSpawn) {
 		position = generateSpawnPoint(zoneName, x, y, minimumDistance, maximumDistance, 5.0, 20, true);
+	}
 
-	if (position != Vector3(0, 0, 0)) {
+	if (fabs(position.getX() - testPosition.getX()) > 0.1 && fabs(position.getY() - testPosition.getY()) > 0.1) {
 		lua_newtable(L);
 		lua_pushnumber(L, position.getX());
 		lua_pushnumber(L, position.getZ());
@@ -3519,9 +3523,10 @@ int DirectorManager::getSpawnPoint(lua_State* L) {
 
 		return 1;
 	} else {
-		String err = "Unable to generate spawn point in DirectorManager::getSpawnPoint, x: " + String::valueOf(x) + ", y: " + String::valueOf(y) +
-				", zone: " + zoneName + ", minDist: " + String::valueOf(minimumDistance) + ", maxDist: " + String::valueOf(maximumDistance);
-		printTraceError(L, err);
+		StringBuffer errorMsg;
+		errorMsg << "DirectorManager::getSpawnPoint failed to find spawn point - Zone: " << zoneName << " X: " << x << ", Y: " << y << " Min Distance: " << minimumDistance << " Max Distance: " << maximumDistance;
+
+		printTraceError(L, errorMsg.toString());
 		return 0;
 	}
 }
