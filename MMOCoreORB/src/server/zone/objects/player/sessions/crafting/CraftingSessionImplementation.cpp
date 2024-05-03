@@ -30,6 +30,8 @@
 #include "templates/params/RangedIntCustomizationVariable.h"
 #include "server/zone/objects/transaction/TransactionLog.h"
 
+// #define DEBUG_EXPERIMENTATION
+
 int CraftingSessionImplementation::initializeSession(CraftingTool* tool, CraftingStation* station) {
 	craftingTool = tool;
 	craftingStation = station;
@@ -986,12 +988,19 @@ void CraftingSessionImplementation::finishAssembly(int clientCounter) {
 	// End Object Controller **************************************
 }
 
+
 void CraftingSessionImplementation::experiment(int rowsAttempted, const String& expAttempt, int clientCounter) {
+	// Player and session are pre-locked coming in
+
+	// Checks to ensure all the variables are no null or ends the session
 	if (!validateSession()) {
 		return;
 	}
 
-	// info(true) << "CraftingSessionImplementation::experiment - Rows Attempted: " << rowsAttempted << " Experimental Group: " << expAttempt << " Client Counter: " << clientCounter;
+#ifdef DEBUG_EXPERIMENTATION
+	info(true) << "\n\nCraftingSessionImplementation::experiment - Total Experimental Points: " << experimentationPointsTotal << " Total Points Used: " << experimentationPointsUsed;
+	info(true) << "Rows Attempted: " << rowsAttempted << " Experimental Group: " << expAttempt << " Client Counter: " << clientCounter;
+#endif // DEBUG_EXPERIMENTATION
 
 	ManagedReference<CraftingTool*> craftingTool = this->craftingTool.get();
 	ManagedReference<CreatureObject*> crafter = this->crafter.get();
@@ -1010,31 +1019,53 @@ void CraftingSessionImplementation::experiment(int rowsAttempted, const String& 
 		return;
 	}
 
-	Locker locker(craftingTool);
-	Locker locker2(manufactureSchematic);
-	Locker locker3(prototype);
+	// Lock the manufacturing schematic
+	Locker schematicClock(manufactureSchematic, crafter);
 
 	StringTokenizer tokenizer(expAttempt);
 
 	int rowEffected, pointsAttempted, failure;
 	int lowestExpSuccess = 0;
 
-	// lastExperimentationTimestamp = Time::currentNanoTime();
-
 	Reference<CraftingValues*> craftingValues = manufactureSchematic->getCraftingValues();
 	craftingValues->clear();
+
 	int numberOfRows = craftingValues->getTotalVisibleAttributeGroups();
+
 	if (rowsAttempted > numberOfRows || rowsAttempted < 1) {
+		error() << "Crafter attempted to experiment on an invalid number of rows - Crafter: " << crafter->getDisplayedName() << " ID: " << crafter->getObjectID() << " Rows Attempted: " << rowsAttempted;
+
 		cancelSession();
 		return;
 	}
+
+	// Lock the prototype
+	Locker prototypeClock(prototype, crafter);
+
 	// Loop through all the lines of experimentation
 	for (int i = 0; i < rowsAttempted; ++i) {
 		rowEffected = tokenizer.getIntToken();
 		pointsAttempted = tokenizer.getIntToken();
 
-		// check for hack attempts
-		if (pointsAttempted > (experimentationPointsTotal - experimentationPointsUsed) || pointsAttempted < 1 || rowEffected < 0 || rowEffected > (numberOfRows - 1)) {
+		// Get the amount of points experimentation points the player has remaining remaining
+		int totalRemainingPoints = (experimentationPointsTotal - experimentationPointsUsed);
+
+#ifdef DEBUG_EXPERIMENTATION
+		info(true) << "Points attempted for Row #" << i << " Points to use: " << pointsAttempted << " Current Remaining Experimentation Points: " << totalRemainingPoints;
+#endif // DEBUG_EXPERIMENTATION
+
+		// Player is out of points, break the loop or experimentation was attempted twice in succession
+		if (totalRemainingPoints <= 0 || pointsAttempted > totalRemainingPoints) {
+			error() << "Crafter Attempted to use too many Experimentation Points - Crafter: " << crafter->getDisplayedName() << " ID: " << crafter->getObjectID() <<
+				" Prototype: " << prototype->getDisplayedName() << " ID: " << prototype->getObjectID();
+			break;
+		}
+
+		// Check for odd values for points attempted or the row. Also make sure the row affected is within range of possible number of rows
+		if (pointsAttempted < 1 || rowEffected < 0 || rowEffected > (numberOfRows - 1)) {
+			error() << "Invalid points or row value during experimentation - Crafter: " << crafter->getDisplayedName() << " ID: " << crafter->getObjectID() <<
+				" Prototype: " << prototype->getDisplayedName() << " ID: " << prototype->getObjectID();
+
 			cancelSession();
 			return;
 		}
@@ -1050,6 +1081,9 @@ void CraftingSessionImplementation::experiment(int rowsAttempted, const String& 
 			experimentationResult = craftingManager->calculateExperimentationSuccess(crafter, manufactureSchematic->getDraftSchematic(), failure);
 
 			if (experimentationResult != CraftingManager::AMAZINGSUCCESS && craftingTool->getForceCriticalExperiment() > 0) {
+				// We are going to mutute the tool, lock it
+				Locker toolLock(craftingTool, crafter);
+
 				experimentationResult = CraftingManager::AMAZINGSUCCESS;
 				craftingTool->setForceCriticalExperiment(craftingTool->getForceCriticalExperiment() - 1);
 			}
@@ -1062,15 +1096,20 @@ void CraftingSessionImplementation::experiment(int rowsAttempted, const String& 
 			return;
 		}
 
-		// Make sure to store the lowest roll to display (Effect the multiline rolls
-		if (lowestExpSuccess < experimentationResult)
+		// Make sure to store the lowest roll to display (Effect the multiline rolls)
+		if (lowestExpSuccess < experimentationResult) {
 			lowestExpSuccess = experimentationResult;
+		}
 
 		manufactureSchematic->increaseComplexity();
 		prototype->setComplexity(manufactureSchematic->getComplexity());
 
 		// Do the experimenting - sets new percentages
 		craftingManager->experimentRow(manufactureSchematic, craftingValues, rowEffected, pointsAttempted, failure, experimentationResult);
+
+#ifdef DEBUG_EXPERIMENTATION
+		info(true) << "Successful Experimentation for Row #" << i << " Using " << pointsAttempted << " points. NEW Remaining Experimentation Points: " << (experimentationPointsTotal - experimentationPointsUsed);
+#endif // DEBUG_EXPERIMENTATION
 	}
 
 	manufactureSchematic->setExperimentingCounter(manufactureSchematic->getExperimentingCounter() + rowsAttempted);
@@ -1081,17 +1120,26 @@ void CraftingSessionImplementation::experiment(int rowsAttempted, const String& 
 	// Update the Tano with new values
 	prototype->updateCraftingValues(manufactureSchematic->getCraftingValues(), false);
 
+	// Release the lock on the prototype
+	prototypeClock.release();
+
 	// Sets the result for display
 	experimentationResult = lowestExpSuccess;
 
-	// Start Player Object Delta **************************************
+	/*
+
+		Send Packets for experimentation updates
+
+	*/
+
+	// Player Object Delta Message 9
 	PlayerObjectDeltaMessage9* dplay9 = new PlayerObjectDeltaMessage9(crafter->getPlayerObject());
 	dplay9->setExperimentationPoints(experimentationPointsTotal - experimentationPointsUsed);
 	dplay9->close();
 
 	crafter->sendMessage(dplay9);
-	// End Player Object Delta **************************************
 
+	// Manufacturing Schematic Delta Message 3
 	ManufactureSchematicObjectDeltaMessage3* dMsco3 = new ManufactureSchematicObjectDeltaMessage3(manufactureSchematic);
 	dMsco3->updateComplexity(manufactureSchematic->getComplexity());
 	dMsco3->updateCraftingValues(manufactureSchematic);
@@ -1099,18 +1147,21 @@ void CraftingSessionImplementation::experiment(int rowsAttempted, const String& 
 
 	crafter->sendMessage(dMsco3);
 
+	// Manufacturing Schematic Delta Message 7
 	ManufactureSchematicObjectDeltaMessage7* dMsco7 = new ManufactureSchematicObjectDeltaMessage7(manufactureSchematic);
 	dMsco7->update9(manufactureSchematic, false);
 	dMsco7->close();
 
 	crafter->sendMessage(dMsco7);
 
+	// Tangible Object Delta Message 3
 	TangibleObjectDeltaMessage3* dtano3 = new TangibleObjectDeltaMessage3(prototype);
 	dtano3->updateComplexity();
 	dtano3->close();
 
 	crafter->sendMessage(dtano3);
 
+	// Object Controller Message
 	ObjectControllerMessage* objMsg = new ObjectControllerMessage(crafter->getObjectID(), 0x1B, 0x0113);
 	objMsg->insertInt(0x105);
 
@@ -1119,11 +1170,22 @@ void CraftingSessionImplementation::experiment(int rowsAttempted, const String& 
 
 	crafter->sendMessage(objMsg);
 
+	/*
+
+		END Packets for experimentation updates
+
+	*/
+
+	// Notify experimentation oberservers
 	crafter->notifyObservers(ObserverEventType::CRAFTINGEXPERIMENTATION, crafter, 0);
 
 	if (crafterGhost != nullptr && crafterGhost->getDebug()) {
 		crafter->sendSystemMessage(craftingValues->toString());
 	}
+
+#ifdef DEBUG_EXPERIMENTATION
+	info(true) << "END Experimentation Session\n\n";
+#endif // DEBUG_EXPERIMENTATION
 }
 
 void CraftingSessionImplementation::customization(const String& name, byte templateChoice, int schematicCount, const String& customizationString) {
