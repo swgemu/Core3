@@ -26,7 +26,6 @@ public:
 	}
 
 	void parse(Message* message) {
-		//System::out << message->toStringData() << endl;
 		message->parseInt();
 
 		clientCounter = message->parseByte();
@@ -50,26 +49,44 @@ public:
 	void run() {
 		ManagedReference<CreatureObject*> player = client->getPlayer();
 
-		if (player == nullptr)
+		if (player == nullptr) {
 			return;
+		}
 
 		Reference<CraftingSession*> session = player->getActiveSession(SessionFacadeType::CRAFTING).castTo<CraftingSession*>();
 
 		if (session == nullptr) {
-			warning("Trying to experiment when no session exists");
+			warning() << "Player attempting to experiment when no CraftingSession exists -- Player: " << player->getDisplayedName() << " ID: " << player->getObjectID();
 			return;
 		}
+
+		auto zoneServer = server->getZoneServer();
+
+		if (zoneServer == nullptr) {
+			return;
+		}
+
+		// Lock the player
+		Locker lock(player);
 
 		ManagedReference<TradeSession*> tradeContainer = player->getActiveSession(SessionFacadeType::TRADE).castTo<TradeSession*>();
 
 		if (tradeContainer != nullptr) {
-			server->getZoneServer()->getPlayerManager()->handleAbortTradeMessage(player);
+			auto playerManager = zoneServer->getPlayerManager();
+
+			if (playerManager == nullptr) {
+				return;
+			}
+
+			playerManager->handleAbortTradeMessage(player);
 		}
 
 		if (session->getState() != 3)
 			return;
 
-		Locker locker(session);
+		// Cross lock the session to the player
+		Locker sessionLock(session, player);
+
 		session->experiment(numRowsAttempted, expString, clientCounter);
 	}
 };
