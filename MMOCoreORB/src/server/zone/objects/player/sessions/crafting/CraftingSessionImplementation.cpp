@@ -560,7 +560,17 @@ void CraftingSessionImplementation::addIngredient(TangibleObject* tano, int slot
 		return;
 	}
 
-	SceneObject* inventory = crafter->getSlottedObject("inventory");
+	if (tano->isCraftingTool()) {
+		auto craftingTool = dynamic_cast<CraftingTool*>(tano);
+
+		if (craftingTool == nullptr || !craftingTool->isReady()) {
+			sendSlotMessage(clientCounter, IngredientSlot::INVALIDINGREDIENT);
+			return;
+		}
+	}
+
+	auto inventory = crafter->getInventory();
+
 	if (inventory == nullptr) {
 		sendSlotMessage(clientCounter, IngredientSlot::NOINVENTORY);
 		return;
@@ -568,7 +578,7 @@ void CraftingSessionImplementation::addIngredient(TangibleObject* tano, int slot
 
 	Locker locker(tano);
 
-	if (tano->getRootParent() == NULL) {
+	if (tano->getRootParent() == nullptr) {
 		sendSlotMessage(clientCounter, IngredientSlot::INVALIDINGREDIENT);
 		return;
 	}
