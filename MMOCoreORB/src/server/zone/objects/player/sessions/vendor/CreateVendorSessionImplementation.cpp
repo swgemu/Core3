@@ -138,15 +138,23 @@ void CreateVendorSessionImplementation::handleVendorSelection(byte menuID) {
 void CreateVendorSessionImplementation::createVendor(String& name) {
 	ManagedReference<CreatureObject*> player = this->player.get();
 
-	if (player == nullptr)
+	if (player == nullptr) {
 		return;
+	}
 
 	Locker locker(player);
+
+	auto zoneServer = player->getZoneServer();
+
+	if (zoneServer == nullptr) {
+		cancelSession();
+		return;
+	}
 
 	if (!VendorManager::instance()->isValidVendorName(name)) {
 		player->sendSystemMessage("@player_structure:obscene");
 		SuiInputBox* input = new SuiInputBox(player, SuiWindowType::STRUCTURE_NAME_VENDOR);
-		input->setCallback(new NameVendorSuiCallback(player->getZoneServer()));
+		input->setCallback(new NameVendorSuiCallback(zoneServer));
 		input->setCancelButton(true, "@cancel");
 		input->setPromptTitle("@player_structure:name_t");
 		input->setPromptText("@player_structure:name_d");
@@ -156,22 +164,23 @@ void CreateVendorSessionImplementation::createVendor(String& name) {
 		return;
 	}
 
-	ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
+	ManagedReference<SceneObject*> inventory = player->getInventory();
+
 	if (inventory == nullptr) {
 		cancelSession();
 		return;
 	}
 
-	ManagedReference<TangibleObject*> vendor;
+	ManagedReference<TangibleObject*> vendor = nullptr;
 
 	try {
-		vendor = (player->getZoneServer()->createObject(templatePath.hashCode())).castTo<TangibleObject*>();
+		vendor = (zoneServer->createObject(templatePath.hashCode())).castTo<TangibleObject*>();
 	} catch (Exception& e) {
 		error(e.getMessage());
 	}
 
 	if (vendor == nullptr) {
-		error("could not create vendor " + templatePath);
+		error() << "createVendor - Failed to create Vendor Template: " << templatePath;
 		cancelSession();
 		return;
 	}
@@ -179,9 +188,11 @@ void CreateVendorSessionImplementation::createVendor(String& name) {
 	Locker clocker(vendor, player);
 
 	if (!vendor->isVendor()) {
-		error("could not create vendor " + templatePath);
+		error() << "createVendor - Tangible Object is not a Vendor! Template: " << templatePath;
+
 		vendor->destroyObjectFromDatabase(true);
 		cancelSession();
+
 		return;
 	}
 

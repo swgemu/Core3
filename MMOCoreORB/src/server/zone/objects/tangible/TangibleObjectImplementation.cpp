@@ -1509,6 +1509,16 @@ bool TangibleObjectImplementation::isInNavMesh() {
 	return false;
 }
 
+bool TangibleObjectImplementation::isVendor() {
+	auto data = getDataObjectComponent()->get();
+
+	if (data == nullptr || !data->isVendorData() || (isAiAgent() && !(getOptionsBitmask() & OptionBitmask::VENDOR))) {
+		return false;
+	}
+
+	return true;
+}
+
 TangibleObject* TangibleObject::asTangibleObject() {
 	return this;
 }
