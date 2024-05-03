@@ -1268,28 +1268,37 @@ int CreatureObjectImplementation::addWounds(int type, int value, bool notifyClie
 		return 0;
 	}
 
-	if (isInvulnerable())
+	if (isInvulnerable()) {
 		return 0;
+	}
 
+	// Value we are returning from function
 	int returnValue = value;
 
+	// Current wounds value for the given HAM attribute
 	int currentValue = wounds.get(type);
 
+	// The expected new wound amount
 	int newValue = currentValue + value;
 
-	if (newValue < 0)
+	// New Wound value is less than zero return the negated currentValue
+	if (newValue < 0) {
 		returnValue = -currentValue;
+	}
 
-	if (newValue >= baseHAM.get(type))
+	if (newValue >= baseHAM.get(type)) {
 		returnValue = baseHAM.get(type) - 1 - currentValue;
+	}
 
-	if (value > 0 && asCreatureObject()->isPlayerCreature())
+	if (value > 0 && isPlayerCreature()) {
 		sendStateCombatSpam("cbt_spam", "wounded", 1, value, false);
+	}
 
 	setWounds(type, newValue, notifyClient);
 
-	if (doShockWounds)
+	if (doShockWounds) {
 		addShockWounds(1, true);
+	}
 
 	return returnValue;
 }

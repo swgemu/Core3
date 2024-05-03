@@ -446,7 +446,12 @@ void SuiManager::handleCharacterBuilderSelectItem(CreatureObject* player, SuiBox
 
 			} else if (templatePath == "apply_disease_dot") {
 				player->addDotState(player, CreatureState::DISEASED, scob->getObjectID(), 100, CreatureAttribute::UNKNOWN, 60, -1, 0);
-
+			} else if (templatePath == "apply_disease_dot_health") {
+				player->addDotState(player, CreatureState::DISEASED, scob->getObjectID(), 200, CreatureAttribute::HEALTH, 240, -1, 0);
+			} else if (templatePath == "apply_disease_dot_action") {
+				player->addDotState(player, CreatureState::DISEASED, scob->getObjectID(), 200, CreatureAttribute::ACTION, 240, -1, 0);
+			} else if (templatePath == "apply_disease_dot_mind") {
+				player->addDotState(player, CreatureState::DISEASED, scob->getObjectID(), 200, CreatureAttribute::MIND, 240, -1, 0);
 			} else if (templatePath == "apply_fire_dot") {
 				player->addDotState(player, CreatureState::ONFIRE, scob->getObjectID(), 100, CreatureAttribute::UNKNOWN, 60, -1, 0, 20);
 
