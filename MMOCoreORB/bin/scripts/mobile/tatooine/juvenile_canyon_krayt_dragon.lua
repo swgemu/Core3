@@ -25,20 +25,21 @@ juvenile_canyon_krayt_dragon = Creature:new {
 	creatureBitmask = PACK + KILLER,
 	optionsBitmask = AIENABLED,
 	diet = CARNIVORE,
+	scale = 0.5,
 
 	templates = {"object/mobile/juvenile_canyon_krayt.iff"},
 	hues = { 24, 25, 26, 27, 28, 29, 30, 31 },
-	scale = 0.5;
 
 	lootGroups = {
 		{
-	        groups = {
-				{group = "krayt_tissue_common", chance = 2500000},
-				{group = "krayt_dragon_common", chance = 3500000},
-				{group = "armor_all", chance = 2000000},
-				{group = "weapons_all", chance = 2000000},
+			groups = {
+				{group = "krayt_dragon_common", chance = 3000000},
+				{group = "krayt_pearls", chance = 1500000},
+				{group = "krayt_tissue_uncommon", chance = 2000000},
+				{group = "armor_all", chance = 1750000},
+				{group = "weapons_all", chance = 1750000},
 			},
-			lootChance = 3440000
+			lootChance = 5500000
 		}
 	},
 
@@ -47,7 +48,7 @@ juvenile_canyon_krayt_dragon = Creature:new {
 	primaryWeapon = "unarmed",
 	secondaryWeapon = "none",
 	conversationTemplate = "",
-	
+
 	-- primaryAttacks and secondaryAttacks should be separate skill groups specific to the weapon type listed in primaryWeapon and secondaryWeapon
 	-- Use merge() to merge groups in creatureskills.lua together. If a weapon is set to "none", set the attacks variable to empty brackets
 	primaryAttacks = { {"posturedownattack",""}, {"creatureareaattack",""} },
