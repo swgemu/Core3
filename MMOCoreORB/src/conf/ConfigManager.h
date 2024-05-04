@@ -386,6 +386,10 @@ namespace conf {
 			return getInt("Core3.MantisPort", 3306);
 		}
 
+		inline const String& getLatestTre() {
+			return getString("Core3.TreManager.LatestTre", "default_patch.tre");
+		}
+
 		inline const Vector<String>& getTreFiles() {
 			return getStringVector("Core3.TreFiles");
 		}
