@@ -427,6 +427,8 @@ public:
 		if (lootCollection->count() == 0)
 			return "!emptyLootCollection";
 
+		int agentLevel = agentTemplate->getLevel();
+
 		int legendaryCount = lootManager->getLegendaryLooted();
 		int exceptionalCount = lootManager->getExceptionalLooted();
 		int yellowCount = lootManager->getYellowLooted();
@@ -436,7 +438,6 @@ public:
 
 		int totalLootGroups = 0;
 		int totalLootItems = 0;
-		int totalFailedGroups = 0;
 
 		VectorMap<String, int> objectCount;
 		StringBuffer itemMsg;
@@ -478,7 +479,6 @@ public:
 
 					//Is this groupEntry lower than the roll? If yes, then we want to try the next groupEntry.
 					if (tempChance < roll) {
-						totalFailedGroups++;
 						continue;
 					}
 
@@ -519,21 +519,26 @@ public:
 			}
 		}
 
+		legendaryCount = lootManager->getLegendaryLooted() - legendaryCount;
+		exceptionalCount = lootManager->getExceptionalLooted() - exceptionalCount;
+		yellowCount = lootManager->getYellowLooted() - yellowCount;
+
 		msg
-		<< "agentLoot - For AI Loot Collection: " << agentTemplateString << endl
+		<< "AI Agent Template: " << agentTemplateString << endl
+		<< "AI Agent Level: " << agentLevel << endl
 		<< endl
 		<< "Total Iterations: " << commas << count << endl
 		<< endl
 		<< "Agent Total Loot Collections: " << lootCollection->count() << endl
 		<< "Agent Total Loot Groups: " << totalLootGroups << endl
+		<< endl
 		<< "Total Failed Collection Rolls: "<< totalFailedCollection << endl
 		<< "Total Loot Collection Attempts: " << totalCollectionAttempts << endl
-		<< "Total Failed Group Rolls: " << totalFailedGroups << endl
-		<< "Total Loot Items: " << totalLootItems << endl
+		<< "Total Dropped Loot Items: " << totalLootItems << endl
 		<< endl
-		<< "Total Legendaries Dropped: " << lootManager->getLegendaryLooted() - legendaryCount << endl
-		<< "Total Expectionals Dropped: " << lootManager->getExceptionalLooted() - exceptionalCount << endl
-		<< "Total Yellow Named Dropped: " << lootManager->getYellowLooted() - yellowCount << endl
+		<< "Total Legendaries Dropped: " << legendaryCount << "\t" << ((1.0f * legendaryCount) / totalLootItems) << "%" << endl
+		<< "Total Expectionals Dropped: " << exceptionalCount << "\t" << ((1.0f * exceptionalCount) / totalLootItems) << "%" << endl
+		<< "Total Yellow Named Dropped: " << yellowCount << "\t" << ((1.0f * yellowCount) / totalLootItems) << "%" << endl
 		<< endl << endl
 		<< "Items Dropped List:\n\n";
 
