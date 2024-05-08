@@ -239,7 +239,7 @@ public:
 			return false;
 		}
 
-		DataObjectComponentReference* data = giveItem->getDataObjectComponent();
+		DataObjectComponentReference* data = vendor->getDataObjectComponent();
 
 		if (data == nullptr || data->get() == nullptr || !data->get()->isVendorData()) {
 			error("Vendor has no data component");
