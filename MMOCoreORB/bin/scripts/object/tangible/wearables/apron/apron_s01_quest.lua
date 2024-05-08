@@ -57,6 +57,8 @@ object_tangible_wearables_apron_apron_s01_quest = object_tangible_wearables_apro
 		"object/creature/player/trandoshan_female.iff",
 		"object/creature/player/twilek_male.iff",
 		"object/creature/player/twilek_female.iff",
+		"object/creature/player/wookiee_female.iff",
+		"object/creature/player/wookiee_male.iff",
 		"object/creature/player/zabrak_male.iff",
 		"object/creature/player/zabrak_female.iff",
 		"object/mobile/vendor/aqualish_female.iff",
