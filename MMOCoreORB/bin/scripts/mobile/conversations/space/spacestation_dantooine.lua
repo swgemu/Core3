@@ -190,7 +190,6 @@ spacestation_dantooine_convotemplate:addScreen(delay_no_land);
 
 delay_patient = ConvoScreen:new {
 	id = "delay_patient",
-	stopConversation = "false",
 	leftDialog = "@conversation/station_dantooine:s_49a5815f", -- Sure thing, friend. Maybe you want to land, though? Could get some help on the planet, maybe.
 	stopConversation = "false",
 	options = {
