@@ -42,27 +42,28 @@
 
 
 object_weapon_melee_sword_crafted_saber_sword_lightsaber_s1_training = object_weapon_melee_sword_crafted_saber_shared_sword_lightsaber_s1_training:new {
-
-	playerRaces = { "object/creature/player/bothan_male.iff",
-				"object/creature/player/bothan_female.iff",
-				"object/creature/player/human_male.iff",
-				"object/creature/player/human_female.iff",
-				"object/creature/player/ithorian_male.iff",
-				"object/creature/player/ithorian_female.iff",
-				"object/creature/player/moncal_male.iff",
-				"object/creature/player/moncal_female.iff",
-				"object/creature/player/rodian_male.iff",
-				"object/creature/player/rodian_female.iff",
-				"object/creature/player/sullustan_male.iff",
-				"object/creature/player/sullustan_female.iff",
-				"object/creature/player/trandoshan_male.iff",
-				"object/creature/player/trandoshan_female.iff",
-				"object/creature/player/twilek_male.iff",
-				"object/creature/player/twilek_female.iff",
-				"object/creature/player/wookiee_male.iff",
-				"object/creature/player/wookiee_female.iff",
-				"object/creature/player/zabrak_male.iff",
-				"object/creature/player/zabrak_female.iff" },
+	playerRaces = {
+		"object/creature/player/bothan_male.iff",
+		"object/creature/player/bothan_female.iff",
+		"object/creature/player/human_male.iff",
+		"object/creature/player/human_female.iff",
+		"object/creature/player/ithorian_male.iff",
+		"object/creature/player/ithorian_female.iff",
+		"object/creature/player/moncal_male.iff",
+		"object/creature/player/moncal_female.iff",
+		"object/creature/player/rodian_male.iff",
+		"object/creature/player/rodian_female.iff",
+		"object/creature/player/sullustan_male.iff",
+		"object/creature/player/sullustan_female.iff",
+		"object/creature/player/trandoshan_male.iff",
+		"object/creature/player/trandoshan_female.iff",
+		"object/creature/player/twilek_male.iff",
+		"object/creature/player/twilek_female.iff",
+		"object/creature/player/wookiee_male.iff",
+		"object/creature/player/wookiee_female.iff",
+		"object/creature/player/zabrak_male.iff",
+		"object/creature/player/zabrak_female.iff"
+	},
 
 	-- RANGEDATTACK, MELEEATTACK, FORCEATTACK, TRAPATTACK, GRENADEATTACK, HEAVYACIDBEAMATTACK, 
 	-- HEAVYLIGHTNINGBEAMATTACK, HEAVYPARTICLEBEAMATTACK, HEAVYROCKETLAUNCHERATTACK, HEAVYLAUNCHERATTACK
@@ -78,7 +79,7 @@ object_weapon_melee_sword_crafted_saber_sword_lightsaber_s1_training = object_we
 	-- combat_meleespecialize_unarmed, combat_meleespecialize_twohand, combat_meleespecialize_polearm, combat_meleespecialize_onehand, combat_general,
 	-- combat_meleespecialize_twohandlightsaber, combat_meleespecialize_polearmlightsaber, jedi_general
 	xpType = "jedi_general",
-	
+
 	-- See http://www.ocdsoft.com/files/certifications.xls
 	certificationsRequired = { "cert_onehandlightsaber_training" },
 	-- See http://www.ocdsoft.com/files/accuracy.xls
@@ -95,7 +96,7 @@ object_weapon_melee_sword_crafted_saber_sword_lightsaber_s1_training = object_we
 
 	-- Leave blank for now
 	damageModifiers = { },
-	
+
 	defenderToughnessModifiers = { "lightsaber_toughness" },
 
 
@@ -121,8 +122,6 @@ object_weapon_melee_sword_crafted_saber_sword_lightsaber_s1_training = object_we
 
 	woundsRatio = 6,
 
-	defenderToughnessModifiers = { "lightsaber_toughness" },
-	
 	noTrade = 1,
 
 	childObjects = {

@@ -88,7 +88,7 @@ function tourAryonConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNpc, s
 		if not BestineElection:hasPlayerVoted(pPlayer) then
 			if BestineElection:canVoteForCandidate(pPlayer, BestineElection.VICTOR) then
 				clonedConversation:addOption("@conversation/tour_aryon:s_1a74caee", "has_victor_evidence") -- I am ready to vote.
-			elseif BestineElection:canVoteForCandidate(pPlayer, BestineElection.VICTOR) then
+			elseif BestineElection:canVoteForCandidate(pPlayer, BestineElection.SEAN) then
 				clonedConversation:addOption("@conversation/tour_aryon:s_1a74caee", "has_sean_evidence") -- I am ready to vote.
 			end
 		end
