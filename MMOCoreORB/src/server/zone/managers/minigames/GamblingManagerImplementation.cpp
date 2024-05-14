@@ -105,7 +105,7 @@ uint32 GamblingManagerImplementation::createSlotWindow(CreatureObject* player, u
 	else
 		box->setCancelButton(true, "@ui:spin");
 
-	box->setOtherButton(true,"@ui:bet_one");
+	box->setOtherButton(true, "@ui:bet_one");
 	box->setOkButton(true, "@ui:bet_max");
 
 	box->setForceCloseDistance(32.f);
@@ -123,13 +123,8 @@ uint32 GamblingManagerImplementation::createRouletteWindow(CreatureObject* playe
 
 	int totalBet = 0;
 
-	String prompt = "The following is a summary of your current bets...\n\nUse /bet <amount> <1-36,0,00,red,black,odd,even,high,low> to wager.\nExample: '/bet 5 black' to wager 5 credits on black\n\nCash : "
-			+ String::valueOf(player->getCashCredits())
-			+ "\nBank : "
-			+ String::valueOf(player->getBankCredits())
-			+ "\nTotal: "
-			+ String::valueOf(player->getCashCredits() + player->getBankCredits())
-			+ "\n\nNOTE: If you leave the table after placing a bet, all of your outstanding bets will be forfeit.";
+	String prompt = "The following is a summary of your current bets...\n\nUse /bet <amount> <1-36,0,00,red,black,odd,even,high,low> to wager.\nExample: '/bet 5 black' to wager 5 credits on black\n\nCash : " + String::valueOf(player->getCashCredits()) + "\nBank : " + String::valueOf(player->getBankCredits()) +
+					"\nTotal: " + String::valueOf(player->getCashCredits() + player->getBankCredits()) + "\n\nNOTE: If you leave the table after placing a bet, all of your outstanding bets will be forfeit.";
 
 	// create new window
 	ManagedReference<SuiListBox*> box = new SuiListBox(player, SuiWindowType::GAMBLING_ROULETTE, 2);
@@ -145,7 +140,7 @@ uint32 GamblingManagerImplementation::createRouletteWindow(CreatureObject* playe
 	box->setUsingObject(terminal);
 
 	if (terminal->getBets()->size() != 0) {
-		for (int i=0; i < terminal->getBets()->size(); ++i) {
+		for (int i = 0; i < terminal->getBets()->size(); ++i) {
 			if (terminal->getBets()->get(i)->getPlayer() == player) {
 				totalBet += terminal->getBets()->get(i)->getAmount();
 				String target = terminal->getBets()->get(i)->getTarget();
@@ -159,8 +154,9 @@ uint32 GamblingManagerImplementation::createRouletteWindow(CreatureObject* playe
 		box->addMenuItem("Total Bet : 0", 0);
 	} else {
 		box->addMenuItem(" ", -2);
-		box->addMenuItem("Total Bet : "+String::valueOf(totalBet), -3);
+		box->addMenuItem("Total Bet : " + String::valueOf(totalBet), -3);
 	}
+
 	box->setCancelButton(true, "@ui:leave_game");
 	box->setOtherButton(false, "");
 	box->setOkButton(true, "@ui:refresh");
@@ -182,6 +178,22 @@ uint32 GamblingManagerImplementation::createPayoutWindow(CreatureObject* player)
 	if (player == nullptr)
 		return 0;
 
+	auto ghost = player->getPlayerObject();
+
+	if (ghost == nullptr) {
+		return 0;
+	}
+
+	auto zoneServer = player->getZoneServer();
+
+	if (zoneServer == nullptr) {
+		return 0;
+	}
+
+	if (ghost->hasSuiBoxWindowType(SuiWindowType::GAMBLING_SLOT_PAYOUT)) {
+		ghost->closeSuiWindowType(SuiWindowType::GAMBLING_SLOT_PAYOUT);
+	}
+
 	String prompt = "The following is the payout schedule for this slot machine.\n \nLegend:\nXXX: denotes any 3 of the same number\n*X|Y|Z: denotes any combination of the 3 numbers";
 
 	// create new window
@@ -201,11 +213,9 @@ uint32 GamblingManagerImplementation::createPayoutWindow(CreatureObject* player)
 	box->setOtherButton(false, "");
 	box->setOkButton(true, "@ui:ok");
 
-	ZoneServer* server = player->getZoneServer();
+	box->setCallback(new GamblingSlotPayoutSuiCallback(zoneServer));
 
-	box->setCallback(new GamblingSlotPayoutSuiCallback(server));
-
-	player->getPlayerObject()->addSuiBox(box);
+	ghost->addSuiBox(box);
 	player->sendMessage(box->generateMessage());
 
 	return box->getBoxID();
@@ -619,7 +629,7 @@ void GamblingManagerImplementation::stopGame(GamblingTerminal* terminal, bool ca
 	int machineType = terminal->getMachineType();
 
 #ifdef DEBUG_GAMBLING
-	info(true) << "stopGame - machineType: " << machineType << " cancel: " << ( cancel ? "TRUE" : "FALSE");
+	info(true) << "stopGame - machineType: " << machineType << " cancel: " << (cancel ? "TRUE" : "FALSE");
 #endif
 
 	switch (machineType) {
@@ -834,23 +844,21 @@ void GamblingManagerImplementation::calculateOutcome(GamblingTerminal* terminal)
 
 			for (int i = 0; i < winnings->size(); ++i) { // send money and messages to players
 				if (winnings->get(i) == 0) {
-
 					winnings->elementAt(i).getKey()->sendSystemMessage("You don't win anything");
 				} else {
 					CreatureObject* player = winnings->elementAt(i).getKey();
 
 					if (player != nullptr) {
-
 						Locker _locker(player);
 
 						// Send message to others
-						StringIdChatParameter textOther("gambling/default_interface","winner_to_other");
+						StringIdChatParameter textOther("gambling/default_interface", "winner_to_other");
 						textOther.setDI(winnings->get(i));
 						textOther.setTO(player->getFirstName());
 						textOther.setTO(player->getObjectID());
 						terminal->notifyOthers(player, &textOther);
 
-						StringIdChatParameter textPlayer("gambling/default_interface","winner_to_winner");
+						StringIdChatParameter textPlayer("gambling/default_interface", "winner_to_winner");
 						textPlayer.setDI(winnings->get(i));
 						player->sendSystemMessage(textPlayer);
 
@@ -906,9 +914,9 @@ void GamblingManagerImplementation::leaveTerminal(CreatureObject* player, int ma
 void GamblingManagerImplementation::removeGambler(CreatureObject* player, int machineType) {
 	Locker _locker(_this.getReferenceUnsafeStaticCast());
 
-	if (machineType ==  GamblingTerminal::SLOTMACHINE) {
+	if (machineType == GamblingTerminal::SLOTMACHINE) {
 		slotGames.drop(player);
-	} else if (machineType ==  GamblingTerminal::ROULETTEMACHINE) {
+	} else if (machineType == GamblingTerminal::ROULETTEMACHINE) {
 		rouletteGames.drop(player);
 	}
 }
