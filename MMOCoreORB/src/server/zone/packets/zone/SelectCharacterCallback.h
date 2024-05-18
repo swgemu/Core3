@@ -107,12 +107,23 @@ public:
 		// Get stored zone name
 		String zoneName = ghost->getSavedTerrainName();
 
-		Zone* zone = zoneServer->getZone(zoneName);
+		auto zone = zoneServer->getZone(zoneName);
+
+#ifdef DEBUG_SELECT_CHAR_CALLBACK
+		StringBuffer debugMsg;
+
+		debugMsg << "---------- SelectCharacterCallback ----------" << endl <<
+		"Player: " << player->getDisplayedName() << endl <<
+		"Zone: " << zoneName << endl;
+#endif // DEBUG_SELECT_CHAR_CALLBACK
 
 		if (zone == nullptr) {
 			ErrorMessage* errMsg = new ErrorMessage("Login Error", "The planet where your character was stored is disabled!", 0x0);
 			client->sendMessage(errMsg);
 
+#ifdef DEBUG_SELECT_CHAR_CALLBACK
+			player->info(true) << debugMsg.toString();
+#endif // DEBUG_SELECT_CHAR_CALLBACK
 			return;
 		}
 
@@ -172,9 +183,6 @@ public:
 		ManagedReference<SceneObject*> rootParent = player->getRootParent();
 
 #ifdef DEBUG_SELECT_CHAR_CALLBACK
-		StringBuffer debugMsg;
-
-		debugMsg << "---------- SelectCharacterCallback ----------\nPlayer: " << player->getDisplayedName() << endl;
 		debugMsg << "Player Arrangement: " << playerArrangement << "\nsavedParentID: " << savedParentID << "\nLast Logout World Position: " << lastWorldPosition.toString() << endl;
 
 		if (playerParent != nullptr)
@@ -197,10 +205,10 @@ public:
 
 		// This bool signifies a player was inside of a parent but fully unloaded from the game world (not LD).
 		bool unloadedInParent = (playerParent != nullptr && currentParent == nullptr);
-		bool currentParentNull = currentParent == nullptr;
+		bool currentParentNull = (currentParent == nullptr);
 
 		// Lets branch for Ships First, player must still be LD in the game world or they should be sent back to their launch position. - Ship, Pilot Chair, Operatios Chair, Ship Turret.
-		if (!currentParentNull && ((!unloadedInParent && (currentParent->isShipObject() || currentParent->isPilotChair() || currentParent->isOperationsChair() || currentParent->isShipTurret())) ||
+		if (!currentParentNull && playerParent != nullptr && ((!unloadedInParent && (currentParent->isShipObject() || currentParent->isPilotChair() || currentParent->isOperationsChair() || currentParent->isShipTurret())) ||
 			(currentParent->isCellObject() && rootParent != nullptr && rootParent->isPobShip() && rootParent->getLocalZone() != nullptr))) {
 #ifdef DEBUG_SELECT_CHAR_CALLBACK
 			player->info(true) << "SelectCharacterCallback -- Sending Player into Ship or child of a ship";
