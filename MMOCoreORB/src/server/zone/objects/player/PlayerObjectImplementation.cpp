@@ -1401,12 +1401,15 @@ void PlayerObjectImplementation::setTitle(const String& characterTitle, bool not
 void PlayerObjectImplementation::notifyOnline() {
 	ManagedReference<SceneObject*> parent = getParent().get();
 
-	if (parent == nullptr)
+	if (parent == nullptr) {
 		return;
+	}
 
 	CreatureObject* playerCreature = parent->asCreatureObject();
-	if (playerCreature == nullptr)
+
+	if (playerCreature == nullptr) {
 		return;
+	}
 
 	miliSecsSession = 0;
 

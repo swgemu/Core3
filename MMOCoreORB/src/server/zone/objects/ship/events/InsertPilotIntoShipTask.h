@@ -58,15 +58,13 @@ public:
 				return;
 			}
 
-			// Always apply the interior state
+			// Always apply the piloting state
 			player->setState(CreatureState::PILOTINGPOBSHIP);
 
 			// set pob pilot to the same direction as the chair
-			player->setDirection(*pilotChair->getDirection());
+			player->setDirection(*ship->getDirection());
 
-			Vector3 chairLocation = pilotChair->getPosition();
-
-			player->switchZone(spaceZone->getZoneName(), chairLocation.getX(), chairLocation.getZ() + 0.5, chairLocation.getY(), pilotChair->getObjectID(), false, PlayerArrangement::SHIP_PILOT_POB);
+			player->switchZone(spaceZone->getZoneName(), 0.0f, 0.5f, 0.0f, pilotChair->getObjectID(), false, PlayerArrangement::SHIP_PILOT_POB);
 		} else {
 			player->setState(CreatureState::PILOTINGSHIP);
 
