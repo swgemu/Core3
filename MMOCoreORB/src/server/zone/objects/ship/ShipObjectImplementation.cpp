@@ -553,8 +553,9 @@ void ShipObjectImplementation::updateZone(bool lightUpdate, bool sendPackets) {
 }
 
 void ShipObjectImplementation::updatePlayersInShip(bool lightUpdate, bool sendPackets) {
-	if (getLocalZone() == nullptr || isHyperspacing())
+	if (getLocalZone() == nullptr) {
 		return;
+	}
 
 	// info(true) << "ShipObjectImplementation::updatePlayersInShip";
 
@@ -566,7 +567,8 @@ void ShipObjectImplementation::updatePlayersInShip(bool lightUpdate, bool sendPa
 
 		Locker clock(shipMember, asShipObject());
 
-		shipMember->setPosition(getPositionX(), getPositionZ(), getPositionY());
+		// This is breaking players positions in POB ships
+		//shipMember->setPosition(worldPos.getX(), worldPos.getZ(), worldPos.getY());
 
 		auto parent = shipMember->getParent().get();
 
