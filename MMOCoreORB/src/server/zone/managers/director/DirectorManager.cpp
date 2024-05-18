@@ -3418,10 +3418,22 @@ Vector3 DirectorManager::generateSpawnPoint(String zoneName, float x, float y, f
 	bool found = false;
 	Vector3 position(0, 0, 0);
 	int retries = 40;
-	ZoneServer* zoneServer = ServerCore::getZoneServer();
-	Zone* zone = zoneServer->getZone(zoneName);
+
+	auto zoneServer = ServerCore::getZoneServer();
+
+	if (zoneServer == nullptr) {
+		return position;
+	}
+
+	auto zone = zoneServer->getZone(zoneName);
 
 	if (zone == nullptr) {
+		return position;
+	}
+
+	auto planetManager = zone->getPlanetManager();
+
+	if (planetManager == nullptr) {
 		return position;
 	}
 
@@ -3443,7 +3455,7 @@ Vector3 DirectorManager::generateSpawnPoint(String zoneName, float x, float y, f
 
 		position.set(newX, newZ, newY);
 
-		found = forceSpawn == true || (zone->getPlanetManager()->isSpawningPermittedAt(position.getX(), position.getY(), extraNoBuildRadius) &&
+		found = forceSpawn == true || (planetManager->isSpawningPermittedAt(position.getX(), position.getY(), extraNoBuildRadius) &&
 				!CollisionManager::checkSphereCollision(position, sphereCollision, zone));
 
 		retries--;
@@ -3572,6 +3584,18 @@ int DirectorManager::getSpawnArea(lua_State* L) {
 		return 0;
 	}
 
+	auto planetManager = zone->getPlanetManager();
+
+	if (planetManager == nullptr) {
+		return 0;
+	}
+
+	auto terrainManager = planetManager->getTerrainManager();
+
+	if (terrainManager == nullptr) {
+		return 0;
+	}
+
 	bool found = false;
 	Vector3 position;
 	int retries = 50;
@@ -3584,7 +3608,7 @@ int DirectorManager::getSpawnArea(lua_State* L) {
 		int y0 = position.getY() - areaSize;
 		int y1 = position.getY() + areaSize;
 
-		found = zone->getPlanetManager()->getTerrainManager()->getHighestHeightDifference(x0, y0, x1, y1) <= maximumHeightDifference;
+		found = terrainManager->getHighestHeightDifference(x0, y0, x1, y1) <= maximumHeightDifference;
 		retries--;
 	}
 
@@ -3596,7 +3620,7 @@ int DirectorManager::getSpawnArea(lua_State* L) {
 		int y0 = position.getY() - areaSize;
 		int y1 = position.getY() + areaSize;
 
-		found = zone->getPlanetManager()->getTerrainManager()->getHighestHeightDifference(x0, y0, x1, y1) <= maximumHeightDifference;
+		found = terrainManager->getHighestHeightDifference(x0, y0, x1, y1) <= maximumHeightDifference;
 	}
 
 	if (found) {
@@ -3721,8 +3745,11 @@ int DirectorManager::getCityRegionAt(lua_State* L) {
 
 	if (zone != nullptr) {
 		PlanetManager* planetManager = zone->getPlanetManager();
+		CityRegion* cityRegion = nullptr;
 
-		CityRegion* cityRegion = planetManager->getCityRegionAt(x, y);
+		if (planetManager != nullptr) {
+			cityRegion = planetManager->getCityRegionAt(x, y);
+		}
 
 		if (cityRegion != nullptr) {
 			lua_pushlightuserdata(L, cityRegion);
