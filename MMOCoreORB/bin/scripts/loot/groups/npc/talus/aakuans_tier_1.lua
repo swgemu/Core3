@@ -5,12 +5,19 @@ aakuans_tier_1 = {
 	minimumLevel = 0,
 	maximumLevel = -1,
 	lootItems = {
-		{groupTemplate = "aakuan_common", weight = 2300000},
-		{groupTemplate = "armor_attachments", weight = 500000},
-		{groupTemplate = "clothing_attachments", weight = 600000},
-		{groupTemplate = "data_storage_unit_parts", weight = 1600000},
-		{groupTemplate = "junk", weight = 4000000},
-		{groupTemplate = "wearables_all", weight = 1000000},
+		{groupTemplate = "aakuan_common", weight = 1600000},
+		{groupTemplate = "armor_attachments", weight = 400000},
+		{groupTemplate = "clothing_attachments", weight = 450000},
+		{groupTemplate = "data_storage_unit_parts", weight = 1000000},
+		{groupTemplate = "junk", weight = 2700000},
+		{groupTemplate = "wearables_all", weight = 600000},
+		{groupTemplate = "resource_gemstone", weight = 250000},
+		{groupTemplate = "resource_metal", weight = 250000},
+		{groupTemplate = "resource_ore", weight = 250000},
+		{groupTemplate = "resource_water", weight = 250000},
+		{groupTemplate = "crafting_component", weight = 250000},
+		{groupTemplate = "melee_weapons_common", weight = 1000000},
+		{groupTemplate = "ranged_weapons_common", weight = 1000000},
 	}
 }
 

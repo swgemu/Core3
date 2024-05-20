@@ -9,10 +9,15 @@ rebel_officer_tier_1 = {
 		{groupTemplate = "armor_attachments", weight = 100000},
 		{groupTemplate = "clothing_attachments", weight = 100000},
 		{groupTemplate = "color_crystals", weight = 100000},
-		{groupTemplate = "junk", weight = 3500000},
-		{groupTemplate = "rebel_officer_common", weight = 200000},
-		{groupTemplate = "weapons_all", weight = 3800000},
-		{groupTemplate = "wearables_all", weight = 1400000},
+		{groupTemplate = "junk", weight = 3050000},
+		{groupTemplate = "rebel_officer_common", weight = 100000},
+		{groupTemplate = "weapons_all", weight = 3300000},
+		{groupTemplate = "wearables_all", weight = 1200000},
+		{groupTemplate = "resource_gemstone", weight = 250000},
+		{groupTemplate = "resource_metal", weight = 250000},
+		{groupTemplate = "resource_ore", weight = 250000},
+		{groupTemplate = "resource_water", weight = 250000},
+		{groupTemplate = "crafting_component", weight = 250000},
 	}
 }
 

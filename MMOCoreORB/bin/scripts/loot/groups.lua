@@ -7,6 +7,7 @@ includeFile("groups/coa3_caravan_disk.lua")
 includeFile("groups/coa3_alderaan_flora.lua")
 includeFile("groups/color_crystals.lua")
 includeFile("groups/power_crystals.lua")
+includeFile("groups/component_enhancement.lua")
 includeFile("groups/data_storage_unit_parts.lua")
 includeFile("groups/fenri_dalso_drop.lua")
 includeFile("groups/holocron_dark.lua")
@@ -53,9 +54,13 @@ includeFile("groups/bestine_election/bestine_election_victor_visalis_rewards.lua
 
 -- component loot sub-folder
 
+includeFile("groups/component_loot/armor_component_advanced.lua")
+includeFile("groups/component_loot/armor_component.lua")
 includeFile("groups/component_loot/chemistry_component_advanced.lua")
-includeFile("groups/component_loot/weapon_component_advanced.lua")
 includeFile("groups/component_loot/chemistry_component.lua")
+includeFile("groups/component_loot/crafting_component_advanced.lua")
+includeFile("groups/component_loot/crafting_component.lua")
+includeFile("groups/component_loot/weapon_component_advanced.lua")
 includeFile("groups/component_loot/weapon_component.lua")
 
 -- corellian_corvette sub-folder
@@ -184,7 +189,6 @@ includeFile("groups/npc/endor/dulok_tier_1.lua")
 includeFile("groups/npc/endor/endor_marauder_tier_2.lua")
 includeFile("groups/npc/endor/gondula_tribe_tier_1.lua")
 includeFile("groups/npc/endor/gondula_tribe_tier_2.lua")
-includeFile("groups/npc/endor/jinda_outcast_tier_1.lua")
 includeFile("groups/npc/endor/jinda_tribe_tier_1.lua")
 includeFile("groups/npc/endor/jinda_tribe_tier_2.lua")
 includeFile("groups/npc/endor/korga_tribe_tier_1.lua")

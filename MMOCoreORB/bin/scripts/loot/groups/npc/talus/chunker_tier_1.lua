@@ -5,10 +5,14 @@ chunker_tier_1 = {
 	minimumLevel = 0,
 	maximumLevel = -1,
 	lootItems = {
-		{groupTemplate = "chunker_common", weight = 6000000},
-		{groupTemplate = "junk", weight = 1200000},
-		{groupTemplate = "melee_knife", weight = 700000},
-		{groupTemplate = "ranged_weapons", weight = 2100000},
+		{groupTemplate = "chunker_common", weight = 5500000},
+		{groupTemplate = "junk", weight = 1100000},
+		{groupTemplate = "melee_knife", weight = 600000},
+		{groupTemplate = "ranged_weapons", weight = 1800000},
+		{groupTemplate = "resource_gemstone", weight = 250000},
+		{groupTemplate = "resource_metal", weight = 250000},
+		{groupTemplate = "resource_ore", weight = 250000},
+		{groupTemplate = "resource_water", weight = 250000},
 	}
 }
 

@@ -5,13 +5,18 @@ cobral_tier_1 = {
 	minimumLevel = 0,
 	maximumLevel = -1,
 	lootItems = {
-		{groupTemplate = "heavy_weapons", weight = 1000000},
-		{groupTemplate = "junk", weight = 1000000},
-		{groupTemplate = "loot_kit_parts", weight = 1000000},
-		{groupTemplate = "melee_weapons", weight = 1000000},
-		{groupTemplate = "ranged_weapons", weight = 3100000},
-		{groupTemplate = "tailor_components", weight = 900000},
-		{groupTemplate = "wearables_all", weight = 2000000},
+		{groupTemplate = "heavy_weapons", weight = 900000},
+		{groupTemplate = "junk", weight = 900000},
+		{groupTemplate = "loot_kit_parts", weight = 900000},
+		{groupTemplate = "melee_weapons", weight = 900000},
+		{groupTemplate = "ranged_weapons", weight = 2750000},
+		{groupTemplate = "tailor_components", weight = 700000},
+		{groupTemplate = "wearables_all", weight = 1700000},
+		{groupTemplate = "resource_gemstone", weight = 250000},
+		{groupTemplate = "resource_metal", weight = 250000},
+		{groupTemplate = "resource_ore", weight = 250000},
+		{groupTemplate = "resource_water", weight = 250000},
+		{groupTemplate = "crafting_component", weight = 250000},
 	}
 }
 

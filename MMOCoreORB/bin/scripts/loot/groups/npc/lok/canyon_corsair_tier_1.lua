@@ -6,14 +6,19 @@ canyon_corsair_tier_1 = {
 	maximumLevel = -1,
 	lootItems = {
 		{groupTemplate = "armor_attachments", weight = 300000},
-		{groupTemplate = "canyon_corsair_common", weight = 1600000},
+		{groupTemplate = "canyon_corsair_common", weight = 1500000},
 		{groupTemplate = "clothing_attachments", weight = 300000},
 		{groupTemplate = "color_crystals", weight = 400000},
-		{groupTemplate = "junk", weight = 4200000},
-		{groupTemplate = "melee_two_handed", weight = 600000},
-		{groupTemplate = "power_crystals", weight = 400000},
-		{groupTemplate = "ranged_weapons", weight = 1200000},
-		{groupTemplate = "tailor_components", weight = 1000000},
+		{groupTemplate = "junk", weight = 3650000},
+		{groupTemplate = "melee_two_handed", weight = 500000},
+		{groupTemplate = "power_crystals", weight = 300000},
+		{groupTemplate = "ranged_weapons", weight = 1000000},
+		{groupTemplate = "tailor_components", weight = 800000},
+		{groupTemplate = "resource_gemstone", weight = 250000},
+		{groupTemplate = "resource_metal", weight = 250000},
+		{groupTemplate = "resource_ore", weight = 250000},
+		{groupTemplate = "resource_water", weight = 250000},
+		{groupTemplate = "crafting_component", weight = 250000},
 	}
 }
 

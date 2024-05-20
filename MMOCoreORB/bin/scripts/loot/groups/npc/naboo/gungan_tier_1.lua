@@ -7,14 +7,17 @@ gungan_tier_1 = {
 	lootItems = {
 		{groupTemplate = "armor_attachments", weight = 100000},
 		{groupTemplate = "clothing_attachments", weight = 100000},
-		{groupTemplate = "gungan_common", weight = 1000000},
-		{groupTemplate = "heavy_weapons", weight = 1000000},
-		{groupTemplate = "junk", weight = 1200000},
-		{groupTemplate = "loot_kit_parts", weight = 900000},
-		{groupTemplate = "melee_weapons", weight = 700000},
-		{groupTemplate = "ranged_weapons", weight = 1500000},
-		{groupTemplate = "tailor_components", weight = 900000},
-		{groupTemplate = "wearables_all", weight = 2600000},
+		{groupTemplate = "gungan_common", weight = 900000},
+		{groupTemplate = "heavy_weapons", weight = 900000},
+		{groupTemplate = "junk", weight = 1100000},
+		{groupTemplate = "loot_kit_parts", weight = 800000},
+		{groupTemplate = "melee_weapons", weight = 650000},
+		{groupTemplate = "ranged_weapons", weight = 1300000},
+		{groupTemplate = "tailor_components", weight = 700000},
+		{groupTemplate = "wearables_all", weight = 2200000},
+		{groupTemplate = "resource_creature", weight = 750000},
+		{groupTemplate = "resource_water", weight = 250000},
+		{groupTemplate = "crafting_component", weight = 250000},
 	}
 }
 

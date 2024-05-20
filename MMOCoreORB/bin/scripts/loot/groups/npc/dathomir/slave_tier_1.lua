@@ -5,11 +5,16 @@ slave_tier_1 = {
 	minimumLevel = 0,
 	maximumLevel = -1,
 	lootItems = {
-		{groupTemplate = "junk", weight = 4700000},
-		{groupTemplate = "loot_kit_parts", weight = 1400000},
-		{groupTemplate = "nightsister_common", weight = 400000},
-		{groupTemplate = "tailor_components", weight = 2100000},
-		{groupTemplate = "wearables_common", weight = 1400000},
+		{groupTemplate = "junk", weight = 4200000},
+		{groupTemplate = "loot_kit_parts", weight = 1250000},
+		{groupTemplate = "nightsister_common", weight = 300000},
+		{groupTemplate = "tailor_components", weight = 1800000},
+		{groupTemplate = "wearables_common", weight = 1200000},
+		{groupTemplate = "resource_gemstone", weight = 250000},
+		{groupTemplate = "resource_metal", weight = 250000},
+		{groupTemplate = "resource_ore", weight = 250000},
+		{groupTemplate = "resource_water", weight = 250000},
+		{groupTemplate = "crafting_component", weight = 250000},
 	}
 }
 

@@ -5,12 +5,17 @@ sulfur_lake_pirate_tier_1 = {
 	minimumLevel = 0,
 	maximumLevel = -1,
 	lootItems = {
-		{groupTemplate = "junk", weight = 3600000},
-		{groupTemplate = "loot_kit_parts", weight = 1400000},
-		{groupTemplate = "melee_weapons", weight = 700000},
-		{groupTemplate = "ranged_weapons", weight = 2200000},
-		{groupTemplate = "tailor_components", weight = 700000},
-		{groupTemplate = "wearables_common", weight = 1400000},
+		{groupTemplate = "junk", weight = 3200000},
+		{groupTemplate = "loot_kit_parts", weight = 1250000},
+		{groupTemplate = "melee_weapons", weight = 600000},
+		{groupTemplate = "ranged_weapons", weight = 1900000},
+		{groupTemplate = "tailor_components", weight = 600000},
+		{groupTemplate = "wearables_common", weight = 1200000},
+		{groupTemplate = "resource_gemstone", weight = 250000},
+		{groupTemplate = "resource_metal", weight = 250000},
+		{groupTemplate = "resource_ore", weight = 250000},
+		{groupTemplate = "resource_water", weight = 250000},
+		{groupTemplate = "crafting_component", weight = 250000},
 	}
 }
 

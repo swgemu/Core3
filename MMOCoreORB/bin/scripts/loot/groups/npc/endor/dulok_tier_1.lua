@@ -5,7 +5,9 @@ dulok_tier_1 = {
 	minimumLevel = 0,
 	maximumLevel = -1,
 	lootItems = {
-		{groupTemplate = "ewok", weight = 10000000},
+		{groupTemplate = "ewok", weight = 9000000},
+		{groupTemplate = "resource_creature", weight = 750000},
+		{groupTemplate = "resource_water", weight = 250000},
 	}
 }
 

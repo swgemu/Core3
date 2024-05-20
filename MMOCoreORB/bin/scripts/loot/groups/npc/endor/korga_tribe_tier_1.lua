@@ -7,8 +7,10 @@ korga_tribe_tier_1 = {
 	lootItems = {
 		{groupTemplate = "armor_attachments", weight = 300000},
 		{groupTemplate = "clothing_attachments", weight = 300000},
-		{groupTemplate = "ewok", weight = 8500000},
-		{groupTemplate = "wearables_uncommon", weight = 900000},
+		{groupTemplate = "ewok", weight = 7600000},
+		{groupTemplate = "wearables_uncommon", weight = 800000},
+		{groupTemplate = "resource_creature", weight = 750000},
+		{groupTemplate = "resource_water", weight = 250000},
 	}
 }
 

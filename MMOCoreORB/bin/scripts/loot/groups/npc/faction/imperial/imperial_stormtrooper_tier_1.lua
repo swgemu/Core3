@@ -9,12 +9,17 @@ imperial_stormtrooper_tier_1 = {
 		{groupTemplate = "armor_attachments", weight = 100000},
 		{groupTemplate = "clothing_attachments", weight = 100000},
 		{groupTemplate = "color_crystals", weight = 100000},
-		{groupTemplate = "junk", weight = 2000000},
-		{groupTemplate = "loot_kit_parts", weight = 1100000},
-		{groupTemplate = "stormtrooper_common", weight = 300000},
-		{groupTemplate = "tailor_components", weight = 1100000},
-		{groupTemplate = "weapons_all", weight = 1900000},
-		{groupTemplate = "wearables_all", weight = 2700000},
+		{groupTemplate = "junk", weight = 1800000},
+		{groupTemplate = "loot_kit_parts", weight = 1000000},
+		{groupTemplate = "stormtrooper_common", weight = 250000},
+		{groupTemplate = "tailor_components", weight = 900000},
+		{groupTemplate = "weapons_all", weight = 1600000},
+		{groupTemplate = "wearables_all", weight = 2300000},
+		{groupTemplate = "resource_gemstone", weight = 250000},
+		{groupTemplate = "resource_metal", weight = 250000},
+		{groupTemplate = "resource_ore", weight = 250000},
+		{groupTemplate = "resource_water", weight = 250000},
+		{groupTemplate = "crafting_component", weight = 250000},
 	}
 }
 

@@ -5,10 +5,15 @@ prisoner_tier_1 = {
 	minimumLevel = 0,
 	maximumLevel = -1,
 	lootItems = {
-		{groupTemplate = "junk", weight = 4000000},
-		{groupTemplate = "loot_kit_parts", weight = 2000000},
-		{groupTemplate = "tailor_components", weight = 1000000},
-		{groupTemplate = "wearables_common", weight = 3000000},
+		{groupTemplate = "junk", weight = 3600000},
+		{groupTemplate = "loot_kit_parts", weight = 1750000},
+		{groupTemplate = "tailor_components", weight = 800000},
+		{groupTemplate = "wearables_common", weight = 2600000},
+		{groupTemplate = "resource_gemstone", weight = 250000},
+		{groupTemplate = "resource_metal", weight = 250000},
+		{groupTemplate = "resource_ore", weight = 250000},
+		{groupTemplate = "resource_water", weight = 250000},
+		{groupTemplate = "crafting_component", weight = 250000},
 	}
 }
 

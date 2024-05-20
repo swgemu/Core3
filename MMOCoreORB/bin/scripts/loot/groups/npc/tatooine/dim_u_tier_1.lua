@@ -5,11 +5,17 @@ dim_u_tier_1 = {
 	minimumLevel = 0,
 	maximumLevel = -1,
 	lootItems = {
-		{groupTemplate = "dim_u_common", weight = 500000},
-		{groupTemplate = "junk", weight = 4500000},
-		{groupTemplate = "loot_kit_parts", weight = 1500000},
-		{groupTemplate = "tailor_components", weight = 1500000},
-		{groupTemplate = "wearables_common", weight = 2000000},
+		{groupTemplate = "dim_u_common", weight = 400000},
+		{groupTemplate = "junk", weight = 3200000},
+		{groupTemplate = "loot_kit_parts", weight = 1000000},
+		{groupTemplate = "tailor_components", weight = 1000000},
+		{groupTemplate = "wearables_common", weight = 1400000},
+		{groupTemplate = "resource_gemstone", weight = 250000},
+		{groupTemplate = "resource_metal", weight = 250000},
+		{groupTemplate = "resource_ore", weight = 250000},
+		{groupTemplate = "resource_water", weight = 250000},
+		{groupTemplate = "melee_weapons_common", weight = 1000000},
+		{groupTemplate = "ranged_weapons_common", weight = 1000000},
 	}
 }
 

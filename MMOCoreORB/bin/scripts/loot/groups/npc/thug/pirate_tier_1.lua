@@ -6,12 +6,17 @@ pirate_tier_1 = {
 	maximumLevel = -1,
 	lootItems = {
 		{groupTemplate = "color_crystals", weight = 300000},
-		{groupTemplate = "junk", weight = 2000000},
-		{groupTemplate = "loot_kit_parts", weight = 1300000},
-		{groupTemplate = "melee_weapons", weight = 1000000},
-		{groupTemplate = "ranged_weapons", weight = 3500000},
-		{groupTemplate = "tailor_components", weight = 600000},
-		{groupTemplate = "wearables_common", weight = 1300000},
+		{groupTemplate = "junk", weight = 1800000},
+		{groupTemplate = "loot_kit_parts", weight = 1200000},
+		{groupTemplate = "melee_weapons", weight = 850000},
+		{groupTemplate = "ranged_weapons", weight = 3000000},
+		{groupTemplate = "tailor_components", weight = 500000},
+		{groupTemplate = "wearables_common", weight = 1100000},
+		{groupTemplate = "resource_gemstone", weight = 250000},
+		{groupTemplate = "resource_metal", weight = 250000},
+		{groupTemplate = "resource_ore", weight = 250000},
+		{groupTemplate = "resource_water", weight = 250000},
+		{groupTemplate = "crafting_component", weight = 250000},
 	}
 }
 

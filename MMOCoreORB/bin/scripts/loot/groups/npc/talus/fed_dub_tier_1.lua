@@ -5,13 +5,18 @@ fed_dub_tier_1 = {
 	minimumLevel = 0,
 	maximumLevel = -1,
 	lootItems = {
-		{groupTemplate = "heavy_weapons", weight = 1100000},
-		{groupTemplate = "junk", weight = 1600000},
-		{groupTemplate = "loot_kit_parts", weight = 800000},
-		{groupTemplate = "melee_weapons", weight = 1100000},
-		{groupTemplate = "ranged_weapons", weight = 3500000},
-		{groupTemplate = "tailor_components", weight = 800000},
-		{groupTemplate = "wearables_common", weight = 1100000},
+		{groupTemplate = "heavy_weapons", weight = 1000000},
+		{groupTemplate = "junk", weight = 1500000},
+		{groupTemplate = "loot_kit_parts", weight = 750000},
+		{groupTemplate = "melee_weapons", weight = 900000},
+		{groupTemplate = "ranged_weapons", weight = 3000000},
+		{groupTemplate = "tailor_components", weight = 700000},
+		{groupTemplate = "wearables_common", weight = 900000},
+		{groupTemplate = "resource_gemstone", weight = 250000},
+		{groupTemplate = "resource_metal", weight = 250000},
+		{groupTemplate = "resource_ore", weight = 250000},
+		{groupTemplate = "resource_water", weight = 250000},
+		{groupTemplate = "crafting_component", weight = 250000},
 	}
 }
 

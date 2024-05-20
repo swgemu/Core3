@@ -6,10 +6,16 @@ meatlump_tier_1 = {
 	maximumLevel = -1,
 	lootItems = {
 		{groupTemplate = "color_crystals", weight = 100000},
-		{groupTemplate = "junk", weight = 2900000},
-		{groupTemplate = "loot_kit_parts", weight = 1500000},
-		{groupTemplate = "meatlump_common", weight = 5000000},
-		{groupTemplate = "tailor_components", weight = 500000},
+		{groupTemplate = "junk", weight = 2100000},
+		{groupTemplate = "loot_kit_parts", weight = 1000000},
+		{groupTemplate = "meatlump_common", weight = 3500000},
+		{groupTemplate = "tailor_components", weight = 300000},
+		{groupTemplate = "resource_gemstone", weight = 250000},
+		{groupTemplate = "resource_metal", weight = 250000},
+		{groupTemplate = "resource_ore", weight = 250000},
+		{groupTemplate = "resource_water", weight = 250000},
+		{groupTemplate = "melee_weapons_common", weight = 1000000},
+		{groupTemplate = "ranged_weapons_common", weight = 1000000},
 	}
 }
 

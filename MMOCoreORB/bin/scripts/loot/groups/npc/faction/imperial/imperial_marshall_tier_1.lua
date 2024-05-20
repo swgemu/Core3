@@ -8,13 +8,18 @@ imperial_marshall_tier_1 = {
 		{groupTemplate = "armor_attachments", weight = 100000},
 		{groupTemplate = "clothing_attachments", weight = 100000},
 		{groupTemplate = "color_crystals", weight = 100000},
-		{groupTemplate = "grenades_looted", weight = 900000},
+		{groupTemplate = "grenades_looted", weight = 800000},
 		{groupTemplate = "holocron_dark", weight = 100000},
 		{groupTemplate = "holocron_light", weight = 100000},
-		{groupTemplate = "junk", weight = 5800000},
-		{groupTemplate = "melee_weapons", weight = 400000},
-		{groupTemplate = "ranged_weapons", weight = 1500000},
-		{groupTemplate = "wearables_common", weight = 900000},
+		{groupTemplate = "junk", weight = 5100000},
+		{groupTemplate = "melee_weapons", weight = 350000},
+		{groupTemplate = "ranged_weapons", weight = 1300000},
+		{groupTemplate = "wearables_common", weight = 700000},
+		{groupTemplate = "resource_gemstone", weight = 250000},
+		{groupTemplate = "resource_metal", weight = 250000},
+		{groupTemplate = "resource_ore", weight = 250000},
+		{groupTemplate = "resource_water", weight = 250000},
+		{groupTemplate = "crafting_component", weight = 250000},
 	}
 }
 

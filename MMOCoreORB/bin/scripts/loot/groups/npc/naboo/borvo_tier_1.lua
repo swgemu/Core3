@@ -5,12 +5,17 @@ borvo_tier_1 = {
 	minimumLevel = 0,
 	maximumLevel = -1,
 	lootItems = {
-		{groupTemplate = "borvos_common", weight = 2800000},
+		{groupTemplate = "borvos_common", weight = 2500000},
 		{groupTemplate = "color_crystals", weight = 200000},
-		{groupTemplate = "junk", weight = 4000000},
-		{groupTemplate = "loot_kit_parts", weight = 1000000},
-		{groupTemplate = "ranged_weapons", weight = 1000000},
-		{groupTemplate = "tailor_components", weight = 1000000},
+		{groupTemplate = "junk", weight = 3600000},
+		{groupTemplate = "loot_kit_parts", weight = 850000},
+		{groupTemplate = "ranged_weapons", weight = 800000},
+		{groupTemplate = "tailor_components", weight = 800000},
+		{groupTemplate = "resource_gemstone", weight = 250000},
+		{groupTemplate = "resource_metal", weight = 250000},
+		{groupTemplate = "resource_ore", weight = 250000},
+		{groupTemplate = "resource_water", weight = 250000},
+		{groupTemplate = "crafting_component", weight = 250000},
 	}
 }
 

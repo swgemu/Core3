@@ -6,13 +6,18 @@ narmle_tier_1 = {
 	maximumLevel = -1,
 	lootItems = {
 		{groupTemplate = "color_crystals", weight = 200000},
-		{groupTemplate = "heavy_weapons", weight = 900000},
-		{groupTemplate = "junk", weight = 900000},
-		{groupTemplate = "loot_kit_parts", weight = 900000},
-		{groupTemplate = "melee_weapons", weight = 900000},
-		{groupTemplate = "ranged_weapons", weight = 3400000},
-		{groupTemplate = "tailor_components", weight = 900000},
-		{groupTemplate = "wearables_all", weight = 1900000},
+		{groupTemplate = "heavy_weapons", weight = 800000},
+		{groupTemplate = "junk", weight = 800000},
+		{groupTemplate = "loot_kit_parts", weight = 800000},
+		{groupTemplate = "melee_weapons", weight = 800000},
+		{groupTemplate = "ranged_weapons", weight = 3000000},
+		{groupTemplate = "tailor_components", weight = 750000},
+		{groupTemplate = "wearables_all", weight = 1600000},
+		{groupTemplate = "resource_gemstone", weight = 250000},
+		{groupTemplate = "resource_metal", weight = 250000},
+		{groupTemplate = "resource_ore", weight = 250000},
+		{groupTemplate = "resource_water", weight = 250000},
+		{groupTemplate = "crafting_component", weight = 250000},
 	}
 }
 

@@ -8,12 +8,16 @@ nightsister_tier_4 = {
 		{groupTemplate = "armor_attachments", weight = 300000},
 		{groupTemplate = "clothing_attachments", weight = 300000},
 		{groupTemplate = "color_crystals", weight = 500000},
-		{groupTemplate = "melee_weapons", weight = 2000000},
-		{groupTemplate = "nightsister_common", weight = 2300000},
-		{groupTemplate = "power_crystals", weight = 500000},
-		{groupTemplate = "ranged_weapons", weight = 3100000},
-		{groupTemplate = "tailor_components", weight = 500000},
-		{groupTemplate = "wearables_common", weight = 500000},
+		{groupTemplate = "melee_weapons", weight = 1900000},
+		{groupTemplate = "nightsister_common", weight = 2200000},
+		{groupTemplate = "power_crystals", weight = 400000},
+		{groupTemplate = "ranged_weapons", weight = 2800000},
+		{groupTemplate = "tailor_components", weight = 400000},
+		{groupTemplate = "wearables_common", weight = 400000},
+		{groupTemplate = "resource_creature", weight = 300000},
+		{groupTemplate = "resource_water", weight = 100000},
+		{groupTemplate = "crafting_component", weight = 100000},
+		{groupTemplate = "crafting_component_advanced", weight = 300000},
 	}
 }
 

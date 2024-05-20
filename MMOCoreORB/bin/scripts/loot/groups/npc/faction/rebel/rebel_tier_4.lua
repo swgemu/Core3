@@ -8,10 +8,16 @@ rebel_tier_4 = {
 		{groupTemplate = "armor_all", weight = 1200000},
 		{groupTemplate = "armor_attachments", weight = 100000},
 		{groupTemplate = "clothing_attachments", weight = 100000},
-		{groupTemplate = "color_crystals", weight = 200000},
-		{groupTemplate = "junk", weight = 6200000},
-		{groupTemplate = "weapons_all", weight = 1200000},
-		{groupTemplate = "wearables_all", weight = 1000000},
+		{groupTemplate = "color_crystals", weight = 100000},
+		{groupTemplate = "junk", weight = 5700000},
+		{groupTemplate = "weapons_all", weight = 1100000},
+		{groupTemplate = "wearables_all", weight = 900000},
+		{groupTemplate = "resource_gemstone", weight = 100000},
+		{groupTemplate = "resource_metal", weight = 100000},
+		{groupTemplate = "resource_ore", weight = 100000},
+		{groupTemplate = "resource_water", weight = 100000},
+		{groupTemplate = "crafting_component", weight = 100000},
+		{groupTemplate = "crafting_component_advanced", weight = 300000},
 	}
 }
 

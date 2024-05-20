@@ -8,11 +8,17 @@ bandit_tier_4 = {
 		{groupTemplate = "armor_attachments", weight = 800000},
 		{groupTemplate = "clothing_attachments", weight = 800000},
 		{groupTemplate = "color_crystals", weight = 600000},
-		{groupTemplate = "junk", weight = 5200000},
-		{groupTemplate = "melee_polearm", weight = 600000},
-		{groupTemplate = "pistols", weight = 600000},
-		{groupTemplate = "power_crystals", weight = 400000},
-		{groupTemplate = "wearables_all", weight = 1000000},
+		{groupTemplate = "junk", weight = 4800000},
+		{groupTemplate = "melee_polearm", weight = 500000},
+		{groupTemplate = "pistols", weight = 500000},
+		{groupTemplate = "power_crystals", weight = 300000},
+		{groupTemplate = "wearables_all", weight = 900000},
+		{groupTemplate = "resource_gemstone", weight = 100000},
+		{groupTemplate = "resource_metal", weight = 100000},
+		{groupTemplate = "resource_ore", weight = 100000},
+		{groupTemplate = "resource_water", weight = 100000},
+		{groupTemplate = "crafting_component", weight = 100000},
+		{groupTemplate = "crafting_component_advanced", weight = 300000},
 	}
 }
 

@@ -7,9 +7,14 @@ flail_tier_1 = {
 	lootItems = {
 		{groupTemplate = "color_crystals", weight = 700000},
 		{groupTemplate = "flail_common", weight = 300000},
-		{groupTemplate = "junk", weight = 2600000},
-		{groupTemplate = "rifles", weight = 1500000},
-		{groupTemplate = "wearables_all", weight = 4900000},
+		{groupTemplate = "junk", weight = 2250000},
+		{groupTemplate = "rifles", weight = 1300000},
+		{groupTemplate = "wearables_all", weight = 4200000},
+		{groupTemplate = "resource_gemstone", weight = 250000},
+		{groupTemplate = "resource_metal", weight = 250000},
+		{groupTemplate = "resource_ore", weight = 250000},
+		{groupTemplate = "resource_water", weight = 250000},
+		{groupTemplate = "crafting_component", weight = 250000},
 	}
 }
 

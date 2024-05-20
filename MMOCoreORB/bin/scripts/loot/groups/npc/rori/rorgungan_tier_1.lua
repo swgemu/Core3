@@ -6,12 +6,17 @@ rorgungan_tier_1 = {
 	maximumLevel = -1,
 	lootItems = {
 		{groupTemplate = "color_crystals", weight = 100000},
-		{groupTemplate = "gungan_common", weight = 1800000},
-		{groupTemplate = "junk", weight = 5400000},
-		{groupTemplate = "loot_kit_parts", weight = 1300000},
-		{groupTemplate = "power_crystals", weight = 100000},
-		{groupTemplate = "tailor_components", weight = 400000},
-		{groupTemplate = "wearables_common", weight = 900000},
+		{groupTemplate = "gungan_common", weight = 1300000},
+		{groupTemplate = "junk", weight = 3700000},
+		{groupTemplate = "loot_kit_parts", weight = 850000},
+		{groupTemplate = "power_crystals", weight = 0},
+		{groupTemplate = "tailor_components", weight = 200000},
+		{groupTemplate = "wearables_common", weight = 600000},
+		{groupTemplate = "resource_creature", weight = 750000},
+		{groupTemplate = "resource_water", weight = 250000},
+		{groupTemplate = "crafting_component", weight = 250000},
+		{groupTemplate = "melee_weapons_common", weight = 1000000},
+		{groupTemplate = "ranged_weapons_common", weight = 1000000},
 	}
 }
 

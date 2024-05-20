@@ -5,12 +5,16 @@ miner_tier_1 = {
 	minimumLevel = 0,
 	maximumLevel = -1,
 	lootItems = {
-		{groupTemplate = "junk", weight = 2200000},
-		{groupTemplate = "loot_kit_parts", weight = 1400000},
+		{groupTemplate = "junk", weight = 2000000},
+		{groupTemplate = "loot_kit_parts", weight = 1300000},
 		{groupTemplate = "melee_weapons", weight = 700000},
-		{groupTemplate = "ranged_weapons", weight = 2900000},
-		{groupTemplate = "tailor_components", weight = 1400000},
-		{groupTemplate = "wearables_common", weight = 1400000},
+		{groupTemplate = "ranged_weapons", weight = 2600000},
+		{groupTemplate = "tailor_components", weight = 1200000},
+		{groupTemplate = "wearables_common", weight = 1200000},
+		{groupTemplate = "resource_gemstone", weight = 250000},
+		{groupTemplate = "resource_metal", weight = 250000},
+		{groupTemplate = "resource_ore", weight = 250000},
+		{groupTemplate = "resource_water", weight = 250000},
 	}
 }
 

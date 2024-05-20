@@ -5,10 +5,15 @@ poacher_tier_1 = {
 	minimumLevel = 0,
 	maximumLevel = -1,
 	lootItems = {
-		{groupTemplate = "junk", weight = 6300000},
-		{groupTemplate = "loot_kit_parts", weight = 1400000},
-		{groupTemplate = "tailor_components", weight = 1400000},
-		{groupTemplate = "wearables_common", weight = 900000},
+		{groupTemplate = "junk", weight = 4300000},
+		{groupTemplate = "loot_kit_parts", weight = 950000},
+		{groupTemplate = "tailor_components", weight = 900000},
+		{groupTemplate = "wearables_common", weight = 600000},
+		{groupTemplate = "resource_creature", weight = 750000},
+		{groupTemplate = "resource_water", weight = 250000},
+		{groupTemplate = "crafting_component", weight = 250000},
+		{groupTemplate = "melee_weapons_common", weight = 1000000},
+		{groupTemplate = "ranged_weapons_common", weight = 1000000},
 	}
 }
 

@@ -5,11 +5,15 @@ rorgungan_tier_2 = {
 	minimumLevel = 0,
 	maximumLevel = -1,
 	lootItems = {
-		{groupTemplate = "junk", weight = 5000000},
-		{groupTemplate = "loot_kit_parts", weight = 2000000},
-		{groupTemplate = "tailor_components", weight = 2000000},
-		{groupTemplate = "wearables_common", weight = 500000},
-		{groupTemplate = "wearables_uncommon", weight = 500000},
+		{groupTemplate = "junk", weight = 4500000},
+		{groupTemplate = "loot_kit_parts", weight = 1800000},
+		{groupTemplate = "tailor_components", weight = 1800000},
+		{groupTemplate = "wearables_common", weight = 400000},
+		{groupTemplate = "wearables_uncommon", weight = 400000},
+		{groupTemplate = "resource_creature", weight = 600000},
+		{groupTemplate = "resource_water", weight = 200000},
+		{groupTemplate = "crafting_component", weight = 225000},
+		{groupTemplate = "crafting_component_advanced", weight = 75000},
 	}
 }
 

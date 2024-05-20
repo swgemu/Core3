@@ -5,13 +5,18 @@ jabba_tier_1 = {
 	minimumLevel = 0,
 	maximumLevel = -1,
 	lootItems = {
-		{groupTemplate = "jabba_common", weight = 1000000},
-		{groupTemplate = "junk", weight = 1000000},
-		{groupTemplate = "loot_kit_parts", weight = 1000000},
-		{groupTemplate = "melee_weapons", weight = 1400000},
-		{groupTemplate = "ranged_weapons", weight = 3200000},
-		{groupTemplate = "tailor_components", weight = 1000000},
-		{groupTemplate = "wearables_common", weight = 1400000},
+		{groupTemplate = "jabba_common", weight = 900000},
+		{groupTemplate = "junk", weight = 900000},
+		{groupTemplate = "loot_kit_parts", weight = 900000},
+		{groupTemplate = "melee_weapons", weight = 1250000},
+		{groupTemplate = "ranged_weapons", weight = 2800000},
+		{groupTemplate = "tailor_components", weight = 800000},
+		{groupTemplate = "wearables_common", weight = 1200000},
+		{groupTemplate = "resource_gemstone", weight = 250000},
+		{groupTemplate = "resource_metal", weight = 250000},
+		{groupTemplate = "resource_ore", weight = 250000},
+		{groupTemplate = "resource_water", weight = 250000},
+		{groupTemplate = "crafting_component", weight = 250000},
 	}
 }
 

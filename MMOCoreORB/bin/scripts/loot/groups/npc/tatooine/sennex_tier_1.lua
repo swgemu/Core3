@@ -5,12 +5,17 @@ sennex_tier_1 = {
 	minimumLevel = 0,
 	maximumLevel = -1,
 	lootItems = {
-		{groupTemplate = "heavy_weapons", weight = 1900000},
-		{groupTemplate = "junk", weight = 3000000},
-		{groupTemplate = "loot_kit_parts", weight = 1500000},
-		{groupTemplate = "tailor_components", weight = 1400000},
-		{groupTemplate = "wearables_common", weight = 1800000},
-		{groupTemplate = "wearables_uncommon", weight = 400000},
+		{groupTemplate = "heavy_weapons", weight = 1700000},
+		{groupTemplate = "junk", weight = 2700000},
+		{groupTemplate = "loot_kit_parts", weight = 1350000},
+		{groupTemplate = "tailor_components", weight = 1200000},
+		{groupTemplate = "wearables_common", weight = 1500000},
+		{groupTemplate = "wearables_uncommon", weight = 300000},
+		{groupTemplate = "resource_gemstone", weight = 250000},
+		{groupTemplate = "resource_metal", weight = 250000},
+		{groupTemplate = "resource_ore", weight = 250000},
+		{groupTemplate = "resource_water", weight = 250000},
+		{groupTemplate = "crafting_component", weight = 250000},
 	}
 }
 

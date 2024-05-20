@@ -11,10 +11,16 @@ tusken_raider_tier_4 = {
 		{groupTemplate = "clothing_attachments", weight = 400000},
 		{groupTemplate = "color_crystals", weight = 400000},
 		{groupTemplate = "junk", weight = 1100000},
-		{groupTemplate = "power_crystals", weight = 400000},
-		{groupTemplate = "tusken_common", weight = 3000000},
-		{groupTemplate = "wearables_all", weight = 1400000},
-		{groupTemplate = "wearables_scarce", weight = 1700000},
+		{groupTemplate = "power_crystals", weight = 300000},
+		{groupTemplate = "tusken_common", weight = 2700000},
+		{groupTemplate = "wearables_all", weight = 1200000},
+		{groupTemplate = "wearables_scarce", weight = 1500000},
+		{groupTemplate = "resource_gemstone", weight = 100000},
+		{groupTemplate = "resource_metal", weight = 100000},
+		{groupTemplate = "resource_ore", weight = 100000},
+		{groupTemplate = "resource_water", weight = 100000},
+		{groupTemplate = "crafting_component", weight = 100000},
+		{groupTemplate = "crafting_component_advanced", weight = 300000},
 	}
 }
 

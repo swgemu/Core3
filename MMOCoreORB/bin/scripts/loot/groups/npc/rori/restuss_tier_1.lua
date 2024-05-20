@@ -6,10 +6,15 @@ restuss_tier_1 = {
 	maximumLevel = -1,
 	lootItems = {
 		{groupTemplate = "color_crystals", weight = 400000},
-		{groupTemplate = "junk", weight = 4300000},
-		{groupTemplate = "loot_kit_parts", weight = 400000},
-		{groupTemplate = "ranged_weapons", weight = 1600000},
-		{groupTemplate = "wearables_all", weight = 3300000},
+		{groupTemplate = "junk", weight = 3800000},
+		{groupTemplate = "loot_kit_parts", weight = 350000},
+		{groupTemplate = "ranged_weapons", weight = 1400000},
+		{groupTemplate = "wearables_all", weight = 2800000},
+		{groupTemplate = "resource_gemstone", weight = 250000},
+		{groupTemplate = "resource_metal", weight = 250000},
+		{groupTemplate = "resource_ore", weight = 250000},
+		{groupTemplate = "resource_water", weight = 250000},
+		{groupTemplate = "crafting_component", weight = 250000},
 	}
 }
 

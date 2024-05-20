@@ -7,8 +7,10 @@ pubam_tier_1 = {
 	lootItems = {
 		{groupTemplate = "armor_attachments", weight = 300000},
 		{groupTemplate = "clothing_attachments", weight = 300000},
-		{groupTemplate = "ewok", weight = 7800000},
-		{groupTemplate = "wearables_all", weight = 1600000},
+		{groupTemplate = "ewok", weight = 7000000},
+		{groupTemplate = "wearables_all", weight = 1400000},
+		{groupTemplate = "resource_creature", weight = 750000},
+		{groupTemplate = "resource_water", weight = 250000},
 	}
 }
 

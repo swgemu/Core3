@@ -5,11 +5,17 @@ darklighter_tier_3 = {
 	minimumLevel = 0,
 	maximumLevel = -1,
 	lootItems = {
-		{groupTemplate = "junk", weight = 2000000},
-		{groupTemplate = "loot_kit_parts", weight = 2000000},
-		{groupTemplate = "pistols", weight = 2000000},
-		{groupTemplate = "tailor_components", weight = 2000000},
-		{groupTemplate = "wearables_common", weight = 2000000},
+		{groupTemplate = "junk", weight = 1850000},
+		{groupTemplate = "loot_kit_parts", weight = 1800000},
+		{groupTemplate = "pistols", weight = 1800000},
+		{groupTemplate = "tailor_components", weight = 1800000},
+		{groupTemplate = "wearables_common", weight = 1800000},
+		{groupTemplate = "resource_gemstone", weight = 150000},
+		{groupTemplate = "resource_metal", weight = 150000},
+		{groupTemplate = "resource_ore", weight = 150000},
+		{groupTemplate = "resource_water", weight = 150000},
+		{groupTemplate = "crafting_component", weight = 175000},
+		{groupTemplate = "crafting_component_advanced", weight = 175000},
 	}
 }
 

@@ -5,12 +5,19 @@ nym_tier_2 = {
 	minimumLevel = 0,
 	maximumLevel = -1,
 	lootItems = {
-		{groupTemplate = "junk", weight = 5000000},
-		{groupTemplate = "nyms_common", weight = 800000},
+		{groupTemplate = "junk", weight = 4400000},
+		{groupTemplate = "nyms_common", weight = 700000},
 		{groupTemplate = "nyms_rare", weight = 400000},
-		{groupTemplate = "ranged_weapons", weight = 1700000},
-		{groupTemplate = "tailor_components", weight = 400000},
-		{groupTemplate = "wearables_uncommon", weight = 1700000},
+		{groupTemplate = "ranged_weapons", weight = 1400000},
+		{groupTemplate = "tailor_components", weight = 300000},
+		{groupTemplate = "wearables_uncommon", weight = 1400000},
+		{groupTemplate = "resource_gemstone", weight = 200000},
+		{groupTemplate = "resource_metal", weight = 200000},
+		{groupTemplate = "resource_ore", weight = 200000},
+		{groupTemplate = "resource_water", weight = 200000},
+		{groupTemplate = "crafting_component", weight = 225000},
+		{groupTemplate = "crafting_component_advanced", weight = 75000},
+		{groupTemplate = "component_enhancement", weight = 300000},
 	}
 }
 

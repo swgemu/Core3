@@ -5,8 +5,10 @@ donkuwah_tribe_tier_2 = {
 	minimumLevel = 0,
 	maximumLevel = -1,
 	lootItems = {
-		{groupTemplate = "donkuwah_common", weight = 8200000},
-		{groupTemplate = "wearables_all", weight = 1800000},
+		{groupTemplate = "donkuwah_common", weight = 7600000},
+		{groupTemplate = "wearables_all", weight = 1600000},
+		{groupTemplate = "resource_creature", weight = 600000},
+		{groupTemplate = "resource_water", weight = 200000},
 	}
 }
 

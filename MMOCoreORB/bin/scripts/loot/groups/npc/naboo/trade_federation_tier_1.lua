@@ -5,12 +5,17 @@ trade_federation_tier_1 = {
 	minimumLevel = 0,
 	maximumLevel = -1,
 	lootItems = {
-		{groupTemplate = "junk", weight = 2000000},
-		{groupTemplate = "loot_kit_parts", weight = 1600000},
-		{groupTemplate = "melee_weapons", weight = 1600000},
-		{groupTemplate = "pistols", weight = 1600000},
-		{groupTemplate = "tailor_components", weight = 1600000},
-		{groupTemplate = "wearables_common", weight = 1600000},
+		{groupTemplate = "junk", weight = 1750000},
+		{groupTemplate = "loot_kit_parts", weight = 1400000},
+		{groupTemplate = "melee_weapons", weight = 1400000},
+		{groupTemplate = "pistols", weight = 1400000},
+		{groupTemplate = "tailor_components", weight = 1400000},
+		{groupTemplate = "wearables_common", weight = 1400000},
+		{groupTemplate = "resource_gemstone", weight = 250000},
+		{groupTemplate = "resource_metal", weight = 250000},
+		{groupTemplate = "resource_ore", weight = 250000},
+		{groupTemplate = "resource_water", weight = 250000},
+		{groupTemplate = "crafting_component", weight = 250000},
 	}
 }
 

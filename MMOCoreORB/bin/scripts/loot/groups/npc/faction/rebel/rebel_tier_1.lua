@@ -5,13 +5,18 @@ rebel_tier_1 = {
 	minimumLevel = 0,
 	maximumLevel = -1,
 	lootItems = {
-		{groupTemplate = "armor_all", weight = 900000},
+		{groupTemplate = "armor_all", weight = 800000},
 		{groupTemplate = "armor_attachments", weight = 100000},
 		{groupTemplate = "clothing_attachments", weight = 100000},
 		{groupTemplate = "color_crystals", weight = 100000},
-		{groupTemplate = "junk", weight = 3500000},
-		{groupTemplate = "weapons_all", weight = 3900000},
-		{groupTemplate = "wearables_all", weight = 1400000},
+		{groupTemplate = "junk", weight = 3050000},
+		{groupTemplate = "weapons_all", weight = 3400000},
+		{groupTemplate = "wearables_all", weight = 1200000},
+		{groupTemplate = "resource_gemstone", weight = 250000},
+		{groupTemplate = "resource_metal", weight = 250000},
+		{groupTemplate = "resource_ore", weight = 250000},
+		{groupTemplate = "resource_water", weight = 250000},
+		{groupTemplate = "crafting_component", weight = 250000},
 	}
 }
 

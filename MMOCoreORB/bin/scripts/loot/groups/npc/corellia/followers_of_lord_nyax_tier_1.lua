@@ -5,9 +5,14 @@ followers_of_lord_nyax_tier_1 = {
 	minimumLevel = 0,
 	maximumLevel = -1,
 	lootItems = {
-		{groupTemplate = "color_crystals", weight = 800000},
-		{groupTemplate = "junk", weight = 6100000},
-		{groupTemplate = "ranged_weapons", weight = 3100000},
+		{groupTemplate = "color_crystals", weight = 750000},
+		{groupTemplate = "junk", weight = 5300000},
+		{groupTemplate = "ranged_weapons", weight = 2700000},
+		{groupTemplate = "resource_chemical", weight = 250000},
+		{groupTemplate = "resource_gemstone", weight = 250000},
+		{groupTemplate = "resource_metal", weight = 250000},
+		{groupTemplate = "resource_water", weight = 250000},
+		{groupTemplate = "crafting_component", weight = 250000},
 	}
 }
 

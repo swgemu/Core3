@@ -5,12 +5,16 @@ sleemo_gang_tier_1 = {
 	minimumLevel = 0,
 	maximumLevel = -1,
 	lootItems = {
-		{groupTemplate = "junk", weight = 3200000},
+		{groupTemplate = "junk", weight = 2900000},
 		{groupTemplate = "loot_kit_parts", weight = 1000000},
-		{groupTemplate = "melee_knife", weight = 700000},
-		{groupTemplate = "printer_parts", weight = 1000000},
-		{groupTemplate = "ranged_weapons", weight = 2100000},
-		{groupTemplate = "wearables_common", weight = 2000000},
+		{groupTemplate = "melee_knife", weight = 600000},
+		{groupTemplate = "printer_parts", weight = 900000},
+		{groupTemplate = "ranged_weapons", weight = 1800000},
+		{groupTemplate = "wearables_common", weight = 1800000},
+		{groupTemplate = "resource_gemstone", weight = 250000},
+		{groupTemplate = "resource_metal", weight = 250000},
+		{groupTemplate = "resource_ore", weight = 250000},
+		{groupTemplate = "resource_water", weight = 250000},
 	}
 }
 

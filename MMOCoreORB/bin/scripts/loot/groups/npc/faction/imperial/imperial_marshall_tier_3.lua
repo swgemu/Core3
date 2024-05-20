@@ -11,11 +11,17 @@ imperial_marshall_tier_3 = {
 		{groupTemplate = "color_crystals", weight = 300000},
 		{groupTemplate = "holocron_dark", weight = 100000},
 		{groupTemplate = "holocron_light", weight = 100000},
-		{groupTemplate = "junk", weight = 3400000},
-		{groupTemplate = "power_crystals", weight = 300000},
-		{groupTemplate = "weapons_all", weight = 4000000},
-		{groupTemplate = "wearables_all", weight = 500000},
-		{groupTemplate = "wearables_rare", weight = 400000},
+		{groupTemplate = "junk", weight = 3100000},
+		{groupTemplate = "power_crystals", weight = 250000},
+		{groupTemplate = "weapons_all", weight = 3600000},
+		{groupTemplate = "wearables_all", weight = 400000},
+		{groupTemplate = "wearables_rare", weight = 300000},
+		{groupTemplate = "resource_gemstone", weight = 150000},
+		{groupTemplate = "resource_metal", weight = 150000},
+		{groupTemplate = "resource_ore", weight = 150000},
+		{groupTemplate = "resource_water", weight = 150000},
+		{groupTemplate = "crafting_component", weight = 175000},
+		{groupTemplate = "crafting_component_advanced", weight = 175000},
 	}
 }
 

@@ -5,9 +5,15 @@ smashball_tier_1 = {
 	minimumLevel = 0,
 	maximumLevel = -1,
 	lootItems = {
-		{groupTemplate = "junk", weight = 6000000},
-		{groupTemplate = "loot_kit_parts", weight = 2500000},
-		{groupTemplate = "tailor_components", weight = 1500000},
+		{groupTemplate = "junk", weight = 4300000},
+		{groupTemplate = "loot_kit_parts", weight = 1700000},
+		{groupTemplate = "tailor_components", weight = 1000000},
+		{groupTemplate = "resource_gemstone", weight = 250000},
+		{groupTemplate = "resource_metal", weight = 250000},
+		{groupTemplate = "resource_ore", weight = 250000},
+		{groupTemplate = "resource_water", weight = 250000},
+		{groupTemplate = "melee_weapons_common", weight = 1000000},
+		{groupTemplate = "ranged_weapons_common", weight = 1000000},
 	}
 }
 

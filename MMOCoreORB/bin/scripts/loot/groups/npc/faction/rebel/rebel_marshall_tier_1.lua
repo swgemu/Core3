@@ -9,10 +9,15 @@ rebel_marshall_tier_1 = {
 		{groupTemplate = "clothing_attachments", weight = 200000},
 		{groupTemplate = "holocron_dark", weight = 400000},
 		{groupTemplate = "holocron_light", weight = 400000},
-		{groupTemplate = "junk", weight = 3400000},
-		{groupTemplate = "melee_weapons", weight = 900000},
-		{groupTemplate = "ranged_weapons", weight = 4000000},
-		{groupTemplate = "wearables_common", weight = 500000},
+		{groupTemplate = "junk", weight = 2950000},
+		{groupTemplate = "melee_weapons", weight = 700000},
+		{groupTemplate = "ranged_weapons", weight = 3500000},
+		{groupTemplate = "wearables_common", weight = 400000},
+		{groupTemplate = "resource_gemstone", weight = 250000},
+		{groupTemplate = "resource_metal", weight = 250000},
+		{groupTemplate = "resource_ore", weight = 250000},
+		{groupTemplate = "resource_water", weight = 250000},
+		{groupTemplate = "crafting_component", weight = 250000},
 	}
 }
 

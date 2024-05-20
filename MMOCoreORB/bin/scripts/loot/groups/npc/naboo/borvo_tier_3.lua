@@ -7,12 +7,18 @@ borvo_tier_3 = {
 	lootItems = {
 		{groupTemplate = "armor_attachments", weight = 500000},
 		{groupTemplate = "clothing_attachments", weight = 500000},
-		{groupTemplate = "composite_armor", weight = 1500000},
-		{groupTemplate = "junk", weight = 2000000},
-		{groupTemplate = "loot_kit_parts", weight = 1500000},
-		{groupTemplate = "melee_two_handed", weight = 1500000},
-		{groupTemplate = "tailor_components", weight = 1500000},
-		{groupTemplate = "wearables_common", weight = 1000000},
+		{groupTemplate = "composite_armor", weight = 1400000},
+		{groupTemplate = "junk", weight = 1850000},
+		{groupTemplate = "loot_kit_parts", weight = 1300000},
+		{groupTemplate = "melee_two_handed", weight = 1300000},
+		{groupTemplate = "tailor_components", weight = 1300000},
+		{groupTemplate = "wearables_common", weight = 900000},
+		{groupTemplate = "resource_gemstone", weight = 150000},
+		{groupTemplate = "resource_metal", weight = 150000},
+		{groupTemplate = "resource_ore", weight = 150000},
+		{groupTemplate = "resource_water", weight = 150000},
+		{groupTemplate = "crafting_component", weight = 175000},
+		{groupTemplate = "crafting_component_advanced", weight = 175000},
 	}
 }
 

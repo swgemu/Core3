@@ -9,11 +9,17 @@ imperial_tier_3 = {
 		{groupTemplate = "armor_attachments", weight = 100000},
 		{groupTemplate = "clothing_attachments", weight = 100000},
 		{groupTemplate = "color_crystals", weight = 100000},
-		{groupTemplate = "junk", weight = 2500000},
-		{groupTemplate = "loot_kit_parts", weight = 1200000},
-		{groupTemplate = "tailor_components", weight = 900000},
-		{groupTemplate = "weapons_all", weight = 700000},
-		{groupTemplate = "wearables_all", weight = 3700000},
+		{groupTemplate = "junk", weight = 2300000},
+		{groupTemplate = "loot_kit_parts", weight = 1050000},
+		{groupTemplate = "tailor_components", weight = 800000},
+		{groupTemplate = "weapons_all", weight = 600000},
+		{groupTemplate = "wearables_all", weight = 3300000},
+		{groupTemplate = "resource_gemstone", weight = 150000},
+		{groupTemplate = "resource_metal", weight = 150000},
+		{groupTemplate = "resource_ore", weight = 150000},
+		{groupTemplate = "resource_water", weight = 150000},
+		{groupTemplate = "crafting_component", weight = 175000},
+		{groupTemplate = "crafting_component_advanced", weight = 175000},
 	}
 }
 

@@ -5,10 +5,15 @@ swamp_rat_tier_1 = {
 	minimumLevel = 0,
 	maximumLevel = -1,
 	lootItems = {
-		{groupTemplate = "junk", weight = 5500000},
-		{groupTemplate = "loot_kit_parts", weight = 500000},
-		{groupTemplate = "melee_weapons", weight = 1000000},
-		{groupTemplate = "ranged_weapons", weight = 3000000},
+		{groupTemplate = "junk", weight = 4900000},
+		{groupTemplate = "loot_kit_parts", weight = 450000},
+		{groupTemplate = "melee_weapons", weight = 800000},
+		{groupTemplate = "ranged_weapons", weight = 2600000},
+		{groupTemplate = "resource_gemstone", weight = 250000},
+		{groupTemplate = "resource_metal", weight = 250000},
+		{groupTemplate = "resource_ore", weight = 250000},
+		{groupTemplate = "resource_water", weight = 250000},
+		{groupTemplate = "crafting_component", weight = 250000},
 	}
 }
 

@@ -5,12 +5,16 @@ rodian_tier_1 = {
 	minimumLevel = 0,
 	maximumLevel = -1,
 	lootItems = {
-		{groupTemplate = "carbines", weight = 1600000},
-		{groupTemplate = "heavy_weapons", weight = 1600000},
-		{groupTemplate = "junk", weight = 2800000},
-		{groupTemplate = "loot_kit_parts", weight = 1600000},
-		{groupTemplate = "tailor_components", weight = 800000},
-		{groupTemplate = "wearables_common", weight = 1600000},
+		{groupTemplate = "carbines", weight = 1500000},
+		{groupTemplate = "heavy_weapons", weight = 1500000},
+		{groupTemplate = "junk", weight = 2500000},
+		{groupTemplate = "loot_kit_parts", weight = 1400000},
+		{groupTemplate = "tailor_components", weight = 700000},
+		{groupTemplate = "wearables_common", weight = 1400000},
+		{groupTemplate = "resource_gemstone", weight = 250000},
+		{groupTemplate = "resource_metal", weight = 250000},
+		{groupTemplate = "resource_ore", weight = 250000},
+		{groupTemplate = "resource_water", weight = 250000},
 	}
 }
 

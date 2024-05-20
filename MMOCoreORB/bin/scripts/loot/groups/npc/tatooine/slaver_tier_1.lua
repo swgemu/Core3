@@ -5,11 +5,15 @@ slaver_tier_1 = {
 	minimumLevel = 0,
 	maximumLevel = -1,
 	lootItems = {
-		{groupTemplate = "junk", weight = 2300000},
-		{groupTemplate = "loot_kit_parts", weight = 1600000},
-		{groupTemplate = "ranged_weapons", weight = 3600000},
-		{groupTemplate = "tailor_components", weight = 900000},
-		{groupTemplate = "wearables_common", weight = 1600000},
+		{groupTemplate = "junk", weight = 2100000},
+		{groupTemplate = "loot_kit_parts", weight = 1500000},
+		{groupTemplate = "ranged_weapons", weight = 3200000},
+		{groupTemplate = "tailor_components", weight = 800000},
+		{groupTemplate = "wearables_common", weight = 1400000},
+		{groupTemplate = "resource_gemstone", weight = 250000},
+		{groupTemplate = "resource_metal", weight = 250000},
+		{groupTemplate = "resource_ore", weight = 250000},
+		{groupTemplate = "resource_water", weight = 250000},
 	}
 }
 

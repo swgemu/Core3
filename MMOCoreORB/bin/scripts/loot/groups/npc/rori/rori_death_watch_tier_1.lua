@@ -5,10 +5,15 @@ rori_death_watch_tier_1 = {
 	minimumLevel = 0,
 	maximumLevel = -1,
 	lootItems = {
-		{groupTemplate = "junk", weight = 6600000},
-		{groupTemplate = "ranged_weapons", weight = 2400000},
-		{groupTemplate = "wearables_common", weight = 500000},
-		{groupTemplate = "wearables_uncommon", weight = 500000},
+		{groupTemplate = "junk", weight = 5800000},
+		{groupTemplate = "ranged_weapons", weight = 2150000},
+		{groupTemplate = "wearables_common", weight = 400000},
+		{groupTemplate = "wearables_uncommon", weight = 400000},
+		{groupTemplate = "resource_gemstone", weight = 250000},
+		{groupTemplate = "resource_metal", weight = 250000},
+		{groupTemplate = "resource_ore", weight = 250000},
+		{groupTemplate = "resource_water", weight = 250000},
+		{groupTemplate = "crafting_component", weight = 250000},
 	}
 }
 

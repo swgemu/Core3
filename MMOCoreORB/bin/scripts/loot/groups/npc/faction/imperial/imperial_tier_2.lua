@@ -5,13 +5,19 @@ imperial_tier_2 = {
 	minimumLevel = 0,
 	maximumLevel = -1,
 	lootItems = {
-		{groupTemplate = "armor_all", weight = 1200000},
+		{groupTemplate = "armor_all", weight = 1100000},
 		{groupTemplate = "armor_attachments", weight = 100000},
 		{groupTemplate = "clothing_attachments", weight = 100000},
 		{groupTemplate = "color_crystals", weight = 100000},
-		{groupTemplate = "junk", weight = 6300000},
-		{groupTemplate = "weapons_all", weight = 1200000},
-		{groupTemplate = "wearables_all", weight = 1000000},
+		{groupTemplate = "junk", weight = 5700000},
+		{groupTemplate = "weapons_all", weight = 1000000},
+		{groupTemplate = "wearables_all", weight = 800000},
+		{groupTemplate = "resource_gemstone", weight = 200000},
+		{groupTemplate = "resource_metal", weight = 200000},
+		{groupTemplate = "resource_ore", weight = 200000},
+		{groupTemplate = "resource_water", weight = 200000},
+		{groupTemplate = "crafting_component", weight = 225000},
+		{groupTemplate = "crafting_component_advanced", weight = 75000},
 	}
 }
 

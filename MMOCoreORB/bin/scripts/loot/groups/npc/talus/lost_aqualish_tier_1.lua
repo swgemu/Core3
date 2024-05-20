@@ -6,14 +6,19 @@ lost_aqualish_tier_1 = {
 	maximumLevel = -1,
 	lootItems = {
 		{groupTemplate = "color_crystals", weight = 200000},
-		{groupTemplate = "heavy_weapons", weight = 1000000},
-		{groupTemplate = "junk", weight = 1500000},
+		{groupTemplate = "heavy_weapons", weight = 900000},
+		{groupTemplate = "junk", weight = 1400000},
 		{groupTemplate = "loot_kit_parts", weight = 800000},
-		{groupTemplate = "melee_weapons", weight = 1000000},
-		{groupTemplate = "ranged_weapons", weight = 3600000},
-		{groupTemplate = "tailor_components", weight = 800000},
-		{groupTemplate = "wearables_common", weight = 900000},
-		{groupTemplate = "wearables_uncommon", weight = 200000},
+		{groupTemplate = "melee_weapons", weight = 850000},
+		{groupTemplate = "ranged_weapons", weight = 3100000},
+		{groupTemplate = "tailor_components", weight = 700000},
+		{groupTemplate = "wearables_common", weight = 700000},
+		{groupTemplate = "wearables_uncommon", weight = 100000},
+		{groupTemplate = "resource_gemstone", weight = 250000},
+		{groupTemplate = "resource_metal", weight = 250000},
+		{groupTemplate = "resource_ore", weight = 250000},
+		{groupTemplate = "resource_water", weight = 250000},
+		{groupTemplate = "crafting_component", weight = 250000},
 	}
 }
 

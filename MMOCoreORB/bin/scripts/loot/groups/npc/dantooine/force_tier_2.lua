@@ -8,11 +8,17 @@ force_tier_2 = {
 		{groupTemplate = "armor_attachments", weight = 500000},
 		{groupTemplate = "clothing_attachments", weight = 500000},
 		{groupTemplate = "color_crystals", weight = 500000},
-		{groupTemplate = "junk", weight = 5000000},
-		{groupTemplate = "melee_weapons", weight = 1000000},
-		{groupTemplate = "power_crystals", weight = 500000},
-		{groupTemplate = "wearables_common", weight = 1000000},
-		{groupTemplate = "wearables_uncommon", weight = 1000000},
+		{groupTemplate = "junk", weight = 4500000},
+		{groupTemplate = "melee_weapons", weight = 900000},
+		{groupTemplate = "power_crystals", weight = 400000},
+		{groupTemplate = "wearables_common", weight = 800000},
+		{groupTemplate = "wearables_uncommon", weight = 800000},
+		{groupTemplate = "resource_chemical", weight = 200000},
+		{groupTemplate = "resource_gemstone", weight = 200000},
+		{groupTemplate = "resource_metal", weight = 200000},
+		{groupTemplate = "resource_water", weight = 200000},
+		{groupTemplate = "crafting_component", weight = 225000},
+		{groupTemplate = "crafting_component_advanced", weight = 75000},
 	}
 }
 
