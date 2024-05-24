@@ -34,10 +34,7 @@ binayre_smuggler = Creature:new {
 	lootGroups = {
 		{
 			groups = {
-				{group = "junk", chance = 2450000},
-				{group = "tailor_components", chance = 1500000},
-				{group = "loot_kit_parts", chance = 1500000},
-				{group = "binayre_common", chance = 4550000}
+				{group = "binayre_tier_1", chance = 10000000}
 			}
 		}
 	},

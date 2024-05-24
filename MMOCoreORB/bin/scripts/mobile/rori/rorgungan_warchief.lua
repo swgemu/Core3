@@ -31,12 +31,7 @@ rorgungan_warchief = Creature:new {
 	lootGroups = {
 		{
 			groups = {
-				{group = "junk", chance = 5500000},
-				{group = "gungan_common", chance = 2000000},
-				{group = "tailor_components", chance = 500000},
-				{group = "loot_kit_parts", chance = 1500000},
-				{group = "color_crystals", chance = 250000},
-				{group = "power_crystals", chance = 250000}
+				{group = "rorgungan_tier_1", chance = 10000000}
 			}
 		}
 	},

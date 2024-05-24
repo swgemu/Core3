@@ -31,13 +31,7 @@ fbase_imperial_noncom_hard = Creature:new {
 	lootGroups = {
 		{
 			groups = {
-				{group = "color_crystals", chance = 200000},
-				{group = "junk", chance = 6000000},
-				{group = "weapons_all", chance = 1250000},
-				{group = "armor_all", chance = 1250000},
-				{group = "clothing_attachments", chance = 150000},
-				{group = "armor_attachments", chance = 150000},
-				{group = "wearables_all", chance = 1000000}
+				{group = "imperial_tier_2", chance = 10000000}
 			}
 		}
 	},

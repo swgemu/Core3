@@ -33,15 +33,7 @@ prophet_of_the_dark_side = Creature:new {
 	lootGroups = {
 		{
 			groups = {
-				{group = "holocron_dark", chance = 600000},
-				{group = "holocron_light", chance = 600000},
-				{group = "power_crystals", chance = 600000},
-				{group = "rifles", chance = 1500000},
-				{group = "pistols", chance = 1500000},
-				{group = "melee_weapons", chance = 1500000},
-				{group = "armor_attachments", chance = 1100000},
-				{group = "clothing_attachments", chance = 1100000},
-				{group = "carbines", chance = 1500000}
+				{group = "imperial_marshall_tier_4", chance = 10000000}
 			}
 		}
 	},

@@ -33,17 +33,7 @@ elite_sand_trooper = Creature:new {
 	lootGroups = {
 		{
 			groups = {
-				{group = "color_crystals", chance = 100000},
-				{group = "junk", chance = 6550000},
-				{group = "rifles", chance = 550000},
-				{group = "pistols", chance = 550000},
-				{group = "melee_weapons", chance = 550000},
-				{group = "carbines", chance = 550000},
-				{group = "clothing_attachments", chance = 25000},
-				{group = "armor_attachments", chance = 25000},
-				{group = "stormtrooper_common", chance = 100000},
-				{group = "wearables_common", chance = 500000},
-				{group = "wearables_uncommon", chance = 500000}
+				{group = "imperial_stormtrooper_tier_2", chance = 10000000}
 			}
 		}
 	},

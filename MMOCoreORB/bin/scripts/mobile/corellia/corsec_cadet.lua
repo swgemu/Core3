@@ -36,10 +36,7 @@ corsec_cadet = Creature:new {
 	lootGroups = {
 		{
 			groups = {
-				{group = "junk", chance = 4000000},
-				{group = "wearables_common", chance = 2000000},
-				{group = "corsec_weapons", chance = 2500000},
-				{group = "tailor_components", chance = 1500000}
+				{group = "corsec_tier_1", chance = 10000000}
 			}
 		}
 	},

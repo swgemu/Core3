@@ -34,7 +34,7 @@ korga_battlelord = Creature:new {
 	lootGroups = {
 		{
 			groups = {
-				{group = "ewok", chance = 10000000}
+				{group = "korga_tribe_tier_1", chance = 10000000}
 			},
 			lootChance = 1700000
 		}

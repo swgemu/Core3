@@ -32,12 +32,7 @@ jawa_henchman = Creature:new {
 	lootGroups = {
 		{
 			groups = {
-				{group = "junk", chance = 5000000},
-				{group = "jawa_common", chance = 1500000},
-				{group = "armor_all", chance = 800000},
-				{group = "tailor_components", chance = 1000000},
-				{group = "loot_kit_parts", chance = 1500000},
-				{group = "color_crystals", chance = 200000}
+				{group = "jawa_tier_1", chance = 10000000}
 			}
 		}
 	},

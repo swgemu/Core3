@@ -37,12 +37,7 @@ pirate_privateer = Creature:new {
 	lootGroups = {
 		{
 			groups = {
-				{group = "junk", chance = 4000000},
-				{group = "wearables_common", chance = 2000000},
-				{group = "rifles", chance = 1000000},
-				{group = "pistols", chance = 1000000},
-				{group = "melee_weapons", chance = 1000000},
-				{group = "carbines", chance = 1000000},
+				{group = "pirate_tier_1", chance = 10000000}
 			}
 		}
 	},

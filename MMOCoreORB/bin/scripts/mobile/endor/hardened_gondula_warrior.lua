@@ -34,7 +34,7 @@ hardened_gondula_warrior = Creature:new {
 	lootGroups = {
 		{
 			groups = {
-				{group = "ewok", chance = 10000000}
+				{group = "gondula_tribe_tier_2", chance = 10000000}
 			},
 			lootChance = 2060000
 		}

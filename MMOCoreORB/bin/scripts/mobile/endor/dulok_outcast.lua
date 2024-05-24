@@ -34,7 +34,7 @@ dulok_outcast = Creature:new {
 	lootGroups = {
 		{
 			groups = {
-				{group = "ewok", chance = 10000000}
+				{group = "dulok_tier_1", chance = 10000000}
 			},
 			lootChance = 1400000
 		}

@@ -32,17 +32,7 @@ spiderclan_sentinel = Creature:new {
 	lootGroups = {
 		{
 			groups = {
-				{group = "junk", chance = 1500000},
-				{group = "power_crystals", chance = 500000},
-				{group = "color_crystals", chance = 500000},
-				{group = "armor_attachments", chance = 400000},
-				{group = "clothing_attachments", chance = 400000},
-				{group = "melee_weapons", chance = 2700000},
-				{group = "pistols", chance = 1000000},
-				{group = "rifles", chance = 1000000},
-				{group = "carbines", chance = 1000000},
-				{group = "wearables_common", chance = 500000},
-				{group = "wearables_uncommon", chance = 500000}
+				{group = "spider_nightsister_tier_3", chance = 10000000}
 			}
 		}
 	},

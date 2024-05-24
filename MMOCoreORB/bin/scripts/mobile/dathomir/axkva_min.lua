@@ -31,15 +31,7 @@ axkva_min = Creature:new {
 	lootGroups = {
 		{
 			groups = {
-				{group = "power_crystals", chance = 900000},
-				{group = "nightsister_common", chance = 2600000},
-				{group = "pistols", chance = 1000000},
-				{group = "rifles", chance = 1000000},
-				{group = "carbines", chance = 1000000},
-				{group = "melee_weapons", chance = 2000000},
-				{group = "armor_attachments", chance = 500000},
-				{group = "clothing_attachments", chance = 500000},
-				{group = "wearables_rare", chance = 500000}
+				{group = "nightsister_tier_5", chance = 10000000}
 			}
 		},
 		{

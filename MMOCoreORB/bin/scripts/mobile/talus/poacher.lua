@@ -36,10 +36,7 @@ poacher = Creature:new {
 	lootGroups = {
 		{
 			groups = {
-				{group = "junk", chance = 6000000},
-				{group = "tailor_components", chance = 1500000},
-				{group = "loot_kit_parts", chance = 1500000},
-				{group = "wearables_common", chance = 1000000}
+				{group = "poacher_tier_1", chance = 10000000}
 			}
 		}
 	},

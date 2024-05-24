@@ -31,12 +31,7 @@ swamp_rat = Creature:new {
 	lootGroups = {
 		{
 			groups = {
-				{group = "junk", chance = 5500000},
-				{group = "rifles", chance = 1000000},
-				{group = "melee_weapons", chance = 1000000},
-				{group = "carbines", chance = 1000000},
-				{group = "pistols", chance = 1000000},
-				{group = "loot_kit_parts", chance = 500000}
+				{group = "swamp_rat_tier_1", chance = 10000000}
 			}
 		}
 	},

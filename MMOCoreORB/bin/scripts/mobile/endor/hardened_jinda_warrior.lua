@@ -34,9 +34,7 @@ hardened_jinda_warrior = Creature:new {
 	lootGroups = {
 		{
 			groups = {
-				{group = "ewok", chance = 9100000},
-				{group = "armor_attachments", chance = 450000},
-				{group = "clothing_attachments", chance = 450000}
+				{group = "jinda_tribe_tier_2", chance = 10000000}
 			},
 			lootChance = 2000000
 		}

@@ -34,9 +34,7 @@ beguiling_korga_scout = Creature:new {
 	lootGroups = {
 		{
 			groups = {
-				{group = "ewok", chance = 9100000},
-				{group = "armor_attachments", chance = 450000},
-				{group = "clothing_attachments", chance = 450000}
+				{group = "korga_tribe_tier_1", chance = 10000000}
 			},
 			lootChance = 1640000
 		}

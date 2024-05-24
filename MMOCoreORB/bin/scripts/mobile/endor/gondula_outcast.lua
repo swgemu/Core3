@@ -32,7 +32,7 @@ gondula_outcast = Creature:new {
 	lootGroups = {
 		{
 			groups = {
-				{group = "ewok", chance = 10000000}
+				{group = "gondula_tribe_tier_1", chance = 10000000}
 			},
 			lootChance = 1260000
 		}

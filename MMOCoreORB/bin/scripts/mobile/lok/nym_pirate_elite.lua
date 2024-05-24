@@ -35,12 +35,7 @@ nym_pirate_elite = Creature:new {
 	lootGroups = {
 		{
 			groups = {
-				{group = "junk", chance = 4500000},
-				{group = "wearables_uncommon", chance = 2000000},
-				{group = "nyms_common", chance = 1000000},
-				{group = "pistols", chance = 1000000},
-				{group = "carbines", chance = 1000000},
-				{group = "tailor_components", chance = 500000}
+				{group = "nym_tier_1", chance = 10000000}
 			}
 		}
 	},

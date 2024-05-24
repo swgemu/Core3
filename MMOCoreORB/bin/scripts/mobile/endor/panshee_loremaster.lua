@@ -38,7 +38,7 @@ panshee_loremaster = Creature:new {
 	lootGroups = {
 		{
 			groups = {
-				{group = "ewok", chance = 10000000}
+				{group = "panshee_tribe_tier_1", chance = 10000000}
 			},
 			lootChance = 1500000
 		}

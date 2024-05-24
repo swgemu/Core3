@@ -32,10 +32,7 @@ corsec_chief = Creature:new {
 	lootGroups = {
 		{
 			groups = {
-				{group = "junk", chance = 4500000},
-				{group = "wearables_all", chance = 1500000},
-				{group = "corsec_weapons", chance = 2500000},
-				{group = "tailor_components", chance = 1500000}
+				{group = "corsec_tier_1", chance = 10000000}
 			}
 		}
 	},

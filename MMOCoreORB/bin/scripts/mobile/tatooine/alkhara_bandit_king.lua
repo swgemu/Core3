@@ -32,12 +32,7 @@ alkhara_bandit_king = Creature:new {
 	lootGroups = {
 		{
 			groups = {
-				{group = "junk", chance = 2550000},
-				{group = "wearables_common", chance = 2000000},
-				{group = "rifles", chance = 2000000},
-				{group = "tailor_components", chance = 1500000},
-				{group = "loot_kit_parts", chance = 1500000},
-				{group = "alkhara_common", chance = 450000}
+				{group = "alkhara_tier_1", chance = 10000000}
 			}
 		}
 	},

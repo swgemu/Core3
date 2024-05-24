@@ -36,8 +36,7 @@ panshee_elder_worker = Creature:new {
 	lootGroups = {
 		{
 			groups = {
-				{group = "ewok", chance = 9000000},
-				{group = "wearables_uncommon", chance = 1000000},
+				{group = "panshee_tribe_tier_1", chance = 10000000}
 			},
 			lootChance = 1540000
 		}

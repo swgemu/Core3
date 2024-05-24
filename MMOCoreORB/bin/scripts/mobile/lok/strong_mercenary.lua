@@ -37,18 +37,7 @@ strong_mercenary = Creature:new {
 	lootGroups = {
 		{
 			groups = {
-				{group = "junk", chance = 4100000},
-				{group = "tailor_components", chance = 1000000},
-				{group = "color_crystals", chance = 400000},
-				{group = "power_crystals", chance = 400000},
-				{group = "melee_unarmed", chance = 600000},
-				{group = "melee_polearm", chance = 600000},
-				{group = "pistols", chance = 600000},
-				{group = "carbines", chance = 600000},
-				{group = "rifles", chance = 600000},
-				{group = "clothing_attachments", chance = 300000},
-				{group = "armor_attachments", chance = 300000},
-				{group = "wearables_common", chance = 500000}
+				{group = "lok_mercenaries_tier_1", chance = 10000000}
 			}
 		}
 	},

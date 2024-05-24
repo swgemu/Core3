@@ -34,8 +34,7 @@ gifted_gondula_shaman = Creature:new {
 	lootGroups = {
 		{
 			groups = {
-				{group = "ewok", chance = 9000000},
-				{group = "wearables_uncommon", chance = 1000000},
+				{group = "gondula_tribe_tier_2", chance = 10000000}
 			},
 			lootChance = 1920000
 		}

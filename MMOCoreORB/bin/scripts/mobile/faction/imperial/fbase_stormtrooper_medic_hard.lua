@@ -33,14 +33,7 @@ fbase_stormtrooper_medic_hard = Creature:new {
 	lootGroups = {
 		{
 			groups = {
-				{group = "color_crystals", chance = 100000},
-				{group = "junk", chance = 6000000},
-				{group = "weapons_all", chance = 1200000},
-				{group = "armor_all", chance = 1200000},
-				{group = "clothing_attachments", chance = 150000},
-				{group = "armor_attachments", chance = 150000},
-				{group = "stormtrooper_common", chance = 200000},
-				{group = "wearables_all", chance = 1000000}
+				{group = "imperial_stormtrooper_tier_3", chance = 10000000}
 			}
 		}
 	},

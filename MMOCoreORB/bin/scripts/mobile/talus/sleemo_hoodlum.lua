@@ -35,14 +35,7 @@ sleemo_hoodlum = Creature:new {
 	lootGroups = {
 		{
 			groups = {
-				{group = "junk", chance = 3200000},
-				{group = "wearables_common", chance = 2000000},
-				{group = "rifles", chance = 700000},
-				{group = "melee_knife", chance = 700000},
-				{group = "pistols", chance = 700000},
-				{group = "carbines", chance = 700000},
-				{group = "printer_parts", chance = 1000000},
-				{group = "loot_kit_parts", chance = 1000000},
+				{group = "sleemo_gang_tier_1", chance = 10000000}
 			}
 		}
 	},

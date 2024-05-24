@@ -36,16 +36,7 @@ elite_canyon_corsair = Creature:new {
 	lootGroups = {
 		{
 			groups = {
-				{group = "junk", chance = 4000000},
-				{group = "tailor_components", chance = 1000000},
-				{group = "color_crystals", chance = 400000},
-				{group = "power_crystals", chance = 400000},
-				{group = "melee_two_handed", chance = 600000},
-				{group = "carbines", chance = 600000},
-				{group = "pistols", chance = 600000},
-				{group = "clothing_attachments", chance = 450000},
-				{group = "armor_attachments", chance = 450000},
-				{group = "canyon_corsair_common", chance = 1500000}
+				{group = "canyon_corsair_tier_2", chance = 10000000}
 			}
 		}
 	},

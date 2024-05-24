@@ -39,12 +39,7 @@ scavenger = Creature:new {
 	lootGroups = {
 		{
 			groups = {
-				{group = "junk", chance = 6500000},
-				{group = "rifles", chance = 700000},
-				{group = "melee_knife", chance = 700000},
-				{group = "pistols", chance = 700000},
-				{group = "carbines", chance = 700000},
-				{group = "stormtrooper_common", chance = 700000},
+				{group = "thug_tier_1", chance = 10000000}
 			}
 		}
 	},

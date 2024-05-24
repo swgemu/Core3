@@ -34,9 +34,7 @@ smashball_thug = Creature:new {
 	lootGroups = {
 		{
 			groups = {
-				{group = "junk", chance = 6000000},
-				{group = "loot_kit_parts", chance = 2500000},
-				{group = "tailor_components", chance = 1500000}
+				{group = "smashball_tier_1", chance = 10000000}
 			}
 		}
 	},

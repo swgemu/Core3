@@ -41,12 +41,7 @@ marooned_pirate_engineer = Creature:new {
 	lootGroups = {
 		{
 			groups = {
-				{group = "junk", chance = 2500000},
-				{group = "wearables_common", chance = 2000000},
-				{group = "loot_kit_parts", chance = 2000000},
-				{group = "tailor_components", chance = 1000000},
-				{group = "carbines", chance = 2000000},
-				{group = "color_crystals", chance = 500000}
+				{group = "pirate_tier_1", chance = 10000000}
 			}
 		}
 	},

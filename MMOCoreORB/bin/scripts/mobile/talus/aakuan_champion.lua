@@ -34,11 +34,7 @@ aakuan_champion = Creature:new {
 	lootGroups = {
 		{
 			groups = {
-				{group = "junk", chance = 4000000},
-				{group = "data_storage_unit_parts", chance = 2000000},
-				{group = "aakuan_common", chance = 2600000},
-				{group = "armor_attachments", chance = 600000},
-				{group = "clothing_attachments", chance = 800000}
+				{group = "aakuans_tier_1", chance = 10000000}
 			}
 		}
 	},

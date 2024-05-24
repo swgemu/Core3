@@ -36,10 +36,7 @@ jinda_chief = Creature:new {
 	lootGroups = {
 		{
 			groups = {
-				{group = "ewok", chance = 8100000},
-				{group = "wearables_uncommon", chance = 1000000},
-				{group = "armor_attachments", chance = 450000},
-				{group = "clothing_attachments", chance = 450000}
+				{group = "jinda_tribe_tier_2", chance = 10000000}
 			},
 			lootChance = 2020000
 		}

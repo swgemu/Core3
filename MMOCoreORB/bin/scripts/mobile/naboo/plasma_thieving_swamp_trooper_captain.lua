@@ -32,11 +32,7 @@ plasma_thieving_swamp_trooper_captain = Creature:new {
 	lootGroups = {
 		{
 			groups = {
-				{group = "junk", chance = 2000000},
-				{group = "tailor_components", chance = 2000000},
-				{group = "loot_kit_parts", chance = 2000000},
-				{group = "wearables_common", chance = 2000000},
-				{group = "wearables_uncommon", chance = 2000000},
+				{group = "imperial_stormtrooper_tier_1", chance = 10000000}
 			}
 		}
 	},

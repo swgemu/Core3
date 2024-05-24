@@ -33,14 +33,7 @@ fbase_stormtrooper_captain_extreme = Creature:new {
 	lootGroups = {
 		{
 			groups = {
-				{group = "color_crystals", chance = 100000},
-				{group = "junk", chance = 6000000},
-				{group = "weapons_all", chance = 1100000},
-				{group = "armor_all", chance = 1100000},
-				{group = "clothing_attachments", chance = 150000},
-				{group = "armor_attachments", chance = 150000},
-				{group = "imperial_officer_common", chance = 500000},
-				{group = "wearables_all", chance = 900000}
+				{group = "imperial_stormtrooper_tier_4", chance = 10000000}
 			}
 		}
 	},

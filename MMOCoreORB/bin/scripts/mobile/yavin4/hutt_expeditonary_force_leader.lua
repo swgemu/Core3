@@ -32,17 +32,7 @@ hutt_expeditonary_force_leader = Creature:new {
 	lootGroups = {
 		{
 			groups = {
-				{group = "junk", chance = 3400000},
-				{group = "tailor_components", chance = 1000000},
-				{group = "loot_kit_parts", chance = 1000000},
-				{group = "color_crystals", chance = 200000},
-				{group = "power_crystals", chance = 200000},
-				{group = "pistols", chance = 600000},
-				{group = "carbines", chance = 600000},
-				{group = "rifles", chance = 600000},
-				{group = "clothing_attachments", chance = 200000},
-				{group = "armor_attachments", chance = 200000},
-				{group = "hutt_exp_common", chance = 2000000}
+				{group = "hutt_exp_tier_1", chance = 10000000}
 			}
 		}
 	},

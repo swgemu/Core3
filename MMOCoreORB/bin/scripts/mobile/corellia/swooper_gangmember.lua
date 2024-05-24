@@ -34,11 +34,7 @@ swooper_gangmember = Creature:new {
 	lootGroups = {
 		{
 			groups = {
-				{group = "junk", chance = 3500000},
-				{group = "loot_kit_parts", chance = 2000000},
-				{group = "tailor_components", chance = 1500000},
-				{group = "printer_parts", chance = 1000000},
-				{group = "swooper_common", chance = 2000000}
+				{group = "cor_swoop_tier_1", chance = 10000000}
 			}
 		}
 	},

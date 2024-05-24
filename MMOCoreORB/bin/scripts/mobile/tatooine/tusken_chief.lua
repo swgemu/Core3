@@ -30,16 +30,7 @@ tusken_chief = Creature:new {
 	lootGroups = {
 		{
 			groups = {
-				{group = "junk", chance = 1500000},
-				{group = "tusken_common", chance = 3500000},
-				{group = "wearables_common", chance = 1000000},
-				{group = "wearables_uncommon", chance = 500000},
-				{group = "bone_armor", chance = 750000},
-				{group = "chitin_armor", chance = 750000},
-				{group = "armor_attachments", chance = 500000},
-				{group = "clothing_attachments", chance = 500000},
-				{group = "color_crystals", chance = 500000},
-				{group = "power_crystals", chance = 500000}
+				{group = "tusken_raider_tier_2", chance = 10000000}
 			}
 		}
 	},

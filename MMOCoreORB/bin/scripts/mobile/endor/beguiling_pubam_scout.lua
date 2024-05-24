@@ -34,7 +34,7 @@ beguiling_pubam_scout = Creature:new {
 	lootGroups = {
 		{
 			groups = {
-				{group = "ewok", chance = 10000000}
+				{group = "pubam_tier_1", chance = 10000000}
 			},
 			lootChance = 1500000
 		}

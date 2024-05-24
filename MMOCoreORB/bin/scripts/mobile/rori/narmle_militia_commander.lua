@@ -34,11 +34,7 @@ narmle_militia_commander = Creature:new {
 	lootGroups = {
 		{
 			groups = {
-				{group = "junk", chance = 3500000},
-				{group = "wearables_all", chance = 2000000},
-				{group = "color_crystals", chance = 500000},
-				{group = "tailor_components", chance = 2000000},
-				{group = "loot_kit_parts", chance = 2000000}
+				{group = "narmle_tier_1", chance = 10000000}
 			}
 		}
 	},
