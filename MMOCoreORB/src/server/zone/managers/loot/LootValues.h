@@ -87,7 +87,11 @@ private:
 public:
 	static float getModifierValue(float min, float max, float percentageMax);
 
+	static int getModifierValue(int min, int max, float percentageMax);
+
 	static float getPercentageValue(float min, float max, float percentage);
+
+	static int getPercentageValue(int min, int max, float percentage);
 
 	static float getValuePercentage(float min, float max, float value);
 
