@@ -258,7 +258,7 @@ void LootManagerImplementation::setRandomLootValues(TransactionLog& trx, Tangibl
 	auto debugAttributes = ConfigManager::instance()->getLootDebugAttributes();
 
 	float modifier = LootValues::STATIC;
-	float chance = LootValues::getLevelRankValue(level) * levelChance;
+	float chance = LootValues::getLevelRankValue(level, LootValues::DISTMIN, LootValues::DISTMAX) * levelChance;
 
 	if (excMod >= legendaryModifier) {
 		modifier = LootValues::LEGENDARY;

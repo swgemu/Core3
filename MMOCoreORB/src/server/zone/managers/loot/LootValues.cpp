@@ -272,6 +272,10 @@ float LootValues::getModifierValue(float min, float max, float percentageMax) {
 	}
 }
 
+int LootValues::getModifierValue(int min, int max, float percentageMax) {
+	return round(getModifierValue((float)min, (float)max, percentageMax));
+}
+
 float LootValues::getPercentageValue(float min, float max, float percentage) {
 	if (fabs(max - min) < EPSILON) {
 		return min;
@@ -280,6 +284,10 @@ float LootValues::getPercentageValue(float min, float max, float percentage) {
 	float percent = Math::clamp(0.f, percentage, 1.f);
 
 	return ((max - min) * percent) + min;
+}
+
+int LootValues::getPercentageValue(int min, int max, float percentage) {
+	return round(getPercentageValue((float)min, (float)max, percentage));
 }
 
 float LootValues::getValuePercentage(float min, float max, float value) {
@@ -401,7 +409,7 @@ int LootValues::getDistributedValue(int min, int max, int level, float distMin, 
 }
 
 float LootValues::getLevelRankValue(int level, float distMin, float distMax) {
-	float rank = (level - LEVELMIN) / (float)(LEVELMAX - LEVELMIN);
+	float rank = Math::clamp(0.f, (level - LEVELMIN) / (float)(LEVELMAX - LEVELMIN), 1.f);
 
-	return Math::clamp(distMin, rank, distMax);
+	return Math::linearInterpolate(distMin, distMax, rank);
 }
