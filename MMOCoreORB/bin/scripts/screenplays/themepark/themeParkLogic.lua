@@ -2132,7 +2132,7 @@ function ThemeParkLogic:followPlayer(pConversingNpc, pConversingPlayer)
 		return
 	end
 
-	local playerFaction = CreatureObject(pConversingPlayer)
+	local playerFaction = CreatureObject(pConversingPlayer):getFaction()
 	if (playerFaction == FACTIONREBEL or playerFaction == FACTIONIMPERIAL) and not CreatureObject(pConversingPlayer):isOnLeave() then
 		CreatureObject(pConversingNpc):setFaction(playerFaction)
 
