@@ -5,10 +5,11 @@ resource_creature = {
 	minimumLevel = 0,
 	maximumLevel = 0,
 	lootItems = {
-		{itemTemplate = "resource_container_milk", weight = 2500000},
-		{itemTemplate = "resource_container_meat", weight = 2500000},
-		{itemTemplate = "resource_container_bone", weight = 2500000},
-		{itemTemplate = "resource_container_hide", weight = 2500000}
+		{itemTemplate = "resource_container_milk", weight = 2000000},
+		{itemTemplate = "resource_container_meat", weight = 2000000},
+		{itemTemplate = "resource_container_bone", weight = 2000000},
+		{itemTemplate = "resource_container_bone_horn", weight = 2000000},
+		{itemTemplate = "resource_container_hide", weight = 2000000}
 	}
 }
 

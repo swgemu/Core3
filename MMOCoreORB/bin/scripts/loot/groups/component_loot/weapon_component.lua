@@ -5,16 +5,17 @@ weapon_component = {
 	minimumLevel = 0,
 	maximumLevel = 0,
 	lootItems = {
-		{itemTemplate = "blaster_pistol_barrel", weight = 1000000},
-		{itemTemplate = "blaster_power_handler", weight = 1000000},
-		{itemTemplate = "blaster_rifle_barrel", weight = 1000000},
-		{itemTemplate = "scope_weapon", weight = 1000000},
-		{itemTemplate = "stock", weight = 1000000},
-		{itemTemplate = "projectile_feed_mechanism", weight = 1000000},
-		{itemTemplate = "projectile_pistol_barrel", weight = 1000000},
-		{itemTemplate = "projectile_rifle_barrel", weight = 1000000},
-		{itemTemplate = "reinforcement_core", weight = 1000000},
-		{itemTemplate = "sword_core", weight = 1000000}
+		{itemTemplate = "blaster_pistol_barrel", weight = 909091},
+		{itemTemplate = "blaster_power_handler", weight = 909091},
+		{itemTemplate = "blaster_rifle_barrel", weight = 909091},
+		{itemTemplate = "scope_weapon", weight = 909091},
+		{itemTemplate = "stock", weight = 909091},
+		{itemTemplate = "projectile_feed_mechanism", weight = 909091},
+		{itemTemplate = "projectile_pistol_barrel", weight = 909091},
+		{itemTemplate = "projectile_rifle_barrel", weight = 909091},
+		{itemTemplate = "reinforcement_core", weight = 909091},
+		{itemTemplate = "sword_core", weight = 909091},
+		{itemTemplate = "vibro_unit", weight = 909090}
 	},
 }
 

@@ -22,6 +22,7 @@ corsec_cdef_carbine = {
 		{"attackactioncost",22,15,0},
 		{"attackmindcost",10,7,0},
 	},
+	skillMods = {{"carbine_speed", 3}},
 	customizationStringNames = {},
 	customizationValues = {},
 

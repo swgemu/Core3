@@ -5,8 +5,9 @@ corsec_weapons = {
 	minimumLevel = 0,
 	maximumLevel = 0,
 	lootItems = {
-		{itemTemplate = "corsec_cdef_carbine", weight = 5000000},
-		{itemTemplate = "corsec_cdef_pistol", weight = 5000000}
+		{itemTemplate = "corsec_cdef_carbine", weight = 3333334},
+		{itemTemplate = "corsec_cdef_pistol", weight = 3333333},
+		{itemTemplate = "corsec_scout_blaster", weight = 3333333}
 	}
 }
 
