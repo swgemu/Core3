@@ -102,6 +102,8 @@ protected:
 public:
 	ShipChassisData(DataTableRow *row, Vector<String>& columnNames);
 
+	~ShipChassisData();
+
 	const String& getName() const {
 		return name;
 	}

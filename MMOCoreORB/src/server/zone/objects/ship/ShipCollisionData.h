@@ -103,6 +103,18 @@ public:
 		setComponentData(shipTemplate, chassisData);
 	}
 
+	~ShipCollisionData() {
+		slotWeights.removeAll();
+
+		for (int i = 0; i < hardPointMap.size(); i++) {
+			auto pointsMap = hardPointMap.elementAt(i).getValue();
+
+			pointsMap.removeAll();
+		}
+
+		hardPointMap.removeAll();
+	}
+
 	const BaseBoundingVolume* getCollisionVolume(SharedObjectTemplate* templateData) {
 		auto appearance = templateData->getAppearanceTemplate();
 

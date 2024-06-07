@@ -892,12 +892,6 @@ void ServerCore::shutdown() {
 
 			info("All players disconnected", true);
 		}
-
-		auto frsManager = zoneServer->getFrsManager();
-
-		if (frsManager != nullptr) {
-			frsManager->cancelTasks();
-		}
 	}
 
 	if (pingServer != nullptr) {

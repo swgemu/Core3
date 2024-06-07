@@ -66,7 +66,11 @@ public:
 		setLogging(false);
 	};
 
+	virtual ~ShipManager() {
+	};
+
 	void initialize();
+	void stop();
 
 	bool hyperspaceLocationExists(const String& name) const {
 		return hyperspaceLocations.contains(name) && hyperspaceZones.contains(name);

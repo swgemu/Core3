@@ -297,7 +297,7 @@ void ZoneServerImplementation::startSpaceZones() {
 }
 
 void ZoneServerImplementation::startManagers() {
-	info("loading managers..");
+	info(true) << "ZoneServerImplementation -- Starting Managers...";
 
 	// Load ship data
 	ShipManager::instance()->initialize();
@@ -336,6 +336,8 @@ void ZoneServerImplementation::startManagers() {
 
 	frsManager = new FrsManager(_this.getReferenceUnsafeStaticCast());
 	frsManager->initialize();
+
+	info(true) << "ZoneServerImplementation -- Managers Started.";
 }
 
 void ZoneServerImplementation::start(int p, int mconn) {
@@ -416,7 +418,7 @@ void ZoneServerImplementation::shutdown() {
 }
 
 void ZoneServerImplementation::stopManagers() {
-	info("stopping managers..", true);
+	info(true) << "ZoneServerImplementation -- Stopping Managers...";
 
 	missionManager = nullptr;
 	radialManager = nullptr;
@@ -425,6 +427,7 @@ void ZoneServerImplementation::stopManagers() {
 	reactionManager = nullptr;
 
 	if (frsManager != nullptr) {
+		frsManager->stop();
 		frsManager = nullptr;
 	}
 
@@ -480,7 +483,9 @@ void ZoneServerImplementation::stopManagers() {
 		objectManager = nullptr;
 	}
 
-	info("managers stopped", true);
+	ShipManager::instance()->stop();
+
+	info(true) << "ZoneServerImplementation -- Managers Stopped";
 }
 
 void ZoneServerImplementation::clearZones() {

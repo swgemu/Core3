@@ -46,6 +46,29 @@ void ShipManager::initialize() {
 	loadShipTurretLuaData();
 }
 
+void ShipManager::stop() {
+	chassisData.removeAll();
+	shipComponents.removeAll();
+	shipComponentTemplateNames.removeAll();
+	shipAppearanceData.removeAll();
+	shipProjectileData.removeAll();
+	shipProjectiletTemplateNames.removeAll();
+	shipCollisionData.removeAll();
+	chassisData.removeAll();
+
+	missileData.removeAll();
+	countermeasureData.removeAll();
+
+	for (int i = 0; i < turretData.size(); ++i) {
+		auto dataMap = turretData.elementAt(i).getValue();
+
+		dataMap.removeAll();
+	}
+
+	hyperspaceLocations.removeAll();
+	hyperspaceZones.removeAll();
+}
+
 void ShipManager::loadHyperspaceLocations() {
 	IffStream* iffStream = DataArchiveStore::instance()->openIffFile("datatables/space/hyperspace/hyperspace_locations.iff");
 
