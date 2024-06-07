@@ -31,10 +31,14 @@ protected:
 	ManagedReference<CellObject*> cell;
 
 public:
+	// Constructors
 	WorldCoordinates();
 	WorldCoordinates(const WorldCoordinates& c);
 	WorldCoordinates(SceneObject* obj);
 	WorldCoordinates(const Vector3& position, CellObject* cell);
+
+	// Destructor
+	~WorldCoordinates();
 
 #ifdef CXX11_COMPILER
 	WorldCoordinates(WorldCoordinates&& c) : Object(), point(c.point), cell(std::move(c.cell)) {

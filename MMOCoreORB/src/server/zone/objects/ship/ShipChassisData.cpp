@@ -27,10 +27,11 @@ ShipChassisData::ShipChassisData(DataTableRow* row, Vector<String>& columnNames)
 		componentMap.put(componentName, new ComponentSlotData(compatability, componentName, hitweight, targetable));
 	}
 
-	//Logger::console.info("Loaded Chassis: " + name);
-
 	loadComponentHardpoints();
+}
 
+ShipChassisData::~ShipChassisData() {
+	componentMap.removeAll();
 }
 
 void ShipChassisData::loadComponentHardpoints() {
@@ -38,7 +39,6 @@ void ShipChassisData::loadComponentHardpoints() {
 	IffStream* iffStream = DataArchiveStore::instance()->openIffFile(filename);
 
 	if (iffStream == nullptr) {
-		//Logger::console.error(filename + " could not be found.");
 		return;
 	}
 
@@ -46,17 +46,17 @@ void ShipChassisData::loadComponentHardpoints() {
 	dtiff.readObject(iffStream);
 
 	Vector<String> columns(dtiff.getTotalColumns(), 3);
-	for (int i=0; i<dtiff.getTotalColumns(); i++) {
+	for (int i = 0; i < dtiff.getTotalColumns(); i++) {
 		columns.add(dtiff.getColumnNameByIndex(i));
 	}
 
 	for (int i = 0; i < dtiff.getTotalRows(); ++i) {
-		DataTableRow *row = dtiff.getRow(i);
+		DataTableRow* row = dtiff.getRow(i);
 		String name;
 		row->getCell(0)->getValue(name);
 
 		float range = 0.0f;
-		if (columns.get(dtiff.getTotalColumns()-1) == "hit_range") {
+		if (columns.get(dtiff.getTotalColumns() - 1) == "hit_range") {
 			row->getCell(dtiff.getTotalColumns() - 1)->getValue(range);
 		}
 
@@ -64,13 +64,16 @@ void ShipChassisData::loadComponentHardpoints() {
 			if (columns.get(j) == "hit_range") {
 				continue;
 			}
+
 			String value;
 			row->getCell(j)->getValue(value);
-			if (value.isEmpty())
+
+			if (value.isEmpty()) {
 				continue;
+			}
 
 			const String& slotName = columns.get(j);
-			ComponentSlotData *slotData = componentMap.get(slotName);
+			ComponentSlotData* slotData = componentMap.get(slotName);
 
 			if (slotData == nullptr) {
 				slotData = new ComponentSlotData(slotName, "", 0, true);
@@ -80,6 +83,7 @@ void ShipChassisData::loadComponentHardpoints() {
 			StringTokenizer hardpointTokenizer(value);
 			hardpointTokenizer.setDelimiter(",");
 			Vector<const ComponentHardpoint*> hardpoints;
+
 			while (hardpointTokenizer.hasMoreTokens()) {
 				String hardpoint;
 				hardpointTokenizer.getStringToken(hardpoint);
@@ -90,6 +94,7 @@ void ShipChassisData::loadComponentHardpoints() {
 				String first;
 				String second;
 				templateTokenizer.getStringToken(first);
+
 				if (!templateTokenizer.hasMoreTokens()) {
 					hardpoints.add(new ComponentHardpoint("", first, range));
 				} else {
@@ -99,7 +104,6 @@ void ShipChassisData::loadComponentHardpoints() {
 			}
 
 			slotData->addHardpointData(name, hardpoints);
-
 		}
 	}
 	delete iffStream;
