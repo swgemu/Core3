@@ -65,6 +65,22 @@ void FrsManagerImplementation::initialize() {
 		voteStatusTask->schedule(VOTE_STATUS_TICK - miliDiff);
 }
 
+void FrsManagerImplementation::stop() {
+	cancelTasks();
+
+	rankMaintenanceTask = nullptr;
+	voteStatusTask = nullptr;
+
+	managerData = nullptr;
+	lightEnclave = nullptr;
+	darkEnclave = nullptr;
+
+	lightRankingData.removeAll();
+	darkRankingData.removeAll();
+	roomRequirements.removeAll();
+	experienceValues.removeAll();
+}
+
 void FrsManagerImplementation::cancelTasks() {
 	if (voteStatusTask) {
 		voteStatusTask->cancel();
