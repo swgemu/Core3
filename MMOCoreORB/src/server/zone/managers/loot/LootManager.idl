@@ -98,6 +98,11 @@ class LootManager extends ManagedService implements Logger {
 	public static final int LEVELMAX = 300;
 	public static final int LEVELMIN = 1;
 
+	public static final int DOT_POISON = 1;
+	public static final int DOT_DISEASE = 2;
+	public static final int DOT_FIRE = 3;
+	public static final int DOT_BLEEDING = 4;
+
 	public LootManager(CraftingManager craftman, ObjectManager objMan, ZoneServer server) {
 		craftingManager = craftman;
 		objectManager = objMan;
@@ -160,9 +165,6 @@ class LootManager extends ManagedService implements Logger {
 
 	@local
 	private native void addStaticDots(TangibleObject object, final LootItemTemplate templateObject, int level);
-
-	@local
-	private native float calculateDotValue(float min, float max, float level);
 
 	@local
 	private native void addConditionDamage(TangibleObject loot);
