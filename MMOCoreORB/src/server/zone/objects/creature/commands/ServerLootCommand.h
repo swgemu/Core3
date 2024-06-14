@@ -18,6 +18,7 @@
 #include "server/zone/objects/transaction/TransactionLog.h"
 #include "server/zone/objects/player/sui/messagebox/SuiMessageBox.h"
 #include "server/zone/managers/creature/CreatureTemplateManager.h"
+#include "server/zone/objects/tangible/weapon/WeaponObject.h"
 
 class ServerLootCommand {
 	const static int GENERALERROR = 0;
@@ -148,6 +149,71 @@ public:
 		}
 
 		return msg.toString();
+	}
+
+	static TangibleObject* createLootObject(TransactionLog& trx, CreatureObject* creature, const String& lootName, int level = 0, float modifier = 0.f) {
+		auto zone = creature->getZone();
+
+		if (zone == nullptr) {
+			return nullptr;
+		}
+
+		auto zoneServer = creature->getZoneServer();
+
+		if (zoneServer == nullptr)
+			return nullptr;
+
+		auto lootManager = zoneServer->getLootManager();
+
+		if (lootManager == nullptr) {
+			return nullptr;
+		}
+
+		auto lootMap = lootManager->getLootMap();
+
+		if (lootMap == nullptr) {
+			return nullptr;
+		}
+
+		auto itemTemplate = lootMap->getLootItemTemplate(lootName);
+
+		if (itemTemplate == nullptr) {
+			return nullptr;
+		}
+
+		ManagedReference<TangibleObject*> prototype = nullptr;
+
+		if (itemTemplate->isRandomResourceContainer()) {
+			prototype = lootManager->createLootResource(lootName, zone->getZoneName());
+		} else {
+			prototype = lootManager->createLootObject(trx, itemTemplate, level, false);
+		}
+
+		if (prototype == nullptr) {
+			return nullptr;
+		}
+
+		Locker lock(prototype, creature);
+		String craftersName = creature->getFirstName();
+		uint64 craftersOID = creature->getObjectID();
+
+		prototype->setCraftersName(craftersName);
+		prototype->setCraftersID(craftersOID);
+
+		if (modifier >= LootValues::EXPERIMENTAL) {
+			auto lootValues = LootValues(itemTemplate, 0, 0);
+			lootValues.setLevel(level);
+			lootValues.setModifier(modifier);
+			lootValues.recalculateValues(true);
+
+			prototype->updateCraftingValues(&lootValues, true);
+
+			if (lootValues.getDynamicValues() > 0 && !(prototype->getOptionsBitmask() & OptionBitmask::YELLOW)) {
+				prototype->addMagicBit(false);
+			}
+		}
+
+		return prototype;
 	}
 
 	static String testItem(TransactionLog& trx, CreatureObject* creature, const String& args, bool createItems = true) {
@@ -439,6 +505,9 @@ public:
 		int totalLootGroups = 0;
 		int totalLootItems = 0;
 
+		int weaponCount = 0;
+		int weaponWithDotCount = 0;
+
 		VectorMap<String, int> objectCount;
 		StringBuffer itemMsg;
 
@@ -471,6 +540,8 @@ public:
 				//Now we do the second roll to determine loot group.
 				roll = System::random(10000000);
 
+				ManagedReference<TangibleObject*> prototype = nullptr;
+
 				//Select the loot group to use.
 				for (int k = 0; k < lootGroups->count(); ++k) {
 					const LootGroupEntry* groupEntry = lootGroups->get(k);
@@ -497,7 +568,30 @@ public:
 						}
 					}
 
-					itemMsg << createLoot(trx, creature, nullptr, lootEntry, agentTemplate->getLevel());
+					prototype = createLootObject(trx, creature, lootEntry, agentTemplate->getLevel());
+
+					if (prototype == nullptr) {
+						itemMsg << "NULL LOOT ITEM";
+					} else {
+						Locker lock(prototype);
+
+						itemMsg << prototype->getDisplayedName();
+
+						if (prototype->isWeaponObject()) {
+							weaponCount++;
+
+							auto weaponLoot = cast<WeaponObject*>(prototype.get());
+
+							if (weaponLoot != nullptr && weaponLoot->getNumberOfDots() > 0) {
+								weaponWithDotCount++;
+							}
+						}
+
+						prototype->destroyObjectFromWorld(true);
+						prototype->destroyObjectFromDatabase(true);
+					}
+
+					prototype = nullptr;
 
 					String itemName = itemMsg.toString();
 
@@ -539,6 +633,9 @@ public:
 		<< "Total Legendaries Dropped: " << legendaryCount << "    " << (((1.0f * legendaryCount) / totalLootItems) * 100.f) << "%" << endl
 		<< "Total Expectionals Dropped: " << exceptionalCount << "    " << (((1.0f * exceptionalCount) / totalLootItems) * 100.f) << "%" << endl
 		<< "Total Yellow Named Dropped: " << yellowCount << "    " << (((1.0f * yellowCount) / totalLootItems) * 100.f) << "%" << endl
+		<< endl << endl
+		<< "Total Weapons Dropped: " << weaponCount << endl
+		<< "Total Weapons with DoT's: " << weaponWithDotCount << " or " << (((1.0f * weaponWithDotCount) / weaponCount) * 100.f) << "%" << endl
 		<< endl << endl
 		<< "Items Dropped List:\n\n";
 
