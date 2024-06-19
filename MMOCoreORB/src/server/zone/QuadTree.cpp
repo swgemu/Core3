@@ -30,6 +30,7 @@ Distribution of this file for usage outside of Core3 is prohibited.
 #include "engine/log/Logger.h"
 
 #include "QuadTree.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 #define NO_ENTRY_REF_COUNTING
 
@@ -67,14 +68,19 @@ void QuadTree::setSize(float minx, float miny, float maxx, float maxy) {
 	root = new TreeNode(minx, miny, maxx, maxy, nullptr);
 }
 
-void QuadTree::insert(TreeEntry *obj) {
-	/*if (!isLocked()) {
-		Logger::console.info(true) << "inserting to unlocked quad tree\n";
-		StackTrace::printStackTrace();
-		raise(SIGSEGV);
-	}*/
+void QuadTree::insert(TreeEntry* obj) {
+	if (QuadTree::doLog()) {
+		Logger::console.info("QuadTree::insert", true);
+	}
 
-	E3_ASSERT(obj->getParent() == nullptr);
+	if (obj->getParent() != nullptr) {
+		auto  scno = cast<SceneObject*>(obj);
+		auto objParent = obj->getParent().get().castTo<SceneObject*>();
+
+		Logger::console.info(true) << "Object Inserted to Quadtree still has a parent Object: " << scno->getDisplayedName() << " ID: " << scno->getObjectID() << " Parent: " << objParent->getDisplayedName() << " ID: " << objParent->getObjectID();
+
+		E3_ASSERT(obj->getParent() == nullptr);
+	}
 
 	Locker locker(&mutex);
 

@@ -1172,14 +1172,6 @@ Vector<WorldCoordinates>* PathFinderManager::findPathFromCellToDifferentCell(con
 	}
 #endif
 
-
-	// Stop here for leak test
-	//if (1 != 0) {
-	//	path->removeAll();
-	//	delete path;
-	//	return nullptr;
-	//}
-
 	return path;
 }
 
@@ -1217,7 +1209,7 @@ Vector<WorldCoordinates>* PathFinderManager::findPathFromCellToCell(const WorldC
 
 	const FloorMesh* floorMesh1 = portalLayout->getFloorMesh(ourCellID);
 
-if (floorMesh1 == nullptr) {
+	if (floorMesh1 == nullptr) {
 		return nullptr;
 	}
 
@@ -1237,6 +1229,10 @@ if (floorMesh1 == nullptr) {
 	// Points in the same triangle
 	if (res == -1) {
 		path->add(pointB);
+
+		if (trianglePath != nullptr) {
+			delete trianglePath;
+		}
 
 		return path;
 	}

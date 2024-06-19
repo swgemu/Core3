@@ -43,10 +43,18 @@ void OctTree::setSize(float minx, float miny, float minz, float maxx, float maxy
 }
 
 void OctTree::insert(TreeEntry *obj) {
-	if (OctTree::doLog())
+	if (OctTree::doLog()) {
 		Logger::console.info("OctTee::insert", true);
+	}
 
-	assert(obj->getParent() == nullptr);
+	if (obj->getParent() != nullptr) {
+		auto  scno = cast<SceneObject*>(obj);
+		auto objParent = obj->getParent().get().castTo<SceneObject*>();
+
+		Logger::console.info(true) << "Object Inserted to Octree still has a parent Object: " << scno->getDisplayedName() << " ID: " << scno->getObjectID() << " Parent: " << objParent->getDisplayedName() << " ID: " << objParent->getObjectID();
+
+		E3_ASSERT(obj->getParent() == nullptr);
+	}
 
 	Locker locker(&mutex);
 
