@@ -417,14 +417,17 @@ TangibleObject* LootManagerImplementation::createLootObject(TransactionLog& trx,
 	trx.addState("lootJunkValue", prototype->getJunkValue());
 
 	// Add Dots to weapon objects.
-	addStaticDots(prototype, templateObject, level);
-	addRandomDots(prototype, templateObject, level, excMod);
+	if (prototype->isWeaponObject()) {
+		addStaticDots(prototype, templateObject, level);
+		addRandomDots(prototype, templateObject, level, excMod);
+	}
 
 	setSkillMods(prototype, templateObject, level, excMod);
 
-	//add some condition damage where appropriate
-	if (!maxCondition)
+	// add some condition damage where appropriate
+	if (!maxCondition) {
 		addConditionDamage(prototype);
+	}
 
 	trx.addState("lootConditionDmg", prototype->getConditionDamage());
 	trx.addState("lootConditionMax", prototype->getMaxCondition());
@@ -803,7 +806,7 @@ bool LootManagerImplementation::createLootSet(TransactionLog& trx, SceneObject* 
 }
 
 void LootManagerImplementation::addStaticDots(TangibleObject* object, const LootItemTemplate* templateObject, int level) {
-	if (object == nullptr || !object->isWeaponObject()) {
+	if (object == nullptr) {
 		return;
 	}
 
@@ -887,7 +890,7 @@ void LootManagerImplementation::addStaticDots(TangibleObject* object, const Loot
 }
 
 void LootManagerImplementation::addRandomDots(TangibleObject* object, const LootItemTemplate* templateObject, int level, float excMod) {
-	if (object == nullptr || !object->isWeaponObject()) {
+	if (object == nullptr) {
 		return;
 	}
 
