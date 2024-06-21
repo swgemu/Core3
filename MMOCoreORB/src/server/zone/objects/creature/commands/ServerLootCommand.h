@@ -514,6 +514,10 @@ public:
 
 		int weaponCount = 0;
 		int weaponWithDotCount = 0;
+		int weaponWithSkillModCount = 0;
+		int oneMod = 0;
+		int twoMods = 0;
+		int threeMods = 0;
 
 		VectorMap<String, int> objectCount;
 		StringBuffer itemMsg;
@@ -589,8 +593,24 @@ public:
 
 							auto weaponLoot = cast<WeaponObject*>(prototype.get());
 
-							if (weaponLoot != nullptr && weaponLoot->getNumberOfDots() > 0) {
-								weaponWithDotCount++;
+							if (weaponLoot != nullptr) {
+								if (weaponLoot->getNumberOfDots() > 0) {
+									weaponWithDotCount++;
+								}
+
+								int totalSkillMods = weaponLoot->getTotalWearableSkillMods();
+
+								if (totalSkillMods > 0) {
+									weaponWithSkillModCount++;
+
+									if (totalSkillMods == 1) {
+										oneMod++;
+									} else if (totalSkillMods == 2) {
+										twoMods++;
+									} else if (totalSkillMods == 3) {
+										threeMods++;
+									}
+								}
 							}
 						}
 
@@ -637,12 +657,15 @@ public:
 		<< "Total Loot Collection Attempts: " << totalCollectionAttempts << endl
 		<< "Total Dropped Loot Items: " << totalLootItems << endl
 		<< endl
-		<< "Total Legendaries Dropped: " << legendaryCount << "    " << (((1.0f * legendaryCount) / totalLootItems) * 100.f) << "%" << endl
-		<< "Total Expectionals Dropped: " << exceptionalCount << "    " << (((1.0f * exceptionalCount) / totalLootItems) * 100.f) << "%" << endl
-		<< "Total Yellow Named Dropped: " << yellowCount << "    " << (((1.0f * yellowCount) / totalLootItems) * 100.f) << "%" << endl
-		<< endl
+		<< "Total Legendaries Dropped: " << legendaryCount << "    " << (((1.0f * legendaryCount) / totalLootItems) * 100.f) << " percent " << endl
+		<< "Total Expectionals Dropped: " << exceptionalCount << "    " << (((1.0f * exceptionalCount) / totalLootItems) * 100.f) << " percent" << endl
+		<< "Total Yellow Named Dropped: " << yellowCount << "    " << (((1.0f * yellowCount) / totalLootItems) * 100.f) << " percent" << endl << endl
 		<< "Total Weapons Dropped: " << weaponCount << endl
-		<< "Total DoT Weapons: " << weaponWithDotCount << "    " << (((1.0f * weaponWithDotCount) / weaponCount) * 100.f) << "%" << endl << endl;
+		<< "Total DoT Weapons: " << weaponWithDotCount << "    " << (((1.0f * weaponWithDotCount) / weaponCount) * 100.f) << " percent of weapons looted" << endl << endl
+		<< "Total Weapons with Skill Mods: " << weaponWithSkillModCount << "    " << (((1.0f * weaponWithSkillModCount) / weaponCount) * 100.f) << " percent of weapons looted" << endl
+		<< "One Skill Mod: " << oneMod << "    " << (((1.0f * oneMod) / weaponCount) * 100.f) << " percent of weapons looted" << endl
+		<< "Two Skill Mods: " << twoMods << "    " << (((1.0f * twoMods) / weaponCount) * 100.f) << " percent of weapons looted" << endl
+		<< "Three Skill Mods: " << threeMods << "    " << (((1.0f * threeMods) / weaponCount) * 100.f) << " percent of weapons looted" << endl << endl;
 
 		StringBuffer objectMsg;
 		objectMsg << "Items Dropped List:" << endl << endl;

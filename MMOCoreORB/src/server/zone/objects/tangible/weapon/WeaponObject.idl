@@ -596,4 +596,9 @@ class WeaponObject extends TangibleObject {
 	public final VectorMap<string, int> getWearableSkillMods() {
 		return wearableSkillMods;
 	}
+
+	@read
+	public int getTotalWearableSkillMods() {
+		return wearableSkillMods.size();
+	}
 }
