@@ -222,8 +222,8 @@ public:
 
 		String lootTemplate = tokenizer.hasMoreTokens() ? tokenizer.getStringToken() : "";
 		int level = tokenizer.hasMoreTokens() ? tokenizer.getIntToken() : 0;
-		float modifier = tokenizer.hasMoreTokens() ? tokenizer.getIntToken() : 0.f;
 		int count = tokenizer.hasMoreTokens() ? tokenizer.getIntToken() : 1;
+		float modifier = tokenizer.hasMoreTokens() ? tokenizer.getIntToken() : 0.f;
 
 		auto zoneServer = creature->getZoneServer();
 
@@ -264,7 +264,8 @@ public:
 		StringTokenizer tokenizer(args.toLowerCase());
 
 		String lootTemplate = tokenizer.hasMoreTokens() ? tokenizer.getStringToken() : 0;
-		int level = tokenizer.hasMoreTokens() ? tokenizer.getIntToken() : 0;
+		int level = tokenizer.hasMoreTokens() ? tokenizer.getIntToken() : 1;
+		int count = tokenizer.hasMoreTokens() ? tokenizer.getIntToken() : 1;
 		float modifier = tokenizer.hasMoreTokens() ? tokenizer.getIntToken() : 0.f;
 
 		auto zoneServer = creature->getZoneServer();
@@ -296,38 +297,44 @@ public:
 			return "!inventory";
 		}
 
-		ManagedReference<SceneObject*> container = zoneServer->createObject(String::hashCode("object/tangible/container/drum/large_plain_crate_s01.iff"), 2);
+		ManagedReference<SceneObject*> container = nullptr;
 
-		if (container == nullptr) {
-			return "!container";
-		}
+		for (int i = 0; i < count; ++i) {
+			container = zoneServer->createObject(String::hashCode("object/tangible/container/drum/large_plain_crate_s01.iff"), 2);
 
-		Locker cLock(container, creature);
+			if (container == nullptr) {
+				continue;
+			}
 
-		container->setCustomObjectName(lootTemplate + " cl:" + String::valueOf(level), false);
+			Locker cLock(container, creature);
 
-		if (inventory->transferObject(container, -1, false, true)) {
-			container->sendTo(creature, true);
+			container->setCustomObjectName(lootTemplate + " cl:" + String::valueOf(level), false);
 
-			String current, last = "first";
+			if (inventory->transferObject(container, -1, false, true)) {
+				container->sendTo(creature, true);
 
-			for (int ii = 0; ii < 1000; ++ii) {
-				int increment = ii * 10000;
+				String current, last = "first";
 
-				current = lootGroup->getLootGroupEntryForRoll(increment);
+				for (int j = 0; j < 1000; ++j) {
+					int increment = j * 10000;
 
-				if (current != last) {
-					last = current;
+					current = lootGroup->getLootGroupEntryForRoll(increment);
 
-					if (lootGroupMap->lootGroupExists(current)) {
-						testGroup(trx, creature, current + " " + String::valueOf(level) + " " + String::valueOf(modifier));
-					} else {
-						msg << createLoot(trx, creature, container, current, level, modifier);
+					if (current != last) {
+						last = current;
+
+						if (lootGroupMap->lootGroupExists(current)) {
+							testGroup(trx, creature, current + " " + String::valueOf(level) + " " + String::valueOf(modifier));
+						} else {
+							msg << createLoot(trx, creature, container, current, level, modifier);
+						}
 					}
 				}
+			} else {
+				container->destroyObjectFromDatabase(true);
 			}
-		} else {
-			container->destroyObjectFromDatabase(true);
+
+			container = nullptr;
 		}
 
 		return msg.toString();
@@ -676,8 +683,8 @@ public:
 		<< endl
 		<< "			String		lootTemplate" << endl
 		<< "			int			level" << endl
-		<< "			float		modifier" << endl
 		<< "			int			count" << endl
+		<< "			float		modifier" << endl
 		<< endl
 		<< "example:	/server loot item rifle_t21 300 100 10" << endl
 		<< endl
@@ -688,6 +695,7 @@ public:
 		<< endl
 		<< "			String		groupTemplate" << endl
 		<< "			int			level" << endl
+		<< "			int			count" << endl
 		<< "			float		modifier" << endl
 		<< endl
 		<< "example:	/server loot group weapons_all 300 10" << endl
