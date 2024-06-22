@@ -1013,14 +1013,16 @@ Vector<WorldCoordinates>* PathFinderManager::findPathFromCellToDifferentCell(con
 
 	if (nearestSourceNodeTriangle == nullptr) {
 		delete path;
+		path = nullptr;
+
 		return nullptr;
 	}
 
 	const PathNode* source = CollisionManager::findNearestPathNode(nearestSourceNodeTriangle, floorMesh1, pointA.getPoint());//targetPathGraph->findNearestNode(pointB.getPoint());
 
 	if (source == nullptr) {
-		path->removeAll();
 		delete path;
+		path = nullptr;
 
 		return nullptr;
 	}
@@ -1028,8 +1030,8 @@ Vector<WorldCoordinates>* PathFinderManager::findPathFromCellToDifferentCell(con
 	const TriangleNode* nearestTargetNodeTriangle = CollisionManager::getTriangle(pointB.getPoint(), floorMesh2);
 
 	if (nearestTargetNodeTriangle == nullptr) {
-		path->removeAll();
 		delete path;
+		path = nullptr;
 
 		return nullptr;
 	}
@@ -1037,8 +1039,8 @@ Vector<WorldCoordinates>* PathFinderManager::findPathFromCellToDifferentCell(con
 	const PathNode* target = CollisionManager::findNearestPathNode(nearestTargetNodeTriangle, floorMesh2, pointB.getPoint());//targetPathGraph->findNearestNode(pointB.getPoint());
 
 	if (target == nullptr) {
-		path->removeAll();
 		delete path;
+		path = nullptr;
 
 		return nullptr;
 	}
@@ -1048,8 +1050,8 @@ Vector<WorldCoordinates>* PathFinderManager::findPathFromCellToDifferentCell(con
 	if (nodes == nullptr) {
 		error() << __FUNCTION__ << "Could not find path from " << source << " to " << target << " in building: " << templateObject->getFullTemplateString();
 
-		path->removeAll();
 		delete path;
+		path = nullptr;
 
 		return nullptr;
 	}
@@ -1061,11 +1063,10 @@ Vector<WorldCoordinates>* PathFinderManager::findPathFromCellToDifferentCell(con
 
 		error() << __FUNCTION__ << "getPath from " << source << " to " << target << " nodes->size() == 1 for building " << templateObject->getFullTemplateString() << " from " << pointA << " to " << pointB << " in zone " << zoneName;
 
-		nodes->removeAll();
 		delete nodes;
-
-		path->removeAll();
 		delete path;
+		nodes = nullptr;
+		path = nullptr;
 
 		return nullptr;
 	}
@@ -1134,7 +1135,6 @@ Vector<WorldCoordinates>* PathFinderManager::findPathFromCellToDifferentCell(con
 	}
 
 	// Clean up nodes
-	nodes->removeAll();
 	delete nodes;
 	nodes = nullptr;
 
@@ -1232,6 +1232,7 @@ Vector<WorldCoordinates>* PathFinderManager::findPathFromCellToCell(const WorldC
 
 		if (trianglePath != nullptr) {
 			delete trianglePath;
+			trianglePath = nullptr;
 		}
 
 		return path;
@@ -1241,7 +1242,6 @@ Vector<WorldCoordinates>* PathFinderManager::findPathFromCellToCell(const WorldC
 	if (trianglePath == nullptr) {
 		error() << __FUNCTION__ << " - path nullptr";
 
-		path->removeAll();
 		delete path;
 
 		return findPathFromCellToDifferentCell(pointA, pointB);
@@ -1250,8 +1250,8 @@ Vector<WorldCoordinates>* PathFinderManager::findPathFromCellToCell(const WorldC
 
 		addTriangleNodeEdges(pointA.getPoint(), pointB.getPoint(), trianglePath, path, ourCell);
 
-		trianglePath->removeAll();
 		delete trianglePath;
+		trianglePath = nullptr;
 
 		// Add Destination point
 		path->add(pointB);
