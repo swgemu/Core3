@@ -502,24 +502,55 @@ public:
 
 		int agentLevel = agentTemplate->getLevel();
 
-		int legendaryCount = lootManager->getLegendaryLooted();
-		int exceptionalCount = lootManager->getExceptionalLooted();
-		int yellowCount = lootManager->getYellowLooted();
+		uint32 legendaryCount = lootManager->getLegendaryLooted();
+		uint32 exceptionalCount = lootManager->getExceptionalLooted();
+		uint32 yellowCount = lootManager->getYellowLooted();
 
-		int totalCollectionAttempts = 0;
-		int totalFailedCollection = 0;
+		uint32 totalCollectionAttempts = 0;
+		uint32 totalFailedCollection = 0;
 
-		int totalLootGroups = 0;
-		int totalLootItems = 0;
+		uint32 totalLootGroups = 0;
+		uint32 totalLootItems = 0;
 
-		int weaponCount = 0;
-		int weaponWithDotCount = 0;
-		int weaponWithSkillModCount = 0;
-		int oneMod = 0;
-		int twoMods = 0;
-		int threeMods = 0;
+		// Weapon Data
+		uint32 weaponCount = 0;
 
-		VectorMap<String, int> objectCount;
+		// DoTs on Weapons
+		uint32 weaponWithDotCount = 0;
+
+		uint32 fireDotTotal = 0;
+		uint32 firePotency = 0;
+		uint32 fireStrenth = 0;
+		uint32 fireDuration = 0;
+		uint32 fireUseCount = 0;
+
+		uint32 poisonDotTotal = 0;
+		uint32 poisonPotency = 0;
+		uint32 poisonStrength = 0;
+		uint32 poisonDuration = 0;
+		uint32 poisonUseCount = 0;
+
+		uint32 diseaseDotTotal = 0;
+		uint32 diseasePotency = 0;
+		uint32 diseaseStrength = 0;
+		uint32 diseaseDuration = 0;
+		uint32 diseaseUseCount = 0;
+
+		uint32 bleedDotTotal = 0;
+		uint32 bleedPotency = 0;
+		uint32 bleedStrength = 0;
+		uint32 bleedDuration = 0;
+		uint32 bleedUseCount = 0;
+
+		// Wearable Mods on Weapons
+		uint32 weaponWithSkillModCount = 0;
+		uint32 oneMod = 0;
+		uint32 twoMods = 0;
+		uint32 threeMods = 0;
+		uint32 skillModTotal = 0;
+		uint32 skillModsValueTotal = 0;
+
+		VectorMap<String, uint32> objectCount;
 		StringBuffer itemMsg;
 
 		for (int i = 0; i < count; ++i) {
@@ -588,17 +619,60 @@ public:
 
 						itemMsg << prototype->getDisplayedName();
 
+						// Collect Weapon Data
 						if (prototype->isWeaponObject()) {
 							weaponCount++;
 
 							auto weaponLoot = cast<WeaponObject*>(prototype.get());
 
 							if (weaponLoot != nullptr) {
-								if (weaponLoot->getNumberOfDots() > 0) {
+								int numberOfDots = weaponLoot->getNumberOfDots();
+
+								if (numberOfDots > 0) {
 									weaponWithDotCount++;
+
+									for (int ii = 0; ii < numberOfDots; ii++) {
+										switch (weaponLoot->getDotType(ii)) {
+										case 1:
+											// "Poison";
+											poisonDotTotal++;
+											poisonPotency += weaponLoot->getDotPotency(ii);
+											poisonStrength += weaponLoot->getDotStrength(ii);
+											poisonDuration += weaponLoot->getDotDuration(ii);
+											poisonUseCount += weaponLoot->getDotUses(ii);
+											break;
+										case 2:
+											// "Disease";
+											diseaseDotTotal++;
+											diseasePotency += weaponLoot->getDotPotency(ii);
+											diseaseStrength += weaponLoot->getDotStrength(ii);
+											diseaseDuration += weaponLoot->getDotDuration(ii);
+											diseaseUseCount += weaponLoot->getDotUses(ii);
+											break;
+										case 3:
+											// "Fire";
+											fireDotTotal++;
+											firePotency += weaponLoot->getDotPotency(ii);
+											fireStrenth += weaponLoot->getDotStrength(ii);
+											fireDuration += weaponLoot->getDotDuration(ii);
+											fireUseCount += weaponLoot->getDotUses(ii);
+											break;
+										case 4:
+											// "Bleeding";
+											bleedDotTotal++;
+											bleedPotency += weaponLoot->getDotPotency(ii);
+											bleedStrength += weaponLoot->getDotStrength(ii);
+											bleedDuration += weaponLoot->getDotDuration(ii);
+											bleedUseCount += weaponLoot->getDotUses(ii);
+											break;
+										default:
+											break;
+										}
+									}
 								}
 
-								int totalSkillMods = weaponLoot->getTotalWearableSkillMods();
+								const VectorMap<String, int>* wearableSkillMods = weaponLoot->getWearableSkillMods();
+								int totalSkillMods = wearableSkillMods->size();
 
 								if (totalSkillMods > 0) {
 									weaponWithSkillModCount++;
@@ -609,6 +683,11 @@ public:
 										twoMods++;
 									} else if (totalSkillMods == 3) {
 										threeMods++;
+									}
+
+									for (int ii = 0; ii < totalSkillMods; ii++) {
+										skillModTotal++;
+										skillModsValueTotal += wearableSkillMods->elementAt(ii).getValue();
 									}
 								}
 							}
@@ -660,12 +739,64 @@ public:
 		<< "Total Legendaries Dropped: " << legendaryCount << "    " << (((1.0f * legendaryCount) / totalLootItems) * 100.f) << " percent " << endl
 		<< "Total Expectionals Dropped: " << exceptionalCount << "    " << (((1.0f * exceptionalCount) / totalLootItems) * 100.f) << " percent" << endl
 		<< "Total Yellow Named Dropped: " << yellowCount << "    " << (((1.0f * yellowCount) / totalLootItems) * 100.f) << " percent" << endl << endl
-		<< "Total Weapons Dropped: " << weaponCount << endl
-		<< "Total DoT Weapons: " << weaponWithDotCount << "    " << (((1.0f * weaponWithDotCount) / weaponCount) * 100.f) << " percent of weapons looted" << endl << endl
-		<< "Total Weapons with Skill Mods: " << weaponWithSkillModCount << "    " << (((1.0f * weaponWithSkillModCount) / weaponCount) * 100.f) << " percent of weapons looted" << endl
-		<< "One Skill Mod: " << oneMod << "    " << (((1.0f * oneMod) / weaponCount) * 100.f) << " percent of weapons looted" << endl
-		<< "Two Skill Mods: " << twoMods << "    " << (((1.0f * twoMods) / weaponCount) * 100.f) << " percent of weapons looted" << endl
-		<< "Three Skill Mods: " << threeMods << "    " << (((1.0f * threeMods) / weaponCount) * 100.f) << " percent of weapons looted" << endl << endl;
+		<< "Total Weapons Dropped: " << weaponCount << endl << endl;
+
+		if (weaponCount > 0) {
+			msg
+			<< "Total DoT Weapons: " << weaponWithDotCount << "    " << (((1.0f * weaponWithDotCount) / weaponCount) * 100.f) << " percent of weapons looted" << endl << endl
+			<< "Total Fire Dots: " << fireDotTotal << endl;
+
+			if (fireDotTotal > 0) {
+				msg
+				<< "Average Fire Potency: " << (firePotency / fireDotTotal) << endl
+				<< "Average Fire Strength: " << (fireStrenth / fireDotTotal) << endl
+				<< "Average Fire Duration: " << (fireDuration / fireDotTotal) << endl
+				<< "Average Fire Use Count: " << (fireUseCount / fireDotTotal) << endl;
+			}
+
+			msg << endl << "Total Poison Dots: " << poisonDotTotal << endl;
+
+			if (poisonDotTotal > 0) {
+				msg
+				<< "Average Poison Potency: " << (poisonPotency / poisonDotTotal) << endl
+				<< "Average Poison Strength: " << (poisonStrength / poisonDotTotal) << endl
+				<< "Average Poison Duration: " << (poisonDuration / poisonDotTotal) << endl
+				<< "Average Poison Use Count: " << (poisonUseCount / poisonDotTotal) << endl;
+			}
+
+			msg << endl << "Total Disease Dots: " << diseaseDotTotal << endl;
+
+			if (diseaseDotTotal > 0) {
+				msg
+				<< "Average Disease Potency: " << (diseasePotency / diseaseDotTotal) << endl
+				<< "Average Disease Strength: " << (diseaseStrength / diseaseDotTotal) << endl
+				<< "Average Disease Duration: " << (diseaseDuration / diseaseDotTotal) << endl
+				<< "Average Disease Use Count: " << (diseaseUseCount / diseaseDotTotal) << endl;
+			}
+
+			msg << endl << "Total Bleed Dots: " << bleedDotTotal << endl;
+
+			if (bleedDotTotal > 0) {
+				msg
+				<< "Average Bleed Potency: " << (bleedPotency / bleedDotTotal) << endl
+				<< "Average Bleed Strength: " << (bleedStrength / bleedDotTotal) << endl
+				<< "Average Bleed Duration: " << (bleedDuration / bleedDotTotal) << endl
+				<< "Average Bleed Use Count: " << (bleedUseCount / bleedDotTotal) << endl;
+			}
+
+			msg
+			<< endl
+			<< "Total Weapons with Skill Mods: " << weaponWithSkillModCount << "    " << (((1.0f * weaponWithSkillModCount) / weaponCount) * 100.f) << " percent of weapons looted" << endl;
+
+			if (skillModTotal > 0) {
+				msg << "Average Weapon Skill Mod Value: " << (skillModsValueTotal / skillModTotal) << endl;
+			}
+
+			msg
+			<< "One Skill Mod: " << oneMod << "    " << (((1.0f * oneMod) / weaponCount) * 100.f) << " percent of weapons looted" << endl
+			<< "Two Skill Mods: " << twoMods << "    " << (((1.0f * twoMods) / weaponCount) * 100.f) << " percent of weapons looted" << endl
+			<< "Three Skill Mods: " << threeMods << "    " << (((1.0f * threeMods) / weaponCount) * 100.f) << " percent of weapons looted" << endl << endl;
+		}
 
 		StringBuffer objectMsg;
 		objectMsg << "Items Dropped List:" << endl << endl;
