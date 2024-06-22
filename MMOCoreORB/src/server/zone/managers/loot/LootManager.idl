@@ -95,7 +95,7 @@ class LootManager extends ManagedService implements Logger {
 	@dereferenced
 	private transient VectorMap<string, Reference<CrystalData> > crystalData;
 
-	public static final int LEVELMAX = 300;
+	public static final int LEVELMAX = 350;
 	public static final int LEVELMIN = 1;
 
 	public static final int DOT_POISON = 1;
@@ -158,7 +158,10 @@ class LootManager extends ManagedService implements Logger {
 	private native void setSkillMods(TangibleObject object, final LootItemTemplate templateObject, int level, float excMod);
 
 	@local
-	private native void setCustomObjectName(TangibleObject object, final LootItemTemplate templateObject);
+	private native void setCustomObjectName(TangibleObject object, final LootItemTemplate templateObject, float excMod);
+
+	@local
+	private native void setJunkValue(TangibleObject object, final LootItemTemplate templateObject, int level, float excMod);
 
 	@local
 	private native void addRandomDots(TangibleObject object, final LootItemTemplate templateObject, int level, float excMod);

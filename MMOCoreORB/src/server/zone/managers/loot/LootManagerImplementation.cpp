@@ -232,7 +232,7 @@ void LootManagerImplementation::setCustomizationData(const LootItemTemplate* tem
 #endif
 }
 
-void LootManagerImplementation::setCustomObjectName(TangibleObject* object, const LootItemTemplate* templateObject) {
+void LootManagerImplementation::setCustomObjectName(TangibleObject* object, const LootItemTemplate* templateObject, float excMod) {
 	const String& customName = templateObject->getCustomObjectName();
 
 	if (!customName.isEmpty()) {
@@ -244,6 +244,40 @@ void LootManagerImplementation::setCustomObjectName(TangibleObject* object, cons
 			object->setCustomObjectName(customName, false);
 		}
 	}
+
+	String suffixName = "";
+
+	if (excMod >= legendaryModifier) {
+		suffixName = " (Legendary)";
+	} else if (excMod >= exceptionalModifier) {
+		suffixName = " (Exceptional)";
+	}
+
+	if (suffixName != "") {
+		object->setCustomObjectName(object->getDisplayedName() + suffixName, false);
+		object->addMagicBit(false);
+	}
+}
+
+void LootManagerImplementation::setJunkValue(TangibleObject* prototype, const LootItemTemplate* itemTemplate, int level, float excMod) {
+	float valueMin = itemTemplate->getJunkMinValue() * junkValueModifier;
+	float valueMax = itemTemplate->getJunkMaxValue() * junkValueModifier;
+
+	int junkType = itemTemplate->getJunkDealerTypeNeeded();
+	int junkValue = System::random(valueMax - valueMin) + valueMin;
+
+	if (junkType >= 2) {
+		junkValue = ((level * 0.01f) * junkValue) + junkValue;
+	}
+
+	if (excMod >= exceptionalModifier) {
+		junkValue *= (excMod * 0.5f);
+	} else if (excMod >= yellowModifier) {
+		junkValue *= 1.25;
+	}
+
+	prototype->setJunkDealerNeeded(junkType);
+	prototype->setJunkValue(junkValue);
 }
 
 int LootManagerImplementation::calculateLootCredits(int level) {
@@ -274,13 +308,22 @@ void LootManagerImplementation::setRandomLootValues(TransactionLog& trx, Tangibl
 	auto lootValues = LootValues(itemTemplate, level, modifier);
 	prototype->updateCraftingValues(&lootValues, true);
 
-	if (lootValues.getDynamicValues() > 0) {
-		prototype->addMagicBit(false);
-	}
-
 #ifdef LOOTVALUES_DEBUG
 	lootValues.debugAttributes(prototype, itemTemplate);
 #endif // LOOTVALUES_DEBUG
+
+	if (excMod >= legendaryModifier) {
+		trx.addState("lootIsLegendary", true);
+		legendaryLooted.increment();
+	} else if (excMod >= exceptionalModifier) {
+		trx.addState("lootIsExceptional", true);
+		exceptionalLooted.increment();
+	} else if (lootValues.getDynamicValues() > 0) {
+		trx.addState("lootIsYellow", true);
+		yellowLooted.increment();
+
+		prototype->addMagicBit(false);
+	}
 
 	if (debugAttributes) {
 		JSONSerializationType attrDebug;
@@ -304,19 +347,14 @@ void LootManagerImplementation::setRandomLootValues(TransactionLog& trx, Tangibl
 }
 
 TangibleObject* LootManagerImplementation::createLootObject(TransactionLog& trx, const LootItemTemplate* templateObject, int level, bool maxCondition) {
-	int uncappedLevel = level;
-
 #ifdef DEBUG_LOOT_MAN
 	info(true) << " ---------- LootManagerImplementation::createLootObject -- called ----------";
 #endif
 
-	trx.addState("lootVersion", 2);
-
-	level = (level < LootManager::LEVELMIN) ? LootManager::LEVELMIN : level;
-	level = (level > LootManager::LEVELMAX) ? LootManager::LEVELMAX : level;
-
 	const String& directTemplateObject = templateObject->getDirectObjectTemplate();
+	level = Math::clamp((int)LEVELMIN, level, (int)LEVELMAX);
 
+	trx.addState("lootVersion", 2);
 	trx.addState("lootTemplate", directTemplateObject);
 	trx.addState("lootLevel", level);
 	trx.addState("lootMaxCondition", maxCondition);
@@ -332,103 +370,49 @@ TangibleObject* LootManagerImplementation::createLootObject(TransactionLog& trx,
 	ManagedReference<TangibleObject*> prototype = zoneServer->createObject(directTemplateObject.hashCode(), 2).castTo<TangibleObject*>();
 
 	if (prototype == nullptr) {
-		error("could not create loot object: " + directTemplateObject);
+		error() << "could not create loot object: " << directTemplateObject;
 		return nullptr;
 	}
 
 	Locker objLocker(prototype);
-
 	prototype->createChildObjects();
 
-	//Disable serial number generation on looted items that require no s/n
 	if (!templateObject->getSuppressSerialNumber()) {
 		String serial = craftingManager->generateSerial();
 		prototype->setSerialNumber(serial);
 	}
 
-	prototype->setJunkDealerNeeded(templateObject->getJunkDealerTypeNeeded());
-	float junkMinValue = templateObject->getJunkMinValue() * junkValueModifier;
-	float junkMaxValue = templateObject->getJunkMaxValue() * junkValueModifier;
-	float fJunkValue = junkMinValue+System::random(junkMaxValue-junkMinValue);
+	float chance = LootValues::getLevelRankValue(Math::max(level - 50, 0), 0.f, 0.35f) * levelChance;
+	float excMod = baseModifier;
 
-	if (templateObject->getJunkDealerTypeNeeded() > 1){
-		fJunkValue = fJunkValue + (fJunkValue * ((float)level / 100)); // This is the loot value calculation if the item has a level
-	}
-
-	setCustomizationData(templateObject, prototype);
-	setCustomObjectName(prototype, templateObject);
-
-	float excMod = 1.0;
-
-	float adjustment = floor((float)(((level > 50) ? level : 50) - 50) / 10.f + 0.5);
-
-	trx.addState("lootAdjustment", adjustment);
-
-	if (System::random(legendaryChance) >= legendaryChance - adjustment) {
-		UnicodeString newName = prototype->getDisplayedName() + " (Legendary)";
-		prototype->setCustomObjectName(newName, false);
-
+	if (System::random(legendaryChance) <= chance) {
 		excMod = legendaryModifier;
-
-		prototype->addMagicBit(false);
-
-		legendaryLooted.increment();
-		trx.addState("lootIsLegendary", true);
-	} else if (System::random(exceptionalChance) >= exceptionalChance - adjustment) {
-		UnicodeString newName = prototype->getDisplayedName() + " (Exceptional)";
-		prototype->setCustomObjectName(newName, false);
-
+	} else if (System::random(exceptionalChance) <= chance) {
 		excMod = exceptionalModifier;
-
-		prototype->addMagicBit(false);
-
-		exceptionalLooted.increment();
-		trx.addState("lootIsExceptional", true);
 	}
-
-	trx.addState("lootExcMod", excMod);
 
 #ifdef DEBUG_LOOT_MAN
-		info(true) << "Exceptional Modifier (excMod) = " << excMod << "  Adjustment = " << adjustment;
+	info(true) << "Exceptional Modifier (excMod) = " << excMod << "  chance = " << chance;
 #endif
 
-	if (prototype->isLightsaberCrystalObject()) {
-		LightsaberCrystalComponent* crystal = cast<LightsaberCrystalComponent*> (prototype.get());
+	setCustomizationData(templateObject, prototype);
+	setCustomObjectName(prototype, templateObject, excMod);
+	setJunkValue(prototype, templateObject, level, excMod);
+	setRandomLootValues(trx, prototype, templateObject, level, excMod);
+	setSkillMods(prototype, templateObject, level, excMod);
 
-		if (crystal != nullptr)
-			crystal->setItemLevel(uncappedLevel);
-	}
-
-	setRandomLootValues(trx, prototype, templateObject, uncappedLevel, excMod);
-
-	if (excMod == 1.f && (prototype->getOptionsBitmask() & OptionBitmask::YELLOW)) {
-		yellowLooted.increment();
-		trx.addState("lootIsYellow", true);
-
-		prototype->setJunkValue((int)(fJunkValue * 1.25));
-	} else {
-		if (excMod == 1.0) {
-			prototype->setJunkValue((int)(fJunkValue));
-		} else {
-			prototype->setJunkValue((int)(fJunkValue * (excMod/2)));
-		}
-	}
-
-	trx.addState("lootJunkValue", prototype->getJunkValue());
-
-	// Add Dots to weapon objects.
 	if (prototype->isWeaponObject()) {
 		addStaticDots(prototype, templateObject, level);
 		addRandomDots(prototype, templateObject, level, excMod);
 	}
 
-	setSkillMods(prototype, templateObject, level, excMod);
-
-	// add some condition damage where appropriate
 	if (!maxCondition) {
 		addConditionDamage(prototype);
 	}
 
+	trx.addState("lootAdjustment", chance);
+	trx.addState("lootExcMod", excMod);
+	trx.addState("lootJunkValue", prototype->getJunkValue());
 	trx.addState("lootConditionDmg", prototype->getConditionDamage());
 	trx.addState("lootConditionMax", prototype->getMaxCondition());
 
