@@ -544,11 +544,20 @@ public:
 
 		// Wearable Mods on Weapons
 		uint32 weaponWithSkillModCount = 0;
-		uint32 oneMod = 0;
-		uint32 twoMods = 0;
-		uint32 threeMods = 0;
+		uint32 weaponOneMod = 0;
+		uint32 weaponTwoMods = 0;
+		uint32 weaponThreeMods = 0;
 		uint32 skillModTotal = 0;
 		uint32 skillModsValueTotal = 0;
+
+		// Attachment Data
+		uint32 totalAttachments = 0;
+		uint32 attachmentModTotal = 0;
+		uint32 attachmentTotalMods = 0;
+
+		uint32 attachmentOneMod = 0;
+		uint32 attachmentTwoMods = 0;
+		uint32 attachmentThreeMods = 0;
 
 		VectorMap<String, uint32> objectCount;
 		StringBuffer itemMsg;
@@ -678,16 +687,43 @@ public:
 									weaponWithSkillModCount++;
 
 									if (totalSkillMods == 1) {
-										oneMod++;
+										weaponOneMod++;
 									} else if (totalSkillMods == 2) {
-										twoMods++;
+										weaponTwoMods++;
 									} else if (totalSkillMods == 3) {
-										threeMods++;
+										weaponThreeMods++;
 									}
 
 									for (int ii = 0; ii < totalSkillMods; ii++) {
 										skillModTotal++;
 										skillModsValueTotal += wearableSkillMods->elementAt(ii).getValue();
+									}
+								}
+							} else if (prototype->isAttachment()) {
+								totalAttachments++;
+
+								auto attachment = prototype.castTo<Attachment*>();
+
+								if (attachment != nullptr) {
+									const auto attachmentMods = attachment->getSkillMods();
+
+									if (attachmentMods != nullptr) {
+										HashTableIterator<String, int> iterator = attachmentMods->iterator();
+										int totalSkillMods = attachmentMods->size();
+
+										for(int i = 0; i < totalSkillMods; ++i) {
+											int value = iterator.getNextValue();
+											attachmentModTotal += value;
+											attachmentTotalMods++;
+										}
+
+										if (totalSkillMods == 1) {
+											attachmentOneMod++;
+										} else if (totalSkillMods == 2) {
+											attachmentTwoMods++;
+										} else if (totalSkillMods == 3) {
+											attachmentThreeMods++;
+										}
 									}
 								}
 							}
@@ -793,9 +829,20 @@ public:
 			}
 
 			msg
-			<< "One Skill Mod: " << oneMod << "    " << (((1.0f * oneMod) / weaponCount) * 100.f) << " percent of weapons looted" << endl
-			<< "Two Skill Mods: " << twoMods << "    " << (((1.0f * twoMods) / weaponCount) * 100.f) << " percent of weapons looted" << endl
-			<< "Three Skill Mods: " << threeMods << "    " << (((1.0f * threeMods) / weaponCount) * 100.f) << " percent of weapons looted" << endl << endl;
+			<< "Weapon - One Skill Mod: " << weaponOneMod << "    " << (((1.0f * weaponOneMod) / weaponCount) * 100.f) << " percent of weapons looted" << endl
+			<< "Weapon - Two Skill Mods: " << weaponTwoMods << "    " << (((1.0f * weaponTwoMods) / weaponCount) * 100.f) << " percent of weapons looted" << endl
+			<< "Weapon - Three Skill Mods: " << weaponThreeMods << "    " << (((1.0f * weaponThreeMods) / weaponCount) * 100.f) << " percent of weapons looted" << endl << endl;
+		}
+
+		// Attachments
+		msg << "Total Attachments Dropped: " << totalAttachments << endl;
+
+		if (totalAttachments > 0) {
+			msg
+			<< "Average Attachment Skill Mod Value: " << (attachmentModTotal / attachmentTotalMods) << endl
+			<< "Attachments - One Skill Mod: " << attachmentOneMod << "    " << (((1.0f * attachmentOneMod) / totalAttachments) * 100.f) << " percent of attachments looted" << endl
+			<< "Attachments - Two Skill Mods: " << attachmentTwoMods << "    " << (((1.0f * attachmentTwoMods) / totalAttachments) * 100.f) << " percent of attachments looted" << endl
+			<< "Attachments - Three Skill Mods: " << attachmentThreeMods << "    " << (((1.0f * attachmentThreeMods) / totalAttachments) * 100.f) << " percent of attachments looted" << endl << endl;
 		}
 
 		StringBuffer objectMsg;
