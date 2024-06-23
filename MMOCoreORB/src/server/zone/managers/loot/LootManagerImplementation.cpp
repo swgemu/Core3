@@ -374,14 +374,19 @@ TangibleObject* LootManagerImplementation::createLootObject(TransactionLog& trx,
 		return nullptr;
 	}
 
+	// Lock the loot item
 	Locker objLocker(prototype);
+
+	// Create child objects of loot item
 	prototype->createChildObjects();
 
+	// Add a seriel number for objects that do not hide them
 	if (!templateObject->getSuppressSerialNumber()) {
 		String serial = craftingManager->generateSerial();
 		prototype->setSerialNumber(serial);
 	}
 
+	// Calculate level rank value chance
 	float chance = LootValues::getLevelRankValue(Math::max(level - 50, 0), 0.f, 0.35f) * levelChance;
 	float excMod = baseModifier;
 
@@ -395,18 +400,29 @@ TangibleObject* LootManagerImplementation::createLootObject(TransactionLog& trx,
 	info(true) << "Exceptional Modifier (excMod) = " << excMod << "  chance = " << chance;
 #endif
 
+	// Set loot item customization and object name
 	setCustomizationData(templateObject, prototype);
 	setCustomObjectName(prototype, templateObject, excMod);
-	setJunkValue(prototype, templateObject, level, excMod);
-	setRandomLootValues(trx, prototype, templateObject, level, excMod);
-	setSkillMods(prototype, templateObject, level, excMod);
 
+	// Set the value for those items that can be sold at a junk dealer
+	setJunkValue(prototype, templateObject, level, excMod);
+
+	// Set the values for the random attributes to be modified if there are any
+	setRandomLootValues(trx, prototype, templateObject, level, excMod);
+
+	// Chance to add skill modifiers to weapons and wearable objects (clothing, armor)
+	if (prototype->isWeaponObject() || prototype->isWearableObject()) {
+		setSkillMods(prototype, templateObject, level, excMod);
+	}
+
+	// Add static DoT's to weapons and check for chance to add random DoTs
 	if (prototype->isWeaponObject()) {
 		addStaticDots(prototype, templateObject, level);
 		addRandomDots(prototype, templateObject, level, excMod);
 	}
 
-	if (!maxCondition) {
+	// Add some condition damage to the looted item if it is a weapon or piece of armor
+	if (!maxCondition && (prototype->isWeaponObject() || prototype->isArmorObject())) {
 		addConditionDamage(prototype);
 	}
 
@@ -495,7 +511,7 @@ TangibleObject* LootManagerImplementation::createLootResource(const String& reso
 }
 
 void LootManagerImplementation::addConditionDamage(TangibleObject* prototype) {
-	if (!prototype->isWeaponObject() && !prototype->isArmorObject()) {
+	if (prototype == nullptr) {
 		return;
 	}
 
@@ -514,7 +530,7 @@ void LootManagerImplementation::addConditionDamage(TangibleObject* prototype) {
 }
 
 void LootManagerImplementation::setSkillMods(TangibleObject* prototype, const LootItemTemplate* templateObject, int level, float excMod) {
-	if (!prototype->isWeaponObject() && !prototype->isWearableObject()) {
+	if (prototype == nullptr || templateObject == nullptr) {
 		return;
 	}
 
@@ -541,7 +557,7 @@ void LootManagerImplementation::setSkillMods(TangibleObject* prototype, const Lo
 	for (int i = 0; i < randomMods; ++i) {
 		String modName = getRandomLootableMod(prototype->getGameObjectType());
 
-		if (modName == "") {
+		if (modName.isEmpty()) {
 			continue;
 		}
 
