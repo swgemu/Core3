@@ -779,46 +779,48 @@ public:
 		<< "Total Weapons Dropped: " << weaponCount << endl << endl;
 
 		if (weaponCount > 0) {
-			msg
-			<< "Total DoT Weapons: " << weaponWithDotCount << "    " << (((1.0f * weaponWithDotCount) / weaponCount) * 100.f) << " percent of weapons looted" << endl << endl
-			<< "Total Fire Dots: " << fireDotTotal << endl;
+			msg << "Total DoT Weapons: " << weaponWithDotCount << "    " << (((1.0f * weaponWithDotCount) / weaponCount) * 100.f) << " percent of Weapons looted" << endl << endl;
 
-			if (fireDotTotal > 0) {
-				msg
-				<< "Average Fire Potency: " << (firePotency / fireDotTotal) << endl
-				<< "Average Fire Strength: " << (fireStrenth / fireDotTotal) << endl
-				<< "Average Fire Duration: " << (fireDuration / fireDotTotal) << endl
-				<< "Average Fire Use Count: " << (fireUseCount / fireDotTotal) << endl;
-			}
+			if (weaponWithDotCount > 0) {
+				msg << "Total Fire Dots: " << fireDotTotal << "    " << (((1.0f * fireDotTotal) / weaponWithDotCount) * 100.f) << " percent of DOT Weapons looted" << endl;
 
-			msg << endl << "Total Poison Dots: " << poisonDotTotal << endl;
+				if (fireDotTotal > 0) {
+					msg
+					<< "Average Fire Potency: " << (firePotency / fireDotTotal) << endl
+					<< "Average Fire Strength: " << (fireStrenth / fireDotTotal) << endl
+					<< "Average Fire Duration: " << (fireDuration / fireDotTotal) << endl
+					<< "Average Fire Use Count: " << (fireUseCount / fireDotTotal) << endl;
+				}
 
-			if (poisonDotTotal > 0) {
-				msg
-				<< "Average Poison Potency: " << (poisonPotency / poisonDotTotal) << endl
-				<< "Average Poison Strength: " << (poisonStrength / poisonDotTotal) << endl
-				<< "Average Poison Duration: " << (poisonDuration / poisonDotTotal) << endl
-				<< "Average Poison Use Count: " << (poisonUseCount / poisonDotTotal) << endl;
-			}
+				msg << endl << "Total Poison Dots: " << poisonDotTotal << "    " << (((1.0f * poisonDotTotal) / weaponWithDotCount) * 100.f) << " percent of DOT Weapons looted" << endl;
 
-			msg << endl << "Total Disease Dots: " << diseaseDotTotal << endl;
+				if (poisonDotTotal > 0) {
+					msg
+					<< "Average Poison Potency: " << (poisonPotency / poisonDotTotal) << endl
+					<< "Average Poison Strength: " << (poisonStrength / poisonDotTotal) << endl
+					<< "Average Poison Duration: " << (poisonDuration / poisonDotTotal) << endl
+					<< "Average Poison Use Count: " << (poisonUseCount / poisonDotTotal) << endl;
+				}
 
-			if (diseaseDotTotal > 0) {
-				msg
-				<< "Average Disease Potency: " << (diseasePotency / diseaseDotTotal) << endl
-				<< "Average Disease Strength: " << (diseaseStrength / diseaseDotTotal) << endl
-				<< "Average Disease Duration: " << (diseaseDuration / diseaseDotTotal) << endl
-				<< "Average Disease Use Count: " << (diseaseUseCount / diseaseDotTotal) << endl;
-			}
+				msg << endl << "Total Disease Dots: " << diseaseDotTotal << "    " << (((1.0f * diseaseDotTotal) / weaponWithDotCount) * 100.f) << " percent of DOT Weapons looted" << endl;
 
-			msg << endl << "Total Bleed Dots: " << bleedDotTotal << endl;
+				if (diseaseDotTotal > 0) {
+					msg
+					<< "Average Disease Potency: " << (diseasePotency / diseaseDotTotal) << endl
+					<< "Average Disease Strength: " << (diseaseStrength / diseaseDotTotal) << endl
+					<< "Average Disease Duration: " << (diseaseDuration / diseaseDotTotal) << endl
+					<< "Average Disease Use Count: " << (diseaseUseCount / diseaseDotTotal) << endl;
+				}
 
-			if (bleedDotTotal > 0) {
-				msg
-				<< "Average Bleed Potency: " << (bleedPotency / bleedDotTotal) << endl
-				<< "Average Bleed Strength: " << (bleedStrength / bleedDotTotal) << endl
-				<< "Average Bleed Duration: " << (bleedDuration / bleedDotTotal) << endl
-				<< "Average Bleed Use Count: " << (bleedUseCount / bleedDotTotal) << endl;
+				msg << endl << "Total Bleed Dots: " << bleedDotTotal << "    " << (((1.0f * bleedDotTotal) / weaponWithDotCount) * 100.f) << " percent of DOT Weapons looted" << endl;
+
+				if (bleedDotTotal > 0) {
+					msg
+					<< "Average Bleed Potency: " << (bleedPotency / bleedDotTotal) << endl
+					<< "Average Bleed Strength: " << (bleedStrength / bleedDotTotal) << endl
+					<< "Average Bleed Duration: " << (bleedDuration / bleedDotTotal) << endl
+					<< "Average Bleed Use Count: " << (bleedUseCount / bleedDotTotal) << endl;
+				}
 			}
 
 			msg
