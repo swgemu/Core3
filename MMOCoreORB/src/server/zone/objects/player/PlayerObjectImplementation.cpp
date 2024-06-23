@@ -3399,7 +3399,7 @@ bool PlayerObjectImplementation::isInPvpArea(bool checkTimer) {
 	for (int i = 0; i < areas.size(); ++i) {
 		ManagedReference<ActiveArea*>& area = areas.get(i);
 
-		if (area->isPvpArea()) {
+		if (area != nullptr && area->isPvpArea()) {
 			return true;
 		}
 	}
