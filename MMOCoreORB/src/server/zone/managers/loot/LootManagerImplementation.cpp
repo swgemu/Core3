@@ -81,6 +81,22 @@ bool LootManagerImplementation::loadConfigData() {
 	skillModChance = lua->getGlobalFloat("skillModChance");
 	junkValueModifier = lua->getGlobalFloat("junkValueModifier");
 
+	fireDotChance = lua->getGlobalFloat("fireDotChance");
+	diseaseDotChance = lua->getGlobalFloat("diseaseDotChance");
+	poisonDotChance = lua->getGlobalFloat("poisonDotChance");
+
+	if ((fireDotChance + diseaseDotChance + poisonDotChance) != 1) {
+		error() << "Weapon DOT Type chance is not properly distributed. Chances need to equate to 1 - Current Value: " << (fireDotChance + diseaseDotChance + poisonDotChance);
+	}
+
+	healthDotChance = lua->getGlobalFloat("healthDotChance");
+	actionDotChance = lua->getGlobalFloat("actionDotChance");
+	mindDotChance = lua->getGlobalFloat("mindDotChance");
+
+	if ((healthDotChance + actionDotChance + mindDotChance) != 1) {
+		error() << "Weapon DOT HAM Attrobite chance is not properly distributed. Chances need to equate to 1 - Current Value: " << (healthDotChance + actionDotChance + mindDotChance);
+	}
+
 	LuaObject dotAttributeTable = lua->getGlobalObject("randomDotAttribute");
 
 	if (dotAttributeTable.isValidTable() && dotAttributeTable.getTableSize() > 0) {
@@ -925,13 +941,36 @@ void LootManagerImplementation::addRandomDots(TangibleObject* object, const Loot
 		excMod = yellowModifier;
 	}
 
-	const int dotTypes[] = {LootManager::DOT_POISON,  LootManager::DOT_POISON,  LootManager::DOT_POISON, LootManager::DOT_DISEASE, LootManager::DOT_DISEASE, LootManager::DOT_FIRE};
-	const int dotAttributes[] = {CreatureAttribute::HEALTH, CreatureAttribute::HEALTH, CreatureAttribute::HEALTH, CreatureAttribute::ACTION, CreatureAttribute::ACTION, CreatureAttribute::MIND};
+	float fireChance = fireDotChance * LootManager::DOTROLLCHANCE;
+	float diseaseChance = diseaseDotChance * LootManager::DOTROLLCHANCE;
+	float poisonChance = poisonDotChance * LootManager::DOTROLLCHANCE;
+
+	float healthChance = healthDotChance * LootManager::DOTROLLCHANCE;
+	float actionChance = actionDotChance * LootManager::DOTROLLCHANCE;
+	float mindChance = mindDotChance * LootManager::DOTROLLCHANCE;
 
 	for (int i = 0; i < randomDots; i++) {
-		int dotType = dotTypes[System::random(5)];
-		int attribute = dotAttributes[System::random(5)];
+		// Determine DOT type
+		int typeChance = System::random(LootManager::DOTROLLCHANCE);
+		int dotType = LootManager::DOT_POISON;
 
+		if (typeChance <= fireChance) {
+			dotType = LootManager::DOT_FIRE;
+		} else if (typeChance <= diseaseChance) {
+			dotType = LootManager::DOT_DISEASE;
+		}
+
+		// Determine DOT HAM attribute
+		int attributeChance = System::random(LootManager::DOTROLLCHANCE);
+		int attribute = CreatureAttribute::HEALTH;
+
+		if (attribute <= mindChance) {
+			attribute = CreatureAttribute::MIND;
+		} else if (attribute <= actionChance) {
+			attribute = CreatureAttribute::ACTION;
+		}
+
+		// Chance for HAM attribute to be a secondary for disease DOTs
 		if (attribute == LootManager::DOT_DISEASE) {
 			attribute += System::random(2);
 		}
