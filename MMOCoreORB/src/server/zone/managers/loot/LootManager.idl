@@ -45,6 +45,14 @@ class LootManager extends ManagedService implements Logger {
 	private transient float legendaryChance;
 	private transient float legendaryModifier;
 
+	private transient float fireDotChance;
+	private transient float diseaseDotChance;
+	private transient float poisonDotChance;
+
+	private transient float healthDotChance;
+	private transient float actionDotChance;
+	private transient float mindDotChance;
+
 	@dereferenced
 	private transient AtomicInteger yellowLooted;
 	@dereferenced
@@ -103,6 +111,8 @@ class LootManager extends ManagedService implements Logger {
 	public static final int DOT_FIRE = 3;
 	public static final int DOT_BLEEDING = 4;
 
+	public static final int DOTROLLCHANCE = 1000;
+
 	public LootManager(CraftingManager craftman, ObjectManager objMan, ZoneServer server) {
 		craftingManager = craftman;
 		objectManager = objMan;
@@ -138,6 +148,14 @@ class LootManager extends ManagedService implements Logger {
 		legendaryModifier = 0.0;
 
 		skillModChance = 0.0;
+
+		fireDotChance = 0.0;
+		diseaseDotChance = 0.0;
+		poisonDotChance = 0.0;
+
+		healthDotChance = 0.0;
+		actionDotChance = 0.0;
+		mindDotChance = 0.0;
 
 		Logger.setLoggingName("LootManager");
 
