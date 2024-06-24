@@ -836,6 +836,7 @@
 #include "InspacereloadCommand.h"
 #include "InspacerrCommand.h"
 #include "RequestSpaceTrainerCommand.h"
+#include "helloWorld.h"
 
 
 

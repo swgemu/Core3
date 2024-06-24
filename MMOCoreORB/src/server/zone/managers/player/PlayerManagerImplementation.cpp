@@ -2440,38 +2440,78 @@ int PlayerManagerImplementation::awardExperience(CreatureObject* player, const S
 		buffMultiplier += player->getSkillModFromBuffs("xp_increase") / 100.f;
 
 	int xp = 0;
+	uint64_t bonusXp = 0;
+    	uint64_t bonusXpAward = 0;
 
-	trx.addState("applyModifiers", applyModifiers);
+    trx.addState("applyModifiers", applyModifiers);
 
-	if (applyModifiers) {
-		trx.addState("speciesModifier", speciesModifier);
-		trx.addState("buffMultiplier", buffMultiplier);
-		trx.addState("localMultiplier", localMultiplier);
-		trx.addState("globalExpMultiplier", globalExpMultiplier);
+    // Fetch bonusxp value from the database and adjust it
+    try {
+        const uint64_t characterOid = player->getObjectID();
+        const String query = "SELECT bonusxp FROM characters WHERE character_oid = " + String::valueOf(characterOid);
 
-		xp = playerObject->addExperience(trx, xpType, (int) (amount * speciesModifier * buffMultiplier * localMultiplier * globalExpMultiplier));
-	} else
-		xp = playerObject->addExperience(trx, xpType, (int)amount);
+        Reference<ResultSet*> res = ServerDatabase::instance()->executeQuery(query);
 
-	player->notifyObservers(ObserverEventType::XPAWARDED, player, xp);
+        if (res->next()) {
+            bonusXp = res->getUnsignedLong(0);
+        }
 
-	if (sendSystemMessage) {
-		if (xp > 0) {
-			StringIdChatParameter message("base_player","prose_grant_xp");
-			message.setDI(xp);
-			message.setTO("exp_n", xpType);
-			player->sendSystemMessage(message);
-		}
-		if (xp > 0 && playerObject->hasCappedExperience(xpType)) {
-			StringIdChatParameter message("base_player", "prose_hit_xp_cap"); //You have achieved your current limit for %TO experience.
-			message.setTO("exp_n", xpType);
-			player->sendSystemMessage(message);
-		}
+        // Calculate the bonus XP to be awarded based on the initial amount
+        bonusXpAward = static_cast<uint64_t>(amount * 0.05);
+        if (bonusXpAward > bonusXp) {
+            bonusXpAward = bonusXp; // Cap the bonus XP award to the available bonus XP
+        }
+        bonusXp -= bonusXpAward;
+
+        // Update the bonusxp value in the database
+        const String updateQuery = "UPDATE characters SET bonusxp = " + String::valueOf(bonusXp) + " WHERE character_oid = " + String::valueOf(characterOid);
+        ServerDatabase::instance()->executeQuery(updateQuery);
+	
+	if (bonusXpAward > 0) {
+        // Notify player of the consumed bonus XP
+        std::wstringstream ws;
+         ws << L"Gained " << bonusXpAward << L" bonus " << xpType.toCharArray() << L" Experience. " << bonusXp << L" Remaining.";
+        std::wstring wsStr = ws.str();
+        std::string bonusXpMessageStr(wsStr.begin(), wsStr.end());
+        UnicodeString bonusXpMessage(bonusXpMessageStr);
+        ChatSystemMessage* csm = new ChatSystemMessage(bonusXpMessage, ChatSystemMessage::DISPLAY_CHATONLY);
+        player->sendMessage(csm);
 	}
 
-	return xp;
-}
+    } catch (const Exception& e) {
+        error(e.getMessage());
+    }
+	amount += bonusXpAward;
+    // Add the base XP amount
+    if (applyModifiers) {
+        trx.addState("speciesModifier", speciesModifier);
+        trx.addState("buffMultiplier", buffMultiplier);
+        trx.addState("localMultiplier", localMultiplier);
+        trx.addState("globalExpMultiplier", globalExpMultiplier);
 
+        xp = playerObject->addExperience(trx, xpType, (int) (amount * speciesModifier * buffMultiplier * localMultiplier * globalExpMultiplier), true);
+    } else {
+        xp = playerObject->addExperience(trx, xpType, (int)amount, true);
+    }
+
+    player->notifyObservers(ObserverEventType::XPAWARDED, player, xp);
+
+    if (sendSystemMessage) {
+        if (xp > 0) {
+            StringIdChatParameter message("base_player","prose_grant_xp");
+            message.setDI(xp);
+            message.setTO("exp_n", xpType);
+            player->sendSystemMessage(message);
+        }
+        if (xp > 0 && playerObject->hasCappedExperience(xpType)) {
+            StringIdChatParameter message("base_player", "prose_hit_xp_cap"); //You have achieved your current limit for %TO experience.
+            message.setTO("exp_n", xpType);
+            player->sendSystemMessage(message);
+        }
+    }
+
+    return xp;
+}
 void PlayerManagerImplementation::sendLoginMessage(CreatureObject* creature) {
 	String motd = server->getLoginMessage();
 

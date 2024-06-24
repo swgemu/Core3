@@ -150,6 +150,7 @@ Core3 = {
 	TrePath = "/home/swgemu/Desktop/SWGEmu",
 	TreFiles = {
 		"default_patch.tre",
+		"koltorpatch01.tre",
 		"patch_sku1_14_00.tre",
 		"patch_14_00.tre",
 		"patch_sku1_13_00.tre",
@@ -242,8 +243,8 @@ Core3 = {
 	UnloadContainers = 1, -- Whether to unload container contents from RAM after the container hasn't been accessed for a time
 
 	------Server Config------
-	CharacterBuilderEnabled = "true",
-	AutoReg = 1,
+	CharacterBuilderEnabled = "false",
+	AutoReg = 0,
 
 	------TOS Config------
 	TermsOfServiceVersion = 0,

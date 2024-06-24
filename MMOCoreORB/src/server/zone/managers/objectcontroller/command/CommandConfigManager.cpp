@@ -65,6 +65,8 @@
 
 #include "server/zone/objects/creature/commands/JediQueueCommand.h"
 
+#include "server/zone/objects/creature/commands/helloWorld.h"
+
 #include "templates/datatables/DataTableIff.h"
 #include "templates/datatables/DataTableRow.h"
 #include "CommandList.h"
@@ -889,4 +891,5 @@ void CommandConfigManager::registerCommands() {
 	commandFactory.registerCommand<PetPatrolCommand>(String("petPatrol").toLowerCase());
 	commandFactory.registerCommand<PetClearPatrolPointsCommand>(String("petClearPatrolPoints").toLowerCase());
 	commandFactory.registerCommand<PetGetPatrolPointCommand>(String("petGetPatrolPoint").toLowerCase());
+	commandFactory.registerCommand<HelloWorldCommand>(String("helloWorld").toLowerCase());
 }
