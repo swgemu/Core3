@@ -24,6 +24,7 @@ import server.zone.objects.tangible.threat.ThreatMap;
 include server.zone.objects.scene.variables.AutoDeltaSet;
 include server.zone.objects.scene.variables.StringId;
 include system.thread.atomic.AtomicInteger;
+include server.zone.TreeEntry;
 
 @json
 @mock
@@ -244,6 +245,9 @@ class TangibleObject extends SceneObject {
 	 */
 	@dirty
 	public native void sendTo(SceneObject player, boolean doClose, boolean forceLoadContainer = true);
+
+	@local
+	public native void notifyInsert(TreeEntry entry);
 
 	/**
 	 * Calls the appropriate UI Listener Function

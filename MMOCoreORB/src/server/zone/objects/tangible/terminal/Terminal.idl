@@ -6,7 +6,6 @@ package server.zone.objects.tangible.terminal;
 
 import server.zone.objects.tangible.TangibleObject;
 import server.zone.objects.scene.SceneObject;
-include server.zone.TreeEntry;
 
 @json
 class Terminal extends TangibleObject {
@@ -20,9 +19,6 @@ class Terminal extends TangibleObject {
 	}
 
 	public native void initializeTransientMembers();
-
-	@local
-	public native void notifyInsert(TreeEntry obj);
 
 	@dirty
 	public boolean isTerminal() {

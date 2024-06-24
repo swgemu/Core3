@@ -12,14 +12,3 @@ void TerminalImplementation::initializeTransientMembers() {
 
 	setLoggingName("Terminal");
 }
-
-void TerminalImplementation::notifyInsert(TreeEntry* object) {
-	auto sceneO = static_cast<SceneObject*>(object);
-	uint64 scnoID = sceneO->getObjectID();
-
-	if (sceneO == nullptr) {
-		return;
-	}
-
-	sendTo(sceneO, true, false);
-}
