@@ -130,18 +130,22 @@ public:
 			// Player will be sent to the vehicles position in the world
 			Vector3 vehiclePosition = vehicle->getWorldPosition();
 
-			// Get a position 1m back from the vehicles position
-			float angle = vehicle->getDirection()->getRadians();
+			float vehicleSpeed = vehicle->getCurrentSpeed();
 
-			angle = M_PI / 2 - angle;
+			if (vehicleSpeed > 0) {
+				// Get a position 1m back from the vehicles position
+				float angle = vehicle->getDirection()->getRadians();
 
-			if (angle < 0) {
-				float a = M_PI + angle;
-				angle = M_PI + a;
+				angle = M_PI / 2 - angle;
+
+				if (angle < 0) {
+					float a = M_PI + angle;
+					angle = M_PI + a;
+				}
+
+				vehiclePosition.setX(vehiclePosition.getX() + (Math::cos(angle) * -1.f));
+				vehiclePosition.setY(vehiclePosition.getY() + (Math::sin(angle) * -1.f));
 			}
-
-			vehiclePosition.setX(vehiclePosition.getX() + (Math::cos(angle) * -1.f));
-			vehiclePosition.setY(vehiclePosition.getY() + (Math::sin(angle) * -1.f));
 
 			auto planetManager = zone->getPlanetManager();
 
