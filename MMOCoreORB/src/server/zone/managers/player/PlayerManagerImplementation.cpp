@@ -5932,7 +5932,7 @@ void PlayerManagerImplementation::disconnectAllPlayers() {
 		}
 	}
 
-	auto elapsedMs = profile.stopMs();
+	auto elapsedMs = Math::max((uint64)1, profile.stopMs());
 	auto ps = countDisconnected / (elapsedMs / 1000.0f);
 	info(true) << "Finished disconnecting " << commas << countDisconnected << " players (" << ps << "/s)";
 }

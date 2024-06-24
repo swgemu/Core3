@@ -9,7 +9,6 @@
 #include "server/zone/objects/cell/CellObject.h"
 
 WorldCoordinates::WorldCoordinates() : Object() {
-
 }
 
 WorldCoordinates::WorldCoordinates(const WorldCoordinates& c) : Object() {
@@ -18,8 +17,9 @@ WorldCoordinates::WorldCoordinates(const WorldCoordinates& c) : Object() {
 }
 
 WorldCoordinates& WorldCoordinates::operator=(const WorldCoordinates& c) {
-	if (this == &c)
+	if (this == &c) {
 		return *this;
+	}
 
 	point = c.point;
 	cell = c.cell;
@@ -32,17 +32,22 @@ WorldCoordinates::WorldCoordinates(SceneObject* obj) : Object() {
 
 	ManagedReference<CellObject*> parent = obj->getParent().get().castTo<CellObject*>();
 
-	if (parent != nullptr && obj != parent)
+	if (parent != nullptr && obj != parent) {
 		cell = parent;
+	}
 }
 
 WorldCoordinates::WorldCoordinates(const Vector3& position, CellObject* parent) : Object() {
 	point = position;
 
-	if (parent != nullptr)
+	if (parent != nullptr) {
 		cell = parent;
+	}
 }
 
+WorldCoordinates::~WorldCoordinates() {
+	cell = nullptr;
+}
 
 bool WorldCoordinates::toBinaryStream(ObjectOutputStream* stream) {
 	point.toBinaryStream(stream);

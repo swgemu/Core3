@@ -141,6 +141,7 @@ class FrsManager extends ManagedService implements Logger {
 	public native void initialize();
 	public native void loadLuaConfig();
 	public native void loadFrsData();
+	public native void stop();
 
 	public native void setupEnclaves();
 	public native void setupEnclaveRooms(BuildingObject enclaveBuilding, final string groupName);
@@ -160,7 +161,7 @@ class FrsManager extends ManagedService implements Logger {
 
 	@arg1preLocked
 	public native void validatePlayerData(CreatureObject player, boolean verifyBan = false);
-	
+
 	@arg1preLocked
 	public native boolean isBanned(CreatureObject player);
 
