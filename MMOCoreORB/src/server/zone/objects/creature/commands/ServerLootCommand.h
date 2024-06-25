@@ -542,6 +542,11 @@ public:
 		uint32 bleedDuration = 0;
 		uint32 bleedUseCount = 0;
 
+		uint32 healthDot = 0;
+		uint32 actionDot = 0;
+		uint32 mindDot = 0;
+		uint32 secondaryDot = 0;
+
 		// Wearable Mods on Weapons
 		uint32 weaponWithSkillModCount = 0;
 		uint32 weaponOneMod = 0;
@@ -675,6 +680,21 @@ public:
 											bleedUseCount += weaponLoot->getDotUses(ii);
 											break;
 										default:
+											break;
+										}
+
+										switch (weaponLoot->getDotAttribute(ii)) {
+										case 0: // CreatureAttribute::HEALTH
+											healthDot++;
+											break;
+										case 3: // CreatureAttribute::ACTION
+											actionDot++;
+											break;
+										case 6: // CreatureAttribute::MIND
+											mindDot++;
+											break;
+										default:
+											secondaryDot++;
 											break;
 										}
 									}
@@ -821,6 +841,14 @@ public:
 					<< "Average Bleed Duration: " << (bleedDuration / bleedDotTotal) << endl
 					<< "Average Bleed Use Count: " << (bleedUseCount / bleedDotTotal) << endl;
 				}
+
+				int attributesTotal = healthDot + actionDot + mindDot + secondaryDot;
+
+				msg << endl
+				<< "Health DOTs: " << healthDot << "    " << (((1.0f * healthDot) / attributesTotal) * 100.f) << " percent of DOT Attributes" << endl
+				<< "Action DOTs: " << actionDot << "    " << (((1.0f * actionDot) / attributesTotal) * 100.f) << " percent of DOT Attributes" << endl
+				<< "Mind DOTs: " << mindDot << "    " << (((1.0f * mindDot) / attributesTotal) * 100.f) << " percent of DOT Attributes" << endl
+				<< "Secondary Attribute DOTs: " << secondaryDot << "    " << (((1.0f * secondaryDot) / attributesTotal) * 100.f) << " percent of DOT Attributes" << endl;
 			}
 
 			msg

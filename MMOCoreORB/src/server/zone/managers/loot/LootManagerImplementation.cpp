@@ -94,7 +94,7 @@ bool LootManagerImplementation::loadConfigData() {
 	mindDotChance = lua->getGlobalFloat("mindDotChance");
 
 	if (fabs((healthDotChance + actionDotChance + mindDotChance) - 1.f) > 0.01f) {
-		error() << "Weapon DOT HAM Attrobite chance is not properly distributed. Chances need to equate to 1 - Current Value: " << (healthDotChance + actionDotChance + mindDotChance);
+		error() << "Weapon DOT HAM Attribute chance is not properly distributed. Chances need to equate to 1 - Current Value: " << (healthDotChance + actionDotChance + mindDotChance);
 	}
 
 	LuaObject dotAttributeTable = lua->getGlobalObject("randomDotAttribute");
@@ -941,13 +941,13 @@ void LootManagerImplementation::addRandomDots(TangibleObject* object, const Loot
 		excMod = yellowModifier;
 	}
 
-	float fireChance = fireDotChance * LootManager::DOTROLLCHANCE;
-	float diseaseChance = diseaseDotChance * LootManager::DOTROLLCHANCE;
-	float poisonChance = poisonDotChance * LootManager::DOTROLLCHANCE;
+	int fireChance = fireDotChance * LootManager::DOTROLLCHANCE;
+	int diseaseChance = (diseaseDotChance * LootManager::DOTROLLCHANCE) + fireChance;
+	// int poisonChance = poisonDotChance * LootManager::DOTROLLCHANCE;
 
-	float healthChance = healthDotChance * LootManager::DOTROLLCHANCE;
-	float actionChance = actionDotChance * LootManager::DOTROLLCHANCE;
-	float mindChance = mindDotChance * LootManager::DOTROLLCHANCE;
+	int mindChance = mindDotChance * LootManager::DOTROLLCHANCE;
+	int actionChance = (actionDotChance * LootManager::DOTROLLCHANCE) + mindChance;
+	// int healthChance = healthDotChance * LootManager::DOTROLLCHANCE;
 
 	for (int i = 0; i < randomDots; i++) {
 		// Determine DOT type
@@ -958,20 +958,20 @@ void LootManagerImplementation::addRandomDots(TangibleObject* object, const Loot
 			dotType = LootManager::DOT_FIRE;
 		} else if (typeChance < diseaseChance) {
 			dotType = LootManager::DOT_DISEASE;
-		}
+		} // DOT Type is poison
 
 		// Determine DOT HAM attribute
 		int attributeChance = System::random(LootManager::DOTROLLCHANCE);
 		int attribute = CreatureAttribute::HEALTH;
 
-		if (attribute < mindChance) {
+		if (attributeChance < mindChance) {
 			attribute = CreatureAttribute::MIND;
-		} else if (attribute < actionChance) {
+		} else if (attributeChance < actionChance) {
 			attribute = CreatureAttribute::ACTION;
-		}
+		} // DOT is a HEALTH attribute
 
 		// Chance for HAM attribute to be a secondary for disease DOTs
-		if (attribute == LootManager::DOT_DISEASE) {
+		if (dotType == LootManager::DOT_DISEASE) {
 			attribute += System::random(2);
 		}
 
