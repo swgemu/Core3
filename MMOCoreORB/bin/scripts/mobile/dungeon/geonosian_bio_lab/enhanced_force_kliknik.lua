@@ -30,8 +30,8 @@ enhanced_force_kliknik = Creature:new {
 	templates = {"object/mobile/kliknik_hue.iff"},
 	scale = 1.45,
 	lootGroups = {
-	 {
-	        groups = {
+		{
+			groups = {
 				{group = "geo_kliknik", chance = 10000000}
 			},
 			lootChance = 2880000
@@ -43,11 +43,11 @@ enhanced_force_kliknik = Creature:new {
 	primaryWeapon = "object/weapon/ranged/creature/creature_spit_heavy_flame.iff",
 	secondaryWeapon = "unarmed",
 	conversationTemplate = "",
-	
+
 	-- primaryAttacks and secondaryAttacks should be separate skill groups specific to the weapon type listed in primaryWeapon and secondaryWeapon
 	-- Use merge() to merge groups in creatureskills.lua together. If a weapon is set to "none", set the attacks variable to empty brackets
 	primaryAttacks = { {"stunattack",""}, {"creatureareaattack",""} },
-	secondaryAttacks = { }
+	secondaryAttacks = { {"stunattack",""}, {"creatureareaattack",""} }
 }
 
 CreatureTemplates:addCreatureTemplate(enhanced_force_kliknik, "enhanced_force_kliknik")
