@@ -39,7 +39,7 @@ poisonous_krevol_queen = Creature:new {
 	-- primaryAttacks and secondaryAttacks should be separate skill groups specific to the weapon type listed in primaryWeapon and secondaryWeapon
 	-- Use merge() to merge groups in creatureskills.lua together. If a weapon is set to "none", set the attacks variable to empty brackets
 	primaryAttacks = { {"blindattack",""}, {"mediumpoison",""} },
-	secondaryAttacks = { {"blindattack",""} }
+	secondaryAttacks = { {"blindattack",""}, {"mediumpoison",""} }
 }
 
 CreatureTemplates:addCreatureTemplate(poisonous_krevol_queen, "poisonous_krevol_queen")

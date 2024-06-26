@@ -41,7 +41,7 @@ noxious_vrelt_scavenger = Creature:new {
 	-- primaryAttacks and secondaryAttacks should be separate skill groups specific to the weapon type listed in primaryWeapon and secondaryWeapon
 	-- Use merge() to merge groups in creatureskills.lua together. If a weapon is set to "none", set the attacks variable to empty brackets
 	primaryAttacks = { {"stunattack",""}, {"milddisease",""} },
-	secondaryAttacks = { {"stunattack",""} }
+	secondaryAttacks = { {"stunattack",""}, {"milddisease",""} }
 }
 
 CreatureTemplates:addCreatureTemplate(noxious_vrelt_scavenger, "noxious_vrelt_scavenger")

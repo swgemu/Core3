@@ -40,7 +40,7 @@ blister_rot_mite_queen = Creature:new {
 	-- primaryAttacks and secondaryAttacks should be separate skill groups specific to the weapon type listed in primaryWeapon and secondaryWeapon
 	-- Use merge() to merge groups in creatureskills.lua together. If a weapon is set to "none", set the attacks variable to empty brackets
 	primaryAttacks = { {"mediumdisease",""}, {"stunattack",""} },
-	secondaryAttacks = { {"stunattack",""} }
+	secondaryAttacks = { {"mediumdisease",""}, {"stunattack",""} }
 }
 
 CreatureTemplates:addCreatureTemplate(blister_rot_mite_queen, "blister_rot_mite_queen")

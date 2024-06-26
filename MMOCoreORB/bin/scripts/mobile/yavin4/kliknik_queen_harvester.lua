@@ -47,7 +47,7 @@ kliknik_queen_harvester = Creature:new {
 	-- primaryAttacks and secondaryAttacks should be separate skill groups specific to the weapon type listed in primaryWeapon and secondaryWeapon
 	-- Use merge() to merge groups in creatureskills.lua together. If a weapon is set to "none", set the attacks variable to empty brackets
 	primaryAttacks = { {"posturedownattack",""}, {"mildpoison",""} },
-	secondaryAttacks = { {"posturedownattack",""} }
+	secondaryAttacks = { {"posturedownattack",""}, {"mildpoison",""} }
 }
 
 CreatureTemplates:addCreatureTemplate(kliknik_queen_harvester, "kliknik_queen_harvester")

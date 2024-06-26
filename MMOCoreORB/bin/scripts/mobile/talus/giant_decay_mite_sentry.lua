@@ -39,7 +39,7 @@ giant_decay_mite_sentry = Creature:new {
 	-- primaryAttacks and secondaryAttacks should be separate skill groups specific to the weapon type listed in primaryWeapon and secondaryWeapon
 	-- Use merge() to merge groups in creatureskills.lua together. If a weapon is set to "none", set the attacks variable to empty brackets
 	primaryAttacks = { {"knockdownattack",""}, {"mediumdisease",""} },
-	secondaryAttacks = { {"knockdownattack",""} }
+	secondaryAttacks = { {"knockdownattack",""}, {"mediumdisease",""} }
 }
 
 CreatureTemplates:addCreatureTemplate(giant_decay_mite_sentry, "giant_decay_mite_sentry")
