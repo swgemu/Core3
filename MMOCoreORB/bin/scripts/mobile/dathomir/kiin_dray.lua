@@ -39,7 +39,7 @@ kiin_dray = Creature:new {
 	-- primaryAttacks and secondaryAttacks should be separate skill groups specific to the weapon type listed in primaryWeapon and secondaryWeapon
 	-- Use merge() to merge groups in creatureskills.lua together. If a weapon is set to "none", set the attacks variable to empty brackets
 	primaryAttacks = { {"creatureareapoison",""}, {"strongpoison",""} },
-	secondaryAttacks = { {"creatureareapoison",""} }
+	secondaryAttacks = { {"creatureareapoison",""}, {"strongpoison",""} }
 }
 
 CreatureTemplates:addCreatureTemplate(kiin_dray, "kiin_dray")
