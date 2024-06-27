@@ -54,25 +54,11 @@ void LootValues::setModifier(const LootItemTemplate* lootTemplate, float lootMod
 		return;
 	}
 
-	int modLvl = levelMin == 0 ? BonusType::STATIC : BonusType::EXPERIMENTAL;
-	int modMax = modLvl;
-	int modMin = modLvl;
-
-	if (lootModifier > EXCEPTIONAL) {
-		modMax = BonusType::LEGENDARY;
-		modMin = BonusType::EXCEPTIONAL;
-	} else if (lootModifier > ENHANCED) {
-		modMax = BonusType::EXCEPTIONAL;
-		modMin = BonusType::ENHANCED;
-	} else if (lootModifier > EXPERIMENTAL) {
-		modMax = BonusType::ENHANCED;
-		modMin = BonusType::EXPERIMENTAL;
-	} else if (lootModifier > STATIC) {
-		modMax = BonusType::EXPERIMENTAL;
-		modMin = BonusType::STATIC;
+	if (levelMin >= 1 && lootModifier == STATIC) {
+		lootModifier = EXPERIMENTAL;
 	}
 
-	modifier = modMax == modMin ? modMin : getDistributedValue(modMin, modMax, level) + BonusType::EXPERIMENTAL;
+	setModifier(lootModifier);
 }
 
 void LootValues::recalculateValues(bool initial) {

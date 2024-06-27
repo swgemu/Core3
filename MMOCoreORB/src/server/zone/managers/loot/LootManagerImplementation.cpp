@@ -286,8 +286,8 @@ void LootManagerImplementation::setJunkValue(TangibleObject* prototype, const Lo
 		junkValue = ((level * 0.01f) * junkValue) + junkValue;
 	}
 
-	if (excMod >= exceptionalModifier) {
-		junkValue *= (excMod * 0.5f);
+	if (excMod >= legendaryModifier) {
+		junkValue *= 2.5f;
 	} else if (excMod >= yellowModifier) {
 		junkValue *= 1.25;
 	}
@@ -308,18 +308,7 @@ int LootManagerImplementation::calculateLootCredits(int level) {
 void LootManagerImplementation::setRandomLootValues(TransactionLog& trx, TangibleObject* prototype, const LootItemTemplate* itemTemplate, int level, float excMod) {
 	auto debugAttributes = ConfigManager::instance()->getLootDebugAttributes();
 
-	float modifier = LootValues::STATIC;
-	float chance = LootValues::getLevelRankValue(level, 0.2f, 0.9f) * levelChance;
-
-	if (excMod >= legendaryModifier) {
-		modifier = LootValues::LEGENDARY;
-	} else if (excMod >= exceptionalModifier) {
-		modifier = LootValues::EXCEPTIONAL;
-	} else if (System::random(yellowChance) <= chance) {
-		modifier = LootValues::ENHANCED;
-	} else if (System::random(baseChance) <= chance) {
-		modifier = LootValues::EXPERIMENTAL;
-	}
+	float modifier = getRandomModifier(itemTemplate, level, excMod);
 
 	auto lootValues = LootValues(itemTemplate, level, modifier);
 	prototype->updateCraftingValues(&lootValues, true);
@@ -420,11 +409,11 @@ TangibleObject* LootManagerImplementation::createLootObject(TransactionLog& trx,
 	setCustomizationData(templateObject, prototype);
 	setCustomObjectName(prototype, templateObject, excMod);
 
-	// Set the value for those items that can be sold at a junk dealer
-	setJunkValue(prototype, templateObject, level, excMod);
-
 	// Set the values for the random attributes to be modified if there are any
 	setRandomLootValues(trx, prototype, templateObject, level, excMod);
+
+	// Set the value for those items that can be sold at a junk dealer
+	setJunkValue(prototype, templateObject, level, excMod);
 
 	// Chance to add skill modifiers to weapons and wearable objects (clothing, armor)
 	if (prototype->isWeaponObject() || prototype->isWearableObject()) {
@@ -552,18 +541,19 @@ void LootManagerImplementation::setSkillMods(TangibleObject* prototype, const Lo
 
 	VectorMap<String,int> skillMods = *templateObject->getSkillMods();
 
-	int chance = LootValues::getLevelRankValue(level, 0.2f, 0.9f) * Math::max(1.f, excMod) * levelChance;
+	float modifier = Math::max(getRandomModifier(templateObject, level, excMod), baseModifier);
+	int chance = LootValues::getLevelRankValue(level, 0.2f, 0.9f) * modifier * levelChance;
 	int roll = System::random(skillModChance);
 	int randomMods = 0;
 
 	if (roll <= chance) {
 		int pivot = chance - roll;
 
-		if (pivot < 20) {
+		if (pivot < 40) {
 			randomMods = 1;
-		} else if (pivot < 40) {
+		} else if (pivot < 70) {
 			randomMods = System::random(1) + 1;
-		} else if (pivot < 60) {
+		} else if (pivot < 100) {
 			randomMods = System::random(2) + 1;
 		} else {
 			randomMods = System::random(1) + 2;
@@ -577,8 +567,9 @@ void LootManagerImplementation::setSkillMods(TangibleObject* prototype, const Lo
 			continue;
 		}
 
-		int min = Math::clamp(-1, (int)round(0.075f * level) - 1, 25);
-		int max = Math::clamp(-1, (int)round(0.1f * level) + 3, 25);
+		float step = 1.f - ((i / (float)randomMods) * 0.5f);
+		int min = Math::clamp(-1, (int)round(0.075f * level) - 1, 25) * step;
+		int max = Math::clamp(-1, (int)round(0.125f * level) + 1, 25);
 		int mod = System::random(max - min) + min;
 
 		skillMods.add(skillMods.size(), VectorMapEntry<String,int>(modName, mod == 0 ? 1 : mod));
@@ -838,7 +829,7 @@ void LootManagerImplementation::addStaticDots(TangibleObject* object, const Loot
 		return;
 	}
 
-	int levelRank = LootValues::getLevelRankValue(level, 0.f, 0.25f) * levelChance;
+	int levelRank = LootValues::getLevelRankValue(level, 0.f, 0.15f) * levelChance;
 	int staticDots = 0;
 
 	if (staticDotChance == 0 || System::random(staticDotChance) <= levelRank) {
@@ -922,7 +913,8 @@ void LootManagerImplementation::addRandomDots(TangibleObject* object, const Loot
 		return;
 	}
 
-	int levelRank = LootValues::getLevelRankValue(level, 0.f, 0.25f) * Math::max(1.f, excMod) * levelChance;
+	float modifier = Math::max(getRandomModifier(templateObject, level, excMod), baseModifier);
+	int levelRank = LootValues::getLevelRankValue(level, 0.f, 0.15f) * modifier * levelChance;
 	int randomDots = 0;
 
 	if (randomDotChance == 0 || System::random(randomDotChance) <= levelRank) {
@@ -935,10 +927,6 @@ void LootManagerImplementation::addRandomDots(TangibleObject* object, const Loot
 
 	if (randomDots == 0) {
 		return;
-	}
-
-	if (excMod == baseModifier && System::random(yellowChance) <= levelRank) {
-		excMod = yellowModifier;
 	}
 
 	int fireChance = fireDotChance * LootManager::DOTROLLCHANCE;
@@ -987,10 +975,10 @@ void LootManagerImplementation::addRandomDots(TangibleObject* object, const Loot
 			durMod = 1.5f;
 		}
 
-		int strength = LootValues::getDistributedValue(randomDotStrength.get(0), randomDotStrength.get(1), level) * excMod * strMod;
-		int duration = LootValues::getDistributedValue(randomDotDuration.get(0), randomDotDuration.get(1), level) * excMod * durMod;
-		int potency = LootValues::getDistributedValue(randomDotPotency.get(0), randomDotPotency.get(1), level) * excMod;
-		int uses = LootValues::getDistributedValue(randomDotUses.get(0), randomDotUses.get(1), level) * excMod;
+		int strength = LootValues::getDistributedValue(randomDotStrength.get(0), randomDotStrength.get(1), level) * modifier * strMod;
+		int duration = LootValues::getDistributedValue(randomDotDuration.get(0), randomDotDuration.get(1), level) * modifier * durMod;
+		int potency = LootValues::getDistributedValue(randomDotPotency.get(0), randomDotPotency.get(1), level) * modifier;
+		int uses = LootValues::getDistributedValue(randomDotUses.get(0), randomDotUses.get(1), level) * modifier;
 
 		if (strength <= 0 || duration <= 0 || potency <= 0 || uses <= 0) {
 			continue;
@@ -1005,4 +993,41 @@ void LootManagerImplementation::addRandomDots(TangibleObject* object, const Loot
 	}
 
 	weapon->addMagicBit(false);
+}
+
+float LootManagerImplementation::getRandomModifier(const LootItemTemplate* itemTemplate, int level, float excMod) {
+	if (level <= 0 || excMod <= 0.f || itemTemplate == nullptr || itemTemplate->getLevelMax() == 0) {
+		return 0.f;
+	}
+
+	if (excMod <= baseModifier) {
+		float chance = LootValues::getLevelRankValue(level, 0.2f, 0.9f) * levelChance;
+
+		if (System::random(yellowChance) <= chance) {
+			excMod = yellowModifier;
+		} else if (System::random(baseChance) <= chance) {
+			excMod = baseModifier;
+		} else {
+			excMod = 0.f;
+		}
+	}
+
+	int modMax = 0;
+	int modMin = 0;
+
+	if (excMod >= legendaryModifier) {
+		modMax = legendaryModifier;
+		modMin = exceptionalModifier;
+	} else if (excMod >= exceptionalModifier) {
+		modMax = exceptionalModifier;
+		modMin = yellowModifier;
+	} else if (excMod >= yellowModifier) {
+		modMax = yellowModifier;
+		modMin = baseModifier;
+	} else if (excMod >= baseModifier) {
+		modMax = baseModifier;
+		modMin = 0.f;
+	}
+
+	return modMax == modMin ? modMin : LootValues::getDistributedValue(modMin, modMax, level) + baseModifier;
 }
