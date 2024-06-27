@@ -246,4 +246,6 @@ class LootManager extends ManagedService implements Logger {
 		return crystalData.get(name);
 	}
 
+	@local
+	private native float getRandomModifier(final LootItemTemplate templateObject, int level, float excMod);
 }
