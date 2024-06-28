@@ -794,7 +794,7 @@ public:
 		<< "Total Dropped Loot Items: " << totalLootItems << endl
 		<< endl
 		<< "Total Legendaries Dropped: " << legendaryCount << "    " << (((1.0f * legendaryCount) / totalLootItems) * 100.f) << " percent " << endl
-		<< "Total Expectionals Dropped: " << exceptionalCount << "    " << (((1.0f * exceptionalCount) / totalLootItems) * 100.f) << " percent" << endl
+		<< "Total Exceptionals Dropped: " << exceptionalCount << "    " << (((1.0f * exceptionalCount) / totalLootItems) * 100.f) << " percent" << endl
 		<< "Total Yellow Named Dropped: " << yellowCount << "    " << (((1.0f * yellowCount) / totalLootItems) * 100.f) << " percent" << endl << endl
 		<< "Total Weapons Dropped: " << weaponCount << endl << endl;
 

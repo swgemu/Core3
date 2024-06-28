@@ -365,7 +365,7 @@ TangibleObject* LootManagerImplementation::createLootObject(TransactionLog& trx,
 	trx.addState("lootMaxCondition", maxCondition);
 
 #ifdef DEBUG_LOOT_MAN
-	info(true) << "Item Template: " << directTemplateObject << "    Level = " << level << " Uncapped Level = " << uncappedLevel;
+	info(true) << "Item Template: " << directTemplateObject << "    Level = " << level;
 #endif
 
 	if (templateObject->isRandomResourceContainer()) {
