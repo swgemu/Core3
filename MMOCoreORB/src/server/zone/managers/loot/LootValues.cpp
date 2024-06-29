@@ -156,8 +156,8 @@ void LootValues::setDamageValues() {
 			float maxPercentMax = getMaxPercentage("maxdamage");
 			float minPercentMax = getMaxPercentage("mindamage");
 
-			float percent = Math::max(minPercent, maxPercent);
-			float percentMax = Math::max(minPercentMax, maxPercentMax);
+			float percent = Math::clamp(0.f, (minPercent + maxPercent) * 0.5f, 1.f);
+			float percentMax = Math::max((minPercentMax + maxPercentMax) * 0.5f, 1.f);
 
 			setCurrentPercentage("maxdamage", percent, percentMax);
 			setModifierValue("maxdamage", percentMax);
