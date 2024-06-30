@@ -149,6 +149,13 @@ public:
 			}
 		}
 
+		if (objectType == SceneObjectType::COMPONENT) {
+			switch (attributeCRC) {
+				case String::hashCode("usecount"):						return RandomType::UNIFORM;
+				default:												return RandomType::STATIC;
+			}
+		}
+
 		return RandomType::STATIC;
 	}
 
