@@ -188,7 +188,7 @@ public:
 		lua->setGlobalInt("INCAPACITATED",				CreaturePosture::INCAPACITATED			);
 		lua->setGlobalInt("DEAD",						CreaturePosture::DEAD					);
 
-		lua->setGlobalInt("STATIONARY",					CreatureLocomotion::STATIONARY			);
+		lua->setGlobalInt("STATIONARY_LOCOMOTION",		CreatureLocomotion::STATIONARY			);
 		lua->setGlobalInt("SLOW",						CreatureLocomotion::SLOW				);
 		lua->setGlobalInt("FAST",						CreatureLocomotion::FAST				);
 

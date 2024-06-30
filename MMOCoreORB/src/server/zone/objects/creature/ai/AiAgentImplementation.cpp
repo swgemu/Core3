@@ -626,6 +626,11 @@ void AiAgentImplementation::respawn(Zone* zone, int level) {
 	info(true) << "respawn called for - " << getDisplayedName() << " ID: " << getObjectID() << " Inventory Size: " << inventory->getContainerObjectsSize();
 #endif
 
+	// Remove the object flag for baby
+	if (creatureBitmask & ObjectFlag::BABY) {
+		removeObjectFlag(ObjectFlag::BABY);
+	}
+
 	// Clear the agents blackboard
 	blackboard.removeAll();
 
@@ -687,7 +692,7 @@ void AiAgentImplementation::respawn(Zone* zone, int level) {
 				// Now reload the template for baby stats
 				creature->loadTemplateDataForBaby(npcTemplate);
 
-				// info(true) << getDisplayedName() << " ID: " << getObjectID() << " Loc: " << getWorldPosition().toString() << " SPAWNED AS BABY" << " Inventory Size: " << inventory->getContainerObjectsSize();
+				// info(true) << getDisplayedName() << " ID: " << getObjectID() << " Loc: " << getWorldPosition().toString() << " SPAWNED AS BABY";
 			}
 		}
 	}
