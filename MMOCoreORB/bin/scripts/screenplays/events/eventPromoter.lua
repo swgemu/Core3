@@ -131,7 +131,7 @@ function eventPromoterScreenplay:giveItem(pPlayer, deedData)
 		CreatureObject(pPlayer):sendSystemMessage("@event_perk:promoter_full_inv")
 		return
 	elseif (not PlayerObject(pGhost):isPrivileged()) then
-		if (PlayerObject(pGhost):hasEventPerk("shuttle_beacon")) then
+		if (deedData.template == "shuttle_beacon" and PlayerObject(pGhost):hasEventPerk("shuttle_beacon")) then
 			CreatureObject(pPlayer):sendSystemMessage("@event_perk:only_one_shuttle_beacon")
 			return
 		elseif (PlayerObject(pGhost):getEventPerkCount() >= 5) then
