@@ -6,7 +6,7 @@ heavy_duty_clasp = {
 	customObjectName = "",
 	directObjectTemplate = "object/tangible/component/clothing/clasp_heavy_duty.iff",
 	craftingValues = {
-		{"useCount",1,6,0},
+		{"useCount",1,11,0},
 	},
 	customizationStringNames = {},
 	customizationValues = {}
