@@ -173,11 +173,11 @@ ceth_laike_conv:addScreen(ground_progress)
 
 ground_finished = ConvoScreen:new {
 	id = "ground_finished",
-	leftDialog = "@conversation/c_sink_imp:s_1396", -- I have the Flail symbols and you have heard about the Binayre, I believe, sir.
-	stopConversation = "false",
+	leftDialog = "@conversation/c_sink_imp:s_1398", -- You would be correct. You did an admirable job.
+	stopConversation = "false", --  Set to false when space portion is implemented
 	options = {
-		--{"@conversation/c_sink_imp:s_1400", "space_start"}, -- These thugs aren't only on the ground, sir.
-		--{"@conversation/c_sink_imp:s_1404", "ground_done"}, -- I am happy to do my part.
+		{"@conversation/c_sink_imp:s_1400", "space_start"}, -- These thugs aren't only on the ground, sir.
+		{"@conversation/c_sink_imp:s_1404", "ground_done"}, -- I am happy to do my part.
 	}
 }
 ceth_laike_conv:addScreen(ground_finished)
