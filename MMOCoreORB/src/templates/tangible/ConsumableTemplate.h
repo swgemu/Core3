@@ -13,7 +13,11 @@
 class ConsumableTemplate : public SharedTangibleObjectTemplate {
 	int duration;
 	int filling;
-	int nutrition;
+
+	float nutrition;
+
+	float nutritionMin;
+	float nutritionMax;
 
 	int effectType;
 	Vector<int> eventType;
@@ -22,8 +26,7 @@ class ConsumableTemplate : public SharedTangibleObjectTemplate {
 	int fillingMax;
 	int flavorMin;
 	int flavorMax;
-	int nutritionMin;
-	int nutritionMax;
+
 	int quantityMin;
 	int quantityMax;
 
@@ -40,7 +43,10 @@ public:
 	ConsumableTemplate() {
 		duration = 0;
 		filling = 0;
-		nutrition = 0;
+
+		nutrition = 0.f;
+		nutritionMin = 0.f;
+		nutritionMax = 0.f;
 
 		effectType = 0;
 
@@ -48,8 +54,6 @@ public:
 		fillingMax = 0;
 		flavorMin = 0;
 		flavorMax = 0;
-		nutritionMin = 0;
-		nutritionMax = 0;
 		quantityMin = 0;
 		quantityMax = 0;
 
@@ -68,7 +72,7 @@ public:
 
 		duration = templateData->getIntField("duration");
 		filling = templateData->getIntField("filling");
-		nutrition = templateData->getIntField("nutrition");
+		nutrition = templateData->getFloatField("nutrition");
 
 		effectType = templateData->getIntField("effectType");
 
@@ -87,8 +91,8 @@ public:
 
 		flavorMin = templateData->getIntField("flavorMin");
 		flavorMax = templateData->getIntField("flavorMax");
-		nutritionMin = templateData->getIntField("nutritionMin");
-		nutritionMax = templateData->getIntField("nutritionMax");
+		nutritionMin = templateData->getFloatField("nutritionMin");
+		nutritionMax = templateData->getFloatField("nutritionMax");
 		quantityMin = templateData->getIntField("quantityMin");
 		quantityMax = templateData->getIntField("quantityMax");
 
@@ -165,15 +169,15 @@ public:
 		return &eventType;
 	}
 
-	inline int getNutrition() const {
+	inline float getNutrition() const {
 		return nutrition;
 	}
 
-	inline int getNutritionMax() const {
+	inline float getNutritionMax() const {
 		return nutritionMax;
 	}
 
-	inline int getNutritionMin() const {
+	inline float getNutritionMin() const {
 		return nutritionMin;
 	}
 
