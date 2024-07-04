@@ -17,92 +17,106 @@
 #include "server/zone/managers/player/PlayerManager.h"
 
 void ConsumableImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
+	if (templateData == nullptr) {
+		return;
+	}
+
 	TangibleObjectImplementation::loadTemplateData(templateData);
 
-	ConsumableTemplate* consumable = dynamic_cast<ConsumableTemplate*>(templateData);
+	ConsumableTemplate* consumableTemplate = dynamic_cast<ConsumableTemplate*>(templateData);
 
-	if (consumable == nullptr)
+	if (consumableTemplate == nullptr) {
 		return;
+	}
 
-	duration = consumable->getDuration();
-	filling = consumable->getFilling();
-	nutrition = consumable->getNutrition();
+	duration = consumableTemplate->getDuration();
+	filling = consumableTemplate->getFilling();
 
-	effectType = consumable->getEffectType();
+	newNutrition = consumableTemplate->getNutrition();
+	nutritionMin = consumableTemplate->getNutritionMin();
+	nutritionMax = consumableTemplate->getNutritionMax();
 
-	eventTypes = *consumable->getEventTypes();
+	effectType = consumableTemplate->getEffectType();
+	eventTypes = *consumableTemplate->getEventTypes();
 
-	fillingMin = consumable->getFillingMin();
-	fillingMax = consumable->getFillingMax();
-	flavorMin = consumable->getFlavorMin();
-	flavorMax = consumable->getFlavorMax();
-	nutritionMin = consumable->getNutritionMin();
-	nutritionMax = consumable->getNutritionMax();
-	quantityMin = consumable->getQuantityMin();
-	quantityMax = consumable->getQuantityMax();
+	fillingMin = consumableTemplate->getFillingMin();
+	fillingMax = consumableTemplate->getFillingMax();
+	flavorMin = consumableTemplate->getFlavorMin();
+	flavorMax = consumableTemplate->getFlavorMax();
+
+	quantityMin = consumableTemplate->getQuantityMin();
+	quantityMax = consumableTemplate->getQuantityMax();
 
 
-	modifiers = *consumable->getModifiers();
-	buffName = consumable->getBuffName();
+	modifiers = *consumableTemplate->getModifiers();
+	buffName = consumableTemplate->getBuffName();
 
 	buffCRC = buffName.hashCode();
 
-	foragedFood = consumable->getForagedFood();
+	foragedFood = consumableTemplate->getForagedFood();
 
-	speciesRestriction = consumable->getSpeciesRestriction();
+	speciesRestriction = consumableTemplate->getSpeciesRestriction();
 }
 
 void ConsumableImplementation::updateCraftingValues(CraftingValues* values, bool firstUpdate) {
+	if (values == nullptr) {
+		return;
+	}
 
-	if(firstUpdate) {
+	if (firstUpdate) {
 		setMaxCondition(values->getCurrentValue("hitpoints"), true);
 	}
 
-	if (!isSpice()) {
-		if(values->hasExperimentalAttribute("filling")) {
+	if (isSpice()) {
+		return;
+	}
 
-			filling = (fillingMax - fillingMin) * values->getCurrentPercentage("filling") + fillingMin;
-			if(values->hasExperimentalAttribute("add_filling"))
-				filling *= (1 -(values->getCurrentValue("add_filling") / 100.f));
+	if (values->hasExperimentalAttribute("filling")) {
+		filling = (fillingMax - fillingMin) * values->getCurrentPercentage("filling") + fillingMin;
 
+		if (values->hasExperimentalAttribute("add_filling")) {
+			filling *= (1.f - (values->getCurrentValue("add_filling") / 100.f));
+		}
+	}
+
+	// http://www.swgemu.com/archive/scrapbookv51/data/20070126195417/cheffaq2_5.html
+	// Containers
+	// How do containers work?
+	// Containers are required components for all drinks, but you can use any container in that slot. Each container has a multiplier that gets applied to the base quantity of the drink (which is shown in the Food Chart).
+	// Small Glass: 1x multiplier (base quantity),Large Glass: 1.5x multiplier
+	// Cask: 3x multiplier , Barrel: Unknown (bugged as of 3/30/04).
+	// The multiplier is applied after any rounding due to experimentation. So if a drink needs to be experimented to 25% to go from 6 to 7 doses, that point is still when additional doses appear, just with the multiplier. With a large glass, that drink would go from 9 to 10 doses (6 * 1.5 = 9, 7 * 1.5 = 10.5, but
+	// it gets rounded down). This makes things tricky when using large glasses. The rounding is done twice, so you'll get some jumpy increases, first from 9 to 10 at 25% quantity, then from 10 to 12 at 50% quantity. The container multiplier also stacks with any BE quantity enhancer. So if you use both a +150
+	// quantity tissue (which gives a 2.5x multiplier) and a cask, the final drink will have 7.5x as many doses as one made with a small glass and without the tissue. T'illa T'ill is the only exception. This appears to be designed as a single-dose item (although why a 10-15% reduction in the food stomach is
+	// considered that powerful is beyond me). This will always come out with a single dose no matter what container or BE tissue you include in it, so stick to small glasses.
+
+	if (values->hasExperimentalAttribute("quantity")) {
+		int quant = (quantityMax - quantityMin) * values->getCurrentPercentage("quantity") + quantityMin;
+
+		if (values->hasExperimentalAttribute("quantity_bonus")) {
+			quant *= values->getCurrentValue("quantity_bonus");
 		}
 
-		//http://www.swgemu.com/archive/scrapbookv51/data/20070126195417/cheffaq2_5.html
-		//Containers
-		//How do containers work?
-		//Containers are required components for all drinks, but you can use any container in that slot. Each container has a multiplier that gets applied to the base quantity of the drink (which is shown in the Food Chart).
-		//Small Glass: 1x multiplier (base quantity),Large Glass: 1.5x multiplier
-		//Cask: 3x multiplier , Barrel: Unknown (bugged as of 3/30/04).
-		//The multiplier is applied after any rounding due to experimentation. So if a drink needs to be experimented to 25% to go from 6 to 7 doses, that point is still when additional doses appear, just with the multiplier. With a large glass, that drink would go from 9 to 10 doses (6 * 1.5 = 9, 7 * 1.5 = 10.5, but it gets rounded down). This makes things tricky when using large glasses. The rounding is done twice, so you'll get some jumpy increases, first from 9 to 10 at 25% quantity, then from 10 to 12 at 50% quantity.
-		//The container multiplier also stacks with any BE quantity enhancer. So if you use both a +150 quantity tissue (which gives a 2.5x multiplier) and a cask, the final drink will have 7.5x as many doses as one made with a small glass and without the tissue.
-		//T'illa T'ill is the only exception. This appears to be designed as a single-dose item (although why a 10-15% reduction in the food stomach is considered that powerful is beyond me). This will always come out with a single dose no matter what container or BE tissue you include in it, so stick to small glasses.
-
-		if(values->hasExperimentalAttribute("quantity")) {
-			int quant = (quantityMax - quantityMin) * values->getCurrentPercentage("quantity") + quantityMin;
-
-			if(values->hasExperimentalAttribute("quantity_bonus"))
-				quant *= values->getCurrentValue("quantity_bonus");
-
-
-			if(values->hasExperimentalAttribute("add_quantity"))
-				quant *= (1 + (values->getCurrentValue("add_quantity") / 100.f));
-
-			setUseCount(quant, true);
+		if (values->hasExperimentalAttribute("add_quantity")) {
+			quant *= (1 + (values->getCurrentValue("add_quantity") / 100.f));
 		}
 
-		if(values->hasExperimentalAttribute("flavor")) {
-			duration = (flavorMax - flavorMin) * values->getCurrentPercentage("flavor") + flavorMin;
+		setUseCount(quant, true);
+	}
 
-			if(values->hasExperimentalAttribute("add_flavor"))
-				duration *= (1 + (values->getCurrentValue("add_flavor") / 100.f));
+	if (values->hasExperimentalAttribute("flavor")) {
+		duration = (flavorMax - flavorMin) * values->getCurrentPercentage("flavor") + flavorMin;
 
+		if (values->hasExperimentalAttribute("add_flavor")) {
+			duration *= (1 + (values->getCurrentValue("add_flavor") / 100.f));
 		}
+	}
 
-		if(values->hasExperimentalAttribute("nutrition")) {
-			nutrition = (nutritionMax - nutritionMin) * values->getCurrentPercentage("nutrition") + nutritionMin;
+	if (values->hasExperimentalAttribute("nutrition")) {
+		newNutrition = (nutritionMax - nutritionMin) * values->getCurrentPercentage("nutrition") + nutritionMin;
 
-			if(values->hasExperimentalAttribute("add_nutrition"))
-				nutrition *= (1 + (values->getCurrentValue("add_nutrition") / 100.f));
+		if (values->hasExperimentalAttribute("add_nutrition")) {
+			newNutrition *= (1 + (values->getCurrentValue("add_nutrition") / 100.f));
 		}
 	}
 }
@@ -217,12 +231,13 @@ int ConsumableImplementation::handleObjectMenuSelect(CreatureObject* player, byt
 		for (int i = 0; i < modifiers.size(); ++i) {
 			String key = modifiers.elementAt(i).getKey();
 
-			if (key == "health")
-				healthHealed = player->healDamage(player, 0, nutrition);
-			else if (key == "action")
-				actionHealed = player->healDamage(player, 3, nutrition);
-			else if (key == "mind")
-				mindHealed = player->healDamage(player, 6, nutrition);
+			if (key == "health") {
+				healthHealed = player->healDamage(player, 0, newNutrition);
+			} else if (key == "action") {
+				actionHealed = player->healDamage(player, 3, newNutrition);
+			} else if (key == "mind") {
+				mindHealed = player->healDamage(player, 6, newNutrition);
+			}
 		}
 
 		if ((healthHealed + actionHealed + mindHealed) <= 0) {
@@ -292,8 +307,8 @@ int ConsumableImplementation::handleObjectMenuSelect(CreatureObject* player, byt
 		String effect = modifiers.elementAt(0).getKey();
 
 		if (effect == "burst_run") {
-			float cooldownModifier = (float) duration / 100.f;
-			float hamModifier = (float) nutrition / 100.f;
+			float cooldownModifier = (float)duration / 100.f;
+			float hamModifier = (float)newNutrition / 100.f;
 
 			PlayerManager* playerManager = server->getZoneServer()->getPlayerManager();
 
@@ -304,16 +319,18 @@ int ConsumableImplementation::handleObjectMenuSelect(CreatureObject* player, byt
 			player->enqueueCommand(STRING_HASHCODE("wookieeroar"), 0, target, "", 1);
 		} else if (effect == "enhanced_regen") {
 			uint64 target = player->getObjectID();
-			player->addSkillMod(SkillModManager::TEMPORARYMOD,"enhanced_regen",nutrition,true);
+			player->addSkillMod(SkillModManager::TEMPORARYMOD, "enhanced_regen", newNutrition, true);
 			player->enqueueCommand(STRING_HASHCODE("regeneration"), 0, target, "", 1);
 		} else if (effect == "food_reduce") {
-			//Tilla till reduces food stomach filling by a percentage
+			// Tilla till reduces food stomach filling by a percentage
 			int currentfilling = ghost->getFoodFilling();
-			ghost->setFoodFilling(round(currentfilling * (100 - nutrition) / 100.0f), true);
+
+			ghost->setFoodFilling(round(currentfilling * (100 - newNutrition) / 100.0f), true);
 		} else if (effect == "slow_dot" && player->getDamageOverTimeList()->hasDot()) {
-			player->getDamageOverTimeList()->multiplyAllDOTDurations((100 - nutrition) / 100.f);
+			player->getDamageOverTimeList()->multiplyAllDOTDurations((100 - newNutrition) / 100.f);
+
 			StringIdChatParameter params("@combat_effects:slow_dot_done"); // The remaining duration of DOTs affecting you have been reduced by %DI%.
-			params.setDI(nutrition);
+			params.setDI((uint32)newNutrition);
 			player->sendSystemMessage(params);
 		}
 
@@ -382,18 +399,24 @@ void ConsumableImplementation::setModifiers(Buff* buff, bool skillModifiers) {
 
 		uint8 hamAttribute = CreatureAttribute::getAttribute(attribute);
 
-		if (!isSpice() && !isForagedFood())
-			value = nutrition;
+		if (!isSpice() && !isForagedFood()) {
+			value = newNutrition;
+		}
 
-		if (!skillModifiers)
+		if (!skillModifiers) {
 			buff->setAttributeModifier(hamAttribute, (int)value);
-
-		else
+		} else {
 			buff->setSkillModifier(attribute, (int)value);
+		}
 	}
 }
 
 void ConsumableImplementation::fillAttributeList(AttributeListMessage* alm, CreatureObject* player) {
+	// Update new nutrition float attribute from old int value
+	if (nutrition > 0 && newNutrition < 0.0001) {
+		newNutrition = (1.000f * nutrition);
+	}
+
 	if (maxCondition > 0) {
 		StringBuffer cond;
 		cond << (maxCondition-(int)conditionDamage) << "/" << maxCondition;
@@ -404,15 +427,16 @@ void ConsumableImplementation::fillAttributeList(AttributeListMessage* alm, Crea
 	alm->insertAttribute("volume", volume);
 
 	// Hide information on batender drinks
-	if (effectType == EFFECT_BARTENDER_DRINK)
+	if (effectType == EFFECT_BARTENDER_DRINK) {
 		return;
+	}
 
 	if (!isAttributeEffect() && !isSpiceEffect()) {
-		if (useCount > 0)
+		if (useCount > 0) {
 			alm->insertAttribute("counter_uses_remaining", useCount);
-	} else {
-		if (useCount > 0)
-			alm->insertAttribute("quantity", useCount);
+		}
+	} else if (useCount > 0) {
+		alm->insertAttribute("quantity", useCount);
 	}
 
 	if (!craftersName.isEmpty()){
@@ -425,7 +449,6 @@ void ConsumableImplementation::fillAttributeList(AttributeListMessage* alm, Crea
 
 	switch (effectType) {
 	case EFFECT_HEALING: {
-
 		if (filling > 0) {
 			if (isFood())
 				alm->insertAttribute("stomach_food", filling);
@@ -434,18 +457,17 @@ void ConsumableImplementation::fillAttributeList(AttributeListMessage* alm, Crea
 		}
 
 		if (modifiers.size() == 1 && modifiers.elementAt(0).getKey() == "mind") {
-			alm->insertAttribute("mind_heal", nutrition);
+			alm->insertAttribute("mind_heal", Math::getPrecision(newNutrition, 6));
 		} else {
 			for (int i = 0; i < modifiers.size(); ++i) {
 				VectorMapEntry<String, float>* entry = &modifiers.elementAt(i);
-				alm->insertAttribute("examine_heal_damage_" + entry->getKey(), nutrition);
+				alm->insertAttribute("examine_heal_damage_" + entry->getKey(), Math::getPrecision(newNutrition, 6));
 			}
 		}
 
 		break;
 	}
 	case EFFECT_ATTRIBUTE: {
-
 		if (filling > 0) {
 			if (isFood())
 				alm->insertAttribute("stomach_food", filling);
@@ -475,10 +497,11 @@ void ConsumableImplementation::fillAttributeList(AttributeListMessage* alm, Crea
 				VectorMapEntry<String, float>* entry = &modifiers.elementAt(i);
 				StringBuffer nutritionstring;
 
-				if (!isForagedFood())
-					nutritionstring << ((nutrition > 0) ? "+" : "") << nutrition << " for " << durationstring.toString();
-				else
+				if (!isForagedFood()) {
+					nutritionstring << ((newNutrition > 0) ? "+" : "") << Math::getPrecision(newNutrition, 6) << " for " << durationstring.toString();
+				} else {
 					nutritionstring << ((entry->getValue() > 0) ? "+" : "") << entry->getValue() << ", " << durationstring.toString();
+				}
 
 				alm->insertAttribute("attr_" + entry->getKey(), nutritionstring.toString());
 			}
@@ -498,6 +521,7 @@ void ConsumableImplementation::fillAttributeList(AttributeListMessage* alm, Crea
 				VectorMapEntry<String, float>* entry = &modifiers.elementAt(i);
 				StringBuffer nutritionstring;
 				nutritionstring << ((entry->getValue() > 0) ? "+" : "") << entry->getValue() << ", " << durationstring.toString();
+
 				alm->insertAttribute("attr_" + entry->getKey(), nutritionstring.toString());
 			}
 		}
@@ -505,12 +529,12 @@ void ConsumableImplementation::fillAttributeList(AttributeListMessage* alm, Crea
 		break;
 	}
 	case EFFECT_SKILL: {
-
 		if (filling > 0) {
-			if (isFood())
+			if (isFood()) {
 				alm->insertAttribute("stomach_food", filling);
-			else if (isDrink())
+			} else if (isDrink()) {
 				alm->insertAttribute("stomach_drink", filling);
+			}
 		}
 
 		for (int i = 0; i < modifiers.size(); ++i) {
@@ -519,7 +543,7 @@ void ConsumableImplementation::fillAttributeList(AttributeListMessage* alm, Crea
 		}
 
 		StringBuffer nutritionstring;
-		nutritionstring << ((nutrition > 0) ? "+" : "") << nutrition;
+		nutritionstring << ((newNutrition > 0) ? "+" : "") << Math::getPrecision(newNutrition, 6);
 
 		alm->insertAttribute("modifier", nutritionstring.toString());
 
@@ -528,8 +552,9 @@ void ConsumableImplementation::fillAttributeList(AttributeListMessage* alm, Crea
 		int minutes = (int) floor(duration / 60.0f);
 		int seconds = duration % 60;
 
-		if (minutes > 0)
+		if (minutes > 0) {
 			durationstring << minutes << "m ";
+		}
 
 		durationstring << seconds << "s";
 
@@ -538,12 +563,12 @@ void ConsumableImplementation::fillAttributeList(AttributeListMessage* alm, Crea
 		break;
 	}
 	case EFFECT_DURATION: {
-
 		if (filling > 0) {
-			if (isFood())
+			if (isFood()) {
 				alm->insertAttribute("stomach_food", filling);
-			else if (isDrink())
+			} else if (isDrink()) {
 				alm->insertAttribute("stomach_drink", filling);
+			}
 		}
 
 		for (int i = 0; i < modifiers.size(); ++i) {
@@ -554,7 +579,7 @@ void ConsumableImplementation::fillAttributeList(AttributeListMessage* alm, Crea
 
 			alm->insertAttribute("duration_effect", "@obj_attr_n:" + key + "_d");
 
-			alm->insertAttribute(key + "_eff", nutrition);
+			alm->insertAttribute(key + "_eff", Math::getPrecision(newNutrition, 6));
 
 			StringBuffer durationstring;
 
@@ -572,7 +597,6 @@ void ConsumableImplementation::fillAttributeList(AttributeListMessage* alm, Crea
 		break;
 	}
 	case EFFECT_DELAYED: {
-
 		if (filling > 0) {
 			if (isFood())
 				alm->insertAttribute("stomach_food", filling);
@@ -588,7 +612,7 @@ void ConsumableImplementation::fillAttributeList(AttributeListMessage* alm, Crea
 
 			alm->insertAttribute("delay_effect", "@obj_attr_n:" + key + "_d");
 
-			alm->insertAttribute(key + "_eff", nutrition);
+			alm->insertAttribute(key + "_eff", Math::getPrecision(newNutrition, 6));
 
 			if (duration > 1)
 				alm->insertAttribute(key + "_dur", duration);
@@ -597,7 +621,6 @@ void ConsumableImplementation::fillAttributeList(AttributeListMessage* alm, Crea
 		break;
 	}
 	case EFFECT_INSTANT: {
-
 		if (filling > 0) {
 			if (isFood())
 				alm->insertAttribute("stomach_food", filling);
@@ -612,7 +635,7 @@ void ConsumableImplementation::fillAttributeList(AttributeListMessage* alm, Crea
 			float value = entry->getValue();
 
 			alm->insertAttribute("instant_effect", "@obj_attr_n:" + key + "_d");
-			alm->insertAttribute(key + "_v1", nutrition);
+			alm->insertAttribute(key + "_v1", Math::getPrecision(newNutrition, 6));
 
 			if (key == "burst_run")
 				alm->insertAttribute(key + "_v2", duration);
@@ -622,9 +645,10 @@ void ConsumableImplementation::fillAttributeList(AttributeListMessage* alm, Crea
 	}
 
 	if (!speciesRestriction.isEmpty()) {
-		if (speciesRestriction == "pets")
+		if (speciesRestriction == "pets") {
 			alm->insertAttribute("race_restriction", "@obj_attr_n:speciespet"); //Pets
-		else
+		} else {
 			alm->insertAttribute("race_restriction", "@obj_attr_n:species" + speciesRestriction);
+		}
 	}
 }

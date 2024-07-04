@@ -17,7 +17,11 @@ include system.util.Vector;
 class Consumable extends TangibleObject {
 	protected int duration;
 	protected int filling;
+
 	protected int nutrition;
+	protected float newNutrition;
+	protected float nutritionMin;
+	protected float nutritionMax;
 
 	protected int effectType;
 
@@ -28,8 +32,6 @@ class Consumable extends TangibleObject {
 	protected int fillingMax;
 	protected int flavorMin;
 	protected int flavorMax;
-	protected int nutritionMin;
-	protected int nutritionMax;
 	protected int quantityMin;
 	protected int quantityMax;
 
@@ -64,14 +66,18 @@ class Consumable extends TangibleObject {
 
 		duration = 30;
 		filling = 0;
+
+		nutrition = 0;
+		newNutrition = 1.f;
+		nutritionMin = 1.f;
+		nutritionMax = 1.f;
+
 		effectType = EFFECT_ATTRIBUTE;
 
 		fillingMin = 1;
 		fillingMax = 1;
 		flavorMin = 1;
 		flavorMax = 1;
-		nutritionMin = 1;
-		nutritionMax = 1;
 		quantityMin = 1;
 		quantityMax = 1;
 
@@ -161,5 +167,4 @@ class Consumable extends TangibleObject {
 	public string getSpeciesRestriction() {
 		return speciesRestriction;
 	}
-
 }
