@@ -18,6 +18,7 @@
 #include "server/zone/objects/area/events/RemoveNoSpawnAreaTask.h"
 
 //#define DEBUG_SPAWNING
+#define DEBUG_LAIR_DIFFICULTY
 
 void SpawnAreaImplementation::notifyPositionUpdate(TreeEntry* entry) {
 	if (numberOfPlayersInRange <= 0)
@@ -177,7 +178,7 @@ void SpawnAreaImplementation::tryToSpawn(CreatureObject* player) {
 		return;
 
 #ifdef DEBUG_SPAWNING
-	info(true) << "SpawnAreaImplementation::tryToSpawn for " << player->getObjectName() << " ID: " << player->getObjectID() << " Possible Spawns Size = " << possibleSpawns.size();
+	info(true) << "SpawnAreaImplementation::tryToSpawn for " << player->getDisplayedName() << " ID: " << player->getObjectID() << " Total Possible Lair Types = " << possibleSpawns.size();
 #endif // DEBUG_SPAWNING
 
 	ReadLocker _readlocker(_this.getReferenceUnsafeStaticCast());
@@ -218,11 +219,26 @@ void SpawnAreaImplementation::tryToSpawn(CreatureObject* player) {
 		return;
 	}
 
+	String lairTemplate = finalSpawn->getLairTemplateName();
+	uint32 lairHashCode = lairTemplate.hashCode();
+
+	int spawnLimit = finalSpawn->getSpawnLimit();
+	int currentSpawnCount = spawnCountByType.get(lairHashCode);
+
+	// Make sure spawn area limit has not been reached
+	if (spawnLimit != -1 && currentSpawnCount >= spawnLimit) {
+		return;
+	}
+
 	ManagedReference<PlanetManager*> planetManager = zone->getPlanetManager();
+
+	if (planetManager == nullptr) {
+		return;
+	}
 
 	Vector3 randomPosition = getRandomPosition(player);
 
-	if (randomPosition.getX() == 0 && randomPosition.getY() == 0) {
+	if ((randomPosition.getX() < 0.01) && (randomPosition.getY() < 0.01)) {
 		return;
 	}
 
@@ -236,56 +252,84 @@ void SpawnAreaImplementation::tryToSpawn(CreatureObject* player) {
 		return;
 	}
 
+	// Get terrain height for lair
 	float spawnZ = zone->getHeight(randomPosition.getX(), randomPosition.getY());
 	randomPosition.setZ(spawnZ);
 
-	int spawnLimit = finalSpawn->getSpawnLimit();
-
-	String lairTemplate = finalSpawn->getLairTemplateName();
-	uint32 lairHashCode = lairTemplate.hashCode();
-
-	int currentSpawnCount = spawnCountByType.get(lairHashCode);
-
-	if (spawnLimit != -1) {
-		if (currentSpawnCount >= spawnLimit)
-			return;
-	}
-
-	int maxDifficulty = finalSpawn->getMaxDifficulty();
-	int minDifficulty = finalSpawn->getMinDifficulty();
+	// Caculate the lair difficulty
+	// Highest player level is 25 and highest group level is 120
 	int playerLevel = getPlayerSpawnLevel(player);
 
-	if (maxDifficulty == 500)
-		maxDifficulty = minDifficulty + (playerLevel * 2.f);
+#ifdef DEBUG_LAIR_DIFFICULTY
+	playerLevel = System::random(120);
+#endif //DEBUG_LAIR_DIFFICULTY
 
-	float difficultyLevel = (((maxDifficulty - minDifficulty) / 25.f) * playerLevel) + minDifficulty + System::random(5);
+	float levelMultiplier = (playerLevel / 120.f);
 
-	if (difficultyLevel < minDifficulty)
-		difficultyLevel = minDifficulty;
+	int minDifficulty = finalSpawn->getMinDifficulty();
+	int maxDifficulty = finalSpawn->getMaxDifficulty();
+	int lairRange = maxDifficulty - minDifficulty;
 
-	int difficulty = (float)(difficultyLevel - minDifficulty) / ((maxDifficulty > (minDifficulty + 5) ? (float)(maxDifficulty - minDifficulty) : 5.f) / 5.f);
+	if (lairRange < 0) {
+		error() << "Lair Min Difficulty is less than Max Difficulty. - Lair: " << lairTemplate << " Min: " << minDifficulty << " Max: " << maxDifficulty;
+		return;
+	}
 
-	if (difficulty >= 5)
-		difficulty = 4;
+	// Difficulty level is the possible level range for the lairs template
+	float difficultyLevel = (levelMultiplier * lairRange) + minDifficulty;
 
-#ifdef DEBUG_SPAWNING
-	info(true) << "Player Level = " << playerLevel << " Min Difficulty = " << minDifficulty << " Max Difficulty = " << maxDifficulty << " Calculated Difficulty Level: " << difficultyLevel << " Difficulty: " << difficulty;
-#endif // DEBUG_SPAWNING
+	int lairBuildingLevel = 4;
+
+	if ((maxDifficulty * 0.25) > difficultyLevel) {
+		lairBuildingLevel = 1;
+	} else if ((maxDifficulty * 0.5) > difficultyLevel) {
+		lairBuildingLevel = 2;
+	} else if ((maxDifficulty * 0.75) > difficultyLevel) {
+		lairBuildingLevel = 3;
+	} // Lair is max building style 4
 
 	_readlocker.release();
 
-	CreatureManager* creatureManager = zone->getCreatureManager();
+	auto creatureManager = zone->getCreatureManager();
 
-	ManagedReference<SceneObject*> obj = creatureManager->spawn(lairHashCode, difficultyLevel, difficulty, randomPosition.getX(), spawnZ, randomPosition.getY(), finalSpawn->getSize());
+	if (creatureManager == nullptr) {
+		return;
+	}
 
-	if (obj != nullptr) {
-#ifdef DEBUG_SPAWNING
-		info(true) << "lair spawned at " << obj->getPositionX() << " " << obj->getPositionY();
-#endif // DEBUG_SPAWNING
-	} else {
+	ManagedReference<SceneObject*> obj = creatureManager->spawn(lairHashCode, difficultyLevel, lairBuildingLevel, randomPosition.getX(), spawnZ, randomPosition.getY(), finalSpawn->getSize());
+
+	if (obj == nullptr) {
 		error("Failed to spawn lair: " + lairTemplate);
 		return;
 	}
+
+#ifdef DEBUG_SPAWNING
+		info(true) << "lair spawned at " << obj->getPositionX() << " " << obj->getPositionY();
+#endif // DEBUG_SPAWNING
+
+#ifdef DEBUG_LAIR_DIFFICULTY
+	uint32 conditionCalc = ((CreatureManager::CREATURE_LAIR_MAX / 500.f) * difficultyLevel);
+	int maxCondition = Math::min(CreatureManager::CREATURE_LAIR_MAX, (uint32)conditionCalc);
+
+
+	StringBuffer lairDifficultyMsg;
+	lairDifficultyMsg
+	<< endl << "-----------------------------------" << endl
+	<< "--- Wild Lair Spawn Difficulty ---" << endl
+	<< "-----------------------------------" << endl
+	<< "Player Level = " << playerLevel << endl
+	<< "Level Multiplier = " << levelMultiplier << endl
+	<< "Min Difficulty = " << minDifficulty << endl
+	<< "Max Difficulty = " << maxDifficulty << endl
+	<< "Difficulty Range (Max - Min) = " << lairRange << endl
+	<< "Calculated Difficulty Level: " << difficultyLevel << endl
+	<< "Lair Building Level: " << lairBuildingLevel << endl
+	<< "Condition Calculated: " << conditionCalc << endl
+	<< "Max Lair Condition: " << maxCondition << endl
+	<< "Lair: " << lairTemplate << endl
+	<< "-----------------------------------" << endl;
+	info(true) << lairDifficultyMsg.toString();
+#endif // DEBUG_LAIR_DIFFICULTY
 
 	Locker _locker2(_this.getReferenceUnsafeStaticCast());
 
@@ -314,25 +358,36 @@ void SpawnAreaImplementation::tryToSpawn(CreatureObject* player) {
 }
 
 int SpawnAreaImplementation::getPlayerSpawnLevel(CreatureObject* player) {
-	int level = 0;
+	int level = 1;
 
-	if (player == nullptr)
+	if (player == nullptr) {
 		return level;
+	}
 
 	if (player->isGrouped()) {
-		GroupObject* group = player->getGroup();
+		auto group = player->getGroup();
 
 		if (group != nullptr) {
 			level = group->getGroupLevel();
+
+#ifdef DEBUG_LAIR_DIFFICULTY
+			info(true) << "Returning Group Level: " << level;
+			info(true) << "Group Bonus: " << group->getGroupSize();
+#endif // DEBUG_LAIR_DIFFICULTY
 		}
 	} else {
-		ZoneServer* zoneServer = player->getZoneServer();
+		auto zoneServer = player->getZoneServer();
 
 		if (zoneServer != nullptr) {
-			PlayerManager* playerMan = zoneServer->getPlayerManager();
+			auto playerMan = zoneServer->getPlayerManager();
 
-			if (playerMan != nullptr)
+			if (playerMan != nullptr) {
 				level = playerMan->calculatePlayerLevel(player);
+
+#ifdef DEBUG_LAIR_DIFFICULTY
+				info(true) << "Returning Players Solo Level: " << level;
+#endif // DEBUG_LAIR_DIFFICULTY
+			}
 		}
 	}
 
