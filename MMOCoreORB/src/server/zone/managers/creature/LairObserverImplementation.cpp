@@ -203,22 +203,26 @@ void LairObserverImplementation::healLair(TangibleObject* lair, TangibleObject* 
 }
 
 bool LairObserverImplementation::checkForNewSpawns(TangibleObject* lair, TangibleObject* attacker, bool forceSpawn) {
-	Zone* zone = lair->getZone();
+	auto zone = lair->getZone();
 
-	if (zone == nullptr)
+	if (zone == nullptr) {
 		return false;
+	}
 
 	CreatureManager* creatureManager = zone->getCreatureManager();
 
-	if (creatureManager == nullptr)
+	if (creatureManager == nullptr) {
 		return false;
+	}
 
 	int spawnLimit = lairTemplate->getSpawnLimit();
 
 	LairObject* lairObject = cast<LairObject*>(lair);
 
-	if (lairObject != nullptr && lairObject->isRepopulated())
+	// Lair limit is double due to "milking"
+	if (lairObject != nullptr && lairObject->isRepopulated()) {
 		spawnLimit *= 2;
+	}
 
 	if (spawnedCreatures.size() >= spawnLimit && !lairTemplate->hasBossMobs())
 		return false;
@@ -278,14 +282,18 @@ bool LairObserverImplementation::checkForNewSpawns(TangibleObject* lair, Tangibl
 		const Vector<String>* mobiles = lairTemplate->getWeightedMobiles();
 		int amountToSpawn = 0;
 
+		// The amount to spawn should be figured out using the lair difficulty
 		if (getMobType() == LairTemplate::CREATURE) {
-			amountToSpawn = System::random(3) + ((lairTemplate->getSpawnLimit() / 3) - 2);
+			int difficultyLevel = getDifficultyLevel();
+
+			amountToSpawn = difficultyLevel + System::random(3);
 		} else {
 			amountToSpawn = System::random(lairTemplate->getSpawnLimit() / 2) + (lairTemplate->getSpawnLimit() / 2);
 		}
 
-		if (amountToSpawn < 1)
+		if (amountToSpawn < 1) {
 			amountToSpawn = 1;
+		}
 
 		for (int i = 0; i < amountToSpawn; i++) {
 			int num = System::random(mobiles->size() - 1);
@@ -295,7 +303,8 @@ bool LairObserverImplementation::checkForNewSpawns(TangibleObject* lair, Tangibl
 
 			if (find != -1) {
 				int& value = objectsToSpawn.elementAt(find).getValue();
-				++value;
+
+				value++;
 			} else {
 				objectsToSpawn.put(mob, 1);
 			}
@@ -319,6 +328,10 @@ bool LairObserverImplementation::checkForNewSpawns(TangibleObject* lair, Tangibl
 		float tamingChance = creatureTemplate->getTame();
 
 		for (int j = 0; j < numberToSpawn; j++) {
+
+
+			// Schedule out the spawns here using a task
+
 			float x = lair->getPositionX() + (size - System::random(size * 20) / 10.0f);
 			float y = lair->getPositionY() + (size - System::random(size * 20) / 10.0f);
 			float z = zone->getHeight(x, y);
