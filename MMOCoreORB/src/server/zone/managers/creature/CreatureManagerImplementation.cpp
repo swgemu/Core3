@@ -67,23 +67,23 @@ CreatureObject* CreatureManagerImplementation::spawnCreature(uint32 templateCRC,
 	return creature;
 }
 
-SceneObject* CreatureManagerImplementation::spawn(unsigned int lairTemplate, int difficultyLevel, int difficulty, float x, float z, float y, float size) {
+SceneObject* CreatureManagerImplementation::spawn(unsigned int lairTemplate, int difficultyLevel, int lairBuildingLevel, float x, float z, float y, float size) {
 	LairTemplate* lairTmpl = creatureTemplateManager->getLairTemplate(lairTemplate);
 
 	if (lairTmpl == nullptr)
 		return nullptr;
 
 	if (lairTmpl->getBuildingType() == LairTemplate::LAIR)
-		return spawnLair(lairTemplate, difficultyLevel, difficulty, x, z, y, size);
+		return spawnLair(lairTemplate, difficultyLevel, lairBuildingLevel, x, z, y, size);
 	else if (lairTmpl->getBuildingType() == LairTemplate::THEATER)
-		return spawnTheater(lairTemplate, difficulty, x, z, y, size);
+		return spawnTheater(lairTemplate, lairBuildingLevel, x, z, y, size);
 	else if (lairTmpl->getBuildingType() == LairTemplate::NONE)
-		return spawnDynamicSpawn(lairTemplate, difficulty, x, z, y, size);
+		return spawnDynamicSpawn(lairTemplate, lairBuildingLevel, x, z, y, size);
 
 	return nullptr;
 }
 
-SceneObject* CreatureManagerImplementation::spawnLair(unsigned int lairTemplate, int difficultyLevel, int difficulty, float x, float z, float y, float size) {
+SceneObject* CreatureManagerImplementation::spawnLair(unsigned int lairTemplate, int difficultyLevel, int lairBuildingLevel, float x, float z, float y, float size) {
 	LairTemplate* lairTmpl = creatureTemplateManager->getLairTemplate(lairTemplate);
 
 	if (lairTmpl == nullptr || lairTmpl->getBuildingType() != LairTemplate::LAIR)
@@ -96,7 +96,7 @@ SceneObject* CreatureManagerImplementation::spawnLair(unsigned int lairTemplate,
  	if (mobiles->size() == 0)
  		return nullptr;
 
- 	buildingToSpawn = lairTmpl->getBuilding((uint32)difficulty);
+ 	buildingToSpawn = lairTmpl->getBuilding(Math::max(1, (lairBuildingLevel - 1)));
 
  	if (buildingToSpawn.isEmpty()) {
  		error("error spawning " + buildingToSpawn);
@@ -106,24 +106,51 @@ SceneObject* CreatureManagerImplementation::spawnLair(unsigned int lairTemplate,
  	Reference<LairObject*> building = zoneServer->createObject(buildingToSpawn.hashCode(), 0).castTo<LairObject*>();
 
  	if (building == nullptr) {
- 		error("error spawning " + buildingToSpawn);
+ 		error() << "Failed to create lair spawn: " << buildingToSpawn;
  		return nullptr;
  	}
 
  	Locker blocker(building);
 
+	float baseCondition = 1000.f;
+
+	switch(lairBuildingLevel) {
+		case 2: {
+			baseCondition = 3000.f;
+			break;
+		}
+		case 3: {
+			baseCondition = 6000.f;
+			break;
+		}
+		case 4: {
+			baseCondition = 9000.f;
+			break;
+		}
+		case 5: {
+			baseCondition = 12000.f;
+			break;
+		}
+		default:
+			break;
+	}
+
+	uint32 conditionCalc = Math::min((float)CreatureManager::CREATURE_LAIR_MAX, (System::random(baseCondition) + ((baseCondition / 10) * difficultyLevel)));
+
+	building->setMaxCondition(conditionCalc);
+	building->setConditionDamage(0, false);
+
  	building->setFaction(lairTmpl->getFaction());
  	building->setPvpStatusBitmask(ObjectFlag::ATTACKABLE);
  	building->setOptionsBitmask(0, false);
- 	building->setMaxCondition(difficultyLevel * (900 + System::random(200)));
- 	building->setConditionDamage(0, false);
+
  	building->initializePosition(x, z, y);
  	building->setDespawnOnNoPlayersInRange(true);
 
  	ManagedReference<LairObserver*> lairObserver = new LairObserver();
  	lairObserver->deploy();
  	lairObserver->setLairTemplate(lairTmpl);
- 	lairObserver->setDifficulty(difficulty);
+ 	lairObserver->setDifficulty(lairBuildingLevel);
  	lairObserver->setObserverType(ObserverType::LAIR);
  	lairObserver->setSize(size);
 
