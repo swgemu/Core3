@@ -15,6 +15,9 @@ include system.thread.atomic.AtomicInteger;
 class LairObserver extends SpawnObserver {
 	public static final int BABY_SPAWN_CHANCE = 500;
 
+	public static final int SPAWN_TIME_MIN = 1; // In seconds
+	public static final int SPAWN_TIME_MAX = 6; // In seconds
+
 	@dereferenced
 	protected AtomicInteger spawnNumber;
 
@@ -35,6 +38,10 @@ class LairObserver extends SpawnObserver {
 
 	@arg1preLocked
 	public abstract native boolean checkForNewSpawns(TangibleObject lair, TangibleObject attacker, boolean forceSpawn = false);
+
+	@arg1preLocked
+	public native void spawnLairMobile(TangibleObject lair, int spawnNumber, final string templateToSpawn);
+
 	public native void healLair(TangibleObject lair, TangibleObject attacker);
 	public abstract native void checkForHeal(TangibleObject lair, TangibleObject attacker, boolean forceNewUpdate = false);
 	public native void doAggro(TangibleObject lair, TangibleObject attacker, boolean allAttack = false);
