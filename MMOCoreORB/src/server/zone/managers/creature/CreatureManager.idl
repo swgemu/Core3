@@ -38,6 +38,9 @@ class CreatureManager extends ZoneManager {
 	public static final short DNASAMPLED = 0x01;
 	public static final short DNADEATH = 0x03;
 
+	public static final unsigned int CREATURE_LAIR_MIN = 1000;
+	public static final unsigned int CREATURE_LAIR_MAX = 64000;
+
 	public CreatureManager(Zone planet) {
 		super("CreatureManager " + planet.getZoneName());
 
@@ -51,9 +54,9 @@ class CreatureManager extends ZoneManager {
 
 	public native void stop();
 
-	public native SceneObject spawn(unsigned int lairTemplate, int difficultyLevel, int difficulty, float x, float z, float y, float size);
+	public native SceneObject spawn(unsigned int lairTemplate, int difficultyLevel, int lairBuildingLevel, float x, float z, float y, float size);
 
-	public native SceneObject spawnLair(unsigned int lairTemplate, int difficultyLevel, int difficulty, float x, float z, float y, float size = 20);
+	public native SceneObject spawnLair(unsigned int lairTemplate, int difficultyLevel, int lairBuildingLevel, float x, float z, float y, float size = 20);
 
 	public native SceneObject spawnTheater(unsigned int lairTemplate, int difficulty, float x, float z, float y, float size = 10);
 
