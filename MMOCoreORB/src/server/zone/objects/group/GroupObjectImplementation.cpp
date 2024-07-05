@@ -25,6 +25,7 @@
 #include "server/zone/managers/creature/PetManager.h"
 
 //#define DEBUG_GROUPS
+//#define DEBUG_GROUP_LEVEL
 
 void GroupObjectImplementation::sendBaselinesTo(SceneObject* player) {
 	if (player == nullptr)
@@ -560,31 +561,67 @@ float GroupObjectImplementation::getGroupHarvestModifier(CreatureObject* player)
 
 void GroupObjectImplementation::calculateGroupLevel() {
 	int highestPlayer = 0;
-	groupLevel = 0;
+	float newLevel = 0;
 	factionPetLevel = 0;
+
+#ifdef DEBUG_GROUP_LEVEL
+	StringBuffer levelMsg;
+#endif // DEBUG_GROUP_LEVEL
+
+	/*
+	for (int i = 0; i < 20; i++) {
+		int memberLevel = 25;
+
+		if (memberLevel > highestPlayer) {
+			newLevel += (memberLevel - highestPlayer + (highestPlayer / 5.f));
+			highestPlayer = memberLevel;
+		} else {
+			newLevel += (memberLevel / 5.f);
+		}
+	}
+	*/
 
 	for (int i = 0; i < getGroupSize(); i++) {
 		Reference<CreatureObject*> member = getGroupMember(i);
+
+		if (member == nullptr) {
+			continue;
+		}
+
+		int memberLevel = member->getLevel();
+
+#ifdef DEBUG_GROUP_LEVEL
+		levelMsg << "Member Level: " << memberLevel << endl
+		<< "Highest Player Level: " << highestPlayer << endl;
+#endif // DEBUG_GROUP_LEVEL
 
 		if (member->isPet()) {
 				ManagedReference<PetControlDevice*> pcd = member->getControlDevice().get().castTo<PetControlDevice*>();
 
 				if (pcd != nullptr && pcd->getPetType() == PetManager::FACTIONPET) {
-					factionPetLevel += member->getLevel() / 5;
+					factionPetLevel += (memberLevel / 5.f);
 				}
 
-				groupLevel += member->getLevel() / 5;
+				newLevel += (memberLevel / 5.f);
 		} else if (member->isPlayerCreature()) {
-			int memberLevel = member->getLevel();
-
 			if (memberLevel > highestPlayer) {
-				groupLevel += (memberLevel - highestPlayer + (highestPlayer / 5));
+				newLevel += (memberLevel - highestPlayer + (highestPlayer / 5.f));
 				highestPlayer = memberLevel;
 			} else {
-				groupLevel += memberLevel / 5;
+				newLevel += (memberLevel / 5.f);
 			}
 		}
+#ifdef DEBUG_GROUP_LEVEL
+		levelMsg << "Group Level Adjusted: " << newLevel << endl;
+#endif // DEBUG_GROUP_LEVEL
 	}
+
+#ifdef DEBUG_GROUP_LEVEL
+	levelMsg << "Calculate Group Level Result: " << newLevel << endl;
+	info(true) << levelMsg.toString();
+#endif // DEBUG_GROUP_LEVEL
+
+	groupLevel = round(newLevel);
 }
 
 int GroupObjectImplementation::getNumberOfPlayerMembers() {
