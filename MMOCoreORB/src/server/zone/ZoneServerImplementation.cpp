@@ -734,7 +734,7 @@ void ZoneServerImplementation::changeUserCap(int amount) {
 	unlock();
 }
 
-void ZoneServerImplementation::addTotalSentPacket(int count) {
+void ZoneServerImplementation::addTotalSentPacket(unsigned int count) {
 //	lock();
 
 	totalSentPackets += count;
@@ -742,7 +742,7 @@ void ZoneServerImplementation::addTotalSentPacket(int count) {
 //	unlock();
 }
 
-void ZoneServerImplementation::addTotalResentPacket(int count) {
+void ZoneServerImplementation::addTotalResentPacket(unsigned int count) {
 	//lock();
 
 	totalResentPackets += count;
