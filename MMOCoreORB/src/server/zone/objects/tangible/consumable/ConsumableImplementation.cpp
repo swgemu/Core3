@@ -32,7 +32,6 @@ void ConsumableImplementation::loadTemplateData(SharedObjectTemplate* templateDa
 	duration = consumableTemplate->getDuration();
 	filling = consumableTemplate->getFilling();
 
-	newNutrition = consumableTemplate->getNutrition();
 	nutritionMin = consumableTemplate->getNutritionMin();
 	nutritionMax = consumableTemplate->getNutritionMax();
 
