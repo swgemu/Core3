@@ -86,11 +86,11 @@ class ZoneServer extends ManagedService implements Logger {
 
 	private transient DnaManager dnaManager;
 
-	private int totalSentPackets;
+	private unsigned long totalSentPackets;
 
 	private int serverCap;
 
-	private int totalResentPackets;
+	private unsigned long totalResentPackets;
 
 	@dereferenced
 	private AtomicInteger currentPlayers;
@@ -169,10 +169,10 @@ class ZoneServer extends ManagedService implements Logger {
 	public native boolean handleError(ZoneClientSession client, @dereferenced Exception e);
 
 	@dirty
-	public native void addTotalSentPacket(int count);
+	public native void addTotalSentPacket(unsigned int count);
 
 	@dirty
-	public native void addTotalResentPacket(int count);
+	public native void addTotalResentPacket(unsigned int count);
 
 	@dirty
 	public native void printInfo();
