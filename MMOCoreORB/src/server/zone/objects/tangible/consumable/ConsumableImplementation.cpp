@@ -32,6 +32,7 @@ void ConsumableImplementation::loadTemplateData(SharedObjectTemplate* templateDa
 	duration = consumableTemplate->getDuration();
 	filling = consumableTemplate->getFilling();
 
+	newNutrition = consumableTemplate->getNutrition();
 	nutritionMin = consumableTemplate->getNutritionMin();
 	nutritionMax = consumableTemplate->getNutritionMax();
 
@@ -412,8 +413,8 @@ void ConsumableImplementation::setModifiers(Buff* buff, bool skillModifiers) {
 
 void ConsumableImplementation::fillAttributeList(AttributeListMessage* alm, CreatureObject* player) {
 	// Update new nutrition float attribute from old int value
-	if (nutrition > 0 && newNutrition < 0.0001) {
-		newNutrition = (1.000f * nutrition);
+	if (nutrition > 0 && nutrition < (int)newNutrition) {
+		newNutrition = nutrition;
 	}
 
 	if (maxCondition > 0) {
@@ -447,200 +448,208 @@ void ConsumableImplementation::fillAttributeList(AttributeListMessage* alm, Crea
 	}
 
 	switch (effectType) {
-	case EFFECT_HEALING: {
-		if (filling > 0) {
-			if (isFood())
-				alm->insertAttribute("stomach_food", filling);
-			else if (isDrink())
-				alm->insertAttribute("stomach_drink", filling);
-		}
-
-		if (modifiers.size() == 1 && modifiers.elementAt(0).getKey() == "mind") {
-			alm->insertAttribute("mind_heal", Math::getPrecision(newNutrition, 6));
-		} else {
-			for (int i = 0; i < modifiers.size(); ++i) {
-				VectorMapEntry<String, float>* entry = &modifiers.elementAt(i);
-				alm->insertAttribute("examine_heal_damage_" + entry->getKey(), Math::getPrecision(newNutrition, 6));
-			}
-		}
-
-		break;
-	}
-	case EFFECT_ATTRIBUTE: {
-		if (filling > 0) {
-			if (isFood())
-				alm->insertAttribute("stomach_food", filling);
-			else if (isDrink())
-				alm->insertAttribute("stomach_drink", filling);
-		}
-
-		if (duration <= 0)
-			return;
-
-		StringBuffer durationstring;
-
-		int minutes = (int) floor(duration / 60.0f);
-		int seconds = duration % 60;
-
-		if (minutes > 0)
-			durationstring << minutes << "m ";
-
-		durationstring << seconds << "s";
-
-		int mods = modifiers.size();
-
-		if (mods > 0) {
-			alm->insertAttribute("attribmods", mods);
-
-			for (int i = 0; i < mods; ++i) {
-				VectorMapEntry<String, float>* entry = &modifiers.elementAt(i);
-				StringBuffer nutritionstring;
-
-				if (!isForagedFood()) {
-					nutritionstring << ((newNutrition > 0) ? "+" : "") << Math::getPrecision(newNutrition, 6) << " for " << durationstring.toString();
-				} else {
-					nutritionstring << ((entry->getValue() > 0) ? "+" : "") << entry->getValue() << ", " << durationstring.toString();
+		case EFFECT_HEALING: {
+			if (filling > 0) {
+				if (isFood()) {
+					alm->insertAttribute("stomach_food", filling);
+				} else if (isDrink()) {
+					alm->insertAttribute("stomach_drink", filling);
 				}
-
-				alm->insertAttribute("attr_" + entry->getKey(), nutritionstring.toString());
 			}
-		}
-		break;
-	}
-	case EFFECT_SPICE: {
-		int mods = modifiers.size();
 
-		if (mods > 0) {
-			StringBuffer durationstring;
-			durationstring << duration << "s";
-
-			alm->insertAttribute("attribmods", mods);
-
-			for (int i = 0; i < mods; ++i) {
-				VectorMapEntry<String, float>* entry = &modifiers.elementAt(i);
-				StringBuffer nutritionstring;
-				nutritionstring << ((entry->getValue() > 0) ? "+" : "") << entry->getValue() << ", " << durationstring.toString();
-
-				alm->insertAttribute("attr_" + entry->getKey(), nutritionstring.toString());
+			if (modifiers.size() == 1 && modifiers.elementAt(0).getKey() == "mind") {
+				alm->insertAttribute("mind_heal", (int)newNutrition);
+			} else {
+				for (int i = 0; i < modifiers.size(); ++i) {
+					VectorMapEntry<String, float>* entry = &modifiers.elementAt(i);
+					alm->insertAttribute("examine_heal_damage_" + entry->getKey(), Math::getPrecision(newNutrition, 6));
+				}
 			}
-		}
 
-		break;
-	}
-	case EFFECT_SKILL: {
-		if (filling > 0) {
-			if (isFood()) {
-				alm->insertAttribute("stomach_food", filling);
-			} else if (isDrink()) {
-				alm->insertAttribute("stomach_drink", filling);
+			break;
+		}
+		case EFFECT_ATTRIBUTE: {
+			if (filling > 0) {
+				if (isFood()) {
+					alm->insertAttribute("stomach_food", filling);
+				} else if (isDrink()) {
+					alm->insertAttribute("stomach_drink", filling);
+				}
 			}
-		}
 
-		for (int i = 0; i < modifiers.size(); ++i) {
-			VectorMapEntry<String, float>* entry = &modifiers.elementAt(i);
-			alm->insertAttribute("skill", "@stat_n:" + entry->getKey());
-		}
-
-		StringBuffer nutritionstring;
-		nutritionstring << ((newNutrition > 0) ? "+" : "") << Math::getPrecision(newNutrition, 6);
-
-		alm->insertAttribute("modifier", nutritionstring.toString());
-
-		StringBuffer durationstring;
-
-		int minutes = (int) floor(duration / 60.0f);
-		int seconds = duration % 60;
-
-		if (minutes > 0) {
-			durationstring << minutes << "m ";
-		}
-
-		durationstring << seconds << "s";
-
-		alm->insertAttribute("duration", durationstring.toString());
-
-		break;
-	}
-	case EFFECT_DURATION: {
-		if (filling > 0) {
-			if (isFood()) {
-				alm->insertAttribute("stomach_food", filling);
-			} else if (isDrink()) {
-				alm->insertAttribute("stomach_drink", filling);
+			if (duration <= 0) {
+				return;
 			}
-		}
-
-		for (int i = 0; i < modifiers.size(); ++i) {
-			VectorMapEntry<String, float>* entry = &modifiers.elementAt(i);
-
-			String key = entry->getKey();
-			float value = entry->getValue();
-
-			alm->insertAttribute("duration_effect", "@obj_attr_n:" + key + "_d");
-
-			alm->insertAttribute(key + "_eff", Math::getPrecision(newNutrition, 6));
 
 			StringBuffer durationstring;
 
-			int minutes = (int) floor(duration / 60.0f);
+			int minutes = (int)floor(duration / 60.0f);
 			int seconds = duration % 60;
 
-			if (minutes > 0)
+			if (minutes > 0) {
 				durationstring << minutes << "m ";
+			}
+
+			durationstring << seconds << "s";
+
+			int mods = modifiers.size();
+
+			if (mods > 0) {
+				alm->insertAttribute("attribmods", mods);
+
+				for (int i = 0; i < mods; ++i) {
+					VectorMapEntry<String, float>* entry = &modifiers.elementAt(i);
+					StringBuffer nutritionstring;
+
+					if (!isForagedFood()) {
+						if (isDrink()) {
+							nutritionstring << ((newNutrition > 0) ? "+" : "") << (int)newNutrition << " for " << durationstring.toString();
+						} else {
+							nutritionstring << ((newNutrition > 0) ? "+" : "") << Math::getPrecision(newNutrition, 6) << " for " << durationstring.toString();
+						}
+					} else {
+						nutritionstring << ((entry->getValue() > 0) ? "+" : "") << entry->getValue() << ", " << durationstring.toString();
+					}
+
+					alm->insertAttribute("attr_" + entry->getKey(), nutritionstring.toString());
+				}
+			}
+			break;
+		}
+		case EFFECT_SPICE: {
+			int mods = modifiers.size();
+
+			if (mods > 0) {
+				StringBuffer durationstring;
+				durationstring << duration << "s";
+
+				alm->insertAttribute("attribmods", mods);
+
+				for (int i = 0; i < mods; ++i) {
+					VectorMapEntry<String, float>* entry = &modifiers.elementAt(i);
+					StringBuffer nutritionstring;
+					nutritionstring << ((entry->getValue() > 0) ? "+" : "") << entry->getValue() << ", " << durationstring.toString();
+
+					alm->insertAttribute("attr_" + entry->getKey(), nutritionstring.toString());
+				}
+			}
+
+			break;
+		}
+		case EFFECT_SKILL: {
+			if (filling > 0) {
+				if (isFood()) {
+					alm->insertAttribute("stomach_food", filling);
+				} else if (isDrink()) {
+					alm->insertAttribute("stomach_drink", filling);
+				}
+			}
+
+			for (int i = 0; i < modifiers.size(); ++i) {
+				VectorMapEntry<String, float>* entry = &modifiers.elementAt(i);
+				alm->insertAttribute("skill", "@stat_n:" + entry->getKey());
+			}
+
+			StringBuffer nutritionstring;
+			nutritionstring << ((newNutrition > 0) ? "+" : "") << Math::getPrecision(newNutrition, 6);
+
+			alm->insertAttribute("modifier", nutritionstring.toString());
+
+			StringBuffer durationstring;
+
+			int minutes = (int)floor(duration / 60.0f);
+			int seconds = duration % 60;
+
+			if (minutes > 0) {
+				durationstring << minutes << "m ";
+			}
 
 			durationstring << seconds << "s";
 
 			alm->insertAttribute("duration", durationstring.toString());
+
+			break;
 		}
+		case EFFECT_DURATION: {
+			if (filling > 0) {
+				if (isFood()) {
+					alm->insertAttribute("stomach_food", filling);
+				} else if (isDrink()) {
+					alm->insertAttribute("stomach_drink", filling);
+				}
+			}
 
-		break;
-	}
-	case EFFECT_DELAYED: {
-		if (filling > 0) {
-			if (isFood())
-				alm->insertAttribute("stomach_food", filling);
-			else if (isDrink())
-				alm->insertAttribute("stomach_drink", filling);
+			for (int i = 0; i < modifiers.size(); ++i) {
+				VectorMapEntry<String, float>* entry = &modifiers.elementAt(i);
+
+				String key = entry->getKey();
+				float value = entry->getValue();
+
+				alm->insertAttribute("duration_effect", "@obj_attr_n:" + key + "_d");
+
+				alm->insertAttribute(key + "_eff", Math::getPrecision(newNutrition, 6));
+
+				StringBuffer durationstring;
+
+				int minutes = (int)floor(duration / 60.0f);
+				int seconds = duration % 60;
+
+				if (minutes > 0)
+					durationstring << minutes << "m ";
+
+				durationstring << seconds << "s";
+
+				alm->insertAttribute("duration", durationstring.toString());
+			}
+
+			break;
 		}
+		case EFFECT_DELAYED: {
+			if (filling > 0) {
+				if (isFood())
+					alm->insertAttribute("stomach_food", filling);
+				else if (isDrink())
+					alm->insertAttribute("stomach_drink", filling);
+			}
 
-		for (int i = 0; i < modifiers.size(); ++i) {
-			VectorMapEntry<String, float>* entry = &modifiers.elementAt(i);
+			for (int i = 0; i < modifiers.size(); ++i) {
+				VectorMapEntry<String, float>* entry = &modifiers.elementAt(i);
 
-			String key = entry->getKey();
-			float value = entry->getValue();
+				String key = entry->getKey();
+				float value = entry->getValue();
 
-			alm->insertAttribute("delay_effect", "@obj_attr_n:" + key + "_d");
+				alm->insertAttribute("delay_effect", "@obj_attr_n:" + key + "_d");
 
-			alm->insertAttribute(key + "_eff", Math::getPrecision(newNutrition, 6));
+				alm->insertAttribute(key + "_eff", Math::getPrecision(newNutrition, 6));
 
-			if (duration > 1)
-				alm->insertAttribute(key + "_dur", duration);
+				if (duration > 1)
+					alm->insertAttribute(key + "_dur", duration);
+			}
+
+			break;
 		}
+		case EFFECT_INSTANT: {
+			if (filling > 0) {
+				if (isFood())
+					alm->insertAttribute("stomach_food", filling);
+				else if (isDrink())
+					alm->insertAttribute("stomach_drink", filling);
+			}
 
-		break;
-	}
-	case EFFECT_INSTANT: {
-		if (filling > 0) {
-			if (isFood())
-				alm->insertAttribute("stomach_food", filling);
-			else if (isDrink())
-				alm->insertAttribute("stomach_drink", filling);
+			for (int i = 0; i < modifiers.size(); ++i) {
+				VectorMapEntry<String, float>* entry = &modifiers.elementAt(i);
+
+				String key = entry->getKey();
+				float value = entry->getValue();
+
+				alm->insertAttribute("instant_effect", "@obj_attr_n:" + key + "_d");
+				alm->insertAttribute(key + "_v1", Math::getPrecision(newNutrition, 6));
+
+				if (key == "burst_run")
+					alm->insertAttribute(key + "_v2", duration);
+			}
+			break;
 		}
-
-		for (int i = 0; i < modifiers.size(); ++i) {
-			VectorMapEntry<String, float>* entry = &modifiers.elementAt(i);
-
-			String key = entry->getKey();
-			float value = entry->getValue();
-
-			alm->insertAttribute("instant_effect", "@obj_attr_n:" + key + "_d");
-			alm->insertAttribute(key + "_v1", Math::getPrecision(newNutrition, 6));
-
-			if (key == "burst_run")
-				alm->insertAttribute(key + "_v2", duration);
-		}
-		break;
-	}
 	}
 
 	if (!speciesRestriction.isEmpty()) {
