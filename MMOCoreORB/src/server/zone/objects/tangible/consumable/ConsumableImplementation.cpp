@@ -413,7 +413,7 @@ void ConsumableImplementation::setModifiers(Buff* buff, bool skillModifiers) {
 
 void ConsumableImplementation::fillAttributeList(AttributeListMessage* alm, CreatureObject* player) {
 	// Update new nutrition float attribute from old int value
-	if (nutrition > 0 && nutrition < (int)newNutrition) {
+	if (nutrition > newNutrition) {
 		newNutrition = nutrition;
 	}
 
