@@ -17,7 +17,7 @@ void DestroyMissionLairObserverImplementation::checkForHeal(TangibleObject* lair
 		return;
 	}
 
-	LairObserverImplementation::checkForHeal(lair, attacker, forceNewUpdate);
+	LairObserverImplementation::checkForHeal(lair, forceNewUpdate);
 }
 
 bool DestroyMissionLairObserverImplementation::checkForNewSpawns(TangibleObject* lair, TangibleObject* attacker, bool forceSpawn) {

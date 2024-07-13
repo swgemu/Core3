@@ -5,11 +5,11 @@
 
 package server.zone.managers.creature;
 
+import server.zone.objects.creature.ai.AiAgent;
 import engine.core.ManagedObject;
 import engine.util.Observable;
 import server.zone.managers.creature.SpawnObserver;
 import server.zone.objects.tangible.LairObject;
-import server.zone.managers.creature.HealLairObserverEvent;
 import system.lang.Time;
 
 include server.zone.objects.tangible.TangibleObject;
@@ -33,8 +33,6 @@ class LairObserver extends SpawnObserver {
 	@dereferenced
 	protected AtomicInteger spawnNumber;
 
-	protected transient HealLairObserverEvent healLairEvent;
-
 	@dereferenced
 	protected transient Time lastHealTime;
 
@@ -42,15 +40,17 @@ class LairObserver extends SpawnObserver {
 		super();
 
 		Logger.setLoggingName("LairObserver");
-
-		healLairEvent = null;
 		spawnNumber.set(0);
 	}
 
+	// Observer Events
 	public native int notifyObserverEvent(unsigned int eventType, Observable observable, ManagedObject arg1, long arg2);
-
 	public native void notifyDestruction(TangibleObject lair, TangibleObject attacker, int condition);
 
+	// Healing
+	public abstract native void checkForHeal(TangibleObject lair, boolean forceNewUpdate = false);
+
+	// Spawning
 	@arg1preLocked
 	public abstract native boolean checkForNewSpawns(TangibleObject lair, TangibleObject attacker, boolean forceSpawn = false);
 
@@ -63,9 +63,10 @@ class LairObserver extends SpawnObserver {
 	@arg1preLocked
 	public abstract native void spawnLairMobile(LairObject lair, int spawnNumber, final string templateToSpawn, boolean spawnPassive = true);
 
-	public native void healLair(TangibleObject lair, TangibleObject attacker);
-	public abstract native void checkForHeal(TangibleObject lair, TangibleObject attacker, boolean forceNewUpdate = false);
+	// Aggro
 	public native void doAggro(TangibleObject lair, TangibleObject attacker, boolean allAttack = false);
+
+	// Lair Milking
 	public native void repopulateLair(TangibleObject lair);
 
 	public boolean isLairObserver() {
