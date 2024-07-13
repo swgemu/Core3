@@ -90,9 +90,10 @@
 
 //#define DEBUG
 //#define DEBUG_AI_WEAPONS
+//#define DEBUG_AI_HEAL
 
 //#define DEBUG_PATHING
-//#define SHOW_PATH
+// #define SHOW_PATH
 //#define SHOW_NEXT_POSITION
 //#define DEBUG_FINDNEXTPOSITION
 
@@ -1990,7 +1991,7 @@ void AiAgentImplementation::healTarget(CreatureObject* healTarget) {
 		return;
 	}
 
-#ifdef DEBUG_AIHEAL
+#ifdef DEBUG_AI_HEAL
 	ZoneServer* zoneServer = getZoneServer();
 
 	ChatManager* chatManager = nullptr;
@@ -2009,7 +2010,7 @@ void AiAgentImplementation::healTarget(CreatureObject* healTarget) {
 		if (healTarget->getObjectID() == getObjectID()) {
 			healTarget->playEffect("clienteffect/pl_force_heal_self.cef");
 
-#ifdef DEBUG_AIHEAL
+#ifdef DEBUG_AI_HEAL
 			if (chatManager != nullptr)
 				chatManager->broadcastChatMessage(asAiAgent(), "Force Healing myself!", 0, 0, asAiAgent()->getMoodID());
 #endif
@@ -2017,7 +2018,7 @@ void AiAgentImplementation::healTarget(CreatureObject* healTarget) {
 		} else {
 			doCombatAnimation(healTarget, STRING_HASHCODE("force_healing_1"), 0, 0xFF);
 
-#ifdef DEBUG_AIHEAL
+#ifdef DEBUG_AI_HEAL
 			if (chatManager != nullptr)
 				chatManager->broadcastChatMessage(asAiAgent(), "Force Healing target!", 0, 0, asAiAgent()->getMoodID());
 #endif
@@ -2026,7 +2027,7 @@ void AiAgentImplementation::healTarget(CreatureObject* healTarget) {
 		if (healTarget->getObjectID() == getObjectID()) {
 			doAnimation("heal_self");
 
-#ifdef DEBUG_AIHEAL
+#ifdef DEBUG_AI_HEAL
 			if (chatManager != nullptr)
 				chatManager->broadcastChatMessage(asAiAgent(), "Healing myself!", 0, 0, asAiAgent()->getMoodID());
 #endif
@@ -2034,7 +2035,7 @@ void AiAgentImplementation::healTarget(CreatureObject* healTarget) {
 		} else {
 			doAnimation("heal_other");
 
-#ifdef DEBUG_AIHEAL
+#ifdef DEBUG_AI_HEAL
 			if (chatManager != nullptr)
 				chatManager->broadcastChatMessage(asAiAgent(), "Healing target!", 0, 0, asAiAgent()->getMoodID());
 #endif

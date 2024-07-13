@@ -1,8 +1,9 @@
 /*
  * HealLairObserverEvent.h
  *
- *  Created on: 10/12/2011
- *      Author: victor
+ * Created on: 10/12/2011
+ * Author: victor
+ *
  */
 
 #ifndef HEALLAIROBSERVEREVENT_H_
@@ -10,59 +11,82 @@
 
 #include "server/zone/managers/creature/LairObserver.h"
 #include "server/zone/objects/tangible/TangibleObject.h"
+#include "server/zone/objects/creature/ai/AiAgent.h"
 
 namespace server {
- namespace zone {
-  namespace managers {
-   namespace creature {
+namespace zone {
+namespace managers {
+namespace creature {
 
-   class HealLairObserverEvent : public Task {
-	   ManagedWeakReference<TangibleObject*> lair;
-	   ManagedWeakReference<TangibleObject*> attacker;
-	   ManagedWeakReference<LairObserver*> observer;
+class HealLairObserverEvent : public Task {
+	ManagedWeakReference<TangibleObject*> weakLair;
+	ManagedWeakReference<TangibleObject*> weakAttacker;
+	ManagedWeakReference<LairObserver*> weakObserver;
+	ManagedWeakReference<AiAgent*> weakHealer;
 
-   public:
-	   HealLairObserverEvent(TangibleObject* obj, TangibleObject* attacker, LairObserver* observer) {
-		   lair = obj;
-		   this->attacker = attacker;
-		   this->observer = observer;
-	   }
+public:
+	HealLairObserverEvent() {
+	}
 
-	   void run() {
-		   ManagedReference<TangibleObject*> strongRef = lair.get();
+	void run() {
+		ManagedReference<TangibleObject*> lair = weakLair.get();
+		ManagedReference<AiAgent*> healerAgent = weakHealer.get();
+		ManagedReference<LairObserver*> lairObserver = weakObserver.get();
 
-		   if (strongRef == nullptr)
-			   return;
+		// Logger::console.info(true) << "HealLairEvent called -- lair: " << lair->getDisplayedName() << " ID: " << lair->getObjectID();
 
-		   ManagedReference<TangibleObject*> strongAttackerRef = attacker.get();
-		   ManagedReference<LairObserver*> strongObserver = observer.get();
+		if (lair == nullptr || healerAgent == nullptr || lairObserver == nullptr) {
+			clearTaskObjects();
+			return;
+		}
 
-		   if (strongObserver == nullptr)
-			   return;
+		ManagedReference<TangibleObject*> attacker = weakAttacker.get();
 
-		   Locker locker(strongRef);
+		Locker locker(lair);
 
-		  // Locker clocker(attacker, lair);
+		// Logger::console.info(true) << "HealLairEvent -- attempting to heal lair";
 
-		   strongObserver->healLair(strongRef, strongAttackerRef);
+		// Attempt the heal, if the agent is out of range it will fail and repeat until successful
+		if (!lairObserver->healLair(lair, healerAgent, attacker)) {
+			reschedule(1000);
+			return;
+		}
 
-		   if (strongRef->getConditionDamage() > 0)
-			   strongObserver->checkForHeal(strongRef, strongAttackerRef, true);
-	   }
+		// Heal was succesful, clear healer and attacker
+		clearTaskObjects();
+	}
 
-	   void setAttacker(TangibleObject* obj) {
-		   attacker = obj;
-	   }
+	void setLair(TangibleObject* lair) {
+		weakLair = lair;
+	}
 
-   };
+	void setLairObserver(LairObserver* observer) {
+		weakObserver = observer;
+	}
 
-   }
-  }
- }
-}
+	void setAttacker(TangibleObject* attacker) {
+		weakAttacker = attacker;
+	}
+
+	void setHealerAgent(AiAgent* healer) {
+		weakHealer = healer;
+	}
+
+	bool isActivelyHealing() {
+		return (weakHealer.get() != nullptr);
+	}
+
+	void clearTaskObjects() {
+		weakHealer = nullptr;
+		weakAttacker = nullptr;
+	}
+};
+
+} // namespace creature
+} // namespace managers
+} // namespace zone
+} // namespace server
 
 using namespace server::zone::managers::creature;
-
-
 
 #endif /* HEALLAIROBSERVEREVENT_H_ */

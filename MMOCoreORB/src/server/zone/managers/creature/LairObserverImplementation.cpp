@@ -20,8 +20,15 @@
 #include "server/zone/managers/creature/DisseminateExperienceTask.h"
 #include "server/zone/managers/creature/LairRepopulateTask.h"
 #include "server/zone/managers/creature/SpawnLairMobileTask.h"
+#include "server/chat/ChatManager.h"
 
  // #define DEBUG_WILD_LAIRS
+
+void LairObserverImplementation::initializeTransientMembers() {
+	if (healLairEvent == nullptr) {
+		healLairEvent = new HealLairObserverEvent();
+	}
+}
 
 int LairObserverImplementation::notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, int64 arg2) {
 	if (observable == nullptr || arg1 == nullptr) {
@@ -63,12 +70,12 @@ int LairObserverImplementation::notifyObserverEvent(unsigned int eventType, Obse
 
 			String zoneQueueName = zone->getZoneName();
 
+			Reference<TangibleObject*> lairRef = lair;
+			Reference<TangibleObject*> attackerRef = attacker;
+
 			// Check for new spawns when the lair is not past the max spawn waves
 			if (spawnNumber < 3) {
 				// Check for new spawns Lambda
-				Reference<TangibleObject*> lairRef = lair;
-				Reference<TangibleObject*> attackerRef = attacker;
-
 				Core::getTaskManager()->scheduleTask([lairObserver, lairRef, attackerRef]() {
 					if (lairObserver == nullptr || lairRef == nullptr || attackerRef == nullptr) {
 						return;
@@ -93,9 +100,6 @@ int LairObserverImplementation::notifyObserverEvent(unsigned int eventType, Obse
 					return 0;
 				}
 
-				Reference<TangibleObject*> lairRef = lair;
-				Reference<TangibleObject*> attackerRef = attacker;
-
 				Core::getTaskManager()->scheduleTask([lairObserver, lairRef, attackerRef]() {
 					if (lairObserver == nullptr || lairRef == nullptr || attackerRef == nullptr) {
 						return;
@@ -104,16 +108,21 @@ int LairObserverImplementation::notifyObserverEvent(unsigned int eventType, Obse
 					Locker locker(lairRef);
 
 					lairObserver->checkForBossSpawn(lairRef, attackerRef);
-				}, "CheckForBossSpawnLambda", 500, zoneQueueName.toCharArray());
+				}, "CheckForBossSpawnLambda", 200, zoneQueueName.toCharArray());
 			}
 
-			// Check for heal on lair -- TODO: Fix how agents heal their lairs
-			// Add pathing to lair, check healing amounts, remove constant healing
-			if (lastHealTime.isPast() && (attacker->getObjectID() != lair->getObjectID())) {
+			// Check for heal on lair
+			if (lastHealTime.isPast()) {
 				lastHealTime.updateToCurrentTime();
 				lastHealTime.addMiliTime(LairObserver::HEAL_CHECK_INTERVAL * 1000);
 
-				checkForHeal(lair, attacker);
+				Core::getTaskManager()->scheduleTask([lairObserver, lairRef, attackerRef]() {
+					if (lairObserver == nullptr || lairRef == nullptr || attackerRef == nullptr) {
+						return;
+					}
+
+					lairObserver->checkForHeal(lairRef, attackerRef);
+				}, "CheckForLairHealLambda", 200, zoneQueueName.toCharArray());
 			}
 
 			break;
@@ -226,6 +235,12 @@ int LairObserverImplementation::getLivingCreatureCount() {
 	return totalLiving;
 }
 
+/*
+*
+* Aggro
+*
+*/
+
 void LairObserverImplementation::doAggro(TangibleObject* lair, TangibleObject* attacker, bool allAttack) {
 	for (int i = 0; i < spawnedCreatures.size(); ++i) {
 		CreatureObject* creo = spawnedCreatures.get(i);
@@ -242,8 +257,14 @@ void LairObserverImplementation::doAggro(TangibleObject* lair, TangibleObject* a
 	}
 }
 
+/*
+*
+* Healing
+*
+*/
+
 void LairObserverImplementation::checkForHeal(TangibleObject* lair, TangibleObject* attacker, bool forceNewUpdate) {
-	if (lair->isDestroyed() || getMobType() == LairTemplate::NPC) {
+	if (lair == nullptr || lair->isDestroyed() || getMobType() == LairTemplate::NPC) {
 		return;
 	}
 
@@ -251,52 +272,136 @@ void LairObserverImplementation::checkForHeal(TangibleObject* lair, TangibleObje
 		return;
 	}
 
+#ifdef DEBUG_WILD_LAIRS
+	info(true) << "Lair - Name: " << lair->getDisplayedName() << " ID: " << lair->getObjectID() << " checkForHeal - Attacker: " << ((attacker != nullptr) ? attacker->getDisplayedName() : "Attacker null");
+#endif // DEBUG_WILD_LAIRS
+
 	if (healLairEvent == nullptr) {
-		healLairEvent = new HealLairObserverEvent(lair, attacker, _this.getReferenceUnsafeStaticCast());
-		healLairEvent->schedule(1000);
-	} else if (!healLairEvent->isScheduled()) {
-		healLairEvent->schedule(1000);
-	} else if (attacker != nullptr)
-		healLairEvent->setAttacker(attacker);
-}
-
-void LairObserverImplementation::healLair(TangibleObject* lair, TangibleObject* attacker) {
-	Locker locker(lair);
-
-	if (lair->getZone() == nullptr)
+#ifdef DEBUG_WILD_LAIRS
+		info(true) << "Lair - Name: " << lair->getDisplayedName() << " ID: " << lair->getObjectID() << " has a null healing event!";
+#endif // DEBUG_WILD_LAIRS
 		return;
-
-	int damageToHeal = 0;
-	int lairMaxCondition = lair->getMaxCondition();
-
-	for (int i = 0; i < spawnedCreatures.size(); ++i) {
-		CreatureObject* creo = spawnedCreatures.get(i);
-
-		if (creo->isDead() || creo->getZone() == nullptr) {
-			continue;
-		}
-
-		if (lair->getDistanceTo(creo) > 20.0f) {
-			continue;
-		}
-
-		damageToHeal += lairMaxCondition / 100;
 	}
 
-	if (damageToHeal == 0)
+	// Lair is already in process of receiving a heal
+	if (healLairEvent->isActivelyHealing()) {
 		return;
+	}
 
-	if (lair->getZone() == nullptr)
+	// Pick through the live creatures to find a healer
+	Vector<CreatureObject*> liveCreatures;
+
+	for (int i = 0; i < spawnedCreatures.size(); ++i) {
+		auto creO = spawnedCreatures.get(i);
+
+		if (creO == nullptr || creO->isDead() || creO->isPet() || creO->getZone() == nullptr) {
+			continue;
+		}
+
+		liveCreatures.add(creO);
+	}
+
+	int totalLiving = liveCreatures.size();
+
+#ifdef DEBUG_WILD_LAIRS
+	info(true) << "LairObserver -- healLair - Name: " << lair->getDisplayedName() << " ID: " << lair->getObjectID() << " Total Living Creatures: " << totalLiving;
+#endif // DEBUG_WILD_LAIRS
+
+	// All of the creature agents are currently dead
+	if (totalLiving <= 0) {
 		return;
+	}
 
+	int totalAttempts = 0;
+	ManagedReference<AiAgent*> healerAgent = nullptr;
+
+	while (totalAttempts < 10) {
+		int randomMobile = System::random(totalLiving - 1);
+		auto healer = liveCreatures.get(randomMobile);
+
+		if (healer != nullptr && healer->isAiAgent()) {
+			healerAgent = healer->asAiAgent();
+
+			if (healerAgent != nullptr) {
+				break;
+			}
+		}
+
+		totalAttempts++;
+	}
+
+	// Setup the task for the lair heal event
+	healLairEvent->setLair(lair);
+	healLairEvent->setLairObserver(_this.getReferenceUnsafeStaticCast());
+	healLairEvent->setAttacker(attacker);
+	healLairEvent->setHealerAgent(healerAgent);
+
+	// Schedule the task to start the movement and heal process
+	healLairEvent->schedule(500);
+}
+
+// Return false to continue healing the lair. Return true to if heal event needs to be rescheduled
+
+bool LairObserverImplementation::healLair(TangibleObject* lair, AiAgent* healerAgent, TangibleObject* attacker) {
+	if (lair == nullptr || healerAgent == nullptr) {
+		return true;
+	}
+
+	Locker locker(lair);
+
+	auto zone = lair->getZone();
+
+	if (zone == nullptr) {
+		return true;
+	}
+
+#ifdef DEBUG_WILD_LAIRS
+	info(true) << "LairObserver -- healLair called - Lair: " << lair->getDisplayedName() << " ID: " << lair->getObjectID() << " Healer Agent: " << healerAgent->getDisplayedName() << " ID: " << healerAgent->getDisplayedName();
+#endif // DEBUG_WILD_LAIRS
+
+	int lairMaxCondition = lair->getMaxCondition();
+	int damageToHeal = (lairMaxCondition / 5);
+
+	Locker clock(healerAgent, lair);
+
+	if (!healerAgent->isInRange(lair, 2.f)) {
+		auto lairWorld = lair->getWorldPosition();
+
+		healerAgent->clearPatrolPoints();
+
+		healerAgent->setNextStepPosition(lairWorld.getX(), lairWorld.getZ(), lairWorld.getY(), nullptr);
+		healerAgent->setNextPosition(lairWorld.getX(), lairWorld.getZ(), lairWorld.getY(), nullptr);
+
+#ifdef DEBUG_WILD_LAIRS
+		healerAgent->getZoneServer()->getChatManager()->broadcastChatMessage(healerAgent, "I am trying to heal my home lair!");
+
+		info(true) << "Agent is not in range to heal lair!! -- Lair: " << lair->getDisplayedName() << " ID: " << lair->getObjectID() << " Healer Agent: " << healerAgent->getDisplayedName() << " ID: " << healerAgent->getDisplayedName();
+#endif // DEBUG_WILD_LAIRS
+
+		return false;
+	}
+
+#ifdef DEBUG_WILD_LAIRS
+	info(true) << "LairObserver -- Heal Lair Success! - Lair: " << lair->getDisplayedName() << " ID: " << lair->getObjectID() << " Damage Healed: " << damageToHeal;
+#endif // DEBUG_WILD_LAIRS
+
+	// Apply the heal to the lair
 	lair->healDamage(lair, 0, damageToHeal, true);
 
-	PlayClientEffectObjectMessage* heal = new PlayClientEffectObjectMessage(lair, "clienteffect/healing_healdamage.cef", "");
-	lair->broadcastMessage(heal, false);
+	// Make the agent do the heal animation
+	healerAgent->playEffect("clienteffect/healing_healdamage.cef", "");
 
-	PlayClientEffectLoc* healLoc = new PlayClientEffectLoc("clienteffect/healing_healdamage.cef", lair->getZone()->getZoneName(), lair->getPositionX(), lair->getPositionZ(), lair->getPositionY());
-	lair->broadcastMessage(healLoc, false);
+	// Play the heal animation on the lair
+	lair->playEffect("clienteffect/healing_healdamage.cef", "");
+
+	return true;
 }
+
+/*
+*
+* Spawning
+*
+*/
 
 bool LairObserverImplementation::checkForNewSpawns(TangibleObject* lair, TangibleObject* attacker, bool forceSpawn) {
 	if (lair == nullptr) {
