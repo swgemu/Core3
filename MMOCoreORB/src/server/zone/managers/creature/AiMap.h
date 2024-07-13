@@ -171,6 +171,7 @@ public:
 		lua->setGlobalInt("HARVESTING",					AiAgent::HARVESTING						);
 		lua->setGlobalInt("RESTING",					AiAgent::RESTING						);
 		lua->setGlobalInt("CONVERSING",					AiAgent::CONVERSING						);
+		lua->setGlobalInt("LAIR_HEALING",				AiAgent::LAIR_HEALING					);
 
 		lua->setGlobalInt("UPRIGHT",					CreaturePosture::UPRIGHT				);
 		lua->setGlobalInt("CROUCHED",					CreaturePosture::CROUCHED				);

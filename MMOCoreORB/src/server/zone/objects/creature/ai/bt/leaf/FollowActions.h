@@ -296,31 +296,30 @@ public:
 		}
 
 		switch (state) {
-		case AiAgent::OBLIVIOUS:
-			agent->setOblivious();
-			break;
-		case AiAgent::WATCHING: {
-			if (tar != nullptr) {
-				Locker clocker(tar, agent);
-				agent->setWatchObject(tar);
+			case AiAgent::OBLIVIOUS:
+				agent->setOblivious();
+				break;
+			case AiAgent::WATCHING: {
+				if (tar != nullptr) {
+					Locker clocker(tar, agent);
+					agent->setWatchObject(tar);
+				}
+				break;
 			}
-			break;
-		}
-		case AiAgent::STALKING: {
-			if (tar != nullptr) {
-				Locker clocker(tar, agent);
-				agent->setStalkObject(tar);
+			case AiAgent::STALKING: {
+				if (tar != nullptr) {
+					Locker clocker(tar, agent);
+					agent->setStalkObject(tar);
+				}
+				break;
 			}
-			break;
-		}
-		case AiAgent::FOLLOWING:
-			break;
-		case AiAgent::PATROLLING:
-		case AiAgent::FLEEING:
-		case AiAgent::LEASHING:
-		default:
-			agent->setMovementState(state);
-			break;
+			case AiAgent::FOLLOWING:
+			case AiAgent::PATROLLING:
+			case AiAgent::FLEEING:
+			case AiAgent::LEASHING:
+			default:
+				agent->setMovementState(state);
+				break;
 		};
 
 		return SUCCESS;
@@ -870,7 +869,7 @@ public:
 					return FAILURE;
 
 				if (healCreo == agent) {
-					agent->writeBlackboard("healTarget", healCreo);
+					agent->writeBlackboard("healTarget", healCreo->asTangibleObject());
 					return SUCCESS;
 				}
 
@@ -889,7 +888,7 @@ public:
 					return FAILURE;
 
 				agent->setMovementState(AiAgent::MOVING_TO_HEAL);
-				agent->writeBlackboard("healTarget", healCreo);
+				agent->writeBlackboard("healTarget", healCreo->asTangibleObject());
 
 				return SUCCESS;
 			}
