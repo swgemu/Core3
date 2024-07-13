@@ -201,7 +201,7 @@ class BuildingObject extends StructureObject {
 	public native void notifyInsertToZone(Zone zone);
 
 	@local
-	public native void notifyDissapear(TreeEntry obj);
+	public abstract native void notifyDissapear(TreeEntry obj);
 
 	@dirty
 	@local

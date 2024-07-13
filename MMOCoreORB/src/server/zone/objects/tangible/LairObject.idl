@@ -74,27 +74,8 @@ class LairObject extends TangibleObject {
 		}
 	}
 
-	public void notifyDissapear(TreeEntry entry) {
-		SceneObject obj = (SceneObject) entry;
-
-		if (obj == this)
-			return;
-
-		if (obj.isPlayerCreature()) {
-			CreatureObject creo = (CreatureObject) obj;
-			if (!creo.isInvisible()) {
-				int val = numberOfPlayersInRange.decrement();
-
-				if (val <= 0) {
-					if (despawnOnNoPlayersInRange)
-						activateDespawnEvent();
-
-					if (!repopulated && (super.getConditionDamage() > (super.getMaxCondition() * 0.5f)))
-						notifyObservers(ObserverEventType.NOPLAYERSINRANGE);
-				}
-			}
-		}
-	}
+	@local
+	public abstract native void notifyDissapear(TreeEntry entry);
 
 	public void activateDespawnEvent() {
 		if (despawnEvent)

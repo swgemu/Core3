@@ -8,24 +8,40 @@
 #include "server/zone/objects/creature/ai/AiAgent.h"
 #include "server/zone/objects/creature/ai/Creature.h"
 #include "server/zone/objects/tangible/LairObject.h"
+#include "server/zone/managers/creature/SpawnLairMobileTask.h"
+
+// #define DEBUG_MISSION_LAIRS
 
 void DestroyMissionLairObserverImplementation::checkForHeal(TangibleObject* lair, TangibleObject* attacker, bool forceNewUpdate) {
-	if (getMobType() == LairTemplate::NPC)
+	if (getMobType() == LairTemplate::NPC) {
 		return;
+	}
 
 	LairObserverImplementation::checkForHeal(lair, attacker, forceNewUpdate);
 }
 
 bool DestroyMissionLairObserverImplementation::checkForNewSpawns(TangibleObject* lair, TangibleObject* attacker, bool forceSpawn) {
-	Zone* zone = lair->getZone();
-
-	if (zone == nullptr)
+	if (lair == nullptr) {
 		return false;
+	}
 
-	CreatureManager* creatureManager = zone->getCreatureManager();
+	auto zone = lair->getZone();
 
-	if (creatureManager == nullptr)
+	if (zone == nullptr) {
 		return false;
+	}
+
+	auto lairObject = cast<LairObject*>(lair);
+
+	if (lairObject == nullptr) {
+		return false;
+	}
+
+	auto creatureManager = zone->getCreatureManager();
+
+	if (creatureManager == nullptr) {
+		return false;
+	}
 
 	int spawnLimitAdjustment = 0;
 
@@ -38,180 +54,224 @@ bool DestroyMissionLairObserverImplementation::checkForNewSpawns(TangibleObject*
 	int spawnLimit = lairTemplate->getSpawnLimit() + spawnLimitAdjustment;
 	spawnLimitAdjustment = spawnLimit;
 
-	LairObject* lairObject = cast<LairObject*>(lair);
+	bool isCreatureLair = false;
 
-	if (lairObject != nullptr && lairObject->isRepopulated())
+	if (getMobType() == LairTemplate::CREATURE) {
+		isCreatureLair = true;
+	}
+
+	// Lair limit is double due to "milking"
+	if (lairObject->isRepopulated()) {
 		spawnLimit *= 2;
+	}
+
+#ifdef DEBUG_MISSION_LAIRS
+	info(true) << "Mission Lair - " << lair->getDisplayedName() << " Checking for new spawns with spawnNumber = " << spawnNumber << " Spawn Limit = " << spawnLimit << " Total Spawned Creatures = " << spawnedCreatures.size();
+#endif // DEBUG_MISSION_LAIRS
 
 	if (forceSpawn) {
 		spawnNumber.increment();
 	} else if (getMobType() == LairTemplate::NPC) {
 		return false;
 	} else {
-		if (spawnedCreatures.size() >= spawnLimit && !lairTemplate->hasBossMobs())
-			return true;
+		// Spawn limit has been reached for lair
+		if (spawnedCreatures.size() >= spawnLimit) {
+			return false;
+		}
 
 		int conditionDamage = lair->getConditionDamage();
 		int maxCondition = lair->getMaxCondition();
 
 		switch (spawnNumber) {
-		case 0:
-			spawnNumber.increment();
-			break;
-		case 1:
-			if (conditionDamage > (maxCondition / 10)) {
+			// Initial Spawn when lair is inserted to zone
+			case 0:
 				spawnNumber.increment();
-			} else {
+				break;
+			// 1st Wave of spawns when lair takes its first damage
+			case 1:
+				if (conditionDamage > 0) {
+					spawnNumber.increment();
+				} else {
+					return false;
+				}
+				break;
+			// 2nd Wave of spawns when lair condition drops past half of the total condition
+			case 2:
+				if (conditionDamage > (maxCondition / 2)) {
+					spawnNumber.increment();
+				} else {
+					return false;
+				}
+				break;
+			default:
 				return false;
-			}
-			break;
-		case 2:
-			if (conditionDamage > (maxCondition / 2)) {
-				spawnNumber.increment();
-			} else {
-				return false;
-			}
-			break;
-		case 3:
-			if (lairTemplate->hasBossMobs() && conditionDamage > ((maxCondition * 9) / 10)) {
-				spawnNumber.increment();
-			} else {
-				return false;
-			}
-			break;
-		default:
-			return false;
-			break;
+				break;
 		}
 	}
 
-	VectorMap<String, int> objectsToSpawn; // String mobileTemplate, int number to spawn
+	// String mobileTemplate, int number to spawn
+	VectorMap<String, int> objectsToSpawn;
 
-	if (spawnNumber == 4) {
-		if (System::random(100) > 4)
-			return false;
+	const Vector<String>* mobiles = lairTemplate->getWeightedMobiles();
+	int amountToSpawn = 0;
 
-		const VectorMap<String, int>* mobs = lairTemplate->getBossMobiles();
+	if (isCreatureLair) {
+		amountToSpawn = spawnLimitAdjustment / 3;
 
-		for (int i = 0; i < mobs->size(); i++) {
-			objectsToSpawn.put(mobs->elementAt(i).getKey(), mobs->elementAt(i).getValue());
+		if (amountToSpawn <= 1) {
+			amountToSpawn = 2;
 		}
-
 	} else {
-		const Vector<String>* mobiles = lairTemplate->getWeightedMobiles();
-		int amountToSpawn = 0;
+		amountToSpawn = System::random(2) + (spawnLimitAdjustment / 3);
 
-		if (getMobType() == LairTemplate::CREATURE) {
-			amountToSpawn = spawnLimitAdjustment / 3;
-		} else {
-			amountToSpawn = System::random(2) + (spawnLimitAdjustment / 3);
-		}
-
-		if (amountToSpawn < 1)
+		if (amountToSpawn < 1) {
 			amountToSpawn = 1;
+		}
+	}
 
-		for (int i = 0; i < amountToSpawn; i++) {
-			int num = System::random(mobiles->size() - 1);
-			const String& mob = mobiles->get(num);
+	for (int i = 0; i < amountToSpawn; i++) {
+		int num = System::random(mobiles->size() - 1);
+		const String& mob = mobiles->get(num);
 
-			int find = objectsToSpawn.find(mob);
+		int find = objectsToSpawn.find(mob);
 
-			if (find != -1) {
-				int& value = objectsToSpawn.elementAt(find).getValue();
+		if (find != -1) {
+			int& value = objectsToSpawn.elementAt(find).getValue();
 
-				++value;
-			} else {
-				objectsToSpawn.put(mob, 1);
-			}
+			++value;
+		} else {
+			objectsToSpawn.put(mob, 1);
 		}
 	}
 
 	uint32 lairTemplateCRC = getLairTemplateName().hashCode();
 
-	for(int i = 0; i < objectsToSpawn.size(); ++i) {
-
-		if (spawnNumber != 4 && spawnedCreatures.size() >= spawnLimit)
-			return true;
-
-		String templateToSpawn = objectsToSpawn.elementAt(i).getKey();
+	for (int i = 0; i < objectsToSpawn.size(); ++i) {
+		const String& templateToSpawn = objectsToSpawn.elementAt(i).getKey();
 		int numberToSpawn = objectsToSpawn.elementAt(i).getValue();
 
-		CreatureTemplate* creatureTemplate = CreatureTemplateManager::instance()->getTemplate(templateToSpawn);
-
-		if (creatureTemplate == nullptr)
-			continue;
-
-		float tamingChance = creatureTemplate->getTame();
-
 		for (int j = 0; j < numberToSpawn; j++) {
-			if (lair->getZone() == nullptr)
-				break;
+			// Lair mobile spawn task with passive mobile set to spawn
+			Reference<SpawnLairMobileTask*> spawnTask = new SpawnLairMobileTask(lairObject, spawnNumber, templateToSpawn, true);
 
-			float x = lair->getPositionX() + (size - System::random(size * 20) / 10.0f);
-			float y = lair->getPositionY() + (size - System::random(size * 20) / 10.0f);
-			float z = zone->getHeight(x, y);
-
-			ManagedReference<CreatureObject*> creo = nullptr;
-
-			if (j > 0 && creatureManager->checkSpawnAsBaby(tamingChance, babiesSpawned, DestroyMissionLairObserver::BABY_SPAWN_CHANCE)) {
-				creo = creatureManager->spawnCreatureAsBaby(templateToSpawn.hashCode(), x, z, y);
-				babiesSpawned++;
+			if (spawnTask == nullptr) {
+				continue;
 			}
 
-			if (creo == nullptr)
-				creo = creatureManager->spawnCreatureWithAi(templateToSpawn.hashCode(), x, z, y);
-
-			if (creo == nullptr)
-				continue;
-
-			if (!creo->isAiAgent()) {
-				error("spawned non player creature with template " + templateToSpawn);
+			// Initial spawn wave should spawn quicker then the others
+			if (spawnNumber < 2) {
+				// Initial spawn is spawned almost immediately
+				spawnTask->schedule((j + 1) * 200);
 			} else {
-				AiAgent* agent = cast<AiAgent*>(creo.get());
+				// Create a spawn time that is at least between the min and max
+				int spawnTime = System::random(LairObserver::SPAWN_TIME_MAX - LairObserver::SPAWN_TIME_MIN) + LairObserver::SPAWN_TIME_MIN;
 
-				Locker clocker(agent, lair);
-
-				agent->setDespawnOnNoPlayerInRange(false);
-				agent->setHomeLocation(x, z, y);
-				agent->setRespawnTimer(0);
-				agent->setHomeObject(lair);
-				agent->setLairTemplateCRC(lairTemplateCRC);
-
-				spawnedCreatures.add(creo);
-
-				// Must be at least the baby and one other creature on the spawn to set a adult creature to social follow
-				if (spawnedCreatures.size() > 1 && agent->isCreature()) {
-					Creature* creature = cast<Creature*>(agent);
-
-					if (creature != nullptr && creature->isBaby()) {
-						ManagedReference<CreatureObject*> adultCreo = spawnedCreatures.get(0);
-
-						if (adultCreo != nullptr && adultCreo->getObjectID() != creo->getObjectID()) {
-							Locker adultLock(adultCreo, agent);
-
-							agent->addObjectFlag(ObjectFlag::ESCORT);
-							agent->addObjectFlag(ObjectFlag::FOLLOW);
-
-							agent->setFollowObject(adultCreo);
-							agent->setMovementState(AiAgent::FOLLOWING);
-
-							agent->setAITemplate();
-
-							Vector3 formationOffset;
-							formationOffset.setX(2.0);
-							agent->writeBlackboard("formationOffset", formationOffset);
-						}
-					}
-				}
+				spawnTask->schedule(spawnTime * 1000);
 			}
 		}
-	}
-
-	if (spawnNumber == 4) {
-		Reference<LairAggroTask*> task = new LairAggroTask(lair, attacker, _this.getReferenceUnsafeStaticCast(), true);
-		task->schedule(1000);
 	}
 
 	return objectsToSpawn.size() > 0;
 }
 
+void DestroyMissionLairObserverImplementation::spawnLairMobile(LairObject* lair, int spawnNumber, const String& templateToSpawn, bool spawnPassive) {
+	if (lair == nullptr) {
+		return;
+	}
+
+	auto zone = lair->getZone();
+
+	// Lair will have a null zone if it is destroyed
+	if (zone == nullptr) {
+		return;
+	}
+
+	auto creatureManager = zone->getCreatureManager();
+
+	if (creatureManager == nullptr) {
+		return;
+	}
+
+	auto creatureTemplate = CreatureTemplateManager::instance()->getTemplate(templateToSpawn);
+
+	if (creatureTemplate == nullptr) {
+		return;
+	}
+
+	float tamingChance = creatureTemplate->getTame();
+	uint32 lairTemplateCRC = templateToSpawn.hashCode();
+
+	float x = lair->getPositionX() + (size - System::random(size * 20) / 10.0f);
+	float y = lair->getPositionY() + (size - System::random(size * 20) / 10.0f);
+	float z = zone->getHeight(x, y);
+
+	ManagedReference<CreatureObject*> creature = nullptr;
+
+	if (spawnNumber > 0 && creatureManager->checkSpawnAsBaby(tamingChance, babiesSpawned, LairObserver::BABY_SPAWN_CHANCE)) {
+		creature = creatureManager->spawnCreatureAsBaby(lairTemplateCRC, x, z, y);
+
+		babiesSpawned++;
+	}
+
+	if (creature == nullptr) {
+		creature = creatureManager->spawnCreatureWithAi(lairTemplateCRC, x, z, y);
+	}
+
+	if (creature == nullptr || !creature->isAiAgent()) {
+		return;
+	}
+
+	auto agent = creature->asAiAgent();
+
+	if (agent == nullptr) {
+		return;
+	}
+
+	Locker clocker(agent, lair);
+
+	agent->setDespawnOnNoPlayerInRange(false);
+	agent->setHomeLocation(x, z, y);
+	agent->setRespawnTimer(0);
+	agent->setHomeObject(lair);
+	agent->setLairTemplateCRC(lairTemplateCRC);
+
+	spawnedCreatures.add(agent);
+
+	// Must be at least the baby and one other creature on the spawn to set a adult creature to social follow
+	if (spawnedCreatures.size() > 1 && agent->isCreature()) {
+		Creature* creature = cast<Creature*>(agent);
+
+		if (creature != nullptr && creature->isBaby()) {
+			ManagedReference<CreatureObject*> adultCreo = spawnedCreatures.get(0);
+
+			if (adultCreo != nullptr && adultCreo->getObjectID() != creature->getObjectID()) {
+				Locker adultLock(adultCreo, agent);
+
+				agent->addObjectFlag(ObjectFlag::ESCORT);
+				agent->addObjectFlag(ObjectFlag::FOLLOW);
+
+				agent->setFollowObject(adultCreo);
+				agent->setMovementState(AiAgent::FOLLOWING);
+
+				agent->setAITemplate();
+
+				Vector3 formationOffset;
+				formationOffset.setX(2.0);
+				agent->writeBlackboard("formationOffset", formationOffset);
+			}
+		}
+	}
+
+	if (getMobType() != LairTemplate::CREATURE || (spawnNumber < 2)) {
+		return;
+	}
+
+	// Any spawn wave with the exception of the initial wave causes lair damage
+	int newDamage = (lair->getMaxCondition() / ((lairTemplate->getSpawnLimit() / 3) * 5));
+
+#ifdef DEBUG_MISSION_LAIRS
+	info(true) << "Wild Lair - Name: " << lair->getDisplayedName() << " ID: " << lair->getObjectID() << " Damaging Self from creature spawn: " << newDamage;
+#endif // DEBUG_MISSION_LAIRS
+
+	lair->inflictDamage(lair, 0, newDamage, true, true, false);
+}

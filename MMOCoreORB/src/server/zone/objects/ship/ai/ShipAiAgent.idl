@@ -197,7 +197,7 @@ class ShipAiAgent extends FighterShipObject {
 	public native void notifyInsert(TreeEntry entry);
 
 	@local
-	public native void notifyDissapear(TreeEntry entry);
+	public abstract native void notifyDissapear(TreeEntry entry);
 
 	@weakReference
 	public ShipObject getFollowShipObject() {

@@ -1231,7 +1231,7 @@ class CreatureObject extends TangibleObject {
 	public native void notifyInsert(TreeEntry obj);
 
 	@local
-	public native void notifyDissapear(TreeEntry obj);
+	public abstract native void notifyDissapear(TreeEntry obj);
 
 	@dirty
 	@local
