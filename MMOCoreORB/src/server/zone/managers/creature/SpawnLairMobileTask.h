@@ -8,19 +8,21 @@
 #ifndef SPAWNLAIRMOBILETASK_H_
 #define SPAWNLAIRMOBILETASK_H_
 
-#include "server/zone/objects/tangible/TangibleObject.h"
+#include "server/zone/objects/tangible/LairObject.h"
 #include "server/zone/managers/creature/LairObserver.h"
 
 class SpawnLairMobileTask : public Task {
-	ManagedWeakReference<TangibleObject*> lairWeak;
+	ManagedWeakReference<LairObject*> lairWeak;
 	int spawnNumber;
 	String mobileString;
+	bool spawnPassive;
 
 public:
-	SpawnLairMobileTask(TangibleObject* lair, int spawnNum, String mobileStr) {
+	SpawnLairMobileTask(LairObject* lair, int spawnNum, String mobileStr, bool passive) {
 		lairWeak = lair;
 		spawnNumber = spawnNum;
 		mobileString = mobileStr;
+		spawnPassive = passive;
 	}
 
 	void run() {
@@ -51,7 +53,7 @@ public:
 			return;
 		}
 
-		lairObserver->spawnLairMobile(lairObject, spawnNumber, mobileString);
+		lairObserver->spawnLairMobile(lairObject, spawnNumber, mobileString, spawnPassive);
 	}
 };
 
