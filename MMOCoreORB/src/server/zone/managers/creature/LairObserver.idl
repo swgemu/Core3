@@ -8,20 +8,36 @@ package server.zone.managers.creature;
 import engine.core.ManagedObject;
 import engine.util.Observable;
 import server.zone.managers.creature.SpawnObserver;
-import server.zone.objects.tangible.TangibleObject;
+import server.zone.objects.tangible.LairObject;
 import server.zone.managers.creature.HealLairObserverEvent;
+import system.lang.Time;
+
+include server.zone.objects.tangible.TangibleObject;
 include system.thread.atomic.AtomicInteger;
 
 class LairObserver extends SpawnObserver {
 	public static final int BABY_SPAWN_CHANCE = 500;
+	public static final int BOSS_SPAWN_CHANCE = 10;
+
+	public static final int WILD_LAIR_PASSIVE_MAX = 20;
 
 	public static final int SPAWN_TIME_MIN = 1; // In seconds
-	public static final int SPAWN_TIME_MAX = 6; // In seconds
+	public static final int SPAWN_TIME_MAX = 10; // In seconds
+
+	public static final int RESPAWN_TIME_MIN = 120; // In seconds
+	public static final int RESPAWN_TIME_MAX = 240; // In seconds
+
+	public static final int PASSIVE_SPAWN_TIME_MIN = 15; // In seconds
+	public static final int PASSIVE_SPAWN_TIME_MAX = 20; // In seconds
+	public static final int HEAL_CHECK_INTERVAL = 15; // In seconds
 
 	@dereferenced
 	protected AtomicInteger spawnNumber;
 
 	protected transient HealLairObserverEvent healLairEvent;
+
+	@dereferenced
+	protected transient Time lastHealTime;
 
 	public LairObserver() {
 		super();
@@ -40,7 +56,13 @@ class LairObserver extends SpawnObserver {
 	public abstract native boolean checkForNewSpawns(TangibleObject lair, TangibleObject attacker, boolean forceSpawn = false);
 
 	@arg1preLocked
-	public native void spawnLairMobile(TangibleObject lair, int spawnNumber, final string templateToSpawn);
+	public native void checkForBossSpawn(TangibleObject lair, TangibleObject attacker);
+
+	@arg1preLocked
+	public native void checkRespawn(LairObject lair, TangibleObject attacker);
+
+	@arg1preLocked
+	public abstract native void spawnLairMobile(LairObject lair, int spawnNumber, final string templateToSpawn, boolean spawnPassive = true);
 
 	public native void healLair(TangibleObject lair, TangibleObject attacker);
 	public abstract native void checkForHeal(TangibleObject lair, TangibleObject attacker, boolean forceNewUpdate = false);

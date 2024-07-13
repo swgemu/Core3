@@ -5,8 +5,10 @@
 package server.zone.objects.mission;
 
 import server.zone.managers.creature.LairObserver;
-import server.zone.objects.tangible.TangibleObject;
+import server.zone.objects.tangible.LairObject;
 import engine.log.Logger;
+
+include server.zone.objects.tangible.TangibleObject;
 
 class DestroyMissionLairObserver extends LairObserver {
 	public static final int BABY_SPAWN_CHANCE = 1000;
@@ -19,7 +21,11 @@ class DestroyMissionLairObserver extends LairObserver {
 
 	public native void checkForHeal(TangibleObject lair, TangibleObject attacker, boolean forceNewUpdate = false);
 
+	@arg1preLocked
 	public native boolean checkForNewSpawns(TangibleObject lair, TangibleObject attacker, boolean forceSpawn = false);
+
+	@arg1preLocked
+	public abstract native void spawnLairMobile(LairObject lair, int spawnNumber, final string templateToSpawn, boolean spawnPassive = true);
 
 	public boolean isDestroyMissionLairObserver() {
 		return true;
