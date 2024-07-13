@@ -296,31 +296,30 @@ public:
 		}
 
 		switch (state) {
-		case AiAgent::OBLIVIOUS:
-			agent->setOblivious();
-			break;
-		case AiAgent::WATCHING: {
-			if (tar != nullptr) {
-				Locker clocker(tar, agent);
-				agent->setWatchObject(tar);
+			case AiAgent::OBLIVIOUS:
+				agent->setOblivious();
+				break;
+			case AiAgent::WATCHING: {
+				if (tar != nullptr) {
+					Locker clocker(tar, agent);
+					agent->setWatchObject(tar);
+				}
+				break;
 			}
-			break;
-		}
-		case AiAgent::STALKING: {
-			if (tar != nullptr) {
-				Locker clocker(tar, agent);
-				agent->setStalkObject(tar);
+			case AiAgent::STALKING: {
+				if (tar != nullptr) {
+					Locker clocker(tar, agent);
+					agent->setStalkObject(tar);
+				}
+				break;
 			}
-			break;
-		}
-		case AiAgent::FOLLOWING:
-			break;
-		case AiAgent::PATROLLING:
-		case AiAgent::FLEEING:
-		case AiAgent::LEASHING:
-		default:
-			agent->setMovementState(state);
-			break;
+			case AiAgent::FOLLOWING:
+			case AiAgent::PATROLLING:
+			case AiAgent::FLEEING:
+			case AiAgent::LEASHING:
+			default:
+				agent->setMovementState(state);
+				break;
 		};
 
 		return SUCCESS;
@@ -835,67 +834,90 @@ public:
 	}
 
 	GetHealTarget& operator=(const GetHealTarget& a) {
-		if (this == &a)
+		if (this == &a) {
 			return *this;
+		}
+
 		Behavior::operator=(a);
 		range = a.range;
 		return *this;
 	}
 
 	Behavior::Status execute(AiAgent* agent, unsigned int startIdx = 0) const {
-		ManagedReference<SceneObject*> target = nullptr;
+		// agent->info(true) << "ID: " << agent->getObjectID() << " calling --- GetHealTarget!";
 
-		if (agent->peekBlackboard("targetProspect"))
-			target = agent->readBlackboard("targetProspect").get<ManagedReference<SceneObject*> >().get();
+		ManagedReference<SceneObject*> targetProspect = nullptr;
 
-		if (target == nullptr || !target->isCreatureObject())
-			return FAILURE;
-
-		ManagedReference<CreatureObject*> targetCreo = target->asCreatureObject();
-
-		if (targetCreo != nullptr) {
-			const DeltaVector<ManagedReference<SceneObject*>>* defenderList = targetCreo->getDefenderList();
-
-			if (defenderList != nullptr && defenderList->size() > 0) {
-				int healTar = System::random(defenderList->size() - 1);
-
-				ManagedReference<SceneObject*> healTarget = defenderList->get(healTar);
-
-				if (healTarget == nullptr || !healTarget->isCreatureObject())
-					return FAILURE;
-
-				ManagedReference<CreatureObject*> healCreo = healTarget->asCreatureObject();
-
-				if (healCreo == nullptr || healCreo->isDead())
-					return FAILURE;
-
-				if (healCreo == agent) {
-					agent->writeBlackboard("healTarget", healCreo);
-					return SUCCESS;
-				}
-
-				Locker clocker(healCreo, agent);
-
-				if (healCreo->isAggressiveTo(agent) || agent->isAggressiveTo(healCreo))
-					return FAILURE;
-
-				if (healCreo->getFaction() > 0 && (healCreo->getFaction() != agent->getFaction() && healCreo->getFactionStatus() > FactionStatus::ONLEAVE)) {
-					return FAILURE;
-				}
-
-				float distSq = agent->getPosition().squaredDistanceTo(healCreo->getPosition());
-
-				if (distSq > range * range)
-					return FAILURE;
-
-				agent->setMovementState(AiAgent::MOVING_TO_HEAL);
-				agent->writeBlackboard("healTarget", healCreo);
-
-				return SUCCESS;
-			}
+		if (agent->peekBlackboard("targetProspect")) {
+			targetProspect = agent->readBlackboard("targetProspect").get<ManagedReference<SceneObject*> >().get();
 		}
 
-		return FAILURE;
+		if (targetProspect == nullptr || !targetProspect->isCreatureObject()) {
+			return FAILURE;
+		}
+
+		auto targetTanO = targetProspect->asTangibleObject();
+
+		if (targetTanO == nullptr) {
+			return FAILURE;
+		}
+
+		const DeltaVector<ManagedReference<SceneObject*>>* defenderList = targetTanO->getDefenderList();
+
+		if (defenderList == nullptr || defenderList->size() < 1) {
+			return FAILURE;
+		}
+
+		int healTar = System::random(defenderList->size() - 1);
+
+		ManagedReference<SceneObject*> defenderSceneO = defenderList->get(healTar);
+
+		if (defenderSceneO == nullptr || !defenderSceneO->isCreatureObject()) {
+			return FAILURE;
+		}
+
+		ManagedReference<TangibleObject*> healTarget = defenderSceneO->asTangibleObject();
+
+		if (healTarget == nullptr ) {
+			return FAILURE;
+		}
+
+		if (healTarget->getObjectID() == agent->getObjectID()) {
+			// agent->info(true) << "ID: " << agent->getObjectID() << " Agent setting self as heal target";
+
+			agent->writeBlackboard("healTarget", healTarget);
+			return SUCCESS;
+		}
+
+		auto healCreo = healTarget->asCreatureObject();
+
+		if (healCreo == nullptr || healCreo->isDead()) {
+			// agent->info(true) << "blocked adding a CreO to healTarget";
+			return FAILURE;
+		}
+
+		Locker clocker(healCreo, agent);
+
+		if (healCreo->isAggressiveTo(agent) || agent->isAggressiveTo(healCreo)) {
+			return FAILURE;
+		}
+
+		if (healCreo->getFaction() > 0 && (healCreo->getFaction() != agent->getFaction() && healCreo->getFactionStatus() > FactionStatus::ONLEAVE)) {
+			return FAILURE;
+		}
+
+		if (!agent->isInRange3d(healCreo, range)) {
+			return FAILURE;
+		}
+
+		agent->setMovementState(AiAgent::MOVING_TO_HEAL);
+
+		// This must set the Tangible Object as the target to heal
+		agent->writeBlackboard("healTarget", healTarget);
+
+		// agent->info(true) << "ID: " << agent->getObjectID() << "    Set up a healTarget ---- " << healCreo->getDisplayedName();
+
+		return SUCCESS;
 	}
 
 	void parseArgs(const LuaObject& args) {

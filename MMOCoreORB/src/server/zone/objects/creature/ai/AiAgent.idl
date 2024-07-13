@@ -222,6 +222,7 @@ class AiAgent extends CreatureObject {
 	public static final int HARVESTING = 13;
 	public static final int RESTING = 14;
 	public static final int CONVERSING = 15;
+	public static final int LAIR_HEALING = 16;
 
 	public static final int MOB_HERBIVORE = 1;
 	public static final int MOB_CARNIVORE = 2;
@@ -740,7 +741,11 @@ class AiAgent extends CreatureObject {
 
 	public native boolean stalkProspect(SceneObject prospect);
 
-	public native void healTarget(CreatureObject target);
+	@arg1preLocked
+	public native void healCreatureTarget(CreatureObject healTarget);
+
+	@arg1preLocked
+	public native void healTangibleTarget(TangibleObject healTarget);
 
 	@preLocked
 	public native void setDespawnOnNoPlayerInRange(boolean val);

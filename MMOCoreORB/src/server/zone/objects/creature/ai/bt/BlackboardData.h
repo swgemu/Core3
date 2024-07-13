@@ -14,12 +14,9 @@ namespace creature {
 namespace ai {
 namespace bt {
 
-enum DataVal
-	: uint32 {
-		WALK, RUN, DEFAULT, WEAPON, RANDOM, PLAYER, CREATURE, NPC, TANGIBLE, AGENT, PRIMARYWEAPON, SECONDARYWEAPON, MONSTER, DROID, ANDROID, HUMANOID, BADVAL
-};
+enum DataVal : uint32 { WALK, RUN, DEFAULT, WEAPON, RANDOM, PLAYER, CREATURE, NPC, TANGIBLE, AGENT, PRIMARYWEAPON, SECONDARYWEAPON, MONSTER, DROID, ANDROID, HUMANOID, BADVAL };
 
-template<typename T>
+template <typename T>
 using BlackboardType = typename std::decay<T>::type;
 
 class BlackboardData : public Object {
@@ -31,23 +28,19 @@ private:
 		virtual bool operator==(const AbstractData&) const = 0;
 	};
 
-	template<typename T>
+	template <typename T>
 	class Data : public AbstractData {
 	public:
-		Data()
-				: value(static_cast<T>(0)) {
+		Data() : value(static_cast<T>(0)) {
 		}
 
-		Data(T in)
-				: value(in) {
+		Data(T in) : value(in) {
 		}
 
-		Data(const Data<T>& in)
-				: value(in.value) {
+		Data(const Data<T>& in) : value(in.value) {
 		}
 
-		Data(Data<T> && in)
-				: Data() {
+		Data(Data<T>&& in) : Data() {
 			swap(*this, in);
 		}
 
@@ -80,21 +73,17 @@ private:
 	std::shared_ptr<AbstractData> data;
 
 public:
-	BlackboardData()
-			: Object(), data(NULL) {
+	BlackboardData() : Object(), data(NULL) {
 	}
 
-	template<typename T>
-	BlackboardData(T&& in)
-			: Object(), data(new Data<BlackboardType<T> >(std::forward<T>(in))) {
+	template <typename T>
+	BlackboardData(T&& in) : Object(), data(new Data<BlackboardType<T>>(std::forward<T>(in))) {
 	}
 
-	BlackboardData(const BlackboardData& in)
-			: Object(), data(in.data) {
+	BlackboardData(const BlackboardData& in) : Object(), data(in.data) {
 	}
 
-	BlackboardData(BlackboardData&& in)
-			: BlackboardData() {
+	BlackboardData(BlackboardData&& in) : BlackboardData() {
 		swap(*this, in);
 	}
 
@@ -112,41 +101,38 @@ public:
 		return *data == *b.data;
 	}
 
-	template<typename T>
+	template <typename T>
 	BlackboardType<T>& get() {
 		typedef BlackboardType<T> TBASE;
 		// this with throw bad_cast if the type is wrong
 		return dynamic_cast<Data<TBASE>&>(*data).value;
 	}
 
-	template<typename T>
+	template <typename T>
 	void set(T&& in) {
-		data.reset(new Data<BlackboardType<T> >(std::forward<T>(in)));
+		data.reset(new Data<BlackboardType<T>>(std::forward<T>(in)));
 	}
 };
 
 // template specializations to avoid passing BlackboardData into the input ctor
-template<>
-inline BlackboardData::BlackboardData(const BlackboardData& in)
-		: Object(), data(in.data) {
+template <>
+inline BlackboardData::BlackboardData(const BlackboardData& in) : Object(), data(in.data) {
 }
 
-template<>
-inline BlackboardData::BlackboardData(BlackboardData& in)
-		: Object(), data(in.data) {
+template <>
+inline BlackboardData::BlackboardData(BlackboardData& in) : Object(), data(in.data) {
 }
 
-template<>
-inline BlackboardData::BlackboardData(BlackboardData&& in)
-		: BlackboardData() {
+template <>
+inline BlackboardData::BlackboardData(BlackboardData&& in) : BlackboardData() {
 	swap(*this, in);
 }
 
-}
-}
-}
-}
-}
-}
+} // namespace bt
+} // namespace ai
+} // namespace creature
+} // namespace objects
+} // namespace zone
+} // namespace server
 
 #endif // BLACKBOARDDATA_H_
