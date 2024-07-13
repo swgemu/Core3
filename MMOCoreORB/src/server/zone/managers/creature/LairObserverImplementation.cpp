@@ -251,50 +251,82 @@ void LairObserverImplementation::checkForHeal(TangibleObject* lair, TangibleObje
 		return;
 	}
 
+#ifdef DEBUG_WILD_LAIRS
+	info(true) << "Lair - Name: " << lair->getDisplayedName() << " ID: " << lair->getObjectID() << " Observer Event Type = " << eventType;
+#endif // DEBUG_WILD_LAIRS
+
 	if (healLairEvent == nullptr) {
 		healLairEvent = new HealLairObserverEvent(lair, attacker, _this.getReferenceUnsafeStaticCast());
-		healLairEvent->schedule(1000);
-	} else if (!healLairEvent->isScheduled()) {
-		healLairEvent->schedule(1000);
-	} else if (attacker != nullptr)
+	}
+
+	if (healLairEvent == nullptr) {
+		return;
+	}
+
+	if (attacker != nullptr) {
 		healLairEvent->setAttacker(attacker);
+	}
+
+	if (!healLairEvent->isScheduled()) {
+		healLairEvent->schedule(1000);
+	}
 }
 
 void LairObserverImplementation::healLair(TangibleObject* lair, TangibleObject* attacker) {
+	if (lair == nullptr) {
+		return;
+	}
+
 	Locker locker(lair);
 
-	if (lair->getZone() == nullptr)
-		return;
+	auto zone = lair->getZone();
 
-	int damageToHeal = 0;
+	if (zone == nullptr) {
+		return;
+	}
+
 	int lairMaxCondition = lair->getMaxCondition();
+	int damageToHeal = (lairMaxCondition / 5);
+
+	Vector<CreatureObject*> liveCreatures;
 
 	for (int i = 0; i < spawnedCreatures.size(); ++i) {
-		CreatureObject* creo = spawnedCreatures.get(i);
+		auto creo = spawnedCreatures.get(i);
 
 		if (creo->isDead() || creo->getZone() == nullptr) {
 			continue;
 		}
 
-		if (lair->getDistanceTo(creo) > 20.0f) {
-			continue;
-		}
-
-		damageToHeal += lairMaxCondition / 100;
+		liveCreatures.add(creo);
 	}
 
-	if (damageToHeal == 0)
-		return;
+	int totalLiving = liveCreatures.size();
 
-	if (lair->getZone() == nullptr)
+	if (totalLiving <= 0) {
 		return;
+	}
+
+	int randomMobile = System::random(totalLiving - 1);
+	auto healer = liveCreatures.get(randomMobile);
+
+	if (healer == nullptr || healer->isDead() || healer->isPet()) {
+		return;
+	}
+
+	// TODO: Healer needs to path to the lair
+
+	if (!healer->isInRange(lair, 2.f)) {
+
+	}
+
+
+
 
 	lair->healDamage(lair, 0, damageToHeal, true);
 
-	PlayClientEffectObjectMessage* heal = new PlayClientEffectObjectMessage(lair, "clienteffect/healing_healdamage.cef", "");
-	lair->broadcastMessage(heal, false);
+	healer->playEffect("clienteffect/healing_healdamage.cef", "");
 
-	PlayClientEffectLoc* healLoc = new PlayClientEffectLoc("clienteffect/healing_healdamage.cef", lair->getZone()->getZoneName(), lair->getPositionX(), lair->getPositionZ(), lair->getPositionY());
+	auto healLoc = new PlayClientEffectLoc("clienteffect/healing_healdamage.cef", zone->getZoneName(), lair->getPositionX(), lair->getPositionZ(), lair->getPositionY());
 	lair->broadcastMessage(healLoc, false);
 }
 
