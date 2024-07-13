@@ -758,6 +758,7 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	luaEngine->setGlobalInt("AI_HARVESTING", AiAgent::HARVESTING);
 	luaEngine->setGlobalInt("AI_RESTING", AiAgent::RESTING);
 	luaEngine->setGlobalInt("AI_CONVERSING", AiAgent::CONVERSING);
+	luaEngine->setGlobalInt("AI_LAIR_HEALING", AiAgent::LAIR_HEALING);
 
 	// Ship Types
 	luaEngine->setGlobalInt("SHIP", ShipManager::SHIP);

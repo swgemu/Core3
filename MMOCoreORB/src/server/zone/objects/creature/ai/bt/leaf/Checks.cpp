@@ -29,7 +29,13 @@ template<> bool CheckDestination::check(AiAgent* agent) const {
 }
 
 template<> bool CheckMovementState::check(AiAgent* agent) const {
-	return agent->getMovementState() == checkVar;
+	int stateCopy = agent->getMovementState();
+
+	if (stateCopy == AiAgent::LAIR_HEALING && checkVar == stateCopy) {
+		agent->info(true) << "Agent has LAIR_HEALING movement state in CheckMovementState";
+	}
+
+	return  stateCopy == checkVar;
 }
 
 template<> bool CheckHasFollow::check(AiAgent* agent) const {

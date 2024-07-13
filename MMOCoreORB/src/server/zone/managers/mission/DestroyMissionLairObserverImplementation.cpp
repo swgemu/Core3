@@ -10,7 +10,7 @@
 #include "server/zone/objects/tangible/LairObject.h"
 #include "server/zone/managers/creature/SpawnLairMobileTask.h"
 
-// #define DEBUG_MISSION_LAIRS
+#define DEBUG_MISSION_LAIRS
 
 void DestroyMissionLairObserverImplementation::checkForHeal(TangibleObject* lair, TangibleObject* attacker, bool forceNewUpdate) {
 	if (getMobType() == LairTemplate::NPC) {

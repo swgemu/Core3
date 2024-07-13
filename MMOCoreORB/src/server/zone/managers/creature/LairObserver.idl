@@ -5,6 +5,7 @@
 
 package server.zone.managers.creature;
 
+import server.zone.objects.creature.ai.AiAgent;
 import engine.core.ManagedObject;
 import engine.util.Observable;
 import server.zone.managers.creature.SpawnObserver;
@@ -38,6 +39,8 @@ class LairObserver extends SpawnObserver {
 	@dereferenced
 	protected transient Time lastHealTime;
 
+	protected transient boolean awaitingHeal;
+
 	public LairObserver() {
 		super();
 
@@ -45,12 +48,21 @@ class LairObserver extends SpawnObserver {
 
 		healLairEvent = null;
 		spawnNumber.set(0);
+
+		initializeTransientMembers();
 	}
 
-	public native int notifyObserverEvent(unsigned int eventType, Observable observable, ManagedObject arg1, long arg2);
+	public native void initializeTransientMembers();
 
+	// Observer Events
+	public native int notifyObserverEvent(unsigned int eventType, Observable observable, ManagedObject arg1, long arg2);
 	public native void notifyDestruction(TangibleObject lair, TangibleObject attacker, int condition);
 
+	// Healing
+	public abstract native void checkForHeal(TangibleObject lair, TangibleObject attacker, boolean forceNewUpdate = false);
+	public native boolean healLair(TangibleObject lair, AiAgent healerAgent, TangibleObject attacker);
+
+	// Spawning
 	@arg1preLocked
 	public abstract native boolean checkForNewSpawns(TangibleObject lair, TangibleObject attacker, boolean forceSpawn = false);
 
@@ -63,9 +75,10 @@ class LairObserver extends SpawnObserver {
 	@arg1preLocked
 	public abstract native void spawnLairMobile(LairObject lair, int spawnNumber, final string templateToSpawn, boolean spawnPassive = true);
 
-	public native void healLair(TangibleObject lair, TangibleObject attacker);
-	public abstract native void checkForHeal(TangibleObject lair, TangibleObject attacker, boolean forceNewUpdate = false);
+	// Aggro
 	public native void doAggro(TangibleObject lair, TangibleObject attacker, boolean allAttack = false);
+
+	// Lair Milking
 	public native void repopulateLair(TangibleObject lair);
 
 	public boolean isLairObserver() {
@@ -80,5 +93,9 @@ class LairObserver extends SpawnObserver {
 
 	public int getSpawnNumber() {
 		return spawnNumber.get();
+	}
+
+	public boolean isAwaitingHeal() {
+		return awaitingHeal;
 	}
 }
