@@ -18,7 +18,7 @@
 #include "server/zone/objects/area/events/RemoveNoSpawnAreaTask.h"
 
 // #define DEBUG_SPAWNING
-//#define DEBUG_LAIR_DIFFICULTY
+// #define DEBUG_LAIR_DIFFICULTY
 
 void SpawnAreaImplementation::notifyPositionUpdate(TreeEntry* entry) {
 	if (numberOfPlayersInRange <= 0)
@@ -112,7 +112,7 @@ Vector3 SpawnAreaImplementation::getRandomPosition(SceneObject* player) {
 	}
 
 #ifdef DEBUG_SPAWNING
-	info(true) << getAreaName() << " -- getRandomPosition -- for Player " << player->getObjectName() << " ID: " << player->getObjectID();
+	info(true) << getAreaName() << " -- getRandomPosition -- for Player " << player->getDisplayedName() << " ID: " << player->getObjectID();
 	info(true) << getAreaName() << " Location = " << getPositionX() << " , " << getPositionY();
 #endif // DEBUG_SPAWNING
 
@@ -226,19 +226,29 @@ void SpawnAreaImplementation::tryToSpawn(CreatureObject* player) {
 	int currentSpawnCount = spawnCountByType.get(lairHashCode);
 
 	// Make sure spawn area limit has not been reached
-	if (spawnLimit != -1 && currentSpawnCount >= spawnLimit) {
+	if (spawnLimit > -1 && currentSpawnCount >= spawnLimit) {
+#ifdef DEBUG_SPAWNING
+		info(true) << "tryToSpawn -- Spawn Limit Reached - spawnLimit: " << spawnLimit << " currentSpawnCount: " << currentSpawnCount;
+#endif // DEBUG_SPAWNING
 		return;
 	}
 
-	ManagedReference<PlanetManager*> planetManager = zone->getPlanetManager();
+	auto planetManager = zone->getPlanetManager();
 
 	if (planetManager == nullptr) {
 		return;
 	}
 
 	Vector3 randomPosition = getRandomPosition(player);
+	float randomX = randomPosition.getX();
+	float randomY = randomPosition.getY();
 
-	if ((randomPosition.getX() < 0.01) && (randomPosition.getY() < 0.01)) {
+	// We do not want the random position to be 0, 0
+	if ((randomX < 0.01) && (randomX > -0.01) && (randomY < 0.01) && (randomY > -0.01)) {
+#ifdef DEBUG_SPAWNING
+		info(true) << "tryToSpawn -- Failed due to random position near 0, 0 -- Chosen position: " << randomPosition.toString();
+#endif // DEBUG_SPAWNING
+
 		return;
 	}
 
