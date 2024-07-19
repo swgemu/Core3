@@ -1,8 +1,8 @@
 /*
  * LairAggroTask.h
  *
- *  Created on: Jul 6, 2013
- *      Author: swgemu
+ * Created on: Jul 6, 2013
+ * Author: swgemu
  */
 
 #ifndef LAIRAGGROTASK_H_
@@ -12,37 +12,36 @@
 #include "server/zone/objects/tangible/TangibleObject.h"
 
 class LairAggroTask : public Task {
-
-	bool all;
-	ManagedWeakReference<TangibleObject*> lair;
-	ManagedWeakReference<LairObserver*> observer;
-	ManagedWeakReference<TangibleObject*> attacker;
+	ManagedWeakReference<TangibleObject*> weakLair;
+	ManagedWeakReference<LairObserver*> weakObserver;
+	ManagedWeakReference<TangibleObject*> weakAttacker;
+	bool allAttack;
 
 public:
-
-	LairAggroTask(TangibleObject* obj, ManagedWeakReference<TangibleObject*> attacker, LairObserver* observer, bool allAttack) {
-		all = allAttack;
-		lair = obj;
-		this->attacker = attacker;
-		this->observer = observer;
+	LairAggroTask(TangibleObject* lair, TangibleObject* attacker, LairObserver* lairObserver, bool allAgentsAttack) {
+		weakLair = lair;
+		weakObserver = lairObserver;
+		weakAttacker = attacker;
+		allAttack = allAgentsAttack;
 	}
 
 	void run() {
-		ManagedReference<TangibleObject*> strongRef = lair.get();
+		ManagedReference<TangibleObject*> lair = weakLair.get();
 
-		if (strongRef == nullptr)
+		if (lair == nullptr) {
 			return;
+		}
 
+		ManagedReference<LairObserver*> lairObserver = weakObserver.get();
+		ManagedReference<TangibleObject*> attacker = weakAttacker.get();
 
-		ManagedReference<LairObserver*> strongObserver = observer.get();
-		ManagedReference<TangibleObject*> strongAttackerRef = attacker.get();
-
-		if (strongObserver == nullptr)
+		if (lairObserver == nullptr || attacker == nullptr) {
 			return;
+		}
 
-		Locker locker(strongRef);
+		Locker locker(lair);
 
-		strongObserver->doAggro(strongRef, strongAttackerRef, all);
+		lairObserver->doAggro(lair, attacker, allAttack);
 	}
 };
 

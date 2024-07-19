@@ -28,13 +28,19 @@ class LairObserver extends SpawnObserver {
 
 	public static final int PASSIVE_SPAWN_TIME_MIN = 15; // In seconds
 	public static final int PASSIVE_SPAWN_TIME_MAX = 20; // In seconds
+
 	public static final int HEAL_CHECK_INTERVAL = 15; // In seconds
+	public static final int AGGRO_CHECK_INTERVAL = 60; // In seconds
+	public static final int AGGRO_TASK_DELAY = 4; // In seconds
 
 	@dereferenced
 	protected AtomicInteger spawnNumber;
 
 	@dereferenced
 	protected transient Time lastHealTime;
+
+	@dereferenced
+	protected transient Time lastAggroTime;
 
 	public LairObserver() {
 		super();

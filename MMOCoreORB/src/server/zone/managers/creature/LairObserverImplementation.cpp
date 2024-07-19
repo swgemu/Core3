@@ -246,18 +246,33 @@ int LairObserverImplementation::getLivingCreatureCount() {
 */
 
 void LairObserverImplementation::doAggro(TangibleObject* lair, TangibleObject* attacker, bool allAttack) {
+	if (lair == nullptr || attacker == nullptr) {
+		return;
+	}
+
 	for (int i = 0; i < spawnedCreatures.size(); ++i) {
-		CreatureObject* creo = spawnedCreatures.get(i);
-
-		if (creo->isDead() || creo->getZone() == nullptr)
+		// If allAttack is false, roll now before running checks
+		if (!allAttack && (System::random(100) < 50)) {
 			continue;
-
-		if (creo->isAiAgent() && attacker != nullptr && (allAttack || (System::random(1) == 1))) {
-			// TODO: only set defender if needed
-			AiAgent* ai = cast<AiAgent*>(creo);
-			Locker clocker(creo, lair);
-			creo->setDefender(attacker);
 		}
+
+		auto creO = spawnedCreatures.get(i);
+
+		if (creO == nullptr || creO->isDead() || creO->getZone() == nullptr || creO->isPet() || !creO->isAiAgent()) {
+			continue;
+		}
+
+		Locker clocker(creO, lair);
+
+		auto agent = creO->asAiAgent();
+
+		if (agent == nullptr) {
+			continue;
+		}
+
+		Locker tarLock(attacker, creO);
+
+		agent->addDefender(attacker);
 	}
 }
 
@@ -378,6 +393,18 @@ bool LairObserverImplementation::checkForNewSpawns(TangibleObject* lair, Tangibl
 	// Lair limit is double due to "milking"
 	if (lairObject->isRepopulated()) {
 		spawnLimit *= 2;
+	}
+
+	// Schedule the aggro task
+	if (attacker != nullptr && attacker->isCreatureObject() && lastAggroTime.isPast()) {
+		lastAggroTime.updateToCurrentTime();
+		lastAggroTime.addMiliTime(LairObserver::AGGRO_CHECK_INTERVAL * 1000);
+
+		auto aggroTask = new LairAggroTask(lairObject, attacker, _this.getReferenceUnsafeStaticCast(), false);
+
+		if (aggroTask != nullptr) {
+			aggroTask->schedule(LairObserver::AGGRO_TASK_DELAY * 1000);
+		}
 	}
 
 #ifdef DEBUG_WILD_LAIRS
@@ -529,19 +556,8 @@ void LairObserverImplementation::checkForBossSpawn(TangibleObject* lair, Tangibl
 	Reference<LairAggroTask*> aggroTask = new LairAggroTask(lair, attacker, _this.getReferenceUnsafeStaticCast(), true);
 
 	if (aggroTask != nullptr) {
-		aggroTask->schedule(1000);
+		aggroTask->schedule(LairObserver::AGGRO_TASK_DELAY * 1000);
 	}
-
-
-	// if there are living creatures, make them aggro
-
-	// TODO: this does not seem right, given there are accounts that players attack lairs and the creatures do not always aggro
-	/*
-	if (getLivingCreatureCount() > 0) {
-		task = new LairAggroTask(lair, attacker.get(), _this.getReferenceUnsafeStaticCast(), false);
-		task->execute();
-	}
-	*/
 }
 
 void LairObserverImplementation::checkRespawn(LairObject* lair, TangibleObject* agent) {

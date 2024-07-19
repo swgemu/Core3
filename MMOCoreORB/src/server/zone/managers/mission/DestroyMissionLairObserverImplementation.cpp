@@ -65,6 +65,18 @@ bool DestroyMissionLairObserverImplementation::checkForNewSpawns(TangibleObject*
 		spawnLimit *= 2;
 	}
 
+	// Schedule the aggro task
+	if (attacker != nullptr && attacker->isCreatureObject() && lastAggroTime.isPast()) {
+		lastAggroTime.updateToCurrentTime();
+		lastAggroTime.addMiliTime(LairObserver::AGGRO_CHECK_INTERVAL * 1000);
+
+		auto aggroTask = new LairAggroTask(lairObject, attacker, _this.getReferenceUnsafeStaticCast(), false);
+
+		if (aggroTask != nullptr) {
+			aggroTask->schedule(LairObserver::AGGRO_TASK_DELAY * 1000);
+		}
+	}
+
 #ifdef DEBUG_MISSION_LAIRS
 	info(true) << "Mission Lair - " << lair->getDisplayedName() << " Checking for new spawns with spawnNumber = " << spawnNumber << " Spawn Limit = " << spawnLimit << " Total Spawned Creatures = " << spawnedCreatures.size();
 #endif // DEBUG_MISSION_LAIRS
