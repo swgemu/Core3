@@ -1398,6 +1398,9 @@ class AiAgent extends CreatureObject {
 	@preLocked
 	public native void removeObjectFlag(unsigned int flag);
 
+	@read
+	public native boolean isScoutCreature();
+
 	@local
 	@dirty
 	public Time getAlertedTime() {

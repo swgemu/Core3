@@ -560,8 +560,8 @@ void LairObserverImplementation::checkForBossSpawn(TangibleObject* lair, Tangibl
 	}
 }
 
-void LairObserverImplementation::checkRespawn(LairObject* lair, TangibleObject* agent) {
-	if (lair == nullptr || agent == nullptr || lair->isDestroyed()) {
+void LairObserverImplementation::checkRespawn(LairObject* lair, TangibleObject* tanoAgent) {
+	if (lair == nullptr || tanoAgent == nullptr || lair->isDestroyed()) {
 		return;
 	}
 
@@ -570,6 +570,21 @@ void LairObserverImplementation::checkRespawn(LairObject* lair, TangibleObject* 
 	// Lair will have a null zone if it is destroyed
 	if (zone == nullptr) {
 		return;
+	}
+
+	auto agent = tanoAgent->asAiAgent();
+
+	if (agent == nullptr) {
+		return;
+	}
+
+	if (agent->isScoutCreature()) {
+		Locker lock(agent, lair);
+
+		agent->removeObjectFlag(ObjectFlag::SCOUT);
+		agent->setCustomObjectName("", false);
+
+		scoutCreature = nullptr;
 	}
 
 	String agentTemplate = agent->getObjectNameStringIdName();
@@ -589,7 +604,6 @@ void LairObserverImplementation::checkRespawn(LairObject* lair, TangibleObject* 
 #endif // DEBUG_WILD_LAIRS
 
 	spawnTask->schedule(randomRespawn * 1000);
-
 }
 
 void LairObserverImplementation::spawnLairMobile(LairObject* lair, int spawnNumber, const String& templateToSpawn, bool spawnPassive) {
@@ -618,10 +632,15 @@ void LairObserverImplementation::spawnLairMobile(LairObject* lair, int spawnNumb
 
 	int spawnLimit = lairTemplate->getSpawnLimit();
 	bool isCreatureLair = false;
+	bool spawnScout = false;
 
 	if (getMobType() == LairTemplate::CREATURE) {
 		isCreatureLair = true;
 		spawnLimit *= 3;
+
+		if (scoutCreature.get() == nullptr && (System::random(100) <= LairObserver::SCOUT_SPAWN_CHANCE)) {
+			spawnScout = true;
+		}
 	}
 
 	if (spawnedCreatures.size() >= spawnLimit) {
@@ -641,6 +660,9 @@ void LairObserverImplementation::spawnLairMobile(LairObject* lair, int spawnNumb
 		creature = creatureManager->spawnCreatureAsBaby(lairTemplateCRC, x, z, y);
 
 		babiesSpawned++;
+
+		// Don't spawn baby as a scout
+		spawnScout = false;
 	}
 
 	if (creature == nullptr) {
@@ -672,6 +694,15 @@ void LairObserverImplementation::spawnLairMobile(LairObject* lair, int spawnNumb
 	agent->setHomeLocation(x, z, y);
 	agent->setHomeObject(lair);
 	agent->setLairTemplateCRC(lairTemplateCRC);
+
+	if (spawnScout) {
+		agent->addObjectFlag(ObjectFlag::SCOUT);
+		agent->setAITemplate();
+
+		agent->setCustomObjectName(agent->getDisplayedName() + " (scout)", true);
+
+		scoutCreature = agent;
+	}
 
 	// Add agent to the lairs creature list
 	spawnedCreatures.add(agent);
