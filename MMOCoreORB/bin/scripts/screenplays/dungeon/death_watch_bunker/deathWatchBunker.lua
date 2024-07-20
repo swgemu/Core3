@@ -1121,6 +1121,8 @@ function DeathWatchBunkerScreenPlay:spawnDefender(spawnData, spawnName)
 	local pMobile = spawnMobile("endor", spawnData[1], spawnData[2], spawnData[3], spawnData[4], spawnData[5], spawnData[6], spawnData[7])
 
 	if (pMobile ~= nil) then
+		AiAgent(pMobile):addObjectFlag(AI_STATIONARY)
+
 		createEvent(300 * 1000, "DeathWatchBunkerScreenPlay", "despawnMobile", pMobile, "")
 		createEvent(10, "DeathWatchBunkerScreenPlay", "startDefenderPath", pMobile, spawnName)
 	end

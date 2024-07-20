@@ -387,7 +387,7 @@ void InstallationObjectImplementation::updateHopper(Time& workingTime, bool shut
 		resourceHopperTimestamp.updateToCurrentTime();
 		currentSpawn = nullptr;
 		setActive(false);
-		auto msg = error();
+		auto msg = info();
 
 		msg << errorString;
 

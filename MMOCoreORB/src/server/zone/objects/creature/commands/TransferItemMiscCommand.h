@@ -274,7 +274,7 @@ public:
 				}
 			}
 		} else {
-			creature->error("trying to transfer an object with null zone");
+			creature->error() << creature->getDisplayedName() << " ID: " << creature->getObjectID() << " Attempted to transfer an object with null zone Item: " << objectToTransfer->getDisplayedName() << " ID: " << objectToTransfer->getObjectID();
 			trx.abort() << "objectToTransfer has nullptr zone";
 			return GENERALERROR;
 		}
