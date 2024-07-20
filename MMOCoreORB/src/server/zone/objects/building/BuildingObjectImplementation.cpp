@@ -39,6 +39,8 @@
 #include "server/zone/objects/transaction/TransactionLog.h"
 #include "server/zone/objects/player/FactionStatus.h"
 
+// #define DEBUG_COV
+
 void BuildingObjectImplementation::initializeTransientMembers() {
 	cooldownTimerMap = new CooldownTimerMap();
 
@@ -635,7 +637,7 @@ void BuildingObjectImplementation::notifyDissapear(TreeEntry* object) {
 				}
 			}
 		} catch (const Exception& exception) {
-			warning("could not remove all container objects in BuildingObject::notifyDissapear");
+			warning() << "Could not remove all container objects in BuildingObject::notifyDissapear -- Object Leaving Range: " << sceneO->getDisplayedName() << " ID: " << sceneO->getObjectID();
 
 			exception.printStackTrace();
 		}

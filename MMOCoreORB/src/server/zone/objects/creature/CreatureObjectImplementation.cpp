@@ -4107,7 +4107,12 @@ void CreatureObjectImplementation::removeOutOfRangeObjects() {
 
 	auto zone = getZone();
 
-	error() << "Player: " << getDisplayedName() << " ID: " << getObjectID() << " Reached Max COV Count: " << covSize << " Zone: " << (zone != nullptr ? zone->getZoneName() : "null") << " World Position: " << getWorldPosition().toString();
+	auto message = error();
+	message <<
+	"Player: " << getDisplayedName() << " ID: " << getObjectID() << " Reached Max COV Count: " << covSize << endl <<
+	"Zone: " << (zone != nullptr ? zone->getZoneName() : "null") << endl <<
+	"World Position: " << getWorldPosition().toString();
+	message.flush();
 
 	ghost->setCountMaxCov(covSize);
 }
