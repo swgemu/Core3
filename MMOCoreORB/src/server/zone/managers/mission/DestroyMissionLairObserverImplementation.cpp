@@ -217,12 +217,21 @@ void DestroyMissionLairObserverImplementation::spawnLairMobile(LairObject* lair,
 	float y = lair->getPositionY() + (size - System::random(size * 20) / 10.0f);
 	float z = zone->getHeight(x, y);
 
+	bool spawnScout = false;
+
+	if (getMobType() == LairTemplate::CREATURE && scoutCreatureId == 0 && (System::random(100) <= LairObserver::SCOUT_SPAWN_CHANCE)) {
+		spawnScout = true;
+	}
+
 	ManagedReference<CreatureObject*> creature = nullptr;
 
 	if (spawnNumber > 0 && creatureManager->checkSpawnAsBaby(tamingChance, babiesSpawned, LairObserver::BABY_SPAWN_CHANCE)) {
 		creature = creatureManager->spawnCreatureAsBaby(lairTemplateCRC, x, z, y);
 
 		babiesSpawned++;
+
+		// Don't spawn baby as a scout
+		spawnScout = false;
 	}
 
 	if (creature == nullptr) {
@@ -246,6 +255,15 @@ void DestroyMissionLairObserverImplementation::spawnLairMobile(LairObject* lair,
 	agent->setRespawnTimer(0);
 	agent->setHomeObject(lair);
 	agent->setLairTemplateCRC(lairTemplateCRC);
+
+	if (spawnScout) {
+		agent->addObjectFlag(ObjectFlag::SCOUT);
+		agent->setAITemplate();
+
+		agent->setCustomObjectName(agent->getDisplayedName() + " (scout)", true);
+
+		scoutCreatureId = agent->getObjectID();
+	}
 
 	spawnedCreatures.add(agent);
 

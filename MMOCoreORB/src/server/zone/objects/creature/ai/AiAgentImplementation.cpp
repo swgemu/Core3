@@ -4680,6 +4680,10 @@ void AiAgentImplementation::removeObjectFlag(unsigned int flag) {
 	}
 }
 
+bool AiAgentImplementation::isScoutCreature() const {
+	return (creatureBitmask & ObjectFlag::SCOUT);
+}
+
 void AiAgentImplementation::loadCreatureBitmask() {
 }
 
