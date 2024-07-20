@@ -30,5 +30,4 @@ class DestroyMissionLairObserver extends LairObserver {
 	public boolean isDestroyMissionLairObserver() {
 		return true;
 	}
-
 }
