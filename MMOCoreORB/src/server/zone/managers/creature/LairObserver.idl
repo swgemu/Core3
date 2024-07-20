@@ -33,6 +33,8 @@ class LairObserver extends SpawnObserver {
 	public static final int AGGRO_CHECK_INTERVAL = 60; // In seconds
 	public static final int AGGRO_TASK_DELAY = 4; // In seconds
 
+	public static final int SCOUT_SPAWN_CHANCE = 10; // Chance out of 100 to spawn scout
+
 	@dereferenced
 	protected AtomicInteger spawnNumber;
 
@@ -42,11 +44,16 @@ class LairObserver extends SpawnObserver {
 	@dereferenced
 	protected transient Time lastAggroTime;
 
+	@weakReference
+	protected unsigned long scoutCreatureId;
+
 	public LairObserver() {
 		super();
 
 		Logger.setLoggingName("LairObserver");
 		spawnNumber.set(0);
+
+		scoutCreatureId = 0;
 	}
 
 	// Observer Events

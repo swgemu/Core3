@@ -80,7 +80,7 @@ class SpawnObserver extends Observer implements Logger {
 		return false;
 	}
 
-	public boolean isDestroyMissionLairObserver() {
+	public abstract boolean isDestroyMissionLairObserver() {
 		return false;
 	}
 
