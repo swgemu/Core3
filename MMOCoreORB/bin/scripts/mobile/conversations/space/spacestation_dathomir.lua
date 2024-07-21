@@ -375,7 +375,7 @@ spacestation_dathomir_convotemplate:addScreen(repair_full);
 -- Accept Repair Full
 accept_repair_full = ConvoScreen:new {
 	id = "accept_repair_full",
-	leftDialog = "@conversation/station_dathomir:s_5cc333f9", -- Repairs complete, %TU. All of your ship's damage has been fixed. Thank you for visiting the Royal Security Forces Naboo Station.
+	leftDialog = "@conversation/station_dathomir:s_865", -- "Repairs Complete! Let me know if there is anything else I can do for you."
 	stopConversation = "true",
 	options = {}
 }
