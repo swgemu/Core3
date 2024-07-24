@@ -44,6 +44,7 @@ RUN set -xe; \
         cppcheck \
         curl \
         db5.3-util \
+        default-jdk \
         dnsutils \
         doxygen \
         figlet \
