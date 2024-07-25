@@ -476,7 +476,7 @@ SceneObject* ObjectManager::loadObjectFromTemplate(uint32 objectCRC) {
 		SharedObjectTemplate* templateData = templateManager->getTemplate(objectCRC);
 
 		if (templateData == nullptr) {
-			error() << "trying to create object with unknown objectcrc 0x" << hex << (int)objectCRC;
+			error() << "Failed to create object with unknown CRC: 0x" << hex << (int)objectCRC;
 
 			return nullptr;
 		}

@@ -22,18 +22,25 @@
 #include "server/chat/ChatManager.h"
 #include "server/zone/managers/combat/CombatManager.h"
 
-// #define DEBUG_WILD_LAIRS
+//#define DEBUG_WILD_LAIRS
 // #define DEBUG_LAIR_HEALING
 
 int LairObserverImplementation::notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, int64 arg2) {
-	if (observable == nullptr || arg1 == nullptr) {
+	// info(true) << "LairObserverImplementation::notifyObserverEvent -- " << " Observer Event Type: " << eventType;
+
+	if (observable == nullptr) {
 		return 1;
 	}
 
-	ManagedReference<TangibleObject*> attacker = cast<TangibleObject*>(arg1);
+	ManagedReference<TangibleObject*> attacker = nullptr;
+
+	if (arg1 != nullptr) {
+		attacker = cast<TangibleObject*>(arg1);
+	}
+
 	ManagedReference<TangibleObject*> lair = cast<TangibleObject*>(observable);
 
-	if (attacker == nullptr || lair == nullptr) {
+	if (lair == nullptr) {
 		return 1;
 	}
 
@@ -49,14 +56,22 @@ int LairObserverImplementation::notifyObserverEvent(unsigned int eventType, Obse
 	switch (eventType) {
 		// Lair despawned, remove mobiles
 		case ObserverEventType::OBJECTREMOVEDFROMZONE:
+			// info(true) << "Lair - Name: " << lair->getDisplayedName() << " ID: " << lair->getObjectID() << " Observer Event Type = " << eventType;
+
 			despawnSpawns();
 			return 1;
 		// Lair destroyed notify destruction observers
 		case ObserverEventType::OBJECTDESTRUCTION:
+			// info(true) << "Lair - Name: " << lair->getDisplayedName() << " ID: " << lair->getObjectID() << " Observer Event Type = " << eventType;
+
 			notifyDestruction(lair, attacker, (int)arg2);
 			return 1;
 		// Lair received damage handle spawning, healing, and boss mobiles
 		case ObserverEventType::DAMAGERECEIVED: {
+			if (attacker == nullptr) {
+				return 1;
+			}
+
 			auto zone = lair->getZone();
 
 			if (zone == nullptr) {
@@ -160,6 +175,11 @@ int LairObserverImplementation::notifyObserverEvent(unsigned int eventType, Obse
 
 			break;
 		case ObserverEventType::CREATUREDESPAWNED: {
+			// Attacker is the agent to be respawn for this observer trigger
+			if (attacker == nullptr) {
+				return 1;
+			}
+
 			auto zone = lair->getZone();
 
 			if (zone == nullptr) {
@@ -168,7 +188,6 @@ int LairObserverImplementation::notifyObserverEvent(unsigned int eventType, Obse
 
 			String zoneQueueName = zone->getZoneName();
 
-			// attacker is the agent for this observer trigger
 			Reference<LairObject*> lairRef = lair.castTo<LairObject*>();
 			Reference<TangibleObject*> mobileRef = attacker;
 
@@ -528,6 +547,12 @@ void LairObserverImplementation::checkForBossSpawn(TangibleObject* lair, Tangibl
 		return;
 	}
 
+	bool isRepopulated = lairObject->isRepopulated();
+
+	if ((!isRepopulated && bossesSpawned > 0) || (isRepopulated && bossesSpawned > 1)) {
+		return;
+	}
+
 	const VectorMap<String, int>* bossMobiles = lairTemplate->getBossMobiles();
 
 	if (bossMobiles == nullptr || bossMobiles->size() < 1) {
@@ -548,6 +573,8 @@ void LairObserverImplementation::checkForBossSpawn(TangibleObject* lair, Tangibl
 		}
 
 		spawnTask->schedule(500);
+
+		bossesSpawned.increment();
 	} catch (Exception& e) {
 		e.printStackTrace();
 		error() << "exception in LairObserverImplementation::checkForBossSpawn -- " << e.getMessage();
@@ -738,7 +765,8 @@ void LairObserverImplementation::spawnLairMobile(LairObject* lair, int spawnNumb
 		}
 	}
 
-	if (!spawnPassive || !isCreatureLair || (spawnNumber < 2) || (spawnedCreatures.size() > LairObserver::WILD_LAIR_PASSIVE_MAX)) {
+	// Damage is not applied to initial spawn or NPC lairs
+	if (!isCreatureLair || (spawnNumber < 2)) {
 		return;
 	}
 
@@ -752,7 +780,8 @@ void LairObserverImplementation::spawnLairMobile(LairObject* lair, int spawnNumb
 
 	lair->inflictDamage(lair, 0, newDamage, true, true, false);
 
-	if (lair->isDestroyed()) {
+	// Returning here for no passive spawn, lair is destroyed or we have hit the max passive spawns
+	if (!spawnPassive || lair->isDestroyed() || spawnedCreatures.size() > LairObserver::WILD_LAIR_PASSIVE_MAX) {
 		return;
 	}
 

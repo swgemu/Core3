@@ -36,6 +36,8 @@ public:
 			return;
 		}
 
+		// lairObject->info(true) << "spawn lair mobile called for Lair: " << lairObject->getDisplayedName() << " ID: " << lairObject->getObjectID() << " Position: " << lairObject->getPosition().toString();
+
 		Locker lock(lairObject);
 
 		ManagedReference<LairObserver*> lairObserver = nullptr;

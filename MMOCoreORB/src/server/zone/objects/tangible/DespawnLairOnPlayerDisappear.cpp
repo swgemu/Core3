@@ -26,6 +26,8 @@ void DespawnLairOnPlayerDisappear::run() {
 	if (zone == nullptr)
 		return;
 
+	// zone->info(true) << "DespawnLairOnPlayerDisappear -- for lair: " << strongRef->getDisplayedName();
+
 	if (strongRef->isLairObject()) {
 		ManagedReference<LairObject*> strongLair = strongRef.castTo<LairObject*>();
 

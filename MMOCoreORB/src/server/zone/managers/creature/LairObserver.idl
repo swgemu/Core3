@@ -18,7 +18,7 @@ include system.thread.atomic.AtomicInteger;
 class LairObserver extends SpawnObserver {
 	public static final int BABY_SPAWN_CHANCE = 500;
 
-	public static final int WILD_LAIR_PASSIVE_MAX = 20;
+	public static final int WILD_LAIR_PASSIVE_MAX = 10;
 
 	public static final int SPAWN_TIME_MIN = 1; // In seconds
 	public static final int SPAWN_TIME_MAX = 10; // In seconds
@@ -30,13 +30,16 @@ class LairObserver extends SpawnObserver {
 	public static final int PASSIVE_SPAWN_TIME_MAX = 20; // In seconds
 
 	public static final int HEAL_CHECK_INTERVAL = 15; // In seconds
-	public static final int AGGRO_CHECK_INTERVAL = 60; // In seconds
+	public static final int AGGRO_CHECK_INTERVAL = 30; // In seconds
 	public static final int AGGRO_TASK_DELAY = 4; // In seconds
 
 	public static final int SCOUT_SPAWN_CHANCE = 10; // Chance out of 100 to spawn scout
 
 	@dereferenced
 	protected AtomicInteger spawnNumber;
+
+	@dereferenced
+	protected AtomicInteger bossesSpawned;
 
 	@dereferenced
 	protected transient Time lastHealTime;
@@ -52,6 +55,7 @@ class LairObserver extends SpawnObserver {
 
 		Logger.setLoggingName("LairObserver");
 		spawnNumber.set(0);
+		bossesSpawned.set(0);
 
 		scoutCreatureId = 0;
 	}

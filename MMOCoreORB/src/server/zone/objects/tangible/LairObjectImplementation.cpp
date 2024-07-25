@@ -7,6 +7,7 @@
 
 #include "server/zone/objects/tangible/LairObject.h"
 #include "templates/params/ObserverEventType.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
 void LairObjectImplementation::notifyDissapear(TreeEntry* object) {
 	auto sceneO = static_cast<SceneObject*>(object);
@@ -15,7 +16,7 @@ void LairObjectImplementation::notifyDissapear(TreeEntry* object) {
 		return;
 	}
 
-	// info(true) << "LairObjectImplementation::notifyDissapear - Object Exited: " << sceneO->getDisplayedName();
+	// info(true) << "LairObjectImplementation::notifyDissapear -- Lair: " << getDisplayedName() << " ID: " << getObjectID() << " Object Exited: " << sceneO->getDisplayedName();
 
 	uint64 scnoID = sceneO->getObjectID();
 
@@ -25,13 +26,15 @@ void LairObjectImplementation::notifyDissapear(TreeEntry* object) {
 
 	auto player = sceneO->asCreatureObject();
 
-	if (player == nullptr) {
+	if (player == nullptr || player->isInvisible()) {
 		return;
 	}
 
-	int val = numberOfPlayersInRange.decrement();
+	int totalPlayers = numberOfPlayersInRange.decrement();
 
-	if (val > 0) {
+	// info(true) << "notifyDissapear -- Lair: " << getDisplayedName() << " ID: " << getObjectID() << " Total Players in Range: " << totalPlayers;
+
+	if (totalPlayers > 0) {
 		return;
 	}
 
