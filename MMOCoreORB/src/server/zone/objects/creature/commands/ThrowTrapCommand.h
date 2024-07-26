@@ -57,11 +57,21 @@ public:
 				return GENERALERROR;
 			}
 
+			ManagedReference<SceneObject*> targetObject = zoneServer->getObject(target);
+
+			if (targetObject == nullptr || !targetObject->isCreatureObject()) {
+				return INVALIDTARGET;
+			}
+
 			// Get trap target
-			ManagedReference<CreatureObject*> targetCreature = zoneServer->getObject(target).castTo<CreatureObject*>();
+			auto targetCreature = targetObject->asCreatureObject();
 
 			if (targetCreature == nullptr) {
 				return GENERALERROR;
+			}
+
+			if (targetCreature->isDead()) {
+				return INVALIDTARGET;
 			}
 
 			// Check for validity of target
