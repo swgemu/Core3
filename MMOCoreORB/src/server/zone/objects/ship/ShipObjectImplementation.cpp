@@ -1143,7 +1143,7 @@ float ShipObjectImplementation::getActualSpeed() {
 	}
 
 	if (hasShipWings() && (getOptionsBitmask() & OptionBitmask::WINGS_OPEN)) {
-		const auto chassisData = ShipManager::instance()->getChassisData(getShipName());
+		const auto chassisData = ShipManager::instance()->getChassisData(chassisDataName);
 
 		if (chassisData != nullptr) {
 			chassisActual *= chassisData->getWingOpenSpeed();
