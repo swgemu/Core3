@@ -25,7 +25,9 @@ private:
 
 	static float getSphereIntersection(const Vector3& rayStart, const Vector3& rayEnd, const Sphere& targetPosition, float radius, float distance);
 
-	static float getBoxIntersection(const Vector3& rayStart, const Vector3& rayEnd, const AABB& box, float radius);
+	static float getBoxIntersection(const Vector3& rayStart, const Vector3& rayEnd, const AABB& box, float radius, float distance);
+
+	static float getHardpointIntersection(const Vector3& localStart, const Vector3& localEnd, const ShipCollisionHardpoint& hardpoint, float radius, float distance);
 
 	static Ray getAxisAlignedRay(ShipObject* target, const ShipProjectile* projectile);
 
