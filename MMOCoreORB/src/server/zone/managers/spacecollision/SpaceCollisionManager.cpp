@@ -38,7 +38,7 @@ float SpaceCollisionManager::getProjectileCollision(ShipObject* ship, const Ship
 		auto type = data->getVolumeType();
 
 		switch (type) {
-			case ShipCollisionData::CollisionVolumeType::RADIUS: {
+			case ShipCollisionData::CollisionVolumeType::SPHERE: {
 				getChassisRadiusCollision(target, data, projectile, result);
 				break;
 			}
@@ -50,9 +50,12 @@ float SpaceCollisionManager::getProjectileCollision(ShipObject* ship, const Ship
 
 			case ShipCollisionData::CollisionVolumeType::MESH: {
 				getChassisAppearanceCollision(target, data, projectile, result);
-				getComponentHardpointCollision(target, data, projectile, result);
 				break;
 			}
+		}
+
+		if (data->getHardpointSize() > 0) {
+			getComponentHardpointCollision(target, data, projectile, result);
 		}
 
 		if (result.getDistance() != MISS) {
@@ -99,8 +102,9 @@ float SpaceCollisionManager::getChassisBoxCollision(ShipObject* target, const Sh
 
 	const AABB& aabBox = data->getChassisBox();
 	float radius = projectile->getRadius();
+	float distance = projectile->getDistance();
 
-	float intersection = getBoxIntersection(localStart, localEnd, aabBox, radius);
+	float intersection = getBoxIntersection(localStart, localEnd, aabBox, radius, distance);
 	if (intersection == MISS) {
 		return MISS;
 	}
@@ -124,17 +128,18 @@ float SpaceCollisionManager::getChassisAppearanceCollision(ShipObject* target, c
 	}
 
 	Ray ray = getAxisAlignedRay(target, projectile);
-	float distance = projectile->getDistance();
-	float radius = projectile->getRadius();
+	float rayDistance = projectile->getDistance();
+	float rayRadius = projectile->getRadius();
 
 	SortedVector<IntersectionResult> results;
-	appearance->intersects(ray, distance, results);
+	appearance->intersects(ray, rayDistance, results);
 
 	if (results.size() > 0) {
-		float intersection = Math::max(results.getUnsafe(0).getIntersectionDistance() - radius, 0.f);
-		bool hitFront = ((intersection * ray.getDirection().getZ()) + ray.getOrigin().getZ()) <= 0.f;
+		float intersection = Math::max(results.getUnsafe(0).getIntersectionDistance() - rayRadius, 0.f) / Math::max(rayDistance, 1.f);
 
-		result.setCollision(target, projectile, intersection / distance, Components::CHASSIS, hitFront);
+		bool hitFront = ((intersection * rayDistance * ray.getDirection().getZ()) + ray.getOrigin().getZ()) >= 0.f;
+
+		result.setCollision(target, projectile, intersection, Components::CHASSIS, hitFront);
 	}
 
 	return result.getDistance();
@@ -148,55 +153,97 @@ float SpaceCollisionManager::getComponentHardpointCollision(ShipObject* target, 
 		return MISS;
 	}
 
-	const Matrix4& rotation = *target->getRotationMatrix();
+	const Matrix4& targetrotation = *target->getRotationMatrix();
+	const Vector3& targetPosition = target->getPosition();
 	const Vector3& rayStart = projectile->getLastPosition();
 	const Vector3& rayEnd = projectile->getThisPosition();
-	const Vector3& targetPosition = target->getPosition();
 
-	float distance = projectile->getDistance();
-	float radius = projectile->getRadius();
+	float rayDistance = projectile->getDistance();
+	float rayRadius = projectile->getRadius();
 
-	Vector3 localStart = getAxisAlignedVector(rayStart - targetPosition, rotation);
-	Vector3 localEnd = getAxisAlignedVector(rayEnd - targetPosition, rotation);
+	Vector3 localStart = getAxisAlignedVector(rayStart - targetPosition, targetrotation);
+	Vector3 localEnd = getAxisAlignedVector(rayEnd - targetPosition, targetrotation);
+	Vector3 localDirection = localEnd - localStart;
 
-	for (uint32 slot = 0; slot <= Components::FIGHTERSLOTMAX; ++slot) {
+	Vector3 resultPosition = Vector3(MISS);
+	float resultIntersection = MISS;
+
+	if (result.getDistance() != MISS) {
+		resultIntersection =  result.getDistance() / Math::max(rayDistance, 1.f);
+		resultPosition = (localDirection * resultIntersection) + localStart;
+	}
+
+	for (int slot = -1; slot <= Components::CAPITALSLOTMAX; ++slot) {
 		String slotName = Components::shipComponentSlotToString(slot);
-
-		auto compCrc = componentMap->get(slot);
-		if (compCrc == 0) {
-			continue;
-		}
-
+		uint32 compCrc = componentMap->get(slot);
 		float hitpoints = hitpointsMap->get(slot);
-		if (hitpoints == 0) {
+
+		if (slot != Components::CHASSIS && (compCrc == 0 || hitpoints == 0)) {
 			continue;
 		}
 
 		const auto& hardPoints = data->getHardpoints(slotName);
 
 		for (int i = 0; i < hardPoints.size(); ++i) {
-			auto key = hardPoints.getUnsafe(i).getKey();
-			if (key != compCrc) {
+			const auto& key = hardPoints.elementAt(i).getKey();
+
+			if (slot != Components::CHASSIS && key != compCrc) {
 				continue;
 			}
 
-			const auto& hardPoint = hardPoints.getUnsafe(i).getValue();
-			const auto& sphere = hardPoint.getSphere();
+			const auto& hardpoint = hardPoints.elementAt(i).getValue();
+			const auto& boundingPosition = hardpoint.getSphere().getCenter();
+			float boundingRadius = hardpoint.getSphere().getRadius();
 
-			float intersection = getSphereIntersection(localStart, localEnd, sphere, radius, distance);
+			Vector3 localDifference = boundingPosition - localStart;
+			float targetRadius = boundingRadius + rayRadius;
+
+			float intersection = getPointIntersection(localDirection, localDifference, targetRadius, rayDistance);
+
 			if (intersection == MISS) {
 				continue;
 			}
 
-			bool hitFront = (((localEnd.getZ() - localStart.getZ()) * intersection) + localStart.getZ()) >= 0.f;
+			auto volumeType = hardpoint.getVolumeType();
 
-			result.setCollision(target, projectile, intersection, slot, hitFront);
+			switch (volumeType) {
+				case ShipCollisionData::CollisionVolumeType::SPHERE: {
+					intersection = getSphereIntersection(localStart, localEnd, hardpoint.getSphere(), rayRadius, rayDistance);
+					break;
+				}
 
-			return result.getDistance();
+				case ShipCollisionData::CollisionVolumeType::BOX: {
+					intersection = getBoxIntersection(localStart, localEnd, hardpoint.getBox(), rayRadius, rayDistance);
+					break;
+				}
+
+				case ShipCollisionData::CollisionVolumeType::MESH: {
+					intersection = getHardpointIntersection(localStart, localEnd, hardpoint, rayRadius, rayDistance);
+					break;
+				}
+
+				default: {
+					intersection = MISS;
+					break;
+				}
+			}
+
+			if (intersection != MISS) {
+				bool hitFront = (((localEnd.getZ() - localStart.getZ()) * intersection) + localStart.getZ()) >= 0.f;
+				result.setCollision(target, projectile, intersection, slot, hitFront);
+				return result.getDistance();
+			}
+
+			float hardpointRadius = hardpoint.getRadius() + rayRadius;
+
+			if (resultIntersection != MISS && resultPosition.squaredDistanceTo(boundingPosition) <= Math::sqr(hardpointRadius)) {
+				result.setCollision(target, projectile, resultIntersection, slot, resultPosition.getZ() >= 0.f);
+				return result.getDistance();
+			}
 		}
 	}
 
-	return MISS;
+	return result.getDistance();
 }
 
 float SpaceCollisionManager::getPointIntersection(const Vector3& direction, const Vector3& difference, float radius, float distance) {
@@ -246,16 +293,19 @@ float SpaceCollisionManager::getSphereIntersection(const Vector3& rayStart, cons
 	return intersection - bounding;
 }
 
-float SpaceCollisionManager::getBoxIntersection(const Vector3& rayStart, const Vector3& rayEnd, const AABB& box, float radius) {
+float SpaceCollisionManager::getBoxIntersection(const Vector3& rayStart, const Vector3& rayEnd, const AABB& box, float radius, float distance) {
 	Vector3 radiusV = Vector3(radius);
 	Vector3 direction = rayEnd - rayStart;
-	Vector3 invDirection = Vector3(1.f / direction.getX(), 1.f / direction.getY(), 1.f / direction.getZ());
+	Vector3 invDirection = Vector3(
+			direction.getX() == 0.f ? MISS : 1.f / direction.getX(),
+			direction.getY() == 0.f ? MISS : 1.f / direction.getY(),
+			direction.getZ() == 0.f ? MISS : 1.f / direction.getZ());
 
 	Vector3 minBounds = *box.getMinBound() - radiusV;
 	Vector3 maxBounds = *box.getMaxBound() + radiusV;
 
-	float tMin = -FLT_MAX;
-	float tMax = FLT_MAX;
+	float tMin = 0.0f;
+	float tMax = distance;
 	float epsilon = 0.1f;
 
 	for (int axis = 0; axis < 3; ++axis) {
@@ -263,22 +313,15 @@ float SpaceCollisionManager::getBoxIntersection(const Vector3& rayStart, const V
 		float tFar = (maxBounds[axis] - rayStart[axis]) * invDirection[axis];
 
 		if (tNear > tFar) {
-			float temp = tNear;
-			tNear = tFar;
-			tFar = temp;
+			std::swap(tNear, tFar);
 		}
 
 		if (tNear > tMax + epsilon || tFar < tMin - epsilon) {
 			return MISS;
 		}
 
-		tMin = Math::max(tMin, tNear);
-		tMax = Math::min(tMax, tFar);
-
-		float intersectionPoint = (direction[axis] * tMin) + rayStart[axis];
-		if (intersectionPoint < (minBounds[axis] - epsilon) || intersectionPoint > (maxBounds[axis] + epsilon)) {
-			return MISS;
-		}
+		tMin = std::max(tMin, tNear);
+		tMax = std::min(tMax, tFar);
 	}
 
 	if (tMin > tMax + epsilon || tMax < (0.f - epsilon) || tMin > (1.f + epsilon)) {
@@ -286,6 +329,37 @@ float SpaceCollisionManager::getBoxIntersection(const Vector3& rayStart, const V
 	}
 
 	return tMin;
+}
+
+float SpaceCollisionManager::getHardpointIntersection(const Vector3& localStart, const Vector3& localEnd, const ShipCollisionHardpoint& hardpoint, float radius, float distance) {
+	const auto appearance = hardpoint.getAppearanceTemplate();
+	if (appearance == nullptr) {
+		return MISS;
+	}
+
+	const Matrix4* rotation = hardpoint.getRotation();
+	const Vector3&  position = hardpoint.getPosition();
+
+	Vector3 offsetStart = localStart - position;
+	Vector3 offsetEnd = localEnd - position;
+
+	if (rotation != nullptr) {
+		const Matrix4& matrix = *rotation;
+		offsetStart = offsetStart * matrix;
+		offsetEnd = offsetEnd * matrix;
+	}
+
+	Vector3 offsetDirection = (offsetEnd - offsetStart) * (1.f / distance);
+	Ray ray = Ray(offsetStart, offsetDirection);
+
+	SortedVector<IntersectionResult> results;
+	appearance->intersects(ray, distance, results);
+
+	if (results.size() > 0) {
+		return Math::max(results.getUnsafe(0).getIntersectionDistance() - radius, 0.f) / Math::max(distance, 1.f);
+	}
+
+	return MISS;
 }
 
 Ray SpaceCollisionManager::getAxisAlignedRay(ShipObject* target, const ShipProjectile* projectile) {

@@ -1308,10 +1308,6 @@ bool ShipAiAgentImplementation::fireTurretAtTarget(ShipObject* targetShip, uint3
 	const auto& hardpoints = collisionData->getHardpoints(slotName);
 	const auto& hardpoint = hardpoints.get(crc);
 
-	if (hardpoint.getAppearanceName() == "") {
-		return false;
-	}
-
 	const Matrix4& shipRotation = *getRotationMatrix();
 	const Vector3& shipPosition = getPosition();
 	const Vector3& targetPosition = getInterceptPosition(targetShip, projectileData->getSpeed(), targetSlot);
@@ -1785,7 +1781,7 @@ void ShipAiAgentImplementation::sendDebugPath() {
 	auto path = new CreateClientPathMessage();
 	path->addCoordinate(position);
 
-	if (data->getVolumeType() == ShipCollisionData::CollisionVolumeType::RADIUS) {
+	if (data->getVolumeType() == ShipCollisionData::CollisionVolumeType::SPHERE) {
 		path->drawBoundingSphere(position, rotation, data->getChassisSphere());
 		//path->drawBoundingSphere(position, rotation, data->getBoundingSphere());
 	}
