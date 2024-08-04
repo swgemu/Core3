@@ -164,7 +164,7 @@ public:
 						// apply the damage to the target and send themessage
 						if (CollisionManager::checkLineOfSight(object, droid)) {
 							// apply the damage
-							float amount = CombatManager::instance()->doDroidDetonation(droid, creo, areaDamage);
+							float amount = CombatManager::instance()->doObjectDetonation(droid, creo, areaDamage);
 
 							if (amount > 0) {
 								if (creo->isPlayerCreature()) {

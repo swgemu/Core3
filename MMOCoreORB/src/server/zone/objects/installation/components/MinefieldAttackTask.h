@@ -15,82 +15,89 @@
 #include "server/zone/objects/creature/commands/CombatQueueCommand.h"
 
 class MinefieldAttackTask : public Task {
-	ManagedReference<SceneObject*> sceneObject;
-	ManagedReference<CreatureObject*> player;
+	ManagedWeakReference<TangibleObject*> weakMinefield;
+	ManagedWeakReference<CreatureObject*> weakTarget;
 
 public:
-	MinefieldAttackTask(SceneObject* scene, CreatureObject* player) {
-		sceneObject = scene;
-		this->player = player;
+	MinefieldAttackTask(TangibleObject* minefield, CreatureObject* creatureTarget) {
+		weakMinefield = minefield;
+		weakTarget = creatureTarget;
 	}
 
 	void run() {
-		if(sceneObject == nullptr)
-			return;
+		ManagedReference<TangibleObject*> minefield = weakMinefield.get();
 
-		Locker locker(sceneObject);
-
-		if(sceneObject->getContainerObjectsSize() <= 0)
-			return;
-
-		DataObjectComponentReference* ref = sceneObject->getDataObjectComponent();
-		if(ref == nullptr){
+		if (minefield == nullptr) {
 			return;
 		}
 
-		MinefieldDataComponent* mineData = cast<MinefieldDataComponent*>(ref->get());
+		auto zone = minefield->getZone();
 
-		if(mineData == nullptr || !mineData->canExplode()){
+		if (zone == nullptr) {
 			return;
 		}
 
-		//Locker clocker(player, sceneObject);
+		ManagedReference<CreatureObject*> creatureTarget = weakTarget.get();
 
-		ManagedReference<WeaponObject*> weapon = sceneObject->getContainerObject(0).castTo<WeaponObject*>();
-
-		if (weapon == nullptr || sceneObject->getZone() == nullptr)
+		if (creatureTarget == nullptr) {
 			return;
-
-		PlayClientEffectLoc* explodeLoc = new PlayClientEffectLoc("clienteffect/lair_damage_heavy.cef", sceneObject->getZone()->getZoneName(), sceneObject->getPositionX(), sceneObject->getPositionZ(), sceneObject->getPositionY());
-		sceneObject->broadcastMessage(explodeLoc, false);
-
-		sceneObject->removeObject(weapon,nullptr,true);
-
-		if(sceneObject->getZoneServer() != nullptr){
-			ManagedReference<ObjectController*> objectController = sceneObject->getZoneServer()->getObjectController();
-			const QueueCommand* command = objectController->getQueueCommand(STRING_HASHCODE("minefieldattack"));
-
-			if(command != nullptr){
-				const CombatQueueCommand* combatCommand = cast<const CombatQueueCommand*>(command);
-				if(combatCommand != nullptr){
-					CombatManager::instance()->doCombatAction(sceneObject.castTo<TangibleObject*>(), weapon, player, combatCommand);
-				}
-			}
-
 		}
 
+		auto zoneServer = minefield->getZoneServer();
+
+		if (zoneServer == nullptr) {
+			return;
+		}
+
+		Locker locker(minefield);
+
+		if (minefield->getContainerObjectsSize() <= 0) {
+			return;
+		}
+
+		DataObjectComponentReference* dataComponent = minefield->getDataObjectComponent();
+
+		if (dataComponent == nullptr) {
+			return;
+		}
+
+		MinefieldDataComponent* mineData = cast<MinefieldDataComponent*>(dataComponent->get());
+
+		if (mineData == nullptr || !mineData->canExplode()) {
+			return;
+		}
+
+		ManagedReference<WeaponObject*> weapon = minefield->getContainerObject(0).castTo<WeaponObject*>();
+
+		if (weapon == nullptr) {
+			return;
+		}
+
+		// Damage the creature target
+		Locker targetClock(creatureTarget, minefield);
+
+		// Player mine explosion animation
+		auto explodeLoc = new PlayClientEffectLoc("clienteffect/lair_damage_heavy.cef", zone->getZoneName(), creatureTarget->getPositionX(), creatureTarget->getPositionZ(), creatureTarget->getPositionY());
+
+		if (explodeLoc != nullptr) {
+			minefield->broadcastMessage(explodeLoc, false);
+		}
+
+		// Update cooldown and max range
 		mineData->updateCooldown(weapon->getAttackSpeed());
-		mineData->setMaxRange(weapon->getMaxRange());
 
-		if(sceneObject->getContainerObjectsSize() <= 0){
-			TangibleObject* tano = sceneObject.castTo<TangibleObject*>();
-			if(tano == nullptr)
-				return;
+		float minDamage = weapon->getMinDamage();
+		float maxDamage = weapon->getMaxDamage();
 
-			tano->setPvpStatusBitmask(tano->getPvpStatusBitmask() | ObjectFlag::ATTACKABLE);
-		}
+		CombatManager::instance()->doObjectDetonation(minefield, creatureTarget, (System::frandom(maxDamage - minDamage) + minDamage), weapon);
 
-		//clocker.release();
-		locker.release();
+		targetClock.release();
 
-		Locker lockerw(weapon);
+		Locker lockerw(weapon, minefield);
 
 		weapon->destroyObjectFromWorld(true);
 		weapon->destroyObjectFromDatabase(true);
-
 	}
-
 };
-
 
 #endif /* MINEFIELDATTACKTASK_H_ */

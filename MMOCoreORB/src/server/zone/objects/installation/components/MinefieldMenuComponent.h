@@ -2,7 +2,7 @@
  * MinefieldMenuComponent.h
  *
  *  Created on: Jan 31, 2013
- *      Author: root
+ *  Author: root
  */
 
 #ifndef MINEFIELDMENUCOMPONENT_H_
@@ -13,10 +13,7 @@
 
 class MinefieldMenuComponent : public ObjectMenuComponent {
 protected:
-
-
 public:
-
 	/**
 	 * Fills the radial options, needs to be overriden
 	 * @pre { this object is locked }
@@ -34,8 +31,6 @@ public:
 	 * @returns 0 if successfull
 	 */
 	virtual int handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* player, byte selectedID) const;
-
 };
-
 
 #endif /* MINEFIELDMENUCOMPONENT_H_ */
