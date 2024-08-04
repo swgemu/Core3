@@ -43,14 +43,16 @@
 
 object_installation_faction_perk_minefield_field_1x1 = object_installation_faction_perk_minefield_shared_field_1x1:new {
 	lotSize = 1,
-	pvpStatusBitmask = ATTACKABLE,
-	optionsBitmask = 0,
+
+	pvpStatusBitmask = 0,
+	optionsBitmask = INVULNERABLE,
+
 	dataObjectComponent = "MinefieldDataComponent",
 	groundZoneComponent = "MinefieldZoneComponent",
 	containerComponent = "MinefieldContainerComponent",
 	objectMenuComponent = "MinefieldMenuComponent",
+
 	maxCondition = 6500,
-	
 }
 
 ObjectTemplates:addTemplate(object_installation_faction_perk_minefield_field_1x1, "object/installation/faction_perk/minefield/field_1x1.iff")

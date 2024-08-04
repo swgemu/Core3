@@ -732,20 +732,23 @@ void GCWManagerImplementation::initializeBaseTimers(BuildingObject* building) {
 }
 
 void GCWManagerImplementation::addMinefield(BuildingObject* building, SceneObject* minefield) {
-	if (building == nullptr)
+	if (building == nullptr) {
 		return;
+	}
 
 	DestructibleBuildingDataComponent* baseData = getDestructibleBuildingData(building);
 
-	if (baseData == nullptr)
+	if (baseData == nullptr) {
 		return;
+	}
 
 	Locker _lock(building);
 
-	if (minefield != nullptr)
+	if (minefield != nullptr) {
 		baseData->addMinefield(baseData->getTotalMinefieldCount(), minefield->getObjectID());
-	else
+	} else {
 		baseData->addMinefield(baseData->getTotalMinefieldCount(), 0);
+	}
 
 	verifyMinefields(building);
 }
@@ -2791,30 +2794,27 @@ void GCWManagerImplementation::performDefenseDonation(BuildingObject* building, 
 void GCWManagerImplementation::performDonateMinefield(BuildingObject* building, CreatureObject* creature, Deed* deed) {
 	String serverTemplatePath = deed->getGeneratedObjectTemplate();
 	TemplateManager* templateManager = TemplateManager::instance();
+
 	Reference<SharedObjectTemplate*> baseServerTemplate = building->getObjectTemplate();
 	Reference<SharedObjectTemplate*> minefieldTemplate = nullptr;
+
 	const ChildObject* child = nullptr;
 
 	int currentMinefieldIndex = 0;
 
 	DestructibleBuildingDataComponent* baseData = getDestructibleBuildingData(building);
 
-	if (baseData == nullptr)
+	if (baseData == nullptr) {
 		return;
-
-	// go through it and inf the first available mine
-	int minefieldIndex = 0;
-	for (minefieldIndex = 0; minefieldIndex < baseData->getTotalMinefieldCount(); minefieldIndex++) {
-		if (baseData->getMinefieldID(minefieldIndex) == 0)
-			break;
 	}
 
 	// Minefield donation
 	int nextAvailableMinefield = 0;
 
-	for (nextAvailableMinefield = 0; nextAvailableMinefield < baseData->getTotalTurretCount(); nextAvailableMinefield++) {
-		if (baseData->getMinefieldID(nextAvailableMinefield) == 0)
+	for (nextAvailableMinefield = 0; nextAvailableMinefield < baseData->getTotalMinefieldCount(); nextAvailableMinefield++) {
+		if (baseData->getMinefieldID(nextAvailableMinefield) == 0) {
 			break;
+		}
 	}
 
 	if (nextAvailableMinefield >= baseData->getTotalMinefieldCount()) {
@@ -2843,29 +2843,33 @@ void GCWManagerImplementation::performDonateMinefield(BuildingObject* building, 
 		}
 	}
 
-	if (child == nullptr || minefieldTemplate == nullptr || minefieldTemplate->getGameObjectType() != SceneObjectType::MINEFIELD)
+	if (child == nullptr || minefieldTemplate == nullptr || minefieldTemplate->getGameObjectType() != SceneObjectType::MINEFIELD) {
 		return;
+	}
 
 	uint64 minefieldID = addChildInstallationFromDeed(building, child, creature, deed);
 
-	if (minefieldID > 0) {
-		baseData->setMinefieldID(currentMinefieldIndex, minefieldID);
-
-		if (isBaseVulnerable(building))
-			baseData->setDefenseAddedThisVuln(true);
-
-		StringIdChatParameter params;
-		params.setStringId("@faction/faction_hq/faction_hq_response:terminal_response45"); //"You successfully donate a %TO deed to the current facility."
-		params.setTO(deed->getObjectNameStringIdFile(), deed->getObjectNameStringIdName());
-		creature->sendSystemMessage(params);
-
-		building->addCooldown("defense_donation", donationCooldown * 1000);
-
-		verifyMinefields(building);
-
-		Locker clock(deed, creature);
-		deed->destroyObjectFromWorld(true);
+	if (minefieldID <= 0) {
+		return;
 	}
+
+	baseData->setMinefieldID(currentMinefieldIndex, minefieldID);
+
+	if (isBaseVulnerable(building)) {
+		baseData->setDefenseAddedThisVuln(true);
+	}
+
+	StringIdChatParameter params;
+	params.setStringId("@faction/faction_hq/faction_hq_response:terminal_response45"); //"You successfully donate a %TO deed to the current facility."
+	params.setTO(deed->getObjectNameStringIdFile(), deed->getObjectNameStringIdName());
+	creature->sendSystemMessage(params);
+
+	building->addCooldown("defense_donation", donationCooldown * 1000);
+
+	verifyMinefields(building);
+
+	Locker clock(deed, creature);
+	deed->destroyObjectFromWorld(true);
 }
 
 void GCWManagerImplementation::performDonateScanner(BuildingObject* building, CreatureObject* creature,  Deed* scannerDeed) {

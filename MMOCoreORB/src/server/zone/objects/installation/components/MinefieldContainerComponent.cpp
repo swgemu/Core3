@@ -9,28 +9,37 @@
 #include "server/zone/objects/installation/InstallationObject.h"
 #include "server/zone/objects/player/FactionStatus.h"
 #include "templates/params/creature/ObjectFlag.h"
+#include "templates/faction/Factions.h"
+#include "server/zone/objects/player/PlayerObject.h"
 
 bool MinefieldContainerComponent::checkContainerPermission(SceneObject* sceneObject, CreatureObject* creature, uint16 permission) const {
-	if (sceneObject == nullptr || !sceneObject->isTangibleObject())
+	if (sceneObject == nullptr || !sceneObject->isTangibleObject()) {
 		return false;
+	}
 
 	InstallationObject* minefield = cast<InstallationObject*>(sceneObject);
 
-	if (creature == nullptr || minefield == nullptr)
+	if (creature == nullptr || minefield == nullptr) {
 		return false;
+	}
 
-	if (creature->getFaction() == 0 || minefield->getFaction() == 0)
+	if (creature->getFaction() == Factions::FACTIONNEUTRAL || minefield->getFaction() == Factions::FACTIONNEUTRAL) {
 		return false;
+	}
+
+	auto ghost = creature->getPlayerObject();
+	bool isPrivileged = (ghost != nullptr && ghost->isPrivileged());
 
 	if (permission == ContainerPermissions::OPEN || permission == ContainerPermissions::MOVEIN) {
-		if (minefield->getFaction() == creature->getFaction() && creature->getFactionStatus() != FactionStatus::ONLEAVE)
+		if (isPrivileged || (minefield->getFaction() == creature->getFaction() && creature->getFactionStatus() != FactionStatus::ONLEAVE)) {
 			return true;
-		else
+		} else {
 			return false;
-
+		}
 	} else if (permission == ContainerPermissions::MOVEOUT) {
-		if (creature->getFaction() != minefield->getFaction())
+		if ((creature->getFaction() != minefield->getFaction()) && !isPrivileged) {
 			return false;
+		}
 
 		return minefield->isOnAdminList(creature);
 	}
@@ -60,13 +69,9 @@ int MinefieldContainerComponent::canAddObject(SceneObject* sceneObject, SceneObj
  */
 int MinefieldContainerComponent::notifyObjectInserted(SceneObject* sceneObject, SceneObject* object) const {
 	ManagedReference<InstallationObject*> installation = cast<InstallationObject*>(sceneObject);
-	if (installation == nullptr)
-		return 1;
 
-	// mine isn't attackable if it has mines
-	if (installation->getPvpStatusBitmask() & ObjectFlag::ATTACKABLE) {
-		int newbitmask = installation->getPvpStatusBitmask() - ObjectFlag::ATTACKABLE;
-		installation->setPvpStatusBitmask(newbitmask);
+	if (installation == nullptr) {
+		return 1;
 	}
 
 	return ContainerComponent::notifyObjectInserted(sceneObject, object);
@@ -81,12 +86,9 @@ int MinefieldContainerComponent::notifyObjectRemoved(SceneObject* sceneObject, S
 		return 1;
 
 	ManagedReference<TangibleObject*> installation = cast<TangibleObject*>(sceneObject);
-	if (installation == nullptr)
-		return 1;
 
-	if (installation->getContainerObjectsSize() == 0 && !(installation->getPvpStatusBitmask() & ObjectFlag::ATTACKABLE)) {
-		int newbitmask = installation->getPvpStatusBitmask() + ObjectFlag::ATTACKABLE;
-		installation->setPvpStatusBitmask(newbitmask);
+	if (installation == nullptr) {
+		return 1;
 	}
 
 	return ContainerComponent::notifyObjectRemoved(sceneObject, object, destination);

@@ -206,7 +206,7 @@ public:
 	void sendMitigationCombatSpam(CreatureObject* defender, TangibleObject* item, uint32 damage, int type) const;
 
 	float hitChanceEquation(float attackerAccuracy, float targetDefense) const;
-	float doDroidDetonation(CreatureObject* droid, CreatureObject* defender, float damage) const;
+	float doObjectDetonation(TangibleObject* droid, CreatureObject* defender, float damage, WeaponObject* weapon = nullptr) const;
 
 	void checkForTefs(CreatureObject* attacker, CreatureObject* defender, bool* shouldGcwCrackdownTef, bool* shouldGcwTef, bool* shouldBhTef) const;
 	void getFrsModifiedForceAttackDamage(CreatureObject* attacker, float& minDmg, float& maxDmg, const CreatureAttackData& data) const;
