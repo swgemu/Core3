@@ -46,8 +46,12 @@ object_installation_faction_perk_turret_dish_lg = object_installation_faction_pe
 	pvpStatusBitmask = ATTACKABLE,
 	optionsBitmask = 0,
 	maxCondition = 300000,
+
 	groundZoneComponent = "TurretZoneComponent",
 	dataObjectComponent = "TurretDataComponent",
+	containerComponent = "TurretContainerComponent",
+	objectMenuComponent = "TurretMenuComponent",
+
 	-- Damagetypes in WeaponObject
 	vulnerability = BLAST,
 	-- LIGHT, MEDIUM, HEAVY
