@@ -42,39 +42,33 @@
 
 
 object_draft_schematic_munition_mine_dxr55 = object_draft_schematic_munition_shared_mine_dxr55:new {
+	templateType = DRAFTSCHEMATIC,
 
-   templateType = DRAFTSCHEMATIC,
+	craftingToolTab = 1, -- (See DraftSchematicObjectTemplate.h)
+	complexity = 20,
+	size = 3,
+	factoryCrateType = "object/factory/factory_crate_weapon.iff",
 
-   customObjectName = "DRX Mine",
+	xpType = "crafting_weapons_general",
+	xp = 35,
 
-   craftingToolTab = 1, -- (See DraftSchematicObjectTemplate.h)
-   complexity = 20, 
-   size = 3, 
-   factoryCrateType = "object/factory/factory_crate_weapon.iff",
-   
-   xpType = "crafting_weapons_general", 
-   xp = 35, 
+	assemblySkill = "weapon_assembly",
+	experimentingSkill = "weapon_experimentation",
+	customizationSkill = "weapon_customization",
 
-   assemblySkill = "weapon_assembly", 
-   experimentingSkill = "weapon_experimentation", 
-   customizationSkill = "weapon_customization", 
+	customizationOptions = {},
+	customizationStringNames = {},
+	customizationDefaults = {},
 
-   customizationOptions = {},
-   customizationStringNames = {},
-   customizationDefaults = {},
+	ingredientTemplateNames = {"craft_munition_ingredients_n", "craft_munition_ingredients_n", "craft_munition_ingredients_n", "craft_munition_ingredients_n", "craft_munition_ingredients_n", "craft_munition_ingredients_n", "craft_munition_ingredients_n", "craft_munition_ingredients_n", "craft_munition_ingredients_n"},
+	ingredientTitleNames = {"weapon_casing", "trigger_mechanism", "warhead_compartment", "grounding_pile", "warhead_insulator", "warhead_assembly", "null_field_generator", "warhead_fusing", "warhead_booster"},
+	ingredientSlotType = {0, 0, 0, 0, 0, 1, 1, 1, 3},
+	resourceTypes = {"metal", "petrochem_inert_polymer", "ore_carbonate", "steel_thoranium", "ore_siliclastic_crism", "object/tangible/component/munition/shared_warhead_medium.iff", "object/tangible/component/munition/shared_warhead_stabilizer.iff", "object/tangible/component/munition/shared_warhead_fusing_mechanism.iff", "object/tangible/component/munition/shared_enhanced_destructive_pulse_channeling.iff"},
+	resourceQuantities = {10, 1, 2, 15, 3, 1, 1, 1, 1},
+	contribution = {100, 100, 100, 100, 100, 100, 100, 100, 100},
 
-   ingredientTemplateNames = {"craft_munition_ingredients_n", "craft_munition_ingredients_n", "craft_munition_ingredients_n", "craft_munition_ingredients_n", "craft_munition_ingredients_n", "craft_munition_ingredients_n", "craft_munition_ingredients_n", "craft_munition_ingredients_n", "craft_munition_ingredients_n"},
-   ingredientTitleNames = {"weapon_casing", "trigger_mechanism", "warhead_compartment", "grounding_pile", "warhead_insulator", "warhead_assembly", "null_field_generator", "warhead_fusing", "warhead_booster"},
-   ingredientSlotType = {0, 0, 0, 0, 0, 1, 1, 1, 3},
-   resourceTypes = {"metal", "petrochem_inert_polymer", "ore_carbonate", "steel_thoranium", "ore_siliclastic_crism", "object/tangible/component/munition/shared_warhead_medium.iff", "object/tangible/component/munition/shared_warhead_stabilizer.iff", "object/tangible/component/munition/shared_warhead_fusing_mechanism.iff", "object/tangible/component/munition/shared_enhanced_destructive_pulse_channeling.iff"},
-   resourceQuantities = {10, 1, 2, 15, 3, 1, 1, 1, 1},
-   contribution = {100, 100, 100, 100, 100, 100, 100, 100, 100},
+	targetTemplate = "object/weapon/mine/wp_mine_drx55.iff",
 
-
-   targetTemplate = "object/weapon/mine/wp_mine_drx55.iff",
-
-   additionalTemplates = {
-             }
-
+	additionalTemplates = {}
 }
 ObjectTemplates:addTemplate(object_draft_schematic_munition_mine_dxr55, "object/draft_schematic/munition/mine_dxr55.iff")
