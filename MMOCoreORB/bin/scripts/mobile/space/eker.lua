@@ -3,8 +3,6 @@ eker = Creature:new {
 	socialGroup = "rebel",
 	faction = "rebel",
 	mobType = MOB_NPC,
-	planetMapCategory = "trainer",
-	planetMapSubCategory = "trainer_pilot_rebel",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,
@@ -25,7 +23,7 @@ eker = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = AIENABLED,
+	optionsBitmask = AIENABLED + JTLINTERESTING,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/space_rebel_tier2_eker.iff"},

@@ -1,17 +1,17 @@
-vrak = Creature:new {
-	objectName = "@npc_spawner_n:vrak",
+gi_a_pei = Creature:new {
+	objectName = "@npc_spawner_n:gi_a_pei",
 	socialGroup = "townsperson",
 	faction = "townsperson",
 	mobType = MOB_NPC,
-	level = 4,
-	chanceHit = 0.24,
-	damageMin = 40,
-	damageMax = 45,
-	baseXp = 62,
-	baseHAM = 113,
-	baseHAMmax = 138,
+	level = 19,
+	chanceHit = 0.33,
+	damageMin = 180,
+	damageMax = 190,
+	baseXp = 1257,
+	baseHAM = 4500,
+	baseHAMmax = 5500,
 	armor = 0,
-	resists = {15,15,15,15,15,15,15,-1,-1},
+	resists = {0,0,0,0,0,0,0,0,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -22,13 +22,11 @@ vrak = Creature:new {
 	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = NONE,
-	creatureBitmask = HERD,
-	optionsBitmask = AIENABLED,
+	creatureBitmask = NONE,
+	optionsBitmask = AIENABLED + JTLINTERESTING,
 	diet = HERBIVORE,
 
-	templates = {
-		"object/mobile/dressed_nym_destroyer_rod_m.iff"
-	},		
+	templates = {"object/mobile/space_greeter_kadaara_mistress.iff"},
 	lootGroups = {},
 
 	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)
@@ -43,4 +41,4 @@ vrak = Creature:new {
 	secondaryAttacks = { }
 }
 
-CreatureTemplates:addCreatureTemplate(vrak, "vrak")
+CreatureTemplates:addCreatureTemplate(gi_a_pei, "gi_a_pei")

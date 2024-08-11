@@ -1,7 +1,9 @@
 landau = Creature:new {
 	objectName = "@npc_spawner_n:cmdr_landau",
-	socialGroup = "townsperson",
-	faction = "townsperson",
+	socialGroup = "imperial",
+	faction = "imperial",
+	planetMapCategory = "space",
+	planetMapSubCategory = "space_recruiter",
 	mobType = MOB_NPC,
 	level = 100,
 	chanceHit = 0.33,
@@ -23,10 +25,10 @@ landau = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = NONE,
-	optionsBitmask = AIENABLED,
+	optionsBitmask = AIENABLED + JTLINTERESTING,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_commoner_old_human_male_01.iff"},
+	templates = {"object/mobile/dressed_imperial_lieutenant_m.iff"},
 	lootGroups = {},
 
 	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)

@@ -1,15 +1,15 @@
-imperial_pilot = Creature:new {
-	objectName = "@npc_spawner_n:imperial_pilot",
-	socialGroup = "imperial",
+bek_rabor = Creature:new {
+	objectName = "@npc_spawner_n:bek_rabor",
+	socialGroup = "townsperson",
 	faction = "imperial",
 	mobType = MOB_NPC,
-	level = 20,
-	chanceHit = 0.33,
-	damageMin = 190,
-	damageMax = 200,
-	baseXp = 1803,
-	baseHAM = 5000,
-	baseHAMmax = 6100,
+	level = 100,
+	chanceHit = 1,
+	damageMin = 645,
+	damageMax = 1000,
+	baseXp = 9429,
+	baseHAM = 24000,
+	baseHAMmax = 30000,
 	armor = 0,
 	resists = {0,0,0,0,0,0,0,0,-1},
 	meatType = "",
@@ -21,32 +21,24 @@ imperial_pilot = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE,
-	creatureBitmask = PACK + KILLER,
-	optionsBitmask = AIENABLED,
+	pvpBitmask = NONE,
+	creatureBitmask = PACK,
+	optionsBitmask = AIENABLED + JTLINTERESTING,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_stranded_imperial_pilot.iff"},
-	lootGroups = {
-		{
-			groups = {
-				{group = "imperial_tier_1", chance = 10000000}
-			}
-		}
-	},
+	templates = {"object/mobile/space_greeter_dantooine_imperial_officer.iff"},
+	lootGroups = {},
 
 	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)
 	-- Unarmed should be put on secondary unless the mobile doesn't use weapons, in which case "unarmed" should be put primary and "none" as secondary
-	primaryWeapon = "imperial_carbine",
-	secondaryWeapon = "imperial_pistol",
+	primaryWeapon = "unarmed",
+	secondaryWeapon = "none",
 	conversationTemplate = "",
-	reactionStf = "@npc_reaction/military",
-	personalityStf = "@hireling/hireling_military",
-
+	
 	-- primaryAttacks and secondaryAttacks should be separate skill groups specific to the weapon type listed in primaryWeapon and secondaryWeapon
 	-- Use merge() to merge groups in creatureskills.lua together. If a weapon is set to "none", set the attacks variable to empty brackets
-	primaryAttacks = marksmanmaster,
-	secondaryAttacks = marksmanmaster
+	primaryAttacks = {},
+	secondaryAttacks = { }
 }
 
-CreatureTemplates:addCreatureTemplate(imperial_pilot, "imperial_pilot")
+CreatureTemplates:addCreatureTemplate(bek_rabor, "bek_rabor")

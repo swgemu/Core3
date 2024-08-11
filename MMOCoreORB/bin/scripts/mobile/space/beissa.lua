@@ -1,7 +1,5 @@
-freelance_pilot = Creature:new {
-	objectName = "@npc_spawner_n:freelance_pilot",
-	randomNameType = NAME_GENERIC,
-	randomNameTag = true,
+beissa = Creature:new {
+	objectName = "@npc_spawner_n:beissa",
 	socialGroup = "townsperson",
 	faction = "townsperson",
 	mobType = MOB_NPC,
@@ -25,10 +23,10 @@ freelance_pilot = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = AIENABLED,
+	optionsBitmask = AIENABLED + JTLINTERESTING,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/space_privateer_broker_retired_pilot.iff"},
+	templates = {"object/mobile/space_rebel_tier3_beissa.iff"},
 	lootGroups = {},
 
 	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)
@@ -43,4 +41,4 @@ freelance_pilot = Creature:new {
 	secondaryAttacks = { }
 }
 
-CreatureTemplates:addCreatureTemplate(freelance_pilot, "freelance_pilot")
+CreatureTemplates:addCreatureTemplate(beissa, "beissa")

@@ -1,19 +1,17 @@
-beissa = Creature:new {
-	objectName = "@npc_spawner_n:beissa",
-	socialGroup = "townsperson",
-	faction = "townsperson",
+tk_8h2 = Creature:new {
+	objectName = "@npc_spawner_n:tk_8h2",
+	socialGroup = "imperial",
+	faction = "imperial",
 	mobType = MOB_NPC,
-	planetMapCategory = "trainer",
-	planetMapSubCategory = "trainer_pilot_rebel",
-	level = 10,
-	chanceHit = 0.28,
-	damageMin = 90,
-	damageMax = 110,
-	baseXp = 356,
-	baseHAM = 810,
-	baseHAMmax = 990,
+	level = 100,
+	chanceHit = 1,
+	damageMin = 645,
+	damageMax = 1000,
+	baseXp = 9429,
+	baseHAM = 24000,
+	baseHAMmax = 30000,
 	armor = 0,
-	resists = {0,0,0,0,0,0,0,-1,-1},
+	resists = {0,0,0,0,0,0,0,0,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -25,10 +23,10 @@ beissa = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = AIENABLED,
+	optionsBitmask = AIENABLED + JTLINTERESTING,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/space_rebel_tier3_beissa.iff"},
+	templates = {"object/mobile/dressed_stormtrooper_captain_white_white.iff"},
 	lootGroups = {},
 
 	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)
@@ -36,11 +34,11 @@ beissa = Creature:new {
 	primaryWeapon = "unarmed",
 	secondaryWeapon = "none",
 	conversationTemplate = "",
-
+	
 	-- primaryAttacks and secondaryAttacks should be separate skill groups specific to the weapon type listed in primaryWeapon and secondaryWeapon
 	-- Use merge() to merge groups in creatureskills.lua together. If a weapon is set to "none", set the attacks variable to empty brackets
 	primaryAttacks = {},
 	secondaryAttacks = { }
 }
 
-CreatureTemplates:addCreatureTemplate(beissa, "beissa")
+CreatureTemplates:addCreatureTemplate(tk_8h2, "tk_8h2")

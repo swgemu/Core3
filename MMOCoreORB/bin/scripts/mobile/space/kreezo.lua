@@ -25,7 +25,7 @@ kreezo = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = AIENABLED,
+	optionsBitmask = AIENABLED + JTLINTERESTING,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/space_rebel_tier1_corellia_kreezo.iff"},

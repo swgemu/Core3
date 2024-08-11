@@ -346,9 +346,16 @@ CorelliaTyrenaScreenPlay = CityScreenPlay:new {
 		{"trainer_scout", 0,-5061.86,21,-2322.52,36,0, ""},
 		{"trainer_weaponsmith", 0,-5106,21,-2324,180,0, ""},
 
-		{"larek_tatham",60,-5050.23,21,-2291.69,113.059,0, "neutral"},
+		--JTL Rebel Trainer
+		{"kreezo", 60, -4.4, 0.6, -3.6, -130, 3375654, "neutral"},
+		
+		--Space Greeters
+		{"larek_tatham", 60, -5050.23, 21, -2291.69, 113.059, 0, "neutral"},
+		{"cll_8_space", 60, -5050, 21, -2288, 145, 0, ""},
+		{"ulaire_roye", 60, -5048.68, 21, -2291.24, 113.059,0, "neutral"},
+
 		{"junk_dealer", 0, -5203.6, 21, -2285.9, -11, 0, ""},
-		{"sullustan_male",60,-5564.23,21,-2777.78,0,0, "nervous"}
+		{"sullustan_male", 60, -5564.23, 21, -2777.78, 0, 0, "nervous"}
 	}
 }
 

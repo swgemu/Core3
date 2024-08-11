@@ -1,8 +1,10 @@
-ta_667 = Creature:new {
-	objectName = "@npc_spawner_n:ta_667",
+gunham = Creature:new {
+	objectName = "@npc_spawner_n:gunham",
 	socialGroup = "imperial",
 	faction = "imperial",
-	mobType = MOB_ANDROID,
+	planetMapCategory = "space",
+	planetMapSubCategory = "space_recruiter",
+	mobType = MOB_NPC,
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,
@@ -23,11 +25,10 @@ ta_667 = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = AIENABLED,
+	optionsBitmask = AIENABLED + JTLINTERESTING,
 	diet = HERBIVORE,
-	scale = 1.5,
 
-	templates = {"object/mobile/dark_trooper.iff"},
+	templates = {"object/mobile/dressed_imperial_lieutenant_m.iff"},
 	lootGroups = {},
 
 	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)
@@ -42,4 +43,4 @@ ta_667 = Creature:new {
 	secondaryAttacks = { }
 }
 
-CreatureTemplates:addCreatureTemplate(ta_667, "ta_667")
+CreatureTemplates:addCreatureTemplate(gunham, "gunham")

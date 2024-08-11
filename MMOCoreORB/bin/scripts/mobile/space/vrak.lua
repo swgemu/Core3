@@ -1,17 +1,17 @@
-zo_ssa = Creature:new {
-	objectName = "@npc_spawner_n:zo_ssa",
-	socialGroup = "rebel",
-	faction = "rebel",
+vrak = Creature:new {
+	objectName = "@npc_spawner_n:vrak",
+	socialGroup = "townsperson",
+	faction = "townsperson",
 	mobType = MOB_NPC,
-	level = 100,
-	chanceHit = 1,
-	damageMin = 645,
-	damageMax = 1000,
-	baseXp = 9429,
-	baseHAM = 24000,
-	baseHAMmax = 30000,
+	level = 4,
+	chanceHit = 0.24,
+	damageMin = 40,
+	damageMax = 45,
+	baseXp = 62,
+	baseHAM = 113,
+	baseHAMmax = 138,
 	armor = 0,
-	resists = {0,0,0,0,0,0,0,0,-1},
+	resists = {15,15,15,15,15,15,15,-1,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -22,11 +22,11 @@ zo_ssa = Creature:new {
 	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = NONE,
-	creatureBitmask = PACK,
-	optionsBitmask = AIENABLED,
+	creatureBitmask = HERD,
+	optionsBitmask = AIENABLED + JTLINTERESTING,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_rebel_army_captain_zabrak_female.iff"},
+	templates = {"object/mobile/dressed_nym_destroyer_rod_m.iff"},		
 	lootGroups = {},
 
 	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)
@@ -41,4 +41,4 @@ zo_ssa = Creature:new {
 	secondaryAttacks = { }
 }
 
-CreatureTemplates:addCreatureTemplate(zo_ssa, "zo_ssa")
+CreatureTemplates:addCreatureTemplate(vrak, "vrak")

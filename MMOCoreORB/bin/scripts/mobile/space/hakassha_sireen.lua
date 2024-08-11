@@ -25,7 +25,7 @@ hakassha_sireen = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = AIENABLED,
+	optionsBitmask = AIENABLED + JTLINTERESTING,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_imperial_trainer_space_02.iff"},

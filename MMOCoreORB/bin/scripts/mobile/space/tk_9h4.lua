@@ -1,5 +1,5 @@
-nym_fuel_tech = Creature:new {
-	objectName = "@npc_spawner_n:nym_fuel_tech",
+tk_9h4 = Creature:new {
+	objectName = "@npc_spawner_n:tk_9h4",
 	socialGroup = "imperial",
 	faction = "imperial",
 	mobType = MOB_NPC,
@@ -23,10 +23,10 @@ nym_fuel_tech = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = AIENABLED,
+	optionsBitmask = AIENABLED + JTLINTERESTING,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_nym_technician_1.iff"},
+	templates = {"object/mobile/dressed_stormtrooper_captain_white_white.iff"},
 	lootGroups = {},
 
 	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)
@@ -41,4 +41,4 @@ nym_fuel_tech = Creature:new {
 	secondaryAttacks = { }
 }
 
-CreatureTemplates:addCreatureTemplate(nym_fuel_tech, "nym_fuel_tech")
+CreatureTemplates:addCreatureTemplate(tk_9h4, "tk_9h4")

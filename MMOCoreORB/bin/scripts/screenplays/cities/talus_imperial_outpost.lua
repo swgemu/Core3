@@ -34,7 +34,10 @@ TalusImperialOutpostScreenPlay = CityScreenPlay:new {
 		{"stormtrooper_sniper", 300, -2193.5, 20.0, 2267.2, -15, 0, ""},
 		{"at_st", 300, -2198.2, 20.0, 2299.8, 0, 0, ""},
 		{"stormtrooper_bombardier", 300, -2195.2, 20.0, 2295.2, 0, 0, ""},
-		{"stormtrooper_bombardier", 300, -2201.2, 20.0, 2295.2, 0, 0, ""}
+		{"stormtrooper_bombardier", 300, -2201.2, 20.0, 2295.2, 0, 0, ""},
+
+		{"hakassha_sireen", 300, 0.1, 0.1, -6.0, 0, 4965433, "neutral"},
+		{"prisk_kith_vys", 300, -3.8, 0.1, -5.0, 39, 4965436, "neutral"}
 	}
 }
 

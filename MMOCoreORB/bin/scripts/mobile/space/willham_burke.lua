@@ -1,7 +1,7 @@
-nym_fuel_tech = Creature:new {
-	objectName = "@npc_spawner_n:nym_fuel_tech",
-	socialGroup = "imperial",
-	faction = "imperial",
+willham_burke = Creature:new {
+	objectName = "@npc_spawner_n:willham_burke",
+	socialGroup = "rebel",
+	faction = "rebel",
 	mobType = MOB_NPC,
 	level = 100,
 	chanceHit = 1,
@@ -23,10 +23,10 @@ nym_fuel_tech = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = AIENABLED,
+	optionsBitmask = AIENABLED + JTLINTERESTING,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_nym_technician_1.iff"},
+	templates = {"object/mobile/dressed_rebel_army_captain_human_male_01.iff"},
 	lootGroups = {},
 
 	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)
@@ -41,4 +41,4 @@ nym_fuel_tech = Creature:new {
 	secondaryAttacks = { }
 }
 
-CreatureTemplates:addCreatureTemplate(nym_fuel_tech, "nym_fuel_tech")
+CreatureTemplates:addCreatureTemplate(willham_burke, "willham_burke")

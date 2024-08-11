@@ -2,6 +2,8 @@ zhanks = Creature:new {
 	objectName = "@npc_spawner_n:zhanks",
 	socialGroup = "imperial",
 	faction = "imperial",
+	planetMapCategory = "space",
+	planetMapSubCategory = "space_recruiter",
 	mobType = MOB_NPC,
 	level = 100,
 	chanceHit = 1,
@@ -23,7 +25,7 @@ zhanks = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = AIENABLED,
+	optionsBitmask = AIENABLED + JTLINTERESTING,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_imperial_lieutenant_m.iff"},

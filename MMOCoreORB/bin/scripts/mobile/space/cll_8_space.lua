@@ -1,8 +1,8 @@
-nym_fuel_tech = Creature:new {
-	objectName = "@npc_spawner_n:nym_fuel_tech",
-	socialGroup = "imperial",
-	faction = "imperial",
-	mobType = MOB_NPC,
+cll_8_space = Creature:new {
+	objectName = "@npc_spawner_n:cll_8",
+	socialGroup = "townsperson",
+	faction = "townsperson",
+	mobType = MOB_DROID,
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,
@@ -11,7 +11,7 @@ nym_fuel_tech = Creature:new {
 	baseHAM = 24000,
 	baseHAMmax = 30000,
 	armor = 0,
-	resists = {0,0,0,0,0,0,0,0,-1},
+	resists = {15,15,15,15,15,15,15,15,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -23,10 +23,10 @@ nym_fuel_tech = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = AIENABLED,
+	optionsBitmask = AIENABLED + JTLINTERESTING,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_nym_technician_1.iff"},
+	templates = {"object/mobile/cll8_binary_load_lifter.iff"},
 	lootGroups = {},
 
 	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)
@@ -34,11 +34,11 @@ nym_fuel_tech = Creature:new {
 	primaryWeapon = "unarmed",
 	secondaryWeapon = "none",
 	conversationTemplate = "",
-	
+
 	-- primaryAttacks and secondaryAttacks should be separate skill groups specific to the weapon type listed in primaryWeapon and secondaryWeapon
 	-- Use merge() to merge groups in creatureskills.lua together. If a weapon is set to "none", set the attacks variable to empty brackets
 	primaryAttacks = {},
 	secondaryAttacks = { }
 }
 
-CreatureTemplates:addCreatureTemplate(nym_fuel_tech, "nym_fuel_tech")
+CreatureTemplates:addCreatureTemplate(cll_8_space, "cll_8_space")

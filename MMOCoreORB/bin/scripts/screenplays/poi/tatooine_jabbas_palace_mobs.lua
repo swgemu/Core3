@@ -93,6 +93,9 @@ function TatooineJabbasPalaceMobsScreenPlay:spawnStatics()
 	pNpc = spawnMobile("tatooine", "commoner_tatooine", 60, -15.4, 0.1, 87.7, 42, 1177498)
 	self:setMoodString(pNpc, "nervous")
 
+	pNpc = spawnMobile("tatooine", "smuggler_pilot", 60, -5868.38, 90, -6199.5, 90, 0)
+	self:setMoodString(pNpc, "neutral")
+
 	pNpc = spawnMobile("tatooine", "fringer", 300, -8.7, 2.0, 49.6, 347, 1177487)
 	createEvent(5000, "TatooineJabbasPalaceMobsScreenPlay", "palaceConverse", pNpc, "")
 

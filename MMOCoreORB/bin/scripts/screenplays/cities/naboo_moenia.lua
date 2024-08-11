@@ -98,8 +98,12 @@ NabooMoeniaScreenPlay = CityScreenPlay:new {
 		{"rebel_recruiter",0,-29,-0.89,-1.2,74,119, ""},
 		{"informant_npc_lvl_2",0,-2.2226,-0.894992,5.90785,90,111, ""},
 
-		--hotel
+		--Hotel
 		{"bartender",60,20.2,1.6,12.3,-180,1717470, "conversation"},
+
+		--Gazebo
+		{"v3_fx", 60, 4764.2, 6.1, -4795.2, 133, 0, "neutral"},
+		{"kiizete", 60, 4766.36, 6.1, -4795.8, 172, 0, "neutral"},
 
 		--Guild Hall 4923 -4783
 		{"trainer_artisan",0,-0.0177415,1.13306,-13.3088,0,1717546, ""},

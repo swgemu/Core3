@@ -1,19 +1,17 @@
-shamdon_kree = Creature:new {
-	objectName = "@npc_spawner_n:shamdon_kree",
-	socialGroup = "townsperson",
-	faction = "townsperson",
+zo_ssa = Creature:new {
+	objectName = "@npc_spawner_n:zo_ssa",
+	socialGroup = "rebel",
+	faction = "rebel",
 	mobType = MOB_NPC,
-	level = 10,
-	planetMapCategory = "trainer",
-	planetMapSubCategory = "trainer_pilot_privateer",
-	chanceHit = 0.28,
-	damageMin = 90,
-	damageMax = 110,
-	baseXp = 356,
-	baseHAM = 810,
-	baseHAMmax = 990,
+	level = 100,
+	chanceHit = 1,
+	damageMin = 645,
+	damageMax = 1000,
+	baseXp = 9429,
+	baseHAM = 24000,
+	baseHAMmax = 30000,
 	armor = 0,
-	resists = {0,0,0,0,10,0,0,-1,-1},
+	resists = {0,0,0,0,0,0,0,0,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -25,10 +23,10 @@ shamdon_kree = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = AIENABLED,
+	optionsBitmask = AIENABLED + JTLINTERESTING,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/space_privateer_tier2_shamdon.iff"},
+	templates = {"object/mobile/dressed_rebel_army_captain_zabrak_female.iff"},
 	lootGroups = {},
 
 	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)
@@ -36,11 +34,11 @@ shamdon_kree = Creature:new {
 	primaryWeapon = "unarmed",
 	secondaryWeapon = "none",
 	conversationTemplate = "",
-
+	
 	-- primaryAttacks and secondaryAttacks should be separate skill groups specific to the weapon type listed in primaryWeapon and secondaryWeapon
 	-- Use merge() to merge groups in creatureskills.lua together. If a weapon is set to "none", set the attacks variable to empty brackets
 	primaryAttacks = {},
 	secondaryAttacks = { }
 }
 
-CreatureTemplates:addCreatureTemplate(shamdon_kree, "shamdon_kree")
+CreatureTemplates:addCreatureTemplate(zo_ssa, "zo_ssa")

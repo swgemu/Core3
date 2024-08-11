@@ -3,8 +3,6 @@ kaydine = Creature:new {
 	socialGroup = "townsperson",
 	faction = "townsperson",
 	mobType = MOB_NPC,
-	planetMapCategory = "trainer",
-	planetMapSubCategory = "trainer_pilot_privateer",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,
@@ -25,7 +23,7 @@ kaydine = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = AIENABLED,
+	optionsBitmask = AIENABLED + JTLINTERESTING,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/space_privateer_tier2_naboo.iff"},

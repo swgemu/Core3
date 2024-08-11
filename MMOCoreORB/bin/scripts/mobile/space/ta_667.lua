@@ -1,8 +1,10 @@
-nym_fuel_tech = Creature:new {
-	objectName = "@npc_spawner_n:nym_fuel_tech",
+ta_667 = Creature:new {
+	objectName = "@npc_spawner_n:ta_667",
 	socialGroup = "imperial",
 	faction = "imperial",
-	mobType = MOB_NPC,
+	mobType = MOB_ANDROID,
+	--planetMapCategory = "space",
+	--planetMapSubCategory = "space_recruiter",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,
@@ -23,10 +25,11 @@ nym_fuel_tech = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = AIENABLED,
+	optionsBitmask = AIENABLED + JTLINTERESTING,
 	diet = HERBIVORE,
+	scale = 1.5,
 
-	templates = {"object/mobile/dressed_nym_technician_1.iff"},
+	templates = {"object/mobile/dark_trooper.iff"},
 	lootGroups = {},
 
 	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)
@@ -41,4 +44,4 @@ nym_fuel_tech = Creature:new {
 	secondaryAttacks = { }
 }
 
-CreatureTemplates:addCreatureTemplate(nym_fuel_tech, "nym_fuel_tech")
+CreatureTemplates:addCreatureTemplate(ta_667, "ta_667")

@@ -1,11 +1,9 @@
-adwan_turoldine = Creature:new {
-	objectName = "@npc_spawner_n:adwan_turoldine",
-	socialGroup = "townsperson",
-	faction = "townsperson",
+bertos_goodner = Creature:new {
+	objectName = "@npc_spawner_n:bertos_goodner",
+	socialGroup = "rebel",
+	faction = "rebel",
 	mobType = MOB_NPC,
 	level = 100,
-	planetMapCategory = "trainer",
-	planetMapSubCategory = "trainer_pilot_privateer",
 	chanceHit = 1,
 	damageMin = 645,
 	damageMax = 1000,
@@ -25,10 +23,10 @@ adwan_turoldine = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = AIENABLED,
+	optionsBitmask = AIENABLED + JTLINTERESTING,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/space_privateer_tier4_corellia_adwan.iff"},
+	templates = {"object/mobile/space_greeter_moenia_undercover_rebel.iff"},
 	lootGroups = {},
 
 	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)
@@ -36,11 +34,11 @@ adwan_turoldine = Creature:new {
 	primaryWeapon = "unarmed",
 	secondaryWeapon = "none",
 	conversationTemplate = "",
-
+	
 	-- primaryAttacks and secondaryAttacks should be separate skill groups specific to the weapon type listed in primaryWeapon and secondaryWeapon
 	-- Use merge() to merge groups in creatureskills.lua together. If a weapon is set to "none", set the attacks variable to empty brackets
 	primaryAttacks = {},
 	secondaryAttacks = { }
 }
 
-CreatureTemplates:addCreatureTemplate(adwan_turoldine, "adwan_turoldine")
+CreatureTemplates:addCreatureTemplate(bertos_goodner, "bertos_goodner")

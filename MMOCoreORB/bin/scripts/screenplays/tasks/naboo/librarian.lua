@@ -3,7 +3,7 @@ local ObjectManager = require("managers.object.object_manager")
 npcMapLibrarian =
 	{
 		{
-			spawnData = { npcTemplate = "librarian", x = 40.7, z = 33, y = -93.9, direction = -97, cellID = 1688867, position = STAND },
+			spawnData = { npcTemplate = "librarian", x = 39.71, z = 33, y = -96.81, direction = -97, cellID = 1688867, position = STAND },
 			npcNumber = 1,
 			stfFile = "@celebrity/librarian",
 		},

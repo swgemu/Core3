@@ -105,9 +105,6 @@ NabooKaadaraScreenPlay = CityScreenPlay:new {
 	mobiles = {
 		--Hotel
 		{"info_broker",60,-2.1,1.0,12.6,90,1741477, "happy"},
-		{"patron_devaronian",60,2.1,1.0,-4.5,-24,1741477, "entertained"},
-		{"entertainer",60,1.2,1.0,-1.9,78,1741477, "happy"},
-		{"chiss_female",60,2.6,1.0,-0.5,-115,1741477, "npc_standing_drinking"},
 		{"contractor",60,4.0,1.0,4.3,-165,1741477, "npc_accusing"},
 		{"bartender", 1, 19.5, 1.6, 12.6, 180, 1741478, ""},
 
@@ -152,7 +149,10 @@ NabooKaadaraScreenPlay = CityScreenPlay:new {
 		{"trainer_scout", 1, 5192.38, -192, 6614.09, 5, 0, ""},
 		{"trainer_scout", 1, -10.8899, 1.13306, 4.89649, 204, 1741459, ""},
 		{"trainer_weaponsmith", 1, -2.5, 1.13306, -8.4, 91, 1741471, ""},
-		{"trainer_shipwright",1,5.1,0.6,66.6,119,1741539, "neutral"},
+		{"trainer_shipwright", 1,5.1,0.6,66.6,119,1741539, "neutral"},
+		{"barn_sinkko", 1, -1.4, 1.8, -13.5, 2 , 1741494 , "neutral"},
+		{"jaden_dala", 1, 5206.5, -192, 6680.65, 117, 0, "neutral"},
+		{"gi_a_pei", 1, 5207.32, -192, 6681.31, 117, 0, "neutral"},
 
 		--misc
 		{"informant_npc_lvl_1", 1, 5042, -188, 6734, 0, 0, ""},

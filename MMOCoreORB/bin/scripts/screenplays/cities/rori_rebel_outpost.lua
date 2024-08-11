@@ -46,6 +46,7 @@ RoriRebelOutpostScreenPlay = CityScreenPlay:new {
 		{"specforce_marine", 360, 2.2, 0.6, -2.2, 243, 4505636, ""},
 		{"specforce_marine", 360, 2.1, 0.6, -6.5, 280, 4505636, ""},
 		{"rebel_high_general", 360, 7.8, 0.6, -4.4, 270, 4505637, ""},
+		{"ufwol", 360, -8.4, 0.6, 3.5, 88, 4505635, ""},
 
 		--Left Storage Shed with quest givers
 		{"specforce_marine", 360, 0, 0.1, -6.0, 0, 4505666, ""},

@@ -1,17 +1,17 @@
-ty_vila = Creature:new {
-	objectName = "@npc_spawner_n:ty_vila",
-	socialGroup = "townsperson",
-	faction = "townsperson",
+dac_axfow = Creature:new {
+	objectName = "@npc_spawner_n:dac_axfow",
+	socialGroup = "imperial",
+	faction = "imperial",
 	mobType = MOB_NPC,
-	level = 100,
-	chanceHit = 1,
-	damageMin = 645,
-	damageMax = 1000,
-	baseXp = 9429,
-	baseHAM = 24000,
-	baseHAMmax = 30000,
+	level = 23,
+	chanceHit = 0.33,
+	damageMin = 210,
+	damageMax = 220,
+	baseXp = 2006,
+	baseHAM = 5000,
+	baseHAMmax = 6100,
 	armor = 0,
-	resists = {0,0,0,0,0,0,0,0,-1},
+	resists = {30,30,-1,0,0,-1,0,-1,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -22,11 +22,11 @@ ty_vila = Creature:new {
 	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = NONE,
-	creatureBitmask = PACK,
-	optionsBitmask = AIENABLED,
+	creatureBitmask = NONE,
+	optionsBitmask = AIENABLED + JTLINTERESTING,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/space_privateer_broker_fired_worker.iff"},
+	templates = {"object/mobile/space_greeter_kor_vella_imperial_officer.iff"},
 	lootGroups = {},
 
 	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)
@@ -34,11 +34,11 @@ ty_vila = Creature:new {
 	primaryWeapon = "unarmed",
 	secondaryWeapon = "none",
 	conversationTemplate = "",
-
+	
 	-- primaryAttacks and secondaryAttacks should be separate skill groups specific to the weapon type listed in primaryWeapon and secondaryWeapon
 	-- Use merge() to merge groups in creatureskills.lua together. If a weapon is set to "none", set the attacks variable to empty brackets
 	primaryAttacks = {},
 	secondaryAttacks = { }
 }
 
-CreatureTemplates:addCreatureTemplate(ty_vila, "ty_vila")
+CreatureTemplates:addCreatureTemplate(dac_axfow, "dac_axfow")

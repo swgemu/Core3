@@ -1,5 +1,5 @@
-gunham = Creature:new {
-	objectName = "@npc_spawner_n:gunham",
+talon_karrde = Creature:new {
+	objectName = "@mob/creature_names:talon_karrde",
 	socialGroup = "townsperson",
 	faction = "townsperson",
 	mobType = MOB_NPC,
@@ -23,17 +23,17 @@ gunham = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = AIENABLED,
+	optionsBitmask = AIENABLED + JTLINTERESTING,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_imperial_lieutenant_m.iff"},
+	templates = {"object/mobile/dressed_talon_karrde.iff"},
 	lootGroups = {},
 
 	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)
 	-- Unarmed should be put on secondary unless the mobile doesn't use weapons, in which case "unarmed" should be put primary and "none" as secondary
 	primaryWeapon = "unarmed",
 	secondaryWeapon = "none",
-	conversationTemplate = "",
+	conversationTemplate = "",--TODO: convert to a JTL 'Smuggler Alliance' PILOT TRAINER for 'Tier 2' missions
 	
 	-- primaryAttacks and secondaryAttacks should be separate skill groups specific to the weapon type listed in primaryWeapon and secondaryWeapon
 	-- Use merge() to merge groups in creatureskills.lua together. If a weapon is set to "none", set the attacks variable to empty brackets
@@ -41,4 +41,4 @@ gunham = Creature:new {
 	secondaryAttacks = { }
 }
 
-CreatureTemplates:addCreatureTemplate(gunham, "gunham")
+CreatureTemplates:addCreatureTemplate(talon_karrde, "talon_karrde")

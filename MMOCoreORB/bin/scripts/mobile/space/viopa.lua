@@ -4,8 +4,6 @@ viopa = Creature:new {
 	faction = "rebel",
 	mobType = MOB_NPC,
 	level = 100,
-	planetMapCategory = "trainer",
-	planetMapSubCategory = "trainer_pilot_privateer",
 	chanceHit = 1,
 	damageMin = 645,
 	damageMax = 1000,
@@ -25,10 +23,10 @@ viopa = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = AIENABLED,
+	optionsBitmask = AIENABLED + JTLINTERESTING,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/space_privateer_tier4_naboo_diness.iff"},
+	templates = {"object/mobile/dressed_space_rebel_trainer_lady_viopa.iff"},
 	lootGroups = {},
 
 	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)

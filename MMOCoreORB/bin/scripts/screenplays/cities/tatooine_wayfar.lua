@@ -114,7 +114,7 @@ TatooineWayfarScreenPlay = CityScreenPlay:new {
 		{"mercenary",300,-25.6591,-0.519991,10.6171,15.7251,1134570, ""},
 
 		{"rebel_recruiter",60,-5295.7,75,-6527.99,39.2298,0, ""},
-		{"smuggler_pilot",60,-5868.38,90,-6199.5,65.5014,0, "neutral"},
+		--{"smuggler_pilot",60,-5868.38,90,-6199.5,65.5014,0, "neutral"},
 		{"trainer_artisan",0,-5274,75,-6547,139,0, ""},
 		{"trainer_commando",0,-5038,75,-6609,226,0, ""},
 		{"trainer_scout",0,-5051.46,75,-6629.48,7,0, ""},

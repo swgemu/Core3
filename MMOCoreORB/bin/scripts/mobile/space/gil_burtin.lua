@@ -2,6 +2,8 @@ gil_burtin = Creature:new {
 	objectName = "@npc_spawner_n:gil_burtin",
 	socialGroup = "townsperson",
 	faction = "townsperson",
+	planetMapCategory = "space",
+	planetMapSubCategory = "space_recruiter",
 	mobType = MOB_NPC,
 	level = 19,
 	chanceHit = 0.33,
@@ -23,7 +25,7 @@ gil_burtin = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = NONE,
-	optionsBitmask = AIENABLED,
+	optionsBitmask = AIENABLED + JTLINTERESTING,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_industrialist_trainer_01.iff"},

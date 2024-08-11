@@ -1,17 +1,19 @@
-kilnstrider = Creature:new {
-	objectName = "@npc_spawner_n:kilnstrider",
+freelance_pilot = Creature:new {
+	objectName = "@npc_spawner_n:freelance_pilot",
+	randomNameType = NAME_GENERIC,
+	randomNameTag = true,
+	socialGroup = "townsperson",
+	faction = "townsperson",
 	mobType = MOB_NPC,
-	socialGroup = "imperial",
-	faction = "imperial",
-	level = 178,
-	chanceHit = 12.25,
-	damageMin = 1020,
-	damageMax = 1750,
-	baseXp = 16794,
-	baseHAM = 200000,
-	baseHAMmax = 200000,
-	armor = 2,
-	resists = {75,75,90,80,45,45,100,70,-1},
+	level = 10,
+	chanceHit = 0.28,
+	damageMin = 90,
+	damageMax = 110,
+	baseXp = 356,
+	baseHAM = 810,
+	baseHAMmax = 990,
+	armor = 0,
+	resists = {0,0,0,0,0,0,0,-1,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -22,11 +24,11 @@ kilnstrider = Creature:new {
 	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = NONE,
-	creatureBitmask = KILLER,
-	optionsBitmask = AIENABLED,
+	creatureBitmask = PACK,
+	optionsBitmask = AIENABLED + JTLINTERESTING,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/space_imperial_tier4_tatooine_kilnstrider.iff"},
+	templates = {"object/mobile/space_privateer_broker_retired_pilot.iff"},
 	lootGroups = {},
 
 	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)
@@ -34,11 +36,11 @@ kilnstrider = Creature:new {
 	primaryWeapon = "unarmed",
 	secondaryWeapon = "none",
 	conversationTemplate = "",
-	
+
 	-- primaryAttacks and secondaryAttacks should be separate skill groups specific to the weapon type listed in primaryWeapon and secondaryWeapon
 	-- Use merge() to merge groups in creatureskills.lua together. If a weapon is set to "none", set the attacks variable to empty brackets
 	primaryAttacks = {},
 	secondaryAttacks = { }
 }
 
-CreatureTemplates:addCreatureTemplate(kilnstrider, "kilnstrider")
+CreatureTemplates:addCreatureTemplate(freelance_pilot, "freelance_pilot")

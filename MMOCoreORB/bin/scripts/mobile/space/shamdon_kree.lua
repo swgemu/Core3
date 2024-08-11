@@ -1,17 +1,19 @@
-eryk_chinn = Creature:new {
-	objectName = "@npc_spawner_n:eryk_chinn",
-	socialGroup = "imperial",
-	faction = "imperial",
+shamdon_kree = Creature:new {
+	objectName = "@npc_spawner_n:shamdon_kree",
+	socialGroup = "townsperson",
+	faction = "townsperson",
 	mobType = MOB_NPC,
-	level = 23,
-	chanceHit = 0.33,
-	damageMin = 210,
-	damageMax = 220,
-	baseXp = 2006,
-	baseHAM = 5000,
-	baseHAMmax = 6100,
+	level = 10,
+	planetMapCategory = "trainer",
+	planetMapSubCategory = "trainer_pilot_privateer",
+	chanceHit = 0.28,
+	damageMin = 90,
+	damageMax = 110,
+	baseXp = 356,
+	baseHAM = 810,
+	baseHAMmax = 990,
 	armor = 0,
-	resists = {30,30,-1,0,0,-1,0,-1,-1},
+	resists = {0,0,0,0,10,0,0,-1,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -22,11 +24,11 @@ eryk_chinn = Creature:new {
 	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = NONE,
-	creatureBitmask = NONE,
-	optionsBitmask = AIENABLED,
+	creatureBitmask = PACK,
+	optionsBitmask = AIENABLED + JTLINTERESTING,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_stormtrooper_black_black.iff"},
+	templates = {"object/mobile/space_privateer_tier2_shamdon.iff"},
 	lootGroups = {},
 
 	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)
@@ -34,11 +36,11 @@ eryk_chinn = Creature:new {
 	primaryWeapon = "unarmed",
 	secondaryWeapon = "none",
 	conversationTemplate = "",
-	
+
 	-- primaryAttacks and secondaryAttacks should be separate skill groups specific to the weapon type listed in primaryWeapon and secondaryWeapon
 	-- Use merge() to merge groups in creatureskills.lua together. If a weapon is set to "none", set the attacks variable to empty brackets
 	primaryAttacks = {},
 	secondaryAttacks = { }
 }
 
-CreatureTemplates:addCreatureTemplate(eryk_chinn, "eryk_chinn")
+CreatureTemplates:addCreatureTemplate(shamdon_kree, "shamdon_kree")

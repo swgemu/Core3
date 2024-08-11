@@ -1,17 +1,17 @@
-willham_burke = Creature:new {
-	objectName = "@npc_spawner_n:willham_burke",
-	socialGroup = "rebel",
-	faction = "rebel",
+kilnstrider = Creature:new {
+	objectName = "@npc_spawner_n:kilnstrider",
+	socialGroup = "imperial",
+	faction = "imperial",
 	mobType = MOB_NPC,
-	level = 100,
-	chanceHit = 1,
-	damageMin = 645,
-	damageMax = 1000,
-	baseXp = 9429,
-	baseHAM = 24000,
-	baseHAMmax = 30000,
-	armor = 0,
-	resists = {0,0,0,0,0,0,0,0,-1},
+	level = 178,
+	chanceHit = 12.25,
+	damageMin = 1020,
+	damageMax = 1750,
+	baseXp = 16794,
+	baseHAM = 200000,
+	baseHAMmax = 200000,
+	armor = 2,
+	resists = {75,75,90,80,45,45,100,70,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -23,10 +23,10 @@ willham_burke = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = AIENABLED,
+	optionsBitmask = AIENABLED + JTLINTERESTING,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_rebel_army_captain_human_male_01.iff"},
+	templates = {"object/mobile/space_imperial_tier4_tatooine_kilnstrider.iff"},
 	lootGroups = {},
 
 	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)
@@ -41,4 +41,4 @@ willham_burke = Creature:new {
 	secondaryAttacks = { }
 }
 
-CreatureTemplates:addCreatureTemplate(willham_burke, "willham_burke")
+CreatureTemplates:addCreatureTemplate(kilnstrider, "kilnstrider")

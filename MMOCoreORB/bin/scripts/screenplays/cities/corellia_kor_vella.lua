@@ -244,6 +244,7 @@ CorelliaKorVellaScreenPlay = CityScreenPlay:new {
 		{"rogue_corsec_trooper", 360, -3332.89, 86, 3303.69, 68.6738, 0, ""},
 		{"rogue_corsec_trooper", 360, -3330.1, 86, 3290.98, 104.099, 0, ""},
 		{"sullustan_male", 360, -3177.78, 31, 2891.03, 180, 0, ""},
+		{"corsec_pilot", 360, -3368.55, 86, 3144.06, 20, 0, "neutral"},
 
 		--misc
 		{"informant_npc_lvl_1", 10, -3563, 86, 3138, 60, 0, ""},
