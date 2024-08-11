@@ -7,22 +7,23 @@
 
 #include "TurretZoneComponent.h"
 #include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/objects/installation/InstallationObject.h"
+#include "server/zone/objects/installation/TurretObject.h"
 #include "TurretDataComponent.h"
 #include "server/zone/Zone.h"
 #include "server/zone/objects/installation/components/TurretObserver.h"
 #include "MinefieldAttackTask.h"
 
-void TurretZoneComponent::notifyInsertToZone(SceneObject* sceneObject, Zone* zne) const {
-	if (zne == nullptr)
+void TurretZoneComponent::notifyInsertToZone(SceneObject* sceneObject, Zone* zone) const {
+	if (zone == nullptr)
 		return;
 
-	ManagedReference<InstallationObject*> installation = cast<InstallationObject*>(sceneObject);
+	ManagedReference<TurretObject*> turret = cast<TurretObject*>(sceneObject);
 
-	if (installation == nullptr)
+	if (turret == nullptr) {
 		return;
+	}
 
-	SortedVector<ManagedReference<Observer*> > destructionObservers = installation->getObservers(ObserverEventType::OBJECTDESTRUCTION);
+	SortedVector<ManagedReference<Observer*> > destructionObservers = turret->getObservers(ObserverEventType::OBJECTDESTRUCTION);
 
 	for (int i = 0; i < destructionObservers.size(); i++) {
 		TurretObserver* turretObserver = destructionObservers.get(i).castTo<TurretObserver*>();
@@ -34,7 +35,30 @@ void TurretZoneComponent::notifyInsertToZone(SceneObject* sceneObject, Zone* zne
 
 	ManagedReference<TurretObserver*> observer = new TurretObserver();
 
-	installation->registerObserver(ObserverEventType::OBJECTDESTRUCTION, observer);
+	turret->registerObserver(ObserverEventType::OBJECTDESTRUCTION, observer);
+}
+
+void TurretZoneComponent::notifyRemoveFromZone(SceneObject* sceneObject) const {
+	if (sceneObject == nullptr || !sceneObject->isTurret()) {
+		return;
+	}
+
+	ManagedReference<TurretObject*> turret = cast<TurretObject*>(sceneObject);
+
+	if (turret == nullptr) {
+		return;
+	}
+
+	Reference<WeaponObject*> turretWeapon = turret->getTurretWeapon();
+
+	if (turretWeapon != nullptr) {
+		Locker clock(turretWeapon, turret);
+
+		turretWeapon->destroyObjectFromWorld(true);
+		turretWeapon->destroyObjectFromDatabase(true);
+	}
+
+	turret->setTurretWeapon(nullptr);
 }
 
 void TurretZoneComponent::notifyInsert(SceneObject* sceneObject, TreeEntry* entry) const {
