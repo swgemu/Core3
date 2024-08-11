@@ -729,12 +729,16 @@ function recruiterScreenplay:getItemListTable(faction, screenID)
 		return dataTable.weaponsArmorList
 	elseif screenID == "fp_installations" then
 		local list = dataTable.installationsList
+		local covertOvert = useCovertOvert()
+
 		local table = {}
 
 		for i = 1, #list, 1 do
 			local itemString = list[i]
 
 			if ((not self.allowPveBases) and (string.find(itemString, "hq_")) and (not string.find(itemString, "_pvp_"))) then
+				goto skip
+			elseif ((not covertOvert) and (string.find(itemString, "covert_detector_32m"))) then
 				goto skip
 			end
 
