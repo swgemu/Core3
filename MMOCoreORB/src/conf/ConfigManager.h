@@ -739,6 +739,19 @@ namespace conf {
 			return cachedMinSpawnDelay;
 		}
 
+		inline bool disableWorldSpawns() {
+			static uint32 cachedVersion = 0;
+			static bool cachedDisableWorldSpawns;
+
+			if (configVersion.get() > cachedVersion) {
+				Locker guard(&mutex);
+				cachedDisableWorldSpawns = getBool("Core3.Regions.DisableWorldSpawns", false);
+				cachedVersion = configVersion.get();
+			}
+
+			return cachedDisableWorldSpawns;
+		}
+
 		inline float getSpawnCheckRange() {
 			static uint32 cachedVersion = 0;
 			static float cachedSpawnRange;

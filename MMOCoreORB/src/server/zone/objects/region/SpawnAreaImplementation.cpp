@@ -21,24 +21,29 @@
 // #define DEBUG_LAIR_DIFFICULTY
 
 void SpawnAreaImplementation::notifyPositionUpdate(TreeEntry* entry) {
-	if (numberOfPlayersInRange <= 0)
+	if (numberOfPlayersInRange <= 0 || entry == nullptr) {
 		return;
-
-	if (entry == nullptr)
-		return;
+	}
 
 	SceneObject* sceneObject = cast<SceneObject*>(entry);
 
-	if (sceneObject == nullptr || !sceneObject->isPlayerCreature())
+	if (sceneObject == nullptr || !sceneObject->isPlayerCreature()) {
 		return;
+	}
 
-	ZoneServer* zoneServer = getZoneServer();
+	auto zoneServer = getZoneServer();
 
-	if (zoneServer != nullptr && (zoneServer->isServerLoading() || zoneServer->isServerShuttingDown()))
+	if (zoneServer != nullptr && (zoneServer->isServerLoading() || zoneServer->isServerShuttingDown())) {
 		return;
+	}
 
-	if (lastSpawn.miliDifference() < ConfigManager::instance()->getMinLairSpawnInterval())
+	if (lastSpawn.miliDifference() < ConfigManager::instance()->getMinLairSpawnInterval()) {
 		return;
+	}
+
+	if (ConfigManager::instance()->disableWorldSpawns()) {
+		return;
+	}
 
 #ifdef DEBUG_SPAWNING
 	info(true) << getAreaName() << " --SpawnAreaImplementation::notifyPositionUpdate called";
