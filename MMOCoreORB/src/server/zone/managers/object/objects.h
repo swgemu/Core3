@@ -66,6 +66,7 @@
 #include "server/zone/objects/building/travel/TravelBuildingObject.h"
 #include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
 #include "server/zone/objects/installation/InstallationObject.h"
+#include "server/zone/objects/installation/TurretObject.h"
 #include "server/zone/objects/installation/factory/FactoryObject.h"
 #include "server/zone/objects/factorycrate/FactoryCrate.h"
 #include "server/zone/objects/installation/shuttle/ShuttleInstallation.h"

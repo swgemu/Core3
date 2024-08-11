@@ -7,6 +7,7 @@
 
 #ifndef TURRETDATACOMPONENT_H_
 #define TURRETDATACOMPONENT_H_
+
 #include "engine/engine.h"
 #include "server/zone/objects/scene/components/DataObjectComponent.h"
 #include "server/zone/packets/scene/AttributeListMessage.h"
@@ -15,31 +16,46 @@
 #include "server/zone/objects/creature/CreatureObject.h"
 
 class TurretDataComponent : public DataObjectComponent {
-
 protected:
-	int maxRange;
+	float maxRange;
 	float attackSpeed;
+
 	Time nextAutoFireTime;
+
 	SharedInstallationObjectTemplate* templateData;
+
 	ManagedWeakReference<CreatureObject*> controller;
 	ManagedWeakReference<CreatureObject*> manualTarget;
 	ManagedWeakReference<CreatureObject*> lastAutoTarget;
-	Reference<Task*> turretFireTask;
+
+	Reference<Task*> turretTask;
 	AtomicInteger numberOfPlayersInRange;
+
+	float maxMineRange;
+	float mineDelay;
+
+	Time explodeDelay;
+
+	Vector<ManagedReference<WeaponObject*>> mines;
+	SynchronizedSortedVector<uint64> notifiedPlayers;
 
 public:
 	TurretDataComponent() {
-		maxRange = 80;
-		attackSpeed = 1;
-		nextAutoFireTime = Time();
+		maxRange = 80.f;
+		attackSpeed = 1.f;
+
+		nextAutoFireTime.updateToCurrentTime();
+
 		templateData = nullptr;
 		controller = nullptr;
 		manualTarget = nullptr;
-		turretFireTask = nullptr;
+		turretTask = nullptr;
+
+		maxMineRange = 16.f;
+		explodeDelay.updateToCurrentTime();
 	}
 
 	~TurretDataComponent() {
-
 	}
 
 	void writeJSON(nlohmann::json& j) const {
@@ -62,48 +78,7 @@ public:
 	}
 
 	void initializeTransientMembers();
-	void setWeapon(WeaponObject* weapon);
-
-	int getRescheduleDelay() {
-		int delay = 0;
-
-		if (nextAutoFireTime.isFuture())
-			delay = Time().miliDifference(nextAutoFireTime);
-
-		return delay;
-	}
-
-	bool isTurretData() {
-		return true;
-	}
-
-	void setController(CreatureObject* creature) {
-		controller = creature;
-	}
-
-	CreatureObject* getController() {
-		return controller.get();
-	}
-
-	void setManualTarget(CreatureObject* creature) {
-		manualTarget = creature;
-	}
-
-	CreatureObject* getManualTarget() {
-		return manualTarget.get();
-	}
-
-	int getMaxRange () {
-		return maxRange;
-	}
-
-	float getAttackSpeed() {
-		return attackSpeed;
-	}
-
-	Task* getFireTask() {
-		return turretFireTask;
-	}
+	void fillAttributeList(AttributeListMessage* alm);
 
 	Vector<CreatureObject*> getAvailableTargets(bool aggroOnly);
 	CreatureObject* selectTarget();
@@ -115,8 +90,16 @@ public:
 	void rescheduleFireTask(bool wasManual, bool isManual);
 	int getAutoFireTimeout();
 
-	uint32 getNumberOfPlayersInRange() {
-		return numberOfPlayersInRange.get();
+	/*
+	 * Setters
+	 */
+
+	void setController(CreatureObject* creature) {
+		controller = creature;
+	}
+
+	void setManualTarget(CreatureObject* creature) {
+		manualTarget = creature;
 	}
 
 	uint32 incrementNumberOfPlayersInRange() {
@@ -127,23 +110,84 @@ public:
 		return numberOfPlayersInRange.decrement();
 	}
 
+	void addNotifiedPlayer(const uint64 oid) {
+		notifiedPlayers.put(oid);
+	}
+
+	void removeNotifiedPlayer(const uint64 oid) {
+		notifiedPlayers.drop(oid);
+	}
+
+	void updateMineCooldown(uint64 cooldown) {
+		explodeDelay.updateToCurrentTime();
+		explodeDelay.addMiliTime(cooldown);
+	}
+
+	/*
+	 * Getters
+	 */
+
+	int getRescheduleDelay() {
+		int delay = 0;
+
+		if (nextAutoFireTime.isFuture())
+			delay = Time().miliDifference(nextAutoFireTime);
+
+		return delay;
+	}
+
+	CreatureObject* getController() {
+		return controller.get();
+	}
+
+	CreatureObject* getManualTarget() {
+		return manualTarget.get();
+	}
+
+	int getMaxRange() {
+		return maxRange;
+	}
+
+	float getAttackSpeed() {
+		return attackSpeed;
+	}
+
+	Task* getFireTask() {
+		return turretTask;
+	}
+
+	uint32 getNumberOfPlayersInRange() {
+		return numberOfPlayersInRange.get();
+	}
+
+	int getMineCount() {
+		return mines.size();
+	}
+
+	float getMaxMineRange() {
+		return maxMineRange;
+	}
+
 	bool compareAndSetNumberOfPlayersInRange(uint32 oldVal, uint32 newVal) {
 		return numberOfPlayersInRange.compareAndSet(oldVal, newVal);
 	}
-	void fillAttributeList(AttributeListMessage* alm);
 
-	unsigned int getArmorRating();
-	float getArmorResistReduction(float value);
-	float getKinetic();
-	float getEnergy();
-	float getElectricity();
-	float getStun();
-	float getBlast();
-	float getHeat();
-	float getCold();
-	float getAcid();
-	float getLightSaber();
-	float getChanceHit();
+	bool canExplodeMine() {
+		return explodeDelay.isPast();
+	}
+
+	bool isTurretData() {
+		return true;
+	}
+
+	bool hasNotifiedPlayer(const uint64 oid) {
+		return notifiedPlayers.contains(oid);
+	}
+
+private:
+	void addSerializableVariables() {
+		addSerializableVariable("mines", &mines);
+	}
 };
 
 #endif /* TURRETDATACOMPONENT_H_ */

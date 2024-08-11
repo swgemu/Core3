@@ -3026,6 +3026,16 @@ void GCWManagerImplementation::performDonateTurret(BuildingObject* building, Cre
 }
 
 uint64 GCWManagerImplementation::addChildInstallationFromDeed(BuildingObject* building, const ChildObject* child, CreatureObject* creature, Deed* deed) {
+	if (building == nullptr || child == nullptr) {
+		return 0;
+	}
+
+	auto zoneServer = zone->getZoneServer();
+
+	if (zoneServer == nullptr) {
+		return 0;
+	}
+
 	Vector3 position = building->getPosition();
 
 	const Quaternion* direction = building->getDirection();
@@ -3043,46 +3053,46 @@ uint64 GCWManagerImplementation::addChildInstallationFromDeed(BuildingObject* bu
 	float degrees = direction->getDegrees();
 	Quaternion dir = child->getDirection();
 
-	ManagedReference<SceneObject*> obj = zone->getZoneServer()->createObject(deed->getGeneratedObjectTemplate().hashCode(), building->getPersistenceLevel());
+	ManagedReference<SceneObject*> childObject = zoneServer->createObject(deed->getGeneratedObjectTemplate().hashCode(), building->getPersistenceLevel());
 
-	if (obj == nullptr) {
+	if (childObject == nullptr) {
 		return 0;
 	}
 
-	Locker locker(obj);
+	Locker locker(childObject);
 
-	obj->initializePosition(x, z, y);
-	obj->setDirection(dir.rotate(Vector3(0, 1, 0), degrees));
+	childObject->initializePosition(x, z, y);
+	childObject->setDirection(dir.rotate(Vector3(0, 1, 0), degrees));
 
-	if (!obj->isTangibleObject()) {
-		obj->destroyObjectFromDatabase(true);
+	if (!childObject->isTangibleObject()) {
+		childObject->destroyObjectFromDatabase(true);
 		return 0;
 	}
 
-	TangibleObject* tano = cast<TangibleObject*>(obj.get());
+	TangibleObject* childTanO = childObject->asTangibleObject();
 
-	if (tano != nullptr) {
-		tano->setFaction(building->getFaction());
-		tano->setPvpStatusBitmask(building->getPvpStatusBitmask() | tano->getPvpStatusBitmask());
+	if (childTanO == nullptr) {
+		childObject->destroyObjectFromDatabase(true);
+		return 0;
+	}
 
-		if (tano->isTurret())
-			tano->setDetailedDescription("Donated Turret");
+	childTanO->setFaction(building->getFaction());
+	childTanO->setPvpStatusBitmask(building->getPvpStatusBitmask() | childTanO->getPvpStatusBitmask());
 
-		if (tano->isInstallationObject()) {
-			InstallationObject* instObject = cast<InstallationObject*>(tano);
+	if (childTanO->isInstallationObject()) {
+		InstallationObject* instObject = cast<InstallationObject*>(childTanO);
 
-			if (instObject != nullptr) {
-				instObject->setOwner(building->getObjectID());
-				instObject->createChildObjects();
-				instObject->setDeedObjectID(deed->getObjectID());
-			}
+		if (instObject != nullptr) {
+			instObject->setOwner(building->getObjectID());
+			instObject->createChildObjects();
+			instObject->setDeedObjectID(deed->getObjectID());
 		}
 	}
 
-	zone->transferObject(obj, -1, true);
-	building->getChildObjects()->put(obj);
+	zone->transferObject(childTanO, -1, true);
+	building->getChildObjects()->put(childTanO);
 
-	return obj->getObjectID();
+	return childTanO->getObjectID();
 }
 
 void GCWManagerImplementation::sendTurretAttackListTo(CreatureObject* creature, SceneObject* turretControlTerminal) {

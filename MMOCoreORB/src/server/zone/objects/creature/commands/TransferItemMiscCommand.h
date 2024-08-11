@@ -18,12 +18,11 @@
 
 class TransferItemMiscCommand : public QueueCommand {
 public:
-	TransferItemMiscCommand(const String& name, ZoneProcessServer* server)
-		: QueueCommand(name, server) {
-
+	TransferItemMiscCommand(const String& name, ZoneProcessServer* server) : QueueCommand(name, server) {
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
+		info(true) << "TransferItemMiscCommand called";
 
 		if (!checkStateMask(creature))
 			return INVALIDSTATE;
@@ -39,8 +38,21 @@ public:
 
 		StringTokenizer tokenizer(arguments.toString());
 
-		if (!tokenizer.hasMoreTokens())
+		if (!tokenizer.hasMoreTokens()) {
 			return GENERALERROR;
+		}
+
+		auto zoneServer = creature->getZoneServer();
+
+		if (zoneServer == nullptr) {
+			return GENERALERROR;
+		}
+
+		auto playerManager = zoneServer->getPlayerManager();
+
+		if (playerManager == nullptr) {
+			return GENERALERROR;
+		}
 
 		uint64 destinationID = tokenizer.getLongToken();
 		int transferType = tokenizer.getIntToken(); // containment type .. -1 container, >=4 slotted container
@@ -51,17 +63,17 @@ public:
 		ManagedReference<TradeSession*> tradeContainer = creature->getActiveSession(SessionFacadeType::TRADE).castTo<TradeSession*>();
 
 		if (tradeContainer != nullptr) {
-			server->getZoneServer()->getPlayerManager()->handleAbortTradeMessage(creature);
+			playerManager->handleAbortTradeMessage(creature);
 		}
 
-		auto objectToTransfer = server->getZoneServer()->getObject(target);
+		auto objectToTransfer = zoneServer->getObject(target);
 
 		if (objectToTransfer == nullptr) {
 			creature->error("objectToTransfer nullptr in transferItemMisc command");
 			return GENERALERROR;
 		}
 
-		auto destinationObject = server->getZoneServer()->getObject(destinationID);
+		auto destinationObject = zoneServer->getObject(destinationID);
 
 		if (destinationObject == nullptr) {
 			creature->error("destinationObject nullptr in tansferItemMisc command");
@@ -327,7 +339,13 @@ public:
 			return GENERALERROR;
 		}
 
-		ZoneServer* zoneServer = ServerCore::getZoneServer();
+		auto zoneServer = ServerCore::getZoneServer();
+
+		if (zoneServer == nullptr) {
+			trx.abort() << "zoneServer is null";
+			return GENERALERROR;
+		}
+
 		ObjectController* objectController = zoneServer->getObjectController();
 
 		objectToTransfer->initializePosition(creature->getPositionX(), creature->getPositionZ(), creature->getPositionY());
@@ -348,10 +366,12 @@ public:
 		if (clearWeapon) {
 			creature->setWeapon(nullptr, true);
 
-			if (creature->hasBuff(STRING_HASHCODE("centerofbeing")))
+			if (creature->hasBuff(STRING_HASHCODE("centerofbeing"))) {
 				creature->removeBuff(STRING_HASHCODE("centerofbeing"));
+			}
 
-			ManagedReference<PlayerManager*> playerManager = creature->getZoneServer()->getPlayerManager();
+			ManagedReference<PlayerManager*> playerManager = zoneServer->getPlayerManager();
+
 			if (playerManager != nullptr) {
 				creature->setLevel(playerManager->calculatePlayerLevel(creature));
 			}

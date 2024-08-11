@@ -1,0 +1,153 @@
+/*
+				Copyright <SWGEmu>
+		See file COPYING for copying conditions.*/
+
+package server.zone.objects.installation;
+
+import server.zone.objects.installation.InstallationObject;
+import server.zone.objects.tangible.weapon.WeaponObject;
+
+include templates.SharedObjectTemplate;
+include server.zone.packets.scene.AttributeListMessage;
+include server.zone.objects.creature.CreatureObject;
+
+@json
+class TurretObject extends InstallationObject {
+	protected transient WeaponObject weapon;
+
+	protected unsigned int armorRating;
+
+	protected float kinetic;
+	protected float energy;
+	protected float electricity;
+	protected float stun;
+	protected float blast;
+	protected float heat;
+	protected float cold;
+	protected float acid;
+	protected float lightsaber;
+
+	protected float chanceHit;
+
+	public TurretObject() {
+		weapon = null;
+
+		armorRating = 0;
+
+		kinetic = -1.f;
+		energy = -1.f;
+		electricity = -1.f;
+		stun = -1.f;
+		blast = -1.f;
+		heat = -1.f;
+		cold = -1.f;
+		acid = -1.f;
+		lightsaber = -1.f;
+
+		chanceHit = 1.f;
+	}
+
+	/**
+	 * Initializes the transient members of SceneObject, must call the inherited object method first.
+	 * @pre {transient members are not initialized }
+	 * @post { transient members are initialized }
+	 */
+	public native void initializeTransientMembers();
+
+	/**
+	 * Reads and sets the template data from a SharedObjectTemplate LuaObject
+	 * @pre { templateData is a valid pointer }
+	 * @post { SceneObject members are initialized }
+	 * @param templateData templateData points to the LuaObject that is used to initialize SceneObejct members
+	 */
+	@local
+	public native void loadTemplateData(SharedObjectTemplate templateData);
+
+	@preLocked
+	public native void createChildObjects();
+
+	@local
+	@dirty
+	public native void fillAttributeList(AttributeListMessage alm, CreatureObject player);
+
+	public native float getArmorResistReduction(float value);
+	public native float getKinetic();
+	public native float getEnergy();
+	public native float getElectricity();
+	public native float getStun();
+	public native float getBlast();
+	public native float getHeat();
+	public native float getCold();
+	public native float getAcid();
+	public native float getLightSaber();
+
+	/*
+	*	Setters
+	*/
+
+	@preLocked
+	public void setTurretWeapon(WeaponObject turretWeapon) {
+		weapon = turretWeapon;
+	}
+
+	public void setArmorRating(unsigned int rating) {
+		armorRating = rating;
+	}
+
+	public void setKinetic(float resist) {
+		kinetic = resist;
+	}
+
+	public void setEnergy(float resist) {
+		energy = resist;
+	}
+
+	public void setElectricity(float resist) {
+		electricity = resist;
+	}
+
+	public void setStun(float resist) {
+		stun = resist;
+	}
+
+	public void setBlast(float resist) {
+		blast = resist;
+	}
+
+	public void setHeat(float resist) {
+		heat = resist;
+	}
+
+	public void setCold(float resist) {
+		cold = resist;
+	}
+
+	public void setAcid(float resist) {
+		acid = resist;
+	}
+
+	public void setLightSaber(float resist) {
+		lightsaber = resist;
+	}
+
+	public void setChanceHit(float chance) {
+		chanceHit = chance;
+	}
+
+	/*
+	*	Getters
+	*/
+
+	@dirty
+	public WeaponObject getTurretWeapon() {
+		return weapon;
+	}
+
+	public unsigned int getArmorRating() {
+		return armorRating;
+	}
+
+	public float getChanceHit() {
+		return chanceHit;
+	}
+}

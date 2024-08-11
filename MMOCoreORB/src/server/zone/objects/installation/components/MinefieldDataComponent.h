@@ -14,20 +14,23 @@
 
 class MinefieldDataComponent : public DataObjectComponent {
 protected:
-	uint64 nextExplodeTime;
-	int attackSpeed;
 	const static int CAPACITY = 20;
+
+	Time explodeDelay;
+	float attackSpeed;
+	float maxRange;
+
 	Vector<ManagedReference<WeaponObject*>> mines;
 	SharedInstallationObjectTemplate* templateData;
-	float maxRange;
 	SynchronizedSortedVector<uint64> notifiedPlayers;
 
 public:
 	MinefieldDataComponent() {
-		attackSpeed = 5;
+		attackSpeed = 5.f;
+		maxRange = 16.f;
+
 		templateData = nullptr;
-		nextExplodeTime = time(0);
-		maxRange = 32.f;
+		explodeDelay.updateToCurrentTime();
 
 		addSerializableVariables();
 	}
@@ -55,17 +58,16 @@ public:
 	}
 
 	bool canExplode() {
-		return (time(0) > nextExplodeTime);
+		return explodeDelay.isPast();
 	}
 
 	int getCapacity() {
 		return CAPACITY;
 	}
 
-	void updateCooldown(int cooldown) {
-		// Logger::Logger tlog("minefieldata");
-		// tlog.info("updating cooldown on minefield to " + String::valueOf(cooldown),true);
-		nextExplodeTime = time(0) + cooldown;
+	void updateCooldown(uint64 cooldown) {
+		explodeDelay.updateToCurrentTime();
+		explodeDelay.addMiliTime(cooldown);
 	}
 
 	void addMine(WeaponObject* weapon) {
