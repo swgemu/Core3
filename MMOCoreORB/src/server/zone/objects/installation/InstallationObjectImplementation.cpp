@@ -61,26 +61,16 @@ void InstallationObjectImplementation::sendBaselinesTo(SceneObject* player) {
 }
 
 void InstallationObjectImplementation::fillAttributeList(AttributeListMessage* alm, CreatureObject* object) {
-	//TangibleObjectImplementation::fillAttributeList(alm, object);
+	// TangibleObjectImplementation::fillAttributeList(alm, object);
 
 	if (object != nullptr && isOnAdminList(object)) {
-
-		//Add the owner name to the examine window.
+		// Add the owner name to the examine window.
 		ManagedReference<SceneObject*> obj = object->getZoneServer()->getObject(ownerObjectID);
 
-		if(obj != nullptr) {
+		if (obj != nullptr) {
 			alm->insertAttribute("owner", obj->getDisplayedName());
 		}
 	}
-	if(isTurret() && dataObjectComponent != nullptr){
-
-		TurretDataComponent* turretData = cast<TurretDataComponent*>(dataObjectComponent.get());
-			if(turretData == nullptr)
-				return;
-
-			turretData->fillAttributeList(alm);
-	}
-
 }
 
 void InstallationObjectImplementation::setActive(bool value, bool notifyClient) {
@@ -937,41 +927,15 @@ bool InstallationObjectImplementation::isAttackableBy(CreatureObject* creature) 
 }
 
 void InstallationObjectImplementation::createChildObjects() {
-	if (isTurret()) {
-		SharedInstallationObjectTemplate* inso = dynamic_cast<SharedInstallationObjectTemplate*>(getObjectTemplate());
+	if (isMinefield()) {
+		setContainerDefaultAllowPermission(ContainerPermissions::MOVEIN);
+		setContainerDefaultDenyPermission(ContainerPermissions::MOVEOUT);
+		setContainerDefaultAllowPermission(ContainerPermissions::OPEN);
 
-		if (inso != nullptr) {
-			uint32 defaultWeaponCRC = inso->getWeapon().hashCode();
-
-			if (getZoneServer() != nullptr) {
-				Reference<WeaponObject*> defaultWeapon = (getZoneServer()->createObject(defaultWeaponCRC, getPersistenceLevel())).castTo<WeaponObject*>();
-
-				if (defaultWeapon == nullptr) {
-					return;
-				}
-
-				if (!transferObject(defaultWeapon, 4)) {
-					defaultWeapon->destroyObjectFromDatabase(true);
-					return;
-				}
-
-				if (dataObjectComponent != nullptr) {
-					TurretDataComponent* turretData = cast<TurretDataComponent*>(dataObjectComponent.get());
-
-					if (turretData != nullptr) {
-						turretData->setWeapon(defaultWeapon);
-					}
-				}
-			}
-		}
-	} else if (isMinefield()) {
-		this->setContainerDefaultAllowPermission(ContainerPermissions::MOVEIN);
-		this->setContainerDefaultDenyPermission(ContainerPermissions::MOVEOUT);
-		this->setContainerDefaultAllowPermission(ContainerPermissions::OPEN);
-
-	} else {
-		StructureObjectImplementation::createChildObjects();
+		return;
 	}
+
+	StructureObjectImplementation::createChildObjects();
 }
 
 float InstallationObjectImplementation::getHitChance() const {

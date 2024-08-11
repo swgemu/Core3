@@ -13,6 +13,8 @@
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/packets/scene/PlayClientEffectLocMessage.h"
 #include "server/zone/objects/creature/commands/CombatQueueCommand.h"
+#include "server/zone/objects/installation/components/MinefieldDataComponent.h"
+#include "server/zone/objects/installation/components/TurretDataComponent.h"
 
 class MinefieldAttackTask : public Task {
 	ManagedWeakReference<TangibleObject*> weakMinefield;
@@ -61,16 +63,30 @@ public:
 			return;
 		}
 
-		MinefieldDataComponent* mineData = cast<MinefieldDataComponent*>(dataComponent->get());
-
-		if (mineData == nullptr || !mineData->canExplode()) {
-			return;
-		}
-
 		ManagedReference<WeaponObject*> weapon = minefield->getContainerObject(0).castTo<WeaponObject*>();
 
 		if (weapon == nullptr) {
 			return;
+		}
+
+		if (minefield->isTurret()) {
+			TurretDataComponent* turretData = cast<TurretDataComponent*>(dataComponent->get());
+
+			if (turretData == nullptr || !turretData->canExplodeMine()) {
+				return;
+			}
+
+			// Update cooldown
+			turretData->updateMineCooldown((uint64)(weapon->getAttackSpeed() * 1000));
+		} else {
+			MinefieldDataComponent* mineData = cast<MinefieldDataComponent*>(dataComponent->get());
+
+			if (mineData == nullptr || !mineData->canExplode()) {
+				return;
+			}
+
+			// Update cooldown
+			mineData->updateCooldown((uint64)(weapon->getAttackSpeed() * 1000));
 		}
 
 		// Damage the creature target
@@ -82,9 +98,6 @@ public:
 		if (explodeLoc != nullptr) {
 			minefield->broadcastMessage(explodeLoc, false);
 		}
-
-		// Update cooldown and max range
-		mineData->updateCooldown(weapon->getAttackSpeed());
 
 		float minDamage = weapon->getMinDamage();
 		float maxDamage = weapon->getMaxDamage();

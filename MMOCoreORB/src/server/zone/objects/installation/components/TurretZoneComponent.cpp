@@ -11,12 +11,14 @@
 #include "TurretDataComponent.h"
 #include "server/zone/Zone.h"
 #include "server/zone/objects/installation/components/TurretObserver.h"
+#include "MinefieldAttackTask.h"
 
 void TurretZoneComponent::notifyInsertToZone(SceneObject* sceneObject, Zone* zne) const {
 	if (zne == nullptr)
 		return;
 
 	ManagedReference<InstallationObject*> installation = cast<InstallationObject*>(sceneObject);
+
 	if (installation == nullptr)
 		return;
 
@@ -36,29 +38,54 @@ void TurretZoneComponent::notifyInsertToZone(SceneObject* sceneObject, Zone* zne
 }
 
 void TurretZoneComponent::notifyInsert(SceneObject* sceneObject, TreeEntry* entry) const {
-	ManagedReference<SceneObject*> target = cast<SceneObject*>(entry);
-
-	if (!sceneObject->isTurret() || target == nullptr || !target->isPlayerCreature())
+	if (sceneObject == nullptr || !sceneObject->isTurret() || entry == nullptr) {
 		return;
+	}
 
 	ManagedReference<TangibleObject*> turret = cast<TangibleObject*>(sceneObject);
-	TurretDataComponent* turretData = cast<TurretDataComponent*>(sceneObject->getDataObjectComponent()->get());
-	CreatureObject* player = target.castTo<CreatureObject*>();
 
-	if (turret == nullptr || turretData == nullptr || player == nullptr || player->isInvisible())
+	if (turret == nullptr) {
 		return;
+	}
 
-	int newValue = (int) turretData->incrementNumberOfPlayersInRange();
+	auto dataComponent = sceneObject->getDataObjectComponent()->get();
+
+	if (dataComponent == nullptr) {
+		return;
+	}
+
+	auto turretData = cast<TurretDataComponent*>(dataComponent);
+
+	if (turretData == nullptr) {
+		return;
+	}
+
+	ManagedReference<SceneObject*> target = cast<SceneObject*>(entry);
+
+	if (target == nullptr || !target->isPlayerCreature()) {
+		return;
+	}
+
+	auto player = target->asCreatureObject();
+
+	if (player == nullptr || player->isInvisible()) {
+		return;
+	}
+
+	int newValue = (int)turretData->incrementNumberOfPlayersInRange();
 
 	if (newValue == 1) {
-		Core::getTaskManager()->executeTask([=] () {
-			Locker locker(turret);
+		Reference<TangibleObject*> turretRef = turret;
+		Reference<TurretDataComponent*> turretDataRef = turretData;
 
-			TurretDataComponent* data = cast<TurretDataComponent*>(turret->getDataObjectComponent()->get());
-
-			if (data) {
-				data->scheduleFireTask(nullptr, nullptr, System::random(1000));
+		Core::getTaskManager()->executeTask([turretRef, turretDataRef] () {
+			if (turretRef == nullptr || turretDataRef == nullptr) {
+				return;
 			}
+
+			Locker locker(turretRef);
+
+			turretDataRef->scheduleFireTask(nullptr, nullptr, System::random(1000));
 		}, "ScheduleTurretFireTaskLambda");
 	}
 }
@@ -90,4 +117,74 @@ void TurretZoneComponent::notifyDissapear(SceneObject* sceneObject, TreeEntry* e
 				newValue = 0;
 		} while (!turretData->compareAndSetNumberOfPlayersInRange((uint32)oldValue, (uint32)newValue));
 	}
+}
+
+void TurretZoneComponent::notifyPositionUpdate(SceneObject* sceneObject, TreeEntry* entry) const {
+	if (sceneObject == nullptr || !sceneObject->isTurret()) {
+		return;
+	}
+
+	ManagedReference<SceneObject*> target = cast<SceneObject*>(entry);
+
+	if (target == nullptr || !target->isCreatureObject()) {
+		return;
+	}
+
+	DataObjectComponentReference* dataComponent = sceneObject->getDataObjectComponent();
+
+	if (dataComponent == nullptr) {
+		return;
+	}
+
+	TurretDataComponent* turretData = cast<TurretDataComponent*>(dataComponent->get());
+
+	if (turretData == nullptr) {
+		return;
+	}
+
+	try {
+		auto creatureTarget = target->asCreatureObject();
+
+		if (creatureTarget == nullptr) {
+			return;
+		}
+
+		uint64 targetId = creatureTarget->getObjectID();
+
+		ManagedReference<TangibleObject*> turret = sceneObject->asTangibleObject();
+
+		if (turret == nullptr) {
+			return;
+		}
+
+		// Check if the creature is attackable by the turret (factional enemies)
+		if (!creatureTarget->isAttackableBy(turret)) {
+			return;
+		}
+
+		// Check if they creature is in range
+		if (sceneObject->isInRange(target, turretData->getMaxMineRange())) {
+			// Add players to the notified list
+			if (creatureTarget->isPlayerCreature() && !turretData->hasNotifiedPlayer(targetId)) {
+				turretData->addNotifiedPlayer(targetId);
+
+				creatureTarget->sendSystemMessage("@faction_perk:minefield_near"); // You have breached the perimeter of an enemy minefield.
+			}
+
+			if (turretData->canExplodeMine() && sceneObject->getContainerObjectsSize() > 0) {
+				Reference<MinefieldAttackTask*> task = new MinefieldAttackTask(turret, creatureTarget);
+
+				if (task != nullptr) {
+					task->schedule(250);
+				}
+			}
+		} else if (creatureTarget->isPlayerCreature() && turretData->hasNotifiedPlayer(targetId)) {
+			creatureTarget->sendSystemMessage("@faction_perk:minefield_exit"); // You have left the perimeter of an enemy minefield.
+
+			turretData->removeNotifiedPlayer(targetId);
+		}
+	} catch (Exception& e) {
+	}
+
+	return;
 }

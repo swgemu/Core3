@@ -1578,7 +1578,6 @@ void BuildingObjectImplementation::createChildObjects() {
 
 			if (tano != nullptr) {
 				tano->setFaction(getFaction());
-				tano->setDetailedDescription("DEFAULT BASE TURRET");
 				tano->setPvpStatusBitmask(getPvpStatusBitmask() | tano->getPvpStatusBitmask());
 			}
 

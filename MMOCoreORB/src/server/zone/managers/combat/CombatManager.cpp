@@ -30,6 +30,7 @@
 #include "server/zone/packets/object/ShowFlyText.h"
 #include "server/zone/managers/frs/FrsManager.h"
 #include "server/zone/objects/intangible/PetControlDevice.h"
+#include "server/zone/objects/installation/TurretObject.h"
 
 #define COMBAT_SPAM_RANGE 85 // Range at which players will see Combat Log Info
 
@@ -2591,44 +2592,46 @@ int CombatManager::getArmorReduction(TangibleObject* attacker, WeaponObject* wea
 int CombatManager::getArmorTurretReduction(CreatureObject* attacker, TangibleObject* defender, int damageType) const {
 	int resist = 0;
 
-	if (defender != nullptr && defender->isTurret()) {
-		DataObjectComponentReference* data = defender->getDataObjectComponent();
+	if (defender == nullptr || !defender->isTurret()) {
+		return resist;
+	}
 
-		if (data != nullptr) {
-			TurretDataComponent* turretData = cast<TurretDataComponent*>(data->get());
+	auto turretDefender = cast<TurretObject*>(defender);
 
-			if (turretData != nullptr) {
-				switch (damageType) {
-				case SharedWeaponObjectTemplate::KINETIC:
-					resist = turretData->getKinetic();
-					break;
-				case SharedWeaponObjectTemplate::ENERGY:
-					resist = turretData->getEnergy();
-					break;
-				case SharedWeaponObjectTemplate::ELECTRICITY:
-					resist = turretData->getElectricity();
-					break;
-				case SharedWeaponObjectTemplate::STUN:
-					resist = turretData->getStun();
-					break;
-				case SharedWeaponObjectTemplate::BLAST:
-					resist = turretData->getBlast();
-					break;
-				case SharedWeaponObjectTemplate::HEAT:
-					resist = turretData->getHeat();
-					break;
-				case SharedWeaponObjectTemplate::COLD:
-					resist = turretData->getCold();
-					break;
-				case SharedWeaponObjectTemplate::ACID:
-					resist = turretData->getAcid();
-					break;
-				case SharedWeaponObjectTemplate::LIGHTSABER:
-					resist = turretData->getLightSaber();
-					break;
-				}
-			}
-		}
+	if (turretDefender == nullptr) {
+		return resist;
+	}
+
+	switch (damageType) {
+		case SharedWeaponObjectTemplate::KINETIC:
+			resist = turretDefender->getKinetic();
+			break;
+		case SharedWeaponObjectTemplate::ENERGY:
+			resist = turretDefender->getEnergy();
+			break;
+		case SharedWeaponObjectTemplate::ELECTRICITY:
+			resist = turretDefender->getElectricity();
+			break;
+		case SharedWeaponObjectTemplate::STUN:
+			resist = turretDefender->getStun();
+			break;
+		case SharedWeaponObjectTemplate::BLAST:
+			resist = turretDefender->getBlast();
+			break;
+		case SharedWeaponObjectTemplate::HEAT:
+			resist = turretDefender->getHeat();
+			break;
+		case SharedWeaponObjectTemplate::COLD:
+			resist = turretDefender->getCold();
+			break;
+		case SharedWeaponObjectTemplate::ACID:
+			resist = turretDefender->getAcid();
+			break;
+		case SharedWeaponObjectTemplate::LIGHTSABER:
+			resist = turretDefender->getLightSaber();
+			break;
+		default:
+			break;
 	}
 
 	return resist;
@@ -2648,15 +2651,11 @@ float CombatManager::getArmorPiercing(TangibleObject* defender, int armorPiercin
 	} else if (defender->isVehicleObject()) {
 		VehicleObject* vehicleDefender = cast<VehicleObject*>(defender);
 		armorReduction = vehicleDefender->getArmor();
-	} else {
-		DataObjectComponentReference* data = defender->getDataObjectComponent();
+	} else if (defender->isTurret()) {
+		auto turret = cast<TurretObject*>(defender);
 
-		if (data != nullptr) {
-			TurretDataComponent* turretData = cast<TurretDataComponent*>(data->get());
-
-			if (turretData != nullptr) {
-				armorReduction = turretData->getArmorRating();
-			}
+		if (turret != nullptr) {
+			armorReduction = turret->getArmorRating();
 		}
 	}
 

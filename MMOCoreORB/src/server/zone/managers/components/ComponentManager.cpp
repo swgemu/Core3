@@ -29,6 +29,7 @@
 #include "server/zone/objects/installation/components/TurretZoneComponent.h"
 #include "server/zone/objects/installation/components/MinefieldZoneComponent.h"
 #include "server/zone/objects/installation/components/MinefieldContainerComponent.h"
+#include "server/zone/objects/installation/components/TurretContainerComponent.h"
 #include "server/zone/objects/installation/components/ScannerZoneComponent.h"
 #include "server/zone/objects/intangible/components/WarrenDiskContainerComponent.h"
 #include "server/zone/objects/tangible/components/vendor/AuctionTerminalDataComponent.h"
@@ -90,6 +91,7 @@
 #include "server/zone/objects/installation/components/InstallationObjectMenuComponent.h"
 #include "server/zone/objects/installation/components/FactoryObjectMenuComponent.h"
 #include "server/zone/objects/installation/components/MinefieldMenuComponent.h"
+#include "server/zone/objects/installation/components/TurretMenuComponent.h"
 #include "server/zone/GroundZoneContainerComponent.h"
 #include "server/zone/SpaceZoneContainerComponent.h"
 #include "server/zone/objects/ship/components/ShipContainerComponent.h"
@@ -229,6 +231,7 @@ ComponentManager::ComponentManager() {
 	components.put("StructureTerminalMenuComponent", new StructureTerminalMenuComponent());
 	components.put("FactoryObjectMenuComponent", new FactoryObjectMenuComponent());
 	components.put("MinefieldMenuComponent", new MinefieldMenuComponent());
+	components.put("TurretMenuComponent", new TurretMenuComponent());
 	components.put("InstallationObjectMenuComponent", new InstallationObjectMenuComponent());
 
 	components.put("ShipPermissionTerminalMenuComponent", new ShipPermissionTerminalMenuComponent());
@@ -246,6 +249,7 @@ ComponentManager::ComponentManager() {
 	components.put("VendorMenuComponent", new VendorMenuComponent());
 	components.put("VendorZoneComponent", new VendorZoneComponent());
 	components.put("TurretZoneComponent", new TurretZoneComponent());
+	components.put("TurretContainerComponent", new TurretContainerComponent());
 	components.put("MinefieldZoneComponent", new MinefieldZoneComponent());
 	components.put("MinefieldContainerComponent", new MinefieldContainerComponent());
 	components.put("ScannerZoneComponent", new ScannerZoneComponent());
