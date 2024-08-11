@@ -2,7 +2,7 @@
  * MinefieldMenuComponent.cpp
  *
  *  Created on: Jan 31, 2013
- *      Author: root
+ *  Author: root
  */
 
 #include "MinefieldMenuComponent.h"
@@ -13,6 +13,7 @@
 #include "templates/params/creature/ObjectFlag.h"
 #include "templates/faction/Factions.h"
 #include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/managers/collision/CollisionManager.h"
 
 void MinefieldMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) const {
 	if (sceneObject == nullptr || !sceneObject->isMinefield() || sceneObject->getZone() == nullptr) {
@@ -33,33 +34,23 @@ void MinefieldMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, Ob
 		return;
 	}
 
-	ManagedReference<InstallationObject*> installation = cast<InstallationObject*>(sceneObject);
+	ManagedReference<InstallationObject*> minefield = cast<InstallationObject*>(sceneObject);
 
-	if (installation == nullptr) {
+	if (minefield == nullptr) {
 		return;
 	}
-
-	/*
-	uint64 ownerid = installation->getOwnerObjectID();
-
-	ManagedReference<SceneObject*> ownerObject = zoneServer->getObject(ownerid);
-
-	if (ownerObject == nullptr) {
-		return;
-	}
-	*/
 
 	auto ghost = player->getPlayerObject();
 	bool isPrivileged = (ghost != nullptr && ghost->isPrivileged());
 
 	// Allow privileged access to the mine unless the player is the same faction
 	if (!isPrivileged) {
-		if (player->getFaction() != installation->getFaction()) {
+		if (player->getFaction() != minefield->getFaction()) {
 			return;
 		}
 
 		// if minefield is overt and player is not
-		if ((installation->getPvpStatusBitmask() & ObjectFlag::OVERT) && (player->getPvpStatusBitmask() & !(player->getPvpStatusBitmask() & ObjectFlag::OVERT))) {
+		if ((minefield->getPvpStatusBitmask() & ObjectFlag::OVERT) && !(player->getPvpStatusBitmask() & ObjectFlag::OVERT)) {
 			return;
 		}
 	}
@@ -78,9 +69,17 @@ int MinefieldMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, Cre
 		return 1;
 	}
 
-	ManagedReference<InstallationObject*> installation = cast<InstallationObject*>(sceneObject);
+	ManagedReference<InstallationObject*> minefield = cast<InstallationObject*>(sceneObject);
 
-	if (installation == nullptr) {
+	if (minefield == nullptr) {
+		return 1;
+	}
+
+	if (!CollisionManager::checkLineOfSight(player, minefield)) {
+		player->sendSystemMessage("@container_error_message:container18"); // "You can't see that object.  You may have to move closer to it."
+		return 1;
+	} else if (!player->isInRange(minefield, 7.f)) {
+		player->sendSystemMessage("@container_error_message:container09"); // "You are out of range."
 		return 1;
 	}
 
@@ -89,13 +88,15 @@ int MinefieldMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, Cre
 
 	switch(selectedID) {
 		case 37: {
-			if (isPrivileged || installation->checkContainerPermission(player, ContainerPermissions::OPEN)) {
-				installation->sendWithoutParentTo(player);
-				installation->openContainerTo(player);
-				installation->notifyObservers(ObserverEventType::OPENCONTAINER, player);
+			if (isPrivileged || minefield->checkContainerPermission(player, ContainerPermissions::OPEN)) {
+				minefield->sendWithoutParentTo(player);
+				minefield->openContainerTo(player);
+				minefield->notifyObservers(ObserverEventType::OPENCONTAINER, player);
 			} else {
 				player->sendSystemMessage("@error_message:perm_no_open"); // You do not have permission to access this container
 			}
+
+			break;
 		}
 		default:
 			break;
