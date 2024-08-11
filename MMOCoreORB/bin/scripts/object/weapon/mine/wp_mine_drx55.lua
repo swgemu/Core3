@@ -42,20 +42,28 @@
 
 
 object_weapon_mine_wp_mine_drx55 = object_weapon_mine_shared_wp_mine_drx55:new {
+	useCount = 5,
 
 	pointBlankRange = 0,
 	pointBlankAccuracy = 0,
 	idealRange = 0,
 	idealAccuracy = 0,
+
 	maxRange = 32,
 	maxRangeAccuracy = 0,
+
 	minDamage = 150,
 	maxDamage = 400,
-	attackSpeed = .5,
+
+	attackSpeed = 0.5,
+
 	woundsRatio = 25,
+
 	damageType = BLAST,
 	armorPiercing = HEAVY,
-	
+
+	area = 8,
+
 	numberExperimentalProperties = {1, 1, 2, 2, 2, 2, 1},
 	experimentalProperties = {"XX", "XX", "SR", "UT", "SR", "UT", "SR", "UT", "SR", "UT", "XX"},
 	experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
