@@ -89,27 +89,75 @@ public:
 			mineData->updateCooldown((uint64)(weapon->getAttackSpeed() * 1000));
 		}
 
-		// Damage the creature target
-		Locker targetClock(creatureTarget, minefield);
+		float damageRadius = weapon->getDamageRadius();
 
-		// Player mine explosion animation
-		auto explodeLoc = new PlayClientEffectLoc("clienteffect/lair_damage_heavy.cef", zone->getZoneName(), creatureTarget->getPositionX(), creatureTarget->getPositionZ(), creatureTarget->getPositionY());
+		auto targetCov = creatureTarget->getCloseObjects();
 
-		if (explodeLoc != nullptr) {
-			minefield->broadcastMessage(explodeLoc, false);
+		if (targetCov == nullptr) {
+			return;
 		}
 
-		float minDamage = weapon->getMinDamage();
-		float maxDamage = weapon->getMaxDamage();
+		SortedVector<TreeEntry*> closeObjects;
 
-		CombatManager::instance()->doObjectDetonation(minefield, creatureTarget, (System::frandom(maxDamage - minDamage) + minDamage), weapon);
+		closeObjects.removeAll(targetCov->size(), 10);
+		targetCov->safeCopyReceiversTo(closeObjects, CloseObjectsVector::CREOTYPE);
 
-		targetClock.release();
+		for (int i = 0; i < closeObjects.size(); i++) {
+			SceneObject* object = static_cast<SceneObject*>(closeObjects.get(i));
+
+			if (object == nullptr) {
+				continue;
+			}
+
+			Reference<CreatureObject*> targetCreo = object->asCreatureObject();
+
+			if (targetCreo == nullptr) {
+				continue;
+			}
+
+			// Check target is within range
+			if (!targetCreo->isInRange(creatureTarget, damageRadius)) {
+				continue;
+			}
+
+			// Check target is valid attackable target
+			if (!targetCreo->isAttackableBy(minefield)) {
+				continue;
+			}
+
+			// Check that the mine has LoS of the creature to damage
+			if (!CollisionManager::checkLineOfSight(targetCreo, creatureTarget)) {
+				continue;
+			}
+
+			// Damage the creature target
+			Locker targetClock(targetCreo, minefield);
+
+			// Player mine explosion animation
+			auto explodeLoc = new PlayClientEffectLoc("clienteffect/lair_damage_heavy.cef", zone->getZoneName(), targetCreo->getPositionX(), targetCreo->getPositionZ(), targetCreo->getPositionY());
+
+			if (explodeLoc != nullptr) {
+				targetCreo->broadcastMessage(explodeLoc, false);
+			}
+
+			float minDamage = weapon->getMinDamage();
+			float maxDamage = weapon->getMaxDamage();
+
+			CombatManager::instance()->doObjectDetonation(minefield, targetCreo, (System::frandom(maxDamage - minDamage) + minDamage), weapon);
+		}
 
 		Locker lockerw(weapon, minefield);
 
-		weapon->destroyObjectFromWorld(true);
-		weapon->destroyObjectFromDatabase(true);
+		int weaponUses = weapon->getUseCount();
+
+		// Mine has greater than 1 use count
+		if (weaponUses > 1) {
+			weapon->setUseCount(weaponUses - 1, true);
+		// Mine is down to one use count, destroy
+		} else {
+			weapon->destroyObjectFromWorld(true);
+			weapon->destroyObjectFromDatabase(true);
+		}
 	}
 };
 
