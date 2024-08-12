@@ -3,8 +3,6 @@ j1_po_space = Creature:new {
 	socialGroup = "townsperson",
 	faction = "townsperson",
 	mobType = MOB_NPC,
-	planetMapCategory = "trainer",
-	planetMapSubCategory = "trainer_pilot_rebel",
 	level = 19,
 	chanceHit = 0.33,
 	damageMin = 180,
@@ -28,7 +26,7 @@ j1_po_space = Creature:new {
 	optionsBitmask = AIENABLED + JTLINTERESTING,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/space_rebel_tier1_naboo_v3fx.iff"},
+	templates = {"object/mobile/3po_protocol_droid_silver.iff"},
 	lootGroups = {},
 
 	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)
