@@ -7,63 +7,68 @@
  */
 
 #include "TurretContainerComponent.h"
-#include "server/zone/objects/installation/InstallationObject.h"
+#include "server/zone/objects/installation/TurretObject.h"
 #include "server/zone/objects/player/FactionStatus.h"
 #include "templates/params/creature/ObjectFlag.h"
 #include "templates/faction/Factions.h"
 #include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/objects/building/BuildingObject.h"
 
 bool TurretContainerComponent::checkContainerPermission(SceneObject* sceneObject, CreatureObject* creature, uint16 permission) const {
-	// sceneObject->info(true) << "TurretContainerComponent::checkContainerPermission -- called - Permissions: " << permission;
-
 	if (sceneObject == nullptr || !sceneObject->isTangibleObject()) {
 		return false;
 	}
 
-	// sceneObject->info(true) << "2";
-
-	InstallationObject* turret = cast<InstallationObject*>(sceneObject);
+	auto turret = cast<TurretObject*>(sceneObject);
 
 	if (creature == nullptr || turret == nullptr) {
 		return false;
 	}
 
-	// sceneObject->info(true) << "3";
-
 	if (creature->getFaction() == Factions::FACTIONNEUTRAL || turret->getFaction() == Factions::FACTIONNEUTRAL) {
 		return false;
 	}
 
-	// sceneObject->info(true) << "4";
+	auto zoneServer = turret->getZoneServer();
+
+	if (zoneServer == nullptr) {
+		return false;
+	}
+
+	// GCW Base Parent
+	auto baseParent = zoneServer->getObject(turret->getOwnerObjectID());
+
+	if (baseParent == nullptr || !baseParent->isBuildingObject()) {
+		return false;
+	}
+
+	auto baseBuilding = cast<BuildingObject*>(baseParent.get());
+
+	if (baseBuilding == nullptr) {
+		return false;
+	}
 
 	auto ghost = creature->getPlayerObject();
 	bool isPrivileged = (ghost != nullptr && ghost->isPrivileged());
 
-	if (permission == ContainerPermissions::OPEN || permission == ContainerPermissions::MOVEIN) {
-		if (isPrivileged || (turret->getFaction() == creature->getFaction() && creature->getFactionStatus() != FactionStatus::ONLEAVE)) {
-			return true;
-		} else {
-			return false;
-		}
-	} else if (permission == ContainerPermissions::MOVEOUT) {
-		/*
-		if ((creature->getFaction() != turret->getFaction()) && !isPrivileged) {
+	if (!isPrivileged) {
+		if (baseBuilding->getOwnerObjectID() != creature->getObjectID()) {
 			return false;
 		}
 
-		return turret->isOnAdminList(creature);
-		*/
-		// turret->info(true) << "Failing here...";
+		if ((turret->getFaction() != creature->getFaction()) || (creature->getFactionStatus() < turret->getFactionStatus())) {
+			return false;
+		}
+	}
 
-		return false;
+	if (permission == ContainerPermissions::OPEN || permission == ContainerPermissions::MOVEIN || permission == ContainerPermissions::MOVEOUT) {
+		return true;
 	}
 
 	return ContainerComponent::checkContainerPermission(sceneObject, creature, permission);
 }
 
 int TurretContainerComponent::canAddObject(SceneObject* sceneObject, SceneObject* object, int containmentType, String& errorDescription) const {
-	// sceneObject->info(true) << "TurretContainerComponent::canAddObject -- called";
-
 	if (sceneObject == nullptr || !sceneObject->isCreatureObject() || object == nullptr) {
 		return 1;
 	}
@@ -101,6 +106,15 @@ int TurretContainerComponent::notifyObjectRemoved(SceneObject* sceneObject, Scen
 	ManagedReference<TangibleObject*> installation = cast<TangibleObject*>(sceneObject);
 
 	if (installation == nullptr) {
+		return 1;
+	}
+
+	if (object->isWeaponObject() && object->getGameObjectType() != SceneObjectType::MINE) {
+		Locker lock(object);
+
+		object->destroyObjectFromWorld(true);
+		object->destroyObjectFromDatabase(true);
+
 		return 1;
 	}
 

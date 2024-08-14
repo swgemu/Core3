@@ -292,6 +292,8 @@ class GCWManager extends ManagedService implements Logger {
 	public native void notifyScannerDestruction(BuildingObject building, InstallationObject scanner);
 
 	public native void sendSelectDeedToDonate(BuildingObject building, CreatureObject creature);
+	public native void sendSelectMineToDonate(InstallationObject installation, CreatureObject player);
+
 	public native void performDefenseDonation(BuildingObject building, CreatureObject creature, unsigned long deedOID);
 
 	@arg1preLocked

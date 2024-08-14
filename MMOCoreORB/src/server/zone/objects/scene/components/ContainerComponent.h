@@ -85,7 +85,6 @@ public:
 	 * @param object object that has been inserted
 	 */
 	virtual int notifyObjectRemoved(SceneObject* sceneObject, SceneObject* object, SceneObject* destination) const;
-
 };
 
 #endif /* CONTAINERCOMPONENT_H_ */

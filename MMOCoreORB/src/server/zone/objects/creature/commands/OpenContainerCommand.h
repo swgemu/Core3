@@ -44,7 +44,6 @@ public:
 		bool clientObject = rootParent != nullptr && rootParent->isClientObject();
 
 		if (craftingStation) {
-
 			if (!creature->isInRange(objectsParent, 12.0f)) {
 				StringIdChatParameter param;
 				param.setStringId("@container_error_message:container09_prose"); // You are out of range of %TT.
@@ -60,9 +59,7 @@ public:
 				creature->sendSystemMessage(msgParam);
 				return GENERALERROR;
 			}
-
-		} else if (!playerItem && (objectsParent == nullptr || clientObject)) {//Perform checks if not player item and outside, or inside in clientObject structure
-
+		} else if (objectToOpen->isTurret() || (!playerItem && (objectsParent == nullptr || clientObject))) { //Perform checks if not player item and outside, or inside in clientObject structure
 			if (!creature->isInRange(objectToOpen, 7.0f)) {
 				StringIdChatParameter param;
 				param.setStringId("@container_error_message:container09_prose"); // You are out of range of %TT.
@@ -104,6 +101,7 @@ public:
 		}*/
 
 		ManagedReference<Container*> container = objectToOpen.castTo<Container*>();
+
 		if (container != nullptr && container->isContainerLocked()) {
 			creature->sendSystemMessage("@slicing/slicing:locked");
 			return SUCCESS;
