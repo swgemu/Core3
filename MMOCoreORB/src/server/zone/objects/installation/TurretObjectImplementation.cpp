@@ -34,43 +34,6 @@ void TurretObjectImplementation::initializeTransientMembers() {
 	// Assign the turret weapon
 	setTurretWeapon(weapon);
 
-	/*
-	ContainerPermissions* permissions = getContainerPermissionsForUpdate();
-
-	if (permissions != nullptr) {
-		setContainerType(ContainerType::VOLUME);
-
-		info(true) << endl << endl << endl << "Turret permissions updated !!! With Container Type: " << getContainerType() << endl << endl << endl;
-
-
-		//permissions->setDefaultAllowPermission(ContainerPermissions::MOVEIN);
-		//permissions->setDefaultAllowPermission(ContainerPermissions::MOVEOUT);
-
-		//permissions->setOwner(getObjectID());
-		//permissions->setInheritPermissionsFromParent(false);
-		//permissions->setDefaultDenyPermission(ContainerPermissions::MOVECONTAINER);
-		//permissions->setDenyPermission("owner", ContainerPermissions::MOVECONTAINER);
-
-
-		// Turrets should accept mines since they function as a minefield as well
-		setContainerDefaultAllowPermission(ContainerPermissions::MOVEIN);
-		setContainerDefaultDenyPermission(ContainerPermissions::MOVEOUT);
-		setContainerDefaultAllowPermission(ContainerPermissions::OPEN);
-
-
-		ManagedReference<WeaponObject*> testMine1 = (zoneServer->createObject(STRING_HASHCODE("object/weapon/mine/wp_mine_xg.iff"), 0)).castTo<WeaponObject*>();
-
-		if (testMine1 != nullptr) {
-			transferObject(testMine1, -1, true);
-		}
-
-		ManagedReference<WeaponObject*> testMine2 = (zoneServer->createObject(STRING_HASHCODE("object/weapon/mine/wp_mine_xg.iff"), 0)).castTo<WeaponObject*>();
-
-		if (testMine2 != nullptr) {
-			transferObject(testMine2, -1, true);
-		}
-	}*/
-
 	InstallationObjectImplementation::initializeTransientMembers();
 }
 
@@ -127,7 +90,7 @@ void TurretObjectImplementation::fillAttributeList(AttributeListMessage* alm, Cr
 
 	alm->insertAttribute("condition", String::valueOf(getMaxCondition() - getConditionDamage()) + "/" + String::valueOf(getMaxCondition()));
 
-	int objectCount = getSlottedObjectsSize();
+	int objectCount = getContainerObjectsSize();
 	int volumeLimit = getContainerVolumeLimit();
 
 	StringBuffer contentsString;

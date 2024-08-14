@@ -68,7 +68,6 @@ object_installation_faction_perk_turret_tower_med = object_installation_faction_
 	lightSaber = -1,
 	chanceHit = 4,
 	weapon = "object/weapon/ranged/turret/turret_tower_large.iff",
-
 }
 
 ObjectTemplates:addTemplate(object_installation_faction_perk_turret_tower_med, "object/installation/faction_perk/turret/tower_med.iff")
