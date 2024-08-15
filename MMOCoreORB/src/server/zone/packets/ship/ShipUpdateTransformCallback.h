@@ -291,34 +291,15 @@ public:
 			ship->setRotationMatrix(direction);
 		}
 
+		float speed = velocity.getSpeed();
+
+		if (ship->getCurrentSpeed() != speed) {
+			ship->setCurrentSpeed(speed);
+			ship->updateSpeedRotationValues(true);
+		}
+
 		ship->setPosition(position.getX(), position.getZ(), position.getY());
 		ship->setDirection(direction);
-
-		const float updatedSpeed = velocity.getSpeed();
-		if (ship->getCurrentSpeed() != updatedSpeed) {
-			ship->setCurrentSpeed(updatedSpeed);
-
-			// we want these to be in the same message, so we need to create a vector
-			auto deltaVector = ship->getDeltaVector();
-
-			// potential optimizations here if they matter: persist ypFactor and just check that it's changed,
-			// you only need to check pitch or yaw, they should both change together
-			const float ypFactor = ship->getComponentEfficiencyMap()->get(Components::ENGINE) * ship->getSpeedRotationFactor(updatedSpeed);
-			const float actualYawRate = ship->getEngineYawRate() * ypFactor;
-			const float actualPitchRate = ship->getEnginePitchRate() * ypFactor;
-
-			if (ship->getActualYawRate() != actualYawRate) {
-				ship->setActualYawRate(actualYawRate, false, nullptr, deltaVector);
-			}
-
-			if (ship->getActualPitchRate() != actualPitchRate) {
-				ship->setActualPitchRate(actualPitchRate, false, nullptr, deltaVector);
-			}
-
-			if (deltaVector != nullptr) {
-				deltaVector->sendMessages(ship, pilot);
-			}
-		}
 
 		bool lightUpdate = priority != 0x23;
 		ship->updateZone(lightUpdate, false);
