@@ -49,7 +49,7 @@ public:
 		manualTarget = nullptr;
 		turretTask = nullptr;
 
-		maxMineRange = 16.f;
+		maxMineRange = 32.f;
 		explodeDelay.updateToCurrentTime();
 	}
 

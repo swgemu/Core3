@@ -27,7 +27,7 @@ protected:
 public:
 	MinefieldDataComponent() {
 		attackSpeed = 5.f;
-		maxRange = 16.f;
+		maxRange = 32.f;
 
 		templateData = nullptr;
 		explodeDelay.updateToCurrentTime();

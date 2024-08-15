@@ -195,7 +195,7 @@ void TurretZoneComponent::notifyPositionUpdate(SceneObject* sceneObject, TreeEnt
 				creatureTarget->sendSystemMessage("@faction_perk:minefield_near"); // You have breached the perimeter of an enemy minefield.
 			}
 
-			if (turretData->canExplodeMine() && sceneObject->getContainerObjectsSize() > 0) {
+			if ((creatureTarget->getPosture() != CreaturePosture::PRONE) && turretData->canExplodeMine() && sceneObject->getContainerObjectsSize() > 0) {
 				Reference<MinefieldAttackTask*> task = new MinefieldAttackTask(turret, creatureTarget);
 
 				if (task != nullptr) {
