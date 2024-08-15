@@ -53,7 +53,7 @@ public:
 		insertFloat(ship->getActualPitchRate());
 		insertFloat(ship->getActualYawRate());
 		insertFloat(ship->getActualRollRate());
-		insertFloat(ship->getActualSpeed());
+		insertFloat(ship->getActualMaxSpeed());
 
 		insertLong(ship->getShipTargetID());
 		insertInt(ship->getShipTargetSlot());

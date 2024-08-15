@@ -933,7 +933,7 @@ bool ShipAiAgentImplementation::isTargetForward() {
 void ShipAiAgentImplementation::setSpeed() {
 	const static float stepRate = (BEHAVIORINTERVAL * 0.001f);
 
-	float shipSpeed = getActualSpeed();
+	float shipSpeed = getActualMaxSpeed();
 	if (shipSpeed == 0.f) {
 		currentSpeed = 0.f;
 		return;
@@ -975,7 +975,7 @@ void ShipAiAgentImplementation::setSpeed() {
 void ShipAiAgentImplementation::setShipDirection() {
 	const static float stepRate = (BEHAVIORINTERVAL * 0.001f);
 
-	float shipSpeed = getActualSpeed();
+	float shipSpeed = getActualMaxSpeed();
 	if (shipSpeed == 0.f) {
 		return;
 	}
