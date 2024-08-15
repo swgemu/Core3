@@ -259,6 +259,10 @@ float SpaceCombatManager::applyArmorDamage(ShipObject* target, const Vector3& co
 		messages.add(getHitEffectMessage(collisionPoint, ShipHitType::HITARMOR));
 	}
 
+	if (target->getCurrentHitpointsMap()->get(slot) == 0.f) {
+		target->setComponentDemolished(slot, false, deltaVector);
+	}
+
 	return armorDamage / effect;
 }
 
@@ -347,17 +351,7 @@ float SpaceCombatManager::applyComponentDamage(ShipObject* target, const Vector3
 	}
 
 	if (target->getCurrentHitpointsMap()->get(slot) == 0.f) {
-		int flags = target->getComponentOptionsMap()->get(slot);
-
-		if (!(flags & ShipComponentFlag::DISABLED)) {
-			flags |= ShipComponentFlag::DISABLED;
-		}
-
-		if (!(flags & ShipComponentFlag::DEMOLISHED)) {
-			flags |= ShipComponentFlag::DEMOLISHED;
-		}
-
-		target->setComponentOptions(slot, flags, nullptr, 2, deltaVector);
+		target->setComponentDemolished(slot, false, deltaVector);
 
 		if (slot == Components::BRIDGE) {
 			applyChassisDamage(target, collisionPoint, target->getChassisCurrentHealth(), deltaVector, messages);
