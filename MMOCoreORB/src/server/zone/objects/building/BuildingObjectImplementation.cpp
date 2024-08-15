@@ -144,7 +144,7 @@ void BuildingObjectImplementation::sendTo(SceneObject* player, bool doClose, boo
 	if (!isStaticBuilding()) { // send Baselines etc..
 		debug("sending building object create");
 
-		SceneObjectImplementation::sendTo(player, doClose, forceLoadContainer);
+		TangibleObjectImplementation::sendTo(player, doClose, forceLoadContainer);
 	} //else { // just send the objects that are in the building, without the cells because they are static in the client
 
 	auto closeObjects = player->getCloseObjects();
