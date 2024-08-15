@@ -28,7 +28,7 @@ void ShipTargetVector::update() {
 
 	targetMap.removeAll(closeCopy.size(), closeCopy.size());
 
-	float maxRange = (ship->getActualSpeed() * UPDATEMODIFIER) + PROJECTILERANGEMAX;
+	float maxRange = (ship->getActualMaxSpeed() * UPDATEMODIFIER) + PROJECTILERANGEMAX;
 	const auto& shipPosition = ship->getPosition();
 
 	for (int i = 0; i < closeCopy.size(); ++i) {

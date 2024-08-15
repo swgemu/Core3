@@ -111,10 +111,8 @@ class ShipObject extends TangibleObject {
 
 	protected float boundingRadius;
 
-	// internal velocity values
 	protected float currentSpeed;
 
-	// internal "sweet spot" variables (set by engine)
 	protected float speedRotationFactorMax;
 
 	protected float speedRotationFactorMin;
@@ -435,6 +433,14 @@ class ShipObject extends TangibleObject {
 		totalCellNumber = 0;
 
 		playersOnBoard.setNoDuplicateInsertPlan();
+
+		boundingRadius = 1.f;
+		currentSpeed = 0.f;
+		speedRotationFactorMax = 1.f;
+		speedRotationFactorMin = 1.f;
+		speedRotationFactorOptimal = 0.5f;
+
+		chassisSpeed.set(1.f);
 	}
 
 	public native void notifyLoadFromDatabase();
@@ -1470,8 +1476,6 @@ class ShipObject extends TangibleObject {
 		return componentTargetableBitfield;
 	}
 
-	public native float getActualSpeed();
-
 	public string getShipChassisName() {
 		return chassisDataName;
 	}
@@ -1550,7 +1554,7 @@ class ShipObject extends TangibleObject {
 
 	@dirty
 	public boolean isBoosterActive() {
-		return componentOptions.get(7);
+		return hasComponentFlag(7,4);
 	}
 
 	public string getConversationTemplate() {
@@ -1593,9 +1597,23 @@ class ShipObject extends TangibleObject {
 		return boostTimer.isPast();
 	}
 
-	public native void addComponentFlag(unsigned int slot, unsigned int flag, boolean notify = true);
+	public native boolean hasComponentFlag(unsigned int slot, unsigned int flag);
 
-	public native void removeComponentFlag(unsigned int slot, unsigned int flag, boolean notify = true);
+	@preLocked
+	@local
+	public native void addComponentFlag(unsigned int slot, unsigned int flag, boolean notify = true, ShipDeltaVector vector = null);
+
+	@preLocked
+	@local
+	public native void removeComponentFlag(unsigned int slot, unsigned int flag, boolean notify = true, ShipDeltaVector vector = null);
+
+	@preLocked
+	@local
+	public native void resetComponentFlag(unsigned int slot, boolean notify = true, ShipDeltaVector vector = null);
+
+	@preLocked
+	@local
+	public native void setComponentDemolished(unsigned int slot, boolean notify = true, ShipDeltaVector vector = null);
 
 	public native void restartBooster();
 
@@ -1662,8 +1680,6 @@ class ShipObject extends TangibleObject {
 		return speedRotationFactorOptimal;
 	}
 
-	public native float getSpeedRotationFactor(float speed);
-
 	public native unsigned long getLastDamageReceivedMili();
 
 	public native float getComponentCondition(unsigned int slot);
@@ -1697,4 +1713,30 @@ class ShipObject extends TangibleObject {
 
 	@read
 	public native int getReceiverFlags();
+
+	public native boolean isComponentInstalled(unsigned int slot);
+
+	public native boolean isComponentFunctional(unsigned int slot);
+
+	public native float calculateActualComponentEfficiency(unsigned int slot);
+
+	public native float calculateSpeedRotationFactor();
+
+	public native float calculateActualAccelerationRate();
+
+	public native float calculateActualDecelerationRate();
+
+	public native float calculateActualMaxSpeed();
+
+	@preLocked
+	@local
+	public native void updateSpeedRotationValues(boolean notifyClient = true, ShipDeltaVector vector = null);
+
+	@preLocked
+	@local
+	public native void updateActualEngineValues(boolean notifyClient = true, ShipDeltaVector vector = null);
+
+	@preLocked
+	@local
+	public native void updateComponentFlags(boolean notifyClient = true, ShipDeltaVector vector = null);
 }

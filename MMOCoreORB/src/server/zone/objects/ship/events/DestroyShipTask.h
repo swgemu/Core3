@@ -50,7 +50,7 @@ public:
 				ship->clearOptionBit(OptionBitmask::WINGS_OPEN, true);
 
 				if (ship->isBoosterActive()) {
-					ship->removeComponentFlag(Components::BOOSTER, ShipComponentFlag::DISABLED, true);
+					ship->removeComponentFlag(Components::BOOSTER, ShipComponentFlag::ACTIVE, true);
 					ship->restartBooster();
 				}
 
