@@ -42,6 +42,10 @@ void ShipObjectImplementation::initializeTransientMembers() {
 		shipRecoveryEvent = new ShipRecoveryEvent(asShipObject());
 	}
 
+	for (int i = 0; i < componentOptions.size(); ++i) {
+		resetComponentFlag(componentOptions.getKeyAt(i), false);
+	}
+
 	TangibleObjectImplementation::initializeTransientMembers();
 }
 
@@ -680,50 +684,123 @@ int ShipObjectImplementation::notifyObjectRemovedFromChild(SceneObject* object, 
 void ShipObjectImplementation::doRecovery(int mselapsed) {
 	float deltaTime = mselapsed * 0.001f;
 
+	if (deltaTime <= 0.f) {
+		return;
+	}
+
 	auto pilot = owner.get();
 	auto deltaVector = getDeltaVector();
 	auto componentMap = getShipComponentMap();
+
+	float reactorEnergy = getReactorGenerationRate() * calculateActualComponentEfficiency(Components::REACTOR) * deltaTime;
+	bool updateFlags = false;
 
 	for (int i = 0; i < componentMap->size(); ++i) {
 		uint32 slot = componentMap->getKeyAt(i);
 		uint32 crc = componentMap->getValueAt(i);
 
-		if (crc == 0) {
+		if (!isComponentInstalled(slot)) {
 			continue;
+		}
+
+		if (hasComponentFlag(slot, ShipComponentFlag::DEMOLISHED)) {
+			continue;
+		}
+
+		if (hasComponentFlag(slot, ShipComponentFlag::DISABLED) && !hasComponentFlag(slot, ShipComponentFlag::DISABLED_NEEDS_POWER)) {
+			continue;
+		}
+
+		float energyEfficiency = Math::clamp(0.1f, getComponentEnergyEfficiency(slot), 10.f);
+		float componentEfficiency = Math::clamp(0.1f, getComponentEfficiency(slot), 10.f);
+		float componentEnergyCost = getComponentEnergyCostMap()->get(slot);
+		float reactorEnergyRate = 1.f;
+
+		uint32 componentFlags = getComponentOptionsMap()->get(slot);
+
+		if (componentEnergyCost > 0.f) {
+			float energyCost = Math::max((componentEnergyCost / energyEfficiency) * deltaTime, 0.1f);
+
+			if (reactorEnergy >= energyCost) {
+				reactorEnergy -= energyCost;
+
+				if (hasComponentFlag(slot, ShipComponentFlag::DISABLED_NEEDS_POWER)) {
+					removeComponentFlag(slot, ShipComponentFlag::DISABLED_NEEDS_POWER, false);
+				} else if (hasComponentFlag(slot, ShipComponentFlag::LOW_POWER)) {
+					removeComponentFlag(slot, ShipComponentFlag::LOW_POWER, false);
+				}
+			} else {
+				reactorEnergyRate = reactorEnergy / energyCost;
+				reactorEnergy = 0.f;
+
+				if (hasComponentFlag(slot, ShipComponentFlag::DISABLED_NEEDS_POWER)) {
+					removeComponentFlag(slot, ShipComponentFlag::DISABLED_NEEDS_POWER, false);
+				} else if (!hasComponentFlag(slot, ShipComponentFlag::LOW_POWER)) {
+					addComponentFlag(slot, ShipComponentFlag::LOW_POWER, false);
+				}
+			}
+
+			if (reactorEnergyRate <= 0.f) {
+				reactorEnergyRate = 0.f;
+
+				if (!hasComponentFlag(slot, ShipComponentFlag::DISABLED_NEEDS_POWER)) {
+					addComponentFlag(slot, ShipComponentFlag::DISABLED_NEEDS_POWER, false);
+				} else if (hasComponentFlag(slot, ShipComponentFlag::LOW_POWER)) {
+					removeComponentFlag(slot, ShipComponentFlag::LOW_POWER, false);
+				}
+			}
 		}
 
 		switch (slot) {
 			case Components::SHIELD0:
 			case Components::SHIELD1: {
+				float maxFront = getMaxFrontShield() * componentEfficiency * reactorEnergyRate;
 				float minFront = getFrontShield();
-				float maxFront = getMaxFrontShield();
 
 				if (minFront != maxFront) {
-					float value = minFront + (deltaTime * getShieldRechargeRate());
-					value = Math::min(value, maxFront);
-					setFrontShield(value, false, nullptr, deltaVector);
+					if (minFront < maxFront) {
+						float rechargeRate = getShieldRechargeRate() * componentEfficiency * deltaTime;
+						minFront = Math::min(minFront + rechargeRate, maxFront);
+					} else if (minFront > maxFront) {
+						float decayRate = getMaxFrontShield() * reactorEnergyRate * deltaTime;
+						minFront = Math::max(minFront - decayRate, maxFront);
+					}
+
+					setFrontShield(minFront, false, nullptr, deltaVector);
 				}
 
+				float maxRear = getMaxRearShield() * componentEfficiency * reactorEnergyRate;
 				float minRear = getRearShield();
-				float maxRear = getMaxRearShield();
 
 				if (minRear != maxRear) {
-					float value = minRear + (deltaTime * getShieldRechargeRate());
-					value = Math::min(value, maxRear);
-					setRearShield(value, false, nullptr, deltaVector);
+					if (minRear < maxRear) {
+						float rechargeRate = getShieldRechargeRate() * componentEfficiency * deltaTime;
+						minRear = Math::min(minRear + rechargeRate, maxRear);
+					} else if (minRear > maxRear) {
+						float decayRate = getMaxRearShield() * reactorEnergyRate * deltaTime;
+						minRear = Math::max(minRear - decayRate, maxRear);
+					}
+
+					setRearShield(minRear, false, nullptr, deltaVector);
 				}
 
 				break;
 			}
 
 			case Components::CAPACITOR: {
+				float maxCap = getCapacitorMaxEnergy() * componentEfficiency * reactorEnergyRate;
 				float minCap = getCapacitorEnergy();
-				float maxCap = getCapacitorMaxEnergy();
 
-				if (maxCap != minCap) {
-					float value = minCap + (deltaTime * getCapacitorRechargeRate());
-					value = Math::min(value, maxCap);
-					setCapacitorEnergy(value, false, nullptr, deltaVector);
+				if (minCap != maxCap) {
+					if (minCap < maxCap) {
+						float rechargeRate = getCapacitorRechargeRate() * componentEfficiency * deltaTime;
+						minCap = Math::min(minCap + rechargeRate, maxCap);
+					} else if (minCap > maxCap) {
+						float decayRate = getCapacitorMaxEnergy() * reactorEnergyRate * deltaTime;
+						minCap = Math::max(minCap - decayRate, maxCap);
+					}
+
+					setCapacitorEnergy(minCap, false, nullptr, deltaVector);
 				}
 
 				break;
@@ -731,14 +808,17 @@ void ShipObjectImplementation::doRecovery(int mselapsed) {
 
 			case Components::BOOSTER: {
 				if (isBoosterActive()) {
+					float boostLimit = (getBoosterConsumptionRate() / componentEfficiency) * deltaTime;
 					float boostEnergy = getBoosterEnergy();
-					float boostLimit = getBoosterConsumptionRate() * deltaTime;
 
 					if (boostEnergy >= boostLimit) {
 						float value = boostEnergy - boostLimit;
-						setBoosterEnergy(value, false, nullptr, deltaVector);
+
+						if (boostEnergy != value) {
+							setBoosterEnergy(value, false, nullptr, deltaVector);
+						}
 					} else {
-						removeComponentFlag(Components::BOOSTER, ShipComponentFlag::DISABLED, true);
+						removeComponentFlag(Components::BOOSTER, ShipComponentFlag::ACTIVE, false);
 						restartBooster();
 
 						if (pilot != nullptr) {
@@ -746,26 +826,38 @@ void ShipObjectImplementation::doRecovery(int mselapsed) {
 						}
 					}
 				} else {
-					float maxBoost = getBoosterMaxEnergy();
+					float maxBoost = getBoosterMaxEnergy() * componentEfficiency * reactorEnergyRate;
 					float minBoost = getBoosterEnergy();
 
-					if (maxBoost != minBoost) {
-						float value = minBoost + (deltaTime * getBoosterRechargeRate());
-						value = Math::min(value, maxBoost);
-						setBoosterEnergy(value, false, nullptr, deltaVector);
+					if (minBoost != maxBoost) {
+						if (minBoost < maxBoost) {
+							float rechargeRate = getCapacitorRechargeRate() * componentEfficiency * deltaTime;
+							minBoost = Math::min(minBoost + rechargeRate, maxBoost);
+						} else if (minBoost > maxBoost) {
+							float decayRate = getBoosterMaxEnergy() * reactorEnergyRate * deltaTime;
+							minBoost = Math::max(minBoost - decayRate, maxBoost);
+						}
+
+						setBoosterEnergy(minBoost, false, nullptr, deltaVector);
 					}
 				}
 
 				break;
 			}
 		}
+
+		if (!updateFlags && getComponentOptionsMap()->get(slot) != componentFlags) {
+			updateFlags = true;
+		}
 	}
 
-	float actualSpeed = getActualSpeed();
-
-	if (getActualMaxSpeed() != actualSpeed) {
-		setActualMaxSpeed(actualSpeed, false, nullptr, deltaVector);
+	if (updateFlags) {
+		uint32 componentFlag = getComponentOptionsMap()->get(Components::REACTOR);
+		setComponentOptions(Components::REACTOR, componentFlag, nullptr, DeltaMapCommands::SET, deltaVector);
 	}
+
+	updateActualEngineValues(false, deltaVector);
+	updateComponentFlags(false, deltaVector);
 
 	if (deltaVector != nullptr) {
 		deltaVector->sendMessages(asShipObject(), pilot);
@@ -880,6 +972,8 @@ void ShipObjectImplementation::repairShip(float value, bool decay) {
 	info(true) << "------ Starting Component Map Update ------\n";
 #endif
 
+	bool updateFlags = false;
+
 	for (int i = 0; i < componentMap->size(); ++i) {
 		uint32 slot = componentMap->getKeyAt(i);
 		uint32 crc = componentMap->getValueAt(i);
@@ -893,17 +987,13 @@ void ShipObjectImplementation::repairShip(float value, bool decay) {
 			continue;
 		}
 
-		int flags = getComponentOptionsMap()->get(slot);
+		uint32 componentFlag = getComponentOptionsMap()->get(slot);
 
-		if (flags & ShipComponentFlag::DEMOLISHED) {
-			flags &= ~ShipComponentFlag::DEMOLISHED;
+		if (hasComponentFlag(slot, ShipComponentFlag::DEMOLISHED)) {
+			removeComponentFlag(slot, ShipComponentFlag::DEMOLISHED, false);
 		}
 
-		if (flags & ShipComponentFlag::DISABLED) {
-			flags &= ~ShipComponentFlag::DISABLED;
-		}
-
-		setComponentOptions(slot, flags, nullptr, command,  deltaVector);
+		resetComponentFlag(slot, false);
 
 		// Handle Armor Repair and Decay
 		float armorMax = getMaxArmorMap()->get(slot);
@@ -1019,6 +1109,15 @@ void ShipObjectImplementation::repairShip(float value, bool decay) {
 				break;
 			}
 		}
+
+		if (!updateFlags && getComponentOptionsMap()->get(slot) != componentFlag) {
+			updateFlags = true;
+		}
+	}
+
+	if (updateFlags) {
+		uint32 componentFlag = getComponentOptionsMap()->get(Components::REACTOR);
+		setComponentOptions(Components::REACTOR, componentFlag, nullptr, DeltaMapCommands::SET, deltaVector);
 	}
 
 	if (deltaVector != nullptr) {
@@ -1048,45 +1147,114 @@ bool ShipObjectImplementation::isShipObject() {
 	return true;
 }
 
-void ShipObjectImplementation::addComponentFlag(uint32 slot, uint32 bit, bool notifyClient) {
-	if (slot == -1)
+bool ShipObjectImplementation::hasComponentFlag(uint32 slot, uint32 value) {
+	return (componentOptions.get(slot) & value);
+}
+
+void ShipObjectImplementation::addComponentFlag(uint32 slot, uint32 value, bool notifyClient, ShipDeltaVector* deltaVector) {
+	uint32 componentFlag = componentOptions.get(slot);
+
+	if (componentFlag & value) {
 		return;
+	}
 
-	ShipComponent* component = getComponentObject(slot);
+	componentFlag |= value;
 
-	if (component == nullptr)
-		return;
+	if (deltaVector == nullptr && notifyClient) {
+		deltaVector = getDeltaVector();
+	}
 
-	Locker lock(component);
+	setComponentOptions(slot, componentFlag, nullptr, DeltaMapCommands::SET, deltaVector);
 
-	if (notifyClient) {
-		DeltaMessage* message = new DeltaMessage(getObjectID(), 'SHIP', 3);
-
-		setComponentOptions(slot, bit, message);
-		message->close();
-
-		broadcastMessage(message, true);
+	if (deltaVector != nullptr && notifyClient) {
+		deltaVector->sendMessages(asShipObject(), getPilot());
 	}
 }
 
-void ShipObjectImplementation::removeComponentFlag(uint32 slot, uint32 bit, bool notifyClient) {
-	if (slot == -1)
+void ShipObjectImplementation::removeComponentFlag(uint32 slot, uint32 value, bool notifyClient, ShipDeltaVector* deltaVector) {
+	uint32 componentFlag = componentOptions.get(slot);
+
+	if (!(componentFlag & value)) {
 		return;
+	}
 
-	ShipComponent* component = getComponentObject(slot);
+	componentFlag &= ~value;
 
-	if (component == nullptr)
+	if (deltaVector == nullptr && notifyClient) {
+		deltaVector = getDeltaVector();
+	}
+
+	setComponentOptions(slot, componentFlag, nullptr, DeltaMapCommands::SET, deltaVector);
+
+	if (deltaVector != nullptr && notifyClient) {
+		deltaVector->sendMessages(asShipObject(), getPilot());
+	}
+}
+
+void ShipObjectImplementation::resetComponentFlag(uint32 slot, bool notifyClient, ShipDeltaVector* deltaVector) {
+	uint32 componentFlag = componentOptions.get(slot);
+
+	if (componentFlag & ShipComponentFlag::DISABLED) {
+		componentFlag &= ~ShipComponentFlag::DISABLED;
+	}
+
+	if (componentFlag & ShipComponentFlag::LOW_POWER) {
+		componentFlag &= ~ShipComponentFlag::LOW_POWER;
+	}
+
+	if (componentFlag & ShipComponentFlag::ACTIVE) {
+		componentFlag &= ~ShipComponentFlag::ACTIVE;
+	}
+
+	if (componentFlag & ShipComponentFlag::DISABLED_NEEDS_POWER) {
+		componentFlag &= ~ShipComponentFlag::DISABLED_NEEDS_POWER;
+	}
+
+	if (componentFlag == componentOptions.get(slot)) {
 		return;
+	}
 
-	Locker lock(component);
+	if (deltaVector == nullptr && notifyClient) {
+		deltaVector = getDeltaVector();
+	}
 
-	if (notifyClient) {
-		DeltaMessage* message = new DeltaMessage(getObjectID(), 'SHIP', 3);
+	setComponentOptions(slot, componentFlag, nullptr, DeltaMapCommands::SET, deltaVector);
 
-		setComponentOptions(slot, 0, message);
-		message->close();
+	if (deltaVector != nullptr && notifyClient) {
+		deltaVector->sendMessages(asShipObject(), getPilot());
+	}
+}
 
-		broadcastMessage(message, true);
+void ShipObjectImplementation::setComponentDemolished(uint32 slot, bool notifyClient, ShipDeltaVector* deltaVector) {
+	if (deltaVector == nullptr && notifyClient) {
+		deltaVector = getDeltaVector();
+	}
+
+	if (!hasComponentFlag(slot, ShipComponentFlag::DEMOLISHED)) {
+		addComponentFlag(slot, ShipComponentFlag::DEMOLISHED, false, deltaVector);
+	}
+
+	switch (slot) {
+		case Components::SHIELD0:
+		case Components::SHIELD1: {
+			setFrontShield(0.f, false, nullptr, deltaVector);
+			setRearShield(0.f, false, nullptr, deltaVector);
+			break;
+		}
+
+		case Components::CAPACITOR: {
+			setCapacitorEnergy(0.f, false, nullptr, deltaVector);
+			break;
+		}
+
+		case Components::BOOSTER: {
+			setBoosterEnergy(0.f, false, nullptr, deltaVector);
+			break;
+		}
+	}
+
+	if (deltaVector != nullptr && notifyClient) {
+		deltaVector->sendMessages(asShipObject(),getPilot());
 	}
 }
 
@@ -1124,42 +1292,6 @@ void ShipObjectImplementation::setHyperspaceDelay() {
 int ShipObjectImplementation::getHyperspaceDelay() {
 	Time now;
 	return (now.miliDifference() - hyperspaceTime.miliDifference()) / 1000;
-}
-
-float ShipObjectImplementation::getActualSpeed() {
-	const auto componentMap = getShipComponentMap();
-
-	float componentActual = 0.f;
-
-	if (componentMap->get(Components::ENGINE) != 0) {
-		float efficiency = getComponentEfficiencyMap()->get(Components::ENGINE);
-		float condition = getComponentCondition(Components::ENGINE);
-
-		componentActual += engineMaxSpeed * efficiency * condition;
-	}
-
-	if (componentMap->get(Components::BOOSTER) != 0 && isBoosterActive()) {
-		float efficiency = getComponentEfficiencyMap()->get(Components::BOOSTER);
-		float condition = getComponentCondition(Components::BOOSTER);
-
-		componentActual += boosterMaxSpeed * efficiency * condition;
-	}
-
-	float chassisActual = 1.f;
-
-	if (chassisSpeed != 0) {
-		chassisActual = chassisSpeed;
-	}
-
-	if (hasShipWings() && (getOptionsBitmask() & OptionBitmask::WINGS_OPEN)) {
-		const auto chassisData = ShipManager::instance()->getChassisData(chassisDataName);
-
-		if (chassisData != nullptr) {
-			chassisActual *= chassisData->getWingOpenSpeed();
-		}
-	}
-
-	return componentActual * chassisActual;
 }
 
 bool ShipObjectImplementation::checkInConversationRange(SceneObject* targetObject) {
@@ -1477,60 +1609,6 @@ void ShipObjectImplementation::updateLastDamageReceived() {
 	lastDamageReceived.updateToCurrentTime();
 }
 
-float ShipObjectImplementation::getSpeedRotationFactor(float speed) {
-	const float maxSpeed = getActualMaxSpeed();
-	const float maxFactor = getSpeedRotationFactorMax();
-	const float minFactor = getSpeedRotationFactorMin();
-	const float optimalFactor = getSpeedRotationFactorOptimal();
-
-	const float speedRatio = maxSpeed > 0.f ? speed / maxSpeed : 0.f;
-
-	auto getFactor = [&]() -> float {
-		/*
-		 *      rotation factor (in units of max pitch/yaw)
-		 *      |
-         *        +--------------------------------------------------------------------+
-         *        |             +             +            +             +             |
-         *        |                                ****                                ---- 1.0 @ optimal speed
-         *        |                             ****  ****                             |
-         *    0.8 |-+                       ****          ****                       +-|
-         *        |                      ****                ****                      |
-         *        |                   ***                        ***                   |
-         *        |               ****                              ****               |
-         *    0.4 |-+          ***                                      ***          +-|
-         *        |        ****                                            ****        |
-         *        |     ***                                                    ***     |
-         *        | ****        +             +            +             +        **** ---- minFactor/maxFactor
-         *      0 +-|-------------------------------|--------------------------------|-+
-         *        0 |          0.2           0.4    |     0.6           0.8          | 1 -- speed (in units of max speed)
-         *          |                               |                                |
-         *      Min Speed                     Optimal Speed                     Max Speed
-         *
-         * When speed < optimal speed:
-         *     find y-value on upslope, between minFactor and 1.f,
-         *     interpolated from min speed (0.f) to optimal speed
-         *     ergo, t = (speedRatio - 0) / (optimalFactor - 0) = speedRatio / optimalFactor
-         *
-         * When speed > optimal speed:
-         *     find y-value on downslope, between 1.f and maxFactor
-         *     interpolated from optimal speed to max speed (1.f)
-         *     ergo, t = (speedRatio - optimalFactor) / (1 - optimalFactor)
-		 */
-		if (speedRatio < optimalFactor || optimalFactor >= 1.f) {
-			// linearly interpolate between minFactor to 1 (1 being the optimal factor)
-			// at a ratio in the range expressed as speedRatio / optimalFactor
-			return Math::linearInterpolate(minFactor, 1.f, speedRatio / optimalFactor);
-		}
-
-		// linearly interpolate between 1 to maxFactor (1 being the optimal factor)
-		// at a ratio in the range expressed as (speedRatio - optimalFactor) / (1 - optimalFactor)
-		return Math::linearInterpolate(1.f, maxFactor, (speedRatio - optimalFactor) / (1.f - optimalFactor));
-	};
-
-	// discretize factor to prevent overupdating the client
-	return floorf((getFactor() * 10.f) + 0.5f) / 10.f;
-}
-
 CreatureObject* ShipObjectImplementation::getPlayerOnBoard(int index) {
 	auto player = playersOnBoard.get(index).get();
 
@@ -1618,4 +1696,232 @@ int ShipObjectImplementation::getReceiverFlags() const {
 		type = type | CloseObjectsVector::PLAYERSHIPTYPE;
 
 	return type | TangibleObjectImplementation::getReceiverFlags();
+}
+
+bool ShipObjectImplementation::isComponentInstalled(uint32 slot) {
+	return getShipComponentMap()->get(slot) != 0;
+}
+
+bool ShipObjectImplementation::isComponentFunctional(uint32 slot) {
+	return isComponentInstalled(slot) && !hasComponentFlag(slot, ShipComponentFlag::DISABLED) && !hasComponentFlag(slot, ShipComponentFlag::DEMOLISHED);
+}
+
+float ShipObjectImplementation::calculateActualComponentEfficiency(uint32 slot) {
+	return isComponentFunctional(slot) ? Math::clamp(0.1f, getComponentEfficiency(slot) * getComponentCondition(slot), 10.f) : 0.f;
+}
+
+float ShipObjectImplementation::calculateSpeedRotationFactor() {
+	float speedCurrent = getCurrentSpeed();
+	float speedMax = getActualMaxSpeed();
+
+	float factorOptimal = getSpeedRotationFactorOptimal();
+	float factorMax = getSpeedRotationFactorMax();
+	float factorMin = getSpeedRotationFactorMin();
+
+	if (speedCurrent <= 0.f || speedMax <= 0.f) {
+		return factorMin;
+	}
+
+	float factorPercent = Math::clamp(0.f, speedCurrent / speedMax, 1.f);
+	float factorActual = factorMin;
+
+	if (factorPercent < factorOptimal || factorOptimal >= 1.f) {
+		float ratio = factorPercent / factorOptimal;
+		factorActual = Math::linearInterpolate(factorMin, 1.f, ratio);
+	} else {
+		float ratio = (factorPercent - factorOptimal) / (1.f - factorOptimal);
+		factorActual = Math::linearInterpolate(1.f, factorMax, ratio);
+	}
+
+	return factorActual;
+}
+
+float ShipObjectImplementation::calculateActualAccelerationRate() {
+	float engineAcceleration = 0.f;
+
+	if (isComponentInstalled(Components::ENGINE)) {
+		engineAcceleration = getEngineAccelerationRate() * calculateActualComponentEfficiency(Components::ENGINE);
+	}
+
+	float boosterAcceleration = 0.f;
+
+	if (isComponentInstalled(Components::BOOSTER) && isBoosterActive()) {
+		boosterAcceleration = getBoosterAcceleration() * calculateActualComponentEfficiency(Components::BOOSTER);
+	}
+
+	return engineAcceleration + boosterAcceleration;
+}
+
+float ShipObjectImplementation::calculateActualDecelerationRate() {
+	float engineDeceleration = getEngineDecelerationRate();
+
+	if (isComponentFunctional(Components::ENGINE)) {
+		engineDeceleration *= calculateActualComponentEfficiency(Components::ENGINE);
+	}
+
+	return engineDeceleration;
+}
+
+float ShipObjectImplementation::calculateActualMaxSpeed() {
+	float engineSpeed = 0.f;
+
+	if (isComponentInstalled(Components::ENGINE)) {
+		engineSpeed = getEngineMaxSpeed() * calculateActualComponentEfficiency(Components::ENGINE);
+	}
+
+	float boosterSpeed = 0.f;
+
+	if (isComponentInstalled(Components::BOOSTER) && isBoosterActive()) {
+		boosterSpeed = getBoosterMaxSpeed() * calculateActualComponentEfficiency(Components::BOOSTER);
+	}
+
+	float chassisSpeed = getChassisSpeed();
+
+	if (hasShipWings() && (getOptionsBitmask() & OptionBitmask::WINGS_OPEN)) {
+		auto chassisData = ShipManager::instance()->getChassisData(chassisDataName);
+
+		if (chassisData != nullptr) {
+			chassisSpeed *= chassisData->getWingOpenSpeed();
+		}
+	}
+
+	return Math::clamp(0.f, ((engineSpeed + boosterSpeed) * chassisSpeed), 512.f);
+}
+
+void ShipObjectImplementation::updateSpeedRotationValues(bool notifyClient, ShipDeltaVector* deltaVector) {
+	float engineEfficiency = calculateActualComponentEfficiency(Components::ENGINE);
+	float rotationFactor = calculateSpeedRotationFactor();
+
+	float actualPitchRate = getEnginePitchRate() * engineEfficiency * rotationFactor;
+	float actualYawRate = getEngineYawRate() * engineEfficiency * rotationFactor;
+
+	if (getActualPitchRate() == actualPitchRate && getActualYawRate() == actualYawRate) {
+		return;
+	}
+
+	if (deltaVector == nullptr && notifyClient) {
+		deltaVector = getDeltaVector();
+	}
+
+	if (getActualPitchRate() != actualPitchRate) {
+		setActualPitchRate(actualPitchRate, false, nullptr, deltaVector);
+	}
+
+	if (getActualYawRate() != actualYawRate) {
+		setActualYawRate(actualYawRate, false, nullptr, deltaVector);
+	}
+
+	if (deltaVector != nullptr && notifyClient) {
+		deltaVector->sendMessages(asShipObject(), getPilot());
+	}
+}
+
+void ShipObjectImplementation::updateActualEngineValues(bool notifyClient, ShipDeltaVector* deltaVector) {
+	float componentEfficiency = calculateActualComponentEfficiency(Components::ENGINE);
+	float rotationFactor = calculateSpeedRotationFactor();
+
+	float actualAcceleration = calculateActualAccelerationRate();
+	float actualDeceleration = calculateActualDecelerationRate();
+	float actualPitchAccel = getEnginePitchAccelerationRate() * componentEfficiency;
+	float actualYawAccel = getEngineYawAccelerationRate() * componentEfficiency;
+	float actualRollAccel = getEngineRollAccelerationRate() * componentEfficiency;
+	float actualPitch = getEnginePitchRate() * componentEfficiency * rotationFactor;
+	float actualYaw = getEnginePitchRate() * componentEfficiency * rotationFactor;
+	float actualRoll = getEnginePitchRate() * componentEfficiency;
+	float actualSpeed = calculateActualMaxSpeed();
+
+	if (deltaVector == nullptr && notifyClient) {
+		deltaVector = getDeltaVector();
+	}
+
+	if (getActualAccelerationRate() != actualAcceleration) {
+		setActualAccelerationRate(actualAcceleration, false, nullptr, deltaVector);
+	}
+
+	if (getActualDecelerationRate() != actualDeceleration) {
+		setActualDecelerationRate(actualDeceleration, false, nullptr, deltaVector);
+	}
+
+	if (getActualPitchAccelerationRate() != actualPitchAccel) {
+		setActualPitchAccelerationRate(actualPitchAccel, false, nullptr, deltaVector);
+	}
+
+	if (getActualYawAccelerationRate() != actualYawAccel) {
+		setActualYawAccelerationRate(actualYawAccel, false, nullptr, deltaVector);
+	}
+
+	if (getActualRollAccelerationRate() != actualRollAccel) {
+		setActualRollAccelerationRate(actualRollAccel, false, nullptr, deltaVector);
+	}
+
+	if (getActualPitchRate() != actualPitch) {
+		setActualPitchRate(actualPitch, false, nullptr, deltaVector);
+	}
+
+	if (getActualYawRate() != actualYaw) {
+		setActualYawRate(actualYaw, false, nullptr, deltaVector);
+	}
+
+	if (getActualRollRate() != actualRoll) {
+		setActualRollRate(actualRoll, false, nullptr, deltaVector);
+	}
+
+	if (getActualMaxSpeed() != actualSpeed) {
+		setActualMaxSpeed(actualSpeed, false, nullptr, deltaVector);
+	}
+
+	if (deltaVector != nullptr && notifyClient) {
+		deltaVector->sendMessages(asShipObject(), getPilot());
+	}
+}
+
+void ShipObjectImplementation::updateComponentFlags(bool notifyClient, ShipDeltaVector* deltaVector) {
+	bool updateFlags = false;
+
+	for (int i = 0; i < componentOptions.size(); ++i) {
+		uint32 slot = componentOptions.getKeyAt(i);
+
+		if (!isComponentInstalled(slot)) {
+			continue;
+		}
+
+		uint32 componentFlag = componentOptions.getValueAt(i);
+
+		if (hasComponentFlag(slot, ShipComponentFlag::DEMOLISHED)) {
+			if (hasComponentFlag(slot, ShipComponentFlag::ACTIVE)) {
+				removeComponentFlag(slot, ShipComponentFlag::ACTIVE, false);
+			} else if (hasComponentFlag(slot, ShipComponentFlag::DISABLED)) {
+				removeComponentFlag(slot, ShipComponentFlag::DISABLED, false);
+			}
+		} else if (hasComponentFlag(slot, ShipComponentFlag::DISABLED_NEEDS_POWER)) {
+			if (hasComponentFlag(slot, ShipComponentFlag::ACTIVE)) {
+				removeComponentFlag(slot, ShipComponentFlag::ACTIVE, false);
+			} else if (!hasComponentFlag(slot, ShipComponentFlag::DISABLED)) {
+				addComponentFlag(slot, ShipComponentFlag::DISABLED, false);
+			}
+		} else {
+			if (!hasComponentFlag(slot, ShipComponentFlag::ACTIVE) && slot != Components::BOOSTER) {
+				addComponentFlag(slot, ShipComponentFlag::ACTIVE, false);
+			} else if (hasComponentFlag(slot, ShipComponentFlag::DISABLED)) {
+				removeComponentFlag(slot, ShipComponentFlag::DISABLED, false);
+			}
+		}
+
+		if (!updateFlags && componentOptions.getValueAt(i) != componentFlag) {
+			updateFlags = true;
+		}
+	}
+
+	if (updateFlags) {
+		if (deltaVector == nullptr && notifyClient) {
+			deltaVector = getDeltaVector();
+		}
+
+		uint32 componentFlag = componentOptions.get(Components::REACTOR);
+		componentOptions.update(Components::REACTOR, componentFlag, nullptr, DeltaMapCommands::SET, deltaVector);
+
+		if (deltaVector != nullptr && notifyClient) {
+			deltaVector->sendMessages(asShipObject(), getPilot());
+		}
+	}
 }
