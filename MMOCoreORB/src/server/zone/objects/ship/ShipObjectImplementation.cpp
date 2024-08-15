@@ -150,8 +150,17 @@ void ShipObjectImplementation::loadTemplateData(SharedShipObjectTemplate* ssot) 
 }
 
 void ShipObjectImplementation::sendTo(SceneObject* player, bool doClose, bool forceLoadContainer) {
+	if (player == nullptr) {
+		return;
+	}
+
 	//info(true) << "ShipObjectImplementation::sendTo - Ship Location: " << getWorldPosition().toString() << " sending to: " << player->getDisplayedName() << " Player Loc: " << player->getWorldPosition().toString()
 	//	<< " Containment Type: " << player->getContainmentType();
+
+	// Do not send the contents of the ships to anyone but the owner unless it is launched
+	if (!isShipLaunched() && player->getObjectID() != getOwnerID()) {
+		return;
+	}
 
 	TangibleObjectImplementation::sendTo(player, doClose, forceLoadContainer);
 }

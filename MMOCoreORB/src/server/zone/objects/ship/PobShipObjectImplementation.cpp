@@ -268,14 +268,24 @@ void PobShipObjectImplementation::updatePlayersInShip(bool lightUpdate, bool sen
 }
 
 void PobShipObjectImplementation::sendTo(SceneObject* sceneO, bool doClose, bool forceLoadContainer) {
+	if (sceneO == nullptr) {
+		return;
+	}
+
 	// info(true) << "PobShipObjectImplementation::sendTo - " << getDisplayedName() << " sending to: " << sceneO->getDisplayedName();
 
-	CreatureObject* player = sceneO->asCreatureObject();
+	auto player = sceneO->asCreatureObject();
 
-	if (player == nullptr)
+	if (player == nullptr) {
 		return;
+	}
 
 	ShipObjectImplementation::sendTo(player, doClose, forceLoadContainer);
+
+	// Do not send the contents of the ships cells to the player unless it is launched
+	if (!isShipLaunched()) {
+		return;
+	}
 
 	auto closeObjects = player->getCloseObjects();
 
