@@ -1457,8 +1457,9 @@ void TangibleObjectImplementation::addActiveArea(ActiveArea* area) {
 }
 
 void TangibleObjectImplementation::sendTo(SceneObject* player, bool doClose, bool forceLoadContainer) {
-	if (isInvisible() && player != asTangibleObject())
+	if (isInvisible() && player != asTangibleObject()) {
 		return;
+	}
 
 	SceneObjectImplementation::sendTo(player, doClose, forceLoadContainer);
 }
