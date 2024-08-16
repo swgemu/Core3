@@ -119,14 +119,20 @@ function SithShadowEncounter:onEncounterInRange(pPlayer, spawnedObjects)
 		if (pMobile ~= nil) then
 			AiAgent(pMobile):removeObjectFlag(AI_ESCORT)
 			AiAgent(pMobile):removeObjectFlag(AI_FOLLOW)
-			AiAgent(pMobile):setDefender(pPlayer)
+
+			AiAgent(pMobile):setAITemplate()
+
+			AiAgent(pMobile):addDefender(pPlayer)
 		end
 	end)
 
 	Logger:log("Sending threaten string.", LT_INFO)
+
 	local threatenString = LuaStringIdChatParameter(SITH_SHADOW_THREATEN_STRING)
 	threatenString:setTT(CreatureObject(pPlayer):getFirstName())
+
 	spatialChat(spawnedObjects[1], threatenString:_getObject())
+
 	QuestManager.activateQuest(pPlayer, QuestManager.quests.LOOT_DATAPAD_1)
 end
 

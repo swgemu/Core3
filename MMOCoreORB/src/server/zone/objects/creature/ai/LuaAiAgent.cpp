@@ -500,18 +500,37 @@ int LuaAiAgent::isFleeing(lua_State* L) {
 }
 
 int LuaAiAgent::runAway(lua_State* L) {
-	SceneObject* scene = static_cast<CreatureObject*>(lua_touserdata(L, -2));
-	Reference<CreatureObject*> target = dynamic_cast<CreatureObject*>(scene);
-	float range = lua_tonumber(L, -1);
-	Reference<AiAgent*> agentObject = realObject;
+	SceneObject* sceneO = static_cast<SceneObject*>(lua_touserdata(L, -2));
 
-	if (target != nullptr) {
-		Core::getTaskManager()->executeTask([=] () {
-			Locker locker(agentObject);
-
-			agentObject->runAway(target, range, false);
-		}, "RunAwayLambda");
+	if (sceneO == nullptr || !sceneO->isCreatureObject()) {
+		return 0;
 	}
+
+	Reference<CreatureObject*> targetCreO = sceneO->asCreatureObject();
+
+	if (targetCreO == nullptr) {
+		return 0;
+	}
+
+	int range = lua_tointeger(L, -1);
+
+	range = Math::max(5, range);
+
+	Locker locker(realObject);
+
+	auto fleeDelay = realObject->getFleeDelay();
+
+	if (fleeDelay != nullptr) {
+		uint64 newDelay = (range * 500);
+
+		// Set flee delay
+		fleeDelay->updateToCurrentTime();
+		fleeDelay->addMiliTime(newDelay);
+	}
+
+	Locker clock(targetCreO, realObject);
+
+	realObject->runAway(targetCreO, range, false, false);
 
 	return 0;
 }
@@ -941,12 +960,7 @@ int LuaAiAgent::setHomeLocation(lua_State* L) {
 int LuaAiAgent::setNoAiAggro(lua_State* L) {
 	Locker locker(realObject);
 
-	if (!(realObject->getCreatureBitmask() & ObjectFlag::NOAIAGGRO)) {
-		uint32 creatureBitmask = realObject->getCreatureBitmask();
-		creatureBitmask |= ObjectFlag::NOAIAGGRO;
-
-		realObject->setCreatureBitmask(creatureBitmask);
-	}
+	realObject->addObjectFlag(ObjectFlag::NOAIAGGRO);
 
 	return 0;
 }
