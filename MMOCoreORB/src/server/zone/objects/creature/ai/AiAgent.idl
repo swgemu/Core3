@@ -877,7 +877,7 @@ class AiAgent extends CreatureObject {
 	}
 
 	@preLocked
-	public native void runAway(CreatureObject target, float range, boolean random);
+	public native void runAway(CreatureObject target, float range, boolean random = false, boolean setTarget = true);
 
 	@preLocked
 	public abstract native void leash(boolean forcePeace = true);

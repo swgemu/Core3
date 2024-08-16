@@ -1844,12 +1844,22 @@ void AiAgentImplementation::setDespawnOnNoPlayerInRange(bool val) {
 	}
 }
 
-void AiAgentImplementation::runAway(CreatureObject* target, float range, bool random = false) {
+void AiAgentImplementation::runAway(CreatureObject* target, float range, bool random, bool setTarget) {
 	if (getParent().get() != nullptr || getParentID() > 0 || target == nullptr || target->getParent().get() != nullptr || getZoneUnsafe() == nullptr) {
 		return;
 	}
 
-	setTargetObject(target);
+	auto zone = getZone();
+
+	if (zone == nullptr) {
+		return;
+	}
+
+	if (setTarget) {
+		setTargetObject(target);
+	} else {
+		setTargetObject(nullptr);
+	}
 
 	notifyObservers(ObserverEventType::FLEEING, target);
 	sendReactionChat(target, ReactionManager::FLEE);
@@ -1904,7 +1914,7 @@ void AiAgentImplementation::runAway(CreatureObject* target, float range, bool ra
 	clearPatrolPoints();
 	currentFoundPath = nullptr;
 
-	setNextPosition(runTrajectory.getX(), getZoneUnsafe()->getHeight(runTrajectory.getX(), runTrajectory.getY()), runTrajectory.getY(), getParent().get().castTo<CellObject*>());
+	setNextPosition(runTrajectory.getX(), zone->getHeight(runTrajectory.getX(), runTrajectory.getY()), runTrajectory.getY(), getParent().get().castTo<CellObject*>());
 }
 
 void AiAgentImplementation::leash(bool forcePeace) {
@@ -2599,7 +2609,7 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 
 	float newSpeed = runSpeed;
 
-	if (movementState == AiAgent::FLEEING)
+	if (movementState == AiAgent::FLEEING && isInCombat())
 		newSpeed *= 0.7f;
 
 	if ((walk && movementState != AiAgent::FLEEING) || posture == CreaturePosture::PRONE)
@@ -3352,7 +3362,8 @@ int AiAgentImplementation::setDestination() {
 		if (fleeDiff < 1500) {
 			eraseBlackboard("fleeRange");
 			setMovementState(AiAgent::FOLLOWING);
-			return stateCopy;
+
+			break;
 		}
 
 		break;
