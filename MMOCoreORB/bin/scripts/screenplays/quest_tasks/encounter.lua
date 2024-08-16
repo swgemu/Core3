@@ -143,9 +143,9 @@ function Encounter:setSpawnedObjectsToFollow(spawnedObjects, objectToFollow)
 
 				AiAgent(spawnedObjects[i]):addObjectFlag(AI_ESCORT)
 				AiAgent(spawnedObjects[i]):addObjectFlag(AI_FOLLOW)
-				AiAgent(spawnedObjects[i]):setFollowObject(objectToFollow)
 
 				AiAgent(spawnedObjects[i]):setAITemplate()
+				AiAgent(spawnedObjects[i]):setFollowObject(objectToFollow)
 			end
 		end
 	end
@@ -245,7 +245,7 @@ function Encounter:handleDespawnEvent(pPlayer)
 end
 
 function Encounter:doRunAway(pAiAgent)
-	if pAiAgent == nil or not SceneObject(pAiAgent):isAiAgent() then
+	if pAiAgent == nil then
 		return
 	end
 
@@ -254,14 +254,43 @@ function Encounter:doRunAway(pAiAgent)
 	local newY = readData(objectID .. ":encounterNewY")
 	local newZ = readData(objectID .. ":encounterNewZ")
 
-	AiAgent(pAiAgent):setFollowObject(nil)
-	AiAgent(pAiAgent):setMovementState(AI_PATROLLING)
+	-- This works at a walk
 
+	AiAgent(pAiAgent):removeObjectFlag(AI_ESCORT)
+	AiAgent(pAiAgent):removeObjectFlag(AI_FOLLOW)
+	AiAgent(pAiAgent):setAITemplate()
+
+	AiAgent(pAiAgent):setFollowObject(nil)
+	AiAgent(pAiAgent):storeFollowObject()
+
+	AiAgent(pAiAgent):setMovementState(AI_FLEEING)
+
+
+	--AiAgent(pAiAgent):removeObjectFlag(AI_ESCORT)
+	--AiAgent(pAiAgent):removeObjectFlag(AI_FOLLOW)
+	--AiAgent(pAiAgent):setAITemplate()
+
+	--AiAgent(pAiAgent):setFollowObject(nil)
+	--AiAgent(pAiAgent):storeFollowObject()
+
+	--AiAgent(pAiAgent):removeObjectFlag(AI_FOLLOW)
+	--AiAgent(pAiAgent):setFollowObject(nil)
+
+	--AiAgent(pAiAgent):addObjectFlag(AI_STATIONARY)
+
+
+	--AiAgent(pAiAgent):setAITemplate()
+
+	--AiAgent(pAiAgent):setMovementState(AI_PATROLLING)
+
+	--AiAgent(pAiAgent):addPatrolPoint(newX, newZ, newY, nil)
 	AiAgent(pAiAgent):setNextPosition(newX, newZ, newY, 0)
 
 	deleteData(objectID .. ":encounterNewX")
 	deleteData(objectID .. ":encounterNewY")
 	deleteData(objectID .. ":encounterNewZ")
+
+	print("Old man should be running away!!!!!!!!")
 end
 
 function Encounter:doDespawn(pPlayer)
