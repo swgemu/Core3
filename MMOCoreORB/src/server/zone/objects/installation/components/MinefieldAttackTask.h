@@ -63,6 +63,10 @@ public:
 			return;
 		}
 
+		if (!CollisionManager::checkLineOfSight(creatureTarget, minefield)) {
+			return;
+		}
+
 		ManagedReference<WeaponObject*> weapon = minefield->getContainerObject(0).castTo<WeaponObject*>();
 
 		if (weapon == nullptr) {
@@ -137,7 +141,7 @@ public:
 			auto explodeLoc = new PlayClientEffectLoc("clienteffect/lair_damage_heavy.cef", zone->getZoneName(), targetCreo->getPositionX(), targetCreo->getPositionZ(), targetCreo->getPositionY());
 
 			if (explodeLoc != nullptr) {
-				targetCreo->broadcastMessage(explodeLoc, false);
+				targetCreo->broadcastMessage(explodeLoc, true, false);
 			}
 
 			float minDamage = weapon->getMinDamage();

@@ -61,19 +61,18 @@ void MinefieldMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, Ob
 	if (!isPrivileged) {
 		bool similarStatus = (minefield->getFactionStatus() <= player->getFactionStatus());
 
+		// Player is a lower faction status then the minefield
+		if (!similarStatus) {
+			return;
+		}
+
 		// Player and minefield are opposite faction
 		if (player->getFaction() != minefield->getFaction()) {
 			// Player and minefield are opposite faction but same faction status
 			if (similarStatus) {
 				menuResponse->addRadialMenuItem(RadialOptions::SERVER_MENU1, 3, "@player_structure:disarm_minefield"); // "Disarm Minefield"
-				return;
 			}
 
-			return;
-		}
-
-		// Player and minefield are opposite faction status
-		if (!similarStatus) {
 			return;
 		}
 	}
@@ -128,15 +127,23 @@ int MinefieldMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, Cre
 		return 1;
 	}
 
-	if (ghost->hasSuiBoxWindowType(SuiWindowType::HQ_TERMINAL)) {
-		ghost->closeSuiWindowType(SuiWindowType::HQ_TERMINAL);
-	}
-
 	bool isPrivileged = ghost->isPrivileged();
 
 	switch(selectedID) {
 		// Disarm Minefield
 		case RadialOptions::SERVER_MENU1: {
+			Reference<CreatureObject*> playerRef = player;
+			Reference<InstallationObject*> minefieldRef = minefield;
+
+			Core::getTaskManager()->executeTask([playerRef, minefieldRef]() {
+				if (playerRef == nullptr || minefieldRef == nullptr) {
+					return;
+				}
+
+				Locker locker(playerRef);
+
+				playerRef->executeObjectControllerAction(STRING_HASHCODE("defuseminefield"), minefieldRef->getObjectID(), "");
+			}, "DefuseMinefieldLambda");
 
 			break;
 		}

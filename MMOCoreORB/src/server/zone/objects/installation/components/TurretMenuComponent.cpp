@@ -62,19 +62,18 @@ void TurretMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, Objec
 	if (!isPrivileged) {
 		bool similarStatus = (turret->getFactionStatus() <= player->getFactionStatus());
 
+		// Player is a lower faction status then the turret
+		if (!similarStatus) {
+			return;
+		}
+
 		// Player and turret are opposite faction
 		if (player->getFaction() != turret->getFaction()) {
 			// Player and turret are opposite faction but same faction status
 			if (similarStatus) {
 				menuResponse->addRadialMenuItem(RadialOptions::SERVER_MENU1, 3, "@player_structure:disarm_minefield"); // "Disarm Minefield"
-				return;
 			}
 
-			return;
-		}
-
-		// Player and minefield are opposite faction status
-		if (!similarStatus) {
 			return;
 		}
 	}
@@ -129,15 +128,23 @@ int TurretMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, Creatu
 		return 1;
 	}
 
-	if (ghost->hasSuiBoxWindowType(SuiWindowType::HQ_TERMINAL)) {
-		ghost->closeSuiWindowType(SuiWindowType::HQ_TERMINAL);
-	}
-
 	bool isPrivileged = ghost->isPrivileged();
 
 	switch(selectedID) {
 		// Disarm Minefield
 		case RadialOptions::SERVER_MENU1: {
+			Reference<CreatureObject*> playerRef = player;
+			Reference<TurretObject*> turretRef = turret;
+
+			Core::getTaskManager()->executeTask([playerRef, turretRef]() {
+				if (playerRef == nullptr || turretRef == nullptr) {
+					return;
+				}
+
+				Locker locker(playerRef);
+
+				playerRef->executeObjectControllerAction(STRING_HASHCODE("defuseminefield"), turretRef->getObjectID(), "");
+			}, "DefuseMinefieldLambda");
 
 			break;
 		}
