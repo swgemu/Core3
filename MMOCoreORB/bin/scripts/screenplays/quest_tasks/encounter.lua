@@ -143,9 +143,9 @@ function Encounter:setSpawnedObjectsToFollow(spawnedObjects, objectToFollow)
 
 				AiAgent(spawnedObjects[i]):addObjectFlag(AI_ESCORT)
 				AiAgent(spawnedObjects[i]):addObjectFlag(AI_FOLLOW)
-				AiAgent(spawnedObjects[i]):setFollowObject(objectToFollow)
 
 				AiAgent(spawnedObjects[i]):setAITemplate()
+				AiAgent(spawnedObjects[i]):setFollowObject(objectToFollow)
 			end
 		end
 	end
@@ -213,6 +213,7 @@ function Encounter:handleDespawnEvent(pPlayer)
 		return
 	end
 
+	--[[
 	local playerX = SceneObject(pPlayer):getPositionX()
 	local playerY = SceneObject(pPlayer):getPositionY()
 	local newX, newY
@@ -230,22 +231,35 @@ function Encounter:handleDespawnEvent(pPlayer)
 	end
 
 	local newZ = getTerrainHeight(pPlayer, newX, newY)
+	]]
 
 	for i = 1, #spawnedObjects, 1 do
 		if (SpawnMobiles.isValidMobile(spawnedObjects[i])) then
+			--[[
 			local objectID = SceneObject(spawnedObjects[i]):getObjectID()
+
 			writeData(objectID .. ":encounterNewX", newX)
 			writeData(objectID .. ":encounterNewY", newY)
 			writeData(objectID .. ":encounterNewZ", newZ)
+
 			createEvent(1000, self.taskName, "doRunAway", spawnedObjects[i], "")
+			]]
+
+			AiAgent(spawnedObjects[i]):removeObjectFlag(AI_ESCORT)
+			AiAgent(spawnedObjects[i]):removeObjectFlag(AI_FOLLOW)
+
+			AiAgent(spawnedObjects[i]):setAITemplate()
+
+			AiAgent(spawnedObjects[i]):runAway(pPlayer, 100)
 		end
 	end
 
-	createEvent(9000, self.taskName, "doDespawn", pPlayer, "")
+	createEvent(18000, self.taskName, "doDespawn", pPlayer, "")
 end
 
+-- Unused, replaced with runAway function in cpp
 function Encounter:doRunAway(pAiAgent)
-	if pAiAgent == nil or not SceneObject(pAiAgent):isAiAgent() then
+	if pAiAgent == nil then
 		return
 	end
 
