@@ -52,21 +52,7 @@ class TreeEntry extends Observable {
 	}*/
 
 	@dirty
-	public void removeInRangeObject(TreeEntry obj, boolean notifyDisappear = true) {
-		//System::out << "droping in range object:" << obj << "\n";
-
-		if (closeobjects.drop(obj) && notifyDisappear) {
-			notifyDissapear(obj);
-		}
-
-		/*else {
-			TreeEntry* obj2 = NULL;
-			obj2->getPositionX();
-
-			System::out << hex << "[0x" << obj->objectID << "] was not found in close objects for [0x"
-				 << objectID << dec << "]\n";
-		}*/
-	}
+	public native void removeInRangeObject(TreeEntry obj, boolean notifyDisappear = true);
 
 	@dirty
 	public void removeInRangeObject(int index) {

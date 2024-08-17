@@ -598,8 +598,10 @@ void BuildingObjectImplementation::notifyDissapear(TreeEntry* object) {
 
 		if (player != nullptr && player->isRidingMount()) {
 #ifdef DEBUG_COV
+			uint64 structureID = getObjectID();
+
 			// Theed Medical Center & Theed Cloning Facility
-			if (((getObjectID() == 1697358) || (getObjectID() == 1697350) || !isClientObject()) && ((sceneO->isPlayerCreature() || sceneO->isVehicleObject()))) {
+			if (((structureID == 1697358) || (structureID == 1697350) || !isClientObject()) && ((sceneO->isPlayerCreature() || sceneO->isVehicleObject()))) {
 				info(true) << "Blocked the removing of player that is riding mount: " << sceneO->getDisplayedName();
 			}
 #endif // DEBUG_COV

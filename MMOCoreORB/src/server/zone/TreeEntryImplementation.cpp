@@ -11,7 +11,7 @@ Distribution of this file for usage outside of Core3 is prohibited.
 
 //#define DEBUG_TREE_ENTRY
 
-TreeEntryImplementation::TreeEntryImplementation(TreeNode *n) {
+TreeEntryImplementation::TreeEntryImplementation(TreeNode* n) {
 	node = n;
 	bounding = false;
 	closeobjects = nullptr;
@@ -20,8 +20,24 @@ TreeEntryImplementation::TreeEntryImplementation(TreeNode *n) {
 	receiverFlags = 0;
 }
 
-void TreeEntryImplementation::setNode(TreeNode *n) {
+void TreeEntryImplementation::setNode(TreeNode* n) {
 	node = n;
+}
+
+void TreeEntryImplementation::removeInRangeObject(TreeEntry* obj, bool notifyDisappear) {
+	if (obj == nullptr) {
+		return;
+	}
+
+	auto closeObjects = getCloseObjects();
+
+	if (closeObjects == nullptr) {
+		return;
+	}
+
+	if (closeObjects->drop(obj) && notifyDisappear) {
+		notifyDissapear(obj);
+	}
 }
 
 bool TreeEntryImplementation::containsPoint(float px, float py) {
