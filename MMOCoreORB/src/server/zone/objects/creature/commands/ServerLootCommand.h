@@ -730,11 +730,10 @@ public:
 								const auto attachmentMods = attachment->getSkillMods();
 
 								if (attachmentMods != nullptr) {
-									HashTableIterator<String, int> iterator = attachmentMods->iterator();
 									int totalSkillMods = attachmentMods->size();
 
 									for(int i = 0; i < totalSkillMods; ++i) {
-										int value = iterator.getNextValue();
+										int value = attachmentMods->elementAt(i).getValue();
 										attachmentModTotal += value;
 										attachmentTotalMods++;
 									}

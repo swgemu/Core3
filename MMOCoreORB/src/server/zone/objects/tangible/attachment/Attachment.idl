@@ -11,6 +11,7 @@ include templates.SharedObjectTemplate;
 import server.zone.packets.scene.AttributeListMessage;
 include server.zone.objects.scene.SceneObjectType;
 import system.util.HashTable;
+include system.util.VectorMap;
 
 @json
 class Attachment extends TangibleObject {
@@ -19,6 +20,9 @@ class Attachment extends TangibleObject {
 	@dereferenced
 	protected HashTable<string, int> skillModMap;
 
+	@dereferenced
+	protected VectorMap<string, int> skillModifiers;
+
 	protected static final int CLOTHINGTYPE = 1;
 	protected static final int ARMORTYPE = 2;
 
@@ -26,6 +30,7 @@ class Attachment extends TangibleObject {
 		Logger.setLoggingName("Attachment");
 
 		skillModMap.setNullValue(0);
+		skillModifiers.setNullValue(0);
 
 		//generateSkillMods();
 	}
@@ -77,8 +82,7 @@ class Attachment extends TangibleObject {
 	}
 
 	@local
-	public HashTable<string, int> getSkillMods() {
-		return skillModMap;
+	public VectorMap<string, int> getSkillMods() {
+		return skillModifiers;
 	}
-
 }

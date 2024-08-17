@@ -110,66 +110,69 @@ void WearableObjectImplementation::generateSockets(CraftingValues* craftingValue
 }
 
 void WearableObjectImplementation::applyAttachment(CreatureObject* player, Attachment* attachment) {
-	if (!isASubChildOf(player))
+	if (!isASubChildOf(player)) {
 		return;
+	}
 
-	if (getRemainingSockets() > 0 && wearableSkillMods.size() < 6) {
-		Locker locker(player);
+	if (getRemainingSockets() < 1 && wearableSkillMods.size() > 5) {
+		return;
+	}
 
-		if (isEquipped()) {
-			removeSkillModsFrom(player);
+	Locker locker(player);
+
+	if (isEquipped()) {
+		removeSkillModsFrom(player);
+	}
+
+	SortedVector<ModSortingHelper> sortedMods;
+	VectorMap<String, int>* skillModifiers = attachment->getSkillMods();
+
+	for (int i = 0; i < skillModifiers->size(); i++) {
+		auto key = skillModifiers->elementAt(i).getKey();
+		auto value = skillModifiers->elementAt(i).getValue();
+
+		sortedMods.put(ModSortingHelper(key, value));
+	}
+
+	// Select the next mod in the SEA, sorted high-to-low. If that skill mod is already on the
+	// wearable, with higher or equal value, don't apply and continue. Break once one mod
+	// is applied.
+	for (int i = 0; i < sortedMods.size(); i++) {
+		String modName = sortedMods.elementAt(i).getKey();
+		int modValue = sortedMods.elementAt(i).getValue();
+
+		int existingValue = -26;
+
+		if (wearableSkillMods.contains(modName)) {
+			existingValue = wearableSkillMods.get(modName);
 		}
 
-		HashTable<String, int>* mods = attachment->getSkillMods();
-		HashTableIterator<String, int> iterator = mods->iterator();
-
-		String statName;
-		int newValue;
-
-		SortedVector< ModSortingHelper > sortedMods;
-		for( int i = 0; i < mods->size(); i++){
-			iterator.getNextKeyAndValue(statName, newValue);
-			sortedMods.put( ModSortingHelper( statName, newValue));
+		if (modValue > existingValue) {
+			wearableSkillMods.put(modName, modValue);
+			break;
 		}
+	}
 
-		// Select the next mod in the SEA, sorted high-to-low. If that skill mod is already on the
-		// wearable, with higher or equal value, don't apply and continue. Break once one mod
-		// is applied.
-		for (int i = 0; i < sortedMods.size(); i++ ) {
-			String modName = sortedMods.elementAt(i).getKey();
-			int modValue = sortedMods.elementAt(i).getValue();
+	usedSocketCount++;
+	addMagicBit(true);
+	Locker clocker(attachment, player);
+	TransactionLog trx(player, asSceneObject(), attachment, TrxCode::APPLYATTACHMENT);
 
-			int existingValue = -26;
-			if (wearableSkillMods.contains(modName))
-				existingValue = wearableSkillMods.get(modName);
+	if (trx.isVerbose()) {
+		// Force a synchronous export because the object will be deleted before we can export it!
+		trx.addRelatedObject(attachment, true);
+		trx.setExportRelatedObjects(true);
+		trx.exportRelated();
+	}
 
-			if (modValue > existingValue) {
-				wearableSkillMods.put( modName, modValue );
-				break;
-			}
-		}
+	trx.addState("subjectSkillModMap", sortedMods);
+	trx.addState("dstSkillModMap", wearableSkillMods);
 
-		usedSocketCount++;
-		addMagicBit(true);
-		Locker clocker(attachment, player);
-		TransactionLog trx(player, asSceneObject(), attachment, TrxCode::APPLYATTACHMENT);
+	attachment->destroyObjectFromWorld(true);
+	attachment->destroyObjectFromDatabase(true);
 
-		if (trx.isVerbose()) {
-			// Force a synchronous export because the object will be deleted before we can export it!
-			trx.addRelatedObject(attachment, true);
-			trx.setExportRelatedObjects(true);
-			trx.exportRelated();
-		}
-
-		trx.addState("subjectSkillModMap", sortedMods);
-		trx.addState("dstSkillModMap", wearableSkillMods);
-
-		attachment->destroyObjectFromWorld(true);
-		attachment->destroyObjectFromDatabase(true);
-
-		if (isEquipped()) {
-			applySkillModsTo(player);
-		}
+	if (isEquipped()) {
+		applySkillModsTo(player);
 	}
 }
 

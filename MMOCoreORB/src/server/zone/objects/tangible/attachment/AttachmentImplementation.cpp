@@ -13,11 +13,35 @@
 #include "server/zone/managers/loot/LootManager.h"
 #include "server/zone/managers/loot/LootValues.h"
 
+void AttachmentImplementation::initializeMembers() {
+	if (gameObjectType == SceneObjectType::CLOTHINGATTACHMENT) {
+		setOptionsBitmask(32, true);
+		attachmentType = CLOTHINGTYPE;
+
+	} else if (gameObjectType == SceneObjectType::ARMORATTACHMENT) {
+		setOptionsBitmask(32, true);
+		attachmentType = ARMORTYPE;
+	}
+}
+
 void AttachmentImplementation::initializeTransientMembers() {
 	TangibleObjectImplementation::initializeTransientMembers();
 
 	setLoggingName("AttachmentObject");
 
+	// This is here to convert the existing HashTable to a VectorMap
+	if (skillModifiers.size() < 1) {
+		HashTableIterator<String, int> iterator = skillModMap.iterator();
+
+		String key = "";
+		int value = 0;
+
+		for (int i = 0; i < skillModMap.size(); ++i) {
+			iterator.getNextKeyAndValue(key, value);
+
+			skillModifiers.put(key, value);
+		}
+	}
 }
 
 void AttachmentImplementation::updateCraftingValues(CraftingValues* values, bool firstUpdate) {
@@ -53,28 +77,16 @@ void AttachmentImplementation::updateCraftingValues(CraftingValues* values, bool
 		modCount = System::random(1) + 2;
 	}
 
-	for(int i = 0; i < modCount; ++i) {
+	for (int i = 0; i < modCount; ++i) {
 		float step = 1.f - ((i / (float)modCount) * 0.5f);
 		int min = Math::clamp(-1, (int)round(0.075f * level) - 1, 25) * step;
 		int max = Math::clamp(-1, (int)round(0.125f * level) + 1, 25);
 		int mod = System::random(max - min) + min;
 
 		String modName = lootManager->getRandomLootableMod(gameObjectType);
-		skillModMap.put(modName, mod == 0 ? 1 : mod);
+
+		skillModifiers.put(modName, mod == 0 ? 1 : mod);
 	}
-}
-
-void AttachmentImplementation::initializeMembers() {
-	if (gameObjectType == SceneObjectType::CLOTHINGATTACHMENT) {
-		setOptionsBitmask(32, true);
-		attachmentType = CLOTHINGTYPE;
-
-	} else if (gameObjectType == SceneObjectType::ARMORATTACHMENT) {
-		setOptionsBitmask(32, true);
-		attachmentType = ARMORTYPE;
-
-	}
-
 }
 
 void AttachmentImplementation::fillAttributeList(AttributeListMessage* msg, CreatureObject* object) {
@@ -82,14 +94,9 @@ void AttachmentImplementation::fillAttributeList(AttributeListMessage* msg, Crea
 
 	StringBuffer name;
 
-	HashTableIterator<String, int> iterator = skillModMap.iterator();
-
-	String key = "";
-	int value = 0;
-
-	for(int i = 0; i < skillModMap.size(); ++i) {
-
-		iterator.getNextKeyAndValue(key, value);
+	for (int i = 0; i < skillModifiers.size(); i++) {
+		auto key = skillModifiers.elementAt(i).getKey();
+		auto value = skillModifiers.elementAt(i).getValue();
 
 		name << "cat_skill_mod_bonus.@stat_n:" << key;
 
@@ -97,5 +104,4 @@ void AttachmentImplementation::fillAttributeList(AttributeListMessage* msg, Crea
 
 		name.deleteAll();
 	}
-
 }
