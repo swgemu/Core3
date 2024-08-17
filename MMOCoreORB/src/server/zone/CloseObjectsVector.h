@@ -71,7 +71,7 @@ public:
 
 	void safeRunForEach(const Function<void(TreeEntry* const&)>& lambda, uint32 receiverType) const;
 
-	int size() const NO_THREAD_SAFETY_ANALYSIS {
+	uint32 size() const NO_THREAD_SAFETY_ANALYSIS {
 		return count;
 	}
 
