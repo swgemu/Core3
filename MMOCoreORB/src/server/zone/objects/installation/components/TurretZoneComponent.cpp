@@ -12,6 +12,7 @@
 #include "server/zone/Zone.h"
 #include "server/zone/objects/installation/components/TurretObserver.h"
 #include "MinefieldAttackTask.h"
+#include "templates/faction/Factions.h"
 
 void TurretZoneComponent::notifyInsertToZone(SceneObject* sceneObject, Zone* zone) const {
 	if (zone == nullptr)
@@ -148,6 +149,12 @@ void TurretZoneComponent::notifyPositionUpdate(SceneObject* sceneObject, TreeEnt
 		return;
 	}
 
+	ManagedReference<TurretObject*> turret = cast<TurretObject*>(sceneObject);
+
+	if (turret == nullptr || (turret->getFaction() == Factions::FACTIONNEUTRAL) || (turret->getOwnerObjectID() < 1)) {
+		return;
+	}
+
 	ManagedReference<SceneObject*> target = cast<SceneObject*>(entry);
 
 	if (target == nullptr || !target->isCreatureObject()) {
@@ -174,12 +181,6 @@ void TurretZoneComponent::notifyPositionUpdate(SceneObject* sceneObject, TreeEnt
 		}
 
 		uint64 targetId = creatureTarget->getObjectID();
-
-		ManagedReference<TangibleObject*> turret = sceneObject->asTangibleObject();
-
-		if (turret == nullptr) {
-			return;
-		}
 
 		// Check if the creature is attackable by the turret (factional enemies)
 		if (!creatureTarget->isAttackableBy(turret)) {

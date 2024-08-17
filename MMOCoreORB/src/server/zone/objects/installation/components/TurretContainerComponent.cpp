@@ -15,7 +15,7 @@
 #include "server/zone/objects/building/BuildingObject.h"
 
 bool TurretContainerComponent::checkContainerPermission(SceneObject* sceneObject, CreatureObject* creature, uint16 permission) const {
-	if (sceneObject == nullptr || !sceneObject->isTangibleObject()) {
+	if (sceneObject == nullptr || !sceneObject->isTurret()) {
 		return false;
 	}
 
