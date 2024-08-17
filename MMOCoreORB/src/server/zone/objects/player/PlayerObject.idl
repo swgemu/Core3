@@ -82,7 +82,7 @@ class PlayerObject extends IntangibleObject {
 
 	protected transient Account account;
 
-	protected transient int countMaxCov;
+	protected transient unsigned int countMaxCov;
 
 	@dereferenced
 	protected Time reactionFineTimestamp; // Timestamp of when player was given a fine
@@ -437,11 +437,11 @@ class PlayerObject extends IntangibleObject {
 	}
 
 	@read
-	public int getCountMaxCov() {
+	public unsigned int getCountMaxCov() {
 		return countMaxCov;
 	}
 
-	public void setCountMaxCov(int newMaxCov) {
+	public void setCountMaxCov(unsigned int newMaxCov) {
 		countMaxCov = newMaxCov;
 	}
 

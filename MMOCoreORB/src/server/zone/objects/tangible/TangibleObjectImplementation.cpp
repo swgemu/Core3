@@ -452,10 +452,11 @@ void TangibleObjectImplementation::synchronizedUIStopListen(CreatureObject* play
 }
 
 void TangibleObjectImplementation::removeOutOfRangeObjects() {
-	TangibleObject* thisObject = asTangibleObject();
+	auto thisObject = asTangibleObject();
 
-	if (thisObject == nullptr)
+	if (thisObject == nullptr) {
 		return;
+	}
 
 	auto rootParent = thisObject->getRootParent();
 	auto parent = getParent().get();
@@ -466,8 +467,9 @@ void TangibleObjectImplementation::removeOutOfRangeObjects() {
 		thisObject = rootParent->asTangibleObject();
 	}
 
-	if (thisObject == nullptr)
+	if (thisObject == nullptr) {
 		return;
+	}
 
 #ifdef DEBUG_COV
 	info(true) << "TangibleObjectImplementation::removeOutOfRangeObjects() called - For Object: " << thisObject->getDisplayedName();
@@ -476,8 +478,9 @@ void TangibleObjectImplementation::removeOutOfRangeObjects() {
 	SortedVector<TreeEntry*> closeObjects;
 	auto closeObjectsVector = thisObject->getCloseObjects();
 
-	if (closeObjectsVector == nullptr)
+	if (closeObjectsVector == nullptr) {
 		return;
+	}
 
 	closeObjectsVector->safeCopyTo(closeObjects);
 
