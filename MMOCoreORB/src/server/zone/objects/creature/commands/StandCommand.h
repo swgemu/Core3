@@ -5,10 +5,9 @@
 #ifndef STANDCOMMAND_H_
 #define STANDCOMMAND_H_
 
-#include "server/zone/objects/creature/CreatureObject.h"
-
 class StandCommand : public QueueCommand {
 public:
+	const static int MINDELTA = 100;
 
 	StandCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
@@ -16,7 +15,6 @@ public:
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
-
 		if (!checkStateMask(creature)) {
 			return INVALIDSTATE;
 		}
@@ -31,21 +29,48 @@ public:
 			}
 		}
 
+		if (creature->getPosture() == CreaturePosture::UPRIGHT) {
+			return GENERALERROR;
+		}
+
 		if (creature->isAiAgent()) {
-			if (creature->isNonPlayerCreatureObject() && creature->isDizzied() && System::random(100) < 85) {
-				creature->queueDizzyFallEvent();
-				return SUCCESS;
-			}
-		} else if (creature->isDizzied() && System::random(100) < 85) {
+			return setAiAgentPosture(creature);
+		}
+
+		if (creature->isPlayerCreature()) {
+			return setPlayerPosture(creature);
+		}
+
+		creature->setPosture(CreaturePosture::UPRIGHT);
+		return SUCCESS;
+	}
+
+	int setAiAgentPosture(CreatureObject* creature) const {
+		if (creature->isNonPlayerCreatureObject() && creature->isDizzied() && System::random(100) < 85) {
 			creature->queueDizzyFallEvent();
 			return SUCCESS;
 		}
 
-		creature->setPosture(CreaturePosture::UPRIGHT, true, true);
-
+		creature->setPosture(CreaturePosture::UPRIGHT);
 		return SUCCESS;
 	}
 
+	int setPlayerPosture(CreatureObject* creature) const {
+		const String& commandName = getQueueCommandName();
+
+		if (creature->getQueueCommandDeltaTime(commandName) < StandCommand::MINDELTA) {
+			return GENERALERROR;
+		}
+
+		if (creature->isDizzied() && System::random(100) < 85) {
+			creature->queueDizzyFallEvent();
+			return SUCCESS;
+		}
+
+		creature->setQueueCommandDeltaTime(commandName, "setPosture");
+		creature->setPosture(CreaturePosture::UPRIGHT);
+		return SUCCESS;
+	}
 };
 
 #endif //STANDCOMMAND_H_

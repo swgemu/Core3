@@ -5,10 +5,11 @@
 #ifndef SITSERVERCOMMAND_H_
 #define SITSERVERCOMMAND_H_
 
-#include "templates/params/creature/CreatureState.h"
+#include "server/zone/objects/creature/commands/StandCommand.h"
 
 class SitServerCommand : public QueueCommand {
 public:
+	const static int MINDELTA = 1600;
 
 	SitServerCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
@@ -27,6 +28,10 @@ public:
 			return INVALIDSTATE;
 
 		if (arguments.isEmpty()) {
+			if (creature->isPlayerCreature()) {
+				return setPlayerPosture(creature);
+			}
+
 			creature->setPosture(CreaturePosture::SITTING);
 		} else {
 			StringTokenizer tokenizer(arguments.toString());
@@ -78,6 +83,21 @@ public:
 		return SUCCESS;
 	}
 
+	int setPlayerPosture(CreatureObject* creature) const {
+		const String& commandName = getQueueCommandName();
+
+		if (creature->getQueueCommandDeltaTime("setPosture") < StandCommand::MINDELTA) {
+			return GENERALERROR;
+		}
+
+		if (creature->getQueueCommandDeltaTime(commandName) < SitServerCommand::MINDELTA) {
+			return GENERALERROR;
+		}
+
+		creature->setQueueCommandDeltaTime(commandName, "setPosture");
+		creature->setPosture(CreaturePosture::SITTING);
+		return SUCCESS;
+	}
 };
 
 #endif //SITSERVERCOMMAND_H_

@@ -46,6 +46,7 @@ import server.zone.managers.auction.AuctionSearchTask;
 import server.zone.objects.tangible.Instrument;
 include server.zone.objects.creature.CommandQueue;
 include server.zone.objects.ship.ShipObject;
+include system.lang.String;
 
 @mock
 @json
@@ -2357,4 +2358,9 @@ class CreatureObject extends TangibleObject {
 	@dirty
 	@local
 	public native boolean checkInConversationRange(SceneObject object);
+
+	@preLocked
+	public native void setQueueCommandDeltaTime(@dereferenced final String commandName, @dereferenced final String commandGroup);
+
+	public native unsigned long getQueueCommandDeltaTime(@dereferenced final String commandName);
 }

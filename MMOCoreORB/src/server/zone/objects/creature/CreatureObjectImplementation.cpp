@@ -4388,3 +4388,31 @@ bool CreatureObjectImplementation::checkInConversationRange(SceneObject* targetO
 
 	return sqDistance < distanceToCheck;
 }
+
+void CreatureObjectImplementation::setQueueCommandDeltaTime(const String& commandName, const String& commandGroup) {
+	if (!isPlayerCreature()) {
+		return;
+	}
+
+	if (!commandName.isEmpty()) {
+		cooldownTimerMap->updateToCurrentTime(commandName + "_command_time");
+	}
+
+	if (!commandGroup.isEmpty()) {
+		cooldownTimerMap->updateToCurrentTime(commandGroup + "_command_time");
+	}
+}
+
+uint64 CreatureObjectImplementation::getQueueCommandDeltaTime(const String& commandName) {
+	if (!isPlayerCreature() || commandName.isEmpty()) {
+		return INT64_MAX;
+	}
+
+	auto commandTime = cooldownTimerMap->getTime(commandName + "_command_time");
+
+	if (commandTime == nullptr) {
+		return INT64_MAX;
+	}
+
+	return commandTime->miliDifference();
+}
