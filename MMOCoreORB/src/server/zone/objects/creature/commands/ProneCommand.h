@@ -23,10 +23,6 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
-		if (creature->getPosture() == CreaturePosture::PRONE) {
-			return GENERALERROR;
-		}
-
 		if (creature->isAiAgent()) {
 			return setAiAgentPosture(creature);
 		}

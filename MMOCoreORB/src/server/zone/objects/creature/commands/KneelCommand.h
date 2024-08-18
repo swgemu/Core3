@@ -23,10 +23,6 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
-		if (creature->getPosture() == CreaturePosture::CROUCHED) {
-			return GENERALERROR;
-		}
-
 		if (creature->isAiAgent()) {
 			return setAiAgentPosture(creature);
 		}
@@ -58,6 +54,11 @@ public:
 
 		if (creature->getQueueCommandDeltaTime(commandName) < KneelCommand::MINDELTA) {
 			return GENERALERROR;
+		}
+
+		if (creature->isDizzied() && System::random(100) < 85) {
+			creature->queueDizzyFallEvent();
+			return SUCCESS;
 		}
 
 		creature->setQueueCommandDeltaTime(commandName, "setPosture");

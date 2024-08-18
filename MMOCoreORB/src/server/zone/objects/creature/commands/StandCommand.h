@@ -29,10 +29,6 @@ public:
 			}
 		}
 
-		if (creature->getPosture() == CreaturePosture::UPRIGHT) {
-			return GENERALERROR;
-		}
-
 		if (creature->isAiAgent()) {
 			return setAiAgentPosture(creature);
 		}
