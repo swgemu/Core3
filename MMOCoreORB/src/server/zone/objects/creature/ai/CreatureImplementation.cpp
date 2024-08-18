@@ -496,6 +496,22 @@ void CreatureImplementation::setPetLevel(int newLevel) {
 	}
 }
 
+int CreatureImplementation::getAdultLevel() {
+	auto creatureDeed = getPetDeed();
+
+	// Pet Deed is not null, use the level from that
+	if (creatureDeed != nullptr) {
+		return creatureDeed->getLevel();
+	}
+
+	if (npcTemplate != nullptr) {
+		return npcTemplate->getLevel();
+	}
+
+	// Just use the creatures level
+	return getLevel();
+}
+
 bool CreatureImplementation::isMount() {
 	if (!isPet())
 		return false;

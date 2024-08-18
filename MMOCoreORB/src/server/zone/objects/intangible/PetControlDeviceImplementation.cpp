@@ -890,7 +890,19 @@ void PetControlDeviceImplementation::fillAttributeList(AttributeListMessage* alm
 		ManagedReference<AiAgent*> pet = cast<AiAgent*>(this->controlledObject.get().get());
 
 		if (pet != nullptr) {
-			alm->insertAttribute("challenge_level", pet->getLevel());
+			int petLevel = 0;
+
+			if (pet->isCreature()) {
+				auto petCreature = cast<Creature*>(pet.get());
+
+				if (petCreature != nullptr) {
+					petLevel = petCreature->getAdultLevel();
+				}
+			} else {
+				petLevel = pet->getLevel();
+			}
+
+			alm->insertAttribute("challenge_level", petLevel);
 
 			if (petType == PetManager::CREATUREPET)
 				alm->insertAttribute("creature_vitality", String::valueOf(vitality) + "/" + String::valueOf(maxVitality));
