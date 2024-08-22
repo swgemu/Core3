@@ -366,10 +366,21 @@ void ZoneServerImplementation::timedShutdown(int minutes, int flags) {
 	} else {
 		task->schedule(60 * 1000);
 
-		String str = "Server will shutdown in " + String::valueOf(minutes) + " minutes";
-		Logger::console.info(str, true);
+		StringBuffer shutdownMsg;
 
-		getChatManager()->broadcastGalaxy(nullptr, str);
+		shutdownMsg << "You will be disconnected in ";
+
+		if (minutes > 1) {
+			shutdownMsg << minutes << " minutes ";
+		} else {
+			shutdownMsg << minutes << " minute ";
+		}
+
+		shutdownMsg << "so the server can perform a final save before shutting down. Please find a safe place to logout.";
+
+		Logger::console.info(shutdownMsg.toString(), true);
+
+		getChatManager()->broadcastGalaxy(nullptr, shutdownMsg.toString());
 	}
 }
 
