@@ -47,8 +47,6 @@ class TurretObject extends InstallationObject {
 		chanceHit = 1.f;
 	}
 
-	public native void finalize();
-
 	/**
 	 * Initializes the transient members of SceneObject, must call the inherited object method first.
 	 * @pre {transient members are not initialized }

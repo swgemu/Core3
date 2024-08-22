@@ -37,15 +37,6 @@ void TurretObjectImplementation::initializeTransientMembers() {
 	InstallationObjectImplementation::initializeTransientMembers();
 }
 
-void TurretObjectImplementation::finalize() {
-	if (weapon != nullptr) {
-		weapon->destroyObjectFromWorld(true);
-		weapon->destroyObjectFromDatabase(true);
-	}
-
-	weapon = nullptr;
-}
-
 void TurretObjectImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
 	if (!templateData->isSharedInstallationObjectTemplate()) {
 		return;
