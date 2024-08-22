@@ -47,6 +47,8 @@ object_installation_faction_perk_turret_dish_lg = object_installation_faction_pe
 	optionsBitmask = 0,
 	maxCondition = 300000,
 
+	gameObjectType = 4105,
+
 	groundZoneComponent = "TurretZoneComponent",
 	dataObjectComponent = "TurretDataComponent",
 	containerComponent = "TurretContainerComponent",

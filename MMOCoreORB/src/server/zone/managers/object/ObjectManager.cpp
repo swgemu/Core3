@@ -189,7 +189,8 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<HarvesterObject>(SceneObjectType::HARVESTER);
 	objectFactory.registerObject<FactoryObject>(SceneObjectType::FACTORY);
 	objectFactory.registerObject<GeneratorObject>(SceneObjectType::GENERATOR);
-	objectFactory.registerObject<TurretObject>(SceneObjectType::DESTRUCTIBLE);
+	objectFactory.registerObject<InstallationObject>(SceneObjectType::DESTRUCTIBLE);
+	objectFactory.registerObject<TurretObject>(SceneObjectType::TURRET);
 	objectFactory.registerObject<InstallationObject>(SceneObjectType::MINEFIELD);
 	objectFactory.registerObject<InstallationObject>(SceneObjectType::COVERTSCANNER);
 	objectFactory.registerObject<WeaponObject>(SceneObjectType::WEAPON);

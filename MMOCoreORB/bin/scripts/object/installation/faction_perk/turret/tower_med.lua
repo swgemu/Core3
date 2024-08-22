@@ -47,6 +47,8 @@ object_installation_faction_perk_turret_tower_med = object_installation_faction_
 	optionsBitmask = 0,
 	maxCondition = 200000,
 
+	gameObjectType = 4105,
+
 	groundZoneComponent = "TurretZoneComponent",
 	dataObjectComponent = "TurretDataComponent",
 	containerComponent = "TurretContainerComponent",
