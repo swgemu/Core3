@@ -20,6 +20,12 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
+		auto ghost = creature->getPlayerObject().get();
+
+		if (ghost == nullptr || ghost->isTeleporting()) {
+			return GENERALERROR;
+		}
+
 		StringTokenizer tokenizer(arguments.toString());
 
 		if (!tokenizer.hasMoreTokens())
@@ -63,15 +69,53 @@ public:
 			return GENERALERROR;
 		}
 
+		auto shipComponent = dynamic_cast<ShipComponent*>(component.get());
+
+		if (shipComponent == nullptr) {
+			return GENERALERROR;
+		}
+
 		ManagedReference<SceneObject*> shipSceneO = zoneServer->getObject(shipID);
 
-		if (shipSceneO == nullptr || !shipSceneO->isShipObject())
+		if (shipSceneO == nullptr || !shipSceneO->isShipObject()) {
 			return GENERALERROR;
+		}
 
-		ManagedReference<ShipObject*> ship = shipSceneO.castTo<ShipObject*>();
+		auto ship = shipSceneO->asShipObject();
 
-		if (ship == nullptr)
+		if (ship == nullptr || ship->getOwner().get() != creature) {
 			return GENERALERROR;
+		}
+
+		bool hasGodMode = ghost->hasGodMode();
+
+		if (!hasGodMode) {
+			if (!isPlayerCertifiedForObject(creature, ship)) {
+				creature->sendSystemMessage("@ui_shipcomponents:err_cannot_open_ship_not_certified");
+				return GENERALERROR;
+			}
+
+			if (!isPlayerCertifiedForObject(creature, shipComponent)) {
+				creature->sendSystemMessage("@ui_shipcomponents:err_component_not_certified");
+				return GENERALERROR;
+			}
+
+			if (!isSlotCompatibleWithComponent(ship, shipComponent, slot)) {
+				creature->sendSystemMessage("That component is incompatible with that slot.");
+				return GENERALERROR;
+			}
+
+			int chassisMass = ship->getChassisMass();
+			int chassisMassMax = ship->getChassisMaxMass();
+			int chassisMassAvailable = chassisMassMax - chassisMass;
+
+			if (shipComponent->getMass() > chassisMassAvailable) {
+				creature->sendSystemMessage("@ui_shipcomponents:err_too_heavy");
+				return GENERALERROR;
+			}
+		} else {
+			creature->sendSystemMessage("Bypassing InstallShipComponentCommand checks due to GOD mode.");
+		}
 
 		auto componentParent = component->getParent().get();
 
@@ -109,6 +153,63 @@ public:
 		ship->install(creature, component, slot, true);
 
 		return SUCCESS;
+	}
+
+	bool isSlotCompatibleWithComponent(ShipObject* ship, ShipComponent* component, uint32 slot) const {
+		auto shipManager = ShipManager::instance();
+
+		if (shipManager == nullptr) {
+			return false;
+		}
+
+		const auto chassisData = shipManager->getChassisData(ship->getShipChassisName());
+
+		if (chassisData == nullptr) {
+			return false;
+		}
+
+		const auto slotData = chassisData->getComponentSlotData(slot);
+
+		if (slotData == nullptr) {
+			return false;
+		}
+
+		const auto componentData = shipManager->getShipComponent(component->getComponentDataName());
+
+		if (componentData == nullptr) {
+			return false;
+		}
+
+		const auto& slotCompatibility = slotData->getCompatability();
+		const auto& compCompatibility = componentData->getCompatibility();
+
+		return slotCompatibility == compCompatibility;
+	}
+
+	bool isPlayerCertifiedForObject(CreatureObject* player, TangibleObject* object) const {
+		auto objectTemplate = dynamic_cast<SharedTangibleObjectTemplate*>(object->getObjectTemplate());
+
+		if (objectTemplate == nullptr) {
+			return false;
+		}
+
+		auto ghost = player->getPlayerObject().get();
+
+		if (ghost == nullptr) {
+			return false;
+		}
+
+		const auto& certs = objectTemplate->getCertificationsRequired();
+
+		for (int i = 0; i < certs.size(); ++i) {
+			auto cert = certs.get(i);
+
+			if (!ghost->hasAbility(cert) && !player->hasSkill(cert)) {
+				return false;
+			}
+		}
+
+		return true;
 	}
 
 };
