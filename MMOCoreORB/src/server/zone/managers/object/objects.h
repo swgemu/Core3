@@ -30,6 +30,7 @@
 #include "server/zone/objects/ship/components/ShipBoosterComponent.h"
 #include "server/zone/objects/ship/components/ShipCapacitorComponent.h"
 #include "server/zone/objects/ship/components/ShipChassisComponent.h"
+#include "server/zone/objects/ship/components/ShipDroidInterfaceComponent.h"
 #include "server/zone/objects/ship/components/ShipEngineComponent.h"
 #include "server/zone/objects/ship/components/ShipReactorComponent.h"
 #include "server/zone/objects/ship/components/ShipShieldComponent.h"

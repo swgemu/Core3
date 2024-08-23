@@ -24,7 +24,7 @@ ShipChassisData::ShipChassisData(DataTableRow* row, Vector<String>& columnNames)
 		}
 		row->getCell(i+1)->getValue(hitweight);
 		row->getCell(i+2)->getValue(targetable);
-		componentMap.put(componentName, new ComponentSlotData(compatability, componentName, hitweight, targetable));
+		componentMap.put(componentName, new ComponentSlotData(componentName, compatability, hitweight, targetable));
 	}
 
 	loadComponentHardpoints();

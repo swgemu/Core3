@@ -1,0 +1,47 @@
+/*
+Copyright <SWGEmu>
+See file COPYING for copying conditions.
+*/
+
+package server.zone.objects.ship.components;
+
+import server.zone.objects.ship.components.ShipComponent;
+import server.zone.objects.creature.CreatureObject;
+import server.zone.objects.ship.ShipObject;
+
+include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
+include server.zone.packets.scene.AttributeListMessage;
+include templates.SharedObjectTemplate;
+
+class ShipDroidInterfaceComponent extends ShipComponent {
+	protected float droidCommandSpeed;
+
+	public ShipDroidInterfaceComponent() {
+		droidCommandSpeed = 0.f;
+	}
+
+	public float getDroidCommandSpeed() {
+		return droidCommandSpeed;
+	}
+
+	@local
+	public void setDroidCommandSpeed(float value) {
+		droidCommandSpeed = value;
+	}
+
+	@local
+	public native void loadTemplateData(SharedObjectTemplate templateData);
+
+	@local
+	public native void updateCraftingValues(CraftingValues values, boolean firstUpdate);
+
+	@local
+	@dirty
+	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
+
+	@local
+	public native void install(CreatureObject owner, ShipObject component, int slot, boolean notifyClient);
+
+	@local
+	public native void uninstall(CreatureObject owner, ShipObject component, int slot, boolean notifyClient);
+}
