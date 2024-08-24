@@ -452,57 +452,63 @@ void TangibleObjectImplementation::synchronizedUIStopListen(CreatureObject* play
 }
 
 void TangibleObjectImplementation::removeOutOfRangeObjects() {
-	TangibleObject* thisObject = asTangibleObject();
+	TangibleObject* rangeCheckObject = asTangibleObject();
 
-	if (thisObject == nullptr)
+	if (rangeCheckObject == nullptr) {
 		return;
+	}
 
-	auto rootParent = thisObject->getRootParent();
+	auto rootParent = rangeCheckObject->getRootParent();
 	auto parent = getParent().get();
 
 	if (parent != nullptr && (parent->isVehicleObject() || parent->isMount())) {
-		thisObject = parent->asTangibleObject();
+		rangeCheckObject = parent->asTangibleObject();
 	} else if (rootParent != nullptr && (rootParent->isShipObject() || rootParent->isStructureObject())) {
-		thisObject = rootParent->asTangibleObject();
+		rangeCheckObject = rootParent->asTangibleObject();
 	}
 
-	if (thisObject == nullptr)
+	if (rangeCheckObject == nullptr) {
 		return;
+	}
 
 #ifdef DEBUG_COV
-	info(true) << "TangibleObjectImplementation::removeOutOfRangeObjects() called - For Object: " << thisObject->getDisplayedName();
+	info(true) << "TangibleObjectImplementation::removeOutOfRangeObjects() called - For Object: " << rangeCheckObject->getDisplayedName();
 #endif // DEBUG_COV
 
 	SortedVector<TreeEntry*> closeObjects;
-	auto closeObjectsVector = thisObject->getCloseObjects();
 
-	if (closeObjectsVector == nullptr)
+	// Using this Tangible objects COV
+	auto closeObjectsVector = getCloseObjects();
+
+	if (closeObjectsVector == nullptr) {
 		return;
+	}
 
 	closeObjectsVector->safeCopyTo(closeObjects);
 
-	auto worldPos = thisObject->getWorldPosition();
+	auto worldPos = rangeCheckObject->getWorldPosition();
 
 	float ourX = worldPos.getX();
 	float ourY = worldPos.getY();
 	float ourZ = worldPos.getZ();
 
-	float ourRange = thisObject->getOutOfRangeDistance();
-	bool objectIsShip = thisObject->isShipObject();
+	float ourRange = rangeCheckObject->getOutOfRangeDistance();
+	bool objectIsShip = rangeCheckObject->isShipObject();
 
-	int countChecked = 0;
-	int countCov = closeObjects.size();
+	uint64 thisObectId = getObjectID();
+	uint64 rangeCheckObjectId = rangeCheckObject->getObjectID();
 
 	for (int i = closeObjects.size() - 1; i >= 0; i--) {
 		auto covObject = static_cast<SceneObject*>(closeObjects.getUnsafe(i));
 
-		// Don't remove ourselves
-		if (covObject == nullptr || covObject->getObjectID() == getObjectID()) {
+		if (covObject == nullptr) {
 			continue;
 		}
 
-		// Don't remove our own root parent, this applies to large things like Geo Caves due to their size.
-		if (rootParent != nullptr && rootParent->getObjectID() == covObject->getObjectID()) {
+		uint64 covObjectId = covObject->getObjectID();
+
+		// Don't remove ourselves or our parent / root parent that is being used to remove objects out of range
+		if (covObjectId == thisObectId || covObjectId == rangeCheckObjectId) {
 			continue;
 		}
 
@@ -513,8 +519,6 @@ void TangibleObjectImplementation::removeOutOfRangeObjects() {
 		if (covObjectRoot != nullptr) {
 			continue;
 		}
-
-		countChecked++;
 
 		auto objectWorldPos = covObject->getWorldPosition();
 
@@ -538,8 +542,6 @@ void TangibleObjectImplementation::removeOutOfRangeObjects() {
 			continue;
 		}
 
-		countCov--;
-
 		/*
 		if (getObjectID() == PLAYERIDHERE && (covObject->isVehicleObject() || covObject->isPlayerCreature())) {
 			StringBuffer msg;
@@ -549,14 +551,14 @@ void TangibleObjectImplementation::removeOutOfRangeObjects() {
 			info(true) << msg.toString();
 		}*/
 
-		// Remove covObject from thisObjects (or using thisObject's parent)
-		if (thisObject->getCloseObjects() != nullptr) {
-			thisObject->removeInRangeObject(covObject);
+		// Remove covObject from in range objects using either the objects root parent or the object itself
+		if (rangeCheckObject->getCloseObjects() != nullptr) {
+			rangeCheckObject->removeInRangeObject(covObject);
 		}
 
-		// Remove thisObject from covObjects COV
+		// Remove the object from covObjects' COV
 		if (covObject->getCloseObjects() != nullptr) {
-			covObject->removeInRangeObject(thisObject);
+			covObject->removeInRangeObject(rangeCheckObject);
 		}
 	}
 }

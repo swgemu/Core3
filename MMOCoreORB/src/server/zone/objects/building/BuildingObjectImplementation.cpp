@@ -577,7 +577,9 @@ void BuildingObjectImplementation::notifyDissapear(TreeEntry* object) {
 	uint64 scnoID = sceneO->getObjectID();
 
 #ifdef DEBUG_COV
-	info(true) << getObjectName() << " - BuildingObjectImplementation::notifyDissapear for Object: " << sceneO->getDisplayedName() << " ID: " << sceneO->getObjectID();
+	if (sceneO->isPlayerCreature()) {
+		info(true) << getObjectName() << " - BuildingObjectImplementation::notifyDissapear for Object: " << sceneO->getDisplayedName() << " ID: " << sceneO->getObjectID();
+	}
 
 	/*
 	if (getObjectID() == 88) { // Theed Cantina
@@ -590,15 +592,16 @@ void BuildingObjectImplementation::notifyDissapear(TreeEntry* object) {
 	}*/
 #endif // DEBUG_COV
 
-	// Prevent players that are mounted from being loaded on their own. When their mount loads it will send the player on its own
+	// Prevent players that are mounted from being removed on their own. When their mount disappears it will remove its contained & children objects
 	if (sceneO->isPlayerCreature()) {
 		auto player = sceneO->asCreatureObject();
 
 		if (player != nullptr && player->isRidingMount()) {
 #ifdef DEBUG_COV
 			// Theed Medical Center & Theed Cloning Facility
-			if (((getObjectID() == 1697358) || (getObjectID() == 1697350) || !isClientObject()) && ((sceneO->isPlayerCreature() || sceneO->isVehicleObject())))
+			if (((getObjectID() == 1697358) || (getObjectID() == 1697350) || !isClientObject()) && ((sceneO->isPlayerCreature() || sceneO->isVehicleObject()))) {
 				info(true) << "Blocked the removing of player that is riding mount: " << sceneO->getDisplayedName();
+			}
 #endif // DEBUG_COV
 			return;
 		}
@@ -607,16 +610,18 @@ void BuildingObjectImplementation::notifyDissapear(TreeEntry* object) {
 	for (int i = 0; i < cells.size(); ++i) {
 		auto& cell = cells.get(i);
 
-		if (!cell->isContainerLoaded())
+		if (!cell->isContainerLoaded()) {
 			continue;
+		}
 
 		try {
 			for (int j = 0; j < cell->getContainerObjectsSize(); ++j) {
 				auto child = cell->getContainerObject(j);
 
 				// Child should not remove itself
-				if (child == nullptr || child->getObjectID() == scnoID)
+				if (child == nullptr || child->getObjectID() == scnoID) {
 					continue;
+				}
 
 #ifdef DEBUG_COV
 				// Theed Medical Center & Theed Cloning Facility
