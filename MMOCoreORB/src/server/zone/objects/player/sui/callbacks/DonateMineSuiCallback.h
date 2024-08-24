@@ -61,9 +61,21 @@ public:
 			return;
 		}
 
-		Locker clock(mineSceneO, minefield);
+		auto mine = mineSceneO.castTo<WeaponObject*>();
 
-		minefield->transferObject(mineSceneO, -1, true);
+		if (mine == nullptr) {
+			return;
+		}
+
+		Locker clock(mine, minefield);
+
+		if (!minefield->transferObject(mine, -1, true)) {
+			return;
+		}
+
+		mine->sendDestroyTo(player);
+
+		minefield->broadcastObject(mine, false);
 	}
 };
 

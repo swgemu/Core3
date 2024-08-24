@@ -15,6 +15,7 @@
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/managers/collision/CollisionManager.h"
 #include "server/zone/managers/gcw/GCWManager.h"
+#include "server/zone/objects/player/FactionStatus.h"
 
 void MinefieldMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) const {
 	if (sceneObject == nullptr || !sceneObject->isMinefield() || sceneObject->getZone() == nullptr) {
@@ -25,19 +26,23 @@ void MinefieldMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, Ob
 		return;
 	}
 
-	if (player->getFaction() == Factions::FACTIONNEUTRAL) {
+	ManagedReference<InstallationObject*> minefield = cast<InstallationObject*>(sceneObject);
+
+	if (minefield == nullptr) {
+		return;
+	}
+
+	uint32 playerFaction = player->getFaction();
+	uint32 minefieldFaction = minefield->getFaction();
+	int playerStatus = player->getFactionStatus();
+
+	if (playerFaction == Factions::FACTIONNEUTRAL || playerStatus == FactionStatus::ONLEAVE || minefieldFaction == Factions::FACTIONNEUTRAL) {
 		return;
 	}
 
 	auto zoneServer = sceneObject->getZoneServer();
 
 	if (zoneServer == nullptr) {
-		return;
-	}
-
-	ManagedReference<InstallationObject*> minefield = cast<InstallationObject*>(sceneObject);
-
-	if (minefield == nullptr) {
 		return;
 	}
 
@@ -59,7 +64,7 @@ void MinefieldMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, Ob
 
 	// Allow privileged access to the mine unless the player is the same faction
 	if (!isPrivileged) {
-		bool similarStatus = (minefield->getFactionStatus() <= player->getFactionStatus());
+		bool similarStatus = ((minefield->getPvpStatusBitmask() & ObjectFlag::OVERT) && (playerStatus == FactionStatus::OVERT));
 
 		// Player is a lower faction status then the minefield
 		if (!similarStatus) {

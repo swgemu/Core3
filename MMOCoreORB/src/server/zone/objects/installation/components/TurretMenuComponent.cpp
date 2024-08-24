@@ -16,6 +16,7 @@
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/managers/collision/CollisionManager.h"
 #include "server/zone/managers/gcw/GCWManager.h"
+#include "server/zone/objects/player/FactionStatus.h"
 
 void TurretMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) const {
 	if (sceneObject == nullptr || !sceneObject->isTurret() || sceneObject->getZone() == nullptr) {
@@ -26,19 +27,23 @@ void TurretMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, Objec
 		return;
 	}
 
-	if (player->getFaction() == Factions::FACTIONNEUTRAL) {
+	ManagedReference<TurretObject*> turret = cast<TurretObject*>(sceneObject);
+
+	if (turret == nullptr) {
+		return;
+	}
+
+	uint32 playerFaction = player->getFaction();
+	uint32 turretFaction = turret->getFaction();
+	int playerStatus = player->getFactionStatus();
+
+	if (playerFaction == Factions::FACTIONNEUTRAL || playerStatus == FactionStatus::ONLEAVE || turretFaction == Factions::FACTIONNEUTRAL) {
 		return;
 	}
 
 	auto zoneServer = sceneObject->getZoneServer();
 
 	if (zoneServer == nullptr) {
-		return;
-	}
-
-	ManagedReference<TurretObject*> turret = cast<TurretObject*>(sceneObject);
-
-	if (turret == nullptr) {
 		return;
 	}
 
@@ -60,7 +65,7 @@ void TurretMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, Objec
 
 	// Allow privileged access to the turret unless the player is the same faction
 	if (!isPrivileged) {
-		bool similarStatus = (turret->getFactionStatus() <= player->getFactionStatus());
+		bool similarStatus = ((turret->getPvpStatusBitmask() & ObjectFlag::OVERT) && (playerStatus == FactionStatus::OVERT));
 
 		// Player is a lower faction status then the turret
 		if (!similarStatus) {
@@ -68,7 +73,7 @@ void TurretMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, Objec
 		}
 
 		// Player and turret are opposite faction
-		if (player->getFaction() != turret->getFaction()) {
+		if (playerFaction != turretFaction) {
 			// Player and turret are opposite faction but same faction status
 			if (similarStatus) {
 				menuResponse->addRadialMenuItem(RadialOptions::SERVER_MENU1, 3, "@player_structure:disarm_minefield"); // "Disarm Minefield"

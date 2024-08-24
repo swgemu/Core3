@@ -13,19 +13,28 @@
 #include "templates/faction/Factions.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/building/BuildingObject.h"
+#include "server/zone/objects/player/FactionStatus.h"
 
 bool TurretContainerComponent::checkContainerPermission(SceneObject* sceneObject, CreatureObject* creature, uint16 permission) const {
 	if (sceneObject == nullptr || !sceneObject->isTurret()) {
 		return false;
 	}
 
-	auto turret = cast<TurretObject*>(sceneObject);
+	if (permission == ContainerPermissions::MOVEIN) {
+		return false;
+	}
+
+	ManagedReference<TurretObject*> turret = cast<TurretObject*>(sceneObject);
 
 	if (creature == nullptr || turret == nullptr) {
 		return false;
 	}
 
-	if (creature->getFaction() == Factions::FACTIONNEUTRAL || turret->getFaction() == Factions::FACTIONNEUTRAL) {
+	uint32 playerFaction = creature->getFaction();
+	uint32 turretFaction = turret->getFaction();
+	int playerStatus = creature->getFactionStatus();
+
+	if (playerFaction == Factions::FACTIONNEUTRAL || playerStatus == FactionStatus::ONLEAVE || turretFaction == Factions::FACTIONNEUTRAL) {
 		return false;
 	}
 
@@ -56,12 +65,14 @@ bool TurretContainerComponent::checkContainerPermission(SceneObject* sceneObject
 			return false;
 		}
 
-		if ((turret->getFaction() != creature->getFaction()) || (creature->getFactionStatus() < turret->getFactionStatus())) {
+		bool similarStatus = ((turret->getPvpStatusBitmask() & ObjectFlag::OVERT) && (playerStatus == FactionStatus::OVERT));
+
+		if (turretFaction != playerFaction || !similarStatus) {
 			return false;
 		}
 	}
 
-	if (permission == ContainerPermissions::OPEN || permission == ContainerPermissions::MOVEIN || permission == ContainerPermissions::MOVEOUT) {
+	if (permission == ContainerPermissions::OPEN || permission == ContainerPermissions::MOVEOUT) {
 		return true;
 	}
 
