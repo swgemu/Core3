@@ -82,7 +82,7 @@ private:
 	ShipProjectileMap projectileMap;
 
 private:
-	void broadcastProjectile(ShipObject* ship, const ShipProjectile* projectile) const;
+	void broadcastProjectile(ShipObject* ship, const ShipProjectile* projectile, CreatureObject* player) const;
 
 	void broadcastMissile(ShipObject* ship, const ShipMissile* missile) const;
 
@@ -113,7 +113,7 @@ private:
 public:
 	int updateProjectiles();
 
-	void addProjectile(ShipObject* ship, ShipProjectile* projectile);
+	void addProjectile(ShipObject* ship, ShipProjectile* projectile, CreatureObject* player = nullptr);
 
 	void addMissile(ShipObject* ship, ShipMissile* missile);
 
