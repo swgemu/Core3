@@ -120,13 +120,10 @@ public:
 			return;
 		}
 
-		auto component = ship->getComponentObject(ShipObject::WEAPON_COMPONENT_START + weaponIndex);
-		if (component == nullptr) {
-			return;
-		}
+		uint32 slot = Components::WEAPON_START + weaponIndex;
+		uint32 crc = ship->getShipComponentMap()->get(slot);
 
-		auto weapon = dynamic_cast<ShipWeaponComponent*>(component);
-		if (weapon == nullptr) {
+		if (crc == 0 || !ship->isComponentFunctional(slot)) {
 			return;
 		}
 
@@ -135,36 +132,43 @@ public:
 			return;
 		}
 
-		auto data = shipManager->getProjectileData(component->getComponentDataName().hashCode());
+		auto data = shipManager->getProjectileData(crc);
 		if (data == nullptr) {
 			return;
 		}
 
+		Locker lock(pilot);
+		Locker cross(ship, pilot);
+
 		pilot->setSyncStamp(sequence);
 
-		if (data->isCountermeasure()) {
-			launchCountermeasure(ship, pilot, weapon, data);
-		} else if (data->isMissile()) {
-			launchMissile(ship, pilot, weapon, data);
-		} else {
-			float currentEnergy = ship->getCapacitorEnergy();
-			float cost = weapon->getEnergyPerShot();
+		float energyPerShot = ship->getEnergyPerShotMap()->get(slot);
 
-			if (currentEnergy >= cost) {
-				Locker lock(pilot);
-				Locker cross(ship, pilot);
+		if (energyPerShot > 0.f) {
+			float energyEfficiency = Math::clamp(0.1f, ship->getComponentEnergyEfficiencyMap()->get(slot), 10.f);
+			float actualEnergyCost = energyPerShot / energyEfficiency;
+			float capacitorEnergy = ship->getCapacitorEnergy();
 
-				ship->setCapacitorEnergy(currentEnergy - cost, true);
-
-				auto projectile = new ShipProjectile(ship, weaponIndex, projectileType, componentIndex, position, direction, data->getSpeed(), data->getRange(), 1.f, System::getMiliTime());
-				projectile->readProjectileData(data);
-
-				SpaceCombatManager::instance()->addProjectile(ship, projectile);
+			if (capacitorEnergy < actualEnergyCost) {
+				return;
 			}
+
+			ship->setCapacitorEnergy(capacitorEnergy - actualEnergyCost, true);
+		}
+
+		if (data->isCountermeasure()) {
+			launchCountermeasure(ship, pilot, data);
+		} else if (data->isMissile()) {
+			launchMissile(ship, pilot, data);
+		} else {
+			auto projectile = new ShipProjectile(ship, weaponIndex, projectileType, componentIndex, position, direction, data->getSpeed(), data->getRange(), 1.f, System::getMiliTime());
+			projectile->readProjectileData(data);
+
+			SpaceCombatManager::instance()->addProjectile(ship, projectile, pilot);
 		}
 	}
 
-	void launchCountermeasure(ShipObject* ship, CreatureObject* pilot, ShipWeaponComponent* weapon, const ShipProjectileData* data) {
+	void launchCountermeasure(ShipObject* ship, CreatureObject* pilot, const ShipProjectileData* data) const {
 		auto shipManager = ShipManager::instance();
 		if (shipManager == nullptr) {
 			return;
@@ -183,9 +187,6 @@ public:
 			return;
 		}
 
-		Locker lock(pilot);
-		Locker cross(ship, pilot);
-
 		auto deltaVector = ship->getDeltaVector();
 		if (deltaVector == nullptr) {
 			return;
@@ -201,7 +202,7 @@ public:
 		SpaceCombatManager::instance()->addCountermeasure(ship, counter);
 	}
 
-	void launchMissile(ShipObject* ship, CreatureObject* pilot, ShipWeaponComponent* weapon, const ShipProjectileData* data) {
+	void launchMissile(ShipObject* ship, CreatureObject* pilot, const ShipProjectileData* data) const {
 		auto targetID = pilot->getTargetID();
 		if (targetID == 0) {
 			return;
@@ -239,9 +240,6 @@ public:
 		if (missileData == nullptr) {
 			return;
 		}
-
-		Locker lock(pilot);
-		Locker cross(ship, pilot);
 
 		auto deltaVector = ship->getDeltaVector();
 		if (deltaVector == nullptr) {
