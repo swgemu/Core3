@@ -1642,9 +1642,10 @@ class SceneObject extends TreeEntry implements Logger, Metrics {
 	public native abstract FighterShipObject asFighterShip();
 
 	@dirty
-	public abstract boolean isCreature() {
-		return false;
-	}
+	@local
+	@nativeStub
+	@virtualStub
+	public native abstract boolean isCreature();
 
 	@dirty
 	@local
