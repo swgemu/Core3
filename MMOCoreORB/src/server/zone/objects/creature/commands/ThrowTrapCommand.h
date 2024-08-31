@@ -70,7 +70,7 @@ public:
 				return GENERALERROR;
 			}
 
-			if (targetCreature->isDead()) {
+			if (targetCreature->isDead() || !targetCreature->isAttackableBy(creature)) {
 				return INVALIDTARGET;
 			}
 
