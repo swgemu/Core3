@@ -577,11 +577,6 @@ void BuildingObjectImplementation::notifyDissapear(TreeEntry* object) {
 	uint64 scnoID = sceneO->getObjectID();
 
 #ifdef DEBUG_COV
-	if (sceneO->isPlayerCreature()) {
-		info(true) << getObjectName() << " - BuildingObjectImplementation::notifyDissapear for Object: " << sceneO->getDisplayedName() << " ID: " << sceneO->getObjectID();
-	}
-
-	/*
 	if (getObjectID() == 88) { // Theed Cantina
 		info("BuildingObjectImplementation::notifyDissapear(" + String::valueOf(scnoID) + ")", true);
 
@@ -589,22 +584,31 @@ void BuildingObjectImplementation::notifyDissapear(TreeEntry* object) {
 
 		if (c != nullptr)
 			c->info("BuildingObjectImplementation::notifyDissapear from " + String::valueOf(getObjectID()), true);
-	}*/
+	} else if (getObjectID() == 1082874 && (sceneO->isPlayerCreature() || sceneO->isVehicleObject())) {
+		info(true) << "BuildingObjectImplementation::notifyDissapear ----- Mos Eisley cantina removing player or vehicle from nearby objects: " << sceneO->getDisplayedName();
+	}
 #endif // DEBUG_COV
 
 	// Prevent players that are mounted from being removed on their own. When their mount disappears it will remove its contained & children objects
 	if (sceneO->isPlayerCreature()) {
+#ifdef DEBUG_COV
+		if (sceneO->isPlayerCreature()) {
+			info(true) << getObjectName() << " - BuildingObjectImplementation::notifyDissapear for Player: " << sceneO->getDisplayedName() << " ID: " << sceneO->getObjectID();
+		}
+#endif // DEBUG_COV
+
 		auto player = sceneO->asCreatureObject();
 
 		if (player != nullptr && player->isRidingMount()) {
 #ifdef DEBUG_COV
 			uint64 structureID = getObjectID();
 
-			// Theed Medical Center & Theed Cloning Facility
-			if (((structureID == 1697358) || (structureID == 1697350) || !isClientObject()) && ((sceneO->isPlayerCreature() || sceneO->isVehicleObject()))) {
-				info(true) << "Blocked the removing of player that is riding mount: " << sceneO->getDisplayedName();
+			// Mos Eisley Cantina, Theed Medical Center, Theed Cloning Facility Tests, and Player Structures
+			if ((structureID == 1082874) || (structureID == 1697358) || (structureID == 1697350) || !isClientObject()) {
+				info(true) << "Blocked notifyDissapear for player that is riding vehicle or mount: " << sceneO->getDisplayedName();
 			}
 #endif // DEBUG_COV
+
 			return;
 		}
 	}
@@ -627,8 +631,9 @@ void BuildingObjectImplementation::notifyDissapear(TreeEntry* object) {
 
 #ifdef DEBUG_COV
 				// Theed Medical Center & Theed Cloning Facility
-				if (((getObjectID() == 1697358) || (getObjectID() == 1697350) || !isClientObject()) && child->isPlayerCreature() && (sceneO->isPlayerCreature() || sceneO->isVehicleObject()))
-					info(true) << child->getDisplayedName() << " - removing inRangeObject Entry Object: " << sceneO->getDisplayedName();
+				if (((getObjectID() == 1082874) || (getObjectID() == 1697358) || (getObjectID() == 1697350)) && child->isPlayerCreature() && (sceneO->isPlayerCreature() || sceneO->isVehicleObject())) {
+					info(true) << child->getDisplayedName() << " - removing inRangeObject Object: " << sceneO->getDisplayedName();
+				}
 #endif // DEBUG_COV
 
 				if (child->getCloseObjects() != nullptr) {

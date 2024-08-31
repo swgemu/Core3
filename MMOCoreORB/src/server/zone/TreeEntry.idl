@@ -36,20 +36,7 @@ class TreeEntry extends Observable {
 	protected transient int receiverFlags;
 
 	@dirty
-	public void addInRangeObject(TreeEntry obj, boolean doNotifyUpdate = true) {
-		//System::out << "adding in range object:" << obj << "\n";
-
-		if (closeobjects.put(obj) != -1) {
-			notifyInsert(obj);
-		} else if (doNotifyUpdate) {
-			notifyPositionUpdate(obj);
-		}
-	}
-
-	/*@read
-	public TreeEntry getInRangeObject(int index) {
-		return closeobjects.get(index);
-	}*/
+	public native void addInRangeObject(TreeEntry obj, boolean doNotifyUpdate = true);
 
 	@dirty
 	public native void removeInRangeObject(TreeEntry obj, boolean notifyDisappear = true);

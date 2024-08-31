@@ -24,18 +24,24 @@ void TreeEntryImplementation::setNode(TreeNode* n) {
 	node = n;
 }
 
+void TreeEntryImplementation::addInRangeObject(TreeEntry* obj, bool doNotifyUpdate) {
+	if (obj == nullptr) {
+		return;
+	}
+
+	if (closeobjects != nullptr && closeobjects->put(obj) != -1) {
+ 		notifyInsert(obj);
+	} else if (doNotifyUpdate) {
+		notifyPositionUpdate(obj);
+	}
+}
+
 void TreeEntryImplementation::removeInRangeObject(TreeEntry* obj, bool notifyDisappear) {
 	if (obj == nullptr) {
 		return;
 	}
 
-	auto closeObjects = getCloseObjects();
-
-	if (closeObjects == nullptr) {
-		return;
-	}
-
-	if (closeObjects->drop(obj) && notifyDisappear) {
+	if (closeobjects != nullptr && closeobjects->drop(obj) && notifyDisappear) {
 		notifyDissapear(obj);
 	}
 }
@@ -262,8 +268,9 @@ float TreeEntryImplementation::getOutOfRangeDistance() {
 	auto thisNode = node.get();
 	float closeRange = ZoneServer::CLOSEOBJECTRANGE;
 
-	if (thisNode != nullptr && thisNode->dividerZ != -1)
+	if (thisNode != nullptr && thisNode->dividerZ != -1) {
 		closeRange = ZoneServer::SPACEOBJECTRANGE;
+	}
 
 	if (radius > (closeRange * 0.5f)) {
 		return closeRange + radius;

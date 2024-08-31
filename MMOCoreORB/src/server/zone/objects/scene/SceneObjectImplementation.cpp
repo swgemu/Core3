@@ -1053,10 +1053,11 @@ void SceneObjectImplementation::notifyDissapear(TreeEntry* object) {
 
 	auto zone = getZone();
 
-	if (zone != nullptr && zone->isSpaceZone())
+	if (zone != nullptr && zone->isSpaceZone()) {
 		spaceZoneComponent->notifyDissapear(asSceneObject(), object);
-	else
+	} else {
 		groundZoneComponent->notifyDissapear(asSceneObject(), object);
+	}
 }
 
 void SceneObjectImplementation::notifyRemoveFromZone() {

@@ -454,11 +454,7 @@ void TangibleObjectImplementation::synchronizedUIStopListen(CreatureObject* play
 void TangibleObjectImplementation::removeOutOfRangeObjects() {
 	auto rangeCheckObject = asTangibleObject();
 
-	if (rangeCheckObject == nullptr) {
-		return;
-	}
-
-	auto rootParent = rangeCheckObject->getRootParent();
+	auto rootParent = getRootParent();
 	auto parent = getParent().get();
 
 	if (parent != nullptr && (parent->isVehicleObject() || parent->isMount())) {
@@ -495,7 +491,7 @@ void TangibleObjectImplementation::removeOutOfRangeObjects() {
 	float ourRange = rangeCheckObject->getOutOfRangeDistance();
 	bool objectIsShip = rangeCheckObject->isShipObject();
 
-	uint64 thisObectId = getObjectID();
+	uint64 thisObjectID = getObjectID();
 	uint64 rangeCheckObjectId = rangeCheckObject->getObjectID();
 
 	for (int i = closeObjects.size() - 1; i >= 0; i--) {
@@ -505,10 +501,10 @@ void TangibleObjectImplementation::removeOutOfRangeObjects() {
 			continue;
 		}
 
-		uint64 covObjectId = covObject->getObjectID();
+		uint64 covObjectID = covObject->getObjectID();
 
 		// Don't remove ourselves or our parent / root parent that is being used to remove objects out of range
-		if (covObjectId == thisObectId || covObjectId == rangeCheckObjectId) {
+		if (covObjectID == thisObjectID || covObjectID == rangeCheckObjectId) {
 			continue;
 		}
 
@@ -517,6 +513,9 @@ void TangibleObjectImplementation::removeOutOfRangeObjects() {
 
 		// They should be managed by the parent
 		if (covObjectRoot != nullptr) {
+			continue;
+		// covObject is a player, their root is null but this object has a parent
+		} else if (covObject->isPlayerCreature() && parent != nullptr) {
 			continue;
 		}
 
@@ -543,12 +542,12 @@ void TangibleObjectImplementation::removeOutOfRangeObjects() {
 		}
 
 		/*
-		// Internal Test for MosEisley Cantina
-		if ((getObjectID() == PLAYERIDHERE) && (covObject->getObjectID() == COVOBJECTIDHERE)) {
+		if (isPlayerCreature() && ((covObject->getObjectID() == COVOBJECTIDHERE) || covObject->isPlayerCreature() || covObject->isVehicleObject())) {
 			StringBuffer msg;
 
 			msg << endl << endl
-			<< getDisplayedName() << " -- TangibleObjectImplementation::removeOutOfRangeObjects() removing MosEisley Cantina from COV -- " << covObject->getDisplayedName() << endl
+			<< getDisplayedName() << " -- TangibleObjectImplementation::removeOutOfRangeObjects() removing Object from COV -- " << covObject->getDisplayedName() << endl
+			<< "COV Size: " << getCloseObjects()->size() << endl
 			<< "Parent ID: " << getParentID() << endl
 			<< "Root Parent ID: " << (rootParent != nullptr ? rootParent->getObjectID() : 0) << endl
 			<< "Player is using Range Check Object: " << rangeCheckObject->getDisplayedName() <<  " ID: " <<  rangeCheckObject->getObjectID() << endl
@@ -560,24 +559,26 @@ void TangibleObjectImplementation::removeOutOfRangeObjects() {
 
 			info(true) << msg.toString();
 		}
-
-		// Vehicle testing
-		if (getObjectID() == PLAYERIDHERE && (covObject->isVehicleObject() || covObject->isPlayerCreature())) {
-			StringBuffer msg;
-
-			msg << getDisplayedName() << " removeOutOfRangeObjects task removed object from COV: " << covObject->getDisplayedName() << endl;
-			msg << "Our World Pos: " << worldPos.toString() << " Distance Sq: " << deltaDistance << " RangeSq Checked Against: " << outOfRangeSqr;
-			info(true) << msg.toString();
-		}*/
+		*/
 
 		// Remove covObject from this objects COV
-		if (getCloseObjects() != nullptr) {
-			removeInRangeObject(covObject);
+		if (rangeCheckObject->isVehicleObject() || rangeCheckObject->isMount()) {
+			rangeCheckObject->removeInRangeObject(covObject);
+		} else {
+			rangeCheckObject = asTangibleObject();
+
+			if (getCloseObjects() != nullptr) {
+				removeInRangeObject(covObject);
+			} else {
+				notifyDissapear(covObject);
+			}
 		}
 
 		// Remove the object from covObjects' COV
 		if (covObject->getCloseObjects() != nullptr) {
 			covObject->removeInRangeObject(rangeCheckObject);
+		} else {
+			covObject->notifyDissapear(covObject);
 		}
 	}
 }
