@@ -12,7 +12,7 @@
 #include "server/zone/packets/ship/OnShipHit.h"
 #include "server/zone/packets/jtl/CreateMissileMessage.h"
 
-void SpaceCombatManager::broadcastProjectile(ShipObject* ship, const ShipProjectile* projectile) const {
+void SpaceCombatManager::broadcastProjectile(ShipObject* ship, const ShipProjectile* projectile, CreatureObject* player) const {
 	auto cov = ship == nullptr ? nullptr : ship->getCloseObjects();
 	if (cov == nullptr) {
 		return;
@@ -24,7 +24,7 @@ void SpaceCombatManager::broadcastProjectile(ShipObject* ship, const ShipProject
 	for (int i = 0; i < closeObjects.size(); ++i) {
 		auto playerEntry = closeObjects.get(i).castTo<CreatureObject*>();
 
-		if (playerEntry == nullptr) {
+		if (playerEntry == nullptr || playerEntry == player) {
 			continue;
 		}
 
@@ -622,7 +622,7 @@ int SpaceCombatManager::updateProjectiles() {
 	return System::getMiliTime() - miliTime;
 }
 
-void SpaceCombatManager::addProjectile(ShipObject* ship, ShipProjectile* projectile) {
+void SpaceCombatManager::addProjectile(ShipObject* ship, ShipProjectile* projectile, CreatureObject* player) {
 	if (ship == nullptr || projectile == nullptr) {
 		return;
 	}
@@ -630,7 +630,7 @@ void SpaceCombatManager::addProjectile(ShipObject* ship, ShipProjectile* project
 	Locker sLock(ship);
 
 	projectileMap.addProjectile(ship, projectile);
-	broadcastProjectile(ship, projectile);
+	broadcastProjectile(ship, projectile, player);
 }
 
 void SpaceCombatManager::addMissile(ShipObject* ship, ShipMissile* missile) {

@@ -570,23 +570,28 @@ void ShipObjectImplementation::updatePlayersInShip(bool lightUpdate, bool sendPa
 		return;
 	}
 
-	// info(true) << "ShipObjectImplementation::updatePlayersInShip";
+	const auto& worldPosition = getWorldPosition();
 
 	for (int i = 0; i < playersOnBoard.size(); ++i) {
 		auto shipMember = playersOnBoard.get(i).get();
 
-		if (shipMember == nullptr)
+		if (shipMember == nullptr) {
 			continue;
+		}
 
 		Locker clock(shipMember, asShipObject());
 
-		// This is breaking players positions in POB ships
-		//shipMember->setPosition(worldPos.getX(), worldPos.getZ(), worldPos.getY());
-
 		auto parent = shipMember->getParent().get();
 
-		if (parent != nullptr)
-			shipMember->updateZoneWithParent(parent, lightUpdate, sendPackets);
+		if (parent == nullptr) {
+			continue;
+		}
+
+		if (parent == asShipObject()) {
+			shipMember->setPosition(worldPosition.getX(), worldPosition.getZ(), worldPosition.getY());
+		}
+
+		shipMember->updateZoneWithParent(parent, lightUpdate, sendPackets);
 	}
 }
 
@@ -831,7 +836,7 @@ void ShipObjectImplementation::doRecovery(int mselapsed) {
 
 					if (minBoost != maxBoost) {
 						if (minBoost < maxBoost) {
-							float rechargeRate = getCapacitorRechargeRate() * componentEfficiency * deltaTime;
+							float rechargeRate = getBoosterRechargeRate() * componentEfficiency * deltaTime;
 							minBoost = Math::min(minBoost + rechargeRate, maxBoost);
 						} else if (minBoost > maxBoost) {
 							float decayRate = getBoosterMaxEnergy() * reactorEnergyRate * deltaTime;

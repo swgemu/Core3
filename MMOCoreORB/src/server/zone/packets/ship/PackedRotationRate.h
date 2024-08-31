@@ -22,12 +22,12 @@ public:
 
 	}
 
-	PackedRotationRate(float rate) {
-		set(rate);
+	PackedRotationRate(float value) {
+		set(value);
 	}
 
-	void set(float rate) {
-		rate = static_cast<int8>(clamp(-(PI_2), rate, (PI_2))*(127.f / (PI_2)));
+	void set(float value) {
+		rate = static_cast<int8>(clamp(-(PI_2), value, (PI_2)) * (127.f / PI_2));
 	}
 
 	float get() {
