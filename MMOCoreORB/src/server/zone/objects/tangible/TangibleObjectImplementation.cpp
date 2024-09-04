@@ -508,18 +508,28 @@ void TangibleObjectImplementation::removeOutOfRangeObjects() {
 			continue;
 		}
 
-		// Check for objects inside another object
-		auto covObjectRoot = covObject->getRootParent();
+		Locker* clock = nullptr;
 
-		// They should be managed by the parent
-		if (covObjectRoot != nullptr) {
-			continue;
-		// covObject is a player, their root is null but this object has a parent
-		} else if (covObject->isPlayerCreature() && parent != nullptr) {
-			continue;
+		if (covObject->isCreatureObject()) {
+			clock = new Locker(covObject, asTangibleObject());
 		}
 
+		// Check for objects inside another object
+		auto covObjectRoot = covObject->getRootParent();
+		uint64 covParentID = covObject->getParentID();
 		auto objectWorldPos = covObject->getWorldPosition();
+
+		if (clock != nullptr) {
+			clock->release();
+			delete clock;
+		}
+
+		/* If covObjectRoot is not null, skip given should be managed by the rootParent (building, vehicle, ship etc.)
+		* If the covObject has a parent and this objects parent is not null, skip the covObject. Removal should be notified from this objects parent.
+		*/
+		if (covObjectRoot != nullptr || (covParentID > 0 && parent != nullptr)) {
+			continue;
+		}
 
 		float deltaX = ourX - objectWorldPos.getX();
 		float deltaY = ourY - objectWorldPos.getY();
