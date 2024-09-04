@@ -508,18 +508,30 @@ void TangibleObjectImplementation::removeOutOfRangeObjects() {
 			continue;
 		}
 
+		Locker* clock = nullptr;
+
+		if (covObject->isCreatureObject()) {
+			clock = new Locker(covObject, asTangibleObject());
+		}
+
 		// Check for objects inside another object
 		auto covObjectRoot = covObject->getRootParent();
+		uint64 covParentID = covObject->getParentID();
+		auto objectWorldPos = covObject->getWorldPosition();
+
+		if (clock != nullptr) {
+			clock->release();
+			delete clock;
+		}
 
 		// They should be managed by the parent
 		if (covObjectRoot != nullptr) {
 			continue;
-		// covObject is a player, their root is null but this object has a parent
+		// covObject is a player, their root is null (object is in the zone) but this object has a parent which will notify
+		// when objects have moved out of range and remove them
 		} else if (covObject->isPlayerCreature() && parent != nullptr) {
 			continue;
 		}
-
-		auto objectWorldPos = covObject->getWorldPosition();
 
 		float deltaX = ourX - objectWorldPos.getX();
 		float deltaY = ourY - objectWorldPos.getY();
