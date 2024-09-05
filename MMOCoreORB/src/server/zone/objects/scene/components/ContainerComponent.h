@@ -39,6 +39,9 @@ enum ContainerType {
 
 class ContainerComponent : public SceneObjectComponent {
 
+private:
+	virtual bool completeTransfer(SceneObject* sceneObject, SceneObject* object, SceneObject* objParent) const;
+
 public:
 	/**
 	 * Tries to add/link object
