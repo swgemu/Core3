@@ -21,22 +21,36 @@ void ValidatedPosition::update(SceneObject* object) {
 }
 
 Vector3 ValidatedPosition::getWorldPosition(ZoneServer* zoneServer) {
-	if (parent == 0)
+	if (parent == 0) {
 		return point;
-
-	Vector3 newWorldPosition;
+	}
 
 	ManagedReference<SceneObject*> newParent = zoneServer->getObject(parent);
 
-	if (newParent == nullptr)
+	if (newParent == nullptr) {
 		return point;
+	}
 
 	ManagedReference<SceneObject*> root = newParent->getRootParent();
 
-	float length = Math::sqrt(point.getX() * point.getX() + point.getY() * point.getY());
-	float angle = root->getDirection()->getRadians() + atan2(point.getX(), point.getY());
+	if (root == nullptr) {
+		return point;
+	}
 
-	newWorldPosition.set(root->getPositionX() + (sin(angle) * length), root->getPositionZ() + point.getZ(), root->getPositionY() + (cos(angle) * length));
+	float rootRad = -root->getDirection()->getRadians();
+	float rootCos = cos(rootRad);
+	float rootSin = sin(rootRad);
 
-	return newWorldPosition;
+	float localX = point.getX();
+	float localY = point.getY();
+	float localZ = point.getZ();
+
+	float rotatedX = (localX * rootCos) - (localY * rootSin);
+	float rotatedY = (localX * rootSin) + (localY * rootCos);
+
+	float worldX = root->getPositionX() + rotatedX;
+	float worldY = root->getPositionY() + rotatedY;
+	float worldZ = root->getPositionZ() + localZ;
+
+	return Vector3(worldX, worldY, worldZ);
 }
