@@ -22,6 +22,9 @@ class TreeEntry extends Observable {
 	@dereferenced
 	protected Coordinate coordinates;
 
+	@dereferenced
+	protected transient Coordinate worldCoordinates;
+
 	transient protected TreeNode node;
 
 	protected boolean bounding;
@@ -230,15 +233,6 @@ class TreeEntry extends Observable {
 		return coordinates.getPosition();
 	}
 
-	public void setPosition(float x, float z, float y) {
-		coordinates.setPosition(x, z, y);
-	}
-
-	@dirty
-	public void initializePosition(float x, float z, float y) {
-		coordinates.initializePosition(x, z, y);
-	}
-
 	@nativeStub
 	@dirty
 	public native abstract int compareTo(TreeEntry obj);
@@ -315,7 +309,31 @@ class TreeEntry extends Observable {
 	}
 
 	@dirty
-	public abstract void setParent(TreeEntry par) {
-		parent = par;
-	}
+	public native abstract void setParent(TreeEntry par);
+
+	@dirty
+	public native abstract void initializePosition(@dereferenced final Vector3 value);
+
+	@dirty
+	public native abstract void initializePosition(float x, float z, float y);
+
+	public native abstract void setPosition(@dereferenced final Vector3 value);
+
+	public native abstract void setPosition(float x, float z, float y);
+
+	public native abstract void updateWorldPosition(boolean initialize = false);
+
+	@read
+	public native abstract float getWorldPositionX();
+
+	@read
+	public native abstract float getWorldPositionY();
+
+	@read
+	public native abstract float getWorldPositionZ();
+
+	@read
+	@local
+	@dereferenced
+	public native abstract Vector3 getWorldPosition();
 }
