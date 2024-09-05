@@ -495,7 +495,7 @@ void TangibleObjectImplementation::removeOutOfRangeObjects() {
 	uint64 rangeCheckObjectId = rangeCheckObject->getObjectID();
 
 	for (int i = closeObjects.size() - 1; i >= 0; i--) {
-		auto covObject = static_cast<SceneObject*>(closeObjects.getUnsafe(i));
+		ManagedReference<SceneObject*> covObject = static_cast<SceneObject*>(closeObjects.getUnsafe(i));
 
 		if (covObject == nullptr) {
 			continue;
@@ -508,21 +508,10 @@ void TangibleObjectImplementation::removeOutOfRangeObjects() {
 			continue;
 		}
 
-		Locker* clock = nullptr;
-
-		if (covObject->isCreatureObject()) {
-			clock = new Locker(covObject, asTangibleObject());
-		}
-
 		// Check for objects inside another object
 		auto covObjectRoot = covObject->getRootParent();
 		uint64 covParentID = covObject->getParentID();
 		auto objectWorldPos = covObject->getWorldPosition();
-
-		if (clock != nullptr) {
-			clock->release();
-			delete clock;
-		}
 
 		/* If covObjectRoot is not null, skip given should be managed by the rootParent (building, vehicle, ship etc.)
 		* If the covObject has a parent and this objects parent is not null, skip the covObject. Removal should be notified from this objects parent.
