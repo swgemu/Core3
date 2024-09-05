@@ -278,3 +278,81 @@ float TreeEntryImplementation::getOutOfRangeDistance() {
 
 	return closeRange;
 }
+
+void TreeEntryImplementation::setParent(TreeEntry* value) {
+	parent = value;
+	updateWorldPosition(false);
+}
+
+void TreeEntryImplementation::initializePosition(const Vector3& value) {
+	coordinates.initializePosition(value);
+	updateWorldPosition(true);
+}
+
+void TreeEntryImplementation::initializePosition(float x, float z, float y) {
+	coordinates.initializePosition(x, z, y);
+	updateWorldPosition(true);
+}
+
+void TreeEntryImplementation::setPosition(const Vector3& value) {
+	coordinates.setPosition(value);
+	updateWorldPosition(false);
+}
+
+void TreeEntryImplementation::setPosition(float x, float z, float y) {
+	coordinates.setPosition(x, z, y);
+	updateWorldPosition(false);
+}
+
+void TreeEntryImplementation::updateWorldPosition(bool initialize) {
+	auto root = static_cast<SceneObject*>(getRootParentUnsafe());
+
+	Vector3 worldPosition = getPosition();
+
+	if (root != nullptr) {
+		if (root->isBuildingObject()) {
+			float rootRad = -root->getDirection()->getRadians();
+			float rootCos = cos(rootRad);
+			float rootSin = sin(rootRad);
+
+			float localX = getPositionX();
+			float localY = getPositionY();
+			float localZ = getPositionZ();
+
+			float rotatedX = (localX * rootCos) - (localY * rootSin);
+			float rotatedY = (localX * rootSin) + (localY * rootCos);
+
+			float worldX = root->getPositionX() + rotatedX;
+			float worldY = root->getPositionY() + rotatedY;
+			float worldZ = root->getPositionZ() + localZ;
+
+			worldPosition = Vector3(worldX, worldY, worldZ);
+		} else {
+			worldPosition = root->getPosition();
+		}
+	}
+
+	if (initialize) {
+		worldCoordinates.initializePosition(worldPosition);
+	} else {
+		worldCoordinates.setPosition(worldPosition);
+	}
+
+}
+
+Vector3 TreeEntryImplementation::getWorldPosition() const {
+	return worldCoordinates.getPosition();
+}
+
+float TreeEntryImplementation::getWorldPositionX() const {
+	return worldCoordinates.getPositionX();
+}
+
+float TreeEntryImplementation::getWorldPositionY() const {
+	return worldCoordinates.getPositionY();
+}
+
+float TreeEntryImplementation::getWorldPositionZ() const {
+	return worldCoordinates.getPositionZ();
+}
+
