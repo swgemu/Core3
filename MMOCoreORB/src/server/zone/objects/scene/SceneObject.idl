@@ -1008,24 +1008,6 @@ class SceneObject extends TreeEntry implements Logger, Metrics {
 	@dirty
 	public native Vector3 getWorldCoordinate(float distance, float angleDegrees, boolean includeZ);
 
-	@mock
-	@dirty
-	public abstract native float getWorldPositionX();
-
-	@dirty
-	@mock
-	public abstract native float getWorldPositionY();
-
-	@dirty
-	@mock
-	public abstract native float getWorldPositionZ();
-
-	@dirty
-	@local
-	@dereferenced
-	@mock
-	public abstract native Vector3 getWorldPosition();
-
 	@read
 	public float getDirectionX() {
 		return direction.getX();
