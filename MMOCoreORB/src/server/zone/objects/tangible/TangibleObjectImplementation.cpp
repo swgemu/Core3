@@ -511,7 +511,6 @@ void TangibleObjectImplementation::removeOutOfRangeObjects() {
 		// Check for objects inside another object
 		auto covObjectRoot = covObject->getRootParent();
 		uint64 covParentID = covObject->getParentID();
-		auto objectWorldPos = covObject->getWorldPosition();
 
 		/* If covObjectRoot is not null, skip given should be managed by the rootParent (building, vehicle, ship etc.)
 		* If the covObject has a parent and this objects parent is not null, skip the covObject. Removal should be notified from this objects parent.
@@ -519,6 +518,8 @@ void TangibleObjectImplementation::removeOutOfRangeObjects() {
 		if (covObjectRoot != nullptr || (covParentID > 0 && parent != nullptr)) {
 			continue;
 		}
+
+		auto objectWorldPos = covObject->getWorldPosition();
 
 		float deltaX = ourX - objectWorldPos.getX();
 		float deltaY = ourY - objectWorldPos.getY();

@@ -39,9 +39,6 @@ enum ContainerType {
 
 class ContainerComponent : public SceneObjectComponent {
 
-private:
-	virtual bool completeTransfer(SceneObject* sceneObject, SceneObject* object, SceneObject* objParent) const;
-
 public:
 	/**
 	 * Tries to add/link object
@@ -63,7 +60,7 @@ public:
 	 * @param notifyClient not used currently
 	 * @return returns true if the object has been successfully removed
 	 */
-	virtual bool removeObject(SceneObject* sceneObject, SceneObject* object, SceneObject* destination, bool notifyClient) const;
+	virtual bool removeObject(SceneObject* sceneObject, SceneObject* object, SceneObject* destination, bool notifyClient, bool nullifyParent = true) const;
 
 	/**
 	 * Evaluates if this object has the necessary free slots to be able to add the specified SceneObject

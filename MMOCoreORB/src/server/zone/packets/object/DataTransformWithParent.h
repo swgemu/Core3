@@ -57,8 +57,7 @@ class DataTransformWithParentCallback : public MessageCallback {
 	long deltaTime;
 
 public:
-	DataTransformWithParentCallback (ObjectControllerMessageCallback* objectControllerCallback) :
-		MessageCallback(objectControllerCallback->getClient(), objectControllerCallback->getServer()) {
+	DataTransformWithParentCallback(ObjectControllerMessageCallback* objectControllerCallback) : MessageCallback(objectControllerCallback->getClient(), objectControllerCallback->getServer()) {
 		objectControllerMain = objectControllerCallback;
 
 		deltaTime = 0;
@@ -125,7 +124,10 @@ public:
 			return updateError(creO, "syncDelta", true);
 		}
 
-		if (deltaTime < Transform::MINDELTA) {
+		uint64 parentID = transform.getParentID();
+
+		// Ensures datatransform is ran with the parent is changing, regardless of deltaTime
+		if (deltaTime < Transform::MINDELTA && parentID > 0 && parentID != creO->getParentID()) {
 			return updateError(creO, "deltaTime");
 		}
 
@@ -135,7 +137,7 @@ public:
 			return updateError(creO, "!zoneServer");
 		}
 
-		ManagedReference<SceneObject*> parent = zoneServer->getObject(transform.getParentID(), true);
+		ManagedReference<SceneObject*> parent = zoneServer->getObject(parentID, true);
 
 		if (parent == nullptr || parent->getZone() == nullptr || !parent->isCellObject()) {
 			return updateError(creO, "!parent");
@@ -155,7 +157,9 @@ public:
 				creO->setDirection(transform.getDirection());
 				creO->setCurrentSpeed(transform.getSpeed());
 
-				broadcastTransform(creO, parent, transform.getPosition());
+				bool lightUpdate = objectControllerMain->getPriority() != 0x23;
+
+				broadcastTransform(creO, parent, transform.getPosition(), lightUpdate);
 			} else if (validPosition.getParent() != transform.getParentID() || transform.get2dSquaredDistance(validPosition.getPosition()) >= 0.015625f) {
 				updatePosition(creO, parent);
 			} else {
@@ -168,7 +172,8 @@ public:
 			e.printStackTrace();
 		}
 #else
-		} catch (...) {}
+		} catch (...) {
+		}
 #endif // TRANSFORM_DEBUG
 
 		if (ghost->isForcedTransform()) {
@@ -304,7 +309,7 @@ public:
 			}
 		}
 
-		UniqueReference<Vector<float>*> collisionPoints(CollisionManager::getCellFloorCollision(transform.getPositionX(), transform.getPositionY() , newCell));
+		UniqueReference<Vector<float>*> collisionPoints(CollisionManager::getCellFloorCollision(transform.getPositionX(), transform.getPositionY(), newCell));
 
 		if (collisionPoints == nullptr) {
 			return updateError(creO, "!collisionPoints");
@@ -348,7 +353,7 @@ public:
 			return updateError(creO, "!playerManager");
 		}
 
-		if (playerManager->checkSpeedHackFirstTest(creO, transform.getSpeed() , validPosition, 1.1f) != 0) {
+		if (playerManager->checkSpeedHackFirstTest(creO, transform.getSpeed(), validPosition, 1.1f) != 0) {
 			return updateError(creO, "!checkSpeedHackFirstTest");
 		}
 
@@ -363,11 +368,23 @@ public:
 		transform.sendDebug(creO, type, position, deltaTime);
 #endif // TRANSFORM_DEBUG
 
-		creO->setPosition(transform.getPositionX(), transform.getPositionZ(), transform.getPositionY());
-		creO->setDirection(transform.getDirection());
+		// Update Speed and locomotion
 		creO->setCurrentSpeed(transform.getSpeed());
+		creO->updateLocomotion();
 
-		broadcastTransform(creO, parent, position);
+		bool lightUpdate = objectControllerMain->getPriority() != 0x23;
+
+		// Set the players new position in the cell
+		creO->setPosition(transform.getPositionX(), transform.getPositionZ(), transform.getPositionY());
+
+		// Update the players parent
+		creO->updateZoneWithParent(parent, lightUpdate, false);
+
+		// Update the players direction
+		creO->setDirection(transform.getDirection());
+
+		// Broadcast the position move
+		broadcastTransform(creO, parent, position, lightUpdate);
 	}
 
 	void updateStatic(CreatureObject* creO, SceneObject* parent) {
@@ -389,7 +406,9 @@ public:
 		creO->setDirection(direction);
 		creO->setCurrentSpeed(0.f);
 
-		broadcastTransform(creO, parent, creO->getPosition());
+		bool lightUpdate = objectControllerMain->getPriority() != 0x23;
+
+		broadcastTransform(creO, parent, creO->getPosition(), lightUpdate);
 
 		if (synchronize) {
 			auto data = new DataTransformWithParent(creO);
@@ -397,8 +416,8 @@ public:
 		}
 	}
 
-	void broadcastTransform(CreatureObject* creO, SceneObject* parent, const Vector3& position) const {
-		PlayerObject* ghost = creO->getPlayerObject();
+	void broadcastTransform(CreatureObject* creO, SceneObject* parent, const Vector3& position, bool lightUpdate) const {
+		auto ghost = creO->getPlayerObject();
 
 		if (ghost == nullptr) {
 			return updateError(creO, "!ghost");
@@ -406,14 +425,10 @@ public:
 
 		ghost->setClientLastMovementStamp(transform.getTimeStamp());
 
-		bool lightUpdate = objectControllerMain->getPriority() != 0x23;
 		bool sendPackets = deltaTime > Transform::SYNCDELTA || creO->getParentID() != 0;
 
 		creO->setMovementCounter(transform.getMoveCount());
 		creO->setSyncStamp(transform.getTimeStamp());
-
-		creO->updateZoneWithParent(parent, lightUpdate, false);
-		creO->updateLocomotion();
 
 		if (!sendPackets || creO->isInvisible()) {
 			return updateError(creO, "!sendPackets");

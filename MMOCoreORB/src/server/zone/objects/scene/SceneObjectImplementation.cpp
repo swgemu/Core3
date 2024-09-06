@@ -1093,8 +1093,8 @@ void SceneObjectImplementation::destroyObjectFromWorld(bool sendSelfDestroy) {
 	}
 }
 
-bool SceneObjectImplementation::removeObject(SceneObject* object, SceneObject* destination, bool notifyClient) {
-	return containerComponent->removeObject(asSceneObject(), object, destination, notifyClient);
+bool SceneObjectImplementation::removeObject(SceneObject* object, SceneObject* destination, bool notifyClient, bool nullifyParent) {
+	return containerComponent->removeObject(asSceneObject(), object, destination, notifyClient, nullifyParent);
 }
 
 void SceneObjectImplementation::removeObjectFromZone(Zone* zone, SceneObject* par) {

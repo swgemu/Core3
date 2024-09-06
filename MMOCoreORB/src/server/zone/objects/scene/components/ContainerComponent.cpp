@@ -199,47 +199,22 @@ bool ContainerComponent::checkContainerPermission(SceneObject* sceneObject, Crea
 	return permission & (allowPermissions & ~denyPermissions);
 }
 
-bool ContainerComponent::completeTransfer(SceneObject* sceneObject, SceneObject* object, SceneObject* objParent) const {
-	ManagedReference<Zone*> objZone = object->getLocalZone();
-
-	if (objParent != nullptr || objZone != nullptr) {
-		// Don't notify client yet, if you do here it confuses the client and drops from toolbar etc.
-		if (objParent != nullptr && !objParent->removeObject(object, sceneObject, false)) {
-			object->error() << "Failed to remove object from parent #1";
-			return false;
-		}
-
-		if (object->getParent() != nullptr) {
-			object->error() << "Failed to remove object from parent #2";
-			return false;
-		}
-
-		if (objZone != nullptr) {
-			objZone->remove(object);
-		}
-
-		object->setZone(nullptr);
-	}
-
-	object->setParent(sceneObject);
-
-	return true;
-}
-
 bool ContainerComponent::transferObject(SceneObject* sceneObject, SceneObject* object, int containmentType, bool notifyClient, bool allowOverflow, bool notifyRoot) const {
 	if (sceneObject == object) {
 		return false;
 	}
 
+#ifdef DEBUG_CONTAINER_TRANSFER
+	if (object->isPlayerCreature()) {
+		object->info(true) << "---------- " << object->getDisplayedName() << " --- STARTING container Transfer into Cell ID: " << sceneObject->getObjectID() << " ---------- ";
+	}
+#endif // DEBUG_CONTAINER_TRANSFER
+
 	if (!object->canBeTransferred(sceneObject)) {
 		return false;
 	}
 
-	ManagedReference<SceneObject*> objParent = object->getParent().get();
-
-	ManagedReference<Zone*> objZone = object->getLocalZone();
-	ManagedReference<Zone*> oldRootZone = object->getZone();
-
+	// Terminate any active slicing sessions on the object being transferred
 	if (object->containsActiveSession(SessionFacadeType::SLICING)) {
 		ManagedReference<Facade*> facade = object->getActiveSession(SessionFacadeType::SLICING);
 		ManagedReference<SlicingSession*> session = dynamic_cast<SlicingSession*>(facade.get());
@@ -249,12 +224,46 @@ bool ContainerComponent::transferObject(SceneObject* sceneObject, SceneObject* o
 		}
 	}
 
-	bool update = true;
+	ManagedReference<SceneObject*> objParent = object->getParent().get();
 
+	ManagedReference<Zone*> objZone = object->getLocalZone();
+	ManagedReference<Zone*> oldRootZone = object->getZone();
+
+	if (objParent != nullptr || objZone != nullptr) {
+		bool nullifyParent = (sceneObject == nullptr);
+
+		if (objParent != nullptr) {
+			/*	Call the previous parent to remove
+			*	Don't notify client yet, if you do here it confuses the client and drops tiems from toolbar etc
+			*	Only nullify the object being transferreds' parent if the new parent is null, or it causes an issue during transitions for out of range object removal
+			*/
+			objParent->removeObject(object, sceneObject, false, nullifyParent);
+		}
+
+		if (nullifyParent && object->getParent() != nullptr) {
+			object->error() << "Failed to remove object from old parent: " << object->getDisplayedName() << " ID: " << object->getObjectID() << " to container: " << sceneObject->getDisplayedName() << " ID: " << sceneObject->getObjectID();
+
+			return false;
+		}
+
+		if (objZone != nullptr) {
+			objZone->remove(object);
+		}
+
+		object->setZone(nullptr);
+
+		if (objParent == nullptr) {
+			objParent = objZone;
+		}
+	}
+
+	// Lock the container
 	Locker contLocker(sceneObject->getContainerLock());
 
 	VectorMap<String, ManagedReference<SceneObject*> >* slottedObjects = sceneObject->getSlottedObjects();
 	VectorMap<uint64, ManagedReference<SceneObject*> >* containerObjects = sceneObject->getContainerObjects();
+
+	bool update = true;
 
 	if (containmentType >= 4) {
 		int arrangementGroup = containmentType - 4;
@@ -264,6 +273,7 @@ bool ContainerComponent::transferObject(SceneObject* sceneObject, SceneObject* o
 
 			for (int i = 0; i < descriptors->size(); ++i){
 				const String& childArrangement = descriptors->get(i);
+
 				if (slottedObjects->contains(childArrangement)) {
 					return false;
 				}
@@ -276,30 +286,35 @@ bool ContainerComponent::transferObject(SceneObject* sceneObject, SceneObject* o
 			return false;
 		}
 
-		if (!completeTransfer(sceneObject, object, objParent)) {
-			object->error() << "completeTransfer - Failed to assign: " << object->getDisplayedName() << " ID: " << object->getObjectID() << " to container: " << sceneObject->getDisplayedName() << " ID: " << sceneObject->getObjectID();
-			return false;
-		}
-
+		// Set the new parent
+		object->setParent(sceneObject);
 		object->setContainmentType(containmentType);
 	} else if (containmentType == -1) {
+#ifdef DEBUG_CONTAINER_TRANSFER
+		if (object->isPlayerCreature()) {
+			object->info(true) << object->getDisplayedName() << " --- container transfer will be using containment type -1";
+		}
+#endif // DEBUG_CONTAINER_TRANSFER
+
+		// Check for volume limit if overflow is not allowed
 		if (!allowOverflow && containerObjects->size() >= sceneObject->getContainerVolumeLimit()){
 			return false;
 		}
 
-		/*if (containerObjects.contains(object->getObjectID()))
-			return false*/
-
+		// Attempt to add the object in the container
 		if (containerObjects->put(object->getObjectID(), object) == -1) {
 			update = false;
 		}
 
-		if (!completeTransfer(sceneObject, object, objParent)) {
-			object->error() << "completeTransfer - Failed to assign: " << object->getDisplayedName() << " ID: " << object->getObjectID() << " to container: " << sceneObject->getDisplayedName() << " ID: " << sceneObject->getObjectID();
-			return false;
-		}
-
+		// Set the new parent
+		object->setParent(sceneObject);
 		object->setContainmentType(containmentType);
+
+#ifdef DEBUG_CONTAINER_TRANSFER
+		if (object->isPlayerCreature()) {
+			object->info(true) << object->getDisplayedName() << " --- new parent succesfully set!";
+		}
+#endif // DEBUG_CONTAINER_TRANSFER
 
 		ManagedReference<Zone*> newRootZone = object->getZone();
 
@@ -324,14 +339,15 @@ bool ContainerComponent::transferObject(SceneObject* sceneObject, SceneObject* o
 			}
 		}
 	} else {
-		sceneObject->error("unknown containment type " + String::valueOf(containmentType));
+		object->error() << "transferObject - Failed to assign: " << object->getDisplayedName() << " ID: " << object->getObjectID() << " to container: " << sceneObject->getDisplayedName() << " ID: " << sceneObject->getObjectID() << " - unknown containment type: " <<containmentType;
+
 		StackTrace::printStackTrace();
 		return false;
 	}
 
 	contLocker.release();
 
-	if ((containmentType >= 4) && (object->getLocalZone() == nullptr)) {
+	if ((containmentType >= 4) && (objZone == nullptr)) {
 		sceneObject->broadcastObject(object, true);
 	} else if (notifyClient) {
 		sceneObject->broadcastMessage(object->link(sceneObject->getObjectID(), containmentType), true);
@@ -346,19 +362,27 @@ bool ContainerComponent::transferObject(SceneObject* sceneObject, SceneObject* o
 	ManagedReference<SceneObject*> rootParent = object->getRootParent();
 
 	if (rootParent != nullptr && notifyRoot) {
-		if (objParent == nullptr) {
-			objParent = objZone;
-		}
-
 		rootParent->notifyObjectInsertedToChild(object, sceneObject, objParent);
 	}
 
 	object->notifyObservers(ObserverEventType::PARENTCHANGED, sceneObject);
 
+#ifdef DEBUG_CONTAINER_TRANSFER
+	if (object->isPlayerCreature()) {
+		object->info(true) << "---------- " << object->getDisplayedName() << " COMPLETED container Transfer into Cell ID: " << sceneObject->getObjectID() << " ----------";
+	}
+#endif // DEBUG_CONTAINER_TRANSFER
+
 	return true;
 }
 
-bool ContainerComponent::removeObject(SceneObject* sceneObject, SceneObject* object, SceneObject* destination, bool notifyClient) const {
+bool ContainerComponent::removeObject(SceneObject* sceneObject, SceneObject* object, SceneObject* destination, bool notifyClient, bool nullifyParent) const {
+#ifdef DEBUG_CONTAINER_TRANSFER
+	if (object->isPlayerCreature()) {
+		object->info(true) << object->getDisplayedName() << " --- removeObject function START";
+	}
+#endif // DEBUG_CONTAINER_TRANSFER
+
 	Locker contLocker(sceneObject->getContainerLock());
 
 	VectorMap<String, ManagedReference<SceneObject*> >* slottedObjects = sceneObject->getSlottedObjects();
@@ -376,14 +400,13 @@ bool ContainerComponent::removeObject(SceneObject* sceneObject, SceneObject* obj
 			objParent->info("i am the parent", true);
 
 			return false;
-		} else
+		} else if (nullifyParent) {
 			object->setParent(nullptr);
+		}
 	}
 
 	int containedType = object->getContainmentType();
-
 	int arrangementSize = object->getArrangementDescriptorSize();
-
 	int arrangementGroup = Math::max(0, containedType - 4);
 
 	if (object->getArrangementDescriptorSize() > arrangementGroup) {
@@ -403,25 +426,25 @@ bool ContainerComponent::removeObject(SceneObject* sceneObject, SceneObject* obj
 		}
 
 		if (removeFromSlot) {
-			for (int i = 0; i < descriptors->size(); ++i)
+			for (int i = 0; i < descriptors->size(); ++i) {
 				slottedObjects->drop(descriptors->get(i));
+			}
 		}
 	}
 
 	if (containerObjects->contains(object->getObjectID())) {
-		//object->setParent(nullptr);
-
-		//			return false;
-
 		containerObjects->drop(object->getObjectID());
 	}
 
-	object->setParent(nullptr);
+	if (nullifyParent) {
+		object->setParent(nullptr);
+	}
 
 	contLocker.release();
 
-	if (notifyClient)
+	if (notifyClient) {
 		sceneObject->broadcastMessage(object->link((uint64) 0, 0xFFFFFFFF), true);
+	}
 
 	notifyObjectRemoved(sceneObject, object, destination);
 
@@ -433,11 +456,18 @@ bool ContainerComponent::removeObject(SceneObject* sceneObject, SceneObject* obj
 	} else {
 		ManagedReference<SceneObject*> rootParent = sceneObject->getRootParent();
 
-		if (rootParent != nullptr)
+		if (rootParent != nullptr) {
 			rootParent->notifyObjectRemovedFromChild(object, sceneObject);
-		else
+		} else {
 			sceneObject->notifyObjectRemovedFromChild(object, sceneObject);
+		}
 	}
+
+#ifdef DEBUG_CONTAINER_TRANSFER
+	if (object->isPlayerCreature()) {
+		object->info(true) << object->getDisplayedName() << " --- removeObject function COMPLETE";
+	}
+#endif // DEBUG_CONTAINER_TRANSFER
 
 	return true;
 }
