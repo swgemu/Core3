@@ -219,7 +219,7 @@ bool SpaceZoneContainerComponent::transferObject(SceneObject* sceneObject, Scene
 	return true;
 }
 
-bool SpaceZoneContainerComponent::removeObject(SceneObject* sceneObject, SceneObject* object, SceneObject* destination, bool notifyClient) const {
+bool SpaceZoneContainerComponent::removeObject(SceneObject* sceneObject, SceneObject* object, SceneObject* destination, bool notifyClient, bool nullifyParent) const {
 	SpaceZone* spaceZone = sceneObject->asSpaceZone();
 
 	if (object->isActiveArea())

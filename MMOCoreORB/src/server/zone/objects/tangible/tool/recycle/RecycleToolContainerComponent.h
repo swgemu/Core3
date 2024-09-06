@@ -23,9 +23,9 @@ public:
 		return ContainerComponent::notifyObjectInserted(sceneObject, object);
 	}
 
-	bool removeObject(SceneObject* sceneObject, SceneObject* object, SceneObject* destination, bool notifyClient) const {
+	bool removeObject(SceneObject* sceneObject, SceneObject* object, SceneObject* destination, bool notifyClient, bool nullifyParent) const {
 
-		return ContainerComponent::removeObject(sceneObject, object, destination, notifyClient);
+		return ContainerComponent::removeObject(sceneObject, object, destination, notifyClient, nullifyParent);
 	}
 
 	int canAddObject(SceneObject* sceneObject, SceneObject* object, int containmentType, String& errorDescription) const {

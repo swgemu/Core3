@@ -257,7 +257,7 @@ bool GroundZoneContainerComponent::transferObject(SceneObject* sceneObject, Scen
 	return true;
 }
 
-bool GroundZoneContainerComponent::removeObject(SceneObject* sceneObject, SceneObject* object, SceneObject* destination, bool notifyClient) const {
+bool GroundZoneContainerComponent::removeObject(SceneObject* sceneObject, SceneObject* object, SceneObject* destination, bool notifyClient, bool nullifyParent) const {
 	Zone* zone = dynamic_cast<Zone*>(sceneObject);
 
 	if (object->isActiveArea())

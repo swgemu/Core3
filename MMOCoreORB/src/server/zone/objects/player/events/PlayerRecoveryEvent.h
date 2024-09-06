@@ -14,53 +14,51 @@ namespace player {
 namespace events {
 
 class PlayerRecoveryEvent : public Task {
-	ManagedWeakReference<PlayerObject*> player;
+	ManagedWeakReference<PlayerObject*> weakGhost;
 	Time startTime;
 
 public:
-	PlayerRecoveryEvent(PlayerObject* pl) : Task(2000) {
-		player = pl;
+	PlayerRecoveryEvent(PlayerObject* ghost) : Task(2000) {
+		weakGhost = ghost;
 		startTime.updateToCurrentTime();
 	}
 
 	~PlayerRecoveryEvent() {
-		/*if (enQueued) {
-			System::out << "ERROR: PlayerRecoveryEvent scheduled event deleted\n";
-			raise(SIGSEGV);
-		}*/
 	}
 
 	void run() {
-		ManagedReference<PlayerObject*> play = player.get();
+		ManagedReference<PlayerObject*> ghost = weakGhost.get();
 
-		if (play == nullptr)
+		if (ghost == nullptr) {
 			return;
+		}
 
-		ManagedReference<SceneObject*> strongParent = play->getParent().get();
-		
-		if (strongParent == nullptr)
+		ManagedReference<SceneObject*> strongParent = ghost->getParent().get();
+
+		if (strongParent == nullptr) {
 			return;
+		}
 
-		Locker _locker(strongParent);
+		Locker lock(strongParent);
 
-		if (play->isOnline() || play->isLinkDead())
-			play->doRecovery(startTime.miliDifference());
+		if (!ghost->isOnline() && !ghost->isLinkDead()) {
+			return;
+		}
 
-
+		ghost->doRecovery(startTime.miliDifference());
 	}
 
-	void schedule(uint64 delay = 0)
-	{
+	void schedule(uint64 delay = 0) {
 		startTime.updateToCurrentTime();
 		Task::schedule(delay);
 	}
 };
 
-}
-}
-}
-}
-}
+} // namespace events
+} // namespace player
+} // namespace objects
+} // namespace zone
+} // namespace server
 
 using namespace server::zone::objects::player::events;
 

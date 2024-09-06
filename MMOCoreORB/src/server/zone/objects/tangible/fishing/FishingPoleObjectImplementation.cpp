@@ -76,7 +76,7 @@ String FishingPoleObjectImplementation::getText(CreatureObject* player) {
 	return text;
 }
 
-bool FishingPoleObjectImplementation::removeObject(SceneObject* object, SceneObject* destination, bool notifyClient) {
+bool FishingPoleObjectImplementation::removeObject(SceneObject* object, SceneObject* destination, bool notifyClient, bool nullifyParent) {
 	ManagedReference<FishingManager*> manager = server->getFishingManager();
 	ManagedReference<SceneObject*> strongParent = getParent().get();
 	if (strongParent == nullptr)

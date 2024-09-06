@@ -155,17 +155,13 @@ bool CellObjectImplementation::transferObject(SceneObject* object, int containme
 			TangibleObject* tano = cast<TangibleObject*>(object);
 
 			if (tano != nullptr) {
-				if (zone->isSpaceZone()) {
-					//TODO: update this when OctreeActiveArea is added
-				} else {
-					zone->updateActiveAreas(tano);
-				}
+				zone->updateActiveAreas(tano);
 			}
 		}
 
-		if (object->isCreatureObject() || object->isVendor() || object->getPlanetMapCategoryCRC() != 0 || object->getPlanetMapSubCategoryCRC() != 0)
+		if (object->isCreatureObject() || object->isVendor() || object->getPlanetMapCategoryCRC() != 0 || object->getPlanetMapSubCategoryCRC() != 0) {
 			forceLoadObjectCount.increment();
-
+		}
 	} catch (...) {
 	}
 
@@ -191,11 +187,12 @@ bool CellObjectImplementation::transferObject(SceneObject* object, int containme
 	return ret;
 }
 
-bool CellObjectImplementation::removeObject(SceneObject* object, SceneObject* destination, bool notifyClient) {
-	bool ret = SceneObjectImplementation::removeObject(object, destination, notifyClient);
+bool CellObjectImplementation::removeObject(SceneObject* object, SceneObject* destination, bool notifyClient, bool nullifyParent) {
+	bool ret = SceneObjectImplementation::removeObject(object, destination, notifyClient, nullifyParent);
 
-	if (object->isCreatureObject() || object->isVendor() || object->getPlanetMapCategoryCRC() != 0 || object->getPlanetMapSubCategoryCRC() != 0)
+	if (object->isCreatureObject() || object->isVendor() || object->getPlanetMapCategoryCRC() != 0 || object->getPlanetMapSubCategoryCRC() != 0) {
 		forceLoadObjectCount.decrement();
+	}
 
 	return ret;
 }

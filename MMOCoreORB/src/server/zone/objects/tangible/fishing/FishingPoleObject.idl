@@ -69,5 +69,5 @@ class FishingPoleObject extends TangibleObject {
 	@dirty
 	public native string getText(CreatureObject player);
 
-	public native abstract boolean removeObject(SceneObject object, SceneObject destination, boolean notifyClient = false);
+	public native abstract boolean removeObject(SceneObject object, SceneObject destination, boolean notifyClient = false, boolean nullifyParent = true);
 }

@@ -65,7 +65,7 @@ bool LuaContainerComponent::transferObject(SceneObject* sceneObject, SceneObject
 	return result;
 }
 
-bool LuaContainerComponent::removeObject(SceneObject* sceneObject, SceneObject* object, SceneObject* destination, bool notifyClient) const {
+bool LuaContainerComponent::removeObject(SceneObject* sceneObject, SceneObject* object, SceneObject* destination, bool notifyClient, bool nullifyParent) const {
 	if (sceneObject == object)
 		return false;
 
@@ -83,7 +83,7 @@ bool LuaContainerComponent::removeObject(SceneObject* sceneObject, SceneObject* 
 	lua_pop(lua->getLuaState(), 1);
 
 	if (result == -1)
-		result = ContainerComponent::removeObject(sceneObject, object, destination, notifyClient);
+		result = ContainerComponent::removeObject(sceneObject, object, destination, notifyClient, nullifyParent);
 
 	return result;
 }
