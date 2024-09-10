@@ -102,6 +102,7 @@ See [linux/README.md](linux/README.md) for instructions.
   * clang18
   * java runtime
   * boost
+  * ninja-build
 
 #### Clang-18
 
@@ -125,7 +126,7 @@ This will install the latest and symlink all the files to /usr/bin so CMake find
 
   * Install dependencies (Debian 12)
 
-        sudo apt install build-essential libmariadb-dev libmariadb-dev-compat liblua5.3-dev libdb5.3-dev libssl-dev cmake git default-jre libboost-all-dev gdb
+        sudo apt install build-essential libmariadb-dev libmariadb-dev-compat liblua5.3-dev libdb5.3-dev libssl-dev cmake git default-jre libboost-all-dev gdb ninja-build
 
   * Clone core3 repository somewhere  (~/workspace)
 
