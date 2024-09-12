@@ -572,7 +572,7 @@ void LootManagerImplementation::setSkillMods(TangibleObject* prototype, const Lo
 		int max = Math::clamp(-1, (int)round(0.125f * level) + 1, 25);
 		int mod = System::random(max - min) + min;
 
-		skillMods.add(skillMods.size(), VectorMapEntry<String,int>(modName, mod == 0 ? 1 : mod));
+		skillMods.add(skillMods.size(), VectorMapEntry<String,int>(modName, ((mod <= 0) ? 1 : mod)));
 	}
 
 	if (skillMods.size() == 0) {

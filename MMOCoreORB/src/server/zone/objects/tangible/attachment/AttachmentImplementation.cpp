@@ -85,7 +85,7 @@ void AttachmentImplementation::updateCraftingValues(CraftingValues* values, bool
 
 		String modName = lootManager->getRandomLootableMod(gameObjectType);
 
-		skillModifiers.put(modName, mod == 0 ? 1 : mod);
+		skillModifiers.put(modName, ((mod <= 0) ? 1 : mod));
 	}
 }
 
