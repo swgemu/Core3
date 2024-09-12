@@ -1,13 +1,17 @@
-//
-// Created by g on 12/15/17.
-//
+/*
+ *	PlanetManagerImplementation.cpp
+ *
+ *	Created on: 12/15/17
+ *	Author: g
+ */
+
+#include "server/zone/managers/space/SpaceManager.h"
 
 #include "server/zone/SpaceZone.h"
 #include "server/zone/ZoneServer.h"
 #include "server/zone/ZoneProcessServer.h"
 #include "server/zone/managers/collision/CollisionManager.h"
 #include "server/zone/managers/object/ObjectManager.h"
-#include "server/zone/managers/space/SpaceManager.h"
 #include "server/zone/managers/object/ObjectManager.h"
 #include "server/zone/objects/ship/ai/ShipAiAgent.h"
 #include "conf/ConfigManager.h"
@@ -21,111 +25,9 @@
 #include "server/zone/objects/area/space/NebulaArea.h"
 #include "server/zone/packets/jtl/CreateNebulaLightningMessage.h"
 
-void SpaceManagerImplementation::loadLuaConfig() {
-	String planetName = spaceZone->getZoneName();
-
-	Lua* lua = new Lua();
-	lua->init();
-
-	lua->runFile("scripts/managers/space_manager.lua");
-
-	// Get's the configuration settings object for this planet.
-	LuaObject base = lua->getGlobalObject(planetName);
-
-	if (base.isValidTable()) {
-		LuaObject luaObject = base.getObjectField("spaceStations");
-
-		if (!luaObject.isValidTable())
-			return;
-
-		for (int i = 1; i <= luaObject.getTableSize(); ++i) {
-			lua_State* L = luaObject.getLuaState();
-			lua_rawgeti(L, -1, i);
-
-			LuaObject stationObject(L);
-
-			String templateFile = stationObject.getStringField("templateFile");
-
-			auto shipTemp = dynamic_cast<SharedShipObjectTemplate*>(TemplateManager::instance()->getTemplate(templateFile.hashCode()));
-
-			if (shipTemp == nullptr)
-				continue;
-
-			ManagedReference<ShipAiAgent*> shipAgent = ShipManager::instance()->createAiShip(templateFile);
-
-			if (shipAgent == nullptr)
-				continue;
-
-			Locker shipLocker(shipAgent);
-
-			float x = stationObject.getFloatField("x");
-			float y = stationObject.getFloatField("y");
-			float z = stationObject.getFloatField("z");
-			float ox = stationObject.getFloatField("ox");
-			float oy = stationObject.getFloatField("oy");
-			float oz = stationObject.getFloatField("oz");
-			float ow = stationObject.getFloatField("ow");
-
-			uint64 parentID = stationObject.getLongField("parent");
-
-			Quaternion direction(ow, ox, oy, oz);
-			direction.normalize();
-
-			shipAgent->initializePosition(x, z, y);
-			shipAgent->setDirection(direction);
-
-			// Transfer into the zone
-			spaceZone->transferObject(shipAgent, -1, true);
-
-			shipAgent->createChildObjects();
-
-			shipAgent->setRotationMatrix(direction);
-
-			String faction = shipAgent->getShipFaction();
-
-			if (faction.isEmpty() || !spaceStationMap.contains(faction)) {
-				faction = "neutral";
-
-				shipAgent->setFaction(Factions::FACTIONNEUTRAL);
-				shipAgent->setOptionBit(OptionBitmask::INVULNERABLE, false);
-			}
-
-			uint64 stationID = shipAgent->getObjectID();
-			Vector3 stationPosition = shipAgent->getPosition();
-
-			spaceStationMap.get(faction).put(stationID, stationPosition);
-
-
-			// info(true) << "SpaceStation Added: " << shipAgent->getDisplayedName() << " Location: " + shipAgent->getPosition().toString();
-
-			stationObject.pop();
-		}
-
-		try {
-			LuaObject travelPoints = luaObject.getObjectField("jtlTravelPoints");
-			loadJTLData(&travelPoints);
-			travelPoints.pop();
-
-			LuaObject launchLocation = luaObject.getObjectField("jtlLaunchPoint");
-			if (!launchLocation.isValidTable())
-				return;
-
-			jtlZoneName = launchLocation.getStringAt(1);
-			float x = launchLocation.getFloatAt(2);
-			float z = launchLocation.getFloatAt(3);
-			float y = launchLocation.getFloatAt(4);
-
-			jtlLaunchLocation = Vector3(x, y, z);
-			launchLocation.pop();
-		} catch (Exception &e) {
-			error(e.getMessage());
-		}
-	} else {
-		warning("Space configuration settings not found.");
-	}
-}
-
 void SpaceManagerImplementation::initialize() {
+	String spaceZoneName = spaceZone->getZoneName();
+
 	VectorMap<uint64, Vector3> stationMap;
 	stationMap.setNoDuplicateInsertPlan();
 	stationMap.setNullValue(Vector3::ZERO);
@@ -134,34 +36,23 @@ void SpaceManagerImplementation::initialize() {
 	spaceStationMap.put("neutral", stationMap);
 	spaceStationMap.put("imperial", stationMap);
 
-	info(true) << "loading space manager " << spaceZone->getZoneName();
+	info(true) << "loading space manager " << spaceZoneName;
 
-	loadLuaConfig();
+	// Load Space Regions
+	loadRegions();
+
+	// Load Nebulas
 	loadNebulaAreas();
-}
 
-void SpaceManagerImplementation::loadJTLData(LuaObject* luaObject) {
-	if (!luaObject->isValidTable())
-		return;
-
-	for (int i = 1; i <= luaObject->getTableSize(); ++i) {
-		lua_State* L = luaObject->getLuaState();
-		lua_rawgeti(L, -1, i);
-
-		LuaObject location(L);
-
-		String locationName = location.getStringAt(1);
-		float x = location.getFloatAt(2);
-		float z = location.getFloatAt(3);
-		float y = location.getFloatAt(4);
-
-		jtlTravelDestinations.put(locationName, Vector3(x, y, z));
-		location.pop();
-	}
+	// Load Space Lua Config
+	loadLuaConfig();
 }
 
 void SpaceManagerImplementation::initializeTransientMembers() {
 	ManagedObjectImplementation::initializeTransientMembers();
+}
+
+void SpaceManagerImplementation::start() {
 }
 
 void SpaceManagerImplementation::finalize() {
@@ -169,7 +60,10 @@ void SpaceManagerImplementation::finalize() {
 	server = nullptr;
 }
 
-void SpaceManagerImplementation::start() {
+void SpaceManagerImplementation::loadRegions() {
+}
+
+void SpaceManagerImplementation::readRegionObject(LuaObject& regionObject) {
 }
 
 void SpaceManagerImplementation::loadNebulaAreas() {
@@ -285,6 +179,129 @@ void SpaceManagerImplementation::loadNebulaAreas() {
 	delete iffStream;
 }
 
+void SpaceManagerImplementation::loadLuaConfig() {
+	String spaceZoneName = spaceZone->getZoneName();
+
+	Lua* lua = new Lua();
+	lua->init();
+
+	lua->runFile("scripts/managers/space_manager.lua");
+
+	// Get's the configuration settings object for this planet.
+	LuaObject base = lua->getGlobalObject(spaceZoneName);
+
+	if (base.isValidTable()) {
+		LuaObject luaObject = base.getObjectField("spaceStations");
+
+		if (!luaObject.isValidTable())
+			return;
+
+		for (int i = 1; i <= luaObject.getTableSize(); ++i) {
+			lua_State* L = luaObject.getLuaState();
+			lua_rawgeti(L, -1, i);
+
+			LuaObject stationObject(L);
+
+			String templateFile = stationObject.getStringField("templateFile");
+
+			auto shipTemp = dynamic_cast<SharedShipObjectTemplate*>(TemplateManager::instance()->getTemplate(templateFile.hashCode()));
+
+			if (shipTemp == nullptr)
+				continue;
+
+			ManagedReference<ShipAiAgent*> shipAgent = ShipManager::instance()->createAiShip(templateFile);
+
+			if (shipAgent == nullptr)
+				continue;
+
+			Locker shipLocker(shipAgent);
+
+			float x = stationObject.getFloatField("x");
+			float y = stationObject.getFloatField("y");
+			float z = stationObject.getFloatField("z");
+			float ox = stationObject.getFloatField("ox");
+			float oy = stationObject.getFloatField("oy");
+			float oz = stationObject.getFloatField("oz");
+			float ow = stationObject.getFloatField("ow");
+
+			uint64 parentID = stationObject.getLongField("parent");
+
+			Quaternion direction(ow, ox, oy, oz);
+			direction.normalize();
+
+			shipAgent->initializePosition(x, z, y);
+			shipAgent->setDirection(direction);
+
+			// Transfer into the zone
+			spaceZone->transferObject(shipAgent, -1, true);
+
+			shipAgent->createChildObjects();
+
+			shipAgent->setRotationMatrix(direction);
+
+			String faction = shipAgent->getShipFaction();
+
+			if (faction.isEmpty() || !spaceStationMap.contains(faction)) {
+				faction = "neutral";
+
+				shipAgent->setFaction(Factions::FACTIONNEUTRAL);
+				shipAgent->setOptionBit(OptionBitmask::INVULNERABLE, false);
+			}
+
+			uint64 stationID = shipAgent->getObjectID();
+			Vector3 stationPosition = shipAgent->getPosition();
+
+			spaceStationMap.get(faction).put(stationID, stationPosition);
+
+			// info(true) << "SpaceStation Added: " << shipAgent->getDisplayedName() << " Location: " + shipAgent->getPosition().toString();
+
+			stationObject.pop();
+		}
+
+		try {
+			LuaObject travelPoints = luaObject.getObjectField("jtlTravelPoints");
+			loadJTLData(&travelPoints);
+			travelPoints.pop();
+
+			LuaObject launchLocation = luaObject.getObjectField("jtlLaunchPoint");
+			if (!launchLocation.isValidTable())
+				return;
+
+			jtlZoneName = launchLocation.getStringAt(1);
+			float x = launchLocation.getFloatAt(2);
+			float z = launchLocation.getFloatAt(3);
+			float y = launchLocation.getFloatAt(4);
+
+			jtlLaunchLocation = Vector3(x, y, z);
+			launchLocation.pop();
+		} catch (Exception& e) {
+			error(e.getMessage());
+		}
+	} else {
+		warning("Space configuration settings not found.");
+	}
+}
+
+void SpaceManagerImplementation::loadJTLData(LuaObject* luaObject) {
+	if (!luaObject->isValidTable())
+		return;
+
+	for (int i = 1; i <= luaObject->getTableSize(); ++i) {
+		lua_State* L = luaObject->getLuaState();
+		lua_rawgeti(L, -1, i);
+
+		LuaObject location(L);
+
+		String locationName = location.getStringAt(1);
+		float x = location.getFloatAt(2);
+		float z = location.getFloatAt(3);
+		float y = location.getFloatAt(4);
+
+		jtlTravelDestinations.put(locationName, Vector3(x, y, z));
+		location.pop();
+	}
+}
+
 Vector3 SpaceManagerImplementation::getJtlLaunchLocationss() {
 	return jtlLaunchLocation;
 }
@@ -330,7 +347,7 @@ void SpaceManagerImplementation::broadcastNebulaLightning(ShipObject* ship, cons
 		return;
 
 	CloseObjectsVector* closeObjects = ship->getCloseObjects();
-	SortedVector<ManagedReference<TreeEntry*>>closeObjectsCopy(200, 50);
+	SortedVector<ManagedReference<TreeEntry*>> closeObjectsCopy(200, 50);
 
 	if (closeObjects != nullptr) {
 		closeObjects->safeCopyReceiversTo(closeObjectsCopy, CloseObjectsVector::PLAYERTYPE);

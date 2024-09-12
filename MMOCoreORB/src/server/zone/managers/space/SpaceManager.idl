@@ -53,6 +53,12 @@ class SpaceManager extends ManagedService implements Logger {
 	public native void loadLuaConfig();
 
 	@local
+	public native void loadRegions();
+
+	@local
+	public native void readRegionObject(@dereferenced LuaObject luaObject);
+
+	@local
 	public native void loadNebulaAreas();
 
 	@local
