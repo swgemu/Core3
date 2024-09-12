@@ -122,6 +122,9 @@ class ShipObject extends TangibleObject {
 	@dereferenced
 	protected Matrix4 rotationMatrix;
 
+	@dereferenced
+	protected Matrix4 conjugateMatrix;
+
 	// DeltaAutoVariable template <class K, class V, int BaselineName, uint8 DeltaType, int DeltaIndex>
 
 	@rawTemplate(value = "float, 'SHIP', 1, 17")
@@ -1658,6 +1661,11 @@ class ShipObject extends TangibleObject {
 	@local
 	public final Matrix4 getRotationMatrix() {
 		return rotationMatrix;
+	}
+
+	@local
+	public final Matrix4 getConjugateMatrix() {
+		return conjugateMatrix;
 	}
 
 	public float getBoundingRadius() {

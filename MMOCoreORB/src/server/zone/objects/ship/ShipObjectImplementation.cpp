@@ -1597,6 +1597,7 @@ CreatureObject* ShipObjectImplementation::getShipOperator() {
 
 void ShipObjectImplementation::setRotationMatrix(const Quaternion& value) {
 	rotationMatrix.setRotationMatrix(value.toMatrix3());
+	conjugateMatrix.setRotationMatrix(value.getConjugate().toMatrix3());
 }
 
 float ShipObjectImplementation::getComponentCondition(uint32 slot) {
