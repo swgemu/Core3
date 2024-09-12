@@ -212,3 +212,45 @@ function deathWatchMandalorianCraftingTerminal:handleObjectMenuSelect(pSceneObje
 
 	return 0
 end
+
+deathWatchDebrisTerminal = { }
+
+function deathWatchDebrisTerminal:fillObjectMenuResponse(pSceneObject, pMenuResponse, pPlayer)
+end
+
+function deathWatchDebrisTerminal:handleObjectMenuSelect(pSceneObject, pPlayer, selectedID)
+	if (pPlayer == nil or pSceneObject == nil) then
+		return 0
+	end
+
+	if (selectedID ~= 20) then
+		return 0
+	end
+
+	local parentID = SceneObject(pSceneObject):getParentID()
+
+	if (parentID ~= SceneObject(pPlayer):getParentID()) then
+		return 0
+	end
+
+	local debrisID = 0
+
+	-- Debris Terminal 1
+	if (parentID == 5996349) then
+		debrisID = readData("dwb:bombDebris")
+	-- Debris Terminal 2
+	else
+		debrisID = readData("dwb:bombDebris2")
+	end
+
+	local pDebris = getSceneObject(debrisID)
+
+	if (pDebris == nil) then
+		return 0
+	end
+
+	SceneObject(pDebris):playEffect("clienteffect/combat_grenade_proton.cef", "")
+	createEvent(250, "DeathWatchBunkerScreenPlay", "destroyDebris", pDebris, "")
+
+	return 0
+end

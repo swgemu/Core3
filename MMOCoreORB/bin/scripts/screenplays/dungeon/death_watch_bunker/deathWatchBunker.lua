@@ -314,6 +314,26 @@ function DeathWatchBunkerScreenPlay:spawnObjects()
 		writeData("dwb:bombDebris2", SceneObject(spawnedPointer):getObjectID())
 	end
 
+	-- Debris Clearance Terminal1
+	spawnedPointer = spawnSceneObject("endor", "object/tangible/dungeon/terminal_free_s1.iff", 115.25, -63.8, -108.9, 5996349, -0.707107, 0, 0.707107, 0)
+
+	if (spawnedPointer ~= nil) then
+		spawnedSceneObject:_setObject(spawnedPointer)
+		spawnedSceneObject:setCustomObjectName("Clearance Terminal")
+
+		spawnedSceneObject:setObjectMenuComponent("deathWatchDebrisTerminal")
+	end
+
+	-- Debris Clearance Terminal2
+	spawnedPointer = spawnSceneObject("endor", "object/tangible/dungeon/terminal_free_s1.iff", 115, -63.8, -155, 5996350, -0.707107, 0, 0.707107, 0)
+
+	if (spawnedPointer ~= nil) then
+		spawnedSceneObject:_setObject(spawnedPointer)
+		spawnedSceneObject:setCustomObjectName("Clearance Terminal")
+
+		spawnedSceneObject:setObjectMenuComponent("deathWatchDebrisTerminal")
+	end
+
 	-- Armorsmith Access Terminal
 	spawnedPointer = spawnSceneObject("endor", "object/tangible/dungeon/death_watch_bunker/door_control_terminal.iff", -232.11,-60,-219.996,5996373,0.707107,0,0.707107,0)
 
@@ -966,10 +986,10 @@ function DeathWatchBunkerScreenPlay:bombDroidDetonated(pBombDroid)
 
 	if (pDebris ~= nil and SceneObject(pBombDroid):isInRangeWithObject(pDebris, 5)) then
 		SceneObject(pDebris):playEffect("clienteffect/combat_grenade_proton.cef", "")
-		createEvent(500, "DeathWatchBunkerScreenPlay", "destroyDebris", pDebris, "")
+		createEvent(250, "DeathWatchBunkerScreenPlay", "destroyDebris", pDebris, "")
 	elseif (pDebris2 ~= nil and SceneObject(pBombDroid):isInRangeWithObject(pDebris2, 5)) then
 		SceneObject(pDebris2):playEffect("clienteffect/combat_grenade_proton.cef", "")
-		createEvent(500, "DeathWatchBunkerScreenPlay", "destroyDebris", pDebris2, "")
+		createEvent(250, "DeathWatchBunkerScreenPlay", "destroyDebris", pDebris2, "")
 	end
 
 	createEvent(2000, "DeathWatchBunkerScreenPlay", "despawnCreature", pBombDroid, "")
