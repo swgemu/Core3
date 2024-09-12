@@ -51,12 +51,6 @@ class ShipAiAgent extends FighterShipObject {
 	protected transient SpacePatrolPoint nextStepPosition;
 
 	@dereferenced
-	protected transient SpacePatrolPoint endMovementPosition;
-
-	@dereferenced
-	protected transient Vector3 lastPosition;
-
-	@dereferenced
 	protected transient Vector3 lastDirection;
 
 	@dereferenced
@@ -64,6 +58,15 @@ class ShipAiAgent extends FighterShipObject {
 
 	@dereferenced
 	protected transient Vector3 nextDirection;
+
+	@dereferenced
+	protected transient Vector3 lastRotation;
+
+	@dereferenced
+	protected transient Vector3 currentRotation;
+
+	@dereferenced
+	protected transient Vector3 nextRotation;
 
 	protected boolean despawnOnNoPlayerInRange;
 
@@ -95,7 +98,6 @@ class ShipAiAgent extends FighterShipObject {
 	protected float coordinateMin;
 	protected float coordinateMax;
 
-	private float currentSpeed;
 	private float lastSpeed;
 
 	@dereferenced
@@ -132,6 +134,7 @@ class ShipAiAgent extends FighterShipObject {
 	protected unsigned int shipBitmask;
 
 	public static final int BEHAVIORINTERVAL = 200; // msec
+	public static final float DELTATIME = 0.2f;
 
 	public static final float DEFAULTAGGRORADIUS = 768.f;
 	public static final float MAX_ATTACK_DISTANCE = 1280.f;
@@ -261,23 +264,42 @@ class ShipAiAgent extends FighterShipObject {
 	public abstract native int setDestination();
 
 	@local
-	public native final Quaternion unitVectorToQuaternion();
+	@dereferenced
+	public native Quaternion radiansToQuaterion(float yaw, float pitch, float roll);
 
-	public native float getRotationRate(float currentRadians, float lastRadians);
+	@local
+	@dereferenced
+	public native Vector3 radiansToUnitVector(float yaw, float pitch);
+
+	@local
+	@dereferenced
+	public native Quaternion unitVectorToQuaternion();
+
+	@local
+	@dereferenced
+	public native Vector3 unitVectorToRotation();
+
+	@local
+	@dereferenced
+	public native Vector3 matrixToUnitVector();
 
 	public native float getMaxThrottle();
 
 	public native float getMinThrottle();
 
+	public native float getRotationRate(float currentRadians, float lastRadians = 0.f);
+
 	public native float qInvSqrt(float x);
+
+	public native float qSqrt(float x);
 
 	public native float qNormalize(@dereferenced Vector3 vec);
 
 	public native boolean setDisabledEngineSpeed();
 
-	public native void setSpeed();
+	public native void setNextSpeed();
 
-	public native void setShipDirection();
+	public native void setNextDirection();
 
 	public native void setNextPosition();
 
@@ -285,6 +307,8 @@ class ShipAiAgent extends FighterShipObject {
 	public abstract native boolean findNextPosition(int maxDistance);
 
 	public abstract native boolean generatePatrol(int num, float dist);
+
+	public abstract native void updatePatrolPoints();
 
 	@preLocked
 	public abstract native void leash();
@@ -505,11 +529,6 @@ class ShipAiAgent extends FighterShipObject {
 		return numberOfPlayersInRange.get();
 	}
 
-	@local
-	@dirty
-	@dereferenced
-	public native Vector3 getCurrentDirectionVector();
-
 	@preLocked
 	public native void setDespawnOnNoPlayerInRange(boolean val);
 
@@ -591,10 +610,6 @@ class ShipAiAgent extends FighterShipObject {
 
 	public native void sendDebugPath();
 
-	public float getCurrentSpeed() {
-		return currentSpeed;
-	}
-
 	@preLocked
 	public native boolean validateTarget();
 
@@ -604,4 +619,39 @@ class ShipAiAgent extends FighterShipObject {
 	public native boolean fireWeaponAtTarget(ShipObject targetShip, unsigned int slot, unsigned int targetSlot);
 
 	public native boolean fireTurretAtTarget(ShipObject targetShip, unsigned int slot, unsigned int targetSlot);
+
+	public native void initializeTransform(@dereferenced final Vector3 position, @dereferenced final Quaternion direction);
+
+	@read
+	@local
+	@dereferenced
+	public native Vector3 getNextDirectionVector();
+
+	@read
+	@local
+	@dereferenced
+	public native Vector3 getCurrentDirectionVector();
+
+	@read
+	@local
+	@dereferenced
+	public native Vector3 getLastDirectionVector();
+
+	@read
+	@local
+	@dereferenced
+	public native Vector3 getNextRotationVector();
+
+	@read
+	@local
+	@dereferenced
+	public native Vector3 getCurrentRotationVector();
+
+	@read
+	@local
+	@dereferenced
+	public native Vector3 getLastRotationVector();
+
+	@read
+	public native float getLastSpeed();
 }

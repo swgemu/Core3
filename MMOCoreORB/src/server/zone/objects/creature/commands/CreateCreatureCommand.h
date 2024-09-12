@@ -277,10 +277,16 @@ public:
 
 		shipAgent->setFactionStatus(FactionStatus::OVERT);
 
-		const Vector3& position = creature->getPosition();
+		Vector3 position = creature->getPosition();
 
-		shipAgent->setHomeLocation(position.getX(), position.getZ() - 40.f, position.getY(), Quaternion::IDENTITY);
-		shipAgent->initializePosition(position.getX(), position.getZ() - 40.f, position.getY());
+		position.setX(Math::clamp(-7999.f, (System::random(128) - 64.f) + position.getX(), 7999.f));
+		position.setY(Math::clamp(-7999.f, (System::random(128) - 64.f) + position.getY(), 7999.f));
+		position.setZ(Math::clamp(-7999.f, (System::random(128) - 64.f) + position.getZ(), 7999.f));
+
+		shipAgent->setHomeLocation(position.getX(), position.getZ(), position.getY(), Quaternion::IDENTITY);
+		shipAgent->initializeTransform(position, Quaternion::IDENTITY);
+
+		shipAgent->setHyperspacing(true);
 
 		if (!spaceZone->transferObject(shipAgent, -1, true)) {
 			shipAgent->destroyObjectFromWorld(true);
@@ -288,6 +294,8 @@ public:
 
 			return GENERALERROR;
 		}
+
+		shipAgent->setHyperspacing(false);
 
 		info(true) << "CreateCreatureCommand " << creature->getDisplayedName() << " Created Ship: " << shipAgent->getObjectID() << " [" << shipAgent->getDisplayedName() << "] at " << shipAgent->getWorldPosition() << " in Space Zone: " << spaceZone->getZoneName();
 
