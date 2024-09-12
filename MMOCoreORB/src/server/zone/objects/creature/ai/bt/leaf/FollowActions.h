@@ -713,21 +713,25 @@ public:
 	}
 
 	Behavior::Status execute(AiAgent* agent, unsigned int startIdx = 0) const {
-		if (agent == nullptr || !agent->isPet())
+		if (agent == nullptr || !agent->isPet()) {
 			return FAILURE;
+		}
 
 		Reference<PetControlDevice*> controlDevice = agent->getControlDevice().castTo<PetControlDevice*>();
 
-		if (controlDevice == nullptr)
+		if (controlDevice == nullptr) {
 			return FAILURE;
+		}
 
 		ManagedReference<SceneObject*> newFollow = controlDevice->getLastCommander();
 		uint32 lastCommand = controlDevice->getLastCommand();
+
 		Locker clocker(controlDevice, agent);
 
 		if (lastCommand == PetManager::PATROL) {
-			if (controlDevice->getPatrolPointSize() == 0)
+			if (controlDevice->getPatrolPointSize() == 0) {
 				return FAILURE;
+			}
 
 			controlDevice->setLastCommandTarget(nullptr);
 
@@ -752,9 +756,9 @@ public:
 		}
 
 		controlDevice->setLastCommandTarget(newFollow);
+
 		clocker.release();
 
-		Locker flocker(newFollow, agent);
 		agent->setFollowObject(newFollow);
 
 		return SUCCESS;
