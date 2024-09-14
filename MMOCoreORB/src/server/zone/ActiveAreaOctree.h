@@ -14,7 +14,7 @@
 #include "system/lang/ref/UniqueReference.h"
 
 // #define AREA_TREE_SIMPLE
-//#define DEBUG_AA_OCTREE
+// #define DEBUG_AA_OCTREE
 
 namespace server {
 namespace zone {
@@ -67,8 +67,13 @@ public:
 		float zDelta1 = z - radius;
 		float zDelta2 = z + radius;
 
-		bool runTest = ((xDelta1 >= minX && xDelta2 < maxX) && (yDelta1 >= minY && yDelta2 < maxY)
-			&& (zDelta1 >= minZ && zDelta2 < maxZ));
+#ifdef DEBUG_AA_OCTREE
+		info(true) << "testAreaInside --- Radius: " << radius << " xDelta1 = " << xDelta1 << " xDelta2 = " << xDelta2 << " yDelta1 = " << yDelta1 << " yDelta2 = " << yDelta2 <<
+		" zDelta1 = " << zDelta1 << " zDelta2 = " << zDelta2;
+		info(true) << "minX = " << minX << " maxX = " << maxX << " minZ = " << minZ << " maxZ = " << maxZ << " minY = " << minY << " maxY = " << maxY;
+#endif
+
+		bool runTest = ((xDelta1 > minX && xDelta2 < maxX) && (yDelta1 > minY && yDelta2 < maxY) && (zDelta1 > minZ && zDelta2 < maxZ));
 
 		return runTest;
 	}
@@ -105,50 +110,145 @@ public:
 	}
 
 	bool hasSubNodes() const {
-		return nwNode != nullptr || neNode != nullptr || swNode != nullptr || seNode
-			!= nullptr || nwNode2 != nullptr || neNode2 != nullptr || swNode2 != nullptr || seNode2 != nullptr;
+		return nwNode != nullptr || neNode != nullptr || swNode != nullptr || seNode != nullptr || nwNode2 != nullptr || neNode2 != nullptr || swNode2 != nullptr || seNode2 != nullptr;
 	}
 
 	bool testInSWArea(float x, float z, float y, float radius) const {
-		return (x - radius) >= minX && (x + radius) < dividerX && (y - radius) >= minY && (y + radius) < dividerY
-			&& (z - radius) >= minZ && (z + radius) < dividerZ;
+		float xDelta1 = x - radius;
+		float xDelta2 = x + radius;
+		float yDelta1 = y - radius;
+		float yDelta2 = y + radius;
+		float zDelta1 = z - radius;
+		float zDelta2 = z + radius;
+
+#ifdef DEBUG_AA_OCTREE
+		info(true) << "testInSWArea --- Radius: " << radius << " xDelta1 = " << xDelta1 << " xDelta2 = " << xDelta2 << " yDelta1 = " << yDelta1 << " yDelta2 = " << yDelta2 <<
+		" zDelta1 = " << zDelta1 << " zDelta2 = " << zDelta2;
+		info(true) << "minX = " << minX << " dividerX = " << dividerX << " minZ = " << minZ << " dividerZ = " << dividerZ << " minY = " << minY << " dividerY = " << dividerY;
+#endif
+
+		return (xDelta1 > minX && xDelta2 < dividerX) && (yDelta1 > minY && yDelta2 < dividerY) && (zDelta1 > minZ && zDelta2 < dividerZ);
 	}
 
 	bool testInSEArea(float x, float z, float y, float radius) const {
-		return (x - radius) >= dividerX && (x + radius) < maxX && (y - radius) >= minY && (y + radius) < dividerY
-			&& (z - radius) >= minZ && (z + radius) < dividerZ;
+		float xDelta1 = x - radius;
+		float xDelta2 = x + radius;
+		float yDelta1 = y - radius;
+		float yDelta2 = y + radius;
+		float zDelta1 = z - radius;
+		float zDelta2 = z + radius;
+
+#ifdef DEBUG_AA_OCTREE
+		info(true) << "testInSEArea --- Radius: " << radius << " xDelta1 = " << xDelta1 << " xDelta2 = " << xDelta2 << " yDelta1 = " << yDelta1 << " yDelta2 = " << yDelta2 <<
+		" zDelta1 = " << zDelta1 << " zDelta2 = " << zDelta2;
+		info(true) << "dividerX = " << dividerX << " maxX = " << maxX << " minZ = " << minZ << " dividerZ = " << dividerZ << " minY = " << minY << " dividerY = " << dividerY;
+#endif
+
+		return (xDelta1 > dividerX && xDelta2 < maxX) && (yDelta1 > minY && yDelta2 < dividerY) && (zDelta1 > minZ && zDelta2 < dividerZ);
 	}
 
 	bool testInNWArea(float x, float z, float y, float radius) const {
-		return (x - radius) >= minX && (x + radius) < dividerX && (y - radius) >= dividerY && (y + radius) < maxY
-			&& (z - radius) >= minZ && (z + radius) < dividerZ;
+		float xDelta1 = x - radius;
+		float xDelta2 = x + radius;
+		float yDelta1 = y - radius;
+		float yDelta2 = y + radius;
+		float zDelta1 = z - radius;
+		float zDelta2 = z + radius;
+
+#ifdef DEBUG_AA_OCTREE
+		info(true) << "testInNWArea --- Radius: " << radius << " xDelta1 = " << xDelta1 << " xDelta2 = " << xDelta2 << " yDelta1 = " << yDelta1 << " yDelta2 = " << yDelta2 <<
+		" zDelta1 = " << zDelta1 << " zDelta2 = " << zDelta2;
+		info(true) << "minX = " << minX << " dividerX = " << dividerX << " minZ = " << minZ << " dividerZ = " << dividerZ << " dividerY = " << dividerY << " maxY = " << maxY;
+#endif
+
+		return (xDelta1 > minX && xDelta2 < dividerX) && (yDelta1 > dividerY && yDelta2 < maxY) && (zDelta1 > minZ && zDelta2 < dividerZ);
 	}
 
 	bool testInNEArea(float x, float z, float y, float radius) const {
-		return (x - radius) >= dividerX && (x + radius) < maxX && (y - radius) >= dividerY && (y + radius) < maxY
-			&& (z - radius) >= minZ && (z + radius) < dividerZ;
+		float xDelta1 = x - radius;
+		float xDelta2 = x + radius;
+		float yDelta1 = y - radius;
+		float yDelta2 = y + radius;
+		float zDelta1 = z - radius;
+		float zDelta2 = z + radius;
+
+#ifdef DEBUG_AA_OCTREE
+		info(true) << "testInNEArea --- Radius: " << radius << " xDelta1 = " << xDelta1 << " xDelta2 = " << xDelta2 << " yDelta1 = " << yDelta1 << " yDelta2 = " << yDelta2 <<
+		" zDelta1 = " << zDelta1 << " zDelta2 = " << zDelta2;
+		info(true) << "minX = " << minX << " dividerX = " << dividerX << " minZ = " << minZ << " dividerZ = " << dividerZ << " dividerY = " << dividerY << " maxY = " << maxY;
+#endif
+
+		return (xDelta1 > dividerX && xDelta2 < maxX) && (yDelta1 > dividerY && yDelta2 < maxY) && (zDelta1 > minZ && zDelta2 < dividerZ);
 	}
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	bool testInSWArea2(float x, float z, float y, float radius) const {
-		return (x - radius) >= minX && (x + radius) < dividerX && (y - radius) >= minY && (y + radius) < dividerY
-			&& (z + radius) >= dividerZ && (z - radius) < maxZ;
+		float xDelta1 = x - radius;
+		float xDelta2 = x + radius;
+		float yDelta1 = y - radius;
+		float yDelta2 = y + radius;
+		float zDelta1 = z - radius;
+		float zDelta2 = z + radius;
+
+#ifdef DEBUG_AA_OCTREE
+		info(true) << "testInSWArea2 --- Radius: " << radius << " xDelta1 = " << xDelta1 << " xDelta2 = " << xDelta2 << " yDelta1 = " << yDelta1 << " yDelta2 = " << yDelta2 <<
+		" zDelta1 = " << zDelta1 << " zDelta2 = " << zDelta2;
+		info(true) << "minX = " << minX << " dividerX = " << dividerX << " dividerZ = " << dividerZ << " maxZ = " << maxZ << " minY = " << minY << " dividerY = " << dividerY;
+#endif
+
+		return (xDelta1 > minX && xDelta2 < dividerX) && (yDelta1 > minY && yDelta2 < dividerY) && (zDelta1 > dividerZ && zDelta2 < maxZ);
 	}
 
 	bool testInSEArea2(float x, float z, float y, float radius) const {
-		return (x - radius) >= dividerX && (x + radius) < maxX && (y - radius) >= minY && (y + radius) < dividerY
-			&& (z + radius) >= dividerZ && (z - radius) < maxZ;
+		float xDelta1 = x - radius;
+		float xDelta2 = x + radius;
+		float yDelta1 = y - radius;
+		float yDelta2 = y + radius;
+		float zDelta1 = z - radius;
+		float zDelta2 = z + radius;
+
+#ifdef DEBUG_AA_OCTREE
+		info(true) << "testInSEArea2 --- Radius: " << radius << " xDelta1 = " << xDelta1 << " xDelta2 = " << xDelta2 << " yDelta1 = " << yDelta1 << " yDelta2 = " << yDelta2 <<
+		" zDelta1 = " << zDelta1 << " zDelta2 = " << zDelta2;
+		info(true) << "dividerX = " << dividerX << " maxX = " << maxX << " minZ = " << minZ << " maxZ = " << maxZ << " minY = " << minY << " maxY = " << maxY;
+#endif
+
+		return (xDelta1 > dividerX && xDelta2 < maxX) && (yDelta1 > minY && yDelta2 < dividerY) && (zDelta1 > dividerZ && zDelta2 < maxZ);
 	}
 
 	bool testInNWArea2(float x, float z, float y, float radius) const {
-		return (x - radius) >= minX && (x + radius) < dividerX && (y - radius) >= dividerY && (y + radius) < maxY
-			&& (z + radius) >= dividerZ && (z - radius) < maxZ;
+		float xDelta1 = x - radius;
+		float xDelta2 = x + radius;
+		float yDelta1 = y - radius;
+		float yDelta2 = y + radius;
+		float zDelta1 = z - radius;
+		float zDelta2 = z + radius;
+
+#ifdef DEBUG_AA_OCTREE
+		info(true) << "testInNWArea2 --- Radius: " << radius << " xDelta1 = " << xDelta1 << " xDelta2 = " << xDelta2 << " yDelta1 = " << yDelta1 << " yDelta2 = " << yDelta2 <<
+		" zDelta1 = " << zDelta1 << " zDelta2 = " << zDelta2;
+		info(true) << "minX = " << minX << " dividerX = " << dividerX << " dividerZ = " << dividerZ << " maxZ = " << maxZ << " dividerY = " << minY << " maxY = " << maxY;
+#endif
+
+		return (xDelta1 > minX && xDelta2 < dividerX) && (yDelta1 > dividerY && yDelta2 < maxY) && (zDelta1 > dividerZ && zDelta2 < maxZ);
 	}
 
 	bool testInNEArea2(float x, float z, float y, float radius) const {
-		return (x - radius) >= dividerX && (x + radius) < maxX && (y - radius) >= dividerY && (y + radius) < maxY
-			&& (z + radius) >= dividerZ && (z - radius) < maxZ;
+		float xDelta1 = x - radius;
+		float xDelta2 = x + radius;
+		float yDelta1 = y - radius;
+		float yDelta2 = y + radius;
+		float zDelta1 = z - radius;
+		float zDelta2 = z + radius;
+
+#ifdef DEBUG_AA_OCTREE
+		info(true) << "testInNEArea2 --- Radius: " << radius << " xDelta1 = " << xDelta1 << " xDelta2 = " << xDelta2 << " yDelta1 = " << yDelta1 << " yDelta2 = " << yDelta2 <<
+		" zDelta1 = " << zDelta1 << " zDelta2 = " << zDelta2;
+		info(true) << "dividerX = " << dividerX << " maxX = " << maxX << " dividerZ = " << dividerZ << " maxZ = " << maxZ << " dividerY = " << dividerY << " maxY = " << maxY;
+#endif
+
+		return (xDelta1 > dividerX && xDelta2 < maxX) && (yDelta1 > dividerY && yDelta2 < maxY) && (zDelta1 > dividerZ && zDelta2 < maxZ);
 	}
 
 	friend class ActiveAreaOctree;

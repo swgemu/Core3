@@ -50,6 +50,8 @@ class ActiveArea extends SceneObject {
 	public static final int CIRCLE = 1;
 	public static final int RECTANGLE = 2;
 	public static final int RING = 3;
+	public static final int SPHERE = 4;
+	public static final int CUBOID = 5;
 
 	public ActiveArea() {
 		cellObjectID = 0;

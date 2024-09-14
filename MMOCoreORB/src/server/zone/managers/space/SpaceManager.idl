@@ -14,12 +14,16 @@ include engine.lua.LuaObject;
 import server.zone.CloseObjectsVector;
 include engine.util.u3d.Vector3;
 import server.zone.objects.ship.ShipObject;
+include server.zone.managers.space.SpaceRegionMap;
 
 @dirty
 class SpaceManager extends ManagedService implements Logger {
 	protected SpaceZone spaceZone;
 
 	protected transient ZoneProcessServer server;
+
+	@dereferenced
+	protected SpaceRegionMap regionMap;
 
 	@rawTemplate(value="String, Vector3")
 	@dereferenced

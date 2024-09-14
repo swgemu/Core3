@@ -148,6 +148,8 @@
 #include "server/zone/objects/region/SpawnArea.h"
 #include "server/zone/objects/area/space/SpaceActiveArea.h"
 #include "server/zone/objects/area/space/NebulaArea.h"
+#include "server/zone/objects/region/space/SpaceRegion.h"
+#include "server/zone/objects/region/space/SpaceSpawnArea.h"
 #include "server/zone/objects/tangible/misc/ContractCrate.h"
 #include "server/zone/objects/tangible/misc/DeadEyePrototype.h"
 #include "server/zone/objects/tangible/misc/FurnitureObject.h"

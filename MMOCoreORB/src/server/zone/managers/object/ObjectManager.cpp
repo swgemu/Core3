@@ -105,6 +105,8 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<NavArea>(SceneObjectType::NAVMESHAREA);
 	objectFactory.registerObject<SpaceActiveArea>(SceneObjectType::SPACEACTIVEAREA);
 	objectFactory.registerObject<NebulaArea>(SceneObjectType::NEBULAAREA);
+	objectFactory.registerObject<SpaceRegion>(SceneObjectType::SPACEREGIONAREA);
+	objectFactory.registerObject<SpaceSpawnArea>(SceneObjectType::SPACESPAWNAREA);
 	objectFactory.registerObject<StaticObject>(SceneObjectType::STATICOBJECT);
 	objectFactory.registerObject<Creature>(SceneObjectType::CREATURE);
 	objectFactory.registerObject<NonPlayerCreatureObject>(SceneObjectType::NPCCREATURE);
