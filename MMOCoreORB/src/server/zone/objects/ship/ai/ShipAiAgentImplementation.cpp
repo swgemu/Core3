@@ -284,17 +284,9 @@ void ShipAiAgentImplementation::notifyDissapear(TreeEntry* entry) {
 
 	SceneObject* scno = static_cast<SceneObject*>(entry);
 
-#ifdef DEBUG_COV
-	info(true) << "ShipAiAgentImplementation::notifyDissapear - for Object: " << scno->getDisplayedName();
-#endif // DEBUG_COV
-
-	if (scno == nullptr || (scno->getObjectID() == getObjectID()) || !scno->isShipObject())
+	if (scno == nullptr || (scno->getObjectID() == getObjectID()) || !scno->isShipObject()  || scno->isShipAiAgent()) {
 		return;
-
-	ShipObject* ship = scno->asShipObject();
-
-	if (ship == nullptr || ship->isShipAiAgent())
-		return;
+	}
 
 	int32 newValue = (int32)numberOfPlayersInRange.decrement();
 
@@ -311,13 +303,24 @@ void ShipAiAgentImplementation::notifyDissapear(TreeEntry* entry) {
 		} while (!numberOfPlayersInRange.compareAndSet((uint32)oldValue, (uint32)newValue));
 	}
 
-	if (newValue == 0) {
-		if (despawnOnNoPlayerInRange && (despawnEvent == nullptr)) {
-			despawnEvent = new DespawnAiShipOnNoPlayersInRange(asShipAiAgent());
-			despawnEvent->schedule(30000);
+#ifdef DEBUG_COV
+	info(true) << "ShipAiAgentImplementation::notifyDissapear - for Object: " << scno->getDisplayedName() << " number of players in range: " << newValue;
+#endif // DEBUG_COV
+
+	if (newValue <= 0) {
+		if (newValue < 0) {
+			error() << "numberOfPlayersInRange below 0";
 		}
-	} else if (newValue < 0) {
-		error() << "numberOfPlayersInRange below 0";
+
+		if (despawnOnNoPlayerInRange) {
+			if (despawnEvent == nullptr) {
+				despawnEvent = new DespawnAiShipOnNoPlayersInRange(asShipAiAgent());
+			}
+
+			if (!despawnEvent->isScheduled()) {
+				despawnEvent->schedule(30000);
+			}
+		}
 	}
 
 	activateAiBehavior();

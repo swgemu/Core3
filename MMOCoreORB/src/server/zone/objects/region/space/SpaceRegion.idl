@@ -1,0 +1,42 @@
+/*
+				Copyright <SWGEmu>
+		See file COPYING for copying conditions.*/
+
+package server.zone.objects.region.space;
+
+import server.zone.objects.area.space.SpaceActiveArea;
+import server.zone.objects.scene.SceneObject;
+
+@json
+class SpaceRegion extends SpaceActiveArea {
+	public SpaceRegion() {
+		super();
+	}
+
+	public native void notifyLoadFromDatabase();
+
+	public void enqueueEnterEvent(SceneObject obj) {
+		notifyEnter(obj);
+	}
+
+	public void enqueueExitEvent(SceneObject obj) {
+		notifyExit(obj);
+	}
+
+	public void notifyEnter(SceneObject object) {
+		super.notifyEnter(object);
+	}
+
+	public void notifyExit(SceneObject object) {
+		super.notifyExit(object);
+	}
+
+	@dirty
+	public boolean isSpaceRegion() {
+		return true;
+	}
+
+	public boolean isSpaceSpawnAreaObject() {
+		return false;
+	}
+}

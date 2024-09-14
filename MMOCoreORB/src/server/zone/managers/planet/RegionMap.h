@@ -94,7 +94,7 @@ public:
 	Region* getRegionAt(float x, float y) {
 		rlock();
 
-		for (int i = 0; i < cityRegions.size(); ++i) {
+		for (int i = 0; i < regions.size(); ++i) {
 			Region* region = regions.get(i);
 
 			if (region->containsPoint(x, y)) {

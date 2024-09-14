@@ -8,8 +8,8 @@
 #include "server/zone/objects/area/areashapes/CuboidAreaShape.h"
 #include "server/zone/objects/area/areashapes/SphereAreaShape.h"
 
-//#define DEBUG_POSITION
-//#define DEBUG_CUBOID
+// #define DEBUG_POSITION
+// #define DEBUG_CUBOID
 
 void CuboidAreaShapeImplementation::setDimensions(float len, float wid, float hght) {
 	length = len;
@@ -28,7 +28,7 @@ void CuboidAreaShapeImplementation::setDimensions(float len, float wid, float hg
 }
 
 bool CuboidAreaShapeImplementation::containsPoint(float x, float z, float y) const {
-	bool containsTest = (x >= minX && x <= maxX) && (y >= minY && y <= maxY) && (z >= minZ && z <= maxZ);
+	bool containsTest = (x > minX && x < maxX) && (y > minY && y < maxY) && (z > minZ && z < maxZ);
 
 #ifdef DEBUG_CUBOID
 	StringBuffer msg;
@@ -45,8 +45,7 @@ bool CuboidAreaShapeImplementation::containsPoint(float x, float z, float y) con
 }
 
 bool CuboidAreaShapeImplementation::containsPoint(const Vector3& point) const {
-	return (point.getX() >= minX && point.getX() <= maxX) && (point.getY() >= minY && point.getY() <= maxY)
-		&& (point.getZ() >= minZ && point.getZ() <= maxZ);
+	return (point.getX() > minX && point.getX() < maxX) && (point.getY() > minY && point.getY() < maxY) && (point.getZ() > minZ && point.getZ() < maxZ);
 }
 
 Vector3 CuboidAreaShapeImplementation::getRandomPosition() const {
@@ -64,33 +63,28 @@ Vector3 CuboidAreaShapeImplementation::getRandomPosition(const Vector3& origin, 
 	info(true) << "Cuboid - getRandomPosition called";
 #endif // DEBUG_POSITION
 
-	Vector3 position;
+	Vector3 position(areaCenter.getX(), areaCenter.getZ(), areaCenter.getY());
 	bool found = false;
 	int retries = 10;
 
 	while (!found && retries-- > 0) {
-		// Generate random radial distance and angle
-		float radius = System::frandom(maxDistance - minDistance);
-		float angle = System::frandom(2.0 * Math::PI);
+		int halfLength = length / 2;
+		int halfWidth = width / 2;
+		int halfHeight = height / 2;
 
-		// Calculate Cartesian coordinates based on polar coordinates
-		float x = areaCenter.getX() + radius * cos(angle);
-		float y = areaCenter.getY() + radius * sin(angle);
+		float randLength = System::random(halfLength) * ((System::random(10) < 5) ? -1.f : 1.f);
+		float randWidth = System::random(halfWidth) * ((System::random(10) < 5) ? -1.f : 1.f);
+		float randHeight = System::random(halfHeight)  * ((System::random(10) < 5) ? -1.f : 1.f);
 
-		// Z-coordinate is within the cuboid's height
-		float z = areaCenter.getZ() + System::frandom(maxDistance - minDistance);
-
-		// Ensure generated coordinates are within the cuboid
-		x = Math::max(Math::min(x, areaCenter.getX() + 0.5f * length), (float) (areaCenter.getX() - 0.5 * length));
-		y = Math::max(Math::min(y, areaCenter.getY() + 0.5f * width), (float) (areaCenter.getY() - 0.5 * width));
-		z = Math::max(Math::min(z, areaCenter.getZ() + height), areaCenter.getZ());
-
-#ifdef DEBUG_POSITION
-		info(true) << " X Calc = " << xCalc << " Y Calc = " << yCalc << " Spawn Distance Delta = " << spawnDistanceDelta;
-		info(true) << "Checking Position: " << position.toString() << "   Squared Distance: " << areaCenter.squaredDistanceTo(position) << "  Squared Radius = " << radius2;
-#endif // DEBUG_POSITION
+		position.setX(areaCenter.getX() + randLength);
+		position.setY(areaCenter.getY() + randWidth);
+		position.setZ(areaCenter.getZ() + randHeight);
 
 		found = containsPoint(position);
+
+#ifdef DEBUG_POSITION
+		info(true) << "Cuboid - getRandomPosition -- Retries remaining: " << retries;
+#endif // DEBUG_POSITION
 	}
 
 	if (!found) {
