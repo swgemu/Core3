@@ -1,0 +1,110 @@
+/*
+				Copyright <SWGEmu>
+		See file COPYING for copying conditions.*/
+
+package server.zone.objects.region.space;
+
+import server.zone.objects.region.space.SpaceRegion;
+
+import engine.core.ManagedObject;
+import engine.util.Observable;
+import engine.log.Logger;
+import server.zone.TreeEntry;
+import server.zone.objects.scene.SceneObject;
+include server.zone.objects.ship.ShipObject;
+import system.lang.Time;
+import server.zone.objects.region.space.SpaceSpawnAreaObserver;
+
+include system.util.Vector;
+include engine.util.u3d.Vector3;
+include system.thread.atomic.AtomicInteger;
+
+@json
+class SpaceSpawnArea extends SpaceRegion {
+	@dereferenced
+	protected transient AtomicInteger numberOfPlayerShipsInRange;
+
+	//@dereferenced
+	//@rawTemplate(value = "Reference<LairSpawn*>")
+	//protected transient Vector possibleSpawns;
+
+	protected int totalSpawnCount;
+	protected int maxSpawnLimit;
+
+	@dereferenced
+	protected Time lastSpawn;
+
+	protected SpaceSpawnAreaObserver spawnAreaObserver;
+
+	@dereferenced
+	@rawTemplate(value = "ManagedWeakReference<SpaceSpawnArea*>")
+	protected Vector noSpawnAreas;
+
+	public final static int MINSPAWNINTERVAL = 5000; //msec
+
+	public SpaceSpawnArea() {
+		spawnAreaObserver = null;
+
+		totalSpawnCount = 0;
+		maxSpawnLimit = 100;
+
+		Logger.setLoggingName("SpaceSpawnArea");
+	}
+
+	@dirty
+	public native void notifyPositionUpdate(TreeEntry entry);
+
+	@dirty
+	public native abstract void notifyEnter(SceneObject object);
+
+	@dirty
+	public native abstract void notifyExit(SceneObject object);
+
+
+	public native void tryToSpawn(ShipObject playerShip);
+
+	public native int getShipSpawnLevel(ShipObject playerShip);
+
+	@local
+	@dereferenced
+	@dirty
+	public native Vector3 getRandomPosition(SceneObject playerShip);
+
+	public native int notifyObserverEvent(unsigned int eventType, Observable observable, ManagedObject arg1, long arg2);
+
+	@local
+	@preLocked
+	public native void buildSpawnList(Vector<unsigned int> groupCRCs);
+
+	/*
+	@local
+	@rawTemplate(value = "Reference<LairSpawn*>")
+	@read
+	public final Vector getSpawnList() {
+		return possibleSpawns;
+	}
+	*/
+
+	/*
+	*	Mutators
+	*/
+
+	@preLocked
+	public void setMaxSpawnLimit(int n) {
+		maxSpawnLimit = n;
+	}
+
+	@preLocked
+	public void addNoSpawnArea(SpaceSpawnArea area) {
+		noSpawnAreas.add(area);
+	}
+
+	/*
+	*	Accessors
+	*/
+
+	@dirty
+	public boolean isSpaceSpawnAreaObject() {
+		return true;
+	}
+}

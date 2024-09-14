@@ -13,11 +13,15 @@
 
 
 bool SpaceZoneContainerComponent::insertActiveArea(Zone* newZone, ActiveArea* activeArea) const {
-	if (newZone == nullptr || activeArea == nullptr)
+	if (newZone == nullptr || activeArea == nullptr) {
 		return false;
+	}
 
-	if (!activeArea->isDeployed())
+	// newZone->info(true) << "SpaceZoneContainerComponent::insertActiveArea -- ActiveArea: " << activeArea->getAreaName();
+
+	if (!activeArea->isDeployed()) {
 		activeArea->deploy();
+	}
 
 	Zone* zone = activeArea->getZone();
 
@@ -66,7 +70,7 @@ bool SpaceZoneContainerComponent::insertActiveArea(Zone* newZone, ActiveArea* ac
 		}
 	}
 
-	//info(true) << newZone->getZoneName() << " -- Inserted Active area: " << activeArea->getAreaName() << " Location: " << activeArea->getAreaCenter().toString();
+	// info(true) << newZone->getZoneName() << " -- Inserted Active area: " << activeArea->getAreaName() << " Location: " << activeArea->getAreaCenter().toString();
 
 	newZone->addSceneObject(activeArea);
 

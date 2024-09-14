@@ -63,8 +63,9 @@ void ActiveAreaOctree::insert(ActiveAreaOctreeNode& node, ActiveArea* area) {
 
 	if ((isCuboid && node.testAreaInsideCuboid(area)) || node.testAreaInside(x, z, y, radius)) {
 		if (node.testInSWArea(x, z, y, radius)) {
-			if (node.swNode == nullptr)
+			if (node.swNode == nullptr) {
 				node.swNode = makeUnique<ActiveAreaOctreeNode>(node.minX, node.minZ, node.minY, node.dividerX, node.dividerZ, node.dividerY, &node);
+			}
 
 #ifdef DEBUG_AA_OCTREE
 			info(true) << "Inside SW node";
@@ -72,8 +73,9 @@ void ActiveAreaOctree::insert(ActiveAreaOctreeNode& node, ActiveArea* area) {
 
 			insert(*node.swNode, area);
 		} else if (node.testInSEArea(x, z, y, radius)) {
-			if (node.seNode == nullptr)
+			if (node.seNode == nullptr) {
 				node.seNode = makeUnique<ActiveAreaOctreeNode>(node.dividerX, node.minZ, node.minY, node.maxX, node.dividerZ, node.dividerY, &node);
+			}
 
 #ifdef DEBUG_AA_OCTREE
 			info(true) << "Inside SE node";
@@ -81,8 +83,9 @@ void ActiveAreaOctree::insert(ActiveAreaOctreeNode& node, ActiveArea* area) {
 
 			insert(*node.seNode, area);
 		} else if (node.testInNWArea(x, z, y, radius)) {
-			if (node.nwNode == nullptr)
+			if (node.nwNode == nullptr) {
 				node.nwNode = makeUnique<ActiveAreaOctreeNode>(node.minX, node.minZ, node.dividerY, node.dividerX, node.dividerZ, node.maxY, &node);
+			}
 
 #ifdef DEBUG_AA_OCTREE
 			info(true) << "Inside NW node";
@@ -90,8 +93,9 @@ void ActiveAreaOctree::insert(ActiveAreaOctreeNode& node, ActiveArea* area) {
 
 			insert(*node.nwNode, area);
 		} else if (node.testInNEArea(x, z, y, radius)) {
-			if (node.neNode == nullptr)
+			if (node.neNode == nullptr) {
 				node.neNode = makeUnique<ActiveAreaOctreeNode>(node.dividerX, node.minZ, node.dividerY, node.maxX, node.dividerZ, node.maxY, &node);
+			}
 
 #ifdef DEBUG_AA_OCTREE
 			info(true) << "Inside NE node";
@@ -100,8 +104,9 @@ void ActiveAreaOctree::insert(ActiveAreaOctreeNode& node, ActiveArea* area) {
 			insert(*node.neNode, area);
 		////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		} else if (node.testInSWArea2(x, z, y, radius)) {
-			if (node.swNode2 == nullptr)
+			if (node.swNode2 == nullptr) {
 				node.swNode2 = makeUnique<ActiveAreaOctreeNode>(node.minX, node.dividerZ, node.minY, node.dividerX, node.maxZ, node.dividerY, &node);
+			}
 
 #ifdef DEBUG_AA_OCTREE
 			info(true) << "Inside SW-2 node";
@@ -109,8 +114,9 @@ void ActiveAreaOctree::insert(ActiveAreaOctreeNode& node, ActiveArea* area) {
 
 			insert(*node.swNode2, area);
 		} else if (node.testInSEArea2(x, z, y, radius)) {
-			if (node.seNode2 == nullptr)
+			if (node.seNode2 == nullptr) {
 				node.seNode2 = makeUnique<ActiveAreaOctreeNode>(node.minX, node.dividerZ, node.minY, node.maxX, node.maxZ, node.dividerY, &node);
+			}
 
 #ifdef DEBUG_AA_OCTREE
 			info(true) << "Inside SE-2 node";
@@ -118,8 +124,9 @@ void ActiveAreaOctree::insert(ActiveAreaOctreeNode& node, ActiveArea* area) {
 
 			insert(*node.seNode2, area);
 		} else if (node.testInNWArea2(x, z, y, radius)) {
-			if (node.nwNode2 == nullptr)
+			if (node.nwNode2 == nullptr) {
 				node.nwNode2 = makeUnique<ActiveAreaOctreeNode>(node.minX, node.dividerZ, node.minY, node.dividerX, node.maxZ, node.maxY, &node);
+			}
 
 #ifdef DEBUG_AA_OCTREE
 			info(true) << "Inside NW-2 node";
@@ -127,8 +134,9 @@ void ActiveAreaOctree::insert(ActiveAreaOctreeNode& node, ActiveArea* area) {
 
 			insert(*node.nwNode2, area);
 		} else if (node.testInNEArea2(x, z, y, radius)) {
-			if (node.neNode2 == nullptr)
+			if (node.neNode2 == nullptr) {
 				node.neNode2 = makeUnique<ActiveAreaOctreeNode>(node.minX, node.dividerZ, node.minY, node.maxX, node.maxZ, node.maxY, &node);
+			}
 
 #ifdef DEBUG_AA_OCTREE
 			info(true) << "Inside NE-2 node";
@@ -136,7 +144,6 @@ void ActiveAreaOctree::insert(ActiveAreaOctreeNode& node, ActiveArea* area) {
 
 			insert(*node.neNode2, area);
 		} else {
-
 #ifdef DEBUG_AA_OCTREE
 			info(true) << "insert FINAL -- Inserting into node.";
 #endif
