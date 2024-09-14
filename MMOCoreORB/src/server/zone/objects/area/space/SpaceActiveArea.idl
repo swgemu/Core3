@@ -3,7 +3,7 @@
 		See file COPYING for copying conditions.
 */
 
-package server.zone.objects.area;
+package server.zone.objects.area.space;
 
 import server.zone.objects.scene.SceneObject;
 import server.zone.objects.area.ActiveArea;
@@ -12,6 +12,8 @@ import server.zone.objects.area.ActiveArea;
 @json
 class SpaceActiveArea extends ActiveArea {
 	public SpaceActiveArea() {
+		super();
+
 		Logger.setLoggingName("SpaceActiveArea");
 	}
 

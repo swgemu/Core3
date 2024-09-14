@@ -739,6 +739,19 @@ namespace conf {
 			return cachedMinSpawnDelay;
 		}
 
+		inline int getMinSpaceSpawnInterval() {
+			static uint32 cachedVersion = 0;
+			static int cachedMinSpaceSpawnDelay;
+
+			if (configVersion.get() > cachedVersion) {
+				Locker guard(&mutex);
+				cachedMinSpaceSpawnDelay = getInt("Core3.Regions.minimumSpaceSpawnInterval", 5000);
+				cachedVersion = configVersion.get();
+			}
+
+			return cachedMinSpaceSpawnDelay;
+		}
+
 		inline bool disableWorldSpawns() {
 			static uint32 cachedVersion = 0;
 			static bool cachedDisableWorldSpawns;
@@ -750,6 +763,19 @@ namespace conf {
 			}
 
 			return cachedDisableWorldSpawns;
+		}
+
+		inline bool disableSpaceSpawns() {
+			static uint32 cachedVersion = 0;
+			static bool cachedDisableSpaceSpawns;
+
+			if (configVersion.get() > cachedVersion) {
+				Locker guard(&mutex);
+				cachedDisableSpaceSpawns = getBool("Core3.Regions.DisableSpaceSpawns", false);
+				cachedVersion = configVersion.get();
+			}
+
+			return cachedDisableSpaceSpawns;
 		}
 
 		inline float getSpawnCheckRange() {

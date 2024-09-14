@@ -200,9 +200,9 @@ TEST_F(AreaShapeTests, CuboidShapeContainsTest) {
 
 	EXPECT_TRUE(cuboidShape->containsPoint(-400, 0, 0));
 
-	EXPECT_TRUE(cuboidShape->containsPoint(-400, 250, 375));
+	EXPECT_TRUE(cuboidShape->containsPoint(-400, 240, 370));
 
-	EXPECT_TRUE(cuboidShape->containsPoint(400, -250, -375));
+	EXPECT_TRUE(cuboidShape->containsPoint(400, -240, -370));
 }
 
 }

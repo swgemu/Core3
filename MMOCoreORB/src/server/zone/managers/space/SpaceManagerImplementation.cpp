@@ -23,7 +23,11 @@
 #include "server/zone/objects/area/areashapes/SphereAreaShape.h"
 #include "server/zone/objects/area/areashapes/CuboidAreaShape.h"
 #include "server/zone/objects/area/space/NebulaArea.h"
+#include "server/zone/objects/region/space/SpaceRegion.h"
 #include "server/zone/packets/jtl/CreateNebulaLightningMessage.h"
+#include "server/zone/objects/region/space/SpaceSpawnArea.h"
+
+// #define DEBUG_SPACE_REGIONS
 
 void SpaceManagerImplementation::initialize() {
 	String spaceZoneName = spaceZone->getZoneName();
@@ -61,9 +65,172 @@ void SpaceManagerImplementation::finalize() {
 }
 
 void SpaceManagerImplementation::loadRegions() {
+	Lua* lua = new Lua();
+	lua->init();
+
+	String spaceZoneName = spaceZone->getZoneName();
+
+#ifdef DEBUG_SPACE_REGIONS
+	info(true) << "Reading from regions file: " << " scripts/managers/space/regions/" << spaceZoneName << "_regions.lua";
+#endif // DEBUG_SPACE_REGIONS
+
+	lua->runFile("scripts/managers/space/regions/" + spaceZoneName + "_regions.lua");
+	LuaObject regionObjects = lua->getGlobalObject(spaceZoneName + "_regions");
+
+	lua_State* s = regionObjects.getLuaState();
+
+	for (int i = 1; i <= regionObjects.getTableSize(); ++i) {
+		lua_rawgeti(s, -1, i);
+		LuaObject regionObject(s);
+
+		if (regionObject.isValidTable()) {
+			readRegionObject(regionObject);
+		}
+
+		regionObject.pop();
+	}
+
+	regionObjects.pop();
+
+	delete lua;
+	lua = nullptr;
+
+	info(true) << "Loaded " << regionMap.getTotalRegions() << " total regions.";
 }
 
 void SpaceManagerImplementation::readRegionObject(LuaObject& regionObject) {
+	String name = regionObject.getStringAt(1);
+	float x = regionObject.getFloatAt(2);
+	float z = regionObject.getFloatAt(3);
+	float y = regionObject.getFloatAt(4);
+
+#ifdef DEBUG_SPACE_REGIONS
+	info(true) << "readSpaceRegion -- Name: " << name << " x = " << x << " z = " << z << " y = " << y;
+#endif // DEBUG_SPACE_REGIONS
+
+	int type = regionObject.getIntAt(6);
+
+	// For SPHERE
+	float radius = 0;
+
+	// For CUBOID
+	float length = 0;
+	float width = 0;
+	float height = 0;
+
+	LuaObject areaShapeObject = regionObject.getObjectAt(5);
+
+	if (!areaShapeObject.isValidTable()) {
+		error("Invalid area shape table for spawn region " + name);
+		return;
+	}
+
+	int regionShape = areaShapeObject.getIntAt(1);
+
+	if (regionShape == SpaceActiveArea::SPHERE) {
+		radius = areaShapeObject.getFloatAt(2);
+
+		if (radius < 256) {
+			error() << "Invalid SPHERE Region Radius for Space Region: " << name << " Radius = " << radius;
+			return;
+		}
+	} else if (regionShape == SpaceActiveArea::CUBOID) {
+		length = areaShapeObject.getFloatAt(2);
+		width = areaShapeObject.getFloatAt(3);
+		height = areaShapeObject.getFloatAt(4);
+
+		if (length < 256 || width < 256 || height < 256) {
+			error() << "Invalid CUBOID Region Dimension for Space Region: " << name << " Length = " << length << " Width = " << width << " Height = " << height;
+			return;
+		}
+	} else {
+		error() << "Invalid Region Shape: " << regionShape << " for Space Region " << name;
+		return;
+	}
+
+	areaShapeObject.pop();
+
+	ManagedReference<SpaceRegion*> spaceRegion = nullptr;
+	bool spawnAreaRegion = (type & ActiveArea::SPAWNAREA);
+
+	if (spawnAreaRegion) {
+		spaceRegion = dynamic_cast<SpaceRegion*>(ObjectManager::instance()->createObject(STRING_HASHCODE("object/space_spawn_area.iff"), 0, "spawnareas"));
+#ifdef DEBUG_SPACE_REGIONS
+		info(true) << "\n\n\n\n ~~~ Creating space_spawn_area object ~~~ ";
+#endif // DEBUG_SPACE_REGIONS
+	} else {
+		spaceRegion = dynamic_cast<SpaceRegion*>(ObjectManager::instance()->createObject(STRING_HASHCODE("object/region_area.iff"), 0, "regions"));
+#ifdef DEBUG_SPACE_REGIONS
+		info(true) << " --- Creating region_area object --- ";
+#endif // DEBUG_SPACE_REGIONS
+	}
+
+	if (spaceRegion == nullptr) {
+		return;
+	}
+
+	Locker lock(spaceRegion);
+
+	spaceRegion->setObjectName(name, false);
+	spaceRegion->setAreaName(name);
+
+	if (regionShape == SpaceActiveArea::SPHERE) {
+		ManagedReference<SphereAreaShape*> sphereAreaShape = new SphereAreaShape();
+
+		// Lock the shape for mutation
+		Locker shapeLocker(sphereAreaShape, spaceRegion);
+
+		sphereAreaShape->setAreaCenter(x, z, y);
+		sphereAreaShape->setRadius(radius);
+
+		spaceRegion->setAreaShape(sphereAreaShape);
+	} else if (regionShape == SpaceActiveArea::CUBOID) {
+		ManagedReference<CuboidAreaShape*> cuboidAreaShape = new CuboidAreaShape();
+
+		// Lock the shape for mutation
+		Locker shapeLocker(cuboidAreaShape, spaceRegion);
+
+		cuboidAreaShape->setAreaCenter(x, z, y);
+		cuboidAreaShape->setDimensions(length, width, height);
+
+		spaceRegion->setAreaShape(cuboidAreaShape);
+	}
+
+	// Assign the type flags to the region
+	spaceRegion->setRegionFlags(type);
+
+	// Initialize the position of the region
+	spaceRegion->initializePosition(x, z, y);
+
+	// Transfer it into the zone
+	spaceZone->transferObject(spaceRegion, -1, true);
+
+	if (spawnAreaRegion) {
+#ifdef DEBUG_SPACE_REGIONS
+		info(true) << "Adding Spawn Area";
+#endif // DEBUG_SPACE_REGIONS
+
+		ManagedReference<SpaceSpawnArea*> spawnArea = spaceRegion.castTo<SpaceSpawnArea*>();
+
+		if (spawnArea != nullptr) {
+			// Set the max spawn limit
+			spawnArea->setMaxSpawnLimit(regionObject.getIntAt(8));
+
+			/*LuaObject spawnGroups = regionObject.getObjectAt(7);
+
+			if (spawnGroups.isValidTable()) {
+				TODO: Add loading of ship spawn groups
+			}
+			*/
+		}
+	}
+
+	// Add region to the map
+	regionMap.addRegion(spaceRegion);
+
+#ifdef DEBUG_SPACE_REGIONS
+	info(true) << "FINISHED Loading Space Region -- Name: " << name;
+#endif // DEBUG_SPACE_REGIONS
 }
 
 void SpaceManagerImplementation::loadNebulaAreas() {
@@ -86,7 +253,7 @@ void SpaceManagerImplementation::loadNebulaAreas() {
 	IffStream* iffStream = templateManager->openIffFile("datatables/space/nebula/" + zoneName + ".iff");
 
 	if (iffStream == nullptr) {
-		info(true) << "Nebula table for " << zoneName << " could not be found.";
+		warning() << "Nebula table for " << zoneName << " could not be found.";
 		return;
 	}
 
@@ -185,7 +352,7 @@ void SpaceManagerImplementation::loadLuaConfig() {
 	Lua* lua = new Lua();
 	lua->init();
 
-	lua->runFile("scripts/managers/space_manager.lua");
+	lua->runFile("scripts/managers/space/space_manager.lua");
 
 	// Get's the configuration settings object for this planet.
 	LuaObject base = lua->getGlobalObject(spaceZoneName);
@@ -260,19 +427,24 @@ void SpaceManagerImplementation::loadLuaConfig() {
 
 		try {
 			LuaObject travelPoints = luaObject.getObjectField("jtlTravelPoints");
+
 			loadJTLData(&travelPoints);
 			travelPoints.pop();
 
 			LuaObject launchLocation = luaObject.getObjectField("jtlLaunchPoint");
-			if (!launchLocation.isValidTable())
+
+			if (!launchLocation.isValidTable()) {
 				return;
+			}
 
 			jtlZoneName = launchLocation.getStringAt(1);
+
 			float x = launchLocation.getFloatAt(2);
 			float z = launchLocation.getFloatAt(3);
 			float y = launchLocation.getFloatAt(4);
 
 			jtlLaunchLocation = Vector3(x, y, z);
+
 			launchLocation.pop();
 		} catch (Exception& e) {
 			error(e.getMessage());

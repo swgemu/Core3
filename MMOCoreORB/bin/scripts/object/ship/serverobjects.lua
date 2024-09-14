@@ -45,6 +45,7 @@
 -- Children folder includes
 includeFile("ship/base/serverobjects.lua")
 includeFile("ship/player/serverobjects.lua")
+includeFile("ship/spawn/serverobjects.lua")
 
 -- Server Objects
 includeFile("ship/assaultship.lua")

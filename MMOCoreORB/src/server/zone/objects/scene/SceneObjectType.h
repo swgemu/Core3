@@ -348,6 +348,8 @@ public:
 	const static int NAVMESHAREA = 0x200000C;
 	const static int SPACEACTIVEAREA = 0x200000D;
 	const static int NEBULAAREA = 0x200000E;
+	const static int SPACEREGIONAREA = 0x200000F;
+	const static int SPACESPAWNAREA = 0x2000010;
 
 	const static int SHIP = 0x20000000;
 	const static int SHIPFIGHTER = 0x20000001;
