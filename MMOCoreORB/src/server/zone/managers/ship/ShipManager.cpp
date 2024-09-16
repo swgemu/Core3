@@ -5,14 +5,15 @@
  *      Author: victor
  */
 
-#include <server/zone/managers/collision/CollisionManager.h>
-#include <server/zone/packets/ship/OnShipHit.h>
 #include "ShipManager.h"
+
+#include "server/ServerCore.h"
+#include "server/zone/ZoneServer.h"
+#include "server/zone/managers/collision/CollisionManager.h"
+#include "server/zone/packets/ship/OnShipHit.h"
 #include "templates/manager/DataArchiveStore.h"
 #include "templates/datatables/DataTableIff.h"
 #include "server/zone/objects/ship/ShipChassisData.h"
-#include "server/ServerCore.h"
-#include "server/zone/ZoneServer.h"
 #include "templates/tangible/ship/SharedShipObjectTemplate.h"
 #include "server/zone/objects/ship/ComponentSlots.h"
 #include "server/zone/objects/ship/ShipComponentFlag.h"
@@ -32,6 +33,20 @@
 #include "server/zone/objects/tangible/deed/ship/ShipDeed.h"
 #include "server/chat/ChatManager.h"
 #include "server/zone/managers/planet/PlanetManager.h"
+#include "SpaceSpawnGroup.h"
+
+int ShipManager::ERROR_CODE = NO_ERROR;
+
+ShipManager::ShipManager() : Logger("ShipManger") {
+	setGlobalLogging(false);
+	setLogging(false);
+
+	lua = new Lua();
+	lua->init();
+
+	lua->registerFunction("includeFile", includeFile);
+	lua->registerFunction("addShipSpawnGroup", addShipSpawnGroup);
+}
 
 void ShipManager::initialize() {
 	loadShipChassisData();
@@ -44,6 +59,9 @@ void ShipManager::initialize() {
 	loadShipCollisionData();
 	loadShipTurretIffData();
 	loadShipTurretLuaData();
+
+	// Load the ship spawn groups
+	loadShipSpawnGroups();
 }
 
 void ShipManager::stop() {
@@ -454,6 +472,92 @@ void ShipManager::loadShipComponentObjects(ShipObject* ship) {
 	}
 }
 
+int ShipManager::loadShipSpawnGroups() {
+	info(true) << "Loading Ship Spawn Groups...";
+
+	bool ret = false;
+
+	try {
+		ret = lua->runFile("scripts/object/ship/spawn/shipSpawnGroups.lua");
+	} catch (Exception& e) {
+		error(e.getMessage());
+		e.printStackTrace();
+		ret = false;
+	}
+
+	// Set the reference to lua null
+	lua = nullptr;
+
+	if (!ret) {
+		ERROR_CODE = GENERAL_ERROR;
+	}
+
+	info(true) << "Finished loading " << ShipManager::instance()->spawnGroupMap.size() << " Ship Spawn Groups.";
+
+	return ERROR_CODE;
+}
+
+int ShipManager::checkArgumentCount(lua_State* L, int args) {
+	int parameterCount = lua_gettop(L);
+
+	if (parameterCount < args) {
+		return 1;
+	} else if (parameterCount > args)
+		return 2;
+
+	return 0;
+}
+
+int ShipManager::includeFile(lua_State* L) {
+	if (checkArgumentCount(L, 1) == 1) {
+		instance()->error("incorrect number of arguments passed to ShipManager::includeFile");
+		ERROR_CODE = INCORRECT_ARGUMENTS;
+		return 0;
+	}
+
+	String filename = Lua::getStringParameter(L);
+
+	int oldError = ERROR_CODE;
+
+	bool ret = Lua::runFile("scripts/object/ship/spawn/" + filename, L);
+
+	if (!ret) {
+		ERROR_CODE = GENERAL_ERROR;
+
+		instance()->error("scripts/object/ship/spawn/" + filename);
+	} else {
+		if (!oldError && ERROR_CODE) {
+			instance()->error("scripts/object/ship/spawn/" + filename);
+		}
+	}
+
+	return 0;
+}
+
+int ShipManager::addShipSpawnGroup(lua_State* L) {
+	if (checkArgumentCount(L, 2) == 1) {
+		instance()->error("incorrect number of arguments passed to ShipManager::addShipSpawnGroup");
+		ERROR_CODE = INCORRECT_ARGUMENTS;
+		return 0;
+	}
+
+	String groupName = lua_tostring(L, -2);
+	uint32 groupCRC = (uint32) groupName.hashCode();
+
+#ifdef DEBUG_SPACE_REGIONS
+	Logger::console.info(true) << "Adding SpaceSpawnGroup: " << groupName;
+#endif // DEBUG_SPACE_REGIONS
+
+	LuaObject shipSpawnGroup(L);
+
+	// SpaceSpawnGroup is loaded from lua here
+	ShipManager::instance()->spawnGroupMap.put(groupCRC, new SpaceSpawnGroup(groupName, shipSpawnGroup));
+
+	shipSpawnGroup.pop();
+
+	return 0;
+}
+
 // Ship is locked coming in
 ShipControlDevice* ShipManager::createShipControlDevice(ShipObject* ship) {
 	String controlName = "object/intangible/ship/" + ship->getShipChassisName().replaceAll("player_", "") + "_pcd.iff";
@@ -485,9 +589,13 @@ ShipControlDevice* ShipManager::createShipControlDevice(ShipObject* ship) {
 }
 
 ShipAiAgent* ShipManager::createAiShip(const String& shipName) {
+	return createAiShip(shipName.hashCode());
+}
+
+ShipAiAgent* ShipManager::createAiShip(uint32 shipCRC) {
 	//info(true) << "ShipManager::createAiShip -- Create Chassis Name: " << shipName;
 
-	auto shipTemp = dynamic_cast<SharedShipObjectTemplate*>(TemplateManager::instance()->getTemplate(shipName.hashCode()));
+	auto shipTemp = dynamic_cast<SharedShipObjectTemplate*>(TemplateManager::instance()->getTemplate(shipCRC));
 
 	if (shipTemp == nullptr) {
 		return nullptr;
@@ -495,8 +603,9 @@ ShipAiAgent* ShipManager::createAiShip(const String& shipName) {
 
 	auto zoneServer = ServerCore::getZoneServer();
 
-	if (zoneServer == nullptr)
+	if (zoneServer == nullptr) {
 		return nullptr;
+	}
 
 	ManagedReference<ShipAiAgent*> shipAgent = zoneServer->createObject(shipTemp->getServerObjectCRC(), 0).castTo<ShipAiAgent*>();
 

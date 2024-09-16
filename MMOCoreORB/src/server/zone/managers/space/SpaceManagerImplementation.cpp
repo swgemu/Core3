@@ -216,12 +216,25 @@ void SpaceManagerImplementation::readRegionObject(LuaObject& regionObject) {
 			// Set the max spawn limit
 			spawnArea->setMaxSpawnLimit(regionObject.getIntAt(8));
 
-			/*LuaObject spawnGroups = regionObject.getObjectAt(7);
+			LuaObject spawnGroups = regionObject.getObjectAt(7);
 
 			if (spawnGroups.isValidTable()) {
-				TODO: Add loading of ship spawn groups
+				Vector<uint32> groups;
+
+				for (int i = 1; i <= spawnGroups.getTableSize(); i++) {
+					uint32 groupHash = spawnGroups.getStringAt(i).hashCode();
+
+//#ifdef DEBUG_SPACE_REGIONS
+					info(true) << "Adding Space Spawn Group: #" << i << " Name: " << spawnGroups.getStringAt(i);
+//#endif // DEBUG_SPACE_REGIONS
+
+					groups.add(spawnGroups.getStringAt(i).hashCode());
+				}
+
+				spawnArea->buildSpawnList(&groups);
+
+				spawnGroups.pop();
 			}
-			*/
 		}
 	}
 

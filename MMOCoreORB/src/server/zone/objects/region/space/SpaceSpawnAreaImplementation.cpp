@@ -139,7 +139,7 @@ void SpaceSpawnAreaImplementation::tryToSpawn(ShipObject* playerShip) {
 	lastSpawn.updateToCurrentTime();
 
 	// Temporary TODO: Remove
-	Vector<String> tempShips = {"object/ship/freighterlight_tier1.iff", "object/ship/z95_tier1.iff", "object/ship/yt1300_tier1.iff", "object/ship/sorosuub_space_yacht.iff", "object/ship/merchant_cruiser_light_tier1.iff"};
+	Vector<String> tempShips = {"object/ship/freighterlight_tier1.iff", "object/ship/z95_tier1.iff", "object/ship/yt1300_tier1.iff", "object/ship/blacksun_light_s03_tier1.iff", "object/ship/merchant_cruiser_light_tier1.iff", "object/ship/tiefighter_tier1.iff"};
 	String templateToSpawn = tempShips.get(System::random(tempShips.size() - 1));
 
 
@@ -205,5 +205,26 @@ Vector3 SpaceSpawnAreaImplementation::getRandomPosition() {
 }
 
 void SpaceSpawnAreaImplementation::buildSpawnList(Vector<uint32>* groupCRCs) {
+
+	/*
+	CreatureTemplateManager* ctm = CreatureTemplateManager::instance();
+
+	for (int i = 0; i < groupCRCs->size(); i++) {
+		SpawnGroup* group = ctm->getSpawnGroup(groupCRCs->get(i));
+
+		const Vector<Reference<LairSpawn*> >& spawnList = group->getSpawnList();
+
+		for (int j = 0; j < spawnList.size(); j++) {
+			const auto& spawn = spawnList.get(j);
+
+			possibleSpawns.emplace(spawn);
+
+			totalWeighting += spawn->getWeighting();
+		}
+	}
+	*/
+
+
+
 
 }
