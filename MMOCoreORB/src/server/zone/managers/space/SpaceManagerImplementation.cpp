@@ -26,6 +26,7 @@
 #include "server/zone/objects/region/space/SpaceRegion.h"
 #include "server/zone/packets/jtl/CreateNebulaLightningMessage.h"
 #include "server/zone/objects/region/space/SpaceSpawnArea.h"
+#include "server/zone/managers/ship/SpaceSpawn.h"
 
 // #define DEBUG_SPACE_REGIONS
 
@@ -216,12 +217,25 @@ void SpaceManagerImplementation::readRegionObject(LuaObject& regionObject) {
 			// Set the max spawn limit
 			spawnArea->setMaxSpawnLimit(regionObject.getIntAt(8));
 
-			/*LuaObject spawnGroups = regionObject.getObjectAt(7);
+			LuaObject spawnGroups = regionObject.getObjectAt(7);
 
 			if (spawnGroups.isValidTable()) {
-				TODO: Add loading of ship spawn groups
+				Vector<uint32> groups;
+
+				for (int i = 1; i <= spawnGroups.getTableSize(); i++) {
+					uint32 groupHash = spawnGroups.getStringAt(i).hashCode();
+
+#ifdef DEBUG_SPACE_REGIONS
+					info(true) << "Adding Space Spawn Group: #" << i << " Name: " << spawnGroups.getStringAt(i);
+#endif // DEBUG_SPACE_REGIONS
+
+					groups.add(spawnGroups.getStringAt(i).hashCode());
+				}
+
+				spawnArea->buildSpawnList(&groups);
+
+				spawnGroups.pop();
 			}
-			*/
 		}
 	}
 
@@ -543,4 +557,41 @@ void SpaceManagerImplementation::broadcastNebulaLightning(ShipObject* ship, cons
 	} catch (...) {
 		throw;
 	}
+}
+
+SceneObject* SpaceManagerImplementation::spaceDynamicSpawn(uint32 shipCRC, Zone* zone, const Vector3& spawnLocation, SceneObject* homeTheater) {
+	auto shipManager = ShipManager::instance();
+
+	if (shipManager == nullptr) {
+		return nullptr;
+	}
+
+	ManagedReference<ShipAiAgent*> shipAgent = shipManager->createAiShip(shipCRC);
+
+	if (shipAgent == nullptr) {
+		return nullptr;
+	}
+
+	Locker lock(shipAgent);
+
+	shipAgent->initializePosition(spawnLocation.getX(), spawnLocation.getZ(), spawnLocation.getY());
+
+	shipAgent->setHomeLocation(spawnLocation.getX(), spawnLocation.getZ(), spawnLocation.getY(), Quaternion::IDENTITY);
+	shipAgent->initializeTransform(spawnLocation, Quaternion::IDENTITY);
+
+	if (!zone->transferObject(shipAgent, -1, true)) {
+		shipAgent->destroyObjectFromWorld(true);
+		shipAgent->destroyObjectFromDatabase(true);
+
+		return nullptr;
+	}
+
+	// Set to despawn with no players in range
+	shipAgent->setDespawnOnNoPlayerInRange(true);
+
+	if (homeTheater != nullptr) {
+		shipAgent->setHomeObject(homeTheater);
+	}
+
+	return shipAgent;
 }
