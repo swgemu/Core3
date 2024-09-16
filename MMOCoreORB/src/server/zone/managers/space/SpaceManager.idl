@@ -5,6 +5,7 @@
 package server.zone.managers.space;
 
 import engine.core.ManagedService;
+import server.zone.Zone;
 import server.zone.SpaceZone;
 import server.zone.ZoneProcessServer;
 import engine.log.Logger;
@@ -15,6 +16,7 @@ import server.zone.CloseObjectsVector;
 include engine.util.u3d.Vector3;
 import server.zone.objects.ship.ShipObject;
 include server.zone.managers.space.SpaceRegionMap;
+include server.zone.managers.ship.SpaceSpawn;
 
 @dirty
 class SpaceManager extends ManagedService implements Logger {
@@ -77,6 +79,8 @@ class SpaceManager extends ManagedService implements Logger {
 	public native void start();
 
 	public native void broadcastNebulaLightning(ShipObject ship, @dereferenced final Vector3 nebulaCenter, unsigned short lightningCount, int nebulaID, int startMili, int endMili, @dereferenced final Vector3 startPoint, @dereferenced final Vector3 endPoint);
+
+	public native SceneObject spaceDynamicSpawn(unsigned int shipCRC, Zone zone, @dereferenced final Vector3 location, SceneObject homeTheater);
 
 	@dirty
 	@local

@@ -1047,44 +1047,38 @@ void PlanetManagerImplementation::readRegionObject(LuaObject& regionObject) {
 
 	region->setRegionFlags(type);
 
-	CreatureManager* creatureMan = zone->getCreatureManager();
-
-	if (spawnAreaRegion) {
+	if (type & ActiveArea::SPAWNAREA) {
 #ifdef DEBUG_REGIONS
 		info(true) << "Adding Spawn Area";
 #endif // DEBUG_REGIONS
 		ManagedReference<SpawnArea*> area = region.castTo<SpawnArea*>();
+		CreatureManager* creatureMan = zone->getCreatureManager();
 
 		if (creatureMan != nullptr && area != nullptr) {
-			if (type & ActiveArea::SPAWNAREA) {
-				area->setMaxSpawnLimit(regionObject.getIntAt(7));
-				LuaObject spawnGroups = regionObject.getObjectAt(6);
+			area->setMaxSpawnLimit(regionObject.getIntAt(7));
 
-				if (spawnGroups.isValidTable()) {
-					Vector<uint32> groups;
+			LuaObject spawnGroups = regionObject.getObjectAt(6);
 
-					for (int i = 1; i <= spawnGroups.getTableSize(); i++) {
-						uint32 groupHash = spawnGroups.getStringAt(i).hashCode();
+			if (spawnGroups.isValidTable()) {
+				Vector<uint32> groups;
 
-						// TODO: REMOVE
-						if (groupHash == STRING_HASHCODE("insert_spawnlist_here"))
-							continue;
+				for (int i = 1; i <= spawnGroups.getTableSize(); i++) {
+					uint32 groupHash = spawnGroups.getStringAt(i).hashCode();
 
 #ifdef DEBUG_REGIONS
-						info(true) << "Adding Spawn Group: #" << i << " Name: " << spawnGroups.getStringAt(i);
+					info(true) << "Adding Spawn Group: #" << i << " Name: " << spawnGroups.getStringAt(i);
 #endif // DEBUG_REGIONS
 
-						groups.add(spawnGroups.getStringAt(i).hashCode());
-					}
-
-					area->buildSpawnList(&groups);
+					groups.add(spawnGroups.getStringAt(i).hashCode());
 				}
 
-				spawnGroups.pop();
-
-				// Add to Spawn Area Map
-				creatureMan->addSpawnAreaToMap(name.hashCode(), area);
+				area->buildSpawnList(&groups);
 			}
+
+			spawnGroups.pop();
+
+			// Add to Spawn Area Map
+			creatureMan->addSpawnAreaToMap(name.hashCode(), area);
 		}
 	}
 

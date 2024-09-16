@@ -15,7 +15,7 @@
 
 
 -- Naboo Spawns
-includeFile("ship/spawn/naboo/naboo_traffic.lua")
+includeFile("naboo/naboo_traffic.lua")
 
 -- Rori Spawns
 
