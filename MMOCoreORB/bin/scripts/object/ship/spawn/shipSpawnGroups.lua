@@ -15,7 +15,7 @@
 
 
 -- Naboo Spawns
-includeFile("ship/spawn/naboo/naboo_traffic.lua")
+includeFile("naboo/naboo_traffic.lua")
 
 -- Rori Spawns
 
@@ -29,5 +29,5 @@ includeFile("ship/spawn/naboo/naboo_traffic.lua")
 -- Yavin 4
 
 
--- destroy_mission
-
+-- Faction
+includeFile("faction/imperial/imperial_easy.lua")

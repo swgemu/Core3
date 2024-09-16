@@ -42,6 +42,9 @@ class ShipAiAgent extends FighterShipObject {
 	protected transient ShipAiBehaviorEvent behaviorEvent;
 
 	@dereferenced
+	protected transient ReadWriteLock despawnMutex;
+
+	@dereferenced
 	protected transient SpacePatrolPointsVector patrolPoints;
 
 	@dereferenced
@@ -133,6 +136,9 @@ class ShipAiAgent extends FighterShipObject {
 
 	protected unsigned int shipBitmask;
 
+	@weakReference
+	protected SceneObject homeObject;
+
 	public static final int BEHAVIORINTERVAL = 200; // msec
 	public static final float DELTATIME = 0.2f;
 
@@ -201,6 +207,9 @@ class ShipAiAgent extends FighterShipObject {
 
 	@local
 	public abstract native void notifyDissapear(TreeEntry entry);
+
+	@preLocked
+	public abstract native void notifyDespawn(Zone zone);
 
 	@weakReference
 	public ShipObject getFollowShipObject() {
@@ -333,6 +342,18 @@ class ShipAiAgent extends FighterShipObject {
 		homeLocation.setPosition(x, z, y);
 		homeLocation.setReached(true);
 		homeLocation.setDirection(direction.getW(), direction.getX(), direction.getZ(), direction.getY());
+	}
+
+	@preLocked
+	public void setHomeObject(SceneObject home) {
+		homeObject = home;
+	}
+
+	@read
+	@local
+	@weakReference
+	public SceneObject getHomeObject() {
+		return homeObject;
 	}
 
 	public void setFollowShipObject(ShipObject ship) {
