@@ -84,13 +84,17 @@ class SpawnObserver extends Observer implements Logger {
 		return false;
 	}
 
-	public boolean isTheaterSpawnObserver() {
+	public abstract boolean isTheaterSpawnObserver() {
 		return false;
 	}
 
-	public boolean isDynamicSpawnObserver() {
+	public abstract boolean isDynamicSpawnObserver() {
 		return false;
 	}
 
-	public native void despawnSpawns();
+	public abstract boolean isSpaceSpawnObserver() {
+		return false;
+	}
+
+	public abstract native void despawnSpawns();
 }
