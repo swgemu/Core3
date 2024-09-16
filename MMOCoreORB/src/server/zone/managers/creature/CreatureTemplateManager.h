@@ -44,7 +44,6 @@ public:
 	enum LUA_ERROR_CODE { NO_ERROR = 0, GENERAL_ERROR, DUPLICATE_MOBILE, INCORRECT_ARGUMENTS, DUPLICATE_CONVO };
 	static int ERROR_CODE;
 
-public:
 	CreatureTemplateManager();
 	virtual ~CreatureTemplateManager();
 

@@ -300,7 +300,7 @@ int CreatureTemplateManager::addWeapon(lua_State* L) {
 
 int CreatureTemplateManager::addSpawnGroup(lua_State* L) {
 	if (checkArgumentCount(L, 2) == 1) {
-		instance()->error("incorrect number of arguments passed to CreatureTemplateManager::addLairGroup");
+		instance()->error("incorrect number of arguments passed to CreatureTemplateManager::addSpawnGroup");
 		ERROR_CODE = INCORRECT_ARGUMENTS;
 		return 0;
 	}
