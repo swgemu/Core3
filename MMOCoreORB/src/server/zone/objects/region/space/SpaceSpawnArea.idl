@@ -14,6 +14,7 @@ import server.zone.objects.scene.SceneObject;
 include server.zone.objects.ship.ShipObject;
 import system.lang.Time;
 import server.zone.objects.region.space.SpaceSpawnAreaObserver;
+import server.zone.managers.ship.SpaceSpawn;
 
 include system.util.Vector;
 include engine.util.u3d.Vector3;
@@ -24,12 +25,14 @@ class SpaceSpawnArea extends SpaceRegion {
 	@dereferenced
 	protected transient AtomicInteger numberOfPlayerShipsInRange;
 
-	//@dereferenced
-	//@rawTemplate(value = "Reference<LairSpawn*>")
-	//protected transient Vector possibleSpawns;
+	@dereferenced
+	@rawTemplate(value = "Reference<SpaceSpawn*>")
+	protected transient Vector possibleSpawns;
 
 	protected int totalSpawnCount;
 	protected int maxSpawnLimit;
+
+	protected int totalWeighting;
 
 	@dereferenced
 	protected Time lastSpawn;
@@ -76,14 +79,17 @@ class SpaceSpawnArea extends SpaceRegion {
 	@preLocked
 	public native void buildSpawnList(Vector<unsigned int> groupCRCs);
 
-	/*
 	@local
-	@rawTemplate(value = "Reference<LairSpawn*>")
+	@rawTemplate(value = "Reference<SpaceSpawn*>")
 	@read
 	public final Vector getSpawnList() {
 		return possibleSpawns;
 	}
-	*/
+
+	@read
+	public int getTotalWeighting() {
+		return totalWeighting;
+	}
 
 	/*
 	*	Mutators
