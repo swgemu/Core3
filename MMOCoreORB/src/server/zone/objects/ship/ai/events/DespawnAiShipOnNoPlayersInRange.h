@@ -23,7 +23,7 @@ public:
 
 		auto zone = shipO->getZone();
 
-		if (shipO != nullptr) {
+		if (zone != nullptr) {
 			setCustomTaskQueue(zone->getZoneName());
 		}
 	}
@@ -51,6 +51,7 @@ public:
 
 		if (strongShip->getNumberOfPlayersInRange() <= 0) {
 			strongShip->destroyObjectFromWorld(true);
+			strongShip->notifyDespawn(zone);
 
 			// strongShip->info(true) << strongShip->getDisplayedName() << " removed from ShipAgent from world";
 		}

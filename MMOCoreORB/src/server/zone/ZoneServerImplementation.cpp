@@ -190,6 +190,9 @@ void ZoneServerImplementation::initialize() {
 	petManager = new PetManager(_this.getReferenceUnsafeStaticCast());
 	petManager->initialize();
 
+	// Load ship data
+	ShipManager::instance()->initialize();
+
 	startGroundZones();
 	startSpaceZones();
 
@@ -298,9 +301,6 @@ void ZoneServerImplementation::startSpaceZones() {
 
 void ZoneServerImplementation::startManagers() {
 	info(true) << "ZoneServerImplementation -- Starting Managers...";
-
-	// Load ship data
-	ShipManager::instance()->initialize();
 
 	radialManager = new RadialManager(_this.getReferenceUnsafeStaticCast());
 	radialManager->deploy("RadialManager");

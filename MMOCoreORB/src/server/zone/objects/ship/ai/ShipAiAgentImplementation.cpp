@@ -318,12 +318,61 @@ void ShipAiAgentImplementation::notifyDissapear(TreeEntry* entry) {
 			}
 
 			if (!despawnEvent->isScheduled()) {
-				despawnEvent->schedule(30000);
+				despawnEvent->schedule(300000);
 			}
 		}
 	}
 
 	activateAiBehavior();
+}
+
+void ShipAiAgentImplementation::notifyDespawn(Zone* zone) {
+#ifdef DEBUG_SHIP_AI
+	info(true) << "notifyDespawn called for - " << getDisplayedName() << " ID: " << getObjectID();
+#endif // DEBUG_SHIP_AI
+
+ 	Locker locker(&despawnMutex);
+
+	// Clearing Agent Events
+	cancelBehaviorEvent();
+	wipeBlackboard();
+
+	clearPatrolPoints();
+
+	if (threatMap != nullptr) {
+		threatMap->removeAll(true);
+	}
+
+	ManagedReference<SceneObject*> home = homeObject.get();
+
+	// Notify lairspawns that a creature/NPC has been killed and it will handle respawn
+	if (home != nullptr && home->getObserverCount(ObserverEventType::SHIPAGENTDESPAWNED) > 0) {
+#ifdef DEBUG_SHIP_AI
+		info(true) << getDisplayedName() << " ID: " << getObjectID() << " notifying home space in regards of despawn.";
+#endif // DEBUG_SHIP_AI
+
+		home->notifyObservers(ObserverEventType::SHIPAGENTDESPAWNED, asShipAiAgent());
+	} else {
+		notifyObservers(ObserverEventType::SHIPAGENTDESPAWNED);
+	}
+
+	// Drop Squadron Observer when implemented
+	if (getObserverCount(ObserverEventType::SQUADRON) > 0) {
+		SortedVector<ManagedReference<Observer*> > observers = getObservers(ObserverEventType::SQUADRON);
+
+		for (int i = 0; i < observers.size(); i++) {
+			/*SquadObserver* squadObserver = cast<SquadObserver*>(observers.get(i).get());
+
+			if (squadObserver != nullptr) {
+				dropObserver(ObserverEventType::SQUAD, squadObserver);
+			}
+			*/
+		}
+	}
+
+#ifdef DEBUG_SHIP_AI
+	info(true) << getDisplayedName() << " ID: " << getObjectID() << " notifyDespawn complete - Reference Count: " << getReferenceCount();
+#endif // DEBUG_SHIP_AI
 }
 
 /*
@@ -1615,8 +1664,9 @@ void ShipAiAgentImplementation::setDespawnOnNoPlayerInRange(bool val) {
 			despawnEvent = new DespawnAiShipOnNoPlayersInRange(asShipAiAgent());
 		}
 
-		if (!despawnEvent->isScheduled())
-			despawnEvent->schedule(30000);
+		if (!despawnEvent->isScheduled()) {
+			despawnEvent->schedule(300000);
+		}
 	}
 }
 

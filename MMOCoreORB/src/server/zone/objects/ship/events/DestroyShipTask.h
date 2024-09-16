@@ -34,12 +34,11 @@ public:
 			return;
 		}
 
-		Zone* zone = ship->getZone();
+		auto zone = ship->getZone();
 
-		if (zone == nullptr || !zone->isSpaceZone())
+		if (zone == nullptr) {
 			return;
-
-		SpaceZone* spaceZone = cast<SpaceZone*>(zone);
+		}
 
 		auto pilot = ship->getOwner().get();
 
@@ -65,13 +64,15 @@ public:
 					reschedule(5000);
 				}
 
+				ship->notifyDespawn(zone);
+
 				return;
 			}
 
 			case 1: {
 				ship->clearOptionBit(OptionBitmask::DESTROYING, true);
 
-				auto spaceManager = spaceZone->getSpaceManager();
+				auto spaceManager = zone->getSpaceManager();
 
 				if (spaceManager == nullptr) {
 					return;

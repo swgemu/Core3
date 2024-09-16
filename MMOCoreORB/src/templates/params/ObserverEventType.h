@@ -105,6 +105,8 @@ public:
 		FACTIONCHAT,				// ManagedObject arg1 = AiAgent, long arg2 = playerID
 		NOPLAYERSINRANGE,			// ManagedObject arg1 = null, long arg2 = 0
 		SPATIALCHAT,				// ManagedObject arg1 = ChatMessage containing string text, long arg2 = playerID
+		SHIPAGENTDESPAWNED,			// ManagedObject arg1 = ShipAiAgent that despawned, long arg2 = 0
+		SQUADRON,					// ManagedObject arg1 = ShipAiAgent, long arg2 = 0
 	};
 };
 

@@ -14,6 +14,7 @@ public:
 	const static int IMAGEDESIGNPOSITION = 2;
 	const static int GCWBASESHUTDOWN = 3;
 	const static int SCREENPLAY = 4;
+	const static int SPACE_SPAWN = 5;
 };
 
 #endif /* OBSERVERTYPE_H_ */

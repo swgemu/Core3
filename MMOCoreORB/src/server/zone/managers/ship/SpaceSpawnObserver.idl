@@ -1,0 +1,53 @@
+/*
+				Copyright <SWGEmu>
+		See file COPYING for copying conditions.
+*/
+
+package server.zone.managers.ship;
+
+import server.zone.managers.creature.SpawnObserver;
+import engine.core.ManagedObject;
+import engine.util.Observable;
+import server.zone.objects.scene.SceneObject;
+import server.zone.objects.ship.ai.ShipAiAgent;
+import system.thread.Mutex;
+
+include system.util.SortedVector;
+include system.thread.atomic.AtomicInteger;
+
+class SpaceSpawnObserver extends SpawnObserver {
+	@dereferenced
+	protected transient AtomicInteger shipSpawnCount;
+
+	@dereferenced
+	@rawTemplate(value = "ManagedWeakReference<ShipAiAgent*>")
+	protected transient SortedVector spawnedShipAgents;
+
+	@weakReference
+	protected transient ShipAiAgent weakCapitalShip;
+
+	@dereferenced
+	protected transient Mutex spawnMutex;
+
+	public SpaceSpawnObserver() {
+		super();
+
+		Logger.setLoggingName("SpaceSpawnObserver");
+	}
+
+	public native int notifyObserverEvent(unsigned int eventType, Observable observable, ManagedObject arg1, long arg2);
+
+	public abstract native void despawnSpawns();
+
+	public native void addSpawnedShip(ShipAiAgent shipAgent);
+
+	public native void removeSpawnedShip(ShipAiAgent shipAgent);
+
+	public native void setCapitalShip(ShipAiAgent capShip) {
+		weakCapitalShip = capShip;
+	}
+
+	public boolean isSpaceSpawnObserver() {
+		return true;
+	}
+}
