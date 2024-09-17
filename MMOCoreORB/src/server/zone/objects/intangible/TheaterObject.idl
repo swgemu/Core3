@@ -57,37 +57,9 @@ class TheaterObject extends IntangibleObject {
 		shouldFlatten = b;
 	}
 
-	public void notifyInsert(TreeEntry entry) {
-		SceneObject obj = (SceneObject) entry;
+	public native void notifyInsert(TreeEntry entry);
 
-		if (obj == this)
-			return;
-
-		if (obj.isPlayerCreature()) {
-			CreatureObject creo = (CreatureObject) obj;
-			if (!creo.isInvisible()) {
-				numberOfPlayersInRange.increment();
-				clearDespawnEvent();
-			}
-		}
-	}
-
-	public void notifyDissapear(TreeEntry entry) {
-		SceneObject obj = (SceneObject) entry;
-
-		if (obj == this)
-			return;
-
-		if (obj.isPlayerCreature()) {
-			CreatureObject creo = (CreatureObject) obj;
-			if (!creo.isInvisible()) {
-				int val = numberOfPlayersInRange.decrement();
-
-				if (val <= 0 && despawnOnNoPlayersInRange)
-					activateDespawnEvent();
-			}
-		}
-	}
+	public native void notifyDissapear(TreeEntry entry);
 
 	public void activateDespawnEvent() {
 		if (despawnEvent)
