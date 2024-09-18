@@ -29,7 +29,7 @@ public:
 
 		ManagedReference<SceneObject*> object = zoneServer->getObject(target);
 
-		if (object == nullptr || !object->isHarvesterObject()) {
+		if (object == nullptr || (!object->isHarvesterObject() && !object->isGeneratorObject())) {
 			return GENERALERROR;
 		}
 
