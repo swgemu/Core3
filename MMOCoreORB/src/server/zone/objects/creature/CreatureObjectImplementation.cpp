@@ -282,8 +282,11 @@ void CreatureObjectImplementation::finalize() {
 void CreatureObjectImplementation::sendToOwner(bool doClose) {
 	auto owner = this->owner.get();
 
-	if (owner == nullptr)
+	if (owner == nullptr) {
 		return;
+	}
+
+	// info(true) << getDisplayedName() << " sendToOwner -- START";
 
 	setMovementCounter(0);
 
@@ -305,8 +308,9 @@ void CreatureObjectImplementation::sendToOwner(bool doClose) {
 
 	if (rootParent != nullptr) {
 		rootParent->sendTo(asCreatureObject(), true);
-	} else
+	} else {
 		sendTo(asCreatureObject(), doClose);
+	}
 
 	CloseObjectsVector* vec = getCloseObjects();
 
@@ -334,10 +338,13 @@ void CreatureObjectImplementation::sendToOwner(bool doClose) {
 
 	}
 
-	if (group != nullptr)
+	if (group != nullptr) {
 		group->sendTo(asCreatureObject(), true);
+	}
 
 	owner->resetPacketCheckupTime();
+
+	// info(true) << getDisplayedName() << " sendToOwner -- COMPLETE";
 }
 
 void CreatureObjectImplementation::sendBaselinesTo(SceneObject* player) {
