@@ -60,20 +60,10 @@ public:
 		Locker deviceLock(shipControlDevice);
 
 		// Ship is cross locked to device in the launchShip function
-		if (!shipControlDevice->launchShip(player, jtlZoneName, launchPosition)) {
-			error() << "Ship failed to launch - Device ID: " << shipControlDevice->getObjectID();
-			return;
-		}
+		Reference<ShipObject*> ship = shipControlDevice->launchShip(player, jtlZoneName, launchPosition);
 
-		auto controlledDevice = shipControlDevice->getControlledObject();
-
-		if (controlledDevice == nullptr || !controlledDevice->isShipObject()) {
-			return;
-		}
-
-		auto ship = controlledDevice->asShipObject();
-
-		if (ship == nullptr || ship->getLocalZone() == nullptr) {
+		if (ship == nullptr || !ship->isShipLaunched()) {
+			error() << "Ship failed to launch - Device: " << shipControlDevice->getDisplayedName() << " ID: " << shipControlDevice->getObjectID();
 			return;
 		}
 
@@ -86,8 +76,9 @@ public:
 
 		InsertPilotIntoShipTask* pilotTask = new InsertPilotIntoShipTask(player, ship);
 
-		if (pilotTask != nullptr)
+		if (pilotTask != nullptr) {
 			pilotTask->schedule(100);
+		}
 
 		if (groupMembers.size() > 0 && (ship->isPobShip() || ship->isMultiPassengerShip())) {
 			for (int j = 0; j < groupMembers.size(); ++j) {
