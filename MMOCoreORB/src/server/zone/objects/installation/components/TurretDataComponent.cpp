@@ -109,7 +109,7 @@ void TurretDataComponent::scheduleFireTask(CreatureObject* target, TangibleObjec
 		return;
 	}
 
-	ManagedReference<TangibleObject*> turret = cast<TangibleObject*>(componentParent);
+	ManagedReference<TurretObject*> turret = cast<TurretObject*>(componentParent);
 
 	if (turret == nullptr) {
 		return;

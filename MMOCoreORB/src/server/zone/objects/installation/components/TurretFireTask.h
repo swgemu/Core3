@@ -18,25 +18,19 @@
 #include "server/zone/objects/tangible/terminal/components/TurretControlTerminalDataComponent.h"
 
 class TurretFireTask : public Task {
-	ManagedWeakReference<TangibleObject*> weakTurret;
+	ManagedWeakReference<TurretObject*> weakTurret;
 	ManagedWeakReference<TangibleObject*> weakTerminal;
 	bool isManual;
 
 public:
-	TurretFireTask(TangibleObject* turret, TangibleObject* terminal, bool manual) {
+	TurretFireTask(TurretObject* turret, TangibleObject* terminal, bool manual) {
 		weakTurret = turret;
 		weakTerminal = terminal;
 		isManual = manual;
 	}
 
 	void run() {
-		ManagedReference<TangibleObject*> turretTanO = weakTurret.get();
-
-		if (turretTanO == nullptr || !turretTanO->isTurret()) {
-			return;
-		}
-
-		auto turret = turretTanO.castTo<TurretObject*>();
+		ManagedReference<TurretObject*> turret = weakTurret.get();
 
 		if (turret == nullptr) {
 			return;

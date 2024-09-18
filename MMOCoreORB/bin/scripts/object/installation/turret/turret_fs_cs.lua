@@ -45,6 +45,9 @@ object_installation_turret_turret_fs_cs = object_installation_turret_shared_turr
 	pvpStatusBitmask = ATTACKABLE,
 	optionsBitmask = 0,
 	maxCondition = 75000,
+
+	gameObjectType = 4105,
+
 	maxRange = 60,
 	groundZoneComponent = "TurretZoneComponent",
 	dataObjectComponent = "TurretDataComponent",
