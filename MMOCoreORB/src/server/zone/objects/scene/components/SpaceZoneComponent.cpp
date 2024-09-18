@@ -209,8 +209,9 @@ void SpaceZoneComponent::switchZone(SceneObject* sceneObject, const String& newT
 
 	auto zoneServer = sceneObject->getZoneServer();
 
-	if (zoneServer == nullptr)
+	if (zoneServer == nullptr) {
 		return;
+	}
 
 	auto zone = sceneObject->getZone();
 	ManagedReference<SceneObject*> thisLocker = sceneObject;
@@ -244,12 +245,14 @@ void SpaceZoneComponent::switchZone(SceneObject* sceneObject, const String& newT
 	sceneObject->incrementMovementCounter();
 
 	if (newParent != nullptr) {
+		// info(true) << "SpaceZoneComponent::switchZone -- starting transfer into new parent... ";
+
 		if (newParent->transferObject(sceneObject, playerArrangement, false, false, false)) {
 			sceneObject->sendToOwner(true);
 
 			// info(true) << "SpaceZoneComponent::switchZone transferred into Parent: " << newParent->getDisplayedName() << " Player: " << sceneObject->getDisplayedName() << " Containment Type: " << playerArrangement << " X: " << newPositionX << " Z: " << newPositionZ << " Y: " << newPositionY;
 
-			if (newParent->isPilotChair() || newParent->isCellObject()) {
+			if (newParent->isPilotChair() || newParent->isCellObject() || newParent->isShipTurret() || newParent->isOperationsChair()) {
 				SceneObject* rootParent = newParent->getRootParent();
 
 				if (rootParent != nullptr) {

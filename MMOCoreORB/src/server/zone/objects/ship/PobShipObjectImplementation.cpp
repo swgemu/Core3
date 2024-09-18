@@ -318,10 +318,7 @@ void PobShipObjectImplementation::sendContainerObjectsTo(SceneObject* sceneO, bo
 		return;
 	}
 
-	// Do not send the contents of the ships cells to the player unless it is launched
-	if (!isShipLaunched()) {
-		return;
-	}
+	// info(true) << "PobShipObjectImplementation::sendContainerObjectsTo - " << getDisplayedName() << " sending to: " << sceneO->getDisplayedName();
 
 	auto player = sceneO->asCreatureObject();
 
@@ -330,12 +327,18 @@ void PobShipObjectImplementation::sendContainerObjectsTo(SceneObject* sceneO, bo
 	}
 
 	auto playerId = player->getObjectID();
+	bool isLaunched = isShipLaunched();
 
 	for (int i = 0; i < cells.size(); ++i) {
 		auto& cell = cells.get(i);
 
 		cell->sendTo(player, true);
 		cell->sendPermissionsTo(player, true);
+
+		// Do not send the contents of the ships cells to the player unless it is launched
+		if (!isLaunched) {
+			continue;
+		}
 
 		for (int j = 0; j < cell->getContainerObjectsSize(); ++j) {
 			auto object = cell->getContainerObject(j);

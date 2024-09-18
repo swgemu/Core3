@@ -35,18 +35,21 @@ public:
 
 		auto zoneServer = ship->getZoneServer();
 
-		if (zoneServer == nullptr)
+		if (zoneServer == nullptr) {
 			return;
+		}
 
 		auto memberObject = zoneServer->getObject(memberID).get();
 
-		if (memberObject == nullptr || !memberObject->isPlayerCreature())
+		if (memberObject == nullptr || !memberObject->isPlayerCreature()) {
 			return;
+		}
 
 		auto groupMember = memberObject->asCreatureObject();
 
-		if (groupMember == nullptr)
+		if (groupMember == nullptr) {
 			return;
+		}
 
 		Locker lock(ship);
 

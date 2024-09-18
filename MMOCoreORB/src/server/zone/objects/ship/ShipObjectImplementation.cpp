@@ -479,8 +479,11 @@ void ShipObjectImplementation::notifyInsert(TreeEntry* object) {
 		for (int i = 0; i < playersOnBoard.size(); ++i) {
 			auto shipMember = playersOnBoard.get(i).get();
 
-			if (shipMember == nullptr)
+			if (shipMember == nullptr) {
 				continue;
+			}
+
+			// info(true) << "Ship: " << getDisplayedName() << " updating shipMember: " << shipMember->getDisplayedName();
 
 			// Update the Ship member
 			if (shipMember->getCloseObjects() != nullptr) {
@@ -609,17 +612,15 @@ int ShipObjectImplementation::notifyObjectInsertedToChild(SceneObject* object, S
 	// info(true) << getDisplayedName() << " ShipObjectImplementation::notifyObjectInsertedToChild -- object inserted: " << object->getDisplayedName() << " ID: " << object->getObjectID();
 
 	try {
-		if (object->getCloseObjects() != nullptr)
+		if (object->getCloseObjects() != nullptr) {
 			object->addInRangeObject(object, false);
+		}
 
-		if (child->isCellObject()) {
-			bool runInRange = true;
-
+		if (child->isCellObject() || child->isPilotChair() || child->isShipTurret() || child->isOperationsChair()) {
 			if (oldParent == nullptr || !oldParent->isCellObject() || oldParent == child) {
 
 				if (oldParent == nullptr || (oldParent != nullptr && dynamic_cast<SpaceZone*>(oldParent) == nullptr && !oldParent->isCellObject())) {
 					notifyObjectInsertedToZone(object);
-					runInRange = false;
 				}
 
 				if (!object->isPlayerCreature()) {
@@ -628,42 +629,38 @@ int ShipObjectImplementation::notifyObjectInsertedToChild(SceneObject* object, S
 				}
 			}
 
-			if (runInRange) {
-				ManagedReference<CellObject*> cell = cast<CellObject*>(child);
+			ManagedReference<CellObject*> cell = cast<CellObject*>(child);
 
-				if (cell != nullptr) {
-					for (int j = 0; j < cell->getContainerObjectsSize(); ++j) {
-						ManagedReference<SceneObject*> cobj = cell->getContainerObject(j);
+			if (cell != nullptr) {
+				for (int j = 0; j < cell->getContainerObjectsSize(); ++j) {
+					ManagedReference<SceneObject*> cobj = cell->getContainerObject(j);
 
-						if (cobj != object) {
+					if (cobj != object) {
 
-							if (cobj->getCloseObjects() != nullptr) {
-								if (!cobj->getCloseObjects()->contains(object)) {
-									cobj->addInRangeObject(object, false);
-									object->sendTo(cobj, true, false);
-								}
-							} else
-								cobj->notifyInsert(object);
-
-							if (object->getCloseObjects() != nullptr) {
-								if (!object->getCloseObjects()->contains(cobj.get())) {
-									object->addInRangeObject(cobj.get(), false);
-									cobj->sendTo(object, true, false);//sendTo because notifyInsert doesnt send objects with parent
-								} else {
-									if (object->getClient() != nullptr && cobj->isCreatureObject()) {
-										object->sendMessage(cobj->link(cell->getObjectID(), -1));
-									}
-								}
-							} else {
-								object->notifyInsert(cobj.get());
+						if (cobj->getCloseObjects() != nullptr) {
+							if (!cobj->getCloseObjects()->contains(object)) {
+								cobj->addInRangeObject(object, false);
+								object->sendTo(cobj, true, false);
 							}
+						} else
+							cobj->notifyInsert(object);
 
+						if (object->getCloseObjects() != nullptr) {
+							if (!object->getCloseObjects()->contains(cobj.get())) {
+								object->addInRangeObject(cobj.get(), false);
+								cobj->sendTo(object, true, false);//sendTo because notifyInsert doesnt send objects with parent
+							} else {
+								if (object->getClient() != nullptr && cobj->isCreatureObject()) {
+									object->sendMessage(cobj->link(cell->getObjectID(), -1));
+								}
+							}
+						} else {
+							object->notifyInsert(cobj.get());
 						}
 					}
 				}
 			}
 		}
-
 
 		if (object->isPlayerCreature()) {
 			// Add player to the onboard list
