@@ -22,27 +22,24 @@
 
 
 
-bool ShipControlDeviceImplementation::launchShip(CreatureObject* player, const String& zoneName, const Vector3& position) {
+ShipObject* ShipControlDeviceImplementation::launchShip(CreatureObject* player, const String& zoneName, const Vector3& position) {
 	auto ship = controlledObject.get().castTo<ShipObject*>();
 
 	if (ship == nullptr) {
-		return false;
+		return nullptr;
 	}
 
 	auto zoneServer = getZoneServer();
 
-	if (zoneServer ==  nullptr)
-		return false;
+	if (zoneServer ==  nullptr) {
+		return nullptr;
+	}
 
-	Zone* zone = zoneServer->getZone(zoneName);
+	auto zone = zoneServer->getZone(zoneName);
 
-	if (zone == nullptr || !zone->isSpaceZone())
-		return false;
-
-	SpaceZone* spaceZone = cast<SpaceZone*>(zone);
-
-	if (spaceZone == nullptr)
-		return false;
+	if (zone == nullptr) {
+		return nullptr;
+	}
 
 	Locker sLock(ship, _this.getReferenceUnsafeStaticCast());
 
@@ -52,23 +49,25 @@ bool ShipControlDeviceImplementation::launchShip(CreatureObject* player, const S
 
 	ship->clearPlayersOnBoard();
 
-	if (spaceZone->transferObject(ship, -1, true)) {
-		ship->setFactionStatus(player->getFactionStatus());
-		ship->setShipFaction(player->getFaction());
-		ship->scheduleRecovery();
-
-		if (player->isInvulnerable()) {
-			ship->setOptionBit(OptionBitmask::INVULNERABLE, false);
-		} else {
-			ship->clearOptionBit(OptionBitmask::INVULNERABLE, false);
-		}
-
-		updateStatus(true, true);
-
-		return true;
+	if (!zone->transferObject(ship, -1, true)) {
+		return nullptr;
 	}
 
-	return false;
+	ship->setFactionStatus(player->getFactionStatus());
+	ship->setShipFaction(player->getFaction());
+	ship->scheduleRecovery();
+
+	if (player->isInvulnerable()) {
+		ship->setOptionBit(OptionBitmask::INVULNERABLE, false);
+	} else {
+		ship->clearOptionBit(OptionBitmask::INVULNERABLE, false);
+	}
+
+	updateStatus(true, true);
+
+	// ship->info(true) << ship->getDisplayedName() << " ship succesfully launched into space zone";
+
+	return ship;
 }
 
 void ShipControlDeviceImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {

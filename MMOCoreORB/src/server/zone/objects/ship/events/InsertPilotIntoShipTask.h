@@ -24,12 +24,13 @@ public:
 		ManagedReference<CreatureObject*> player = play.get();
 		ManagedReference<ShipObject*> ship = shipObject.get();
 
-		if (player == nullptr || ship == nullptr)
+		if (player == nullptr || ship == nullptr) {
 			return;
+		}
 
-		auto spaceZone = ship->getLocalZone();
+		auto zone = ship->getLocalZone();
 
-		if (spaceZone == nullptr) {
+		if (zone == nullptr) {
 			return;
 		}
 
@@ -58,20 +59,23 @@ public:
 				return;
 			}
 
+			// Must send the cell permissions prior to player inserting or it will crash the client
+			ship->sendContainerObjectsTo(player, true);
+
 			// Always apply the piloting state
 			player->setState(CreatureState::PILOTINGPOBSHIP);
 
 			// set pob pilot to the same direction as the chair
 			player->setDirection(*ship->getDirection());
 
-			player->switchZone(spaceZone->getZoneName(), 0.0f, 0.5f, 0.0f, pilotChair->getObjectID(), false, PlayerArrangement::SHIP_PILOT_POB);
+			player->switchZone(zone->getZoneName(), 0.0f, 0.5f, 0.0f, pilotChair->getObjectID(), false, PlayerArrangement::SHIP_PILOT_POB);
 		} else {
 			player->setState(CreatureState::PILOTINGSHIP);
 
 			// Set the pilots direction to the same as the ship
 			player->setDirection(*ship->getDirection());
 
-			player->switchZone(spaceZone->getZoneName(), ship->getPositionX(), ship->getPositionZ(), ship->getPositionY(), ship->getObjectID(), false, PlayerArrangement::SHIP_PILOT);
+			player->switchZone(zone->getZoneName(), ship->getPositionX(), ship->getPositionZ(), ship->getPositionY(), ship->getObjectID(), false, PlayerArrangement::SHIP_PILOT);
 		}
 
 		ship->addPlayerOnBoard(player);

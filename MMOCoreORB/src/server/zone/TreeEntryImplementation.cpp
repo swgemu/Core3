@@ -310,7 +310,7 @@ void TreeEntryImplementation::updateWorldPosition(bool initialize) {
 	Vector3 worldPosition = getPosition();
 
 	if (root != nullptr) {
-		if (root->isBuildingObject()) {
+		if (root->isBuildingObject() || root->isPobShip()) {
 			float rootRad = -root->getDirection()->getRadians();
 			float rootCos = cos(rootRad);
 			float rootSin = sin(rootRad);

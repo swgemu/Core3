@@ -35,18 +35,21 @@ public:
 
 		auto zoneServer = ship->getZoneServer();
 
-		if (zoneServer == nullptr)
+		if (zoneServer == nullptr) {
 			return;
+		}
 
 		auto memberObject = zoneServer->getObject(memberID).get();
 
-		if (memberObject == nullptr || !memberObject->isPlayerCreature())
+		if (memberObject == nullptr || !memberObject->isPlayerCreature()) {
 			return;
+		}
 
 		auto groupMember = memberObject->asCreatureObject();
 
-		if (groupMember == nullptr)
+		if (groupMember == nullptr) {
 			return;
+		}
 
 		Locker lock(ship);
 
@@ -74,7 +77,7 @@ public:
 
 			groupMember->setState(CreatureState::SHIPINTERIOR);
 
-			// info(true) << "Inserting Group Member into POB ship - " << groupMember->getDisplayedName() << " Into Cell: " << randomCell << " Launch Location: " << launchLoc << " Player Arrangement: " << playerArrangement;
+			// info(true) << endl << endl << endl << "Inserting Group Member into POB ship - " << groupMember->getDisplayedName() << " Into Cell: " << randomCell << " Launch Location: " << launchLoc << " Player Arrangement: " << playerArrangement;
 
 			groupMember->switchZone(spaceZone->getZoneName(), launchLoc.getX(), launchLoc.getZ(), launchLoc.getY(), cell->getObjectID(), false, playerArrangement);
 		} else {
