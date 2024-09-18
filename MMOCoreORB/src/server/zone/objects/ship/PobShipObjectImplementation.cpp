@@ -6,6 +6,8 @@
 #include "server/zone/objects/ship/PobShipObject.h"
 #include "server/zone/objects/ship/ShipObject.h"
 #include "server/zone/Zone.h"
+#include "server/zone/SpaceZone.h"
+#include "server/zone/ZoneClientSession.h"
 #include "templates/tangible/ship/SharedShipObjectTemplate.h"
 #include "server/zone/objects/ship/PlayerLaunchPoints.h"
 #include "server/zone/objects/ship/DamageSparkLocations.h"
@@ -257,6 +259,87 @@ void PobShipObjectImplementation::notifyInsertToZone(Zone* zone) {
 	ShipObjectImplementation::notifyInsertToZone(zone);
 }
 
+int PobShipObjectImplementation::notifyObjectInsertedToChild(SceneObject* object, SceneObject* child, SceneObject* oldParent) {
+	Zone* zone = getZone();
+
+	Locker* _locker = nullptr;
+
+	if (zone != nullptr) {
+		_locker = new Locker(zone);
+	}
+
+	// info(true) << getDisplayedName() << " PobShipObjectImplementation::notifyObjectInsertedToChild -- object inserted: " << object->getDisplayedName() << " ID: " << object->getObjectID();
+
+	try {
+		if (object->getCloseObjects() != nullptr) {
+			object->addInRangeObject(object, false);
+		}
+
+		if (child->isCellObject() || child->isPilotChair() || child->isShipTurret() || child->isOperationsChair()) {
+			if (oldParent == nullptr || (oldParent != nullptr && dynamic_cast<SpaceZone*>(oldParent) == nullptr && !oldParent->isCellObject())) {
+				notifyObjectInsertedToZone(object);
+			}
+
+			if (!object->isPlayerCreature()) {
+				broadcastDestroy(object, true);
+				broadcastObject(object, false);
+			}
+
+			for (int j = 0; j < child->getContainerObjectsSize(); ++j) {
+				ManagedReference<SceneObject*> containedObject = child->getContainerObject(j);
+
+				if (containedObject == nullptr) {
+					continue;
+				}
+
+				if (containedObject->getCloseObjects() != nullptr) {
+					containedObject->addInRangeObject(object, false);
+					object->sendTo(containedObject, true, false);
+				} else {
+					containedObject->notifyInsert(object);
+				}
+
+				if (object->getCloseObjects() != nullptr) {
+					object->addInRangeObject(containedObject.get(), false);
+					containedObject->sendTo(object, true, false);
+
+					if (object->getClient() != nullptr && containedObject->isCreatureObject()) {
+						object->sendMessage(containedObject->link(child->getObjectID(), -1));
+					}
+				} else {
+					object->notifyInsert(containedObject.get());
+				}
+			}
+		}
+
+		if (object->isPlayerCreature()) {
+			// Add player to the onboard list
+			addPlayerOnBoard(object->asCreatureObject());
+		}
+	} catch (Exception& e) {
+		error(e.getMessage());
+		e.printStackTrace();
+	}
+
+	if (zone != nullptr) {
+		delete _locker;
+	}
+
+	ShipObjectImplementation::notifyObjectInsertedToChild(object, child, oldParent);
+
+	// info(true) << getDisplayedName() << " PobShipObjectImplementation::notifyObjectInsertedToChild -- FINISHED object inserted: " << object->getDisplayedName() << " ID: " << object->getObjectID();
+
+	return 0;
+}
+
+int PobShipObjectImplementation::notifyObjectRemovedFromChild(SceneObject* object, SceneObject* child) {
+	// info(true) << getDisplayedName() << " PobShipObjectImplementation::notifyObjectRemovedFromChild -- object removed: " << object->getDisplayedName() << " ID: " << object->getObjectID();
+
+	ShipObjectImplementation::notifyObjectRemovedFromChild(object, child);
+
+	return 0;
+}
+
 void PobShipObjectImplementation::updateZone(bool lightUpdate, bool sendPackets) {
 	ShipObjectImplementation::updateZone(lightUpdate, sendPackets);
 }
@@ -282,10 +365,7 @@ void PobShipObjectImplementation::sendTo(SceneObject* sceneO, bool doClose, bool
 
 	ShipObjectImplementation::sendTo(player, doClose, forceLoadContainer);
 
-	// Do not send the contents of the ships cells to the player unless it is launched
-	if (!isShipLaunched()) {
-		return;
-	}
+	bool isLaunched = isShipLaunched();
 
 	auto closeObjects = player->getCloseObjects();
 
@@ -298,6 +378,11 @@ void PobShipObjectImplementation::sendTo(SceneObject* sceneO, bool doClose, bool
 		if (!perms->hasInheritPermissionsFromParent()) {
 			BaseMessage* perm = new UpdateCellPermissionsMessage(cell->getObjectID(), false);
 			player->sendMessage(perm);
+		}
+
+		// Do not send the contents of the ships cells to the player unless it is launched
+		if (!isLaunched) {
+			continue;
 		}
 
 		for (int j = 0; j < cell->getContainerObjectsSize(); ++j) {
@@ -318,10 +403,7 @@ void PobShipObjectImplementation::sendContainerObjectsTo(SceneObject* sceneO, bo
 		return;
 	}
 
-	// Do not send the contents of the ships cells to the player unless it is launched
-	if (!isShipLaunched()) {
-		return;
-	}
+	// info(true) << "PobShipObjectImplementation::sendContainerObjectsTo - " << getDisplayedName() << " sending to: " << sceneO->getDisplayedName();
 
 	auto player = sceneO->asCreatureObject();
 
@@ -330,12 +412,18 @@ void PobShipObjectImplementation::sendContainerObjectsTo(SceneObject* sceneO, bo
 	}
 
 	auto playerId = player->getObjectID();
+	bool isLaunched = isShipLaunched();
 
 	for (int i = 0; i < cells.size(); ++i) {
 		auto& cell = cells.get(i);
 
 		cell->sendTo(player, true);
 		cell->sendPermissionsTo(player, true);
+
+		// Do not send the contents of the ships cells to the player unless it is launched
+		if (!isLaunched) {
+			continue;
+		}
 
 		for (int j = 0; j < cell->getContainerObjectsSize(); ++j) {
 			auto object = cell->getContainerObject(j);

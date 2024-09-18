@@ -64,6 +64,9 @@ class PobShipObject extends ShipObject {
 
 	public native void notifyInsertToZone(Zone zone);
 
+	public native int notifyObjectInsertedToChild(SceneObject object, SceneObject child, SceneObject oldParent);
+	public native int notifyObjectRemovedFromChild(SceneObject object, SceneObject child);
+
 	public native void updatePlayersInShip(boolean lightUpdate, boolean sendPackets = true);
 
 	@local

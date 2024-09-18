@@ -498,9 +498,6 @@ class ShipObject extends TangibleObject {
 
 	public abstract native void updatePlayersInShip(boolean lightUpdate, boolean sendPackets = true);
 
-	public native int notifyObjectInsertedToChild(SceneObject object, SceneObject child, SceneObject oldParent);
-	public native int notifyObjectRemovedFromChild(SceneObject object, SceneObject child);
-
 	/*
 
 		Mutators

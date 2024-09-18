@@ -206,7 +206,7 @@ bool ContainerComponent::transferObject(SceneObject* sceneObject, SceneObject* o
 
 #ifdef DEBUG_CONTAINER_TRANSFER
 	if (object->isPlayerCreature()) {
-		object->info(true) << "---------- " << object->getDisplayedName() << " --- STARTING container Transfer into Cell ID: " << sceneObject->getObjectID() << " ---------- ";
+		object->info(true) << "---------- " << object->getDisplayedName() << " --- STARTING container Transfer into new Parent - ID: " << sceneObject->getObjectID() << " ---------- ";
 	}
 #endif // DEBUG_CONTAINER_TRANSFER
 
@@ -369,7 +369,7 @@ bool ContainerComponent::transferObject(SceneObject* sceneObject, SceneObject* o
 
 #ifdef DEBUG_CONTAINER_TRANSFER
 	if (object->isPlayerCreature()) {
-		object->info(true) << "---------- " << object->getDisplayedName() << " COMPLETED container Transfer into Cell ID: " << sceneObject->getObjectID() << " ----------";
+		object->info(true) << "---------- " << object->getDisplayedName() << " COMPLETED container transfer into new Parent ID: " << sceneObject->getObjectID() << " ----------";
 	}
 #endif // DEBUG_CONTAINER_TRANSFER
 
