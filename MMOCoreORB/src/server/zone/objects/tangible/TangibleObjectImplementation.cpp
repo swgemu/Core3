@@ -501,6 +501,11 @@ void TangibleObjectImplementation::removeOutOfRangeObjects() {
 			continue;
 		}
 
+		// Skip removing space stations, they are global objects for the space zones and always in range
+		if (covObject->isSpaceStation()) {
+			continue;
+		}
+
 		uint64 covObjectID = covObject->getObjectID();
 
 		// Don't remove ourselves or our parent / root parent that is being used to remove objects out of range
@@ -524,7 +529,8 @@ void TangibleObjectImplementation::removeOutOfRangeObjects() {
 		float deltaX = ourX - objectWorldPos.getX();
 		float deltaY = ourY - objectWorldPos.getY();
 
-		float outOfRangeSqr = Math::sqr(Math::max(ourRange, covObject->getOutOfRangeDistance()));
+		float outOfRangeDistance = covObject->getOutOfRangeDistance();
+		float outOfRangeSqr = Math::sqr(Math::max(ourRange, outOfRangeDistance));
 		float deltaDistance = 0.f;
 
 		// This range calculation is used for everything in GroundZone

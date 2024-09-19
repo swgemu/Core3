@@ -209,8 +209,9 @@ void SpaceZoneComponent::switchZone(SceneObject* sceneObject, const String& newT
 
 	auto zoneServer = sceneObject->getZoneServer();
 
-	if (zoneServer == nullptr)
+	if (zoneServer == nullptr) {
 		return;
+	}
 
 	auto zone = sceneObject->getZone();
 	ManagedReference<SceneObject*> thisLocker = sceneObject;
@@ -218,23 +219,23 @@ void SpaceZoneComponent::switchZone(SceneObject* sceneObject, const String& newT
 	Zone* newZone = zoneServer->getZone(newTerrainName);
 
 	if (newZone == nullptr || !newZone->isSpaceZone()) {
-		sceneObject->error("attempting to switch to unkown/disabled space zone " + newTerrainName);
+		sceneObject->error() << sceneObject->getDisplayedName() << " ID: " << sceneObject->getObjectID() << " -- ::switchZone - Attempting to transfer object into disabled Space Zone: " << newTerrainName;
 		return;
 	}
 
 	ManagedReference<SceneObject*> newParent = zoneServer->getObject(parentID);
 
-	if (newParent != nullptr && newParent->getZone() == nullptr)
+	if (newParent != nullptr && newParent->getZone() == nullptr) {
 		return;
+	}
 
 	sceneObject->destroyObjectFromWorld(false);
 
-	if (toggleInvisibility) {
+	if (toggleInvisibility && sceneObject->isTangibleObject()) {
 		TangibleObject* tano = sceneObject->asTangibleObject();
 
 		if (tano != nullptr) {
-			// TODO: handle invisibility for space
-			//tano->setInvisible(!tano->isInvisible());
+			tano->setInvisible(!tano->isInvisible());
 		}
 	}
 
@@ -244,16 +245,18 @@ void SpaceZoneComponent::switchZone(SceneObject* sceneObject, const String& newT
 	sceneObject->incrementMovementCounter();
 
 	if (newParent != nullptr) {
+		// info(true) << "SpaceZoneComponent::switchZone -- starting transfer into new parent... ";
+
 		if (newParent->transferObject(sceneObject, playerArrangement, false, false, false)) {
 			sceneObject->sendToOwner(true);
 
 			// info(true) << "SpaceZoneComponent::switchZone transferred into Parent: " << newParent->getDisplayedName() << " Player: " << sceneObject->getDisplayedName() << " Containment Type: " << playerArrangement << " X: " << newPositionX << " Z: " << newPositionZ << " Y: " << newPositionY;
 
-			if (newParent->isPilotChair() || newParent->isCellObject()) {
-				SceneObject* rootParent = newParent->getRootParent();
+			if (newParent->isPilotChair() || newParent->isCellObject() || newParent->isShipTurret() || newParent->isOperationsChair()) {
+				auto rootParent = newParent->getRootParent();
 
 				if (rootParent != nullptr) {
-					// info(true) << "SpaceZoneComponent::switchZone notified root parent: " << rootParent->getDisplayedName();
+					// info(true) << "SpaceZoneComponent::switchZone notifying root parent: " << rootParent->getDisplayedName();
 
 					rootParent->notifyObjectInsertedToChild(sceneObject, newParent, nullptr);
 				}
