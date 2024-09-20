@@ -60,7 +60,7 @@ TalusNashalScreenPlay = CityScreenPlay:new {
 
 	stationaryCommoners = {"commoner", "commoner_fat", "commoner_old"},
 	stationaryNpcs = {"agriculturalist", "artisan", "bodyguard", "bothan_diplomat", "bounty_hunter", "businessman", "commoner_technician", "contractor", "entertainer", "explorer", "farmer", "farmer_rancher", "fringer",
-			"gambler", "info_broker", "insurgent", "ithorian_male", "medic", "mercenary", "miner", "noble", "official", "pilot", "rancher", "scientist", "slicer", "smuggler", "vendor", "weak_mercenary"},
+			"gambler", "info_broker", "chiss_female", "ithorian_male", "medic", "mercenary", "miner", "noble", "official", "pilot", "rancher", "scientist", "slicer", "smuggler", "vendor", "weak_mercenary"},
 
 	--{respawn, x, z, y, direction, cell, mood}
 	stationaryMobiles = {
@@ -197,7 +197,6 @@ TalusNashalScreenPlay = CityScreenPlay:new {
 		{"artisan",60,2.49489,-0.894992,-5.58394,0,4265375, "conversation"},
 		{"info_broker",60,11.3604,-0.894992,5.58351,180.01,4265375, "conversation"},
 		{"commoner_technician",60,2.49489,-0.894992,-4.58394,179.992,4265375, "conversation"},
-		{"insurgent",60,11.3604,-0.894992,4.58351,360.011,4265375, "nervous"}
 	}
 }
 
