@@ -11,6 +11,9 @@ include server.zone.packets.scene.AttributeListMessage;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.tangible.tool.repair.RepairTool;
 import server.zone.objects.area.ActiveArea;
+import server.zone.objects.tangible.threat.ThreatMap;
+import engine.util.u3d.Vector3;
+
 include templates.params.OptionBitmask;
 include templates.params.ObserverEventType;
 import server.zone.objects.factorycrate.FactoryCrate;
@@ -20,7 +23,6 @@ include server.zone.objects.scene.variables.DeltaVector;
 include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
 include templates.SharedObjectTemplate;
 include system.util.VectorMap;
-import server.zone.objects.tangible.threat.ThreatMap;
 include server.zone.objects.scene.variables.AutoDeltaSet;
 include server.zone.objects.scene.variables.StringId;
 include system.thread.atomic.AtomicInteger;
@@ -248,6 +250,11 @@ class TangibleObject extends SceneObject {
 
 	@local
 	public native void notifyInsert(TreeEntry entry);
+
+	@dirty
+	@local
+	@dereferenced
+	public native abstract Vector3 getWorldPosition();
 
 	/**
 	 * Calls the appropriate UI Listener Function

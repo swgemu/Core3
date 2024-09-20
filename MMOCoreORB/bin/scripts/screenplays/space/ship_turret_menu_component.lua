@@ -62,8 +62,9 @@ function ShipTurretMenuComponent:handleObjectMenuSelect(pTurret, pPlayer, select
 		"space/space_interaction:turret_disabled"
 	]]
 
-	-- Make sure player is within 5m
-	if (not CreatureObject(pPlayer):isInRangeWithObject(pTurret, 5)) then
+	-- Make sure player is within 4m
+	if (not CreatureObject(pPlayer):isInRangeWithObject3d(pTurret, 4)) then
+		-- print("Failing due to range: " .. SceneObject(pPlayer):getDistanceTo3d(pTurret))
 		CreatureObject(pPlayer):sendSystemMessage("@system_msg:out_of_range")
 		return 0
 	end
