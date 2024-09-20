@@ -268,46 +268,72 @@ int PobShipObjectImplementation::notifyObjectInsertedToChild(SceneObject* object
 		_locker = new Locker(zone);
 	}
 
-	// info(true) << getDisplayedName() << " PobShipObjectImplementation::notifyObjectInsertedToChild -- object inserted: " << object->getDisplayedName() << " ID: " << object->getObjectID();
+	// info(true) << getDisplayedName() << " PobShipObjectImplementation::notifyObjectInsertedToChild -- object inserted: " << object->getDisplayedName() << " ID: " << object->getObjectID() << " Child: " << child->getObjectID() << " oldParent: " << (oldParent != nullptr ? oldParent->getObjectID() : 0);
 
 	try {
 		if (object->getCloseObjects() != nullptr) {
 			object->addInRangeObject(object, false);
 		}
 
-		if (child->isCellObject() || child->isPilotChair() || child->isShipTurret() || child->isOperationsChair()) {
-			if (oldParent == nullptr || (oldParent != nullptr && dynamic_cast<SpaceZone*>(oldParent) == nullptr && !oldParent->isCellObject())) {
-				notifyObjectInsertedToZone(object);
+		if (child->isCellObject() || child->isValidJtlParent()) {
+			bool hasEnteredRange = false;
+			bool oldRootIsPob = false;
+
+			if (oldParent != nullptr) {
+				auto oldParentRoot = oldParent->getRootParent();
+
+				if (oldParentRoot == _this.getReferenceUnsafeStaticCast()) {
+					oldRootIsPob = true;
+				}
 			}
 
-			if (!object->isPlayerCreature()) {
+			bool objectIsPlayer = object->isPlayerCreature();
+
+			if (oldParent == nullptr || !oldRootIsPob) {
+				notifyObjectInsertedToZone(object);
+				hasEnteredRange = true;
+			} else if (!hasEnteredRange && objectIsPlayer) {
+				auto player = object->asCreatureObject();
+
+				if (player != nullptr) {
+					auto ghost = player->getPlayerObject();
+
+					if (ghost != nullptr && ghost->isOnLoadScreen()) {
+						hasEnteredRange = true;
+					}
+				}
+			}
+
+			if (!objectIsPlayer) {
 				broadcastDestroy(object, true);
 				broadcastObject(object, false);
 			}
 
-			for (int j = 0; j < child->getContainerObjectsSize(); ++j) {
-				ManagedReference<SceneObject*> containedObject = child->getContainerObject(j);
+			if (hasEnteredRange) {
+				for (int j = 0; j < child->getContainerObjectsSize(); ++j) {
+					ManagedReference<SceneObject*> containedObject = child->getContainerObject(j);
 
-				if (containedObject == nullptr) {
-					continue;
-				}
-
-				if (containedObject->getCloseObjects() != nullptr) {
-					containedObject->addInRangeObject(object, false);
-					object->sendTo(containedObject, true, false);
-				} else {
-					containedObject->notifyInsert(object);
-				}
-
-				if (object->getCloseObjects() != nullptr) {
-					object->addInRangeObject(containedObject.get(), false);
-					containedObject->sendTo(object, true, false);
-
-					if (object->getClient() != nullptr && containedObject->isCreatureObject()) {
-						object->sendMessage(containedObject->link(child->getObjectID(), -1));
+					if (containedObject == nullptr) {
+						continue;
 					}
-				} else {
-					object->notifyInsert(containedObject.get());
+
+					if (containedObject->getCloseObjects() != nullptr) {
+						containedObject->addInRangeObject(object, false);
+						object->sendTo(containedObject, true, false);
+					} else {
+						containedObject->notifyInsert(object);
+					}
+
+					if (object->getCloseObjects() != nullptr) {
+						object->addInRangeObject(containedObject.get(), false);
+						containedObject->sendTo(object, true, false);
+
+						if (object->getClient() != nullptr && containedObject->isCreatureObject()) {
+							object->sendMessage(containedObject->link(child->getObjectID(), -1));
+						}
+					} else {
+						object->notifyInsert(containedObject.get());
+					}
 				}
 			}
 		}

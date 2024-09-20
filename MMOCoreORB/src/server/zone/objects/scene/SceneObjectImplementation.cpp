@@ -681,6 +681,12 @@ void SceneObjectImplementation::broadcastDestroy(SceneObject* object, bool sendS
 	broadcastDestroyPrivate(object, selfObject);
 }
 
+void SceneObjectImplementation::broadcastMessage(BasePacket* message, bool sendSelf, bool lockZone) {
+	SceneObject* selfObject = (sendSelf ? nullptr : asSceneObject());
+
+	broadcastMessagePrivate(message, selfObject, lockZone);
+}
+
 void SceneObjectImplementation::broadcastMessagePrivate(BasePacket* message, SceneObject* selfObject, bool lockZone) {
 	const ZoneServer* zoneServer = getZoneServer();
 
@@ -690,17 +696,17 @@ void SceneObjectImplementation::broadcastMessagePrivate(BasePacket* message, Sce
 	}
 
 	if (parent != nullptr) {
-		ManagedReference<SceneObject*> grandParent = getRootParent();
+		ManagedReference<SceneObject*> rootParent = getRootParent();
 
-		if (grandParent != nullptr) {
-			grandParent->broadcastMessagePrivate(message, selfObject, lockZone);
-
-			return;
-		} else {
+		if (rootParent == nullptr) {
 			delete message;
-
 			return;
 		}
+
+		// Broadcast message with root parent
+		rootParent->broadcastMessagePrivate(message, selfObject, lockZone);
+
+		return;
 	}
 
 	if (zone == nullptr) {
@@ -766,12 +772,6 @@ void SceneObjectImplementation::broadcastMessagePrivate(BasePacket* message, Sce
 #ifndef LOCKFREE_BCLIENT_BUFFERS
 	delete message;
 #endif
-}
-
-void SceneObjectImplementation::broadcastMessage(BasePacket* message, bool sendSelf, bool lockZone) {
-	SceneObject* selfObject = sendSelf ? nullptr : asSceneObject();
-
-	broadcastMessagePrivate(message, selfObject, lockZone);
 }
 
 void SceneObjectImplementation::broadcastMessagesPrivate(Vector<BasePacket*>* messages, SceneObject* selfObject) {

@@ -1944,18 +1944,23 @@ class SceneObject extends TreeEntry implements Logger, Metrics {
 	}
 
 	@read
-	public abstract boolean isPilotChair() {
+	public boolean isPilotChair() {
 		return gameObjectType == SceneObjectType.PILOTCHAIR;
 	}
 
 	@read
-	public abstract boolean isOperationsChair() {
+	public boolean isOperationsChair() {
 		return gameObjectType == SceneObjectType.OPERATIONSCHAIR;
 	}
 
 	@read
-	public abstract boolean isShipTurret() {
+	public boolean isShipTurret() {
 		return gameObjectType == SceneObjectType.TURRETACCESSLADDER;
+	}
+
+	@dirty
+	public boolean isValidJtlParent() {
+		return (isPilotChair() || isOperationsChair() || isShipTurret() || (isShipObject() && !isPobShip()));
 	}
 
 	@read
