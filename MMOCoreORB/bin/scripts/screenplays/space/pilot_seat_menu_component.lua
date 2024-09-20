@@ -61,8 +61,9 @@ function PilotSeatMenuComponent:handleObjectMenuSelect(pPilotChair, pPlayer, sel
 			return 0
 		end
 
-		-- Make sure player is within 5m
-		if (not CreatureObject(pPlayer):isInRangeWithObject(pPilotChair, 5)) then
+		-- Make sure player is within 7m
+		if (not CreatureObject(pPlayer):isInRangeWithObject3d(pPilotChair, 7)) then
+			-- print("Failing due to range: " .. SceneObject(pPlayer):getDistanceTo3d(pPilotChair))
 			CreatureObject(pPlayer):sendSystemMessage("@system_msg:out_of_range")
 			return 0
 		end

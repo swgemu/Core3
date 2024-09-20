@@ -305,6 +305,10 @@ void TreeEntryImplementation::setPosition(float x, float z, float y) {
 }
 
 void TreeEntryImplementation::updateWorldPosition(bool initialize) {
+#ifdef DEBUG_WORLD_POSITION
+	auto sceneO = static_cast<SceneObject*>(_this.getReferenceUnsafeStaticCast());
+#endif // DEBUG_WORLD_POSITION
+
 	auto root = static_cast<SceneObject*>(getRootParentUnsafe());
 
 	Vector3 worldPosition = getPosition();
@@ -326,6 +330,11 @@ void TreeEntryImplementation::updateWorldPosition(bool initialize) {
 			float worldY = root->getPositionY() + rotatedY;
 			float worldZ = root->getPositionZ() + localZ;
 
+#ifdef DEBUG_WORLD_POSITION
+			if (sceneO != nullptr && sceneO->isPlayerCreature())
+				Logger::console.info(true) << sceneO->getDisplayedName() << " -- Coordinates are using root parent to calculate";
+#endif // DEBUG_WORLD_POSITION
+
 			worldPosition = Vector3(worldX, worldY, worldZ);
 		} else {
 			worldPosition = root->getPosition();
@@ -333,15 +342,38 @@ void TreeEntryImplementation::updateWorldPosition(bool initialize) {
 	}
 
 	if (initialize) {
-		worldCoordinates.initializePosition(worldPosition);
-	} else {
-		worldCoordinates.setPosition(worldPosition);
-	}
+#ifdef DEBUG_WORLD_POSITION
+		if (sceneO != nullptr && sceneO->isPlayerCreature()) {
+			Logger::console.info(true) << sceneO->getDisplayedName() << " -- INITIALIZING - World Coordinates to " << worldPosition.toString();
+		}
+#endif // DEBUG_WORLD_POSITION
 
+		worldCoordinates.initializePosition(worldPosition.getX(), worldPosition.getZ(), worldPosition.getY());
+	} else {
+#ifdef DEBUG_WORLD_POSITION
+		if (sceneO != nullptr && sceneO->isPlayerCreature()) {
+			Logger::console.info(true) << sceneO->getDisplayedName() << " -- UPDATING - World Coordinates to " << worldPosition.toString();
+		}
+#endif // DEBUG_WORLD_POSITION
+
+		worldCoordinates.setPosition(worldPosition.getX(), worldPosition.getZ(), worldPosition.getY());
+	}
 }
 
-Vector3 TreeEntryImplementation::getWorldPosition() const {
-	return worldCoordinates.getPosition();
+Vector3 TreeEntryImplementation::getWorldPosition() {
+#ifdef DEBUG_WORLD_POSITION
+	auto sceneO = static_cast<SceneObject*>(_this.getReferenceUnsafeStaticCast());
+#endif // DEBUG_WORLD_POSITION
+
+	auto currentWorld = worldCoordinates.getPosition();
+
+#ifdef DEBUG_WORLD_POSITION
+	if (sceneO != nullptr && sceneO->isPlayerCreature()) {
+		Logger::console.info(true) << sceneO->getDisplayedName() << " -- TreeEntryImplementation::getWorldPosition() is returning  " << currentWorld.toString();
+	}
+#endif // DEBUG_WORLD_POSITION
+
+	return currentWorld;
 }
 
 float TreeEntryImplementation::getWorldPositionX() const {

@@ -1511,6 +1511,18 @@ void TangibleObjectImplementation::notifyInsert(TreeEntry* object) {
 	sendTo(sceneO, true, false);
 }
 
+Vector3 TangibleObjectImplementation::getWorldPosition() {
+	auto root = getRootParent();
+
+	if (root != nullptr && root->isPobShip()) {
+		updateWorldPosition(false);
+	}
+
+	auto currentWorld = worldCoordinates.getPosition();
+
+	return currentWorld;
+}
+
 bool TangibleObjectImplementation::isCityStreetLamp() const {
 	return (templateObject != nullptr && templateObject->getFullTemplateString().contains("object/tangible/furniture/city/streetlamp"));
 }

@@ -52,7 +52,7 @@ function ShipOperationsMenuComponent:handleObjectMenuSelect(pOpsChair, pPlayer, 
 		return
 	end
 
-	--print("Operations Seat Menu Selected ID " .. selectedID .. " Container ID: " .. SceneObject(pOpsChair):getObjectID() .. " Objects Size: " .. SceneObject(pOpsChair):getContainerObjectsSize())
+	-- print("Operations Seat Menu Selected ID " .. selectedID .. " Container ID: " .. SceneObject(pOpsChair):getObjectID() .. " Objects Size: " .. SceneObject(pOpsChair):getContainerObjectsSize())
 
 	-- Enter Ship Operations
 	if (selectedID == 120) then
@@ -61,8 +61,9 @@ function ShipOperationsMenuComponent:handleObjectMenuSelect(pOpsChair, pPlayer, 
 			return 0
 		end
 
-		-- Make sure player is within 5m
-		if (not CreatureObject(pPlayer):isInRangeWithObject(pOpsChair, 5)) then
+		-- Make sure player is within 7m
+		if (not CreatureObject(pPlayer):isInRangeWithObject3d(pOpsChair, 7)) then
+			-- print("Failing due to range: " .. SceneObject(pPlayer):getDistanceTo3d(pOpsChair))
 			CreatureObject(pPlayer):sendSystemMessage("@system_msg:out_of_range")
 			return 0
 		end

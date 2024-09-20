@@ -332,7 +332,7 @@ class TreeEntry extends Observable {
 	@read
 	public native abstract float getWorldPositionZ();
 
-	@read
+	@dirty
 	@local
 	@dereferenced
 	public native abstract Vector3 getWorldPosition();

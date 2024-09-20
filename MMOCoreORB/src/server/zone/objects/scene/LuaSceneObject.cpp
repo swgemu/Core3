@@ -38,6 +38,8 @@ Luna<LuaSceneObject>::RegType LuaSceneObject::Register[] = {
 		{ "setCustomObjectName", &LuaSceneObject::setCustomObjectName},
 		{ "getDistanceTo", &LuaSceneObject::getDistanceTo },
 		{ "getDistanceToPosition", &LuaSceneObject::getDistanceToPosition },
+		{ "getDistanceTo3d", &LuaSceneObject::getDistanceTo3d },
+		{ "getDistanceToPosition3d", &LuaSceneObject::getDistanceToPosition3d },
 		{ "updateDirection", &LuaSceneObject::updateDirection },
 		{ "getServerObjectCRC", &LuaSceneObject::getServerObjectCRC },
 		{ "showFlyText", &LuaSceneObject::showFlyText },
@@ -300,7 +302,32 @@ int LuaSceneObject::getDistanceTo(lua_State* L) {
 	return 1;
 }
 
+int LuaSceneObject::getDistanceTo3d(lua_State* L) {
+	SceneObject* obj = (SceneObject*)lua_touserdata(L, -1);
+
+	float res = realObject->getDistanceTo3d(obj);
+
+	lua_pushnumber(L, res);
+
+	return 1;
+}
+
 int LuaSceneObject::getDistanceToPosition(lua_State* L) {
+	float y = lua_tonumber(L, -1);
+	float z = lua_tonumber(L, -2);
+	float x = lua_tonumber(L, -3);
+
+	Coordinate position;
+	position.setPosition(x, z, y);
+
+	float dist = realObject->getDistanceTo(&position);
+
+	lua_pushnumber(L, dist);
+
+	return 1;
+}
+
+int LuaSceneObject::getDistanceToPosition3d(lua_State* L) {
 	float y = lua_tonumber(L, -1);
 	float z = lua_tonumber(L, -2);
 	float x = lua_tonumber(L, -3);
