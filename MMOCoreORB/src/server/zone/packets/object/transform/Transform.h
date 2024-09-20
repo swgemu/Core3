@@ -1,7 +1,7 @@
 #ifndef TRANSFORM_H_
 #define TRANSFORM_H_
 
-//#define TRANSFORM_DEBUG
+// #define TRANSFORM_DEBUG
 
 #include "server/zone/objects/creature/CreatureObject.h"
 
@@ -123,7 +123,7 @@ public:
 		}
 
 		if (parentID == 0) {
-			if (position.getX() > 7680.f || position.getX() < -7680.f || position.getY() > 7680.f || position.getY() < -7680.f || position.getZ() > 7680.f || position.getZ() < -7680.f) {
+			if (position.getX() > 8192.f || position.getX() < -8192.f || position.getY() > 8192.f || position.getY() < -8192.f || position.getZ() > 8192.f || position.getZ() < -8192.f) {
 				return false;
 			}
 		} else {
@@ -169,6 +169,14 @@ public:
 		float deltaY = creoPosition.getY() - position.getY();
 
 		return (deltaX * deltaX) + (deltaY * deltaY);
+	}
+
+	float get3dSquaredDistance(const Vector3& creoPosition) const {
+		float deltaX = creoPosition.getX() - position.getX();
+		float deltaY = creoPosition.getY() - position.getY();
+		float deltaZ = creoPosition.getZ() - position.getZ();
+
+		return (deltaX * deltaX) + (deltaY * deltaY) + (deltaZ * deltaZ);
 	}
 
 	float getSquaredMoveScale(const Vector3& creoPosition, float interval) const {
@@ -231,6 +239,10 @@ public:
 		float y = (deltaY * vector) + creoPosition.getY();
 
 		return Vector3(x, y, position.getZ());
+	}
+
+	bool isValidParentType(SceneObject* parent) {
+		return parent != nullptr && (parent->isCellObject() || (parent->isShipObject() && !parent->isPobShip()) || !parent->isPilotChair() || parent->isOperationsChair() || parent->isShipTurret());
 	}
 
 #ifdef TRANSFORM_DEBUG
@@ -315,23 +327,21 @@ public:
 			return;
 		}
 
-		const Vector3& validated = ghost->getLastValidatedPosition()->getPosition();
-		const uint64& validParent = ghost->getLastValidatedPosition()->getParent();
+		const auto lastValidated = ghost->getLastValidatedPosition();
+
+		const Vector3& validated = lastValidated->getPosition();
+		const uint64& validParent = lastValidated->getParent();
 
 		StringBuffer msg;
 
-		msg << "Transform: "
+		msg << endl << endl
+			// Transform
+			<< "Transform: "
 			<< " Position: " << newPosition.getX()  << ", " << newPosition.getZ()  << ", " << newPosition.getY()
 			<< " DeltaTime: " << deltaTime
 			<< " Type: " << type
 			<< endl
-			<< "Parsed: "
-			<< " Position: " << position.getX()  << ", " << position.getZ()  << ", " << position.getY()
-			<< " Direction: " << direction.getW()  << ", " << direction.getX()  << ", " << direction.getY() << ", " << direction.getZ()
-			<< " MoveCount: " << moveCount
-			<< " ParentID: " << parentID
-			<< " Speed:	" << speed
-			<< endl
+			// Current
 			<< "Current: "
 			<< " Position: " << creature->getPositionX() << ", " << creature->getPositionZ() << ", " << creature->getPositionY()
 			<< " Direction: " << creature->getDirectionW() << ", " << creature->getDirectionX() << ", " << creature->getDirectionY() << ", " << creature->getDirectionZ()
@@ -339,14 +349,24 @@ public:
 			<< " ParentID: " << creature->getParentID()
 			<< " Speed: " << creature->getCurrentSpeed()
 			<< endl
-			<< "Validated: "
+			// Parsed
+			<< "Parsed: "
+			<< " Position: " << position.getX()  << ", " << position.getZ()  << ", " << position.getY()
+			<< " Direction: " << direction.getW()  << ", " << direction.getX()  << ", " << direction.getY() << ", " << direction.getZ()
+			<< " MoveCount: " << moveCount
+			<< " ParentID: " << parentID
+			<< " Speed: " << speed
+			<< endl
+			// Validated
+			<< "Last Saved Validated: "
 			<< " Position: " << validated.getX() << ", " << validated.getZ() << ", " << validated.getY()
 			<< " ParentID: " << validParent
 			<< " Zone: " << ghost->getSavedTerrainName()
-			<< endl
+			<< endl << endl;
 
-			<< "--------------------------------";
+			//<< "--------------------------------";
 
+		//creature->info(true) << msg.toString();
 		creature->sendSystemMessage(msg.toString());
 	}
 #endif // TRANSFORM_DEBUG

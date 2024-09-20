@@ -403,7 +403,7 @@ class PlayerManager extends Observer implements Logger {
 	public native void updateSwimmingState(CreatureObject player, float newZ, IntersectionResults intersections = null, CloseObjectsVector closeObjects = null);
 	@local
 	public native int checkSpeedHackFirstTest(CreatureObject player, float parsedSpeed, @dereferenced ValidatedPosition teleportPosition, float errorMultiplier = 1);
-	public native int checkSpeedHackSecondTest(CreatureObject player, float newX, float newZ, float newY, unsigned int newStamp, SceneObject newParent = null);
+	public native int checkSpeedHackSecondTest(CreatureObject player, float newX, float newZ, float newY, unsigned int newStamp, SceneObject newParent = null, boolean spaceZone = false);
 
 	@dirty
 	public native boolean existsName(final string name);

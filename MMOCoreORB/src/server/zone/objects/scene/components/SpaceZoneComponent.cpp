@@ -127,22 +127,20 @@ void SpaceZoneComponent::updateZoneWithParent(SceneObject* sceneObject, SceneObj
 		spaceZone = rootParent->getZone();
 	}
 
-	if (spaceZone == nullptr || !spaceZone->isSpaceZone())
+	if (spaceZone == nullptr || !spaceZone->isSpaceZone()) {
 		return;
+	}
 
-	//sceneObject->info(true) << "\n";
-	//sceneObject->info(true) << "SpaceZoneComponent::updateZoneWithParent - For SceneObject: " << sceneObject->getDisplayedName() << sceneObject->getContainmentType() << "\n";
+	// sceneObject->info(true) << "SpaceZoneComponent::updateZoneWithParent - For SceneObject: " << sceneObject->getDisplayedName() << " Containment Type: " << sceneObject->getContainmentType() << " World Position: " << sceneObject->getWorldPosition().toString() << " Position: " << sceneObject->getPosition().toString();
 
 	Locker _locker(spaceZone);
 
 	if (oldParent != newParent) {
-		if (newParent->isShipObject()) {
-			rootParent->transferObject(sceneObject, sceneObject->getContainmentType(), true);
 		// Player is in POB Ship cell
-		} else if (newParent->isCellObject()) {
+		if (newParent->isCellObject()) {
 			newParent->transferObject(sceneObject, -1, true);
 		// Player is in slotted position
-		} else if (sceneObject->isInShipStation()) {
+		} else if (newParent->isValidJtlParent()) {
 			newParent->transferObject(sceneObject, sceneObject->getContainmentType(), true);
 		}
 	}
