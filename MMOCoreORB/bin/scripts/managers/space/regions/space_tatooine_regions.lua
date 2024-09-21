@@ -10,7 +10,7 @@ CUBOID Examples:
 {"regionName", x, z, y, {CUBOID, length, width, height}, SPACESPAWNAREA, {"spawnGroup1", "spawnGroup2"}, maxSpawnLimit}
 ]]
 
-require("scripts.managers.space.regions")
+require("scripts.managers.space.regions.regions")
 
 space_tatooine_regions = {
 }

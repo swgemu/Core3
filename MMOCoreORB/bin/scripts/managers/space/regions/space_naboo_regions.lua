@@ -13,19 +13,8 @@ CUBOID Examples:
 require("scripts.managers.space.regions.regions")
 
 space_naboo_regions = {
-	{"naboo_space_station", -2500, 900, -6000, {CUBOID, 4096, 4096, 4096}, SPAWNAREA, {"naboo_traffic"}, 24},
-	{"rori_space_station", 6226.22, -4450.57, 484.75, {CUBOID, 4096, 4096, 4096}, SPAWNAREA, {"naboo_traffic"}, 24},
+	{"naboo_space_station", -2500, 900, -4800, {CUBOID, 6144, 6144, 6144}, SPAWNAREA, {"naboo_traffic"}, 24},
+	{"rori_space_station", 4800, -4450.57, 484.75, {CUBOID, 6144, 6144, 6144}, SPAWNAREA, {"naboo_traffic"}, 24},
 
 	{"imperial_naboo", 3511.83, 1774.71, 944.36, {SPHERE, 4096}, SPAWNAREA, {"imperial_easy"}, 12},
-
-	-- Top
-	{"naboo_space_test1", 4000, 4000, 4000, {SPHERE, 2048}, SPAWNAREA, {"naboo_traffic"}, 12},
-	{"naboo_space_test2", -4000, 4000, 4000, {SPHERE, 2048}, SPAWNAREA, {"naboo_traffic"}, 12},
-	{"naboo_space_test3", 4000, 4000, -4000, {SPHERE, 2048}, SPAWNAREA, {"naboo_traffic"}, 12},
-	{"naboo_space_test4", -4000, 4000, -4000, {SPHERE, 2048}, SPAWNAREA, {"naboo_traffic"}, 12},
-	-- Bottom
-	{"naboo_space_test5", 4000, -4000, 4000, {SPHERE, 2048}, SPAWNAREA, {"naboo_traffic"}, 12},
-	{"naboo_space_test6", -4000, -4000, 4000, {SPHERE, 2048}, SPAWNAREA, {"naboo_traffic"}, 12},
-	{"naboo_space_test7", 4000, -4000, -4000, {SPHERE, 2048}, SPAWNAREA, {"naboo_traffic"}, 12},
-	{"naboo_space_test8", -4000, -4000, -4000, {SPHERE, 2048}, SPAWNAREA, {"naboo_traffic"}, 12},
 }
