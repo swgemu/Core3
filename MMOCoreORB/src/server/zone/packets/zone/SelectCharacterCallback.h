@@ -208,8 +208,9 @@ public:
 		bool currentParentNull = (currentParent == nullptr);
 
 		// Lets branch for Ships First, player must still be LD in the game world or they should be sent back to their launch position. - Ship, Pilot Chair, Operatios Chair, Ship Turret.
-		if (!currentParentNull && playerParent != nullptr && ((!unloadedInParent && (currentParent->isShipObject() || currentParent->isPilotChair() || currentParent->isOperationsChair() || currentParent->isShipTurret())) ||
+		if (!currentParentNull && playerParent != nullptr && ((!unloadedInParent && currentParent->isValidJtlParent()) ||
 			(currentParent->isCellObject() && rootParent != nullptr && rootParent->isPobShip() && rootParent->getLocalZone() != nullptr))) {
+
 #ifdef DEBUG_SELECT_CHAR_CALLBACK
 			player->info(true) << "SelectCharacterCallback -- Sending Player into Ship or child of a ship";
 #endif

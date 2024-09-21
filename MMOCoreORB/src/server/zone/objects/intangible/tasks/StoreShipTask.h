@@ -5,6 +5,7 @@
 #ifndef STORESHIPTASK_H_
 #define STORESHIPTASK_H_
 
+#include "server/zone/ZoneServer.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/intangible/ShipControlDevice.h"
 #include "server/zone/objects/ship/ShipObject.h"
@@ -42,22 +43,30 @@ public:
 		info(true) << "StoreShipTask called for Player: " << player->getDisplayedName() << " Ship: " << ship->getDisplayedName() << " Zone: " << zoneName << " Loc: " << coordinates.toString();
 #endif
 
+		auto zoneServer = player->getZoneServer();
+
+		if (zoneServer == nullptr) {
+			return;
+		}
+
 		// Lock the ship
 		Locker shipLock(ship);
 
 		// Copy list of the players onboard for removal
-		SortedVector<WeakReference<CreatureObject*>>* playersCopy = new SortedVector<WeakReference<CreatureObject*>>(*ship->getPlayersOnBoard());
+		Vector<uint64> playersOnBoard = ship->getPlayersOnBoard();
 
 #ifdef DEBUG_SHIP_STORE
-		info(true) << "StoreShipTask seeing " << playersCopy->size() << " player(s) on board.";
+		info(true) << "StoreShipTask seeing " << playersOnBoard.size() << " player(s) on board.";
 #endif
 
 		// This function should remove all players in the ship.
-		for (int i = playersCopy->size() - 1; i >= 0; --i) {
-			auto shipMember = playersCopy->get(i).get();
+		for (int i = playersOnBoard.size() - 1; i >= 0; --i) {
+			auto shipMemberID = playersOnBoard.get(i);
+			auto shipMember = cast<CreatureObject*>(zoneServer->getObject(shipMemberID).get());
 
-			if (shipMember == nullptr)
+			if (shipMember == nullptr) {
 				continue;
+			}
 
 			try {
 				// Cross lock the player for removal
@@ -71,13 +80,8 @@ public:
 				error() << "Failed to remove player from Ship - ShipID: " << ship->getObjectID() << " Player ID: " << shipMember->getObjectID();
 			}
 
-			playersCopy->remove(i);
+			playersOnBoard.remove(i);
 		}
-
-		playersCopy->removeAll();
-		delete playersCopy;
-
-		ship->clearPlayersOnBoard();
 
 		// Destroy the ship from the zone.
 		ship->destroyObjectFromWorld(false);
@@ -124,8 +128,9 @@ public:
 
 		auto zoneServer = player->getZoneServer();
 
-		if (zoneServer == nullptr)
+		if (zoneServer == nullptr) {
 			return false;
+		}
 
 		auto zone = zoneServer->getZone(newZoneName);
 
@@ -135,20 +140,7 @@ public:
 
 		player->clearSpaceStates();
 
-		if (player->isOnline() && zone != nullptr) {
-			player->switchZone(newZoneName, location.getX(), location.getZ(), location.getY(), 0, false);
-		} else {
-			player->setPosition(location.getX(), location.getZ(), location.getY());
-
-			player->setParent(nullptr);
-
-			auto ghost = player->getPlayerObject();
-
-			if (ghost != nullptr) {
-				ghost->setSavedParentID(0);
-				ghost->setSavedTerrainName(newZoneName);
-			}
-		}
+		player->switchZone(newZoneName, location.getX(), location.getZ(), location.getY(), 0, false);
 
 		return true;
 	}
