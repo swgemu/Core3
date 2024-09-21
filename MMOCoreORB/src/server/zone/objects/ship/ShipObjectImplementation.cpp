@@ -45,6 +45,8 @@ void ShipObjectImplementation::initializeTransientMembers() {
 		resetComponentFlag(componentOptions.getKeyAt(i), false);
 	}
 
+	initializeUniqueID(false);
+
 	TangibleObjectImplementation::initializeTransientMembers();
 }
 
@@ -67,7 +69,6 @@ void ShipObjectImplementation::loadTemplateData(SharedShipObjectTemplate* ssot) 
 	setShipName("", false);
 
 	setShipType(ssot->getShipType(), false);
-	setUniqueID(getUniqueID(), false);
 
 	setChassisMaxHealth(ssot->getChassisHitpoints(), false);
 	setCurrentChassisHealth(ssot->getChassisHitpoints(), false);
@@ -268,15 +269,6 @@ void ShipObjectImplementation::updateCraftingValues(CraftingValues* values, bool
 	}
 
 	TangibleObjectImplementation::updateCraftingValues(values, firstUpdate);
-}
-
-uint16 ShipObjectImplementation::getUniqueID() {
-	uint32 hash = UnsignedLong::hashCode(getObjectID());
-	uint16 id = (uint16) (hash ^ (hash >> 16));
-
-	//info("uniqueId: 0x" + String::hexvalueOf(id), true);
-
-	return id;
 }
 
 void ShipObjectImplementation::sendBaselinesTo(SceneObject* player) {
@@ -1844,4 +1836,19 @@ void ShipObjectImplementation::updateComponentFlags(bool notifyClient, ShipDelta
 			deltaVector->sendMessages(asShipObject(), getPilot());
 		}
 	}
+}
+
+void ShipObjectImplementation::initializeUniqueID(bool notifyClient) {
+	auto shipManager = ShipManager::instance();
+
+	if (shipManager == nullptr) {
+		return;
+	}
+
+	if (getUniqueID() != 0) {
+		shipManager->dropShipUniqueID(asShipObject());
+	}
+
+	uint16 shipID = shipManager->setShipUniqueID(asShipObject());
+	setUniqueID(shipID, notifyClient);
 }

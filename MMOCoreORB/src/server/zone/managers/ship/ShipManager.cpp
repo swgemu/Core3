@@ -974,3 +974,23 @@ void ShipManager::promptNameShip(CreatureObject* creature, ShipControlDevice* sh
 
 	creature->sendMessage(inputBox->generateMessage());
 }
+
+uint16 ShipManager::setShipUniqueID(ShipObject* ship) {
+	if (ship == nullptr) {
+		return 0;
+	}
+
+	Locker sLock(ship);
+	uint16 shipID = shipUniqueIdMap.setUniqueID(ship);
+
+	return shipID;
+}
+
+void ShipManager::dropShipUniqueID(ShipObject* ship) {
+	if (ship == nullptr) {
+		return;
+	}
+
+	Locker sLock(ship);
+	shipUniqueIdMap.dropUniqueID(ship);
+}
