@@ -52,6 +52,40 @@ void ShipObjectImplementation::initializeTransientMembers() {
 
 void ShipObjectImplementation::notifyLoadFromDatabase() {
 	TangibleObjectImplementation::notifyLoadFromDatabase();
+
+	// This ship is launched when loading from DB. Auto store it
+	if (!isShipAiAgent() && isShipLaunched()) {
+		auto zoneServer = getZoneServer();
+
+		if (zoneServer == nullptr) {
+			return;
+		}
+
+		auto shipDevice = cast<ShipControlDevice*>(zoneServer->getObject(controlDeviceID).get());
+		auto owner = getOwner().get();
+
+		if (shipDevice != nullptr && owner != nullptr) {
+
+			auto launchZone = getSpaceLaunchZone();
+			auto launchLoc = getSpaceLaunchLocation();
+
+			if (launchZone.isEmpty()) {
+				launchZone = "naboo";
+			}
+
+			if (launchLoc.getX() == 0 && launchLoc.getY() == 0) {
+				launchLoc.setX(-4868.f);
+				launchLoc.setY(4154.f);
+				launchLoc.setZ(6.0f);
+			}
+
+			StoreShipTask* storeTask = new StoreShipTask(owner, shipDevice, launchZone, launchLoc);
+
+			if (storeTask != nullptr) {
+				storeTask->schedule(5000);
+			}
+		}
+	}
 }
 
 void ShipObjectImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
@@ -463,12 +497,19 @@ void ShipObjectImplementation::notifyInsert(TreeEntry* object) {
 	uint64 scnoID = sceneO->getObjectID();
 
 #ifdef DEBUG_COV
-	info(true) << "Ship: " << getDisplayedName() << " -- ShipObjectImplementation::notifyInsert -- Object inserted: " << sceneO->getDisplayedName() << " ID: " << scnoID << " Players on Board Size: " << playersOnBoard.size();
+	info(true) << "Ship: " << getDisplayedName() << " -- ShipObjectImplementation::notifyInsert -- Object inserted: " << sceneO->getDisplayedName() << " ID: " << scnoID << " Players on Board Size: " << getTotalPlayersOnBoard();
 #endif // DEBUG_COV
 
 	try {
+		auto zoneServer = getZoneServer();
+
+		if (zoneServer == nullptr) {
+			return;
+		}
+
 		for (int i = 0; i < playersOnBoard.size(); ++i) {
-			auto shipMember = playersOnBoard.get(i).get();
+			auto shipMemberID = playersOnBoard.get(i);
+			auto shipMember = cast<CreatureObject*>(zoneServer->getObject(shipMemberID).get());
 
 			if (shipMember == nullptr) {
 				continue;
@@ -515,11 +556,19 @@ void ShipObjectImplementation::notifyDissapear(TreeEntry* object) {
 #endif // DEBUG_COV
 
 	try {
-		for (int i = 0; i < playersOnBoard.size(); ++i) {
-			auto shipMember = playersOnBoard.get(i).get();
+		auto zoneServer = getZoneServer();
 
-			if (shipMember == nullptr)
+		if (zoneServer == nullptr) {
+			return;
+		}
+
+		for (int i = 0; i < playersOnBoard.size(); ++i) {
+			auto shipMemberID = playersOnBoard.get(i);
+			auto shipMember = cast<CreatureObject*>(zoneServer->getObject(shipMemberID).get());
+
+			if (shipMember == nullptr) {
 				continue;
+			}
 
 			if (shipMember->getCloseObjects() != nullptr)
 				shipMember->removeInRangeObject(object);
@@ -567,10 +616,17 @@ void ShipObjectImplementation::updatePlayersInShip(bool lightUpdate, bool sendPa
 		return;
 	}
 
+	auto zoneServer = getZoneServer();
+
+	if (zoneServer == nullptr) {
+		return;
+	}
+
 	const auto& worldPosition = getWorldPosition();
 
 	for (int i = 0; i < playersOnBoard.size(); ++i) {
-		auto shipMember = playersOnBoard.get(i).get();
+		auto shipMemberID = playersOnBoard.get(i);
+		auto shipMember = cast<CreatureObject*>(zoneServer->getObject(shipMemberID).get());
 
 		if (shipMember == nullptr) {
 			continue;
@@ -1521,77 +1577,147 @@ void ShipObjectImplementation::updateLastDamageReceived() {
 	lastDamageReceived.updateToCurrentTime();
 }
 
-CreatureObject* ShipObjectImplementation::getPlayerOnBoard(int index) {
-	auto player = playersOnBoard.get(index).get();
-
-	return player;
-}
-
 uint64 ShipObjectImplementation::getLastDamageReceivedMili() {
 	return lastDamageReceived.getMiliTime();
 }
 
-void ShipObjectImplementation::addPlayerOnBoard(CreatureObject* player) {
-	if (player == nullptr)
-		return;
+CreatureObject* ShipObjectImplementation::getPlayerOnBoard(int index) {
+	auto zoneServer = getZoneServer();
 
-	playersOnBoard.put(player);
+	if (zoneServer == nullptr) {
+		return nullptr;
+	}
+
+	auto shipMemberID = playersOnBoard.get(index);
+	auto shipMember = cast<CreatureObject*>(zoneServer->getObject(shipMemberID).get());
+
+	if (shipMember == nullptr) {
+		return nullptr;
+	}
+
+	return shipMember;
+}
+
+void ShipObjectImplementation::addPlayerOnBoard(CreatureObject* player) {
+	if (player == nullptr) {
+		return;
+	}
+
+	uint64 playerID = player->getObjectID();
+
+	if (playersOnBoard.contains(playerID)) {
+		return;
+	}
+
+	playersOnBoard.add(playerID);
+}
+
+void ShipObjectImplementation::clearPlayersOnBoard() {
+	playersOnBoard.removeAll();
+}
+
+int ShipObjectImplementation::getTotalPlayersOnBoard() {
+	return playersOnBoard.size();
+}
+
+Vector<uint64> ShipObjectImplementation::getPlayersOnBoard() {
+	return playersOnBoard;
 }
 
 void ShipObjectImplementation::sendShipMembersMessage(const String& message) {
+	auto zoneServer = getZoneServer();
+
+	if (zoneServer == nullptr) {
+		return;
+	}
+
 	for (int i = 0; i < playersOnBoard.size(); ++i) {
-		auto member = playersOnBoard.get(i).get();
+		auto shipMemberID = playersOnBoard.get(i);
+		auto shipMember = cast<CreatureObject*>(zoneServer->getObject(shipMemberID).get());
 
-		if (member == nullptr)
+		if (shipMember == nullptr) {
 			continue;
+		}
 
-		member->sendSystemMessage(message);
+		shipMember->sendSystemMessage(message);
 	}
 }
 
 void ShipObjectImplementation::sendShipMembersMusicMessage(const String& message) {
+	auto zoneServer = getZoneServer();
+
+	if (zoneServer == nullptr) {
+		return;
+	}
+
 	for (int i = 0; i < playersOnBoard.size(); ++i) {
-		auto member = playersOnBoard.get(i).get();
+		auto shipMemberID = playersOnBoard.get(i);
+		auto shipMember = cast<CreatureObject*>(zoneServer->getObject(shipMemberID).get());
 
-		if (member == nullptr)
+		if (shipMember == nullptr) {
 			continue;
+		}
 
-		member->playMusicMessage(message);
+		shipMember->playMusicMessage(message);
 	}
 }
 
 void ShipObjectImplementation::sendMembersHyperspaceBeginMessage(const String& zoneName, const Vector3& location) {
+	auto zoneServer = getZoneServer();
+
+	if (zoneServer == nullptr) {
+		return;
+	}
+
 	for (int i = 0; i < playersOnBoard.size(); ++i) {
-		auto member = playersOnBoard.get(i).get();
+		auto shipMemberID = playersOnBoard.get(i);
+		auto shipMember = cast<CreatureObject*>(zoneServer->getObject(shipMemberID).get());
 
-		if (member == nullptr)
+		if (shipMember == nullptr) {
 			continue;
+		}
 
-		BeginHyperspaceMessage* msg = new BeginHyperspaceMessage(member->getObjectID(), zoneName, location.getX(), location.getZ(), location.getY());
-		member->sendMessage(msg);
+		BeginHyperspaceMessage* msg = new BeginHyperspaceMessage(shipMember->getObjectID(), zoneName, location.getX(), location.getZ(), location.getY());
+		shipMember->sendMessage(msg);
 	}
 }
 
 void ShipObjectImplementation::sendMembersHyperspaceOrientMessage(const String& zoneName, const Vector3& location) {
+	auto zoneServer = getZoneServer();
+
+	if (zoneServer == nullptr) {
+		return;
+	}
+
 	for (int i = 0; i < playersOnBoard.size(); ++i) {
-		auto member = playersOnBoard.get(i).get();
+		auto shipMemberID = playersOnBoard.get(i);
+		auto shipMember = cast<CreatureObject*>(zoneServer->getObject(shipMemberID).get());
 
-		if (member == nullptr)
+		if (shipMember == nullptr) {
 			continue;
+		}
 
-		OrientForHyperspaceMessage *msg = new OrientForHyperspaceMessage(member->getObjectID(), zoneName, location.getX(), location.getZ(), location.getY());
-		member->sendMessage(msg);
+		OrientForHyperspaceMessage *msg = new OrientForHyperspaceMessage(shipMember->getObjectID(), zoneName, location.getX(), location.getZ(), location.getY());
+		shipMember->sendMessage(msg);
 	}
 }
 
 void ShipObjectImplementation::sendMembersBaseMessage(BaseMessage* message) {
+	auto zoneServer = getZoneServer();
+
+	if (zoneServer == nullptr) {
+		return;
+	}
+
 	for (int i = 0; i < playersOnBoard.size(); ++i) {
-		auto member = playersOnBoard.get(i).get();
+		auto shipMemberID = playersOnBoard.get(i);
+		auto shipMember = cast<CreatureObject*>(zoneServer->getObject(shipMemberID).get());
 
-		if (member == nullptr)
+		if (shipMember == nullptr) {
 			continue;
+		}
 
-		member->sendMessage(message->clone());
+		shipMember->sendMessage(message->clone());
 	}
 
 	delete message;
