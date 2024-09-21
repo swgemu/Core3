@@ -70,6 +70,12 @@ public:
 		cityName = name;
 	}
 
+	inline void setLocation(float x, float z, float y) {
+		location.setX(x);
+		location.setZ(z);
+		location.setY(y);
+	}
+
 	inline void setLocation(Vector3 loc) {
 		location = loc;
 	}

@@ -326,6 +326,10 @@ void ShipControlDeviceImplementation::setStoredLocationData(CreatureObject* play
 	ghost->setSpaceLaunchLocation(position);
 	ghost->setSpaceLaunchCityName(pointName);
 	ghost->setSpaceLaunchZone(zoneName);
+
+	ship->setSpaceLaunchLocation(position);
+	ship->setSpaceLaunchCityName(pointName);
+	ship->setSpaceLaunchZone(zoneName);
 }
 
 Vector3 ShipControlDeviceImplementation::getStoredPosition(bool randomPosition) {

@@ -50,6 +50,50 @@ void ShipObjectImplementation::initializeTransientMembers() {
 
 void ShipObjectImplementation::notifyLoadFromDatabase() {
 	TangibleObjectImplementation::notifyLoadFromDatabase();
+
+	// This ship is launched when loading from DB. Auto store it
+	if (!isShipAiAgent() && isShipLaunched()) {
+		info(true) << "this ship is showing as launched";
+
+		auto zoneServer = getZoneServer();
+
+		if (zoneServer == nullptr) {
+			return;
+		}
+
+		info(true) << "1";
+
+		auto shipDevice = cast<ShipControlDevice*>(zoneServer->getObject(controlDeviceID).get());
+		auto owner = getOwner().get();
+
+		if (shipDevice != nullptr && owner != nullptr) {
+
+			info(true) << "2";
+
+			auto launchZone = getSpaceLaunchZone();
+			auto launchLoc = getSpaceLaunchLocation();
+
+			if (launchZone.isEmpty()) {
+				launchZone = "naboo";
+			}
+
+			if (launchLoc.getX() == 0 && launchLoc.getY() == 0) {
+				launchLoc.setX(-4868.f);
+				launchLoc.setY(4154.f);
+				launchLoc.setZ(6.0f);
+			}
+
+			StoreShipTask* storeTask = new StoreShipTask(owner, shipDevice, launchZone, launchLoc);
+
+			info(true) << "executing StoreShipTask - for Ship Device: " << shipDevice->getDisplayedName();
+
+			if (storeTask != nullptr) {
+				info(true) << "3";
+
+				storeTask->schedule(1000);
+			}
+		}
+	}
 }
 
 void ShipObjectImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
