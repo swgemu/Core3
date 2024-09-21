@@ -104,7 +104,6 @@ space_corellia = {
 		{templateFile = "object/ship/spacestation_talus.iff", x = -6345.5, z = -5274.5, y = -3957.25, ow = 0.640802, ox = 0.015822, oy = 0.76738, oz = -0.0158223, parentid = 0},
 		{templateFile = "object/ship/spacestation_rebel.iff", x = -1463.42, z = 318.86, y = -1012.24, ow = 0.759136, ox = -0.0474463, oy = 0.648429, oz = 0.0316307, parentid = 0},
 		{templateFile = "object/ship/spacestation_corellia.iff", x = 6519.75, z = -5373.75, y = -2600.25, ow = -0.428073, ox = -1.39125e-08, oy = 0.90371, oz = -0.00792732, parentid = 0}
-
 	}
 }
 
