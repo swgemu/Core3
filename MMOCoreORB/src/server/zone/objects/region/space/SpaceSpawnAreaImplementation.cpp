@@ -33,7 +33,7 @@ void SpaceSpawnAreaImplementation::notifyPositionUpdate(TreeEntry* entry) {
 	// Spawn limit has been reached
 	if (totalSpawnCount >= maxSpawnLimit) {
 #ifdef DEBUG_SPACE_SPAWNING
-		info(true) << "Total Spawn Count Reached for - " << getAreaName() << " Max Limit: " <<  maxSpawnLimit << " Total Spawn Count: " << totalSpawnCount;
+		info(true) << "Total Spawn Count Reached for - " << getAreaName() << " Max Limit: " <<  maxSpawnLimit << " Total Spawn Count: " << totalSpawnCount << " Trigger Ship: " << sceneObject->getDisplayedName();
 #endif // DEBUG_SPACE_SPAWNING
 		return;
 	}
@@ -71,7 +71,7 @@ void SpaceSpawnAreaImplementation::notifyEnter(SceneObject* sceneO) {
 	}
 
 #ifdef DEBUG_SPACE_SPAWNING
-	info(true) << getAreaName() << " -- SpaceSpawnAreaImplementation::notifyEnter for " << sceneO->getCustomObjectName();
+	info(true) << getAreaName() << " -- SpaceSpawnAreaImplementation::notifyEnter for " << sceneO->getDisplayedName();
 #endif // DEBUG_SPACE_SPAWNING
 
 #ifdef DEBUG_SPACE_AREAS
@@ -93,7 +93,7 @@ void SpaceSpawnAreaImplementation::notifyExit(SceneObject* sceneO) {
 	}
 
 #ifdef DEBUG_SPACE_SPAWNING
-	info(true) << getAreaName() << " --SpaceSpawnAreaImplementation::notifyExit for " << sceneO->getCustomObjectName();
+	info(true) << getAreaName() << " --SpaceSpawnAreaImplementation::notifyExit for " << sceneO->getDisplayedName();
 #endif // DEBUG_SPACE_SPAWNING
 
 #ifdef DEBUG_SPACE_AREAS
@@ -167,7 +167,7 @@ void SpaceSpawnAreaImplementation::tryToSpawn(ShipObject* playerShip) {
 	// Update lastSpawn time
 	lastSpawn.updateToCurrentTime();
 
-	int choice = System::random(totalWeighting - 1);
+	int weightingRoll = System::random(totalWeighting - 1);
 	int counter = 0;
 
 	SpaceSpawn* finalSpawn = nullptr;
@@ -177,7 +177,7 @@ void SpaceSpawnAreaImplementation::tryToSpawn(ShipObject* playerShip) {
 
 		counter += spawn->getWeighting();
 
-		if (choice < counter) {
+		if (weightingRoll < counter) {
 			finalSpawn = spawn;
 			break;
 		}
@@ -185,7 +185,7 @@ void SpaceSpawnAreaImplementation::tryToSpawn(ShipObject* playerShip) {
 
 	if (finalSpawn == nullptr) {
 #ifdef DEBUG_SPACE_SPAWNING
-		info(true) << "tryToSpawn -- finalSpawn is a nullptr";
+		info(true) << "tryToSpawn -- finalSpawn is a nullptr. weightingRoll: " << weightingRoll << " Counter: " << counter;
 #endif // DEBUG_SPACE_SPAWNING
 		return;
 	}
