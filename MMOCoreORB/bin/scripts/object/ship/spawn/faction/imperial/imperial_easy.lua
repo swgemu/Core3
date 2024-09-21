@@ -18,7 +18,7 @@ imperial_easy = {
 
 		spawnLimit = -1,
 		numberToSpawn = 5,
-		weighting = 50,
+		weighting = 30,
 		capitalShip = "",
 	},
 	{
@@ -29,7 +29,7 @@ imperial_easy = {
 
 		spawnLimit = -1,
 		numberToSpawn = 5,
-		weighting = 75,
+		weighting = 60,
 		capitalShip = "",
 	},
 }

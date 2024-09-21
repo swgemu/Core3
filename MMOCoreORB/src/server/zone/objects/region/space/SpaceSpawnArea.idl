@@ -48,6 +48,8 @@ class SpaceSpawnArea extends SpaceRegion {
 	public SpaceSpawnArea() {
 		spawnAreaObserver = null;
 
+		totalWeighting = 1;
+
 		totalSpawnCount = 0;
 		maxSpawnLimit = 100;
 
