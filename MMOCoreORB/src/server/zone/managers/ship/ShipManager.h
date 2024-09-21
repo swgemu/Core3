@@ -20,6 +20,7 @@
 #include "server/zone/objects/ship/ShipCountermeasureData.h"
 #include "server/zone/objects/ship/components/ShipChassisComponent.h"
 #include "server/zone/objects/ship/ShipTurretData.h"
+#include "ShipUniqueIdMap.h"
 #include "SpaceSpawnGroup.h"
 
 namespace server {
@@ -47,6 +48,8 @@ protected:
 	VectorMap<String, String> hyperspaceZones;
 
 	HashTable<uint32, Reference<SpaceSpawnGroup*>> spawnGroupMap;
+
+	ShipUniqueIdMap shipUniqueIdMap;
 
 	void checkProjectiles();
 	void loadShipComponentData();
@@ -200,6 +203,10 @@ public:
 	SpaceSpawnGroup* getSpaceSpawnGroup(uint32 crc) {
 		return spawnGroupMap.get(crc);
 	}
+
+	uint16 setShipUniqueID(ShipObject* ship);
+
+	void dropShipUniqueID(ShipObject* ship);
 };
 
 } // namespace ship
