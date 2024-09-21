@@ -12,6 +12,7 @@ import server.zone.objects.ship.events.ShipRecoveryEvent;
 import server.zone.Zone;
 import system.util.SortedVector;
 import engine.service.proto.BaseMessage;
+import engine.util.u3d.Vector3;
 
 include server.zone.TreeEntry;
 include server.zone.objects.scene.SceneObject;
@@ -32,9 +33,9 @@ include system.util.VectorMap;
 include system.lang.ref.Reference;
 include server.zone.objects.ship.ShipDeltaVector;
 include server.zone.objects.ship.ShipTargetVector;
-include engine.util.u3d.Vector3;
 include engine.util.u3d.Quaternion;
 include engine.util.u3d.Matrix4;
+include server.zone.objects.player.variables.SpaceLaunchPoint;
 
 class ShipObject extends TangibleObject {
 	public static final int HYPERSPACE_DELAY = 40;
@@ -65,6 +66,9 @@ class ShipObject extends TangibleObject {
 	protected CreatureObject owner;
 
 	unsigned long ownerID;
+
+	@dereferenced
+	protected SpaceLaunchPoint launchPoint;
 
 	@weakReference
 	protected SceneObject pilotChair;
@@ -1747,4 +1751,32 @@ class ShipObject extends TangibleObject {
 	public native void updateComponentFlags(boolean notifyClient = true, ShipDeltaVector vector = null);
 
 	public native void initializeUniqueID(boolean notifyClient = true);
+
+	public void setSpaceLaunchZone(string zoneName) {
+		launchPoint.setGroundZoneName(zoneName);
+	}
+
+	public void setSpaceLaunchCityName(string cityName) {
+		launchPoint.setCityName(cityName);
+	}
+
+	public void setSpaceLaunchLocation(@dereferenced Vector3 location) {
+		launchPoint.setLocation(location.getX(), location.getZ(), location.getY());
+	}
+
+	@dereferenced
+	public string getSpaceLaunchZone() {
+		return launchPoint.getGoundZoneName();
+	}
+
+	@dereferenced
+	public string getSpaceLaunchCityName() {
+		return launchPoint.getCityName();
+	}
+
+	@local
+	@dereferenced
+	public Vector3 getSpaceLaunchLocation() {
+		return launchPoint.getLocation();
+	}
 }

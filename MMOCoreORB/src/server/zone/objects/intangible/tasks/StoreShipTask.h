@@ -12,7 +12,7 @@
 #include "templates/params/creature/PlayerArrangement.h"
 #include "server/zone/objects/player/PlayerObject.h"
 
-// #define DEBUG_SHIP_STORE
+#define DEBUG_SHIP_STORE
 
 class StoreShipTask : public Task, public Logger {
 	ManagedWeakReference<CreatureObject*> play;
