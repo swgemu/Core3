@@ -1,4 +1,4 @@
-naboo_traffic = {
+corellia_traffic = {
 	{
 		shipSpawnGroupName = "hutt_light_easy",
 
@@ -7,7 +7,7 @@ naboo_traffic = {
 
 		spawnLimit = -1,
 		numberToSpawn = 5,
-		weighting = 15,
+		weighting = 25,
 		capitalShip = "",
 	},
 	{
@@ -18,7 +18,7 @@ naboo_traffic = {
 
 		spawnLimit = -1,
 		numberToSpawn = 5,
-		weighting = 15,
+		weighting = 25,
 		capitalShip = "",
 	},
 	{
@@ -32,17 +32,6 @@ naboo_traffic = {
 		weighting = 50,
 		capitalShip = "",
 	},
-	{
-		shipSpawnGroupName = "droid_fighter_tier2",
-
-		leadShips = {""},
-		groupShips = {"droid_fighter_tier1"},
-
-		spawnLimit = -1,
-		numberToSpawn = 10,
-		weighting = 30,
-		capitalShip = "",
-	},
 }
 
-addShipSpawnGroup("naboo_traffic", naboo_traffic);
+addShipSpawnGroup("corellia_traffic", corellia_traffic);

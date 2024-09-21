@@ -16,6 +16,7 @@
 #include "server/zone/objects/intangible/TheaterObject.h"
 #include "server/zone/managers/ship/SpaceSpawnObserver.h"
 
+#define DEBUG_SPACE_AREAS
 // #define DEBUG_SPACE_SPAWNING
 
 void SpaceSpawnAreaImplementation::notifyPositionUpdate(TreeEntry* entry) {
@@ -69,13 +70,19 @@ void SpaceSpawnAreaImplementation::notifyEnter(SceneObject* sceneO) {
 		return;
 	}
 
-	if (sceneO->isDebuggingRegions()) {
-		sendDebugMessage(sceneO, true);
-	}
-
 #ifdef DEBUG_SPACE_SPAWNING
 	info(true) << getAreaName() << " -- SpaceSpawnAreaImplementation::notifyEnter for " << sceneO->getCustomObjectName();
 #endif // DEBUG_SPACE_SPAWNING
+
+#ifdef DEBUG_SPACE_AREAS
+	auto entryShip = sceneO->asShipObject();
+
+	if (entryShip != nullptr) {
+		StringBuffer msg;
+		msg << "notifyEnter - SpaceSpawnAreaImplementation: " << getAreaName() << " Location: " << getAreaCenter().toString();
+		entryShip->sendShipMembersMessage(msg.toString());
+	}
+#endif
 
 	numberOfPlayerShipsInRange.increment();
 }
@@ -85,13 +92,19 @@ void SpaceSpawnAreaImplementation::notifyExit(SceneObject* sceneO) {
 		return;
 	}
 
-	if (sceneO->isDebuggingRegions()) {
-		sendDebugMessage(sceneO, true);
-	}
-
 #ifdef DEBUG_SPACE_SPAWNING
 	info(true) << getAreaName() << " --SpaceSpawnAreaImplementation::notifyExit for " << sceneO->getCustomObjectName();
 #endif // DEBUG_SPACE_SPAWNING
+
+#ifdef DEBUG_SPACE_AREAS
+	auto entryShip = sceneO->asShipObject();
+
+	if (entryShip != nullptr) {
+		StringBuffer msg;
+		msg << "notifyExit - SpaceSpawnAreaImplementation: " << getAreaName() << " Location: " << getAreaCenter().toString();
+		entryShip->sendShipMembersMessage(msg.toString());
+	}
+#endif
 
 	numberOfPlayerShipsInRange.decrement();
 
