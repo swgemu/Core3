@@ -579,12 +579,16 @@ SceneObject* SpaceManagerImplementation::spaceDynamicSpawn(uint32 shipCRC, Zone*
 	shipAgent->setHomeLocation(spawnLocation.getX(), spawnLocation.getZ(), spawnLocation.getY(), Quaternion::IDENTITY);
 	shipAgent->initializeTransform(spawnLocation, Quaternion::IDENTITY);
 
+	shipAgent->setHyperspacing(true);
+
 	if (!zone->transferObject(shipAgent, -1, true)) {
 		shipAgent->destroyObjectFromWorld(true);
 		shipAgent->destroyObjectFromDatabase(true);
 
 		return nullptr;
 	}
+
+	shipAgent->setHyperspacing(false);
 
 	if (homeTheater != nullptr) {
 		shipAgent->setHomeObject(homeTheater);
