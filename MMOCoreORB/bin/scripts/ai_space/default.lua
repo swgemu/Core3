@@ -1,55 +1,57 @@
 aggroDefault = {
-	{id="945589948",	name="SequenceSpace",	pid="none"},
-	{id="1631029490",	name="IfSpace",	pid="945589948"},
-	{id="368523102",	name="CheckProspectAggression",	pid="1631029490"},
-	{id="2014626606",	name="IfSpace",	pid="945589948"},
-	{id="1176105024",	name="CheckProspectInRange",	pid="2014626606"},
-	{id="1957806964",	name="IfSpace",	pid="945589948"},
-	{id="851346818",	name="CheckProspectLOS",	pid="1957806964"},
-	{id="3986427247",	name="SetDefenderFromProspect",	pid="945589948"}}
+	{id="1109954618",	name="SequenceSpace",	pid="none"},
+	{id="2050102950",	name="IfSpace",	pid="1109954618"},
+	{id="305546007",	name="CheckProspectAggression",	pid="2050102950"},
+	{id="3897258376",	name="IfSpace",	pid="1109954618"},
+	{id="487075687",	name="CheckProspectInRange",	pid="3897258376"},
+	{id="2593013780",	name="IfSpace",	pid="1109954618"},
+	{id="2407318360",	name="CheckProspectLOS",	pid="2593013780"},
+	{id="908237602",	name="SetDefenderFromProspect",	pid="1109954618"}}
 addAiTemplate("aggroDefault", aggroDefault)
 
 attackDefault = {
-	{id="848497664",	name="SequenceSpace",	pid="none"},
-	{id="87769704",	name="IfSpace",	pid="848497664"},
-	{id="2250329166",	name="CheckRefireRate",	pid="87769704",	args={condition=500}},
-	{id="772823324",	name="EngageTarget",	pid="848497664"}}
+	{id="1824859964",	name="SequenceSpace",	pid="none"},
+	{id="159424751",	name="IfSpace",	pid="1824859964"},
+	{id="597003156",	name="CheckRefireRate",	pid="159424751",	args={condition=500}},
+	{id="2510868304",	name="EngageTarget",	pid="1824859964"}}
 addAiTemplate("attackDefault", attackDefault)
 
 awareDefault = {
 	{id="1214404540",	name="SequenceSpace",	pid="none"},
-	{id="3841927422",	name="NotSpace",	pid="1214404540"},
-	{id="957850819",	name="IfSpace",	pid="3841927422"},
-	{id="3395630515",	name="CheckMovementState",	pid="957850819",	args={condition=EVADING}},
+	{id="1915611982",	name="NotSpace",	pid="1214404540"},
+	{id="2125777402",	name="IfSpace",	pid="1915611982"},
+	{id="3574561166",	name="CheckMovementState",	pid="2125777402",	args={condition=EVADING}},
 	{id="2152617010",	name="LookForTargetSpace",	pid="1214404540"},
 	{id="83649144",	name="SequenceSpace",	pid="2152617010"},
 	{id="765304253",	name="CalculateAggroMod",	pid="83649144"},
 	{id="4225492471",	name="IfSpace",	pid="83649144"},
 	{id="2515118288",	name="CheckProspectInRange",	pid="4225492471"},
-	{id="3076853086",	name="AlwaysSucceedSpace",	pid="83649144"},
-	{id="934410611",	name="TreeSocketSpace",	pid="3076853086",	args={slot=LOOKATSPACE}},
-	{id="1270556892",	name="IfSpace",	pid="83649144"},
-	{id="2923824875",	name="CheckMovementState",	pid="1270556892",	args={condition=WATCHING}},
-	{id="2797098288",	name="IfSpace",	pid="83649144"},
-	{id="576735143",	name="CheckAggroDelayPast",	pid="2797098288"},
-	{id="1799039580",	name="TreeSocketSpace",	pid="83649144",	args={slot=AGGROSPACE}}}
+	{id="470242119",	name="AlwaysSucceedSpace",	pid="83649144"},
+	{id="934410611",	name="TreeSocketSpace",	pid="470242119",	args={slot=LOOKATSPACE}},
+	{id="769764285",	name="IfSpace",	pid="83649144"},
+	{id="3977758222",	name="CheckMovementState",	pid="769764285",	args={condition=WATCHING}},
+	{id="3090883828",	name="IfSpace",	pid="83649144"},
+	{id="2582999451",	name="CheckAggroDelayPast",	pid="3090883828"},
+	{id="235282565",	name="TreeSocketSpace",	pid="83649144",	args={slot=AGGROSPACE}}}
 addAiTemplate("awareDefault", awareDefault)
 
 evadeDefault = {
-	{id="2857060179",	name="SelectorSpace",	pid="none"},
-	{id="2602567462",	name="SequenceSpace",	pid="2857060179"},
+	{id="312238841",	name="SelectorSpace",	pid="none"},
+	{id="2602567462",	name="SequenceSpace",	pid="312238841"},
 	{id="4002815204",	name="IfSpace",	pid="2602567462"},
 	{id="2649809160",	name="CheckMovementState",	pid="4002815204",	args={condition=EVADING}},
-	{id="937592621",	name="AlwaysSucceedSpace",	pid="2602567462"},
-	{id="721046627",	name="SequenceSpace",	pid="937592621"},
-	{id="959847675",	name="IfSpace",	pid="721046627"},
-	{id="1108311886",	name="CheckStopEvading",	pid="959847675"},
-	{id="2242555820",	name="SetMovementState",	pid="721046627",	args={state=ATTACKING}},
-	{id="105533972",	name="SequenceSpace",	pid="2857060179"},
-	{id="239981461",	name="IfSpace",	pid="105533972"},
-	{id="2845710209",	name="CheckEvadeChance",	pid="239981461",	args={chance=10}},
-	{id="2176893155",	name="SetMovementState",	pid="105533972",	args={state=EVADING}},
-	{id="3574481783",	name="Evade",	pid="105533972",	args={evadeDelay=2000}}}
+	{id="3017093125",	name="AlwaysSucceedSpace",	pid="2602567462"},
+	{id="3880616062",	name="SelectorSpace",	pid="3017093125"},
+	{id="2820082591",	name="SequenceSpace",	pid="3880616062"},
+	{id="2968774197",	name="IfSpace",	pid="2820082591"},
+	{id="666306794",	name="CheckStopEvading",	pid="2968774197"},
+	{id="1144510400",	name="SetMovementState",	pid="2820082591",	args={state=ATTACKING}},
+	{id="209398235",	name="TreeSocketSpace",	pid="3880616062",	args={slot=ATTACKSPACE}},
+	{id="688192376",	name="SequenceSpace",	pid="312238841"},
+	{id="3972827323",	name="IfSpace",	pid="688192376"},
+	{id="2565166350",	name="CheckEvadeChance",	pid="3972827323",	args={chance=10}},
+	{id="3110218052",	name="SetMovementState",	pid="688192376",	args={state=EVADING}},
+	{id="3267148840",	name="Evade",	pid="688192376",	args={evadeDelay=2000}}}
 addAiTemplate("evadeDefault", evadeDefault)
 
 idleDefault = {
@@ -98,12 +100,12 @@ rootDefault = {
 	{id="1729558672",	name="TreeSocketSpace",	pid="2051740559",	args={slot=MOVESPACE}},
 	{id="1447247403",	name="TreeSocketSpace",	pid="2051740559",	args={slot=EVADESPACE}},
 	{id="4225713865",	name="SequenceSpace",	pid="2051740559"},
-	{id="2158110177",	name="SelectorSpace",	pid="4225713865"},
-	{id="4010272258",	name="TreeSocketSpace",	pid="2158110177",	args={slot=TARGETSPACE}},
-	{id="2499929043",	name="TreeSocketSpace",	pid="2158110177",	args={slot=AWARESPACE}},
-	{id="215111410",	name="IfSpace",	pid="4225713865"},
-	{id="522517531",	name="CheckMovementState",	pid="215111410",	args={condition=ATTACKING}},
-	{id="1406904607",	name="TreeSocketSpace",	pid="4225713865",	args={slot=ATTACKSPACE}},
+	{id="2182549780",	name="SelectorSpace",	pid="4225713865"},
+	{id="763273353",	name="TreeSocketSpace",	pid="2182549780",	args={slot=TARGETSPACE}},
+	{id="3449223772",	name="TreeSocketSpace",	pid="2182549780",	args={slot=AWARESPACE}},
+	{id="3661746079",	name="IfSpace",	pid="2182549780"},
+	{id="2975072207",	name="CheckMovementState",	pid="3661746079",	args={condition=ATTACKING}},
+	{id="2621288157",	name="TreeSocketSpace",	pid="4225713865",	args={slot=ATTACKSPACE}},
 	{id="869798738",	name="TreeSocketSpace",	pid="2051740559",	args={slot=IDLESPACE}}}
 addAiTemplate("rootDefault", rootDefault)
 

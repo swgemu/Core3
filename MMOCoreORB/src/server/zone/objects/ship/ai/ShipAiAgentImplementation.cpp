@@ -1628,7 +1628,9 @@ bool ShipAiAgentImplementation::validateTarget(ShipObject* targetShip) {
 		return false;
 	}
 
-	if (!targetShip->isAttackableBy(asShipAiAgent()) || !targetShip->isInRange3d(asShipAiAgent(), ShipAiAgent::MAX_ATTACK_DISTANCE)) {
+	float maxAttackDistance = ShipAiAgent::MAX_ATTACK_DISTANCE + getBoundingRadius() + targetShip->getBoundingRadius();
+
+	if (!targetShip->isAttackableBy(asShipAiAgent()) || !targetShip->isInRange3d(asShipAiAgent(), maxAttackDistance)) {
 		//info("validateTarget FALSE attackable checks", true);
 		return false;
 	}
