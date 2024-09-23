@@ -68,7 +68,7 @@ public:
 	}
 
 	DeltaMessage* getMessage(uint32 deltaID) {
-		ReadLocker lock(&deltaMutex);
+		Locker lock(&deltaMutex);
 
 		int deltaType = getDeltaType(deltaID);
 		if (deltaType == DeltaTypeID::None || (deltaType == DeltaType::Private && playerID == DeltaTypeID::None)) {
@@ -104,7 +104,7 @@ public:
 			if (deltaType == DeltaType::Private && player != nullptr) {
 				player->sendMessage(message->clone());
 			} else if (deltaType == DeltaType::Public) {
-				ship->broadcastMessage(message->clone(), false);
+				ship->broadcastMessage(message->clone(), true);
 			}
 		}
 

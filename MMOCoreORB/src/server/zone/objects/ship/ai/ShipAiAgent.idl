@@ -136,11 +136,12 @@ class ShipAiAgent extends FighterShipObject {
 
 	protected unsigned int shipBitmask;
 
+	protected transient float deltaTime;
+
 	@weakReference
 	protected SceneObject homeObject;
 
 	public static final int BEHAVIORINTERVAL = 200; // msec
-	public static final float DELTATIME = 0.2f;
 
 	public static final float DEFAULTAGGRORADIUS = 768.f;
 	public static final float MAX_ATTACK_DISTANCE = 1280.f;
@@ -159,6 +160,9 @@ class ShipAiAgent extends FighterShipObject {
 	public static final int NEUTRAL_PROJECTILE = 2;
 	public static final int REBEL_PROJECTILE = 4;
 	public static final int IMPERIAL_PROJECTILE = 6;
+
+	public static final float DEFAULT_PROJECTILE_SPEED = 500.f;
+	public static final float DEFAULT_PROJECTILE_RANGE = 512.f;
 
 	protected transient unsigned long customShipAiMap;
 
@@ -311,6 +315,8 @@ class ShipAiAgent extends FighterShipObject {
 	public native void setNextDirection();
 
 	public native void setNextPosition();
+
+	public native void setDeltaTime();
 
 	@preLocked
 	public abstract native boolean findNextPosition(int maxDistance);
