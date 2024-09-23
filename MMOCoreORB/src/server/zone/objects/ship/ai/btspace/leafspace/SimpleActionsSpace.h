@@ -121,7 +121,7 @@ public:
 	}
 
 	BehaviorSpace::Status execute(ShipAiAgent* agent, unsigned int startIdx = 0) const {
-		return agent->generatePatrol(numPoints, agent->getEngineMaxSpeed() * 5.f) ? SUCCESS : FAILURE;
+		return agent->generatePatrol(numPoints, distFromHome) ? SUCCESS : FAILURE;
 	}
 
 	String print() const {

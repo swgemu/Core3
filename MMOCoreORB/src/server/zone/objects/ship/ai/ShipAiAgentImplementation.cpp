@@ -751,7 +751,7 @@ int ShipAiAgentImplementation::setDestination() {
 	}
 	case ShipAiAgent::WATCHING:
 	case ShipAiAgent::PATROLLING: {
-		if (hasShipWings() && (getOptionsBitmask() & OptionBitmask::WINGS_OPEN)) {
+		if (getOptionsBitmask() & OptionBitmask::WINGS_OPEN) {
 			clearOptionBit(OptionBitmask::WINGS_OPEN, true);
 		}
 
@@ -774,7 +774,7 @@ int ShipAiAgentImplementation::setDestination() {
 
 		clearPatrolPoints();
 
-		if (hasShipWings() && !(getOptionsBitmask() & OptionBitmask::WINGS_OPEN)) {
+		if (!(getOptionsBitmask() & OptionBitmask::WINGS_OPEN)) {
 			setOptionBit(OptionBitmask::WINGS_OPEN, true);
 		}
 
@@ -818,6 +818,10 @@ int ShipAiAgentImplementation::setDestination() {
 			evadePoint.setEvadePoint(true);
 
 			patrolPoints.add(evadePoint);
+		}
+
+		if (!(getOptionsBitmask() & OptionBitmask::WINGS_OPEN)) {
+			setOptionBit(OptionBitmask::WINGS_OPEN, true);
 		}
 
 		break;
@@ -1176,7 +1180,7 @@ void ShipAiAgentImplementation::setDeltaTime() {
 }
 
 bool ShipAiAgentImplementation::generatePatrol(int totalPoints, float distance) {
-	//info(true) << getDisplayedName() << " ID: " << getObjectID() << "  generatePatrol called with a state of " << getMovementState() << " and point size of = " << getPatrolPointSize() << " Max Distance: " << distance;
+	// info(true) << getDisplayedName() << " ID: " << getObjectID() << "  generatePatrol called with a state of " << getMovementState() << " and point size of = " << totalPoints << " Max Distance: " << distance;
 
 	Zone* zone = getZoneUnsafe();
 
@@ -1646,7 +1650,9 @@ bool ShipAiAgentImplementation::validateTarget(ShipObject* targetShip) {
 		return false;
 	}
 
-	if (!targetShip->isAttackableBy(asShipAiAgent()) || !targetShip->isInRange3d(asShipAiAgent(), ShipAiAgent::MAX_ATTACK_DISTANCE)) {
+	float maxAttackDistance = ShipAiAgent::MAX_ATTACK_DISTANCE + getBoundingRadius() + targetShip->getBoundingRadius();
+
+	if (!targetShip->isAttackableBy(asShipAiAgent()) || !targetShip->isInRange3d(asShipAiAgent(), maxAttackDistance)) {
 		//info("validateTarget FALSE attackable checks", true);
 		return false;
 	}
