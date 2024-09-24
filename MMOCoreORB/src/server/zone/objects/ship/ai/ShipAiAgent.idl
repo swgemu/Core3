@@ -330,6 +330,8 @@ class ShipAiAgent extends FighterShipObject {
 
 	public abstract native void broadcastTransform(@dereferenced final Vector3 position);
 
+	public native float calculatePixelHeight(@dereferenced final Vector3 position);
+
 	public void clearPatrolPoints() {
 		synchronized (targetMutex) {
 			patrolPoints.removeAll();

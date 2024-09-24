@@ -1068,10 +1068,10 @@ void ShipAiAgentImplementation::setNextDirection() {
 
 		float nextY = getRotationRate(Math::clamp(-actualY, thisDeltaY, actualY) + thisY, thisY) + thisY;
 		float nextP = getRotationRate(Math::clamp(-actualP, thisDeltaP, actualP) + thisP, thisP) + thisP;
-		float nextR = (((getRotationRate(thisY, nextY) / deltaTime) - thisR) * deltaTime) + thisR;
-		float rateY = getRotationRate(round(nextY * 100.f) * 0.01f);
-		float rateP = getRotationRate(round(nextP * 100.f) * 0.01f);
-		float rateR = getRotationRate(round(nextR * 100.f) * 0.01f);
+		float nextR = (((getRotationRate(lastRotation.getX(), nextY) / (deltaTime * 2.f)) - thisR) * deltaTime) + thisR;
+		float rateY = getRotationRate(round(nextY * 1000.f) * 0.001f);
+		float rateP = getRotationRate(round(nextP * 1000.f) * 0.001f);
+		float rateR = getRotationRate(round(nextR * 1000.f) * 0.001f);
 
 		auto direction = radiansToQuaterion(rateY, rateP, rateR);
 		setDirection(direction);
@@ -1172,7 +1172,7 @@ void ShipAiAgentImplementation::setDeltaTime() {
 	deltaTime = Math::clamp(0.1f, deltaSync * 0.001f, 2.f);
 	syncStamp = timeSync;
 
-	nextBehaviorInterval = Math::max(stepMin, stepMax - ((deltaSync - stepMax) % stepMax));
+	nextBehaviorInterval = Math::clamp(stepMin, stepMax - ((deltaSync - stepMax) % stepMax), stepMax);
 }
 
 bool ShipAiAgentImplementation::generatePatrol(int totalPoints, float distance) {
@@ -1283,11 +1283,29 @@ void ShipAiAgentImplementation::broadcastTransform(const Vector3& position) {
 			continue;
 		}
 
+		int updateFreq = Math::clamp(1.f, 20.f / calculatePixelHeight(playerEntry->getWorldPosition()), 5.f);
+
+		if (movementCount % updateFreq) {
+			continue;
+		}
+
 		uint32 syncStamp = playerEntry->getSyncStamp();
 
 		auto data = new ShipUpdateTransformMessage(asShipObject(), currentPosition, velocity, rateY, rateP, rateR, syncStamp);
 		playerEntry->sendMessage(data);
 	}
+}
+
+float ShipAiAgentImplementation::calculatePixelHeight(const Vector3& position) {
+    static constexpr float SCREEN_HEIGHT = 1080.f;
+    static constexpr float SCREEN_FOV = 70.f * (M_PI / 180.f);
+    static constexpr float INVERSE_FOV = (1.f / SCREEN_FOV) * SCREEN_HEIGHT;
+
+    float distance = qSqrt(getWorldPosition().squaredDistanceTo(position));
+    float radius = getBoundingRadius();
+    float angle = atan2(radius, distance) * 2.f;
+
+    return Math::max(angle * INVERSE_FOV, 1.f);
 }
 
 /*
