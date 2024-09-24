@@ -61,6 +61,7 @@ namespace scene {
 		int isContainerFull(lua_State* L);
 		int isContainerFullRecursive(lua_State* L);
 		int getSlottedObject(lua_State* L);
+		int setPosition(lua_State* L);
 		int transferObject(lua_State* L);
 		//int removeObject(lua_State* L);
 		int getGameObjectType(lua_State* L);

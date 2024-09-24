@@ -37,9 +37,6 @@ public:
 			return GENERALERROR;
 		}
 
-		// Reset player movement counter
-		creature->setMovementCounter(0);
-
 		// Clear Station State
 		creature->clearSpaceStates();
 
@@ -47,8 +44,11 @@ public:
 		creature->setState(CreatureState::SHIPINTERIOR);
 
 		if (parent->isPilotChair() || parent->isOperationsChair()) {
-			creature->initializePosition(parent->getPositionX(), parent->getPositionZ(), parent->getPositionY());
+			creature->setPosition(parent->getPositionX(), parent->getPositionZ(), parent->getPositionY());
 		}
+
+		// Reset player movement counter
+		creature->setMovementCounter(0);
 
 		if (!cell->transferObject(creature, -1, true)) {
 			return GENERALERROR;

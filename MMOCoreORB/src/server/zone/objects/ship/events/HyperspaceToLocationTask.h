@@ -28,8 +28,9 @@ public:
 		CreatureObject* player = play.get();
 		ShipObject* shipObject = ship.get();
 
-		if (player == nullptr || shipObject == nullptr)
+		if (player == nullptr || shipObject == nullptr) {
 			return;
+		}
 
 		if (!shipObject->isHyperspacing()) {
 			return;
@@ -103,6 +104,8 @@ public:
 
 			// Switch all remaining players onboard the ship
 			int totalPlayers = shipObject->getTotalPlayersOnBoard();
+			auto zoneServer = shipObject->getZoneServer();
+
 
 			for (int i = 0; i < totalPlayers; i++) {
 				auto shipMember = shipObject->getPlayerOnBoard(i);
@@ -118,6 +121,23 @@ public:
 					uint64 parentID = shipMember->getParentID();
 
 					// shipObject->info(true) << "Transferring Ship Member: " << shipMember->getDisplayedName() << " To Position: " << memberPosition.toString() << " ID: " << parentID;
+
+					const Quaternion* direction = nullptr;
+
+					if (parentID != shipObject->getObjectID() && zoneServer != nullptr) {
+						auto parentObject = zoneServer->getObject(parentID);
+
+						if (parentObject != nullptr) {
+
+							direction = parentObject->getDirection();
+						}
+					} else {
+						direction = shipObject->getDirection();
+					}
+
+					if (direction != nullptr) {
+						shipMember->setDirection(direction->getW(), direction->getX(), direction->getY(), direction->getZ());
+					}
 
 					shipMember->switchZone(zoneName, memberPosition.getX(), memberPosition.getZ(), memberPosition.getY(), parentID, false, shipMember->getContainmentType());
 				} catch (...) {

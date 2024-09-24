@@ -90,12 +90,14 @@ function ShipOperationsMenuComponent:handleObjectMenuSelect(pOpsChair, pPlayer, 
 			return 0
 		end
 
+		-- Add in their ship operatios state
+		CreatureObject(pPlayer):setState(SHIPOPERATIONS)
+
+		SceneObject(pPlayer):setPosition(0, 0.5, 0)
+
 		SceneObject(pOpsChair):transferObject(pPlayer, SHIP_OPERATIONS_POB, 1)
 
 		CreatureObject(pPlayer):clearState(SHIPINTERIOR)
-
-		-- Add in their ship operatios state
-		CreatureObject(pPlayer):setState(SHIPOPERATIONS)
 	end
 
 	return 0

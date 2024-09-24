@@ -83,6 +83,11 @@ function ShipTurretMenuComponent:handleObjectMenuSelect(pTurret, pPlayer, select
 		return 0
 	end
 
+	-- Add players ship operatios state
+	CreatureObject(pPlayer):setState(SHIPGUNNER)
+
+	SceneObject(pPlayer):setPosition(0, 0.5, 0)
+
 	-- Ship Turret
 	if (selectedID == 120) then
 		-- Check if occupied
@@ -103,9 +108,6 @@ function ShipTurretMenuComponent:handleObjectMenuSelect(pTurret, pPlayer, select
 	end
 
 	CreatureObject(pPlayer):clearState(SHIPINTERIOR)
-
-	-- Add players ship operatios state
-	CreatureObject(pPlayer):setState(SHIPGUNNER)
 
 	return 0
 end

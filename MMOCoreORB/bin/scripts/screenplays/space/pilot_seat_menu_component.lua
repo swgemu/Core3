@@ -93,12 +93,14 @@ function PilotSeatMenuComponent:handleObjectMenuSelect(pPilotChair, pPlayer, sel
 			return 0
 		end
 
+		-- Add in their piloting state
+		CreatureObject(pPlayer):setState(PILOTINGPOBSHIP)
+
+		SceneObject(pPlayer):setPosition(0, 0.5, 0)
+
 		SceneObject(pPilotChair):transferObject(pPlayer, SHIP_PILOT_POB, 1)
 
 		CreatureObject(pPlayer):clearState(SHIPINTERIOR)
-
-		-- Add in their piloting state
-		CreatureObject(pPlayer):setState(PILOTINGPOBSHIP)
 	end
 
 	return 0
