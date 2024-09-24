@@ -51,6 +51,7 @@ Luna<LuaSceneObject>::RegType LuaSceneObject::Register[] = {
 		{ "isContainerFull", &LuaSceneObject::isContainerFull },
 		{ "isContainerFullRecursive", &LuaSceneObject::isContainerFullRecursive },
 		{ "getSlottedObject", &LuaSceneObject::getSlottedObject },
+		{ "setPosition", &LuaSceneObject::setPosition },
 		{ "transferObject", &LuaSceneObject::transferObject },
 //		{ "removeObject", &LuaSceneObject::removeObject },
 		{ "getGameObjectType", &LuaSceneObject::getGameObjectType },
@@ -505,6 +506,25 @@ int LuaSceneObject::getSlottedObject(lua_State* L) {
 	}
 
 	return 1;
+}
+
+int LuaSceneObject::setPosition(lua_State* L) {
+	int numberOfArguments = lua_gettop(L) - 1;
+
+	if (numberOfArguments != 3) {
+		realObject->error() << "Improper number of arguments in setPosition in LuaSceneObject.";
+		return 0;
+	}
+
+	float y = lua_tonumber(L, -1);
+	float z = lua_tonumber(L, -2);
+	float x = lua_tonumber(L, -3);
+
+	Locker lock(realObject);
+
+	realObject->setPosition(x, z, y);
+
+	return 0;
 }
 
 int LuaSceneObject::transferObject(lua_State* L) {
