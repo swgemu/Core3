@@ -321,7 +321,7 @@ class ShipAiAgent extends FighterShipObject {
 	@preLocked
 	public abstract native boolean findNextPosition(int maxDistance);
 
-	public abstract native boolean generatePatrol(int num, float dist);
+	public abstract native boolean generatePatrol(int totalPoints, float distance, boolean randomize = true, int pathShape = 0);
 
 	public abstract native void updatePatrolPoints();
 
@@ -650,6 +650,10 @@ class ShipAiAgent extends FighterShipObject {
 	public native boolean fireTurretAtTarget(ShipObject targetShip, unsigned int slot, unsigned int targetSlot);
 
 	public native void initializeTransform(@dereferenced final Vector3 position, @dereferenced final Quaternion direction);
+
+	@local
+	@dereferenced
+	public native Vector3 getHomePosition();
 
 	@read
 	@local

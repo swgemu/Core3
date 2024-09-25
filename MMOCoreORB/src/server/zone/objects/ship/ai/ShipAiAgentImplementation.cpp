@@ -44,6 +44,7 @@
 #include "server/zone/packets/chat/ChatSystemMessage.h"
 #include "server/zone/managers/ship/ShipManager.h"
 #include "server/zone/objects/player/FactionStatus.h"
+#include "server/zone/objects/ship/ai/events/ShipAiPatrolPathFinder.h"
 
 // #define DEBUG_SHIP_AI
 // #define DEBUG_FINDNEXTPOSITION
@@ -1179,7 +1180,7 @@ void ShipAiAgentImplementation::setDeltaTime() {
 	nextBehaviorInterval = Math::clamp(stepMin, stepMax - ((deltaSync - stepMax) % stepMax), stepMax);
 }
 
-bool ShipAiAgentImplementation::generatePatrol(int totalPoints, float distance) {
+bool ShipAiAgentImplementation::generatePatrol(int totalPoints, float distance, bool randomize, int pathShape) {
 	// info(true) << getDisplayedName() << " ID: " << getObjectID() << "  generatePatrol called with a state of " << getMovementState() << " and point size of = " << totalPoints << " Max Distance: " << distance;
 
 	Zone* zone = getZoneUnsafe();
@@ -1197,23 +1198,32 @@ bool ShipAiAgentImplementation::generatePatrol(int totalPoints, float distance) 
 		setMovementState(ShipAiAgent::PATROLLING);
 	}
 
-	Vector3 homePosition = homeLocation.getWorldPosition();
-	Vector3 currentPosition = getWorldPosition();
+	const Vector3& homePosition = getHomePosition();
+	Vector3 patrolPosition = homePosition;
+	float patrolRadius = distance;
 
-	for (int i = 0; i < totalPoints; i++) {
-		Vector3 deltaV = currentPosition - homePosition;
+	if (randomize) {
+		float radiusMax = distance * 0.75f;
+		float radiusMin = distance * 0.25f;
 
-		float x = homePosition.getX() + (distance - System::frandom(distance * 2.f));
-		float y = homePosition.getY() + (distance - System::frandom(distance * 2.f));
-		float z = homePosition.getZ() + (distance - System::frandom(distance * 2.f));
-
-		Vector3 position = Vector3(x, y, z);
-		SpacePatrolPoint newPoint(position);
-
-		patrolPoints.add(newPoint);
-
-		currentPosition = position;
+		patrolPosition = ShipAiPatrolPathFinder::getRandomPosition(homePosition, radiusMin, radiusMax);
+		patrolRadius = distance - qSqrt((homePosition - patrolPosition).squaredLength());
 	}
+
+	Vector<SpacePatrolPoint> patrolCopy;
+
+	switch (pathShape) {
+		case ShipAiPatrolPathFinder::PathShape::SPHERE: {
+			patrolCopy = ShipAiPatrolPathFinder::generatePatrolSphere(Sphere(patrolPosition, patrolRadius), Matrix4(), totalPoints);
+			break;
+		}
+		default: {
+			patrolCopy = ShipAiPatrolPathFinder::generatePatrolCircle(Sphere(patrolPosition, patrolRadius), Matrix4(), totalPoints);
+		}
+	}
+
+	patrolPoints.removeAll(totalPoints, totalPoints);
+	patrolPoints.addAll(patrolCopy);
 
 	// info(true) << getDisplayedName() << " ID: " << getObjectID() << " Finished generating points. TotaL: " << getPatrolPointSize();
 
@@ -1767,6 +1777,16 @@ void ShipAiAgentImplementation::initializeTransform(const Vector3& position, con
 
 	lastSpeed = 0.f;
 	currentSpeed = 0.f;
+}
+
+Vector3 ShipAiAgentImplementation::getHomePosition() {
+	auto homeRef = homeObject.get();
+
+	if (homeRef != nullptr) {
+		return homeRef->getWorldPosition();
+	}
+
+	return homeLocation.getWorldPosition();
 }
 
 Vector3 ShipAiAgentImplementation::getNextDirectionVector() const {
