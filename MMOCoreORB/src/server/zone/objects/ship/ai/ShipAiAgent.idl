@@ -300,6 +300,8 @@ class ShipAiAgent extends FighterShipObject {
 
 	public native float getMinThrottle();
 
+	public native float getMaxTurnRate();
+
 	public native float getRotationRate(float currentRadians, float lastRadians = 0.f);
 
 	public native float qInvSqrt(float x);
