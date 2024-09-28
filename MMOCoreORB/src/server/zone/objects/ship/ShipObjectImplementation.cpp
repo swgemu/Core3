@@ -82,7 +82,7 @@ void ShipObjectImplementation::notifyLoadFromDatabase() {
 			StoreShipTask* storeTask = new StoreShipTask(owner, shipDevice, launchZone, launchLoc);
 
 			if (storeTask != nullptr) {
-				storeTask->schedule(5000);
+				storeTask->schedule(2000);
 			}
 		}
 	}
