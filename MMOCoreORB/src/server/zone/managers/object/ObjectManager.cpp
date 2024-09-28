@@ -103,10 +103,6 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<CampSiteActiveArea>(SceneObjectType::CAMPAREA);
 	objectFactory.registerObject<Region>(SceneObjectType::REGIONAREA);
 	objectFactory.registerObject<NavArea>(SceneObjectType::NAVMESHAREA);
-	objectFactory.registerObject<SpaceActiveArea>(SceneObjectType::SPACEACTIVEAREA);
-	objectFactory.registerObject<NebulaArea>(SceneObjectType::NEBULAAREA);
-	objectFactory.registerObject<SpaceRegion>(SceneObjectType::SPACEREGIONAREA);
-	objectFactory.registerObject<SpaceSpawnArea>(SceneObjectType::SPACESPAWNAREA);
 	objectFactory.registerObject<StaticObject>(SceneObjectType::STATICOBJECT);
 	objectFactory.registerObject<Creature>(SceneObjectType::CREATURE);
 	objectFactory.registerObject<NonPlayerCreatureObject>(SceneObjectType::NPCCREATURE);
@@ -211,7 +207,6 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<MissionObject>(SceneObjectType::MISSIONOBJECT);
 	objectFactory.registerObject<Terminal>(SceneObjectType::TERMINAL);
 	objectFactory.registerObject<Terminal>(SceneObjectType::INSURANCE);
-	objectFactory.registerObject<SpaceshipTerminal>(SceneObjectType::SPACETERMINAL);
 	objectFactory.registerObject<Terminal>(SceneObjectType::SHIPPINGTERMINAL);
 	objectFactory.registerObject<Terminal>(SceneObjectType::INTERACTIVETERMINAL);
 	objectFactory.registerObject<MissionTerminal>(SceneObjectType::MISSIONTERMINAL);
@@ -352,6 +347,15 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<TangibleObject>(SceneObjectType::SHIPCONTAINER);
 	objectFactory.registerObject<FactoryCrate>(SceneObjectType::FACTORYCRATE);
 	objectFactory.registerObject<TangibleObject>(SceneObjectType::CRYSTAL);
+
+	// JTL Related
+	objectFactory.registerObject<SpaceActiveArea>(SceneObjectType::SPACEACTIVEAREA);
+	objectFactory.registerObject<NebulaArea>(SceneObjectType::NEBULAAREA);
+	objectFactory.registerObject<SpaceRegion>(SceneObjectType::SPACEREGIONAREA);
+	objectFactory.registerObject<SpaceSpawnArea>(SceneObjectType::SPACESPAWNAREA);
+	objectFactory.registerObject<SpaceSpawner>(SceneObjectType::SPACESPAWNER);
+
+	objectFactory.registerObject<SpaceshipTerminal>(SceneObjectType::SPACETERMINAL);
 	objectFactory.registerObject<ShipObject>(SceneObjectType::SHIP);
 	objectFactory.registerObject<FighterShipObject>(SceneObjectType::SHIPFIGHTER);
 	objectFactory.registerObject<ShipObject>(SceneObjectType::SHIPCAPITAL);

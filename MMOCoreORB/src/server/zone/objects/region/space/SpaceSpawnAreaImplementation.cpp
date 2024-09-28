@@ -13,8 +13,10 @@
 #include "server/zone/objects/region/space/SpaceSpawnAreaObserver.h"
 #include "server/zone/managers/ship/SpaceSpawn.h"
 #include "server/zone/managers/space/SpaceManager.h"
-#include "server/zone/objects/intangible/TheaterObject.h"
+#include "server/zone/objects/tangible/space/content_infrastructure/SpaceSpawner.h"
 #include "server/zone/managers/ship/SpaceSpawnObserver.h"
+#include "server/zone/objects/area/areashapes/SphereAreaShape.h"
+#include "server/zone/objects/area/events/RemoveNoSpawnAreaTask.h"
 
 #define DEBUG_SPACE_AREAS
 // #define DEBUG_SPACE_SPAWNING
@@ -120,7 +122,7 @@ int SpaceSpawnAreaImplementation::notifyObserverEvent(unsigned int eventType, Ob
 
 	SceneObject* sceneO = dynamic_cast<SceneObject*>(observable);
 
-	if (sceneO == nullptr) {
+	if (sceneO == nullptr || !sceneO->isSpaceSpawner()) {
 		return 1;
 	}
 
@@ -130,7 +132,25 @@ int SpaceSpawnAreaImplementation::notifyObserverEvent(unsigned int eventType, Ob
 
 	Locker locker(_this.getReferenceUnsafeStaticCast());
 
+	// Update Spawn Count
 	totalSpawnCount--;
+
+	// Destroy the spawner
+	ManagedReference<SpaceSpawner*> spaceSpawner = cast<SpaceSpawner*>(sceneO);
+
+	if (spaceSpawner == nullptr) {
+		return 1;
+	}
+
+	auto spaceActiveArea = spaceSpawner->getSpaceActiveArea().get();
+
+	if (spaceActiveArea != nullptr) {
+		auto removeTask = new RemoveNoSpawnAreaTask(spaceActiveArea);
+
+		if (removeTask != nullptr) {
+			removeTask->schedule(60000);
+		}
+	}
 
 	return 1;
 }
@@ -190,45 +210,99 @@ void SpaceSpawnAreaImplementation::tryToSpawn(ShipObject* playerShip) {
 		return;
 	}
 
+	String spawnGroupName = finalSpawn->getShipSpawnGroupName();
+	uint32 nameHash = spawnGroupName.hashCode();
+
+	int spawnLimit = finalSpawn->getSpawnLimit();
+	int currentSpawnCount = spawnCountByType.get(nameHash);
+
+	// Make sure spawn area limit has not been reached
+	if (spawnLimit > -1 && currentSpawnCount >= spawnLimit) {
+#ifdef DEBUG_SPACE_SPAWNING
+		info(true) << "tryToSpawn -- Spawn Limit Reached - spawnLimit: " << spawnLimit << " currentSpawnCount: " << currentSpawnCount;
+#endif // DEBUG_SPACE_SPAWNING
+		return;
+	}
+
+	float checkRange = SpaceSpawnArea::SPAWN_SPAWN_SIZE + ConfigManager::instance()->getSpaceSpawnCheckRange();
+
+	// Get a random position within the spawn area
+	Vector3 position = getRandomPosition();
+
+	// Check the spot to see if spawning is allowed
+	if (!spaceManager->isSpawningPermittedAt(position.getX(), position.getZ(), position.getY(), checkRange)) {
+#ifdef DEBUG_SPAWNING
+		info(true) << "tryToSpawn Spawning is not permitted at " << position.toString();
+#endif // DEBUG_SPAWNING
+		return;
+	}
+
 	// Create observer for the area if it does not exist
 	if (spawnAreaObserver == nullptr) {
 		spawnAreaObserver = new SpaceSpawnAreaObserver(_this.getReferenceUnsafeStaticCast());
 		spawnAreaObserver->deploy();
 	}
 
-	// Get a random position within the spawn area
-	Vector3 position = getRandomPosition();
-
-	// Create the theater
-	Reference<TheaterObject*> theater = zoneServer->createObject(STRING_HASHCODE("object/intangible/theater/base_theater.iff"), 0).castTo<TheaterObject*>();
+	// Create the SpaceSpawner
+	Reference<SpaceSpawner*> spaceSpawner = zoneServer->createObject(STRING_HASHCODE("object/tangible/space/content_infrastructure/basic_spawner.iff"), 0).castTo<SpaceSpawner*>();
 	ManagedReference<SpaceSpawnObserver*> spaceObserver = new SpaceSpawnObserver();
 
-	if (theater == nullptr || spaceObserver == nullptr) {
-		error() << "error creating intangible theater or SpaceObserver";
+	if (spaceSpawner == nullptr || spaceObserver == nullptr) {
+		error() << "error creating intangible spaceSpawner or SpaceObserver";
 		return;
 	}
 
-	Locker theaterLocker(theater);
+	Locker spawnerLocker(spaceSpawner);
 
-	theater->initializePosition(position.getX(), position.getZ(), position.getY());
-	theater->setDespawnOnNoPlayersInRange(true);
+	spaceSpawner->initializePosition(position.getX(), position.getZ(), position.getY());
+	spaceSpawner->setDespawnOnNoPlayersInRange(true);
 
 	// Register the observer for the SpaceSpawnArea so it can keep count of current spawns
-	theater->registerObserver(ObserverEventType::OBJECTREMOVEDFROMZONE, spawnAreaObserver);
+	spaceSpawner->registerObserver(ObserverEventType::OBJECTREMOVEDFROMZONE, spawnAreaObserver);
+
+	Locker obsClock(spaceObserver, spaceSpawner);
 
 	// Setup the SpaceSpawnObserver
 	spaceObserver->deploy();
 
 	spaceObserver->setObserverType(ObserverType::SPACE_SPAWN);
-	spaceObserver->setSize(512.f);
+	spaceObserver->setSize(SpaceSpawnArea::SPAWN_SPAWN_SIZE);
 
-	theater->registerObserver(ObserverEventType::SHIPAGENTDESPAWNED, spaceObserver);
-	theater->registerObserver(ObserverEventType::OBJECTREMOVEDFROMZONE, spaceObserver);
+	spaceSpawner->registerObserver(ObserverEventType::SHIPAGENTDESPAWNED, spaceObserver);
+	spaceSpawner->registerObserver(ObserverEventType::OBJECTREMOVEDFROMZONE, spaceObserver);
 
-	zone->transferObject(theater, -1, true);
+	obsClock.release();
 
-	// Release the lock on the theater
-	theaterLocker.release();
+	zone->transferObject(spaceSpawner, -1, true);
+
+	ManagedReference<SpaceActiveArea*> spaceArea = (zoneServer->createObject(STRING_HASHCODE("object/space_active_area.iff"), 0)).castTo<SpaceActiveArea*>();
+	ManagedReference<SphereAreaShape*> sphereAreaShape = new SphereAreaShape();
+
+	if (spaceArea != nullptr && sphereAreaShape != nullptr) {
+		Locker areaClock(spaceArea, spaceSpawner);
+
+		spaceArea->setRadius(SpaceSpawnArea::SPAWN_SPAWN_SIZE);
+		spaceArea->addAreaFlag(ActiveArea::NOSPAWNAREA);
+
+		spaceArea->initializePosition(position.getX(), position.getZ(), position.getY());
+
+		// Lock the shape for mutation
+		Locker shapeLocker(sphereAreaShape, spaceSpawner);
+
+		sphereAreaShape->setAreaCenter(position.getX(), position.getZ(), position.getY());
+		sphereAreaShape->setRadius(radius);
+
+		shapeLocker.release();
+
+		spaceArea->setAreaShape(sphereAreaShape);
+
+		zone->transferObject(spaceArea, -1, true);
+
+		spaceSpawner->setSpaceArea(spaceArea);
+	}
+
+	// Release the lock on the spaceSpawner
+	spawnerLocker.release();
 
 	// Get the total amount of ships to spawn
 	int numberToSpawn = finalSpawn->getNumberToSpawn();
@@ -236,7 +310,7 @@ void SpaceSpawnAreaImplementation::tryToSpawn(ShipObject* playerShip) {
 	uint32 capitalShipCRC = finalSpawn->getCapitalShipCRC();
 
 	// Spawn the Capital Ship
-	ManagedReference<SceneObject*> capitalShip = spaceManager->spaceDynamicSpawn(capitalShipCRC, zone, position, theater);
+	ManagedReference<SceneObject*> capitalShip = spaceManager->spaceDynamicSpawn(capitalShipCRC, zone, position, spaceSpawner);
 
 	if (capitalShip != nullptr) {
 #ifdef DEBUG_SPACE_SPAWNING
@@ -250,7 +324,7 @@ void SpaceSpawnAreaImplementation::tryToSpawn(ShipObject* playerShip) {
 	const auto randomLeadShip = finalSpawn->getRandomLeadShip();
 
 	// Spawn lead ShipAiAgent
-	ManagedReference<SceneObject*> leadShip = spaceManager->spaceDynamicSpawn(randomLeadShip, zone, position, theater);
+	ManagedReference<SceneObject*> leadShip = spaceManager->spaceDynamicSpawn(randomLeadShip, zone, position, spaceSpawner);
 
 	if (leadShip != nullptr) {
 		spaceObserver->addSpawnedShip(leadShip->asShipAiAgent());
@@ -263,7 +337,7 @@ void SpaceSpawnAreaImplementation::tryToSpawn(ShipObject* playerShip) {
 		const auto randomGroupShip = finalSpawn->getRandomGroupShip();
 
 		// Spawn lead ShipAiAgent
-		ManagedReference<SceneObject*> groupShip = spaceManager->spaceDynamicSpawn(randomGroupShip, zone, position, theater);
+		ManagedReference<SceneObject*> groupShip = spaceManager->spaceDynamicSpawn(randomGroupShip, zone, position, spaceSpawner);
 
 		if (groupShip != nullptr) {
 			spaceObserver->addSpawnedShip(groupShip->asShipAiAgent());

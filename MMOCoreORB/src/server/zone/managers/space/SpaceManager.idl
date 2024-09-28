@@ -82,6 +82,8 @@ class SpaceManager extends ManagedService implements Logger {
 
 	public native SceneObject spaceDynamicSpawn(unsigned int shipCRC, Zone zone, @dereferenced final Vector3 location, SceneObject homeTheater);
 
+	public native boolean isSpawningPermittedAt(float x, float z, float y, float distance);
+
 	@dirty
 	@local
 	@dereferenced

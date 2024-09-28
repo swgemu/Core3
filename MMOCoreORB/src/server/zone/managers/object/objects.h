@@ -154,5 +154,6 @@
 #include "server/zone/objects/tangible/misc/DeadEyePrototype.h"
 #include "server/zone/objects/tangible/misc/FurnitureObject.h"
 #include "server/zone/objects/tangible/misc/LightObject.h"
+#include "server/zone/objects/tangible/space/content_infrastructure/SpaceSpawner.h"
 
 #endif /* OBJECTS_H_ */
