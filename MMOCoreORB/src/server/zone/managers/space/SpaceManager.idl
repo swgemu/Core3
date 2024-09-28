@@ -17,6 +17,7 @@ include engine.util.u3d.Vector3;
 import server.zone.objects.ship.ShipObject;
 include server.zone.managers.space.SpaceRegionMap;
 include server.zone.managers.ship.SpaceSpawn;
+include server.zone.objects.tangible.space.content_infrastructure.SpaceSpawner;
 
 @dirty
 class SpaceManager extends ManagedService implements Logger {
@@ -80,7 +81,9 @@ class SpaceManager extends ManagedService implements Logger {
 
 	public native void broadcastNebulaLightning(ShipObject ship, @dereferenced final Vector3 nebulaCenter, unsigned short lightningCount, int nebulaID, int startMili, int endMili, @dereferenced final Vector3 startPoint, @dereferenced final Vector3 endPoint);
 
-	public native SceneObject spaceDynamicSpawn(unsigned int shipCRC, Zone zone, @dereferenced final Vector3 location, SceneObject homeTheater);
+	public native SceneObject spaceDynamicSpawn(unsigned int shipCRC, Zone zone, SpaceSpawner spaceSpawner);
+
+	public native boolean isSpawningPermittedAt(float x, float z, float y, float distance);
 
 	@dirty
 	@local
