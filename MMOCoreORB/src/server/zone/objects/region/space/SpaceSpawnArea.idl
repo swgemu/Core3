@@ -19,9 +19,12 @@ import server.zone.managers.ship.SpaceSpawn;
 include system.util.Vector;
 include engine.util.u3d.Vector3;
 include system.thread.atomic.AtomicInteger;
+include system.util.VectorMap;
 
 @json
 class SpaceSpawnArea extends SpaceRegion {
+	public static final float SPACE_SPAWN_SIZE = 1024;
+
 	@dereferenced
 	protected transient AtomicInteger numberOfPlayerShipsInRange;
 
@@ -31,6 +34,9 @@ class SpaceSpawnArea extends SpaceRegion {
 
 	protected int totalSpawnCount;
 	protected int maxSpawnLimit;
+
+	@dereferenced
+	protected VectorMap<unsigned int, int> spawnCountByType;
 
 	protected int totalWeighting;
 

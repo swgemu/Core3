@@ -45,3 +45,13 @@ void SpaceActiveAreaImplementation::notifyExit(SceneObject* sceneO) {
 
 	ActiveAreaImplementation::notifyExit(sceneO);
 }
+
+Vector3 SpaceActiveAreaImplementation::getRandomPosition() {
+	Vector3 position = getWorldPosition();
+
+	if (areaShape != nullptr) {
+		position = areaShape->getRandomPosition();
+	}
+
+	return position;
+}
