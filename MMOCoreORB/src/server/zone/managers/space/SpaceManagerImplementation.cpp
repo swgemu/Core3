@@ -160,7 +160,7 @@ void SpaceManagerImplementation::readRegionObject(LuaObject& regionObject) {
 		info(true) << "\n\n\n\n ~~~ Creating space_spawn_area object ~~~ ";
 #endif // DEBUG_SPACE_REGIONS
 	} else {
-		spaceRegion = dynamic_cast<SpaceRegion*>(ObjectManager::instance()->createObject(STRING_HASHCODE("object/region_area.iff"), 0, "regions"));
+		spaceRegion = dynamic_cast<SpaceRegion*>(ObjectManager::instance()->createObject(STRING_HASHCODE("object/space_region_area.iff"), 0, "regions"));
 #ifdef DEBUG_SPACE_REGIONS
 		info(true) << " --- Creating region_area object --- ";
 #endif // DEBUG_SPACE_REGIONS
@@ -600,4 +600,32 @@ SceneObject* SpaceManagerImplementation::spaceDynamicSpawn(uint32 shipCRC, Zone*
 	}
 
 	return shipAgent;
+}
+
+bool SpaceManagerImplementation::isSpawningPermittedAt(float x, float z, float y, float distance) {
+	Vector3 targetPos(x, y, z);
+
+	if (!spaceZone->isWithinBoundaries(targetPos)) {
+		return false;
+	}
+
+	SortedVector<ActiveArea*> activeAreas;
+
+	spaceZone->getInRangeActiveAreas(x, z, y, &activeAreas, true);
+
+	for (int i = 0; i < activeAreas.size(); ++i) {
+		ActiveArea* area = activeAreas.get(i);
+
+		if (area == nullptr) {
+			continue;
+		}
+
+		float checkDistance = (distance * distance) + area->getRadius();
+
+		if (area->isNoSpawnArea() && (targetPos.squaredDistanceTo(area->getAreaCenter()) > checkDistance)) {
+			return false;
+		}
+	}
+
+	return true;
 }

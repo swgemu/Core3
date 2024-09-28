@@ -42,7 +42,7 @@
 
 
 object_tangible_space_content_infrastructure_basic_spawner = object_tangible_space_content_infrastructure_shared_basic_spawner:new {
-
+	gameObjectType = 8254,
 }
 
 ObjectTemplates:addTemplate(object_tangible_space_content_infrastructure_basic_spawner, "object/tangible/space/content_infrastructure/basic_spawner.iff")
