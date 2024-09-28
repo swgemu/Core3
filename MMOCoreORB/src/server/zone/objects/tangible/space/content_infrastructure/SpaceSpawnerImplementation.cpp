@@ -1,14 +1,15 @@
 /*
- * TheaterObjectImplementation.cpp
+ * SpaceSpawnerImplementation.cpp
  *
- * Created on: 2024-09-17
+ * Created on: 2024-09-26
  * Author: Hakry
  */
 
-#include "server/zone/objects/intangible/TheaterObject.h"
+#include "server/zone/objects/tangible/space/content_infrastructure/SpaceSpawner.h"
 #include "server/zone/objects/tangible/TangibleObject.h"
+#include "server/zone/objects/area/space/SpaceActiveArea.h"
 
-void TheaterObjectImplementation::notifyInsert(TreeEntry* entry) {
+void SpaceSpawnerImplementation::notifyInsert(TreeEntry* entry) {
 	auto sceneO = static_cast<SceneObject*>(entry);
 	uint64 scnoID = sceneO->getObjectID();
 
@@ -16,7 +17,7 @@ void TheaterObjectImplementation::notifyInsert(TreeEntry* entry) {
 		return;
 	}
 
-	if (!sceneO->isPlayerCreature()) {
+	if (!sceneO->isShipObject() || sceneO->isShipAiAgent()) {
 		return;
 	}
 
@@ -30,7 +31,7 @@ void TheaterObjectImplementation::notifyInsert(TreeEntry* entry) {
 	clearDespawnEvent();
 }
 
-void TheaterObjectImplementation::notifyDissapear(TreeEntry* entry) {
+void SpaceSpawnerImplementation::notifyDissapear(TreeEntry* entry) {
 	auto sceneO = static_cast<SceneObject*>(entry);
 	uint64 scnoID = sceneO->getObjectID();
 
@@ -38,7 +39,7 @@ void TheaterObjectImplementation::notifyDissapear(TreeEntry* entry) {
 		return;
 	}
 
-	if (!sceneO->isPlayerCreature()) {
+	if ((!sceneO->isPlayerCreature() && !sceneO->isShipObject()) || sceneO->isShipAiAgent()) {
 		return;
 	}
 
@@ -53,4 +54,16 @@ void TheaterObjectImplementation::notifyDissapear(TreeEntry* entry) {
 	if (val <= 0 && despawnOnNoPlayersInRange) {
 		activateDespawnEvent();
 	}
+}
+
+Vector3 SpaceSpawnerImplementation::getLocationForSpawn() {
+	Vector3 location = getPosition();
+
+	auto areaStrong = spaceArea.get();
+
+	if (areaStrong != nullptr) {
+		location = areaStrong->getRandomPosition();
+	}
+
+	return location;
 }

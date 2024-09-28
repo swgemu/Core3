@@ -791,6 +791,19 @@ namespace conf {
 			return cachedSpawnRange;
 		}
 
+		inline float getSpaceSpawnCheckRange() {
+			static uint32 cachedVersion = 0;
+			static float cachedSpaceSpawnRange;
+
+			if (configVersion.get() > cachedVersion) {
+				Locker guard(&mutex);
+				cachedSpaceSpawnRange = getFloat("Core3.Regions.spaceSpawnCheckRange", 1024.f);
+				cachedVersion = configVersion.get();
+			}
+
+			return cachedSpaceSpawnRange;
+		}
+
 		inline bool getLootDebugAttributes() {
 			static uint32 cachedVersion = 0;
 			static bool cachedValue;

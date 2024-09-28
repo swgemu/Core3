@@ -168,6 +168,7 @@ public:
 	const static int CONTRACTCRATE = 0x203B;
 	const static int DEADEYEPROTOTYPE = 0x203C;
 	const static int LIGHTOBJECT = 0x203D;
+	const static int SPACESPAWNER = 0x203E;
 	/// End Not in client **************
 
 	const static int TERMINAL = 0x4000;
