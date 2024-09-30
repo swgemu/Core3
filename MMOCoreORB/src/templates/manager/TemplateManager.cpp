@@ -130,7 +130,7 @@
 #include "templates/SharedStaticObjectTemplate.h"
 #include "templates/SharedTangibleObjectTemplate.h"
 #include "templates/SharedUniverseObjectTemplate.h"
-
+#include "templates/params/ship/ShipFlag.h"
 
 
 #include "conf/ConfigManager.h"
@@ -629,6 +629,10 @@ void TemplateManager::registerGlobals() {
 	luaTemplatesInstance->setGlobalInt("FACTIONAGGRO", OptionBitmask::FACTIONAGGRO);
 	luaTemplatesInstance->setGlobalInt("INTERESTING", OptionBitmask::INTERESTING);
 	luaTemplatesInstance->setGlobalInt("JTLINTERESTING", OptionBitmask::JTLINTERESTING);
+
+	luaTemplatesInstance->setGlobalInt("ESCORT", ShipFlag::ESCORT);
+	luaTemplatesInstance->setGlobalInt("FOLLOW", ShipFlag::FOLLOW);
+	luaTemplatesInstance->setGlobalInt("TURRETSHIP", ShipFlag::TURRETSHIP);
 
 	luaTemplatesInstance->setGlobalInt("MELEEATTACK", SharedWeaponObjectTemplate::MELEEATTACK);
 	luaTemplatesInstance->setGlobalInt("RANGEDATTACK", SharedWeaponObjectTemplate::RANGEDATTACK);

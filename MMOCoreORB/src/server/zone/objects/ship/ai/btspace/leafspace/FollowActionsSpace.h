@@ -224,17 +224,19 @@ public:
 	uint64 evadeDelay;
 };
 
-class EngageTarget : public BehaviorSpace {
+class EngageSingleTarget : public BehaviorSpace {
 public:
-	EngageTarget(const String& className, const uint32 id, const LuaObject& args) : BehaviorSpace(className, id, args) {
+	EngageSingleTarget(const String& className, const uint32 id, const LuaObject& args) : BehaviorSpace(className, id, args) {
 	}
 
-	EngageTarget(const EngageTarget& a) : BehaviorSpace(a) {
+	EngageSingleTarget(const EngageSingleTarget& a) : BehaviorSpace(a) {
 	}
 
-	EngageTarget& operator=(const EngageTarget& a) {
-		if (this == &a)
+	EngageSingleTarget& operator=(const EngageSingleTarget& a) {
+		if (this == &a) {
 			return *this;
+		}
+
 		BehaviorSpace::operator=(a);
 
 		return *this;
@@ -251,6 +253,76 @@ public:
 			return FAILURE;
 		}
 
+		Vector<uint32> weaponsIndex;
+
+		// Create Index for possible weapons to attack with
+		for (uint32 slot = Components::WEAPON_START; slot <= Components::CAPITALSLOTMAX; ++slot) {
+			uint32 crc = agent->getShipComponentMap()->get(slot);
+
+			if (crc == 0) {
+				continue;
+			}
+
+			int hitpoints = agent->getCurrentHitpointsMap()->get(slot);
+
+			if (hitpoints <= 0.f) {
+				continue;
+			}
+
+			int flags = agent->getComponentOptionsMap()->get(slot);
+
+			if (flags & ShipComponentFlag::DISABLED) {
+				continue;
+			}
+
+			weaponsIndex.add(slot);
+		}
+
+		Locker clock(targetShip, agent);
+
+		// Fire the weapons at the current target ship
+		for (int i = 0; i < weaponsIndex.size(); i++) {
+			//int key = System::random(i);
+			int slot = weaponsIndex.get(i);
+
+			if (!agent->fireWeaponAtTarget(targetShip, slot, Components::CHASSIS)) {
+				continue;
+			}
+		}
+
+		uint64 timeNow = System::getMiliTime();
+		agent->writeBlackboard("refireInterval", timeNow);
+
+		return SUCCESS;
+	}
+
+	String print() const {
+		StringBuffer msg;
+		msg << className << "-";
+
+		return msg.toString();
+	}
+};
+
+class EngageTurrets : public BehaviorSpace {
+public:
+	EngageTurrets(const String& className, const uint32 id, const LuaObject& args) : BehaviorSpace(className, id, args) {
+	}
+
+	EngageTurrets(const EngageTurrets& a) : BehaviorSpace(a) {
+	}
+
+	EngageTurrets& operator=(const EngageTurrets& a) {
+		if (this == &a) {
+			return *this;
+		}
+
+		BehaviorSpace::operator=(a);
+
+		return *this;
+	}
+
+	BehaviorSpace::Status execute(ShipAiAgent* agent, unsigned int startIdx = 0) const {
 		auto shipManager = ShipManager::instance();
 
 		if (shipManager == nullptr) {
@@ -288,6 +360,11 @@ public:
 			}
 
 			weaponsIndex.add(slot);
+		}
+
+		// No available weapons
+		if (weaponsIndex.size() < 1) {
+			return FAILURE;
 		}
 
 		Vector<ManagedReference<ShipObject*>> targetVectorCopy;
