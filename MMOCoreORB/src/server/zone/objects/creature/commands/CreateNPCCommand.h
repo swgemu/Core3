@@ -8,7 +8,7 @@
 #include "server/zone/managers/director/DirectorManager.h"
 #include "server/zone/objects/creature/ai/AiAgent.h"
 #include "server/zone/objects/ship/ai/ShipAiAgent.h"
-#include "templates/params/ship/ShipFlags.h"
+#include "templates/params/ship/ShipFlag.h"
 #include "server/zone/objects/creature/commands/QueueCommand.h"
 
 class CreateNPCCommand : public QueueCommand {

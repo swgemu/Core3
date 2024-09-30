@@ -56,7 +56,7 @@ object_ship_ykl37r_tier2 = object_ship_shared_ykl37r_tier2:new {
 	gameObjectType = 536870919,
 
 	pvpStatusBitmask = ATTACKABLE + AGGRESSIVE,
-	shipBitmask = NONE,
+	shipBitmask = TURRETSHIP,
 	optionsBitmask = AIENABLED,
 
 	customShipAiMap = "",

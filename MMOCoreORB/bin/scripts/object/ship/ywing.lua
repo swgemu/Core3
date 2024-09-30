@@ -56,7 +56,7 @@ object_ship_ywing = object_ship_shared_ywing:new {
 	gameObjectType = 536870919,
 
 	pvpStatusBitmask = ATTACKABLE + AGGRESSIVE,
-	shipBitmask = NONE,
+	shipBitmask = TURRETSHIP,
 	optionsBitmask = AIENABLED,
 
 	customShipAiMap = "",

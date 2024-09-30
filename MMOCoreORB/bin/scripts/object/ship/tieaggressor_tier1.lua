@@ -56,7 +56,7 @@ object_ship_tieaggressor_tier1 = object_ship_shared_tieaggressor_tier1:new {
 	gameObjectType = 536870919,
 
 	pvpStatusBitmask = ATTACKABLE + AGGRESSIVE,
-	shipBitmask = NONE,
+	shipBitmask = TURRETSHIP,
 	optionsBitmask = AIENABLED,
 
 	customShipAiMap = "",
