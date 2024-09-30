@@ -13,7 +13,9 @@ attackDefault = {
 	{id="1824859964",	name="SequenceSpace",	pid="none"},
 	{id="159424751",	name="IfSpace",	pid="1824859964"},
 	{id="597003156",	name="CheckRefireRate",	pid="159424751",	args={condition=500}},
-	{id="2510868304",	name="EngageTarget",	pid="1824859964"}}
+	{id="1982099467",	name="IfSpace",	pid="1824859964"},
+	{id="930829653",	name="CheckWeapons",	pid="1982099467"},
+	{id="2510868304",	name="EngageSingleTarget",	pid="1824859964"}}
 addAiTemplate("attackDefault", attackDefault)
 
 awareDefault = {
@@ -49,7 +51,7 @@ evadeDefault = {
 	{id="209398235",	name="TreeSocketSpace",	pid="3880616062",	args={slot=ATTACKSPACE}},
 	{id="688192376",	name="SequenceSpace",	pid="312238841"},
 	{id="3972827323",	name="IfSpace",	pid="688192376"},
-	{id="2565166350",	name="CheckEvadeChance",	pid="3972827323",	args={chance=10}},
+	{id="2565166350",	name="CheckEvadeChance",	pid="3972827323",	args={condition=40}},
 	{id="3110218052",	name="SetMovementState",	pid="688192376",	args={state=EVADING}},
 	{id="3267148840",	name="Evade",	pid="688192376",	args={evadeDelay=2000}}}
 addAiTemplate("evadeDefault", evadeDefault)
@@ -110,25 +112,26 @@ rootDefault = {
 addAiTemplate("rootDefault", rootDefault)
 
 targetDefault = {
-	{id="295814316",	name="SequenceSpace",	pid="none"},
-	{id="3051594756",	name="SelectorSpace",	pid="295814316"},
+	{id="1876748355",	name="SelectorSpace",	pid="none"},
+	{id="2258474644",	name="SequenceSpace",	pid="1876748355"},
+	{id="3051594756",	name="SelectorSpace",	pid="2258474644"},
 	{id="4219427160",	name="GetProspectFromThreatMap",	pid="3051594756"},
 	{id="1280314588",	name="SequenceSpace",	pid="3051594756"},
 	{id="1485266457",	name="NotSpace",	pid="1280314588"},
 	{id="3575964598",	name="IfSpace",	pid="1485266457"},
 	{id="1056287644",	name="CheckMovementState",	pid="3575964598",	args={condition=FLEEING}},
 	{id="260549053",	name="GetProspectFromDefenders",	pid="1280314588"},
-	{id="3669711549",	name="SelectorSpace",	pid="295814316"},
-	{id="2292606827",	name="SequenceSpace",	pid="3669711549"},
-	{id="2668746033",	name="NotSpace",	pid="2292606827"},
-	{id="1453715206",	name="IfSpace",	pid="2668746033"},
+	{id="3308935710",	name="SetDefenderFromProspect",	pid="3051594756"},
+	{id="1453715206",	name="IfSpace",	pid="2258474644"},
 	{id="1228992601",	name="CheckTargetIsValid",	pid="1453715206"},
-	{id="627960272",	name="SequenceSpace",	pid="2292606827"},
+	{id="3792515791",	name="SetMovementState",	pid="2258474644",	args={state=ATTACKING}},
+	{id="1283033720",	name="AlwaysFailSpace",	pid="1876748355"},
+	{id="627960272",	name="SequenceSpace",	pid="1283033720"},
 	{id="3767183712",	name="EraseBlackboard",	pid="627960272",	args={param="aggroMod"}},
 	{id="4195634024",	name="EraseBlackboard",	pid="627960272",	args={param="targetShipProspect"}},
 	{id="3661684207",	name="ExitCombat",	pid="627960272"},
-	{id="3784699471",	name="SequenceSpace",	pid="3669711549"},
-	{id="3308935710",	name="SetDefenderFromProspect",	pid="3784699471"},
-	{id="3792515791",	name="SetMovementState",	pid="3784699471",	args={state=ATTACKING}}}
+	{id="3553364391",	name="IfSpace",	pid="627960272"},
+	{id="4107670032",	name="CheckMovementState",	pid="3553364391",	args={condition=ATTACKING}},
+	{id="1537483837",	name="SetMovementState",	pid="627960272",	args={state=PATROLLING}}}
 addAiTemplate("targetDefault", targetDefault)
 

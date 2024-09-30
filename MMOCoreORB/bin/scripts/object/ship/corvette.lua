@@ -56,7 +56,7 @@ object_ship_corvette = object_ship_shared_corvette:new {
 	gameObjectType = 536870919,
 
 	pvpStatusBitmask = ATTACKABLE,
-	shipBitmask = NONE,
+	shipBitmask = TURRETSHIP,
 	optionsBitmask = AIENABLED,
 
 	customShipAiMap = "",
