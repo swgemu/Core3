@@ -657,26 +657,19 @@ SpacePatrolPoint ShipAiAgentImplementation::getNextAttackPosition(ShipObject* ta
 }
 
 SpacePatrolPoint ShipAiAgentImplementation::getNextEvadePosition() {
-	const Vector3& currentPosition = getPosition();
-	Vector3 deltaV = (homeLocation.getWorldPosition() - currentPosition);
+	const Vector3& sPosition = getWorldPosition();
+	const Vector3& hPosition = getHomePosition();
 
-	deltaV.setZ(deltaV.getZ() * 0.5f);
+	Vector3 homeDirection = hPosition - sPosition;
+	float homeDistance = qNormalize(homeDirection);
+	float homeAnchor = Math::clamp(0.f, homeDistance / MAX_ATTACK_DISTANCE, 1.f);
+	float evadeDistance = (getActualMaxSpeed() * 5.f) + getMaxDistance();
 
-	if (deltaV == Vector3::ZERO) {
-		return ((getEngineMaxSpeed() * 5.f) * currentDirection) + currentPosition;
-	} else {
-		qNormalize(deltaV);
-	}
+	Vector3 inverseDirection = currentDirection * -1.f;
+	Vector3 evadeDirection = (inverseDirection * (1.f - homeAnchor)) + (homeDirection * homeAnchor);
+	Vector3 evadePosition = (evadeDirection * evadeDistance) + sPosition;
 
-	Vector3 evadePosition = ((getEngineMaxSpeed() * 5.f) * deltaV) + currentPosition;
-
-#ifdef DEBUG_FINDNEXTPOSITION
-	info(true) << getDisplayedName() << " -- Next evade position = " << evadePosition.toString();
-#endif
-
-	SpacePatrolPoint evadePoint = evadePosition;
-
-	return evadePoint;
+	return SpacePatrolPoint(evadePosition);
 }
 
 Vector3 ShipAiAgentImplementation::getInterceptPosition(ShipObject* target, float speed, int slot) {
