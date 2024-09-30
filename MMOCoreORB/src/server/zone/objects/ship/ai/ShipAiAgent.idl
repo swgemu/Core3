@@ -145,6 +145,7 @@ class ShipAiAgent extends FighterShipObject {
 
 	public static final float DEFAULTAGGRORADIUS = 768.f;
 	public static final float MAX_ATTACK_DISTANCE = 1280.f;
+	public static final float MAX_EVADE_DURATION = 5.f; // sec
 
 	public static final int OBLIVIOUS = 0;
 	public static final int WATCHING = 1;

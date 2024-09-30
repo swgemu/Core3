@@ -51,7 +51,7 @@ evadeDefault = {
 	{id="209398235",	name="TreeSocketSpace",	pid="3880616062",	args={slot=ATTACKSPACE}},
 	{id="688192376",	name="SequenceSpace",	pid="312238841"},
 	{id="3972827323",	name="IfSpace",	pid="688192376"},
-	{id="2565166350",	name="CheckEvadeChance",	pid="3972827323",	args={condition=40}},
+	{id="2565166350",	name="CheckEvadeChance",	pid="3972827323"},
 	{id="3110218052",	name="SetMovementState",	pid="688192376",	args={state=EVADING}},
 	{id="3267148840",	name="Evade",	pid="688192376",	args={evadeDelay=2000}}}
 addAiTemplate("evadeDefault", evadeDefault)
