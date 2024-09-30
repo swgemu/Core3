@@ -56,7 +56,7 @@ object_ship_yt1300 = object_ship_shared_yt1300:new {
 	gameObjectType = 536870919,
 
 	pvpStatusBitmask = ATTACKABLE,
-	shipBitmask = NONE,
+	shipBitmask = TURRETSHIP,
 	optionsBitmask = AIENABLED,
 
 	customShipAiMap = "",

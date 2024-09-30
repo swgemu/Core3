@@ -56,7 +56,7 @@ object_ship_imperial_gunboat_tier4 = object_ship_shared_imperial_gunboat_tier4:n
 	gameObjectType = 536870919,
 
 	pvpStatusBitmask = ATTACKABLE + AGGRESSIVE,
-	shipBitmask = NONE,
+	shipBitmask = TURRETSHIP,
 	optionsBitmask = AIENABLED,
 
 	customShipAiMap = "",

@@ -56,7 +56,7 @@ object_ship_hutt_turret_ship = object_ship_shared_hutt_turret_ship:new {
 	gameObjectType = 536870919,
 
 	pvpStatusBitmask = ATTACKABLE,
-	shipBitmask = NONE,
+	shipBitmask = TURRETSHIP,
 	optionsBitmask = AIENABLED,
 
 	customShipAiMap = "",

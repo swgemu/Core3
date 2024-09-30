@@ -86,8 +86,9 @@ template<> bool CheckProspectAggression::check(ShipAiAgent* agent) const {
 template<> bool CheckRefireRate::check(ShipAiAgent* agent) const {
 	uint64 lastFire = (uint64)checkVar;
 
-	if (agent->peekBlackboard("refireInterval"))
+	if (agent->peekBlackboard("refireInterval")) {
 		lastFire += agent->readBlackboard("refireInterval").get<uint64>();
+	}
 
 	uint64 timeNow = System::getMiliTime();
 
@@ -151,8 +152,9 @@ template<> bool CheckEnginesDisabled::check(ShipAiAgent* agent) const {
 
 template<> bool CheckEvadeChance::check(ShipAiAgent* agent) const {
 	// Agent engines are disabled, no evading
-	if (agent->getCurrentSpeed() == 0.f)
+	if (agent->getCurrentSpeed() == 0.f) {
 		return false;
+	}
 
 	// Don't immediately evade again
 	if (!agent->isEvadeDelayPast()) {
@@ -161,8 +163,9 @@ template<> bool CheckEvadeChance::check(ShipAiAgent* agent) const {
 
 	ManagedReference<ShipObject*> targetShip = agent->getTargetShipObject();
 
-	if (targetShip == nullptr)
+	if (targetShip == nullptr) {
 		return false;
+	}
 
 	Locker clocker(targetShip, agent);
 
@@ -175,9 +178,14 @@ template<> bool CheckEvadeChance::check(ShipAiAgent* agent) const {
 		}
 	}
 
+	int chance = (int)checkVar;
+
+	// agent->info(true) << "CheckEvadeChance using chance: " << chance;
+
 	// Random chance we do not evade
-	if (System::random(100) < 50)
+	if (System::random(100) > chance) {
 		return false;
+	}
 
 	float maxDistance = agent->getMaxDistance();
 	float maxSquared = maxDistance * maxDistance;
@@ -207,4 +215,39 @@ template<> bool CheckProspectLOS::check(ShipAiAgent* agent) const {
 	Locker locker(targetShip, agent);
 
 	return agent->checkLineOfSight(targetShip);
+}
+
+template<> bool CheckWeapons::check(ShipAiAgent* agent) const {
+	auto componentMap = agent->getShipComponentMap();
+	auto componentOptionsMap = agent->getComponentOptionsMap();
+
+	if (componentMap == nullptr || componentOptionsMap == nullptr) {
+		return false;
+	}
+
+	int validWeapons = 0;
+
+	for (uint32 slot = Components::WEAPON_START; slot <= Components::CAPITALSLOTMAX; ++slot) {
+		uint32 crc = componentMap->get(slot);
+
+		if (crc == 0) {
+			continue;
+		}
+
+		int hitpoints = agent->getCurrentHitpointsMap()->get(slot);
+
+		if (hitpoints <= 0.f) {
+			continue;
+		}
+
+		int flags = componentOptionsMap->get(slot);
+
+		if (flags & ShipComponentFlag::DISABLED) {
+			continue;
+		}
+
+		validWeapons++;
+	}
+
+	return validWeapons > 0;
 }
