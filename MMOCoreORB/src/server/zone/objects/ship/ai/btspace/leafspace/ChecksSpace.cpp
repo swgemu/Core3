@@ -169,38 +169,42 @@ template<> bool CheckEvadeChance::check(ShipAiAgent* agent) const {
 
 	Locker clocker(targetShip, agent);
 
+	const Vector3& targetPosition = targetShip->getWorldPosition();
+	const Vector3& agentPosition = agent->getWorldPosition();
+	const Vector3& homePosition = agent->getHomePosition();
+
+	float attackDistanceMin = agent->getMaxDistance();
+	float attackDistanceMax = ShipAiAgent::MAX_ATTACK_DISTANCE + attackDistanceMin;
+
+	float homeDistanceSqr = homePosition.squaredDistanceTo(targetPosition);
+	// evade if target distance to home position exceeds max attack distance
+	if (homeDistanceSqr > Math::sqr(attackDistanceMax)) {
+		return true;
+	}
+
+	float targetDistanceSqr = agentPosition.squaredDistanceTo(targetPosition);
+	// evade if target distance to agent is less than 1/sec to collision
+	if (targetDistanceSqr < Math::sqr(attackDistanceMin)) {
+		return true;
+	}
+
 	if (targetShip->isShipAiAgent()) {
 		ShipAiAgent* targetAgent = targetShip->asShipAiAgent();
 
-		// Target Agent is already evading, lets not do it at the same time;
-		if (targetAgent != nullptr && targetAgent->getMovementState() == ShipAiAgent::EVADING) {
-			return false;
+		if (targetAgent != nullptr) {
+			// do not evade if target is static or already evading
+			if (targetAgent->getCurrentSpeed() <= 1.f || targetAgent->getMovementState() == ShipAiAgent::EVADING) {
+				return false;
+			}
+
+			// if target is attacking agent, roll for who breaks off the attack first.
+			if (targetAgent->getMovementState() == ShipAiAgent::ATTACKING && targetAgent->getTargetShipObject() == agent) {
+				return System::random(1000) < ShipAiAgent::BEHAVIORINTERVAL;
+			}
 		}
 	}
 
-	int chance = (int)checkVar;
-
-	// agent->info(true) << "CheckEvadeChance using chance: " << chance;
-
-	// Random chance we do not evade
-	if (System::random(100) > chance) {
-		return false;
-	}
-
-	float maxDistance = agent->getMaxDistance();
-	float maxSquared = maxDistance * maxDistance;
-
-	float minDistance = targetShip->getBoundingRadius() + agent->getBoundingRadius();
-	float minSquared = minDistance * minDistance;
-
-	SpacePatrolPoint nextPoint = agent->getNextPosition();
-	float sqrDist = nextPoint.getWorldPosition().squaredDistanceTo(targetShip->getPosition());
-
-	// agent->info(true) << "CheckEvadeChance : " << nextPoint.getWorldPosition().toString() << " Sq Distance to Target = " << sqrDist
-	//	<< " Min Distance: " << minDistance << " Min Distance Sq: " << minSquared << " Max Distance: " << maxDistance << " Max Distance Sq: " << maxSquared;
-
-	// Evade if the too far or too close to the target ship
-	return sqrDist > maxSquared || sqrDist < minSquared;
+	return false;
 }
 
 template<> bool CheckProspectLOS::check(ShipAiAgent* agent) const {
