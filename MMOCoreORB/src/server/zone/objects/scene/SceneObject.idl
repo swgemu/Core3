@@ -2390,4 +2390,14 @@ class SceneObject extends TreeEntry implements Logger, Metrics {
 	public native abstract void setSyncStamp(unsigned int value);
 
 	public native abstract unsigned int getSyncStamp();
+
+	@dirty
+	public abstract int getCurrentNumberOfPlayerItems() {
+		return 0;
+	}
+
+	@dirty
+	public abstract unsigned int getMaximumNumberOfPlayerItems() {
+		return 0;
+	}
 }

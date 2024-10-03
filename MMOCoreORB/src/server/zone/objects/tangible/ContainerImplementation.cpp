@@ -266,6 +266,10 @@ int ContainerImplementation::canAddObject(SceneObject* object, int containmentTy
 						errorDescription = "@container_error_message:container03"; // This container is full.
 						return TransferErrorCode::CONTAINERFULL;
 					}
+				} else if (rootParent->isPobShip() && ((rootParent->getCurrentNumberOfPlayerItems() + objectSize) > rootParent->getMaximumNumberOfPlayerItems())) {
+					errorDescription = "@container_error_message:container13"; // This house has too many items in it
+
+					return TransferErrorCode::TOOMANYITEMSINHOUSE;
 				}
 			}
 		}
