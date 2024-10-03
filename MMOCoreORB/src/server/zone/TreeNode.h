@@ -45,7 +45,7 @@ namespace server {
 namespace zone {
 
 class QuadTree;
-class OctTree;
+class Octree;
 class TreeEntry;
 class TreeEntryImplementation;
 
@@ -142,12 +142,12 @@ public:
 	bool testInsideQuadTree(TreeEntry* obj) const;
 
 	// Test if the object is inside this oct tree node
-	bool testInsideOctTree(TreeEntry* obj) const;
+	bool testInsideOctree(TreeEntry* obj) const;
 
 	String toStringData();
 
 	friend class server::zone::QuadTree;
-	friend class server::zone::OctTree;
+	friend class server::zone::Octree;
 	friend class server::zone::TreeEntryImplementation;
 };
 

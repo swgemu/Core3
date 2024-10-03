@@ -5,7 +5,7 @@
 package server.zone;
 
 import server.zone.Zone;
-import server.zone.OctTree;
+import server.zone.Octree;
 import server.zone.TreeEntry;
 
 include server.zone.ZoneProcessServer;
@@ -19,7 +19,7 @@ import server.zone.managers.gcw.GCWManager;
 import system.util.SortedVector;
 import system.util.SynchronizedSortedVector;
 include engine.util.u3d.Vector3;
-include server.zone.OctTreeReference;
+include server.zone.OctreeReference;
 
 import server.zone.objects.tangible.TangibleObject;
 import server.zone.ActiveAreaOctree;
@@ -31,7 +31,7 @@ class SpaceZone extends Zone {
 	private transient ActiveAreaOctree areaOctree;
 
 	@dereferenced
-	private OctTreeReference octTree;
+	private OctreeReference octree;
 
 	// Space Zone Constructor
 	public native SpaceZone(ZoneProcessServer processor, final string zoneName);

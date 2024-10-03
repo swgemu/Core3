@@ -3,8 +3,8 @@ Copyright (C) 2007 <SWGEmu>. All rights reserved.
 Distribution of this file for usage outside of Core3 is prohibited.
 */
 
-#ifndef OCTTREE_H_
-#define OCTTREE_H_
+#ifndef OCTREE_H_
+#define OCTREE_H_
 
 #include "system/lang.h"
 #include "engine/log/Logger.h"
@@ -14,7 +14,7 @@ Distribution of this file for usage outside of Core3 is prohibited.
 namespace server {
   namespace zone {
 
-	class OctTree : public Object {
+	class Octree : public Object {
 
 		Reference<TreeNode*> root;
 
@@ -23,9 +23,9 @@ namespace server {
 		mutable ReadWriteLock mutex;
 
 	public:
-		OctTree();
-		OctTree(float minx, float miny, float minz, float maxx, float maxy, float maxz);
-		~OctTree();
+		Octree();
+		Octree(float minx, float miny, float minz, float maxx, float maxy, float maxz);
+		~Octree();
 
 		Object* clone();
 		Object* clone(void* object);
@@ -79,4 +79,4 @@ namespace server {
   } // namespace zone
 } // namespace server
 
-#endif /*OCTTREE_H_*/
+#endif /*OCTREE_H_*/
