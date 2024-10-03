@@ -113,18 +113,17 @@ void CellObjectImplementation::sendBaselinesTo(SceneObject* player) {
 int CellObjectImplementation::canAddObject(SceneObject* object, int containmentType, String& errorDescription) {
 	ManagedReference<SceneObject*> strongParent = getParent().get();
 
-	if (strongParent != nullptr && strongParent->isBuildingObject()) {
-		BuildingObject* building = strongParent->asBuildingObject();
-
+	if (strongParent != nullptr && (strongParent->isBuildingObject() || strongParent->isPobShip())) {
 		int count = 1;
 
-		if (object->isVendor())
+		if (object->isVendor()) {
 			count = 0;
-		else if (object->isContainerObject())
+		} else if (object->isContainerObject()) {
 			count += object->getCountableObjectsRecursive();
+		}
 
-		if (building->getCurrentNumberOfPlayerItems() + count > building->getMaximumNumberOfPlayerItems()) {
-			errorDescription = "@container_error_message:container13";
+		if ((strongParent->getCurrentNumberOfPlayerItems() + count) > strongParent->getMaximumNumberOfPlayerItems()) {
+			errorDescription = "@container_error_message:container13"; // This house has too many items in it
 
 			return TransferErrorCode::TOOMANYITEMSINHOUSE;
 		}
