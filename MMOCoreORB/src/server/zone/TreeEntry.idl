@@ -78,14 +78,15 @@ class TreeEntry extends Observable {
 
 	@dirty
 	public abstract boolean isInRange(float x, float y, float z, float range) {
-		int rangesq = range * range;
+		float rangeSq = range * range;
 
 		float deltaX = x - coordinates.getPositionX();
 		float deltaY = y - coordinates.getPositionY();
 		float deltaZ = z - coordinates.getPositionZ();
-		float deltaCalc = deltaX * deltaX + deltaY * deltaY + deltaZ * deltaZ;
 
-		return deltaCalc < rangesq;
+		float deltaCalc = (deltaX * deltaX) + (deltaY * deltaY) + (deltaZ * deltaZ);
+
+		return deltaCalc < rangeSq;
 	}
 
 	@dirty

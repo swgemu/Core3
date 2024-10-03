@@ -1,7 +1,9 @@
 /*
-Copyright (C) 2007 <SWGEmu>. All rights reserved.
-Distribution of this file for usage outside of Core3 is prohibited.
- */
+	Copyright (C) 2007 <SWGEmu>. All rights reserved.
+	Distribution of this file for usage outside of Core3 is prohibited.
+
+	Octree Implementation
+*/
 
 #include <math.h>
 #include "server/zone/TreeEntry.h"
@@ -64,8 +66,9 @@ void Octree::insert(TreeEntry *obj) {
 			Logger::console.info(true) << "Octree - Object ID " << scno->getObjectID() << " " << scno->getDisplayedName() <<  " inserting at: (" << obj->getPositionX() << ", " << obj->getPositionZ() << ", " << obj->getPositionY() << ")";
 		}
 
-		if (obj->getNode() != nullptr)
+		if (obj->getNode() != nullptr) {
 			remove(obj);
+		}
 
 		_insert(root, obj);
 
@@ -234,8 +237,9 @@ int Octree::inRange(float x, float y, float z, float range, SortedVector<Managed
 int Octree::inRange(float x, float y, float z, float range, SortedVector<TreeEntry*>& objects) const {
 	ReadLocker locker(&mutex);
 
-	if (Octree::doLog())
-		Logger::console.info(true) << "Octree::inRange-3";
+	if (Octree::doLog()) {
+		Logger::console.info(true) << "Octree::inRange-3 called using root node -- Range: " << range << " X: " << x << " Z: " << z << " Y: " << y;
+	}
 
 	try {
 		return _inRange(root, x, y, z, range, objects);
@@ -282,163 +286,280 @@ void Octree::removeAll() {
 	}
 }
 
-void Octree::_insert(const Reference<TreeNode*>& node, TreeEntry *obj) {
-	if (Octree::doLog())
-		Logger::console.info(true) << "Octree::_insert called - Object ID # " << obj->getObjectID();
+void Octree::_insert(const Reference<TreeNode*>& node, TreeEntry* obj) {
+	if (Octree::doLog()) {
+		Logger::console.info(true) << "Octree::_insert -- Node: " << node->toStringData() << " for Object ID # " << obj->getObjectID();
+	}
 
+	/*
+	 * Logic:
+	 *
+	 * 1) We have Objects in this Node and the Node has no children.
+	 *		It has not yet been broken down into eight sections since it has been needed yet,
+	 *		so we do it now and move all the objects down into the squares that arent locked.
+	 *
+	 * 2) We have Objects in this Node. The Node has children.
+	 *    - All those objects must be locked, else they would have been
+	 *    moved down on squaring. So we dont worry about moving them.
+	 *
+	 * 3) The Node is empty. We add the object.
+	 */
+
+	// Initially assume the object is not crossing any boundaries
 	obj->clearBounding();
 
 	if (!node->isEmpty() && !node->hasSubNodes()) {
-		if ((node->maxX - node->minX <= 8) && (node->maxY - node->minY <= 8) && (node->maxZ - node->minZ <= 8)) {
+		/*
+		* We want to Insert another object, so we square this Node up and move
+		* all the Objects that arent locked (cause they cross a boundary) down.
+		*/
+
+		if ((node->maxX - node->minX < 16) && (node->maxY - node->minY < 16) && (node->maxZ - node->minZ < 16)) {
+			/*
+			* This protects from killing the stack. If something is messed up it may
+			* blow the stack because the recursion runs forever. Stop squaring when
+			* it doesnt make sense anymore. If the two objects have the same coordinate
+			* we add the new one to the map. The search is linear for objects inside
+			* .1 Unit. So what.
+			*/
+
 			node->addObject(obj);
 			return;
 		}
 
+		/* Run 1)
+		 * Proceed objects in node in reverse direction since this
+		 * makes handling deletions from the vector easier.
+		 */
 		for (int i = node->objects.size() - 1; i >= 0; i--) {
 			TreeEntry* existing = node->getObject(i);
 
-			if (existing->isBounding())
+			// We remove the Object from the Node if its not locked
+			// for crossing boundaries to add it to another Node
+			if (existing->isBounding()) {
 				continue;
+			}
 
 			node->removeObject(i);
 
-			if (Octree::doLog())
-				Logger::console.info(true) << "Octree::_insert - Object ID # " << obj->getObjectID() << " is Removing Object #" << existing->getObjectID();
+			if (Octree::doLog()) {
+				Logger::console.info(true) << "Octree::_insert -- Node: " << node->toStringData() << " - Object ID # " << obj->getObjectID() << " is Removing Object #" << existing->getObjectID();
+			}
+
+			// First find out which square it needs, then Insert it into it
+			// We divide the Node area into 8 squares, reusing existing children
 
 			if (existing->isInSWArea(node)) {
-				if (node->swNode == nullptr)
+				if (node->swNode == nullptr) {
 					node->swNode = new TreeNode(node->minX, node->minY, node->minZ, node->dividerX, node->dividerY, node->dividerZ, node);
+
+					node->swNode->nodeName = "swNode";
+				}
 
 				_insert(node->swNode, existing);
 			} else if (existing->isInSEArea(node)) {
-				if (node->seNode == nullptr)
+				if (node->seNode == nullptr) {
 					node->seNode = new TreeNode(node->dividerX, node->minY, node->minZ, node->maxX, node->dividerY, node->dividerZ, node);
+
+					node->seNode->nodeName = "seNode";
+				}
 
 				_insert(node->seNode, existing);
 			} else if (existing->isInNWArea(node)) {
-				if (node->nwNode == nullptr)
+				if (node->nwNode == nullptr) {
 					node->nwNode = new TreeNode(node->minX, node->dividerY, node->minZ, node->dividerX, node->maxY, node->dividerZ, node);
+
+					node->nwNode->nodeName = "nwNode";
+				}
 
 				_insert(node->nwNode, existing);
 			} else if (existing->isInNEArea(node)) {
-				if (node->neNode == nullptr)
+				if (node->neNode == nullptr) {
 					node->neNode = new TreeNode(node->dividerX, node->dividerY, node->minZ, node->maxX, node->maxY, node->dividerZ, node);
 
+					node->neNode->nodeName = "neNode";
+				}
+
 				_insert(node->neNode, existing);
+			//////////////////////////////////////////////////////
 			} else if (existing->isInSW2Area(node)) {
-				if (node->swNode2 == nullptr)
+				if (node->swNode2 == nullptr) {
 					node->swNode2 = new TreeNode(node->minX, node->minY, node->dividerZ, node->dividerX, node->dividerY, node->maxZ, node);
+
+					node->swNode2->nodeName = "swNode2";
+				}
 
 				_insert(node->swNode2, existing);
 			} else if (existing->isInSE2Area(node)) {
-				if (node->seNode2 == nullptr)
+				if (node->seNode2 == nullptr) {
 					node->seNode2 = new TreeNode(node->dividerX, node->minY, node->dividerZ, node->maxX, node->dividerY, node->maxZ, node);
+
+					node->seNode2->nodeName = "seNode2";
+				}
 
 				_insert(node->seNode2, existing);
 			} else if (existing->isInNW2Area(node)) {
-				if (node->nwNode2 == nullptr)
+				if (node->nwNode2 == nullptr) {
 					node->nwNode2 = new TreeNode(node->minX, node->dividerY, node->dividerZ, node->dividerX, node->maxY, node->maxZ, node);
+
+					node->nwNode2->nodeName = "nwNode2";
+				}
 
 				_insert(node->nwNode2, existing);
 			} else if (existing->isInNE2Area(node)) {
-				if (node->neNode2 == nullptr)
+				if (node->neNode2 == nullptr) {
 					node->neNode2 = new TreeNode(node->dividerX, node->dividerY, node->dividerZ, node->maxX, node->maxY, node->maxZ, node);
+
+					node->neNode2->nodeName = "neNode2";
+				}
 
 				_insert(node->neNode2, existing);
 			}
 		}
 	}
 
+	/*
+	* We may or may not have created more children nodes but this object extends beyond one
+	* of the boundaries, so we cannot put it into a lower node. It will be
+	* placed in this one regardless and locked.
+	*/
 	if (obj->isInArea(node)) {
 		obj->setBounding();
 		node->addObject(obj);
 
-		if (Octree::doLog())
-			Logger::console.info(true) << "Octree::_insert Object ID # " << obj->getObjectID() << " is in area, adding to node and setBounding";
-
+		if (Octree::doLog()) {
+			Logger::console.info(true) << "Octree::_insert -- Node: " << node->toStringData() << " Object ID # " << obj->getObjectID() << " is in area, ADDDING to node and setBounding due to crossing node boundaries";
+		}
 		return;
 	}
 
+	/*
+	* Child nodes were created because there was already an object inside.
+	* Also, the new object is contained in one of those new children nodes
+	* So we search for the right one and insert the object there.
+	*/
 	if (node->hasSubNodes()) {
-		if (Octree::doLog())
-			Logger::console.info(true) << "Octree::_insert Object ID # " << obj->getObjectID() << " node has subnodes";
+		if (Octree::doLog()) {
+			Logger::console.info(true) << "Octree::_insert -- Node: " << node->toStringData() << " -- Object ID # " << obj->getObjectID() << " node has subnodes";
+		}
 
 		if (obj->isInSWArea(node)) {
-			if (node->swNode == nullptr)
+			if (node->swNode == nullptr) {
 				node->swNode = new TreeNode(node->minX, node->minY, node->minZ, node->dividerX, node->dividerY, node->dividerZ, node);
+
+				node->swNode->nodeName = "swNode";
+			}
 
 			_insert(node->swNode, obj);
 		} else if (obj->isInSEArea(node)) {
-			if (node->seNode == nullptr)
+			if (node->seNode == nullptr) {
 				node->seNode = new TreeNode(node->dividerX, node->minY, node->minZ, node->maxX, node->dividerY, node->dividerZ, node);
+
+				node->seNode->nodeName = "seNode";
+			}
 
 			_insert(node->seNode, obj);
 		} else if (obj->isInNWArea(node)) {
-			if (node->nwNode == nullptr)
+			if (node->nwNode == nullptr) {
 				node->nwNode = new TreeNode(node->minX, node->dividerY, node->minZ, node->dividerX, node->maxY, node->dividerZ, node);
 
+				node->nwNode->nodeName = "nwNode";
+			}
+
 			_insert(node->nwNode, obj);
-		} else if (obj->isInNEArea(node)){
-			if (node->neNode == nullptr)
+		} else if (obj->isInNEArea(node)) {
+			if (node->neNode == nullptr) {
 				node->neNode = new TreeNode(node->dividerX, node->dividerY, node->minZ, node->maxX, node->maxY, node->dividerZ, node);
 
+				node->neNode->nodeName = "neNode";
+			}
+
 			_insert(node->neNode, obj);
-		////////////////////////////////////////////////////////////////////////////////////////////////////////////
+		//////////////////////////////////////////////////////
 		} else if (obj->isInSW2Area(node)) {
-			if (node->swNode2 == nullptr)
+			if (node->swNode2 == nullptr) {
 				node->swNode2 = new TreeNode(node->minX, node->minY, node->dividerZ, node->dividerX, node->dividerY, node->maxZ, node);
+
+				node->swNode2->nodeName = "swNode2";
+			}
 
 			_insert(node->swNode2, obj);
 		} else if (obj->isInSE2Area(node)) {
-			if (node->seNode2 == nullptr)
+			if (node->seNode2 == nullptr) {
 				node->seNode2 = new TreeNode(node->dividerX, node->minY, node->dividerZ, node->maxX, node->dividerY, node->maxZ, node);
+
+				node->seNode2->nodeName = "seNode2";
+			}
 
 			_insert(node->seNode2, obj);
 		} else if (obj->isInNW2Area(node)) {
-			if (node->nwNode2 == nullptr)
+			if (node->nwNode2 == nullptr) {
 				node->nwNode2 = new TreeNode(node->minX, node->dividerY, node->dividerZ, node->dividerX, node->maxY, node->maxZ, node);
 
+				node->nwNode2->nodeName = "nwNode2";
+			}
+
 			_insert(node->nwNode2, obj);
-		} else  {
-			if (node->neNode2 == nullptr)
+		} else if (obj->isInNE2Area(node)) {
+			if (node->neNode2 == nullptr) {
 				node->neNode2 = new TreeNode(node->dividerX, node->dividerY, node->dividerZ, node->maxX, node->maxY, node->maxZ, node);
+
+				node->neNode2->nodeName = "neNode2";
+			}
 
 			_insert(node->neNode2, obj);
 		}
 
-		if (Octree::doLog())
-			Logger::console.info(true) << "Octree::_insert Object ID # " << obj->getObjectID() << " HITTING RETURN, object not added!";
+		if (Octree::doLog()) {
+			Logger::console.info(true) << "Octree::_insert -- Node: " << node->toStringData() << " -- Object ID # " << obj->getObjectID() << " HITTING RETURN, object not added!";
+		}
 
 		return;
 	}
 
+	// No children nodes were created and we have only one data entry, so it can stay
+	// this way. Data can be Inserted, and the recursion is over.
+
 	node->addObject(obj);
 
-	if (Octree::doLog())
-		Logger::console.info(true) << "Octree::_insert Object ID # " << obj->getObjectID() << " node added object - Total Objects: " << node->objects.size();
+	if (Octree::doLog()) {
+		Logger::console.info(true) << "Octree::_insert -- Node: " << node->toStringData() << " --  Object ID # " << obj->getObjectID() << " node added object - Total Objects: " << node->objects.size() << " Node: " << node->toStringData();
+	}
 }
 
 bool Octree::_update(const Reference<TreeNode*>& node, TreeEntry* obj) {
-	if (Octree::doLog())
+	if (Octree::doLog()) {
 		Logger::console.info(true) << "Octree::_update -- Poisition (" << obj->getPositionX() << "," << obj->getPositionZ() << "," << obj->getPositionY() << ")\n";
+	}
 
-	if (node->testInsideOctree(obj))
+	// Still in the same node square
+	if (node->testInsideOctree(obj)) {
 		return true;
+	}
 
-	Reference<TreeNode*> cur = node->parentNode.get();
-	while (cur != nullptr && !cur->testInsideOctree(obj))
-		cur = cur->parentNode.get();
+	// We have to remporarily remove the object from the octree
+	// so we hold it in Reference so it is not cleaned up by garbage collection
+	Reference<TreeNode*> currentNode = node->parentNode.get();
 
+	// Move up parent nodes until the object is in the square
+	while (currentNode != nullptr && !currentNode->testInsideOctree(obj)) {
+		currentNode = currentNode->parentNode.get();
+	}
+
+	// Remove the object from current node
 	remove(obj);
 
-	if (cur != nullptr) {
-		_insert(cur, obj);
+	// Insert the object into the new node
+	if (currentNode != nullptr) {
+		_insert(currentNode, obj);
 	}
 #ifdef OUTPUT_OT_ERRORS
 	else
 		Logger::console.info(true) << "[Octree] error on update() - invalid Node\n";
 #endif
-	return cur != nullptr;
+
+	// Return true if the new node is not null
+	return (currentNode != nullptr);
 }
 
 void Octree::safeInRange(TreeEntry* obj, float range) {
@@ -602,52 +723,58 @@ void Octree::_inRange(const Reference<TreeNode*>& node, TreeEntry *obj, float ra
 	float oldz = obj->getPreviousPositionZ();
 
 	for (int i = 0; i < refNode->objects.size(); i++) {
-		TreeEntry *o = refNode->objects.get(i);
+		TreeEntry* treeEntry = refNode->objects.get(i);
 
-		if (o != obj) {
-			float deltaX = x - o->getPositionX();
-			float deltaY = y - o->getPositionY();
-			float deltaZ = z - o->getPositionZ();
+		if (treeEntry != obj) {
+			float deltaX = x - treeEntry->getPositionX();
+			float deltaY = y - treeEntry->getPositionY();
+			float deltaZ = z - treeEntry->getPositionZ();
 			int deltaCalc = deltaX * deltaX + deltaY * deltaY + deltaZ * deltaZ;
 
-			if (deltaCalc <= rangesq) {
+			if (deltaCalc < rangesq) {
 				CloseObjectsVector* objCloseObjects = obj->getCloseObjects();
 
-				if (objCloseObjects != nullptr && !objCloseObjects->contains(o)) {
-					obj->addInRangeObject(o, false);
-					//obj->notifyInsert(o);
+				if (objCloseObjects != nullptr && !objCloseObjects->contains(treeEntry)) {
+					obj->addInRangeObject(treeEntry, false);
+					//obj->notifyInsert(treeEntry);
 				}
 
-				CloseObjectsVector* oCloseObjects = o->getCloseObjects();
+				CloseObjectsVector* entryCloseObjects = treeEntry->getCloseObjects();
 
-				if (oCloseObjects != nullptr && !oCloseObjects->contains(obj)) {
-					o->addInRangeObject(obj);
-					//o->notifyInsert(obj);
-				} else
-					o->notifyPositionUpdate(obj);
+				if (entryCloseObjects != nullptr && !entryCloseObjects->contains(obj)) {
+					treeEntry->addInRangeObject(obj);
+					//treeEntry->notifyInsert(obj);
+				} else {
+					treeEntry->notifyPositionUpdate(obj);
+				}
 
-				/*obj->addInRangeObject(o, false);
-				o->addInRangeObject(obj);*/
+				/*obj->addInRangeObject(treeEntry, false);
+				treeEntry->addInRangeObject(obj);*/
 			} else {
-				float oldDeltaX = oldx - o->getPositionX();
-				float oldDeltaY = oldy - o->getPositionY();
-				float oldDeltaZ = oldz - o->getPositionZ();
-				int deltaCalc2 = oldDeltaX * oldDeltaX + oldDeltaY * oldDeltaY + oldDeltaZ * oldDeltaZ;
+				float oldDeltaX = oldx - treeEntry->getPositionX();
+				float oldDeltaY = oldy - treeEntry->getPositionY();
+				float oldDeltaZ = oldz - treeEntry->getPositionZ();
 
-				if (deltaCalc2 <= rangesq) {
+				int deltaCalc2 = (oldDeltaX * oldDeltaX) + (oldDeltaY * oldDeltaY) + (oldDeltaZ * oldDeltaZ);
+
+				if (deltaCalc2 < rangesq) {
 					CloseObjectsVector* objCloseObjects = obj->getCloseObjects();
-					if (objCloseObjects != nullptr)
-						obj->removeInRangeObject(o);
 
-					CloseObjectsVector* oCloseObjects = o->getCloseObjects();
+					if (objCloseObjects != nullptr) {
+						obj->removeInRangeObject(treeEntry);
+					}
 
-					if (oCloseObjects != nullptr)
-						o->removeInRangeObject(obj);
+					CloseObjectsVector* entryCloseObjects = treeEntry->getCloseObjects();
+
+					if (entryCloseObjects != nullptr) {
+						treeEntry->removeInRangeObject(obj);
+					}
 				}
 			}
 		} else {
-			if (obj->getCloseObjects() != nullptr)
+			if (obj->getCloseObjects() != nullptr) {
 				obj->addInRangeObject(obj, false);
+			}
 		}
 	}
 
@@ -701,15 +828,16 @@ int Octree::inRange(float x, float y, float z, SortedVector<TreeEntry*>& objects
 int Octree::_inRange(const Reference<TreeNode*>& node, float x, float y, float z, SortedVector<ManagedReference<TreeEntry*> >& objects) const {
 	int count = 0;
 
-	if (Octree::doLog())
-		Logger::console.info(true) << "Octree::_inRange-2 -- Total Objects = " << node->objects.size();
+	if (Octree::doLog()) {
+		Logger::console.info(true) << "Octree::_inRange-2 -- Location - X: " << x << " Z: " << z << " Y: " << y << " Node: " << node->toStringData();
+	}
 
 	for (int i = 0; i < node->objects.size(); i++) {
-		TreeEntry *o = node->objects.get(i);
+		TreeEntry* treeEntry = node->objects.get(i);
 
-		if (o->containsPoint(x, y, z)) {
+		if (treeEntry->containsPoint(x, y, z)) {
 			++count;
-			objects.put(o);
+			objects.put(treeEntry);
 		}
 	}
 
@@ -736,39 +864,52 @@ int Octree::_inRange(const Reference<TreeNode*>& node, float x, float y, float z
 	return count;
 }
 
-int Octree::_inRange(const Reference<TreeNode*>& node, float x, float y, float z, SortedVector<TreeEntry* >& objects) const {
+int Octree::_inRange(const Reference<TreeNode*>& node, float x, float y, float z, SortedVector<TreeEntry*>& objects) const {
 	int count = 0;
 
-	if (Octree::doLog())
-		Logger::console.info(true) << "Octree::_inRange-3 -- Total Objects = " << node->objects.size();
+	if (Octree::doLog()) {
+		Logger::console.info(true) << "Octree::_inRange-3 -- Location - X: " << x << " Z: " << z << " Y: " << y << " Node: " << node->toStringData();
+	}
 
 	for (int i = 0; i < node->objects.size(); i++) {
-		TreeEntry *o = node->objects.get(i);
+		TreeEntry* treeEntry = node->objects.get(i);
 
-		if (o->containsPoint(x, y, z)) {
+		if (Octree::doLog()) {
+			Logger::console.info(true) << "_inRange-5 is check if object #" << i << " is in range. Node: " << node->toStringData();
+		}
+
+		if (treeEntry->isInRange(x, y, z)) {
 			++count;
-			objects.put(o);
+			objects.put(treeEntry);
 		}
 	}
 
 	if (node->hasSubNodes()) {
-		if (node->nwNode != nullptr && node->nwNode->testInside(x, y, z))
+		if (node->nwNode != nullptr && node->nwNode->testInside(x, y, z)) {
 			count += _inRange(node->nwNode, x, y, z, objects);
-		if (node->neNode != nullptr && node->neNode->testInside(x, y, z))
+		}
+		if (node->neNode != nullptr && node->neNode->testInside(x, y, z)) {
 			count += _inRange(node->neNode, x, y, z, objects);
-		if (node->swNode != nullptr && node->swNode->testInside(x, y, z))
+		}
+		if (node->swNode != nullptr && node->swNode->testInside(x, y, z)) {
 			count += _inRange(node->swNode, x, y, z, objects);
-		if (node->seNode != nullptr && node->seNode->testInside(x, y, z))
+		}
+		if (node->seNode != nullptr && node->seNode->testInside(x, y, z)) {
 			count += _inRange(node->seNode, x, y, z, objects);
-		//////
-		if (node->nwNode2 != nullptr && node->nwNode2->testInside(x, y, z))
+		}
+		//////////////////////////////////////////////////////
+		if (node->nwNode2 != nullptr && node->nwNode2->testInside(x, y, z)) {
 			count += _inRange(node->nwNode2, x, y, z, objects);
-		if (node->neNode2 != nullptr && node->neNode2->testInside(x, y, z))
+		}
+		if (node->neNode2 != nullptr && node->neNode2->testInside(x, y, z)) {
 			count += _inRange(node->neNode2, x, y, z, objects);
-		if (node->swNode2 != nullptr && node->swNode2->testInside(x, y, z))
+		}
+		if (node->swNode2 != nullptr && node->swNode2->testInside(x, y, z)) {
 			count += _inRange(node->swNode2, x, y, z, objects);
-		if (node->seNode2 != nullptr && node->seNode2->testInside(x, y, z))
+		}
+		if (node->seNode2 != nullptr && node->seNode2->testInside(x, y, z)) {
 			count += _inRange(node->seNode2, x, y, z, objects);
+		}
 	}
 
 	return count;
@@ -777,74 +918,108 @@ int Octree::_inRange(const Reference<TreeNode*>& node, float x, float y, float z
 int Octree::_inRange(const Reference<TreeNode*>& node, float x, float y, float z, float range, SortedVector<ManagedReference<TreeEntry*> >& objects) const {
 	int count = 0;
 
-	if (Octree::doLog())
-		Logger::console.info(true) << "Octree::_inRange-4 -- Total Objects = " << node->objects.size();
+	if (Octree::doLog()) {
+		Logger::console.info(true) << "Octree::_inRange-4 -- Range: " << range << " Location - X: " << x << " Z: " << z << " Y: " << y << " Node: " << node->toStringData();
+	}
 
 	for (int i = 0; i < node->objects.size(); i++) {
-		TreeEntry *o = node->objects.get(i);
+		TreeEntry* treeEntry = node->objects.get(i);
 
-		if (o->isInRange(x, y, z, range)) {
+		if (treeEntry->isInRange(x, y, z, range)) {
 			++count;
-			objects.put(o);
+			objects.put(treeEntry);
 		}
 	}
 
 	if (node->hasSubNodes()) {
-		if (node->nwNode != nullptr && node->nwNode->testInside(x, y, z))
-			count += _inRange(node->nwNode, x, y, z, objects);
-		if (node->neNode != nullptr && node->neNode->testInside(x, y, z))
-			count += _inRange(node->neNode, x, y, z, objects);
-		if (node->swNode != nullptr && node->swNode->testInside(x, y, z))
-			count += _inRange(node->swNode, x, y, z, objects);
-		if (node->seNode != nullptr && node->seNode->testInside(x, y, z))
-			count += _inRange(node->seNode, x, y, z, objects);
-		//////
-		if (node->nwNode2 != nullptr && node->nwNode2->testInside(x, y, z))
-			count += _inRange(node->nwNode2, x, y, z, objects);
-		if (node->neNode2 != nullptr && node->neNode2->testInside(x, y, z))
-			count += _inRange(node->neNode2, x, y, z, objects);
-		if (node->swNode2 != nullptr && node->swNode2->testInside(x, y, z))
-			count += _inRange(node->swNode2, x, y, z, objects);
-		if (node->seNode2 != nullptr && node->seNode2->testInside(x, y, z))
-			count += _inRange(node->seNode2, x, y, z, objects);
+		if (node->nwNode != nullptr && node->nwNode->testInRange(x, y, z, range)) {
+			count += _inRange(node->nwNode, x, y, z, range, objects);
+		}
+		if (node->neNode != nullptr && node->neNode->testInRange(x, y, z, range)) {
+			count += _inRange(node->neNode, x, y, z, range, objects);
+		}
+		if (node->swNode != nullptr && node->swNode->testInRange(x, y, z, range)) {
+			count += _inRange(node->swNode, x, y, z, range, objects);
+		}
+		if (node->seNode != nullptr && node->seNode->testInRange(x, y, z, range)) {
+			count += _inRange(node->seNode, x, y, z, range, objects);
+		}
+		//////////////////////////////////////////////////////
+		if (node->nwNode2 != nullptr && node->nwNode2->testInRange(x, y, z, range)) {
+			count += _inRange(node->nwNode2, x, y, z, range, objects);
+		}
+		if (node->neNode2 != nullptr && node->neNode2->testInRange(x, y, z, range)) {
+			count += _inRange(node->neNode2, x, y, z, range, objects);
+		}
+		if (node->swNode2 != nullptr && node->swNode2->testInRange(x, y, z, range)) {
+			count += _inRange(node->swNode2, x, y, z, range, objects);
+		}
+		if (node->seNode2 != nullptr && node->seNode2->testInRange(x, y, z, range)) {
+			count += _inRange(node->seNode2, x, y, z, range, objects);
+		}
 	}
 
 	return count;
 }
 
-int Octree::_inRange(const Reference<TreeNode*>& node, float x, float y, float z, float range,	SortedVector<TreeEntry* >& objects) const {
+int Octree::_inRange(const Reference<TreeNode*>& node, float x, float y, float z, float range,	SortedVector<TreeEntry*>& objects) const {
 	int count = 0;
 
-	if (Octree::doLog())
-		Logger::console.info(true) << "Octree::_inRange-5 -- Total Objects = " << node->objects.size();
+	if (Octree::doLog()) {
+		Logger::console.info(true) << "Octree::_inRange-5 -- Range: " << range << " Location - X: " << x << " Z: " << z << " Y: " << y << " Node: " << node->toStringData();
+	}
 
 	for (int i = 0; i < node->objects.size(); i++) {
-		TreeEntry *o = node->objects.getUnsafe(i);
+		TreeEntry* treeEntry = node->objects.getUnsafe(i);
 
-		if (o->isInRange(x, y, z, range)) {
-			++count;
-			objects.put(o);
+		if (Octree::doLog()) {
+			Logger::console.info(true) << "_inRange-5 is check if object #" << i << " is in range. Node: " << node->toStringData();
+		}
+
+		if (treeEntry->isInRange(x, y, z, range)) {
+			objects.put(treeEntry);
+			count++;
 		}
 	}
 
 	if (node->hasSubNodes()) {
-		if (node->nwNode != nullptr && node->nwNode->testInside(x, y, z))
-			count += _inRange(node->nwNode, x, y, z, objects);
-		if (node->neNode != nullptr && node->neNode->testInside(x, y, z))
-			count += _inRange(node->neNode, x, y, z, objects);
-		if (node->swNode != nullptr && node->swNode->testInside(x, y, z))
-			count += _inRange(node->swNode, x, y, z, objects);
-		if (node->seNode != nullptr && node->seNode->testInside(x, y, z))
-			count += _inRange(node->seNode, x, y, z, objects);
-		//////
-		if (node->nwNode2 != nullptr && node->nwNode2->testInside(x, y, z))
-			count += _inRange(node->nwNode2, x, y, z, objects);
-		if (node->neNode2 != nullptr && node->neNode2->testInside(x, y, z))
-			count += _inRange(node->neNode2, x, y, z, objects);
-		if (node->swNode2 != nullptr && node->swNode2->testInside(x, y, z))
-			count += _inRange(node->swNode2, x, y, z, objects);
-		if (node->seNode2 != nullptr && node->seNode2->testInside(x, y, z))
-			count += _inRange(node->seNode2, x, y, z, objects);
+		if (Octree::doLog()) {
+			Logger::console.info(true) << "Octree::_inRange-5 -- has Sub Nodes - Current Object Count: Node: " << node->toStringData();
+		}
+
+		if (node->nwNode != nullptr && node->nwNode->testInRange(x, y, z, range)) {
+			count += _inRange(node->nwNode, x, y, z, range, objects);
+		}
+
+		if (node->neNode != nullptr && node->neNode->testInRange(x, y, z, range)) {
+			count += _inRange(node->neNode, x, y, z, range, objects);
+		}
+
+		if (node->swNode != nullptr && node->swNode->testInRange(x, y, z, range)) {
+			count += _inRange(node->swNode, x, y, z, range, objects);
+		}
+
+		if (node->seNode != nullptr && node->seNode->testInRange(x, y, z, range)) {
+			count += _inRange(node->seNode, x, y, z, range, objects);
+		}
+
+		//////////////////////////////////////////////////////
+
+		if (node->nwNode2 != nullptr && node->nwNode2->testInRange(x, y, z, range)) {
+			count += _inRange(node->nwNode2, x, y, z, range, objects);
+		}
+
+		if (node->neNode2 != nullptr && node->neNode2->testInRange(x, y, z, range)) {
+			count += _inRange(node->neNode2, x, y, z, range, objects);
+		}
+
+		if (node->swNode2 != nullptr && node->swNode2->testInRange(x, y, z, range)) {
+			count += _inRange(node->swNode2, x, y, z, range, objects);
+		}
+
+		if (node->seNode2 != nullptr && node->seNode2->testInRange(x, y, z, range)) {
+			count += _inRange(node->seNode2, x, y, z, range, objects);
+		}
 	}
 
 	return count;

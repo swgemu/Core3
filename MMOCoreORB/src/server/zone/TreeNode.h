@@ -67,6 +67,8 @@ class TreeNode: public Object {
 
 	float dividerX, dividerY, dividerZ;
 
+	String nodeName;
+
 public:
 	TreeNode();
 	TreeNode(float minx, float miny, float minz, float maxx, float maxy, float maxz, TreeNode *parent);
@@ -125,17 +127,18 @@ public:
 
 	// Check if this node has children nodes
 	inline bool hasSubNodes() const {
-		return nwNode != nullptr || neNode != nullptr || swNode != nullptr || seNode
-			!= nullptr || nwNode2 != nullptr || neNode2 != nullptr || swNode2 != nullptr || seNode2 != nullptr;
+		return nwNode != nullptr || neNode != nullptr || swNode != nullptr || seNode != nullptr || nwNode2 != nullptr || neNode2 != nullptr || swNode2 != nullptr || seNode2 != nullptr;
 	}
 
 	// Test if the point is inside this node
 	inline bool testInside(float x, float y, float z) const {
-		return x >= minX && x < maxX && y >= minY && y < maxY && z >= minZ && z < maxZ;
+		// Logger::console.info(true) << "TreeNode - testInside --- Using X: " << x << " Z: " << z << " Y: " << y << " minX: " << minX << " maxX: " << maxX << " minZ: " << minZ << " maxZ: " << maxZ << " minY: " << minY << " maxY: " << maxY;
+
+		return ((x > minX) && (x < maxX) && (y > minY) && (y < maxY) && (z > minZ) && (z < maxZ));
 	}
 
 	inline bool testInside(float x, float y) const {
-		return x >= minX && x < maxX && y >= minY && y < maxY;
+		return ((x > minX) && (x < maxX) && (y > minY) && (y < maxY));
 	}
 
 	// Test if the object is inside this quad tree node

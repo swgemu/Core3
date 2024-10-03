@@ -19,7 +19,7 @@ TreeNode::TreeNode() {
 	dividerX = 0, dividerY = 0,	dividerZ = -1;
 }
 
-TreeNode::TreeNode(float minx, float miny, float minz, float maxx, float maxy, float maxz, TreeNode *parent) {
+TreeNode::TreeNode(float minx, float miny, float minz, float maxx, float maxy, float maxz, TreeNode* parent) {
 	objects.setNoDuplicateInsertPlan();
 
 	parentNode = parent;
@@ -124,21 +124,34 @@ bool TreeNode::testInsideOctree(TreeEntry* obj) const {
 	//Logger::console.info(true) << "TreeNode::testInsideOctree called - X = " << x << " Z = " << z << " Y = " << y;
 	//Logger::console.info(true) << " minX = " << minX << " maxX = " << maxX << " minZ = " << minZ << " maxZ = " << maxZ << " minY = " << minY << " maxY = " << maxY;
 
-	return x >= minX && x <= maxX && y >= minY && y <= maxY && z >= minZ && z <= maxZ;
+	return ((x > minX) && (x < maxX) && (y > minY) && (y < maxY) && (z > minZ) && (z < maxZ));
 }
 
 bool TreeNode::testInRange(float x, float y, float z, float range) const {
-	bool insideX = (minX <= x) && (x < maxX);
-	bool insideY = (minY <= y) && (y < maxY);
-	bool insideZ = (minZ <= z) && (z < maxZ);
+	bool insideX = (minX < x) && (x < maxX);
+	bool insideY = (minY < y) && (y < maxY);
+	bool insideZ = (minZ < z) && (z < maxZ);
+
+	/*
+	StringBuffer msg;
+	msg <<
+	" Node -- " << nodeName << " - " << this <<
+	" (Min X: " << (int)minX << ", Min Y: " << (int)minY << ", Min Z: " << (int)minZ <<
+	", Max X: " << (int)maxX << ", Max Y: " << (int)maxY << ", Max Z: " << (int)maxZ << ")" <<
+	"[Total Objects in Node: " << objects.size() << "]";
+
+	Logger::console.info(true) << "TreeNode - testInRange -- " << msg.toString() << " for X: " << x << " Z: " << z << " Y: " << y << " insideX: " << (insideX ? "TRUE" : "FALSE") << " insideZ: " << (insideZ ? "TRUE" : "FALSE") << " insideY: " << (insideY ? "TRUE" : "FALSE");
+	*/
 
 	if (insideX && insideY && insideZ) {
 		return true;
 	}
 
-	bool closeenoughX = (fabs(minX - x) < range || fabs(maxX - x) < range);
-	bool closeenoughY = (fabs(minY - y) < range || fabs(maxY - y) < range);
-	bool closeenoughZ = (fabs(minZ - z) < range || fabs(maxZ - z) < range);
+	bool closeenoughX = ((fabs(minX - x) < range) || (fabs(maxX - x) < range));
+	bool closeenoughY = ((fabs(minY - y) < range) || (fabs(maxY - y) < range));
+	bool closeenoughZ = ((fabs(minZ - z) < range) || (fabs(maxZ - z) < range));
+
+	// Logger::console.info(true) << "TreeNode - testInRange -- " << msg.toString() << " for X: " << x << " Z: " << z << " Y: " << y << " closeenoughX: " << (closeenoughX ? "TRUE" : "FALSE") << " closeenoughZ: " << (closeenoughZ ? "TRUE" : "FALSE") << " closeenoughY: " << (closeenoughY ? "TRUE" : "FALSE");
 
 	if ((insideX || closeenoughX) && (insideY || closeenoughY) && (insideZ || closeenoughZ)) {
 		return true;
@@ -192,10 +205,12 @@ void TreeNode::check () {
 }
 
 String TreeNode::toStringData() {
-	StringBuffer s;
-	s << " Node " << this << " (" << (int) minX << ","
-			<< (int) minY << "," << (int) minZ << "," << (int) maxX << "," << (int) maxY << ","
-			<< (int) maxZ << ") [" << objects.size() << "]";
+	StringBuffer msg;
+	msg <<
+	" Node -- " << nodeName << " - " << this <<
+	" (Min X: " << (int)minX << ", Min Y: " << (int)minY << ", Min Z: " << (int)minZ <<
+	", Max X: " << (int)maxX << ", Max Y: " << (int)maxY << ", Max Z: " << (int)maxZ << ")" <<
+	"[Total Objects in Node: " << objects.size() << "]";
 
-	return s.toString();
+	return msg.toString();
 }
