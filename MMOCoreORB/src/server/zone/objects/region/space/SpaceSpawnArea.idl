@@ -15,6 +15,7 @@ include server.zone.objects.ship.ShipObject;
 import system.lang.Time;
 import server.zone.objects.region.space.SpaceSpawnAreaObserver;
 import server.zone.managers.ship.SpaceSpawn;
+import system.util.HashTable;
 
 include system.util.Vector;
 include engine.util.u3d.Vector3;
@@ -36,7 +37,7 @@ class SpaceSpawnArea extends SpaceRegion {
 	protected int maxSpawnLimit;
 
 	@dereferenced
-	protected VectorMap<unsigned int, int> spawnCountByType;
+	protected HashTable<unsigned int, int> spawnCountByType;
 
 	protected int totalWeighting;
 

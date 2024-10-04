@@ -95,7 +95,7 @@ class SpaceSpawner extends TangibleObject {
 		spawnName = name;
 	}
 
-	public string getSpawnName() {
+	public final string getSpawnName() {
 		return spawnName;
 	}
 

@@ -63,6 +63,10 @@ void DespawnLairOnPlayerDisappear::run() {
 	} else if (strongRef->isSpaceSpawner()) {
 		ManagedReference<SpaceSpawner*> strongSpaceSpawner = strongRef.castTo<SpaceSpawner*>();
 
+		if (strongSpaceSpawner == nullptr) {
+			return;
+		}
+
 		Locker locker(strongSpaceSpawner);
 
 		strongSpaceSpawner->clearDespawnEvent();

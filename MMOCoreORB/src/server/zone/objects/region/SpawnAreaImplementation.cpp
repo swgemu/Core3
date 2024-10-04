@@ -230,6 +230,8 @@ void SpawnAreaImplementation::tryToSpawn(CreatureObject* player) {
 	int spawnLimit = finalSpawn->getSpawnLimit();
 	int currentSpawnCount = spawnCountByType.get(lairHashCode);
 
+	currentSpawnCount = ((currentSpawnCount < 0) ? 0 : currentSpawnCount);
+
 	// Make sure spawn area limit has not been reached
 	if (spawnLimit > -1 && currentSpawnCount >= spawnLimit) {
 #ifdef DEBUG_SPAWNING
@@ -390,7 +392,7 @@ void SpawnAreaImplementation::tryToSpawn(CreatureObject* player) {
 
 	totalSpawnCount++;
 
-	spawnCountByType.put(lairTemplate.hashCode(), currentSpawnCount);
+	spawnCountByType.put(lairTemplate.hashCode(), currentSpawnCount + 1);
 
 #ifdef DEBUG_SPAWNING
 		info(true) << "tryToSpawn Complete";

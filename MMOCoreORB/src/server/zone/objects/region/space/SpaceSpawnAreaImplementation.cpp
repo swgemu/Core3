@@ -145,12 +145,14 @@ int SpaceSpawnAreaImplementation::notifyObserverEvent(unsigned int eventType, Ob
 	String spawnName = spaceSpawner->getSpawnName();
 	uint32 spawnNameHash = spawnName.hashCode();
 
-	int currentSpawnCount = spawnCountByType.get(spawnNameHash) - 1;
+	if (spawnNameHash > 0) {
+		int currentSpawnCount = spawnCountByType.get(spawnNameHash) - 1;
 
-	if (currentSpawnCount < 1) {
-		spawnCountByType.remove(spawnNameHash);
-	} else {
-		spawnCountByType.put(spawnNameHash, currentSpawnCount);
+		if (currentSpawnCount < 1) {
+			spawnCountByType.remove(spawnNameHash);
+		} else {
+			spawnCountByType.put(spawnNameHash, currentSpawnCount);
+		}
 	}
 
 	auto spaceActiveArea = spaceSpawner->getSpaceActiveArea().get();
@@ -226,6 +228,8 @@ void SpaceSpawnAreaImplementation::tryToSpawn(ShipObject* playerShip) {
 
 	int spawnLimit = finalSpawn->getSpawnLimit();
 	int currentSpawnCount = spawnCountByType.get(nameHash);
+
+	currentSpawnCount = ((currentSpawnCount < 0) ? 0 : currentSpawnCount);
 
 	// Make sure spawn area limit has not been reached
 	if (spawnLimit > -1 && currentSpawnCount >= spawnLimit) {
@@ -315,6 +319,8 @@ void SpaceSpawnAreaImplementation::tryToSpawn(ShipObject* playerShip) {
 		zone->transferObject(spaceArea, -1, true);
 	}
 
+	spaceSpawner->setSpawnName(spawnGroupName);
+
 	// Release the lock on the spaceSpawner
 	spawnerLocker.release();
 
@@ -363,6 +369,8 @@ void SpaceSpawnAreaImplementation::tryToSpawn(ShipObject* playerShip) {
 
 	// Increase Spawn Count
 	totalSpawnCount++;
+
+	spawnCountByType.put(nameHash, currentSpawnCount + 1);
 
 #ifdef DEBUG_SPACE_SPAWNING
 	info(true) << "A new ship lair has spawned!";
