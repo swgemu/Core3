@@ -43,9 +43,11 @@ bool SpaceZoneContainerComponent::insertActiveArea(Zone* newZone, ActiveArea* ac
 
 	// lets update area to the in range players
 	SortedVector<TreeEntry*> objects;
-	float range = activeArea->getRadius() + 500;
+	float range = activeArea->getRadius() + 1024;
 
 	newZone->getInRangeObjects(activeArea->getPositionX(), activeArea->getPositionZ(), activeArea->getPositionY(), range, &objects, false);
+
+	// newZone->info(true) << "SpaceZoneContainerComponent::insertActiveArea -- total in range objects: " << objects.size();
 
 	for (int i = 0; i < objects.size(); ++i) {
 		SceneObject* object = static_cast<SceneObject*>(objects.get(i));
@@ -208,7 +210,7 @@ bool SpaceZoneContainerComponent::transferObject(SceneObject* sceneObject, Scene
 
 	TangibleObject* tanoObject = object->asTangibleObject();
 
-	if (tanoObject != nullptr && tanoObject->isShipObject()) {
+	if (tanoObject != nullptr) {
 		newSpaceZone->updateActiveAreas(tanoObject);
 	}
 
