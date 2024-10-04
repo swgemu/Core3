@@ -42,7 +42,6 @@
 
 
 object_tangible_terminal_terminal_jukebox = object_tangible_terminal_shared_terminal_jukebox:new {
-
 		gameObjectType = 16408,
 
 		childObjects = {

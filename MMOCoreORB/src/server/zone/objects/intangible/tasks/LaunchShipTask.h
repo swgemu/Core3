@@ -77,7 +77,7 @@ public:
 		InsertPilotIntoShipTask* pilotTask = new InsertPilotIntoShipTask(player, ship);
 
 		if (pilotTask != nullptr) {
-			pilotTask->schedule(100);
+			pilotTask->schedule(1000);
 		}
 
 		if (groupMembers.size() > 0 && (ship->isPobShip() || ship->isMultiPassengerShip())) {
@@ -90,7 +90,7 @@ public:
 				InsertGroupMembertIntoShipTask* memberTask = new InsertGroupMembertIntoShipTask(ship, memberID, (ship->isMultiPassengerShip() ? PlayerArrangement::SHIP_GUNNER1 : -1));
 
 				if (memberTask != nullptr) {
-					memberTask->schedule(200 + (j * 50));
+					memberTask->schedule(1000 + (j * 50));
 				}
 
 				// Pre-CU Multipassenger ships only have one gunner slot

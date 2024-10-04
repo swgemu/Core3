@@ -268,7 +268,7 @@ int PobShipObjectImplementation::notifyObjectInsertedToChild(SceneObject* object
 		_locker = new Locker(zone);
 	}
 
-	// info(true) << getDisplayedName() << " PobShipObjectImplementation::notifyObjectInsertedToChild -- object inserted: " << object->getDisplayedName() << " ID: " << object->getObjectID() << " Child: " << child->getObjectID() << " oldParent: " << (oldParent != nullptr ? oldParent->getObjectID() : 0);
+	info(true) << getDisplayedName() << " PobShipObjectImplementation::notifyObjectInsertedToChild -- object inserted: " << object->getDisplayedName() << " ID: " << object->getObjectID() << " Child: " << child->getObjectID() << " oldParent: " << (oldParent != nullptr ? oldParent->getObjectID() : 0);
 
 	try {
 		if (object->getCloseObjects() != nullptr) {
@@ -289,12 +289,12 @@ int PobShipObjectImplementation::notifyObjectInsertedToChild(SceneObject* object
 
 			bool objectIsPlayer = object->isPlayerCreature();
 
-			if (oldParent == nullptr || !oldRootIsPob || (oldParent != nullptr && dynamic_cast<Zone*>(oldParent) == nullptr)) { // && !oldParent->isCellObject())) {
+			if (oldParent == nullptr || !oldRootIsPob || (oldParent != nullptr && dynamic_cast<Zone*>(oldParent) == nullptr && !oldParent->isCellObject())) {
 				notifyObjectInsertedToZone(object);
 				hasEnteredRange = true;
 			}
 
-			if (objectIsPlayer) {
+			if (!hasEnteredRange && objectIsPlayer) {
 				auto player = object->asCreatureObject();
 
 				if (player != nullptr) {

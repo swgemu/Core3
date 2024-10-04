@@ -14,6 +14,9 @@ import server.zone.packets.object.ObjectMenuResponse;
 
 @json
 class Jukebox extends Terminal {
+	public static final float INDOOR_RADIUS = 32;
+	public static final float OUTDOOR_RADIUS = 128;
+
 	@weakReference
 	protected CreatureObject owner;
 

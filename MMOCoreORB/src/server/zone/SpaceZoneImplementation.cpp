@@ -173,8 +173,9 @@ void SpaceZoneImplementation::inRange(TreeEntry* entry, float range) {
 }
 
 void SpaceZoneImplementation::updateActiveAreas(TangibleObject* tano) {
-	if (tano == nullptr || !tano->isShipObject())
+	if (tano == nullptr) {
 		return;
+	}
 
 #ifdef DEBUG_SPACE_AA
 	info(true) << "\n---------- SpaceZoneImplementation::updateActiveAreas called: " << tano->getDisplayedName() << " ----------";
