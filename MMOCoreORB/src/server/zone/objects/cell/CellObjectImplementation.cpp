@@ -79,8 +79,18 @@ void CellObjectImplementation::onBuildingInsertedToZone(BuildingObject* building
 }
 
 void CellObjectImplementation::onShipInsertedToZone(PobShipObject* pobShip) {
+	if (pobShip == nullptr) {
+		return;
+	}
+
 	for (int j = 0; j < getContainerObjectsSize(); ++j) {
 		SceneObject* child = getContainerObject(j);
+
+		if (child == nullptr) {
+			continue;
+		}
+
+		// info(true) << pobShip->getDisplayedName() << " -- PobShip is broadcasting contained object: " << child->getDisplayedName();
 
 		pobShip->notifyObjectInsertedToZone(child);
 	}
@@ -174,8 +184,6 @@ bool CellObjectImplementation::transferObject(SceneObject* object, int containme
 
 				if (building != nullptr && creo != nullptr)
 					building->onEnter(creo);
-			} else if (strongParent->isPobShip()) {
-				// TODO: add notification of player being added to PoBShipCell
 			}
 		}
 	}

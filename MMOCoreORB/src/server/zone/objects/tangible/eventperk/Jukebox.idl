@@ -9,11 +9,16 @@ import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.tangible.tasks.RemoveEventPerkItemTask;
 import server.zone.Zone;
 import system.lang.ref.Reference;
-include system.lang.Time;
 import server.zone.packets.object.ObjectMenuResponse;
+
+include system.lang.Time;
+include server.zone.TreeEntry;
 
 @json
 class Jukebox extends Terminal {
+	public static final float INDOOR_RADIUS = 32;
+	public static final float OUTDOOR_RADIUS = 128;
+
 	@weakReference
 	protected CreatureObject owner;
 
@@ -61,6 +66,12 @@ class Jukebox extends Terminal {
 	public native void setRadius(float radius);
 
 	public native void notifyInsertToZone(Zone zone);
+
+	@local
+	public native void notifyInsert(TreeEntry obj);
+
+	@local
+	public native void notifyDissapear(TreeEntry obj);
 
 	@preLocked
 	@arg1preLocked

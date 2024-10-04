@@ -42,13 +42,12 @@
 
 
 object_tangible_terminal_terminal_jukebox = object_tangible_terminal_shared_terminal_jukebox:new {
-
 		gameObjectType = 16408,
 
 		childObjects = {
 			{templateFile = "object/active_area.iff", x = 0, z = 0, y = 0, ox = 0, oy = 0, oz = 0, ow = 0, cellid = -1, containmentType = -1},
 		},
-		
+
 		noTrade = 1
 }
 
