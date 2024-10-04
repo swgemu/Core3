@@ -464,7 +464,7 @@ void ShipObjectImplementation::notifyObjectInsertedToZone(SceneObject* object) {
 		}
 
 		if (obj->getRootParent() != asShipObject()) {
-			// info(true) << getDisplayedName() << "notifyObjectInsertedToZone -- adding in range object: " << obj->getDisplayedName();
+			// info(true) << getDisplayedName() << " notifyObjectInsertedToZone -- adding in range object: " << obj->getDisplayedName();
 
 			if (object->getCloseObjects() != nullptr) {
 				object->addInRangeObject(obj, obj->isShipObject());

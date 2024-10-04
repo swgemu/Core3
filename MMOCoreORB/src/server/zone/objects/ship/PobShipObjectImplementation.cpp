@@ -268,9 +268,11 @@ int PobShipObjectImplementation::notifyObjectInsertedToChild(SceneObject* object
 		_locker = new Locker(zone);
 	}
 
-	// info(true) << getDisplayedName() << " PobShipObjectImplementation::notifyObjectInsertedToChild -- object inserted: " << object->getDisplayedName() << " ID: " << object->getObjectID() << " Child: " << child->getObjectID() << " oldParent: " << (oldParent != nullptr ? oldParent->getObjectID() : 0);
+	info(true) << getDisplayedName() << " PobShipObjectImplementation::notifyObjectInsertedToChild -- object inserted: " << object->getDisplayedName() << " ID: " << object->getObjectID() << " Child: " << child->getObjectID() << " oldParent: " << (oldParent != nullptr ? oldParent->getObjectID() : 0);
 
 	try {
+		bool objectIsPlayer = object->isPlayerCreature();
+
 		if (object->getCloseObjects() != nullptr) {
 			object->addInRangeObject(object, false);
 		}
@@ -287,23 +289,12 @@ int PobShipObjectImplementation::notifyObjectInsertedToChild(SceneObject* object
 				}
 			}
 
-			bool objectIsPlayer = object->isPlayerCreature();
-
-			if (oldParent == nullptr || !oldRootIsPob || (oldParent != nullptr && dynamic_cast<Zone*>(oldParent) == nullptr)) { // && !oldParent->isCellObject())) {
+			// Notify for objects newly transferred into the PobShip
+			// Cases old parent is null, old root is not the ship or old parent is not a cell or jtl parent
+			//if (oldParent == nullptr || !oldRootIsPob || (oldParent != nullptr && dynamic_cast<Zone*>(oldParent) == nullptr && !oldParent->isCellObject())) {
+			if (oldParent == nullptr || !oldRootIsPob || (oldParent != nullptr && (!oldParent->isCellObject() && !oldParent->isValidJtlParent()))) {
 				notifyObjectInsertedToZone(object);
 				hasEnteredRange = true;
-			}
-
-			if (objectIsPlayer) {
-				auto player = object->asCreatureObject();
-
-				if (player != nullptr) {
-					auto ghost = player->getPlayerObject();
-
-					if (ghost != nullptr && ghost->isOnLoadScreen()) {
-						hasEnteredRange = true;
-					}
-				}
 			}
 
 			if (!objectIsPlayer) {
@@ -337,10 +328,14 @@ int PobShipObjectImplementation::notifyObjectInsertedToChild(SceneObject* object
 						object->notifyInsert(containedObject.get());
 					}
 				}
+
+				if (objectIsPlayer) {
+					onEnter(object->asCreatureObject());
+				}
 			}
 		}
 
-		if (object->isPlayerCreature()) {
+		if (objectIsPlayer) {
 			// Add player to the onboard list
 			addPlayerOnBoard(object->asCreatureObject());
 		}
@@ -353,7 +348,7 @@ int PobShipObjectImplementation::notifyObjectInsertedToChild(SceneObject* object
 		delete _locker;
 	}
 
-	// info(true) << getDisplayedName() << " PobShipObjectImplementation::notifyObjectInsertedToChild -- FINISHED object inserted: " << object->getDisplayedName() << " ID: " << object->getObjectID();
+	info(true) << getDisplayedName() << " PobShipObjectImplementation::notifyObjectInsertedToChild -- FINISHED object inserted: " << object->getDisplayedName() << " ID: " << object->getObjectID();
 
 	return ShipObjectImplementation::notifyObjectInsertedToChild(object, child, oldParent);
 }
@@ -364,6 +359,65 @@ int PobShipObjectImplementation::notifyObjectRemovedFromChild(SceneObject* objec
 	ShipObjectImplementation::notifyObjectRemovedFromChild(object, child);
 
 	return 0;
+}
+
+void PobShipObjectImplementation::onEnter(CreatureObject* player) {
+	if (player == nullptr || !player->isPlayerCreature()) {
+		return;
+	}
+
+	// info(true) << "PobShipObjectImplementation::onEnter -- Ship ID: " << getObjectID() << " Player: " << player->getDisplayedName();
+
+	// Trigger POB ship entry observer
+	notifyObservers(ObserverEventType::ENTEREDPOBSHIP, player, 0);
+
+	// Player has entered the structure. Load objects in the structure for the player
+	Reference<CreatureObject*> playerRef = player;
+
+	for (int i = 0; i < cells.size(); ++i) {
+		auto& cell = cells.get(i);
+
+		if (cell == nullptr) {
+			continue;
+		}
+
+		Core::getTaskManager()->scheduleTask([playerRef, cell] () {
+			if (playerRef == nullptr || cell == nullptr) {
+				return;
+			}
+
+			uint64 playerID = playerRef->getObjectID();
+
+			// cell->info(true) << "Loading Cell ID: " << cell->getObjectID() << " for player " << playerRef->getDisplayedName();
+
+			cell->sendTo(playerRef, true);
+			cell->sendPermissionsTo(playerRef, true);
+
+			for (int j = 0; j < cell->getContainerObjectsSize(); ++j) {
+				auto child = cell->getContainerObject(j);
+
+				if (child == nullptr || child->getObjectID() == playerID) {
+					continue;
+				}
+
+				if (child->getCloseObjects() != nullptr) {
+					child->addInRangeObject(playerRef, false);
+				} else {
+					child->notifyInsert(playerRef);
+				}
+
+				child->sendTo(playerRef, true, child->isValidJtlParent());
+
+				if (playerRef->getCloseObjects() != nullptr) {
+					playerRef->addInRangeObject(child, false);
+				} else {
+					playerRef->notifyInsert(child);
+				}
+
+				playerRef->sendTo(child, true, false);
+			}
+		}, "LoadPobShipLambda", ((i * 500) + 5000));
+	}
 }
 
 void PobShipObjectImplementation::updateZone(bool lightUpdate, bool sendPackets) {
