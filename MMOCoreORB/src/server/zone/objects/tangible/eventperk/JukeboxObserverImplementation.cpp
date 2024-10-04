@@ -6,11 +6,15 @@
 int JukeboxObserverImplementation::notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, int64 arg2) {
 	ManagedReference<Jukebox*> jbox = jukebox.get();
 
-	if (jbox == nullptr)
+	if (jbox == nullptr) {
 		return 1;
+	}
 
-	if (eventType != ObserverEventType::ENTEREDAREA && eventType != ObserverEventType::EXITEDAREA && eventType != ObserverEventType::PARENTCHANGED)
+	jbox->info(true) << " JukeboxObserver - notifyObserverEvent -- #" << eventType << " arg1: " << cast<SceneObject*>(arg1)->getDisplayedName();
+
+	if (eventType != ObserverEventType::ENTEREDAREA && eventType != ObserverEventType::EXITEDAREA && eventType != ObserverEventType::PARENTCHANGED) {
 		return 0;
+	}
 
 	Locker jlocker(jbox);
 
@@ -24,18 +28,21 @@ int JukeboxObserverImplementation::notifyObserverEvent(unsigned int eventType, O
 		}
 
 	} else {
-		if (arg1 == nullptr)
+		if (arg1 == nullptr) {
 			return 0;
+		}
 
 		SceneObject* sceno = cast<SceneObject*>(arg1);
 
-		if (sceno == nullptr || !sceno->isPlayerCreature())
+		if (sceno == nullptr || !sceno->isPlayerCreature()) {
 			return 0;
+		}
 
 		ManagedReference<CreatureObject*> player = cast<CreatureObject*>(sceno);
 
-		if (player == nullptr)
+		if (player == nullptr) {
 			return 0;
+		}
 
 		if (eventType == ObserverEventType::ENTEREDAREA && jbox->isSongPlaying()) {
 			jbox->playMusicToPlayer(player, jbox->getCurSong());

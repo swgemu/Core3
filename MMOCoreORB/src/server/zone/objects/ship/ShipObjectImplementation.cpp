@@ -492,6 +492,20 @@ void ShipObjectImplementation::notifyObjectInsertedToZone(SceneObject* object) {
 	}
 }
 
+int ShipObjectImplementation::notifyObjectInserted(SceneObject* object) {
+	info(true) << "Ship: " << getDisplayedName() << " -- ShipObjectImplementation::notifyObjectInserted called";
+
+	if (object == nullptr) {
+		return 1;
+	}
+
+	info(true) << "Ship: " << getDisplayedName() << " -- notifying for object: " << object->getDisplayedName();
+
+	notifyObjectInsertedToZone(object);
+
+	return TangibleObjectImplementation::notifyObjectInserted(object);
+}
+
 void ShipObjectImplementation::notifyInsert(TreeEntry* object) {
 	auto sceneO = static_cast<SceneObject*>(object);
 	uint64 scnoID = sceneO->getObjectID();

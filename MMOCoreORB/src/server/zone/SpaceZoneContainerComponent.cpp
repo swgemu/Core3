@@ -17,7 +17,7 @@ bool SpaceZoneContainerComponent::insertActiveArea(Zone* newZone, ActiveArea* ac
 		return false;
 	}
 
-	// newZone->info(true) << "SpaceZoneContainerComponent::insertActiveArea -- ActiveArea: " << activeArea->getAreaName();
+	newZone->info(true) << "SpaceZoneContainerComponent::insertActiveArea -- ActiveArea: " << activeArea->getAreaName();
 
 	if (!activeArea->isDeployed()) {
 		activeArea->deploy();
@@ -43,9 +43,11 @@ bool SpaceZoneContainerComponent::insertActiveArea(Zone* newZone, ActiveArea* ac
 
 	// lets update area to the in range players
 	SortedVector<TreeEntry*> objects;
-	float range = activeArea->getRadius() + 500;
+	float range = activeArea->getRadius() + 1024;
 
 	newZone->getInRangeObjects(activeArea->getPositionX(), activeArea->getPositionZ(), activeArea->getPositionY(), range, &objects, false);
+
+	newZone->info(true) << "SpaceZoneContainerComponent::insertActiveArea -- total in range objects: " << objects.size();
 
 	for (int i = 0; i < objects.size(); ++i) {
 		SceneObject* object = static_cast<SceneObject*>(objects.get(i));
@@ -61,16 +63,20 @@ bool SpaceZoneContainerComponent::insertActiveArea(Zone* newZone, ActiveArea* ac
 
 		Vector3 worldPos = tano->getWorldPosition();
 
+		newZone->info(true) << "Checking for object #" << i << " - " << tano->getDisplayedName() << " with a position " << worldPos.toString();
+
 		if (!activeArea->containsPoint(worldPos.getX(), worldPos.getZ(), worldPos.getY()))
 			continue;
 
 		if (!tano->hasActiveArea(activeArea)) {
+			newZone->info(true) << "Checking for object #" << i << " - " << tano->getDisplayedName() << " adding area";
+
 			tano->addActiveArea(activeArea);
 			activeArea->enqueueEnterEvent(object);
 		}
 	}
 
-	// info(true) << newZone->getZoneName() << " -- Inserted Active area: " << activeArea->getAreaName() << " Location: " << activeArea->getAreaCenter().toString();
+	info(true) << newZone->getZoneName() << " -- Inserted Active area: " << activeArea->getAreaName() << " Location: " << activeArea->getAreaCenter().toString();
 
 	newZone->addSceneObject(activeArea);
 
@@ -208,7 +214,7 @@ bool SpaceZoneContainerComponent::transferObject(SceneObject* sceneObject, Scene
 
 	TangibleObject* tanoObject = object->asTangibleObject();
 
-	if (tanoObject != nullptr && tanoObject->isShipObject()) {
+	if (tanoObject != nullptr) { // && tanoObject->isShipObject()) {
 		newSpaceZone->updateActiveAreas(tanoObject);
 	}
 

@@ -1456,23 +1456,28 @@ void SceneObjectImplementation::createChildObjects() {
 	for (int i = 0; i < templateObject->getChildObjectsSize(); ++i) {
 		const auto child = templateObject->getChildObject(i);
 
-		if (child == nullptr)
+		if (child == nullptr) {
 			continue;
+		}
 
 		ManagedReference<SceneObject*> obj = nullptr;
 
-		if (client)
+		if (client) {
 			obj = zoneServer->createObject(child->getTemplateFile().hashCode(), "clientobjects", getPersistenceLevel());
-		else
+		} else {
 			obj = zoneServer->createObject(child->getTemplateFile().hashCode(), getPersistenceLevel());
+		}
 
-		if (obj == nullptr)
+		if (obj == nullptr) {
 			continue;
+		}
 
 		Locker objLocker(obj, asSceneObject());
 
 		Vector3 childPosition = child->getPosition();
+
 		childObjects.put(obj);
+
 		obj->initializePosition(childPosition.getX(), childPosition.getZ(), childPosition.getY());
 		obj->setDirection(child->getDirection());
 
@@ -1538,6 +1543,8 @@ void SceneObjectImplementation::createChildObjects() {
 				obj->destroyObjectFromDatabase(true);
 				continue;
 			}
+
+			info(true) << getDisplayedName() << " just inserted new child object at X: " << x << " Z: " << z << " Y: " << y;
 		}
 
 		//childObjects.put(obj);
