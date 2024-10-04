@@ -173,12 +173,9 @@ void SpaceZoneImplementation::inRange(TreeEntry* entry, float range) {
 }
 
 void SpaceZoneImplementation::updateActiveAreas(TangibleObject* tano) {
-	if (tano == nullptr || !tano->isShipObject())
+	if (tano == nullptr) {
 		return;
-
-#ifdef DEBUG_SPACE_AA
-	info(true) << "\n---------- SpaceZoneImplementation::updateActiveAreas called: " << tano->getDisplayedName() << " ----------";
-#endif
+	}
 
 	Locker _alocker(tano->getContainerLock());
 
@@ -187,6 +184,10 @@ void SpaceZoneImplementation::updateActiveAreas(TangibleObject* tano) {
 	_alocker.release();
 
 	Vector3 worldPos = tano->getWorldPosition();
+
+#ifdef DEBUG_SPACE_AA
+	info(true) << "\n---------- SpaceZoneImplementation::updateActiveAreas called: " << tano->getDisplayedName() << " WorldPosition: " << worldPos.toString() << " ----------";
+#endif
 
 	SortedVector<ActiveArea*> entryObjects;
 
