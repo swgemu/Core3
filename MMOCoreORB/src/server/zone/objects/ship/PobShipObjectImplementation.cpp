@@ -275,24 +275,26 @@ int PobShipObjectImplementation::notifyObjectInsertedToChild(SceneObject* object
 			object->addInRangeObject(object, false);
 		}
 
-		if (child->isCellObject() || child->isValidJtlParent()) {
+		if (child->isValidJtlParent()) {
 			bool hasEnteredRange = false;
 			bool oldRootIsPob = false;
 
 			if (oldParent != nullptr) {
 				auto oldParentRoot = oldParent->getRootParent();
 
-				if (oldParentRoot == _this.getReferenceUnsafeStaticCast()) {
+				if (oldParentRoot == asPobShip()) {
 					oldRootIsPob = true;
 				}
 			}
 
 			bool objectIsPlayer = object->isPlayerCreature();
 
-			if (oldParent == nullptr || !oldRootIsPob) {
+			if (oldParent == nullptr || !oldRootIsPob || (oldParent != nullptr && dynamic_cast<Zone*>(oldParent) == nullptr)) { // && !oldParent->isCellObject())) {
 				notifyObjectInsertedToZone(object);
 				hasEnteredRange = true;
-			} else if (!hasEnteredRange && objectIsPlayer) {
+			}
+
+			if (objectIsPlayer) {
 				auto player = object->asCreatureObject();
 
 				if (player != nullptr) {
@@ -351,11 +353,9 @@ int PobShipObjectImplementation::notifyObjectInsertedToChild(SceneObject* object
 		delete _locker;
 	}
 
-	ShipObjectImplementation::notifyObjectInsertedToChild(object, child, oldParent);
-
 	// info(true) << getDisplayedName() << " PobShipObjectImplementation::notifyObjectInsertedToChild -- FINISHED object inserted: " << object->getDisplayedName() << " ID: " << object->getObjectID();
 
-	return 0;
+	return ShipObjectImplementation::notifyObjectInsertedToChild(object, child, oldParent);
 }
 
 int PobShipObjectImplementation::notifyObjectRemovedFromChild(SceneObject* object, SceneObject* child) {

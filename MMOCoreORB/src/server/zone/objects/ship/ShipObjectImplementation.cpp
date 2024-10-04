@@ -448,48 +448,80 @@ void ShipObjectImplementation::notifyObjectInsertedToZone(SceneObject* object) {
 	// info(true) << getDisplayedName() << " ShipObjectImplementation --- notifyObjectInsertedToZone - Object " << object->getDisplayedName();
 
 	auto closeObjectsVector = getCloseObjects();
-	SortedVector<TreeEntry*> closeObjects(200, 50);
+	Vector<TreeEntry*> closeObjects(closeObjectsVector->size(), 10);
 
 	if (closeObjectsVector != nullptr) {
 		closeObjectsVector->safeCopyTo(closeObjects);
-	} else {
-		auto zone = getZone();
-
-		if (zone != nullptr)
-			zone->getInRangeObjects(getWorldPositionX(), getWorldPositionZ(), getWorldPositionY(), zone->getZoneObjectRange(), &closeObjects, false);
 	}
+
+	// info(true) << getDisplayedName() << " notifyObjectInsertedToZone -- Total closeObjects: " << closeObjects.size();
 
 	for (int i = 0; i < closeObjects.size(); ++i) {
 		SceneObject* obj = static_cast<SceneObject*>(closeObjects.get(i));
 
-		if (obj == nullptr || !obj->isCreatureObject())
+		if (obj == nullptr || (!obj->isCreatureObject() && !obj->isShipObject())) {
 			continue;
+		}
 
-		if (obj->getRootParent() != _this.getReferenceUnsafe()) {
-			if (object->getCloseObjects() != nullptr)
-				object->addInRangeObject(obj, false);
-			else
+		if (obj->getRootParent() != asShipObject()) {
+			// info(true) << getDisplayedName() << "notifyObjectInsertedToZone -- adding in range object: " << obj->getDisplayedName();
+
+			if (object->getCloseObjects() != nullptr) {
+				object->addInRangeObject(obj, obj->isShipObject());
+			} else {
 				object->notifyInsert(obj);
+			}
 
-			if (obj->getCloseObjects() != nullptr)
+			if (obj->getCloseObjects() != nullptr) {
 				obj->addInRangeObject(object, false);
-			else
+			} else {
 				obj->notifyInsert(object);
+			}
 		}
 	}
 
 	notifyInsert(object);
 
-	if (object->getCloseObjects() != nullptr)
+	if (object->getCloseObjects() != nullptr) {
 		object->addInRangeObject(asShipObject(), false);
+	}
 
 	addInRangeObject(object, false);
 
 	Zone* zone = getZone();
 
 	if (zone != nullptr) {
+		auto tanO = object->asTangibleObject();
+
+		if (tanO != nullptr) {
+			zone->updateActiveAreas(tanO);
+		}
+
 		object->notifyInsertToZone(zone);
 	}
+}
+
+int ShipObjectImplementation::notifyObjectInserted(SceneObject* object) {
+	// info(true) << "Ship: " << getDisplayedName() << " -- ShipObjectImplementation::notifyObjectInserted called";
+
+	if (object == nullptr) {
+		return 0;
+	}
+
+	// info(true) << "Ship: " << getDisplayedName() << " -- notifying for object: " << object->getDisplayedName();
+
+	Reference<SceneObject*> sceneRef = object;
+	Reference<ShipObject*> shipRef = asShipObject();
+
+	Core::getTaskManager()->scheduleTask([shipRef, sceneRef] () {
+		if (shipRef == nullptr || sceneRef == nullptr) {
+			return;
+		}
+
+		shipRef->notifyObjectInsertedToZone(sceneRef);
+	}, "ShipNotifyInsertedLambda", 500);
+
+	return TangibleObjectImplementation::notifyObjectInserted(object);
 }
 
 void ShipObjectImplementation::notifyInsert(TreeEntry* object) {

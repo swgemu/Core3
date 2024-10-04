@@ -1960,7 +1960,7 @@ class SceneObject extends TreeEntry implements Logger, Metrics {
 
 	@dirty
 	public boolean isValidJtlParent() {
-		return (isPilotChair() || isOperationsChair() || isShipTurret() || (isShipObject() && !isPobShip()));
+		return (isPilotChair() || isOperationsChair() || isShipTurret() || isCellObject() || (isShipObject() && !isPobShip()));
 	}
 
 	@read
