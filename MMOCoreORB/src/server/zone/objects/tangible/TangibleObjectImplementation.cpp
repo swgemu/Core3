@@ -313,7 +313,7 @@ void TangibleObjectImplementation::sendPvpStatusTo(CreatureObject* player) {
 	auto thisFaction = getFaction();
 	auto playerFaction = player->getFaction();
 
-	if (((isAiAgent() && !isPet() && (thisFactionStatus >= FactionStatus::COVERT)) || isShipAiAgent()) && (thisFaction > 0) && (playerFaction > 0) && (thisFaction != playerFaction)) {
+	if (((isAiAgent() && !isPet() && (thisFactionStatus >= FactionStatus::COVERT)) || isShipAiAgent() || (isShipObject() && !isShipAiAgent())) && (thisFaction > 0) && (playerFaction > 0) && (thisFaction != playerFaction)) {
 		if (ConfigManager::instance()->useCovertOvertSystem()) {
 			PlayerObject* ghost = player->getPlayerObject();
 

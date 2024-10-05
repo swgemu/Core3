@@ -1356,13 +1356,12 @@ void ShipObjectImplementation::sendPvpStatusTo(CreatureObject* player) {
 	// uint32 pvpStatus = pvpStatusBitmask;
 
 	TangibleObjectImplementation::sendPvpStatusTo(player);
-
-	// info(true) << "ShipObjectImplementation::sendPvpStatusTo - " << player->getDisplayedName() << " New Pvp Status: " << pvpStatus << " Old Pvp Status: " << pvpStatusBitmask;
 }
 
 bool ShipObjectImplementation::isAggressiveTo(TangibleObject* object) {
-	if (object == nullptr)
+	if (object == nullptr) {
 		return false;
+	}
 
 	if (!isShipLaunched())
 		return false;
@@ -1377,8 +1376,9 @@ bool ShipObjectImplementation::isAggressiveTo(TangibleObject* object) {
 				auto attackerOwner = objectShip->getOwner().get();
 
 				// Owner of the other player ship for pvp checks
-				if (attackerOwner != nullptr)
-					return thisOwner->isAttackableBy(attackerOwner);
+				if (attackerOwner != nullptr) {
+					return thisOwner->isAggressiveTo(attackerOwner);
+				}
 			}
 		} else {
 			thisOwner->isAggressiveTo(object);
@@ -1390,14 +1390,21 @@ bool ShipObjectImplementation::isAggressiveTo(TangibleObject* object) {
 
 // This will be called for non AI Ships. ShipAgents use their abstracted function in ShipAiAgent
 bool ShipObjectImplementation::isAttackableBy(TangibleObject* attackerTano) {
-	if (!isShipLaunched())
+	if (attackerTano == nullptr) {
 		return false;
+	}
+
+	if (!isShipLaunched()) {
+		return false;
+	}
 
 	auto optionsBit = getOptionsBitmask();
 
 	if ((optionsBit & OptionBitmask::DESTROYING) || (optionsBit & OptionBitmask::INVULNERABLE)) {
 		return false;
 	}
+
+	// info(true) << getDisplayedName() << " ShipObjectImplementation::isAttackableBy -- " << attackerTano->getDisplayedName();
 
 	auto thisOwner = getOwner().get();
 
@@ -1410,14 +1417,21 @@ bool ShipObjectImplementation::isAttackableBy(TangibleObject* attackerTano) {
 				auto attackerOwner = attackerShip->getOwner().get();
 
 				// Owner of the other player ship for pvp checks
-				if (attackerOwner != nullptr)
+				if (attackerOwner != nullptr) {
+					// info(true) << getDisplayedName() << "Using ship owners -- thisOwner: " << thisOwner->getDisplayedName() << " attackerOwner: " << attackerOwner->getDisplayedName();
+
 					return thisOwner->isAttackableBy(attackerOwner);
+				}
 			}
 		} else {
+			// info(true) << getDisplayedName() << "Using thisOwner: " << thisOwner->getDisplayedName() << " against tangible object: " << attackerTano->getDisplayedName();
+
 			// Attacking object is a TanO, likely another ship. Pass to CreO isAttackableBy TanO check
 			thisOwner->isAttackableBy(attackerTano);
 		}
 	} else if (attackerTano->isCreatureObject()) {
+		// info(true) << getDisplayedName() << " isAttackableBy creature: " << attackerTano->getDisplayedName();
+
 		return isAttackableBy(attackerTano->asCreatureObject());
 	}
 

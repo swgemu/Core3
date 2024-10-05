@@ -3411,6 +3411,8 @@ bool CreatureObjectImplementation::isAttackableBy(CreatureObject* creature, bool
 		if (ghost->isOnLoadScreen())
 			return false;
 
+		// info(true) << getDisplayedName() << " passed basic checks, entering faction checks";
+
 		// Get factions
 		uint32 thisFaction = getFaction();
 		uint32 creatureFaction = creature->getFaction();
@@ -3468,37 +3470,47 @@ bool CreatureObjectImplementation::isAttackableBy(CreatureObject* creature, bool
 		// PvP Attackable checks - both this creo and attacker are players
 		if (creature->isPlayerCreature()) {
 			// PvP Mode Config active, all players are attackable to one another
-			if (ConfigManager::instance()->getPvpMode())
+			if (ConfigManager::instance()->getPvpMode()) {
 				return true;
+			}
 
 			PlayerObject* targetGhost = creature->getPlayerObject();
 
-			if (targetGhost == nullptr)
+			if (targetGhost == nullptr) {
 				return false;
+			}
 
-			if (hasPersonalEnemyFlag(creature) && creature->hasPersonalEnemyFlag(asCreatureObject()))
+			// info(true) << creature->getDisplayedName() << " passed basic checks against " << getDisplayedName();
+
+			if (hasPersonalEnemyFlag(creature) && creature->hasPersonalEnemyFlag(asCreatureObject())) {
 				return true;
+			}
 
 			// Duel check & Bounty TEF return true even when players are grouped
 			bool areInDuel = (ghost->requestedDuelTo(creature) && targetGhost->requestedDuelTo(asCreatureObject()));
 
-			if (areInDuel)
+			if (areInDuel) {
 				return true;
+			}
 
-			if (creature->hasBountyMissionFor(asCreatureObject()) || (ghost->hasBhTef() && hasBountyMissionFor(creature)))
+			if (creature->hasBountyMissionFor(asCreatureObject()) || (ghost->hasBhTef() && hasBountyMissionFor(creature))) {
 				return true;
+			}
 
 			// Group prevents players being attackable to one another from Overt status
-			if (getGroupID() != 0 && getGroupID() == creature->getGroupID())
+			if (getGroupID() != 0 && getGroupID() == creature->getGroupID()) {
 				return false;
+			}
 
-			if (ghost->isInPvpArea(true) && targetGhost->isInPvpArea(true))
+			if (ghost->isInPvpArea(true) && targetGhost->isInPvpArea(true)) {
 				return true;
+			}
 
 			ManagedReference<GuildObject*> guildObject = guild.get();
 
-			if (guildObject != nullptr && guildObject->isInWaringGuild(creature))
+			if (guildObject != nullptr && guildObject->isInWaringGuild(creature)) {
 				return true;
+			}
 
 			// PvP Faction Checks - Superseded by TEF, duel, group and guild war checks
 			if (thisFaction == creatureFaction)
