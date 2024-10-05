@@ -204,7 +204,7 @@ public:
 				auto task = new SpaceCommTimerTask(player, npc->getObjectID());
 
 				if (task != nullptr) {
-					player->addPendingTask("SpaceCommTimer", task, 4000);
+					player->addPendingTask("SpaceCommTimer", task, 3000);
 					screenToSave = nullptr;
 				}
 			} else {

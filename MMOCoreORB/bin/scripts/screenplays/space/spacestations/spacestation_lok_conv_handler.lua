@@ -50,7 +50,7 @@ function SpacestationLokConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, p
 
 	-- Handle Landing
 	if (screenID == "spacestation_lok_land_nym_complete") then
-		createEvent(1000, "SpaceStationScreenPlay", "landShip", pPlayer, "nym")
+		createEvent(3500, "SpaceStationScreenPlay", "landShip", pPlayer, "nym")
 	end
 
 	-- Handle Repair Options

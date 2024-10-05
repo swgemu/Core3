@@ -49,13 +49,13 @@ function SpacestationNabooConvoHandler:runScreenHandlers(pConvTemplate, pPlayer,
 	end
 
 	if (screenID == "spacestation_naboo_land_theed_complete") then
-		createEvent(1000, "SpaceStationScreenPlay", "landShip", pPlayer, "theed")
+		createEvent(3500, "SpaceStationScreenPlay", "landShip", pPlayer, "theed")
 	elseif (screenID == "spacestation_naboo_land_kaadara_complete") then
-		createEvent(1000, "SpaceStationScreenPlay", "landShip", pPlayer, "kaadara")
+		createEvent(3500, "SpaceStationScreenPlay", "landShip", pPlayer, "kaadara")
 	elseif (screenID == "spacestation_naboo_land_keren_complete") then
-		createEvent(1000, "SpaceStationScreenPlay", "landShip", pPlayer, "keren")
+		createEvent(3500, "SpaceStationScreenPlay", "landShip", pPlayer, "keren")
 	elseif (screenID == "spacestation_naboo_land_moenia_complete") then
-		createEvent(1000, "SpaceStationScreenPlay", "landShip", pPlayer, "moenia")
+		createEvent(3500, "SpaceStationScreenPlay", "landShip", pPlayer, "moenia")
 	end
 
 	-- Handle Repair Options

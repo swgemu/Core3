@@ -49,13 +49,13 @@ function SpacestationTatooineConvoHandler:runScreenHandlers(pConvTemplate, pPlay
 
 	-- Handle Landing
 	if (screenID == "spacestation_tatooine_land_bestine_complete") then
-		createEvent(1000, "SpaceStationScreenPlay", "landShip", pPlayer, "bestine")
+		createEvent(3500, "SpaceStationScreenPlay", "landShip", pPlayer, "bestine")
 	elseif (screenID == "spacestation_tatooine_land_eisley_complete") then
-		createEvent(1000, "SpaceStationScreenPlay", "landShip", pPlayer, "eisley")
+		createEvent(3500, "SpaceStationScreenPlay", "landShip", pPlayer, "eisley")
 	elseif (screenID == "spacestation_tatooine_land_espa_complete") then
-		createEvent(1000, "SpaceStationScreenPlay", "landShip", pPlayer, "espa")
+		createEvent(3500, "SpaceStationScreenPlay", "landShip", pPlayer, "espa")
 	elseif (screenID == "spacestation_tatooine_land_entha_complete") then
-		createEvent(1000, "SpaceStationScreenPlay", "landShip", pPlayer, "entha")
+		createEvent(3500, "SpaceStationScreenPlay", "landShip", pPlayer, "entha")
 	end
 
 	-- Handle Repair Options

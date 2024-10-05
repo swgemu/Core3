@@ -50,9 +50,9 @@ function SpacestationEndorConvoHandler:runScreenHandlers(pConvTemplate, pPlayer,
 
 	-- Handle Landing
 	if (screenID == "spacestation_endor_land_research_proper" or screenID == "spacestation_endor_land_research") then
-		createEvent(1000, "SpaceStationScreenPlay", "landShip", pPlayer, "research")
+		createEvent(3500, "SpaceStationScreenPlay", "landShip", pPlayer, "research")
 	elseif (screenID == "spacestation_endor_land_smuggler") then
-		createEvent(1000, "SpaceStationScreenPlay", "landShip", pPlayer, "smuggler")
+		createEvent(3500, "SpaceStationScreenPlay", "landShip", pPlayer, "smuggler")
 	end
 
 	-- Handle Repair Options

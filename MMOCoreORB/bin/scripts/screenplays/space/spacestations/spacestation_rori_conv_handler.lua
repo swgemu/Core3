@@ -48,9 +48,9 @@ function SpacestationRoriConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, 
 	end
 
 	if (screenID == "spacestation_rori_land_narmle_complete") then
-		createEvent(1000, "SpaceStationScreenPlay", "landShip", pPlayer, "narmle")
+		createEvent(3500, "SpaceStationScreenPlay", "landShip", pPlayer, "narmle")
 	elseif (screenID == "spacestation_rori_land_restuss_complete") then
-		createEvent(1000, "SpaceStationScreenPlay", "landShip", pPlayer, "restuss")
+		createEvent(3500, "SpaceStationScreenPlay", "landShip", pPlayer, "restuss")
 	end
 
 	-- Handle Repair Options

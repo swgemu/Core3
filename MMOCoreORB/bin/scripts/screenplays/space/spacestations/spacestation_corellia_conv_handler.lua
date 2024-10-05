@@ -49,13 +49,13 @@ function SpacestationCorelliaConvoHandler:runScreenHandlers(pConvTemplate, pPlay
 
 	-- Handle Landing
 	if (screenID == "spacestation_corellia_land_coronet_complete") then
-		createEvent(1000, "SpaceStationScreenPlay", "landShip", pPlayer, "coronet")
+		createEvent(3500, "SpaceStationScreenPlay", "landShip", pPlayer, "coronet")
 	elseif (screenID == "spacestation_corellia_land_kor_vella_complete") then
-		createEvent(1000, "SpaceStationScreenPlay", "landShip", pPlayer, "kor_vella")
+		createEvent(3500, "SpaceStationScreenPlay", "landShip", pPlayer, "kor_vella")
 	elseif (screenID == "spacestation_corellia_land_doaba_guerfel_complete") then
-		createEvent(1000, "SpaceStationScreenPlay", "landShip", pPlayer, "doaba_guerfel")
+		createEvent(3500, "SpaceStationScreenPlay", "landShip", pPlayer, "doaba_guerfel")
 	elseif (screenID == "spacestation_corellia_land_tyrena_complete") then
-		createEvent(1000, "SpaceStationScreenPlay", "landShip", pPlayer, "tyrena")
+		createEvent(3500, "SpaceStationScreenPlay", "landShip", pPlayer, "tyrena")
 	end
 
 	-- Handle Repair Options

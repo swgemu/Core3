@@ -50,9 +50,9 @@ function SpacestationDathomirConvoHandler:runScreenHandlers(pConvTemplate, pPlay
 
 	-- Handle Landing
 	if (screenID == "spacestation_dathomir_land_trade_complete") then
-		createEvent(1000, "SpaceStationScreenPlay", "landShip", pPlayer, "trade")
+		createEvent(3500, "SpaceStationScreenPlay", "landShip", pPlayer, "trade")
 	elseif (screenID == "spacestation_dathomir_land_science_complete") then
-		createEvent(1000, "SpaceStationScreenPlay", "landShip", pPlayer, "science")
+		createEvent(3500, "SpaceStationScreenPlay", "landShip", pPlayer, "science")
 	end
 
 	-- Handle Repair Options

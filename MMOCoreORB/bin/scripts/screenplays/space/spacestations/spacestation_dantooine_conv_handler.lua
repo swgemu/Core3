@@ -49,13 +49,13 @@ function SpacestationDantooineConvoHandler:runScreenHandlers(pConvTemplate, pPla
 	end
 
 	if (screenID == "spacestation_dantooine_land_mining_complete") then
-		createEvent(1000, "SpaceStationScreenPlay", "landShip", pPlayer, "dantooine_mining")
+		createEvent(3500, "SpaceStationScreenPlay", "landShip", pPlayer, "dantooine_mining")
 	elseif (screenID == "spacestation_dantooine_land_agro_complete") then
-		createEvent(1000, "SpaceStationScreenPlay", "landShip", pPlayer, "agro")
+		createEvent(3500, "SpaceStationScreenPlay", "landShip", pPlayer, "agro")
 	elseif (screenID == "spacestation_dantooine_land_imperial_complete") then
-		createEvent(1000, "SpaceStationScreenPlay", "landShip", pPlayer, "dantooine_imperial")
+		createEvent(3500, "SpaceStationScreenPlay", "landShip", pPlayer, "dantooine_imperial")
 	elseif (screenID == "spacestation_dantooine_land_rebel_complete") then
-		createEvent(1000, "SpaceStationScreenPlay", "landShip", pPlayer, "abandoned_rebel")
+		createEvent(3500, "SpaceStationScreenPlay", "landShip", pPlayer, "abandoned_rebel")
 	end
 
 	-- Handle Repair Options

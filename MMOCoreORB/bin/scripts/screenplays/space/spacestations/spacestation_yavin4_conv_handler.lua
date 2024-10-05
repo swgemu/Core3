@@ -49,11 +49,11 @@ function SpacestationYavin4ConvoHandler:runScreenHandlers(pConvTemplate, pPlayer
 
 	-- Handle Landing
 	if (screenID == "spacestation_yavin4_land_mining_land") then
-		createEvent(1000, "SpaceStationScreenPlay", "landShip", pPlayer, "yavin4_mining")
+		createEvent(3500, "SpaceStationScreenPlay", "landShip", pPlayer, "yavin4_mining")
 	elseif (screenID == "spacestation_yavin4_land_labor_land") then
-		createEvent(1000, "SpaceStationScreenPlay", "landShip", pPlayer, "labor")
+		createEvent(3500, "SpaceStationScreenPlay", "landShip", pPlayer, "labor")
 	elseif (screenID == "spacestation_yavin4_land_imperial_land") then
-		createEvent(1000, "SpaceStationScreenPlay", "landShip", pPlayer, "yavin4_imperial")
+		createEvent(3500, "SpaceStationScreenPlay", "landShip", pPlayer, "yavin4_imperial")
 	end
 
 	-- Handle Repair Options
