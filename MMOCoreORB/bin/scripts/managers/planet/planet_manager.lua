@@ -74,10 +74,10 @@ corellia = {
 	},
 
 	jtlTravelPoints = {
-		{"Coronet Starport", -66, 28, -4705},
-		{"Doaba Guerfel Starport", 3349, 308, 5598},
-		{"Kor Vella Starport", -3155, 31, 2880},
-		{"Tyrena Starport", -5001, 21, -2228}
+		{"Coronet Starport", -66.760902, 28, -4641.23},
+		{"Doaba Guerfel Starport", 3349.8933, 308, 5598.1362},
+		{"Kor Vella Starport", -3157.2834, 31, 2876.2029},
+		{"Tyrena Starport", -5003.0649, 21, -2228.3665}
 	},
 
 	jtlLaunchPoint = {"space_corellia", 6520, -5400, -2600},
@@ -115,14 +115,13 @@ dantooine = {
 		{name = "Dantooine Mining Outpost", x = -637.0, z = 3, y = 2504.4, interplanetaryTravelAllowed = 1, incomingTravelAllowed = 1, landingRange = 3},
 		{name = "Dantooine Imperial Outpost", x = -4208.6602, z = 3, y = -2350.24, interplanetaryTravelAllowed = 1, incomingTravelAllowed = 1, landingRange = 3},
 		{name = "Dantooine Agro Outpost", x = 1569.66, z = 4, y = -6415.7598, interplanetaryTravelAllowed = 1, incomingTravelAllowed = 1, landingRange = 3},
-		{name = "Dantooine Agro Outpost", x = 1569.66, z = 4, y = -6415.7598, interplanetaryTravelAllowed = 1, incomingTravelAllowed = 1, landingRange = 3},
 		{name = "Abandoned Rebel Base", x = -6799.6, z = 46.0, y = 5574.3, interplanetaryTravelAllowed = 0, incomingTravelAllowed = 0, landingRange = 3}
 	},
 
 	jtlTravelPoints = {
-		{"Dantooine Mining Outpost", -640, 3, 2505},
-		{"Dantooine Imperial Outpost", -4205, 3, -2350},
-		{"Dantooine Agro Outpost", 1575, 4, -6420},
+		{"Dantooine Mining Outpost", -637.0, 3, 2504.4},
+		{"Dantooine Imperial Outpost", -4208.6602, 3, -2350.24},
+		{"Dantooine Agro Outpost", 1569.66, 4, -6415.7598},
 		{"Abandoned Rebel Base", -6799.6, 46.0, 5574.3}
 	},
 
@@ -162,8 +161,8 @@ dathomir = {
 	},
 
 	jtlTravelPoints = {
-		{"Trade Outpost", 620, 7, 3090},
-		{"Science Outpost", -50, 18, -1580}
+		{"Trade Outpost", 618.89258, 6.039608, 3092.0142},
+		{"Science Outpost", -49.021923, 18, -1584.7278}
 	},
 
 	jtlLaunchPoint = {"space_dathomir", -6900, 2750, -4000},
@@ -229,8 +228,8 @@ endor = {
 	},
 
 	jtlTravelPoints = {
-		{"Research Outpost", 3200, 24, -3470},
-		{"Smuggler Outpost", -950, 73, 1550}
+		{"Research Outpost", 3201.6599, 24, -3499.76},
+		{"Smuggler Outpost", -950.59241, 73, 1553.4125}
 	},
 
 	jtlLaunchPoint = {"space_endor", -5300, -1500, 5250},
@@ -273,7 +272,7 @@ lok = {
 	},
 
 	jtlTravelPoints = {
-		{"Nym's Stronghold", 480, 9, 5510}
+		{"Nym's Stronghold", 478.92676, 9, 5511.9565}
 	},
 
 	jtlLaunchPoint = {"space_lok", -6200, -5350, 113},
@@ -327,10 +326,10 @@ naboo = {
 	},
 
 	jtlTravelPoints = {
-		{"Theed Spaceport", -4860, 6, 4165},
-		{"Keren Starport", 1370, 13, 2750},
-		{"Kaadara Starport", 5280, -192, 6688},
-		{"Moenia", 4730, 5, -4678},
+		{"Theed Spaceport", -4858.834, 5.9483199, 4164.0679},
+		{"Keren Starport", 1371.5938, 13, 2747.9043},
+		{"Kaadara Starport", 5280.2002, -192, 6688.0498},
+		{"Moenia", 4731.1743, 4.1700001, -4677.5439},
 		{"Emperor's Retreat", 2442.8, 292.0, -3916.8}
 	},
 
@@ -388,9 +387,9 @@ rori = {
 	},
 
 	jtlTravelPoints = {
-		{"Narmle Starport", -5374, 80, -2189},
+		{"Narmle Starport", -5374.0718, 80, -2188.6143},
 		{"Restuss Starport", 5340, 80, 5734},
-		{"Rebel Outpost", 3692, 96, -6403}
+		{"Rebel Outpost", 3691.9023, 96, -6403.4404}
 	},
 
 	jtlLaunchPoint = {"space_naboo", 6300, -4400, 500},
@@ -472,9 +471,9 @@ talus = {
 	},
 
 	jtlTravelPoints = {
-		{"Dearic Starport", 265, 6, -2950},
-		{"Nashal Starport", 4450, 2, 5455},
-		{"Talus Imperial Outpost", -2215, 20, 2305}
+		{"Dearic Starport", 263.58401, 6, -2952.1284},
+		{"Nashal Starport", 4453.7212, 2, 5354.3345},
+		{"Talus Imperial Outpost", -2227.4, 20, 2319.9}
 	},
 
 	jtlLaunchPoint = {"space_corellia", -6400, -5300, -4000},
@@ -568,10 +567,10 @@ tatooine = {
 	},
 
 	jtlTravelPoints = {
-		{"Mos Eisley Starport",3600,5,-4785},
-		{"Bestine Starport",-1360,12,-3600},
-		{"Mos Espa Starport",-2835,5,2105},
-		{"Mos Entha Starport",1265,7,3065},
+		{"Mos Eisley Starport", 3416.6914, 5, -4648.1411},
+		{"Bestine Starport", -1361.1917, 12, -3600.0254},
+		{"Mos Espa Starport", -2833.1609, 5, 2107.3787},
+		{"Mos Entha Starport", 1266.0996, 7, 3065.1392},
 		{"Jabba's Palace", -6171.6, 90.0, -6381.5}
 	},
 
@@ -633,8 +632,9 @@ yavin4 = {
 	},
 
 	jtlTravelPoints = {
-		{"Yavin IV Labor Outpost", -6920, 73, -5730},
-		{"Yavin IV Mining Outpost", -265, 35, 4900}
+		{"Yavin IV Labor Outpost", -6921.6733, 73, -5726.5161},
+		{"Yavin IV Mining Outpost", -267.23914, 35, 4896.3013},
+		{"Yavin IV Imperial Outpost", 4054.1, 37, -6216.9}
 	},
 
 	jtlLaunchPoint = {"space_yavin4", -5600, -5200, -5200},
