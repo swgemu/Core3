@@ -106,7 +106,6 @@ public:
 			int totalPlayers = shipObject->getTotalPlayersOnBoard();
 			auto zoneServer = shipObject->getZoneServer();
 
-
 			for (int i = 0; i < totalPlayers; i++) {
 				auto shipMember = shipObject->getPlayerOnBoard(i);
 
@@ -128,7 +127,6 @@ public:
 						auto parentObject = zoneServer->getObject(parentID);
 
 						if (parentObject != nullptr) {
-
 							direction = parentObject->getDirection();
 						}
 					} else {

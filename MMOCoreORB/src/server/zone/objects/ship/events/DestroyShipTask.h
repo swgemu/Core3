@@ -68,7 +68,6 @@ public:
 
 				return;
 			}
-
 			case 1: {
 				ship->clearOptionBit(OptionBitmask::DESTROYING, true);
 
@@ -78,12 +77,12 @@ public:
 					return;
 				}
 
-				if (pilot != nullptr) {
-					pilot->sendToOwner(true);
-				}
-
 				Vector3 randomPosition = Vector3(System::random(100) - 50.f, System::random(100) - 50.f, 0.f);
 				Vector3 stationPosition = spaceManager->getClosestSpaceStationPosition(ship->getPosition(), "neutral") + randomPosition;
+				const String zoneName = zone->getZoneName();
+
+				ship->setDirection(1,0,0,0);
+
 
 				ship->setPosition(stationPosition.getX(), stationPosition.getZ(), stationPosition.getY());
 				ship->setDirection(1,0,0,0);
@@ -94,6 +93,63 @@ public:
 				messages.add(new ShipObjectMessage6(ship));
 
 				ship->broadcastMessages(&messages, true);
+
+				// Switch all remaining players onboard the ship
+				int totalPlayers = ship->getTotalPlayersOnBoard();
+				auto zoneServer = ship->getZoneServer();
+
+				for (int i = 0; i < totalPlayers; i++) {
+					Reference<CreatureObject*> shipMember = ship->getPlayerOnBoard(i);
+
+					if (shipMember == nullptr) {
+						continue;
+					}
+
+					Reference<ShipObject*> shipRef = ship;
+
+					Core::getTaskManager()->scheduleTask([shipRef, shipMember, zoneName] () {
+						if (shipRef == nullptr || shipMember == nullptr) {
+							return;
+						}
+
+						auto zoneServer = shipRef->getZoneServer();
+
+						if (zoneServer == nullptr) {
+							return;
+						}
+
+						try {
+							Locker lock(shipRef);
+
+							Locker memberLock(shipMember, shipRef);
+
+							Vector3 memberPosition = shipMember->getPosition();
+							uint64 parentID = shipMember->getParentID();
+
+							// shipRef->info(true) << "Transferring Ship Member: " << shipMember->getDisplayedName() << " To Position: " << memberPosition.toString() << " ID: " << parentID;
+
+							const Quaternion* direction = nullptr;
+
+							if (parentID != shipRef->getObjectID() && zoneServer != nullptr) {
+								auto parentObject = zoneServer->getObject(parentID);
+
+								if (parentObject != nullptr) {
+									direction = parentObject->getDirection();
+								}
+							} else {
+								direction = shipRef->getDirection();
+							}
+
+							if (direction != nullptr) {
+								shipMember->setDirection(direction->getW(), direction->getX(), direction->getY(), direction->getZ());
+							}
+
+							shipMember->switchZone(zoneName, memberPosition.getX(), memberPosition.getZ(), memberPosition.getY(), parentID, false, shipMember->getContainmentType());
+						} catch (...) {
+							shipMember->error() << "Failed to transport player onboard ship in DestroyShipTask - ShipID: " << shipRef->getObjectID() << " Ship Member ID: " << shipMember->getObjectID();
+						}
+					}, "DestroyShipLambda", (6000 + System::random(2000)));
+				}
 
 				return;
 			}
