@@ -4,6 +4,7 @@
 #include "server/zone/ZoneServer.h"
 #include "server/zone/objects/intangible/ShipControlDevice.h"
 #include "server/zone/objects/intangible/tasks/StoreShipTask.h"
+#include "server/zone/objects/ship/events/DestroyShipTask.h"
 
 const char LuaShipObject::className[] = "LuaShipObject";
 
@@ -18,6 +19,8 @@ Luna<LuaShipObject>::RegType LuaShipObject::Register[] = {
 	{ "getPilotID", &LuaShipObject::getPilotID },
 	{ "getOwner", &LuaShipObject::getOwner },
 	{ "getOwnerID", &LuaShipObject::getOwnerID },
+	{ "scheduleDestroyShipTask", &LuaShipObject::scheduleDestroyShipTask },
+	{ "ejectPassenger", &LuaShipObject::ejectPassenger },
 	{ 0, 0}
 };
 
@@ -195,3 +198,60 @@ int LuaShipObject::getOwnerID(lua_State* L) {
 	return 1;
 }
 
+int LuaShipObject::scheduleDestroyShipTask(lua_State* L) {
+	int numberOfArguments = lua_gettop(L) - 1;
+
+	int delay = 4000;
+
+	if (numberOfArguments > 1) {
+		delay = lua_tointeger(L, -1);
+	}
+
+	auto destroyTask = new DestroyShipTask(realObject);
+
+	if (destroyTask == nullptr) {
+		return 0;
+	}
+
+	destroyTask->schedule(delay);
+
+	return 0;
+}
+
+int LuaShipObject::ejectPassenger(lua_State* L) {
+	int numberOfArguments = lua_gettop(L) - 1;
+
+	if (numberOfArguments != 2) {
+		realObject->error() << "Improper number of arguments in LuaShipObject::ejectPassenger.";
+		return 0;
+	}
+
+	Reference<CreatureObject*> playerRef = (CreatureObject*) lua_touserdata(L, -2);
+	Reference<ShipObject*> shipRef = realObject;
+	int delay = lua_tointeger(L, -1);
+
+	if (playerRef == nullptr) {
+		return 0;
+	}
+
+	Core::getTaskManager()->scheduleTask([shipRef, playerRef] () {
+		if (playerRef == nullptr || shipRef == nullptr) {
+			return;
+		}
+
+		Locker lock(shipRef);
+
+		const auto launchZone = shipRef->getSpaceLaunchZone();
+		const auto launchLoc = shipRef->getSpaceLaunchLocation();
+
+		Locker clock(playerRef, playerRef);
+
+		// Remove the player from the onboard list
+		shipRef->removePlayerOnBoard(playerRef);
+
+		// Send the player to the launch location
+		playerRef->switchZone(launchZone, launchLoc.getX(), launchLoc.getZ(), launchLoc.getY(), 0, false, -1);
+	}, "EjectPassengerLambda", delay);
+
+	return 0;
+}

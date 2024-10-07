@@ -1051,6 +1051,9 @@ class ShipObject extends TangibleObject {
 	public native void addPlayerOnBoard(CreatureObject player);
 
 	@preLocked
+	public native void removePlayerOnBoard(CreatureObject player);
+
+	@preLocked
 	public native void clearPlayersOnBoard();
 
 	/*
