@@ -4,6 +4,7 @@
 #include "server/zone/ZoneServer.h"
 #include "server/zone/objects/intangible/ShipControlDevice.h"
 #include "server/zone/objects/intangible/tasks/StoreShipTask.h"
+#include "server/zone/objects/ship/events/DestroyShipTask.h"
 
 const char LuaShipObject::className[] = "LuaShipObject";
 
@@ -18,6 +19,8 @@ Luna<LuaShipObject>::RegType LuaShipObject::Register[] = {
 	{ "getPilotID", &LuaShipObject::getPilotID },
 	{ "getOwner", &LuaShipObject::getOwner },
 	{ "getOwnerID", &LuaShipObject::getOwnerID },
+	{ "scheduleDestroyShipTask", &LuaShipObject::scheduleDestroyShipTask },
+	{ "ejectPassenger", &LuaShipObject::ejectPassenger },
 	{ 0, 0}
 };
 
@@ -193,5 +196,55 @@ int LuaShipObject::getOwnerID(lua_State* L) {
 	lua_pushinteger(L, ownerID);
 
 	return 1;
+}
+
+int LuaShipObject::scheduleDestroyShipTask(lua_State* L) {
+	int numberOfArguments = lua_gettop(L) - 1;
+
+	int delay = 4000;
+
+	if (numberOfArguments > 1) {
+		delay = lua_tointeger(L, -1);
+	}
+
+	auto destroyTask = new DestroyShipTask(realObject);
+
+	if (destroyTask == nullptr) {
+		return 0;
+	}
+
+	destroyTask->schedule(delay);
+
+	return 0;
+}
+
+int LuaShipObject::ejectPassenger(lua_State* L) {
+	int numberOfArguments = lua_gettop(L) - 1;
+
+	if (numberOfArguments != 1) {
+		realObject->error() << "Improper number of arguments in LuaShipObject::ejectPassenger.";
+		return 0;
+	}
+
+	auto player = (CreatureObject*) lua_touserdata(L, -1);
+
+	if (player == nullptr) {
+		return 0;
+	}
+
+	Locker lock(realObject);
+
+	const auto launchZone = realObject->getSpaceLaunchZone();
+	const auto launchLoc = realObject->getSpaceLaunchLocation();
+
+	Locker clock(player, realObject);
+
+	// Remove the player from the onboard list
+	realObject->removePlayerOnBoard(player);
+
+	// Send the player to the launch location
+	player->switchZone(launchZone, launchLoc.getX(), launchLoc.getZ(), launchLoc.getY(), 0, false, -1);
+
+	return 0;
 }
 

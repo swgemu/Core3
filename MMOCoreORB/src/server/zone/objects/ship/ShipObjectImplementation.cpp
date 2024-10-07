@@ -1658,6 +1658,22 @@ void ShipObjectImplementation::addPlayerOnBoard(CreatureObject* player) {
 	playersOnBoard.add(playerID);
 }
 
+void ShipObjectImplementation::removePlayerOnBoard(CreatureObject* player) {
+	if (player == nullptr) {
+		return;
+	}
+
+	uint64 playerID = player->getObjectID();
+
+	for (int i = playersOnBoard.size() - 1; i >= 0; i--) {
+		if (playersOnBoard.get(i) != playerID) {
+			continue;
+		}
+
+		playersOnBoard.remove(i);
+	}
+}
+
 void ShipObjectImplementation::clearPlayersOnBoard() {
 	playersOnBoard.removeAll();
 }

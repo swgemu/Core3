@@ -68,7 +68,6 @@ public:
 
 				return;
 			}
-
 			case 1: {
 				ship->clearOptionBit(OptionBitmask::DESTROYING, true);
 
@@ -84,16 +83,53 @@ public:
 
 				Vector3 randomPosition = Vector3(System::random(100) - 50.f, System::random(100) - 50.f, 0.f);
 				Vector3 stationPosition = spaceManager->getClosestSpaceStationPosition(ship->getPosition(), "neutral") + randomPosition;
+				const String zoneName = zone->getZoneName();
 
-				ship->setPosition(stationPosition.getX(), stationPosition.getZ(), stationPosition.getY());
 				ship->setDirection(1,0,0,0);
 
-				Vector<BasePacket*> messages;
-				messages.add(new DataTransform(ship));
-				messages.add(new ShipObjectMessage3(ship));
-				messages.add(new ShipObjectMessage6(ship));
+				// Switch the ships zone
+				ship->switchZone(zoneName, stationPosition.getX(), stationPosition.getZ(), stationPosition.getY());
 
-				ship->broadcastMessages(&messages, true);
+				// Switch all remaining players onboard the ship
+				int totalPlayers = ship->getTotalPlayersOnBoard();
+				auto zoneServer = ship->getZoneServer();
+
+				for (int i = 0; i < totalPlayers; i++) {
+					auto shipMember = ship->getPlayerOnBoard(i);
+
+					if (shipMember == nullptr) {
+						continue;
+					}
+
+					try {
+						Locker memberLock(shipMember, ship);
+
+						Vector3 memberPosition = shipMember->getPosition();
+						uint64 parentID = shipMember->getParentID();
+
+						// ship->info(true) << "Transferring Ship Member: " << shipMember->getDisplayedName() << " To Position: " << memberPosition.toString() << " ID: " << parentID;
+
+						const Quaternion* direction = nullptr;
+
+						if (parentID != ship->getObjectID() && zoneServer != nullptr) {
+							auto parentObject = zoneServer->getObject(parentID);
+
+							if (parentObject != nullptr) {
+								direction = parentObject->getDirection();
+							}
+						} else {
+							direction = ship->getDirection();
+						}
+
+						if (direction != nullptr) {
+							shipMember->setDirection(direction->getW(), direction->getX(), direction->getY(), direction->getZ());
+						}
+
+						shipMember->switchZone(zoneName, memberPosition.getX(), memberPosition.getZ(), memberPosition.getY(), parentID, false, shipMember->getContainmentType());
+					} catch (...) {
+						shipMember->error() << "Failed to transport player onboard ship in DestroyShipTask - ShipID: " << ship->getObjectID() << " Ship Member ID: " << shipMember->getObjectID();
+					}
+				}
 
 				return;
 			}

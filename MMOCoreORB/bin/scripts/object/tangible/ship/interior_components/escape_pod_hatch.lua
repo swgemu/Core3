@@ -42,7 +42,7 @@
 
 
 object_tangible_ship_interior_components_escape_pod_hatch = object_tangible_ship_interior_components_shared_escape_pod_hatch:new {
-	objectMenuComponent = "PobShipObjectMenuComponent",
+	objectMenuComponent = "EscapePodHatchMenuComponent",
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_interior_components_escape_pod_hatch, "object/tangible/ship/interior_components/escape_pod_hatch.iff")
