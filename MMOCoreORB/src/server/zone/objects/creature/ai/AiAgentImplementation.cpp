@@ -2502,17 +2502,15 @@ void AiAgentImplementation::updateCurrentPosition(PatrolPoint* nextPosition) {
 
 	CellObject* cell = nextPosition->getCell();
 
-	/*StringBuffer reachedPosition;
-	reachedPosition << "(" << nextPosition->getPositionX() << ", " << nextPosition->getPositionY() << ")";
-	info("reached " + reachedPosition.toString(), true);*/
-
-	if (getZoneUnsafe() == nullptr)
+	if (getZoneUnsafe() == nullptr) {
 		return;
+	}
 
-	if (cell != nullptr && cell->getParent().get() != nullptr)
+	if (cell != nullptr && cell->getParent().get() != nullptr) {
 		updateZoneWithParent(cell, false, false);
-	else
+	} else {
 		updateZone(false, false);
+	}
 
 	removeOutOfRangeObjects();
 	broadcastNextPositionUpdate(nextPosition);
@@ -2668,21 +2666,18 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 	updateLocomotion();
 
 #ifdef DEBUG_FINDNEXTPOSITION
-	printf("--- !!!!    findNextPosition -- Start -- !!!! ----- \n");
+	StringBuffer msg1;
 
-	printf("Patrol Points Size = %i \n", patrolPoints.size());
+	msg1 << "\n--- !!!!    findNextPosition -- Start -- !!!! ----- " << endl
+	<< "Patrol Points Size = " << patrolPoints.size() << endl
+	<< "Current World Position X = " << currentWorldPos.getX() << " Z = " << currentWorldPos.getZ() << " Y = " << currentWorldPos.getY() << endl
+	<< "End Movement Position X = " << endMovementPosition.getWorldPosition().getX() << " Z = " << endMovementPosition.getWorldPosition().getZ() << " Y = " << endMovementPosition.getWorldPosition().getY() << endl
 
-	printf("Current World Position x = %f , ", currentWorldPos.getX());
-	printf(" z = %f \n", currentWorldPos.getZ());
-	printf(" y = %f \n", currentWorldPos.getY());
+	<< "endDistanceSq = " << endDistanceSq << endl
+	<< "maxSquared = " << maxSquared << endl
+	<< "max distance = " << maxDistance << endl;
 
-	printf("End Movement Position x = %f , ", endMovementPosition.getWorldPosition().getX());
-	printf(" z = %f \n", endMovementPosition.getWorldPosition().getZ());
-	printf(" y = %f \n", endMovementPosition.getWorldPosition().getY());
-
-	printf("endDistanceSq = %f \n", endDistanceSq);
-	printf("maxSquared = %f \n", maxSquared);
-	printf("max distance = %f \n", maxDistance);
+	info(true) << msg1.toString();
 #endif
 
 	PathFinderManager* pathFinder = PathFinderManager::instance();
@@ -2866,8 +2861,11 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 #ifdef SHOW_NEXT_POSITION
 		for (int i = 0; i < movementMarkers.size(); ++i) {
 			ManagedReference<SceneObject*> marker = movementMarkers.get(i);
-			Locker clocker(marker, asAiAgent());
-			marker->destroyObjectFromWorld(false);
+
+			Core::getTaskManager()->scheduleTask([marker] {
+				Locker clocker(marker);
+				marker->destroyObjectFromWorld(false);
+			}, "DestroyMarker", 2000);
 		}
 
 		movementMarkers.removeAll();
@@ -3283,8 +3281,15 @@ float AiAgentImplementation::getMaxDistance() {
 						return 1.0f;
 					}
 				} else {
-					if (isPet() && isDroid())
-						return 2.0f;
+					if (isPet()) {
+						auto zone = getZone();
+
+						if (zone != nullptr && zone->isPobShip()) {
+							return 1.f;
+						} else if (isDroid()) {
+							return 2.0f;
+						}
+					}
 
 					return 4.0f;
 				}
