@@ -7,6 +7,7 @@
 
 #include "PathFinderManager.h"
 #include "server/zone/objects/building/BuildingObject.h"
+#include "server/zone/objects/ship/PobShipObject.h"
 #include "server/zone/objects/cell/CellObject.h"
 #include "templates/SharedObjectTemplate.h"
 #include "templates/appearance/PortalLayout.h"
@@ -19,7 +20,7 @@
 #include "engine/util/u3d/Segment.h"
 #include "pathfinding/recast/DetourCommon.h"
 
-//#define DEBUG_PATHING
+#define DEBUG_PATHING
 
 const static constexpr int MAX_QUERY_NODES = 2048 * 2;
 
@@ -948,8 +949,9 @@ void PathFinderManager::addTriangleNodeEdges(const Vector3& source, const Vector
 
 Vector<WorldCoordinates>* PathFinderManager::findPathFromCellToDifferentCell(const WorldCoordinates& pointA, const WorldCoordinates& pointB) {
 #ifdef DEBUG_PATHING
-	info ("findPathFromCellToDifferentCell", true);
+	info (true) << "PathFinderManager::findPathFromCellToDifferentCell -- called";
 #endif
+
 	auto ourCell = pointA.getCell();
 	auto targetCell = pointB.getCell();
 
@@ -960,19 +962,20 @@ Vector<WorldCoordinates>* PathFinderManager::findPathFromCellToDifferentCell(con
 	int ourCellID = ourCell->getCellNumber();
 	int targetCellID = targetCell->getCellNumber();
 
-	ManagedReference<BuildingObject*> building1 = cast<BuildingObject*>(ourCell->getParent().get().get());
-	ManagedReference<BuildingObject*> building2 = cast<BuildingObject*>(targetCell->getParent().get().get());
+	ManagedReference<TangibleObject*> rootParent1 = cast<TangibleObject*>(ourCell->getParent().get().get());
+	ManagedReference<TangibleObject*> rootParent2 = cast<TangibleObject*>(targetCell->getParent().get().get());
 
-	if (building1 == nullptr || building2 == nullptr) {
+	if (rootParent1 == nullptr || rootParent2 == nullptr) {
 		return nullptr;
 	}
 
 	 // TODO: implement path finding between 2 buildings
-	 if (building1 != building2) {
+	 if (rootParent1 != rootParent2) {
+		error() << __FUNCTION__ << " - no implementation for pathfinding between two separate root parents";
 		return nullptr;
 	 }
 
-	auto templateObject = building1->getObjectTemplate();
+	auto templateObject = rootParent1->getObjectTemplate();
 
 	if (templateObject == nullptr) {
 		return nullptr;
@@ -993,14 +996,16 @@ Vector<WorldCoordinates>* PathFinderManager::findPathFromCellToDifferentCell(con
 
 	if (floorMesh2->getCellID() != targetCellID) {
 		error() << __FUNCTION__ << " - floorMesh2 cellID != targetCellID";
+		return nullptr;
 	}
 
-	// info("targetCellID:" + String::valueOf(targetCellID), true);
+	info(true) << "targetCellID:" << targetCellID;
 
 	const auto pathGraph1 = floorMesh1->getPathGraph();
 	const auto pathGraph2 = floorMesh2->getPathGraph();
 
 	if (pathGraph1 == nullptr || pathGraph2 == nullptr) {
+		error() << __FUNCTION__ << " - PathGraph for target cell is null";
 		return nullptr;
 	}
 
@@ -1058,7 +1063,7 @@ Vector<WorldCoordinates>* PathFinderManager::findPathFromCellToDifferentCell(con
 
 	// FIXME (dannuic): Sometimes nodes only have one entry.... why?
 	if (nodes->size() == 1) {
-		auto zone = building1->getZone();
+		auto zone = rootParent1->getZone();
 		String zoneName = zone == nullptr ? "unknown" : zone->getZoneName();
 
 		error() << __FUNCTION__ << "getPath from " << source << " to " << target << " nodes->size() == 1 for building " << templateObject->getFullTemplateString() << " from " << pointA << " to " << pointB << " in zone " << zoneName;
@@ -1103,10 +1108,10 @@ Vector<WorldCoordinates>* PathFinderManager::findPathFromCellToDifferentCell(con
 			// We should never have a cellID of 0 when moving cell to cell
 			nodes->remove(i);
 #ifdef DEBUG_PATHING
-			printf("Removing node with cellID = 0 \n");
+			info(true) << "Removing node with cellID = 0";
 #endif
 		} else {
-			CellObject* pathCell = building1->getCell(cellID);
+			CellObject* pathCell = rootParent1->getCell(cellID);
 
 			if (pathCell == nullptr) {
 				continue;
@@ -1115,9 +1120,9 @@ Vector<WorldCoordinates>* PathFinderManager::findPathFromCellToDifferentCell(con
 			WorldCoordinates coord(pathNode->getPosition(), pathCell);
 
 #ifdef DEBUG_PATHING
-			printf("Adding Path Node with Cell ID = %i, ", cellID);
-			printf(" X = %f ,", coord.getX());
-			printf("Y = %f \n", coord.getY());
+			info(true) << "Adding Path Node with Cell ID = " << cellID;
+			info(true) << " X = " << coord.getX();
+			info(true) << "Y = " << coord.getY();
 #endif
 
 			path->add(coord);
@@ -1128,7 +1133,7 @@ Vector<WorldCoordinates>* PathFinderManager::findPathFromCellToDifferentCell(con
 				}
 
 				if (pathCell != targetCell) {
-					error("final cell not target cell");
+					error() << "final cell not target cell";
 				}
 			}
 		}
@@ -1164,6 +1169,7 @@ Vector<WorldCoordinates>* PathFinderManager::findPathFromCellToDifferentCell(con
 		printf("Final Path Point #%i - ", i);
 		printf(" X = %f,", coord.getX());
 		printf("Y = %f", coord.getY());
+
 		if (coord.getCell() == nullptr) {
 			printf(" -- Cell is nullptr -- ");
 		} else {
@@ -1179,6 +1185,8 @@ Vector<WorldCoordinates>* PathFinderManager::findPathFromCellToCell(const WorldC
 	auto ourCell = pointA.getCell();
 	auto targetCell = pointB.getCell();
 
+	info(true) << "findPathFromCellToCell called";
+
 	if (ourCell == nullptr || targetCell == nullptr) {
 		return nullptr;
 	}
@@ -1189,13 +1197,30 @@ Vector<WorldCoordinates>* PathFinderManager::findPathFromCellToCell(const WorldC
 
 	int ourCellID = ourCell->getCellNumber();
 
-	ManagedReference<BuildingObject*> building = cast<BuildingObject*>(ourCell->getParent().get().get());
+	auto rootParent = cast<TangibleObject*>(ourCell->getParent().get().get());
 
-	if (building == nullptr) {
+	if (rootParent == nullptr) {
 		return nullptr;
 	}
 
-	SharedObjectTemplate* templateObject = building->getObjectTemplate();
+	if (rootParent->isBuildingObject()) {
+		auto building = cast<BuildingObject*>(rootParent);
+
+		if (building == nullptr) {
+			return nullptr;
+		}
+	} else if (rootParent->isPobShip()) {
+		auto pobShip = cast<PobShipObject*>(rootParent);
+
+		if (pobShip == nullptr) {
+			return nullptr;
+		}
+	} else {
+		// Not a building or a POB Ship
+		return nullptr;
+	}
+
+	SharedObjectTemplate* templateObject = rootParent->getObjectTemplate();
 
 	if (templateObject == nullptr) {
 		return nullptr;
@@ -1218,11 +1243,9 @@ Vector<WorldCoordinates>* PathFinderManager::findPathFromCellToCell(const WorldC
 	 // Add source point
 	path->add(pointA);
 
-	// info(true) << "same cell... trying to calculate triangle path";
+	info(true) << "Origin and destination points are in the same cell. Need to Calculate triangle path using floorMesh for cellID: " << ourCellID;
 
 	Vector<const Triangle*>* trianglePath = nullptr;
-
-	//info("searching floorMesh for cellID " + String::valueOf(ourCellID), true);
 
 	int res = getFloorPath(pointA.getPoint(), pointB.getPoint(), floorMesh1, trianglePath);
 
@@ -1245,17 +1268,17 @@ Vector<WorldCoordinates>* PathFinderManager::findPathFromCellToCell(const WorldC
 		delete path;
 
 		return findPathFromCellToDifferentCell(pointA, pointB);
-	} else {
-		//info("path found", true);
-
-		addTriangleNodeEdges(pointA.getPoint(), pointB.getPoint(), trianglePath, path, ourCell);
-
-		delete trianglePath;
-		trianglePath = nullptr;
-
-		// Add Destination point
-		path->add(pointB);
 	}
+
+	info(true) << "Same Cell Path Found";
+
+	addTriangleNodeEdges(pointA.getPoint(), pointB.getPoint(), trianglePath, path, ourCell);
+
+	delete trianglePath;
+	trianglePath = nullptr;
+
+	// Add Destination point
+	path->add(pointB);
 
 	return path;
 }
