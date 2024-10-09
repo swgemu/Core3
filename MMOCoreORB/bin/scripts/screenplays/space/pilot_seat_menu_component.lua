@@ -93,6 +93,8 @@ function PilotSeatMenuComponent:handleObjectMenuSelect(pPilotChair, pPlayer, sel
 			return 0
 		end
 
+		CreatureObject(pPlayer):storePets()
+
 		-- Add in their piloting state
 		CreatureObject(pPlayer):setState(PILOTINGPOBSHIP)
 

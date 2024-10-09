@@ -54,14 +54,14 @@ void PetControlDeviceImplementation::callObject(CreatureObject* player) {
 
 	if (player->getParent() != nullptr) {
 		ManagedReference<SceneObject*> strongRef = player->getRootParent();
-		ManagedReference<BuildingObject*> building = nullptr;
 
-		if (strongRef != nullptr)
-			building = strongRef.castTo<BuildingObject*>();
+		if (strongRef != nullptr && !strongRef->isPobShip()) {
+			ManagedReference<BuildingObject*> building = strongRef.castTo<BuildingObject*>();
 
-		if (building == nullptr || building->isPrivateStructure()) {
-			player->sendSystemMessage("@pet/pet_menu:private_house"); // You cannot call pets in a private building.
-			return;
+			if (building == nullptr || building->isPrivateStructure()) {
+				player->sendSystemMessage("@pet/pet_menu:private_house"); // You cannot call pets in a private building.
+				return;
+			}
 		}
 	}
 

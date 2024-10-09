@@ -1666,6 +1666,14 @@ Reference<SceneObject*> SceneObjectImplementation::getInventory() {
 	return obj;
 }
 
+Reference<SceneObject*> SceneObjectImplementation::getDatapad() {
+	ReadLocker locker(&containerLock);
+
+	Reference<SceneObject*> obj = slottedObjects.get("datapad");
+
+	return obj;
+}
+
 Reference<SceneObject*> SceneObjectImplementation::getSlottedObject(int idx) {
 	Reference<SceneObject*> obj;
 

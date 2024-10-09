@@ -90,6 +90,8 @@ function ShipOperationsMenuComponent:handleObjectMenuSelect(pOpsChair, pPlayer, 
 			return 0
 		end
 
+		CreatureObject(pPlayer):storePets()
+
 		-- Add in their ship operatios state
 		CreatureObject(pPlayer):setState(SHIPOPERATIONS)
 

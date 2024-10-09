@@ -27,6 +27,7 @@ include server.zone.objects.scene.variables.AutoDeltaSet;
 include server.zone.objects.scene.variables.StringId;
 include system.thread.atomic.AtomicInteger;
 include server.zone.TreeEntry;
+include server.zone.objects.cell.CellObject;
 
 @json
 @mock
@@ -925,6 +926,16 @@ class TangibleObject extends SceneObject {
 			}
 		}
 
+		return null;
+	}
+
+	@dirty
+	public abstract CellObject getCell(int idx) {
+		return null;
+	}
+
+	@dirty
+	public abstract CellObject getCell(final string name) {
 		return null;
 	}
 

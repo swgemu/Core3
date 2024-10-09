@@ -83,6 +83,8 @@ function ShipTurretMenuComponent:handleObjectMenuSelect(pTurret, pPlayer, select
 		return 0
 	end
 
+	CreatureObject(pPlayer):storePets()
+
 	-- Add players ship operatios state
 	CreatureObject(pPlayer):setState(SHIPGUNNER)
 
