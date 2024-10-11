@@ -1037,4 +1037,10 @@ class TangibleObject extends SceneObject {
 
 	@dirty
 	public native boolean isVendor();
+
+	@dirty
+	public native abstract boolean isInvulnerable();
+
+	@dirty
+	public native abstract boolean isDestroying();
 }

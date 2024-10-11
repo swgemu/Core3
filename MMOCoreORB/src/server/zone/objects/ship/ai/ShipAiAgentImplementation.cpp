@@ -1586,20 +1586,21 @@ bool ShipAiAgentImplementation::isAttackableBy(TangibleObject* attackerTano) {
 	if (attackerTano == nullptr)
 		return false;
 
-	if (pvpStatusBitmask == 0 || !(pvpStatusBitmask & ObjectFlag::ATTACKABLE))
-		return false;
-
-	if (movementState == ShipAiAgent::LEASHING)
-		return false;
-
-	auto optionsBit = getOptionsBitmask();
-
-	if ((optionsBit & OptionBitmask::DESTROYING) || (optionsBit & OptionBitmask::INVULNERABLE)) {
+	if (pvpStatusBitmask == 0 || !(pvpStatusBitmask & ObjectFlag::ATTACKABLE)) {
 		return false;
 	}
 
-	if (isInNoCombatArea())
+	if (movementState == ShipAiAgent::LEASHING) {
 		return false;
+	}
+
+	if (isDestroying() || isInvulnerable()) {
+		return false;
+	}
+
+	if (isInNoCombatArea()) {
+		return false;
+	}
 
 	if (attackerTano->isCreatureObject()) {
 		return isAttackableBy(attackerTano->asCreatureObject());
@@ -1636,8 +1637,13 @@ bool ShipAiAgentImplementation::isAttackableBy(TangibleObject* attackerTano) {
 }
 
 bool ShipAiAgentImplementation::isAttackableBy(CreatureObject* attacker) {
-	if (attacker == nullptr)
+	if (attacker == nullptr) {
 		return false;
+	}
+
+	if (isDestroying() || isInvulnerable()) {
+		return false;
+	}
 
 	// info(true) << "ShipAiAgentImplementation::isAttackableBy Creature Check -- ShipAgent: " << getDisplayedName() << " by attacker = " << attacker->getDisplayedName();
 

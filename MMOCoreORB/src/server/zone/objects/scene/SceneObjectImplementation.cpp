@@ -2035,6 +2035,10 @@ bool SceneObject::isShipAiAgent() {
 	return false;
 }
 
+bool SceneObjectImplementation::isPlayerShip() {
+	return isShipObject() && !isShipAiAgent();
+}
+
 bool SceneObjectImplementation::isVehicleObject() {
 	return false;
 }
