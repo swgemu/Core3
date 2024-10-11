@@ -65,6 +65,11 @@ public:
 			return GENERALERROR;
 		}
 
+		if (!ship->canBePilotedBy(creature)) {
+			creature->sendSystemMessage("@space/space_interaction:no_ship_certification"); // "You are not certified to pilot this ship."
+			return GENERALERROR;
+		}
+
 		// JTL Fast Travel
 		if (arrivalPlanet != "") {
 			if (ship->getComponentObject(Components::REACTOR) == nullptr) {

@@ -457,10 +457,10 @@ bool PlayerCreationManager::createCharacter(ClientCreateCharacterCallback* callb
 
 	// Handle JTL Ship creation
 	if (shipManager != nullptr) {
-		shipManager->createPlayerShip(playerCreature, "player_xwing", true);
-		shipManager->createPlayerShip(playerCreature, "player_tiefighter", true);
-		shipManager->createPlayerShip(playerCreature, "player_hutt_medium_s01", true);
-		shipManager->createPlayerShip(playerCreature, "player_sorosuub_space_yacht", true);
+		shipManager->createPlayerShip(playerCreature, "player_xwing", "", true);
+		shipManager->createPlayerShip(playerCreature, "player_tiefighter", "", true);
+		shipManager->createPlayerShip(playerCreature, "player_hutt_medium_s01", "", true);
+		shipManager->createPlayerShip(playerCreature, "player_sorosuub_space_yacht", "", true);
 	}
 
 	if (ghost != nullptr) {

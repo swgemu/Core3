@@ -21,6 +21,7 @@ Luna<LuaShipObject>::RegType LuaShipObject::Register[] = {
 	{ "getOwnerID", &LuaShipObject::getOwnerID },
 	{ "scheduleDestroyShipTask", &LuaShipObject::scheduleDestroyShipTask },
 	{ "ejectPassenger", &LuaShipObject::ejectPassenger },
+	{ "canBePilotedBy", &LuaShipObject::canBePilotedBy },
 	{ 0, 0}
 };
 
@@ -254,4 +255,24 @@ int LuaShipObject::ejectPassenger(lua_State* L) {
 	}, "EjectPassengerLambda", delay);
 
 	return 0;
+}
+
+int LuaShipObject::canBePilotedBy(lua_State* L) {
+	int numberOfArguments = lua_gettop(L) - 1;
+
+	if (numberOfArguments != 1) {
+		realObject->error() << "Improper number of arguments in LuaShipObject::canBePilotedBy.";
+		return 0;
+	}
+
+	CreatureObject* player = (CreatureObject*)lua_touserdata(L, -1);
+	bool canPilot = true;
+
+	if (player != nullptr) {
+		canPilot = realObject->canBePilotedBy(player);
+	}
+
+	lua_pushboolean(L, canPilot);
+
+	return 1;
 }

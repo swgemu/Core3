@@ -622,11 +622,11 @@ ShipAiAgent* ShipManager::createAiShip(uint32 shipCRC) {
 	return shipAgent;
 }
 
-ShipObject* ShipManager::createPlayerShip(CreatureObject* owner, const String& shipName, bool loadComponents) {
+ShipObject* ShipManager::createPlayerShip(CreatureObject* owner, const String& shipName, const String& certificationRequired, bool loadComponents) {
 	if (owner == nullptr)
 		return nullptr;
 
-	ManagedReference<SceneObject*> dataPad = owner->getSlottedObject("datapad");
+	ManagedReference<SceneObject*> dataPad = owner->getDatapad();
 
 	if (dataPad == nullptr) {
 		return nullptr;
@@ -662,6 +662,8 @@ ShipObject* ShipManager::createPlayerShip(CreatureObject* owner, const String& s
 
 	// Load ship template data
 	ship->loadTemplateData(shipTemp);
+
+	ship->setCertificationRequired(certificationRequired);
 
 	// Create Control device
 	auto shipControlDevice = createShipControlDevice(ship);

@@ -165,6 +165,9 @@ Luna<LuaCreatureObject>::RegType LuaCreatureObject::Register[] = {
 		{ "forcePeace", &LuaCreatureObject::forcePeace },
 		{ "isPilotingShip", &LuaCreatureObject::isPilotingShip },
 		{ "storePets", &LuaCreatureObject::storePets },
+		{ "isRebelPilot", &LuaCreatureObject::isRebelPilot },
+		{ "isImperialPilot", &LuaCreatureObject::isImperialPilot },
+		{ "isFreelancePilot", &LuaCreatureObject::isFreelancePilot },
 		{ 0, 0 }
 };
 
@@ -1362,4 +1365,34 @@ int LuaCreatureObject::storePets(lua_State* L) {
 	}
 
 	return 0;
+}
+
+int LuaCreatureObject::isRebelPilot(lua_State* L) {
+	Locker lock(realObject);
+
+	bool check = realObject->hasSkill("pilot_rebel_navy_novice");
+
+	lua_pushboolean(L, check);
+
+	return 1;
+}
+
+int LuaCreatureObject::isImperialPilot(lua_State* L) {
+	Locker lock(realObject);
+
+	bool check = realObject->hasSkill("pilot_imperial_navy_novice");
+
+	lua_pushboolean(L, check);
+
+	return 1;
+}
+
+int LuaCreatureObject::isFreelancePilot(lua_State* L) {
+	Locker lock(realObject);
+
+	bool check = realObject->hasSkill("pilot_neutral_novice");
+
+	lua_pushboolean(L, check);
+
+	return 1;
 }

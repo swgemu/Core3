@@ -146,7 +146,7 @@ int ShipDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte 
 		// Sorosuub Luxury Yacht veteran reward should come with components
 		bool componentCreation = (isYachtDeed ? true : shouldCreateComponents());
 
-		ManagedReference<ShipObject*> ship = ShipManager::instance()->createPlayerShip(player, generatedObjectTemplate, componentCreation);
+		ManagedReference<ShipObject*> ship = ShipManager::instance()->createPlayerShip(player, generatedObjectTemplate, certRequired, componentCreation);
 
 		if (ship == nullptr) {
 			error() << "Failed to generate ship object from template: " << generatedObjectTemplate;

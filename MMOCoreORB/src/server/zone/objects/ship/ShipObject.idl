@@ -426,6 +426,8 @@ class ShipObject extends TangibleObject {
 	@dereferenced
 	protected Vector<unsigned long> playersOnBoard;
 
+	protected string certificationRequired;
+
 	public ShipObject() {
 		Logger.setLoggingName("ShipObject");
 
@@ -1751,6 +1753,8 @@ class ShipObject extends TangibleObject {
 
 	public native void initializeUniqueID(boolean notifyClient = true);
 
+	public native boolean canBePilotedBy(CreatureObject player);
+
 	public void setSpaceLaunchZone(string zoneName) {
 		launchPoint.setGroundZoneName(zoneName);
 	}
@@ -1777,5 +1781,14 @@ class ShipObject extends TangibleObject {
 	@dereferenced
 	public Vector3 getSpaceLaunchLocation() {
 		return launchPoint.getLocation();
+	}
+
+	@read
+	public string getCertificationRequired() {
+		return certificationRequired;
+	}
+
+	public void setCertificationRequired(final string cert) {
+		certificationRequired = cert;
 	}
 }

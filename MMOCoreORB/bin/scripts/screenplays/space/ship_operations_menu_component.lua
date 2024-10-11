@@ -61,10 +61,16 @@ function ShipOperationsMenuComponent:handleObjectMenuSelect(pOpsChair, pPlayer, 
 			return 0
 		end
 
+		local player = LuaCreatureObject(pPlayer)
+
+		if (player == nil) then
+			return 0
+		end
+
 		-- Make sure player is within 7m
-		if (not CreatureObject(pPlayer):isInRangeWithObject3d(pOpsChair, 7)) then
+		if (not player:isInRangeWithObject3d(pOpsChair, 7)) then
 			-- print("Failing due to range: " .. SceneObject(pPlayer):getDistanceTo3d(pOpsChair))
-			CreatureObject(pPlayer):sendSystemMessage("@system_msg:out_of_range")
+			player:sendSystemMessage("@system_msg:out_of_range")
 			return 0
 		end
 
@@ -74,32 +80,41 @@ function ShipOperationsMenuComponent:handleObjectMenuSelect(pOpsChair, pPlayer, 
 			return 0
 		end
 
-		-- TODO
-		-- operations certification check
+		local ship = LuaShipObject(pShip)
+
+		if (ship == nil) then
+			return 0
+		end
 
 		-- Faction Check
 		local shipFaction = TangibleObject(pShip):getFaction()
 
-		if (shipFaction ~= FACTIONNEUTRAL and shipFaction ~= CreatureObject(pPlayer):getFaction()) then
-			CreatureObject(pPlayer):sendSystemMessage("@space/space_interaction:wrong_faction")
+		if (shipFaction == FACTIONIMPERIAL and not player:isImperialPilot()) then
+			player:sendSystemMessage("@space/space_interaction:wrong_faction")
+			return 0
+		elseif (shipFaction == FACTIONREBEL and not player:isRebelPilot()) then
+			player:sendSystemMessage("@space/space_interaction:wrong_faction")
+			return 0
+		elseif (shipFaction == FACTIONNEUTRAL and not player:isFreelancePilot()) then
+			player:sendSystemMessage("@space/space_interaction:wrong_faction")
 			return 0
 		end
 
 		if (SceneObject(pOpsChair):getSlottedObject("ship_operations_station") ~= nil) then
-			CreatureObject(pPlayer):sendSystemMessage("The Ship Operations Chair is already occupied.")
+			player:sendSystemMessage("The Ship Operations Chair is already occupied.")
 			return 0
 		end
 
-		CreatureObject(pPlayer):storePets()
+		player:storePets()
 
 		-- Add in their ship operatios state
-		CreatureObject(pPlayer):setState(SHIPOPERATIONS)
+		player:setState(SHIPOPERATIONS)
 
 		SceneObject(pPlayer):setPosition(0, 0.5, 0)
 
 		SceneObject(pOpsChair):transferObject(pPlayer, SHIP_OPERATIONS_POB, 1)
 
-		CreatureObject(pPlayer):clearState(SHIPINTERIOR)
+		player:clearState(SHIPINTERIOR)
 	end
 
 	return 0

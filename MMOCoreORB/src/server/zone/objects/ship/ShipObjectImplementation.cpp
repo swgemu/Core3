@@ -2040,3 +2040,15 @@ void ShipObjectImplementation::initializeUniqueID(bool notifyClient) {
 	uint16 shipID = shipManager->setShipUniqueID(asShipObject());
 	setUniqueID(shipID, notifyClient);
 }
+
+bool ShipObjectImplementation::canBePilotedBy(CreatureObject* player) {
+	if (player == nullptr) {
+		return false;
+	}
+
+	if (certificationRequired.isEmpty()) {
+		return true;
+	}
+
+	return player->hasSkill(certificationRequired);
+}

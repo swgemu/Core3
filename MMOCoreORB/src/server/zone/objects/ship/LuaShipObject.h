@@ -32,7 +32,7 @@ namespace ship {
 		int getOwnerID(lua_State* L);
 		int scheduleDestroyShipTask(lua_State* L);
 		int ejectPassenger(lua_State* L);
-
+		int canBePilotedBy(lua_State* L);
 	private:
 		ShipObject* realObject;
 	};

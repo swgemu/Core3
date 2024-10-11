@@ -164,7 +164,7 @@ private:
 public:
 	ShipAiAgent* createAiShip(const String& shipName);
 	ShipAiAgent* createAiShip(uint32 shipCRC);
-	ShipObject* createPlayerShip(CreatureObject* owner, const String& shipName, bool loadComponents = false);
+	ShipObject* createPlayerShip(CreatureObject* owner, const String& shipName, const String& certificationRequired, bool loadComponents = false);
 
 	bool createDeedFromChassis(CreatureObject* owner, ShipChassisComponent* chassisBlueprint, CreatureObject* chassisDealer);
 
