@@ -89,7 +89,7 @@ function PilotSeatMenuComponent:handleObjectMenuSelect(pPilotChair, pPlayer, sel
 			return 0
 		end
 
-		if (not ship:canBePilotedBy(player)) then
+		if (not ship:canBePilotedBy(pPlayer)) then
 			player:sendSystemMessage("@space/space_interaction:no_ship_certification") --'You are not certified to pilot this ship.'
 			return 0
 		end

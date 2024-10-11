@@ -58,8 +58,6 @@ function ShipTurretMenuComponent:handleObjectMenuSelect(pTurret, pPlayer, select
 
 	--[[ TODO:
 		faction check "@space/space_interaction:"wrong_faction"
-		"space/space_interaction:no_turret"
-		"space/space_interaction:turret_disabled"
 	]]
 
 	-- Make sure player is within 4m
@@ -72,6 +70,12 @@ function ShipTurretMenuComponent:handleObjectMenuSelect(pTurret, pPlayer, select
 	local pShip = SceneObject(pPlayer):getRootParent()
 
 	if (pShip == nil or not SceneObject(pShip):isShipObject()) then
+		return 0
+	end
+
+	local ship = LuaShipObject(pShip)
+
+	if (ship == nil) then
 		return 0
 	end
 
@@ -98,11 +102,27 @@ function ShipTurretMenuComponent:handleObjectMenuSelect(pTurret, pPlayer, select
 			return 0
 		end
 
+		if (not ship:hasUpperTurret()) then
+			CreatureObject(pPlayer):sendSystemMessage("@space/space_interaction:no_turret")
+			return 0
+		elseif (not ship:isUpperTurretFunctional()) then
+			CreatureObject(pPlayer):sendSystemMessage("@space/space_interaction:turret_disabled")
+			return 0
+		end
+
 		SceneObject(pTurret):transferObject(pPlayer, SHIP_GUNNER0_POB, 1)
 	elseif (selectedID == 121) then
 		-- Check if occupied
 		if (SceneObject(pTurret):getSlottedObject("ship_gunner1_pob") ~= nil) then
 			CreatureObject(pPlayer):sendSystemMessage("@space/space_interaction:turret_occupied")
+			return 0
+		end
+
+		if (not ship:hasLowerTurret()) then
+			CreatureObject(pPlayer):sendSystemMessage("@space/space_interaction:no_turret")
+			return 0
+		elseif (not ship:isLowerTurretFunctional()) then
+			CreatureObject(pPlayer):sendSystemMessage("@space/space_interaction:turret_disabled")
 			return 0
 		end
 

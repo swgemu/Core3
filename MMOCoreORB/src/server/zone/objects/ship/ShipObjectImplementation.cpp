@@ -2050,5 +2050,11 @@ bool ShipObjectImplementation::canBePilotedBy(CreatureObject* player) {
 		return true;
 	}
 
-	return player->hasSkill(certificationRequired);
+	auto ghost = player->getPlayerObject();
+
+	if (ghost == nullptr) {
+		return false;
+	}
+
+	return (ghost->hasAbility(certificationRequired) || player->hasSkill(certificationRequired));
 }

@@ -22,6 +22,10 @@ Luna<LuaShipObject>::RegType LuaShipObject::Register[] = {
 	{ "scheduleDestroyShipTask", &LuaShipObject::scheduleDestroyShipTask },
 	{ "ejectPassenger", &LuaShipObject::ejectPassenger },
 	{ "canBePilotedBy", &LuaShipObject::canBePilotedBy },
+	{ "hasUpperTurret", &LuaShipObject::hasUpperTurret },
+	{ "hasLowerTurret", &LuaShipObject::hasLowerTurret },
+	{ "isUpperTurretFunctional", &LuaShipObject::isUpperTurretFunctional },
+	{ "isLowerTurretFunctional", &LuaShipObject::isLowerTurretFunctional },
 	{ 0, 0}
 };
 
@@ -273,6 +277,40 @@ int LuaShipObject::canBePilotedBy(lua_State* L) {
 	}
 
 	lua_pushboolean(L, canPilot);
+
+	return 1;
+}
+
+int LuaShipObject::hasUpperTurret(lua_State* L) {
+	uint32 slot = Components::WEAPON_START;
+
+	bool hasUpperTurret = realObject->isComponentInstalled(Components::WEAPON_START);
+
+	lua_pushboolean(L, hasUpperTurret);
+
+	return 1;
+}
+
+int LuaShipObject::hasLowerTurret(lua_State* L) {
+	bool hasLowerTurret = realObject->isComponentInstalled(Components::WEAPON_START + 1);
+
+	lua_pushboolean(L, hasLowerTurret);
+
+	return 1;
+}
+
+int LuaShipObject::isUpperTurretFunctional(lua_State* L) {
+	bool isUpperTurretFunctional = realObject->isComponentFunctional(Components::WEAPON_START);
+
+	lua_pushboolean(L, isUpperTurretFunctional);
+
+	return 1;
+}
+
+int LuaShipObject::isLowerTurretFunctional(lua_State* L) {
+	bool isLowerTurretFunctional = realObject->isComponentFunctional(Components::WEAPON_START + 1);
+
+	lua_pushboolean(L, isLowerTurretFunctional);
 
 	return 1;
 }
