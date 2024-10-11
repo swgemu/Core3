@@ -1113,7 +1113,7 @@ class CreatureObject extends TangibleObject {
 	public native boolean healFactionChecks(CreatureObject object, boolean isPlayer);
 
 	@dirty
-	public native boolean isInvulnerable();
+	public native abstract boolean isInvulnerable();
 
 	/**
 	 * Evaluates if the bounty hunter has a mission with the target.

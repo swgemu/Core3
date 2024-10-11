@@ -10,21 +10,29 @@
 
 class KillPlayerCommand : public QueueCommand {
 public:
-
-	KillPlayerCommand(const String& name, ZoneProcessServer* server)
-		: QueueCommand(name, server) {
-
+	KillPlayerCommand(const String& name, ZoneProcessServer* server) : QueueCommand(name, server) {
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
-
-		if (!checkStateMask(creature))
+		if (!checkStateMask(creature)) {
 			return INVALIDSTATE;
+		}
 
-		if (!checkInvalidLocomotions(creature))
+		if (!checkInvalidLocomotions(creature)) {
 			return INVALIDLOCOMOTION;
+		}
 
-		//Explain syntax
+		auto zone = creature->getZone();
+
+		if (zone == nullptr) {
+			return GENERALERROR;
+		}
+
+		if (zone->isSpaceZone()) {
+			return killPlayerShip(creature, target, arguments);
+		}
+
+		// Explain syntax
 		if (arguments.isEmpty() && target == 0) {
 			creature->sendSystemMessage("Syntax: /killPlayer [player name] [-area [range]] -wounds [<health> [action] [mind]]");
 			return GENERALERROR;
@@ -46,40 +54,39 @@ public:
 
 		StringTokenizer args(arguments.toString());
 
-		//Initialize default damage amount
+		// Initialize default damage amount
 		int healthDamage = 9999999;
 		int actionDamage = healthDamage;
 		int mindDamage = healthDamage;
 
-		//Initialize components used to kill nearby creatures
+		// Initialize components used to kill nearby creatures
 		bool area = false;
 		bool wounds = false;
 		bool damage = false;
 		float range = 64;
 
 		while (args.hasMoreTokens()) {
-
 			String arg;
 			args.getStringToken(arg);
 			bool validOption = false;
 
-			//If first argument is player name, break loop and kill player
-			ManagedReference<CreatureObject*>findPlayer = playerManager->getPlayer(arg);
+			// If first argument is player name, break loop and kill player
+			ManagedReference<CreatureObject*> findPlayer = playerManager->getPlayer(arg);
 			if (findPlayer != nullptr) {
 				targetPlayer = findPlayer;
 				break;
 			}
 
-			//Command Options
+			// Command Options
 			if (arg.charAt(0) == '-') {
-				//Help Syntax
+				// Help Syntax
 				if (arg.toLowerCase() == "-help" || arg == "-H") {
 					validOption = true;
 					creature->sendSystemMessage("Syntax: /kill [-area [range]] [-wounds] [<health> [action] [mind]]");
 					return GENERALERROR;
 				}
 
-				//Make command area affect with optional range
+				// Make command area affect with optional range
 				if (arg.toLowerCase() == "-area" || arg == "-a") {
 					validOption = true;
 					area = true;
@@ -93,7 +100,7 @@ public:
 					}
 				}
 
-				//Make command apply wounds as well as damage
+				// Make command apply wounds as well as damage
 				if (arg.toLowerCase() == "-wounds" || arg == "-w") {
 					validOption = true;
 					wounds = true;
@@ -103,12 +110,10 @@ public:
 					creature->sendSystemMessage("Invalid option " + arg);
 					return INVALIDPARAMETERS;
 				}
-			}
-
-			else {
-				//Override default damage amount
+			// Override default damage amount
+			} else {
 				try {
-					//Test if value is integer
+					// Test if value is integer
 					for (int i = 0; i < arg.length(); i++) {
 						if (!Character::isDigit(arg.charAt(i)))
 							throw Exception("Invalid damage amount.");
@@ -121,7 +126,7 @@ public:
 
 					if (args.hasMoreTokens()) {
 						args.getStringToken(arg);
-						//Test if value is integer
+						// Test if value is integer
 						for (int i = 0; i < arg.length(); i++) {
 							if (!Character::isDigit(arg.charAt(i)))
 								throw Exception("Invalid action damage amount.");
@@ -132,7 +137,7 @@ public:
 
 						if (args.hasMoreTokens()) {
 							args.getStringToken(arg);
-							//Test if value is integer
+							// Test if value is integer
 							for (int i = 0; i < arg.length(); i++) {
 								if (!Character::isDigit(arg.charAt(i)))
 									throw Exception("Invalid mind damage amount.");
@@ -151,26 +156,24 @@ public:
 			}
 		}
 
-		//Deal area damage if specified
+		// Deal area damage if specified
 		if (area) {
-			//Retrieve nearby objects
+			// Retrieve nearby objects
 			SortedVector<TreeEntry*> closeObjects;
-			Zone* zone = creature->getZone();
 
 			if (creature->getCloseObjects() == nullptr) {
 #ifdef COV_DEBUG
 				creature->info("Null closeobjects vector in KillPlayerCommand::doQueueCommand", true);
 #endif
 				zone->getInRangeObjects(creature->getPositionX(), creature->getPositionZ(), creature->getPositionY(), range, &closeObjects, true);
-			}
-			else {
-				CloseObjectsVector* closeVector = (CloseObjectsVector*) creature->getCloseObjects();
+			} else {
+				CloseObjectsVector* closeVector = (CloseObjectsVector*)creature->getCloseObjects();
 				closeVector->safeCopyReceiversTo(closeObjects, CloseObjectsVector::CREOTYPE);
 			}
 
 			int count = 0;
 
-			//Deal area damage if specified
+			// Deal area damage if specified
 			if (damage) {
 				for (int i = 0; i < closeObjects.size(); i++) {
 					SceneObject* targetObject = static_cast<SceneObject*>(closeObjects.get(i));
@@ -178,22 +181,22 @@ public:
 						targetPlayer = cast<CreatureObject*>(targetObject);
 
 						Locker locker(targetPlayer, creature);
-						//Deal damage if target is in range and is a player or pet
+						// Deal damage if target is in range and is a player or pet
 						if (creature->isInRange(targetPlayer, range) && (targetPlayer->isPlayerCreature() || targetPlayer->isPet()) && targetPlayer != creature) {
 							targetPlayer->inflictDamage(creature, 0, healthDamage, true, true);
 							targetPlayer->inflictDamage(creature, 3, actionDamage, true, true);
 							targetPlayer->inflictDamage(creature, 6, mindDamage, true, true);
 
-							if( wounds ){
-								targetPlayer->addWounds( 0, healthDamage, true );
-								targetPlayer->addWounds( 1, healthDamage, true );
-								targetPlayer->addWounds( 2, healthDamage, true );
-								targetPlayer->addWounds( 3, actionDamage, true );
-								targetPlayer->addWounds( 4, actionDamage, true );
-								targetPlayer->addWounds( 5, actionDamage, true );
-								targetPlayer->addWounds( 6, mindDamage, true );
-								targetPlayer->addWounds( 7, mindDamage, true );
-								targetPlayer->addWounds( 8, mindDamage, true );
+							if (wounds) {
+								targetPlayer->addWounds(0, healthDamage, true);
+								targetPlayer->addWounds(1, healthDamage, true);
+								targetPlayer->addWounds(2, healthDamage, true);
+								targetPlayer->addWounds(3, actionDamage, true);
+								targetPlayer->addWounds(4, actionDamage, true);
+								targetPlayer->addWounds(5, actionDamage, true);
+								targetPlayer->addWounds(6, mindDamage, true);
+								targetPlayer->addWounds(7, mindDamage, true);
+								targetPlayer->addWounds(8, mindDamage, true);
 							}
 
 							if (targetPlayer->isPlayerCreature())
@@ -205,17 +208,15 @@ public:
 				}
 				creature->sendSystemMessage(String::valueOf(count) + " players damaged.");
 				return SUCCESS;
-			}
-
-			//Kill players in area
-			else {
+			// Kill players in area
+			} else {
 				for (int i = 0; i < closeObjects.size(); i++) {
 					SceneObject* targetObject = static_cast<SceneObject*>(closeObjects.get(i));
 					if (targetObject->isPlayerCreature() || targetObject->isPet()) {
 						targetPlayer = cast<CreatureObject*>(targetObject);
 
 						if (targetPlayer->isPlayerCreature() && targetPlayer != creature) {
-							Locker locker (targetPlayer, creature);
+							Locker locker(targetPlayer, creature);
 
 							playerManager->killPlayer(creature, targetPlayer, 1);
 							targetPlayer->notifyObservers(ObserverEventType::OBJECTDESTRUCTION, creature, 0);
@@ -239,10 +240,8 @@ public:
 				creature->sendSystemMessage(String::valueOf(count) + " players and/or pets killed.");
 				return SUCCESS;
 			}
-		}
-
-		//Deal damage to single target
-		else if (damage) {
+		// Deal damage to single target
+		} else if (damage) {
 			if (targetPlayer != nullptr) {
 				if (targetPlayer->isPlayerCreature() || targetPlayer->isPet()) {
 					Locker locker(targetPlayer, creature);
@@ -251,16 +250,16 @@ public:
 					targetPlayer->inflictDamage(creature, 3, actionDamage, true, true);
 					targetPlayer->inflictDamage(creature, 6, mindDamage, true, true);
 
-					if( wounds ){
-						targetPlayer->addWounds( 0, healthDamage, true );
-						targetPlayer->addWounds( 1, healthDamage, true );
-						targetPlayer->addWounds( 2, healthDamage, true );
-						targetPlayer->addWounds( 3, actionDamage, true );
-						targetPlayer->addWounds( 4, actionDamage, true );
-						targetPlayer->addWounds( 5, actionDamage, true );
-						targetPlayer->addWounds( 6, mindDamage, true );
-						targetPlayer->addWounds( 7, mindDamage, true );
-						targetPlayer->addWounds( 8, mindDamage, true );
+					if (wounds) {
+						targetPlayer->addWounds(0, healthDamage, true);
+						targetPlayer->addWounds(1, healthDamage, true);
+						targetPlayer->addWounds(2, healthDamage, true);
+						targetPlayer->addWounds(3, actionDamage, true);
+						targetPlayer->addWounds(4, actionDamage, true);
+						targetPlayer->addWounds(5, actionDamage, true);
+						targetPlayer->addWounds(6, mindDamage, true);
+						targetPlayer->addWounds(7, mindDamage, true);
+						targetPlayer->addWounds(8, mindDamage, true);
 					}
 
 					if (targetPlayer->isPlayerCreature())
@@ -270,15 +269,12 @@ public:
 
 					return SUCCESS;
 				}
-			}
-			else {
+			} else {
 				creature->sendSystemMessage("Invalid target.");
 				return INVALIDTARGET;
 			}
-		}
-
-		//Kill single target
-		else {
+		// Kill single target
+		} else {
 			if (targetPlayer != nullptr) {
 				if (targetPlayer->isPlayerCreature()) {
 					Locker locker(targetPlayer, creature);
@@ -296,8 +292,7 @@ public:
 						pet->notifyObservers(ObserverEventType::OBJECTDESTRUCTION, creature, 0);
 					}
 				}
-			}
-			else {
+			} else {
 				creature->sendSystemMessage("Invalid target.");
 				return INVALIDTARGET;
 			}
@@ -306,6 +301,150 @@ public:
 		return SUCCESS;
 	}
 
+	int killPlayerShip(CreatureObject* creature, const uint64& targetID, const UnicodeString& arguments) const {
+		if (creature == nullptr || (targetID == 0 && arguments == "")) {
+			creature->sendSystemMessage("Kill Player Command Space Syntax: /killPlayer [-area range]");
+			return QueueCommand::INVALIDPARAMETERS;
+		}
+
+		auto zoneServer = creature->getZoneServer();
+
+		if (zoneServer == nullptr) {
+			return GENERALERROR;
+		}
+
+		StringTokenizer args(arguments.toString());
+
+		int range = -1.f;
+		bool validOption = false;
+		bool area = false;
+
+		if (args.hasMoreTokens()) {
+			String arg;
+			args.getStringToken(arg);
+
+			// Command Options
+			if (arg.charAt(0) == '-') {
+				String lowerArg = arg.toLowerCase();
+
+				// Help Syntax
+				if (lowerArg == "-help" || lowerArg == "-h") {
+					validOption = true;
+					creature->sendSystemMessage("Kill Player Command Space Syntax: /killPlayer [-area range]");
+					return SUCCESS;
+				}
+
+				// Make command area affect with optional range
+				if (lowerArg == "-area" || lowerArg == "-a") {
+					validOption = true;
+					area = true;
+
+					if (args.hasMoreTokens()) {
+						range = args.getFloatToken();
+					}
+
+					if (range < 1) {
+						StringBuffer msg;
+						msg << "Invalid range given: " << arg << " " << range << endl <<
+						"Kill Player Space Command Syntax: /killPlayer [-area range]";
+
+						creature->sendSystemMessage(msg.toString());
+						return INVALIDPARAMETERS;
+					}
+				}
+			}
+		} else if (targetID > 0) {
+			validOption = true;
+		}
+
+		if (!validOption) {
+			StringBuffer msg;
+			msg << "Invalid Kill Player Command Arguments in Space." << endl <<
+			"Kill Player Command Space Syntax: /killPlayer [-area range]";
+
+			creature->sendSystemMessage(msg.toString());
+			return INVALIDPARAMETERS;
+		}
+
+		// Single player target selected
+		if (!area) {
+			auto target = zoneServer->getObject(targetID).get();
+
+			if (target == nullptr || !target->isPlayerShip()) {
+				creature->sendSystemMessage("Kill Player Command Space Error -- Target Invalid: " + target->getDisplayedName());
+				return GENERALERROR;
+			}
+
+			auto targetShip = target->asShipObject();
+
+			if (targetShip == nullptr || targetShip->isDestroying()) {
+				return GENERALERROR;
+			}
+
+			Locker tLock(targetShip, creature);
+
+			if (targetShip->getChassisCurrentHealth() > 0.f) {
+				targetShip->setCurrentChassisHealth(0.f, true);
+			}
+
+			auto destroyTask = new DestroyShipTask(targetShip);
+
+			if (destroyTask != nullptr) {
+				destroyTask->execute();
+			}
+
+			creature->sendSystemMessage("Kill Player Command Space Result -- Target Destroyed: " + targetShip->getShipName());
+			return SUCCESS;
+		}
+
+		// Area kill defined
+		auto closeObjects = creature->getCloseObjects();
+
+		if (closeObjects == nullptr) {
+			return GENERALERROR;
+		}
+
+		SortedVector<ManagedReference<TreeEntry*>> closeCopy;
+		closeObjects->safeCopyReceiversTo(closeCopy, CloseObjectsVector::PLAYERSHIPTYPE);
+
+		int count = 0;
+
+		for (int i = 0; i < closeCopy.size(); ++i) {
+			auto target = static_cast<SceneObject*>(closeCopy.get(i).get());
+
+			if (target == nullptr || !target->isPlayerShip()) {
+				continue;
+			}
+
+			auto targetShip = target->asShipObject();
+
+			if (targetShip == nullptr || targetShip->isInvulnerable()) {
+				continue;
+			}
+
+			if (targetShip->getPosition().squaredDistanceTo(creature->getPosition()) > range * range) {
+				continue;
+			}
+
+			Locker tLock(targetShip, creature);
+
+			if (targetShip->getChassisCurrentHealth() > 0.f) {
+				targetShip->setCurrentChassisHealth(0.f, true);
+			}
+
+			auto destroyTask = new DestroyShipTask(targetShip);
+
+			if (destroyTask != nullptr) {
+				destroyTask->execute();
+			}
+
+			count++;
+		}
+
+		creature->sendSystemMessage("Kill Player Command Space Result -- Total Area Ships Destroyed: " + String::valueOf(count));
+
+		return SUCCESS;
+	}
 };
 
-#endif //KILLPLAYERCOMMAND_H_
+#endif // KILLPLAYERCOMMAND_H_

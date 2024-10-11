@@ -1565,6 +1565,10 @@ class SceneObject extends TreeEntry implements Logger, Metrics {
 	@virtualStub
 	public native abstract boolean isShipAiAgent();
 
+	@dirty
+	@local
+	public native abstract boolean isPlayerShip();
+
 	@mock
 	@dirty
 	@local
