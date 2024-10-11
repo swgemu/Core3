@@ -68,9 +68,58 @@ object_tangible_terminal_terminal_character_builder = object_tangible_terminal_s
 	},
 
 	itemList = {
-		"JTL Options",
+		"Jump to Lightspeed",
 		{
-			"Ship Chassis",
+			"Ship Deeds",
+			{
+				"Rebel",
+				{
+					"A-Wing Deed", "object/draft_schematic/space/chassis/awing.iff",
+					"B-Wing Deed", "object/draft_schematic/space/chassis/bwing.iff",
+					"KSE Firespray Deed", "object/draft_schematic/space/chassis/firespray.iff",
+					"X-Wing Deed", "object/draft_schematic/space/chassis/xwing.iff",
+					"YKL-37R Deed", "object/draft_schematic/space/chassis/ykl37r.iff",
+					"Y-Wing Deed", "object/draft_schematic/space/chassis/ywing.iff",
+					"Y-Wing Longprobe Deed", "object/draft_schematic/space/chassis/ywing_longprobe.iff",
+					"Z-95 Deed", "object/draft_schematic/space/chassis/z95.iff",
+				},
+				"Imperial",
+				{
+					"VT-49 Decimator Deed", "object/draft_schematic/space/chassis/decimator.iff",
+					"TIE/In Deed", "object/draft_schematic/space/chassis/tie_in.iff",
+					"TIE Light Duty Fighter Deed", "object/draft_schematic/space/chassis/tie_light_duty.iff",
+					"TIE Advanced Deed", "object/draft_schematic/space/chassis/tieadvanced.iff",
+					"TIE Aggressor Deed", "object/draft_schematic/space/chassis/tieaggressor.iff",
+					"TIE Bomber Deed", "object/draft_schematic/space/chassis/tiebomber.iff",
+					"TIE Fighter Deed", "object/draft_schematic/space/chassis/tiefighter.iff",
+					"TIE Interceptor Deed", "object/draft_schematic/space/chassis/tieinterceptor.iff",
+					"TIE Oppressor Deed", "object/draft_schematic/space/chassis/tieoppressor.iff",
+				},
+				"Neutral",
+				{
+					"M22-T Krayt Heavy Fighter Deed", "object/draft_schematic/space/chassis/hutt_turret_ship.iff",
+					"Ixiyen Fast Attack Craft Deed, Style 1", "object/draft_schematic/space/chassis/blacksun_medium_s01.iff",
+					"Ixiyen Fast Attack Craft Deed, Style 2", "object/draft_schematic/space/chassis/blacksun_medium_s02.iff",
+					"Ixiyen Fast Attack Craft Deed, Style 3", "object/draft_schematic/space/chassis/blacksun_medium_s03.iff",
+					"Ixiyen Fast Attack Craft Deed, Style 4", "object/draft_schematic/space/chassis/blacksun_medium_s04.iff",
+					"Rihkxyrk Attack Ship Deed, Style 1", "object/draft_schematic/space/chassis/blacksun_heavy_s01.iff",
+					"Rihkxyrk Attack Ship Deed, Style 2", "object/draft_schematic/space/chassis/blacksun_heavy_s02.iff",
+					"Rihkxyrk Attack Ship Deed, Style 3", "object/draft_schematic/space/chassis/blacksun_heavy_s03.iff",
+					"Rihkxyrk Attack Ship Deed, Style 4", "object/draft_schematic/space/chassis/blacksun_heavy_s04.iff",
+					"Dunelizard Deed, Style 1", "object/draft_schematic/space/chassis/hutt_medium_s01.iff",
+					"Dunelizard Deed, Style 2", "object/draft_schematic/space/chassis/hutt_medium_s02.iff",
+					"Kimogila Deed, Style 1", "object/draft_schematic/space/chassis/hutt_heavy_s01.iff",
+					"Kimogila Deed, Style 2", "object/draft_schematic/space/chassis/hutt_heavy_s02.iff",
+					"Kihraxz Light Fighter Deed, Style 1", "object/draft_schematic/space/chassis/blacksun_light_s01.iff",
+					"Kihraxz Light Fighter Deed, Style 2", "object/draft_schematic/space/chassis/blacksun_light_s02.iff",
+					"Kihraxz Light Fighter Deed, Style 3", "object/draft_schematic/space/chassis/blacksun_light_s03.iff",
+					"Kihraxz Light Fighter Deed, Style 4", "object/draft_schematic/space/chassis/blacksun_light_s04.iff",
+					"Scyk Light Fighter Deed, Style 1", "object/draft_schematic/space/chassis/hutt_light_s01.iff",
+					"Scyk Light Fighter Deed, Style 2", "object/draft_schematic/space/chassis/hutt_light_s02.iff",
+					"YT-1300 Deed", "object/draft_schematic/space/chassis/yt1300.iff",
+				},
+			},
+			"Quick Launch Ships",
 			{
 				"Rebel",
 				{
@@ -108,7 +157,6 @@ object_tangible_terminal_terminal_character_builder = object_tangible_terminal_s
 					"Sorosuub Luxury Yacht", "object/ship/player/player_sorosuub_space_yacht.iff"
 				},
 			},
-
 			"Ship Components",
 			{
 				"Armor",
@@ -3291,14 +3339,6 @@ object_tangible_terminal_terminal_character_builder = object_tangible_terminal_s
 				--"Landspeeder av21", "object/tangible/deed/vehicle_deed/landspeeder_av21_deed.iff",
 				--"Landspeeder x31", "object/tangible/deed/vehicle_deed/landspeeder_x31_deed.iff",
 				--"Landspeeder x34", "object/tangible/deed/vehicle_deed/landspeeder_x34_deed.iff"
-				},
-				"Ship Deeds",
-				{
-					"YT-1300 Deed", "object/tangible/ship/crafted/chassis/yt1300_deed.iff",
-					"X-Wing Deed", "object/tangible/ship/crafted/chassis/xwing_deed.iff",
-					"Tie Interceptor Deed", "object/tangible/ship/crafted/chassis/tieinterceptor_deed.iff",
-					"KSE Firespray Deed", "object/tangible/ship/crafted/chassis/firespray_deed.iff",
-					"Y-Wing Deed", "object/tangible/ship/crafted/chassis/ywing_deed.iff",
 				},
 				"Structure Deeds",
 				{
