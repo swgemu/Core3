@@ -8,10 +8,13 @@ package server.zone.objects.intangible;
 import server.zone.objects.intangible.ControlDevice;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.packets.object.ObjectMenuResponse;
-include server.zone.managers.radial.RadialOptions;
 import server.zone.objects.scene.SceneObject;
 import server.zone.objects.ship.ShipObject;
+import server.zone.packets.scene.AttributeListMessage;
+
+include server.zone.managers.radial.RadialOptions;
 include engine.util.u3d.Vector3;
+include system.util.Vector;
 
 @json
 class ShipControlDevice extends ControlDevice {
@@ -21,7 +24,7 @@ class ShipControlDevice extends ControlDevice {
 	protected int shipType;
 
 	@dereferenced
-	protected string storedCityName;
+	protected string parkingLocation;
 
 	@dereferenced
 	protected string storedZoneName;
@@ -29,11 +32,17 @@ class ShipControlDevice extends ControlDevice {
 	@dereferenced
 	protected Vector3 storedPosition;
 
+	@dereferenced
+	private Vector<string> skillsRequired;
+
 	public ShipControlDevice() {
 		Logger.setLoggingName("ShipControlDevice");
 
 		shipType = 0;
 	}
+
+	@preLocked
+	public native ShipObject launchShip(CreatureObject player, @dereferenced final string zoneName, @dereferenced final Vector3 position);
 
 	@preLocked
 	@arg1preLocked
@@ -43,8 +52,9 @@ class ShipControlDevice extends ControlDevice {
 	@dirty
 	public native void fillObjectMenuResponse(ObjectMenuResponse menuResponse, CreatureObject player);
 
-	@preLocked
-	public native ShipObject launchShip(CreatureObject player, @dereferenced final string zoneName, @dereferenced final Vector3 position);
+	@local
+	@dirty
+	public native void fillAttributeList(AttributeListMessage alm, CreatureObject object);
 
 	@dirty
 	public native boolean canBeTradedTo(CreatureObject player, CreatureObject receiver, int numberInTrade);
@@ -75,21 +85,9 @@ class ShipControlDevice extends ControlDevice {
 		return true;
 	}
 
-	@preLocked
-	public void setStoredCityName(final string cityName) {
-		storedCityName = cityName;
-	}
-
-	// Mutators
-	@local
-	@preLocked
-	public void setShipType(int type) {
-		shipType = type;
-	}
-
 	@dereferenced
-	public string getStoredCityName() {
-		return storedCityName;
+	public string getParkingLocation() {
+		return parkingLocation;
 	}
 
 	@dereferenced
@@ -101,4 +99,27 @@ class ShipControlDevice extends ControlDevice {
 		return shipType;
 	}
 
+	public int getTotalSkillsRequired() {
+		return skillsRequired.size();
+	}
+
+	public string getSkillRequired(int index) {
+		return skillsRequired.get(index);
+	}
+
+	// Mutators
+	@local
+	@preLocked
+	public void setShipType(int type) {
+		shipType = type;
+	}
+
+	@preLocked
+	public void setParkingLocation(final string cityName) {
+		parkingLocation = cityName;
+	}
+
+	public void addSkillRequired(string skill) {
+		skillsRequired.add(skill);
+	}
 }

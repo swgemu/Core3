@@ -2058,3 +2058,27 @@ bool ShipObjectImplementation::canBePilotedBy(CreatureObject* player) {
 
 	return (ghost->hasAbility(certificationRequired) || player->hasSkill(certificationRequired));
 }
+
+bool ShipObjectImplementation::hasComponentsInstalled() {
+	for (int i = 0; i < componentOptions.size(); ++i) {
+		uint32 slot = componentOptions.getKeyAt(i);
+
+		if (isComponentInstalled(slot)) {
+			return true;
+		}
+	}
+
+	return false;
+}
+
+bool ShipObjectImplementation::isStarterShip() {
+	auto chassisName = getShipChassisName().hashCode();
+
+	return ((STRING_HASHCODE("player_basic_tiefighter") == chassisName) || (STRING_HASHCODE("player_basic_hutt_light") == chassisName) || (STRING_HASHCODE("player_basic_z95") == chassisName));
+}
+
+bool ShipObjectImplementation::isSorosuubSpaceYacht() {
+	auto chassisName = getShipChassisName().hashCode();
+
+	return (STRING_HASHCODE("player_sorosuub_space_yacht") == chassisName);
+}

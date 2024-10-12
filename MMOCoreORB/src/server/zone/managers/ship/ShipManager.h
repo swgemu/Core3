@@ -196,6 +196,8 @@ public:
 	 */
 	void promptNameShip(CreatureObject* creature, ShipControlDevice* shipDevice);
 
+	void reDeedShip(CreatureObject* creature, ShipControlDevice* shipDevice);
+
 	HashTableIterator<uint32, Reference<SpaceSpawnGroup*>> spawnGroupIterator() {
 		return spawnGroupMap.iterator();
 	}

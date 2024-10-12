@@ -69,12 +69,12 @@ public:
 				continue;
 			}
 
-			if (shipDevice->getStoredCityName().isEmpty()) {
+			if (shipDevice->getParkingLocation().isEmpty()) {
 				Locker cLock(shipDevice, player);
-				shipDevice->setStoredCityName(travelPointName);
+				shipDevice->setParkingLocation(travelPointName);
 			}
 
-			shipMap.put(object->getObjectID(), shipDevice->getStoredCityName());
+			shipMap.put(object->getObjectID(), shipDevice->getParkingLocation());
 		}
 
 		insertInt(shipMap.size() +1); // Number of ships

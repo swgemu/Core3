@@ -1755,6 +1755,12 @@ class ShipObject extends TangibleObject {
 
 	public native boolean canBePilotedBy(CreatureObject player);
 
+	public native boolean hasComponentsInstalled();
+
+	public native boolean isStarterShip();
+
+	public native boolean isSorosuubSpaceYacht();
+
 	public void setSpaceLaunchZone(string zoneName) {
 		launchPoint.setGroundZoneName(zoneName);
 	}

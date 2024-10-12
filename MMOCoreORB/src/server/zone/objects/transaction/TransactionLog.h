@@ -100,6 +100,7 @@ enum class TrxCode {
 	RECYCLED,                   // Recycled Items
 	SERVERDESTROYOBJECT,        // /serverDestroyObject command
 	SHIPDEEDPURCHASE,           // Purchase of a ship deed from chassis dealer
+	SHIPREDEED,                 // ReDeeding a ship from datapad
 	SLICECONTAINER,             // Slicing session on a container
 	STRUCTUREDEED,              // Structure deed trxs
 	TRANSFERITEMMISC,           // /transferitemmisc command

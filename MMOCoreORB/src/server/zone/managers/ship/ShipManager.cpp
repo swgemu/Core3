@@ -945,11 +945,12 @@ void ShipManager::promptFindLostItems(CreatureObject* player, PobShipObject* pob
 	}
 }
 
-void ShipManager::promptNameShip(CreatureObject* creature, ShipControlDevice* shipDevice) {
-	if (creature == nullptr || shipDevice == nullptr)
+void ShipManager::promptNameShip(CreatureObject* player, ShipControlDevice* shipDevice) {
+	if (player == nullptr || shipDevice == nullptr) {
 		return;
+	}
 
-	auto ghost = creature->getPlayerObject();
+	auto ghost = player->getPlayerObject();
 
 	if (ghost == nullptr)
 		return;
@@ -960,7 +961,7 @@ void ShipManager::promptNameShip(CreatureObject* creature, ShipControlDevice* sh
 		return;
 	}
 
-	ManagedReference<SuiInputBox*> inputBox = new SuiInputBox(creature, SuiWindowType::OBJECT_NAME);
+	ManagedReference<SuiInputBox*> inputBox = new SuiInputBox(player, SuiWindowType::OBJECT_NAME);
 
 	inputBox->setUsingObject(shipDevice);
 
@@ -969,12 +970,171 @@ void ShipManager::promptNameShip(CreatureObject* creature, ShipControlDevice* sh
 
 	inputBox->setMaxInputSize(20);
 
-	inputBox->setCallback(new NameShipSuiCallback(creature->getZoneServer()));
+	inputBox->setCallback(new NameShipSuiCallback(player->getZoneServer()));
 	inputBox->setForceCloseDistance(-1);
 
 	ghost->addSuiBox(inputBox);
 
-	creature->sendMessage(inputBox->generateMessage());
+	player->sendMessage(inputBox->generateMessage());
+}
+
+void ShipManager::reDeedShip(CreatureObject* player, ShipControlDevice* shipDevice) {
+	if (player == nullptr || shipDevice == nullptr) {
+		return;
+	}
+
+	ManagedReference<ShipObject*> ship = shipDevice->getControlledObject()->asShipObject();
+
+	if (ship == nullptr) {
+		return;
+	}
+
+	auto zoneServer = player->getZoneServer();
+
+	if (zoneServer == nullptr) {
+		return;
+	}
+
+	auto zone = player->getZone();
+
+	if (zone == nullptr) {
+		return;
+	}
+
+	auto planetManager = zone->getPlanetManager();
+
+	if (planetManager == nullptr) {
+		return;
+	}
+
+	auto parkingLocation = shipDevice->getParkingLocation();
+	auto travelPoint = planetManager->getNearestPlanetTravelPoint(player->getWorldPosition(), 128.f);
+
+	if (travelPoint == nullptr || parkingLocation != travelPoint->getPointName()) {
+		player->sendSystemMessage("@space/space_interaction:wrong_parking_location"); // "Your ship is not parked here. (Examine the Ship Control Device to see where it is actually parked)"
+		return;
+	}
+
+	if (ship->isSorosuubSpaceYacht()) {
+		player->sendSystemMessage("@space/space_interaction:space_yacht"); // "The Sorosuub Yacht cannot be re-deeded!"
+		return;
+	} else if (ship->isStarterShip()) {
+		player->sendSystemMessage("@space/space_interaction:newbie_ship"); // "You cannot redeed a starter ship!"
+		return;
+	} else if (ship->isPobShip()) {
+		auto pobShip = ship->asPobShip();
+
+		if (pobShip == nullptr) {
+			return;
+		}
+
+		if (pobShip->getCurrentNumberOfPlayerItems() > 0) {
+			player->sendSystemMessage("@space/space_interaction:items_in_ship"); // "You cannot pack this ship into a deed until you have removed all items from its interior."
+			return;
+		}
+	}
+
+	if (ship->hasComponentsInstalled()) {
+		player->sendSystemMessage("@space/space_interaction:components_installed"); // "You cannot pack this ship until all components have been removed from the ship."
+		return;
+	}
+
+	auto inventory = player->getInventory();
+
+	if (inventory == nullptr) {
+		return;
+	}
+
+	String chassisName = ship->getShipChassisName().replaceAll("player_", "");
+	String deedPath = "object/tangible/ship/crafted/chassis/" + chassisName + "_deed.iff";
+
+	// Create the deed and transfer
+	auto object = zoneServer->createObject(deedPath.hashCode(), 2);
+
+	if (object == nullptr || !object->isShipDeedObject()) {
+		return;
+	}
+
+	ShipDeed* shipDeed = object.castTo<ShipDeed*>();
+
+	if (shipDeed == nullptr) {
+		return;
+	}
+
+	// Transfer the ship stats to the deed
+	Locker deedLock(shipDeed, shipDevice);
+
+	auto controlDeviceTemplate = shipDevice->getObjectTemplate();
+
+	if (controlDeviceTemplate == nullptr) {
+		return;
+	}
+
+	auto deviceStringName = controlDeviceTemplate->getFullTemplateString();
+	auto certificationRequired = ship->getCertificationRequired();
+
+
+	int shipType = shipDevice->getShipType();
+	float maxHealth = ship->getChassisMaxHealth();
+	float currentHealthDamage = (maxHealth - ship->getChassisCurrentHealth());
+	float maxMass = ship->getChassisMaxMass();
+
+	/*
+	StringBuffer msg;
+	msg << "Ship ReDeed Ship Stats Debug -- Control Device Template: " << deviceStringName << endl <<
+	"Max Hit Points: " << maxHealth << endl <<
+	"Hit Points Damage = " << currentHealthDamage << endl <<
+	"Max Mass: " << maxMass << endl <<
+	"Certifcation Required: " << certificationRequired << endl <<
+	"Parking Locaiton: " << parkingLocation << endl;
+	*/
+
+	for (int i = 0; i < shipDevice->getTotalSkillsRequired(); i++) {
+		auto skillName = shipDevice->getSkillRequired(i);
+		shipDeed->addSkillRequired(skillName);
+		// msg << "Skills Required: " << skillName << endl;
+	}
+
+	/*
+	info(true) << msg.toString();
+	*/
+
+	shipDeed->setControlDeviceTemplate(deviceStringName);
+	shipDeed->setCertificationRequired(certificationRequired);
+	shipDeed->setParkingLocation(parkingLocation);
+
+	shipDeed->setMaxHitPoints(maxHealth);
+	shipDeed->setHitPointsDamage(currentHealthDamage);
+	shipDeed->setMass(maxMass);
+	shipDeed->setShipType(shipType);
+
+	deedLock.release();
+
+	TransactionLog trx(shipDevice, player, shipDeed, TrxCode::SHIPREDEED, true);
+	trx.commit();
+
+	Locker playerLock(player, shipDevice);
+
+	// Transfer the deed
+	inventory->transferObject(shipDeed, -1, true, true);
+
+	playerLock.release();
+
+	player->broadcastObject(shipDeed, true);
+
+	// Destroy the ship
+	Locker shipLock(ship, shipDevice);
+
+	ship->destroyObjectFromWorld(true);
+	ship->destroyObjectFromDatabase(true);
+
+	shipLock.release();
+
+	// Destroy the control device
+	shipDevice->destroyObjectFromWorld(true);
+	shipDevice->destroyObjectFromDatabase(true);
+
+	player->sendSystemMessage("@space/space_interaction:packed"); // "You have successfully packed this ship into a deed!"
 }
 
 uint16 ShipManager::setShipUniqueID(ShipObject* ship) {
