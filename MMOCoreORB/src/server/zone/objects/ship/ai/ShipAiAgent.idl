@@ -36,6 +36,9 @@ include engine.util.u3d.Vector3;
 include server.zone.objects.creature.variables.CooldownTimerMap;
 include engine.util.u3d.Quaternion;
 include server.zone.objects.creature.CreatureObject;
+include server.zone.objects.ship.ShipProjectileData;
+include server.zone.objects.ship.ShipMissileData;
+include server.zone.objects.ship.ShipTurretData;
 
 @json
 class ShipAiAgent extends FighterShipObject {
@@ -138,6 +141,8 @@ class ShipAiAgent extends FighterShipObject {
 
 	protected transient float deltaTime;
 
+	protected transient float missileLockTime;
+
 	@weakReference
 	protected SceneObject homeObject;
 
@@ -164,6 +169,8 @@ class ShipAiAgent extends FighterShipObject {
 
 	public static final float DEFAULT_PROJECTILE_SPEED = 500.f;
 	public static final float DEFAULT_PROJECTILE_RANGE = 512.f;
+	public static final float DEFAULT_PROJECTILE_REFIRE = 0.5f;
+	public static final float DEFAULT_MISSILE_REFIRE = 5.f;
 
 	protected transient unsigned long customShipAiMap;
 
@@ -648,9 +655,25 @@ class ShipAiAgent extends FighterShipObject {
 	@preLocked
 	public native boolean validateTarget(ShipObject targetShip);
 
+	@local
+	@dereferenced
+	public native Vector<unsigned int> getActiveWeaponVector();
+
+	@local
 	public native boolean fireWeaponAtTarget(ShipObject targetShip, unsigned int slot, unsigned int targetSlot);
 
-	public native boolean fireTurretAtTarget(ShipObject targetShip, unsigned int slot, unsigned int targetSlot);
+	@local
+	public native boolean fireProjectileAtTarget(ShipObject targetShip, final ShipProjectileData projectileData, unsigned int slot, unsigned int targetSlot);
+
+	@local
+	public native boolean fireMissileAtTarget(ShipObject targetShip, final ShipProjectileData projectileData, final ShipMissileData missileData, unsigned int slot, unsigned int targetSlot);
+
+	@local
+	public native boolean fireTurretAtTarget(ShipObject targetShip, final ShipProjectileData projectileData, final ShipTurretData turretData, unsigned int slot, unsigned int targetSlot);
+
+	public native float getWeaponRefireDeltaTime(unsigned int slot);
+
+	public native void setWeaponRefireDeltaTime(unsigned int slot);
 
 	public native void initializeTransform(@dereferenced final Vector3 position, @dereferenced final Quaternion direction);
 

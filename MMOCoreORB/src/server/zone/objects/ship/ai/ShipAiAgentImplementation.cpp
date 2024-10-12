@@ -45,6 +45,7 @@
 #include "server/zone/managers/ship/ShipManager.h"
 #include "server/zone/objects/player/FactionStatus.h"
 #include "server/zone/objects/ship/ai/events/ShipAiPatrolPathFinder.h"
+#include "server/zone/managers/spacecombat/projectile/ShipMissile.h"
 
 // #define DEBUG_SHIP_AI
 // #define DEBUG_FINDNEXTPOSITION
@@ -173,12 +174,12 @@ void ShipAiAgentImplementation::loadTemplateData(SharedShipObjectTemplate* shipT
 			float usage = values.get("energyUsage");
 			float consumptionRate = values.get("energyConsumptionRate");
 
-			setBoosterRechargeRate(rechargeRate);
-			setBoosterEnergy(energy);
-			setBoosterEnergyConsumptionRate(usage);
-			setBoosterAcceleration(accel);
-			setBoosterMaxSpeed(speed);
-			setBoosterEnergyConsumptionRate(consumptionRate);
+			setBoosterRechargeRate(rechargeRate, false);
+			setBoosterEnergy(energy, false);
+			setBoosterEnergyConsumptionRate(usage, false);
+			setBoosterAcceleration(accel, false);
+			setBoosterMaxSpeed(speed, false);
+			setBoosterEnergyConsumptionRate(consumptionRate, false);
 			break;
 		}
 		default: {
@@ -201,8 +202,9 @@ void ShipAiAgentImplementation::loadTemplateData(SharedShipObjectTemplate* shipT
 
 				setMaxDamage(slot, maxDamage);
 				setMinDamage(slot, maxDamage);
-				setRefireRate(fireRate, false);
-				setRefireEfficiency(drain, false);
+				setRefireRate(slot, fireRate);
+				setEnergyPerShot(slot, drain);
+				setRefireEfficiency(slot, 1.f);
 				setShieldEffectiveness(slot, shieldEff);
 				setArmorEffectiveness(slot, armorEff);
 				setCurrentAmmo(slot, ammo);
@@ -249,6 +251,8 @@ void ShipAiAgentImplementation::initializeTransientMembers() {
 	cooldownTimerMap = new CooldownTimerMap();
 
 	setHyperspacing(false);
+
+	missileLockTime = 0;
 }
 
 void ShipAiAgentImplementation::notifyInsert(TreeEntry* entry) {
@@ -1351,79 +1355,181 @@ float ShipAiAgentImplementation::calculatePixelHeight(const Vector3& position) {
 
 */
 
-bool ShipAiAgentImplementation::fireWeaponAtTarget(ShipObject* targetShip, uint32 slot, uint32 targetSlot) {
-	auto crc = getShipComponentMap()->get(slot);
+Vector<uint32> ShipAiAgentImplementation::getActiveWeaponVector() {
+	Vector<uint32> activeWeapons;
 
-	if (crc == 0) {
-		return false;
+	bool isCapacitorActive = isComponentFunctional(Components::CAPACITOR);
+
+	for (int slot = Components::WEAPON_START; slot <= Components::CAPITALSLOTMAX; ++slot) {
+		if (!isComponentFunctional(slot)) {
+			continue;
+		}
+
+		if (!isCapacitorActive && getEnergyPerShotMap()->get(slot) > 0.f) {
+			continue;
+		}
+
+		activeWeapons.add(slot);
 	}
 
+	return activeWeapons;
+}
+
+bool ShipAiAgentImplementation::fireWeaponAtTarget(ShipObject* targetShip, uint32 slot, uint32 targetSlot) {
 	auto shipManager = ShipManager::instance();
 
 	if (shipManager == nullptr) {
 		return false;
 	}
 
-	auto projectileData = shipManager->getProjectileData(crc);
+	uint32 componentCRC = getShipComponentMap()->get(slot);
+	auto projectileData = shipManager->getProjectileData(componentCRC);
 
 	if (projectileData == nullptr) {
 		return false;
 	}
 
-	const Vector3& targetPosition = getInterceptPosition(targetShip, projectileData->getSpeed(), targetSlot);
+	uint32 weaponIndex = slot - Components::WEAPON_START;
+	auto turretData = shipManager->getShipTurretData(chassisDataName, weaponIndex);
 
-	Vector3 difference = targetPosition - getPosition();
-	Vector3 direction = getCurrentDirectionVector();
+	if (turretData != nullptr) {
+		return fireTurretAtTarget(targetShip, projectileData, turretData, slot, targetSlot);
+	}
+
+	if (projectileData->isMissile()) {
+		uint32 missileType = getAmmoClassMap()->get(slot);
+		auto missileData = shipManager->getMissileData(missileType);
+
+		if (missileData == nullptr) {
+			return false;
+		}
+
+		return fireMissileAtTarget(targetShip, projectileData, missileData, slot, targetSlot);
+	}
+
+	if (projectileData->isTractorBeam()) {
+		return false;
+	}
+
+	if (projectileData->isMiningLaser()) {
+		return false;
+	}
+
+	if (projectileData->isCountermeasure()) {
+		return false;
+	}
+
+	return fireProjectileAtTarget(targetShip, projectileData, slot, targetSlot);
+}
+
+bool ShipAiAgentImplementation::fireProjectileAtTarget(ShipObject* targetShip, const ShipProjectileData* projectileData, uint32 slot, uint32 targetSlot) {
+	if (targetShip == nullptr || projectileData == nullptr) {
+		return false;
+	}
+
+	const Vector3& position = getWorldPosition();
+	const Vector3& targetPosition = targetShip->getWorldPosition();
+
+	uint32 weaponIndex = slot - Components::WEAPON_START;
+	Vector3 difference = targetPosition - position;
 
 	float radius = Math::max(32.f, targetShip->getBoundingRadius());
 	float range = Math::max(512.f, projectileData->getRange());
-	float collisionDistance = SpaceCollisionManager::getPointIntersection(direction * range, difference, radius, range);
+	float collisionDistance = SpaceCollisionManager::getPointIntersection(currentDirection * range, difference, radius, range);
 
 	if (collisionDistance == SpaceCollisionManager::MISS) {
 		return false;
 	}
 
-	if (projectileData->isMissile()) {
-		return false;
-	} else if (projectileData->isCountermeasure()) {
-		return false;
-	} else {
-		auto projectile = new ShipProjectile(asShipAiAgent(), slot - Components::WEAPON_START, projectileData->getIndex(), 0, getPosition(), direction * 7800.f, 500, 500, 1.f, System::getMiliTime());
-		projectile->readProjectileData(projectileData);
-		SpaceCombatManager::instance()->addProjectile(asShipAiAgent(), projectile);
-	}
+	auto projectile = new ShipProjectile(asShipAiAgent(), weaponIndex, projectileData->getIndex(), targetSlot, position, currentDirection * 7800.f, 0, 0, 1.f, System::getMiliTime());
+	projectile->readProjectileData(projectileData);
 
+	SpaceCombatManager::instance()->addProjectile(asShipAiAgent(), projectile);
 	return true;
 }
 
-bool ShipAiAgentImplementation::fireTurretAtTarget(ShipObject* targetShip, uint32 slot, uint32 targetSlot) {
+bool ShipAiAgentImplementation::fireMissileAtTarget(ShipObject* targetShip, const ShipProjectileData* projectileData, const ShipMissileData* missileData, uint32 slot, uint32 targetSlot) {
+	if (targetShip == nullptr || projectileData == nullptr || missileData == nullptr || targetShip != getTargetShipObject().get()) {
+		return false;
+	}
+
+	const Vector3& position = getWorldPosition();
+	const Vector3& targetPosition = targetShip->getWorldPosition();
+	float distanceSqr = position.squaredDistanceTo(targetPosition);
+	float distanceMax =  Math::sqr(projectileData->getRange());
+
+	if (distanceSqr > distanceMax) {
+		missileLockTime = 0.f;
+		return false;
+	}
+
+	Vector3 targetDirection = targetPosition - position;
+	float targetDistance = qNormalize(targetDirection);
+
+	float targetY = atan2(targetDirection.getY(), targetDirection.getX());
+	float targetP = asin(targetDirection.getZ());
+	float deltaY = fabs(targetY - currentRotation.getX());
+	float deltaP = fabs(targetP - currentRotation.getY());
+
+	float targetAngle = atan2(targetShip->getBoundingRadius(), targetDistance);
+	float aquireAngle = Math::deg2rad(missileData->getTargetAquisitionAngle()) + targetAngle;
+
+	if (deltaY > aquireAngle || deltaP > aquireAngle) {
+		missileLockTime = 0.f;
+		return false;
+	}
+
+	float deltaBase = fabs(DEFAULT_PROJECTILE_REFIRE - (BEHAVIORINTERVAL * 0.001f));
+	missileLockTime += deltaBase + deltaTime;
+
+	if (missileLockTime < missileData->getTargetAquisitionTime()) {
+		return false;
+	}
+
+	float missileSpeedMax = missileData->getServerSpeed();
+	float missileRangeMin = missileData->getMinTime() * missileSpeedMax;
+	float missileRangeMax = missileData->getMaxTime() * missileSpeedMax;
+
+	if (targetDistance < missileRangeMin || targetDistance > missileRangeMax) {
+		return false;
+	}
+
+	float refireTime = getWeaponRefireDeltaTime(slot) * 0.001f;
+	float refireRate = getComponentRefireRate()->get(slot);
+
+	if (refireTime < refireRate) {
+		return false;
+	}
+
+	int missileType = getAmmoClassMap()->get(slot);
+	int weaponIndex = slot - Components::WEAPON_START;
+
+	auto missile = new ShipMissile(asShipAiAgent(), weaponIndex, missileType, targetSlot, position, currentDirection * 7800.f, 0, 0, 1.f, System::getMiliTime());
+	missile->readMissileData(missileData);
+	missile->setTarget(targetShip);
+	missile->calculateTimeToHit();
+
+	SpaceCombatManager::instance()->addMissile(asShipAiAgent(), missile);
+	setWeaponRefireDeltaTime(slot);
+	return true;
+}
+
+bool ShipAiAgentImplementation::fireTurretAtTarget(ShipObject* targetShip, const ShipProjectileData* projectileData, const ShipTurretData* turretData, uint32 slot, uint32 targetSlot) {
 	auto crc = getShipComponentMap()->get(slot);
 
-	if (crc == 0) {
+	if (crc == 0 || targetShip == nullptr || projectileData == nullptr || turretData == nullptr) {
 		return false;
 	}
 
 	auto shipManager = ShipManager::instance();
 
 	if (shipManager == nullptr) {
-		return false;
-	}
-
-	auto projectileData = shipManager->getProjectileData(crc);
-
-	if (projectileData == nullptr) {
 		return false;
 	}
 
 	auto collisionData = shipManager->getCollisionData(asShipAiAgent());
 
 	if (collisionData == nullptr) {
-		return false;
-	}
-
-	auto turretData = shipManager->getShipTurretData(getShipChassisName(), slot - Components::WEAPON_START);
-
-	if (turretData == nullptr) {
 		return false;
 	}
 
@@ -1485,6 +1591,24 @@ bool ShipAiAgentImplementation::fireTurretAtTarget(ShipObject* targetShip, uint3
 	SpaceCombatManager::instance()->addProjectile(asShipAiAgent(), projectile);
 
 	return true;
+}
+
+float ShipAiAgentImplementation::getWeaponRefireDeltaTime(uint32 slot) {
+	auto cooldownTime = cooldownTimerMap->getTime("weapon_refire_" + String::valueOf(slot));
+
+	if (cooldownTime == nullptr) {
+		return FLT_MAX;
+	}
+
+	return cooldownTime->miliDifference();
+}
+
+void ShipAiAgentImplementation::setWeaponRefireDeltaTime(uint32 slot) {
+	if (slot == Components::CHASSIS || slot > Components::CAPITALSLOTMAX) {
+		return;
+	}
+
+	cooldownTimerMap->updateToCurrentTime("weapon_refire_" + String::valueOf(slot));
 }
 
 void ShipAiAgentImplementation::setDefender(ShipObject* defender) {

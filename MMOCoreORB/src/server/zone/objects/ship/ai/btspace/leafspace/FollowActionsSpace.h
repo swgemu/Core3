@@ -253,48 +253,18 @@ public:
 			return FAILURE;
 		}
 
-		auto componentMap = agent->getShipComponentMap();
-		auto componentOptionsMap = agent->getComponentOptionsMap();
+		Vector<uint32> weaponVector = agent->getActiveWeaponVector();
 
-		if (componentMap == nullptr || componentOptionsMap == nullptr) {
+		if (weaponVector.size() == 0) {
 			return FAILURE;
-		}
-
-		Vector<uint32> weaponsIndex;
-
-		// Create Index for possible weapons to attack with
-		for (uint32 slot = Components::WEAPON_START; slot <= Components::CAPITALSLOTMAX; ++slot) {
-			uint32 crc = componentMap->get(slot);
-
-			if (crc == 0) {
-				continue;
-			}
-
-			int hitpoints = agent->getCurrentHitpointsMap()->get(slot);
-
-			if (hitpoints <= 0.f) {
-				continue;
-			}
-
-			int flags = componentOptionsMap->get(slot);
-
-			if (flags & ShipComponentFlag::DISABLED) {
-				continue;
-			}
-
-			weaponsIndex.add(slot);
 		}
 
 		Locker clock(targetShip, agent);
 
-		// Fire the weapons at the current target ship
-		for (int i = 0; i < weaponsIndex.size(); i++) {
-			//int key = System::random(i);
-			int slot = weaponsIndex.get(i);
+		for (int i = 0; i < weaponVector.size(); i++) {
+			int slot = weaponVector.get(i);
 
-			if (!agent->fireWeaponAtTarget(targetShip, slot, Components::CHASSIS)) {
-				continue;
-			}
+			agent->fireWeaponAtTarget(targetShip, slot, Components::CHASSIS);
 		}
 
 		uint64 timeNow = System::getMiliTime();
@@ -330,56 +300,20 @@ public:
 	}
 
 	BehaviorSpace::Status execute(ShipAiAgent* agent, unsigned int startIdx = 0) const {
-		auto shipManager = ShipManager::instance();
-
-		if (shipManager == nullptr) {
-			return FAILURE;
-		}
-
 		auto targetVector = agent->getTargetVector();
 
 		if (targetVector == nullptr || targetVector->size() == 0) {
 			return FAILURE;
 		}
 
-		auto componentMap = agent->getShipComponentMap();
-		auto componentOptionsMap = agent->getComponentOptionsMap();
+		auto weaponVector = agent->getActiveWeaponVector();
 
-		if (componentMap == nullptr || componentOptionsMap == nullptr) {
+		if (weaponVector.size() == 0) {
 			return FAILURE;
 		}
-
-		Vector<uint32> weaponsIndex;
 
 		int weaponsFiredMax = 10;
 		int weaponsFired = 0;
-
-		for (uint32 slot = Components::WEAPON_START; slot <= Components::CAPITALSLOTMAX; ++slot) {
-			uint32 crc = componentMap->get(slot);
-
-			if (crc == 0) {
-				continue;
-			}
-
-			int hitpoints = agent->getCurrentHitpointsMap()->get(slot);
-
-			if (hitpoints <= 0.f) {
-				continue;
-			}
-
-			int flags = componentOptionsMap->get(slot);
-
-			if (flags & ShipComponentFlag::DISABLED) {
-				continue;
-			}
-
-			weaponsIndex.add(slot);
-		}
-
-		// No available weapons
-		if (weaponsIndex.size() < 1) {
-			return FAILURE;
-		}
 
 		Vector<ManagedReference<ShipObject*>> targetVectorCopy;
 		targetVector->safeCopyTo(targetVectorCopy);
@@ -393,34 +327,21 @@ public:
 
 			Locker cLock(targetEntry, agent);
 
-			Vector<uint32> weaponsCopy = weaponsIndex;
-
-			for (int ii = weaponsCopy.size(); -1 < --ii;) {
+			for (int ii = weaponVector.size(); -1 < --ii;) {
 				int key = System::random(ii);
-				int slot = weaponsCopy.get(key);
+				int slot = weaponVector.get(key);
 
-				weaponsCopy.remove(key);
-
-				auto turretData = shipManager->getShipTurretData(agent->getShipChassisName(), slot - Components::WEAPON_START);
-
-				if (turretData != nullptr) {
-					if (agent->fireTurretAtTarget(targetEntry, slot, Components::CHASSIS)) {
-						weaponsIndex.remove(key);
-						weaponsFired += 1;
-					}
-				} else {
-					if (agent->fireWeaponAtTarget(targetEntry, slot, Components::CHASSIS)) {
-						weaponsIndex.remove(key);
-						weaponsFired += 1;
-					}
+				if (agent->fireWeaponAtTarget(targetEntry, slot, Components::CHASSIS)) {
+					weaponVector.remove(key);
+					weaponsFired += 1;
 				}
 
-				if (weaponsIndex.size() == 0 || weaponsFired >= weaponsFiredMax) {
+				if (weaponVector.size() == 0 || weaponsFired >= weaponsFiredMax) {
 					break;
 				}
 			}
 
-			if (weaponsIndex.size() == 0 || weaponsFired >= weaponsFiredMax) {
+			if (weaponVector.size() == 0 || weaponsFired >= weaponsFiredMax) {
 				break;
 			}
 		}

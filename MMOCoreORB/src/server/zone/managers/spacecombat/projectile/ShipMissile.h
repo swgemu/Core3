@@ -103,7 +103,7 @@ public:
 		Vector3 targetDirection = getTargetPosition(target) - thisPosition;
 		float distance = targetDirection.length() - radius;
 
-		timeToHit = Math::clamp(timeMin, (int(distance / clientSpeed) * 1000), timeMax);
+		timeToHit = Math::clamp(timeMin, (int(distance / serverSpeed) * 1000), timeMax);
 	}
 
 // update
@@ -113,55 +113,52 @@ public:
 			return;
 		}
 
+		float timeRemaining = Math::max(timeToHit - totalTime, deltaTime) * 0.001f;
+		float deltaRate = deltaTime * 0.001f;
+
 		Vector3 targetDirection = getTargetPosition(target) - thisPosition;
+		float targetRadius = target->getBoundingRadius() + radius;
+		float targetDistance = Math::max(targetDirection.normalize() - targetRadius, 0.f);
 
-		float tMinus = Math::max(timeToHit - totalTime, deltaTime) * 0.001f;
-		float sqrLength = targetDirection.squaredLength();
-		float range = serverSpeed * tMinus;
-
-		if (sqrLength > (range * range)) {
-			float length = sqrt(sqrLength);
-			speed = length / tMinus;
-			direction = targetDirection * (1.f / length);
-		} else {
-			speed = serverSpeed / tMinus;
-		}
-
-		distance = deltaTime * speed * 0.001f;
+		speed = Math::max(targetDistance / timeRemaining, serverSpeed);
+		distance = speed * deltaRate;
+		direction = (targetDirection + direction) * 0.5f;
 
 		lastPosition = thisPosition;
 		thisPosition = thisPosition + (distance * direction);
 	}
 
-	Vector3 getTargetPosition(ShipObject* target) const {
-		Vector3 targetPosition = target->getPosition();
+	Vector3 getTargetPosition(ShipObject* target, float deltaTime = 0.f) const {
+		const Matrix4& targetRotation = *target->getConjugateMatrix();
+		Vector3 targetPosition = target->getWorldPosition();
 
 		if (hardpointTranslate != Vector3::ZERO) {
-			Matrix4 targetRotation = *target->getRotationMatrix();
-			targetRotation.transpose();
-
 			Vector3 position = hardpointTranslate * targetRotation;
-			targetPosition = targetPosition + Vector3(position.getX(), position.getZ(), position.getY());
+			targetPosition = Vector3(position.getX(), position.getZ(), position.getY()) + targetPosition;
 		}
 
-		return targetPosition;
+		Vector3 targetDirection = Vector3(targetRotation[2][0], targetRotation[2][2], targetRotation[2][1]);
+		float targetSpeed = target->getCurrentSpeed();
+
+		return (targetDirection * targetSpeed * deltaTime) + targetPosition;
 	}
 
 #ifdef SHIPPROJECTILE_DEBUG
 	void debugProjectile(ShipObject* ship, int hitResult) {
-		ShipProjectile::debugProjectile(ship, hitResult);
+		debugProjectileMessage(ship, hitResult);
+		debugProjectilePath(ship);
+	}
 
-		auto pilot = ship->getPilot();
-		if (pilot == nullptr) {
-			return;
-		}
+	void debugProjectileMessage(ShipObject* ship, int hitResult) {
+		ShipProjectile::debugProjectileMessage(ship, hitResult);
 
 		auto target = targetRef.get();
 		if (target == nullptr) {
 			return;
 		}
 
-		Vector3 targetDirection = target->getPosition() - thisPosition;
+		Vector3 targetPosition = target->getWorldPosition();
+		Vector3	targetDirection = targetPosition - thisPosition;
 
 		StringBuffer msg;
 
@@ -174,7 +171,30 @@ public:
 			<< " distance   " << targetDirection.length() << endl
 			<< "--------------------------------";
 
-		pilot->sendSystemMessage(msg.toString());
+		auto smsg = new ChatSystemMessage(msg.toString());
+		ship->broadcastMessage(smsg, true);
+	}
+
+	void debugProjectilePath(ShipObject* ship) {
+		auto target = targetRef.get();
+		if (target == nullptr) {
+			return;
+		}
+
+		const Vector3& targetPosition = target->getWorldPosition();
+		const Matrix4& targetRotation = *target->getConjugateMatrix();
+		float targetRadius = target->getBoundingRadius();
+
+		auto path = new CreateClientPathMessage();
+
+		path->addCoordinate(lastPosition);
+		path->drawBoundingSphere(thisPosition, Matrix4(), Sphere(Vector3::ZERO, radius));
+		path->addCoordinate(thisPosition);
+		path->addCoordinate(targetPosition);
+		path->drawBoundingSphere(targetPosition, targetRotation, Sphere(Vector3::ZERO, targetRadius));
+		path->addCoordinate(targetPosition);
+
+		ship->broadcastMessage(path, true);
 	}
 #endif //SHIPPROJECTILE_DEBUG
 };

@@ -38,10 +38,14 @@ void SpaceCombatManager::broadcastProjectile(ShipObject* ship, const ShipProject
 void SpaceCombatManager::broadcastMissile(ShipObject* ship, const ShipMissile* missile) const {
 	auto target = missile->getTarget().get();
 
-	if (target != nullptr) {
-		auto message = new CreateMissileMessage(ship, target, missile);
-		ship->broadcastMessage(message, true);
+	if (target == nullptr) {
+		return;
 	}
+
+	Vector<BasePacket*> messages;
+	messages.add(new CreateMissileMessage(ship, target, missile));
+	messages.add(new UpdateMissileMessage(ship, missile, -1, UpdateMissileMessage::UpdateType::HIT));
+	ship->broadcastMessages(&messages, true);
 }
 
 void SpaceCombatManager::broadcastMissileUpdate(ShipObject* ship, const ShipMissile* missile, int counterType, int missileResult) const {
