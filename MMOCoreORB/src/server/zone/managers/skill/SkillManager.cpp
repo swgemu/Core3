@@ -20,6 +20,9 @@
 #include "server/zone/packets/creature/CreatureObjectDeltaMessage4.h"
 #include "server/zone/managers/mission/MissionManager.h"
 #include "server/zone/managers/frs/FrsManager.h"
+#include "server/zone/objects/player/sui/messagebox/SuiMessageBox.h"
+#include "server/zone/objects/player/sui/callbacks/SurrenderPilotSuiCallback.h"
+#include "templates/faction/Factions.h"
 
 SkillManager::SkillManager()
 	: Logger("SkillManager") {
@@ -410,26 +413,75 @@ void SkillManager::removeSkillRelatedMissions(CreatureObject* creature, Skill* s
 bool SkillManager::surrenderSkill(const String& skillName, CreatureObject* creature, bool notifyClient, bool checkFrs) {
 	Skill* skill = skillMap.get(skillName.hashCode());
 
-	if (skill == nullptr)
+	if (skill == nullptr) {
 		return false;
+	}
 
 	Locker locker(creature);
 
 	//If they have already surrendered the skill, then return true.
-	if (!creature->hasSkill(skill->getSkillName()))
+	if (!creature->hasSkill(skill->getSkillName())) {
 		return true;
+	}
 
 	const SkillList* skillList = creature->getSkillList();
 
 	for (int i = 0; i < skillList->size(); ++i) {
 		Skill* checkSkill = skillList->get(i);
 
-		if (checkSkill->isRequiredSkillOf(skill))
+		if (checkSkill->isRequiredSkillOf(skill)) {
 			return false;
+		}
 	}
 
-	if (skillName.beginsWith("force_") && !(JediManager::instance()->canSurrenderSkill(creature, skillName)))
+	ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
+
+	if (ghost == nullptr) {
 		return false;
+	}
+
+	if (skillName.beginsWith("force_") && !(JediManager::instance()->canSurrenderSkill(creature, skillName))) {
+		return false;
+	} else if (skillName.beginsWith("pilot_")) {
+		if (ghost->hasSuiBoxWindowType(SuiWindowType::SURRENDER_PILOT_DENY)) {
+			return false;
+		}
+
+		ManagedReference<SuiMessageBox*> pilotBox = new SuiMessageBox(creature, SuiWindowType::SURRENDER_PILOT_DENY);
+
+		if (pilotBox == nullptr) {
+			return false;
+		}
+
+		pilotBox->setPromptTitle("@space/space_interaction:retire_warning_title"); // "Surrender Skill"
+
+		uint32 faction = Factions::FACTIONNEUTRAL;
+
+		if (skillName.contains("rebel")) {
+			pilotBox->setPromptText("@space/space_interaction:retire_rebel_warning"); // "You cannot manually surrender pilot skills.If you wish to retire from the Rebel Navy, you should speak to the recruiter for the Rebel Alliance on Corellia. If you need a waypoint to the location of your local recruiter, please press the Get Waypoint button below."
+			faction = Factions::FACTIONREBEL;
+
+		} else if (skillName.contains("imperial")) {
+			pilotBox->setPromptText("@space/space_interaction:retire_imperial_warning"); // "You cannot manually surrender pilot skills.If you wish to retire from the Imperial Navy, you should speak to the navy recruiter for the Empire on Naboo. If you need a waypoint to the location of your local recruiter, please press the Get Waypoint button below."
+			faction = Factions::FACTIONIMPERIAL;
+		} else {
+			pilotBox->setPromptText("@space/space_interaction:retire_neutral_warning"); // "You cannot manually surrender pilot skills.If you wish to retire your pilot skills, you should speak to the recruiter for the Pilot's Guild on Tatooine. If you need a waypoint to the location of your local recruiter, please press the Get Waypoint button below."
+		}
+
+		pilotBox->setCallback(new SurrenderPilotSuiCallback(creature->getZoneServer(), faction));
+
+		pilotBox->setUsingObject(creature);
+		pilotBox->setForceCloseDisabled();
+
+		pilotBox->setOkButton(true, "@ok");
+		pilotBox->setCancelButton(true, "@space/space_interaction:retire_waypoint_btn");
+		pilotBox->setOtherButton(false, "");
+
+		ghost->addSuiBox(pilotBox);
+		creature->sendMessage(pilotBox->generateMessage());
+
+		return false;
+	}
 
 	removeSkillRelatedMissions(creature, skill);
 
@@ -438,42 +490,39 @@ bool SkillManager::surrenderSkill(const String& skillName, CreatureObject* creat
 	//Remove skill modifiers
 	auto skillModifiers = skill->getSkillModifiers();
 
-	ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
-
 	for (int i = 0; i < skillModifiers->size(); ++i) {
 		auto entry = &skillModifiers->elementAt(i);
 		creature->removeSkillMod(SkillModManager::SKILLBOX, entry->getKey(), entry->getValue(), notifyClient);
 
 	}
 
-	if (ghost != nullptr) {
-		//Give the player the used skill points back.
-		ghost->addSkillPoints(skill->getSkillPointsRequired());
+	//Give the player the used skill points back.
+	ghost->addSkillPoints(skill->getSkillPointsRequired());
 
-		//Remove abilities but only if the creature doesn't still have a skill that grants the
-		//ability.  Some abilities are granted by multiple skills. For example Dazzle for dancers
-		//and musicians.
-		auto skillAbilities = skill->getAbilities();
-		if (skillAbilities->size() > 0) {
-			SortedVector<String> abilitiesLost;
-			for (int i = 0; i < skillAbilities->size(); i++) {
-				abilitiesLost.put(skillAbilities->get(i));
-			}
-			for (int i = 0; i < skillList->size(); i++) {
-				Skill* remainingSkill = skillList->get(i);
-				auto remainingAbilities = remainingSkill->getAbilities();
-				for(int j = 0; j < remainingAbilities->size(); j++) {
-					if (abilitiesLost.contains(remainingAbilities->get(j))) {
-						abilitiesLost.drop(remainingAbilities->get(j));
-						if (abilitiesLost.size() == 0) {
-							break;
-						}
+	//Remove abilities but only if the creature doesn't still have a skill that grants the
+	//ability.  Some abilities are granted by multiple skills. For example Dazzle for dancers
+	//and musicians.
+	auto skillAbilities = skill->getAbilities();
+
+	if (skillAbilities->size() > 0) {
+		SortedVector<String> abilitiesLost;
+		for (int i = 0; i < skillAbilities->size(); i++) {
+			abilitiesLost.put(skillAbilities->get(i));
+		}
+		for (int i = 0; i < skillList->size(); i++) {
+			Skill* remainingSkill = skillList->get(i);
+			auto remainingAbilities = remainingSkill->getAbilities();
+			for(int j = 0; j < remainingAbilities->size(); j++) {
+				if (abilitiesLost.contains(remainingAbilities->get(j))) {
+					abilitiesLost.drop(remainingAbilities->get(j));
+					if (abilitiesLost.size() == 0) {
+						break;
 					}
 				}
 			}
-			if (abilitiesLost.size() > 0) {
-				removeAbilities(ghost, abilitiesLost, notifyClient);
-			}
+		}
+		if (abilitiesLost.size() > 0) {
+			removeAbilities(ghost, abilitiesLost, notifyClient);
 		}
 
 		//Remove draft schematic groups
