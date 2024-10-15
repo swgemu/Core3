@@ -15,22 +15,24 @@ class SpaceCollisionEntry {
 protected:
 	ManagedWeakReference<ShipObject*> object;
 	Vector3 position;
+	Vector3 direction;
+
 	float distance;
-	bool front;
 	int slot;
 
 public:
 	SpaceCollisionEntry() {
 		distance = FLT_MAX;
-		front = false;
 		slot = -1;
 	}
 
-	SpaceCollisionEntry(ShipObject* targetShip, const ShipProjectile* projectile, float intersection, int componentSlot = -1, bool hitFront = false) {
+	SpaceCollisionEntry(ShipObject* targetShip, const ShipProjectile* projectile, const Vector3& localDirection, float intersection, int componentSlot = -1) {
 		object = targetShip;
 		distance = projectile->getDistance() * Math::clamp(0.f, intersection, 1.f);
+
 		position = (projectile->getDirection() * distance) + projectile->getLastPosition();
-		front = hitFront;
+		direction = localDirection;
+
 		slot = componentSlot;
 	}
 
@@ -42,12 +44,16 @@ public:
 		return position;
 	}
 
+	const Vector3& getDirection() const {
+		return direction;
+	}
+
 	float getDistance() const {
 		return distance;
 	}
 
 	bool isHitFront() const {
-		return front;
+		return direction.getZ() >= 0.f;
 	}
 
 	int getSlot() const {
@@ -64,8 +70,8 @@ public:
 
 	}
 
-	void setCollision(ShipObject* targetShip, const ShipProjectile* projectile, float intersection, int componentSlot = Components::CHASSIS, bool hitFront = false) {
-		collisionMap.put(intersection, SpaceCollisionEntry(targetShip, projectile, intersection, componentSlot, hitFront));
+	void setCollision(ShipObject* targetShip, const ShipProjectile* projectile, const Vector3& localDirection, float intersection, int componentSlot = Components::CHASSIS) {
+		collisionMap.put(intersection, SpaceCollisionEntry(targetShip, projectile, localDirection, intersection, componentSlot));
 	}
 
 	ManagedWeakReference<ShipObject*> getObject(int index = 0) const {
@@ -74,6 +80,10 @@ public:
 
 	const Vector3& getPosition(int index = 0) const {
 		return collisionMap.size() > index ? collisionMap.elementAt(index).getValue().getPosition() : Vector3::ZERO;
+	}
+
+	const Vector3& getDirection(int index = 0) const {
+		return collisionMap.size() > index ? collisionMap.elementAt(index).getValue().getDirection() : Vector3::ZERO;
 	}
 
 	float getDistance(int index = 0) const {

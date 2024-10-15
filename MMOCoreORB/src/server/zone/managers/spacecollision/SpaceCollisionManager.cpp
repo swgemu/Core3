@@ -84,9 +84,9 @@ float SpaceCollisionManager::getChassisRadiusCollision(ShipObject* target, const
 		return MISS;
 	}
 
-	bool hitFront = (((localEnd.getZ() - localStart.getZ()) * intersection) + localStart.getZ()) >= 0.f;
+	Vector3 collisionPoint = ((localEnd - localStart) * intersection) + localStart;
 
-	result.setCollision(target, projectile, intersection, Components::CHASSIS, hitFront);
+	result.setCollision(target, projectile, collisionPoint, intersection, Components::CHASSIS);
 
 	return result.getDistance();
 }
@@ -109,9 +109,9 @@ float SpaceCollisionManager::getChassisBoxCollision(ShipObject* target, const Sh
 		return MISS;
 	}
 
-	bool hitFront = (((localEnd.getZ() - localStart.getZ()) * intersection) + localStart.getZ()) >= 0.f;
+	Vector3 collisionPoint = ((localEnd - localStart) * intersection) + localStart;
 
-	result.setCollision(target, projectile, intersection, Components::CHASSIS, hitFront);
+	result.setCollision(target, projectile, collisionPoint, intersection, Components::CHASSIS);
 
 	return result.getDistance();
 }
@@ -136,10 +136,9 @@ float SpaceCollisionManager::getChassisAppearanceCollision(ShipObject* target, c
 
 	if (results.size() > 0) {
 		float intersection = Math::max(results.getUnsafe(0).getIntersectionDistance() - rayRadius, 0.f) / Math::max(rayDistance, 1.f);
+		Vector3 collisionPoint = (intersection * rayDistance * ray.getDirection()) + ray.getOrigin();
 
-		bool hitFront = ((intersection * rayDistance * ray.getDirection().getZ()) + ray.getOrigin().getZ()) >= 0.f;
-
-		result.setCollision(target, projectile, intersection, Components::CHASSIS, hitFront);
+		result.setCollision(target, projectile, collisionPoint, intersection, Components::CHASSIS);
 	}
 
 	return result.getDistance();
@@ -229,15 +228,15 @@ float SpaceCollisionManager::getComponentHardpointCollision(ShipObject* target, 
 			}
 
 			if (intersection != MISS) {
-				bool hitFront = (((localEnd.getZ() - localStart.getZ()) * intersection) + localStart.getZ()) >= 0.f;
-				result.setCollision(target, projectile, intersection, slot, hitFront);
+				Vector3 collisionPoint = resultIntersection != MISS ? resultPosition : hardpoint.getPosition();
+				result.setCollision(target, projectile, collisionPoint, intersection, slot);
 				return result.getDistance();
 			}
 
 			float hardpointRadius = hardpoint.getRadius() + rayRadius;
 
 			if (resultIntersection != MISS && resultPosition.squaredDistanceTo(boundingPosition) <= Math::sqr(hardpointRadius)) {
-				result.setCollision(target, projectile, resultIntersection, slot, resultPosition.getZ() >= 0.f);
+				result.setCollision(target, projectile, resultPosition, resultIntersection, slot);
 				return result.getDistance();
 			}
 		}

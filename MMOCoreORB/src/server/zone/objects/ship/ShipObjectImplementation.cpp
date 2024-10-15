@@ -990,6 +990,7 @@ void ShipObjectImplementation::repairShip(float value, bool decay) {
 
 		if (hasComponentFlag(slot, ShipComponentFlag::DEMOLISHED)) {
 			removeComponentFlag(slot, ShipComponentFlag::DEMOLISHED, false);
+			setComponentCRC(slot, crc, nullptr, command, deltaVector);
 		}
 
 		resetComponentFlag(slot, false);
