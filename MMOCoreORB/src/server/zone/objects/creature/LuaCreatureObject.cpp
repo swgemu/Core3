@@ -167,7 +167,8 @@ Luna<LuaCreatureObject>::RegType LuaCreatureObject::Register[] = {
 		{ "storePets", &LuaCreatureObject::storePets },
 		{ "isRebelPilot", &LuaCreatureObject::isRebelPilot },
 		{ "isImperialPilot", &LuaCreatureObject::isImperialPilot },
-		{ "isFreelancePilot", &LuaCreatureObject::isFreelancePilot },
+		{ "isNeutralPilot", &LuaCreatureObject::isNeutralPilot },
+		{ "hasShips", &LuaCreatureObject::hasShips },
 		{ 0, 0 }
 };
 
@@ -502,10 +503,9 @@ int LuaCreatureObject::surrenderSkill(lua_State* L) {
 	String value = lua_tostring(L, -1);
 
 	SkillManager* skillManager = SkillManager::instance();
-	skillManager->surrenderSkill(value, realObject, true);
+	skillManager->surrenderSkill(value, realObject, true, true, true);
 	return 0;
 }
-
 
 int LuaCreatureObject::getInCellNumber(lua_State* L) {
 	SceneObject* parent = realObject->getParent().get().get();
@@ -1387,12 +1387,34 @@ int LuaCreatureObject::isImperialPilot(lua_State* L) {
 	return 1;
 }
 
-int LuaCreatureObject::isFreelancePilot(lua_State* L) {
+int LuaCreatureObject::isNeutralPilot(lua_State* L) {
 	Locker lock(realObject);
 
 	bool check = realObject->hasSkill("pilot_neutral_novice");
 
 	lua_pushboolean(L, check);
+
+	return 1;
+}
+
+int LuaCreatureObject::hasShips(lua_State* L) {
+	auto datapad = realObject->getDatapad();
+	bool hasShip = false;
+
+	if (datapad != nullptr) {
+		for(int i = 0; i < datapad->getContainerObjectsSize(); i++) {
+			ManagedReference<SceneObject*> object = datapad->getContainerObject(i);
+
+			if (object == nullptr || !object->isShipControlDevice()) {
+				continue;
+			}
+
+			hasShip = true;
+			break;
+		}
+	}
+
+	lua_pushboolean(L, hasShip);
 
 	return 1;
 }
