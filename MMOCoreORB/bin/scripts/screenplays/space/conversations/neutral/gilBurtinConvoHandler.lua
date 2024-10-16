@@ -39,6 +39,7 @@ function gilBurtinConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNpc, s
 		CreatureObject(pNpc):doAnimation("shrug_hands")
 	elseif (screenID == "i_want_to_retire") then
 		CreatureObject(pNpc):doAnimation("shake_head_no")
+
 		SpaceHelpers:surrenderPilot(pPlayer, "neutralPilot")
 	elseif (screenID == "yes_i_want") then
 		CreatureObject(pNpc):doAnimation("shrug_hands")

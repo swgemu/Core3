@@ -84,7 +84,7 @@ function SpaceHelpers:isRebelPilot(pPlayer)
 		return false
 	end
 
-	return CreatureObject(pPlayer):isRebel()
+	return CreatureObject(pPlayer):isRebelPilot()
 end
 
 -- @param pPlayer pointer to check if imperial pilot
@@ -102,7 +102,7 @@ function SpaceHelpers:isPilot(pPlayer)
 		return false
 	end
 
-	return (SpaceHelpers:isNeutralPilot(pPlayer) or SpaceHelpers:isRebelPilot(pPlayer) or SpaceHelpers:isImperialPilot(pPlayer))
+	return (CreatureObject(pPlayer):isNeutralPilot() or CreatureObject(pPlayer):isRebelPilot() or CreatureObject(pPlayer):isImperialPilot())
 end
 
 -- @param pPlayer pointer checks if the player has space experience
@@ -209,6 +209,51 @@ function SpaceHelpers:addRebelPilotWaypoint(pPlayer)
 	end
 
 	PlayerObject(pGhost):addWaypoint("corellia", "@npc_spawner_n:j_pai_brek", "@npc_spawner_n:j_pai_brek", -5072, -2343, WAYPOINTBLUE, true, true, 0)
+end
+
+-- @param pPlayer pointer adds waypoint to the Rebel Vortex Squad Tier1 Trainer
+function SpaceHelpers:addVortexSquadWaypoint(pPlayer)
+	if (pPlayer == nil) then
+		return false
+	end
+
+	local pGhost = CreatureObject(pPlayer):getPlayerObject()
+
+	if (pGhost == nil) then
+		return
+	end
+
+	PlayerObject(pGhost):addWaypoint("naboo", "@npc_spawner_n:v3_fx", "@npc_spawner_n:v3_fx", 4764, -4795, WAYPOINTBLUE, true, true, 0)
+end
+
+-- @param pPlayer pointer adds waypoint to the Rebel Akron's Havok Squad Tier1 Trainer
+function SpaceHelpers:addAkronSquadWaypoint(pPlayer)
+	if (pPlayer == nil) then
+		return false
+	end
+
+	local pGhost = CreatureObject(pPlayer):getPlayerObject()
+
+	if (pGhost == nil) then
+		return
+	end
+
+	PlayerObject(pGhost):addWaypoint("corellia", "@npc_spawner_n:kreezo", "@npc_spawner_n:kreezo", -5176, -2281, WAYPOINTBLUE, true, true, 0)
+end
+
+-- @param pPlayer pointer adds waypoint to the Rebel Crimson Phoenix Squadron Tier1 Trainer
+function SpaceHelpers:addCrimsonSquadWaypoint(pPlayer)
+	if (pPlayer == nil) then
+		return false
+	end
+
+	local pGhost = CreatureObject(pPlayer):getPlayerObject()
+
+	if (pGhost == nil) then
+		return
+	end
+
+	PlayerObject(pGhost):addWaypoint("tatooine", "@npc_spawner_n:da_la_socuna", "@npc_spawner_n:da_la_socuna", -3002, 2202, WAYPOINTBLUE, true, true, 0)
 end
 
 -- @param pPlayer pointer adds waypoint to the starting imperial pilot coordinator
