@@ -1,7 +1,7 @@
 chassis_dealer_convotemplate = ConvoTemplate:new {
 	initialScreen = "chassis_dealer_greeting",
 	templateType = "Lua",
-	luaClassHandler = "chassis_dealer_conv_handler",
+	luaClassHandler = "chassisDealerConvoHandler",
 	screens = {}
 }
 
