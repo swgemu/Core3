@@ -33,7 +33,7 @@ public:
 		Locker clocker(targetCreature, creature);
 
 		SkillManager* skillManager = SkillManager::instance();
-		skillManager->surrenderSkill(arguments.toString(), targetCreature, true);
+		skillManager->surrenderSkill(arguments.toString(), targetCreature, true, true, true);
 		bool skillGranted = skillManager->awardSkill(arguments.toString(), targetCreature, true, true, true);
 
 		if (skillGranted) {

@@ -1,9 +1,9 @@
 local Logger = require("utils.logger")
 require("utils.helpers")
 
-chassis_dealer_conv_handler = conv_handler:new {}
+chassisDealerConvoHandler = conv_handler:new {}
 
-function chassis_dealer_conv_handler:runScreenHandlers(pConvTemplate, pPlayer, pNpc, selectedOption, pConvScreen)
+function chassisDealerConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNpc, selectedOption, pConvScreen)
 	local screen = LuaConversationScreen(pConvScreen)
 	pConvScreen = screen:cloneScreen()
 
@@ -11,7 +11,7 @@ function chassis_dealer_conv_handler:runScreenHandlers(pConvTemplate, pPlayer, p
 	local suiManager = LuaSuiManager()
 
 	if (ChassisDealer.CHASSIS_DEBUG) then
-		print("chassis_dealer_conv_handler:runScreenHandlers -- Screen ID: " .. screenID)
+		print("chassisDealerConvoHandler:runScreenHandlers -- Screen ID: " .. screenID)
 	end
 
 	-- Ship Chassis Purchase
@@ -26,7 +26,7 @@ function chassis_dealer_conv_handler:runScreenHandlers(pConvTemplate, pPlayer, p
 			return pConvScreen
 		end
 
-		suiManager:sendListBox(pNpc, pPlayer, "@chassis_npc:buy_ship_title", "@chassis_npc:buy_ship_prompt", 2, "@cancel", "", "@ok", "chassis_dealer_conv_handler", "purchaseChassisConfirmation", 32, shipOptions)
+		suiManager:sendListBox(pNpc, pPlayer, "@chassis_npc:buy_ship_title", "@chassis_npc:buy_ship_prompt", 2, "@cancel", "", "@ok", "chassisDealerConvoHandler", "purchaseChassisConfirmation", 32, shipOptions)
 	-- Ship Components Sale
 	elseif (screenID == "chassis_dealer_sell_components") then
 		local componentTable = ChassisDealer:getShipComponents(pPlayer)
@@ -40,13 +40,13 @@ function chassis_dealer_conv_handler:runScreenHandlers(pConvTemplate, pPlayer, p
 			return pConvScreen
 		end
 
-		suiManager:sendListBox(pNpc, pPlayer, "@chassis_npc:buy_ship_title", "@chassis_npc:buy_ship_prompt", 2, "@cancel", "", "@ok", "chassis_dealer_conv_handler", "sellComponentCallback", 32, componentTable)
+		suiManager:sendListBox(pNpc, pPlayer, "@chassis_npc:buy_ship_title", "@chassis_npc:buy_ship_prompt", 2, "@cancel", "", "@ok", "chassisDealerConvoHandler", "sellComponentCallback", 32, componentTable)
 	end
 
 	return pConvScreen
 end
 
-function chassis_dealer_conv_handler:getInitialScreen(pPlayer, pNpc, pConvTemplate)
+function chassisDealerConvoHandler:getInitialScreen(pPlayer, pNpc, pConvTemplate)
 	if (pPlayer == nil or pNpc == nil or pConvTemplate == nil) then
 		return
 	end
@@ -57,7 +57,7 @@ function chassis_dealer_conv_handler:getInitialScreen(pPlayer, pNpc, pConvTempla
 	return convoTemplate:getScreen("chassis_dealer_greeting")
 end
 
-function chassis_dealer_conv_handler:sellComponentCallback(pPlayer, pSui, eventIndex, arg0)
+function chassisDealerConvoHandler:sellComponentCallback(pPlayer, pSui, eventIndex, arg0)
 	local cancelPressed = (eventIndex == 1)
 
 	if (cancelPressed) then
@@ -89,7 +89,7 @@ function chassis_dealer_conv_handler:sellComponentCallback(pPlayer, pSui, eventI
 
 end
 
-function chassis_dealer_conv_handler:purchaseChassisConfirmation(pPlayer, pSui, eventIndex, arg0)
+function chassisDealerConvoHandler:purchaseChassisConfirmation(pPlayer, pSui, eventIndex, arg0)
 	local cancelPressed = (eventIndex == 1)
 
 	if (cancelPressed) then
@@ -125,16 +125,16 @@ function chassis_dealer_conv_handler:purchaseChassisConfirmation(pPlayer, pSui, 
 	writeData(SceneObject(pPlayer):getObjectID() .. ":ChassisDealer:BlueprintID:", chassisID)
 
 	if (ChassisDealer:checkCertification(pPlayer, SceneObject(pBlueprint):getObjectName())) then
-		suiManager:sendMessageBox(pNpc, pPlayer, "@chassis_npc:confirm_transaction", "@chassis_npc:can_use", "@chassis_npc:btn_buy", "chassis_dealer_conv_handler", "purchaseChassis")
+		suiManager:sendMessageBox(pNpc, pPlayer, "@chassis_npc:confirm_transaction", "@chassis_npc:can_use", "@chassis_npc:btn_buy", "chassisDealerConvoHandler", "purchaseChassis")
 	else
 		local noCertMsg = LuaStringIdChatParameter("@chassis_npc:not_certified")
 		spatialChat(pNpc, noCertMsg:_getObject())
 
-		suiManager:sendMessageBox(pNpc, pPlayer, "@chassis_npc:confirm_transaction", "@chassis_npc:cannot_use", "@chassis_npc:btn_buy", "chassis_dealer_conv_handler", "purchaseChassis")
+		suiManager:sendMessageBox(pNpc, pPlayer, "@chassis_npc:confirm_transaction", "@chassis_npc:cannot_use", "@chassis_npc:btn_buy", "chassisDealerConvoHandler", "purchaseChassis")
 	end
 end
 
-function chassis_dealer_conv_handler:purchaseChassis(pPlayer, pSui, eventIndex, arg0)
+function chassisDealerConvoHandler:purchaseChassis(pPlayer, pSui, eventIndex, arg0)
 	if (pPlayer == nil) then
 		return
 	end
