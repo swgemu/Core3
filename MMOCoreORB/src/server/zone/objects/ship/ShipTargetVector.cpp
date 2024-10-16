@@ -28,7 +28,7 @@ void ShipTargetVector::update() {
 
 	targetMap.removeAll(closeCopy.size(), closeCopy.size());
 
-	float maxRange = (ship->getActualMaxSpeed() * UPDATEMODIFIER) + PROJECTILERANGEMAX;
+	float maxRange = (ship->getActualMaxSpeed() * UPDATEMODIFIER) + ship->getBoundingRadius() + PROJECTILERANGEMAX;
 	const auto& shipPosition = ship->getPosition();
 
 	for (int i = 0; i < closeCopy.size(); ++i) {
@@ -39,13 +39,7 @@ void ShipTargetVector::update() {
 		}
 
 		float sqrDistance = shipPosition.squaredDistanceTo(targetShip->getPosition());
-
 		float targetRadius = targetShip->getBoundingRadius();
-
-		if (targetRadius <= 0.f) {
-			continue;
-		}
-
 		float maxRadius = targetRadius + maxRange;
 
 		if (sqrDistance > (maxRadius * maxRadius)) {

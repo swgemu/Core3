@@ -276,7 +276,7 @@ class ShipAiAgent extends FighterShipObject {
 
 	@local
 	@dereferenced
-	public native Vector3 getInterceptPosition(ShipObject targetShip, float speed, int slot);
+	public native Vector3 getInterceptPosition(ShipObject targetShip, float speed, int slot = -1, int targetSlot = -1);
 
 	@dirty
 	public abstract native float getMaxDistance();
