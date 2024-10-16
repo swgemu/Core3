@@ -676,12 +676,12 @@ SpacePatrolPoint ShipAiAgentImplementation::getNextEvadePosition() {
 	return SpacePatrolPoint(evadePosition);
 }
 
-Vector3 ShipAiAgentImplementation::getInterceptPosition(ShipObject* target, float speed, int slot) {
-	Vector3 tPosition = target->getPosition();
-	Vector3 tPrevious = target->getPreviousPosition();
+Vector3 ShipAiAgentImplementation::getInterceptPosition(ShipObject* target, float speed, int slot, int targetSlot) {
+	Vector3 sPosition = getWorldPosition();
 
 	if (slot != Components::CHASSIS) {
-		auto data = ShipManager::instance()->getCollisionData(target);
+		const Matrix4& sRotation = *getConjugateMatrix();
+		auto data = ShipManager::instance()->getCollisionData(asShipAiAgent());
 
 		if (data != nullptr) {
 			const auto& slotName = Components::shipComponentSlotToString(slot);
@@ -690,27 +690,41 @@ Vector3 ShipAiAgentImplementation::getInterceptPosition(ShipObject* target, floa
 			if (hardpoints.size() > 0) {
 				const auto& hardpoint = hardpoints.get(0);
 				const auto& hPosition = hardpoint.getSphere().getCenter();
-				const auto& hRotation = *target->getConjugateMatrix();
 
-				Vector3 localPoint = hPosition * hRotation;
-				tPosition = localPoint + tPosition;
-				tPrevious = localPoint + tPrevious;
+				Vector3 localPoint = hPosition * sRotation;
+				sPosition = Vector3(localPoint.getX(), localPoint.getZ(), localPoint.getY()) + sPosition;
 			}
 		}
 	}
 
-	const Vector3& sPosition = getPosition();
+	const Matrix4& tRotation = *target->getConjugateMatrix();
+	Vector3 tPosition = target->getWorldPosition();
 
-	Vector3 deltaT = tPosition - tPrevious;
+	if (targetSlot != Components::CHASSIS) {
+		auto data = ShipManager::instance()->getCollisionData(target);
+
+		if (data != nullptr) {
+			const auto& slotName = Components::shipComponentSlotToString(targetSlot);
+			const auto& hardpoints = data->getHardpoints(slotName);
+
+			if (hardpoints.size() > 0) {
+				const auto& hardpoint = hardpoints.get(0);
+				const auto& hPosition = hardpoint.getSphere().getCenter();
+
+				Vector3 localPoint = hPosition * tRotation;
+				tPosition = Vector3(localPoint.getX(), localPoint.getZ(), localPoint.getY()) + tPosition;
+			}
+		}
+	}
+
+	Vector3 deltaT = Vector3(tRotation[2][0], tRotation[2][2], tRotation[2][1]);
 	Vector3 deltaV = tPosition - sPosition;
 
 	float vRange = qNormalize(deltaV);
-	float tRange = qNormalize(deltaT);
-
 	float tSpeed = target->getCurrentSpeed();
-	float vSpeed = Math::clamp(0.f, vRange / speed, 5.f);
+	float vTime = Math::clamp(0.f, vRange / speed, 10.f);
 
-	return (deltaT * tSpeed * vSpeed) + tPosition;
+	return (deltaT * tSpeed * vTime) + tPosition;
 }
 
 int ShipAiAgentImplementation::setDestination() {
@@ -1539,7 +1553,7 @@ bool ShipAiAgentImplementation::fireTurretAtTarget(ShipObject* targetShip, const
 
 	const Matrix4& shipRotation = *getConjugateMatrix();
 	const Vector3& shipPosition = getPosition();
-	const Vector3& targetPosition = getInterceptPosition(targetShip, projectileData->getSpeed(), targetSlot);
+	const Vector3& targetPosition = getInterceptPosition(targetShip, projectileData->getSpeed(), slot, targetSlot);
 	const Vector3& hardpointPosition = hardpoint.getSphere().getCenter();
 
 	Vector3 turretGlobal = (hardpointPosition * shipRotation);

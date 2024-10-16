@@ -442,7 +442,7 @@ TangibleObject* ThreatMap::getHighestThreatAttacker() {
 		} else if (selfStrong->isShipObject()) {
 			ShipObject* selfShip = selfStrong->asShipObject();
 
-			if (selfShip == nullptr || !tano->isInRange(selfShip, 512.f) || !tano->isAttackableBy(selfShip))
+			if (selfShip == nullptr || !tano->isInRange(selfShip, 4096.f) || !tano->isAttackableBy(selfShip))
 				continue;
 
 			threatMatrix.add(tano, entry);

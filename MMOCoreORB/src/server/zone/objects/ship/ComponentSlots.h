@@ -29,7 +29,7 @@ public:
 
 	enum ShipComponentsMax {
 		FIGHTERSLOTMAX = 19,
-		CAPITALSLOTMAX = 99,
+		CAPITALSLOTMAX = 111
 	};
 
 	static String shipComponentSlotToString(int slot) {
