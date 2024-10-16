@@ -43,7 +43,7 @@ public:
 		if (skillManager == nullptr)
 			return GENERALERROR;
 
-		if (skillManager->surrenderSkill(skillString, targetCreature, true)) {
+		if (skillManager->surrenderSkill(skillString, targetCreature, true, true, true)) {
 			creature->sendSystemMessage("Successfully revoked skill: " + skillString + " from player " + targetCreature->getFirstName());
 			targetCreature->sendSystemMessage("Skill: " + skillString + " has been revoked.");
 		}
