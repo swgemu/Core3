@@ -119,7 +119,7 @@ NabooTheedScreenPlay = CityScreenPlay:new {
 		{"informant_npc_lvl_1",0,-5477,6,4089,0,0, ""},
 		{"j1_po", 1, -4859, 6, 4156, 18, 0, "neutral"},
 		{"kulton_woodle", 1, -4857.1, 6, 4155.7, 299, 0, "neutral"},
-		{"landau", 1, -5516.19, 6, 4404.77, 90, 0, "npc_imperial"},
+		{"landau", 1, -5516.19, 6, 4404.77, 145, 0, "npc_imperial"},
 
 		{"junk_dealer", 0, -5884.3, 6, 4214.3, 83, 0, ""},
 
@@ -223,6 +223,10 @@ function NabooTheedScreenPlay:spawnSceneObjects()
 	--outside starport
 	spawnSceneObject(self.planet, "object/tangible/crafting/station/public_space_station.iff", -4830.96, 6, 4141.53, 0, math.rad(-140) )
 	spawnSceneObject(self.planet, "object/tangible/crafting/station/public_space_station.iff", -4886.07, 6, 4188.23, 0, math.rad(-140) )
+
+	-- Imperial Banners Near Commander Landau - Imperial JTL Coordinator
+	spawnSceneObject(self.planet, "object/tangible/gcw/flip_banner_onpole_imperial.iff", -5518.5, 6.0, 4406.1, 0, math.rad(-20))
+	spawnSceneObject(self.planet, "object/tangible/gcw/flip_banner_onpole_imperial.iff", -5515.0, 6.0, 4406.6, 0, 0)
 end
 
 function NabooTheedScreenPlay:spawnMobiles()
