@@ -271,4 +271,50 @@ function SpaceHelpers:addImperialPilotWaypoint(pPlayer)
 	PlayerObject(pGhost):addWaypoint("naboo", "@npc_spawner_n:landau", "@npc_spawner_n:landau", -5516, 4403, WAYPOINTBLUE, true, true, 0)
 end
 
+-- @param pPlayer pointer adds waypoint to the Imperial Black Epsilon Squad
+function SpaceHelpers:addBlackEpsilonSquadWaypoint(pPlayer)
+	if (pPlayer == nil) then
+		return false
+	end
+
+	local pGhost = CreatureObject(pPlayer):getPlayerObject()
+
+	if (pGhost == nil) then
+		return
+	end
+
+	PlayerObject(pGhost):addWaypoint("talus", "@npc_spawner_n:hakassha_sireen", "@npc_spawner_n:hakassha_sireen", -2184, 2273, WAYPOINTBLUE, true, true, 0)
+end
+
+-- @param pPlayer pointer adds waypoint to the Imperial Storm Squadron
+function SpaceHelpers:addStormSquadWaypoint(pPlayer)
+	if (pPlayer == nil) then
+		return false
+	end
+
+	local pGhost = CreatureObject(pPlayer):getPlayerObject()
+
+	if (pGhost == nil) then
+		return
+	end
+
+	PlayerObject(pGhost):addWaypoint("tatooine", "@npc_spawner_n:akal_colzet", "@npc_spawner_n:akal_colzet", -1132, -3542, WAYPOINTBLUE, true, true, 0)
+end
+
+-- @param pPlayer pointer adds waypoint to the Imperial Inquisition Squadron
+function SpaceHelpers:addImperialInquisitionSquadWaypoint(pPlayer)
+	if (pPlayer == nil) then
+		return false
+	end
+
+	local pGhost = CreatureObject(pPlayer):getPlayerObject()
+
+	if (pGhost == nil) then
+		return
+	end
+
+	PlayerObject(pGhost):addWaypoint("naboo", "@npc_spawner_n:barn_sinkko", "@npc_spawner_n:barn_sinkko", 5182, 6750, WAYPOINTBLUE, true, true, 0)
+end
+
+
 return SpaceHelpers
