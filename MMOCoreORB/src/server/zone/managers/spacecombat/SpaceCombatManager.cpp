@@ -115,7 +115,7 @@ void SpaceCombatManager::applyDamage(ShipObject* ship, const ShipProjectile* pro
 		return;
 	}
 
-	if (damage > 1.f && target->isShipAiAgent()) {
+	if (damage > 1.f) {
 		auto targetThreatMap = target->getThreatMap();
 
 		if (targetThreatMap != nullptr) {
@@ -162,6 +162,20 @@ void SpaceCombatManager::applyDamage(ShipObject* ship, const ShipProjectile* pro
 	if (target->getChassisCurrentHealth() == 0.f) {
 		auto destroyTask = new DestroyShipTask(target);
 		destroyTask->execute();
+
+		// Notify Destruction
+		Reference<ShipObject*> refTarget = target;
+		Reference<ShipObject*> attackerRef = ship;
+
+		Core::getTaskManager()->scheduleTask([refTarget, attackerRef] () {
+			if (refTarget == nullptr || attackerRef == nullptr)
+				return;
+
+			Locker lock(refTarget);
+			Locker clocker(attackerRef, refTarget);
+
+			refTarget->notifyObjectDestructionObservers(attackerRef, 0, true);
+		}, "notifyShipDestroyLambda", 200);
 	}
 }
 

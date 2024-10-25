@@ -50,6 +50,7 @@ import server.zone.objects.player.events.OnlinePlayerLogTask;
 import system.lang.Time;
 include server.zone.managers.player.PlayerNameIterator;
 include server.zone.objects.region.CityRegion;
+include server.zone.objects.ship.ai.ShipAiAgent;
 
 @dirty
 class PlayerManager extends Observer implements Logger {
@@ -381,6 +382,10 @@ class PlayerManager extends Observer implements Logger {
 
 	@local
 	public native void disseminateExperience(TangibleObject destructedObject, ThreatMap threatMap, SynchronizedVector<CreatureObject> lairSpawnedCreatures = null,Zone lairZone=null);
+
+	@local
+	@arg1preLocked
+	public native void disseminateSpaceExperience(ShipAiAgent destructedObject, ThreatMap threatMap);
 
 	public native int calculatePlayerLevel(CreatureObject player);
 	public native int calculatePlayerLevel(CreatureObject player, string xpType);

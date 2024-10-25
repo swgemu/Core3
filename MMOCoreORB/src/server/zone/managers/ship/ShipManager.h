@@ -169,6 +169,15 @@ public:
 	bool createDeedFromChassis(CreatureObject* owner, ShipChassisComponent* chassisBlueprint, CreatureObject* chassisDealer);
 
 	/**
+	* @pre { destructor and destructedObject locked }
+	* @post { destructor and destructedObject locked }
+	* @param destructorShip pre-locked
+	* @param destructedShip pre-locked
+	*/
+
+	int notifyDestruction(ShipObject* destructorShip, ShipAiAgent* destructedShip, int condition, bool isCombatAction);
+
+	/**
 	 * Sends a sui list box containing information about the structure.
 	 * @param creature The creature receiving the report.
 	 * @param pobShip The pobShip the report is about.
