@@ -51,7 +51,7 @@ public:
 
 		if (strongShip->getNumberOfPlayersInRange() <= 0) {
 			strongShip->destroyObjectFromWorld(true);
-			strongShip->notifyDespawn(zone);
+			strongShip->notifyDespawn();
 
 			// strongShip->info(true) << strongShip->getDisplayedName() << " removed from ShipAgent from world";
 		}

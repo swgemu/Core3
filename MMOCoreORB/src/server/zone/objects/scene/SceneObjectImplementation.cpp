@@ -1305,6 +1305,17 @@ bool SceneObjectImplementation::isInRange3d(SceneObject* object, float range) {
 	return false;
 }
 
+bool SceneObjectImplementation::isInRange3dZoneless(SceneObject* object, float range) {
+	Vector3 worldPos = object->getWorldPosition();
+	Vector3 thisPos = getWorldPosition();
+
+	if (thisPos.squaredDistanceTo(worldPos) <= range * range) {
+		return true;
+	}
+
+	return false;
+}
+
 float SceneObjectImplementation::getDistanceTo(SceneObject* targetCreature) {
 	auto targetWorldPosition = targetCreature->getWorldPosition();
 	float x = targetWorldPosition.getX();

@@ -112,6 +112,7 @@
 #include "server/zone/objects/creature/commands/TransferItemMiscCommand.h"
 #include "templates/crcstringtable/CrcStringTable.h"
 #include "server/zone/objects/ship/PobShipObject.h"
+#include "server/zone/objects/ship/ai/ShipAiAgent.h"
 #include "server/zone/objects/tangible/deed/ship/ShipDeed.h"
 #include "server/zone/packets/object/transform/Transform.h"
 
@@ -1896,8 +1897,6 @@ void PlayerManagerImplementation::ejectPlayerFromBuilding(CreatureObject* player
 	}
 }
 
-
-
 void PlayerManagerImplementation::disseminateExperience(TangibleObject* destructedObject, ThreatMap* threatMap, SynchronizedVector<ManagedReference<CreatureObject*> >* spawnedCreatures,Zone* lairZone) {
 	uint32 totalDamage = threatMap->getTotalDamage();
 
@@ -2176,10 +2175,7 @@ void PlayerManagerImplementation::disseminateExperience(TangibleObject* destruct
 		}
 	}
 
-
-
-
-	//Send out squad leader experience.
+	// Send out squad leader experience.
 	for (int i = 0; i < slExperience.size(); ++i) {
 		VectorMapEntry<ManagedReference<CreatureObject*>, int>* entry = &slExperience.elementAt(i);
 		CreatureObject* leader = entry->getKey();
@@ -2192,6 +2188,147 @@ void PlayerManagerImplementation::disseminateExperience(TangibleObject* destruct
 		awardExperience(leader, "squadleader", entry->getValue() * 2.f);
 	}
 
+	threatMap->removeAll();
+}
+
+void PlayerManagerImplementation::disseminateSpaceExperience(ShipAiAgent* destructedObject, ThreatMap* threatMap) {
+	if (destructedObject == nullptr || threatMap == nullptr) {
+		threatMap->removeAll();
+		return;
+	}
+
+	uint32 totalDamage = threatMap->getTotalDamage();
+
+	if (totalDamage == 0) {
+		threatMap->removeAll();
+		return;
+	}
+
+	auto zoneServer = ServerCore::getZoneServer();
+
+	if (zoneServer == nullptr) {
+		threatMap->removeAll();
+		return;
+	}
+
+	float totalExperience = 100.f; // TODO: Calculate this
+	uint32 shipDifficulty = destructedObject->getShipDifficulty().hashCode();
+
+	// info(true) << "disseminateSpaceExperience -- for: " << destructedObject->getDisplayedName() << " Ship Diificulty: " << destructedObject->getShipDifficulty() << " Hash: " << shipDifficulty;
+
+	switch(shipDifficulty) {
+		case STRING_HASHCODE("tier1"): {
+			totalExperience = 500.f;
+			break;
+		}
+		case STRING_HASHCODE("tier2"): {
+			totalExperience = 1000.f;
+			break;
+		}
+		case STRING_HASHCODE("tier3"): {
+			totalExperience = 1500.f;
+			break;
+		}
+		case STRING_HASHCODE("tier4"): {
+			totalExperience = 2000.f;
+			break;
+		}
+		case STRING_HASHCODE("tier5"): {
+			totalExperience = 2500.f;
+			break;
+		}
+	}
+
+	for (int i = 0; i < threatMap->size(); ++i) {
+		ThreatMapEntry* entry = &threatMap->elementAt(i).getValue();
+		TangibleObject* attacker = threatMap->elementAt(i).getKey();
+
+		if (entry == nullptr || attacker == nullptr || !attacker->isPlayerShip()) {
+			continue;
+		}
+
+		if (entry->getTotalDamage() < 0.5f) {
+			continue;
+		}
+
+		auto playerShip = attacker->asShipObject();
+
+		if (playerShip == nullptr) {
+			continue;
+		}
+
+		Locker shipLock(playerShip, destructedObject);
+
+		// Range check
+		if (!destructedObject->isInRange3dZoneless(playerShip, ZoneServer::SPACEOBJECTRANGE)) {
+			continue;
+		}
+
+		auto playersOnBoard = playerShip->getPlayersOnBoard();
+		int totalPlayers = playersOnBoard.size();
+
+		for (int i = 0; i < totalPlayers; ++i) {
+			auto shipMemberID = playersOnBoard.get(i);
+			auto shipMember = cast<CreatureObject*>(zoneServer->getObject(shipMemberID).get());
+
+			if (shipMember == nullptr) {
+				continue;
+			}
+
+			Locker playLock(shipMember, playerShip);
+
+			if (shipMember->hasSkill("pilot_neutral_master")) {
+				awardExperience(shipMember, "prestige_pilot", (totalExperience / totalPlayers), true, 1.f);
+			} else if (shipMember->hasSkill("pilot_rebel_navy_master")) {
+				awardExperience(shipMember, "prestige_rebel", (totalExperience / totalPlayers), true, 1.f);
+			} else if (shipMember->hasSkill("pilot_imperial_navy_master")) {
+				awardExperience(shipMember, "prestige_imperial", (totalExperience / totalPlayers), true, 1.f);
+			} else {
+				float aceMultiplier = 1.0f;
+
+				auto ghost = shipMember->getPlayerObject();
+
+				if (ghost != nullptr) {
+					/*
+						130 = "pilot_rebel_navy_corellia"	"...has become a Arkon's Havoc Squadron Ace Pilot."
+						131 = "pilot_rebel_navy_naboo"	"...has become a Vortex Ace Pilot."
+						132 = "pilot_rebel_navy_tatooine"	"...has become a Crimson Phoenix Ace Pilot."
+
+						133 = "pilot_imperial_navy_corellia"	"...has become a Black Epsilon Ace Pilot."
+						134 = "pilot_imperial_navy_naboo"	"...has become an Imperial Inquisition Ace Pilot."
+						135 = "pilot_imperial_navy_tatooine"	"...has become a Storm Squadron Ace Pilot."
+
+						136 = "pilot_neutral_corellia"	"...has become a Corellian Security Forces Ace Pilot."
+						137 = "pilot_neutral_naboo"	"...has become a Royal Security Forces Ace Pilot."
+						138 = "pilot_neutral_tatooine"	"...has become a Smugglers Alliance Ace Pilot."
+					*/
+
+					Vector<Vector<uint32>> aceBadges = {{130, 131, 132}, {133, 134, 135}, {136, 137, 138}};
+
+					for (int i = 0; i < aceBadges.size(); i++) {
+						auto badgeVec = aceBadges.get(i);
+
+						for (int j = 0; j < 3; j++) {
+							auto badge = badgeVec.get(j);
+
+							if (ghost->hasBadge(badge)) {
+								aceMultiplier += 1.f;
+								break;
+							}
+						}
+					}
+				}
+
+				// info(true) << "Awarding XP to: " << shipMember->getDisplayedName() << " Ace Multiplier: " << aceMultiplier << " Total XP Amount: " << (uint32)(aceMultiplier * (totalExperience / totalPlayers));
+
+				awardExperience(shipMember, "space_combat_general", (totalExperience / totalPlayers), true, aceMultiplier);
+			}
+
+			// Faction Points?
+		}
+	}
+
+	// Lastly, clear the threat map
 	threatMap->removeAll();
 }
 

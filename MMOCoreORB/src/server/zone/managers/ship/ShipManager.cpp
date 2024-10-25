@@ -34,6 +34,9 @@
 #include "server/chat/ChatManager.h"
 #include "server/zone/managers/planet/PlanetManager.h"
 #include "SpaceSpawnGroup.h"
+#include "server/zone/managers/player/PlayerManager.h"
+#include "server/zone/objects/tangible/threat/ThreatMap.h"
+
 
 int ShipManager::ERROR_CODE = NO_ERROR;
 
@@ -843,6 +846,124 @@ bool ShipManager::createDeedFromChassis(CreatureObject* player, ShipChassisCompo
 
 	return true;
 }
+
+int ShipManager::notifyDestruction(ShipObject* destructorShip, ShipAiAgent* destructedShip, int condition, bool isCombatAction) {
+	if (destructedShip == nullptr) {
+		return 1;
+	}
+
+	// info(true) << "ShipManager::notifyDestruction -- called for: " << destructedShip->getDisplayedName() << " Attacker: " << destructorShip->getDisplayedName();
+
+	destructedShip->cancelBehaviorEvent();
+	destructedShip->cancelRecovery();
+
+	destructedShip->wipeBlackboard();
+	destructedShip->clearRunningChain();
+
+	if (destructorShip == nullptr) {
+		return 1;
+	}
+
+	auto zoneServer = destructorShip->getZoneServer();
+
+	if (zoneServer == nullptr) {
+		return 1;
+	}
+
+	// Create copy of current threat map
+	ThreatMap* threatMap = destructedShip->getThreatMap();
+	ThreatMap copyThreatMap(*threatMap);
+
+	threatMap->removeObservers();
+	threatMap->removeAll(true);
+
+	auto destructorObjectID = destructorShip->getObjectID();
+
+	// lets unlock destructor so we dont get into complicated deadlocks
+	if (destructedShip != destructorShip) {
+		destructorShip->unlock();
+	}
+
+	try {
+		// Quest Kill Observers
+		SortedVector<ManagedReference<Observer* > > observers = destructedShip->getObservers(ObserverEventType::QUESTKILL);
+
+		if (observers.size() > 0) {
+			for (int i = 0; i < copyThreatMap.size(); ++i) {
+				TangibleObject* attacker = copyThreatMap.elementAt(i).getKey();
+
+				if (attacker == nullptr || !attacker->isPlayerShip())
+					continue;
+
+				auto attackerShip = attacker->asShipObject();
+
+				if (attackerShip == nullptr) {
+					continue;
+				}
+
+				attackerShip->notifyObservers(ObserverEventType::QUESTKILL, destructedShip);
+			}
+		}
+
+
+		// TODO: Killed creature style observer for ship agents
+
+
+		// Handle Awarding XP
+		ManagedReference<PlayerManager*> playerManager = zoneServer->getPlayerManager();
+
+		if (playerManager != nullptr) {
+			playerManager->disseminateSpaceExperience(destructedShip, &copyThreatMap);
+		}
+
+		// TODO: Award Credit Chip and Loot here
+
+	} catch (Exception& e) {
+		destructedShip->scheduleDespawn(10, true);
+
+		// now we can safely lock destructor again
+		if (destructedShip != destructorShip) {
+			destructorShip->wlock(destructedShip);
+		}
+
+		throw;
+	}
+
+	// now we can safely lock destructor again
+	if (destructedShip != destructorShip) {
+		destructorShip->wlock(destructedShip);
+
+		ThreatMap* destructorThreatMap = destructorShip->getThreatMap();
+
+		if (destructorThreatMap != nullptr) {
+			uint64 destructedID = destructedShip->getObjectID();
+
+			for (int i = 0; i < destructorThreatMap->size(); i++) {
+				TangibleObject* threatTano = destructorThreatMap->elementAt(i).getKey();
+
+				if (threatTano == nullptr || threatTano->getObjectID() != destructedID) {
+					continue;
+				}
+
+				destructorThreatMap->remove(i);
+			}
+		}
+
+		if (destructorShip->hasDefender(destructedShip)) {
+			destructorShip->removeDefender(destructedShip);
+		}
+
+		// Finally if the destructor has no more defenders, clear their combat state
+		if (!destructorShip->hasDefenders()) {
+			destructorShip->clearCombatState(false);
+		}
+	}
+
+	// info(true) << "ShipManager::notifyDestruction -- COMPLETE - for: " << destructedShip->getDisplayedName() << " Attacker: " << destructorShip->getDisplayedName();
+
+	return 1;
+}
+
 
 void ShipManager::reportPobShipStatus(CreatureObject* player, PobShipObject* pobShip, SceneObject* terminal) {
 	if (player == nullptr || pobShip == nullptr) {

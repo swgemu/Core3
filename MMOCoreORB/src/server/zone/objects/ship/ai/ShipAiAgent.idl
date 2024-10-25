@@ -221,7 +221,7 @@ class ShipAiAgent extends FighterShipObject {
 	public abstract native void notifyDissapear(TreeEntry entry);
 
 	@preLocked
-	public abstract native void notifyDespawn(Zone zone);
+	public abstract native void notifyDespawn();
 
 	@weakReference
 	public ShipObject getFollowShipObject() {
@@ -571,6 +571,13 @@ class ShipAiAgent extends FighterShipObject {
 	@preLocked
 	public native void setDespawnOnNoPlayerInRange(boolean val);
 
+	/**
+	 * Schedules despawn of the AiAgent.
+	 * @param timeToDespawn the time to despawn the AiAgent in seconds.
+	 */
+	@preLocked
+	public abstract native void scheduleDespawn(int timeToDespawn, boolean force = false);
+
 	@preLocked
 	public abstract void clearDespawnEvent() {
 		despawnEvent = null;
@@ -654,6 +661,18 @@ class ShipAiAgent extends FighterShipObject {
 
 	@preLocked
 	public native boolean validateTarget(ShipObject targetShip);
+
+	/**
+	* Is called when this object is destroyed
+	* @pre { this, attacker locked }
+	* @post { this, attacker locked }
+	*/
+	@preLocked
+	@arg1preLocked
+	public native int notifyObjectDestructionObservers(TangibleObject attacker, int condition, boolean isCombatAction);
+
+	@preLocked
+	public native void sendReactionChat(SceneObject object, int type, int state = 0, boolean force = false);
 
 	@local
 	@dereferenced

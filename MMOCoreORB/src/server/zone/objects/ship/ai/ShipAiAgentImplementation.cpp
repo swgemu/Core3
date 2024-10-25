@@ -28,13 +28,13 @@
 #include "server/zone/managers/collision/PathFinderManager.h"
 #include "server/zone/managers/space/SpaceAiMap.h"
 #include "server/zone/managers/stringid/StringIdManager.h"
-#include "server/zone/packets/object/StartNpcConversation.h"
 #include "server/zone/packets/scene/AttributeListMessage.h"
 #include "server/zone/packets/ship/ShipUpdateTransformMessage.h"
 #include "templates/SharedObjectTemplate.h"
 #include "templates/tangible/ship/SharedShipObjectTemplate.h"
 #include "server/zone/objects/ship/ai/events/ShipAiBehaviorEvent.h"
 #include "server/zone/objects/ship/ai/events/DespawnAiShipOnNoPlayersInRange.h"
+#include "server/zone/objects/ship/ai/events/DespawnShipAgentTask.h"
 #include "templates/params/ship/ShipFlag.h"
 #include "templates/params/creature/ObjectFlag.h"
 #include "server/zone/objects/ship/ai/events/RotationLookupTable.h"
@@ -46,9 +46,11 @@
 #include "server/zone/objects/player/FactionStatus.h"
 #include "server/zone/objects/ship/ai/events/ShipAiPatrolPathFinder.h"
 #include "server/zone/managers/spacecombat/projectile/ShipMissile.h"
+#include "server/zone/managers/reaction/ReactionManager.h"
 
 // #define DEBUG_SHIP_AI
 // #define DEBUG_FINDNEXTPOSITION
+// #define DEBUG_SHIP_DESPAWN
 
 /*
 
@@ -331,7 +333,7 @@ void ShipAiAgentImplementation::notifyDissapear(TreeEntry* entry) {
 	activateAiBehavior();
 }
 
-void ShipAiAgentImplementation::notifyDespawn(Zone* zone) {
+void ShipAiAgentImplementation::notifyDespawn() {
 #ifdef DEBUG_SHIP_DESPAWN
 	info(true) << "notifyDespawn called for - " << getDisplayedName() << " ID: " << getObjectID();
 #endif // DEBUG_SHIP_DESPAWN
@@ -343,10 +345,6 @@ void ShipAiAgentImplementation::notifyDespawn(Zone* zone) {
 	wipeBlackboard();
 
 	clearPatrolPoints();
-
-	if (threatMap != nullptr) {
-		threatMap->removeAll(true);
-	}
 
 	ManagedReference<SceneObject*> home = homeObject.get();
 
@@ -1839,6 +1837,37 @@ bool ShipAiAgentImplementation::validateTarget(ShipObject* targetShip) {
 	return true;
 }
 
+int ShipAiAgentImplementation::notifyObjectDestructionObservers(TangibleObject* attacker, int condition, bool isCombatAction) {
+	if (attacker == nullptr) {
+		attacker = asShipAiAgent();
+	} else if (attacker->isPlayerShip()) {
+		sendReactionChat(attacker, ReactionManager::DEATH);
+	}
+
+	// info(true) << "ShipAiAgentImplementation::notifyObjectDestructionObservers -- ShipAgent: " << getDisplayedName();
+
+	ShipManager* shipManager = ShipManager::instance();
+
+	if (shipManager != nullptr) {
+		shipManager->notifyDestruction(attacker->asShipObject(), asShipAiAgent(), condition, isCombatAction);
+	}
+
+	return TangibleObjectImplementation::notifyObjectDestructionObservers(attacker, condition, isCombatAction);
+}
+
+void ShipAiAgentImplementation::sendReactionChat(SceneObject* object, int type, int state, bool force) {
+	if (object == nullptr) {
+		return;
+	}
+
+	// TODO: Ship Agent Needs reaction chats
+
+	// ReactionManager* reactionManager = getZoneServer()->getReactionManager();
+
+	// if (reactionManager != nullptr)
+	//	reactionManager->sendChatReaction(asAiAgent(), object, type, state, force);
+}
+
 /*
 
 	Various Management Functions
@@ -1859,6 +1888,30 @@ void ShipAiAgentImplementation::setDespawnOnNoPlayerInRange(bool val) {
 		if (!despawnEvent->isScheduled()) {
 			despawnEvent->schedule(300000);
 		}
+	}
+}
+
+void ShipAiAgentImplementation::scheduleDespawn(int timeToDespawn, bool force) {
+	// info(true) << getDisplayedName() << " calling - scheduleDespawn()";
+
+	Reference<DespawnShipAgentTask*> despawn = getPendingTask("despawn").castTo<DespawnShipAgentTask*>();
+
+	if (!force && despawn != nullptr) {
+		return;
+	}
+
+	if (despawn != nullptr) {
+		despawn->cancel();
+		despawn->reschedule(timeToDespawn * 1000);
+	} else {
+		despawn = new DespawnShipAgentTask(asShipAiAgent());
+
+		if (despawn == nullptr) {
+			error() << "ShipAiAgent failed to create a despawn task." << __FILE__ << ":" << __LINE__ << ":" << __FUNCTION__ << ": " << *_this.getReferenceUnsafeStaticCast();
+			return;
+		}
+
+		addPendingTask("despawn", despawn, timeToDespawn * 1000);
 	}
 }
 
