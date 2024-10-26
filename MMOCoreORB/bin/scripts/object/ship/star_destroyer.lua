@@ -60,6 +60,7 @@ object_ship_star_destroyer = object_ship_shared_star_destroyer:new {
 	optionsBitmask = AIENABLED,
 
 	customShipAiMap = "",
+	experience = 10000,
 
 	reactor = {name = "rct_generic", hitpoints = 50000, armor = 25000},
 	engine = {name = "eng_incom_fusialthrust", hitpoints = 50000, armor = 25000, speed = 0, acceleration = 0, deceleration = 0, yaw = 0, yawRate = 0, pitch = 0, pitchRate = 0, roll = 0, rollRate = 0},

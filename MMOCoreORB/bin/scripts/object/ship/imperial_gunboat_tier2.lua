@@ -60,6 +60,7 @@ object_ship_imperial_gunboat_tier2 = object_ship_shared_imperial_gunboat_tier2:n
 	optionsBitmask = AIENABLED,
 
 	customShipAiMap = "",
+	factionMultiplier = 20.0,
 
 	reactor = {name = "rct_generic", hitpoints = 4500, armor = 4500},
 	engine = {name = "eng_incom_fusialthrust", hitpoints = 4500, armor = 4500, speed = 43.26, acceleration = 10.51, deceleration = 8.96, yaw = 18.85, yawRate = 39.55, pitch = 23.79, pitchRate = 47.59, roll = 29.46, rollRate = 53.66},
