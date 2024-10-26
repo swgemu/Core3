@@ -38,6 +38,8 @@ public:
 	 */
 	void awardFactionStanding(CreatureObject* player, const String& factionName, int level);
 
+	void awardSpaceFactionPoints(CreatureObject* player, const String& shipType, const String& factionName, uint32 shipLevel, int totalShipmates, float factionMultiplier = 0.f);
+
 	void awardPvpFactionPoints(TangibleObject* killer, CreatureObject* destructedObject);
 
 	/**
