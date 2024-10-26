@@ -2211,34 +2211,12 @@ void PlayerManagerImplementation::disseminateSpaceExperience(ShipAiAgent* destru
 
 	float experienceReward = destructedObject->getExperienceValue();
 	uint32 shipDifficulty = destructedObject->getShipDifficulty().hashCode();
-	uint32 factionPoints = destructedObject->getFactionReward();
+	String factionName = destructedObject->getShipFaction();
+	float factionMultiplier = destructedObject->getFactionMultiplier();
 
-	if (factionPoints <= 8) {
-		switch(shipDifficulty) {
-			case STRING_HASHCODE("tier1"): {
-				break;
-			}
-			case STRING_HASHCODE("tier2"): {
-				factionPoints = 16.f;
-				break;
-			}
-			case STRING_HASHCODE("tier3"): {
-				factionPoints = 32.f;
-				break;
-			}
-			case STRING_HASHCODE("tier4"): {
-				factionPoints = 48.f;
-				break;
-			}
-			case STRING_HASHCODE("tier5"): {
-				factionPoints = 64.f;
-				break;
-			}
-		}
-	}
 
 	// info(true) << "disseminateSpaceExperience -- for: " << destructedObject->getDisplayedName() << " Ship Diificulty: " << destructedObject->getShipDifficulty() << " Hash: " << shipDifficulty;
-	// info(true) << "Anticipated XP: " << experienceReward << " Anticipated FP: " << factionPoints;
+	// info(true) << "Anticipated XP: " << experienceReward;
 
 	// Get destructed ships faction
 	uint32 destructedFaction = destructedObject->getFaction();
@@ -2271,6 +2249,9 @@ void PlayerManagerImplementation::disseminateSpaceExperience(ShipAiAgent* destru
 		auto playersOnBoard = playerShip->getPlayersOnBoard();
 		int totalPlayers = playersOnBoard.size();
 
+		// Experience divided among players on ship
+		float shipExperience = (experienceReward / totalPlayers);
+
 		for (int i = 0; i < totalPlayers; ++i) {
 			auto shipMemberID = playersOnBoard.get(i);
 			auto shipMember = cast<CreatureObject*>(zoneServer->getObject(shipMemberID).get());
@@ -2290,17 +2271,17 @@ void PlayerManagerImplementation::disseminateSpaceExperience(ShipAiAgent* destru
 			// Award Faction Points to overt players
 			if (shipMember->getFactionStatus() == FactionStatus::OVERT && destructedFaction != Factions::FACTIONNEUTRAL && shipMember->getFaction() != destructedFaction) {
 				FactionManager* factionManager = FactionManager::instance();
-				factionManager->awardFactionStanding(shipMember, destructedObject->getShipFaction(), (int)(factionPoints / totalPlayers));
+				factionManager->awardSpaceFactionPoints(shipMember, factionName, shipDifficulty, totalPlayers, factionMultiplier);
 			}
 
 			if (shipMember->hasSkill("pilot_neutral_master")) {
-				awardExperience(shipMember, "prestige_pilot", (experienceReward / totalPlayers), true, 1.f);
+				awardExperience(shipMember, "prestige_pilot", shipExperience, true, 1.f);
 			} else if (shipMember->hasSkill("pilot_rebel_navy_master")) {
-				awardExperience(shipMember, "prestige_rebel", (experienceReward / totalPlayers), true, 1.f);
+				awardExperience(shipMember, "prestige_rebel", shipExperience, true, 1.f);
 			} else if (shipMember->hasSkill("pilot_imperial_navy_master")) {
-				awardExperience(shipMember, "prestige_imperial", (experienceReward / totalPlayers), true, 1.f);
+				awardExperience(shipMember, "prestige_imperial", shipExperience, true, 1.f);
 			} else {
-				float aceMultiplier = 1.0f;
+				float aceMultiplier = 0.0f;
 
 				/*	130 = "pilot_rebel_navy_corellia"	"...has become a Arkon's Havoc Squadron Ace Pilot."
 					131 = "pilot_rebel_navy_naboo"	"...has become a Vortex Ace Pilot."
@@ -2329,9 +2310,13 @@ void PlayerManagerImplementation::disseminateSpaceExperience(ShipAiAgent* destru
 					}
 				}
 
-				// info(true) << "Awarding XP to: " << shipMember->getDisplayedName() << " Ace Multiplier: " << aceMultiplier << " Total XP Amount: " << (uint32)(aceMultiplier * (experienceReward / totalPlayers)) << " Possible FP: " << factionPoints;
+				// info(true) << "Awarding XP to: " << shipMember->getDisplayedName() << " Ace Multiplier: " << aceMultiplier << " XP Amount: " << shipExperience;
 
-				awardExperience(shipMember, "space_combat_general", (experienceReward / totalPlayers), true, aceMultiplier);
+				awardExperience(shipMember, "space_combat_general", shipExperience, true, 1.f);
+
+				if (aceMultiplier > 0) {
+					awardExperience(shipMember, "space_combat_general", shipExperience, true, aceMultiplier, true, true);
+				}
 			}
 		}
 	}
@@ -2565,9 +2550,7 @@ void PlayerManagerImplementation::setExperienceMultiplier(float globalMultiplier
 	playerManager->awardExperience(playerCreature, "resource_harvesting_inorganic", 500);
  *
  */
-int PlayerManagerImplementation::awardExperience(CreatureObject* player, const String& xpType,
-		int amount, bool sendSystemMessage, float localMultiplier, bool applyModifiers) {
-
+int PlayerManagerImplementation::awardExperience(CreatureObject* player, const String& xpType, int amount, bool sendSystemMessage, float localMultiplier, bool applyModifiers, bool spaceBonus) {
 	PlayerObject* playerObject = player->getPlayerObject();
 
 	if (playerObject == nullptr)
@@ -2577,8 +2560,9 @@ int PlayerManagerImplementation::awardExperience(CreatureObject* player, const S
 
 	float speciesModifier = 1.f;
 
-	if (amount > 0)
+	if (amount > 0) {
 		speciesModifier = getSpeciesXpModifier(player->getSpeciesName(), xpType);
+	}
 
 	float buffMultiplier = 1.f;
 
@@ -2596,17 +2580,25 @@ int PlayerManagerImplementation::awardExperience(CreatureObject* player, const S
 		trx.addState("globalExpMultiplier", globalExpMultiplier);
 
 		xp = playerObject->addExperience(trx, xpType, (int) (amount * speciesModifier * buffMultiplier * localMultiplier * globalExpMultiplier));
-	} else
+	} else {
 		xp = playerObject->addExperience(trx, xpType, (int)amount);
+	}
 
 	player->notifyObservers(ObserverEventType::XPAWARDED, player, xp);
 
 	if (sendSystemMessage) {
 		if (xp > 0) {
-			StringIdChatParameter message("base_player","prose_grant_xp");
-			message.setDI(xp);
-			message.setTO("exp_n", xpType);
-			player->sendSystemMessage(message);
+			if (spaceBonus) {
+				StringIdChatParameter message("base_player","prose_grant_xp_bonus");
+				message.setDI(xp);
+				message.setTO("exp_n", xpType);
+				player->sendSystemMessage(message);
+			} else {
+				StringIdChatParameter message("base_player","prose_grant_xp");
+				message.setDI(xp);
+				message.setTO("exp_n", xpType);
+				player->sendSystemMessage(message);
+			}
 		}
 		if (xp > 0 && playerObject->hasCappedExperience(xpType)) {
 			StringIdChatParameter message("base_player", "prose_hit_xp_cap"); //You have achieved your current limit for %TO experience.
