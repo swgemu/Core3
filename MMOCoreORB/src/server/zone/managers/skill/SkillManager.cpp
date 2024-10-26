@@ -605,7 +605,7 @@ bool SkillManager::surrenderSkill(const String& skillName, CreatureObject* creat
 	return true;
 }
 
-void SkillManager::surrenderAllSkills(CreatureObject* creature, bool notifyClient, bool removeForceProgression) {
+void SkillManager::surrenderAllSkills(CreatureObject* creature, bool notifyClient, bool removeForceProgression, bool removePilot) {
 	ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
 
 	const SkillList* skillList = creature->getSkillList();
@@ -616,10 +616,14 @@ void SkillManager::surrenderAllSkills(CreatureObject* creature, bool notifyClien
 
 	copyOfList.loadFromNames(listOfNames);
 
+	bool surrenderedPilot = false;
+
 	for (int i = 0; i < copyOfList.size(); i++) {
 		Skill* skill = copyOfList.get(i);
 
-		if (skill->getSkillPointsRequired() > 0) {
+		surrenderedPilot = (removePilot && skill->getSkillName().contains("pilot"));
+
+		if (skill->getSkillPointsRequired() > 0 || surrenderedPilot) {
 			if (!removeForceProgression and skill->getSkillName().contains("force_"))
 				continue;
 
@@ -649,6 +653,11 @@ void SkillManager::surrenderAllSkills(CreatureObject* creature, bool notifyClien
 				JediManager::instance()->onSkillRevoked(creature, skill);
 			}
 		}
+	}
+
+	// Reset players pilot tier
+	if (surrenderedPilot) {
+		creature->resetPilotTier();
 	}
 
 	SkillModManager::instance()->verifySkillBoxSkillMods(creature);

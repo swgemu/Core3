@@ -706,7 +706,7 @@ int PlayerObjectImplementation::addExperience(TransactionLog& trx, const String&
 		xpCap = xpTypeCapList.get(xpType);
 
 	if (xpType.beginsWith("prestige_")) {
-		xpCap = 500000;
+		xpCap = INT_MAX;
 	} else if (xpCap < 0) {
 		xpCap = 2000;
 	}

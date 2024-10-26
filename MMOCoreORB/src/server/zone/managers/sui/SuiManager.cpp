@@ -278,7 +278,7 @@ void SuiManager::handleCharacterBuilderSelectItem(CreatureObject* player, SuiBox
 
 			if (templatePath == "unlearn_all_skills") {
 
-				SkillManager::instance()->surrenderAllSkills(player, true, false);
+				SkillManager::instance()->surrenderAllSkills(player, true, false, true);
 				player->sendSystemMessage("All skills unlearned.");
 
 			} else if (templatePath == "cleanse_character") {
@@ -498,9 +498,26 @@ void SuiManager::handleCharacterBuilderSelectItem(CreatureObject* player, SuiBox
 				if (templatePath.length() > 0) {
 					SkillManager::instance()->awardSkill(templatePath, player, true, true, true);
 
-					if (player->hasSkill(templatePath))
+					if (player->hasSkill(templatePath)) {
 						player->sendSystemMessage("You have learned a skill.");
 
+						// Set pilot tier here
+						if (templatePath.contains("pilot")) {
+							Locker lock(player);
+
+							if (templatePath.contains("_novice") || templatePath.contains("_01")) {
+								player->setPilotTier(1);
+							} else if (templatePath.contains("_02")) {
+								player->setPilotTier(2);
+							} else if (templatePath.contains("_03")) {
+								player->setPilotTier(3);
+							} else if (templatePath.contains("_04")) {
+								player->setPilotTier(4);
+							} else {
+								player->setPilotTier(5);
+							}
+						}
+					}
 				} else {
 					player->sendSystemMessage("Unknown selection.");
 					return;

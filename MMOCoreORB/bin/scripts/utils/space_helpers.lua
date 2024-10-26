@@ -146,6 +146,7 @@ function SpaceHelpers:surrenderPilot(pPlayer, pilotProfession)
 
 		if (CreatureObject(pPlayer):hasSkill(skillName)) then
 			CreatureObject(pPlayer):surrenderSkill(skillName)
+			CreatureObject(pPlayer):resetPilotTier()
 		end
 	end
 end
