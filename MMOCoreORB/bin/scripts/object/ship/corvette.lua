@@ -60,6 +60,7 @@ object_ship_corvette = object_ship_shared_corvette:new {
 	optionsBitmask = AIENABLED,
 
 	customShipAiMap = "",
+	factionMultiplier = 22.0,
 
 	reactor = {name = "rct_generic", hitpoints = 10000, armor = 5000},
 	engine = {name = "eng_generic", hitpoints = 10000, armor = 5000, speed = 32, acceleration = 8, deceleration = 8, yaw = 3, yawRate = 3, pitch = 3, pitchRate = 3, roll = 3, rollRate = 3},
