@@ -88,13 +88,11 @@ FactionMap* FactionManager::getFactionMap() {
 }
 
 void FactionManager::awardFactionStanding(CreatureObject* player, const String& factionName, int level) {
-	if (player == nullptr)
+	if (player == nullptr || !factionMap.contains(factionName)) {
 		return;
+	}
 
 	ManagedReference<PlayerObject*> ghost = player->getPlayerObject();
-
-	if (!factionMap.contains(factionName))
-		return;
 
 	const Faction& faction = factionMap.get(factionName);
 	const SortedVector<String>* enemies = faction.getEnemies();
@@ -152,6 +150,148 @@ void FactionManager::awardFactionStanding(CreatureObject* player, const String& 
 	}
 }
 
+void FactionManager::awardSpaceFactionPoints(CreatureObject* player, const String& factionName, uint32 shipLevel, int totalShipmates, float factionMultiplier) {
+	if (player == nullptr || !factionMap.contains(factionName)) {
+		return;
+	}
+
+	auto ghost = player->getPlayerObject();
+
+	if (ghost == nullptr) {
+		return;
+	}
+
+	const Faction& faction = factionMap.get(factionName);
+
+	if (!faction.isPlayerAllowed()) {
+		return;
+	}
+
+	float multiplier = 16.f + factionMultiplier;
+	int pilotTier = player->getPilotTier();
+
+	const uint32 tier1 = STRING_HASHCODE("tier1");
+	const uint32 tier2 = STRING_HASHCODE("tier2");
+	const uint32 tier3 = STRING_HASHCODE("tier3");
+	const uint32 tier4 = STRING_HASHCODE("tier4");
+	const uint32 tier5 = STRING_HASHCODE("tier5");
+
+	float gain = 0.f;
+
+	switch(pilotTier) {
+		case 1: {
+			if (shipLevel != tier1) {
+				gain = multiplier * 1.5f;
+			} else {
+				gain = multiplier;
+			}
+
+			break;
+		}
+		case 2: {
+			if (shipLevel == tier1) {
+				gain = multiplier;
+			} else if (shipLevel != tier2) {
+				gain = multiplier * 2.5f;
+			} else {
+				gain = multiplier * 2.f;
+			}
+
+			break;
+		}
+		case 3: {
+			if (shipLevel == tier2) {
+				gain = ((multiplier * 3.f) / 2.f);
+			} else if (shipLevel == tier3) {
+				gain = multiplier * 3.f;
+			} else if (shipLevel == tier4 || shipLevel == tier5) {
+				gain = multiplier * 3.5f;
+			}
+
+			break;
+		}
+		case 4: {
+			if (shipLevel == tier3) {
+				gain = ((multiplier * 4.f) / 2.f);
+			} else if (shipLevel == tier4) {
+				gain = multiplier * 4.f;
+			} else if (shipLevel == tier5) {
+				gain = multiplier * 4.5f;
+			}
+
+			break;
+		}
+		case 5: {
+			if (shipLevel == tier4) {
+				gain = ((multiplier * 5.f) / 2.f);
+			} else if (shipLevel == tier5) {
+				gain = multiplier * 5.f;
+			}
+
+			break;
+		}
+		default: {
+			break;
+		}
+	}
+
+	float loss = gain * 2;
+
+	// info(true) << "awardSpaceFactionPoints -- Player Tier: " << pilotTier << " ShipLevel: " << shipLevel << " Gain: " << gain << " Loss: " << loss;
+
+	bool gcw = false;
+
+	if (factionName == "rebel" || factionName == "imperial") {
+		gcw = true;
+	}
+
+	const SortedVector<String>* enemies = faction.getEnemies();
+	const SortedVector<String>* allies = faction.getAllies();
+
+	// Gain faction standing to enemies of the creature.
+	for (int i = 0; i < enemies->size(); ++i) {
+		const String& enemy = enemies->get(i);
+
+		if ((enemy == "rebel" || enemy == "imperial") && !gcw) {
+			continue;
+		}
+
+		if (!factionMap.contains(enemy)) {
+			continue;
+		}
+
+		const Faction& enemyFaction = factionMap.get(enemy);
+
+		if (!enemyFaction.isPlayerAllowed()) {
+			continue;
+		}
+
+		ghost->increaseFactionStanding(enemy, gain);
+	}
+
+	ghost->decreaseFactionStanding(factionName, loss);
+
+	// Lose faction standing to allies of the creature.
+	for (int i = 0; i < allies->size(); ++i) {
+		const String& ally = allies->get(i);
+
+		if ((ally == "rebel" || ally == "imperial")) {
+			continue;
+		}
+
+		if (!factionMap.contains(ally)) {
+			continue;
+		}
+
+		const Faction& allyFaction = factionMap.get(ally);
+
+		if (!allyFaction.isPlayerAllowed()) {
+			continue;
+		}
+
+		ghost->decreaseFactionStanding(ally, loss);
+	}
+}
 
 void FactionManager::awardPvpFactionPoints(TangibleObject* killer, CreatureObject* destructedObject) {
 	if (killer->isPlayerCreature() && destructedObject->isPlayerCreature()) {

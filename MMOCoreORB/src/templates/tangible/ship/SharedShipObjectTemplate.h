@@ -48,7 +48,7 @@ class SharedShipObjectTemplate : public SharedTangibleObjectTemplate {
 	unsigned int pvpStatusBitmask;
 
 	int experience;
-	int factionReward;
+	float factionMultiplier;
 
 public:
 	SharedShipObjectTemplate() {
@@ -201,7 +201,7 @@ public:
 		}
 
 		experience = templateData->getIntField("experience");
-		factionReward = templateData->getIntField("factionReward");
+		factionMultiplier = templateData->getFloatField("factionMultiplier");
 
 		readAttributeMap(templateData);
 
@@ -390,8 +390,8 @@ public:
 		return experience;
 	}
 
-	inline int getFactionRewardValue() {
-		return factionReward;
+	inline float getFactionMultiplier() {
+		return factionMultiplier;
 	}
 
 	void parseVariableData(const String& varName, Chunk* data) {

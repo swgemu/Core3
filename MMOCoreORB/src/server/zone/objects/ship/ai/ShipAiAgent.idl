@@ -175,7 +175,7 @@ class ShipAiAgent extends FighterShipObject {
 	protected transient unsigned long customShipAiMap;
 
 	protected transient int experienceValue;
-	protected transient int factionReward;
+	protected transient float factionMultiplier;
 
 	public ShipAiAgent() {
 		movementState = OBLIVIOUS;
@@ -575,8 +575,8 @@ class ShipAiAgent extends FighterShipObject {
 		return experienceValue;
 	}
 
-	public int getFactionReward() {
-		return factionReward;
+	public int getFactionMultiplier() {
+		return factionMultiplier;
 	}
 
 	@preLocked
