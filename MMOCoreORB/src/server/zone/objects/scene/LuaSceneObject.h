@@ -77,6 +77,7 @@ namespace scene {
 		int isBuildingObject(lua_State* L);
 		int isActiveArea(lua_State* L);
 		int isShipObject(lua_State* L);
+		int isShipAiAgent(lua_State* L);
 		int getZoneName(lua_State* L);
 		int sendTo(lua_State* L);
 		int getCustomObjectName(lua_State* L);

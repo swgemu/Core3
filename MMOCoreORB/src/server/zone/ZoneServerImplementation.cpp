@@ -547,8 +547,9 @@ void ZoneServerImplementation::clearZones() {
 }
 
 Zone* ZoneServerImplementation::getZone(const String& zoneName) const {
-	if (zoneName.contains("space"))
+	if (zoneName.beginsWith("space")) {
 		return spaceZones->get(zoneName);
+	}
 
 	return zones->get(zoneName);
 }

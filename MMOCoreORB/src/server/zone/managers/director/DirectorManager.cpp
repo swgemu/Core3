@@ -48,6 +48,7 @@
 #include "templates/params/creature/CreatureState.h"
 #include "templates/params/creature/CreaturePosture.h"
 #include "server/zone/objects/creature/ai/LuaAiAgent.h"
+#include "server/zone/objects/ship/ai/LuaShipAiAgent.h"
 #include "server/zone/objects/area/LuaActiveArea.h"
 #include "server/zone/objects/creature/conversation/ConversationScreen.h"
 #include "server/zone/objects/creature/conversation/ConversationTemplate.h"
@@ -431,6 +432,7 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	luaEngine->registerFunction("hasObserver", hasObserver);
 	luaEngine->registerFunction("spawnMobile", spawnMobile);
 	luaEngine->registerFunction("spawnEventMobile", spawnEventMobile);
+	luaEngine->registerFunction("spawnShipAgent", spawnShipAgent);
 	luaEngine->registerFunction("spatialChat", spatialChat);
 	luaEngine->registerFunction("spatialMoodChat", spatialMoodChat);
 	luaEngine->registerFunction("getRandomNumber", getRandomNumber);
@@ -606,6 +608,7 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	luaEngine->setGlobalInt("SLICED", ObserverEventType::SLICED);
 	luaEngine->setGlobalInt("ABILITYUSED", ObserverEventType::ABILITYUSED);
 	luaEngine->setGlobalInt("SPATIALCHAT", ObserverEventType::SPATIALCHAT);
+	luaEngine->setGlobalInt("SHIPAGENTDESPAWNED", ObserverEventType::SHIPAGENTDESPAWNED);
 
 	luaEngine->setGlobalInt("UPRIGHT", CreaturePosture::UPRIGHT);
 	luaEngine->setGlobalInt("PRONE", CreaturePosture::PRONE);
@@ -770,6 +773,11 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	luaEngine->setGlobalInt("SHIP_AI_ESCORT", ShipFlag::ESCORT);
 	luaEngine->setGlobalInt("SHIP_AI_FOLLOW", ShipFlag::FOLLOW);
 	luaEngine->setGlobalInt("SHIP_AI_TURRETSHIP", ShipFlag::TURRETSHIP);
+	luaEngine->setGlobalInt("SHIP_AI_GUARD_PATROL", ShipFlag::GUARD_PATROL);
+	luaEngine->setGlobalInt("SHIP_AI_RANDOM_PATROL", ShipFlag::RANDOM_PATROL);
+	luaEngine->setGlobalInt("SHIP_AI_FIXED_PATROL", ShipFlag::RANDOM_PATROL);
+	luaEngine->setGlobalInt("SHIP_AI_SQUADRON_PATROL", ShipFlag::SQUADRON_PATROL);
+	luaEngine->setGlobalInt("SHIP_AI_SQUADRON_FOLLOW", ShipFlag::SQUADRON_FOLLOW);
 
 	// Badges
 	const auto badges = BadgeList::instance()->getMap();
@@ -788,6 +796,7 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	Luna<LuaBuildingObject>::Register(luaEngine->getLuaState());
 	Luna<LuaCreatureObject>::Register(luaEngine->getLuaState());
 	Luna<LuaShipObject>::Register(luaEngine->getLuaState());
+	Luna<LuaShipAiAgent>::Register(luaEngine->getLuaState());
 	Luna<LuaSceneObject>::Register(luaEngine->getLuaState());
 	Luna<LuaConversationScreen>::Register(luaEngine->getLuaState());
 	Luna<LuaConversationSession>::Register(luaEngine->getLuaState());
@@ -2646,6 +2655,86 @@ int DirectorManager::spawnEventMobile(lua_State* L) {
 		creature->_setUpdated(true); //mark updated so the GC doesnt delete it while in LUA
 		lua_pushlightuserdata(L, creature);
 	}
+
+	return 1;
+}
+
+int DirectorManager::spawnShipAgent(lua_State* L) {
+	int numberOfArguments = lua_gettop(L);
+
+	if (numberOfArguments != 5) {
+		String err = "incorrect number of arguments passed to DirectorManager::spawnShipAgent";
+		printTraceError(L, err);
+		ERROR_CODE = INCORRECT_ARGUMENTS;
+		return 0;
+	}
+
+	float x, z, y;
+	String shipName, zoneName;
+
+	auto shipManager = ShipManager::instance();
+
+	if (shipManager == nullptr) {
+		lua_pushnil(L);
+		return 1;
+	}
+
+	y = lua_tonumber(L, -1);
+	z = lua_tonumber(L, -2);
+	x = lua_tonumber(L, -3);
+	zoneName = lua_tostring(L, -4);
+	shipName = lua_tostring(L, -5);
+
+	shipName =  "object/ship/" + shipName + ".iff";
+
+	Logger::console.info(true) << "spawnShipAgent - Ship: " << shipName << " Zone: " << zoneName << " X: " << x << " Z: " << z << " Y: " << y;
+
+	auto zoneServer = ServerCore::getZoneServer();
+
+	if (zoneServer == nullptr) {
+		lua_pushnil(L);
+		return 1;
+	}
+
+	auto spaceZone = zoneServer->getZone(zoneName);
+
+	if (spaceZone == nullptr || !spaceZone->isSpaceZone()) {
+		lua_pushnil(L);
+		return 1;
+	}
+
+	ShipAiAgent* shipAgent = shipManager->createAiShip(shipName);
+
+	if (shipAgent == nullptr) {
+		lua_pushnil(L);
+		return 1;
+	}
+
+	shipAgent->info(true) << "Ship agent: " << shipName << " created succesfully";
+
+	Locker lock(shipAgent);
+
+	shipAgent->setHyperspacing(true);
+
+	shipAgent->initializePosition(x, z, y);
+
+	shipAgent->setHomeLocation(x, z, y, Quaternion::IDENTITY);
+	shipAgent->initializeTransform(Vector3(x, y, z), Quaternion::IDENTITY);
+
+	if (!spaceZone->transferObject(shipAgent, -1, true)) {
+		shipAgent->destroyObjectFromWorld(true);
+
+		lua_pushnil(L);
+		return 1;
+	}
+
+ 	// mark updated so the GC doesnt delete it while in LUA
+	shipAgent->_setUpdated(true);
+	lua_pushlightuserdata(L, shipAgent);
+
+	shipAgent->setHyperspacing(false);
+
+	shipAgent->info(true) << "Ship agent: " << shipName << " created succesfully";
 
 	return 1;
 }
