@@ -26,6 +26,7 @@
 #include "server/zone/managers/creature/AiMap.h"
 #include "server/zone/managers/space/SpaceAiMap.h"
 #include "server/zone/managers/creature/CreatureTemplateManager.h"
+#include "server/zone/managers/ship/ShipAgentTemplateManager.h"
 #include "server/zone/managers/creature/DnaManager.h"
 #include "server/zone/managers/creature/PetManager.h"
 #include "server/zone/managers/guild/GuildManager.h"
@@ -75,6 +76,7 @@ ZoneServerImplementation::ZoneServerImplementation(ConfigManager* config) :
 
 	stringIdManager = nullptr;
 	creatureTemplateManager = nullptr;
+	shipAgentTemplateManager = nullptr;
 	guildManager = nullptr;
 	cityManager = nullptr;
 	petManager = nullptr;
@@ -144,6 +146,9 @@ void ZoneServerImplementation::initialize() {
 
 	creatureTemplateManager = CreatureTemplateManager::instance();
 	creatureTemplateManager->loadTemplates();
+
+	shipAgentTemplateManager = ShipAgentTemplateManager::instance();
+	shipAgentTemplateManager->loadTemplates();
 
 	AiMap::instance()->loadTemplates();
 	SpaceAiMap::instance()->loadTemplates();
@@ -443,6 +448,8 @@ void ZoneServerImplementation::stopManagers() {
 	}
 
 	creatureTemplateManager = nullptr;
+	shipAgentTemplateManager = nullptr;
+
 	dnaManager = nullptr;
 	stringIdManager = nullptr;
 	zoneHandler = nullptr;

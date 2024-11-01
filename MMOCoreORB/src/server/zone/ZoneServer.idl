@@ -41,6 +41,7 @@ import server.zone.managers.auction.AuctionManager;
 import server.zone.managers.mission.MissionManager;
 import server.zone.managers.stringid.StringIdManager;
 import server.zone.managers.creature.CreatureTemplateManager;
+import server.zone.managers.ship.ShipAgentTemplateManager;
 import server.zone.managers.creature.DnaManager;
 import server.zone.managers.creature.PetManager;
 import server.zone.managers.guild.GuildManager;
@@ -83,6 +84,8 @@ class ZoneServer extends ManagedService implements Logger {
 	private transient StringIdManager stringIdManager;
 
 	private transient CreatureTemplateManager creatureTemplateManager;
+
+	private transient ShipAgentTemplateManager shipAgentTemplateManager;
 
 	private transient DnaManager dnaManager;
 
