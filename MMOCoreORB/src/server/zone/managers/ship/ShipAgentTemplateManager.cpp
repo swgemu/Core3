@@ -9,6 +9,7 @@
 #include "conf/ConfigManager.h"
 #include "server/zone/managers/name/NameManager.h"
 #include "server/zone/objects/ship/ai/ShipAiAgent.h"
+#include "server/zone/managers/stringid/StringIdManager.h"
 
 AtomicInteger ShipAgentTemplateManager::loadedMobileTemplates;
 
@@ -63,7 +64,7 @@ int ShipAgentTemplateManager::loadTemplates() {
 	}
 
 	if (!DEBUG_MODE) {
-		info(true) << "Finished Loading Ship Mobile Templates -  Total: " << hashTable.size();
+		info(true) << "Finished Loading Ship Agent Templates -  Total: " << hashTable.size();
 	}
 
 	return ERROR_CODE;
@@ -113,7 +114,7 @@ int ShipAgentTemplateManager::addTemplate(lua_State* L) {
 		return 0;
 	}
 
-	String tempName =  lua_tostring(L, -2);
+	String tempName = lua_tostring(L, -2);
 	uint32 crc = (uint32) tempName.hashCode();
 
 	LuaObject obj(L);
