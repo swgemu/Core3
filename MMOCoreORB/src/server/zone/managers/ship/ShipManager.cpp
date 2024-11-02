@@ -620,11 +620,10 @@ ShipAiAgent* ShipManager::createAiShip(const String& shipName, uint32 shipCRC) {
 		return nullptr;
 	}
 
-	auto agentTemplate = shipTemplateManager->getTemplate(shipCRC);
+	Reference<ShipAgentTemplate*> agentTemplate = shipTemplateManager->getTemplate(shipCRC);
 
 	if (agentTemplate == nullptr) {
 		error() << "Ship Agent template is null -- " << shipName;
-
 		return nullptr;
 	}
 
@@ -656,7 +655,7 @@ ShipAiAgent* ShipManager::createAiShip(const String& shipName, uint32 shipCRC) {
 
 	// info(true) << "ShipManager::createAiShip -- ShipName: " << agentTemplate->getTemplateName() << " Game Object Type: " << shipTemp->getGameObjectType() << " Ship Hash: " << shipTemp->getServerObjectCRC() << " Full Template: " << shipTemp->getFullTemplateString();
 
-	shipAgent->loadTemplateData(shipTemp);
+	// Load data from ShipAgentTemplate
 	shipAgent->loadTemplateData(agentTemplate);
 
 	shipAgent->setShipAiTemplate();

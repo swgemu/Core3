@@ -32,6 +32,7 @@ Luna<LuaShipAiAgent>::RegType LuaShipAiAgent::Register[] = {
 	{ "setFixedPatrol", &LuaShipAiAgent::setFixedPatrol },
 	{ "setSquadronPatrol", &LuaShipAiAgent::setSquadronPatrol },
 	{ "setSquadronFollow", &LuaShipAiAgent::setSquadronFollow },
+	{ "setDespawnOnNoPlayerInRange", &LuaShipAiAgent::setDespawnOnNoPlayerInRange },
 	{ 0, 0 }
 };
 
@@ -116,6 +117,16 @@ int LuaShipAiAgent::setSquadronFollow(lua_State* L) {
 
 	realObject->addShipFlag(ShipFlag::SQUADRON_FOLLOW);
 	realObject->setShipAiTemplate();
+
+	return 0;
+}
+
+int LuaShipAiAgent::setDespawnOnNoPlayerInRange(lua_State* L) {
+	bool val = lua_toboolean(L, -1);
+
+	Locker locker(realObject);
+
+	realObject->setDespawnOnNoPlayerInRange(val);
 
 	return 0;
 }

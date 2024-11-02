@@ -60,8 +60,6 @@
 */
 
 void ShipAiAgentImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
-	FighterShipObjectImplementation::loadTemplateData(templateData);
-
 	auto shipTemp = dynamic_cast<SharedShipObjectTemplate*>(templateData);
 
 	if (shipTemp == nullptr) {
@@ -208,14 +206,19 @@ void ShipAiAgentImplementation::loadTemplateData(SharedObjectTemplate* templateD
 		}
 		};
 	}
+
+	FighterShipObjectImplementation::loadTemplateData(templateData);
 }
 
 void ShipAiAgentImplementation::loadTemplateData(ShipAgentTemplate* agentTemp) {
-	if (agentTemplate == nullptr) {
+	if (agentTemp == nullptr) {
 		return;
 	}
 
 	agentTemplate = agentTemp;
+
+	auto shipName = agentTemplate->getTemplateName();
+	setShipNameCRC(shipName.hashCode(), false);
 
 	// Set Faction
 	setShipFaction(agentTemplate->getSpaceFaction(), false);
@@ -1803,7 +1806,7 @@ bool ShipAiAgentImplementation::isAttackableBy(TangibleObject* attackerTano) {
 	// info(true) << "ShipAiAgentImplementation::isAttackableBy TangibleObject Check -- Ship Agent: " << getDisplayedName() << " by attackerTano = " << attackerTano->getDisplayedName();
 
 	// Get factions
-	uint32 thisFaction = getFaction();
+	uint32 thisFaction = getShipFaction().hashCode();
 	uint32 shipFaction = attackerTano->getFaction();
 
 	if (thisFaction != 0 || shipFaction != 0) {
@@ -1833,7 +1836,7 @@ bool ShipAiAgentImplementation::isAttackableBy(CreatureObject* attacker) {
 	// info(true) << "ShipAiAgentImplementation::isAttackableBy Creature Check -- ShipAgent: " << getDisplayedName() << " by attacker = " << attacker->getDisplayedName();
 
 	// Get factions
-	uint32 thisFaction = getFaction();
+	uint32 thisFaction = getShipFaction().hashCode();
 	uint32 attackerFaction = attacker->getFaction();
 
 	// Faction Checks
