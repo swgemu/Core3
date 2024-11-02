@@ -18,6 +18,7 @@
 #include <system/util/Vector.h>
 #include <system/util/VectorMap.h>
 
+#include "server/zone/objects/ship/ai/ShipAgentTemplate.h"
 #include "server/zone/objects/ship/ai/btspace/BehaviorSpace.h"
 #include "server/zone/managers/objectcontroller/ObjectController.h"
 #include "server/zone/objects/ship/ai/ShipAiAgent.h"
@@ -60,29 +61,12 @@
 
 void ShipAiAgentImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
 	FighterShipObjectImplementation::loadTemplateData(templateData);
-}
 
-void ShipAiAgentImplementation::loadTemplateData(SharedShipObjectTemplate* shipTemp) {
+	auto shipTemp = dynamic_cast<SharedShipObjectTemplate*>(templateData);
+
 	if (shipTemp == nullptr) {
 		return;
 	}
-
-	FighterShipObjectImplementation::loadTemplateData(shipTemp);
-
-	// Handles attackable flags (ObjectFlag::ATTACKABLE, ObjectFlag::AGGRESSIVE etc)
-	setPvpStatusBitmask(shipTemp->getPvpBitmask());
-
-	if (getPvpStatusBitmask() == 0)
-		closeobjects = nullptr;
-
-	// Handles special flags for differnt AI Template bitmasks (ESCORT, FOLLOW etc)
-	shipBitmask = shipTemp->getShipBitmask();
-
-	// Special AI Template behavior tree
-	customShipAiMap = shipTemp->getCustomShipAiMap();
-
-	experienceValue = shipTemp->getExperienceValue();
-	factionMultiplier = shipTemp->getFactionMultiplier();
 
 	const auto& componentNames = shipTemp->getComponentNames();
 	const auto& componentValues = shipTemp->getComponentValues();
@@ -223,6 +207,67 @@ void ShipAiAgentImplementation::loadTemplateData(SharedShipObjectTemplate* shipT
 			break;
 		}
 		};
+	}
+}
+
+void ShipAiAgentImplementation::loadTemplateData(ShipAgentTemplate* agentTemp) {
+	if (agentTemplate == nullptr) {
+		return;
+	}
+
+	agentTemplate = agentTemp;
+
+	// Set Faction
+	setShipFaction(agentTemplate->getSpaceFaction(), false);
+
+	// Handles attackable flags (ObjectFlag::ATTACKABLE, ObjectFlag::AGGRESSIVE etc)
+	uint32 templatePvpStatusBitmask = agentTemplate->getPvpBitmask();
+
+	if (agentTemplate->getAggressive() == 1 && !(templatePvpStatusBitmask & ObjectFlag::AGGRESSIVE)) {
+		templatePvpStatusBitmask |= ObjectFlag::AGGRESSIVE;
+	}
+
+	setPvpStatusBitmask(templatePvpStatusBitmask);
+
+	if (getPvpStatusBitmask() == 0) {
+		closeobjects = nullptr;
+	}
+
+	// Handles special flags for differnt AI Template bitmasks (ESCORT, FOLLOW etc)
+	shipBitmask = agentTemplate->getShipBitmask();
+
+	// Special AI Template behavior tree
+	customShipAiMap = agentTemplate->getCustomShipAiMap();
+
+	experienceValue = agentTemplate->getExperience();
+
+	minCredits = agentTemplate->getMinCredits();
+	maxCredits = agentTemplate->getMaxCredits();
+
+	imperialFactionReward = agentTemplate->getImperialFactionReward();
+	rebelFactionReward = agentTemplate->getRebelFactionReward();
+
+	// Set conversation templates, out of range message and mobile
+	setConversationTemplate(agentTemplate->getConversationTemplate());
+	setConversationMessage(agentTemplate->getConversationMessage());
+	setConversationMobile(agentTemplate->getConversationMobile());
+
+	// Add allied factions
+	int totalAllies = agentTemplate->getTotalAlliedFactions();
+
+	for (int i = 0; i < totalAllies; i++) {
+		auto ally = agentTemplate->getAlliedFaction(i);
+
+		alliedFactions.add(ally.hashCode());
+	}
+
+	// Add Enemy factions
+	int totalEnemies = agentTemplate->getTotalEnemyFactions();
+
+	for (int i = 0; i < totalEnemies; i++) {
+		auto enemy = agentTemplate->getEnemyFaction(i);
+
+		enemyFactions.add(enemy.hashCode());
 	}
 }
 

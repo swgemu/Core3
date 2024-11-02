@@ -96,15 +96,6 @@ class ShipObject extends TangibleObject {
 	protected boolean hasWings;
 
 	@dereferenced
-	protected string conversationTemplate;
-
-	@dereferenced
-	protected string conversationMobile;
-
-	@dereferenced
-	protected string conversationMessage;
-
-	@dereferenced
 	protected string chassisDataName;
 
 	@dereferenced
@@ -993,20 +984,6 @@ class ShipObject extends TangibleObject {
 
 	public native void setShipName(@dereferenced final string name, boolean notifyClient = true);
 
-	@dirty
-	public void setConversationTemplate(final string convoTemplate) {
-		conversationTemplate = convoTemplate;
-	}
-
-	@dirty
-	public void setConversationMobile(final string mobile) {
-		conversationMobile = mobile;
-	}
-
-	@dirty
-	public void setConversationMessage(final string message) {
-		conversationMessage = message;
-	}
 
 	@local
 	public void setChassisCategory(@dereferenced final string value) {
@@ -1566,18 +1543,6 @@ class ShipObject extends TangibleObject {
 	@dirty
 	public boolean isBoosterActive() {
 		return hasComponentFlag(7,4);
-	}
-
-	public string getConversationTemplate() {
-		return conversationTemplate;
-	}
-
-	public string getConversationMobile() {
-		return conversationMobile;
-	}
-
-	public string getConversationMessage() {
-		return conversationMessage;
 	}
 
 	public final string getChassisCategory() {

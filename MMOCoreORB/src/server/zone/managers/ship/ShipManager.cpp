@@ -36,6 +36,7 @@
 #include "SpaceSpawnGroup.h"
 #include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/objects/tangible/threat/ThreatMap.h"
+#include "server/zone/managers/ship/ShipAgentTemplateManager.h"
 
 
 int ShipManager::ERROR_CODE = NO_ERROR;
@@ -607,15 +608,23 @@ ShipControlDevice* ShipManager::createShipControlDevice(ShipObject* ship) {
 }
 
 ShipAiAgent* ShipManager::createAiShip(const String& shipName) {
-	return createAiShip(shipName.hashCode());
+	// info(true) << "ShipManager::createAiShip -- Create Chassis Name: " << shipName;
+
+	return createAiShip(shipName, shipName.hashCode());
 }
 
-ShipAiAgent* ShipManager::createAiShip(uint32 shipCRC) {
-	//info(true) << "ShipManager::createAiShip -- Create Chassis Name: " << shipName;
+ShipAiAgent* ShipManager::createAiShip(const String& shipName, uint32 shipCRC) {
+	auto shipTemplateManager = ShipAgentTemplateManager::instance();
 
-	auto shipTemp = dynamic_cast<SharedShipObjectTemplate*>(TemplateManager::instance()->getTemplate(shipCRC));
+	if (shipTemplateManager == nullptr) {
+		return nullptr;
+	}
 
-	if (shipTemp == nullptr) {
+	auto agentTemplate = shipTemplateManager->getTemplate(shipCRC);
+
+	if (agentTemplate == nullptr) {
+		error() << "Ship Agent template is null -- " << shipName;
+
 		return nullptr;
 	}
 
@@ -625,15 +634,30 @@ ShipAiAgent* ShipManager::createAiShip(uint32 shipCRC) {
 		return nullptr;
 	}
 
-	ManagedReference<ShipAiAgent*> shipAgent = zoneServer->createObject(shipTemp->getServerObjectCRC(), 0).castTo<ShipAiAgent*>();
+	String shipTemplateName = agentTemplate->getShipTemplate();
+	shipTemplateName =  "object/ship/" + shipTemplateName + ".iff";
+
+	uint32 shipTempHash = shipTemplateName.hashCode();
+
+	auto shipTemp = dynamic_cast<SharedShipObjectTemplate*>(TemplateManager::instance()->getTemplate(shipTempHash));
+
+	if (shipTemp == nullptr) {
+		error() << "Ship Object template is null for: " << shipTemplateName;
+		return nullptr;
+	}
+
+	// info(true) << "Trying to spawn ship object: " << shipTemplateName;
+
+	ManagedReference<ShipAiAgent*> shipAgent = zoneServer->createObject(shipTemplateName.hashCode(), 0).castTo<ShipAiAgent*>();
 
 	if (shipAgent == nullptr) {
 		return nullptr;
 	}
 
-	// info(true) << "ShipManager::createAiShip -- ShipName: " << shipName << " Game Object Type: " << shipTemp->getGameObjectType() << " Ship Hash: " << shipTemp->getServerObjectCRC() << " Full Template: " << shipTemp->getFullTemplateString();
+	// info(true) << "ShipManager::createAiShip -- ShipName: " << agentTemplate->getTemplateName() << " Game Object Type: " << shipTemp->getGameObjectType() << " Ship Hash: " << shipTemp->getServerObjectCRC() << " Full Template: " << shipTemp->getFullTemplateString();
 
 	shipAgent->loadTemplateData(shipTemp);
+	shipAgent->loadTemplateData(agentTemplate);
 
 	shipAgent->setShipAiTemplate();
 

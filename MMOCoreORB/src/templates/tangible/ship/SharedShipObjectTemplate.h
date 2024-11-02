@@ -34,21 +34,11 @@ class SharedShipObjectTemplate : public SharedTangibleObjectTemplate {
 	FloatParam chassisSpeed;
 	FloatParam chassisMass;
 
-	StringParam conversationTemplate;
-	StringParam conversationMobile;
-	StringParam conversationMessage;
 	StringParam shipDifficulty;
 	StringParam shipFaction;
 
 	VectorMap<String, Vector<Vector3>> sparkLocations;
 	VectorMap<String, Vector<Vector3>> launchLocations;
-
-	unsigned int shipBitmask;
-	uint64 customShipAiMap;
-	unsigned int pvpStatusBitmask;
-
-	int experience;
-	float factionMultiplier;
 
 public:
 	SharedShipObjectTemplate() {
@@ -188,20 +178,6 @@ public:
 
 		shipDifficulty = templateData->getStringField("difficulty");
 		shipFaction = templateData->getStringField("faction");
-
-		conversationTemplate = templateData->getStringField("conversationTemplate");
-		conversationMobile = templateData->getStringField("conversationMobile");
-		conversationMessage = templateData->getStringField("conversationMessage");
-
-		shipBitmask = templateData->getIntField("shipBitmask");
-		pvpStatusBitmask = templateData->getIntField("pvpStatusBitmask");
-
-		if (!templateData->getStringField("customShipAiMap").isEmpty()) {
-			customShipAiMap = templateData->getStringField("customShipAiMap").hashCode();
-		}
-
-		experience = templateData->getIntField("experience");
-		factionMultiplier = templateData->getFloatField("factionMultiplier");
 
 		readAttributeMap(templateData);
 
@@ -346,18 +322,6 @@ public:
 		return hasWings;
 	}
 
-	inline const String& getConversationTemplate() const {
-		return conversationTemplate.get();
-	}
-
-	inline const String& getConversationMobile() const {
-		return conversationMobile.get();
-	}
-
-	inline const String& getConversationMessage() const {
-		return conversationMessage.get();
-	}
-
 	inline const String& getShipDifficulty() const {
 		return shipDifficulty.get();
 	}
@@ -372,26 +336,6 @@ public:
 
 	inline int getChassisLevel() const {
 		return chassisLevel.get();
-	}
-
-	inline uint32 getShipBitmask() const {
-		return shipBitmask;
-	}
-
-	inline uint32 getPvpBitmask() const {
-		return pvpStatusBitmask;
-	}
-
-	inline uint64 getCustomShipAiMap() {
-		return customShipAiMap;
-	}
-
-	inline int getExperienceValue() {
-		return experience;
-	}
-
-	inline float getFactionMultiplier() {
-		return factionMultiplier;
 	}
 
 	void parseVariableData(const String& varName, Chunk* data) {

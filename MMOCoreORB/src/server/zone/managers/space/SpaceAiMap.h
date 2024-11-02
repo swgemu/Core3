@@ -131,6 +131,11 @@ public:
 		lua->setGlobalInt("ESCORT",				ShipFlag::ESCORT);
 		lua->setGlobalInt("FOLLOW",				ShipFlag::FOLLOW);
 		lua->setGlobalInt("TURRETSHIP",			ShipFlag::TURRETSHIP);
+		lua->setGlobalInt("GUARD_PATROL",		ShipFlag::GUARD_PATROL);
+		lua->setGlobalInt("RANDOM_PATROL",		ShipFlag::RANDOM_PATROL);
+		lua->setGlobalInt("FIXED_PATROL",		ShipFlag::FIXED_PATROL);
+		lua->setGlobalInt("SQUADRON_PATROL",	ShipFlag::SQUADRON_PATROL);
+		lua->setGlobalInt("SQUADRON_FOLLOW",	ShipFlag::SQUADRON_FOLLOW);
 		lua->setGlobalInt("TEST",				ShipFlag::TEST);
 
 		lua->setGlobalInt("OBLIVIOUS",			ShipAiAgent::OBLIVIOUS);

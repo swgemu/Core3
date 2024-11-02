@@ -39,15 +39,13 @@ bool SpaceStationObjectImplementation::sendConversationStartTo(SceneObject* play
 	}
 
 	uint64 oid = getObjectID();
-	String mobile = getConversationMobile();
-	uint32 mobileCRC = mobile.hashCode();
+	uint32 mobileCRC = getConversationMobile();
 
 	StartNpcConversation* conv = new StartNpcConversation(playerCreature, oid, 0, "", mobileCRC);
 
 	playerCreature->sendMessage(conv);
 
-	String convo = getConversationTemplate();
-	uint32 convoCRC = convo.hashCode();
+	uint32 convoCRC = getConversationTemplate();
 
 	ConversationTemplate* conversationTemplate = CreatureTemplateManager::instance()->getConversationTemplate(convoCRC);
 

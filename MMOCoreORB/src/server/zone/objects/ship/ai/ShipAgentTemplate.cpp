@@ -46,6 +46,16 @@ ShipAgentTemplate::ShipAgentTemplate() {
 	tauntDefendChance = 0.f;
 	tauntDieChance = 0.f;
 	tauntAggressiveness = 0.f;
+
+	pvpBitmask = 0;
+	shipBitmask = 0;
+	optionsBitmask = 0;
+
+	customShipAiMap = 0;
+
+	conversationTemplate = 0;
+	conversationMobile = 0;
+	conversationMessage = 0;
 }
 
 // Destructor
@@ -53,9 +63,7 @@ ShipAgentTemplate::~ShipAgentTemplate() {
 }
 
 void ShipAgentTemplate::readObject(LuaObject* templateData) {
-	templateName = templateData->getStringField("templateName").trim();
-
-	shipTemplate = templateData->getStringField("shipTemplate").trim();
+	shipTemplate = templateData->getStringField("template").trim();
 	pilotTemplate = templateData->getStringField("pilotTemplate").trim();
 	shipType = templateData->getStringField("shipType").trim();
 
@@ -115,4 +123,16 @@ void ShipAgentTemplate::readObject(LuaObject* templateData) {
 	tauntDefendChance = templateData->getFloatField("tauntDefendChance");
 	tauntDieChance = templateData->getFloatField("tauntDieChance");
 	tauntAggressiveness = templateData->getFloatField("tauntAggressiveness");
+
+	pvpBitmask = templateData->getIntField("pvpBitmask");
+	shipBitmask = templateData->getIntField("shipBitmask");
+	optionsBitmask = templateData->getIntField("optionsBitmask");
+
+	if (!templateData->getStringField("customShipAiMap").isEmpty()) {
+		customShipAiMap = templateData->getStringField("customShipAiMap").hashCode();
+	}
+
+	conversationTemplate = String(templateData->getStringField("conversationTemplate").trim()).hashCode();
+	conversationMobile = String(templateData->getStringField("conversationMobile").trim()).hashCode();
+	conversationMessage = String(templateData->getStringField("conversationMessage").trim()).hashCode();
 }

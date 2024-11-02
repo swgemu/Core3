@@ -11,6 +11,7 @@ import system.lang.Exception;
 import server.zone.Zone;
 
 import server.zone.objects.ship.FighterShipObject;
+import server.zone.objects.ship.ai.ShipAgentTemplate;
 include server.zone.objects.ship.ShipObject;
 import server.zone.objects.ship.ai.events.ShipAiBehaviorEvent;
 import server.zone.objects.ship.ai.events.DespawnAiShipOnNoPlayersInRange;
@@ -111,6 +112,12 @@ class ShipAiAgent extends FighterShipObject {
 
 	protected transient DespawnAiShipOnNoPlayersInRange despawnEvent;
 
+	@dereferenced
+	protected Vector<unsigned int> alliedFactions;
+
+	@dereferenced
+	protected Vector<unsigned int> enemyFactions;
+
 	// btree bit
 	@dereferenced
 	@rawTemplate(value = "BehaviorTreeSlotSpace, Reference<BehaviorSpace*>")
@@ -174,8 +181,19 @@ class ShipAiAgent extends FighterShipObject {
 
 	protected transient unsigned long customShipAiMap;
 
+	protected transient ShipAgentTemplate agentTemplate;
+
 	protected transient int experienceValue;
-	protected transient float factionMultiplier;
+
+	protected transient int minCredits;
+	protected transient int maxCredits;
+
+	protected transient int imperialFactionReward;
+	protected transient int rebelFactionReward;
+
+	protected unsigned int conversationTemplate;
+	protected unsigned int conversationMobile;
+	protected unsigned int conversationMessage;
 
 	public ShipAiAgent() {
 		movementState = OBLIVIOUS;
@@ -205,7 +223,7 @@ class ShipAiAgent extends FighterShipObject {
 	public native abstract void loadTemplateData(SharedObjectTemplate templateData);
 
 	@local
-	public native abstract void loadTemplateData(SharedShipObjectTemplate shipTemp);
+	public native abstract void loadTemplateData(ShipAgentTemplate agentTemp);
 
 	/**
 	 * Initializes the transient members of SceneObject, must call the inherited object method first.
@@ -526,6 +544,21 @@ class ShipAiAgent extends FighterShipObject {
 		shipBitmask = mask;
 	}
 
+	@dirty
+	public void setConversationTemplate(unsigned int convoTemplateCrc) {
+		conversationTemplate = convoTemplateCrc;
+	}
+
+	@dirty
+	public void setConversationMobile(unsigned int mobile) {
+		conversationMobile = mobile;
+	}
+
+	@dirty
+	public void setConversationMessage(unsigned int message) {
+		conversationMessage = message;
+	}
+
 	@preLocked
 	public native void addShipFlag(unsigned int option);
 
@@ -575,8 +608,32 @@ class ShipAiAgent extends FighterShipObject {
 		return experienceValue;
 	}
 
-	public int getFactionMultiplier() {
-		return factionMultiplier;
+	public int getMinLootCredits() {
+		return minCredits;
+	}
+
+	public int getMaxLootCredits() {
+		return maxCredits;
+	}
+
+	public int getImperialFactionReward() {
+		return imperialFactionReward;
+	}
+
+	public int getRebelFactionReward() {
+		return rebelFactionReward;
+	}
+
+	public unsigned int getConversationTemplate() {
+		return conversationTemplate;
+	}
+
+	public unsigned int getConversationMobile() {
+		return conversationMobile;
+	}
+
+	public unsigned int getConversationMessage() {
+		return conversationMessage;
 	}
 
 	@preLocked
