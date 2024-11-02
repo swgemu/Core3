@@ -162,8 +162,9 @@
 #include "server/zone/objects/tangible/components/droid/DroidTrapModuleDataComponent.h"
 #include "server/zone/objects/tangible/components/droid/DroidHarvestModuleDataComponent.h"
 #include "server/zone/objects/tangible/components/droid/DroidPersonalityModuleDataComponent.h"
-#include "server/zone/objects/tangible/components/StarshipTextureKitObjectMenuComponent.h"
 #include "server/zone/objects/tangible/components/PobShipObjectMenuComponent.h"
+#include "server/zone/objects/tangible/components/StarshipPaintKitObjectMenuComponent.h"
+#include "server/zone/objects/tangible/components/StarshipTextureKitObjectMenuComponent.h"
 
 ComponentManager::ComponentManager() {
 	components.put("ContainerComponent", new ContainerComponent());
@@ -377,7 +378,8 @@ ComponentManager::ComponentManager() {
 	// Warren Disks
 	components.put("WarrenDiskContainerComponent", new WarrenDiskContainerComponent());
 
-	//JtL component
-	components.put("StarshipTextureKitObjectMenuComponent", new StarshipTextureKitObjectMenuComponent());
+	//JtL components
 	components.put("PobShipObjectMenuComponent", new PobShipObjectMenuComponent());
+	components.put("StarshipPaintKitObjectMenuComponent", new StarshipPaintKitObjectMenuComponent());
+	components.put("StarshipTextureKitObjectMenuComponent", new StarshipTextureKitObjectMenuComponent());
 }
