@@ -87,15 +87,27 @@ void TangibleObjectImplementation::notifyLoadFromDatabase() {
 	SceneObjectImplementation::notifyLoadFromDatabase();
 
 	if (activeAreas.size() > 0) {
-		TangibleObject* tano = asTangibleObject();
+		Reference<TangibleObject*> refTano = asTangibleObject();
 
 		for (int i = activeAreas.size() - 1; i >= 0; i--) {
 			auto& area = activeAreas.get(i);
 
-			if (!area->isNavArea()) {
-				area->notifyExit(tano);
-				activeAreas.remove(i);
+			if (area == nullptr || area->isNavArea()) {
+				continue;
 			}
+
+			activeAreas.remove(i);
+
+			Core::getTaskManager()->scheduleTask([refTano, area] () {
+				if (refTano == nullptr || area == nullptr) {
+					return;
+				}
+
+				Locker lock(area);
+				Locker clock(refTano, area);
+
+				area->notifyExit(refTano);
+			}, "notifyLoadAAExitLambda", 200);
 		}
 	}
 

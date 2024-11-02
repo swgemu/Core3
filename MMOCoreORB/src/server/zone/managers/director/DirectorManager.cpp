@@ -2685,8 +2685,6 @@ int DirectorManager::spawnShipAgent(lua_State* L) {
 	zoneName = lua_tostring(L, -4);
 	shipName = lua_tostring(L, -5);
 
-	shipName =  "object/ship/" + shipName + ".iff";
-
 	auto zoneServer = ServerCore::getZoneServer();
 
 	if (zoneServer == nullptr) {
