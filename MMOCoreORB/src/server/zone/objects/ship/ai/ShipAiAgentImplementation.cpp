@@ -60,8 +60,6 @@
 */
 
 void ShipAiAgentImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
-	FighterShipObjectImplementation::loadTemplateData(templateData);
-
 	auto shipTemp = dynamic_cast<SharedShipObjectTemplate*>(templateData);
 
 	if (shipTemp == nullptr) {
@@ -208,14 +206,19 @@ void ShipAiAgentImplementation::loadTemplateData(SharedObjectTemplate* templateD
 		}
 		};
 	}
+
+	FighterShipObjectImplementation::loadTemplateData(templateData);
 }
 
 void ShipAiAgentImplementation::loadTemplateData(ShipAgentTemplate* agentTemp) {
-	if (agentTemplate == nullptr) {
+	if (agentTemp == nullptr) {
 		return;
 	}
 
 	agentTemplate = agentTemp;
+
+	auto shipName = "@space/ships_name:" + agentTemplate->getTemplateName();
+	setShipNameCRC(shipName.hashCode(), false);
 
 	// Set Faction
 	setShipFaction(agentTemplate->getSpaceFaction(), false);
@@ -270,6 +273,16 @@ void ShipAiAgentImplementation::loadTemplateData(ShipAgentTemplate* agentTemp) {
 
 		enemyFactions.add(enemy.hashCode());
 	}
+
+	// Set the ships texture
+	setCustomizationVariable("/shared_owner/index_texture_1", agentTemplate->getTexture(), true);
+
+	// Set Ships color scheme
+	String indexOneKey = "/shared_owner/index_color_1";
+	String indexTwoKey = "/shared_owner/index_color_2";
+
+	setCustomizationVariable(indexOneKey, agentTemplate->getColor1(), true);
+	setCustomizationVariable(indexTwoKey, agentTemplate->getColor2(), true);
 }
 
 void ShipAiAgentImplementation::initializeTransientMembers() {
@@ -1789,21 +1802,22 @@ bool ShipAiAgentImplementation::isAttackableBy(TangibleObject* attackerTano) {
 
 	if (attackerTano->isCreatureObject()) {
 		return isAttackableBy(attackerTano->asCreatureObject());
-	} else if (attackerTano->isShipObject() && !attackerTano->isShipAiAgent()) {
+	} else if (attackerTano->isPlayerShip()) {
 		auto attackerShip = attackerTano->asShipObject();
 
 		if (attackerShip != nullptr) {
 			auto owner = attackerShip->getOwner().get();
 
-			if (owner != nullptr)
+			if (owner != nullptr) {
 				return isAttackableBy(owner);
+			}
 		}
 	}
 
 	// info(true) << "ShipAiAgentImplementation::isAttackableBy TangibleObject Check -- Ship Agent: " << getDisplayedName() << " by attackerTano = " << attackerTano->getDisplayedName();
 
 	// Get factions
-	uint32 thisFaction = getFaction();
+	uint32 thisFaction = getShipFaction().hashCode();
 	uint32 shipFaction = attackerTano->getFaction();
 
 	if (thisFaction != 0 || shipFaction != 0) {
@@ -1830,11 +1844,11 @@ bool ShipAiAgentImplementation::isAttackableBy(CreatureObject* attacker) {
 		return false;
 	}
 
-	// info(true) << "ShipAiAgentImplementation::isAttackableBy Creature Check -- ShipAgent: " << getDisplayedName() << " by attacker = " << attacker->getDisplayedName();
-
 	// Get factions
 	uint32 thisFaction = getFaction();
 	uint32 attackerFaction = attacker->getFaction();
+
+	// info(true) << "ShipAiAgentImplementation::isAttackableBy Creature Check -- ShipAgent: " << getDisplayedName() << " by attacker = " << attacker->getDisplayedName() << " thisFaction: " << thisFaction;
 
 	// Faction Checks
 	if (thisFaction != 0) {

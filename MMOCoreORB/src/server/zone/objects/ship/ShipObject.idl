@@ -1522,9 +1522,6 @@ class ShipObject extends TangibleObject {
 	@local
 	public native abstract void loadTemplateData(SharedObjectTemplate templateData);
 
-	@local
-	public native abstract void loadTemplateData(SharedShipObjectTemplate shipTemp);
-
 	@dirty
 	@local
 	@nativeStub
