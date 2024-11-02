@@ -386,11 +386,6 @@ void SpaceManagerImplementation::loadLuaConfig() {
 
 			String templateFile = stationObject.getStringField("templateFile");
 
-			auto shipTemp = dynamic_cast<SharedShipObjectTemplate*>(TemplateManager::instance()->getTemplate(templateFile.hashCode()));
-
-			if (shipTemp == nullptr)
-				continue;
-
 			ManagedReference<ShipAiAgent*> shipAgent = ShipManager::instance()->createAiShip(templateFile);
 
 			if (shipAgent == nullptr)
@@ -571,7 +566,7 @@ SceneObject* SpaceManagerImplementation::spaceDynamicSpawn(uint32 shipCRC, Zone*
 		return nullptr;
 	}
 
-	ManagedReference<ShipAiAgent*> shipAgent = shipManager->createAiShip(shipCRC);
+	ManagedReference<ShipAiAgent*> shipAgent = shipManager->createAiShip("", shipCRC);
 
 	if (shipAgent == nullptr) {
 		return nullptr;

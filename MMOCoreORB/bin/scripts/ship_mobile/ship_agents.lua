@@ -33,7 +33,17 @@ ShipAgent = {
 	tauntAttackChance = 0.0,
 	tauntDefendChance = 0.0,
 	tauntDieChance = 0.0,
-	tauntAggressiveness = 0.0
+	tauntAggressiveness = 0.0,
+
+	pvpBitmask = 0,
+	shipBitmask = 0,
+	optionsBitmask = 0,
+
+	customShipAiMap = "",
+
+	conversationTemplate = "",
+	conversationMobile = "",
+	conversationMessage = "", --Too Far Message
 }
 
 function ShipAgent:new (o)

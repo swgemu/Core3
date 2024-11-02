@@ -58,6 +58,16 @@ protected:
 	float tauntDieChance;
 	float tauntAggressiveness;
 
+	unsigned int pvpBitmask;
+	unsigned int shipBitmask;
+	uint32 optionsBitmask;
+
+	uint64 customShipAiMap;
+
+	uint32 conversationTemplate;
+	uint32 conversationMobile;
+	uint32 conversationMessage; // Too Far Message
+
 public:
 	ShipAgentTemplate();
 
@@ -70,124 +80,152 @@ public:
 	}
 
 	// Accessors
-	String getTemplateName() {
+	inline String getTemplateName() const {
 		return templateName;
 	}
 
-	String getShipTemplate() {
+	inline String getShipTemplate() const {
 		return shipTemplate;
 	}
 
-	String getPilotTemplate() {
+	inline String getPilotTemplate() const {
 		return pilotTemplate;
 	}
 
-	String getShipType() {
+	inline String getShipType() const {
 		return shipType;
 	}
 
-	int getExperience() {
+	inline int getExperience() const {
 		return experience;
 	}
 
-	float getLootChance() {
+	inline float getLootChance() const {
 		return lootChance;
 	}
 
-	int getLootRolls() {
+	inline int getLootRolls() const {
 		return lootRolls;
 	}
 
-	String getLootTable() {
+	inline String getLootTable() const {
 		return lootTable;
 	}
 
-	int getMinCredits() {
+	inline int getMinCredits() const {
 		return minCredits;
 	}
 
-	int getMaxCredits() {
+	inline int getMaxCredits() const {
 		return maxCredits;
 	}
 
-	int getAggressive() {
+	inline int getAggressive() const {
 		return aggressive;
 	}
 
-	String getSpaceFaction() {
+	inline String getSpaceFaction() const {
 		return spaceFaction;
 	}
 
-	int getTotalAlliedFactions() {
+	inline int getTotalAlliedFactions() const {
 		return alliedFactions.size();
 	}
 
-	String getAlliedFaction(int index) {
+	inline String getAlliedFaction(int index) const {
 		return alliedFactions.get(index);
 	}
 
-	int getTotalEnemyFactions() {
+	inline int getTotalEnemyFactions() const {
 		return enemyFactions.size();
 	}
 
-	String getEnemyFaction(int index) {
+	inline String getEnemyFaction(int index) const {
 		return enemyFactions.get(index);
 	}
 
-	int getImperialFactionReward() {
+	inline int getImperialFactionReward() const {
 		return imperialFactionReward;
 	}
 
-	int getRebelFactionReward() {
+	inline int getRebelFactionReward() const {
 		return rebelFactionReward;
 	}
 
-	int getColor1() {
+	inline int getColor1() const {
 		return color1;
 	}
 
-	int getColor2() {
+	inline int getColor2() const {
 		return color2;
 	}
 
-	int getTexture() {
+	inline int getTexture() const {
 		return texture;
 	}
 
-	String getQuestLoot() {
+	inline String getQuestLoot() const {
 		return questLoot;
 	}
 
-	String getInteriorChassis() {
+	inline String getInteriorChassis() const {
 		return interiorChassis;
 	}
 
-	int getFormationLocation() {
+	inline int getFormationLocation() const {
 		return formationLocation;
 	}
 
-	String getAppearance() {
+	inline String getAppearance() const {
 		return appearance;
 	}
 
-	String getTauntType() {
+	inline String getTauntType() const {
 		return tauntType;
 	}
 
-	float getTauntAttackChance() {
+	inline float getTauntAttackChance() const {
 		return tauntAttackChance;
 	}
 
-	float getTauntDefendChance() {
+	inline float getTauntDefendChance() const {
 		return tauntDefendChance;
 	}
 
-	float getTauntDieChance() {
+	inline float getTauntDieChance() const {
 		return tauntDieChance;
 	}
 
-	float getTauntAggressiveness() {
+	inline float getTauntAggressiveness() const {
 		return tauntAggressiveness;
+	}
+
+	inline uint32 getPvpBitmask() const {
+		return pvpBitmask;
+	}
+
+	inline uint32 getShipBitmask() const {
+		return shipBitmask;
+	}
+
+	inline uint32 getOptionsBitmask() const {
+		return optionsBitmask;
+	}
+
+	inline uint64 getCustomShipAiMap() const {
+		return customShipAiMap;
+	}
+
+	inline uint32 getConversationTemplate() const {
+		return conversationTemplate;
+	}
+
+	inline uint32 getConversationMobile() const {
+		return conversationMobile;
+	}
+
+	inline uint32 getConversationMessage() const {
+		return conversationMessage;
 	}
 };
 

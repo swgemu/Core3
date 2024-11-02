@@ -13,9 +13,9 @@ CUBOID Examples:
 require("scripts.managers.space.regions.regions")
 
 space_corellia_regions = {
-	{"corellia_space_station", 4800, -4800, -2600, {CUBOID, 6144, 6144, 6144}, SPAWNAREA, {"corellia_traffic"}, 24},
-	{"talus_space_station", -4800, -4800, -3957, {CUBOID, 6144, 6144, 6144}, SPAWNAREA, {"corellia_traffic"}, 24},
+	--{"corellia_space_station", 4800, -4800, -2600, {CUBOID, 6144, 6144, 6144}, SPAWNAREA, {"corellia_traffic"}, 24},
+	--{"talus_space_station", -4800, -4800, -3957, {CUBOID, 6144, 6144, 6144}, SPAWNAREA, {"corellia_traffic"}, 24},
 
-	{"corellia_rebel_1", -4090, 2340, 2013, {SPHERE, 4096}, SPAWNAREA, {"rebel_easy"}, 12},
-	{"corellia_rebel_2", -1463, 318, -1012, {SPHERE, 4096}, SPAWNAREA, {"rebel_easy"}, 12},
+	--{"corellia_rebel_1", -4090, 2340, 2013, {SPHERE, 4096}, SPAWNAREA, {"rebel_easy"}, 12},
+	--{"corellia_rebel_2", -1463, 318, -1012, {SPHERE, 4096}, SPAWNAREA, {"rebel_easy"}, 12},
 }

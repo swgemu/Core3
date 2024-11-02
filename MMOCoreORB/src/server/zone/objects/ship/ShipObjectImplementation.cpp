@@ -114,10 +114,6 @@ void ShipObjectImplementation::loadTemplateData(SharedShipObjectTemplate* ssot) 
 	setShipFaction(ssot->getShipFaction(), false);
 	setShipDifficulty(ssot->getShipDifficulty(), false);
 
-	setConversationMessage(ssot->getConversationMessage());
-	setConversationMobile(ssot->getConversationMobile());
-	setConversationTemplate(ssot->getConversationTemplate());
-
 	setHasWings(ssot->shipHasWings());
 
 	setChassisCategory(ssot->getChassisCategory());

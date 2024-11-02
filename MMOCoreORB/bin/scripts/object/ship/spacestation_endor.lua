@@ -43,9 +43,6 @@
 
 object_ship_spacestation_endor = object_ship_shared_spacestation_neutral:new {
 	objectName = "@space/space_mobile_type:station_endor",
-	conversationTemplate = "spacestation_endor_convotemplate",
-	conversationMobile = "object/mobile/shared_space_comm_station_endor.iff",
-	conversationMessage = "@conversation/station_endor:s_e1c14e1d", -- Too Far Message
 
 	name = "spacestation_neutral",
 	type = "spacestation_neutral",
@@ -57,12 +54,6 @@ object_ship_spacestation_endor = object_ship_shared_spacestation_neutral:new {
 	chassisMass = 50000,
 
 	gameObjectType = 536870920,
-
-	pvpBitmask = NONE,
-	shipBitmask = NONE,
-	optionsBitmask = AIENABLED + INVULNERABLE,
-
-	customShipAiMap = "spaceStations",
 
 	reactor = {name = "rct_generic", hitpoints = 5000, armor = 2000},
 	shield_0 = {name = "shd_generic", hitpoints = 10000, armor = 3000, front = 6000, back = 6000, regen = 50},
