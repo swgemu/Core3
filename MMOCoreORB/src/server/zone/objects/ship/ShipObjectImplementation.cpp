@@ -169,6 +169,8 @@ void ShipObjectImplementation::loadTemplateData(SharedObjectTemplate* templateDa
 			auto slotData = chassisData->getComponentSlotData(slot);
 			setComponentTargetable(slot, slotData ? slotData->isTargetable() : false);
 		}
+
+		wingsOpenSpeed = chassisData->getWingOpenSpeed();
 	}
 
 	auto appearance = shipTemp->getAppearanceTemplate();
@@ -1874,11 +1876,11 @@ float ShipObjectImplementation::calculateActualMaxSpeed() {
 
 	float chassisSpeed = getChassisSpeed();
 
-	if (hasShipWings() && (getOptionsBitmask() & OptionBitmask::WINGS_OPEN)) {
+	if (hasShipWings() && (getOptionsBitmask() & OptionBitmask::WINGS_OPEN) && wingsOpenSpeed > 0.f) {
 		auto chassisData = ShipManager::instance()->getChassisData(chassisDataName);
 
 		if (chassisData != nullptr) {
-			chassisSpeed *= chassisData->getWingOpenSpeed();
+			chassisSpeed *= wingsOpenSpeed;
 		}
 	}
 

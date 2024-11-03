@@ -60,8 +60,6 @@
 */
 
 void ShipAiAgentImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
-	FighterShipObjectImplementation::loadTemplateData(templateData);
-
 	auto shipTemp = dynamic_cast<SharedShipObjectTemplate*>(templateData);
 
 	if (shipTemp == nullptr) {
@@ -106,108 +104,110 @@ void ShipAiAgentImplementation::loadTemplateData(SharedObjectTemplate* templateD
 		setEfficiency(slot, 1.f);
 
 		switch (slot) {
-		case Components::REACTOR: {
-			setReactorGenerationRate(10000.0f);
-			break;
-		}
-		case Components::ENGINE: {
-			float speed = values.get("speed");
-			float pitch = values.get("pitch") * Math::DEG2RAD;
-			float yaw = values.get("yaw") * Math::DEG2RAD;
-			float roll = values.get("roll") * Math::DEG2RAD;
-			float pitchRate = values.get("pitchRate") * Math::DEG2RAD;
-			float yawRate = values.get("yawRate") * Math::DEG2RAD;
-			float rollRate = values.get("rollRate") * Math::DEG2RAD;
-			float acceleration = values.get("acceleration");
-			float deceleration = values.get("deceleration");
-
-			setEngineMaxSpeed(speed, false);
-			setEnginePitchAccelerationRate(pitch, false);
-			setEnginePitchRate(pitchRate, false);
-			setEngineYawAccelerationRate(yaw, false);
-			setEngineYawRate(yawRate, false);
-			setEngineRollAccelerationRate(roll, false);
-			setEngineRollRate(rollRate, false);
-			setEngineAccelerationRate(acceleration, false);
-			setEngineDecelerationRate(deceleration, false);
-			break;
-		}
-		case Components::SHIELD0:
-		case Components::SHIELD1: {
-			float front = values.get("front");
-			float back = values.get("back");
-			float regen = values.get("regen");
-
-			setFrontShield(front, false);
-			setFrontShieldMax(front, false);
-			setRearShield(back, false);
-			setRearShieldMax(back, false);
-			setShieldRechargeRate(regen, false);
-			break;
-		}
-		case Components::CAPACITOR: {
-			float rechargeRate = values.get("rechargeRate");
-			float energy = values.get("energy");
-
-			setCapacitorEnergy(energy, false);
-			setCapacitorMaxEnergy(energy, false);
-			setCapacitorRechargeRate(rechargeRate, false);
-			break;
-		}
-		case Components::BOOSTER: {
-			float rechargeRate = values.get("rechargeRate");
-			float energy = values.get("energy");
-			float accel = values.get("acceleration");
-			float decel = values.get("deceleration");
-			float speed = values.get("speed");
-			float usage = values.get("energyUsage");
-			float consumptionRate = values.get("energyConsumptionRate");
-
-			setBoosterRechargeRate(rechargeRate, false);
-			setBoosterEnergy(energy, false);
-			setBoosterEnergyConsumptionRate(usage, false);
-			setBoosterAcceleration(accel, false);
-			setBoosterMaxSpeed(speed, false);
-			setBoosterEnergyConsumptionRate(consumptionRate, false);
-			break;
-		}
-		default: {
-			if (slot >= Components::WEAPON_START) {
-				float fireRate = values.get("rate");
-				float drain = values.get("drain");
-				float maxDamage = values.get("maxDamage");
-				float minDamage = values.get("minDamage");
-				float shieldEff = values.get("shieldEfficiency");
-				float armorEff = values.get("armorEfficiency");
-				float ammo = values.get("ammo");
-				float ammoType = values.get("ammo_type");
-
-				float totalEff = shieldEff + armorEff;
-
-				if (totalEff < 1.f) {
-					shieldEff += (1.f - totalEff) * 0.5f;
-					armorEff += (1.f - totalEff) * 0.5f;
-				}
-
-				setMaxDamage(slot, maxDamage);
-				setMinDamage(slot, maxDamage);
-				setRefireRate(slot, fireRate);
-				setEnergyPerShot(slot, drain);
-				setRefireEfficiency(slot, 1.f);
-				setShieldEffectiveness(slot, shieldEff);
-				setArmorEffectiveness(slot, armorEff);
-				setCurrentAmmo(slot, ammo);
-				setMaxAmmo(slot, ammo);
-				setAmmoClass(slot, ammoType);
-
-				if (slot > Components::FIGHTERSLOTMAX) {
-					setComponentTargetable(slot, true);
-				}
+			case Components::REACTOR: {
+				setReactorGenerationRate(10000.0f);
+				break;
 			}
-			break;
-		}
+			case Components::ENGINE: {
+				float speed = values.get("speed");
+				float pitch = values.get("pitch") * Math::DEG2RAD;
+				float yaw = values.get("yaw") * Math::DEG2RAD;
+				float roll = values.get("roll") * Math::DEG2RAD;
+				float pitchRate = values.get("pitchRate") * Math::DEG2RAD;
+				float yawRate = values.get("yawRate") * Math::DEG2RAD;
+				float rollRate = values.get("rollRate") * Math::DEG2RAD;
+				float acceleration = values.get("acceleration");
+				float deceleration = values.get("deceleration");
+
+				setEngineMaxSpeed(speed, false);
+				setEnginePitchAccelerationRate(pitch, false);
+				setEnginePitchRate(pitchRate, false);
+				setEngineYawAccelerationRate(yaw, false);
+				setEngineYawRate(yawRate, false);
+				setEngineRollAccelerationRate(roll, false);
+				setEngineRollRate(rollRate, false);
+				setEngineAccelerationRate(acceleration, false);
+				setEngineDecelerationRate(deceleration, false);
+				break;
+			}
+			case Components::SHIELD0:
+			case Components::SHIELD1: {
+				float front = values.get("front");
+				float back = values.get("back");
+				float regen = values.get("regen");
+
+				setFrontShield(front, false);
+				setFrontShieldMax(front, false);
+				setRearShield(back, false);
+				setRearShieldMax(back, false);
+				setShieldRechargeRate(regen, false);
+				break;
+			}
+			case Components::CAPACITOR: {
+				float rechargeRate = values.get("rechargeRate");
+				float energy = values.get("energy");
+
+				setCapacitorEnergy(energy, false);
+				setCapacitorMaxEnergy(energy, false);
+				setCapacitorRechargeRate(rechargeRate, false);
+				break;
+			}
+			case Components::BOOSTER: {
+				float rechargeRate = values.get("rechargeRate");
+				float energy = values.get("energy");
+				float accel = values.get("acceleration");
+				float decel = values.get("deceleration");
+				float speed = values.get("speed");
+				float usage = values.get("energyUsage");
+				float consumptionRate = values.get("energyConsumptionRate");
+
+				setBoosterRechargeRate(rechargeRate, false);
+				setBoosterEnergy(energy, false);
+				setBoosterEnergyConsumptionRate(usage, false);
+				setBoosterAcceleration(accel, false);
+				setBoosterMaxSpeed(speed, false);
+				setBoosterEnergyConsumptionRate(consumptionRate, false);
+				break;
+			}
+			default: {
+				if (slot >= Components::WEAPON_START) {
+					float fireRate = values.get("rate");
+					float drain = values.get("drain");
+					float maxDamage = values.get("maxDamage");
+					float minDamage = values.get("minDamage");
+					float shieldEff = values.get("shieldEfficiency");
+					float armorEff = values.get("armorEfficiency");
+					float ammo = values.get("ammo");
+					float ammoType = values.get("ammo_type");
+
+					float totalEff = shieldEff + armorEff;
+
+					if (totalEff < 1.f) {
+						shieldEff += (1.f - totalEff) * 0.5f;
+						armorEff += (1.f - totalEff) * 0.5f;
+					}
+
+					setMaxDamage(slot, maxDamage);
+					setMinDamage(slot, maxDamage);
+					setRefireRate(slot, fireRate);
+					setEnergyPerShot(slot, drain);
+					setRefireEfficiency(slot, 1.f);
+					setShieldEffectiveness(slot, shieldEff);
+					setArmorEffectiveness(slot, armorEff);
+					setCurrentAmmo(slot, ammo);
+					setMaxAmmo(slot, ammo);
+					setAmmoClass(slot, ammoType);
+
+					if (slot > Components::FIGHTERSLOTMAX) {
+						setComponentTargetable(slot, true);
+					}
+				}
+				break;
+			}
 		};
 	}
+
+	FighterShipObjectImplementation::loadTemplateData(templateData);
 }
 
 void ShipAiAgentImplementation::loadTemplateData(ShipAgentTemplate* agentTemp) {
@@ -215,6 +215,7 @@ void ShipAiAgentImplementation::loadTemplateData(ShipAgentTemplate* agentTemp) {
 		return;
 	}
 
+	// Store the ShipAgent Template
 	agentTemplate = agentTemp;
 
 	auto shipName = "@space/ships_name:" + agentTemplate->getTemplateName();
@@ -317,6 +318,26 @@ void ShipAiAgentImplementation::initializeTransientMembers() {
 	setHyperspacing(false);
 
 	missileLockTime = 0;
+}
+
+void ShipAiAgentImplementation::notifyInsertToZone(Zone* zone) {
+	/*
+	// Schedule space agents to activate
+	Reference<ShipAiAgent*> agentRef = asShipAiAgent();
+	int randomTime = (System::random(120) + 120) * 1000;
+
+	Core::getTaskManager()->scheduleTask([agentRef] () {
+		if (agentRef == nullptr ) {
+			return;
+		}
+
+		Locker lock(agentRef);
+
+		agentRef->activateAiBehavior();
+	}, "activateShipAiLambda", randomTime);
+	*/
+
+	ShipObjectImplementation::notifyInsertToZone(zone);
 }
 
 void ShipAiAgentImplementation::notifyInsert(TreeEntry* entry) {
@@ -643,6 +664,7 @@ float ShipAiAgentImplementation::getMaxDistance() {
 	case ShipAiAgent::FLEEING:
 		break;
 	case ShipAiAgent::LEASHING:
+		maxDistance = 1000.f;
 		break;
 	case ShipAiAgent::EVADING:
 		break;
@@ -864,7 +886,6 @@ int ShipAiAgentImplementation::setDestination() {
 		} else {
 			homeLocation.setReached(true);
 
-			// TODO: remove when CheckIsHome is added
 			setMovementState(ShipAiAgent::PATROLLING);
 		}
 
@@ -1281,50 +1302,83 @@ void ShipAiAgentImplementation::setDeltaTime() {
 	nextBehaviorInterval = Math::clamp(stepMin, stepMax - ((deltaSync - stepMax) % stepMax), stepMax);
 }
 
-bool ShipAiAgentImplementation::generatePatrol(int totalPoints, float distance, bool randomize, int pathShape) {
+bool ShipAiAgentImplementation::generatePatrol(int totalPoints, float distance, int pathShape) {
 	// info(true) << getDisplayedName() << " ID: " << getObjectID() << "  generatePatrol called with a state of " << getMovementState() << " and point size of = " << totalPoints << " Max Distance: " << distance;
 
-	Zone* zone = getZoneUnsafe();
+	auto zone = getZoneUnsafe();
 
-	if (zone == nullptr)
+	if (zone == nullptr) {
 		return false;
+	}
 
 	uint32 savedState = getMovementState();
 
-	if (savedState == ShipAiAgent::LEASHING)
+	if (savedState == ShipAiAgent::LEASHING) {
 		return false;
+	}
 
-	if (savedState != ShipAiAgent::PATROLLING) {
+	if (savedState != ShipAiAgent::PATROLLING && savedState != ShipAiAgent::WATCHING) {
 		patrolPoints.removeAll();
 		setMovementState(ShipAiAgent::PATROLLING);
 	}
 
+	/* ShipFlag.h
+		GUARD_PATROL - For ships that patrol a specific area in a spherical pattern where they will have a min range and max range to stay within
+			used for ships in patrol around a point or object such as a space station.
+		RANDOM_PATROL - Default method for patrolling. Randomly generates points around its home location.alignas
+		FIXED_PATROL - For ships that have specific set of patrol points assigned to them and will only navigate to those points.alignas
+		SQUADRON_PATROL - For ships that are in a squadron, this will be used to create and assign them to an observer as well as the behaviors needed to operate in the squadron.alignas
+		SQUADRON_FOLLOW - Similar to above, but for ships that have to follow another ship while in a squadron.
+	*/
+
 	const Vector3& homePosition = getHomePosition();
 	Vector3 patrolPosition = homePosition;
-	float patrolRadius = distance;
 
-	if (randomize) {
+	if (shipBitmask & ShipFlag::FIXED_PATROL) {
+		//TODO: Load and set fixed paths using the points on their spawner
+		patrolPosition += Vector3(750, 0, 0);
+		SpacePatrolPoint fixedPoint1(patrolPosition);
+
+		patrolPosition = homePosition + Vector3(0, 750, 0);
+		SpacePatrolPoint fixedPoint2(patrolPosition);
+		SpacePatrolPoint fixedPoint3(homePosition);
+
+		patrolPoints.add(fixedPoint1);
+		patrolPoints.add(fixedPoint2);
+		patrolPoints.add(fixedPoint3);
+	} else if (shipBitmask & ShipFlag::GUARD_PATROL) {
+		float minimumGuardPatrol = getMinimumGuardPatrol();
+		float maximumGuardPatrol = getMaximumGuardPatrol();
+		int randomPatrol = System::random((int)(maximumGuardPatrol - minimumGuardPatrol)) + minimumGuardPatrol;
+
+		Vector<SpacePatrolPoint> patrolCopy;
+
+		patrolCopy = ShipAiPatrolPathFinder::generatePatrolCircle(Sphere(patrolPosition, randomPatrol), Matrix4(), totalPoints);
+
+		patrolPoints.removeAll(totalPoints, totalPoints);
+		patrolPoints.addAll(patrolCopy);
+	} else {
 		float radiusMax = distance * 0.5f;
 		float radiusMin = distance * 0.1f;
 
 		patrolPosition = ShipAiPatrolPathFinder::getRandomPosition(homePosition, radiusMin, radiusMax);
-		patrolRadius = distance - qSqrt((homePosition - patrolPosition).squaredLength());
-	}
+		float patrolRadius = distance - qSqrt((homePosition - patrolPosition).squaredLength());
 
-	Vector<SpacePatrolPoint> patrolCopy;
+		Vector<SpacePatrolPoint> patrolCopy;
 
-	switch (pathShape) {
-		case ShipAiPatrolPathFinder::PathShape::SPHERE: {
-			patrolCopy = ShipAiPatrolPathFinder::generatePatrolSphere(Sphere(patrolPosition, patrolRadius), Matrix4(), totalPoints);
-			break;
+		switch (pathShape) {
+			case ShipAiPatrolPathFinder::PathShape::SPHERE: {
+				patrolCopy = ShipAiPatrolPathFinder::generatePatrolSphere(Sphere(patrolPosition, patrolRadius), Matrix4(), totalPoints);
+				break;
+			}
+			default: {
+				patrolCopy = ShipAiPatrolPathFinder::generatePatrolCircle(Sphere(patrolPosition, patrolRadius), Matrix4(), totalPoints);
+			}
 		}
-		default: {
-			patrolCopy = ShipAiPatrolPathFinder::generatePatrolCircle(Sphere(patrolPosition, patrolRadius), Matrix4(), totalPoints);
-		}
-	}
 
-	patrolPoints.removeAll(totalPoints, totalPoints);
-	patrolPoints.addAll(patrolCopy);
+		patrolPoints.removeAll(totalPoints, totalPoints);
+		patrolPoints.addAll(patrolCopy);
+	}
 
 	// info(true) << getDisplayedName() << " ID: " << getObjectID() << " Finished generating points. TotaL: " << getPatrolPointSize();
 
@@ -1362,6 +1416,10 @@ void ShipAiAgentImplementation::leash() {
 }
 
 void ShipAiAgentImplementation::broadcastTransform(const Vector3& position) {
+	if (numberOfPlayersInRange < 1) {
+		return;
+	}
+
 	auto shipCov = getCloseObjects();
 
 	if (shipCov == nullptr) {
@@ -2104,6 +2162,18 @@ Vector3 ShipAiAgentImplementation::getLastRotationVector() const {
 
 float ShipAiAgentImplementation::getLastSpeed() const {
 	return lastSpeed;
+}
+
+String ShipAiAgentImplementation::getShipAgentTemplateName() {
+	String templateName = "";
+
+	if (agentTemplate == nullptr) {
+		return templateName;
+	}
+
+	templateName = agentTemplate->getTemplateName();
+
+	return templateName;
 }
 
 bool ShipAiAgentImplementation::checkLineOfSight(SceneObject* obj) {

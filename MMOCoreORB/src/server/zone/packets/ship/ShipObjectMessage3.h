@@ -7,6 +7,8 @@
 
 #include "server/zone/packets/tangible/TangibleObjectMessage3.h"
 #include "server/zone/objects/ship/ShipObject.h"
+#include "server/zone/objects/ship/ai/ShipAiAgent.h"
+#include "server/zone/managers/stringid/StringIdManager.h"
 
 class ShipObjectMessage3 : public BaseLineMessage {
 protected:
@@ -40,8 +42,7 @@ public:
 		insertFloat(ship->getComplexity());
 		insertStringId(ship->getObjectName());
 
-		UnicodeString name = ship->getShipLaunchedName();
-		insertUnicode(name);
+		insertUnicode(getShipName(ship));
 
 		insertInt(ship->getVolume());
 
@@ -74,6 +75,21 @@ public:
 		insertFloat(ship->getMaxRearShield());
 
 		setSize();
+	}
+
+	UnicodeString getShipName(ShipObject* ship) {
+		if (!ship->isShipAiAgent()) {
+			return ship->getShipLaunchedName();
+		}
+
+		auto shipAgent = ship->asShipAiAgent();
+
+		if (shipAgent != nullptr) {
+			String stfShip = "@space/ship_names:" + shipAgent->getShipAgentTemplateName();
+			return StringIdManager::instance()->getStringId(stfShip.hashCode());
+		}
+
+		return "";
 	}
 };
 

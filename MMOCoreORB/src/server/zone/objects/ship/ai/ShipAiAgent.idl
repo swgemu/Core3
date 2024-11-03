@@ -195,6 +195,9 @@ class ShipAiAgent extends FighterShipObject {
 	protected unsigned int conversationMobile;
 	protected unsigned int conversationMessage;
 
+	protected float minGuardPatrol;
+	protected float maxGuardPatrol;
+
 	public ShipAiAgent() {
 		movementState = OBLIVIOUS;
 
@@ -234,6 +237,8 @@ class ShipAiAgent extends FighterShipObject {
 
 	public void finalize() {
 	}
+
+	public native void notifyInsertToZone(Zone zone);
 
 	@local
 	public native void notifyInsert(TreeEntry entry);
@@ -352,7 +357,7 @@ class ShipAiAgent extends FighterShipObject {
 	@preLocked
 	public abstract native boolean findNextPosition(int maxDistance);
 
-	public abstract native boolean generatePatrol(int totalPoints, float distance, boolean randomize = true, int pathShape = 0);
+	public abstract native boolean generatePatrol(int totalPoints, float distance, int pathShape = 0);
 
 	public abstract native void updatePatrolPoints();
 
@@ -559,6 +564,14 @@ class ShipAiAgent extends FighterShipObject {
 		conversationMessage = message;
 	}
 
+	public void setMinimumGuardPatrol(float min) {
+		minGuardPatrol = min;
+	}
+
+	public void setMaximumGuardPatrol(float max) {
+		maxGuardPatrol = max;
+	}
+
 	@preLocked
 	public native void addShipFlag(unsigned int option);
 
@@ -634,6 +647,14 @@ class ShipAiAgent extends FighterShipObject {
 
 	public unsigned int getConversationMessage() {
 		return conversationMessage;
+	}
+
+	public float getMinimumGuardPatrol() {
+		return minGuardPatrol;
+	}
+
+	public float getMaximumGuardPatrol() {
+		return maxGuardPatrol;
 	}
 
 	@preLocked
@@ -800,4 +821,6 @@ class ShipAiAgent extends FighterShipObject {
 
 	@read
 	public native float getLastSpeed();
+
+	public native string getShipAgentTemplateName();
 }

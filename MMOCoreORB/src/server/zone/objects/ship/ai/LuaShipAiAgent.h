@@ -37,6 +37,8 @@ public:
 	int setSquadronPatrol(lua_State* L);
 	int setSquadronFollow(lua_State* L);
 	int setDespawnOnNoPlayerInRange(lua_State* L);
+	int setMinimumGuardPatrol(lua_State* L);
+	int setMaximumGuardPatrol(lua_State* L);
 
 private:
 	ShipAiAgent* realObject;

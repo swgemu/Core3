@@ -465,26 +465,32 @@ void ShipManager::loadShipComponentObjects(ShipObject* ship) {
 
 	for (uint32 slot = 0; slot <= Components::FIGHTERSLOTMAX; slot++) {
 		String slotName = Components::shipComponentSlotToString(slot);
+
 		if (slotName == "") {
 			continue;
 		}
 
 		String dataName = componentNames.get(slotName);
+
 		if (dataName == "") {
 			continue;
 		}
 
 		auto compData = getShipComponent(dataName);
+
 		if (compData == nullptr) {
 			continue;
 		}
 
-		auto compShot = TemplateManager::instance()->getTemplate(compData->getObjectTemplate().hashCode());
+		auto componentTempName = compData->getObjectTemplate();
+		auto compShot = TemplateManager::instance()->getTemplate(componentTempName.hashCode());
+
 		if (compShot == nullptr || !(compShot->getGameObjectType() & SceneObjectType::SHIPATTACHMENT)) {
 			continue;
 		}
 
-		ManagedReference<ShipComponent*> component = ServerCore::getZoneServer()->createObject(compData->getObjectTemplate().hashCode(), ship->getPersistenceLevel()).castTo<ShipComponent*>();
+		ManagedReference<ShipComponent*> component = ServerCore::getZoneServer()->createObject(componentTempName.hashCode(), ship->getPersistenceLevel()).castTo<ShipComponent*>();
+
 		if (component != nullptr) {
 			ship->install(nullptr, component, slot, false);
 		}
@@ -652,6 +658,8 @@ ShipAiAgent* ShipManager::createAiShip(const String& shipName, uint32 shipCRC) {
 	if (shipAgent == nullptr) {
 		return nullptr;
 	}
+
+	Locker lock(shipAgent);
 
 	// info(true) << "ShipManager::createAiShip -- ShipName: " << agentTemplate->getTemplateName() << " Game Object Type: " << shipTemp->getGameObjectType() << " Ship Hash: " << shipTemp->getServerObjectCRC() << " Full Template: " << shipTemp->getFullTemplateString();
 

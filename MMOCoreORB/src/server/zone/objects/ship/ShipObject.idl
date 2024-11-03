@@ -419,6 +419,8 @@ class ShipObject extends TangibleObject {
 
 	protected string certificationRequired;
 
+	float wingsOpenSpeed;
+
 	public ShipObject() {
 		Logger.setLoggingName("ShipObject");
 
