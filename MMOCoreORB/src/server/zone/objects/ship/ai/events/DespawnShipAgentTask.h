@@ -15,14 +15,8 @@ class DespawnShipAgentTask : public Task {
 	ManagedReference<ShipAiAgent*> shipAgent;
 
 public:
-	DespawnShipAgentTask(ShipAiAgent* agent) {
+	DespawnShipAgentTask(ShipAiAgent* agent) : Task(1000) {
 		shipAgent = agent;
-
-		auto zone = agent->getZone();
-
-		if (zone != nullptr) {
-			setCustomTaskQueue(zone->getZoneName());
-		}
 	}
 
 	void run() {
@@ -32,6 +26,21 @@ public:
 
 		shipAgent->destroyObjectFromWorld(false);
 		shipAgent->notifyDespawn();
+	}
+
+	void schedule(uint64 delay = 0) {
+		if (shipAgent != nullptr) {
+			auto zone = shipAgent->getZone();
+
+			if (zone != nullptr) {
+				setCustomTaskQueue(zone->getZoneName());
+			}
+		}
+
+		try {
+			Task::schedule(delay);
+		} catch (...) {
+		}
 	}
 };
 
