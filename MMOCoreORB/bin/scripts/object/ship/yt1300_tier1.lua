@@ -55,13 +55,6 @@ object_ship_yt1300_tier1 = object_ship_shared_yt1300_tier1:new {
 
 	gameObjectType = 536870919,
 
-	pvpStatusBitmask = ATTACKABLE,
-	shipBitmask = TURRETSHIP,
-	optionsBitmask = AIENABLED,
-
-	customShipAiMap = "",
-	experience = 190,
-
 	reactor = {name = "rct_generic", hitpoints = 300, armor = 300},
 	engine = {name = "eng_incom_fusialthrust", hitpoints = 300, armor = 300, speed = 42, acceleration = 10.2, deceleration = 8.7, yaw = 18.3, yawRate = 38.4, pitch = 23.1, pitchRate = 46.2, roll = 28.6, rollRate = 52.1},
 	shield_0 = {name = "shd_generic", hitpoints = 300, armor = 300, front = 1200, back = 1200, regen = 6},

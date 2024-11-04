@@ -55,13 +55,6 @@ object_ship_tieoppressor_tier2 = object_ship_shared_tieoppressor_tier2:new {
 
 	gameObjectType = 536870919,
 
-	pvpStatusBitmask = ATTACKABLE + AGGRESSIVE,
-	shipBitmask = NONE,
-	optionsBitmask = AIENABLED,
-
-	customShipAiMap = "",
-	experience = 405,
-
 	reactor = {name = "rct_generic", hitpoints = 495, armor = 495},
 	engine = {name = "eng_novaldex_eventhorizon", hitpoints = 495, armor = 495, speed = 43.26, acceleration = 10.51, deceleration = 8.96, yaw = 18.85, yawRate = 39.55, pitch = 23.79, pitchRate = 47.59, roll = 29.46, rollRate = 53.66},
 	shield_0 = {name = "shd_generic", hitpoints = 495, armor = 495, front = 1980, back = 1980, regen = 5.94},

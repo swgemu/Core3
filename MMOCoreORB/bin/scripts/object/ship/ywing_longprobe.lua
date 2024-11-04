@@ -55,12 +55,6 @@ object_ship_ywing_longprobe = object_ship_shared_ywing_longprobe:new {
 
 	gameObjectType = 536870919,
 
-	pvpStatusBitmask = ATTACKABLE + AGGRESSIVE,
-	shipBitmask = NONE,
-	optionsBitmask = AIENABLED,
-
-	customShipAiMap = "",
-
 	reactor = {name = "rct_generic", hitpoints = 100, armor = 200},
 	engine = {name = "eng_incom_fusialthrust", hitpoints = 100, armor = 200, speed = 34, acceleration = 8.4, deceleration = 9.3, yaw = 16.7, yawRate = 31.9, pitch = 16.7, pitchRate = 31.9, roll = 16.7, rollRate = 31.9},
 	shield_0 = {name = "shd_generic", hitpoints = 400, armor = 500, front = 500, back = 600, regen = 5},

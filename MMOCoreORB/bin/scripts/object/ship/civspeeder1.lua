@@ -55,13 +55,6 @@ object_ship_civspeeder1 = object_ship_shared_civspeeder1:new {
 
 	gameObjectType = 536870919,
 
-	pvpStatusBitmask = ATTACKABLE,
-	shipBitmask = NONE,
-	optionsBitmask = AIENABLED,
-
-	customShipAiMap = "",
-	experience = 0,
-
 	reactor = {name = "rct_generic", hitpoints = 100, armor = 200},
 	engine = {name = "eng_generic", hitpoints = 100, armor = 200, speed = 40, acceleration = 34.8, deceleration = 29.928, yaw = 21.3, yawRate = 43.8, pitch = 21.3, pitchRate = 43.8, roll = 21.3, rollRate = 43.8},
 	shield_0 = {name = "shd_generic", hitpoints = 200, armor = 200, front = 200, back = 200, regen = 5},

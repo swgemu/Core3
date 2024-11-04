@@ -55,12 +55,6 @@ object_ship_probe_droid_pod = object_ship_shared_probe_droid_pod:new {
 
 	gameObjectType = 536870919,
 
-	pvpStatusBitmask = ATTACKABLE,
-	shipBitmask = NONE,
-	optionsBitmask = AIENABLED,
-
-	customShipAiMap = "",
-
 	reactor = {name = "rct_generic", hitpoints = 300, armor = 300},
 	engine = {name = "eng_incom_fusialthrust", hitpoints = 100, armor = 200, speed = 45, acceleration = 10.2, deceleration = 4.5, yaw = 14, yawRate = 22, pitch = 14, pitchRate = 22, roll = 14, rollRate = 22},
 	shield_0 = {name = "shd_generic", hitpoints = 400, armor = 500, front = 200, back = 200, regen = 4},

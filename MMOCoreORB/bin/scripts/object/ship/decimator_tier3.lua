@@ -55,13 +55,6 @@ object_ship_decimator_tier3 = object_ship_shared_decimator_tier3:new {
 
 	gameObjectType = 536870919,
 
-	pvpStatusBitmask = ATTACKABLE + AGGRESSIVE,
-	shipBitmask = NONE,
-	optionsBitmask = AIENABLED,
-
-	customShipAiMap = "",
-	experience = 2350,
-
 	reactor = {name = "rct_generic", hitpoints = 2160, armor = 2160},
 	engine = {name = "eng_incom_fusialthrust", hitpoints = 2160, armor = 2160, speed = 44.56, acceleration = 10.82, deceleration = 9.23, yaw = 19.41, yawRate = 40.74, pitch = 24.51, pitchRate = 49.01, roll = 30.34, rollRate = 55.27},
 	shield_0 = {name = "shd_generic", hitpoints = 2160, armor = 2160, front = 8640, back = 8640, regen = 18.47},

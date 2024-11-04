@@ -55,13 +55,6 @@ object_ship_blacksun_light_s02_tier4 = object_ship_shared_blacksun_light_s02_tie
 
 	gameObjectType = 536870919,
 
-	pvpStatusBitmask = ATTACKABLE,
-	shipBitmask = NONE,
-	optionsBitmask = AIENABLED,
-
-	customShipAiMap = "",
-	experience = 3000,
-
 	reactor = {name = "rct_generic", hitpoints = 1866.24, armor = 1866.24},
 	engine = {name = "eng_generic", hitpoints = 1866.24, armor = 1866.24, speed = 45.89, acceleration = 11.15, deceleration = 9.51, yaw = 20, yawRate = 41.96, pitch = 25.24, pitchRate = 50.48, roll = 31.25, rollRate = 56.93},
 	shield_0 = {name = "shd_generic", hitpoints = 1866.24, armor = 1866.24, front = 9123.84, back = 9123.84, regen = 16.5},

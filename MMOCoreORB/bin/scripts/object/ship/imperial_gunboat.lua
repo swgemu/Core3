@@ -55,13 +55,6 @@ object_ship_imperial_gunboat = object_ship_shared_imperial_gunboat:new {
 
 	gameObjectType = 536870919,
 
-	pvpStatusBitmask = ATTACKABLE + AGGRESSIVE,
-	shipBitmask = TURRETSHIP,
-	optionsBitmask = AIENABLED,
-
-	customShipAiMap = "",
-	factionMultiplier = 20.0,
-
 	reactor = {name = "rct_generic", hitpoints = 5000, armor = 2000},
 	engine = {name = "eng_generic", hitpoints = 5000, armor = 2000, speed = 32, acceleration = 8, deceleration = 8, yaw = 3, yawRate = 3, pitch = 3, pitchRate = 3, roll = 3, rollRate = 3},
 	shield_0 = {name = "shd_generic", hitpoints = 10000, armor = 3000, front = 6000, back = 6000, regen = 50},

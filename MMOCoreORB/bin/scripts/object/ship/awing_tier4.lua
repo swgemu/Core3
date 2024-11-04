@@ -55,13 +55,6 @@ object_ship_awing_tier4 = object_ship_shared_awing_tier4:new {
 
 	gameObjectType = 536870919,
 
-	pvpStatusBitmask = ATTACKABLE + AGGRESSIVE,
-	shipBitmask = NONE,
-	optionsBitmask = AIENABLED,
-
-	customShipAiMap = "",
-	experience = 2500,
-
 	reactor = {name = "rct_generic", hitpoints = 1866.24, armor = 1866.24},
 	engine = {name = "eng_incom_fusialthrust", hitpoints = 1866.24, armor = 1866.24, speed = 50.48, acceleration = 12.26, deceleration = 9.51, yaw = 20, yawRate = 41.96, pitch = 25.24, pitchRate = 50.48, roll = 31.25, rollRate = 56.93},
 	shield_0 = {name = "shd_generic", hitpoints = 1866.24, armor = 1866.24, front = 7464.96, back = 7464.96, regen = 15},

@@ -55,12 +55,6 @@ object_ship_blacksun_heavy_s01 = object_ship_shared_blacksun_heavy_s01:new {
 
 	gameObjectType = 536870919,
 
-	pvpStatusBitmask = ATTACKABLE,
-	shipBitmask = NONE,
-	optionsBitmask = AIENABLED,
-
-	customShipAiMap = "",
-
 	reactor = {name = "rct_generic", hitpoints = 300, armor = 300},
 	engine = {name = "eng_incom_fusialthrust", hitpoints = 100, armor = 200, speed = 42, acceleration = 12.2, deceleration = 15.67, yaw = 21, yawRate = 43, pitch = 21, pitchRate = 43, roll = 21, rollRate = 43},
 	shield_0 = {name = "shd_generic", hitpoints = 800, armor = 500, front = 600, back = 800, regen = 5},

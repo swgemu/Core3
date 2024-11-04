@@ -55,13 +55,6 @@ object_ship_z95_tier4 = object_ship_shared_z95_tier4:new {
 
 	gameObjectType = 536870919,
 
-	pvpStatusBitmask = ATTACKABLE + AGGRESSIVE,
-	shipBitmask = NONE,
-	optionsBitmask = AIENABLED,
-
-	customShipAiMap = "",
-	experience = 3100,
-
 	reactor = {name = "rct_generic", hitpoints = 2073.6, armor = 2073.6},
 	engine = {name = "eng_incom_fusialthrust", hitpoints = 2073.6, armor = 2073.6, speed = 50.48, acceleration = 12.26, deceleration = 9.51, yaw = 20, yawRate = 41.96, pitch = 25.24, pitchRate = 50.48, roll = 31.25, rollRate = 56.93},
 	shield_0 = {name = "shd_generic", hitpoints = 2073.6, armor = 2073.6, front = 9123.84, back = 9123.84, regen = 15},

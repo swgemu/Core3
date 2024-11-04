@@ -59,11 +59,6 @@ object_ship_corvette = object_ship_shared_corvette:new {
 	shipBitmask = TURRETSHIP,
 	optionsBitmask = AIENABLED,
 
-	customShipAiMap = "",
-
-	experience = 43000,
-	factionMultiplier = 22.0,
-
 	reactor = {name = "rct_generic", hitpoints = 10000, armor = 5000},
 	engine = {name = "eng_generic", hitpoints = 10000, armor = 5000, speed = 32, acceleration = 8, deceleration = 8, yaw = 3, yawRate = 3, pitch = 3, pitchRate = 3, roll = 3, rollRate = 3},
 	shield_0 = {name = "shd_generic", hitpoints = 10000, armor = 5000, front = 20000, back = 20000, regen = 50},

@@ -55,13 +55,6 @@ object_ship_civshuttle = object_ship_shared_civshuttle:new {
 
 	gameObjectType = 536870919,
 
-	pvpStatusBitmask = ATTACKABLE,
-	shipBitmask = NONE,
-	optionsBitmask = AIENABLED,
-
-	customShipAiMap = "",
-	experience = 0,
-
 	reactor = {name = "rct_generic", hitpoints = 100, armor = 200},
 	engine = {name = "eng_generic", hitpoints = 100, armor = 200, speed = 30, acceleration = 26.1, deceleration = 22.446, yaw = 16.2, yawRate = 20.6, pitch = 16.2, pitchRate = 20.6, roll = 16.2, rollRate = 20.6},
 	shield_0 = {name = "shd_generic", hitpoints = 200, armor = 200, front = 200, back = 200, regen = 5},

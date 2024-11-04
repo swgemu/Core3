@@ -55,13 +55,6 @@ object_ship_blacksun_medium_s02_tier3 = object_ship_shared_blacksun_medium_s02_t
 
 	gameObjectType = 536870919,
 
-	pvpStatusBitmask = ATTACKABLE,
-	shipBitmask = NONE,
-	optionsBitmask = AIENABLED,
-
-	customShipAiMap = "",
-	experience = 1300,
-
 	reactor = {name = "rct_generic", hitpoints = 1188, armor = 1188},
 	engine = {name = "eng_incom_fusialthrust", hitpoints = 1188, armor = 1188, speed = 44.56, acceleration = 10.82, deceleration = 9.23, yaw = 19.41, yawRate = 40.74, pitch = 24.51, pitchRate = 49.01, roll = 30.34, rollRate = 55.27},
 	shield_0 = {name = "shd_generic", hitpoints = 1188, armor = 1188, front = 5184, back = 5184, regen = 10.16},

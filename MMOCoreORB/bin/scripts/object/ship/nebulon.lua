@@ -55,12 +55,6 @@ object_ship_nebulon = object_ship_shared_nebulon:new {
 
 	gameObjectType = 536870919,
 
-	pvpStatusBitmask = ATTACKABLE,
-	shipBitmask = NONE,
-	optionsBitmask = AIENABLED,
-
-	customShipAiMap = "",
-
 	reactor = {name = "rct_generic", hitpoints = 5000, armor = 200},
 	engine = {name = "eng_generic", hitpoints = 5000, armor = 200, speed = 10, acceleration = 2, deceleration = 1, yaw = 3, yawRate = 3, pitch = 3, pitchRate = 3, roll = 0, rollRate = 0},
 	shield_0 = {name = "shd_generic", hitpoints = 5000, armor = 200, front = 200, back = 200, regen = 5},

@@ -55,12 +55,6 @@ object_ship_hutt_medium_s01 = object_ship_shared_hutt_medium_s01:new {
 
 	gameObjectType = 536870919,
 
-	pvpStatusBitmask = ATTACKABLE,
-	shipBitmask = NONE,
-	optionsBitmask = AIENABLED,
-
-	customShipAiMap = "",
-
 	reactor = {name = "rct_generic", hitpoints = 300, armor = 300},
 	engine = {name = "eng_incom_fusialthrust", hitpoints = 100, armor = 200, speed = 46, acceleration = 12.2, deceleration = 15.67, yaw = 28, yawRate = 55, pitch = 28, pitchRate = 55, roll = 28, rollRate = 55},
 	shield_0 = {name = "shd_generic", hitpoints = 400, armor = 500, front = 400, back = 700, regen = 5},

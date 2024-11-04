@@ -55,12 +55,6 @@ object_ship_bwing = object_ship_shared_bwing:new {
 
 	gameObjectType = 536870919,
 
-	pvpStatusBitmask = ATTACKABLE + AGGRESSIVE,
-	shipBitmask = NONE,
-	optionsBitmask = AIENABLED,
-
-	customShipAiMap = "",
-
 	reactor = {name = "rct_generic", hitpoints = 100, armor = 200},
 	engine = {name = "eng_incom_fusialthrust", hitpoints = 100, armor = 200, speed = 48, acceleration = 16.2, deceleration = 8.1, yaw = 22.3, yawRate = 52.7, pitch = 22.3, pitchRate = 52.7, roll = 22.3, rollRate = 52.7},
 	shield_0 = {name = "shd_generic", hitpoints = 200, armor = 200, front = 600, back = 700, regen = 5},

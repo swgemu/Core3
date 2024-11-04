@@ -55,13 +55,6 @@ object_ship_firespray_tier3 = object_ship_shared_firespray_tier3:new {
 
 	gameObjectType = 536870919,
 
-	pvpStatusBitmask = ATTACKABLE,
-	shipBitmask = NONE,
-	optionsBitmask = AIENABLED,
-
-	customShipAiMap = "",
-	experience = 1550,
-
 	reactor = {name = "rct_generic", hitpoints = 1404, armor = 1404},
 	engine = {name = "eng_incom_fusialthrust", hitpoints = 1404, armor = 1404, speed = 44.56, acceleration = 10.82, deceleration = 9.23, yaw = 19.41, yawRate = 40.74, pitch = 24.51, pitchRate = 49.01, roll = 30.34, rollRate = 55.27},
 	shield_0 = {name = "shd_generic", hitpoints = 1404, armor = 1404, front = 5616, back = 5616, regen = 12},

@@ -55,13 +55,6 @@ object_ship_hutt_transport_tier2 = object_ship_shared_hutt_transport_tier2:new {
 
 	gameObjectType = 536870919,
 
-	pvpStatusBitmask = ATTACKABLE,
-	shipBitmask = NONE,
-	optionsBitmask = AIENABLED,
-
-	customShipAiMap = "",
-	experience = 0,
-
 	reactor = {name = "rct_generic", hitpoints = 900, armor = 900},
 	engine = {name = "eng_incom_fusialthrust", hitpoints = 900, armor = 900, speed = 43.26, acceleration = 10.51, deceleration = 8.96, yaw = 18.85, yawRate = 39.55, pitch = 23.79, pitchRate = 47.59, roll = 29.46, rollRate = 53.66},
 	shield_0 = {name = "shd_generic", hitpoints = 900, armor = 900, front = 5400, back = 5400, regen = 5.4},

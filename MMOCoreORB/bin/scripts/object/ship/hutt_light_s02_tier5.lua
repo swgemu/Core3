@@ -55,13 +55,6 @@ object_ship_hutt_light_s02_tier5 = object_ship_shared_hutt_light_s02_tier5:new {
 
 	gameObjectType = 536870919,
 
-	pvpStatusBitmask = ATTACKABLE,
-	shipBitmask = NONE,
-	optionsBitmask = AIENABLED,
-
-	customShipAiMap = "",
-	experience = 5500,
-
 	reactor = {name = "rct_generic", hitpoints = 3185.05, armor = 3185.05},
 	engine = {name = "eng_incom_fusialthrust", hitpoints = 3185.05, armor = 3185.05, speed = 47.27, acceleration = 11.48, deceleration = 9.79, yaw = 20.6, yawRate = 43.22, pitch = 26, pitchRate = 52, roll = 32.19, rollRate = 58.64},
 	shield_0 = {name = "shd_generic", hitpoints = 3185.05, armor = 3185.05, front = 11466.2, back = 11466.2, regen = 23.15},

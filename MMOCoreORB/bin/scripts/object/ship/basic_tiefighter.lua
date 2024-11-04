@@ -55,12 +55,6 @@ object_ship_basic_tiefighter = object_ship_shared_basic_tiefighter:new {
 
 	gameObjectType = 536870919,
 
-	pvpStatusBitmask = ATTACKABLE,
-	shipBitmask = NONE,
-	optionsBitmask = AIENABLED,
-
-	customShipAiMap = "",
-
 	reactor = {name = "rct_generic", hitpoints = 100, armor = 200},
 	engine = {name = "eng_novaldex_eventhorizon", hitpoints = 100, armor = 200, speed = 48, acceleration = 14.2, deceleration = 6.3, yaw = 26.5, yawRate = 51.8, pitch = 26.5, pitchRate = 51.8, roll = 26.5, rollRate = 51.8},
 	shield_0 = {name = "shd_generic", hitpoints = 200, armor = 200, front = 0, back = 0, regen = 5},

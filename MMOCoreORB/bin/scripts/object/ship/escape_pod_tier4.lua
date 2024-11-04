@@ -55,13 +55,6 @@ object_ship_escape_pod_tier4 = object_ship_shared_escape_pod_tier4:new {
 
 	gameObjectType = 536870919,
 
-	pvpStatusBitmask = ATTACKABLE,
-	shipBitmask = NONE,
-	optionsBitmask = AIENABLED,
-
-	customShipAiMap = "",
-	experience = 0,
-
 	reactor = {name = "rct_generic", hitpoints = 1036.8, armor = 1036.8},
 	engine = {name = "eng_incom_fusialthrust", hitpoints = 1036.8, armor = 1036.8, speed = 45.89, acceleration = 11.15, deceleration = 9.51, yaw = 20, yawRate = 41.96, pitch = 25.24, pitchRate = 50.48, roll = 31.25, rollRate = 56.93},
 	shield_0 = {name = "shd_generic", hitpoints = 1036.8, armor = 1036.8, front = 4147.2, back = 4147.2, regen = 7.5},

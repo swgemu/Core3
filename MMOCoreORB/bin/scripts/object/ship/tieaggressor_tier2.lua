@@ -55,13 +55,6 @@ object_ship_tieaggressor_tier2 = object_ship_shared_tieaggressor_tier2:new {
 
 	gameObjectType = 536870919,
 
-	pvpStatusBitmask = ATTACKABLE + AGGRESSIVE,
-	shipBitmask = TURRETSHIP,
-	optionsBitmask = AIENABLED,
-
-	customShipAiMap = "",
-	experience = 600,
-
 	reactor = {name = "rct_generic", hitpoints = 450, armor = 450},
 	engine = {name = "eng_qualdex_kyromaster", hitpoints = 450, armor = 450, speed = 43.26, acceleration = 10.51, deceleration = 8.96, yaw = 18.85, yawRate = 39.55, pitch = 23.79, pitchRate = 47.59, roll = 29.46, rollRate = 53.66},
 	shield_0 = {name = "shd_generic", hitpoints = 450, armor = 450, front = 1800, back = 1800, regen = 5.4},

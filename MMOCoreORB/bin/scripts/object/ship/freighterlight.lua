@@ -55,12 +55,6 @@ object_ship_freighterlight = object_ship_shared_freighterlight:new {
 
 	gameObjectType = 536870919,
 
-	pvpStatusBitmask = ATTACKABLE,
-	shipBitmask = NONE,
-	optionsBitmask = AIENABLED,
-
-	customShipAiMap = "",
-
 	reactor = {name = "rct_generic", hitpoints = 100, armor = 200},
 	engine = {name = "eng_generic", hitpoints = 100, armor = 200, speed = 20, acceleration = 34.8, deceleration = 29.928, yaw = 19, yawRate = 24, pitch = 19, pitchRate = 24, roll = 19, rollRate = 24},
 	shield_0 = {name = "shd_generic", hitpoints = 200, armor = 200, front = 300, back = 600, regen = 5},

@@ -55,15 +55,6 @@ object_ship_rebel_gunboat_tier5 = object_ship_shared_rebel_gunboat_tier5:new {
 
 	gameObjectType = 536870919,
 
-	pvpStatusBitmask = ATTACKABLE + AGGRESSIVE,
-	shipBitmask = TURRETSHIP,
-	optionsBitmask = AIENABLED,
-
-	customShipAiMap = "",
-
-	experience = 24500,
-	factionMultiplier = 20.0,
-
 	reactor = {name = "rct_generic", hitpoints = 31850.5, armor = 31850.5},
 	engine = {name = "eng_incom_fusialthrust", hitpoints = 31850.5, armor = 31850.5, speed = 47.27, acceleration = 11.48, deceleration = 9.79, yaw = 20.6, yawRate = 43.22, pitch = 26, pitchRate = 52, roll = 32.19, rollRate = 58.64},
 	shield_0 = {name = "shd_generic", hitpoints = 31850.5, armor = 31850.5, front = 127402, back = 127402, regen = 34.73},
