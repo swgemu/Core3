@@ -395,6 +395,133 @@ CreatureObject* ThreatMap::getHighestDamageGroupLeader() {
 	return leaderCreature;
 }
 
+ShipObject* ThreatMap::getHighestDamagePlayerShip() {
+	Locker locker(&lockMutex);
+
+	uint32 maxDamage = 0;
+	VectorMap<uint64, uint32> damageMap;
+	ShipObject* ship = nullptr;
+
+	for (int i = 0; i < size(); ++i) {
+		ThreatMapEntry* entry = &elementAt(i).getValue();
+		uint32 totalDamage = entry->getTotalDamage();
+
+		TangibleObject* tanO = elementAt(i).getKey();
+
+		if (tanO == nullptr || !tanO->isShipObject()) {
+			continue;
+		}
+
+		uint64 tanOID = tanO->getObjectID();
+
+		if (!damageMap.contains(tanOID)) {
+			damageMap.put(tanOID, totalDamage);
+		} else {
+			damageMap.get(tanOID) += totalDamage;
+		}
+
+		if (damageMap.get(tanOID) > maxDamage) {
+			maxDamage = damageMap.get(tanOID);
+
+			ship = tanO->asShipObject();
+		}
+	}
+
+	return ship;
+}
+
+ShipObject* ThreatMap::getHighestDamageGroupLeaderShip() {
+	Locker locker(&lockMutex);
+
+	VectorMap<uint64, uint32> groupDamageMap;
+	int64 highestGroupDmg = 0;
+
+	// info(true) << "ThreatMap::getHighestDamageGroupLeaderShip -- called";
+
+	ManagedReference<ShipObject*> groupShip = nullptr;
+
+	for (int i = 0; i < size(); ++i) {
+		ThreatMapEntry* entry = &elementAt(i).getValue();
+
+		if (entry == nullptr) {
+			continue;
+		}
+
+		uint32 totalDamage = entry->getLootDamage();
+		TangibleObject* tanO = elementAt(i).getKey();
+
+		if (tanO == nullptr || !tanO->isPlayerShip()) {
+			continue;
+		}
+
+		auto playerShip = tanO->asShipObject();
+
+		if (playerShip == nullptr) {
+			continue;
+		}
+
+		auto pilot = playerShip->getPilot();
+
+		if (pilot == nullptr) {
+			continue;
+		}
+
+		auto pilotGroup = pilot->getGroup();
+
+		// Pilot is not group
+		if (pilotGroup == nullptr) {
+			// info(true) << "Pilot is not grouped -- Adding single ship damage " << totalDamage;
+
+			// Add non-grouped player ship damage
+			groupDamageMap.put(playerShip->getObjectID(), totalDamage);
+
+			if (totalDamage > highestGroupDmg) {
+				highestGroupDmg = totalDamage;
+
+				// Update Leader ship pointer
+				groupShip = playerShip;
+			}
+
+			continue;
+		}
+
+		uint64 pilotGroupID = pilotGroup->getObjectID();
+
+		Reference<CreatureObject*> thisleader = pilotGroup->getLeader();
+
+		if (thisleader == nullptr || !thisleader->isPlayerCreature()) {
+			continue;
+		}
+
+		// info(true) << "Pilots Group ID: " << pilotGroupID << " Group Leader: " << thisleader->getFirstName();
+
+		// GroupDamageMap does not contain group entry, add damage.
+		if (!groupDamageMap.contains(pilotGroupID)) {
+			// info(true) << "Initial damage entry for Group ID: " << pilotGroupID << " Initial Entry Damage: " << totalDamage;
+
+			groupDamageMap.put(pilotGroupID, totalDamage);
+		// GroupDamageMap already contains group entry, update it.
+		} else {
+			// info(true) << "Updating - damage entry for Group ID: " << pilotGroupID << " Adding to Entry Damage: " << totalDamage;
+
+			groupDamageMap.get(pilotGroupID) += totalDamage;
+		}
+
+		int64 currentGroupDam = groupDamageMap.get(pilotGroupID);
+
+		if (currentGroupDam > highestGroupDmg) {
+			highestGroupDmg = currentGroupDam;
+
+			// Update Leader ship pointer
+			groupShip = playerShip;
+		}
+	}
+
+	// info(true) << " Returning highest damage group leader ship: " << (groupShip != nullptr ? groupShip->getShipLaunchedName() : "nullptr");
+
+	return groupShip;
+}
+
 TangibleObject* ThreatMap::getHighestThreatAttacker() {
 	Locker locker(&lockMutex);
 

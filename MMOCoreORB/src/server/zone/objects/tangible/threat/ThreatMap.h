@@ -13,6 +13,7 @@
 #include "server/zone/objects/tangible/threat/ThreatMapObserver.h"
 #include "server/zone/objects/creature/variables/CooldownTimerMap.h"
 #include "server/zone/objects/tangible/weapon/WeaponObject.h"
+#include "server/zone/objects/ship/ShipObject.h"
 
 namespace server {
 namespace zone {
@@ -159,7 +160,7 @@ public:
 	}
 };
 
-class ThreatMap : public VectorMap<ManagedReference<TangibleObject*>, ThreatMapEntry> {
+class ThreatMap : public VectorMap<ManagedReference<TangibleObject*>, ThreatMapEntry>, public Logger {
 public:
 	/// Time between normal target evaluation
 	enum { EVALUATIONCOOLDOWN = 24000 };
@@ -222,6 +223,9 @@ public:
 
 	CreatureObject* getHighestDamagePlayer();
 	CreatureObject* getHighestDamageGroupLeader();
+
+	ShipObject* getHighestDamagePlayerShip();
+	ShipObject* getHighestDamageGroupLeaderShip();
 
 	TangibleObject* getHighestThreatAttacker();
 	uint32 getTotalDamage();
