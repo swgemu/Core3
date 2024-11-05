@@ -225,7 +225,7 @@ public:
 	CreatureObject* getHighestDamageGroupLeader();
 
 	ShipObject* getHighestDamagePlayerShip();
-	ShipObject* getHighestDamageGroupLeaderShip();
+	ShipObject* getHighestDamageGroupShip();
 
 	TangibleObject* getHighestThreatAttacker();
 	uint32 getTotalDamage();

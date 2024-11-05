@@ -11,6 +11,7 @@ import server.zone.objects.creature.CreatureObject;
 import system.util.Vector;
 import engine.util.u3d.Vector3;
 import server.zone.Zone;
+import server.zone.objects.ship.ai.ShipAiAgent;
 
 include server.zone.objects.ship.ShipObject;
 include server.zone.TreeEntry;
@@ -42,6 +43,8 @@ class PobShipObject extends ShipObject {
 
 	@dereferenced
 	protected ShipPermissionList shipPermissionList;
+
+	protected SceneObject shipLootBox;
 
 	public PobShipObject() {
 		Logger.setLoggingName("PobShipObject");
@@ -160,6 +163,10 @@ class PobShipObject extends ShipObject {
 	 * Loops through all the cells, destroying items from the database that aren't contained in the child objects vector.
 	 */
 	public native void destroyAllPlayerItems();
+
+	@dirty
+	@arg1preLocked
+	public abstract native void awardLootCredits(ShipAiAgent destructedShip, int payout);
 
 	@dirty
 	public CellObject getCell(int idx) {

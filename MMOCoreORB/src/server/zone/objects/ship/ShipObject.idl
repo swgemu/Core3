@@ -11,6 +11,7 @@ import server.zone.objects.ship.components.ShipComponent;
 import server.zone.objects.ship.events.ShipRecoveryEvent;
 import server.zone.Zone;
 import engine.service.proto.BaseMessage;
+import server.zone.objects.ship.ai.ShipAiAgent;
 
 include server.zone.TreeEntry;
 include server.zone.objects.scene.SceneObject;
@@ -1684,6 +1685,10 @@ class ShipObject extends TangibleObject {
 	@dirty
 	@local
 	public native void sendMembersBaseMessage(BaseMessage message);
+
+	@dirty
+	@arg1preLocked
+	public abstract native void awardLootCredits(ShipAiAgent destructedShip, int payout);
 
 	public native boolean isShipLaunched();
 

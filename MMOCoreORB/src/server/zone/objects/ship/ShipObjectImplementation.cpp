@@ -31,6 +31,8 @@
 #include "server/zone/packets/tangible/UpdatePVPStatusMessage.h"
 #include "server/zone/packets/scene/SceneObjectDestroyMessage.h"
 #include "server/zone/objects/intangible/tasks/StoreShipTask.h"
+#include "server/zone/objects/ship/ai/ShipAiAgent.h"
+#include "server/zone/objects/tangible/item/CreditChipObject.h"
 
 // #define DEBUG_COV
 
@@ -1782,6 +1784,80 @@ void ShipObjectImplementation::sendMembersBaseMessage(BaseMessage* message) {
 	}
 
 	delete message;
+}
+
+void ShipObjectImplementation::awardLootCredits(ShipAiAgent* destructedShip, int payout) {
+	if (destructedShip == nullptr) {
+		return;
+	}
+
+	auto pilot = getPilot();
+
+	if (pilot == nullptr) {
+		return;
+	}
+
+	auto zoneServer = getZoneServer();
+
+	if (zoneServer == nullptr) {
+		return;
+	}
+
+	Locker memberClock(pilot, destructedShip);
+
+	auto inventory = pilot->getInventory();
+
+	if (inventory == nullptr || ((inventory->getCountableObjectsRecursive() + 1) > inventory->getContainerVolumeLimit())) {
+		return;
+	}
+
+	auto creditChip = zoneServer->createObject(STRING_HASHCODE("object/tangible/item/loot_credit_chip.iff"), 1).castTo<CreditChipObject*>();
+
+	if (creditChip == nullptr) {
+		return;
+	}
+
+	Locker creditsClock(creditChip, destructedShip);
+
+	// Set the CreditChip value
+	creditChip->setUseCount(payout);
+
+	// Create TransactionLog
+	TransactionLog trx(destructedShip, pilot, creditChip, TrxCode::CREDITCHIP);
+
+	// Transfer to ShipMembers inventory
+	if (inventory->transferObject(creditChip, -1, false)) {
+		creditChip->sendTo(pilot, true);
+
+		StringIdChatParameter creditsSelfMsg("space/space_loot", "looted_credits_you");
+		creditsSelfMsg.setDI(payout);
+
+		pilot->sendSystemMessage(creditsSelfMsg);
+
+		trx.commit();
+	} else {
+		creditChip->destroyObjectFromWorld(true);
+		creditChip->destroyObjectFromDatabase(true);
+
+		trx.abort() << "Failed to transferObject for CreditChip to shipMember";
+		return;
+	}
+
+	if (!pilot->isGrouped()) {
+		return;
+	}
+
+	auto pilotGroup = pilot->getGroup();
+
+	if (pilotGroup == nullptr) {
+		return;
+	}
+
+	StringIdChatParameter creditGroupMsg("space/space_loot", "looted_credits");
+	creditGroupMsg.setTT(pilot->getFirstName());
+	creditGroupMsg.setDI(payout);
+
+	pilotGroup->sendSystemMessage(creditGroupMsg, false);
 }
 
 bool ShipObjectImplementation::isShipLaunched() {

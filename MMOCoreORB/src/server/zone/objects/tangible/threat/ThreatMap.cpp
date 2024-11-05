@@ -435,13 +435,13 @@ ShipObject* ThreatMap::getHighestDamagePlayerShip() {
 	return ship;
 }
 
-ShipObject* ThreatMap::getHighestDamageGroupLeaderShip() {
+ShipObject* ThreatMap::getHighestDamageGroupShip() {
 	Locker locker(&lockMutex);
 
 	VectorMap<uint64, uint32> groupDamageMap;
 	int64 highestGroupDmg = 0;
 
-	// info(true) << "ThreatMap::getHighestDamageGroupLeaderShip -- called";
+	// info(true) << "ThreatMap::getHighestDamageGroupShip -- called";
 
 	ManagedReference<ShipObject*> groupShip = nullptr;
 
@@ -522,7 +522,7 @@ ShipObject* ThreatMap::getHighestDamageGroupLeaderShip() {
 		}
 	}
 
-	// info(true) << " Returning highest damage group leader ship: " << (groupShip != nullptr ? groupShip->getShipLaunchedName() : "nullptr");
+	// info(true) << " Returning highest damage group ship: " << (groupShip != nullptr ? groupShip->getShipLaunchedName() : "nullptr");
 
 	return groupShip;
 }

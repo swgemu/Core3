@@ -16,6 +16,8 @@
 #include "server/zone/objects/guild/GuildObject.h"
 #include "server/zone/objects/tangible/terminal/Terminal.h"
 #include "server/zone/packets/cell/UpdateCellPermissionsMessage.h"
+#include "server/zone/objects/ship/ai/ShipAiAgent.h"
+#include "server/zone/objects/tangible/item/CreditChipObject.h"
 
 void PobShipObjectImplementation::notifyLoadFromDatabase() {
 	CreatureObject* owner = getOwner().get();
@@ -162,6 +164,8 @@ void PobShipObjectImplementation::createChildObjects() {
 							terminalChild->setControlledObject(asPobShip());
 					} else if (childTemplate.contains("alarm_interior")) {
 						plasmaAlarms.add(obj->getObjectID());
+					} else if (childHash == STRING_HASHCODE("object/tangible/container/drum/pob_ship_loot_box.iff")) {
+						shipLootBox = obj;
 					}
 
 					ContainerPermissions* permissions = obj->getContainerPermissionsForUpdate();
@@ -658,6 +662,76 @@ void PobShipObjectImplementation::destroyAllPlayerItems() {
 
 		cell->destroyAllPlayerItems();
 	}
+}
+
+void PobShipObjectImplementation::awardLootCredits(ShipAiAgent* destructedShip, int payout) {
+	if (destructedShip == nullptr || shipLootBox == nullptr) {
+		return;
+	}
+
+	int totalPlayersOnboard = getTotalPlayersOnBoard();
+	int creditSplit = payout / totalPlayersOnboard;
+
+	auto zoneServer = getZoneServer();
+
+	if (zoneServer == nullptr) {
+		return;
+	}
+
+	auto pilot = getPilot();
+
+	if (pilot == nullptr) {
+		return;
+	}
+
+	Locker memberClock(shipLootBox, destructedShip);
+
+	auto creditChip = zoneServer->createObject(STRING_HASHCODE("object/tangible/item/loot_credit_chip.iff"), 1).castTo<CreditChipObject*>();
+
+	if (creditChip == nullptr) {
+		return;
+	}
+
+	Locker creditsClock(creditChip, destructedShip);
+
+	// Set the CreditChip value
+	creditChip->setUseCount(creditSplit);
+
+	// Create TransactionLog
+	TransactionLog trx(destructedShip, shipLootBox, creditChip, TrxCode::CREDITCHIP);
+	trx.addState("pilotID", pilot->getObjectID());
+
+	// Transfer to ShipMembers inventory
+	if (shipLootBox->transferObject(creditChip, -1, true)) {
+		StringIdChatParameter creditsSelfMsg("space/space_loot", "looted_credits_you");
+		creditsSelfMsg.setDI(creditSplit);
+
+		pilot->sendSystemMessage(creditsSelfMsg);
+
+		trx.commit();
+	} else {
+		creditChip->destroyObjectFromWorld(true);
+		creditChip->destroyObjectFromDatabase(true);
+
+		trx.abort() << "Failed to transferObject for CreditChip into POB Ship Loot Box";
+		return;
+	}
+
+	if (!pilot->isGrouped()) {
+		return;
+	}
+
+	auto pilotGroup = pilot->getGroup();
+
+	if (pilotGroup == nullptr) {
+		return;
+	}
+
+	StringIdChatParameter creditGroupMsg("space/space_loot", "looted_credits");
+	creditGroupMsg.setTT(pilot->getFirstName());
+	creditGroupMsg.setDI(payout);
+
+	pilotGroup->sendSystemMessage(creditGroupMsg, false);
 }
 
 PobShipObject* PobShipObject::asPobShip() {

@@ -940,14 +940,23 @@ int ShipManager::notifyDestruction(ShipObject* destructorShip, ShipAiAgent* dest
 			5. XP awarded
 		*/
 
-		// TODO: Grant Credit Chip here
+		// This function will return a player ship that either has the highest single damage or highest group damage.
+		auto highestShip = copyThreatMap.getHighestDamageGroupShip();
+
+		if (highestShip != nullptr) {
+			int minCredits = destructedShip->getMinLootCredits();
+			int maxCredits = destructedShip->getMaxLootCredits();
+
+			if (maxCredits > 0) {
+				int randomPayout = System::random(maxCredits - minCredits) + minCredits;
+
+				highestShip->awardLootCredits(destructedShip, randomPayout);
+			}
+
+			// TODO: Grant Loot here
 
 
-
-		// object/tangible/item/loot_credit_chip.iff
-		// 'string/en/space/space_loot.stf', '11', 'looted_credits', '%TT has looted a credit chip worth %DI credits.
-
-
+		}
 
 		// Quest Kill Observers
 		SortedVector<ManagedReference<Observer* > > observers = destructedShip->getObservers(ObserverEventType::QUESTKILL);
@@ -968,10 +977,6 @@ int ShipManager::notifyDestruction(ShipObject* destructorShip, ShipAiAgent* dest
 				attackerShip->notifyObservers(ObserverEventType::QUESTKILL, destructedShip);
 			}
 		}
-
-
-		// TODO: Grant Loot here
-
 
 		// Handle Awarding XP
 		ManagedReference<PlayerManager*> playerManager = zoneServer->getPlayerManager();

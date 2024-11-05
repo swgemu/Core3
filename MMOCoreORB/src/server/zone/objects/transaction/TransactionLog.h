@@ -72,6 +72,8 @@ enum class TrxCode {
 	CITYTREASURY,               // City Treasury
 	COMBATSTATS,                // Combat Stats
 	CRAFTINGSESSION,            // Crafting Session
+	CREDITCHIP,             	// Space CreditChip Looted
+	CREDITCHIPCLAIM,            // Space CreditChip Claimed
 	DATABASECOMMIT,             // Database Commit
 	DESTROYSTRUCTURE,           // Structure destroyed by system (maintenance etc)
 	EXPERIENCE,                 // Player experience change

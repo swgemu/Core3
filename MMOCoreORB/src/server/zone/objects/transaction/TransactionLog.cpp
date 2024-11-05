@@ -917,6 +917,8 @@ const String TransactionLog::trxCodeToString(TrxCode code) {
 	case TrxCode::CITYTREASURY:             return "citytreasury";              // City Treasury
 	case TrxCode::COMBATSTATS:              return "combatstats";               // Combat Stats
 	case TrxCode::CRAFTINGSESSION:          return "craftingsession";           // Crafting Session
+	case TrxCode::CREDITCHIP:               return "creditchip";                // Space CreditChip Looted
+	case TrxCode::CREDITCHIPCLAIM:          return "creditchipclaim";           // Space CreditChip Claimed
 	case TrxCode::DATABASECOMMIT:           return "databasecommit";            // Database Commit
 	case TrxCode::DESTROYSTRUCTURE:         return "destroystructure";          // Server destroyed structure (maintenance)
 	case TrxCode::EXPERIENCE:               return "experience";                // Player experience change

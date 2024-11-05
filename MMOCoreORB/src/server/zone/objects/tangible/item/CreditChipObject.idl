@@ -1,0 +1,39 @@
+/*
+			Copyright <SWGEmu>
+	See file COPYING for copying conditions.
+*/
+
+package server.zone.objects.tangible;
+
+import server.zone.objects.tangible.TangibleObject;
+import server.zone.packets.object.ObjectMenuResponse;
+import server.zone.objects.creature.CreatureObject;
+import server.zone.packets.scene.AttributeListMessage;
+import engine.log.Logger;
+
+include system.lang.ref.Reference;
+include system.lang.Time;
+include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
+include server.zone.TreeEntry;
+include server.zone.Zone;
+
+@json
+class CreditChipObject extends TangibleObject {
+	public CreditChipObject() {
+		Logger.setLoggingName("CreditChipObject");
+
+		initializeMembers();
+	}
+
+	@local
+	@dirty
+	public native void fillObjectMenuResponse(ObjectMenuResponse menuResponse, CreatureObject player);
+
+	@preLocked
+	@arg1preLocked
+	public native int handleObjectMenuSelect(CreatureObject player, byte selectedID);
+
+	@local
+	@dirty
+	public native void fillAttributeList(AttributeListMessage msg, CreatureObject player);
+}
