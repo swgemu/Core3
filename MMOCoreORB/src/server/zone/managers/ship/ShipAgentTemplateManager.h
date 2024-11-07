@@ -9,6 +9,7 @@
 #define ShipAgentTemplateManager_H_
 
 #include "server/zone/objects/ship/ai/ShipAgentTemplate.h"
+#include "server/zone/objects/ship/ai/SpacePatrolPoint.h"
 
 namespace server {
 namespace zone {
@@ -19,6 +20,8 @@ class ShipAgentTemplateManager : public Singleton<ShipAgentTemplateManager>, pub
 protected:
 	Reference<Lua*> lua;
 	HashTable<uint32, Reference<ShipAgentTemplate*>> hashTable;
+
+	VectorMap<uint32, VectorMap<uint32, SpacePatrolPoint>> spacePatrolPoints;
 
 	static AtomicInteger loadedMobileTemplates;
 	float globalAttackSpeedOverride;
@@ -31,12 +34,14 @@ public:
 	ShipAgentTemplateManager();
 	virtual ~ShipAgentTemplateManager();
 
-	int loadTemplates();
 	void loadLuaConfig();
+	int loadTemplates();
+	int loadSpacePatrolPoints();
 
+	static int checkArgumentCount(lua_State* L, int args);
 	static int includeFile(lua_State* L);
 	static int addTemplate(lua_State* L);
-	static int checkArgumentCount(lua_State* L, int args);
+	static int addSpacePatrolPoints(lua_State* L);
 
 	int size() {
 		return hashTable.size();
@@ -52,6 +57,10 @@ public:
 
 	ShipAgentTemplate* getTemplate(const String& ascii) {
 		return hashTable.get(ascii.hashCode());
+	}
+
+	SpacePatrolPoint getSpacePatrolPoint(uint32 zoneHash, uint32 pointHash) {
+		return spacePatrolPoints.get(zoneHash).get(pointHash);
 	}
 };
 
