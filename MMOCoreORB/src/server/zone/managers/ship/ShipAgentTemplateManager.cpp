@@ -31,6 +31,7 @@ ShipAgentTemplateManager::ShipAgentTemplateManager() : Logger("ShipAgentTemplate
 
 	lua->registerFunction("includeFile", includeFile);
 	lua->registerFunction("addTemplate", addTemplate);
+	lua->registerFunction("addSpacePatrolPoints", addSpacePatrolPoints);
 
 	lua->setGlobalInt("NONE", 				ObjectFlag::NONE);
 	lua->setGlobalInt("ATTACKABLE",		 	ObjectFlag::ATTACKABLE);
@@ -84,8 +85,6 @@ int ShipAgentTemplateManager::loadTemplates() {
 		ret = false;
 	}
 
-	lua = nullptr;
-
 	if (!ret) {
 		ERROR_CODE = GENERAL_ERROR;
 		error() << "Failed to load Ship Agent Templates";
@@ -93,6 +92,35 @@ int ShipAgentTemplateManager::loadTemplates() {
 
 	if (!DEBUG_MODE) {
 		info(true) << "Finished Loading Ship Agent Templates -  Total: " << hashTable.size();
+	}
+
+	return ERROR_CODE;
+}
+
+int ShipAgentTemplateManager::loadSpacePatrolPoints() {
+	if (!DEBUG_MODE) {
+		info(true) << "Loading Space Patrol Points...\n";
+	}
+
+	bool ret = false;
+
+	try {
+		ret = lua->runFile("scripts/ship_mobile/space_patrol_points.lua");
+	} catch (Exception& e) {
+		error(e.getMessage());
+		e.printStackTrace();
+		ret = false;
+	}
+
+	lua = nullptr;
+
+	if (!ret) {
+		ERROR_CODE = GENERAL_ERROR;
+		error() << "Failed to load Space Patrol points";
+	}
+
+	if (!DEBUG_MODE) {
+		info(true) << "Finished Loading Space Patrol Points -  Total Zones: " << spacePatrolPoints.size();
 	}
 
 	return ERROR_CODE;
@@ -120,15 +148,23 @@ int ShipAgentTemplateManager::includeFile(lua_State* L) {
 
 	int oldError = ERROR_CODE;
 
-	bool ret = Lua::runFile("scripts/ship_mobile/ships/" + filename, L);
+	if (filename.beginsWith("patrol_points")) {
+		filename = "scripts/ship_mobile/" + filename;
+	} else if (filename.beginsWith("space_")) {
+		filename = "scripts/ship_mobile/patrol_points/" + filename;
+	} else {
+		filename = "scripts/ship_mobile/ships/" + filename;
+	}
+
+	bool ret = Lua::runFile(filename, L);
 
 	if (!ret) {
 		ERROR_CODE = GENERAL_ERROR;
 
-		instance()->error("running file scripts/ship_mobile/ships/" + filename);
+		instance()->error() << "running file: " << filename;
 	} else {
 		if (!oldError && ERROR_CODE) {
-			instance()->error("running file scripts/ship_mobile/ships/" + filename);
+			instance()->error() << "running file: " << filename;
 		}
 	}
 
@@ -143,7 +179,7 @@ int ShipAgentTemplateManager::addTemplate(lua_State* L) {
 	}
 
 	String tempName = lua_tostring(L, -2);
-	uint32 crc = (uint32) tempName.hashCode();
+	uint32 crc = tempName.hashCode();
 
 	LuaObject obj(L);
 
@@ -170,6 +206,49 @@ int ShipAgentTemplateManager::addTemplate(lua_State* L) {
 	if (ConfigManager::instance()->isProgressMonitorActivated() && !DEBUG_MODE) {
 		printf("\r\tLoading ship mobile templates: [%d] / [?]\t", count);
 	}
+
+	return 0;
+}
+
+int ShipAgentTemplateManager::addSpacePatrolPoints(lua_State* L) {
+	if (checkArgumentCount(L, 2) == 1) {
+		instance()->error("incorrect number of arguments passed to ShipAgentTemplateManager::addSpacePatrolPoints");
+		ERROR_CODE = INCORRECT_ARGUMENTS;
+		return 0;
+	}
+
+	String zoneName = lua_tostring(L, -2);
+	LuaObject obj(L);
+
+	if (!obj.isValidTable()) {
+		instance()->error() << zoneName << " invalid Space Patrol points Table";
+		return 0;
+	}
+
+	VectorMap<uint32, SpacePatrolPoint> newZoneMap;
+
+	for (int i = 1; i <= obj.getTableSize(); ++i) {
+		LuaObject var = obj.getObjectAt(i);
+
+		if (!var.isValidTable()) {
+			continue;
+		}
+
+		String name = var.getStringAt(1);
+		float x = var.getFloatAt(2);
+		float z = var.getFloatAt(3);
+		float y = var.getFloatAt(4);
+
+		var.pop();
+
+		SpacePatrolPoint newPoint(Vector3(x, y, z));
+
+		newZoneMap.put(name.hashCode(), newPoint);
+	}
+
+	obj.pop();
+
+	ShipAgentTemplateManager::instance()->spacePatrolPoints.put(zoneName.hashCode(), newZoneMap);
 
 	return 0;
 }

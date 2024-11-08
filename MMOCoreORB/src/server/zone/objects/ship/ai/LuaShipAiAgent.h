@@ -39,6 +39,7 @@ public:
 	int setDespawnOnNoPlayerInRange(lua_State* L);
 	int setMinimumGuardPatrol(lua_State* L);
 	int setMaximumGuardPatrol(lua_State* L);
+	int addFixedPatrolPoint(lua_State* L);
 
 private:
 	ShipAiAgent* realObject;

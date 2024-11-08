@@ -197,12 +197,15 @@ class ShipAiAgent extends FighterShipObject {
 	protected transient int imperialFactionReward;
 	protected transient int rebelFactionReward;
 
-	protected unsigned int conversationTemplate;
-	protected unsigned int conversationMobile;
-	protected unsigned int conversationMessage;
+	protected transient unsigned int conversationTemplate;
+	protected transient unsigned int conversationMobile;
+	protected transient unsigned int conversationMessage;
 
-	protected float minGuardPatrol;
-	protected float maxGuardPatrol;
+	protected transient float minGuardPatrol;
+	protected transient float maxGuardPatrol;
+
+	@dereferenced
+	protected transient Vector<unsigned int> fixedPatrolPoints;
 
 	public ShipAiAgent() {
 		movementState = OBLIVIOUS;
@@ -555,6 +558,9 @@ class ShipAiAgent extends FighterShipObject {
 		shipBitmask = mask;
 	}
 
+	@read
+	public native boolean isFixedPatrolShipAgent();
+
 	@dirty
 	public void setConversationTemplate(unsigned int convoTemplateCrc) {
 		conversationTemplate = convoTemplateCrc;
@@ -583,6 +589,9 @@ class ShipAiAgent extends FighterShipObject {
 
 	@preLocked
 	public native void removeShipFlag(unsigned int option);
+
+	@preLocked
+	public native void addFixedPatrolPoint(unsigned int pointHash);
 
 	@preLocked
 	public void destroyObjectFromWorld(boolean sendSelfDestroy) {
