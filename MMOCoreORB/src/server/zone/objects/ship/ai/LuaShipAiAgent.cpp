@@ -35,6 +35,7 @@ Luna<LuaShipAiAgent>::RegType LuaShipAiAgent::Register[] = {
 	{ "setDespawnOnNoPlayerInRange", &LuaShipAiAgent::setDespawnOnNoPlayerInRange },
 	{ "setMinimumGuardPatrol", &LuaShipAiAgent::setMinimumGuardPatrol },
 	{ "setMaximumGuardPatrol", &LuaShipAiAgent::setMaximumGuardPatrol },
+	{ "addFixedPatrolPoint", &LuaShipAiAgent::addFixedPatrolPoint },
 	{ 0, 0 }
 };
 
@@ -149,6 +150,20 @@ int LuaShipAiAgent::setMaximumGuardPatrol(lua_State* L) {
 	Locker locker(realObject);
 
 	realObject->setMaximumGuardPatrol(maxDist);
+
+	return 0;
+}
+
+int LuaShipAiAgent::addFixedPatrolPoint(lua_State* L) {
+	String name = lua_tostring(L, -1);
+
+	if (name.isEmpty()) {
+		return 0;
+	}
+
+	Locker locker(realObject);
+
+	realObject->addFixedPatrolPoint(name.hashCode());
 
 	return 0;
 }

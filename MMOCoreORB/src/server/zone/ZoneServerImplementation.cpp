@@ -149,6 +149,7 @@ void ZoneServerImplementation::initialize() {
 
 	shipAgentTemplateManager = ShipAgentTemplateManager::instance();
 	shipAgentTemplateManager->loadTemplates();
+	shipAgentTemplateManager->loadSpacePatrolPoints();
 
 	AiMap::instance()->loadTemplates();
 	SpaceAiMap::instance()->loadTemplates();
