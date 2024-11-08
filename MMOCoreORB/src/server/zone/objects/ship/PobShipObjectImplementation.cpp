@@ -664,17 +664,20 @@ void PobShipObjectImplementation::destroyAllPlayerItems() {
 	}
 }
 
-void PobShipObjectImplementation::awardLootCredits(ShipAiAgent* destructedShip, int payout) {
+void PobShipObjectImplementation::awardLootItems(ShipAiAgent* destructedShip, int payout) {
 	if (destructedShip == nullptr || shipLootBox == nullptr) {
 		return;
 	}
 
-	int totalPlayersOnboard = getTotalPlayersOnBoard();
-	int creditSplit = payout / totalPlayersOnboard;
-
 	auto zoneServer = getZoneServer();
 
 	if (zoneServer == nullptr) {
+		return;
+	}
+
+	auto lootManager = zoneServer->getLootManager();
+
+	if (lootManager == nullptr) {
 		return;
 	}
 
@@ -684,48 +687,73 @@ void PobShipObjectImplementation::awardLootCredits(ShipAiAgent* destructedShip, 
 		return;
 	}
 
-	Locker memberClock(shipLootBox, destructedShip);
+	Locker pilotClock(shipLootBox, destructedShip);
 
-	auto creditChip = zoneServer->createObject(STRING_HASHCODE("object/tangible/item/loot_credit_chip.iff"), 1).castTo<CreditChipObject*>();
+	int lootBoxVolume = shipLootBox->getContainerVolumeLimit();
 
-	if (creditChip == nullptr) {
+	if ((shipLootBox->getCountableObjectsRecursive() + 1) > lootBoxVolume) {
+		pilot->sendSystemMessage("@space/space_loot:loot_box_full"); // "Your loot box is full so your ship cannot hold any more loot."
 		return;
 	}
 
-	Locker creditsClock(creditChip, destructedShip);
+	// Get pilots group for messages
+	Reference<GroupObject*> pilotGroup = nullptr;
 
-	// Set the CreditChip value
-	creditChip->setUseCount(creditSplit);
-
-	// Create TransactionLog
-	TransactionLog trx(destructedShip, shipLootBox, creditChip, TrxCode::CREDITCHIP);
-	trx.addState("pilotID", pilot->getObjectID());
-
-	// Transfer to ShipMembers inventory
-	if (shipLootBox->transferObject(creditChip, -1, true)) {
-		StringIdChatParameter creditsSelfMsg("space/space_loot", "looted_credits_you");
-		creditsSelfMsg.setDI(creditSplit);
-
-		pilot->sendSystemMessage(creditsSelfMsg);
-
-		trx.commit();
-	} else {
-		creditChip->destroyObjectFromWorld(true);
-		creditChip->destroyObjectFromDatabase(true);
-
-		trx.abort() << "Failed to transferObject for CreditChip into POB Ship Loot Box";
-		return;
+	if (pilot->isGrouped()) {
+		pilotGroup = pilot->getGroup();
 	}
-
-	if (!pilot->isGrouped()) {
-		return;
-	}
-
-	auto pilotGroup = pilot->getGroup();
 
 	if (pilotGroup == nullptr) {
 		return;
 	}
+
+	auto creditChip = zoneServer->createObject(STRING_HASHCODE("object/tangible/item/loot_credit_chip.iff"), 1).castTo<CreditChipObject*>();
+
+	if (creditChip != nullptr) {
+		Locker creditsClock(creditChip, destructedShip);
+
+		// Set the CreditChip value
+		creditChip->setUseCount(payout);
+
+		// Create TransactionLog
+		TransactionLog trx(destructedShip, shipLootBox, creditChip, TrxCode::CREDITCHIP);
+		trx.addState("pilotID", pilot->getObjectID());
+
+		// Transfer to ShipMembers inventory
+		if (shipLootBox->transferObject(creditChip, -1, true)) {
+			StringIdChatParameter creditsSelfMsg("space/space_loot", "looted_credits_you");
+			creditsSelfMsg.setDI(payout);
+
+			pilot->sendSystemMessage(creditsSelfMsg);
+
+			trx.commit();
+		} else {
+			creditChip->destroyObjectFromWorld(true);
+			creditChip->destroyObjectFromDatabase(true);
+
+			trx.abort() << "Failed to transferObject for CreditChip into POB Ship Loot Box";
+		}
+	}
+
+	// Award Loot items here
+	int lootRolls = destructedShip->getLootRolls();
+
+	if ((shipLootBox->getCountableObjectsRecursive() + 1) > lootBoxVolume) {
+		pilot->sendSystemMessage("@space/space_loot:loot_box_full"); // "Your loot box is full so your ship cannot hold any more loot."
+	} else {
+		float lootChance = destructedShip->getLootChance();
+
+		const auto lootTable = destructedShip->getLootTable();
+
+
+
+
+
+
+	}
+
+	// Send Group Messages
+
 
 	StringIdChatParameter creditGroupMsg("space/space_loot", "looted_credits");
 	creditGroupMsg.setTT(pilot->getFirstName());

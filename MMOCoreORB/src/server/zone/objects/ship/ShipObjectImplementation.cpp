@@ -1786,7 +1786,7 @@ void ShipObjectImplementation::sendMembersBaseMessage(BaseMessage* message) {
 	delete message;
 }
 
-void ShipObjectImplementation::awardLootCredits(ShipAiAgent* destructedShip, int payout) {
+void ShipObjectImplementation::awardLootItems(ShipAiAgent* destructedShip, int payout) {
 	if (destructedShip == nullptr) {
 		return;
 	}
@@ -1803,55 +1803,85 @@ void ShipObjectImplementation::awardLootCredits(ShipAiAgent* destructedShip, int
 		return;
 	}
 
-	Locker memberClock(pilot, destructedShip);
+	auto lootManager = zoneServer->getLootManager();
+
+	if (lootManager == nullptr) {
+		return;
+	}
+
+	Locker pilotClock(pilot, destructedShip);
 
 	auto inventory = pilot->getInventory();
 
-	if (inventory == nullptr || ((inventory->getCountableObjectsRecursive() + 1) > inventory->getContainerVolumeLimit())) {
+	if (inventory == nullptr) {
+		return;
+	}
+
+	int inventoryVolume = inventory->getContainerVolumeLimit();
+
+	if ((inventory->getCountableObjectsRecursive() + 1) > inventoryVolume) {
+		pilot->sendSystemMessage("@space/space_loot:no_more_loot"); // "Your inventory is full so you cannot receive any more loot."
+		return;
+	}
+
+	// Get pilots group for messages
+	Reference<GroupObject*> pilotGroup = nullptr;
+
+	if (pilot->isGrouped()) {
+		pilotGroup = pilot->getGroup();
+	}
+
+	if (pilotGroup == nullptr) {
 		return;
 	}
 
 	auto creditChip = zoneServer->createObject(STRING_HASHCODE("object/tangible/item/loot_credit_chip.iff"), 1).castTo<CreditChipObject*>();
 
-	if (creditChip == nullptr) {
-		return;
+	if (creditChip != nullptr) {
+		Locker creditsClock(creditChip, destructedShip);
+
+		// Set the CreditChip value
+		creditChip->setUseCount(payout);
+
+		// Create TransactionLog
+		TransactionLog trx(destructedShip, pilot, creditChip, TrxCode::CREDITCHIP);
+
+		// Transfer to ShipMembers inventory
+		if (inventory->transferObject(creditChip, -1, false)) {
+			creditChip->sendTo(pilot, true);
+
+			StringIdChatParameter creditsSelfMsg("space/space_loot", "looted_credits_you");
+			creditsSelfMsg.setDI(payout);
+
+			pilot->sendSystemMessage(creditsSelfMsg);
+
+			trx.commit();
+		} else {
+			creditChip->destroyObjectFromWorld(true);
+			creditChip->destroyObjectFromDatabase(true);
+
+			trx.abort() << "Failed to transferObject for CreditChip to shipMember";
+		}
 	}
 
-	Locker creditsClock(creditChip, destructedShip);
+	// Award Loot items here
+	int lootRolls = destructedShip->getLootRolls();
 
-	// Set the CreditChip value
-	creditChip->setUseCount(payout);
+	for (int i = 0; i < lootRolls; i++) {
+		if ((inventory->getCountableObjectsRecursive() + 1) > inventoryVolume) {
+			pilot->sendSystemMessage("@space/space_loot:no_more_loot"); // "Your inventory is full so you cannot receive any more loot."
+			break;
+		} else {
+			float lootChance = destructedShip->getLootChance();
+			const auto lootTable = destructedShip->getLootTable();
 
-	// Create TransactionLog
-	TransactionLog trx(destructedShip, pilot, creditChip, TrxCode::CREDITCHIP);
 
-	// Transfer to ShipMembers inventory
-	if (inventory->transferObject(creditChip, -1, false)) {
-		creditChip->sendTo(pilot, true);
 
-		StringIdChatParameter creditsSelfMsg("space/space_loot", "looted_credits_you");
-		creditsSelfMsg.setDI(payout);
-
-		pilot->sendSystemMessage(creditsSelfMsg);
-
-		trx.commit();
-	} else {
-		creditChip->destroyObjectFromWorld(true);
-		creditChip->destroyObjectFromDatabase(true);
-
-		trx.abort() << "Failed to transferObject for CreditChip to shipMember";
-		return;
+		}
 	}
 
-	if (!pilot->isGrouped()) {
-		return;
-	}
+	// Send Group Messages
 
-	auto pilotGroup = pilot->getGroup();
-
-	if (pilotGroup == nullptr) {
-		return;
-	}
 
 	StringIdChatParameter creditGroupMsg("space/space_loot", "looted_credits");
 	creditGroupMsg.setTT(pilot->getFirstName());
