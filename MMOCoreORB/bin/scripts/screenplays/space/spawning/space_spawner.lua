@@ -112,9 +112,42 @@ function SpaceSpawnerScreenPlay:spawnShipAgent(pNil, indexString)
 
 		createObserver(SHIPAGENTDESPAWNED, self.screenplayName, "onDespawn", pShipAgent)
 
-		if (shipType == SHIP_AI_FIXED_PATROL) then
+		if (spawnType == SHIP_AI_FIXED_PATROL) then
 			LuaShipAiAgent(pShipAgent):setFixedPatrol()
-		elseif (shipType == SHIP_AI_GUARD_PATROL) then
+
+			local totalToAdd = spawnTable[11]
+			local patrolPoints = spawnTable[12]
+			local count = 1
+
+			-- Get the max value we can start at in the table
+			local startPoint = #patrolPoints - totalToAdd
+
+			if (startPoint < 1) then
+				startPoint = 1
+			end
+
+			startPoint = getRandomNumber(1, startPoint)
+
+			--print(shipName .. " -- Fixed patrol spawn - Total Points to add: " .. totalToAdd .. " Table Size: " .. #patrolPoints .. " Start Point: " .. startPoint)
+
+			while (totalToAdd >= count) do
+				local patrolName = patrolPoints[startPoint]
+
+				LuaShipAiAgent(pShipAgent):addFixedPatrolPoint(patrolName)
+
+				--print(shipName .. " -- adding point #" .. startPoint .. " Point: " .. patrolName)
+
+				-- Increase count
+				count = count + 1
+				-- Increase start point
+				startPoint = startPoint + 1
+
+				-- Some spawns have smaller set of patrol points, so start over at the first
+				if (startPoint > #patrolPoints) then
+					startPoint = 1
+				end
+			end
+		elseif (spawnType == SHIP_AI_GUARD_PATROL) then
 			LuaShipAiAgent(pShipAgent):setMinimumGuardPatrol(spawnTable[10])
 			LuaShipAiAgent(pShipAgent):setMaximumGuardPatrol(spawnTable[11])
 
