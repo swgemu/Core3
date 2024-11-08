@@ -55,9 +55,6 @@ class PobShipObject extends ShipObject {
 	@local
 	public native abstract void loadTemplateData(SharedObjectTemplate templateData);
 
-	@local
-	public native abstract void loadTemplateData(SharedShipObjectTemplate shipTemp);
-
 	@preLocked
 	public native void createChildObjects();
 
@@ -164,9 +161,9 @@ class PobShipObject extends ShipObject {
 	 */
 	public native void destroyAllPlayerItems();
 
-	@dirty
+	@preLocked
 	@arg1preLocked
-	public abstract native void awardLootCredits(ShipAiAgent destructedShip, int payout);
+	public abstract native void awardLootItems(ShipAiAgent destructedShip, int payout);
 
 	@dirty
 	public CellObject getCell(int idx) {

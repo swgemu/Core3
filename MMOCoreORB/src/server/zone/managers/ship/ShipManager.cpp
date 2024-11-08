@@ -913,13 +913,9 @@ int ShipManager::notifyDestruction(ShipObject* destructorShip, ShipAiAgent* dest
 	destructedShip->wipeBlackboard();
 	destructedShip->clearRunningChain();
 
-	if (destructorShip == nullptr) {
-		return 1;
-	}
-
 	auto zoneServer = destructorShip->getZoneServer();
 
-	if (zoneServer == nullptr) {
+	if (zoneServer == nullptr || zoneServer->isServerShuttingDown()) {
 		return 1;
 	}
 
@@ -951,18 +947,17 @@ int ShipManager::notifyDestruction(ShipObject* destructorShip, ShipAiAgent* dest
 		auto highestShip = copyThreatMap.getHighestDamagePlayerShip();
 
 		if (highestShip != nullptr) {
+			Locker highestLock(highestShip, destructedShip);
+
 			int minCredits = destructedShip->getMinLootCredits();
 			int maxCredits = destructedShip->getMaxLootCredits();
+			int randomPayout = 0;
 
 			if (maxCredits > 0) {
-				int randomPayout = System::random(maxCredits - minCredits) + minCredits;
-
-				highestShip->awardLootCredits(destructedShip, randomPayout);
+				randomPayout = System::random(maxCredits - minCredits) + minCredits;
 			}
 
-			// TODO: Grant Loot here
-
-
+			highestShip->awardLootItems(destructedShip, randomPayout);
 		}
 
 		// Quest Kill Observers

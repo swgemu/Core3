@@ -671,15 +671,21 @@ bool LootManagerImplementation::createLoot(TransactionLog& trx, SceneObject* con
 }
 
 uint64 LootManagerImplementation::createLoot(TransactionLog& trx, SceneObject* container, ShipAiAgent* shipAgent) {
+	if (container == nullptr || shipAgent == nullptr) {
+		return 0;
+	}
+
 	String lootMapEntry = shipAgent->getLootTable();
 
 	if (!lootGroupMap->lootGroupExists(lootMapEntry) && !lootGroupMap->lootItemExists(lootMapEntry)) {
 		return 0;
 	}
 
-	float lootChance = shipAgent->getLootChance();
+	float lootChanceFloat = shipAgent->getLootChance();
+	uint32 lootChance = lootChanceFloat * 10000000;
+	uint32 playerRoll = System::random(10000000);
 
-	if (System::frandom() > lootChance) {
+	if (playerRoll > lootChance) {
 		return 0;
 	}
 

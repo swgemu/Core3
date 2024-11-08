@@ -2279,8 +2279,6 @@ void PlayerManagerImplementation::disseminateSpaceExperience(ShipAiAgent* destru
 
 			// Award Faction Points to overt players
 			if (shipMember->getFactionStatus() == FactionStatus::OVERT && (imperialReward != 0 || rebelReward != 0)) {
-
-
 				FactionManager* factionManager = FactionManager::instance();
 				factionManager->awardSpaceFactionPoints(shipMember, shipTypeHash, factionName, shipDifficulty, totalPlayers, imperialReward, rebelReward);
 			}

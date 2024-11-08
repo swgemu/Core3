@@ -223,6 +223,28 @@ class ShipAiAgent extends FighterShipObject {
 
 		coordinateMin = -8192;
 		coordinateMax = 8192;
+
+		agentTemplate = null;
+
+		experienceValue = 0;
+
+		lootChance = 0;
+		lootRolls = 0;
+
+		lootTable = "";
+
+		minCredits = 0;
+		maxCredits = 0;
+
+		imperialFactionReward = 0;
+		rebelFactionReward = 0;
+
+		conversationTemplate = 0;
+		conversationMobile = 0;
+		conversationMessage = 0;
+
+		minGuardPatrol = 0;
+		maxGuardPatrol = 0;
 	}
 
 	/**
@@ -641,7 +663,7 @@ class ShipAiAgent extends FighterShipObject {
 	}
 
 	public int getLootRolls() {
-		return lootChance;
+		return lootRolls;
 	}
 
 	@dereferenced

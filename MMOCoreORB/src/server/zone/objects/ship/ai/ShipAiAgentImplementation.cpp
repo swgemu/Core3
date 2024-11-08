@@ -323,10 +323,6 @@ void ShipAiAgentImplementation::initializeTransientMembers() {
 	setHyperspacing(false);
 
 	missileLockTime = 0;
-
-	lootChance = 0.f;
-	lootRolls = 0;
-	lootTable = "";
 }
 
 void ShipAiAgentImplementation::notifyInsertToZone(Zone* zone) {

@@ -18,6 +18,7 @@
 #include "server/zone/packets/cell/UpdateCellPermissionsMessage.h"
 #include "server/zone/objects/ship/ai/ShipAiAgent.h"
 #include "server/zone/objects/tangible/item/CreditChipObject.h"
+#include "server/zone/managers/loot/LootManager.h"
 
 void PobShipObjectImplementation::notifyLoadFromDatabase() {
 	CreatureObject* owner = getOwner().get();
@@ -31,19 +32,17 @@ void PobShipObjectImplementation::notifyLoadFromDatabase() {
 
 void PobShipObjectImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
 	ShipObjectImplementation::loadTemplateData(templateData);
-}
 
-void PobShipObjectImplementation::loadTemplateData(SharedShipObjectTemplate* ssot) {
-	if (ssot == nullptr) {
+	auto shipTemp = dynamic_cast<SharedShipObjectTemplate*>(templateData);
+
+	if (shipTemp == nullptr) {
 		return;
 	}
-
-	ShipObjectImplementation::loadTemplateData(ssot);
 
 	setContainerVolumeLimit(0xFFFFFFFF);
 	setContainerType(2);
 
-	const auto sparkLocs = ssot->getSparkLocations();
+	const auto sparkLocs = shipTemp->getSparkLocations();
 
 	for (int i = 0; i < sparkLocs.size(); i++) {
 		String cellName = sparkLocs.elementAt(i).getKey();
@@ -55,7 +54,7 @@ void PobShipObjectImplementation::loadTemplateData(SharedShipObjectTemplate* sso
 		}
 	}
 
-	const auto launchLocs = ssot->getLaunchLocations();
+	const auto launchLocs = shipTemp->getLaunchLocations();
 
 	for (int i = 0; i < launchLocs.size(); i++) {
 		String cellName = launchLocs.elementAt(i).getKey();
@@ -664,17 +663,20 @@ void PobShipObjectImplementation::destroyAllPlayerItems() {
 	}
 }
 
-void PobShipObjectImplementation::awardLootCredits(ShipAiAgent* destructedShip, int payout) {
+void PobShipObjectImplementation::awardLootItems(ShipAiAgent* destructedShip, int payout) {
 	if (destructedShip == nullptr || shipLootBox == nullptr) {
 		return;
 	}
 
-	int totalPlayersOnboard = getTotalPlayersOnBoard();
-	int creditSplit = payout / totalPlayersOnboard;
-
 	auto zoneServer = getZoneServer();
 
 	if (zoneServer == nullptr) {
+		return;
+	}
+
+	auto lootManager = zoneServer->getLootManager();
+
+	if (lootManager == nullptr) {
 		return;
 	}
 
@@ -684,54 +686,97 @@ void PobShipObjectImplementation::awardLootCredits(ShipAiAgent* destructedShip, 
 		return;
 	}
 
-	Locker memberClock(shipLootBox, destructedShip);
+	Locker pilotClock(shipLootBox, destructedShip);
+
+	int lootBoxVolume = shipLootBox->getContainerVolumeLimit();
+
+	// Initial LootBox check can return if full
+	if ((shipLootBox->getCountableObjectsRecursive() + 1) > lootBoxVolume) {
+		pilot->sendSystemMessage("@space/space_loot:loot_box_full"); // "Your loot box is full so your ship cannot hold any more loot."
+		return;
+	}
+
+	// Get pilots group for messages
+	Reference<GroupObject*> pilotGroup = nullptr;
+
+	if (pilot->isGrouped()) {
+		pilotGroup = pilot->getGroup();
+	}
+
+	// Main Loot TransactionLog
+	TransactionLog trx(TrxCode::NPCLOOT, destructedShip);
 
 	auto creditChip = zoneServer->createObject(STRING_HASHCODE("object/tangible/item/loot_credit_chip.iff"), 1).castTo<CreditChipObject*>();
 
-	if (creditChip == nullptr) {
-		return;
+	if (creditChip != nullptr) {
+		Locker creditsClock(creditChip, destructedShip);
+
+		// Set the CreditChip value
+		creditChip->setUseCount(payout);
+
+		// Create CreditChip TransactionLog
+		TransactionLog trxChip(TrxCode::CREDITCHIP, shipLootBox, creditChip, true);
+
+		trxChip.addState("pilotID", pilot->getObjectID());
+
+		// Transfer to POB LootBox
+		if (shipLootBox->transferObject(creditChip, -1, true)) {
+			StringIdChatParameter creditsSelfMsg("space/space_loot", "looted_credits_you");
+			creditsSelfMsg.setDI(payout);
+
+			pilot->sendSystemMessage(creditsSelfMsg);
+
+			trxChip.groupWith(trx);
+
+			if (pilotGroup != nullptr) {
+				StringIdChatParameter creditGroupMsg("space/space_loot", "looted_credits");
+				creditGroupMsg.setTT(pilot->getFirstName());
+				creditGroupMsg.setDI(payout);
+
+				pilotGroup->sendSystemMessage(creditGroupMsg, pilot);
+			}
+		} else {
+			creditChip->destroyObjectFromWorld(true);
+			creditChip->destroyObjectFromDatabase(true);
+
+			trx.abort() << "Failed to transferObject for CreditChip into POB Ship Loot Box";
+		}
 	}
 
-	Locker creditsClock(creditChip, destructedShip);
+	// Award Loot items here
+	int lootRolls = destructedShip->getLootRolls();
+	const auto lootTable = destructedShip->getLootTable();
 
-	// Set the CreditChip value
-	creditChip->setUseCount(creditSplit);
+	for (int i = 0; i < lootRolls; i++) {
+		// Check if there is space in players inventory, if not do not itterate anymore attempts
+		if ((shipLootBox->getCountableObjectsRecursive() + 1) > lootBoxVolume) {
+			pilot->sendSystemMessage("@space/space_loot:loot_box_full"); // "Your loot box is full so your ship cannot hold any more loot."
+			break;
+		}
 
-	// Create TransactionLog
-	TransactionLog trx(destructedShip, shipLootBox, creditChip, TrxCode::CREDITCHIP);
-	trx.addState("pilotID", pilot->getObjectID());
+		uint64 lootObjectID = lootManager->createLoot(trx, shipLootBox, destructedShip);
 
-	// Transfer to ShipMembers inventory
-	if (shipLootBox->transferObject(creditChip, -1, true)) {
-		StringIdChatParameter creditsSelfMsg("space/space_loot", "looted_credits_you");
-		creditsSelfMsg.setDI(creditSplit);
+		if (lootObjectID < 1) {
+			continue;
+		}
 
-		pilot->sendSystemMessage(creditsSelfMsg);
+		// Send Pilot Message
+		StringIdChatParameter itemSelfMsg("space/space_loot", "looted_item_you"); // "You have looted an item: %TO."
+		itemSelfMsg.setTO(lootObjectID);
 
-		trx.commit();
-	} else {
-		creditChip->destroyObjectFromWorld(true);
-		creditChip->destroyObjectFromDatabase(true);
+		pilot->sendSystemMessage(itemSelfMsg);
 
-		trx.abort() << "Failed to transferObject for CreditChip into POB Ship Loot Box";
-		return;
+		// Send Group Messages
+		if (pilotGroup != nullptr) {
+			StringIdChatParameter itemGroupMsg("space/space_loot", "looted_item"); // "%TT has looted an item: %TO."
+			itemGroupMsg.setTT(pilot->getFirstName());
+			itemGroupMsg.setTO(lootObjectID);
+
+			pilotGroup->sendSystemMessage(itemGroupMsg, pilot);
+		}
 	}
 
-	if (!pilot->isGrouped()) {
-		return;
-	}
-
-	auto pilotGroup = pilot->getGroup();
-
-	if (pilotGroup == nullptr) {
-		return;
-	}
-
-	StringIdChatParameter creditGroupMsg("space/space_loot", "looted_credits");
-	creditGroupMsg.setTT(pilot->getFirstName());
-	creditGroupMsg.setDI(payout);
-
-	pilotGroup->sendSystemMessage(creditGroupMsg, false);
+	trx.commit(true);
 }
 
 PobShipObject* PobShipObject::asPobShip() {

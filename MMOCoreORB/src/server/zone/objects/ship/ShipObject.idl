@@ -1686,9 +1686,9 @@ class ShipObject extends TangibleObject {
 	@local
 	public native void sendMembersBaseMessage(BaseMessage message);
 
-	@dirty
+	@preLocked
 	@arg1preLocked
-	public abstract native void awardLootCredits(ShipAiAgent destructedShip, int payout);
+	public abstract native void awardLootItems(ShipAiAgent destructedShip, int payout);
 
 	public native boolean isShipLaunched();
 
