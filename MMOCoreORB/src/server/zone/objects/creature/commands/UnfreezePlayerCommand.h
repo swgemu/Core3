@@ -70,6 +70,7 @@ public:
 			targetGhost->setMutedReason(mutedResonse);
 
 			targetPlayer->removeStateBuff(CreatureState::FROZEN);
+			targetPlayer->clearState(CreatureState::FROZEN, true);
 			targetPlayer->setSpeedMultiplierBase(1.f, true);
 
 			targetPlayer->sendSystemMessage("You have been unfrozen and unmuted by \'" + player->getFirstName() + "\'");

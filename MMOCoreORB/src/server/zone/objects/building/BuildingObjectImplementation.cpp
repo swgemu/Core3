@@ -621,7 +621,7 @@ void BuildingObjectImplementation::notifyDissapear(TreeEntry* object) {
 		}
 
 		try {
-			for (int j = 0; j < cell->getContainerObjectsSize(); ++j) {
+			for (int j = cell->getContainerObjectsSize() - 1; j >= 0 ; j--) {
 				auto child = cell->getContainerObject(j);
 
 				// Child should not remove itself
@@ -649,7 +649,7 @@ void BuildingObjectImplementation::notifyDissapear(TreeEntry* object) {
 				}
 			}
 		} catch (const Exception& exception) {
-			warning() << "Could not remove all container objects in BuildingObject::notifyDissapear -- Object Leaving Range: " << sceneO->getDisplayedName() << " ID: " << sceneO->getObjectID();
+			warning() << "Could not remove all container objects in BuildingObject::notifyDissapear -- ID: " << getObjectID() << " -- Object Leaving Range: " << sceneO->getDisplayedName() << " ID: " << sceneO->getObjectID();
 
 			exception.printStackTrace();
 		}
