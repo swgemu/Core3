@@ -1,7 +1,7 @@
 #ifndef TRANSFORM_H_
 #define TRANSFORM_H_
 
-// #define TRANSFORM_DEBUG
+#define TRANSFORM_DEBUG
 
 #include "server/zone/objects/creature/CreatureObject.h"
 
@@ -260,6 +260,10 @@ public:
 		if (message.beginsWith("warning") || message.beginsWith("error")) {
 			sendSystemMessage(creature, newPosition, message, deltaTime);
 		}
+
+		if (creature->isPlayerCreature()) {
+			creature->info(true) << message;
+		}
 	}
 
 	void sendFlyText(CreatureObject* creature, const String& type, int deltaTime) const {
@@ -368,6 +372,7 @@ public:
 
 		//creature->info(true) << msg.toString();
 		creature->sendSystemMessage(msg.toString());
+		creature->info(true) << msg.toString();
 	}
 #endif // TRANSFORM_DEBUG
 };
