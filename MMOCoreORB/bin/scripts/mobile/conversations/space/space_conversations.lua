@@ -36,3 +36,7 @@ includeFile("conversations/space/greeters/j1_p0_convo.lua")
 includeFile("conversations/space/greeters/vincie_kalhoon_convo.lua")
 includeFile("conversations/space/greeters/mooch_davoney_convo.lua")
 includeFile("conversations/space/greeters/guillo_parootchie_convo.lua")
+
+-- Coronet
+includeFile("conversations/space/greeters/io_tsomcren_convo.lua")
+includeFile("conversations/space/greeters/ral_mundi_convo.lua")
