@@ -44,7 +44,9 @@ public:
 
 		insertFloat(speed);
 
-		sceneO->debug() << "DataTransform sent.";
+		/*if (sceneO->isPlayerCreature())
+			sceneO->info(true) << "DataTransform sent 1 -- X: " << sceneO->getPositionX() << " Z: " << sceneO->getPositionZ() << " Y: " << sceneO->getPositionY();
+		*/
 	}
 
 	DataTransform(SceneObject* sceneO, const Vector3& position) : ObjectControllerMessage(sceneO->getObjectID(), 0x1B, 0x71) {
@@ -66,7 +68,9 @@ public:
 
 		insertFloat(speed);
 
-		sceneO->debug() << "DataTransform sent.";
+		/*if (sceneO->isPlayerCreature())
+			sceneO->info(true) << "DataTransform sent 2.";
+		*/
 	}
 };
 
@@ -100,7 +104,7 @@ public:
 	void parse(Message* message) {
 		transform.parseDataTransform(message);
 
-		debug() << "DataTransform parsed.";
+		debug() << "DataTransform parsed - X: " << transform.getPositionX() << " Z: " << transform.getPositionZ() << " Y: " << transform.getPositionY();
 	}
 
 	void updateError(CreatureObject* creO, const String& message, bool bounceBack = false) const {
@@ -163,6 +167,7 @@ public:
 		if (ghost->isForcedTransform()) {
 			validPosition = *ghost->getLastValidatedPosition();
 		} else {
+			// Update Valid Position
 			validPosition.update(creO);
 		}
 
@@ -258,12 +263,28 @@ public:
 			return updateError(creO, "animationLock", true);
 		}
 
-		if (playerManager->checkSpeedHackFirstTest(creO, transform.getSpeed() , validPosition, 1.1f) != 0) {
-			return updateError(creO, "!checkSpeedHackFirstTest");
+		float transformSpeed = transform.getSpeed();
+
+		if (playerManager->checkSpeedHackFirstTest(creO, transformSpeed, validPosition, 1.1f) != 0) {
+			return updateError(creO, "!checkSpeedHackFirstTest", true);
 		}
 
 		if (playerManager->checkSpeedHackSecondTest(creO, transform.getPositionX(), positionZ, transform.getPositionY(), transform.getTimeStamp(), nullptr) != 0) {
-			return updateError(creO, "!checkSpeedHackSecondTest");
+			return updateError(creO, "!checkSpeedHackSecondTest", true);
+		}
+
+		const auto playerPosition = (transform.getParentID() > 0) ? creO->getPosition() : creO->getWorldPosition();
+		const auto transformPosition = transform.getPosition();
+
+		float sqDistance = playerPosition.squaredDistanceTo(transformPosition);
+
+		StringBuffer msg;
+		msg <<  "Next Position Dist Sq: " << sqDistance << " Player Position: " << playerPosition.toString() << " Speed: " << transformSpeed;
+
+		creO->info(true) << msg.toString();
+
+		if (sqDistance > (20.f * 20.f)) {
+			return updateError(creO, "!updateMovementDist", true);
 		}
 
 		playerManager->updateSwimmingState(creO, positionZ, &intersections, closeObjects);
@@ -284,6 +305,7 @@ public:
 
 	void updateStatic(CreatureObject* creO, SceneObject* parent) {
 		bool synchronize = transform.isSynchronizeUpdate(creO->getDirection(), creO->getCurrentSpeed());
+
 		if (synchronize && deltaTime < Transform::SYNCDELTA) {
 			return updateError(creO, "inertUpdate");
 		}
@@ -299,13 +321,29 @@ public:
 			direction.normalize();
 		}
 
+		float transformSpeed = transform.getSpeed();
+
+		const auto playerPosition = (transform.getParentID() > 0) ? creO->getPosition() : creO->getWorldPosition();
+		const auto transformPosition = transform.getPosition();
+
+		float sqDistance = playerPosition.squaredDistanceTo(transformPosition);
+
+		StringBuffer msg;
+		msg <<  "Next Position Dist Sq: " << sqDistance << " Player Position: " << playerPosition.toString() << " Speed: " << transformSpeed;
+
+		creO->info(true) << msg.toString();
+
+		if (sqDistance > (2.f * 2.f)) {
+			return updateError(creO, "!staticMovementDist", true);
+		}
+
 		creO->setDirection(direction);
 		creO->setCurrentSpeed(0.f);
 
 		updateTransform(creO, parent, creO->getPosition());
 
 		if (synchronize) {
-			auto data = new DataTransform(creO, transform.getPosition());
+			auto data = new DataTransform(creO, transformPosition);
 			creO->sendMessage(data);
 		}
 	}
