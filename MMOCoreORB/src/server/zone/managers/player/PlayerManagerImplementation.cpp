@@ -3944,76 +3944,144 @@ void PlayerManagerImplementation::updateSwimmingState(CreatureObject* player, fl
 	player->clearState(CreatureState::SWIMMING, true);
 }
 
-int PlayerManagerImplementation::checkSpeedHackFirstTest(CreatureObject* player, float parsedSpeed, ValidatedPosition& teleportPosition, float errorMultiplier) {
+bool PlayerManagerImplementation::checkPlayerSpeedTest(CreatureObject* player, SceneObject* parent, float parsedSpeed, ValidatedPosition& teleportPosition, const Vector3& newWorldPosition, float errorMultiplier) {
 	float allowedSpeedMod = player->getSpeedMultiplierMod();
 	float allowedSpeedBase = player->getRunSpeed();
 
-	ManagedReference<SceneObject*> parent = player->getParent().get();
 	SpeedMultiplierModChanges* changeBuffer = player->getSpeedMultiplierModChanges();
 
 	Vector3 teleportPoint = teleportPosition.getPosition();
 	uint64 teleportParentID = teleportPosition.getParent();
 
-	if (parent != nullptr && parent->isVehicleObject()) {
-		VehicleObject* vehicle = cast<VehicleObject*>( parent.get());
+	if (parent != nullptr) {
+		if (parent->isVehicleObject()) {
+			VehicleObject* vehicle = cast<VehicleObject*>(parent);
 
-		allowedSpeedMod = vehicle->getSpeedMultiplierMod();
-		allowedSpeedBase = vehicle->getRunSpeed();
-	} else if (parent != nullptr && parent->isMount()) {
-		Creature* mount = cast<Creature*>( parent.get());
+			allowedSpeedMod = vehicle->getSpeedMultiplierMod();
+			allowedSpeedBase = vehicle->getRunSpeed();
+		} else if (parent->isMount()) {
+			Creature* mount = cast<Creature*>(parent);
 
-		allowedSpeedMod = mount->getSpeedMultiplierMod();
+			allowedSpeedMod = mount->getSpeedMultiplierMod();
 
-		PetManager* petManager = server->getPetManager();
+			PetManager* petManager = server->getPetManager();
 
-		if (petManager != nullptr) {
-			allowedSpeedBase = petManager->getMountedRunSpeed(mount);
+			if (petManager != nullptr) {
+				allowedSpeedBase = petManager->getMountedRunSpeed(mount);
+			}
 		}
-
 	}
 
 	float maxAllowedSpeed = allowedSpeedMod * allowedSpeedBase;
 
-	if (parsedSpeed > maxAllowedSpeed * errorMultiplier) {
-		//float delta = abs(parsedSpeed - maxAllowedSpeed);
+	player->info() << "checkPlayerSpeedTest -- parsedSpeed: " << parsedSpeed << " Teleport position: " << teleportPoint.toString();
+
+	/*
+	// Z Coordinate Check
+	float oldValidZ = teleportPoint.getZ();
+	float newPosZ = newWorldPosition.getZ();
+
+	if (newPosZ > oldValidZ) {
+		float heightDist = fabs(newPosZ - oldValidZ);
+		float slopeMod = player->getSlopeModPercent();
+
+		if (slopeMod > 0.f) {
+			parsedSpeed += (parsedSpeed * (slopeMod / 100.f));
+		}
+
+		parsedSpeed += (heightDist * 0.75f); // Account for players moving quickly up and down steep slopes
+
+		if (heightDist > parsedSpeed) {
+			StringBuffer msg;
+			msg << "checkSpeedHackTests -- FAILED --  heightDist: " << heightDist << " speed: " << parsedSpeed << " Slope Mod Percentage: " << slopeMod;
+			player->info(msg.toString(), true);
+
+			return false;
+		}
+	}
+	*/
+
+	if (parsedSpeed > (maxAllowedSpeed * errorMultiplier)) {
+		// Outdoors get proper Z to try to prevent getting players stuck in terrain
+		if (teleportParentID == 0) {
+			auto zone = player->getZone();
+
+			if (zone == nullptr) {
+				return false;
+			}
+
+			// Proper Z for players being bounced back and stuck in terrain
+			teleportPoint.setZ(zone->getHeight(teleportPoint.getX(), teleportPoint.getY()));
+		}
+
+		if (parsedSpeed > 40.f) {
+			player->setRootedState(7 * 24 * 60 * 60);
+			player->setState(CreatureState::FROZEN, true);
+			player->setSpeedMultiplierBase(0.f, true);
+
+			player->sendSystemMessage("You have been frozen by the system. Please go to SWGEmu Support.");
+
+			player->error() << "Possible Speed Hack Attempt. Player has been frozen. - Player: " << player->getDisplayedName() << " ID: " << player->getObjectID() << " Speed Variable: " << parsedSpeed << " Last Validated World Position: " << teleportPoint.toString() << " Last Valid Parent: " << teleportPosition.getParent() << " New World Position: " << newWorldPosition.toString();
+
+			Reference<CreatureObject*> playerRef = player;
+
+			Core::getTaskManager()->scheduleTask([playerRef, teleportPoint, teleportParentID] () {
+				if (playerRef == nullptr) {
+					return;
+				}
+
+				auto zone = playerRef->getZone();
+
+				if (zone == nullptr) {
+					return;
+				}
+
+				Locker lock(playerRef);
+
+				playerRef->info() << "switchZone for player -- Position: " << teleportPoint.toString() << " ID: " << teleportParentID;
+
+				playerRef->switchZone(zone->getZoneName(), teleportPoint.getX(), teleportPoint.getZ(), teleportPoint.getY(), teleportParentID);
+			}, "SpeedHackTransportLambda", 5000);
+
+			return false;
+		}
 
 		if (changeBuffer->size() == 0) { // no speed changes
 			auto msg = player->info();
-			msg << "checkSpeedHackFirstTest -- FAILED -- changeBuffer - Max Allowed Speed: " << maxAllowedSpeed * errorMultiplier;
-			msg << " Parsed Speed: " << parsedSpeed << endl;
+			msg << "checkPlayerSpeedTest -- FAILED -- changeBuffer - Max Allowed Speed: " << maxAllowedSpeed * errorMultiplier;
+			msg << " Parsed Speed: " << parsedSpeed;
 			msg.flush();
 
 			player->teleport(teleportPoint.getX(), teleportPoint.getZ(), teleportPoint.getY(), teleportParentID);
 
-			return 1;
+			return false;
 		}
 
 		SpeedModChange* firstChange = &changeBuffer->get(changeBuffer->size() - 1);
 		const Time* timeStamp = &firstChange->getTimeStamp();
 
-		if (timeStamp->miliDifference() > 2000) { // we already should have lowered the speed, 2 seconds lag
+		// we already should have lowered the speed, 2 seconds lag
+		if (timeStamp->miliDifference() > 2000) {
 			auto msg = player->info();
-			msg << endl << "checkSpeedHackFirstTest -- FAILED -- Due to timeStamp: " << timeStamp->miliDifference() << " Max Allowed Speed: " << maxAllowedSpeed * errorMultiplier;
+			msg << endl << "checkPlayerSpeedTest -- FAILED -- Due to timeStamp diff: " << timeStamp->miliDifference() << " with Max Allowed Speed: " << maxAllowedSpeed * errorMultiplier;
 			msg << " Parsed Speed: " << parsedSpeed << endl;
-
 			msg.flush();
 
 			player->teleport(teleportPoint.getX(), teleportPoint.getZ(), teleportPoint.getY(), teleportParentID);
 
-			return 1;
+			return false;
 		}
 
 		for (int i = 0; i < changeBuffer->size() - 1; ++i) {
 			SpeedModChange* change = &changeBuffer->get(i);
-			//Time timeStamp = change->getTimeStamp();
 
 			float oldSpeedMod = change->getNewSpeed();
 			float allowed = allowedSpeedBase * oldSpeedMod * errorMultiplier;
 
 			if (allowed >= parsedSpeed) {
-				player->info() << "checkSpeedHackFirstTest -- PASSED";
+				player->info(true) << "checkPlayerSpeedTest -- PASSED";
 
-				return 0; // no hack detected
+				return true; // no hack detected
 			}
 
 			if (allowed > maxAllowedSpeed)
@@ -4021,118 +4089,116 @@ int PlayerManagerImplementation::checkSpeedHackFirstTest(CreatureObject* player,
 		}
 
 		auto msg = player->info();
-		msg << "checkSpeedHackFirstTest -- FAILED -- Max Allowed Speed: " << maxAllowedSpeed;
-		msg << " Parsed Speed: " << parsedSpeed;
-		msg << " changeBufferSize: " << changeBuffer->size();
-
+		msg << "checkPlayerSpeedTest -- FAILED -- Max Allowed Speed: " << maxAllowedSpeed << " Parsed Speed: " << parsedSpeed << " changeBufferSize: " << changeBuffer->size();
 		msg.flush();
 
 		player->teleport(teleportPoint.getX(), teleportPoint.getZ(), teleportPoint.getY(), teleportParentID);
 
-		return 1;
+		return false;
 	}
 
-	player->info() << "checkSpeedHackFirstTest -- PASSED";
+	player->info() << "checkPlayerSpeedTest -- PASSED";
 
-	return 0;
+	return true;
 }
 
-int PlayerManagerImplementation::checkSpeedHackSecondTest(CreatureObject* player, float newX, float newZ, float newY, uint32 newStamp, SceneObject* newParent, bool spaceZone) {
-	auto ghost = player->getPlayerObject();
+bool PlayerManagerImplementation::checkSpeedHackTests(CreatureObject* player, PlayerObject* ghost, const Vector3& newPosition, uint32 newStamp, SceneObject* newParent) {
+	if (player == nullptr || ghost == nullptr) {
+		player->info()  << "checkSpeedHackTests -- FAILED -- null player or ghost";
+		return false;
+	}
+
+	// Not running tests again privileged characters
+	if (ghost->isPrivileged()) {
+		return true;
+	}
 
 	// newStamp - stamp;
 	uint32 deltaTime = ghost->getServerMovementTimeDelta();
 
 	if (deltaTime < 1000) {
-		player->debug() << "checkSpeedHackSecondTest -- PASSED -- deltaTime hasnt passed yet";
-		return 0;
+		player->info()  << "checkSpeedHackTests -- PASSED -- deltaTime hasnt passed yet";
+		return true;
 	}
 
 	uint32 stamp = ghost->getClientLastMovementStamp();
 
 	if (stamp > newStamp) {
-		player->debug() << "checkSpeedHackSecondTest -- FAILED -- older client movement stamp received";
-		return 1;
+		player->info()  << "checkSpeedHackTests -- FAILED -- older client movement stamp received";
+		return false;
 	}
 
-	Vector3 newWorldPosition(newX, newY, newZ);
+	ManagedReference<SceneObject*> parent = player->getParent().get();
 
-	player->debug() << "checkSpeedHackSecondTest ---- Checking - new Position X = " << newWorldPosition.getX() << " Z = " << newWorldPosition.getZ() << " Y = " << newWorldPosition.getY();
+	Vector3 newWorldPosition(newPosition);
+	ValidatedPosition* lastValidatedPosition = ghost->getLastValidatedPosition();
+	Vector3 lastValidatedWorldPosition = lastValidatedPosition->getWorldPosition(server);
+
+	player->info() << "checkSpeedHackTests ---- Checking - new Position X = " << newWorldPosition.getX() << " Z = " << newWorldPosition.getZ() << " Y = " << newWorldPosition.getY();
 
 	if (newParent != nullptr) {
 		ManagedReference<SceneObject*> root = newParent->getRootParent();
 
 		if (!root->isBuildingObject() && !root->isShipObject()) {
-			return 1;
+			return false;
 		}
+
+		float newX = newPosition.getX();
+		float newY = newPosition.getY();
 
 		float length = Math::sqrt(newX * newX + newY * newY);
 		float angle = root->getDirection()->getRadians() + atan2(newX, newY);
 
 		newWorldPosition.setX(root->getPositionX() + (sin(angle) * length));
 		newWorldPosition.setY(root->getPositionY() + (cos(angle) * length));
-		newWorldPosition.setZ(root->getPositionZ() + newZ);
+		newWorldPosition.setZ(root->getPositionZ() + newPosition.getZ());
 
-		player->debug() << "checkSpeedHackSecondTest -- Parent Transform newWorldPosition X = " << newWorldPosition.getX() << " Z = " << newWorldPosition.getZ() << " Y = " << newWorldPosition.getY() << " Distance Length = " << length;
+		player->info()  << "checkSpeedHackTests -- Parent Transform newWorldPosition X = " << newWorldPosition.getX() << " Z = " << newWorldPosition.getZ() << " Y = " << newWorldPosition.getY() << " Distance Length = " << length;
 	}
 
-	ValidatedPosition* lastValidatedPosition = ghost->getLastValidatedPosition();
-
-	Vector3 lastValidatedWorldPosition = lastValidatedPosition->getWorldPosition(server);
-
-	//ignoring Z untill we have all heightmaps
-	float oldValidZ = lastValidatedWorldPosition.getZ();
-	float oldNewPosZ = newWorldPosition.getZ();
-
-	if (!spaceZone) {
-		lastValidatedWorldPosition.setZ(0);
-		newWorldPosition.setZ(0);
-	}
+	// Hills cause issues
+	lastValidatedWorldPosition.setZ(0);
+	newWorldPosition.setZ(0);
 
 	float dist = newWorldPosition.distanceTo(lastValidatedWorldPosition);
 
-	if (dist < 1) {
-		player->debug() << "checkSpeedHackSecondTest -- PASSED -- distance too small to check";
-		return 0;
+	if (dist < 1.f) {
+		player->info()  << "checkSpeedHackTests -- PASSED -- distance too small to check";
+		return true;
 	}
 
 	float speed = dist / (float) deltaTime * 1000.f;
 
-	/*if (oldNewPosZ > oldValidZ) {
-		float heightDist = oldNewPosZ - oldValidZ;
+	StringBuffer msg;
+	msg <<  "Next Position Dist Sq: " << dist << " Player Position: " << lastValidatedWorldPosition.toString() << " Speed: " << speed;
+	player->info() << msg.toString();
 
-		//if (heightDist > speed) {
-			StringBuffer msg;
-			msg << " heightDist:" << heightDist << " speed:" << speed << " terrain neg:" << player->getSlopeModPercent();
-			player->info(msg.toString(), true);
-		//}
-	}*/
-
-	//lastValidatedPosition->set(newWorldPosition.getX(), oldNewPosZ, newWorldPosition.getY());
-
-	int ret = checkSpeedHackFirstTest(player, speed, *lastValidatedPosition, 1.5f);
-
-	if (ret == 0) {
-		lastValidatedPosition->setPosition(newX, newZ, newY);
-
-		if (newParent != nullptr) {
-			lastValidatedPosition->setParent(newParent->getObjectID());
-		} else {
-			lastValidatedPosition->setParent(0);
-		}
-
-		ghost->updateServerLastMovementStamp();
-
-		if (ghost->isOnLoadScreen()) {
-			ghost->setOnLoadScreen(false);
-		}
-
-		ghost->incrementSessionMovement(dist);
+	// Run speed tests
+	if (!checkPlayerSpeedTest(player, parent, speed, *lastValidatedPosition, newWorldPosition, 1.03f)) {
+		return false;
 	}
 
-	player->debug() << "checkSpeedHackSecondTest -- PASSED -- Distance: " << dist << " Speed: " << speed << " Returning Value: " << ret;
+	player->info() << "Setting New Validated Position to - X: " << newWorldPosition.getX() << " Z: " << newWorldPosition.getZ() << " Y: " << newWorldPosition.getY();
 
-	return ret;
+	lastValidatedPosition->setPosition(newPosition.getX(), newPosition.getZ(), newPosition.getY());
+
+	if (newParent != nullptr) {
+		lastValidatedPosition->setParent(newParent->getObjectID());
+	} else {
+		lastValidatedPosition->setParent(0);
+	}
+
+	ghost->updateServerLastMovementStamp();
+
+	if (ghost->isOnLoadScreen()) {
+		ghost->setOnLoadScreen(false);
+	}
+
+	ghost->incrementSessionMovement(dist);
+
+	player->info() << "checkSpeedHackTests -- PASSED -- Distance: " << dist << " Speed: " << speed;
+
+	return true;
 }
 
 void PlayerManagerImplementation::lootAll(CreatureObject* player, CreatureObject* ai) {

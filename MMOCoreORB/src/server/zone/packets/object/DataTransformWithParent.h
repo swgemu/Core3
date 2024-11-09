@@ -354,14 +354,11 @@ public:
 					}
 				}
 			} else {
-				float covDist = ZoneServer::CLOSEOBJECTRANGE;
+				const float covDist = newRootParent->getOutOfRangeDistance();
+				const float sqrCovDist = covDist * covDist;
 
-				// Use the range set for the zone when possible
+				// Use the object out of range distance
 				if (spaceZone) {
-					covDist = zone->getZoneObjectRange();
-
-					float sqrCovDist = covDist * covDist;
-
 					if (transform.get3dSquaredDistance(newRootParent->getPosition()) > sqrCovDist) {
 						CloseObjectsVector* closeObjects = creO->getCloseObjects();
 
@@ -370,8 +367,6 @@ public:
 						}
 					}
 				} else {
-					float sqrCovDist = covDist * covDist;
-
 					if (transform.get2dSquaredDistance(newRootParent->getPosition()) > sqrCovDist) {
 						CloseObjectsVector* closeObjects = creO->getCloseObjects();
 
@@ -409,12 +404,8 @@ public:
 			}
 		}
 
-		if (playerManager->checkSpeedHackFirstTest(creO, transform.getSpeed(), validPosition, 1.1f) != 0) {
-			return updateError(creO, "!checkSpeedHackFirstTest");
-		}
-
-		if (playerManager->checkSpeedHackSecondTest(creO, transform.getPositionX(), transform.getPositionZ(), transform.getPositionY(), transform.getTimeStamp(), parent, spaceZone) != 0) {
-			return updateError(creO, "!checkSpeedHackSecondTest");
+		if (!playerManager->checkSpeedHackTests(creO, ghost, transform.getPosition(), transform.getTimeStamp(), parent)) {
+			return updateError(creO, "!checkSpeedHackTests");
 		}
 
 		Vector3 position = transform.predictPosition(creO->getPosition(), creO->getDirection(), deltaTime);

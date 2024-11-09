@@ -51,6 +51,7 @@ import system.lang.Time;
 include server.zone.managers.player.PlayerNameIterator;
 include server.zone.objects.region.CityRegion;
 include server.zone.objects.ship.ai.ShipAiAgent;
+import engine.util.u3d.Vector3;
 
 @dirty
 class PlayerManager extends Observer implements Logger {
@@ -406,9 +407,11 @@ class PlayerManager extends Observer implements Logger {
 
 	@local
 	public native void updateSwimmingState(CreatureObject player, float newZ, IntersectionResults intersections = null, CloseObjectsVector closeObjects = null);
+
 	@local
-	public native int checkSpeedHackFirstTest(CreatureObject player, float parsedSpeed, @dereferenced ValidatedPosition teleportPosition, float errorMultiplier = 1);
-	public native int checkSpeedHackSecondTest(CreatureObject player, float newX, float newZ, float newY, unsigned int newStamp, SceneObject newParent = null, boolean spaceZone = false);
+	public native boolean checkPlayerSpeedTest(CreatureObject player, SceneObject parent, float parsedSpeed, @dereferenced ValidatedPosition teleportPosition, @dereferenced final Vector3 newWorldPosition, float errorMultiplier = 1);
+
+	public native boolean checkSpeedHackTests(CreatureObject player, PlayerObject ghost, @dereferenced final Vector3 newWorldPosition, unsigned int newStamp, SceneObject newParent = null);
 
 	@dirty
 	public native boolean existsName(final string name);

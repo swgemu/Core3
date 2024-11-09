@@ -66,14 +66,14 @@ public:
 		}
 
 		try {
-
 			Locker playerlocker(targetPlayer);
 
 			targetGhost->setMutedState(true);
 			targetPlayer->setRootedState(3600);
 			targetPlayer->setSpeedMultiplierBase(0.f, true);
+			targetPlayer->setState(CreatureState::FROZEN, true);
 
-			if(fullReason.toString().isEmpty()) {
+			if (fullReason.toString().isEmpty()) {
 				targetPlayer->sendSystemMessage("You have been frozen and muted by " + player->getFirstName() + ".");
 				player->sendSystemMessage(targetPlayer->getFirstName() + " is now frozen and muted.");
 			} else {

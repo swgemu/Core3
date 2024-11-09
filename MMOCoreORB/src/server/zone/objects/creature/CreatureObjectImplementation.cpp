@@ -2077,10 +2077,13 @@ void CreatureObjectImplementation::updateSlopeMods(bool notifyClient) {
 }
 
 float CreatureObjectImplementation::getSlopeModPercent() const {
-	float slopeMod = ((float)getSkillMod("slope_move") / 50.0f) + slopeModPercent;
+	float slopeMove = getSkillMod("slope_move");
 
-	if (slopeMod > 1)
-		slopeMod = 1;
+	if (slopeMove > 50.f) {
+		slopeMove = 50.f;
+	}
+
+	float slopeMod = slopeMove / 50.0f;
 
 	return slopeMod;
 }
