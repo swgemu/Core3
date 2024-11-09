@@ -3969,10 +3969,11 @@ int PlayerManagerImplementation::checkSpeedHackFirstTest(CreatureObject* player,
 		if (petManager != nullptr) {
 			allowedSpeedBase = petManager->getMountedRunSpeed(mount);
 		}
-
 	}
 
 	float maxAllowedSpeed = allowedSpeedMod * allowedSpeedBase;
+
+	// player->info(true) << "checkSpeedHackFirstTest -- parsedSpeed: " << parsedSpeed << " Teleport position: " << teleportPoint.toString();
 
 	if (parsedSpeed > maxAllowedSpeed * errorMultiplier) {
 		//float delta = abs(parsedSpeed - maxAllowedSpeed);
@@ -4113,6 +4114,8 @@ int PlayerManagerImplementation::checkSpeedHackSecondTest(CreatureObject* player
 	int ret = checkSpeedHackFirstTest(player, speed, *lastValidatedPosition, 1.5f);
 
 	if (ret == 0) {
+		// player->info(true) << "Setting Last Validated Position to - X: " << newX << " Z: " << newZ << " Y: " << newY;
+
 		lastValidatedPosition->setPosition(newX, newZ, newY);
 
 		if (newParent != nullptr) {
@@ -4130,7 +4133,7 @@ int PlayerManagerImplementation::checkSpeedHackSecondTest(CreatureObject* player
 		ghost->incrementSessionMovement(dist);
 	}
 
-	player->debug() << "checkSpeedHackSecondTest -- PASSED -- Distance: " << dist << " Speed: " << speed << " Returning Value: " << ret;
+	player->debug() << "checkSpeedHackSecondTest -- Distance: " << dist << " Speed: " << speed << " Returning Value: " << ret;
 
 	return ret;
 }
