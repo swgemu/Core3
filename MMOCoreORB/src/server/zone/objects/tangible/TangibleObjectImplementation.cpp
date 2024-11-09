@@ -325,7 +325,10 @@ void TangibleObjectImplementation::sendPvpStatusTo(CreatureObject* player) {
 	auto thisFaction = getFaction();
 	auto playerFaction = player->getFaction();
 
-	if (((isAiAgent() && !isPet() && (thisFactionStatus >= FactionStatus::COVERT)) || isShipAiAgent() || (isShipObject() && !isShipAiAgent())) && (thisFaction > 0) && (playerFaction > 0) && (thisFaction != playerFaction)) {
+	bool isShipAgent = isShipAiAgent();
+
+	// Handle enemy flagging for Rebel/Imperial
+	if (((isAiAgent() && !isPet() && (thisFactionStatus >= FactionStatus::COVERT)) || isShipAgent || (isShipObject() && !isShipAgent)) && (thisFaction > 0) && (playerFaction > 0) && (thisFaction != playerFaction)) {
 		if (ConfigManager::instance()->useCovertOvertSystem()) {
 			PlayerObject* ghost = player->getPlayerObject();
 
@@ -340,6 +343,13 @@ void TangibleObjectImplementation::sendPvpStatusTo(CreatureObject* player) {
 			} else if (newPvpStatusBitmask & ObjectFlag::ENEMY) {
 				newPvpStatusBitmask &= ~ObjectFlag::ENEMY;
 			}
+		}
+	} else if (!(newPvpStatusBitmask & ObjectFlag::ENEMY) && isShipAgent && (player->isPilotingShip() || player->isOnboardPobShip() || player->isShipGunner())) {
+		auto thisShipAgent = asShipAiAgent();
+		auto playerRoot =  player->getRootParent();
+
+		if (thisShipAgent != nullptr && playerRoot != nullptr && thisShipAgent->isEnemyShip(playerRoot->getObjectID())) {
+			newPvpStatusBitmask |= ObjectFlag::ENEMY;
 		}
 	}
 
@@ -375,8 +385,9 @@ void TangibleObjectImplementation::broadcastPvpStatusBitmask() {
 		if (creo->isPlayerCreature())
 			sendPvpStatusTo(creo);
 
-		if (thisCreo != nullptr && thisCreo->isPlayerCreature())
+		if (thisCreo != nullptr && thisCreo->isPlayerCreature()) {
 			creo->sendPvpStatusTo(thisCreo);
+		}
 	}
 
 	if (thisCreo == nullptr)
