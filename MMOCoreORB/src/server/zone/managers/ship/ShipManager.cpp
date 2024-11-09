@@ -1025,6 +1025,15 @@ int ShipManager::notifyDestruction(ShipObject* destructorShip, ShipAiAgent* dest
 		if (!destructorShip->hasDefenders()) {
 			destructorShip->clearCombatState(false);
 		}
+
+		// Remove the destucted ship agent from the destructors enemy list
+		if (destructorShip->isShipAiAgent()) {
+			auto agentDestructor = destructorShip->asShipAiAgent();
+
+			if (agentDestructor != nullptr) {
+				agentDestructor->removeEnemyShip(destructedShip->getObjectID());
+			}
+		}
 	}
 
 	// info(true) << "ShipManager::notifyDestruction -- COMPLETE - for: " << destructedShip->getDisplayedName() << " Attacker: " << destructorShip->getDisplayedName();

@@ -1775,6 +1775,39 @@ void ShipAiAgentImplementation::setDefender(ShipObject* defender) {
 	setMovementState(ShipAiAgent::ATTACKING);
 
 	defender->addDefender(asShipAiAgent());
+
+	// Add Ship to enemy list
+	if (addEnemyShip(defender->getObjectID()) && defender->isPlayerShip()) {
+		broadcastPvpStatusBitmask();
+	}
+}
+
+bool ShipAiAgentImplementation::addEnemyShip(uint64 enemyShipID) {
+	Locker locker(&enemyListMutex);
+
+	if (enemyShipList.contains(enemyShipID)) {
+		return false;
+	}
+
+	enemyShipList.add(enemyShipID);
+	return true;
+}
+
+bool ShipAiAgentImplementation::removeEnemyShip(uint64 enemyShipID) {
+	Locker locker(&enemyListMutex);
+
+	if (!enemyShipList.contains(enemyShipID)) {
+		return false;
+	}
+
+	enemyShipList.remove(enemyShipID);
+	return true;
+}
+
+bool ShipAiAgentImplementation::isEnemyShip(uint64 shipID) {
+	Locker locker(&enemyListMutex);
+
+	return enemyShipList.contains(shipID);
 }
 
 bool ShipAiAgentImplementation::isAggressiveTo(TangibleObject* target) {
@@ -1866,7 +1899,7 @@ bool ShipAiAgentImplementation::isAggressive(TangibleObject* target) {
 	}
 
 	// ShipAgent is not aggressive due to faction or standing, remaining aggressive check based on pvpStatusBitmask
-	return pvpStatusBitmask & ObjectFlag::AGGRESSIVE;
+	return (pvpStatusBitmask & ObjectFlag::AGGRESSIVE) || isEnemyShip(target->getObjectID());
 }
 
 // This will handle checks for other ShipAgents or tangible objects

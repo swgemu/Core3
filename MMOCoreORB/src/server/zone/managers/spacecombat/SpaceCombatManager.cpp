@@ -123,6 +123,14 @@ void SpaceCombatManager::applyDamage(ShipObject* ship, const ShipProjectile* pro
 		}
 
 		target->updateLastDamageReceived();
+
+		if (target->isShipAiAgent()) {
+			auto targetAgent = target->asShipAiAgent();
+
+			if (targetAgent != nullptr && targetAgent->addEnemyShip(ship->getObjectID()) && ship->isPlayerShip()) {
+				targetAgent->broadcastPvpStatusBitmask();
+			}
+		}
 	}
 
 	const Vector3& collisionPoint = result.getPosition();
@@ -162,6 +170,15 @@ void SpaceCombatManager::applyDamage(ShipObject* ship, const ShipProjectile* pro
 	if (target->getChassisCurrentHealth() == 0.f) {
 		auto destroyTask = new DestroyShipTask(target);
 		destroyTask->execute();
+
+		// If Agent ship kills player ship, remove the player from agents enemy list
+		if (target->isPlayerShip() && ship->isShipAiAgent()) {
+			auto agentShip = ship->asShipAiAgent();
+
+			if (agentShip != nullptr) {
+				agentShip->removeEnemyShip(target->getObjectID());
+			}
+		}
 
 		// Notify Destruction
 		Reference<ShipObject*> refTarget = target;

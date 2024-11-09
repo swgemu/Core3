@@ -207,6 +207,12 @@ class ShipAiAgent extends FighterShipObject {
 	@dereferenced
 	protected transient Vector<unsigned int> fixedPatrolPoints;
 
+	@dereferenced
+	private transient Mutex enemyListMutex;
+
+	@dereferenced
+	protected transient Vector<unsigned long> enemyShipList;
+
 	public ShipAiAgent() {
 		movementState = OBLIVIOUS;
 
@@ -482,6 +488,13 @@ class ShipAiAgent extends FighterShipObject {
 
 	@dirty
 	public native boolean isAttackableBy(CreatureObject object);
+
+	public native boolean addEnemyShip(unsigned long enemyShipID);
+
+	public native boolean removeEnemyShip(unsigned long enemyShipID);
+
+	@dirty
+	public native boolean isEnemyShip(unsigned long shipID);
 
 	/**
 	 * Evaluates if this creature is aggresive to the object
