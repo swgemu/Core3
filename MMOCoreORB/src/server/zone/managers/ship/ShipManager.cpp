@@ -50,6 +50,9 @@ ShipManager::ShipManager() : Logger("ShipManger") {
 
 	lua->registerFunction("includeFile", includeFile);
 	lua->registerFunction("addShipSpawnGroup", addShipSpawnGroup);
+
+	updateTransformTask = new ShipAiAgentUpdateTransformTask(this);
+	updateTransformTask->schedule(60000);
 }
 
 void ShipManager::initialize() {

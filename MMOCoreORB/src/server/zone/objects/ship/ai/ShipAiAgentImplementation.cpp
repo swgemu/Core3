@@ -323,6 +323,9 @@ void ShipAiAgentImplementation::initializeTransientMembers() {
 	setHyperspacing(false);
 
 	missileLockTime = 0;
+
+	lastDeltaTime = 0.f;
+	deltaTime = 0.f;
 }
 
 void ShipAiAgentImplementation::notifyInsertToZone(Zone* zone) {
@@ -522,7 +525,7 @@ void ShipAiAgentImplementation::activateAiBehavior(bool reschedule) {
 		}
 	}
 
-	nextBehaviorInterval = BEHAVIORINTERVAL;
+	nextBehaviorInterval = getNextBehaviorInterval();
 
 	scheduleRecovery();
 }
@@ -1171,44 +1174,36 @@ void ShipAiAgentImplementation::setNextDirection() {
 
 	if (dotProduct <= 0.999f || fabs(thrustR.getZ()) >= 0.001f) {
 		float rateMax = getMaxTurnRate() * deltaTime;
-		float accelY = getActualYawAccelerationRate() * rateMax;
-		float accelP = getActualPitchAccelerationRate() * rateMax;
-		float accelR = getActualRollAccelerationRate() * rateMax;
-		float actualY = getActualYawRate() * rateMax;
-		float actualP = getActualPitchRate() * rateMax;
-		float actualR = getActualRollRate() * rateMax;
 
-		float thisY = currentRotation.getX();
-		float thisP = currentRotation.getY();
-		float thisR = currentRotation.getZ();
+		Vector3 accel = Vector3(getActualYawAccelerationRate(), getActualPitchAccelerationRate(), getActualRollAccelerationRate()) * rateMax;
+		Vector3 actual = Vector3(getActualYawRate(), getActualPitchRate(), getActualRollRate()) * rateMax;
+		Vector3 delta;
+		Vector3 rate;
 
-		float lastDeltaY = getRotationRate(thisY, lastRotation.getX());
-		float lastDeltaP = getRotationRate(thisP, lastRotation.getY());
-		float lastDeltaR = getRotationRate(thisR, lastRotation.getZ());
-		float nextDeltaY = tanh(getRotationRate(nextRotation.getX(), thisY) * M_1_PI) * M_PI_2;
-		float nextDeltaP = tanh(getRotationRate(nextRotation.getY(), thisP) * M_1_PI) * M_PI_2;
-		float nextDeltaR = tanh(getRotationRate(nextRotation.getZ(), thisR) * M_1_PI) * M_PI_2;
+		for (int axis = 0; axis < 3; ++axis) {
+			delta[axis] = getRotationRate(nextRotation[axis], currentRotation[axis]);
+			float lastDelta = getRotationRate(currentRotation[axis], lastRotation[axis]);
 
-		if (fabs(nextDeltaR) < fabs(nextDeltaY)) {
-			nextDeltaR = -nextDeltaY;
+			if (axis == 2 && fabs(delta[axis]) < fabs(delta[0])) {
+				delta[axis] = -delta[0];
+			}
+
+			float thisDelta = Math::clamp(lastDelta - accel[axis], delta[axis], lastDelta + accel[axis]);
+			rate[axis] = getRotationRate(Math::clamp(-actual[axis], thisDelta, actual[axis])) + currentRotation[axis];
+
+			if (axis == 2) {
+				rate[axis] = Math::clamp((float)-M_PI_2, rate[axis], (float)M_PI_2);
+			}
 		}
 
-		float thisDeltaY = Math::clamp(lastDeltaY - accelY, nextDeltaY, lastDeltaY + accelY);
-		float thisDeltaP = Math::clamp(lastDeltaP - accelP, nextDeltaP, lastDeltaP + accelP);
-		float thisDeltaR = Math::clamp(lastDeltaR - accelR, nextDeltaR, lastDeltaR + accelR);
-		float nextY = getRotationRate(Math::clamp(-actualY, thisDeltaY, actualY) + thisY, thisY) + thisY;
-		float nextP = getRotationRate(Math::clamp(-actualP, thisDeltaP, actualP) + thisP, thisP) + thisP;
-		float nextR = getRotationRate(Math::clamp(-actualR, thisDeltaR, actualR) + thisR, thisR) + thisR;
-		float rateY = round(getRotationRate(nextY) * 1000.f) * 0.001f;
-		float rateP = round(getRotationRate(nextP) * 1000.f) * 0.001f;
-		float rateR = round(getRotationRate(nextR) * 1000.f) * 0.001f;
+		if (rate != Vector3::ZERO) {
+			auto direction = radiansToQuaterion(rate.getX(), rate.getY(), rate.getZ());
+			setDirection(direction);
+			setRotationMatrix(direction);
 
-		auto direction = radiansToQuaterion(rateY, rateP, rateR);
-		setDirection(direction);
-		setRotationMatrix(direction);
-
-		thrustV = radiansToUnitVector(rateY, rateP);
-		thrustR = Vector3(rateY,rateP,rateR);
+			thrustV = radiansToUnitVector(rate.getX(), rate.getY());
+			thrustR = rate;
+		}
 	}
 
 	lastRotation = currentRotation;
@@ -1247,24 +1242,32 @@ void ShipAiAgentImplementation::setNextPosition() {
 }
 
 bool ShipAiAgentImplementation::findNextPosition(int maxDistance) {
-#ifdef DEBUG_SHIP_AI
-	if (peekBlackboard("aiDebug") && readBlackboard("aiDebug") == true)
-		info(true) << getDisplayedName() << " - findNextPosition - " << maxDistance;
-#endif // DEBUG_SHIP_AI
+	int64 timeNow = System::getMiliTime();
+	int64 deltaTime = timeNow - updateZoneTime;
 
-#ifdef DEBUG_FINDNEXTPOSITION
-	info(true) << getDisplayedName() << " ----- findNextPosition -- Start -----";
-#endif
+	if (deltaTime >= UPDATEZONEINTERVAL) {
+		updateZoneTime = timeNow;
 
-	Locker locker(&targetMutex);
+		updateZone(false, false);
+		removeOutOfRangeObjects();
+	}
 
 	if (getPatrolPointSize() <= 0) {
 		return false;
 	}
 
+	updatePatrolPoints();
+	return true;
+}
+
+void ShipAiAgentImplementation::updateTransform(bool lightUpdate) {
+	if (lightUpdate && numberOfPlayersInRange < 1) {
+		return;
+	}
+
 	setDeltaTime();
-	setNextDirection();
 	setNextSpeed();
+	setNextDirection();
 	setNextPosition();
 
 #ifdef DEBUG_SHIP_AI
@@ -1272,37 +1275,42 @@ bool ShipAiAgentImplementation::findNextPosition(int maxDistance) {
 	sendDebugPath();
 #endif
 
-	Vector3 nextPosition = nextStepPosition.getWorldPosition();
-	setPosition(nextPosition.getX(), nextPosition.getZ(), nextPosition.getY());
-	updateZone(false, false);
+	const Vector3& position = nextStepPosition.getWorldPosition();
 
-	broadcastTransform(nextPosition);
-	removeOutOfRangeObjects();
-	updatePatrolPoints();
-
-#ifdef DEBUG_SHIP_AI
-	if (peekBlackboard("aiDebug") && readBlackboard("aiDebug") == true)
-		info("findNextPosition - complete returning true", true);
-#endif // DEBUG_SHIP_AI
-
-#ifdef DEBUG_FINDNEXTPOSITION
-	info(true) << getDisplayedName() << " ------ findNextPosition -- End ------ Next Position: " << nextMovementPosition.toString();
-#endif
-
-	return true;
+	setPosition(position);
+	broadcastTransform(position);
 }
 
 void ShipAiAgentImplementation::setDeltaTime() {
-	static const int stepMax = (int)(BEHAVIORINTERVAL);
-	static const int stepMin = stepMax * 0.5f;
+	int stepMax = getNextBehaviorInterval();
+	int stepMin = stepMax * 0.5f;
 
 	long timeSync = (0xFFFFFFFF) & System::getMiliTime();
 	int deltaSync = Math::max(timeSync - syncStamp, 0ull);
 
+	lastDeltaTime = deltaTime;
 	deltaTime = Math::clamp(0.1f, deltaSync * 0.001f, 2.f);
 	syncStamp = timeSync;
+}
 
-	nextBehaviorInterval = Math::clamp(stepMin, stepMax - ((deltaSync - stepMax) % stepMax), stepMax);
+int ShipAiAgentImplementation::getNextBehaviorInterval() {
+	switch (movementState) {
+		case ShipAiAgent::OBLIVIOUS:
+		case ShipAiAgent::WATCHING:
+		case ShipAiAgent::FOLLOWING:
+		case ShipAiAgent::PATROLLING: {
+			return UPDATEZONEINTERVAL;
+		}
+		case ShipAiAgent::ATTACKING:
+		case ShipAiAgent::FLEEING:
+		case ShipAiAgent::LEASHING:
+		case ShipAiAgent::EVADING:
+		case ShipAiAgent::PATHING_HOME:
+		case ShipAiAgent::FOLLOW_FORMATION:
+		default: {
+			return BEHAVIORINTERVAL;
+		}
+	}
 }
 
 bool ShipAiAgentImplementation::generatePatrol(int totalPoints, float distance, int pathShape) {
@@ -1463,9 +1471,14 @@ void ShipAiAgentImplementation::broadcastTransform(const Vector3& position) {
 		Vector3 deltaV = currentDirection * currentSpeed;
 		velocity.set(Vector3(deltaV.getX(), deltaV.getZ(), deltaV.getY()));
 
-		rateY.set(getRotationRate(currentRotation.getX(), lastRotation.getX()));
-		rateP.set(-getRotationRate(currentRotation.getY(), lastRotation.getY()));
-		rateR.set(-getRotationRate(currentRotation.getZ(), lastRotation.getZ()));
+		float rT = 1.f / Math::clamp(0.1f, (deltaTime + lastDeltaTime) * 0.5f, 10.f) * 0.5f;
+		float rY = -getRotationRate(currentRotation.getX(), lastRotation.getX()) * rT;
+		float rP = -getRotationRate(currentRotation.getX(), lastRotation.getX()) * rT;
+		float rR = getRotationRate(currentRotation.getX(), lastRotation.getX()) * rT;
+
+		rateY.set(rY);
+		rateP.set(rP);
+		rateR.set(rR);
 	}
 
 	SortedVector<ManagedReference<TreeEntry*>> closeObjects;
@@ -2204,6 +2217,9 @@ void ShipAiAgentImplementation::initializeTransform(const Vector3& position, con
 
 	lastSpeed = 0.f;
 	currentSpeed = 0.f;
+
+	lastDeltaTime = 0.f;
+	deltaTime = 0.f;
 }
 
 Vector3 ShipAiAgentImplementation::getHomePosition() {
@@ -2214,6 +2230,10 @@ Vector3 ShipAiAgentImplementation::getHomePosition() {
 	}
 
 	return homeLocation.getWorldPosition();
+}
+
+Vector3 ShipAiAgentImplementation::getNextStepPosition() {
+	return nextStepPosition.getWorldPosition();
 }
 
 Vector3 ShipAiAgentImplementation::getNextDirectionVector() const {
@@ -2366,6 +2386,7 @@ void ShipAiAgentImplementation::sendDebugMessage() {
 	msg << "ShipAiAgent:	  " << getDisplayedName() << endl
 		<< " movementState:   " << movementString <<  endl
 		<< " movementCount:   " << movementCount << endl
+		<< " deltaTime:       " << deltaTime * 1000.f << endl
 		<< " targetVector:	  " << (targetVector ? targetVector->size() : 0) << endl
 		<< " patrolPoints:	  " << patrolPoints.size() << endl
 		<< " thisPosition:	  " << currentPosition.getX() << " " << currentPosition.getY() << " " << currentPosition.getZ() << endl
@@ -2417,15 +2438,15 @@ void ShipAiAgentImplementation::sendDebugPath() {
 	path->addCoordinate(position);
 
 	if (data->getVolumeType() == ShipCollisionData::CollisionVolumeType::SPHERE) {
-		path->drawBoundingSphere(position, rotation, data->getChassisSphere());
+		path->drawBoundingSphere(nextPosition, rotation, data->getChassisSphere());
 	}
 
 	if (data->getVolumeType() == ShipCollisionData::CollisionVolumeType::MESH) {
-		path->drawBoundingSphere(position, rotation, data->getBoundingSphere());
+		path->drawBoundingSphere(nextPosition, rotation, data->getBoundingSphere());
 	}
 
 	if (data->getVolumeType() == ShipCollisionData::CollisionVolumeType::BOX) {
-		path->drawBoundingBox(position, rotation, data->getChassisBox());
+		path->drawBoundingBox(nextPosition, rotation, data->getChassisBox());
 	}
 
 	path->addCoordinate(nextPosition);

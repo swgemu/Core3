@@ -12,6 +12,7 @@
 #include "server/zone/objects/ship/ShipProjectileData.h"
 
 #include "server/zone/objects/ship/ShipObject.h"
+#include "server/zone/objects/ship/ai/ShipAiAgent.h"
 #include "server/zone/objects/ship/ComponentSlots.h"
 #include "server/zone/objects/intangible/ShipControlDevice.h"
 #include "server/zone/objects/ship/ShipAppearanceData.h"
@@ -29,6 +30,75 @@ namespace managers {
 namespace ship {
 
 class ShipManager : public Singleton<ShipManager>, public Object, public Logger {
+private:
+	class ShipAiAgentUpdateTransformTask: public Task, public Logger {
+	protected:
+		Vector<ManagedWeakReference<ShipObject*>> uniqueIdMapCopy;
+		Reference<ShipManager*> shipManagerRef;
+		int64 iteration;
+
+	public:
+		const static int INTERVALMAX = 200;
+		const static int INTERVALMIN = 100;
+		const static int PRIORITYMAX = 5;
+
+		ShipAiAgentUpdateTransformTask(ShipManager* shipManager) : Task() {
+			setLoggingName("UpdateShipAiAgentTransformTask");
+
+			shipManagerRef = shipManager;
+			iteration = 0;
+		}
+
+		void run() {
+			auto shipManager = shipManagerRef.get();
+
+			if (shipManager == nullptr) {
+				return;
+			}
+
+			auto uniqueIdMap = shipManager->getShipUniqueIdMap();
+
+			if (uniqueIdMap == nullptr) {
+				return;
+			}
+
+			int64 startTime = System::getMiliTime();
+
+			try {
+			int priority = ++iteration % PRIORITYMAX;
+
+			if (priority == 0) {
+				uniqueIdMap->safeCopyTo(uniqueIdMapCopy);
+			}
+
+			for (int i = 0; i < uniqueIdMapCopy.size(); ++i) {
+				auto ship = uniqueIdMapCopy.get(i).get();
+
+				if (ship == nullptr || !ship->isShipAiAgent()) {
+					continue;
+				}
+
+				auto agent = ship->asShipAiAgent();
+
+				if (agent == nullptr) {
+					continue;
+				}
+
+				Locker lock(agent);
+
+				bool lightUpdate = (i % PRIORITYMAX) != priority;
+				agent->updateTransform(lightUpdate);
+			}
+			} catch (...) {
+			}
+
+			int64 deltaTime = System::getMiliTime() - startTime;
+			int64 interval = Math::max(INTERVALMAX - deltaTime, (int64)INTERVALMIN);
+
+			reschedule(interval);
+		}
+	};
+
 protected:
 	Reference<Lua*> lua;
 
@@ -50,6 +120,7 @@ protected:
 	HashTable<uint32, Reference<SpaceSpawnGroup*>> spawnGroupMap;
 
 	ShipUniqueIdMap shipUniqueIdMap;
+	ShipAiAgentUpdateTransformTask* updateTransformTask;
 
 	void checkProjectiles();
 	void loadShipComponentData();
@@ -151,6 +222,10 @@ public:
 
 	const ShipCountermeasureData* getCountermeasureData(uint32 ammoType) const {
 		return countermeasureData.get(ammoType);
+	}
+
+	ShipUniqueIdMap* getShipUniqueIdMap() {
+		return &shipUniqueIdMap;
 	}
 
 private:

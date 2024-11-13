@@ -408,13 +408,12 @@ void SpaceManagerImplementation::loadLuaConfig() {
 
 			shipAgent->initializePosition(x, z, y);
 			shipAgent->setDirection(direction);
+			shipAgent->initializeTransform(Vector3(x,y,z), direction);
 
 			// Transfer into the zone
 			spaceZone->transferObject(shipAgent, -1, true);
 
 			shipAgent->createChildObjects();
-
-			shipAgent->setRotationMatrix(direction);
 
 			String faction = shipAgent->getShipFaction();
 
