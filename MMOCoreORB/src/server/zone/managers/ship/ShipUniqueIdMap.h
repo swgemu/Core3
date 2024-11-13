@@ -78,6 +78,28 @@ public:
 			shipIdMap.drop(shipID);
 		}
 	}
+
+	void safeCopyTo(Vector<ManagedWeakReference<ShipObject*>>& vector) const {
+		Locker mLock(&mutex);
+		int size = shipIdMap.size();
+
+		vector.removeAll(size, size);
+
+		for (int i = 1; i < size; ++i) {
+			auto ship = shipIdMap.elementAt(i).getValue();
+
+			if (ship == nullptr) {
+				continue;
+			}
+
+			vector.add(ship);
+		}
+	}
+
+	int size() const {
+		Locker mLock(&mutex);
+		return shipIdMap.size();
+	}
 };
 
 #endif // SHIPUNIQUEIDMAP_H_
