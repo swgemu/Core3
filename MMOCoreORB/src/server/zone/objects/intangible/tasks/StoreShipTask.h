@@ -12,6 +12,8 @@
 #include "server/zone/objects/ship/PobShipObject.h"
 #include "templates/params/creature/PlayerArrangement.h"
 #include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/objects/creature/ai/DroidObject.h"
+#include "server/zone/objects/intangible/tasks/PetControlDeviceStoreTask.h"
 
 // #define DEBUG_SHIP_STORE
 
@@ -51,6 +53,11 @@ public:
 
 		// Lock the ship
 		Locker shipLock(ship);
+
+		// Remove the ships astromech if one is assigned
+		if (ship->getShipDroidID() != 0) {
+			removeDroid(ship, player);
+		}
 
 		// Copy list of the players onboard for removal
 		Vector<uint64> playersOnBoard = ship->getPlayersOnBoard();
@@ -139,6 +146,59 @@ public:
 		player->clearSpaceStates();
 
 		player->switchZone(newZoneName, location.getX(), location.getZ(), location.getY(), 0, false);
+
+		return true;
+	}
+
+	bool removeDroid(ShipObject* ship, CreatureObject* player) {
+		if (ship == nullptr || player == nullptr) {
+			return false;
+		}
+
+		auto zoneServer = ship->getZoneServer();
+
+		if (zoneServer == nullptr) {
+			return false;
+		}
+
+		const uint64& droidID = ship->getShipDroidID();
+
+		if (droidID == 0) {
+			return false;
+		}
+
+		ManagedReference<SceneObject*> droidRef = zoneServer->getObject(droidID);
+
+		if (droidRef == nullptr || !droidRef->isDroidObject()) {
+			return false;
+		}
+
+		auto droidObject = dynamic_cast<DroidObject*>(droidRef.get());
+
+		if (droidObject == nullptr) {
+			return false;
+		}
+
+		ManagedReference<ControlDevice*> controlDevice = droidObject->getControlDevice().get();
+
+		if (controlDevice == nullptr || !controlDevice->isPetControlDevice()) {
+			return false;
+		}
+
+		auto petControlDevice = dynamic_cast<PetControlDevice*>(controlDevice.get());
+
+		if (petControlDevice == nullptr) {
+			return false;
+		}
+
+		Locker pLock(player);
+		Locker cLock(controlDevice, player);
+
+		auto storeTask = new PetControlDeviceStoreTask(petControlDevice, player, true);
+
+		if (storeTask != nullptr) {
+			storeTask->execute();
+		}
 
 		return true;
 	}
