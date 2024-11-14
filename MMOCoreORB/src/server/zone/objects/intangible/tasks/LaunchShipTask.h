@@ -11,6 +11,7 @@
 #include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/objects/ship/events/InsertPilotIntoShipTask.h"
 #include "server/zone/objects/ship/events/InsertGroupMemberIntoShipTask.h"
+#include "server/zone/objects/ship/events/InsertAstromechIntoShipTask.h"
 #include "templates/params/creature/PlayerArrangement.h"
 
 class LaunchShipTask : public Task, public Logger {
@@ -87,6 +88,14 @@ public:
 
 		if (pilotTask != nullptr) {
 			pilotTask->schedule(100);
+		}
+
+		if (ship->getShipDroidID() != 0) {
+			auto droidTask = new InsertAstromechIntoShipTask(ship);
+
+			if (droidTask != nullptr) {
+				droidTask->schedule(150);
+			}
 		}
 
 		if (groupMembers.size() > 0 && (ship->isPobShip() || ship->isMultiPassengerShip())) {
