@@ -2,6 +2,7 @@
 #define PETCONTROLDEVICESTORETASK_H_
 
 #include "engine/engine.h"
+#include "server/zone/objects/intangible/PetControlDevice.h"
 
 class PetControlDeviceStoreTask : public Task {
 	ManagedWeakReference<PetControlDevice*> device;
