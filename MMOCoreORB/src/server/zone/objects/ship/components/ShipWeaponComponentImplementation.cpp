@@ -103,7 +103,7 @@ void ShipWeaponComponentImplementation::install(CreatureObject* pilot, ShipObjec
 	ship->setAmmoClass(slot, ammoClass, nullptr, command, deltaVector);
 
 	if (deltaVector != nullptr) {
-		deltaVector->sendMessages(ship, pilot);
+		deltaVector->sendMessages(ship);
 	}
 }
 
@@ -125,7 +125,7 @@ void ShipWeaponComponentImplementation::uninstall(CreatureObject* pilot, ShipObj
 	ship->setAmmoClass(slot, 0, nullptr, command, deltaVector);
 
 	if (deltaVector != nullptr) {
-		deltaVector->sendMessages(ship, pilot);
+		deltaVector->sendMessages(ship);
 	}
 }
 
@@ -167,7 +167,7 @@ void ShipWeaponComponentImplementation::installAmmo(CreatureObject* pilot, ShipO
 	ship->setMaxAmmo(slot, ammoCount, nullptr, command, deltaVector);
 
 	if (deltaVector != nullptr) {
-		deltaVector->sendMessages(ship, pilot);
+		deltaVector->sendMessages(ship);
 	}
 }
 
@@ -190,6 +190,6 @@ void ShipWeaponComponentImplementation::uninstallAmmo(CreatureObject* pilot, Shi
 	ship->setMaxAmmo(slot, 0, nullptr, command, deltaVector);
 
 	if (deltaVector != nullptr) {
-		deltaVector->sendMessages(ship, pilot);
+		deltaVector->sendMessages(ship);
 	}
 }

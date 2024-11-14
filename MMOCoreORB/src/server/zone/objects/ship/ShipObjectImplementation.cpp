@@ -860,7 +860,7 @@ void ShipObjectImplementation::doRecovery(int mselapsed) {
 	updateComponentFlags(false, deltaVector);
 
 	if (deltaVector != nullptr) {
-		deltaVector->sendMessages(asShipObject(), pilot);
+		deltaVector->sendMessages(asShipObject());
 	}
 
 	auto targetVector = getTargetVector();
@@ -1122,7 +1122,7 @@ void ShipObjectImplementation::repairShip(float value, bool decay) {
 	}
 
 	if (deltaVector != nullptr) {
-		deltaVector->sendMessages(asShipObject(), pilot);
+		deltaVector->sendMessages(asShipObject());
 	}
 
 #ifdef DEBUG_SHIP_REPAIR
@@ -1168,7 +1168,7 @@ void ShipObjectImplementation::addComponentFlag(uint32 slot, uint32 value, bool 
 	setComponentOptions(slot, componentFlag, nullptr, DeltaMapCommands::SET, deltaVector);
 
 	if (deltaVector != nullptr && notifyClient) {
-		deltaVector->sendMessages(asShipObject(), getPilot());
+		deltaVector->sendMessages(asShipObject());
 	}
 }
 
@@ -1188,7 +1188,7 @@ void ShipObjectImplementation::removeComponentFlag(uint32 slot, uint32 value, bo
 	setComponentOptions(slot, componentFlag, nullptr, DeltaMapCommands::SET, deltaVector);
 
 	if (deltaVector != nullptr && notifyClient) {
-		deltaVector->sendMessages(asShipObject(), getPilot());
+		deltaVector->sendMessages(asShipObject());
 	}
 }
 
@@ -1222,7 +1222,7 @@ void ShipObjectImplementation::resetComponentFlag(uint32 slot, bool notifyClient
 	setComponentOptions(slot, componentFlag, nullptr, DeltaMapCommands::SET, deltaVector);
 
 	if (deltaVector != nullptr && notifyClient) {
-		deltaVector->sendMessages(asShipObject(), getPilot());
+		deltaVector->sendMessages(asShipObject());
 	}
 }
 
@@ -1255,7 +1255,7 @@ void ShipObjectImplementation::setComponentDemolished(uint32 slot, bool notifyCl
 	}
 
 	if (deltaVector != nullptr && notifyClient) {
-		deltaVector->sendMessages(asShipObject(),getPilot());
+		deltaVector->sendMessages(asShipObject());
 	}
 }
 
@@ -2041,7 +2041,7 @@ void ShipObjectImplementation::updateSpeedRotationValues(bool notifyClient, Ship
 	}
 
 	if (deltaVector != nullptr && notifyClient) {
-		deltaVector->sendMessages(asShipObject(), getPilot());
+		deltaVector->sendMessages(asShipObject());
 	}
 }
 
@@ -2100,7 +2100,7 @@ void ShipObjectImplementation::updateActualEngineValues(bool notifyClient, ShipD
 	}
 
 	if (deltaVector != nullptr && notifyClient) {
-		deltaVector->sendMessages(asShipObject(), getPilot());
+		deltaVector->sendMessages(asShipObject());
 	}
 }
 
@@ -2150,7 +2150,7 @@ void ShipObjectImplementation::updateComponentFlags(bool notifyClient, ShipDelta
 		componentOptions.update(Components::REACTOR, componentFlag, nullptr, DeltaMapCommands::SET, deltaVector);
 
 		if (deltaVector != nullptr && notifyClient) {
-			deltaVector->sendMessages(asShipObject(), getPilot());
+			deltaVector->sendMessages(asShipObject());
 		}
 	}
 }

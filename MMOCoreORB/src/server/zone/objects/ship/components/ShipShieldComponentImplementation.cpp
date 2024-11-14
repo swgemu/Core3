@@ -76,7 +76,7 @@ void ShipShieldComponentImplementation::install(CreatureObject* pilot, ShipObjec
 	ship->setRearShield(rearHitpoints, false, nullptr, deltaVector);
 
 	if (deltaVector != nullptr) {
-		deltaVector->sendMessages(ship, pilot);
+		deltaVector->sendMessages(ship);
 	}
 }
 
@@ -94,6 +94,6 @@ void ShipShieldComponentImplementation::uninstall(CreatureObject* pilot, ShipObj
 	ship->setRearShield(0, false, nullptr, deltaVector);
 
 	if (deltaVector != nullptr) {
-		deltaVector->sendMessages(ship, pilot);
+		deltaVector->sendMessages(ship);
 	}
 }

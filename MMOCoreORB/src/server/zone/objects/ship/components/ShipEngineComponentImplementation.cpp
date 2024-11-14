@@ -97,7 +97,7 @@ void ShipEngineComponentImplementation::install(CreatureObject* pilot, ShipObjec
 	ship->setActualMaxSpeed(engineSpeedMaximum, false, nullptr, deltaVector);
 
 	if (deltaVector != nullptr) {
-		deltaVector->sendMessages(ship, pilot);
+		deltaVector->sendMessages(ship);
 	}
 }
 
@@ -117,6 +117,6 @@ void ShipEngineComponentImplementation::uninstall(CreatureObject* pilot, ShipObj
 	ship->setActualMaxSpeed(0.f, false, nullptr, deltaVector);
 
 	if (deltaVector != nullptr) {
-		deltaVector->sendMessages(ship, pilot);
+		deltaVector->sendMessages(ship);
 	}
 }

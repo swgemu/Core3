@@ -64,7 +64,7 @@ void ShipCapacitorComponentImplementation::install(CreatureObject* pilot, ShipOb
 	ship->setCapacitorEnergy(capacitorEnergy, false, nullptr, deltaVector);
 
 	if (deltaVector != nullptr) {
-		deltaVector->sendMessages(ship, pilot);
+		deltaVector->sendMessages(ship);
 	}
 }
 
@@ -79,6 +79,6 @@ void ShipCapacitorComponentImplementation::uninstall(CreatureObject* pilot, Ship
 	ship->setCapacitorEnergy(0.f, false, nullptr, deltaVector);
 
 	if (deltaVector != nullptr) {
-		deltaVector->sendMessages(ship, pilot);
+		deltaVector->sendMessages(ship);
 	}
 }

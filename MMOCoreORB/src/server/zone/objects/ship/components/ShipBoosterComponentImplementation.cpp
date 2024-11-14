@@ -82,7 +82,7 @@ void ShipBoosterComponentImplementation::install(CreatureObject* pilot, ShipObje
 	ship->setBoosterEnergy(boosterEnergy, false, nullptr, deltaVector);
 
 	if (deltaVector != nullptr) {
-		deltaVector->sendMessages(ship, pilot);
+		deltaVector->sendMessages(ship);
 	}
 }
 
@@ -100,6 +100,6 @@ void ShipBoosterComponentImplementation::uninstall(CreatureObject* pilot, ShipOb
 	ship->setBoosterEnergy(0.f, false, nullptr, deltaVector);
 
 	if (deltaVector != nullptr) {
-		deltaVector->sendMessages(ship, pilot);
+		deltaVector->sendMessages(ship);
 	}
 }

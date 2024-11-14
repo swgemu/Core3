@@ -139,7 +139,7 @@ void ShipComponentImplementation::install(CreatureObject* pilot, ShipObject* shi
 	ship->setComponentCRC(slot, getAppearanceName(ship).hashCode(), nullptr, command, deltaVector);
 
 	if (deltaVector != nullptr) {
-		deltaVector->sendMessages(ship, pilot);
+		deltaVector->sendMessages(ship);
 	}
 }
 
@@ -181,7 +181,7 @@ void ShipComponentImplementation::uninstall(CreatureObject* pilot, ShipObject* s
 	ship->setComponentCRC(slot, 0, nullptr, command, deltaVector);
 
 	if (deltaVector != nullptr) {
-		deltaVector->sendMessages(ship, pilot);
+		deltaVector->sendMessages(ship);
 	}
 }
 

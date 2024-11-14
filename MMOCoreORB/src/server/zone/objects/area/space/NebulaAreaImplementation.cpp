@@ -241,7 +241,7 @@ void NebulaAreaImplementation::shipLightningDamage(ShipObject* ship, const Vecto
 			}
 
 			if (deltaVector != nullptr) {
-				deltaVector->sendMessages(targetShip, targetShip->getPilot());
+				deltaVector->sendMessages(targetShip);
 			}
 
 		}, "LightningDamageTask", 1000);

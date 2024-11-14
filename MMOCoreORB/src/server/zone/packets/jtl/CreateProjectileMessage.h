@@ -170,6 +170,7 @@ public:
 
 	void launchCountermeasure(ShipObject* ship, CreatureObject* pilot, const ShipProjectileData* data) const {
 		auto shipManager = ShipManager::instance();
+
 		if (shipManager == nullptr) {
 			return;
 		}
@@ -178,24 +179,28 @@ public:
 		int ammoType = ship->getAmmoClassMap()->get(slot);
 
 		int currentAmmo = ship->getCurrentAmmoMap()->get(slot);
+
 		if (currentAmmo < 1) {
 			return;
 		}
 
 		auto counterData = shipManager->getCountermeasureData(ammoType);
+
 		if (counterData == nullptr) {
 			return;
 		}
 
 		auto deltaVector = ship->getDeltaVector();
+
 		if (deltaVector == nullptr) {
 			return;
 		}
 
 		ship->setCurrentAmmo(slot, currentAmmo - 1, nullptr, DeltaMapCommands::SET, deltaVector);
-		deltaVector->sendMessages(ship, ship->getPilot());
+		deltaVector->sendMessages(ship);
 
 		auto counter = new ShipCountermeasure(ship, weaponIndex, projectileType, componentIndex, position, direction, data->getSpeed(), data->getRange(), 1.f, System::getMiliTime());
+
 		counter->readProjectileData(data);
 		counter->readCountermeasureData(counterData);
 
@@ -247,7 +252,7 @@ public:
 		}
 
 		ship->setCurrentAmmo(weaponSlot, currentAmmo - 1, nullptr, DeltaMapCommands::SET, deltaVector);
-		deltaVector->sendMessages(ship, ship->getPilot());
+		deltaVector->sendMessages(ship);
 
 		auto missile = new ShipMissile(ship, weaponIndex, projectileType, componentIndex, position, direction, data->getSpeed(), data->getRange(), 1.f, System::getMiliTime());
 		missile->readProjectileData(data);

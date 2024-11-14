@@ -160,7 +160,7 @@ void SpaceCombatManager::applyDamage(ShipObject* ship, const ShipProjectile* pro
 	}
 
 	if (deltaVector != nullptr) {
-		deltaVector->sendMessages(target, target->getPilot());
+		deltaVector->sendMessages(target);
 	}
 
 	if (messages.size() > 0) {
