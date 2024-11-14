@@ -40,6 +40,14 @@ public:
 				if (pet == nullptr)
 					continue;
 
+				if (pet->isDroidObject()) {
+					auto droidRoot = pet->getRootParent();
+
+					if (droidRoot != nullptr && droidRoot->isShipObject() && droidRoot->getSlottedObject("ship_droid") == pet) {
+						continue;
+					}
+				}
+
 				Locker clocker(pet, player);
 
 				PetControlDeviceStoreTask* storeTask = new PetControlDeviceStoreTask(controlDevice.castTo<PetControlDevice*>(), player, true);

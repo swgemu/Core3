@@ -74,8 +74,8 @@ bool ShipContainerComponent::transferObject(SceneObject* shipContainer, SceneObj
 	VectorMap<String, ManagedReference<SceneObject*> >* slottedObjects = shipContainer->getSlottedObjects();
 	VectorMap<uint64, ManagedReference<SceneObject*> >* containerObjects = shipContainer->getContainerObjects();
 
-	// This is a ship container, player arrangement for ships is 5 and greater
-	if (containmentType >= 5) {
+	// This is a ship container, player arrangement for ships is 5 and greater, ship droid/navicomputer arragement is 4.
+	if (containmentType >= 4) {
 		int arrangementGroup = containmentType - 4;
 
 		//info(true) << shipContainer->getDisplayedName() << " Arrangement Group = " << arrangementGroup << " (containmentType - 4) Arrangment Descriptor Size: " << object->getArrangementDescriptorSize();
