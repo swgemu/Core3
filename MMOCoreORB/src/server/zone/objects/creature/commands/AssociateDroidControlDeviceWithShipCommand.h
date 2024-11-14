@@ -5,9 +5,9 @@
 #ifndef ASSOCIATEDROIDCONTROLDEVICEWITHSHIPCOMMAND_H_
 #define ASSOCIATEDROIDCONTROLDEVICEWITHSHIPCOMMAND_H_
 
-#include "server/zone/objects/ship/ShipDroidData.h"
 #include "server/zone/objects/intangible/PetControlDevice.h"
 #include "server/zone/objects/creature/ai/DroidObject.h"
+#include "server/zone/objects/ship/ShipDroidData.h"
 
 class AssociateDroidControlDeviceWithShipCommand : public QueueCommand {
 public:
@@ -25,17 +25,18 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
-		auto zoneServer = creature->getZoneServer();
+		UnicodeTokenizer tokens(arguments);
 
-		if (zoneServer == nullptr) {
+		auto shipID = tokens.hasMoreTokens() ? tokens.getLongToken() : 0;
+		auto itemID = tokens.hasMoreTokens() ? tokens.getLongToken() : 0;
+
+		if (shipID == 0) {
 			return GENERALERROR;
 		}
 
-		UnicodeTokenizer tokens(arguments);
-		uint64 shipID = tokens.hasMoreTokens() ? tokens.getLongToken() : 0;
-		uint64 itemID = tokens.hasMoreTokens() ? tokens.getLongToken() : 0;
+		auto zoneServer = creature->getZoneServer();
 
-		if (shipID == 0) {
+		if (zoneServer == nullptr) {
 			return GENERALERROR;
 		}
 
@@ -47,15 +48,18 @@ public:
 
 		auto ship = shipObject->asShipObject();
 
-		if (ship == nullptr || ship->getOwner().get() != creature) {
+		if (ship == nullptr) {
 			return GENERALERROR;
 		}
 
+		Locker sLock(ship, creature);
+
 		if (itemID == 0) {
-			Locker sLock(ship, creature);
 			ship->setShipDroidID(0, true);
 			return SUCCESS;
 		}
+
+		auto componentMap = ship->getShipComponentMap();
 
 		if (!ship->isComponentInstalled(Components::DROID_INTERFACE)) {
 			creature->sendSystemMessage("@space/space_interaction:no_droid_command_module");
@@ -67,15 +71,15 @@ public:
 			return GENERALERROR;
 		}
 
-		ManagedReference<SceneObject*> control = zoneServer->getObject(itemID);
+		ManagedReference<SceneObject*> petControl = zoneServer->getObject(itemID);
 
-		if (control == nullptr || !control->isPetControlDevice()) {
+		if (petControl == nullptr || !petControl->isPetControlDevice()) {
 			return GENERALERROR;
 		}
 
-		auto droidControl = dynamic_cast<PetControlDevice*>(control.get());
+		auto droidControl = dynamic_cast<PetControlDevice*>(petControl.get());
 
-		if (droidControl == nullptr || !droidControl->isASubChildOf(creature)) {
+		if (droidControl == nullptr) {
 			return GENERALERROR;
 		}
 
@@ -85,10 +89,16 @@ public:
 			return GENERALERROR;
 		}
 
-		uint32 droidType = ShipDroidData::getDroidType(droid->getServerObjectCRC());
+		auto droidObject = dynamic_cast<DroidObject*>(droid.get());
+
+		if (droidObject == nullptr) {
+			return GENERALERROR;
+		}
+
+		uint32 droidType = ShipDroidData::getDroidType(droidObject->getServerObjectCRC());
 		uint32 shipType = ShipDroidData::getShipDroidType(ship->getShipChassisName().hashCode());
 
-		if (droidType != shipType) {
+		if (shipType != droidType) {
 			if (droidType == ShipDroidData::NONE) {
 				creature->sendSystemMessage("@space/space_interaction:not_an_astromech_for_space");
 				return GENERALERROR;
@@ -105,10 +115,9 @@ public:
 			}
 		}
 
-		Locker sLock(ship, creature);
+		uint64 droidID = droid->getObjectID();
 
-		ship->setShipDroidID(droid->getObjectID(), true);
-
+		ship->setShipDroidID(droidID, true);
 		creature->sendSystemMessage("@space/space_interaction:ship_droid_set");
 		return SUCCESS;
 	}
