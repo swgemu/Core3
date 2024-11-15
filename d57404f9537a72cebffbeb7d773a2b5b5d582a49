@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9f749a3f_c71a3d09",
+        "filename": "MMOCoreORB/src/server/zone/objects/intangible/tasks/StoreShipTask.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2024-11-15T19:44:03Z",
+      "side": 1,
+      "message": "Ship is locked coming in, should be cross locking to the ship thread.",
+      "revId": "d57404f9537a72cebffbeb7d773a2b5b5d582a49",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5b14bc7_49d6cd29",
+        "filename": "MMOCoreORB/src/server/zone/objects/ship/events/InsertAstromechIntoShipTask.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2024-11-15T19:44:03Z",
+      "side": 1,
+      "message": "The ship needs to be locked too, you are transferring the droid into it. So lock I would lock the ship and cross lock the droid to it, just like we do when inserting a player.",
+      "revId": "d57404f9537a72cebffbeb7d773a2b5b5d582a49",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    }
+  ]
+}
