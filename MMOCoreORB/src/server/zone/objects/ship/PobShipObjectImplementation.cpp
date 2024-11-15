@@ -19,6 +19,7 @@
 #include "server/zone/objects/ship/ai/ShipAiAgent.h"
 #include "server/zone/objects/tangible/item/CreditChipObject.h"
 #include "server/zone/managers/loot/LootManager.h"
+#include "server/zone/objects/tangible/ship/interiorComponents/ShipInteriorComponent.h"
 
 void PobShipObjectImplementation::notifyLoadFromDatabase() {
 	CreatureObject* owner = getOwner().get();
@@ -78,8 +79,9 @@ void PobShipObjectImplementation::createChildObjects() {
 
 	auto layout = getObjectTemplate()->getPortalLayout();
 
-	if (layout == nullptr)
+	if (layout == nullptr) {
 		return;
+	}
 
 	//info(true) << "creating cells for PoB Ship: " << getDisplayedName();
 
@@ -118,8 +120,9 @@ void PobShipObjectImplementation::createChildObjects() {
 	for (int i = 0; i < templateObject->getChildObjectsSize(); ++i) {
 		const ChildObject* child = templateObject->getChildObject(i);
 
-		if (child == nullptr)
+		if (child == nullptr) {
 			continue;
+		}
 
 		const String childTemplate = child->getTemplateFile();
 		uint32 childHash = childTemplate.hashCode();
@@ -170,7 +173,7 @@ void PobShipObjectImplementation::createChildObjects() {
 
 						if (terminalChild != nullptr)
 							terminalChild->setControlledObject(asPobShip());
-					} else if (childTemplate.contains("alarm_interior")) {
+					} else if (childTemplate.contains("alarm_")) {
 						plasmaAlarms.add(obj->getObjectID());
 					} else if (childHash == STRING_HASHCODE("object/tangible/container/drum/pob_ship_loot_box.iff")) {
 						shipLootBox = obj;
@@ -179,8 +182,13 @@ void PobShipObjectImplementation::createChildObjects() {
 
 						permissions->setAllowPermission("owner", ContainerPermissions::OPEN);
 						permissions->setAllowPermission("owner", ContainerPermissions::MOVEOUT);
-					}
+					} else if (obj->isShipInteriorComponent()) {
+						auto interiorComponent = obj.castTo<ShipInteriorComponent*>();
 
+						if (interiorComponent != nullptr) {
+							interiorComponent->setComponentSlot(child->getComponentSlot());
+						}
+					}
 				} else {
 					error("Cell null for create child objects on PobShip");
 					obj->destroyObjectFromDatabase(true);
@@ -621,8 +629,11 @@ bool PobShipObjectImplementation::isOnPermissionList(const String& listName, Cre
 void PobShipObjectImplementation::togglePlasmaAlarms() {
 	auto zoneServer = getZoneServer();
 
-	if (zoneServer == nullptr)
+	if (zoneServer == nullptr) {
 		return;
+	}
+
+	bool hasActivePlasmaLeak = hasActivePlasmaLeaks();
 
 	for (int i = 0; i < plasmaAlarms.size(); ++i) {
 		uint64 alarmID = plasmaAlarms.get(i);
@@ -635,18 +646,45 @@ void PobShipObjectImplementation::togglePlasmaAlarms() {
 
 		TangibleObject* alarmTano = alarm->asTangibleObject();
 
-		if (alarmTano == nullptr)
+		if (alarmTano == nullptr) {
 			continue;
+		}
 
 		Locker alocker(alarm, _this.getReferenceUnsafeStaticCast());
 
-		if (alarmTano->getOptionsBitmask() & OptionBitmask::ACTIVATED) {
+		uint32 alarmOptionBit = alarmTano->getOptionsBitmask();
+
+		if (!hasActivePlasmaLeak && (alarmOptionBit & OptionBitmask::ACTIVATED)) {
 			alarmTano->setOptionsBitmask(OptionBitmask::DISABLED);
-		} else {
+		} else if (hasActivePlasmaLeak && !(alarmOptionBit & OptionBitmask::ACTIVATED)) {
 			alarmTano->setOptionsBitmask(OptionBitmask::ACTIVATED);
 			alarmTano->setMaxCondition(0);
 		}
 	}
+}
+
+void PobShipObjectImplementation::addDamagedInteriorComponent(uint64 interiorComponentID, int type) {
+	Locker lock(&intComponentsMutex);
+
+	damageInteriorComponents.put(interiorComponentID, type);
+}
+
+void PobShipObjectImplementation::removeDamagedInteriorComponent(uint64 interiorComponentID) {
+	Locker lock(&intComponentsMutex);
+
+	damageInteriorComponents.drop(interiorComponentID);
+}
+
+bool PobShipObjectImplementation::hasActivePlasmaLeaks() {
+	Locker lock(&intComponentsMutex);
+
+	for (int i = 0; i < damageInteriorComponents.size(); i++) {
+		if (damageInteriorComponents.elementAt(i).getValue() == PobShipObject::PLASMA_CONDUIT) {
+			return true;
+		}
+	}
+
+	return false;
 }
 
 int PobShipObjectImplementation::getCurrentNumberOfPlayerItems() {

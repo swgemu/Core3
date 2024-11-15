@@ -1,0 +1,26 @@
+/*
+				Copyright <SWGEmu>
+		See file COPYING for copying conditions.*/
+
+package server.zone.objects.tangible.ship.interiorComponents;
+
+import server.zone.objects.tangible.TangibleObject;
+
+@json
+class ShipInteriorComponent extends TangibleObject {
+	protected int componentSlot;
+
+	public ShipInteriorComponent() {
+		setLoggingName("ShipInteriorComponent");
+
+		componentSlot = -2;
+	}
+
+	public void setComponentSlot(int slot) {
+		componentSlot = slot;
+	}
+
+	public int getComponentSlot() {
+		return componentSlot;
+	}
+}

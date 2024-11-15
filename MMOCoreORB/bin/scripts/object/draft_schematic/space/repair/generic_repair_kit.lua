@@ -42,39 +42,34 @@
 
 
 object_draft_schematic_space_repair_generic_repair_kit = object_draft_schematic_space_repair_shared_generic_repair_kit:new {
+	templateType = DRAFTSCHEMATIC,
 
-   templateType = DRAFTSCHEMATIC,
+	craftingToolTab = 262144, -- (See DraftSchematicObjectTemplate.h)
+	complexity = 11,
+	size = 1,
+	factoryCrateType = "object/factory/factory_crate_electronics.iff",
 
-   customObjectName = "All Purpose Ship Repair Kit",
+	xpType = "crafting_general",
+	xp = 70,
 
-   craftingToolTab = 262144, -- (See DraftSchematicObjectTemplate.h)
-   complexity = 11, 
-   size = 1, 
-   factoryCrateType = "object/factory/factory_crate_electronics.iff",
-   
-   xpType = "crafting_general", 
-   xp = 70, 
+	assemblySkill = "general_assembly",
+	experimentingSkill = "general_experimentation",
+	customizationSkill = "clothing_customization",
 
-   assemblySkill = "general_assembly", 
-   experimentingSkill = "general_experimentation", 
-   customizationSkill = "clothing_customization", 
+	customizationOptions = {},
+	customizationStringNames = {},
+	customizationDefaults = {},
 
-   customizationOptions = {},
-   customizationStringNames = {},
-   customizationDefaults = {},
-
-   ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n"},
-   ingredientTitleNames = {"repair_parts", "fiberplast_patches"},
-   ingredientSlotType = {0, 0},
-   resourceTypes = {"steel", "fiberplast"},
-   resourceQuantities = {80, 60},
-   contribution = {100, 100},
+	ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n"},
+	ingredientTitleNames = {"repair_parts", "fiberplast_patches"},
+	ingredientSlotType = {0, 0},
+	resourceTypes = {"steel", "fiberplast"},
+	resourceQuantities = {80, 60},
+	contribution = {100, 100},
 
 
-   targetTemplate = "object/tangible/ship/crafted/repair/repair_kit_ship.iff",
+	targetTemplate = "object/tangible/ship/crafted/repair/repair_kit_ship.iff",
 
-   additionalTemplates = {
-             }
-
+	additionalTemplates = {}
 }
 ObjectTemplates:addTemplate(object_draft_schematic_space_repair_generic_repair_kit, "object/draft_schematic/space/repair/generic_repair_kit.iff")

@@ -1,0 +1,62 @@
+/*
+				Copyright <SWGEmu>
+		See file COPYING for copying conditions.*/
+
+package server.zone.objects.tangible.ship.crafted.repair;
+
+import server.zone.objects.tangible.TangibleObject;
+import server.zone.packets.scene.AttributeListMessage;
+import server.zone.objects.creature.CreatureObject;
+include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
+
+@json
+class ShipComponentRepairKit extends TangibleObject {
+	protected int repairCharges;
+
+	protected unsigned int componentSlot;
+
+	public ShipComponentRepairKit() {
+		setLoggingName("ShipComponentRepairKit");
+
+		repairCharges = 0;
+	}
+
+	/**
+	 * Fills the attribute list message options that are sent to player creature
+	 * @pre { }
+	 * @post { }
+	 * @param msg attribute list message with the attributes
+	 * @param object player creature to which the message is sent
+	 */
+	@local
+	@dirty
+	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
+
+	@local
+	public native void updateCraftingValues(CraftingValues values, boolean firstUpdate);
+
+	// Mutators
+	@dirty
+	public float getRepairCharges() {
+		return repairCharges;
+	}
+
+	@dirty
+	public unsigned int getComponentSlot() {
+		return componentSlot;
+	}
+
+	// Accesors
+	public void setRepairCharges(int charges) {
+		repairCharges = charges;
+	}
+
+	public void setComponentSlot(unsigned int slot) {
+		componentSlot = slot;
+	}
+
+	@dirty
+	public boolean isShipComponentRepairKit() {
+		return true;
+	}
+}

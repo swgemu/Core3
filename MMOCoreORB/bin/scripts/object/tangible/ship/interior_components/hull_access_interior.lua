@@ -42,7 +42,8 @@
 
 
 object_tangible_ship_interior_components_hull_access_interior = object_tangible_ship_interior_components_shared_hull_access_interior:new {
-	objectMenuComponent = "PobShipObjectMenuComponent",
+	objectMenuComponent = "ShipInteriorComponentMenuComponent",
+	gameObjectType = 1073741841,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_interior_components_hull_access_interior, "object/tangible/ship/interior_components/hull_access_interior.iff")
