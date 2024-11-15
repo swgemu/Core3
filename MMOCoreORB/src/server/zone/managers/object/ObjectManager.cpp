@@ -327,6 +327,8 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<PowerupObject>(SceneObjectType::HEAVYWEAPONPOWERUP);
 	objectFactory.registerObject<PowerupObject>(SceneObjectType::MINEPOWERUP);
 	objectFactory.registerObject<PowerupObject>(SceneObjectType::SPECIALHEAVYWEAPONPOWERUP);
+
+	// JTL Related
 	objectFactory.registerObject<ShipComponent>(SceneObjectType::SHIPATTACHMENT);
 	objectFactory.registerObject<ShipReactorComponent>(SceneObjectType::SHIPREACTOR);
 	objectFactory.registerObject<ShipEngineComponent>(SceneObjectType::SHIPENGINE);
@@ -348,8 +350,10 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<TangibleObject>(SceneObjectType::SHIPCONTAINER);
 	objectFactory.registerObject<FactoryCrate>(SceneObjectType::FACTORYCRATE);
 	objectFactory.registerObject<TangibleObject>(SceneObjectType::CRYSTAL);
+	objectFactory.registerObject<ShipComponentRepairKit>(SceneObjectType::SHIPCOMPONENTREPAIRITEM);
+	objectFactory.registerObject<ShipInteriorComponent>(SceneObjectType::SHIPINTERIORCOMPONENT);
 
-	// JTL Related
+
 	objectFactory.registerObject<SpaceActiveArea>(SceneObjectType::SPACEACTIVEAREA);
 	objectFactory.registerObject<NebulaArea>(SceneObjectType::NEBULAAREA);
 	objectFactory.registerObject<SpaceRegion>(SceneObjectType::SPACEREGIONAREA);

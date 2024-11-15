@@ -35,6 +35,8 @@
 #include "server/zone/objects/ship/components/ShipReactorComponent.h"
 #include "server/zone/objects/ship/components/ShipShieldComponent.h"
 #include "server/zone/objects/ship/components/ShipWeaponComponent.h"
+#include "server/zone/objects/tangible/ship/crafted/repair/ShipComponentRepairKit.h"
+#include "server/zone/objects/tangible/ship/interiorComponents/ShipInteriorComponent.h"
 #include "server/zone/objects/tangible/Container.h"
 #include "server/zone/objects/tangible/TangibleObject.h"
 #include "server/zone/objects/tangible/LairObject.h"

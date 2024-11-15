@@ -65,6 +65,8 @@ namespace tangible {
 		int isSliced(lua_State* L);
 		int isNoTrade(lua_State* L);
 		int getMainDefender(lua_State* L);
+		int getConditionDamage(lua_State* L);
+		int isActivated(lua_State* L);
 
 	protected:
 		TangibleObject* realObject;

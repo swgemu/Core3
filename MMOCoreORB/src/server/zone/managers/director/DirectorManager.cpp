@@ -101,8 +101,10 @@
 #include "server/zone/objects/ship/components/ShipChassisComponent.h"
 
 #include "server/zone/objects/ship/LuaShipObject.h"
+#include "server/zone/objects/ship/LuaPobShipObject.h"
 #include "server/zone/objects/ship/ai/LuaShipAiAgent.h"
 #include "server/zone/objects/ship/components/LuaShipComponent.h"
+#include "server/zone/objects/ship/components/ShipComponent.h"
 
 int DirectorManager::DEBUG_MODE = 0;
 int DirectorManager::ERROR_CODE = NO_ERROR;
@@ -782,6 +784,21 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	luaEngine->setGlobalInt("SHIP_AI_SQUADRON_PATROL", ShipFlag::SQUADRON_PATROL);
 	luaEngine->setGlobalInt("SHIP_AI_SQUADRON_FOLLOW", ShipFlag::SQUADRON_FOLLOW);
 
+	// ShipComponents
+	luaEngine->setGlobalInt("SHIP_REACTOR", Components::REACTOR);
+	luaEngine->setGlobalInt("SHIP_ENGINE", Components::ENGINE);
+	luaEngine->setGlobalInt("SHIP_SHIELD0", Components::SHIELD0);
+	luaEngine->setGlobalInt("SHIP_SHIELD1", Components::SHIELD1);
+	luaEngine->setGlobalInt("SHIP_ARMOR0", Components::ARMOR0);
+	luaEngine->setGlobalInt("SHIP_ARMOR1", Components::ARMOR1);
+	luaEngine->setGlobalInt("SHIP_CAPACITOR", Components::CAPACITOR);
+	luaEngine->setGlobalInt("SHIP_BOOSTER", Components::BOOSTER);
+	luaEngine->setGlobalInt("SHIP_DROID_INTERFACE", Components::DROID_INTERFACE);
+	luaEngine->setGlobalInt("SHIP_BRIDGE", Components::BRIDGE);
+	luaEngine->setGlobalInt("SHIP_HANGAR", Components::HANGAR);
+	luaEngine->setGlobalInt("SHIP_TARGETING_STATION", Components::TARGETING_STATION);
+	luaEngine->setGlobalInt("SHIP_WEAPON_START", Components::WEAPON_START);
+
 	// Badges
 	const auto badges = BadgeList::instance()->getMap();
 	for (const auto& entry : *badges) {
@@ -799,6 +816,7 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	Luna<LuaBuildingObject>::Register(luaEngine->getLuaState());
 	Luna<LuaCreatureObject>::Register(luaEngine->getLuaState());
 	Luna<LuaShipObject>::Register(luaEngine->getLuaState());
+	Luna<LuaPobShipObject>::Register(luaEngine->getLuaState());
 	Luna<LuaShipAiAgent>::Register(luaEngine->getLuaState());
 	Luna<LuaShipComponent>::Register(luaEngine->getLuaState());
 	Luna<LuaSceneObject>::Register(luaEngine->getLuaState());

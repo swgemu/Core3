@@ -34,6 +34,7 @@ _localLuaCityRegion = LuaCityRegion(nil)
 _localLuaActiveArea = LuaActiveArea(nil)
 _localLuaWaypointObject = LuaWaypointObject(nil)
 _localLuaShipObject = LuaShipObject(nil)
+_localLuaPobShipObject = LuaPobShipObject(nil)
 
 AiAgent = function(pAiAgent)
   if (pAiAgent == nil) then
@@ -254,4 +255,14 @@ ShipObject = function(pShip)
   _localLuaShipObject:_setObject(pShip)
 
   return _localLuaShipObject
+end
+
+PobShipObject = function(pShip)
+	if (pShip == nil) then
+		return nil
+	end
+
+	_localLuaPobShipObject:_setObject(pShip)
+
+	return _localLuaPobShipObject
 end

@@ -42,7 +42,8 @@
 
 
 object_tangible_ship_interior_components_weapon_interior = object_tangible_ship_interior_components_shared_weapon_interior:new {
-	objectMenuComponent = "PobShipObjectMenuComponent",
+	objectMenuComponent = "ShipInteriorComponentMenuComponent",
+	gameObjectType = 1073741841,
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_interior_components_weapon_interior, "object/tangible/ship/interior_components/weapon_interior.iff")
