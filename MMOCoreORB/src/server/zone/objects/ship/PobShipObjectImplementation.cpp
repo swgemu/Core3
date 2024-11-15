@@ -170,7 +170,7 @@ void PobShipObjectImplementation::createChildObjects() {
 
 						if (terminalChild != nullptr)
 							terminalChild->setControlledObject(asPobShip());
-					} else if (childTemplate.contains("alarm_interior")) {
+					} else if (childTemplate.contains("alarm_")) {
 						plasmaAlarms.add(obj->getObjectID());
 					} else if (childHash == STRING_HASHCODE("object/tangible/container/drum/pob_ship_loot_box.iff")) {
 						shipLootBox = obj;
@@ -180,7 +180,6 @@ void PobShipObjectImplementation::createChildObjects() {
 						permissions->setAllowPermission("owner", ContainerPermissions::OPEN);
 						permissions->setAllowPermission("owner", ContainerPermissions::MOVEOUT);
 					}
-
 				} else {
 					error("Cell null for create child objects on PobShip");
 					obj->destroyObjectFromDatabase(true);

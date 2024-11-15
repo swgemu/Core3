@@ -42,10 +42,7 @@
 
 
 object_draft_schematic_space_repair_booster_repair_kit = object_draft_schematic_space_repair_shared_booster_repair_kit:new {
-
    templateType = DRAFTSCHEMATIC,
-
-   customObjectName = "Booster Repair Kit",
 
    craftingToolTab = 262144, -- (See DraftSchematicObjectTemplate.h)
    complexity = 11, 
@@ -73,8 +70,6 @@ object_draft_schematic_space_repair_booster_repair_kit = object_draft_schematic_
 
    targetTemplate = "object/tangible/ship/crafted/repair/repair_kit_booster.iff",
 
-   additionalTemplates = {
-             }
-
+   additionalTemplates = {}
 }
 ObjectTemplates:addTemplate(object_draft_schematic_space_repair_booster_repair_kit, "object/draft_schematic/space/repair/booster_repair_kit.iff")

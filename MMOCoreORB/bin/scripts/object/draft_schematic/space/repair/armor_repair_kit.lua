@@ -42,10 +42,7 @@
 
 
 object_draft_schematic_space_repair_armor_repair_kit = object_draft_schematic_space_repair_shared_armor_repair_kit:new {
-
    templateType = DRAFTSCHEMATIC,
-
-   customObjectName = "Armor Repair Kit",
 
    craftingToolTab = 262144, -- (See DraftSchematicObjectTemplate.h)
    complexity = 11, 
@@ -73,8 +70,6 @@ object_draft_schematic_space_repair_armor_repair_kit = object_draft_schematic_sp
 
    targetTemplate = "object/tangible/ship/crafted/repair/repair_kit_armor.iff",
 
-   additionalTemplates = {
-             }
-
+   additionalTemplates = {}
 }
 ObjectTemplates:addTemplate(object_draft_schematic_space_repair_armor_repair_kit, "object/draft_schematic/space/repair/armor_repair_kit.iff")

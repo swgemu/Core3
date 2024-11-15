@@ -42,10 +42,7 @@
 
 
 object_draft_schematic_space_repair_engine_repair_kit = object_draft_schematic_space_repair_shared_engine_repair_kit:new {
-
    templateType = DRAFTSCHEMATIC,
-
-   customObjectName = "Engine Repair Kit",
 
    craftingToolTab = 262144, -- (See DraftSchematicObjectTemplate.h)
    complexity = 11, 
@@ -73,8 +70,6 @@ object_draft_schematic_space_repair_engine_repair_kit = object_draft_schematic_s
 
    targetTemplate = "object/tangible/ship/crafted/repair/repair_kit_engine.iff",
 
-   additionalTemplates = {
-             }
-
+   additionalTemplates = {}
 }
 ObjectTemplates:addTemplate(object_draft_schematic_space_repair_engine_repair_kit, "object/draft_schematic/space/repair/engine_repair_kit.iff")

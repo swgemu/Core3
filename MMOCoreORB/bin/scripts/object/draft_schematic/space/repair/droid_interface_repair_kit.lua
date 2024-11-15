@@ -42,10 +42,7 @@
 
 
 object_draft_schematic_space_repair_droid_interface_repair_kit = object_draft_schematic_space_repair_shared_droid_interface_repair_kit:new {
-
    templateType = DRAFTSCHEMATIC,
-
-   customObjectName = "Droid Interface Repair Kit",
 
    craftingToolTab = 262144, -- (See DraftSchematicObjectTemplate.h)
    complexity = 11, 
@@ -73,8 +70,7 @@ object_draft_schematic_space_repair_droid_interface_repair_kit = object_draft_sc
 
    targetTemplate = "object/tangible/ship/crafted/repair/repair_kit_droid_interface.iff",
 
-   additionalTemplates = {
-             }
+   additionalTemplates = {}
 
 }
 ObjectTemplates:addTemplate(object_draft_schematic_space_repair_droid_interface_repair_kit, "object/draft_schematic/space/repair/droid_interface_repair_kit.iff")

@@ -28,6 +28,7 @@ includeFile("space/ship_components/escape_pod_hatch_menu_component.lua")
 includeFile("space/ship_components/pilot_seat_menu_component.lua")
 includeFile("space/ship_components/ship_operations_menu_component.lua")
 includeFile("space/ship_components/ship_turret_menu_component.lua")
+includeFile("space/ship_components/ship_interior_component_menu_component.lua")
 
 
 --[[

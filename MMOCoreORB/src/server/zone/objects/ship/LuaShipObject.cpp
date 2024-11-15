@@ -26,6 +26,7 @@ Luna<LuaShipObject>::RegType LuaShipObject::Register[] = {
 	{ "hasLowerTurret", &LuaShipObject::hasLowerTurret },
 	{ "isUpperTurretFunctional", &LuaShipObject::isUpperTurretFunctional },
 	{ "isLowerTurretFunctional", &LuaShipObject::isLowerTurretFunctional },
+	{ "repairInteriorComponent", &LuaShipObject::repairInteriorComponent },
 	{ 0, 0}
 };
 
@@ -313,4 +314,39 @@ int LuaShipObject::isLowerTurretFunctional(lua_State* L) {
 	lua_pushboolean(L, isLowerTurretFunctional);
 
 	return 1;
+}
+
+int LuaShipObject::repairInteriorComponent(lua_State* L) {
+	int numberOfArguments = lua_gettop(L) - 1;
+
+	if (numberOfArguments != 4) {
+		realObject->error() << "Improper number of arguments in LuaShipObject::repairInteriorComponent.";
+		return 0;
+	}
+
+	if (!realObject->isPobShip()) {
+		return -;
+	}
+
+	CreatureObject* player = (CreatureObject*)lua_touserdata(L, -4);
+	TangibleObject* interiorComponent = (TangibleObject*)lua_touserdata(L, -3);
+	TangibleObject* repairKit = (TangibleObject*)lua_touserdata(L, -2);
+	int componentType = lua_tonumber(L, -1);
+
+	if (player == nullptr || interiorComponent == nullptr || repairKit == nullptr || componentType == 0) {
+		return 0;
+	}
+
+	/*
+		GENERAL = 1,
+		PLASMA_CONDUIT = 2,
+		REACTOR = 3,
+		ENGINE = 4,
+		SHIELD_GENERATOR = 5,
+		CAPACITOR = 6,
+	*/
+
+
+
+	return 0;
 }

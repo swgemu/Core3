@@ -230,6 +230,20 @@ float SpaceCombatManager::applyShieldDamage(ShipObject* target, const SpaceColli
 		}
 
 		getHitEffectMessages(target, result, ShipHitType::HITSHIELD, shieldNew, shieldOld, messages);
+
+		if (target->isPobShip() && target->isPlayerShip()) {
+			Reference<PobShipObject*> pobRef = target->asPobShip();
+
+			Core::getTaskManager()->scheduleTask([pobRef] () {
+				if (pobRef == nullptr) {
+					return;
+				}
+
+				Locker locker(pobRef);
+
+				//pobRef->damageInteriorComponents();
+			}, "PobInteriorComponentLambda", 200);
+		}
 	}
 
 	return shieldDamage / effect;
@@ -290,6 +304,20 @@ float SpaceCombatManager::applyArmorDamage(ShipObject* target, const SpaceCollis
 		float totalOld = (armorOld + healthOld) / totalMax;
 
 		getHitEffectMessages(target, result, ShipHitType::HITARMOR, totalNew, totalOld, messages);
+
+		if (target->isPobShip() && target->isPlayerShip()) {
+			Reference<PobShipObject*> pobRef = target->asPobShip();
+
+			Core::getTaskManager()->scheduleTask([pobRef] () {
+				if (pobRef == nullptr) {
+					return;
+				}
+
+				Locker locker(pobRef);
+
+				//pobRef->damageInteriorComponents();
+			}, "PobInteriorComponentLambda", 200);
+		}
 	}
 
 	if (target->getCurrentHitpointsMap()->get(slot) == 0.f) {
@@ -323,6 +351,20 @@ float SpaceCombatManager::applyChassisDamage(ShipObject* target, const SpaceColl
 		target->setCurrentChassisHealth(chassisMin, false, nullptr, deltaVector);
 
 		getHitEffectMessages(target, result, ShipHitType::HITCHASSIS, chassisNew, chassisOld, messages);
+
+		if (target->isPobShip() && target->isPlayerShip()) {
+			Reference<PobShipObject*> pobRef = target->asPobShip();
+
+			Core::getTaskManager()->scheduleTask([pobRef] () {
+				if (pobRef == nullptr) {
+					return;
+				}
+
+				Locker locker(pobRef);
+
+				//pobRef->damageInteriorComponents();
+			}, "PobInteriorComponentLambda", 200);
+		}
 	}
 
 	return damage;
@@ -379,6 +421,20 @@ float SpaceCombatManager::applyComponentDamage(ShipObject* target, const SpaceCo
 		float totalOld = (armorOld + healthOld) / totalMax;
 
 		getHitEffectMessages(target, result, ShipHitType::HITCOMPONENT, totalNew, totalOld, messages);
+
+		if (target->isPobShip() && target->isPlayerShip()) {
+			Reference<PobShipObject*> pobRef = target->asPobShip();
+
+			Core::getTaskManager()->scheduleTask([pobRef] () {
+				if (pobRef == nullptr) {
+					return;
+				}
+
+				Locker locker(pobRef);
+
+				//pobRef->damageInteriorComponents();
+			}, "PobInteriorComponentLambda", 200);
+		}
 	}
 
 	if (target->getCurrentHitpointsMap()->get(slot) <= 0.f) {
