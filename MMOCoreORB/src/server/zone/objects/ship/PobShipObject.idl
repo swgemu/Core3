@@ -58,6 +58,9 @@ class PobShipObject extends ShipObject {
 	@dereferenced
 	protected transient ReadWriteLock intComponentsMutex;
 
+	@dereferenced
+	protected VectorMap<int, unsigned int> plasmaConduitTypes;
+
 	public PobShipObject() {
 		Logger.setLoggingName("PobShipObject");
 	}
@@ -139,6 +142,8 @@ class PobShipObject extends ShipObject {
 	}
 
 	public native void togglePlasmaAlarms();
+
+	public native void triggerInteriorDamage(int componentType, float damageVar);
 
 	@dirty
 	@nativeStub

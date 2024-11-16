@@ -67,6 +67,15 @@ void PobShipObjectImplementation::loadTemplateData(SharedObjectTemplate* templat
 			launchPoints.addLaunchPoint(cellName, point);
 		}
 	}
+
+	const auto conduitTypes = shipTemp->getPlasmaConduitTypes();
+
+	for (int i = 0; i < conduitTypes.size(); i++) {
+		int conduit = conduitTypes.elementAt(i).getKey();
+		uint32 componentType = conduitTypes.elementAt(i).getValue();
+
+		plasmaConduitTypes.put(conduit, componentType);
+	}
 }
 
 void PobShipObjectImplementation::createChildObjects() {
@@ -116,6 +125,8 @@ void PobShipObjectImplementation::createChildObjects() {
 		cellNameMap.put(layout->getCellProperty(i)->getName(), newCell);
 		cells.put(i, newCell);
 	}
+
+	int conduitCount = 0;
 
 	for (int i = 0; i < templateObject->getChildObjectsSize(); ++i) {
 		const ChildObject* child = templateObject->getChildObject(i);
@@ -187,7 +198,42 @@ void PobShipObjectImplementation::createChildObjects() {
 
 						if (interiorComponent != nullptr) {
 							interiorComponent->setComponentSlot(child->getComponentSlot());
+
+							if (interiorComponent->isShipPlasmaConduit()) {
+								int componentType = plasmaConduitTypes.elementAt(conduitCount).getValue();
+
+								StringBuffer newName;
+								newName << "@space/space_item:conduit_";
+
+								switch(componentType) {
+									case Components::REACTOR: {
+										newName << "reactor";
+										break;
+									}
+									case Components::ENGINE: {
+										newName << "engine";
+										break;
+									}
+									case Components::CAPACITOR: {
+										newName << "capacitor";
+										break;
+									}
+									case Components::SHIELD0: {
+										newName << "shield_0";
+										break;
+									}
+									default:
+										break;
+								}
+
+								interiorComponent->setObjectName(newName.toString(), false);
+
+								interiorComponent->setPlasmaConduitType(componentType);
+								conduitCount++;
+							}
 						}
+
+						// set the conduit type from the vector
 					}
 				} else {
 					error("Cell null for create child objects on PobShip");
@@ -737,6 +783,18 @@ bool PobShipObjectImplementation::hasActivePlasmaLeaks() {
 	}
 
 	return false;
+}
+
+void PobShipObjectImplementation::triggerInteriorDamage(int componentType, float damageVar) {
+	info(true) << "triggerInteriorDamage -- Component Type: " << componentType << " Damage Variable: " << damageVar;
+
+
+
+
+
+
+
+
 }
 
 int PobShipObjectImplementation::getCurrentNumberOfPlayerItems() {

@@ -39,6 +39,7 @@ class SharedShipObjectTemplate : public SharedTangibleObjectTemplate {
 
 	VectorMap<String, Vector<Vector3>> sparkLocations;
 	VectorMap<String, Vector<Vector3>> launchLocations;
+	VectorMap<int, uint32> plasmaConduitTypes;
 
 public:
 	SharedShipObjectTemplate() {
@@ -66,6 +67,10 @@ public:
 
 	const VectorMap<String, Vector<Vector3>>& getLaunchLocations() {
 		return launchLocations;
+	}
+
+	const VectorMap<int, uint32>& getPlasmaConduitTypes() {
+		return plasmaConduitTypes;
 	}
 
 	void readAttributeMap(LuaObject* templateData) {
@@ -154,6 +159,43 @@ public:
 			}
 		}
 		launchLoc.pop();
+
+		// Plasma Conduits
+		auto plasmaConduits = templateData->getObjectField("plasmaConduits");
+
+		if (plasmaConduits.isValidTable()) {
+			for (int i = 1; i <= plasmaConduits.getTableSize(); ++i) {
+				auto conduitTable = plasmaConduits.getObjectAt(i);
+
+				if (conduitTable.isValidTable()) {
+					// Get information for child object
+					String templateFile = conduitTable.getStringField("templateFile");
+
+					Vector3 position;
+					position.setX(conduitTable.getFloatField("x"));
+					position.setZ(conduitTable.getFloatField("z"));
+					position.setY(conduitTable.getFloatField("y"));
+
+					Quaternion direction;
+					direction.set(conduitTable.getFloatField("ow"), conduitTable.getFloatField("ox"), conduitTable.getFloatField("oy"), conduitTable.getFloatField("oz"));
+
+					int cellid = conduitTable.getIntField("cellid");
+					int containmentType = conduitTable.getIntField("containmentType");
+					int componentSlot = (int)conduitTable.getFloatField("componentSlot", -2.f);
+
+					ChildObject object(position, direction, templateFile, cellid, containmentType, componentSlot);
+
+					// Add conduit as child object so it is created
+					childObjects.add(object);
+
+					// Load the component type
+					plasmaConduitTypes.put(i, conduitTable.getIntField("componentDamageSlot"));
+
+					conduitTable.pop();
+				}
+			}
+		}
+		plasmaConduits.pop();
 	}
 
 	void readObject(LuaObject* templateData) {
