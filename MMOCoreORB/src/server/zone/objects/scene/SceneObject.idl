@@ -1992,7 +1992,12 @@ class SceneObject extends TreeEntry implements Logger, Metrics {
 
 	@read
 	public boolean isShipInteriorComponent() {
-		return gameObjectType == SceneObjectType.SHIPINTERIORCOMPONENT;
+		return gameObjectType == SceneObjectType.SHIPINTERIORCOMPONENT || gameObjectType == SceneObjectType.SHIPPLASMACONDUIT;
+	}
+
+	@read
+	public native boolean isShipPlasmaConduit() {
+		return gameObjectType == SceneObjectType.SHIPPLASMACONDUIT;
 	}
 
 	@dirty

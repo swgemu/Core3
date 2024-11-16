@@ -1,5 +1,6 @@
 #include "LuaPobShipObject.h"
 #include "server/zone/objects/ship/PobShipObject.h"
+#include "ShipComponentFlag.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/ZoneServer.h"
 #include "server/zone/objects/ship/components/ShipComponent.h"
@@ -130,14 +131,14 @@ int LuaPobShipObject::repairInteriorComponent(lua_State* L) {
 	// player->info(true) << "Component Slot: " << componentSlot << " Repair Charges: " << repairCharges;
 
 	if (componentSlot == PobShipObject::PLASMA_CONDUIT) {
-		// Disable the animation
-		if (interiorComponent->getOptionsBitmask() & OptionBitmask::ACTIVATED) {
-			interiorComponent->setOptionsBitmask(OptionBitmask::DISABLED);
-		}
-
 		if (!(interiorComponent->getOptionsBitmask() & OptionBitmask::ACTIVATED)) {
 			player->sendSystemMessage("@space/space_interaction:no_damage_to_repair"); // "That component is not damaged."
 			return 0;
+		}
+
+		// Disable the animation
+		if (interiorComponent->getOptionsBitmask() & OptionBitmask::ACTIVATED) {
+			interiorComponent->setOptionsBitmask(OptionBitmask::DISABLED);
 		}
 
 		Locker kitLock(repairKit, realObject);
@@ -182,6 +183,8 @@ int LuaPobShipObject::repairInteriorComponent(lua_State* L) {
 
 		// Fix hit points first
 		if (hitPointsDamage > 0) {
+			Locker kitLock(repairKit, realObject);
+
 			// Damage is greater then available amount repair kit has
 			if (hitPointsDamage >= repairCharges) {
 				// Destroy the repair kit
@@ -192,6 +195,10 @@ int LuaPobShipObject::repairInteriorComponent(lua_State* L) {
 
 				// Update the component
 				realObject->setComponentHitpoints(componentSlot, repairAmount, nullptr, 2, deltaVector);
+
+				if (realObject->hasComponentFlag(componentSlot, ShipComponentFlag::DISABLED)) {
+					realObject->removeComponentFlag(componentSlot, ShipComponentFlag::DISABLED, false);
+				}
 
 				StringIdChatParameter destroyMsg("@space/space_interaction:repaired_x_component_damage_destroy_kit"); // "You have fixed %DI points of damage on the %TO. The repair kit is used up."
 
@@ -209,8 +216,15 @@ int LuaPobShipObject::repairInteriorComponent(lua_State* L) {
 				// Update the component
 				realObject->setComponentHitpoints(componentSlot, hitpointsMax, nullptr, 2, deltaVector);
 
+				if (realObject->hasComponentFlag(componentSlot, ShipComponentFlag::DISABLED)) {
+					realObject->removeComponentFlag(componentSlot, ShipComponentFlag::DISABLED, false);
+				}
+
 				// Calculate remaining amount of repair charges
 				repairCharges = repairCharges - hitPointsDamage;
+
+				// Update the kits repair charges
+				repairKit->setRepairCharges(repairCharges);
 
 				StringIdChatParameter repairMsg("@space/space_interaction:repaired_x_component_damage"); // "You have fixed %DI points of damage on the %TO."
 

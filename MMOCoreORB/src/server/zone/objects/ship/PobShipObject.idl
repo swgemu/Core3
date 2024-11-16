@@ -13,6 +13,7 @@ import engine.util.u3d.Vector3;
 import server.zone.Zone;
 import server.zone.objects.ship.ai.ShipAiAgent;
 import system.thread.ReadWriteLock;
+import server.zone.objects.tangible.ship.interiorComponents.ShipInteriorComponent;
 
 include server.zone.objects.ship.ShipObject;
 include server.zone.TreeEntry;
@@ -31,17 +32,14 @@ class PobShipObject extends ShipObject {
 
 	public static final int PLASMA_CONDUIT = -1;
 
+	public static final short DAMAGE_LOW = 1;
+	public static final short DAMAGE_HIGH = 2;
+
 	@dereferenced
 	protected VectorMap<string, CellObject> cellNameMap;
 
 	@dereferenced
 	protected VectorMap<unsigned int, CellObject> cells;
-
-	@dereferenced
-	protected Vector<unsigned long> plasmaAlarms;
-
-	@dereferenced
-	protected DamageSparkLocations sparkLocations;
 
 	@dereferenced
 	protected PlayerLaunchPoints launchPoints;
@@ -52,11 +50,26 @@ class PobShipObject extends ShipObject {
 	protected SceneObject shipLootBox;
 
 	@dereferenced
+	protected DamageSparkLocations sparkLocations;
+
+	@dereferenced
+	protected Vector<unsigned long> plasmaAlarms;
+
+	@dereferenced
+	protected Vector<ShipInteriorComponent> interiorComponents;
+
+	@dereferenced
+	protected Vector<ShipInteriorComponent> plasmaConduits;
+
+	@dereferenced
 	@local
-	protected transient VectorMap<unsigned long, int> damageInteriorComponents;
+	protected transient VectorMap<unsigned long, int> damagedInteriorComponents;
 
 	@dereferenced
 	protected transient ReadWriteLock intComponentsMutex;
+
+	@dereferenced
+	protected VectorMap<int, unsigned int> plasmaConduitTypes;
 
 	public PobShipObject() {
 		Logger.setLoggingName("PobShipObject");
@@ -139,6 +152,10 @@ class PobShipObject extends ShipObject {
 	}
 
 	public native void togglePlasmaAlarms();
+
+	public native void triggerInteriorDamage(int hitType, float damageVar);
+
+	public native void doInteriorEffect(Zone zone, CellObject cell, string randomCell, int count, int chance, @dereferenced  Vector<string> clientEffects, @dereferenced  Vector<float> damageEffects, int conduitChance);
 
 	@dirty
 	@nativeStub

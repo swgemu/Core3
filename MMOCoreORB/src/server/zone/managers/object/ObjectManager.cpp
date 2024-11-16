@@ -352,6 +352,7 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<TangibleObject>(SceneObjectType::CRYSTAL);
 	objectFactory.registerObject<ShipComponentRepairKit>(SceneObjectType::SHIPCOMPONENTREPAIRITEM);
 	objectFactory.registerObject<ShipInteriorComponent>(SceneObjectType::SHIPINTERIORCOMPONENT);
+	objectFactory.registerObject<ShipPlasmaConduit>(SceneObjectType::SHIPPLASMACONDUIT);
 
 
 	objectFactory.registerObject<SpaceActiveArea>(SceneObjectType::SPACEACTIVEAREA);

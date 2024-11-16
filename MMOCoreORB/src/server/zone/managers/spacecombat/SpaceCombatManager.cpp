@@ -230,6 +230,14 @@ float SpaceCombatManager::applyShieldDamage(ShipObject* target, const SpaceColli
 		}
 
 		getHitEffectMessages(target, result, ShipHitType::HITSHIELD, shieldNew, shieldOld, messages);
+
+		if (target->isPobShip()) {
+			auto pobTarget = target->asPobShip();
+
+			if (pobTarget != nullptr) {
+				pobTarget->triggerInteriorDamage(ShipHitType::HITSHIELD, (shieldNew * 100.f));
+			}
+		}
 	}
 
 	return shieldDamage / effect;
@@ -290,6 +298,14 @@ float SpaceCombatManager::applyArmorDamage(ShipObject* target, const SpaceCollis
 		float totalOld = (armorOld + healthOld) / totalMax;
 
 		getHitEffectMessages(target, result, ShipHitType::HITARMOR, totalNew, totalOld, messages);
+
+		if (target->isPobShip()) {
+			auto pobTarget = target->asPobShip();
+
+			if (pobTarget != nullptr) {
+				pobTarget->triggerInteriorDamage(ShipHitType::HITARMOR, ((totalOld - totalNew) * 100.f));
+			}
+		}
 	}
 
 	if (target->getCurrentHitpointsMap()->get(slot) == 0.f) {
@@ -323,6 +339,14 @@ float SpaceCombatManager::applyChassisDamage(ShipObject* target, const SpaceColl
 		target->setCurrentChassisHealth(chassisMin, false, nullptr, deltaVector);
 
 		getHitEffectMessages(target, result, ShipHitType::HITCHASSIS, chassisNew, chassisOld, messages);
+
+		if (target->isPobShip()) {
+			auto pobTarget = target->asPobShip();
+
+			if (pobTarget != nullptr) {
+				pobTarget->triggerInteriorDamage(ShipHitType::HITCHASSIS, ((chassisOld - chassisNew) * 100.f));
+			}
+		}
 	}
 
 	return damage;
@@ -379,6 +403,14 @@ float SpaceCombatManager::applyComponentDamage(ShipObject* target, const SpaceCo
 		float totalOld = (armorOld + healthOld) / totalMax;
 
 		getHitEffectMessages(target, result, ShipHitType::HITCOMPONENT, totalNew, totalOld, messages);
+
+		if (target->isPobShip()) {
+			auto pobTarget = target->asPobShip();
+
+			if (pobTarget != nullptr) {
+				pobTarget->triggerInteriorDamage(ShipHitType::HITCOMPONENT, ((totalOld - totalNew) * 100.f));
+			}
+		}
 	}
 
 	if (target->getCurrentHitpointsMap()->get(slot) <= 0.f) {
