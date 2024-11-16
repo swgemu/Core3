@@ -1,0 +1,13 @@
+/*
+				Copyright <SWGEmu>
+		See file COPYING for copying conditions.*/
+
+package server.zone.objects.tangible.ship.interiorComponents;
+
+import server.zone.objects.tangible.ship.interiorComponents.ShipInteriorComponent;
+
+class ShipPlasmaConduit extends ShipInteriorComponent {
+	public ShipPlasmaConduit() {
+		setLoggingName("ShipPlasmaConduit");
+	}
+}

@@ -20,6 +20,9 @@
 #include "server/zone/objects/tangible/item/CreditChipObject.h"
 #include "server/zone/managers/loot/LootManager.h"
 #include "server/zone/objects/tangible/ship/interiorComponents/ShipInteriorComponent.h"
+#include "server/zone/managers/spacecombat/SpaceCombatManager.h"
+#include "server/zone/packets/scene/PlayClientEffectLocMessage.h"
+#include "templates/params/creature/CreatureAttribute.h"
 
 void PobShipObjectImplementation::notifyLoadFromDatabase() {
 	CreatureObject* owner = getOwner().get();
@@ -66,6 +69,15 @@ void PobShipObjectImplementation::loadTemplateData(SharedObjectTemplate* templat
 
 			launchPoints.addLaunchPoint(cellName, point);
 		}
+	}
+
+	const auto conduitTypes = shipTemp->getPlasmaConduitTypes();
+
+	for (int i = 0; i < conduitTypes.size(); i++) {
+		int conduit = conduitTypes.elementAt(i).getKey();
+		uint32 componentType = conduitTypes.elementAt(i).getValue();
+
+		plasmaConduitTypes.put(conduit, componentType);
 	}
 }
 
@@ -116,6 +128,8 @@ void PobShipObjectImplementation::createChildObjects() {
 		cellNameMap.put(layout->getCellProperty(i)->getName(), newCell);
 		cells.put(i, newCell);
 	}
+
+	int conduitCount = 0;
 
 	for (int i = 0; i < templateObject->getChildObjectsSize(); ++i) {
 		const ChildObject* child = templateObject->getChildObject(i);
@@ -187,6 +201,43 @@ void PobShipObjectImplementation::createChildObjects() {
 
 						if (interiorComponent != nullptr) {
 							interiorComponent->setComponentSlot(child->getComponentSlot());
+
+							if (interiorComponent->isShipPlasmaConduit()) {
+								int componentType = plasmaConduitTypes.elementAt(conduitCount).getValue();
+
+								StringBuffer newName;
+								newName << "@space/space_item:conduit_";
+
+								switch(componentType) {
+									case Components::REACTOR: {
+										newName << "reactor";
+										break;
+									}
+									case Components::ENGINE: {
+										newName << "engine";
+										break;
+									}
+									case Components::CAPACITOR: {
+										newName << "capacitor";
+										break;
+									}
+									case Components::SHIELD0: {
+										newName << "shield_0";
+										break;
+									}
+									default:
+										break;
+								}
+
+								interiorComponent->setObjectName(newName.toString(), false);
+
+								interiorComponent->setPlasmaConduitType(componentType);
+								conduitCount++;
+
+								plasmaConduits.add(interiorComponent);
+							} else {
+								interiorComponents.add(interiorComponent);
+							}
 						}
 					}
 				} else {
@@ -718,25 +769,273 @@ void PobShipObjectImplementation::togglePlasmaAlarms() {
 void PobShipObjectImplementation::addDamagedInteriorComponent(uint64 interiorComponentID, int type) {
 	Locker lock(&intComponentsMutex);
 
-	damageInteriorComponents.put(interiorComponentID, type);
+	damagedInteriorComponents.put(interiorComponentID, type);
 }
 
 void PobShipObjectImplementation::removeDamagedInteriorComponent(uint64 interiorComponentID) {
 	Locker lock(&intComponentsMutex);
 
-	damageInteriorComponents.drop(interiorComponentID);
+	damagedInteriorComponents.drop(interiorComponentID);
 }
 
 bool PobShipObjectImplementation::hasActivePlasmaLeaks() {
-	Locker lock(&intComponentsMutex);
+	for (int i = 0; i < plasmaConduits.size(); i++) {
+		auto plasmaConduit = plasmaConduits.get(i);
 
-	for (int i = 0; i < damageInteriorComponents.size(); i++) {
-		if (damageInteriorComponents.elementAt(i).getValue() == PobShipObject::PLASMA_CONDUIT) {
-			return true;
+		if (plasmaConduit == nullptr) {
+			return false;
 		}
+
+		if (!(plasmaConduit->getOptionsBitmask() & OptionBitmask::ACTIVATED)) {
+			continue;
+		}
+
+		return true;
 	}
 
 	return false;
+}
+
+void PobShipObjectImplementation::triggerInteriorDamage(int hitType, float damageVar) {
+	uint8 hitLevel = PobShipObject::DAMAGE_LOW;
+
+	if (damageVar < 20.f) {
+		hitLevel = PobShipObject::DAMAGE_HIGH;
+	}
+
+	// info(true) << "triggerInteriorDamage -- Component Type: " << hitType << " Damage Variable: " << damageVar;
+
+	int totalSparkLocs = sparkLocations.getTotalSparkCells();
+
+	if (totalSparkLocs < 1) {
+		return;
+	}
+
+	auto randomCell = sparkLocations.getRandomCell();
+
+	if (randomCell.isEmpty()) {
+		return;
+	}
+
+	auto cell = getCell(randomCell);
+
+	if (cell == nullptr) {
+		return;
+	}
+
+	const auto damageSparkLocs = sparkLocations.getSparkLocations(randomCell);
+
+	if (damageSparkLocs.size() < 1) {
+		return;
+	}
+
+	Vector3 location = damageSparkLocs.get(System::random(damageSparkLocs.size() - 1));
+
+	auto zone = getZone();
+
+	if (zone == nullptr) {
+		return;
+	}
+
+	// info(true) << "triggerInteriorDamage -- Component Type: " << hitType << " Damage Variable: " << damageVar << " Random Cell: " << randomCell << " Total Spark Locs: " << damageSparkLocs.size();
+
+	PlayClientEffectLoc* effectLoc = nullptr;
+
+	int count = 0;
+	int chance = 0;
+	Vector<String> clientEffects;
+	Vector<float> damageRanges;
+	int conduitChance = 0;
+
+	switch (hitType) {
+		case SpaceCombatManager::ShipHitType::HITSHIELD: {
+			effectLoc = new PlayClientEffectLoc("clienteffect/int_camshake_light.cef", zone->getZoneName(), location.getX(), location.getZ(), location.getY(), cell->getObjectID());
+
+			if (hitLevel == PobShipObject::DAMAGE_LOW) {
+				count = 5;
+				chance = 50;
+				clientEffects = {"clienteffect/lair_damage_light.cef"};
+				damageRanges = {0.f};
+			} else {
+				count = 7;
+				chance = 50;
+				clientEffects = {"clienteffect/lair_damage_light.cef", "clienteffect/lair_damage_light.cef", "clienteffect/lair_damage_medium.cef"};
+				damageRanges = {0.f, 0.f, 2.f};
+			}
+			break;
+		}
+		case SpaceCombatManager::ShipHitType::HITARMOR: {
+			if (hitLevel == PobShipObject::DAMAGE_LOW) {
+				effectLoc = new PlayClientEffectLoc("clienteffect/int_camshake_light.cef", zone->getZoneName(), location.getX(), location.getZ(), location.getY(), cell->getObjectID());
+
+				count = 5;
+				chance = 50;
+				clientEffects = {"clienteffect/lair_damage_light.cef", "clienteffect/lair_med_damage_smoke.cef", "clienteffect/lair_damage_medium.cef"};
+				damageRanges = {0.f, 0.f, 2.f};
+				conduitChance = 2;
+			} else {
+				effectLoc = new PlayClientEffectLoc("clienteffect/int_camshake_medium.cef", zone->getZoneName(), location.getX(), location.getZ(), location.getY(), cell->getObjectID());
+
+				count = 15;
+				chance = 50;
+				clientEffects = {"clienteffect/lair_damage_light.cef", "clienteffect/lair_damage_medium.cef", "clienteffect/lair_damage_light.cef", "clienteffect/lair_damage_medium.cef", "clienteffect/lair_damage_medium.cef", "clienteffect/lair_damage_medium.cef"};
+				damageRanges = {0.f, 2.f, 0.f, 2.f, 2.f, 2.f};
+				conduitChance = 5;
+			}
+			break;
+		}
+		case SpaceCombatManager::ShipHitType::HITCOMPONENT: {
+			if (hitLevel == PobShipObject::DAMAGE_LOW) {
+				effectLoc = new PlayClientEffectLoc("clienteffect/int_camshake_light.cef", zone->getZoneName(), location.getX(), location.getZ(), location.getY(), cell->getObjectID());
+
+				count = 10;
+				chance = 50;
+				clientEffects = {"clienteffect/lair_damage_light.cef", "clienteffect/lair_med_damage_smoke.cef", "clienteffect/lair_damage_medium.cef", "clienteffect/combat_ship_hit_shield.cef"};
+				damageRanges = {0.f, 2.f, 2.f, 4.f};
+				conduitChance = 10;
+			} else {
+				effectLoc = new PlayClientEffectLoc("clienteffect/int_camshake_heavy.cef", zone->getZoneName(), location.getX(), location.getZ(), location.getY(), cell->getObjectID());
+
+				count = 20;
+				chance = 50;
+				clientEffects = {"clienteffect/lair_damage_light.cef", "clienteffect/lair_med_damage_smoke.cef", "clienteffect/lair_damage_medium.cef", "clienteffect/combat_ship_hit_component.cef"};
+				damageRanges = {0.f, 0.f, 2.f, 8.f};
+				conduitChance = 20;
+			}
+			break;
+		}
+		case SpaceCombatManager::ShipHitType::HITCHASSIS: {
+			if (hitLevel == PobShipObject::DAMAGE_LOW) {
+				effectLoc = new PlayClientEffectLoc("clienteffect/int_camshake_heavy.cef", zone->getZoneName(), location.getX(), location.getZ(), location.getY(), cell->getObjectID());
+
+				count = 5;
+				chance = 50;
+				clientEffects = {"clienteffect/lair_damage_light.cef", "clienteffect/lair_med_damage_smoke.cef", "clienteffect/lair_damage_medium.cef", "clienteffect/combat_ship_hit_component.cef"};
+				damageRanges = {0.f, 0.f, 2.f, 8.f};
+				conduitChance = 30;
+			} else {
+				effectLoc = new PlayClientEffectLoc("clienteffect/int_camshake_heavy.cef", zone->getZoneName(), location.getX(), location.getZ(), location.getY(), cell->getObjectID());
+
+				count = 10;
+				chance = 50;
+				clientEffects = {"clienteffect/lair_damage_light.cef", "clienteffect/lair_med_damage_smoke.cef", "clienteffect/lair_damage_medium.cef", "clienteffect/combat_ship_hit_death.cef"};
+				damageRanges = {0.f, 0.f, 2.f, 8.f};
+				conduitChance = 50;
+			}
+			break;
+		}
+		default:
+			break;
+	}
+
+	doInteriorEffect(zone, cell, randomCell, count, chance, clientEffects, damageRanges, conduitChance);
+
+	if (effectLoc != nullptr) {
+		sendMembersBaseMessage(effectLoc);
+	}
+}
+
+void PobShipObjectImplementation::doInteriorEffect(Zone* zone, CellObject* cell, String& randomCell, int count, int chance, Vector<String>& clientEffects, Vector<float>& damageRanges, int conduitChance) {
+	if (zone == nullptr || cell == nullptr || randomCell.isEmpty()) {
+		return;
+	}
+
+	auto zoneServer = getZoneServer();
+
+	if (zoneServer == nullptr) {
+		return;
+	}
+
+	auto thisPob = asPobShip();
+	uint64 cellID = cell->getObjectID();
+
+	const Vector<int> damageAmount = {0, 15, 30, 75};
+
+	// info(true) << "doInteriorEffect -- Random Cell: " << randomCell << " Count: " << count << " Chance: " << chance << " Conduit Chance: " << conduitChance;
+
+	for (int i = 0; i < count; i++) {
+		int effectsRoll = System::random(100);
+
+		if (chance < effectsRoll) {
+			continue;
+		}
+
+		int randomSelection = System::random(clientEffects.size() - 1);
+
+		const auto clientEffect = clientEffects.get(randomSelection);
+		const auto damageRange = damageRanges.get(randomSelection);
+
+		const auto damageSparkLocs = sparkLocations.getSparkLocations(randomCell);
+		Vector3 location = damageSparkLocs.get(System::random(damageSparkLocs.size() - 1));
+
+		// info(true) << "Doing Interior Effect - Random Selection: " << randomSelection <<  " Cef: " << clientEffect << " Damage Range: " << damageRange << " Damage Location: " << location.toString();
+
+		PlayClientEffectLoc* effectLoc = new PlayClientEffectLoc("clienteffect/int_camshake_heavy.cef", zone->getZoneName(), location.getX(), location.getZ(), location.getY(), cell->getObjectID());
+
+		if (effectLoc != nullptr) {
+			sendMembersBaseMessage(effectLoc);
+		}
+
+		if (damageRange > 0.f) {
+			for (int j = 0; j < playersOnBoard.size(); ++j) {
+				auto shipMemberID = playersOnBoard.get(j);
+				auto shipMember = cast<CreatureObject*>(zoneServer->getObject(shipMemberID).get());
+
+				if (shipMember == nullptr) {
+					continue;
+				}
+
+				Locker clock(shipMember, thisPob);
+
+				if (shipMember->getParentID() != cellID || location.squaredDistanceTo(shipMember->getPosition()) < (damageRange * damageRange)) {
+					continue;
+				}
+
+				Vector<uint8> type = {CreatureAttribute::HEALTH, CreatureAttribute::ACTION, CreatureAttribute::MIND};
+
+				shipMember->inflictDamage(nullptr, type.get(System::random(type.size() - 1)), System::random(damageAmount.get((int)randomSelection)), true, true);
+			}
+		}
+	}
+
+	if (conduitChance == 0) {
+		return;
+	}
+
+	int conduitRoll = System::random(100);
+
+	// info(true) << "Rolling for Conduits - Chance: " << conduitChance << " Roll: " << conduitRoll << " Total Plasma Conduots: " << plasmaConduits.size();
+
+	if (conduitRoll > conduitChance) {
+		return;
+	}
+
+	auto randomPlasmaCond = plasmaConduits.get(System::random(plasmaConduits.size() - 1));
+
+	// Activate Plasma Conduit
+	if (randomPlasmaCond->getOptionsBitmask() & OptionBitmask::ACTIVATED) {
+		return;
+	}
+
+	// info(true) << "Activating Plasma Conduit - " << randomPlasmaCond->getDisplayedName();
+
+	Locker plasmaClock(randomPlasmaCond, thisPob);
+
+	// Activate the Plasma Conduit
+	randomPlasmaCond->setOptionBit(OptionBitmask::ACTIVATED);
+
+	// Add it to the damaged interior components map
+	addDamagedInteriorComponent(randomPlasmaCond->getObjectID(), PobShipObject::PLASMA_CONDUIT);
+
+	// Activate the plasma Alarms
+	togglePlasmaAlarms();
+
+	StringBuffer typeMsg("@space/space_interaction:plasma_conduit_burst" + String::valueOf(randomPlasmaCond->getPlasmaConduitType()));
+
+	sendShipMembersMessage(typeMsg.toString());
+
+
+	// TODO: set cell fire DOT values
 }
 
 int PobShipObjectImplementation::getCurrentNumberOfPlayerItems() {

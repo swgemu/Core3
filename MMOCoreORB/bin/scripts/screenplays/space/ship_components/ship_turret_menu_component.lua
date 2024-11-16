@@ -87,13 +87,6 @@ function ShipTurretMenuComponent:handleObjectMenuSelect(pTurret, pPlayer, select
 		return 0
 	end
 
-	CreatureObject(pPlayer):storePets()
-
-	-- Add players ship operatios state
-	CreatureObject(pPlayer):setState(SHIPGUNNER)
-
-	SceneObject(pPlayer):setPosition(0, 0.5, 0)
-
 	-- Ship Turret
 	if (selectedID == 120) then
 		-- Check if occupied
@@ -110,6 +103,13 @@ function ShipTurretMenuComponent:handleObjectMenuSelect(pTurret, pPlayer, select
 			return 0
 		end
 
+		CreatureObject(pPlayer):storePets()
+
+		-- Add players ship operatios state
+		CreatureObject(pPlayer):setState(SHIPGUNNER)
+
+		SceneObject(pPlayer):setPosition(0, 0.5, 0)
+
 		SceneObject(pTurret):transferObject(pPlayer, SHIP_GUNNER0_POB, 1)
 	elseif (selectedID == 121) then
 		-- Check if occupied
@@ -125,6 +125,13 @@ function ShipTurretMenuComponent:handleObjectMenuSelect(pTurret, pPlayer, select
 			CreatureObject(pPlayer):sendSystemMessage("@space/space_interaction:turret_disabled")
 			return 0
 		end
+
+		CreatureObject(pPlayer):storePets()
+
+		-- Add players ship operatios state
+		CreatureObject(pPlayer):setState(SHIPGUNNER)
+
+		SceneObject(pPlayer):setPosition(0, 0.5, 0)
 
 		SceneObject(pTurret):transferObject(pPlayer, SHIP_GUNNER1_POB, 1)
 	end

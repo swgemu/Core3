@@ -91,13 +91,13 @@ object_ship_player_player_decimator = object_ship_player_shared_player_decimator
 		{ templateFile = "object/tangible/ship/interior_components/alarm_interior.iff", x = -2.83, z = 4.18, y = 0.66, ox = 0.000000, oy = 0.000000, oz = -0.159900, ow = 0.987133, cellid = 1, containmentType = -1, componentSlot = -2 },
 		{ templateFile = "object/tangible/ship/interior_components/alarm_interior.iff", x = 2.83, z = 4.18, y = 0.66, ox = 0.000000, oy = 0.000000, oz = 0.159900, ow = 0.987133, cellid = 1, containmentType = -1, componentSlot = -2 },
 		{ templateFile = "object/tangible/ship/interior_components/alarm_interior.iff", x = 0.03, z = 2.76, y = -4.26, ox = 1, oy = 0, oz = 0, ow = 0, cellid = 1, containmentType = -1 },
-		{ templateFile = "object/tangible/ship/interior_components/plasma_conduit_interior.iff", x = 5.54, z = 3.03, y = -2.09, ox = 0.000000, oy = -0.707107, oz = 0.000000, ow = 0.707107, cellid = 1, containmentType = -1, componentSlot = -1 },
-		{ templateFile = "object/tangible/ship/interior_components/plasma_conduit_interior.iff", x = -5.54, z = 3.03, y = -2.09, ox = 0.000000, oy = 0.707107, oz = 0.000000, ow = 0.707107, cellid = 1, containmentType = -1, componentSlot = -1 },
+		--{ templateFile = "object/tangible/ship/interior_components/plasma_conduit_interior.iff", x = 5.54, z = 3.03, y = -2.09, ox = 0.000000, oy = -0.707107, oz = 0.000000, ow = 0.707107, cellid = 1, containmentType = -1, componentSlot = -1 },
+		--{ templateFile = "object/tangible/ship/interior_components/plasma_conduit_interior.iff", x = -5.54, z = 3.03, y = -2.09, ox = 0.000000, oy = 0.707107, oz = 0.000000, ow = 0.707107, cellid = 1, containmentType = -1, componentSlot = -1 },
 		-- Storage 2
 		{ templateFile = "object/tangible/ship/interior_components/engine_interior.iff", x = -7.27, z = 0.71, y = -4.27, ox = 0, oy = 0, oz = 0, ow = 1, cellid = 2, containmentType = -1, componentSlot = -1 },
-		{ templateFile = "object/tangible/ship/interior_components/plasma_conduit_interior.iff", x = -6.77, z = -0.17, y = 2.03, ox = 0, oy = 1, oz = 0, ow = 0, cellid = 2, containmentType = -1, componentSlot = -1 },
+		--{ templateFile = "object/tangible/ship/interior_components/plasma_conduit_interior.iff", x = -6.77, z = -0.17, y = 2.03, ox = 0, oy = 1, oz = 0, ow = 0, cellid = 2, containmentType = -1, componentSlot = -1 },
 		{ templateFile = "object/tangible/ship/interior_components/reactor_interior.iff", x = 6.48, z = -0.11, y = -4.25, ox = 0, oy = 0, oz = 0, ow = 1, cellid = 2, containmentType = -1, componentSlot = 0 },
-		{ templateFile = "object/tangible/ship/interior_components/plasma_conduit_interior.iff", x = 4.76, z = -0.36, y = -2.06, ox = 0.000000, oy = 0.707107, oz = 0.000000, ow = 0.707107, cellid = 2, containmentType = -1, componentSlot = -1 },
+		--{ templateFile = "object/tangible/ship/interior_components/plasma_conduit_interior.iff", x = 4.76, z = -0.36, y = -2.06, ox = 0.000000, oy = 0.707107, oz = 0.000000, ow = 0.707107, cellid = 2, containmentType = -1, componentSlot = -1 },
 		{ templateFile = "object/tangible/ship/interior_components/alarm_interior.iff", x = 6.51, z = 2.14, y = -1.19, ox = 1, oy = 0, oz = 0, ow = 0, cellid = 2, containmentType = -1, componentSlot = -2 },
 		{ templateFile = "object/tangible/ship/interior_components/alarm_interior.iff", x = -6.51, z = 2.14, y = -1.22, ox = 1, oy = 0, oz = 0, ow = 0, cellid = 2, containmentType = -1, componentSlot = -2 },
 		{ templateFile = "object/tangible/ship/interior_components/escape_pod_hatch.iff", x = -8.98, z = 0.3, y = -2.5, ox = 0.000000, oy = 0.707107, oz = 0.000000, ow = 0.707107, cellid = 2, containmentType = -1, componentSlot = -2 },
@@ -105,20 +105,37 @@ object_ship_player_player_decimator = object_ship_player_shared_player_decimator
 		{ templateFile = "object/tangible/ship/interior_components/escape_pod_hatch.iff", x = 10.21, z = 0.93, y = -1.57, ox = 0, oy = 0, oz = 0, ow = 1, cellid = 2, containmentType = -1, componentSlot = -2 },
 		{ templateFile = "object/tangible/ship/interior_components/weapon_interior.iff", x = 2.37, z = -0.48, y = -2.9, ox = 0.000000, oy = 0.707107, oz = 0.000000, ow = 0.707107, cellid = 2, containmentType = -1, componentSlot = 12 },
 		{ templateFile = "object/tangible/ship/interior_components/weapon_interior.iff", x = -2.37, z = -0.48, y = -2.9, ox = 0.000000, oy = -0.707107, oz = 0.000000, ow = 0.707107, cellid = 2, containmentType = -1, componentSlot = 13 },
-		{ templateFile = "object/tangible/ship/interior_components/plasma_conduit_interior.iff", x = 5.64, z = -1.5, y = 5.75, ox = 0.000000, oy = -0.707107, oz = 0.000000, ow = 0.707107, cellid = 2, containmentType = -1, componentSlot = -1 },
-		{ templateFile = "object/tangible/ship/interior_components/plasma_conduit_interior.iff", x = -5.39, z = -1.5, y = 5.93, ox = 0.000000, oy = 0.707107, oz = 0.000000, ow = 0.707107, cellid = 2, containmentType = -1, componentSlot = -1 },
+		--{ templateFile = "object/tangible/ship/interior_components/plasma_conduit_interior.iff", x = 5.64, z = -1.5, y = 5.75, ox = 0.000000, oy = -0.707107, oz = 0.000000, ow = 0.707107, cellid = 2, containmentType = -1, componentSlot = -1 },
+		--{ templateFile = "object/tangible/ship/interior_components/plasma_conduit_interior.iff", x = -5.39, z = -1.5, y = 5.93, ox = 0.000000, oy = 0.707107, oz = 0.000000, ow = 0.707107, cellid = 2, containmentType = -1, componentSlot = -1 },
 		{ templateFile = "object/tangible/ship/interior_components/capacitor_interior.iff", x = 3.7, z = 0.06, y = 9.17, ox = 0, oy = 1, oz = 0, ow = 0, cellid = 2, containmentType = -1, componentSlot = 6 },
 		{ templateFile = "object/tangible/ship/interior_components/alarm_interior.iff", x = 1.47, z = 0.84, y = 9.26, ox = -0.707107, oy = 0.000000, oz = 0.000000, ow = 0.707107, cellid = 2, containmentType = -1, componentSlot = -2 },
-		-- Storag3
+		-- Storage3
 		{ templateFile = "object/tangible/container/drum/pob_ship_loot_box.iff", x = 0.27, z = -2.57, y = 9.91, ox = 0, oy = 0, oz = 0, ow = 1, cellid = 3, containmentType = -1, componentSlot = -2 },
 		{ templateFile = "object/tangible/ship/interior_components/alarm_interior.iff", x = 0.21, z = 0.2, y = 19.81, ox = -0.707107, oy = 0.000000, oz = 0.000000, ow = 0.707107, cellid = 3, containmentType = -1, componentSlot = -2 },
-		{ templateFile = "object/tangible/ship/interior_components/plasma_conduit_interior.iff", x = 4.46, z = -1.91, y = 16.71, ox = 0.000000, oy = -0.707107, oz = 0.000000, ow = 0.707107, cellid = 3, containmentType = -1, componentSlot = -1 },
-		{ templateFile = "object/tangible/ship/interior_components/plasma_conduit_interior.iff", x = -4.47, z = -1.94, y = 16.72, ox = 0.000000, oy = 0.707107, oz = 0.000000, ow = 0.707107, cellid = 3, containmentType = -1, componentSlot = -1 },
+		--{ templateFile = "object/tangible/ship/interior_components/plasma_conduit_interior.iff", x = 4.46, z = -1.91, y = 16.71, ox = 0.000000, oy = -0.707107, oz = 0.000000, ow = 0.707107, cellid = 3, containmentType = -1, componentSlot = -1 },
+		--{ templateFile = "object/tangible/ship/interior_components/plasma_conduit_interior.iff", x = -4.47, z = -1.94, y = 16.72, ox = 0.000000, oy = 0.707107, oz = 0.000000, ow = 0.707107, cellid = 3, containmentType = -1, componentSlot = -1 },
 		-- Lounge
 		{ templateFile = "object/tangible/ship/interior_components/shield_generator_interior.iff", x = -1.4, z = -1.09, y = 20.2, ox = 0, oy = 0, oz = 0, ow = 1, cellid = 4, containmentType = -1, componentSlot = -2 },
-		{ templateFile = "object/tangible/ship/interior_components/plasma_conduit_interior.iff", x = -4.1, z = -1.66, y = 22.01, ox = 0.000000, oy = 0.707107, oz = 0.000000, ow = 0.707107, cellid = 4, containmentType = -1, componentSlot = -1 },
-		{ templateFile = "object/tangible/ship/interior_components/plasma_conduit_interior.iff", x = 3.47, z = -0.22, y = 27.4, ox = 0.628251, oy = -0.628251, oz = -0.324501, ow = 0.324501, cellid = 4, containmentType = -1, componentSlot = -1 },
+		--{ templateFile = "object/tangible/ship/interior_components/plasma_conduit_interior.iff", x = -4.1, z = -1.66, y = 22.01, ox = 0.000000, oy = 0.707107, oz = 0.000000, ow = 0.707107, cellid = 4, containmentType = -1, componentSlot = -1 },
+		--{ templateFile = "object/tangible/ship/interior_components/plasma_conduit_interior.iff", x = 3.47, z = -0.22, y = 27.4, ox = 0.628251, oy = -0.628251, oz = -0.324501, ow = 0.324501, cellid = 4, containmentType = -1, componentSlot = -1 },
 		{ templateFile = "object/tangible/ship/interior_components/alarm_interior.iff", x = -0.03, z = 2.82, y = 24.43, ox = 1, oy = 0, oz = 0, ow = 0, cellid = 4, containmentType = -1, componentSlot = -2 },
+	},
+
+	plasmaConduits = {
+		-- Cockpit
+		{ templateFile = "object/tangible/ship/interior_components/plasma_conduit_interior.iff", x = 5.54, z = 3.03, y = -2.09, ox = 0.000000, oy = -0.707107, oz = 0.000000, ow = 0.707107, cellid = 1, containmentType = -1, componentSlot = -1, componentDamageSlot = 0 }, -- Reactor
+		{ templateFile = "object/tangible/ship/interior_components/plasma_conduit_interior.iff", x = -5.54, z = 3.03, y = -2.09, ox = 0.000000, oy = 0.707107, oz = 0.000000, ow = 0.707107, cellid = 1, containmentType = -1, componentSlot = -1, componentDamageSlot = 1 }, -- Engine
+		-- Storage 2
+		{ templateFile = "object/tangible/ship/interior_components/plasma_conduit_interior.iff", x = -6.77, z = -0.17, y = 2.03, ox = 0, oy = 1, oz = 0, ow = 0, cellid = 2, containmentType = -1, componentSlot = -1, componentDamageSlot = 1 }, -- Engine
+		{ templateFile = "object/tangible/ship/interior_components/plasma_conduit_interior.iff", x = 4.76, z = -0.36, y = -2.06, ox = 0.000000, oy = 0.707107, oz = 0.000000, ow = 0.707107, cellid = 2, containmentType = -1, componentSlot = -1, componentDamageSlot = 0 }, -- Reactor
+		{ templateFile = "object/tangible/ship/interior_components/plasma_conduit_interior.iff", x = 5.64, z = -1.5, y = 5.75, ox = 0.000000, oy = -0.707107, oz = 0.000000, ow = 0.707107, cellid = 2, containmentType = -1, componentSlot = -1, componentDamageSlot = 6 }, -- Capacitor
+		{ templateFile = "object/tangible/ship/interior_components/plasma_conduit_interior.iff", x = -5.39, z = -1.5, y = 5.93, ox = 0.000000, oy = 0.707107, oz = 0.000000, ow = 0.707107, cellid = 2, containmentType = -1, componentSlot = -1, componentDamageSlot = 6 }, -- Capacitor
+		-- Storage3
+		{ templateFile = "object/tangible/ship/interior_components/plasma_conduit_interior.iff", x = 4.46, z = -1.91, y = 16.71, ox = 0.000000, oy = -0.707107, oz = 0.000000, ow = 0.707107, cellid = 3, containmentType = -1, componentSlot = -1, componentDamageSlot = 1 }, -- Engine
+		{ templateFile = "object/tangible/ship/interior_components/plasma_conduit_interior.iff", x = -4.47, z = -1.94, y = 16.72, ox = 0.000000, oy = 0.707107, oz = 0.000000, ow = 0.707107, cellid = 3, containmentType = -1, componentSlot = -1, componentDamageSlot = 0 }, -- Reactor
+		-- Lounge
+		{ templateFile = "object/tangible/ship/interior_components/plasma_conduit_interior.iff", x = -4.1, z = -1.66, y = 22.01, ox = 0.000000, oy = 0.707107, oz = 0.000000, ow = 0.707107, cellid = 4, containmentType = -1, componentSlot = -1, componentDamageSlot = 2 }, -- Shield
+		{ templateFile = "object/tangible/ship/interior_components/plasma_conduit_interior.iff", x = 3.47, z = -0.22, y = 27.4, ox = 0.628251, oy = -0.628251, oz = -0.324501, ow = 0.324501, cellid = 4, containmentType = -1, componentSlot = -1, componentDamageSlot = 2 }, -- Shield
 	},
 
 	sparkLocations = {
