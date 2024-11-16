@@ -26,6 +26,15 @@ public:
 		componentSlot = -2;
 	}
 
+	ChildObject(const Vector3 pos, const Quaternion& dir, const String& templateF, int cellID, int contType, int shipCompSlot) {
+		position = pos;
+		direction = dir;
+		templateFile = templateF;
+		cellid = cellID;
+		containmentType = contType;
+		componentSlot = shipCompSlot;
+	}
+
 	ChildObject(const ChildObject& obj) : Object() {
 		position = obj.position;
 		direction = obj.direction;
