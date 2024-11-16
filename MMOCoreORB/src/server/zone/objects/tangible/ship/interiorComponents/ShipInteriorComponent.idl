@@ -9,6 +9,7 @@ import server.zone.objects.tangible.TangibleObject;
 @json
 class ShipInteriorComponent extends TangibleObject {
 	protected int componentSlot;
+	protected int plasmaConduitType;
 
 	public ShipInteriorComponent() {
 		setLoggingName("ShipInteriorComponent");
@@ -20,7 +21,15 @@ class ShipInteriorComponent extends TangibleObject {
 		componentSlot = slot;
 	}
 
+	public void setPlasmaConduitType(int type) {
+		plasmaConduitType = type;
+	}
+
 	public int getComponentSlot() {
 		return componentSlot;
+	}
+
+	public int getPlasmaConduitType() {
+		return plasmaConduitType;
 	}
 }

@@ -67,6 +67,15 @@ void PobShipObjectImplementation::loadTemplateData(SharedObjectTemplate* templat
 			launchPoints.addLaunchPoint(cellName, point);
 		}
 	}
+
+	const auto conduitTypes = shipTemp->getPlasmaConduitTypes();
+
+	for (int i = 0; i < conduitTypes.size(); i++) {
+		int conduit = conduitTypes.elementAt(i).getKey();
+		uint32 componentType = conduitTypes.elementAt(i).getValue();
+
+		plasmaConduitTypes.put(conduit, componentType);
+	}
 }
 
 void PobShipObjectImplementation::createChildObjects() {
@@ -116,6 +125,8 @@ void PobShipObjectImplementation::createChildObjects() {
 		cellNameMap.put(layout->getCellProperty(i)->getName(), newCell);
 		cells.put(i, newCell);
 	}
+
+	int conduitCount = 0;
 
 	for (int i = 0; i < templateObject->getChildObjectsSize(); ++i) {
 		const ChildObject* child = templateObject->getChildObject(i);
@@ -188,6 +199,8 @@ void PobShipObjectImplementation::createChildObjects() {
 						if (interiorComponent != nullptr) {
 							interiorComponent->setComponentSlot(child->getComponentSlot());
 						}
+
+						// set the conduit type from the vector
 					}
 				} else {
 					error("Cell null for create child objects on PobShip");

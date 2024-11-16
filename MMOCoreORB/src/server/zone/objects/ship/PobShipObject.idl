@@ -58,6 +58,9 @@ class PobShipObject extends ShipObject {
 	@dereferenced
 	protected transient ReadWriteLock intComponentsMutex;
 
+	@dereferenced
+	protected VectorMap<int, unsigned int> plasmaConduitTypes;
+
 	public PobShipObject() {
 		Logger.setLoggingName("PobShipObject");
 	}
