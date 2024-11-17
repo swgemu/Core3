@@ -40,8 +40,8 @@ class ShipDeed extends Deed {
 		maxHitPoints = 0.0f;
 		mass = 0.0f;
 
-		certRequired = "pilot_rebel_navy_novice";
-		parkingLocation = "theed_starport";
+		certRequired = "";
+		parkingLocation = "";
 
 		shipType = 0;
 		createComponents = false;

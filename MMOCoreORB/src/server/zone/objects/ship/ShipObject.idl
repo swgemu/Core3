@@ -444,6 +444,8 @@ class ShipObject extends TangibleObject {
 		speedRotationFactorOptimal = 0.5f;
 
 		chassisSpeed.set(1.f);
+
+		certificationRequired = "";
 	}
 
 	public native void notifyLoadFromDatabase();
