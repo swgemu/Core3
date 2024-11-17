@@ -284,7 +284,7 @@ int ShipControlDeviceImplementation::canBeDestroyed(CreatureObject* player) {
 void ShipControlDeviceImplementation::destroyObjectFromDatabase(bool destroyContainedObjects) {
 	auto ship = getControlledObject();
 
-	if (ship != nullptr) {
+	if (ship != nullptr && ship->getLocalZone() != nullptr) {
 		Locker clock(ship, _this.getReferenceUnsafeStaticCast());
 
 		ship->destroyObjectFromDatabase(true);
