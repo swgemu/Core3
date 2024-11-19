@@ -143,9 +143,19 @@ public:
 		info(true) << "removing player: " << player->getDisplayedName() << " to zone: " << newZoneName;
 #endif
 
+		auto parent = player->getParent().get();
+
 		player->clearSpaceStates();
 
 		player->switchZone(newZoneName, location.getX(), location.getZ(), location.getY(), 0, false);
+
+		if (parent != nullptr && parent->hasObjectInContainer(player->getObjectID())) {
+#ifdef DEBUG_SHIP_STORE
+			info(true) << "Clearing player parent: " << parent->getDisplayedName();
+#endif
+
+			parent->removeObject(player, nullptr, false);
+		}
 
 		return true;
 	}
