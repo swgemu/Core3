@@ -15,7 +15,7 @@ rogue_imperial_shuttle_tier4 = ShipAgent:new {
 	aggressive = 1,
 
 	spaceFaction = "civilian",
-	alliedFactions = {"civlian", "merchant"},
+	alliedFactions = {"civilian", "merchant"},
 	enemyFactions = {"imperial", "rebel", "pirate", "hutt"},
 	appearance = "civilian",
 	tauntAttackChance = 0.1,

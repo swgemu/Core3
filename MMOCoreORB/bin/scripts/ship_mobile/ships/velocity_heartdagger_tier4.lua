@@ -15,7 +15,7 @@ velocity_heartdagger_tier4 = ShipAgent:new {
 	aggressive = 1,
 
 	spaceFaction = "civilian",
-	alliedFactions = {"civlian", "merchant"},
+	alliedFactions = {"civilian", "merchant"},
 	enemyFactions = {"imperial", "pirate"},
 
 	color1 = 5,

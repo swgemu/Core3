@@ -15,7 +15,7 @@ velocity_merc_heavy_fighter_tier5 = ShipAgent:new {
 	aggressive = 1,
 
 	spaceFaction = "civilian",
-	alliedFactions = {"civlian", "merchant"},
+	alliedFactions = {"civilian", "merchant"},
 	enemyFactions = {"imperial", "pirate"},
 
 	color1 = 5,

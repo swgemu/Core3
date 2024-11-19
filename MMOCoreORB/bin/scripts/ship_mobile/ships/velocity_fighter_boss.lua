@@ -15,7 +15,7 @@ velocity_fighter_boss = ShipAgent:new {
 	aggressive = 1,
 
 	spaceFaction = "civilian",
-	alliedFactions = {"civlian", "merchant"},
+	alliedFactions = {"civilian", "merchant"},
 	enemyFactions = {"imperial", "pirate"},
 
 	color1 = 5,
