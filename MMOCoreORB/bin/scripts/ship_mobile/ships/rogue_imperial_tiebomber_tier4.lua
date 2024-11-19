@@ -15,7 +15,7 @@ rogue_imperial_tiebomber_tier4 = ShipAgent:new {
 	aggressive = 1,
 
 	spaceFaction = "civilian",
-	alliedFactions = {"civlian", "merchant"},
+	alliedFactions = {"civilian", "merchant"},
 	enemyFactions = {"imperial", "rebel", "pirate", "hutt"},
 	appearance = "civilian",
 

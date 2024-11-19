@@ -15,7 +15,7 @@ lords_mistress_tier3 = ShipAgent:new {
 	aggressive = 0,
 
 	spaceFaction = "merchant",
-	alliedFactions = {"rsf" , "corsec"},
+	alliedFactions = {"merchant", "rsf" , "corsec"},
 
 	imperialFactionReward = 0,
 	rebelFactionReward = 0,

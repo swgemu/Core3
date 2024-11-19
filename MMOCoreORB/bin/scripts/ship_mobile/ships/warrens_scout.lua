@@ -15,7 +15,7 @@ warrens_scout = ShipAgent:new {
 	aggressive = 1,
 
 	spaceFaction = "pirate",
-	alliedFactions = {"imperial"},
+	alliedFactions = {"imperial", "pirate"},
 	enemyFactions = {"rebel", "civilian", "merchant"},
 	appearance = "generic_pirate",
 

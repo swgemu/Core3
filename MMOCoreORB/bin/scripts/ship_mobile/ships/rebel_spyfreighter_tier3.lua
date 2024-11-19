@@ -15,6 +15,7 @@ rebel_spyfreighter_tier3 = ShipAgent:new {
 	aggressive = 0,
 
 	spaceFaction = "rebel",
+	alliedFactions = {"nym", "rebel"},
 	enemyFactions = {"imperial", "blacksun", "borvo", "hutt", "pirate", "aynat"},
 	imperialFactionReward = 21,
 	rebelFactionReward = -42,
