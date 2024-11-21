@@ -16,6 +16,8 @@ import system.thread.ReadWriteLock;
 import server.zone.objects.tangible.ship.interiorComponents.ShipInteriorComponent;
 
 include server.zone.objects.ship.ShipObject;
+import server.zone.objects.ship.events.PobCellDotTask;
+include system.lang.ref.Reference;
 include server.zone.TreeEntry;
 include templates.SharedObjectTemplate;
 include templates.tangible.ship.SharedShipObjectTemplate;
@@ -34,6 +36,9 @@ class PobShipObject extends ShipObject {
 
 	public static final short DAMAGE_LOW = 1;
 	public static final short DAMAGE_HIGH = 2;
+
+	public static final int CELL_DOT_TICK = 2; // In seconds
+	public static final int CELL_DOT_MULTI = 100.f;
 
 	@dereferenced
 	protected VectorMap<string, CellObject> cellNameMap;
@@ -63,13 +68,16 @@ class PobShipObject extends ShipObject {
 
 	@dereferenced
 	@local
-	protected transient VectorMap<unsigned long, int> damagedInteriorComponents;
+	protected VectorMap<unsigned long, int> damagedInteriorComponents;
 
 	@dereferenced
 	protected transient ReadWriteLock intComponentsMutex;
 
 	@dereferenced
 	protected VectorMap<int, unsigned int> plasmaConduitTypes;
+
+	@dereferenced
+	protected transient Reference<PobCellDotTask> cellDotTask;
 
 	public PobShipObject() {
 		Logger.setLoggingName("PobShipObject");
@@ -156,6 +164,12 @@ class PobShipObject extends ShipObject {
 	public native void triggerInteriorDamage(int hitType, float damageVar);
 
 	public native void doInteriorEffect(Zone zone, CellObject cell, string randomCell, int count, int chance, @dereferenced  Vector<string> clientEffects, @dereferenced  Vector<float> damageEffects, int conduitChance);
+
+	@preLocked
+	public native boolean triggerCellDamageOverTime();
+
+	@preLocked
+	public native void checkPlasmaConduits();
 
 	@dirty
 	@nativeStub

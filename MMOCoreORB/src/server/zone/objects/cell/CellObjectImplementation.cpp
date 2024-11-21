@@ -166,6 +166,35 @@ bool CellObjectImplementation::transferObject(SceneObject* object, int containme
 			if (tano != nullptr) {
 				zone->updateActiveAreas(tano);
 			}
+
+			// PobShip Cell Fires from Plasma Conduits
+			if (cellFireVariable > 0.f && object->isPlayerCreature()) {
+				Reference<CreatureObject*> player = object->asCreatureObject();
+				Reference<CellObject*> cellRef = _this.getReferenceUnsafeStaticCast();
+
+				if (player != nullptr) {
+					Core::getTaskManager()->scheduleTask([player, cellRef]() {
+						if (player == nullptr || cellRef == nullptr) {
+							return;
+						}
+
+						Locker locker(player);
+
+						if (cellRef->getCellFireVariable() < 1.f) {
+							if (player->hasState(CreatureState::ONFIRE)) {
+								player->clearState(CreatureState::ONFIRE, true);
+							}
+							return;
+						}
+
+						if (!player->hasState(CreatureState::ONFIRE)) {
+							player->setState(CreatureState::ONFIRE, true);
+						}
+
+						player->sendSystemMessage("@space/space_interaction:plasma_leak_begin"); // "This area of the ship has a PLASMA LEAK! It begins to scorch the flesh from your bones!"
+					}, "EntryCellFireLambda", 200, zone->getZoneName());
+				}
+			}
 		}
 
 		if (object->isCreatureObject() || object->isVendor() || object->getPlanetMapCategoryCRC() != 0 || object->getPlanetMapSubCategoryCRC() != 0) {
@@ -199,6 +228,29 @@ bool CellObjectImplementation::removeObject(SceneObject* object, SceneObject* de
 
 	if (object->isCreatureObject() || object->isVendor() || object->getPlanetMapCategoryCRC() != 0 || object->getPlanetMapSubCategoryCRC() != 0) {
 		forceLoadObjectCount.decrement();
+	}
+
+	// PobShip Cell Fires from Plasma Conduits
+	if (cellFireVariable > 0.f && object->isPlayerCreature()) {
+		Reference<CreatureObject*> player = object->asCreatureObject();
+
+		if (player != nullptr) {
+			Core::getTaskManager()->executeTask([player]() {
+				if (player == nullptr) {
+					return;
+				}
+
+				Locker locker(player);
+
+				if (!player->hasState(CreatureState::ONFIRE)) {
+					return;
+				}
+
+				player->clearState(CreatureState::ONFIRE, true);
+
+				player->sendSystemMessage("@space/space_interaction:plasma_leak_end"); // "You have successfully escaped the scorching flames of the plasma leak."
+			}, "RemoveCellFireLambda");
+		}
 	}
 
 	return ret;
@@ -262,5 +314,17 @@ void CellObjectImplementation::sendPermissionsTo(CreatureObject* creature, bool 
 	} else {
 		BaseMessage* perm = new UpdateCellPermissionsMessage(getObjectID(), allowEntry);
 		creature->sendMessage(perm);
+	}
+}
+
+void CellObjectImplementation::setCellFireVariable(float damageVar) {
+	// info(true) << "setting cellFireVar - " << damageVar;
+
+	cellFireVariable += damageVar;
+
+	// info(true) << "New cellFireVariable = " << cellFireVariable;
+
+	if (cellFireVariable < 0.f) {
+		cellFireVariable = 0.f;
 	}
 }

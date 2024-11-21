@@ -159,6 +159,15 @@ int LuaPobShipObject::repairInteriorComponent(lua_State* L) {
 
 		// Shut off the alarms
 		realObject->togglePlasmaAlarms();
+
+		// Remove flame dot variable from cell
+		auto cellParent = interiorComponent->getParent().get().castTo<CellObject*>();
+
+		if (cellParent != nullptr) {
+			Locker cellLock(cellParent, realObject);
+
+			cellParent->setCellFireVariable(-1.f);
+		}
 	} else {
 		auto component = realObject->getComponentObject(componentSlot);
 

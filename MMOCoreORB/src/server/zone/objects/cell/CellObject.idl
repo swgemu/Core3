@@ -21,10 +21,13 @@ class CellObject extends SceneObject {
 	@dereferenced
 	protected AtomicInteger forceLoadObjectCount;
 
+	protected float cellFireVariable;
+
 	public CellObject() {
 		Logger.setLoggingName("CellObject");
 
 		cellNumber = 0;
+		cellFireVariable = 0;
 
 		forceLoadObjectCount.set(0);
 	}
@@ -125,6 +128,14 @@ class CellObject extends SceneObject {
 	public void setCellNumber(int number) {
 		cellNumber = number;
 	}
+
+	@read
+	public float getCellFireVariable() {
+		return cellFireVariable;
+	}
+
+	@preLocked
+	public native void setCellFireVariable(float damageVar);
 
 	@dirty
 	public boolean isCellObject() {

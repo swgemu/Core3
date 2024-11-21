@@ -237,10 +237,24 @@ float SpaceCombatManager::applyShieldDamage(ShipObject* target, const SpaceColli
 		getHitEffectMessages(target, result, ShipHitType::HITSHIELD, shieldNew, shieldOld, messages);
 
 		if (target->isPobShip()) {
-			auto pobTarget = target->asPobShip();
+			Reference<PobShipObject*> pobTarget = target->asPobShip();
 
 			if (pobTarget != nullptr) {
-				pobTarget->triggerInteriorDamage(ShipHitType::HITSHIELD, ((effectDamage / shieldMax) * 100.f));
+				float damageDifferential = (effectDamage / shieldMax);
+
+				Core::getTaskManager()->scheduleTask([pobTarget, damageDifferential]() {
+					if (pobTarget == nullptr) {
+						return;
+					}
+
+					try {
+						Locker lock(pobTarget);
+
+						pobTarget->triggerInteriorDamage(ShipHitType::HITSHIELD, (damageDifferential * 100.f));
+					} catch (const Exception& e) {
+						pobTarget->error() << "Failed HITSHIELD for Pob triggerInteriorDamage";
+					}
+				}, "PobInteriorDamageLambda", 200);
 			}
 		}
 	}
@@ -305,10 +319,24 @@ float SpaceCombatManager::applyArmorDamage(ShipObject* target, const SpaceCollis
 		getHitEffectMessages(target, result, ShipHitType::HITARMOR, totalNew, totalOld, messages);
 
 		if (target->isPobShip()) {
-			auto pobTarget = target->asPobShip();
+			Reference<PobShipObject*> pobTarget = target->asPobShip();
 
 			if (pobTarget != nullptr) {
-				pobTarget->triggerInteriorDamage(ShipHitType::HITARMOR, ((totalOld - totalNew) * 100.f));
+				float damageDifferential = (totalOld - totalNew);
+
+				Core::getTaskManager()->scheduleTask([pobTarget, damageDifferential]() {
+					if (pobTarget == nullptr) {
+						return;
+					}
+
+					try {
+						Locker lock(pobTarget);
+
+						pobTarget->triggerInteriorDamage(ShipHitType::HITARMOR, (damageDifferential * 100.f));
+					} catch (const Exception& e) {
+						pobTarget->error() << "Failed HITARMOR for Pob triggerInteriorDamage";
+					}
+				}, "PobInteriorDamageLambda", 200);
 			}
 		}
 	}
@@ -346,10 +374,24 @@ float SpaceCombatManager::applyChassisDamage(ShipObject* target, const SpaceColl
 		getHitEffectMessages(target, result, ShipHitType::HITCHASSIS, chassisNew, chassisOld, messages);
 
 		if (target->isPobShip()) {
-			auto pobTarget = target->asPobShip();
+			Reference<PobShipObject*> pobTarget = target->asPobShip();
 
 			if (pobTarget != nullptr) {
-				pobTarget->triggerInteriorDamage(ShipHitType::HITCHASSIS, ((chassisOld - chassisNew) * 100.f));
+				float damageDifferential = (chassisOld - chassisNew);
+
+				Core::getTaskManager()->scheduleTask([pobTarget, damageDifferential]() {
+					if (pobTarget == nullptr) {
+						return;
+					}
+
+					try {
+						Locker lock(pobTarget);
+
+						pobTarget->triggerInteriorDamage(ShipHitType::HITCHASSIS, (damageDifferential * 100.f));
+					} catch (const Exception& e) {
+						pobTarget->error() << "Failed HITCHASSIS for Pob triggerInteriorDamage";
+					}
+				}, "PobInteriorDamageLambda", 200);
 			}
 		}
 	}
@@ -410,10 +452,24 @@ float SpaceCombatManager::applyComponentDamage(ShipObject* target, const SpaceCo
 		getHitEffectMessages(target, result, ShipHitType::HITCOMPONENT, totalNew, totalOld, messages);
 
 		if (target->isPobShip()) {
-			auto pobTarget = target->asPobShip();
+			Reference<PobShipObject*> pobTarget = target->asPobShip();
 
 			if (pobTarget != nullptr) {
-				pobTarget->triggerInteriorDamage(ShipHitType::HITCOMPONENT, ((totalOld - totalNew) * 100.f));
+				float damageDifferential = (totalOld - totalNew);
+
+				Core::getTaskManager()->scheduleTask([pobTarget, damageDifferential]() {
+					if (pobTarget == nullptr) {
+						return;
+					}
+
+					try {
+						Locker lock(pobTarget);
+
+						pobTarget->triggerInteriorDamage(ShipHitType::HITCOMPONENT, (damageDifferential * 100.f));
+					} catch (const Exception& e) {
+						pobTarget->error() << "Failed HITCOMPONENT for Pob triggerInteriorDamage";
+					}
+				}, "PobInteriorDamageLambda", 200);
 			}
 		}
 	}
@@ -620,7 +676,6 @@ int SpaceCombatManager::updateProjectiles() {
 	uint64 miliTime = System::getMiliTime();
 
 	try {
-
 		for (int i = projectileMap.mapSize(); -1 < --i;) {
 			if (projectileMap.entrySize(i) == 0) {
 				projectileMap.removeShip(i);
