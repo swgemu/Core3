@@ -23,6 +23,8 @@
 #include "server/zone/managers/spacecombat/SpaceCombatManager.h"
 #include "server/zone/packets/scene/PlayClientEffectLocMessage.h"
 #include "templates/params/creature/CreatureAttribute.h"
+#include "server/zone/objects/ship/events/PobCellDotTask.h"
+#include "server/zone/packets/chat/ChatSystemMessage.h"
 
 void PobShipObjectImplementation::notifyLoadFromDatabase() {
 	CreatureObject* owner = getOwner().get();
@@ -375,6 +377,18 @@ void PobShipObjectImplementation::notifyInsertToZone(Zone* zone) {
 	}
 
 	locker.release();
+
+	// Check plasma conduits for cell fires
+	checkPlasmaConduits();
+
+	// Scehedule the CellDotTask
+	if (cellDotTask == nullptr) {
+		cellDotTask = new PobCellDotTask(asPobShip());
+	}
+
+	if (!cellDotTask->isScheduled()) {
+		cellDotTask->schedule(PobShipObject::CELL_DOT_TICK * 2000);
+	}
 
 	ShipObjectImplementation::notifyInsertToZone(zone);
 }
@@ -950,6 +964,7 @@ void PobShipObjectImplementation::doInteriorEffect(Zone* zone, CellObject* cell,
 	uint64 cellID = cell->getObjectID();
 
 	const Vector<int> damageAmount = {0, 15, 30, 75};
+	const Vector<uint8> type = {CreatureAttribute::HEALTH, CreatureAttribute::ACTION, CreatureAttribute::MIND};
 
 	// info(true) << "doInteriorEffect -- Random Cell: " << randomCell << " Count: " << count << " Chance: " << chance << " Conduit Chance: " << conduitChance;
 
@@ -985,15 +1000,22 @@ void PobShipObjectImplementation::doInteriorEffect(Zone* zone, CellObject* cell,
 					continue;
 				}
 
-				Locker clock(shipMember, thisPob);
-
 				if (shipMember->getParentID() != cellID || location.squaredDistanceTo(shipMember->getPosition()) < (damageRange * damageRange)) {
 					continue;
 				}
 
-				Vector<uint8> type = {CreatureAttribute::HEALTH, CreatureAttribute::ACTION, CreatureAttribute::MIND};
+				uint8 randomType = type.get(System::random(type.size() - 1));
+				int randomAmount = System::random(damageAmount.get((int)randomSelection));
 
-				shipMember->inflictDamage(nullptr, type.get(System::random(type.size() - 1)), System::random(damageAmount.get((int)randomSelection)), true, true);
+				Core::getTaskManager()->executeTask([shipMember, randomType, randomAmount]() {
+					if (shipMember == nullptr) {
+						return;
+					}
+
+					Locker lock(shipMember);
+
+					shipMember->inflictDamage(nullptr, randomType, randomAmount, true, true);
+				}, "PobInternalDamageLambda");
 			}
 		}
 	}
@@ -1017,8 +1039,6 @@ void PobShipObjectImplementation::doInteriorEffect(Zone* zone, CellObject* cell,
 		return;
 	}
 
-	// info(true) << "Activating Plasma Conduit - " << randomPlasmaCond->getDisplayedName();
-
 	Locker plasmaClock(randomPlasmaCond, thisPob);
 
 	// Activate the Plasma Conduit
@@ -1030,14 +1050,182 @@ void PobShipObjectImplementation::doInteriorEffect(Zone* zone, CellObject* cell,
 	// Activate the plasma Alarms
 	togglePlasmaAlarms();
 
-	StringBuffer typeMsg("@space/space_interaction:plasma_conduit_burst" + String::valueOf(randomPlasmaCond->getPlasmaConduitType()));
+	// Conduit burst message
+	StringIdChatParameter conduitMessage("space/space_interaction", "conduit_burst"); // "                  WARNING! WARNING! WARNING!      A %TO has been damaged! A Plasma leak has occurred!                  WARNING! WARNING! WARNING!"
+	conduitMessage.setTO(randomPlasmaCond->getDisplayedName());
 
-	sendShipMembersMessage(typeMsg.toString());
+	ChatSystemMessage* chatMsg = new ChatSystemMessage(conduitMessage);
 
+	// Broadcast the message to players on board
+	if (chatMsg != nullptr) {
+		sendMembersBaseMessage(chatMsg);
+	}
 
-	// TODO: set cell fire DOT values
+	// info(true) << "Activating Plasma Conduit - " << randomPlasmaCond->getDisplayedName();
+
+	// Get the conduits cell parent
+	ManagedReference<CellObject*> cellParent = randomPlasmaCond->getParent().get().castTo<CellObject*>();
+
+	if (cellParent != nullptr) {
+		// Lock the cellParent
+		Locker clock(cellParent, thisPob);
+
+		// Add fire dot variable to cell
+		cellParent->setCellFireVariable(1.f);
+
+		if (cellDotTask == nullptr) {
+			cellDotTask = new PobCellDotTask(asPobShip());
+		}
+
+		if (!cellDotTask->isScheduled()) {
+			cellDotTask->schedule(PobShipObject::CELL_DOT_TICK * 2000);
+		}
+	}
 }
 
+bool PobShipObjectImplementation::triggerCellDamageOverTime() {
+	auto zoneServer = getZoneServer();
+
+	if (zoneServer == nullptr) {
+		return false;
+	}
+
+	auto thisPob = asPobShip();
+	bool returnHasDots = false;
+
+	for (int i = 0; i < cells.size(); ++i) {
+		auto& cell = cells.get(i);
+
+		if (cell == nullptr) {
+			continue;
+		}
+
+		const float damageVar = cell->getCellFireVariable();
+
+		if (damageVar < 1.f) {
+			continue;
+		}
+
+		returnHasDots = true;
+
+		Locker clock(cell, thisPob);
+
+		float totalDamage = damageVar * PobShipObject::CELL_DOT_MULTI;
+		float totalWounds = totalDamage / 10.f;
+		uint64 cellID = cell->getObjectID();
+
+		// info(true) << "Cell Fire Dot Tick Triggered -- Cell: " << cell->getObjectID() << " Damage Var: " << damageVar << " Total Damage: " << totalDamage << " Total Wounds: " << totalWounds;
+
+		for (int j = 0; j < playersOnBoard.size(); ++j) {
+			auto shipMemberID = playersOnBoard.get(j);
+			Reference<CreatureObject*> shipMember = cast<CreatureObject*>(zoneServer->getObject(shipMemberID).get());
+
+			if (shipMember == nullptr) {
+				continue;
+			}
+
+			Locker clock(shipMember, thisPob);
+
+			if (shipMember->getParentID() != cellID) {
+				continue;
+			}
+
+			Core::getTaskManager()->executeTask([shipMember, totalDamage, totalWounds]() {
+				if (shipMember == nullptr) {
+					return;
+				}
+
+				Locker lock(shipMember);
+
+				// shipMember->info(true) << "Cell Fire Dot Tick on member - ShipMember: " << shipMember->getDisplayedName() << " Total Damage: " << totalDamage << " Total Wounds: " << totalWounds;
+
+				// Send the message to players in this cell that, others will receive it if they enter the cell.
+				if (!shipMember->hasState(CreatureState::ONFIRE)) {
+					shipMember->setState(CreatureState::ONFIRE, true);
+
+					shipMember->sendSystemMessage("@space/space_interaction:plasma_leak_begin"); // "This area of the ship has a PLASMA LEAK! It begins to scorch the flesh from your bones!"
+				}
+
+				// Add damage and wounds
+				shipMember->inflictDamage(nullptr, CreatureAttribute::HEALTH, totalDamage, true, true);
+				shipMember->addWounds(CreatureAttribute::HEALTH, totalWounds, true, true);
+
+				// Player Fire DOT effect
+				shipMember->playEffect("clienteffect/dot_fire.cef","");
+
+				shipMember->addDotState(shipMember, CreatureState::ONFIRE, 0, totalDamage, CreatureAttribute::HEALTH, 60, -1, 0, 20);
+			}, "PobCellFireLambda");
+		}
+	}
+
+	return returnHasDots;
+}
+void PobShipObjectImplementation::checkPlasmaConduits() {
+	auto zoneServer = getZoneServer();
+
+	if (zoneServer == nullptr) {
+		return;
+	}
+
+	auto thisPob = asPobShip();
+
+	VectorMap<uint64, int> cellMap;
+	cellMap.setNullValue(0);
+
+	for (int i = 0; i < plasmaConduits.size(); i++) {
+		auto plasmaConduit = plasmaConduits.get(i);
+
+		if (plasmaConduit == nullptr) {
+			continue;
+		}
+
+		Locker clock(plasmaConduit, thisPob);
+
+		uint64 cellID = plasmaConduit->getParentID();
+		float currentVar = 0.f;
+
+		if (cellMap.contains(cellID)) {
+			currentVar = cellMap.get(cellID);
+		}
+
+		// info(true) << "Checking Plasma Conduit: " << plasmaConduit->getDisplayedName() << " in Cell ID: " << cellID << " Active: " << ((plasmaConduit->getOptionsBitmask() & OptionBitmask::ACTIVATED) ? "true" : "false") << " currentVar: " << currentVar;
+
+		if ((plasmaConduit->getOptionsBitmask() & OptionBitmask::ACTIVATED)) {
+			currentVar += 1.f;
+		}
+
+		// info(true) << "Final currentVar: " << currentVar;
+
+		cellMap.put(cellID, currentVar);
+	}
+
+	// Apply to the cells
+	for (int i = 0; i < cells.size(); ++i) {
+		auto& cell = cells.get(i);
+
+		if (cell == nullptr) {
+			continue;
+		}
+
+		Locker clock(cell, thisPob);
+
+		auto cellID = cell->getObjectID();
+		float currentVar = cell->getCellFireVariable();
+		float damageVar = 0.f;
+
+		if (cellMap.contains(cellID)) {
+			damageVar = cellMap.get(cellID);
+		}
+
+		if (fabs(damageVar - currentVar) < 0.1f) {
+			continue;
+		}
+
+		// info(true) << "Adjusting cell: " << cellID << " Variable by: " << (damageVar - currentVar);
+
+		cell->setCellFireVariable(damageVar - currentVar);
+	}
+}
 int PobShipObjectImplementation::getCurrentNumberOfPlayerItems() {
 	int items = 0;
 

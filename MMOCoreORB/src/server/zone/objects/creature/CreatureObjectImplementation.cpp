@@ -2743,8 +2743,24 @@ void CreatureObjectImplementation::activateStateRecovery() {
 		clearState(CreatureState::POISONED);
 	if (isDiseased() && !damageOverTimeList.hasDot(CreatureState::DISEASED))
 		clearState(CreatureState::DISEASED);
-	if (isOnFire() && !damageOverTimeList.hasDot(CreatureState::ONFIRE))
-		clearState(CreatureState::ONFIRE);
+	if (isOnFire()) {
+		auto rootParent = getRootParent();
+
+		// Do not clear the fire state for players in POB's. The ship itself handles the DOT ticks
+		if (rootParent != nullptr && rootParent->isPobShip()) {
+			auto parent = getParent().get();
+
+			if (parent != nullptr && parent->isCellObject()) {
+				auto cellParent = parent.castTo<CellObject*>();
+
+				if (cellParent == nullptr || cellParent->getCellFireVariable() < 1.f) {
+					clearState(CreatureState::ONFIRE);
+				}
+			}
+		} else if (!damageOverTimeList.hasDot(CreatureState::ONFIRE)) {
+			clearState(CreatureState::ONFIRE);
+		}
+	}
 }
 
 void CreatureObjectImplementation::updateToDatabaseAllObjects(bool startTask) {
