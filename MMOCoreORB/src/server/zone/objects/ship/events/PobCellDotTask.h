@@ -37,6 +37,8 @@ public:
 		}
 
 		if (pobShip->triggerCellDamageOverTime()) {
+			pobShip->applyPobComponentDot();
+
 			// pobShip->info(true) << "PobCellDotTask -- Re-Scheduling for " << PobShipObject::CELL_DOT_TICK * 1000;
 
 			schedule(PobShipObject::CELL_DOT_TICK * 1000);
