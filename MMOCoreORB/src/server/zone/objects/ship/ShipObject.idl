@@ -427,6 +427,8 @@ class ShipObject extends TangibleObject {
 
 		super.objectVisible = 1;
 
+		ownerID = 0;
+
 		super.closeobjects = new CloseObjectsVector();
 		super.closeobjects.setNoDuplicateInsertPlan();
 

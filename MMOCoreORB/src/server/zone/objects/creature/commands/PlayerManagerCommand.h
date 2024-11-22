@@ -65,13 +65,29 @@ public:
 					oid = Long::valueOf(arg);
 			}
 
-			if (tokenizer.hasMoreTokens())
+			if (tokenizer.hasMoreTokens()) {
 				showAll = true;
+			}
 
 			auto resp = dumpCOV(player->getZoneServer(), oid, showAll);
+
 			ChatManager* chatManager = player->getZoneServer()->getChatManager();
-			chatManager->sendMail("System", "Dump COV" , resp, player->getFirstName());
+
+			if (chatManager != nullptr) {
+				chatManager->sendMail("System", "Dump COV" , resp, player->getFirstName());
+			}
+
 			player->sendSystemMessage(resp);
+
+			ManagedReference<SuiMessageBox*> suiBox = new SuiMessageBox(player, SuiWindowType::NONE);
+
+			if (suiBox != nullptr) {
+				suiBox->setPromptTitle("System - Dump COV");
+				suiBox->setPromptText(resp);
+				suiBox->setForceCloseDistance(0);
+
+				player->sendMessage(suiBox->generateMessage());
+			}
 #ifdef NDEBUG
 			Logger::console.info(true) << "\033[32;40m" << __FILE__ << ":" << __LINE__ << " dumpcov results:\n" << resp << "\033[0m";
 #endif
