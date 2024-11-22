@@ -67,14 +67,18 @@ class PobShipObject extends ShipObject {
 	protected Vector<ShipInteriorComponent> plasmaConduits;
 
 	@dereferenced
+	protected transient ReadWriteLock intComponentsMutex;
+
+	@dereferenced
 	@local
 	protected VectorMap<unsigned long, int> damagedInteriorComponents;
 
 	@dereferenced
-	protected transient ReadWriteLock intComponentsMutex;
-
-	@dereferenced
 	protected VectorMap<int, unsigned int> plasmaConduitTypes;
+
+	@rawTemplate(value = "uint32, float")
+	@dereferenced
+	protected VectorMap componentDamageVariables;
 
 	@dereferenced
 	protected transient Reference<PobCellDotTask> cellDotTask;
@@ -170,6 +174,12 @@ class PobShipObject extends ShipObject {
 
 	@preLocked
 	public native void checkPlasmaConduits();
+
+	@preLocked
+	public native void setComponentDamageVariable(unsigned int componentSlot);
+
+	@preLocked
+	public native void applyPobComponentDot();
 
 	@dirty
 	@nativeStub

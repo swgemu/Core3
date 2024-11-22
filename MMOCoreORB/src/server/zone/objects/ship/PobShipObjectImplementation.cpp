@@ -25,6 +25,7 @@
 #include "templates/params/creature/CreatureAttribute.h"
 #include "server/zone/objects/ship/events/PobCellDotTask.h"
 #include "server/zone/packets/chat/ChatSystemMessage.h"
+#include "server/zone/objects/ship/ShipComponentFlag.h"
 
 void PobShipObjectImplementation::notifyLoadFromDatabase() {
 	CreatureObject* owner = getOwner().get();
@@ -1032,7 +1033,8 @@ void PobShipObjectImplementation::doInteriorEffect(Zone* zone, CellObject* cell,
 		return;
 	}
 
-	auto randomPlasmaCond = plasmaConduits.get(System::random(plasmaConduits.size() - 1));
+	int randomSelection = System::random(plasmaConduits.size() - 1);
+	auto randomPlasmaCond = plasmaConduits.get(randomSelection);
 
 	// Activate Plasma Conduit
 	if (randomPlasmaCond->getOptionsBitmask() & OptionBitmask::ACTIVATED) {
@@ -1044,7 +1046,12 @@ void PobShipObjectImplementation::doInteriorEffect(Zone* zone, CellObject* cell,
 	// Activate the Plasma Conduit
 	randomPlasmaCond->setOptionBit(OptionBitmask::ACTIVATED);
 
-	// Add it to the damaged interior components map
+	// Set the value for the component damage tick
+	uint32 componentSlot = plasmaConduitTypes.elementAt(randomSelection).getValue();
+
+	setComponentDamageVariable(componentSlot);
+
+	// Add Plasma Conduit to the damaged interior components map
 	addDamagedInteriorComponent(randomPlasmaCond->getObjectID(), PobShipObject::PLASMA_CONDUIT);
 
 	// Activate the plasma Alarms
@@ -1160,6 +1167,7 @@ bool PobShipObjectImplementation::triggerCellDamageOverTime() {
 
 	return returnHasDots;
 }
+
 void PobShipObjectImplementation::checkPlasmaConduits() {
 	auto zoneServer = getZoneServer();
 
@@ -1226,6 +1234,72 @@ void PobShipObjectImplementation::checkPlasmaConduits() {
 		cell->setCellFireVariable(damageVar - currentVar);
 	}
 }
+
+void PobShipObjectImplementation::setComponentDamageVariable(uint32 componentSlot) {
+	if (!isComponentInstalled(componentSlot) || hasComponentFlag(componentSlot, ShipComponentFlag::DEMOLISHED) || hasComponentFlag(componentSlot, ShipComponentFlag::DISABLED)) {
+		return;
+	}
+
+	float componentVar = 0.f;
+
+	if (componentDamageVariables.contains(componentSlot)) {
+		componentVar = componentDamageVariables.get(componentSlot);
+	}
+
+	if (componentVar < 0.f) {
+		componentVar = 0.f;
+	}
+
+	componentVar += 0.5f;
+
+	componentDamageVariables.put(componentSlot, componentVar);
+}
+
+void PobShipObjectImplementation::applyPobComponentDot() {
+	auto componentMap = getShipComponentMap();
+	auto hitpointsMap = getCurrentHitpointsMap();
+	auto maxHitpointsMap = getMaxHitpointsMap();
+	auto deltaVector = getDeltaVector();
+
+	if (componentMap == nullptr || hitpointsMap == nullptr || maxHitpointsMap == nullptr || deltaVector == nullptr) {
+		return;
+	}
+
+	auto thisPob = asPobShip();
+
+	for (int i = 0; i < componentDamageVariables.size(); i++) {
+		uint32 componentSlot = componentDamageVariables.elementAt(i).getKey();
+		float damageVar = componentDamageVariables.elementAt(i).getValue();
+
+		if (!isComponentInstalled(componentSlot) || hasComponentFlag(componentSlot, ShipComponentFlag::DEMOLISHED) || hasComponentFlag(componentSlot, ShipComponentFlag::DISABLED)) {
+			continue;
+		}
+
+		auto component = getComponentObject(componentSlot);
+
+		if (component == nullptr) {
+			continue;
+		}
+
+		Locker clock(component, thisPob);
+
+		float hitpointsCurrent = hitpointsMap->get(componentSlot);
+		float hitpointsMax = maxHitpointsMap->get(componentSlot);
+
+		float newHitpoints = Math::clamp(0.f, hitpointsCurrent - (2.f * damageVar), hitpointsMax);
+
+		// info(true) << "applyPobComponentDot -- damageVar: " << damageVar << " Setting Component in Slot #" << componentSlot << " to new Hitpoints: " << newHitpoints << " With Max Hitpoints: " << hitpointsMax << " Current Hitpoints: " << hitpointsCurrent;
+
+		// Update the hitpoints on the component
+		setComponentHitpoints(componentSlot, newHitpoints, nullptr, 2, deltaVector);
+
+		// Set the component demolished
+		if (newHitpoints <= 0.f) {
+			setComponentDemolished(componentSlot, true, deltaVector);
+		}
+	}
+}
+
 int PobShipObjectImplementation::getCurrentNumberOfPlayerItems() {
 	int items = 0;
 
