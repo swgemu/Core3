@@ -71,8 +71,12 @@ bool SpaceStationObjectImplementation::sendConversationStartTo(SceneObject* play
 	return true;
 }
 
+float SpaceStationObjectImplementation::getOutOfRangeDistance() const {
+	return ZoneServer::SPACESTATIONRANGE;
+}
+
 int SpaceStationObjectImplementation::getReceiverFlags() const {
 	int type = CloseObjectsVector::SPACESTATIONTYPE;
 
-	return type | TangibleObjectImplementation::getReceiverFlags();
+	return type | ShipAiAgentImplementation::getReceiverFlags();
 }

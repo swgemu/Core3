@@ -1,0 +1,16 @@
+/*
+				Copyright <SWGEmu>
+		See file COPYING for copying conditions.*/
+
+package server.zone.objects.staticobject;
+
+import server.zone.objects.staticobject.StaticObject;
+
+@json
+class SpaceObject extends StaticObject {
+	public SpaceObject() {
+	}
+
+	@read
+	public native abstract float getOutOfRangeDistance();
+}

@@ -306,7 +306,7 @@ public:
 
 		if (reorthonormalize) {
 			auto data = new DataTransform(ship);
-			pilot->sendMessage(data);
+			ship->sendMembersBaseMessage(data);
 		}
 	}
 

@@ -2289,6 +2289,10 @@ String ShipAiAgentImplementation::getShipAgentTemplateName() {
 	return templateName;
 }
 
+float ShipAiAgentImplementation::getOutOfRangeDistance() const {
+	return ZoneServer::SPACECLOSEOBJECTRANGE;
+}
+
 String ShipAiAgentImplementation::getLootTable() {
 	return lootTable;
 }

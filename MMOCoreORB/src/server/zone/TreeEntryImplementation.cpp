@@ -21,6 +21,15 @@ TreeEntryImplementation::TreeEntryImplementation(TreeNode* n) {
 }
 
 void TreeEntryImplementation::setNode(TreeNode* n) {
+#ifdef DEBUG_TREE_ENTRY_AI
+	if (n == nullptr) {
+		auto sceneO = static_cast<SceneObject*>(_this.getReferenceUnsafeStaticCast());
+
+		if (sceneO->isShipAiAgent())
+			Logger::console.info(true) << sceneO->getDisplayedName() << " setting a null treeNode - ID: " << sceneO->getObjectID();
+	}
+#endif // DEBUG_TREE_ENTRY_AI
+
 	node = n;
 }
 
@@ -59,7 +68,6 @@ bool TreeEntryImplementation::containsPoint(float px, float py) {
 }
 
 bool TreeEntryImplementation::containsPoint(float px, float py, float pz) {
-
 	float deltaX = px - getPositionX();
 	float deltaY = py - getPositionY();
 	float deltaZ = pz - getPositionZ();
@@ -69,109 +77,225 @@ bool TreeEntryImplementation::containsPoint(float px, float py, float pz) {
 	Logger::console.info(true) << "TreeEntryImplementation::containsPoint - checking against RadiusSq: " << radiusSq << " Entry: " << getObjectID() << " ClassName: " << _className;
 #endif
 
-
 	return ((deltaX * deltaX) + (deltaY * deltaY) + (deltaZ * deltaZ)) < radiusSq;
 }
 
 bool TreeEntryImplementation::isInSWArea(TreeNode* checkNode) const {
 #ifdef DEBUG_TREE_ENTRY
-	Logger::console.Logger::console.info(true) << "TreeEntryImplementation::isInSWArea -- Divider Z: " << checkNode->dividerZ;
-#endif
+	Logger::console.info(true) << "TreeEntryImplementation::isInSWArea -- Returning: " << (ret ? "true" : "false") << " Using: " << checkNode->toStringData();
+#endif // DEBUG_TREE_ENTRY
 
-	if (checkNode->dividerZ != -1)
-		return coordinates.getPositionX() > checkNode->minX && coordinates.getPositionX() < checkNode->dividerX && coordinates.getPositionY() > checkNode->minY && coordinates.getPositionY() < checkNode->dividerY && coordinates.getPositionZ() > checkNode->minZ && coordinates.getPositionZ() < checkNode->dividerZ;
-	else
-		return coordinates.getPositionX() > checkNode->minX && coordinates.getPositionX() < checkNode->dividerX && coordinates.getPositionY() > checkNode->minY && coordinates.getPositionY() < checkNode->dividerY;
+	bool ret = false;
+
+	if (checkNode->nodeType == TreeNode::OCTREE_NODE) {
+		ret =  coordinates.getPositionX() > checkNode->minX && coordinates.getPositionX() < checkNode->dividerX && coordinates.getPositionY() > checkNode->minY && coordinates.getPositionY() < checkNode->dividerY && coordinates.getPositionZ() > checkNode->minZ && coordinates.getPositionZ() < checkNode->dividerZ;
+	} else {
+		ret =  coordinates.getPositionX() > checkNode->minX && coordinates.getPositionX() < checkNode->dividerX && coordinates.getPositionY() > checkNode->minY && coordinates.getPositionY() < checkNode->dividerY;
+	}
+
+#ifdef DEBUG_TREE_ENTRY_AI
+	auto sceneO = static_cast<SceneObject*>(_this.getReferenceUnsafeStaticCast());
+
+	if (sceneO->isShipAiAgent()) {
+		Logger::console.info(true) << "TreeEntryImplementation::isInSWArea -- Returning: " << (ret ? "true" : "false") << " Using: " << checkNode->toStringData();
+	}
+#endif // DEBUG_TREE_ENTRY_AI
+
+	return ret;
 }
 
 bool TreeEntryImplementation::isInSEArea(TreeNode* checkNode) const {
 #ifdef DEBUG_TREE_ENTRY
-	Logger::console.info(true) << "TreeEntryImplementation::isInSEArea -- Divider Z: " << checkNode->dividerZ;
+	Logger::console.info(true) << "TreeEntryImplementation::isInSEArea -- Returning: " << (ret ? "true" : "false") << " Using: " << checkNode->toStringData();
 #endif
 
-	if (checkNode->dividerZ != -1)
-		return coordinates.getPositionX() > checkNode->dividerX && coordinates.getPositionX() < checkNode->maxX && coordinates.getPositionY() > checkNode->minY && coordinates.getPositionY() < checkNode->dividerY && coordinates.getPositionZ() > checkNode->minZ && coordinates.getPositionZ() < checkNode->dividerZ;
-	else
-		return coordinates.getPositionX() > checkNode->dividerX && coordinates.getPositionX() < checkNode->maxX && coordinates.getPositionY() > checkNode->minY && coordinates.getPositionY() < checkNode->dividerY;
+	bool ret = false;
+
+	if (checkNode->nodeType == TreeNode::OCTREE_NODE) {
+		ret =  coordinates.getPositionX() > checkNode->dividerX && coordinates.getPositionX() < checkNode->maxX && coordinates.getPositionY() > checkNode->minY && coordinates.getPositionY() < checkNode->dividerY && coordinates.getPositionZ() > checkNode->minZ && coordinates.getPositionZ() < checkNode->dividerZ;
+	} else {
+		ret =  coordinates.getPositionX() > checkNode->dividerX && coordinates.getPositionX() < checkNode->maxX && coordinates.getPositionY() > checkNode->minY && coordinates.getPositionY() < checkNode->dividerY;
+	}
+
+#ifdef DEBUG_TREE_ENTRY_AI
+	auto sceneO = static_cast<SceneObject*>(_this.getReferenceUnsafeStaticCast());
+
+	if (sceneO->isShipAiAgent()) {
+		Logger::console.info(true) << "TreeEntryImplementation::isInSEArea -- Returning: " << (ret ? "true" : "false") << " Using: " << checkNode->toStringData();
+	}
+#endif // DEBUG_TREE_ENTRY_AI
+
+	return ret;
 }
 
 bool TreeEntryImplementation::isInNWArea(TreeNode* checkNode) const {
 #ifdef DEBUG_TREE_ENTRY
-	Logger::console.info(true) << "TreeEntryImplementation::isInNEArea -- Divider Z: " << checkNode->dividerZ;
+	Logger::console.info(true) << "TreeEntryImplementation::isInNEArea -- Returning: " << (ret ? "true" : "false") << " Using: " << checkNode->toStringData();
 #endif
 
-	if (checkNode->dividerZ != -1)
-		return coordinates.getPositionX() > checkNode->minX && coordinates.getPositionX() < checkNode->dividerX && coordinates.getPositionY() > checkNode->dividerY && coordinates.getPositionY() < checkNode->maxY && coordinates.getPositionZ() > checkNode->minZ && coordinates.getPositionZ() < checkNode->dividerZ;
-	else
-		return coordinates.getPositionX() > checkNode->minX && coordinates.getPositionX() < checkNode->dividerX && coordinates.getPositionY() > checkNode->dividerY && coordinates.getPositionY() < checkNode->maxY;
+	bool ret = false;
+
+	if (checkNode->nodeType == TreeNode::OCTREE_NODE) {
+		ret =  coordinates.getPositionX() > checkNode->minX && coordinates.getPositionX() < checkNode->dividerX && coordinates.getPositionY() > checkNode->dividerY && coordinates.getPositionY() < checkNode->maxY && coordinates.getPositionZ() > checkNode->minZ && coordinates.getPositionZ() < checkNode->dividerZ;
+	} else {
+		ret =  coordinates.getPositionX() > checkNode->minX && coordinates.getPositionX() < checkNode->dividerX && coordinates.getPositionY() > checkNode->dividerY && coordinates.getPositionY() < checkNode->maxY;
+	}
+
+#ifdef DEBUG_TREE_ENTRY_AI
+	auto sceneO = static_cast<SceneObject*>(_this.getReferenceUnsafeStaticCast());
+
+	if (sceneO->isShipAiAgent()) {
+		Logger::console.info(true) << "TreeEntryImplementation::isInNWArea -- Returning: " << (ret ? "true" : "false") << " Using: " << checkNode->toStringData();
+	}
+#endif // DEBUG_TREE_ENTRY_AI
+
+	return ret;
 }
 
 bool TreeEntryImplementation::isInNEArea(TreeNode* checkNode) const {
 #ifdef DEBUG_TREE_ENTRY
-	Logger::console.info(true) << "TreeEntryImplementation::isInNEArea -- Divider Z: " << checkNode->dividerZ;
+	Logger::console.info(true) << "TreeEntryImplementation::isInNEArea -- Returning: " << (ret ? "true" : "false") << " Using: " << checkNode->toStringData();
 #endif
 
-	if (checkNode->dividerZ != -1)
-		return coordinates.getPositionX() > checkNode->dividerX && coordinates.getPositionX() < checkNode->maxX && coordinates.getPositionY() > checkNode->dividerY && coordinates.getPositionY() < checkNode->maxY && coordinates.getPositionZ() > checkNode->minZ && coordinates.getPositionZ() < checkNode->dividerZ;
-	else
-		return coordinates.getPositionX() > checkNode->dividerX && coordinates.getPositionX() < checkNode->maxX && coordinates.getPositionY() > checkNode->dividerY && coordinates.getPositionY() < node->maxY;
+	bool ret = false;
+
+	if (checkNode->nodeType == TreeNode::OCTREE_NODE) {
+		ret = coordinates.getPositionX() > checkNode->dividerX && coordinates.getPositionX() < checkNode->maxX && coordinates.getPositionY() > checkNode->dividerY && coordinates.getPositionY() < checkNode->maxY && coordinates.getPositionZ() > checkNode->minZ && coordinates.getPositionZ() < checkNode->dividerZ;
+	} else {
+		ret = coordinates.getPositionX() > checkNode->dividerX && coordinates.getPositionX() < checkNode->maxX && coordinates.getPositionY() > checkNode->dividerY && coordinates.getPositionY() < node->maxY;
+	}
+
+#ifdef DEBUG_TREE_ENTRY_AI
+	auto sceneO = static_cast<SceneObject*>(_this.getReferenceUnsafeStaticCast());
+
+	if (sceneO->isShipAiAgent()) {
+		Logger::console.info(true) << "TreeEntryImplementation::isInNEArea -- Returning: " << (ret ? "true" : "false") << " Using: " << checkNode->toStringData();
+	}
+#endif // DEBUG_TREE_ENTRY_AI
+
+	return ret;
 }
 
 bool TreeEntryImplementation::isInSW2Area(TreeNode* checkNode) const {
 #ifdef DEBUG_TREE_ENTRY
-	Logger::console.info(true) << "TreeEntryImplementation::isInSW2Area -- Divider Z: " << checkNode->dividerZ;
+	Logger::console.info(true) << "TreeEntryImplementation::isInSW2Area -- Returning: " << (ret ? "true" : "false") << " Using: " << checkNode->toStringData();
 #endif
 
-	if (checkNode->dividerZ != -1)
-		return coordinates.getPositionX() > checkNode->minX && coordinates.getPositionX() < checkNode->dividerX && coordinates.getPositionY() > checkNode->minY && coordinates.getPositionY() < checkNode->dividerY && coordinates.getPositionZ() > checkNode->dividerZ && coordinates.getPositionZ() < checkNode->maxZ;
-	else
-		return 0;
+	bool ret = false;
+
+	if (checkNode->nodeType == TreeNode::OCTREE_NODE) {
+		ret = coordinates.getPositionX() > checkNode->minX && coordinates.getPositionX() < checkNode->dividerX && coordinates.getPositionY() > checkNode->minY && coordinates.getPositionY() < checkNode->dividerY && coordinates.getPositionZ() > checkNode->dividerZ && coordinates.getPositionZ() < checkNode->maxZ;
+	} else {
+		ret = false;
+	}
+
+#ifdef DEBUG_TREE_ENTRY_AI
+	auto sceneO = static_cast<SceneObject*>(_this.getReferenceUnsafeStaticCast());
+
+	if (sceneO->isShipAiAgent()) {
+		Logger::console.info(true) << "TreeEntryImplementation::isInSW2Area -- Returning: " << (ret ? "true" : "false") << " Using: " << checkNode->toStringData();
+	}
+#endif // DEBUG_TREE_ENTRY_AI
+
+	return ret;
 }
 
 bool TreeEntryImplementation::isInSE2Area(TreeNode* checkNode) const {
 #ifdef DEBUG_TREE_ENTRY
-	Logger::console.info(true) << "TreeEntryImplementation::isInSE2Area -- Divider Z: " << checkNode->dividerZ;
+	Logger::console.info(true) << "TreeEntryImplementation::isInSE2Area -- Returning: " << (ret ? "true" : "false") << " Using: " << checkNode->toStringData();
 #endif
 
-	if (checkNode->dividerZ != -1)
-		return coordinates.getPositionX() > checkNode->dividerX && coordinates.getPositionX() < checkNode->maxX && coordinates.getPositionY() > checkNode->minY && coordinates.getPositionY() < checkNode->dividerY && coordinates.getPositionZ() > checkNode->dividerZ && coordinates.getPositionZ() < checkNode->maxZ;
-	else
-		return 0;
+	bool ret = false;
+
+	if (checkNode->nodeType == TreeNode::OCTREE_NODE) {
+		ret = coordinates.getPositionX() > checkNode->dividerX && coordinates.getPositionX() < checkNode->maxX && coordinates.getPositionY() > checkNode->minY && coordinates.getPositionY() < checkNode->dividerY && coordinates.getPositionZ() > checkNode->dividerZ && coordinates.getPositionZ() < checkNode->maxZ;
+	} else {
+		ret = false;
+	}
+
+#ifdef DEBUG_TREE_ENTRY_AI
+	auto sceneO = static_cast<SceneObject*>(_this.getReferenceUnsafeStaticCast());
+
+	if (sceneO->isShipAiAgent()) {
+		Logger::console.info(true) << "TreeEntryImplementation::isInSE2Area -- Returning: " << (ret ? "true" : "false") << " Using: " << checkNode->toStringData();
+	}
+#endif // DEBUG_TREE_ENTRY_AI
+
+	return ret;
 }
 
 bool TreeEntryImplementation::isInNE2Area(TreeNode* checkNode) const {
 #ifdef DEBUG_TREE_ENTRY
-	Logger::console.info(true) << "TreeEntryImplementation::isInNE2Area -- Divider Z: " << checkNode->dividerZ;
+	Logger::console.info(true) << "TreeEntryImplementation::isInNE2Area -- Returning: " << (ret ? "true" : "false") << " Using: " << checkNode->toStringData();
 #endif
 
-	if (checkNode->dividerZ != -1)
-		return coordinates.getPositionX() > checkNode->dividerX && coordinates.getPositionX() < checkNode->maxX && coordinates.getPositionY() > checkNode->dividerY && coordinates.getPositionY() < checkNode->maxY && coordinates.getPositionZ() > checkNode->dividerZ && coordinates.getPositionZ() < checkNode->maxZ;
-	else
-		return 0;
+	bool ret = false;
+
+	if (checkNode->nodeType == TreeNode::OCTREE_NODE) {
+		ret = coordinates.getPositionX() > checkNode->dividerX && coordinates.getPositionX() < checkNode->maxX && coordinates.getPositionY() > checkNode->dividerY && coordinates.getPositionY() < checkNode->maxY && coordinates.getPositionZ() > checkNode->dividerZ && coordinates.getPositionZ() < checkNode->maxZ;
+	} else {
+		ret = false;
+	}
+
+#ifdef DEBUG_TREE_ENTRY_AI
+	auto sceneO = static_cast<SceneObject*>(_this.getReferenceUnsafeStaticCast());
+
+	if (sceneO->isShipAiAgent()) {
+		Logger::console.info(true) << "TreeEntryImplementation::isInNE2Area -- Returning: " << (ret ? "true" : "false") << " Using: " << checkNode->toStringData();
+	}
+#endif // DEBUG_TREE_ENTRY_AI
+
+	return ret;
 }
 
 bool TreeEntryImplementation::isInNW2Area(TreeNode* checkNode) const {
 #ifdef DEBUG_TREE_ENTRY
-	Logger::console.info(true) << "TreeEntryImplementation::isInNW2Area -- Divider Z: " << checkNode->dividerZ;
+	Logger::console.info(true) << "TreeEntryImplementation::isInNW2Area -- Returning: " << (ret ? "true" : "false") << " Using: " << checkNode->toStringData();
 #endif
 
-	if (checkNode->dividerZ != -1)
-		return coordinates.getPositionX() > checkNode->minX && coordinates.getPositionX() < checkNode->dividerX && coordinates.getPositionY() > checkNode->dividerY && coordinates.getPositionY() < checkNode->maxY && coordinates.getPositionZ() > checkNode->dividerZ && coordinates.getPositionZ() < checkNode->maxZ;
-	else
-		return 0;
+	bool ret = false;
+
+	if (checkNode->nodeType == TreeNode::OCTREE_NODE) {
+		ret = coordinates.getPositionX() > checkNode->minX && coordinates.getPositionX() < checkNode->dividerX && coordinates.getPositionY() > checkNode->dividerY && coordinates.getPositionY() < checkNode->maxY && coordinates.getPositionZ() > checkNode->dividerZ && coordinates.getPositionZ() < checkNode->maxZ;
+	} else {
+		ret = false;
+	}
+
+#ifdef DEBUG_TREE_ENTRY_AI
+	auto sceneO = static_cast<SceneObject*>(_this.getReferenceUnsafeStaticCast());
+
+	if (sceneO->isShipAiAgent()) {
+		Logger::console.info(true) << "TreeEntryImplementation::isInNW2Area -- Returning: " << (ret ? "true" : "false") << " Using: " << checkNode->toStringData();
+	}
+#endif // DEBUG_TREE_ENTRY_AI
+
+	return ret;
 }
 
 bool TreeEntryImplementation::isInArea(TreeNode* checkNode) const {
 #ifdef DEBUG_TREE_ENTRY
-	Logger::console.info(true) << "TreeEntryImplementation::isInArea -- Divider Z: " << checkNode->dividerZ;
+	Logger::console.info(true) << "TreeEntryImplementation::isInArea -- Returning: " << (ret ? "true" : "false") << " Using: " << checkNode->toStringData();
 #endif
 
-	if (checkNode->dividerZ != -1) {
-		return ((coordinates.getPositionX() + radius > checkNode->dividerX && coordinates.getPositionX() - radius < checkNode->dividerX) || (coordinates.getPositionY() + radius > checkNode->dividerY && coordinates.getPositionY() - radius < checkNode->dividerY)) &&
-			   (coordinates.getPositionZ() + radius > checkNode->dividerZ && coordinates.getPositionZ() - radius < checkNode->dividerZ);
+	bool ret = false;
+
+	if (checkNode->nodeType == TreeNode::OCTREE_NODE) {
+		ret = ((((coordinates.getPositionX() + radius) > checkNode->dividerX) && ((coordinates.getPositionX() - radius) < checkNode->dividerX)) ||
+			(((coordinates.getPositionY() + radius) > checkNode->dividerY) && ((coordinates.getPositionY() - radius) < checkNode->dividerY)) ||
+			(((coordinates.getPositionZ() + radius) > checkNode->dividerZ) && (coordinates.getPositionZ() - radius) < checkNode->dividerZ));
 	} else {
-		return (coordinates.getPositionX() + radius > checkNode->dividerX && coordinates.getPositionX() - radius < checkNode->dividerX) || (coordinates.getPositionY() + radius > checkNode->dividerY && coordinates.getPositionY() - radius < checkNode->dividerY);
+		ret = (coordinates.getPositionX() + radius > checkNode->dividerX && coordinates.getPositionX() - radius < checkNode->dividerX) || (coordinates.getPositionY() + radius > checkNode->dividerY && coordinates.getPositionY() - radius < checkNode->dividerY);
 	}
+
+#ifdef DEBUG_TREE_ENTRY_AI
+	auto sceneO = static_cast<SceneObject*>(_this.getReferenceUnsafeStaticCast());
+
+	if (sceneO->isShipAiAgent()) {
+		Logger::console.info(true) << "TreeEntryImplementation::isInArea - Radius: " << radius << " -- Returning: " << (ret ? "true" : "false") << " Using: " << checkNode->toStringData();
+	}
+#endif // DEBUG_TREE_ENTRY_AI
+
+	return ret;
 }
 
 uint64 TreeEntryImplementation::getObjectID() {
@@ -240,21 +364,10 @@ uint64 TreeEntryImplementation::getDirtyObjectID() {
 	return _this.getReferenceUnsafeStaticCast()->_getObjectID();
 }
 
-float TreeEntryImplementation::getOutOfRangeDistance() {
-	auto thisNode = node.get();
+float TreeEntryImplementation::getOutOfRangeDistance() const {
 	float closeRange = ZoneServer::CLOSEOBJECTRANGE;
 
-	if (thisNode != nullptr && thisNode->dividerZ != -1) {
-		if (getReceiverFlags() & CloseObjectsVector::SPACESTATIONTYPE) {
-			closeRange = ZoneServer::SPACESTATIONRANGE;
-		} else if (getReceiverFlags() & CloseObjectsVector::PLAYERTYPE) {
-			closeRange = ZoneServer::SPACECLOSEOBJECTRANGE;
-		} else if (radius > ZoneServer::SPACECLOSEOBJECTRANGE) {
-			closeRange = radius;
-		} else {
-			closeRange = ZoneServer::SPACECLOSEOBJECTRANGE;
-		}
-	} else if (radius > (closeRange * 0.5f)) {
+	if (radius > (closeRange * 0.5f)) {
 		return closeRange + radius;
 	}
 

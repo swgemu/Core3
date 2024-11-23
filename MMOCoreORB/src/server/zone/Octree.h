@@ -15,7 +15,6 @@ namespace server {
   namespace zone {
 
 	class Octree : public Object {
-
 		Reference<TreeNode*> root;
 
 		static bool logTree;

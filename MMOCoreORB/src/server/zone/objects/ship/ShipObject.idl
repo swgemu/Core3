@@ -1717,6 +1717,9 @@ class ShipObject extends TangibleObject {
 
 	public native float calculateActualMaxSpeed();
 
+	@read
+	public native abstract float getOutOfRangeDistance();
+
 	@preLocked
 	@local
 	public native void updateSpeedRotationValues(boolean notifyClient = true, ShipDeltaVector vector = null);
