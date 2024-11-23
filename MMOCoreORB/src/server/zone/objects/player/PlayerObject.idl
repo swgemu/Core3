@@ -16,6 +16,7 @@ import server.zone.objects.player.events.PlayerDisconnectEvent;
 import server.zone.objects.player.events.PlayerRecoveryEvent;
 import server.zone.objects.player.events.ForceRegenerationEvent;
 import server.zone.objects.player.events.PvpTefRemovalTask;
+import server.zone.objects.player.events.ServerTimeTask;
 import server.zone.objects.scene.SceneObject;
 import server.zone.objects.structure.StructureObject;
 import server.zone.objects.waypoint.WaypointObject;
@@ -266,6 +267,9 @@ class PlayerObject extends IntangibleObject {
 
 	@dereferenced
 	protected transient Reference<PvpTefRemovalTask> pvpTefTask;
+
+	@dereferenced
+	protected transient Reference<ServerTimeTask> serverTimeTask;
 
 	@dereferenced
 	protected Time lastDigestion;
@@ -1820,6 +1824,8 @@ class PlayerObject extends IntangibleObject {
 	public native void schedulePvpTefRemovalTask(boolean removeCrackdownGcwTefNow, boolean removeGcwTefNow, boolean removeBhTefNow);
 
 	public native void schedulePvpTefRemovalTask(boolean removeNow = false);
+
+	public native void scheduleServerTimeTask();
 
 	public native boolean isInPvpArea(boolean checkTime = true);
 

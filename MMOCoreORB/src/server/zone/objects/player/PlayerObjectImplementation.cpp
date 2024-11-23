@@ -62,6 +62,7 @@
 #include "server/zone/objects/intangible/tasks/StoreShipTask.h"
 #include "server/zone/objects/player/events/RemoveSpouseTask.h"
 #include "server/zone/objects/player/events/PvpTefRemovalTask.h"
+#include "server/zone/objects/player/events/ServerTimeTask.h"
 #include "server/zone/objects/player/events/SpawnHelperDroidTask.h"
 #include "server/zone/managers/visibility/VisibilityManager.h"
 #include "server/zone/managers/jedi/JediManager.h"
@@ -2273,6 +2274,8 @@ void PlayerObjectImplementation::setOnline() {
 	doRecovery(1000);
 
 	activateMissions();
+
+	scheduleServerTimeTask();
 }
 
 void PlayerObjectImplementation::setOffline() {
@@ -2660,6 +2663,16 @@ void PlayerObjectImplementation::schedulePvpTefRemovalTask(bool removeCrackdownG
 
 void PlayerObjectImplementation::schedulePvpTefRemovalTask(bool removeNow) {
 	schedulePvpTefRemovalTask(removeNow, removeNow, removeNow);
+}
+
+void PlayerObjectImplementation::scheduleServerTimeTask() {
+	if (serverTimeTask == nullptr) {
+		serverTimeTask = new ServerTimeTask(asPlayerObject());
+	}
+
+	if (!serverTimeTask->isScheduled()) {
+		serverTimeTask->schedule(60 * 1000);
+	}
 }
 
 Vector3 PlayerObjectImplementation::getJediTrainerCoordinates() const {
