@@ -14,11 +14,14 @@ using namespace server::zone;
 TreeNode::TreeNode() {
 	objects.setNoDuplicateInsertPlan();
 
-	minX = 0, minY = 0, minZ = 0, maxX = 0, maxY = 0, maxZ = 0;
+	minX = 0.f, minY = 0.f, minZ = 0.f, maxX = 0.f, maxY = 0.f, maxZ = 0.f;
 
-	dividerX = 0, dividerY = 0,	dividerZ = -1;
+	dividerX = 0.f, dividerY = 0.f,	dividerZ = 0.f;
+
+	nodeType = TreeNode::QUADTREE_NODE;
 }
 
+// Octree node
 TreeNode::TreeNode(float minx, float miny, float minz, float maxx, float maxy, float maxz, TreeNode* parent) {
 	objects.setNoDuplicateInsertPlan();
 
@@ -40,8 +43,11 @@ TreeNode::TreeNode(float minx, float miny, float minz, float maxx, float maxy, f
 	dividerX = (minX + maxX) / 2;
 	dividerY = (minY + maxY) / 2;
 	dividerZ = (minZ + maxZ) / 2;
+
+	nodeType = TreeNode::OCTREE_NODE;
 }
 
+// Quadtree node
 TreeNode::TreeNode(float minx, float miny, float maxx, float maxy, TreeNode *parent) {
 	objects.setNoDuplicateInsertPlan();
 
@@ -50,7 +56,7 @@ TreeNode::TreeNode(float minx, float miny, float maxx, float maxy, TreeNode *par
 	minY = miny;
 	maxX = maxx;
 	maxY = maxy;
-	dividerZ = -1.f;
+	dividerZ = 0.f;
 
 	if (!validateNode() || minX > maxX || minY > maxY) {
 	StringBuffer msg;
@@ -60,20 +66,14 @@ TreeNode::TreeNode(float minx, float miny, float maxx, float maxy, TreeNode *par
 
 	dividerX = (minX + maxX) / 2;
 	dividerY = (minY + maxY) / 2;
+
+	nodeType = TreeNode::QUADTREE_NODE;
 }
 
 TreeNode::~TreeNode() {
 }
 
-void TreeNode::addObject(TreeEntry *obj) {
-	/*if (dividerZ != -1 && Octree::doLog())
-		Logger::console.info(true) << hex << "object [" << obj->getObjectID() <<  "] added to Octree"
-		<< toStringData() << "\n";
-	else if (dividerZ == 0 && QuadTree::doLog())
-		Logger::console.info(true) << hex << "object [" << obj->getObjectID() <<  "] added to QuadTree"
-		<< toStringData() << "\n";
-	*/
-
+void TreeNode::addObject(TreeEntry* obj) {
 	if (!validateNode())
 		Logger::console.error() << "[TreeNode] invalid node in addObject() - " << toStringData() << "\n";
 
@@ -82,8 +82,6 @@ void TreeNode::addObject(TreeEntry *obj) {
 }
 
 void TreeNode::removeObject(TreeEntry* obj) {
-
-
 	if (!objects.drop(obj)) {
 		Logger::console.info(true) << "TreeNode::removeObject -- Object ID: " << obj->getObjectID() <<  "] not found on Tree" << toStringData() << "\n";
 	} else {
@@ -121,10 +119,20 @@ bool TreeNode::testInsideOctree(TreeEntry* obj) const {
 	float y = obj->getPositionY();
 	float z = obj->getPositionZ();
 
-	//Logger::console.info(true) << "TreeNode::testInsideOctree called - X = " << x << " Z = " << z << " Y = " << y;
-	//Logger::console.info(true) << " minX = " << minX << " maxX = " << maxX << " minZ = " << minZ << " maxZ = " << maxZ << " minY = " << minY << " maxY = " << maxY;
+	bool ret = ((x > minX) && (x < maxX) && (y > minY) && (y < maxY) && (z > minZ) && (z < maxZ));
 
-	return ((x > minX) && (x < maxX) && (y > minY) && (y < maxY) && (z > minZ) && (z < maxZ));
+#ifdef DEBUG_TREE_NODE_AI
+	SceneObject* scno = cast<SceneObject*>(obj);
+
+	if (!ret && scno->isShipAiAgent()) {
+		Logger::console.info(true) << "TreeNode::testInsideOctree[" << obj->getObjectID() << "] - X = " << x << " Z = " << z << " Y = " << y << " " << " Node -- " << nodeName << " - " <<
+		" (Min X: " << (int)minX << ", Min Y: " << (int)minY << ", Min Z: " << (int)minZ <<
+		", Max X: " << (int)maxX << ", Max Y: " << (int)maxY << ", Max Z: " << (int)maxZ << ")" <<
+		"[Total Objects in Node: " << objects.size() << "]";
+	}
+#endif // DEBUG_TREE_NODE_AI
+
+	return ret;
 }
 
 bool TreeNode::testInRange(float x, float y, float z, float range) const {
@@ -207,7 +215,7 @@ void TreeNode::check () {
 String TreeNode::toStringData() {
 	StringBuffer msg;
 	msg <<
-	" Node -- " << nodeName << " - " << this <<
+	" Node -- Type: " << nodeType << " - " <<
 	" (Min X: " << (int)minX << ", Min Y: " << (int)minY << ", Min Z: " << (int)minZ <<
 	", Max X: " << (int)maxX << ", Max Y: " << (int)maxY << ", Max Z: " << (int)maxZ << ")" <<
 	"[Total Objects in Node: " << objects.size() << "]";

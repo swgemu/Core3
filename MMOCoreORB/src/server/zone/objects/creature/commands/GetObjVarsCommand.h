@@ -102,7 +102,9 @@ public:
 
 		"Reference Count: " << rCount << endl <<
 		"Marked for deletion: " << bMarkedForDelete << endl <<
-		"IsUpdated: " << bIsUpdated << endl << endl;
+		"IsUpdated: " << bIsUpdated << endl << endl <<
+		"TreeNode is null: " << (object->getNode() == nullptr ? "true" : "false") << endl;
+
 
 		if (object->isCreatureObject()) {
 			auto creoObject = object->asCreatureObject();

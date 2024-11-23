@@ -50,6 +50,9 @@ class TreeEntry;
 class TreeEntryImplementation;
 
 class TreeNode: public Object {
+	static const uint8 QUADTREE_NODE = 0;
+	static const uint8 OCTREE_NODE = 1;
+
 	SortedVector<Reference<TreeEntry*> > objects;
 
 	WeakReference<TreeNode*> parentNode;
@@ -68,6 +71,8 @@ class TreeNode: public Object {
 	float dividerX, dividerY, dividerZ;
 
 	String nodeName;
+
+	uint8 nodeType;
 
 public:
 	TreeNode();
@@ -109,7 +114,7 @@ public:
 	void check();
 
 	bool validateNode() const {
-		if (dividerZ != -1) {
+		if (nodeType == OCTREE_NODE) {
 			if (minX > maxX || minY > maxY || minZ > maxZ) {
 				return false;
 			}

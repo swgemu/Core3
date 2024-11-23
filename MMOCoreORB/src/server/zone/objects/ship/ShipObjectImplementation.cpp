@@ -1964,6 +1964,10 @@ int ShipObjectImplementation::getReceiverFlags() const {
 	return type | TangibleObjectImplementation::getReceiverFlags();
 }
 
+float ShipObjectImplementation::getOutOfRangeDistance() const {
+	return ZoneServer::SPACECLOSEOBJECTRANGE;
+}
+
 bool ShipObjectImplementation::isComponentInstalled(uint32 slot) {
 	return getShipComponentMap()->get(slot) != 0;
 }
