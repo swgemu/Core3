@@ -2684,33 +2684,42 @@ void GCWManagerImplementation::sendSelectDeedToDonate(BuildingObject* building, 
 	for (int i = 0; i < inv->getContainerObjectsSize(); ++i) {
 		ManagedReference<SceneObject*> inventoryObject = inv->getContainerObject(i);
 
-		if (inventoryObject->isDeedObject()) {
-			ManagedReference<Deed*> deed = dynamic_cast<Deed*>(inventoryObject.get());
-
-			if (deed != nullptr) {
-				Reference<SharedObjectTemplate*> generatedTemplate = TemplateManager::instance()->getTemplate(deed->getGeneratedObjectTemplate().hashCode());
-
-				if (generatedTemplate == nullptr)
-					continue;
-
-				int objectType = generatedTemplate->getGameObjectType();
-
-				if (!useCovertOvert && objectType == SceneObjectType::COVERTSCANNER)
-					continue;
-
-				if (objectType == SceneObjectType::MINEFIELD || objectType == SceneObjectType::DESTRUCTIBLE || objectType == SceneObjectType::COVERTSCANNER) {
-					donate->addMenuItem(inventoryObject->getDisplayedName(), inventoryObject->getObjectID());
-				}
-			}
+		if (!inventoryObject->isDeedObject()) {
+			continue;
 		}
+
+		ManagedReference<Deed*> deed = dynamic_cast<Deed*>(inventoryObject.get());
+
+		if (deed == nullptr) {
+			continue;
+		}
+
+		Reference<SharedObjectTemplate*> generatedTemplate = TemplateManager::instance()->getTemplate(deed->getGeneratedObjectTemplate().hashCode());
+
+		if (generatedTemplate == nullptr) {
+			continue;
+		}
+
+		int objectType = generatedTemplate->getGameObjectType();
+
+		if (!useCovertOvert && objectType == SceneObjectType::COVERTSCANNER) {
+			continue;
+		}
+
+		if (objectType != SceneObjectType::MINEFIELD && objectType != SceneObjectType::TURRET && objectType != SceneObjectType::COVERTSCANNER) {
+			continue;
+		}
+
+		donate->addMenuItem(inventoryObject->getDisplayedName(), inventoryObject->getObjectID());
 	}
 
 	if (donate->getMenuSize() == 0) {
 		creature->sendSystemMessage("@faction/faction_hq/faction_hq_response:terminal_response15"); // You do not possess any deeds to donate.
-	} else {
-		ghost->addSuiBox(donate);
-		creature->sendMessage(donate->generateMessage());
+		return;
 	}
+
+	ghost->addSuiBox(donate);
+	creature->sendMessage(donate->generateMessage());
 }
 
 void GCWManagerImplementation::sendSelectMineToDonate(InstallationObject* installation, CreatureObject* player) {
@@ -2833,19 +2842,27 @@ void GCWManagerImplementation::performDefenseDonation(BuildingObject* building, 
 
 	const int objectType = generatedTemplate->getGameObjectType();
 
-	if (objectType == SceneObjectType::MINEFIELD) {
-		performDonateMinefield(building, creature, deed);
-		return;
-	} else if (objectType == SceneObjectType::COVERTSCANNER) {
-		performDonateScanner(building, creature, deed);
-		return;
-	} else if (objectType == SceneObjectType::DESTRUCTIBLE) {
-		performDonateTurret(building, creature, deed);
-		return;
-	} else {
-		StringIdChatParameter param("@faction/faction_hq/faction_hq_response:terminal_response43"); // This facility does not accept deeds of type '%TO'. Cancelling donation..."
-		param.setTO(defenseObj->getObjectName());
-		creature->sendSystemMessage(param);
+	info(true) << "attempting to donate type: " << objectType;
+
+	switch (objectType) {
+		case SceneObjectType::MINEFIELD: {
+			performDonateMinefield(building, creature, deed);
+			return;
+		}
+		case SceneObjectType::COVERTSCANNER: {
+			performDonateScanner(building, creature, deed);
+			return;
+		}
+		case SceneObjectType::TURRET: {
+			performDonateTurret(building, creature, deed);
+			return;
+		}
+		default: {
+			StringIdChatParameter param("@faction/faction_hq/faction_hq_response:terminal_response43"); // This facility does not accept deeds of type '%TO'. Cancelling donation..."
+			param.setTO(defenseObj->getObjectName());
+			creature->sendSystemMessage(param);
+			return;
+		}
 	}
 }
 
@@ -3048,7 +3065,7 @@ void GCWManagerImplementation::performDonateTurret(BuildingObject* building, Cre
 		if (child != nullptr) {
 			turretTemplate = TemplateManager::instance()->getTemplate(child->getTemplateFile().hashCode());
 
-			if (turretTemplate != nullptr && turretTemplate->getGameObjectType() == SceneObjectType::DESTRUCTIBLE) {
+			if (turretTemplate != nullptr && turretTemplate->getGameObjectType() == SceneObjectType::TURRET) {
 				if (currentTurretIndex == nextAvailableTurret) {
 					break;
 				} else {
@@ -3058,8 +3075,9 @@ void GCWManagerImplementation::performDonateTurret(BuildingObject* building, Cre
 		}
 	}
 
-	if (child == nullptr || turretTemplate == nullptr || turretTemplate->getGameObjectType() != SceneObjectType::DESTRUCTIBLE)
+	if (child == nullptr || turretTemplate == nullptr || turretTemplate->getGameObjectType() != SceneObjectType::TURRET) {
 		return;
+	}
 
 	uint64 turretID = addChildInstallationFromDeed(building, child, creature, turretDeed);
 
