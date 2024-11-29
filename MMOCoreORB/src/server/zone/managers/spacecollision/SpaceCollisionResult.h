@@ -13,7 +13,7 @@
 
 class SpaceCollisionEntry {
 protected:
-	ManagedWeakReference<ShipObject*> object;
+	ManagedWeakReference<SceneObject*> object;
 	Vector3 position;
 	Vector3 direction;
 
@@ -26,8 +26,8 @@ public:
 		slot = -1;
 	}
 
-	SpaceCollisionEntry(ShipObject* targetShip, const ShipProjectile* projectile, const Vector3& localDirection, float intersection, int componentSlot = -1) {
-		object = targetShip;
+	SpaceCollisionEntry(SceneObject* target, const ShipProjectile* projectile, const Vector3& localDirection, float intersection, int componentSlot = -1) {
+		object = target;
 		distance = projectile->getDistance() * Math::clamp(0.f, intersection, 1.f);
 
 		position = (projectile->getDirection() * distance) + projectile->getLastPosition();
@@ -36,7 +36,7 @@ public:
 		slot = componentSlot;
 	}
 
-	ManagedWeakReference<ShipObject*> getObject() const {
+	ManagedWeakReference<SceneObject*> getObject() const {
 		return object;
 	}
 
@@ -70,11 +70,11 @@ public:
 
 	}
 
-	void setCollision(ShipObject* targetShip, const ShipProjectile* projectile, const Vector3& localDirection, float intersection, int componentSlot = Components::CHASSIS) {
-		collisionMap.put(intersection, SpaceCollisionEntry(targetShip, projectile, localDirection, intersection, componentSlot));
+	void setCollision(SceneObject* target, const ShipProjectile* projectile, const Vector3& localDirection, float intersection, int componentSlot = Components::CHASSIS) {
+		collisionMap.put(intersection, SpaceCollisionEntry(target, projectile, localDirection, intersection, componentSlot));
 	}
 
-	ManagedWeakReference<ShipObject*> getObject(int index = 0) const {
+	ManagedWeakReference<SceneObject*> getObject(int index = 0) const {
 		return collisionMap.size() > index ? collisionMap.elementAt(index).getValue().getObject() : nullptr;
 	}
 
@@ -109,13 +109,8 @@ public:
 			return;
 		}
 
-		auto targetShip = getObject().get();
-		if (targetShip == nullptr) {
-			return;
-		}
-
-		auto targetData = ShipManager::instance()->getCollisionData(targetShip);
-		if (targetData == nullptr) {
+		auto target = getObject().get();
+		if (target == nullptr) {
 			return;
 		}
 
@@ -131,36 +126,73 @@ public:
 		<< "  distance:       " << getDistance() << endl
 		<< "  position:       " << getPosition().toString() << endl
 		<< "  front/back:     " << (isHitFront() ? "FRONT" : "BACK") << endl
-		<< "  slot:           " << getSlot() << endl
-		<< targetData->toDebugString(false) << endl;
+		<< "  slot:           " << getSlot() << endl;
 
-		const Vector3& targetPosition = targetShip->getPosition();
+		if (target->isShipObject()) {
+			auto targetShip = target->asShipObject();
+			if (targetShip == nullptr) {
+				return;
+			}
 
-		Matrix4 targetRotation;
-		targetRotation.setRotationMatrix(targetShip->getDirection()->getConjugate().toMatrix3());
+			auto targetData = ShipManager::instance()->getCollisionData(targetShip);
+			if (targetData == nullptr) {
+				return;
+			}
 
-		float targetRadius = targetData->getBoundingSphere().getRadius();
+			const Vector3& targetPosition = targetShip->getPosition();
+			const Matrix4& targetRotation = *targetShip->getConjugateMatrix();
 
-		if (targetData->getVolumeType() == ShipCollisionData::CollisionVolumeType::MESH) {
-			path->drawBoundingSphere(targetPosition, targetRotation, targetData->getBoundingSphere());
-			msg << debugCollisionHardpoints(targetShip, targetPosition, targetRotation, targetData, path);
+			if (targetData->getVolumeType() == ShipCollisionData::CollisionVolumeType::MESH) {
+				path->drawBoundingSphere(targetPosition, targetRotation, targetData->getBoundingSphere());
+				msg << debugCollisionHardpoints(targetShip, targetPosition, targetRotation, targetData, path);
+			}
+
+			if (targetData->getVolumeType() == ShipCollisionData::CollisionVolumeType::BOX) {
+				path->drawBoundingSphere(targetPosition, targetRotation, targetData->getBoundingSphere());
+				path->drawBoundingBox(targetPosition, targetRotation, targetData->getChassisBox());
+			}
+
+			if (targetData->getVolumeType() == ShipCollisionData::CollisionVolumeType::SPHERE) {
+				path->drawBoundingSphere(targetPosition, targetRotation, targetData->getBoundingSphere());
+				path->drawBoundingSphere(targetPosition, targetRotation, targetData->getChassisSphere());
+			}
+
+			path->addCoordinate(position);
+			path->addCoordinate(projectile->getThisPosition());
+
+			msg << targetData->toDebugString(false) << endl;
+		} else {
+			auto appearance = target->getAppearanceTemplate();
+			if (appearance == nullptr) {
+				return;
+			}
+
+			auto bounding = appearance->getBoundingVolume();
+			if (bounding == nullptr) {
+				return;
+			}
+
+			auto collision = appearance->getCollisionVolume();
+			if (collision == nullptr) {
+				collision = bounding;
+			}
+
+			const Vector3& targetPosition = target->getPosition();
+			Matrix4 targetRotation;
+			targetRotation.setRotationMatrix(target->getDirection()->getConjugate().toMatrix3());
+
+			if (collision->isBoundingBox()) {
+				path->drawBoundingSphere(targetPosition, targetRotation, bounding->getBoundingSphere());
+				path->drawBoundingBox(targetPosition, targetRotation, collision->getBoundingBox());
+			} else if (collision->isBoundingSphere()) {
+				path->drawBoundingSphere(targetPosition, targetRotation, bounding->getBoundingSphere());
+				path->drawBoundingSphere(targetPosition, targetRotation, collision->getBoundingSphere());
+			} else {
+				path->drawBoundingSphere(targetPosition, targetRotation, bounding->getBoundingSphere());
+			}
 		}
-
-		if (targetData->getVolumeType() == ShipCollisionData::CollisionVolumeType::BOX) {
-			path->drawBoundingSphere(targetPosition, targetRotation, targetData->getBoundingSphere());
-			path->drawBoundingBox(targetPosition, targetRotation, targetData->getChassisBox());
-		}
-
-		if (targetData->getVolumeType() == ShipCollisionData::CollisionVolumeType::SPHERE) {
-			path->drawBoundingSphere(targetPosition, targetRotation, targetData->getBoundingSphere());
-			path->drawBoundingSphere(targetPosition, targetRotation, targetData->getChassisSphere());
-		}
-
-		path->addCoordinate(position);
-		path->addCoordinate(projectile->getThisPosition());
 
 		msg << "--------------------------------";
-
 		pilot->sendSystemMessage(msg.toString());
 		pilot->sendMessage(path);
 	}

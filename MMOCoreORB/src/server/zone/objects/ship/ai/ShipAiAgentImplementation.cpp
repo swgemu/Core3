@@ -1615,7 +1615,7 @@ bool ShipAiAgentImplementation::fireProjectileAtTarget(ShipObject* targetShip, c
 
 	float radius = Math::max(32.f, targetShip->getBoundingRadius());
 	float range = Math::max(512.f, projectileData->getRange());
-	float collisionDistance = SpaceCollisionManager::getPointIntersection(currentDirection * range, difference, radius, range);
+	float collisionDistance = SpaceCollisionManager::instance()->getPointIntersection(currentDirection * range, difference, radius, range);
 
 	if (collisionDistance == SpaceCollisionManager::MISS) {
 		return false;
