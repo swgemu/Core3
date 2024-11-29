@@ -79,7 +79,15 @@ void SpaceCombatManager::applyDamage(ShipObject* ship, const ShipProjectile* pro
 
 	auto target = result.getObject().get();
 
-	if (target == nullptr || !target->isAttackableBy(ship)) {
+	if (target == nullptr || !target->isShipObject()) {
+		auto effect = new PlayClientEffectLoc("clienteffect/combat_ship_hit_armor.cef", "", result.getPosition().getX(), result.getPosition().getZ(), result.getPosition().getY());
+		ship->broadcastMessage(effect, true);
+		return;
+	}
+
+	auto targetShip = target->asShipObject();
+
+	if (targetShip == nullptr || !targetShip->isAttackableBy(ship)) {
 		auto effect = new PlayClientEffectLoc("clienteffect/combat_ship_hit_shield.cef", "", result.getPosition().getX(), result.getPosition().getZ(), result.getPosition().getY());
 		ship->broadcastMessage(effect, true);
 		return;
@@ -87,7 +95,7 @@ void SpaceCombatManager::applyDamage(ShipObject* ship, const ShipProjectile* pro
 
 	Locker tLock(target, ship);
 
-	auto deltaVector = target->getDeltaVector();
+	auto deltaVector = targetShip->getDeltaVector();
 
 	if (deltaVector == nullptr) {
 		return;
@@ -116,16 +124,16 @@ void SpaceCombatManager::applyDamage(ShipObject* ship, const ShipProjectile* pro
 	}
 
 	if (damage > 1.f) {
-		auto targetThreatMap = target->getThreatMap();
+		auto targetThreatMap = targetShip->getThreatMap();
 
 		if (targetThreatMap != nullptr) {
 			targetThreatMap->addDamage(ship, (uint32)damage);
 		}
 
-		target->updateLastDamageReceived();
+		targetShip->updateLastDamageReceived();
 
-		if (target->isShipAiAgent()) {
-			auto targetAgent = target->asShipAiAgent();
+		if (targetShip->isShipAiAgent()) {
+			auto targetAgent = targetShip->asShipAiAgent();
 
 			if (targetAgent != nullptr && targetAgent->addEnemyShip(ship->getObjectID()) && ship->isPlayerShip()) {
 				targetAgent->broadcastPvpStatusBitmask();
@@ -140,39 +148,39 @@ void SpaceCombatManager::applyDamage(ShipObject* ship, const ShipProjectile* pro
 	Vector<BasePacket*> messages;
 
 	if (damage > 0.f) {
-		damage = applyShieldDamage(target, result, damage, shieldEffect, hitFront, deltaVector, messages);
+		damage = applyShieldDamage(targetShip, result, damage, shieldEffect, hitFront, deltaVector, messages);
 	}
 
 	if (damage > 0.f) {
-		damage = applyArmorDamage(target, result, damage, armorEffect,  hitFront, deltaVector, messages);
+		damage = applyArmorDamage(targetShip, result, damage, armorEffect,  hitFront, deltaVector, messages);
 	}
 
 	if (damage > 0.f && collisionSlot != Components::CHASSIS) {
-		damage = applyComponentDamage(target, result, damage, collisionSlot, deltaVector, messages);
+		damage = applyComponentDamage(targetShip, result, damage, collisionSlot, deltaVector, messages);
 	}
 
 	if (damage > 0.f) {
-		damage = applyActiveComponentDamage(target, result, damage, targetSlot, deltaVector, messages);
+		damage = applyActiveComponentDamage(targetShip, result, damage, targetSlot, deltaVector, messages);
 	}
 
-	if (damage > 0.f && target->getShipComponentMap()->get(Components::BRIDGE) == 0) {
-		damage = applyChassisDamage(target, result, damage, deltaVector, messages);
+	if (damage > 0.f && targetShip->getShipComponentMap()->get(Components::BRIDGE) == 0) {
+		damage = applyChassisDamage(targetShip, result, damage, deltaVector, messages);
 	}
 
 	if (deltaVector != nullptr) {
-		deltaVector->sendMessages(target);
+		deltaVector->sendMessages(targetShip);
 	}
 
 	if (messages.size() > 0) {
 		target->broadcastMessages(&messages, true);
 	}
 
-	if (target->getChassisCurrentHealth() == 0.f) {
-		auto destroyTask = new DestroyShipTask(target);
+	if (targetShip->getChassisCurrentHealth() == 0.f) {
+		auto destroyTask = new DestroyShipTask(targetShip);
 		destroyTask->execute();
 
 		// If Agent ship kills player ship, remove the player from agents enemy list
-		if (target->isPlayerShip() && ship->isShipAiAgent()) {
+		if (targetShip->isPlayerShip() && ship->isShipAiAgent()) {
 			auto agentShip = ship->asShipAiAgent();
 
 			if (agentShip != nullptr) {
@@ -181,7 +189,7 @@ void SpaceCombatManager::applyDamage(ShipObject* ship, const ShipProjectile* pro
 		}
 
 		// Notify Destruction
-		Reference<ShipObject*> refTarget = target;
+		Reference<ShipObject*> refTarget = targetShip;
 		Reference<ShipObject*> attackerRef = ship;
 
 		Core::getTaskManager()->scheduleTask([refTarget, attackerRef] () {
@@ -551,7 +559,7 @@ float SpaceCombatManager::applyActiveComponentDamage(ShipObject* target, const S
 	return damage;
 }
 
-int SpaceCombatManager::updateProjectile(ShipObject* ship, ShipProjectile* projectile, SpaceCollisionResult& result, Vector<ManagedReference<ShipObject*>>& targetVectorCopy, const uint64& miliTime) {
+int SpaceCombatManager::updateProjectile(ShipObject* ship, ShipProjectile* projectile, SpaceCollisionResult& result, Vector<ManagedReference<SceneObject*>>& targetVectorCopy, const uint64& miliTime) {
 	if (ship == nullptr || projectile == nullptr) {
 		return ProjectileResult::EXPIRE;
 	}
@@ -586,14 +594,14 @@ int SpaceCombatManager::updateProjectile(ShipObject* ship, ShipProjectile* proje
 		return ProjectileResult::MISS;
 	}
 
-	if (SpaceCollisionManager::getProjectileCollision(ship, projectile, result, targetVectorCopy) != SpaceCollisionManager::MISS) {
+	if (SpaceCollisionManager::instance()->getProjectileCollision(ship, projectile, result, targetVectorCopy) != SpaceCollisionManager::MISS) {
 		return ProjectileResult::HIT;
 	}
 
 	return ProjectileResult::MISS;
 }
 
-int SpaceCombatManager::updateMissile(ShipObject* ship, ShipProjectile* projectile, SpaceCollisionResult& result, Vector<ManagedReference<ShipObject*>>& targetVectorCopy, const uint64& miliTime) {
+int SpaceCombatManager::updateMissile(ShipObject* ship, ShipProjectile* projectile, SpaceCollisionResult& result, Vector<ManagedReference<SceneObject*>>& targetVectorCopy, const uint64& miliTime) {
 	if (ship == nullptr || projectile == nullptr || !projectile->isMissile()) {
 		return ProjectileResult::EXPIRE;
 	}
@@ -664,7 +672,7 @@ int SpaceCombatManager::updateMissile(ShipObject* ship, ShipProjectile* projecti
 		return ProjectileResult::MISS;
 	}
 
-	if (SpaceCollisionManager::getProjectileCollision(ship, projectile, result, targetVectorCopy) != SpaceCollisionManager::MISS) {
+	if (SpaceCollisionManager::instance()->getProjectileCollision(ship, projectile, result, targetVectorCopy) != SpaceCollisionManager::MISS) {
 		broadcastMissileUpdate(ship, missile, -1, UpdateMissileMessage::UpdateType::HIT);
 		return ProjectileResult::HIT;
 	}
@@ -698,7 +706,7 @@ int SpaceCombatManager::updateProjectiles() {
 				continue;
 			}
 
-			Vector<ManagedReference<ShipObject*>> targetVectorCopy;
+			Vector<ManagedReference<SceneObject*>> targetVectorCopy;
 			targetVector->safeCopyTo(targetVectorCopy);
 
 			for (int ii = projectileMap.entrySize(i); -1 < --ii;) {

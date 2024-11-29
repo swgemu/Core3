@@ -57,6 +57,7 @@ include server.zone.objects.scene.variables.ContainerObjectsMap;
 import server.zone.objects.tangible.TangibleObject;
 import server.zone.objects.creature.ai.AiAgent;
 include templates.appearance.MeshData;
+include templates.appearance.AppearanceTemplate;
 include templates.collision.BaseBoundingVolume;
 include server.zone.objects.scene.variables.StdFunction;
 include server.metrics.Metrics;
@@ -2442,4 +2443,8 @@ class SceneObject extends TreeEntry implements Logger, Metrics {
 	public abstract unsigned int getMaximumNumberOfPlayerItems() {
 		return 0;
 	}
+
+	@read
+	@local
+	public native final AppearanceTemplate getAppearanceTemplate();
 }

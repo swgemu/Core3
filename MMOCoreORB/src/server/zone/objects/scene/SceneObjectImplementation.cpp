@@ -2522,3 +2522,19 @@ uint32 SceneObjectImplementation::getSyncStamp() {
 	long deltaTime = System::getMiliTime() - syncTime;
 	return syncStamp + deltaTime;
 }
+
+const AppearanceTemplate* SceneObjectImplementation::getAppearanceTemplate() const {
+	const auto shot = getObjectTemplate();
+
+	if (shot == nullptr) {
+		return nullptr;
+	}
+
+	const auto pob = shot->getPortalLayout();
+
+	if (pob != nullptr && pob->getAppearanceTemplatesSize() > 0) {
+		return pob->getAppearanceTemplate(0);
+	}
+
+	return shot->getAppearanceTemplate();
+}
