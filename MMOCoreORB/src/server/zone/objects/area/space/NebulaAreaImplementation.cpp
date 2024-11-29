@@ -189,7 +189,7 @@ void NebulaAreaImplementation::shipLightningDamage(ShipObject* ship, const Vecto
 		Vector3 difference = targetPosition - startPoint;
 		float targetRadius = targetShip->getBoundingRadius() + LIGHTNING_DAMAGE_RAD;
 
-		float intersection = SpaceCollisionManager::getPointIntersection(direction, difference, targetRadius, distance);
+		float intersection = SpaceCollisionManager::instance()->getPointIntersection(direction, difference, targetRadius, distance);
 
 		if (intersection == SpaceCollisionManager::MISS) {
 			continue;

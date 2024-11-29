@@ -1,7 +1,7 @@
 #ifndef SHIPTARGETVECTOR_H_
 #define SHIPTARGETVECTOR_H_
 
-#include "server/zone/objects/tangible/TangibleObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 namespace server {
 	namespace zone {
@@ -13,6 +13,8 @@ namespace server {
 	}
 }
 
+//#define SHIPTARGETVECTOR_DEBUG
+
 class ShipTargetVector : public Object, public Logger {
 public:
 	const static int UPDATEINTERVAL = 2000;
@@ -22,7 +24,7 @@ public:
 	constexpr static float PROJECTILERANGEMAX = 512.f * UPDATEMODIFIER;
 
 protected:
-	VectorMap<float, ManagedWeakReference<ShipObject*>> targetMap;
+	VectorMap<float, ManagedWeakReference<SceneObject*>> targetMap;
 	ManagedWeakReference<ShipObject*> shipRef;
 
 	mutable ReadWriteLock targetLock;
@@ -39,13 +41,17 @@ public:
 
 	void update();
 
-	bool isTargetValid(ShipObject* ship, ShipObject* target) const;
+	bool isTargetValid(ShipObject* ship, SceneObject* target) const;
 
-	void removeInRangeObject(ShipObject* ship, SceneObject* target) const;
+	void safeCopyTo(Vector<ManagedReference<SceneObject*>>& vector) const;
 
 	void safeCopyTo(Vector<ManagedReference<ShipObject*>>& vector) const;
 
 	int size() const;
+
+#ifdef SHIPTARGETVECTOR_DEBUG
+	void debugTargetVector();
+#endif // SHIPTARGETVECTOR_DEBUG
 };
 
 #endif // SHIPTARGETVECTOR_H_

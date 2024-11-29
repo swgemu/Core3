@@ -176,7 +176,7 @@ void ShipObjectImplementation::loadTemplateData(SharedObjectTemplate* templateDa
 		wingsOpenSpeed = chassisData->getWingOpenSpeed();
 	}
 
-	auto appearance = shipTemp->getAppearanceTemplate();
+	auto appearance = getAppearanceTemplate();
 
 	if (appearance != nullptr) {
 		auto volume = appearance->getBoundingVolume();
@@ -1783,18 +1783,20 @@ void ShipObjectImplementation::sendMembersHyperspaceOrientMessage(const String& 
 	}
 }
 
-void ShipObjectImplementation::sendMembersBaseMessage(BaseMessage* message) {
+void ShipObjectImplementation::sendMembersBaseMessage(BaseMessage* message, bool sendSelf) {
 	auto zoneServer = getZoneServer();
 
 	if (zoneServer == nullptr) {
 		return;
 	}
 
+	auto selfObject = owner.get();
+
 	for (int i = 0; i < playersOnBoard.size(); ++i) {
 		auto shipMemberID = playersOnBoard.get(i);
 		auto shipMember = cast<CreatureObject*>(zoneServer->getObject(shipMemberID).get());
 
-		if (shipMember == nullptr) {
+		if (shipMember == nullptr || (!sendSelf && shipMember == selfObject)) {
 			continue;
 		}
 

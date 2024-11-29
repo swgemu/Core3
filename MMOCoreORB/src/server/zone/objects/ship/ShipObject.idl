@@ -1692,7 +1692,7 @@ class ShipObject extends TangibleObject {
 
 	@dirty
 	@local
-	public native void sendMembersBaseMessage(BaseMessage message);
+	public native void sendMembersBaseMessage(BaseMessage message, boolean sendSelf = true);
 
 	@preLocked
 	@arg1preLocked
