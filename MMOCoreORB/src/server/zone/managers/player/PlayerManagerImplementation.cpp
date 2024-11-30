@@ -118,6 +118,8 @@
 
 #include "server/zone/managers/statistics/StatisticsManager.h"
 
+// #define DEBUG_SPEED_HACK
+
 PlayerManagerImplementation::PlayerManagerImplementation(ZoneServer* zoneServer, ZoneProcessServer* impl, bool trackOnlineUsers) : Logger("PlayerManager") {
 	playerLoggerFilename = "log/player.log";
 	playerLoggerLines = ConfigManager::instance()->getMaxLogLines();
@@ -3974,7 +3976,9 @@ bool PlayerManagerImplementation::checkPlayerSpeedTest(CreatureObject* player, S
 
 	float maxAllowedSpeed = allowedSpeedMod * allowedSpeedBase;
 
-	player->info() << "checkPlayerSpeedTest -- parsedSpeed: " << parsedSpeed << " Teleport position: " << teleportPoint.toString();
+#ifdef DEBUG_SPEED_HACK
+	player->info(true) << "checkPlayerSpeedTest -- parsedSpeed: " << parsedSpeed << " Teleport position: " << teleportPoint.toString();
+#endif // DEBUG_SPEED_HACK
 
 	/*
 	// Z Coordinate Check
@@ -4047,10 +4051,12 @@ bool PlayerManagerImplementation::checkPlayerSpeedTest(CreatureObject* player, S
 		}
 
 		if (changeBuffer->size() == 0) { // no speed changes
-			auto msg = player->info();
+#ifdef DEBUG_SPEED_HACK
+			auto msg = player->info(true);
 			msg << "checkPlayerSpeedTest -- FAILED -- changeBuffer - Max Allowed Speed: " << maxAllowedSpeed * errorMultiplier;
 			msg << " Parsed Speed: " << parsedSpeed;
 			msg.flush();
+#endif // DEBUG_SPEED_HACK
 
 			player->teleport(teleportPoint.getX(), teleportPoint.getZ(), teleportPoint.getY(), teleportParentID);
 
@@ -4062,10 +4068,12 @@ bool PlayerManagerImplementation::checkPlayerSpeedTest(CreatureObject* player, S
 
 		// we already should have lowered the speed, 2 seconds lag
 		if (timeStamp->miliDifference() > 2000) {
-			auto msg = player->info();
+#ifdef DEBUG_SPEED_HACK
+			auto msg = player->info(true);
 			msg << endl << "checkPlayerSpeedTest -- FAILED -- Due to timeStamp diff: " << timeStamp->miliDifference() << " with Max Allowed Speed: " << maxAllowedSpeed * errorMultiplier;
 			msg << " Parsed Speed: " << parsedSpeed << endl;
 			msg.flush();
+#endif // DEBUG_SPEED_HACK
 
 			player->teleport(teleportPoint.getX(), teleportPoint.getZ(), teleportPoint.getY(), teleportParentID);
 
@@ -4088,9 +4096,11 @@ bool PlayerManagerImplementation::checkPlayerSpeedTest(CreatureObject* player, S
 				maxAllowedSpeed = allowed;
 		}
 
-		auto msg = player->info();
+#ifdef DEBUG_SPEED_HACK
+		auto msg = player->info(true);
 		msg << "checkPlayerSpeedTest -- FAILED -- Max Allowed Speed: " << maxAllowedSpeed << " Parsed Speed: " << parsedSpeed << " changeBufferSize: " << changeBuffer->size();
 		msg.flush();
+#endif // DEBUG_SPEED_HACK
 
 		player->teleport(teleportPoint.getX(), teleportPoint.getZ(), teleportPoint.getY(), teleportParentID);
 
@@ -4102,39 +4112,39 @@ bool PlayerManagerImplementation::checkPlayerSpeedTest(CreatureObject* player, S
 	return true;
 }
 
-bool PlayerManagerImplementation::checkSpeedHackTests(CreatureObject* player, PlayerObject* ghost, const Vector3& newPosition, uint32 newStamp, SceneObject* newParent) {
+bool PlayerManagerImplementation::checkSpeedHackTests(CreatureObject* player, PlayerObject* ghost, const Vector3& lastValidatedWorldPosition, const Vector3& newPosition, uint32 newStamp, SceneObject* newParent) {
 	if (player == nullptr || ghost == nullptr) {
-		player->info()  << "checkSpeedHackTests -- FAILED -- null player or ghost";
+#ifdef DEBUG_SPEED_HACK
+		player->info(true)  << "checkSpeedHackTests -- FAILED -- null player or ghost";
+#endif // DEBUG_SPEED_HACK
 		return false;
-	}
-
-	// Not running tests again privileged characters
-	if (ghost->isPrivileged()) {
-		return true;
 	}
 
 	// newStamp - stamp;
 	uint32 deltaTime = ghost->getServerMovementTimeDelta();
 
 	if (deltaTime < 1000) {
-		player->info()  << "checkSpeedHackTests -- PASSED -- deltaTime hasnt passed yet";
+#ifdef DEBUG_SPEED_HACK
+		player->info(true)  << "checkSpeedHackTests -- PASSED -- deltaTime hasnt passed yet";
+#endif // DEBUG_SPEED_HACK
 		return true;
 	}
 
 	uint32 stamp = ghost->getClientLastMovementStamp();
 
 	if (stamp > newStamp) {
-		player->info()  << "checkSpeedHackTests -- FAILED -- older client movement stamp received";
+#ifdef DEBUG_SPEED_HACK
+		player->info(true)  << "checkSpeedHackTests -- FAILED -- older client movement stamp received";
+#endif // DEBUG_SPEED_HACK
 		return false;
 	}
 
-	ManagedReference<SceneObject*> parent = player->getParent().get();
-
 	Vector3 newWorldPosition(newPosition);
 	ValidatedPosition* lastValidatedPosition = ghost->getLastValidatedPosition();
-	Vector3 lastValidatedWorldPosition = lastValidatedPosition->getWorldPosition(server);
 
-	player->info() << "checkSpeedHackTests ---- Checking - new Position X = " << newWorldPosition.getX() << " Z = " << newWorldPosition.getZ() << " Y = " << newWorldPosition.getY();
+#ifdef DEBUG_SPEED_HACK
+	player->info(true) << "checkSpeedHackTests ---- Checking - new Position X = " << newWorldPosition.getX() << " Z = " << newWorldPosition.getZ() << " Y = " << newWorldPosition.getY();
+#endif // DEBUG_SPEED_HACK
 
 	if (newParent != nullptr) {
 		ManagedReference<SceneObject*> root = newParent->getRootParent();
@@ -4153,32 +4163,41 @@ bool PlayerManagerImplementation::checkSpeedHackTests(CreatureObject* player, Pl
 		newWorldPosition.setY(root->getPositionY() + (cos(angle) * length));
 		newWorldPosition.setZ(root->getPositionZ() + newPosition.getZ());
 
-		player->info()  << "checkSpeedHackTests -- Parent Transform newWorldPosition X = " << newWorldPosition.getX() << " Z = " << newWorldPosition.getZ() << " Y = " << newWorldPosition.getY() << " Distance Length = " << length;
+#ifdef DEBUG_SPEED_HACK
+		player->info(true)  << "checkSpeedHackTests -- Parent Transform newWorldPosition X = " << newWorldPosition.getX() << " Z = " << newWorldPosition.getZ() << " Y = " << newWorldPosition.getY() << " Distance Length = " << length;
+#endif // DEBUG_SPEED_HACK
 	}
 
 	// Hills cause issues
-	lastValidatedWorldPosition.setZ(0);
 	newWorldPosition.setZ(0);
 
 	float dist = newWorldPosition.distanceTo(lastValidatedWorldPosition);
 
 	if (dist < 1.f) {
-		player->info()  << "checkSpeedHackTests -- PASSED -- distance too small to check";
+#ifdef DEBUG_SPEED_HACK
+		player->info(true)  << "checkSpeedHackTests -- PASSED -- distance too small to check";
+#endif // DEBUG_SPEED_HACK
 		return true;
 	}
 
 	float speed = dist / (float) deltaTime * 1000.f;
 
+#ifdef DEBUG_SPEED_HACK
 	StringBuffer msg;
 	msg <<  "Next Position Dist Sq: " << dist << " Player Position: " << lastValidatedWorldPosition.toString() << " Speed: " << speed;
-	player->info() << msg.toString();
+	player->info(true) << msg.toString();
+#endif // DEBUG_SPEED_HACK
+
+	ManagedReference<SceneObject*> parent = player->getParent().get();
 
 	// Run speed tests
 	if (!checkPlayerSpeedTest(player, parent, speed, *lastValidatedPosition, newWorldPosition, 1.03f)) {
 		return false;
 	}
 
-	player->info() << "Setting New Validated Position to - X: " << newWorldPosition.getX() << " Z: " << newWorldPosition.getZ() << " Y: " << newWorldPosition.getY();
+#ifdef DEBUG_SPEED_HACK
+	player->info(true) << "Setting New Validated Position to - X: " << newWorldPosition.getX() << " Z: " << newWorldPosition.getZ() << " Y: " << newWorldPosition.getY();
+#endif // DEBUG_SPEED_HACK
 
 	lastValidatedPosition->setPosition(newPosition.getX(), newPosition.getZ(), newPosition.getY());
 
@@ -4196,7 +4215,9 @@ bool PlayerManagerImplementation::checkSpeedHackTests(CreatureObject* player, Pl
 
 	ghost->incrementSessionMovement(dist);
 
-	player->info() << "checkSpeedHackTests -- PASSED -- Distance: " << dist << " Speed: " << speed;
+#ifdef DEBUG_SPEED_HACK
+	player->info(true) << "checkSpeedHackTests -- PASSED -- Distance: " << dist << " Speed: " << speed;
+#endif // DEBUG_SPEED_HACK
 
 	return true;
 }
