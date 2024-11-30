@@ -188,13 +188,13 @@ public:
 			return updateError(creO, "!isPositionValid", true);
 		}
 
+		ZoneServer* zoneServer = creO->getZoneServer();
+
+		if (zoneServer == nullptr) {
+			return updateError(creO, "!zoneServer");
+		}
+
 		if (creO->isRidingMount()) {
-			ZoneServer* zoneServer = creO->getZoneServer();
-
-			if (zoneServer == nullptr) {
-				return updateError(creO, "!zoneServer");
-			}
-
 			ObjectController* objectController = zoneServer->getObjectController();
 
 			if (objectController == nullptr) {
@@ -234,7 +234,9 @@ public:
 			}
 		}
 
-		if (!ghost->isPrivileged()) {
+		bool privilegedPlayer = ghost->isPrivileged();
+
+		if (!privilegedPlayer) {
 			if (creO->isFrozen()) {
 				creO->sendSystemMessage("You are frozen and cannot move.");
 				return updateError(creO, "isFrozen", true);
@@ -288,7 +290,7 @@ public:
 					return updateError(creO, "!building");
 				}
 
-				if (!ghost->isPrivileged() && !building->isAllowedEntry(creO)) {
+				if (!privilegedPlayer && !building->isAllowedEntry(creO)) {
 					return updateError(creO, "!isAllowedEntry", true);
 				}
 			// Checks for POB Ship
@@ -404,7 +406,9 @@ public:
 			}
 		}
 
-		if (!playerManager->checkSpeedHackTests(creO, ghost, transform.getPosition(), transform.getTimeStamp(), parent)) {
+		Vector3 lastValidatedWorldPosition = validPosition.getWorldPosition(zoneServer);
+
+		if (!privilegedPlayer && !playerManager->checkSpeedHackTests(creO, ghost, lastValidatedWorldPosition, transform.getPosition(), transform.getTimeStamp(), parent)) {
 			return updateError(creO, "!checkSpeedHackTests");
 		}
 

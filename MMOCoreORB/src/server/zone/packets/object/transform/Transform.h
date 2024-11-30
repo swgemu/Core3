@@ -308,6 +308,7 @@ public:
 
 		const Vector3& validated = ghost->getLastValidatedPosition()->getPosition();
 		const uint64& validParent = ghost->getLastValidatedPosition()->getParent();
+
 		if (validParent != 0) {
 			return;
 		}
@@ -337,11 +338,13 @@ public:
 		StringBuffer msg;
 
 		msg << endl << endl
+			// Type
+			<< "Error Type: " << type
+			<< endl
 			// Transform
 			<< "Transform: "
 			<< " Position: " << newPosition.getX()  << ", " << newPosition.getZ()  << ", " << newPosition.getY()
 			<< " DeltaTime: " << deltaTime
-			<< " Type: " << type
 			<< endl
 			// Current
 			<< "Current: "
