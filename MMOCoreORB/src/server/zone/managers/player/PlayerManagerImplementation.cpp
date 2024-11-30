@@ -4102,15 +4102,10 @@ bool PlayerManagerImplementation::checkPlayerSpeedTest(CreatureObject* player, S
 	return true;
 }
 
-bool PlayerManagerImplementation::checkSpeedHackTests(CreatureObject* player, PlayerObject* ghost, const Vector3& newPosition, uint32 newStamp, SceneObject* newParent) {
+bool PlayerManagerImplementation::checkSpeedHackTests(CreatureObject* player, PlayerObject* ghost, const Vector3& lastValidatedWorldPosition, const Vector3& newPosition, uint32 newStamp, SceneObject* newParent) {
 	if (player == nullptr || ghost == nullptr) {
 		player->info()  << "checkSpeedHackTests -- FAILED -- null player or ghost";
 		return false;
-	}
-
-	// Not running tests again privileged characters
-	if (ghost->isPrivileged()) {
-		return true;
 	}
 
 	// newStamp - stamp;
@@ -4128,11 +4123,8 @@ bool PlayerManagerImplementation::checkSpeedHackTests(CreatureObject* player, Pl
 		return false;
 	}
 
-	ManagedReference<SceneObject*> parent = player->getParent().get();
-
 	Vector3 newWorldPosition(newPosition);
 	ValidatedPosition* lastValidatedPosition = ghost->getLastValidatedPosition();
-	Vector3 lastValidatedWorldPosition = lastValidatedPosition->getWorldPosition(server);
 
 	player->info() << "checkSpeedHackTests ---- Checking - new Position X = " << newWorldPosition.getX() << " Z = " << newWorldPosition.getZ() << " Y = " << newWorldPosition.getY();
 
@@ -4157,7 +4149,6 @@ bool PlayerManagerImplementation::checkSpeedHackTests(CreatureObject* player, Pl
 	}
 
 	// Hills cause issues
-	lastValidatedWorldPosition.setZ(0);
 	newWorldPosition.setZ(0);
 
 	float dist = newWorldPosition.distanceTo(lastValidatedWorldPosition);
@@ -4172,6 +4163,8 @@ bool PlayerManagerImplementation::checkSpeedHackTests(CreatureObject* player, Pl
 	StringBuffer msg;
 	msg <<  "Next Position Dist Sq: " << dist << " Player Position: " << lastValidatedWorldPosition.toString() << " Speed: " << speed;
 	player->info() << msg.toString();
+
+	ManagedReference<SceneObject*> parent = player->getParent().get();
 
 	// Run speed tests
 	if (!checkPlayerSpeedTest(player, parent, speed, *lastValidatedPosition, newWorldPosition, 1.03f)) {
