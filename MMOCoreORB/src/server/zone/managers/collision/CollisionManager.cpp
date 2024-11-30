@@ -17,6 +17,10 @@
 #include "terrain/manager/TerrainManager.h"
 #include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/objects/ship/ShipObject.h"
+#include "server/zone/packets/ui/CreateClientPathMessage.h"
+#include "server/zone/managers/collision/PathFinderManager.h"
+
+// #define DEBUG_MOVEMENT_COLLISION
 
 float CollisionManager::getRayOriginPoint(CreatureObject* creature) {
 	float heightOrigin = creature->getHeight() - 0.3f;
@@ -65,14 +69,16 @@ bool CollisionManager::checkLineOfSightInBuilding(SceneObject* object1, SceneObj
 
 	return true;
 }
+
 const AppearanceTemplate* CollisionManager::getCollisionAppearance(SceneObject* scno, int collisionBlockFlags) {
 	SharedObjectTemplate* templateObject = scno->getObjectTemplate();
 
 	if (templateObject == nullptr)
 		return nullptr;
 
-	if (!(templateObject->getCollisionActionBlockFlags() & collisionBlockFlags))
+	if (!(templateObject->getCollisionActionBlockFlags() & collisionBlockFlags)) {
 		return nullptr;
+	}
 
 	const PortalLayout* portalLayout = templateObject->getPortalLayout();
 
@@ -176,64 +182,143 @@ bool CollisionManager::checkLineOfSightWorldToCell(const Vector3& rayOrigin, con
 	return true;
 }
 
-bool CollisionManager::checkMovementCollision(CreatureObject* creature, float x, float z, float y, Zone* zone) {
-	SortedVector<ManagedReference<TreeEntry*> > closeObjects;
-	zone->getInRangeObjects(x, z, y, 128, &closeObjects, true);
+bool CollisionManager::checkMovementCollision(CreatureObject* player, CloseObjectsVector* closeObjectsVector, Zone* zone, const Vector3& lastValidWorld, const Vector3& transformPosition) {
+#ifdef DEBUG_MOVEMENT_COLLISION
+	player->info(true) << "CollisionManager::checkMovementCollision -- CALLED";
+#endif // DEBUG_MOVEMENT_COLLISION
 
-	//Vector3 rayStart(x, z + 0.25, y);
-	//Vector3 rayStart(creature->getWorldPositionX(), creature->getWorldPositionZ(), creature->getPos)
-	Vector3 rayStart = creature->getWorldPosition();
-	rayStart.set(rayStart.getX(), rayStart.getY(), rayStart.getZ() + 0.25f);
-	//Vector3 rayEnd(x + System::random(512), z + 0.3f, y + System::random(512));
-
-	/*Vector3 rayEnd;
-	rayEnd.set(targetPosition.getX(), targetPosition.getY(), targetPosition.getZ());*/
-
-	Vector3 rayEnd(x, z + 0.25, y);
-
-	float maxDistance = rayEnd.distanceTo(rayStart);
-
-	if (maxDistance == 0)
+	if (zone == nullptr || closeObjectsVector == nullptr) {
 		return false;
-
-	printf("%f\n", maxDistance);
-
-	SortedVector<IntersectionResult> results;
-	results.setAllowDuplicateInsertPlan();
-
-	printf("starting test\n");
-
-	Triangle* triangle;
-
-	for (int i = 0; i < closeObjects.size(); ++i) {
-		SceneObject* object = dynamic_cast<SceneObject*>(closeObjects.get(i).get());
-
-		if (object == nullptr)
-			continue;
-
-		const AppearanceTemplate* appearance = getCollisionAppearance(object, 255);
-
-		if (appearance == nullptr)
-			continue;
-
-		Ray ray = convertToModelSpace(rayStart, rayEnd, object);
-
-		//results.removeAll(10, 10);
-
-		//ordered by intersection distance
-		//tree->intersects(ray, maxDistance, results);
-
-		float intersectionDistance;
-
-		if (appearance->intersects(ray, maxDistance, intersectionDistance, triangle, true)) {
-			String str = object->getObjectTemplate()->getFullTemplateString();
-
-			object->info("intersecting with me " + str, true);
-			return true;
-		}
 	}
 
-	return false;
+	float rayHeight = getRayOriginPoint(player);
+
+	Vector3 rayStart = lastValidWorld;
+	rayStart.setZ(rayStart.getZ() + rayHeight);
+
+	Vector3 rayEnd;
+
+	float dx = rayStart.getX() - transformPosition.getX();
+	float dy = rayStart.getY() - transformPosition.getY();
+
+	rayEnd.setX(rayStart.getX() - (dx * 0.25f));
+	rayEnd.setY(rayStart.getY() - (dy * 0.25f));
+	rayEnd.setZ(transformPosition.getZ() + rayHeight);
+
+#ifdef DEBUG_MOVEMENT_COLLISION
+	auto path = new CreateClientPathMessage();
+
+	path->addCoordinate(rayStart.getX(), rayStart.getZ(), rayStart.getY());
+	path->addCoordinate(rayEnd.getX(), rayEnd.getZ(), rayEnd.getY());
+
+	player->sendMessage(path);
+#endif // DEBUG_MOVEMENT_COLLISION
+
+	float maxDistance = rayStart.distanceTo(rayEnd);
+
+#ifdef DEBUG_MOVEMENT_COLLISION
+	player->info(true) << "Movement Collision -- Max Dist: " << maxDistance << " Ray Start: " << rayStart.toString() << " Ray End: " << rayEnd.toString() << " Transform Position: " << transformPosition.toString();
+#endif // DEBUG_MOVEMENT_COLLISION
+
+	try {
+		// First attempt using navmeshes
+		SortedVector<ManagedReference<NavArea*>> areas;
+
+		zone->getInRangeNavMeshes(rayStart.getX(), rayStart.getY(), &areas, true);
+
+#ifdef DEBUG_MOVEMENT_COLLISION
+		player->info(true) << "CollisionManager::checkMovementCollision -- Total In Range NavMeshes: " << areas.size();
+#endif // DEBUG_MOVEMENT_COLLISION
+
+		if (areas.size() > 0) {
+			auto pathFinderMan = PathFinderManager::instance();
+
+			SortedVector<NavCollision*> collisions;
+			pathFinderMan->getNavMeshCollisions(&collisions, &areas, rayStart, rayEnd);
+
+			if (collisions.size() == 0) {
+				Vector<WorldCoordinates>* path = new Vector<WorldCoordinates>();
+
+				for (int i = 0; i < areas.size(); i++) {
+					auto navArea = areas.get(i);
+
+					if (navArea == nullptr) {
+						continue;
+					}
+
+					if (!pathFinderMan->getRecastPath(rayStart, rayEnd, navArea, path, maxDistance, false)) {
+						delete path;
+						path = nullptr;
+
+#ifdef DEBUG_MOVEMENT_COLLISION
+						StringBuffer msg;
+						msg << "CollisionManager::checkMovementCollision -- FAILED -- Due to mesh path failure." << endl;
+
+						player->info(true) << msg.toString();
+						player->sendSystemMessage(msg.toString());
+#endif // DEBUG_MOVEMENT_COLLISION
+
+						return false;
+					}
+
+					delete path;
+					path = nullptr;
+				}
+			}
+		}
+
+		// Second attempt using collidable world objects
+		SortedVector<TreeEntry*> closeObjects;
+		closeObjectsVector->safeCopyReceiversTo(closeObjects, CloseObjectsVector::COLLIDABLETYPE);
+
+		for (int i = 0; i < closeObjects.size(); ++i) {
+			SceneObject* object = static_cast<SceneObject*>(closeObjects.get(i));
+
+			if (object == nullptr) {
+				continue;
+			}
+
+			const auto appearance = object->getAppearanceTemplate();
+
+			if (appearance == nullptr) {
+				continue;
+			}
+
+			const auto bounding = appearance->getBoundingVolume();
+
+			if (bounding == nullptr) {
+				continue;
+			}
+
+			const Sphere& objectSphere = bounding->getBoundingSphere();
+			const Vector3& objectPosition = object->getPosition() + objectSphere.getCenter();
+
+			float targetRadius = objectSphere.getRadius() + maxDistance;
+
+			if (getPointIntersection(objectPosition, rayStart, rayEnd, targetRadius, maxDistance) == FLT_MAX) {
+				continue;
+			}
+
+			if (getAppearanceIntersection(object, rayStart, rayEnd, targetRadius, maxDistance) != FLT_MAX) {
+#ifdef DEBUG_MOVEMENT_COLLISION
+				String str = object->getObjectTemplate()->getFullTemplateString();
+
+				StringBuffer msg;
+				msg << "CollisionManager::checkMovementCollision -- FAILED -- Player is intersecting with: " << str << endl;
+
+				player->info(true) << msg.toString();
+				player->sendSystemMessage(msg.toString());
+#endif // DEBUG_MOVEMENT_COLLISION
+
+				return false;
+			}
+		}
+	} catch (const Exception& e) {
+		Logger::console.error("unreported exception caught in bool CollisionManager::checkMovementCollision");
+		Logger::console.error(e.getMessage());
+	}
+
+	return true;
 }
 
 Vector<float>* CollisionManager::getCellFloorCollision(float x, float y, CellObject* cellObject) {

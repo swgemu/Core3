@@ -421,7 +421,7 @@ class PlayerManager extends Observer implements Logger {
 	@local
 	public native boolean checkPlayerSpeedTest(CreatureObject player, SceneObject parent, float parsedSpeed, @dereferenced ValidatedPosition teleportPosition, @dereferenced final Vector3 newWorldPosition, float errorMultiplier = 1);
 
-	public native boolean checkSpeedHackTests(CreatureObject player, PlayerObject ghost, @dereferenced final Vector3 newWorldPosition, unsigned int newStamp, float floorZ, SceneObject newParent = null);
+	public native boolean checkSpeedHackTests(CreatureObject player, PlayerObject ghost, @dereferenced final Vector3 lastValidatedWorldPosition, @dereferenced final Vector3 newWorldPosition, unsigned int newStamp, float floorZ, SceneObject newParent = null);
 
 	@dirty
 	public native boolean existsName(final string name);
