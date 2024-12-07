@@ -339,8 +339,8 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<ShipBoosterComponent>(SceneObjectType::SHIPBOOSTER);
 	objectFactory.registerObject<ShipDroidInterfaceComponent>(SceneObjectType::SHIPDRIODINTERFACE);
 	objectFactory.registerObject<ShipChassisComponent>(SceneObjectType::SHIPCHASSIS);
-	objectFactory.registerObject<ShipComponent>(SceneObjectType::SHIPMISSILE);
-	objectFactory.registerObject<ShipComponent>(SceneObjectType::SHIPCOUNTERMEASURE);
+	objectFactory.registerObject<ShipMissileComponent>(SceneObjectType::SHIPMISSILE);
+	objectFactory.registerObject<ShipCounterMeasureComponent>(SceneObjectType::SHIPCOUNTERMEASURE);
 	objectFactory.registerObject<ShipWeaponComponent>(SceneObjectType::SHIPWEAPONLAUNCHER);
 	objectFactory.registerObject<ShipWeaponComponent>(SceneObjectType::SHIPCOUNTERMEASURELAUNCHER);
 	objectFactory.registerObject<SpaceObject>(SceneObjectType::ASTEROID);

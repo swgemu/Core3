@@ -16,18 +16,28 @@ void ShipWeaponComponentImplementation::loadTemplateData(SharedObjectTemplate* t
 			const auto& attribute = attributeMap.elementAt(i).getKey();
 			float value = attributeMap.elementAt(i).getValue();
 
-			if (attribute == "maxDamage") {
+			if (attribute == "maxDamage" || attribute == "fltmaxdamage") {
 				maxDamage = value;
-			} else if (attribute == "minDamage") {
+			} else if (attribute == "minDamage" || attribute == "fltmindamage") {
 				minDamage = value;
 			} else if (attribute == "shieldEffectiveness") {
 				shieldEffectiveness = value;
 			} else if (attribute == "armorEffectiveness") {
 				armorEffectiveness = value;
+			} else if (attribute == "fltshieldeffectiveness") {
+				missileShieldEffectiveness = value;
+			} else if (attribute == "fltarmoreffectivness") {
+				missileArmorEffectiveness = value;
 			} else if (attribute == "energyPerShot") {
 				energyPerShot = value;
-			} else if (attribute == "refireRate") {
+			} else if (attribute == "refireRate" || attribute == "fltrefirerate") {
 				refireRate = value;
+			} else if (attribute == "minEffectivness") {
+				chaffMinEffectiveness = value;
+			} else if (attribute == "maxEffectiveness") {
+				chaffMaxEffectiveness = value;
+			} else if (attribute == "ammo" || attribute == "fltmaxammo") {
+				ammunition = value;
 			}
 		}
 	}
@@ -52,18 +62,28 @@ void ShipWeaponComponentImplementation::updateCraftingValues(CraftingValues* val
 		const auto& attribute = values->getAttribute(i);
 		auto value = values->getCurrentValue(attribute);
 
-		if (attribute == "damage_max" || attribute == "ship_component_weapon_damage_maximum") {
+		if (attribute == "damage_max" || attribute == "ship_component_weapon_damage_maximum" || attribute == "fltmaxdamage") {
 			maxDamage = value;
-		} else if (attribute == "damage_min" || attribute == "ship_component_weapon_damage_minimum") {
+		} else if (attribute == "damage_min" || attribute == "ship_component_weapon_damage_minimum" || attribute == "fltmindamage") {
 			minDamage = value;
 		} else if (attribute == "effective_shields" || attribute == "ship_component_weapon_effectiveness_shields") {
 			shieldEffectiveness = value * 0.001f;
 		} else if (attribute == "effective_armor" || attribute == "ship_component_weapon_effectiveness_armor") {
 			armorEffectiveness = value * 0.001f;
+		} else if (attribute == "fltshieldeffectiveness") {
+			missileShieldEffectiveness = value;
+		} else if (attribute == "fltarmoreffectiveness") {
+			missileArmorEffectiveness = value;
 		} else if (attribute == "energy_per_shot" || attribute == "ship_component_weapon_energy_per_shot") {
 			energyPerShot = value;
-		} else if (attribute == "refire_rate" || attribute == "ship_component_weapon_refire_rate") {
+		} else if (attribute == "refire_rate" || attribute == "ship_component_weapon_refire_rate" || attribute == "fltrefirerate") {
 			refireRate = value * 0.001f;
+		} else if (attribute == "fltmineffectiveness") {
+			chaffMinEffectiveness = value;
+		} else if (attribute == "fltmaxeffectiveness") {
+			chaffMaxEffectiveness = value;
+		} else if (attribute == "ammo" || attribute == "fltmaxammo") {
+			ammunition = value;
 		}
 	}
 }

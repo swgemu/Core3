@@ -38,6 +38,8 @@
 #include "server/zone/objects/tangible/ship/crafted/repair/ShipComponentRepairKit.h"
 #include "server/zone/objects/tangible/ship/interiorComponents/ShipInteriorComponent.h"
 #include "server/zone/objects/tangible/ship/interiorComponents/ShipPlasmaConduit.h"
+#include "server/zone/objects/ship/components/ShipMissileComponent.h"
+#include "server/zone/objects/ship/components/ShipCounterMeasureComponent.h"
 #include "server/zone/objects/tangible/Container.h"
 #include "server/zone/objects/tangible/TangibleObject.h"
 #include "server/zone/objects/tangible/LairObject.h"

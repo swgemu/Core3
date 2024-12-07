@@ -1,0 +1,24 @@
+/*
+Copyright <SWGEmu>
+See file COPYING for copying conditions.
+*/
+
+package server.zone.objects.ship.components;
+
+import server.zone.objects.ship.components.ShipWeaponComponent;
+import server.zone.objects.ship.ShipObject;
+include server.zone.packets.scene.AttributeListMessage;
+import server.zone.objects.creature.CreatureObject;
+include server.zone.objects.tangible.component.Component;
+
+class ShipMissileComponent extends ShipWeaponComponent {
+
+	public ShipMissileComponent() {
+	super();
+	}
+
+	@local
+	@dirty
+	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
+
+}
