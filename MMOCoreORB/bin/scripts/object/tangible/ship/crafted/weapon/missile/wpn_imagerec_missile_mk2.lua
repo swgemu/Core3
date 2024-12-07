@@ -49,8 +49,8 @@ object_tangible_ship_crafted_weapon_missile_wpn_imagerec_missile_mk2 = object_ta
 	experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
 	experimentalGroupTitles = {"null", "null", "exp_damage_max", "exp_damage_min", "misc", "misc", "exp_ammo", "exp_fltrefirerate"},
 	experimentalSubGroupTitles = {"null", "null", "fltmaxdamage", "fltmindamage", "fltshieldeffectiveness", "fltarmoreffectiveness", "ammo", "refire_rate"},
-	experimentalMin = {0, 0, 3446, 1671, 0.350, 0.350, 4, 6.630},
-	experimentalMax = {0, 0, 6399, 3104, 0.650, 0.650, 8, 3.570},
+	experimentalMin = {0, 0, 3446, 1671, 0.350, 0.350, 4, 6630},
+	experimentalMax = {0, 0, 6399, 3104, 0.650, 0.650, 8, 3570},
 	experimentalPrecision = {0, 0, 6, 6, 6, 6, 0, 6},
 	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1, 1},
 }
