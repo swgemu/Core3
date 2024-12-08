@@ -1,0 +1,112 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "89b6b9a6_2f7eb679",
+        "filename": "MMOCoreORB/src/server/zone/objects/ship/components/ShipCounterMeasureComponent.idl",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2024-12-08T23:43:09Z",
+      "side": 1,
+      "message": "Formatting use tabs, not spaces.",
+      "revId": "028cf48f178ed05b6cd9945ca0b84fb6ab65568e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "34544859_52da2c89",
+        "filename": "MMOCoreORB/src/server/zone/objects/ship/components/ShipCounterMeasureComponentImplmplmentation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2024-12-08T23:43:09Z",
+      "side": 1,
+      "message": "Whitespace",
+      "revId": "028cf48f178ed05b6cd9945ca0b84fb6ab65568e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "284d7206_a42431b8",
+        "filename": "MMOCoreORB/src/server/zone/objects/ship/components/ShipCounterMeasureComponentImplmplmentation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2024-12-08T23:43:09Z",
+      "side": 1,
+      "message": "Formatting, use tabs no space. These inserts should align with the statements above.",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 8
+      },
+      "revId": "028cf48f178ed05b6cd9945ca0b84fb6ab65568e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "543d4578_b3865cb5",
+        "filename": "MMOCoreORB/src/server/zone/objects/ship/components/ShipMissileComponent.idl",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2024-12-08T23:43:09Z",
+      "side": 1,
+      "message": "Formatting use tabs, not spaces.",
+      "revId": "028cf48f178ed05b6cd9945ca0b84fb6ab65568e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6806abec_612fe71a",
+        "filename": "MMOCoreORB/src/server/zone/objects/ship/components/ShipMissileComponentImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2024-12-08T23:43:09Z",
+      "side": 1,
+      "message": "Formatting, this should be single tab with no spaces after the last insert and the closing bracket.",
+      "revId": "028cf48f178ed05b6cd9945ca0b84fb6ab65568e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a77407a_79519375",
+        "filename": "MMOCoreORB/src/server/zone/objects/ship/components/ShipWeaponComponent.idl",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2024-12-08T23:43:09Z",
+      "side": 1,
+      "message": "Formatting, this should be up with the accessors (gettors).",
+      "revId": "028cf48f178ed05b6cd9945ca0b84fb6ab65568e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    }
+  ]
+}
