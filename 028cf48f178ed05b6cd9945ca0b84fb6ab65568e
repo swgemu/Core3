@@ -107,6 +107,24 @@
       "revId": "028cf48f178ed05b6cd9945ca0b84fb6ab65568e",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee4309cb_e48b6496",
+        "filename": "MMOCoreORB/src/server/zone/objects/ship/components/ShipWeaponComponent.idl",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2024-12-11T03:13:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0a77407a_79519375",
+      "revId": "028cf48f178ed05b6cd9945ca0b84fb6ab65568e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     }
   ]
 }
