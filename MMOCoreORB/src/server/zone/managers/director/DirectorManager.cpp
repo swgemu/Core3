@@ -541,6 +541,7 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	// JTL
 	luaEngine->registerFunction("generateShipDeed", generateShipDeed);
 	luaEngine->registerFunction("sellSpaceLoot", sellSpaceLoot);
+	luaEngine->registerFunction("isJtlEnabled", isJtlEnabled);
 
 	//Navigation Mesh Management
 	luaEngine->registerFunction("createNavMesh", createNavMesh);
@@ -798,6 +799,17 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	luaEngine->setGlobalInt("SHIP_HANGAR", Components::HANGAR);
 	luaEngine->setGlobalInt("SHIP_TARGETING_STATION", Components::TARGETING_STATION);
 	luaEngine->setGlobalInt("SHIP_WEAPON_START", Components::WEAPON_START);
+
+	// Pilot Squadrons
+	luaEngine->setGlobalInt("CORSEC_SQUADRON", PlayerManager::CORSEC_SQUADRON);
+	luaEngine->setGlobalInt("RSF_SQUADRON", PlayerManager::RSF_SQUADRON);
+	luaEngine->setGlobalInt("SMUGGLER_SQUADRON", PlayerManager::SMUGGLER_SQUADRON);
+	luaEngine->setGlobalInt("BLACK_EPSILON_SQUADRON", PlayerManager::BLACK_EPSILON_SQUADRON);
+	luaEngine->setGlobalInt("STORM_SQUADRON", PlayerManager::STORM_SQUADRON);
+	luaEngine->setGlobalInt("INQUISITION_SQUADRON", PlayerManager::INQUISITION_SQUADRON);
+	luaEngine->setGlobalInt("CRIMSON_PHOENIX_SQUADRON", PlayerManager::CRIMSON_PHOENIX_SQUADRON);
+	luaEngine->setGlobalInt("VORTEX_SQUADRON", PlayerManager::VORTEX_SQUADRON);
+	luaEngine->setGlobalInt("HAVOC_SQUADRON", PlayerManager::HAVOC_SQUADRON);
 
 	// Badges
 	const auto badges = BadgeList::instance()->getMap();
@@ -4848,4 +4860,12 @@ int DirectorManager::sellSpaceLoot(lua_State* L) {
 	trx.commit();
 
 	return 0;
+}
+
+int DirectorManager::isJtlEnabled(lua_State* L) {
+	bool result = ConfigManager::instance()->isJtlEnabled();
+
+	lua_pushboolean(L, result);
+
+	return 1;
 }

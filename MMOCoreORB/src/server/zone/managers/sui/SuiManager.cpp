@@ -227,7 +227,7 @@ void SuiManager::handleCharacterBuilderSelectItem(CreatureObject* player, SuiBox
 
 	const CharacterBuilderMenuNode* currentNode = cbSui->getCurrentNode();
 
-	PlayerObject* ghost = player->getPlayerObject();
+	auto ghost = player->getPlayerObject();
 
 	//If cancel was pressed then we kill the box/menu.
 	if (cancel != 0 || ghost == nullptr)
@@ -506,15 +506,15 @@ void SuiManager::handleCharacterBuilderSelectItem(CreatureObject* player, SuiBox
 							Locker lock(player);
 
 							if (templatePath.contains("_novice") || templatePath.contains("_01")) {
-								player->setPilotTier(1);
+								ghost->setPilotTier(1);
 							} else if (templatePath.contains("_02")) {
-								player->setPilotTier(2);
+								ghost->setPilotTier(2);
 							} else if (templatePath.contains("_03")) {
-								player->setPilotTier(3);
+								ghost->setPilotTier(3);
 							} else if (templatePath.contains("_04")) {
-								player->setPilotTier(4);
+								ghost->setPilotTier(4);
 							} else {
-								player->setPilotTier(5);
+								ghost->setPilotTier(5);
 							}
 						}
 					}

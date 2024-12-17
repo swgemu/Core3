@@ -105,6 +105,12 @@ namespace player {
 		int hasGcwTef(lua_State* L);
 		int getPvpRating(lua_State* L);
 
+		// JTL
+		int incrementPilotTier(lua_State* L);
+		int resetPilotTier(lua_State* L);
+		int isSquadronType(lua_State* L);
+		int setSquadronType(lua_State* L);
+
 	private:
 		// The pointer to the 'real object' defined in object.cc
 		PlayerObject* realObject;

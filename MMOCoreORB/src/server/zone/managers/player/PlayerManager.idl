@@ -131,6 +131,16 @@ class PlayerManager extends Observer implements Logger {
 	@dereferenced
 	private transient OnlineZoneClientMap onlineZoneClientMap;
 
+	public static final unsigned int CORSEC_SQUADRON = 1;
+	public static final unsigned int RSF_SQUADRON = 2;
+	public static final unsigned int SMUGGLER_SQUADRON = 3;
+	public static final unsigned int BLACK_EPSILON_SQUADRON = 4;
+	public static final unsigned int STORM_SQUADRON = 5;
+	public static final unsigned int INQUISITION_SQUADRON = 6;
+	public static final unsigned int CRIMSON_PHOENIX_SQUADRON = 7;
+	public static final unsigned int VORTEX_SQUADRON = 8;
+	public static final unsigned int HAVOC_SQUADRON = 9;
+
 	public native PlayerManager(ZoneServer zoneServer, ZoneProcessServer impl, boolean trackOnlineUsers);
 	public native void loadNameMap();
 

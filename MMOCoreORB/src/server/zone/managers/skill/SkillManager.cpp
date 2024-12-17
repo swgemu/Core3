@@ -657,7 +657,7 @@ void SkillManager::surrenderAllSkills(CreatureObject* creature, bool notifyClien
 
 	// Reset players pilot tier
 	if (surrenderedPilot) {
-		creature->resetPilotTier();
+		ghost->resetPilotTier();
 	}
 
 	SkillModManager::instance()->verifySkillBoxSkillMods(creature);

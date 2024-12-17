@@ -78,6 +78,51 @@ function SpaceHelpers:isNeutralPilot(pPlayer)
 	return CreatureObject(pPlayer):isNeutralPilot()
 end
 
+-- @param pPlayer pointer checked if is in Corsec Squadron
+function SpaceHelpers:isCorsecSquadron(pPlayer)
+	if (pPlayer == nil) then
+		return false
+	end
+
+	local pGhost = CreatureObject(pPlayer):getPlayerObject()
+
+	if (pGhost == nil) then
+		return false
+	end
+
+	return PlayerObject(pGhost):isSquadronType(CORSEC_SQUADRON)
+end
+
+-- @param pPlayer pointer checked if is in RSF Squadron
+function SpaceHelpers:isRSFSquadron(pPlayer)
+	if (pPlayer == nil) then
+		return false
+	end
+
+	local pGhost = CreatureObject(pPlayer):getPlayerObject()
+
+	if (pGhost == nil) then
+		return false
+	end
+
+	return PlayerObject(pGhost):isSquadronType(RSF_SQUADRON)
+end
+
+-- @param pPlayer pointer checked if is in Smuggler Alliance Squadron
+function SpaceHelpers:isSmugglerSquadron(pPlayer)
+	if (pPlayer == nil) then
+		return false
+	end
+
+	local pGhost = CreatureObject(pPlayer):getPlayerObject()
+
+	if (pGhost == nil) then
+		return false
+	end
+
+	return PlayerObject(pGhost):isSquadronType(SMUGGLER_SQUADRON)
+end
+
 -- @param pPlayer pointer to check if rebel pilot
 function SpaceHelpers:isRebelPilot(pPlayer)
 	if (pPlayer == nil) then
@@ -87,6 +132,51 @@ function SpaceHelpers:isRebelPilot(pPlayer)
 	return CreatureObject(pPlayer):isRebelPilot()
 end
 
+-- @param pPlayer pointer checked if is in Akron's Havoc Squadron
+function SpaceHelpers:isHavocSquadron(pPlayer)
+	if (pPlayer == nil) then
+		return false
+	end
+
+	local pGhost = CreatureObject(pPlayer):getPlayerObject()
+
+	if (pGhost == nil) then
+		return false
+	end
+
+	return PlayerObject(pGhost):isSquadronType(HAVOC_SQUADRON)
+end
+
+-- @param pPlayer pointer checked if is in Vortex Squadron
+function SpaceHelpers:isVortexSquadron(pPlayer)
+	if (pPlayer == nil) then
+		return false
+	end
+
+	local pGhost = CreatureObject(pPlayer):getPlayerObject()
+
+	if (pGhost == nil) then
+		return false
+	end
+
+	return PlayerObject(pGhost):isSquadronType(VORTEX_SQUADRON)
+end
+
+-- @param pPlayer pointer checked if is in Crimson Phoenix Squadron
+function SpaceHelpers:isCrimsonPhoenixSquadron(pPlayer)
+	if (pPlayer == nil) then
+		return false
+	end
+
+	local pGhost = CreatureObject(pPlayer):getPlayerObject()
+
+	if (pGhost == nil) then
+		return false
+	end
+
+	return PlayerObject(pGhost):isSquadronType(CRIMSON_PHOENIX_SQUADRON)
+end
+
 -- @param pPlayer pointer to check if imperial pilot
 function SpaceHelpers:isImperialPilot(pPlayer)
 	if (pPlayer == nil) then
@@ -94,6 +184,51 @@ function SpaceHelpers:isImperialPilot(pPlayer)
 	end
 
 	return CreatureObject(pPlayer):isImperialPilot()
+end
+
+-- @param pPlayer pointer checked if is in Black Epsilon Squadron
+function SpaceHelpers:isBlackEpsilonSquadron(pPlayer)
+	if (pPlayer == nil) then
+		return false
+	end
+
+	local pGhost = CreatureObject(pPlayer):getPlayerObject()
+
+	if (pGhost == nil) then
+		return false
+	end
+
+	return PlayerObject(pGhost):isSquadronType(BLACK_EPSILON_SQUADRON)
+end
+
+-- @param pPlayer pointer checked if is in Storm Squadron
+function SpaceHelpers:isStormSquadron(pPlayer)
+	if (pPlayer == nil) then
+		return false
+	end
+
+	local pGhost = CreatureObject(pPlayer):getPlayerObject()
+
+	if (pGhost == nil) then
+		return false
+	end
+
+	return PlayerObject(pGhost):isSquadronType(STORM_SQUADRON)
+end
+
+-- @param pPlayer pointer checked if is in Inquisition Squadron
+function SpaceHelpers:isInquisitionSquadron(pPlayer)
+	if (pPlayer == nil) then
+		return false
+	end
+
+	local pGhost = CreatureObject(pPlayer):getPlayerObject()
+
+	if (pGhost == nil) then
+		return false
+	end
+
+	return PlayerObject(pGhost):isSquadronType(INQUISITION_SQUADRON)
 end
 
 -- @param pPlayer pointer checks if the player has any type of pilot skills
@@ -114,7 +249,7 @@ function SpaceHelpers:hasEarnedSpaceXP(pPlayer)
 	local pGhost = CreatureObject(pPlayer):getPlayerObject()
 
 	if (pGhost == nil) then
-		return
+		return false
 	end
 
 	local spaceXP = PlayerObject(pGhost):getExperience("space_combat_general")
@@ -149,13 +284,19 @@ function SpaceHelpers:surrenderPilot(pPlayer, pilotProfession)
 		end
 	end
 
-	CreatureObject(pPlayer):resetPilotTier()
+	local pGhost = CreatureObject(pPlayer):getPlayerObject()
+
+	if (pGhost == nil) then
+		return
+	end
+
+	PlayerObject(pGhost):resetPilotTier()
 end
 
--- @param pPlayer pointer adds waypoint to the starting neutral pilot trainer
+-- @param pPlayer pointer adds waypoint to the starting neutral Corsec Squadron trainer
 function SpaceHelpers:addCorsecPilotWaypoint(pPlayer)
 	if (pPlayer == nil) then
-		return false
+		return
 	end
 
 	local pGhost = CreatureObject(pPlayer):getPlayerObject()
@@ -168,10 +309,10 @@ function SpaceHelpers:addCorsecPilotWaypoint(pPlayer)
 end
 
 
--- @param pPlayer pointer adds waypoint to the starting neutral pilot trainer
+-- @param pPlayer pointer adds waypoint to the starting neutral RSF Squadron trainer
 function SpaceHelpers:addRSFPilotWaypoint(pPlayer)
 	if (pPlayer == nil) then
-		return false
+		return
 	end
 
 	local pGhost = CreatureObject(pPlayer):getPlayerObject()
@@ -183,10 +324,10 @@ function SpaceHelpers:addRSFPilotWaypoint(pPlayer)
 	PlayerObject(pGhost):addWaypoint("naboo", "@npc_spawner_n:dinge", "@npc_spawner_n:dinge", -5496, 4579, WAYPOINTBLUE, true, true, 0)
 end
 
--- @param pPlayer pointer adds waypoint to the starting rebel pilot trainer
-function SpaceHelpers:addTatooinePilotWaypoint(pPlayer)
+-- @param pPlayer pointer adds waypoint to the starting neutral Smugglers Alliance Squadron trainer
+function SpaceHelpers:addSmugglersPilotWaypoint(pPlayer)
 	if (pPlayer == nil) then
-		return false
+		return
 	end
 
 	local pGhost = CreatureObject(pPlayer):getPlayerObject()
@@ -201,7 +342,7 @@ end
 -- @param pPlayer pointer adds waypoint to the starting rebel pilot coordinator
 function SpaceHelpers:addRebelPilotWaypoint(pPlayer)
 	if (pPlayer == nil) then
-		return false
+		return
 	end
 
 	local pGhost = CreatureObject(pPlayer):getPlayerObject()
@@ -216,7 +357,7 @@ end
 -- @param pPlayer pointer adds waypoint to the Rebel Vortex Squad Tier1 Trainer
 function SpaceHelpers:addVortexSquadWaypoint(pPlayer)
 	if (pPlayer == nil) then
-		return false
+		return
 	end
 
 	local pGhost = CreatureObject(pPlayer):getPlayerObject()
@@ -231,7 +372,7 @@ end
 -- @param pPlayer pointer adds waypoint to the Rebel Akron's Havok Squad Tier1 Trainer
 function SpaceHelpers:addAkronSquadWaypoint(pPlayer)
 	if (pPlayer == nil) then
-		return false
+		return
 	end
 
 	local pGhost = CreatureObject(pPlayer):getPlayerObject()
@@ -246,7 +387,7 @@ end
 -- @param pPlayer pointer adds waypoint to the Rebel Crimson Phoenix Squadron Tier1 Trainer
 function SpaceHelpers:addCrimsonSquadWaypoint(pPlayer)
 	if (pPlayer == nil) then
-		return false
+		return
 	end
 
 	local pGhost = CreatureObject(pPlayer):getPlayerObject()
@@ -261,7 +402,7 @@ end
 -- @param pPlayer pointer adds waypoint to the starting imperial pilot coordinator
 function SpaceHelpers:addImperialPilotWaypoint(pPlayer)
 	if (pPlayer == nil) then
-		return false
+		return
 	end
 
 	local pGhost = CreatureObject(pPlayer):getPlayerObject()
@@ -276,7 +417,7 @@ end
 -- @param pPlayer pointer adds waypoint to the Imperial Black Epsilon Squad
 function SpaceHelpers:addBlackEpsilonSquadWaypoint(pPlayer)
 	if (pPlayer == nil) then
-		return false
+		return
 	end
 
 	local pGhost = CreatureObject(pPlayer):getPlayerObject()
@@ -291,7 +432,7 @@ end
 -- @param pPlayer pointer adds waypoint to the Imperial Storm Squadron
 function SpaceHelpers:addStormSquadWaypoint(pPlayer)
 	if (pPlayer == nil) then
-		return false
+		return
 	end
 
 	local pGhost = CreatureObject(pPlayer):getPlayerObject()
@@ -306,7 +447,7 @@ end
 -- @param pPlayer pointer adds waypoint to the Imperial Inquisition Squadron
 function SpaceHelpers:addImperialInquisitionSquadWaypoint(pPlayer)
 	if (pPlayer == nil) then
-		return false
+		return
 	end
 
 	local pGhost = CreatureObject(pPlayer):getPlayerObject()

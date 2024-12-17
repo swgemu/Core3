@@ -3,9 +3,9 @@ fernYarrowConvoHandler = conv_handler:new {}
 function fernYarrowConvoHandler:getInitialScreen(pPlayer, pNpc, pConvTemplate)
 	local convoTemplate = LuaConversationTemplate(pConvTemplate)
 
-	--if (not isJtlEnabled()) then
-		-- return convoTemplate:getScreen("no_jtl")
-	--end
+	if (not isJtlEnabled()) then
+		return convoTemplate:getScreen("no_jtl")
+	end
 
 	if (SpaceHelpers:isRebelPilot(pPlayer)) then
 		return convoTemplate:getScreen("rebel_pilot")

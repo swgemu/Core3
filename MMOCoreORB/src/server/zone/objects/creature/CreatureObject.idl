@@ -130,8 +130,6 @@ class CreatureObject extends TangibleObject {
 	protected int performanceStartTime;
 	protected int performanceType;
 
-	protected int pilotTier;
-
 	@dereferenced
 	protected DeltaVector<int> hamList;
 
@@ -1856,34 +1854,6 @@ class CreatureObject extends TangibleObject {
 	@read
 	public int getPerformanceType() {
 		return performanceType;
-	}
-
-	@read
-	public int getPilotTier() {
-		return pilotTier;
-	}
-
-	@preLocked
-	public void incrementPilotTier() {
-		if (pilotTier > 4) {
-			return;
-		}
-
-		pilotTier = pilotTier + 1;
-	}
-
-	@preLocked
-	public void setPilotTier(int tier) {
-		if (tier > 5 || tier < 0) {
-			return;
-		}
-
-		pilotTier = tier;
-	}
-
-	@preLocked
-	public void resetPilotTier() {
-		pilotTier = 0;
 	}
 
 	@read

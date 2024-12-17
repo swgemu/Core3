@@ -5,11 +5,12 @@ ralMundiConvoHandler = conv_handler:new {}
 function ralMundiConvoHandler:getInitialScreen(pPlayer, pNpc, pConvTemplate)
 	local convoTemplate = LuaConversationTemplate(pConvTemplate)
 
-	--if (not isJtlEnabled()) then
-		-- CreatureObject(pNpc):doAnimation("laugh_titter")
-		-- CreatureObject(pPlayer):doAnimation("shrug_shoulders")
-		-- return convoTemplate:getScreen("no_jtl")
-	--end
+	if (not isJtlEnabled()) then
+		CreatureObject(pNpc):doAnimation("laugh_titter")
+		CreatureObject(pPlayer):doAnimation("shrug_shoulders")
+
+		return convoTemplate:getScreen("no_jtl")
+	end
 
 	if (SpaceHelpers:isRebelPilot(pPlayer)) then
 		return convoTemplate:getScreen("rebel_pilot")

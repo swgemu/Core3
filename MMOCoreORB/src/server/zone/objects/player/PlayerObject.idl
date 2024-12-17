@@ -297,6 +297,9 @@ class PlayerObject extends IntangibleObject {
 	@dereferenced
 	protected SpaceLaunchPoint launchPoint;
 
+	protected int pilotTier;
+	protected unsigned int pilotSquadron;
+
 	/**
 	 * the key is the quest.hashCode()
 	 */
@@ -414,6 +417,9 @@ class PlayerObject extends IntangibleObject {
 		tosVersionAccepted = 0;
 
 		miliSecsPlayed = 0;
+
+		pilotTier = 0;
+		pilotSquadron = 0;
 
 		Logger.setLoggingName("PlayerObjectBase");
 	}
@@ -2056,6 +2062,10 @@ class PlayerObject extends IntangibleObject {
 		isPlayerCloning = val;
 	}
 
+	/*
+	*	JTL Mutators
+	*/
+
 	public void setSpaceLaunchZone(string zoneName) {
 		launchPoint.setGroundZoneName(zoneName);
 	}
@@ -2067,6 +2077,38 @@ class PlayerObject extends IntangibleObject {
 	public void setSpaceLaunchLocation(@dereferenced Vector3 location) {
 		launchPoint.setLocation(location);
 	}
+
+	@preLocked
+	public void incrementPilotTier() {
+		if (pilotTier > 4) {
+			return;
+		}
+
+		pilotTier = pilotTier + 1;
+	}
+
+	@preLocked
+	public void setPilotTier(int tier) {
+		if (tier > 5 || tier < 0) {
+			return;
+		}
+
+		pilotTier = tier;
+	}
+
+	@preLocked
+	public void resetPilotTier() {
+		pilotTier = 0;
+	}
+
+	@preLocked
+	public void setPilotSquadron(unsigned int squadron) {
+		pilotSquadron = squadron;
+	}
+
+	/*
+	*	JTL Accessors
+	*/
 
 	@dereferenced
 	public string getSpaceLaunchZone() {
@@ -2082,6 +2124,16 @@ class PlayerObject extends IntangibleObject {
 	@dereferenced
 	public Vector3 getSpaceLaunchLocation() {
 		return launchPoint.getLocation();
+	}
+
+	@read
+	public int getPilotTier() {
+		return pilotTier;
+	}
+
+	@read
+	public int getPilotSquadron() {
+		return pilotSquadron;
 	}
 
 	@read

@@ -100,6 +100,12 @@ Luna<LuaPlayerObject>::RegType LuaPlayerObject::Register[] = {
 		{ "hasPvpTef", &LuaPlayerObject::hasPvpTef },
 		{ "hasGcwTef", &LuaPlayerObject::hasGcwTef },
 		{ "getPvpRating", &LuaPlayerObject::getPvpRating },
+
+		// JTL
+		{ "incrementPilotTier", &LuaPlayerObject::incrementPilotTier },
+		{ "resetPilotTier", &LuaPlayerObject::resetPilotTier },
+		{ "isSquadronType", &LuaPlayerObject::isSquadronType },
+		{ "setSquadronType", &LuaPlayerObject::setSquadronType },
 		{ 0, 0 }
 };
 
@@ -932,4 +938,47 @@ int LuaPlayerObject::getPvpRating(lua_State* L) {
 	lua_pushinteger(L, realObject->getPvpRating());
 
 	return 1;
+}
+
+int LuaPlayerObject::incrementPilotTier(lua_State* L) {
+	Locker lock(realObject);
+
+	realObject->incrementPilotTier();
+
+	return 0;
+}
+
+int LuaPlayerObject::resetPilotTier(lua_State* L) {
+	Locker lock(realObject);
+
+	realObject->resetPilotTier();
+
+	return 0;
+}
+
+int LuaPlayerObject::isSquadronType(lua_State* L) {
+	uint32 squadron = lua_tointeger(L, -1);
+	bool ret = false;
+
+	if (squadron > 0 && squadron < 10) {
+		ret = realObject->getPilotSquadron() == squadron;
+	}
+
+	lua_pushboolean(L, ret);
+
+	return 1;
+}
+
+int LuaPlayerObject::setSquadronType(lua_State* L) {
+	uint32 squadron = lua_tointeger(L, -1);
+
+	if (squadron < 1 || squadron > 9) {
+		return 0;
+	}
+
+	Locker lock(realObject);
+
+	realObject->setPilotSquadron(squadron);
+
+	return 0;
 }

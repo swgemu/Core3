@@ -3,9 +3,9 @@ tarthJaxxConvoHandler = conv_handler:new {}
 function tarthJaxxConvoHandler:getInitialScreen(pPlayer, pNpc, pConvTemplate)
 	local convoTemplate = LuaConversationTemplate(pConvTemplate)
 
-	--if (not isJtlEnabled()) then
-		-- return convoTemplate:getScreen("no_jtl")
-	--end
+	if (not isJtlEnabled()) then
+		return convoTemplate:getScreen("no_jtl")
+	end
 
 	return convoTemplate:getScreen("i_cannot_believe")
 end

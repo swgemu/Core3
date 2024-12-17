@@ -816,6 +816,40 @@ namespace conf {
 
 			return cachedValue;
 		}
+
+
+		/*
+
+			JTL Configs
+
+		*/
+
+
+		inline bool isJtlEnabled() {
+			static uint32 cachedVersion = 0;
+			static bool cachedJtlEnabled;
+
+			if (configVersion.get() > cachedVersion) {
+				Locker guard(&mutex);
+				cachedJtlEnabled = getBool("Core3.JTL.JTLEnabled", false);
+				cachedVersion = configVersion.get();
+			}
+
+			return cachedJtlEnabled;
+		}
+
+		inline bool launchFromDevice() {
+			static uint32 cachedVersion = 0;
+			static bool cachedLaunchFromDevice;
+
+			if (configVersion.get() > cachedVersion) {
+				Locker guard(&mutex);
+				cachedLaunchFromDevice = getBool("Core3.JTL.LaunchFromDevice", false);
+				cachedVersion = configVersion.get();
+			}
+
+			return cachedLaunchFromDevice;
+		}
 	};
 }
 
