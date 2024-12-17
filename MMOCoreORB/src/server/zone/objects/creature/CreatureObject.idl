@@ -131,6 +131,7 @@ class CreatureObject extends TangibleObject {
 	protected int performanceType;
 
 	protected int pilotTier;
+	protected unsigned int pilotSquadron;
 
 	@dereferenced
 	protected DeltaVector<int> hamList;
@@ -1884,6 +1885,16 @@ class CreatureObject extends TangibleObject {
 	@preLocked
 	public void resetPilotTier() {
 		pilotTier = 0;
+	}
+
+	@read
+	public int getPilotSquadron() {
+		return pilotSquadron;
+	}
+
+	@preLocked
+	public void setPilotSquadron(unsigned int squadron) {
+		pilotSquadron = squadron;
 	}
 
 	@read

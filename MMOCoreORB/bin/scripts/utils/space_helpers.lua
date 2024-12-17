@@ -78,6 +78,33 @@ function SpaceHelpers:isNeutralPilot(pPlayer)
 	return CreatureObject(pPlayer):isNeutralPilot()
 end
 
+-- @param pPlayer pointer checked if is in Corsec Squadron
+function SpaceHelpers:isCorsecSquadron(pPlayer)
+	if (pPlayer == nil) then
+		return false
+	end
+
+	return CreatureObject(pPlayer):isSquadronType(CORSEC_SQUADRON)
+end
+
+-- @param pPlayer pointer checked if is in RSF Squadron
+function SpaceHelpers:isRSFSquadron(pPlayer)
+	if (pPlayer == nil) then
+		return false
+	end
+
+	return CreatureObject(pPlayer):isSquadronType(RSF_SQUADRON)
+end
+
+-- @param pPlayer pointer checked if is in Smuggler Alliance Squadron
+function SpaceHelpers:isSmugglerSquadron(pPlayer)
+	if (pPlayer == nil) then
+		return false
+	end
+
+	return CreatureObject(pPlayer):isSquadronType(SMUGGLER_SQUADRON)
+end
+
 -- @param pPlayer pointer to check if rebel pilot
 function SpaceHelpers:isRebelPilot(pPlayer)
 	if (pPlayer == nil) then
@@ -152,7 +179,7 @@ function SpaceHelpers:surrenderPilot(pPlayer, pilotProfession)
 	CreatureObject(pPlayer):resetPilotTier()
 end
 
--- @param pPlayer pointer adds waypoint to the starting neutral pilot trainer
+-- @param pPlayer pointer adds waypoint to the starting neutral Corsec Squadron trainer
 function SpaceHelpers:addCorsecPilotWaypoint(pPlayer)
 	if (pPlayer == nil) then
 		return false
@@ -168,7 +195,7 @@ function SpaceHelpers:addCorsecPilotWaypoint(pPlayer)
 end
 
 
--- @param pPlayer pointer adds waypoint to the starting neutral pilot trainer
+-- @param pPlayer pointer adds waypoint to the starting neutral RSF Squadron trainer
 function SpaceHelpers:addRSFPilotWaypoint(pPlayer)
 	if (pPlayer == nil) then
 		return false
@@ -183,8 +210,8 @@ function SpaceHelpers:addRSFPilotWaypoint(pPlayer)
 	PlayerObject(pGhost):addWaypoint("naboo", "@npc_spawner_n:dinge", "@npc_spawner_n:dinge", -5496, 4579, WAYPOINTBLUE, true, true, 0)
 end
 
--- @param pPlayer pointer adds waypoint to the starting rebel pilot trainer
-function SpaceHelpers:addTatooinePilotWaypoint(pPlayer)
+-- @param pPlayer pointer adds waypoint to the starting neutral Smugglers Alliance Squadron trainer
+function SpaceHelpers:addSmugglersPilotWaypoint(pPlayer)
 	if (pPlayer == nil) then
 		return false
 	end

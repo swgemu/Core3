@@ -165,12 +165,16 @@ Luna<LuaCreatureObject>::RegType LuaCreatureObject::Register[] = {
 		{ "forcePeace", &LuaCreatureObject::forcePeace },
 		{ "isPilotingShip", &LuaCreatureObject::isPilotingShip },
 		{ "storePets", &LuaCreatureObject::storePets },
+
+		// JTL
 		{ "isRebelPilot", &LuaCreatureObject::isRebelPilot },
 		{ "isImperialPilot", &LuaCreatureObject::isImperialPilot },
 		{ "isNeutralPilot", &LuaCreatureObject::isNeutralPilot },
 		{ "hasShips", &LuaCreatureObject::hasShips },
 		{ "incrementPilotTier", &LuaCreatureObject::incrementPilotTier },
 		{ "resetPilotTier", &LuaCreatureObject::resetPilotTier },
+		{ "isSquadronType", &LuaCreatureObject::isSquadronType },
+		{ "setSquadronType", &LuaCreatureObject::setSquadronType },
 		{ 0, 0 }
 };
 
@@ -1433,6 +1437,33 @@ int LuaCreatureObject::resetPilotTier(lua_State* L) {
 	Locker lock(realObject);
 
 	realObject->resetPilotTier();
+
+	return 0;
+}
+
+int LuaCreatureObject::isSquadronType(lua_State* L) {
+	uint32 squadron = lua_tointeger(L, -1);
+	bool ret = false;
+
+	if (squadron > 0 && squadron < 10) {
+		ret = realObject->getPilotSquadron() == squadron;
+	}
+
+	lua_pushboolean(L, ret);
+
+	return 1;
+}
+
+int LuaCreatureObject::setSquadronType(lua_State* L) {
+	uint32 squadron = lua_tointeger(L, -1);
+
+	if (squadron < 1 || squadron > 9) {
+		return 0;
+	}
+
+	Locker lock(realObject);
+
+	realObject->setPilotSquadron(squadron);
 
 	return 0;
 }

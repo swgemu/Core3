@@ -140,6 +140,8 @@ namespace creature {
 		int hasShips(lua_State* L);
 		int incrementPilotTier(lua_State* L);
 		int resetPilotTier(lua_State* L);
+		int isSquadronType(lua_State* L);
+		int setSquadronType(lua_State* L);
 	private:
 		// The pointer to the 'real object' defined in object.cc
 		CreatureObject* realObject;
