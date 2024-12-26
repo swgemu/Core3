@@ -34,6 +34,10 @@ using namespace server::zone;
 
 class CityHallZoneComponent : public GroundZoneComponent {
 public:
+	CityHallZoneComponent() {
+		setLoggingName("CityHallZoneComponent");
+	}
+
 	void destroyObjectFromWorld(SceneObject* sceneObject, bool sendSelfDestroy) const;
 };
 

@@ -62,15 +62,21 @@ void PlanetManagerImplementation::initialize() {
 	buildRegionNavAreas();
 	buildCityNavMeshes();
 
+	auto zoneServer = zone->getZoneServer();
+
+	if (zoneServer == nullptr) {
+		return;
+	}
+
 	if (zoneName == "dathomir") {
-		Reference<ActiveArea*> area = zone->getZoneServer()->createObject(STRING_HASHCODE("object/fs_village_area.iff"), 0).castTo<ActiveArea*>();
+		Reference<ActiveArea*> area = zoneServer->createObject(STRING_HASHCODE("object/fs_village_area.iff"), 0).castTo<ActiveArea*>();
 
 		Locker locker(area);
 		area->setRadius(768.f);
 		area->initializePosition(5306, 0, -4145);
 		zone->transferObject(area, -1, true);
 
-		ManagedReference<SceneObject*> scenery = zone->getZoneServer()->createObject(STRING_HASHCODE("object/static/structure/general/fs_village_nobuild_768m.iff"), 0);
+		ManagedReference<SceneObject*> scenery = zoneServer->createObject(STRING_HASHCODE("object/static/structure/general/fs_village_nobuild_768m.iff"), 0);
 
 		Locker slocker(scenery, area);
 		scenery->initializePosition(5306, zone->getHeight(5306, -4145), -4145);
@@ -79,7 +85,7 @@ void PlanetManagerImplementation::initialize() {
 		slocker.release();
 		locker.release();
 
-		Reference<ActiveArea*> sarlaccArea = zone->getZoneServer()->createObject(STRING_HASHCODE("object/sarlacc_area.iff"), 0).castTo<ActiveArea*>();
+		Reference<ActiveArea*> sarlaccArea = zoneServer->createObject(STRING_HASHCODE("object/sarlacc_area.iff"), 0).castTo<ActiveArea*>();
 
 		Locker locker2(sarlaccArea);
 
@@ -89,7 +95,7 @@ void PlanetManagerImplementation::initialize() {
 
 		locker2.release();
 
-		Reference<ActiveArea*> sarlaccPreArea = zone->getZoneServer()->createObject(STRING_HASHCODE("object/sarlacc_area.iff"), 0).castTo<ActiveArea*>();
+		Reference<ActiveArea*> sarlaccPreArea = zoneServer->createObject(STRING_HASHCODE("object/sarlacc_area.iff"), 0).castTo<ActiveArea*>();
 
 		Locker locker3(sarlaccPreArea);
 
@@ -99,8 +105,7 @@ void PlanetManagerImplementation::initialize() {
 	}
 
 	if (zoneName == "tatooine") {
-		Reference<ActiveArea*> area = zone->getZoneServer()->createObject(
-				STRING_HASHCODE("object/sarlacc_area.iff"), 0).castTo<ActiveArea *>();
+		Reference<ActiveArea*> area = zoneServer->createObject(STRING_HASHCODE("object/sarlacc_area.iff"), 0).castTo<ActiveArea*>();
 
 		Locker locker(area);
 		area->setRadius(30.f);
@@ -109,8 +114,7 @@ void PlanetManagerImplementation::initialize() {
 
 		locker.release();
 
-		Reference<ActiveArea*> preArea = zone->getZoneServer()->createObject(
-				STRING_HASHCODE("object/sarlacc_area.iff"), 0).castTo<ActiveArea *>();
+		Reference<ActiveArea*> preArea = zoneServer->createObject(STRING_HASHCODE("object/sarlacc_area.iff"), 0).castTo<ActiveArea*>();
 
 		Locker locker2(preArea);
 
@@ -258,8 +262,15 @@ void PlanetManagerImplementation::loadJTLData(LuaObject* luaObject) {
 }
 
 void PlanetManagerImplementation::loadPlanetObjects(LuaObject* luaObject) {
-	if (!luaObject->isValidTable())
+	if (!luaObject->isValidTable()) {
 		return;
+	}
+
+	auto zoneServer = zone->getZoneServer();
+
+	if (zoneServer == nullptr) {
+		return;
+	}
 
 	for (int i = 1; i <= luaObject->getTableSize(); ++i) {
 		lua_State* L = luaObject->getLuaState();
@@ -298,7 +309,7 @@ void PlanetManagerImplementation::loadPlanetObjects(LuaObject* luaObject) {
 			obj->initializePosition(x, z, y);
 			obj->setDirection(ow, ox, oy, oz);
 
-			ManagedReference<SceneObject*> parent = zone->getZoneServer()->getObject(parentID);
+			ManagedReference<SceneObject*> parent = zoneServer->getObject(parentID);
 
 			if (parent != nullptr)
 				parent->transferObject(obj, -1, true);

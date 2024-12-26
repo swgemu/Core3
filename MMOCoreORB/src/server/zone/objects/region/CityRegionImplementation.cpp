@@ -192,23 +192,27 @@ int CityRegionImplementation::getTimeToUpdate() {
 }
 
 void CityRegionImplementation::notifyEnter(SceneObject* object) {
-	if (object->getCityRegion().get() != _this.getReferenceUnsafeStaticCast() && object->isPlayerCreature())
+	if (object->getCityRegion().get() != _this.getReferenceUnsafeStaticCast() && object->isPlayerCreature()) {
 		currentPlayers.increment();
+	}
 
 	object->setCityRegion(_this.getReferenceUnsafeStaticCast());
 
 	if (object->isBazaarTerminal() || object->isVendor()) {
-
-		if (object->isBazaarTerminal())
+		if (object->isBazaarTerminal()) {
 			bazaars.put(object->getObjectID(), cast<TangibleObject*>(object));
+		}
 
 		AuctionTerminalDataComponent* terminalData = nullptr;
 		DataObjectComponentReference* data = object->getDataObjectComponent();
-		if(data != nullptr && data->get() != nullptr && data->get()->isAuctionTerminalData())
-			terminalData = cast<AuctionTerminalDataComponent*>(data->get());
 
-		if(terminalData != nullptr)
+		if (data != nullptr && data->get() != nullptr && data->get()->isAuctionTerminalData()) {
+			terminalData = cast<AuctionTerminalDataComponent*>(data->get());
+		}
+
+		if (terminalData != nullptr) {
 			terminalData->updateUID();
+		}
 	}
 
 	if (isClientRegion()) {
@@ -236,9 +240,15 @@ void CityRegionImplementation::notifyEnter(SceneObject* object) {
 		applySpecializationModifiers(creature);
 	}
 
+	auto zoneServer = zone->getZoneServer();
+
+	if (zoneServer == nullptr) {
+		return;
+	}
+
 	if (object->isStructureObject()) {
 		StructureObject* structure = cast<StructureObject*>(object);
-		CityManager* cityManager = getZone()->getZoneServer()->getCityManager();
+		CityManager* cityManager = zoneServer->getCityManager();
 
 		Locker slocker(&structureListMutex);
 
@@ -248,9 +258,10 @@ void CityRegionImplementation::notifyEnter(SceneObject* object) {
 
 		if (structure->isBuildingObject()) {
 			auto ownerID = structure->getOwnerObjectID();
+			auto building = structure->asBuildingObject();
 
-			if (object->asBuildingObject()->isResidence() && !isCitizen(ownerID)) {
-				Core::getTaskManager()->executeTask([ownerID, weakRegion = WeakReference<CityRegion*>(_this.getReferenceUnsafeStaticCast())] () {
+			if (building != nullptr && building->isResidence() && !isCitizen(ownerID)) {
+				Core::getTaskManager()->executeTask([ownerID, weakRegion = WeakReference<CityRegion*>(_this.getReferenceUnsafeStaticCast()), zoneServer] () {
 					auto strongRegion = weakRegion.get();
 
 					if (strongRegion == nullptr) {
@@ -259,23 +270,17 @@ void CityRegionImplementation::notifyEnter(SceneObject* object) {
 
 					auto zone = strongRegion->getZone();
 
-					if (zone == nullptr) {
+					if (zone == nullptr || zoneServer == nullptr) {
 						return;
 					}
 
-					auto server = zone->getZoneServer();
-
-					if (server == nullptr) {
-						return;
-					}
-
-					auto cityManager = server->getCityManager();
+					auto cityManager = zoneServer->getCityManager();
 
 					if (cityManager == nullptr) {
 						return;
 					}
 
-					Reference<CreatureObject*> owner = server->getObject(ownerID).castTo<CreatureObject*>();
+					Reference<CreatureObject*> owner = zoneServer->getObject(ownerID).castTo<CreatureObject*>();
 
 					if(owner != nullptr) {
 						Locker lock(strongRegion);
