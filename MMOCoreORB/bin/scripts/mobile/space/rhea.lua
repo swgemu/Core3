@@ -25,7 +25,7 @@ rhea = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = NONE,
-	optionsBitmask = AIENABLED + JTLINTERESTING,
+	optionsBitmask = AIENABLED + JTLINTERESTING + CONVERSABLE + INVULNERABLE,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/space_privateer_tier1_corellia.iff"},
