@@ -199,7 +199,7 @@ class PlanetManager extends ManagedService implements Logger {
 	 * @return Returns a PlanetTravelPoint or NULL if not found in range
 	 */
 	@local
-	public native PlanetTravelPoint getNearestPlanetTravelPoint(SceneObject object, float range = 16000.0);
+	public native PlanetTravelPoint getNearestPlanetTravelPoint(SceneObject object, float range = 16000.0, boolean interplanetaryOnly = false);
 
 	@local
 	public native PlanetTravelPoint getRandomStarport();
@@ -211,7 +211,7 @@ class PlanetManager extends ManagedService implements Logger {
 	 * @return Returns a PlanetTravelPoint or NULL if not found in range
 	 */
 	@local
-	public native PlanetTravelPoint getNearestPlanetTravelPoint(@dereferenced final Vector3 position, float range = 16000.0);
+	public native PlanetTravelPoint getNearestPlanetTravelPoint(@dereferenced final Vector3 position, float range = 16000.0, boolean interplanetaryOnly = false);
 
 	/**
 	 * Get a random spawn point on the planet.

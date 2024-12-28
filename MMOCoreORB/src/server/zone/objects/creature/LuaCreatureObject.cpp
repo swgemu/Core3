@@ -170,7 +170,7 @@ Luna<LuaCreatureObject>::RegType LuaCreatureObject::Register[] = {
 		{ "isRebelPilot", &LuaCreatureObject::isRebelPilot },
 		{ "isImperialPilot", &LuaCreatureObject::isImperialPilot },
 		{ "isNeutralPilot", &LuaCreatureObject::isNeutralPilot },
-		{ "hasShips", &LuaCreatureObject::hasShips },
+		{ "hasCertifiedShip", &LuaCreatureObject::hasCertifiedShip },
 		{ 0, 0 }
 };
 
@@ -1399,15 +1399,39 @@ int LuaCreatureObject::isNeutralPilot(lua_State* L) {
 	return 1;
 }
 
-int LuaCreatureObject::hasShips(lua_State* L) {
+int LuaCreatureObject::hasCertifiedShip(lua_State* L) {
+	bool skipYacht = lua_toboolean(L, -1);
+
 	auto datapad = realObject->getDatapad();
 	bool hasShip = false;
 
 	if (datapad != nullptr) {
-		for(int i = 0; i < datapad->getContainerObjectsSize(); i++) {
+		for (int i = 0; i < datapad->getContainerObjectsSize(); i++) {
 			ManagedReference<SceneObject*> object = datapad->getContainerObject(i);
 
 			if (object == nullptr || !object->isShipControlDevice()) {
+				continue;
+			}
+
+			if (skipYacht && object->getServerObjectCRC() == STRING_HASHCODE("object/intangible/ship/sorosuub_space_yacht_pcd.iff")) {
+				continue;
+			}
+
+			auto shipDevice = object.castTo<ShipControlDevice*>();
+
+			if (shipDevice == nullptr) {
+				continue;
+			}
+
+			auto controlledObject = shipDevice->getControlledObject();
+
+			if (controlledObject == nullptr) {
+				continue;
+			}
+
+			auto ship = controlledObject->asShipObject();
+
+			if (ship == nullptr || !ship->canBePilotedBy(realObject)) {
 				continue;
 			}
 

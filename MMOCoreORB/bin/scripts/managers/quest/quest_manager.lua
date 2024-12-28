@@ -373,4 +373,18 @@ QuestManager.questCRC.QUEST_LF_SAFETY3 		= 0xC3967EC6
 QuestManager.questCRC.QUEST_LF_SAFETY4 		= 0xDDD12EC3
 QuestManager.questCRC.QUEST_LF_SAFETY5 		= 0xD9103374
 
+-- JTL Quests
+
+-- Neutral
+
+-- Corsec
+QuestManager.questCRC.QUEST_CORELLIA_PRIV_PATROL_1	= 0xD54BD22D
+QuestManager.questCRC.QUEST_CORELLIA_PRIV_DESTROY_1	= 0x4381DE8
+
+
+
+
+
+
+
 return QuestManager

@@ -69,6 +69,42 @@ SpaceHelpers = {
 	}
 }
 
+-- @param pPlayer pointer grants the novice pilot box
+function SpaceHelpers:grantNovicePilot(pPlayer, skillName)
+	if (pPlayer == nil) then
+		return
+	end
+
+	local pilotSkills = self.pilotSkills[skillName]
+	local noviceSkill = pilotSkills[#pilotSkills]
+
+	if (CreatureObject(pPlayer):hasSkill(noviceSkill)) then
+		return
+	end
+
+	awardSkill(pPlayer, noviceSkill)
+
+	local messageString = LuaStringIdChatParameter("@skill_teacher:" .. "prose_skill_learned")
+	messageString:setTO("@skl_n:" .. noviceSkill)
+
+	CreatureObject(pPlayer):sendSystemMessage(messageString:_getObject())
+end
+
+-- @param pPlayer pointer grants the novice pilot box
+function SpaceHelpers:setSquadronType(pPlayer, squadron)
+	if (pPlayer == nil) then
+		return false
+	end
+
+	local pGhost = CreatureObject(pPlayer):getPlayerObject()
+
+	if (pGhost == nil) then
+		return false
+	end
+
+	PlayerObject(pGhost):setSquadronType(squadron)
+end
+
 -- @param pPlayer pointer checked if neutral pilot
 function SpaceHelpers:isNeutralPilot(pPlayer)
 	if (pPlayer == nil) then
@@ -257,13 +293,13 @@ function SpaceHelpers:hasEarnedSpaceXP(pPlayer)
 	return (spaceXP > 0)
 end
 
--- @param pPlayer pointer checks if the player has space experience
-function SpaceHelpers:hasShips(pPlayer)
+-- @param pPlayer pointer checks if the player has a ship, can exlude Yacht
+function SpaceHelpers:hasCertifiedShip(pPlayer, skipYacht)
 	if (pPlayer == nil) then
-		return true
+		return false
 	end
 
-	return CreatureObject(pPlayer):hasShips()
+	return CreatureObject(pPlayer):hasCertifiedShip(skipYacht)
 end
 
 -- @param pPlayer pointer surrenders the entire pilot profession

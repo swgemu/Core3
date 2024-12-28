@@ -713,7 +713,7 @@ void PlanetManagerImplementation::sendPlanetTravelPointListResponse(CreatureObje
 	player->sendMessage(ptplr);
 }
 
-PlanetTravelPoint* PlanetManagerImplementation::getNearestPlanetTravelPoint(SceneObject* object, float searchrange) {
+PlanetTravelPoint* PlanetManagerImplementation::getNearestPlanetTravelPoint(SceneObject* object, float searchrange, bool interplanetaryOnly) {
 #if DEBUG_TRAVEL
 	auto callDesc = info(true);
 
@@ -725,7 +725,7 @@ PlanetTravelPoint* PlanetManagerImplementation::getNearestPlanetTravelPoint(Scen
 			<< "\033[0m\n\t";
 #endif
 
-	Reference<PlanetTravelPoint*> planetTravelPoint = getNearestPlanetTravelPoint(object->getWorldPosition(), searchrange);
+	Reference<PlanetTravelPoint*> planetTravelPoint = getNearestPlanetTravelPoint(object->getWorldPosition(), searchrange, interplanetaryOnly);
 
 #if DEBUG_TRAVEL
 
@@ -740,12 +740,16 @@ PlanetTravelPoint* PlanetManagerImplementation::getNearestPlanetTravelPoint(Scen
 	return planetTravelPoint;
 }
 
-PlanetTravelPoint* PlanetManagerImplementation::getNearestPlanetTravelPoint(const Vector3& position, float range) {
+PlanetTravelPoint* PlanetManagerImplementation::getNearestPlanetTravelPoint(const Vector3& position, float range, bool interplanetaryOnly) {
 	Reference<PlanetTravelPoint*> planetTravelPoint = nullptr;
 	float rangeSq = range * range;
 
 	for (int i = 0; i < planetTravelPointList->size(); ++i) {
 		const auto& ptp = planetTravelPointList->get(i);
+
+		if (ptp == nullptr || (interplanetaryOnly && !ptp->isInterplanetary())) {
+			continue;
+		}
 
 		float distanceSq = position.squaredDistanceTo2d(ptp->getDeparturePosition());
 
