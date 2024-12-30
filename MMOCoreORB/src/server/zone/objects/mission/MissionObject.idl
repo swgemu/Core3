@@ -25,6 +25,8 @@ class MissionObject extends IntangibleObject {
 	protected MissionObjective missionObjective;
 
 	protected unsigned int typeCRC;
+	protected unsigned int questCRC;
+
 	protected int difficultyLevel;
 	protected int difficultyDisplay;
 	protected int difficulty;
@@ -41,11 +43,15 @@ class MissionObject extends IntangibleObject {
 	protected float size;
 
 	protected float startPositionX;
+	protected float startPositionZ;
 	protected float startPositionY;
+
 	protected string startPlanet;
 
 	protected float endPositionX;
+	protected float endPositionZ;
 	protected float endPositionY;
+
 	protected string endPlanet;
 
 	protected unsigned long targetObjectId;
@@ -71,11 +77,9 @@ class MissionObject extends IntangibleObject {
 
 	public MissionObject() {
 		typeCRC = MissionTypes.SURVEY;
+		questCRC = 0;
 
 		refreshCounter = 0;
-
-		//targetTemplateCRC = 2640304325;
-		//targetTemplate = null;
 
 		missionDescription.setStringId("mission/mission_npc_survey_neutral_easy", "m1o");
 		missionTitle.setStringId("mission/mission_npc_survey_neutral_easy", "m1t");
@@ -93,8 +97,11 @@ class MissionObject extends IntangibleObject {
 		size = 20;
 
 		startPositionX = 0;
+		startPositionZ = 0;
 		startPositionY = 0;
+
 		endPositionX = 0;
+		endPositionZ = 0;
 		endPositionY = 0;
 
 		targetObjectId = 0;
@@ -140,8 +147,14 @@ class MissionObject extends IntangibleObject {
 
 	@preLocked
 	public native void setRefreshCounter(int ctr, boolean notifyClient = true);
+
 	@preLocked
 	public native void setTypeCRC(unsigned int crc, boolean notifyClient = true);
+
+	@preLocked
+	public void setQuestCRC(unsigned int crc) {
+		questCRC = crc;
+	}
 
 	public native void initializeTransientMembers();
 	@dirty
@@ -149,23 +162,39 @@ class MissionObject extends IntangibleObject {
 
 	@preLocked
 	public native void setMissionDescription(final string file, final string id, boolean notifyClient = true);
+
 	@preLocked
 	public native void setMissionTitle(final string file, final string id, boolean notifyClient = true);
+
 	@preLocked
 	public native void setMissionTargetName(final string target, boolean notifyClient = true);
+
 	public native void setMissionDifficulty(int diffLevel, boolean notifyClient = true);
+
 	@preLocked
 	public native void setMissionDifficulty(int diffLevel, int display, int diff, boolean notifyClient = true);
+
 	@preLocked
 	public native void setRewardCredits(int creds, boolean notifyClient = true);
+
 	@local
 	@preLocked
 	public native void setTargetTemplate(SharedObjectTemplate templ, boolean notifyClient = true);
+
 	@preLocked
 	public native void setStartPosition(float posX, float posY, final string planet, boolean notifyClient = true);
+
+	@preLocked
+	public native void setStartPosition(float posX, float posZ, float posY, final string planet, boolean notifyClient = true);
+
 	public native void setStartPosition(float posX, float posY, boolean notifyClient = true);
+
 	@preLocked
 	public native void setEndPosition(float posX, float posY, final string planet, boolean notifyClient = true);
+
+	@preLocked
+	public native void setEndPosition(float posX, float posZ, float posY, final string planet, boolean notifyClient = true);
+
 	@preLocked
 	public native void setCreatorName(final string name, boolean notifyClient = true);
 
@@ -283,6 +312,11 @@ class MissionObject extends IntangibleObject {
 	@read
 	public unsigned int getTypeCRC() {
 		return typeCRC;
+	}
+
+	@read
+	public unsigned int getQuestCRC() {
+		return questCRC;
 	}
 
 	@read

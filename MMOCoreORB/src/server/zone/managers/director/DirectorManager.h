@@ -228,6 +228,7 @@ namespace server {
 		static int generateShipDeed(lua_State* L);
 		static int sellSpaceLoot(lua_State* L);
 		static int isJtlEnabled(lua_State* L);
+		static int grantStarterShip(lua_State* L);
 
 	private:
 		static void setupLuaPackagePath(Lua* luaEngine);

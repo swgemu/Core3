@@ -134,12 +134,13 @@ namespace creature {
 		int forcePeace(lua_State* L);
 		int isPilotingShip(lua_State* L);
 		int storePets(lua_State* L);
+		int abortQuestMission(lua_State* L);
 
 		// JTL
 		int isRebelPilot(lua_State* L);
 		int isImperialPilot(lua_State* L);
 		int isNeutralPilot(lua_State* L);
-		int hasShips(lua_State* L);
+		int hasCertifiedShip(lua_State* L);
 	private:
 		// The pointer to the 'real object' defined in object.cc
 		CreatureObject* realObject;

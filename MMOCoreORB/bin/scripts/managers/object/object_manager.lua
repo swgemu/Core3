@@ -30,11 +30,16 @@ _localLuaCreatureObject3 = LuaCreatureObject(nil)
 
 _localLuaPlayerObject = LuaPlayerObject(nil)
 _localLuaBuildingObject = LuaBuildingObject(nil)
+
 _localLuaCityRegion = LuaCityRegion(nil)
 _localLuaActiveArea = LuaActiveArea(nil)
+
 _localLuaWaypointObject = LuaWaypointObject(nil)
+_localLuaMissionObject = LuaMissionObject(nil)
+
 _localLuaShipObject = LuaShipObject(nil)
 _localLuaPobShipObject = LuaPobShipObject(nil)
+
 
 AiAgent = function(pAiAgent)
   if (pAiAgent == nil) then

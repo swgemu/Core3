@@ -519,9 +519,19 @@ void MissionManagerImplementation::handleMissionAbort(MissionObject* mission, Cr
 
 	ManagedReference<PlayerObject*> ghost = player->getPlayerObject();
 
-	if (mission->getTypeCRC() == MissionTypes::BOUNTY && ghost != nullptr && ghost->hasBhTef()) {
-		player->sendSystemMessage("You cannot abort a bounty hunter mission this soon after being in combat with the mission target.");
-		return;
+	if (ghost != nullptr) {
+		if (mission->getTypeCRC() == MissionTypes::BOUNTY && ghost->hasBhTef()) {
+			player->sendSystemMessage("You cannot abort a bounty hunter mission this soon after being in combat with the mission target.");
+			return;
+		}
+
+		uint32 questCRC = mission->getQuestCRC();
+
+		if (questCRC > 0) {
+			Locker lock(player);
+
+			ghost->clearJournalQuest(questCRC, true);
+		}
 	}
 
 	mission->abort();

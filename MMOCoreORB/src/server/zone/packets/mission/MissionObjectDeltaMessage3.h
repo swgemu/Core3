@@ -70,21 +70,21 @@ public:
 		insertInt(crc);
 	}
 
-	void updateStartPosition(float posX, float posY, uint32 crc) {
+	void updateStartPosition(float posX, float posZ, float posY, uint32 crc) {
 		startUpdate(0x09);
 
 		insertFloat(posX);
-		insertFloat(0.0f);
+		insertFloat(posZ);
 		insertFloat(posY);
 		insertLong(0); //?
 		insertInt(crc);
 	}
 
-	void updateDestination(float posX, float posY, uint32 crc) {
+	void updateDestination(float posX, float posZ, float posY, uint32 crc) {
 		startUpdate(0x06);
 
 		insertFloat(posX);
-		insertFloat(0.0f);
+		insertFloat(posZ);
 		insertFloat(posY);
 		insertLong(0); //?
 		insertInt(crc);
