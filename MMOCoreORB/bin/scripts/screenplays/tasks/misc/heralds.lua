@@ -132,7 +132,7 @@ function heraldScreenPlay:createLoc(pPlayer, heraldNum)
 	local stfFile = "@spawning/static_npc/" .. heraldData.stringFile
 	local playerID = CreatureObject(pPlayer):getObjectID()
 
-	local waypointID = PlayerObject(pGhost):addWaypoint(heraldData.planet, stfFile .. ":waypoint_name_1", stfFile .. ":waypoint_description_1", heraldData.destX, heraldData.destY, WAYPOINTPURPLE, true, true, 0, 0)
+	local waypointID = PlayerObject(pGhost):addWaypoint(heraldData.planet, stfFile .. ":waypoint_name_1", stfFile .. ":waypoint_description_1", heraldData.destX, 0, heraldData.destY, WAYPOINTPURPLE, true, true, 0, 0)
 	writeData(playerID .. ":herald" .. heraldNum, waypointID)
 
 	local pArea = spawnActiveArea(heraldData.planet, "object/active_area.iff", heraldData.destX, heraldData.z, heraldData.destY, 10, 0)
@@ -244,7 +244,7 @@ function heraldScreenPlay:giveMultiDestWaypoint(pPlayer, heraldNum, locNum)
 			wpName = destString
 		end
 
-		PlayerObject(pGhost):addWaypoint(heraldData.planet, wpName, "", x, y, WAYPOINTBLUE, true, true, 0)
+		PlayerObject(pGhost):addWaypoint(heraldData.planet, wpName, "", x, 0, y, WAYPOINTBLUE, true, true, 0)
 	end
 end
 

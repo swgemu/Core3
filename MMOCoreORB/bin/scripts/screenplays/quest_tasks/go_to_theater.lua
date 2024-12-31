@@ -84,7 +84,7 @@ function GoToTheater:taskStart(pPlayer)
 		local pGhost = CreatureObject(pPlayer):getPlayerObject()
 
 		if (pGhost ~= nil) then
-			PlayerObject(pGhost):addWaypoint(zoneName, self.waypointDescription, "", spawnPoint[1], spawnPoint[3], WAYPOINTYELLOW, true, true, WAYPOINTQUESTTASK)
+			PlayerObject(pGhost):addWaypoint(zoneName, self.waypointDescription, "", spawnPoint[1], 0, spawnPoint[3], WAYPOINTYELLOW, true, true, WAYPOINTQUESTTASK)
 		end
 	end
 

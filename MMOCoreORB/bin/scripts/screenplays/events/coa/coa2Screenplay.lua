@@ -81,7 +81,7 @@ function Coa2Screenplay:giveWaypoint(pPlayer, pTarget, name, desc, commander)
 	local y = SceneObject(pTarget):getWorldPositionY()
 	local planet = SceneObject(pTarget):getZoneName()
 
-	local wayID = PlayerObject(pGhost):addWaypoint(planet, name, desc, x, y, 2, true, true, 0, commander)
+	local wayID = PlayerObject(pGhost):addWaypoint(planet, name, desc, x, 0, y, 2, true, true, 0, commander)
 
 	return wayID
 end

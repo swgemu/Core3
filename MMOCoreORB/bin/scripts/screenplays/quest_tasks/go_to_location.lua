@@ -101,7 +101,7 @@ function GoToLocation:taskStart(pPlayer)
 
 	local pActiveArea = self:setupActiveArea(pPlayer, point, spawnPlanet, self.spawnRadius)
 	if pActiveArea ~= nil then
-		local waypointId = PlayerObject(pGhost):addWaypoint(spawnPlanet, self.waypointDescription, "", point.x, point.y, WAYPOINTORANGE, true, true, WAYPOINTQUESTTASK)
+		local waypointId = PlayerObject(pGhost):addWaypoint(spawnPlanet, self.waypointDescription, "", point.x, 0, point.y, WAYPOINTORANGE, true, true, WAYPOINTQUESTTASK)
 
 		if waypointId ~= nil then
 			self:onSuccessfulSpawn(pPlayer, pActiveArea)

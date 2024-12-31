@@ -476,7 +476,7 @@ function FsCsCommander:createCommanderWaypoint(pPlayer, theaterID)
 			wayDesc = "Return the Commander (Testing mode)"
 		end
 
-		local waypointID = PlayerObject(pGhost):addWaypoint("dathomir", wayDesc, "", wayX, wayY, WAYPOINTYELLOW, true, true, 0)
+		local waypointID = PlayerObject(pGhost):addWaypoint("dathomir", wayDesc, "", wayX, 0, wayY, WAYPOINTYELLOW, true, true, 0)
 		writeData(SceneObject(pPlayer):getObjectID() .. ":village:csCommanderWaypoint", waypointID)
 	end
 end

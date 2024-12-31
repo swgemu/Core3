@@ -38,11 +38,11 @@ function CethLaikeConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNpc, s
 		CreatureObject(pNpc):doAnimation("salute1")
 
 		-- Waypoint to Pilot
-		local waypointID = ghost:addWaypoint("talus", "Tie Fighter Crash Site", "Tie Fighter Crash Site", -2449, 3843, WAYPOINTYELLOW, true, true, EnoughQuest.IMPERIAL_CRC)
+		local waypointID = ghost:addWaypoint("talus", "Tie Fighter Crash Site", "Tie Fighter Crash Site", -2449, 0, 3843, WAYPOINTYELLOW, true, true, EnoughQuest.IMPERIAL_CRC)
 		writeScreenPlayData(pPlayer, "EnoughQuest", "PilotWaypointID", waypointID)
 
 		-- Waypoint to quest giver
-		waypointID = ghost:addWaypoint("talus", "Ceth Laike", "Ceth Laike", -2179, 2273, WAYPOINTYELLOW, true, true, EnoughQuest.IMPERIAL_CRC)
+		waypointID = ghost:addWaypoint("talus", "Ceth Laike", "Ceth Laike", -2179, 0, 2273, WAYPOINTYELLOW, true, true, EnoughQuest.IMPERIAL_CRC)
 		writeScreenPlayData(pPlayer, "EnoughQuest", "QuestGiverWaypointID", waypointID)
 
 		ghost:activateJournalQuest(EnoughQuest.IMPERIAL_CRC, true)
@@ -50,7 +50,7 @@ function CethLaikeConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNpc, s
 		CreatureObject(pNpc):doAnimation("sigh_deeply")
 
 		-- Waypoint to Pilot
-		local waypointID = ghost:addWaypoint("talus", "Tie Fighter Crash Site", "Tie Fighter Crash Site", -2449, 3843, WAYPOINTYELLOW, true, true, EnoughQuest.IMPERIAL_CRC)
+		local waypointID = ghost:addWaypoint("talus", "Tie Fighter Crash Site", "Tie Fighter Crash Site", -2449, 0, 3843, WAYPOINTYELLOW, true, true, EnoughQuest.IMPERIAL_CRC)
 		writeScreenPlayData(pPlayer, "EnoughQuest", "PilotWaypointID", waypointID)
 
 	-- Give reward if the player has not yet received it
@@ -77,11 +77,11 @@ function CethLaikeConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNpc, s
 		CreatureObject(pPlayer):sendSystemMessage("You recieve " .. creditsAmount .. " credits for completing your task.")
 	elseif (screenID == "help_accept") then
 		-- Waypoint to Binayre Pirate Camp
-		local waypointID = ghost:addWaypoint("talus", "Binayre Pirate Camp", "Binayre Pirate Camp", -1622, 618, WAYPOINTYELLOW, true, true, EnoughQuest.IMPERIAL_CRC)
+		local waypointID = ghost:addWaypoint("talus", "Binayre Pirate Camp", "Binayre Pirate Camp", -1622, 0, 618, WAYPOINTYELLOW, true, true, EnoughQuest.IMPERIAL_CRC)
 		writeScreenPlayData(pPlayer, "EnoughQuest", "KilllWaypointID", waypointID)
 
 		-- Waypoint to Flail Camp
-		waypointID = ghost:addWaypoint("corellia", "Flail Camp", "Flail Camp", -4737, -1519, WAYPOINTYELLOW, true, true, EnoughQuest.IMPERIAL_CRC)
+		waypointID = ghost:addWaypoint("corellia", "Flail Camp", "Flail Camp", -4737, 0, -1519, WAYPOINTYELLOW, true, true, EnoughQuest.IMPERIAL_CRC)
 		writeScreenPlayData(pPlayer, "EnoughQuest", "LootWaypointID", waypointID)
 
 		ghost:completeJournalQuestTask(EnoughQuest.IMPERIAL_CRC, EnoughQuest.REWARD1, true)

@@ -551,6 +551,6 @@ function FsCounterStrike:giveCampWaypoint(pPlayer)
 	local pGhost = CreatureObject(pPlayer):getPlayerObject()
 
 	if (pGhost ~= nil) then
-		PlayerObject(pGhost):addWaypoint("dathomir", "Aurilian Enemy", "", campData[2], campData[4], WAYPOINTYELLOW, true, true, 0)
+		PlayerObject(pGhost):addWaypoint("dathomir", "Aurilian Enemy", "", campData[2], 0, campData[4], WAYPOINTYELLOW, true, true, 0)
 	end
 end

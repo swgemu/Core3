@@ -125,7 +125,7 @@ function coa3LookoutConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNpc,
 				local wayName = "@theme_park/alderaan/act3/shared_" .. faction .. "_missions:waypoint_return_name_2"
 				local wayDesc = "@theme_park/alderaan/act3/shared_" .. faction .. "_missions:waypoint_return_desc_2"
 
-				local wayID = PlayerObject(pGhost):addWaypoint(returnPlanet, wayName, wayDesc, returnLocation[1], returnLocation[3], WAYPOINTYELLOW, true, true, WAYPOINTQUESTTASK)
+				local wayID = PlayerObject(pGhost):addWaypoint(returnPlanet, wayName, wayDesc, returnLocation[1], 0, returnLocation[3], WAYPOINTYELLOW, true, true, WAYPOINTQUESTTASK)
 			end
 		end
 	end

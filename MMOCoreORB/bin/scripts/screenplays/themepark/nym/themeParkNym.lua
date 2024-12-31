@@ -139,7 +139,7 @@ function ThemeParkNym:notifyNymContainerUsed(pDroid, pPlayer)
 		questItem = "object/tangible/loot/quest/nym_droid_memory_chip.iff"
 		questMsg = "@theme_park_nym/messages:acquired_memory"
 		ThemeParkNym:removeNpcWaypoints(CreatureObject(pPlayer), PlayerObject(pGhost))
-		local jinkinsWaypoint = PlayerObject(pGhost):addWaypoint("lok", "Return the chip to Jinkins", "Return the chip to Jinkins", ThemeParkNym.waypointMap.jinkins.x, ThemeParkNym.waypointMap.jinkins.y, WAYPOINT_COLOR_PURPLE, true, true, 0)
+		local jinkinsWaypoint = PlayerObject(pGhost):addWaypoint("lok", "Return the chip to Jinkins", "Return the chip to Jinkins", ThemeParkNym.waypointMap.jinkins.x, 0, ThemeParkNym.waypointMap.jinkins.y, WAYPOINT_COLOR_PURPLE, true, true, 0)
 		setQuestStatus(CreatureObject(pPlayer):getObjectID() .. ":jinkinsWaypointID", jinkinsWaypoint)
 	elseif (SceneObject(pDroid):getTemplateObjectPath() == "object/tangible/container/loot/gas_filter_container.iff") then
 		if (not CreatureObject(pPlayer):hasScreenPlayState(1, "nym_theme_park_koleNpc") or CreatureObject(pPlayer):hasScreenPlayState(2, "nym_theme_park_koleNpc")) then
@@ -151,7 +151,7 @@ function ThemeParkNym:notifyNymContainerUsed(pDroid, pPlayer)
 		questItem = "object/tangible/loot/quest/nym_filtered_gas.iff"
 		questMsg = "@theme_park_nym/messages:acquired_gas"
 		ThemeParkNym:removeNpcWaypoints(CreatureObject(pPlayer), PlayerObject(pGhost))
-		local koleWaypoint = PlayerObject(pGhost):addWaypoint("lok", "Return the filter to Kole", "Return the filter to Kole", ThemeParkNym.waypointMap.kole.x, ThemeParkNym.waypointMap.kole.y, WAYPOINT_COLOR_PURPLE, true, true, 0)
+		local koleWaypoint = PlayerObject(pGhost):addWaypoint("lok", "Return the filter to Kole", "Return the filter to Kole", ThemeParkNym.waypointMap.kole.x, 0, ThemeParkNym.waypointMap.kole.y, WAYPOINT_COLOR_PURPLE, true, true, 0)
 		setQuestStatus(CreatureObject(pPlayer):getObjectID() .. ":koleWaypointID", koleWaypoint)
 	elseif (SceneObject(pDroid):getTemplateObjectPath() == "object/tangible/container/loot/computer_container.iff") then
 		if (not CreatureObject(pPlayer):hasScreenPlayState(1, "nym_theme_park_nymNpc") or CreatureObject(pPlayer):hasScreenPlayState(8, "nym_theme_park_nymNpc") or CreatureObject(pPlayer):hasScreenPlayState(16, "nym_theme_park_nymNpc")) then
@@ -164,7 +164,7 @@ function ThemeParkNym:notifyNymContainerUsed(pDroid, pPlayer)
 		if (getContainerObjectByTemplate(pInventory, "object/tangible/loot/quest/nym_imggc.iff", true) ~= nil) then
 			questMsg = "@theme_park_nym/messages:all_nym_needed"
 			ThemeParkNym:removeNpcWaypoints(CreatureObject(pPlayer), PlayerObject(pGhost))
-			local nymWaypoint = PlayerObject(pGhost):addWaypoint("lok", "Return the items to Nym", "Return the items to Nym", ThemeParkNym.waypointMap.nym.x, ThemeParkNym.waypointMap.nym.y, WAYPOINT_COLOR_PURPLE, true, true, 0)
+			local nymWaypoint = PlayerObject(pGhost):addWaypoint("lok", "Return the items to Nym", "Return the items to Nym", ThemeParkNym.waypointMap.nym.x, 0, ThemeParkNym.waypointMap.nym.y, WAYPOINT_COLOR_PURPLE, true, true, 0)
 			setQuestStatus(CreatureObject(pPlayer):getObjectID() .. ":nymWaypointID", nymWaypoint)
 		else
 			questMsg = "@theme_park_nym/messages:acquired_hard_drive"
@@ -181,7 +181,7 @@ function ThemeParkNym:notifyNymContainerUsed(pDroid, pPlayer)
 		if (getContainerObjectByTemplate(pInventory, "object/tangible/loot/quest/nym_hard_drive.iff", true) ~= nil) then
 			questMsg = "@theme_park_nym/messages:all_nym_needed"
 			ThemeParkNym:removeNpcWaypoints(CreatureObject(pPlayer), PlayerObject(pGhost))
-			local nymWaypoint = PlayerObject(pGhost):addWaypoint("lok", "Return the items to Nym", "Return the items to Nym", ThemeParkNym.waypointMap.nym.x, ThemeParkNym.waypointMap.nym.y, WAYPOINT_COLOR_PURPLE, true, true, 0)
+			local nymWaypoint = PlayerObject(pGhost):addWaypoint("lok", "Return the items to Nym", "Return the items to Nym", ThemeParkNym.waypointMap.nym.x, 0, ThemeParkNym.waypointMap.nym.y, WAYPOINT_COLOR_PURPLE, true, true, 0)
 			setQuestStatus(CreatureObject(pPlayer):getObjectID() .. ":nymWaypointID", nymWaypoint)
 		else
 			questMsg = "@theme_park_nym/messages:acquired_imggcu"

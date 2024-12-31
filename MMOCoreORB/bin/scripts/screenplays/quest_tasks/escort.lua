@@ -83,7 +83,7 @@ function Escort:taskStart(pPlayer, pEscort)
 
 	local pActiveArea = self:setupActiveArea(pPlayer, self.returnPoint, self.returnPlanet, self.areaRadius)
 	if pActiveArea ~= nil then
-		local waypointId = PlayerObject(pGhost):addWaypoint(self.returnPlanet, self.waypointDescription, "", self.returnPoint.x, self.returnPoint.y, WAYPOINTORANGE, true, true, WAYPOINTQUESTTASK)
+		local waypointId = PlayerObject(pGhost):addWaypoint(self.returnPlanet, self.waypointDescription, "", self.returnPoint.x, 0, self.returnPoint.y, WAYPOINTORANGE, true, true, WAYPOINTQUESTTASK)
 
 		if waypointId ~= nil then
 			writeData(playerID .. ":escortInProgress", 1)

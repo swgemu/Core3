@@ -15,7 +15,7 @@ function OevittPiboiConversationHandler:runScreenHandlers(pConvTemplate, pPlayer
 		local pGhost = CreatureObject(pPlayer):getPlayerObject()
 		
 		if (pGhost ~= nil) then
-			PlayerObject(pGhost):addWaypoint("dantooine", "@theme_park/warren/warren_system_messages:waypoint_name", "", -546, -3846, WAYPOINTBLUE, true, true, 0)
+			PlayerObject(pGhost):addWaypoint("dantooine", "@theme_park/warren/warren_system_messages:waypoint_name", "", -546, 0, -3846, WAYPOINTBLUE, true, true, 0)
 		end
 	end
 

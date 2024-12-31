@@ -80,7 +80,7 @@ function FsSad1Theater1:notifyKilledMobile(pVictim, pAttacker)
 		local pGhost = CreatureObject(pOwner):getPlayerObject()
 
 		if (pGhost ~= nil) then
-			PlayerObject(pGhost):addWaypoint("dathomir", "@quest/quest_journal/fs_quests_sad:return1", "", 5238, -4189, WAYPOINTYELLOW, true, true, WAYPOINTQUESTTASK)
+			PlayerObject(pGhost):addWaypoint("dathomir", "@quest/quest_journal/fs_quests_sad:return1", "", 5238, 0, -4189, WAYPOINTYELLOW, true, true, WAYPOINTQUESTTASK)
 		end
 	end
 

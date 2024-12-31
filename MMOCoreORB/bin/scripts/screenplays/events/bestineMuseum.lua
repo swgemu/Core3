@@ -479,7 +479,7 @@ function BestineMuseumScreenPlay:createArtistWaypoint(pPlayer, id)
 				PlayerObject(pGhost):updateWaypoint(SceneObject(pWaypoint):getObjectID())
 			end
 		else
-			PlayerObject(pGhost):addWaypoint("tatooine", artistName, "", artistData.x, artistData.y, WAYPOINTPURPLE, true, true, 0, 0)
+			PlayerObject(pGhost):addWaypoint("tatooine", artistName, "", artistData.x, 0, artistData.y, WAYPOINTPURPLE, true, true, 0, 0)
 		end
 	end
 end

@@ -674,7 +674,7 @@ function HeroOfTatooineScreenPlay:giveAltruismWaypoint(pPlayer)
 		removeQuestStatus(playerID .. ":altruismWaypointID")
 	end
 
-	local waypointID = PlayerObject(pGhost):addWaypoint("tatooine", "Kidnapped Family", "", 6555, -1311, WAYPOINT_COLOR_PURPLE, true, true, 0, 1)
+	local waypointID = PlayerObject(pGhost):addWaypoint("tatooine", "Kidnapped Family", "", 6555, 0, -1311, WAYPOINT_COLOR_PURPLE, true, true, 0, 1)
 	setQuestStatus(playerID .. ":altruismWaypointID", waypointID)
 end
 
@@ -1021,7 +1021,7 @@ function HeroOfTatooineScreenPlay:giveHonorWaypoint(pPlayer)
 		removeQuestStatus(playerID .. ":honorWaypointID")
 	end
 
-	local waypointID = PlayerObject(pGhost):addWaypoint("tatooine", "Ranch House", "", 4993, -4682, WAYPOINT_COLOR_PURPLE, true, true, 0, 1)
+	local waypointID = PlayerObject(pGhost):addWaypoint("tatooine", "Ranch House", "", 4993, 0, -4682, WAYPOINT_COLOR_PURPLE, true, true, 0, 1)
 	setQuestStatus(playerID .. ":honorWaypointID", waypointID)
 end
 

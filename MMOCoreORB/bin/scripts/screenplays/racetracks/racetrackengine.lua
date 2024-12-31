@@ -22,7 +22,7 @@ function RaceTrack:startRacing(pPlayer)
 
 	clearScreenPlayData(pPlayer, self.trackConfig.trackName)
 	self:createResetPlayerUnfinishedEvent(pPlayer)
-	local waypointID = PlayerObject(pGhost):addWaypoint(self.trackConfig.planetName,self.trackConfig.trackCheckpoint .. "0",self.trackConfig.trackCheckpoint .. "0",self.trackConfig.waypoints[1].x,self.trackConfig.waypoints[1].y,WAYPOINTWHITE,true,true,WAYPOINTRACETRACK)
+	local waypointID = PlayerObject(pGhost):addWaypoint(self.trackConfig.planetName,self.trackConfig.trackCheckpoint .. "0",self.trackConfig.trackCheckpoint .. "0",self.trackConfig.waypoints[1].x, 0, self.trackConfig.waypoints[1].y, WAYPOINTWHITE,true,true,WAYPOINTRACETRACK)
 	local time = getTimestampMilli()
 	writeScreenPlayData(pPlayer, self.trackConfig.trackName, "starttime", time)
 	writeScreenPlayData(pPlayer, self.trackConfig.trackName, "waypoint", 1)
@@ -63,7 +63,7 @@ function RaceTrack:actuallyProcessWaypoint(pPlayer, index)
 		return
 	end
 
-	local waypointID = PlayerObject(pGhost):addWaypoint(self.trackConfig.planetName,self.trackConfig.trackCheckpoint .. index,self.trackConfig.trackCheckpoint .. index,self.trackConfig.waypoints[index+1].x,self.trackConfig.waypoints[index+1].y,WAYPOINTWHITE,true,true,WAYPOINTRACETRACK)
+	local waypointID = PlayerObject(pGhost):addWaypoint(self.trackConfig.planetName,self.trackConfig.trackCheckpoint .. index,self.trackConfig.trackCheckpoint .. index,self.trackConfig.waypoints[index+1].x, 0, self.trackConfig.waypoints[index+1].y, WAYPOINTWHITE,true,true,WAYPOINTRACETRACK)
 	local seconds = self:getLaptime(pPlayer)
 	CreatureObject(pPlayer):sendSystemMessage(self.trackConfig.trackLaptime .. index)
 	CreatureObject(pPlayer):sendSystemMessage("Time " .. self:roundNumber(seconds/1000) .. "s")

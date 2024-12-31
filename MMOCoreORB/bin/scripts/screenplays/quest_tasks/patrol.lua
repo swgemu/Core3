@@ -58,7 +58,7 @@ function Patrol:setupPatrolPoints(pPlayer)
 		local pGhost = CreatureObject(pPlayer):getPlayerObject()
 
 		if (pGhost ~= nil) then
-			local waypointID = PlayerObject(pGhost):addWaypoint(planetName, self.waypointName, "", spawnPoint[1], spawnPoint[3], WAYPOINTYELLOW, true, true, 0, 0)
+			local waypointID = PlayerObject(pGhost):addWaypoint(planetName, self.waypointName, "", spawnPoint[1], 0, spawnPoint[3], WAYPOINTYELLOW, true, true, 0, 0)
 			writeData(areaID .. self.taskName .. "waypointID", waypointID)
 		end
 	end
