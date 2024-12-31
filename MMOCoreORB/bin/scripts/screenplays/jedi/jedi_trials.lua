@@ -187,7 +187,7 @@ function JediTrials:unlockJediKnight(pPlayer)
 	CreatureObject(pPlayer):playMusicMessage(unlockMusic)
 	playClientEffectLoc(pPlayer, "clienteffect/trap_electric_01.cef", CreatureObject(pPlayer):getZoneName(), CreatureObject(pPlayer):getPositionX(), CreatureObject(pPlayer):getPositionZ(), CreatureObject(pPlayer):getPositionY(), CreatureObject(pPlayer):getParentID())
 
-	PlayerObject(pGhost):addWaypoint(enclaveLoc[3], enclaveName, "", enclaveLoc[1], enclaveLoc[2], WAYPOINTYELLOW, true, true, 0)
+	PlayerObject(pGhost):addWaypoint(enclaveLoc[3], enclaveName, "", enclaveLoc[1], 0, enclaveLoc[2], WAYPOINTYELLOW, true, true, 0)
 	PlayerObject(pGhost):setJediState(jediState)
 	PlayerObject(pGhost):setFrsCouncil(councilType)
 	PlayerObject(pGhost):setFrsRank(0)
@@ -239,7 +239,7 @@ function JediTrials:createShrineWaypoint(pPlayer, pShrine)
 
 	if (pGhost ~= nil) then
 		local zoneName = SceneObject(pShrine):getZoneName()
-		local waypointID = PlayerObject(pGhost):addWaypoint(zoneName, zoneName:gsub("^%l", string.upper) .. " Force Shrine", "", SceneObject(pShrine):getWorldPositionX(), SceneObject(pShrine):getWorldPositionY(), WAYPOINTYELLOW, true, true, 0)
+		local waypointID = PlayerObject(pGhost):addWaypoint(zoneName, zoneName:gsub("^%l", string.upper) .. " Force Shrine", "", SceneObject(pShrine):getWorldPositionX(), 0, SceneObject(pShrine):getWorldPositionY(), WAYPOINTYELLOW, true, true, 0)
 		writeData(SceneObject(pPlayer):getObjectID() .. ":jediShrineWaypointID", waypointID)
 	end
 end

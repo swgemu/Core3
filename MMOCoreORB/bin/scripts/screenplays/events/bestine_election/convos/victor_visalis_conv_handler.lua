@@ -166,7 +166,7 @@ function victorVisalisConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNp
 			local curID = readData(SceneObject(pPlayer):getObjectID() .. ":bestineElection:tuskenWaypointID")
 			PlayerObject(pGhost):removeWaypoint(curID, true)
 
-			local wayID = PlayerObject(pGhost):addWaypoint("tatooine", "Fort Tusken", "", -3960, 6233, WAYPOINTBLUE, true, true, 0,0)
+			local wayID = PlayerObject(pGhost):addWaypoint("tatooine", "Fort Tusken", "", -3960, 0, 6233, WAYPOINTBLUE, true, true, 0,0)
 			writeData(SceneObject(pPlayer):getObjectID() .. ":bestineElection:tuskenWaypointID", wayID)
 		end
 	elseif (screenID == "sand_people_will_leave") then
@@ -192,7 +192,7 @@ function victorVisalisConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNp
 		local pGhost = CreatureObject(pPlayer):getPlayerObject()
 
 		if (pGhost ~= nil) then
-			local wayID = PlayerObject(pGhost):addWaypoint("tatooine", "Fort Tusken", "", -3960, 6233, WAYPOINTBLUE, true, true, 0,0)
+			local wayID = PlayerObject(pGhost):addWaypoint("tatooine", "Fort Tusken", "", -3960, 0, 6233, WAYPOINTBLUE, true, true, 0,0)
 			writeData(SceneObject(pPlayer):getObjectID() .. ":bestineElection:tuskenWaypointID", wayID)
 		end
 	end

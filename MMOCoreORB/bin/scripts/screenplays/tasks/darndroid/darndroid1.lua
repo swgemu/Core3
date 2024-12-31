@@ -244,7 +244,7 @@ function DarnDroid1:giveWaypoint(pPlayer, planet, name, x, y)
 		PlayerObject(pGhost):removeWaypoint(oldWaypointID, true)
 		removeQuestStatus(playerID .. ":darnDroid1WaypointID")
 	end
-	local waypointID = PlayerObject(pGhost):addWaypoint(planet, name, "", x, y, WAYPOINTYELLOW, true, true, 0, 0)
+	local waypointID = PlayerObject(pGhost):addWaypoint(planet, name, "", x, 0, y, WAYPOINTYELLOW, true, true, 0, 0)
 	setQuestStatus(playerID .. ":darnDroid1WaypointID", waypointID)
 end
 

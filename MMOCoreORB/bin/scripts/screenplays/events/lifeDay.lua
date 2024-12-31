@@ -106,7 +106,7 @@ function LifeDay:giveWaypoint(pPlayer)
 	local pGhost = CreatureObject(pPlayer):getPlayerObject()
 
 	if (pGhost ~= nil) then
-		local newWaypointID = PlayerObject(pGhost):addWaypoint(self.waypoints[num].planet, "@quest/lifeday/lifeday:waypoint_name", "", self.waypoints[num].x, self.waypoints[num].y, 2, true, true, 0, 0) -- Life Day Celebration
+		local newWaypointID = PlayerObject(pGhost):addWaypoint(self.waypoints[num].planet, "@quest/lifeday/lifeday:waypoint_name", "", self.waypoints[num].x, 0, self.waypoints[num].y, 2, true, true, 0, 0) -- Life Day Celebration
 		writeData(playerID .. "lifeDayWaypointID", newWaypointID)
 		writeData(playerID .. ":lifeDayState", 1)
 

@@ -131,7 +131,7 @@ function RishaSinan:finalTask(pPlayer)
 		PlayerObject(pGhost):removeWaypoint(oldWaypointID, true)
 		removeQuestStatus(playerID .. ":rishaSinanWaypointID")
 	end
-	local waypointID = PlayerObject(pGhost):addWaypoint("rori", "Return to Risha Sinan", "", 5335, 5637, WAYPOINTYELLOW, true, true, 0, 0)
+	local waypointID = PlayerObject(pGhost):addWaypoint("rori", "Return to Risha Sinan", "", 5335, 0, 5637, WAYPOINTYELLOW, true, true, 0, 0)
 	setQuestStatus(playerID .. ":rishaSinanWaypointID", waypointID)
 
 	PlayerObject(pGhost):activateJournalQuestTask(questCrc, TASK_RETURNTORISHA, true);
@@ -215,7 +215,7 @@ function RishaSinan:giveWaypoints(pPlayer)
 		PlayerObject(pGhost):removeWaypoint(oldWaypointID, true)
 		removeQuestStatus(playerID .. ":rishaSinanCaveWaypointID")
 	end
-	local waypointID = PlayerObject(pGhost):addWaypoint("rori", "Giant Mite Cave", "", 3572, 5424, WAYPOINTYELLOW, true, true, 0, 0)
+	local waypointID = PlayerObject(pGhost):addWaypoint("rori", "Giant Mite Cave", "", 3572, 0, 5424, WAYPOINTYELLOW, true, true, 0, 0)
 	setQuestStatus(playerID .. ":rishaSinanCaveWaypointID", waypointID)
 
 	oldWaypointID = tonumber(getQuestStatus(playerID .. ":rishaSinanWaypointID"))
@@ -223,7 +223,7 @@ function RishaSinan:giveWaypoints(pPlayer)
 		PlayerObject(pGhost):removeWaypoint(oldWaypointID, true)
 		removeQuestStatus(playerID .. ":rishaSinanWaypointID")
 	end
-	waypointID = PlayerObject(pGhost):addWaypoint("rori", "Risha Sinan", "", 5335, 5637, WAYPOINTYELLOW, false, true, 0, 0)
+	waypointID = PlayerObject(pGhost):addWaypoint("rori", "Risha Sinan", "", 5335, 0, 5637, WAYPOINTYELLOW, false, true, 0, 0)
 	setQuestStatus(playerID .. ":rishaSinanWaypointID", waypointID)
 end
 

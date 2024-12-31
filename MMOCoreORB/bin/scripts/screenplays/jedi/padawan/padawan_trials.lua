@@ -514,7 +514,7 @@ function PadawanTrials:createMainLocation(pPlayer)
 	local pGhost = CreatureObject(pPlayer):getPlayerObject()
 
 	if (pGhost ~= nil) then
-		PlayerObject(pGhost):addWaypoint(planetName, "Speak to this person", "", spawnLoc[1], spawnLoc[3], WAYPOINTBLUE, true, true, WAYPOINTQUESTTASK)
+		PlayerObject(pGhost):addWaypoint(planetName, "Speak to this person", "", spawnLoc[1], 0, spawnLoc[3], WAYPOINTBLUE, true, true, WAYPOINTQUESTTASK)
 	end
 end
 
@@ -756,7 +756,7 @@ function PadawanTrials:createTargetLocation(pPlayer, isThirdLocation)
 	local pGhost = CreatureObject(pPlayer):getPlayerObject()
 
 	if (pGhost ~= nil) then
-		PlayerObject(pGhost):addWaypoint(zoneName, "Padawan Trial waypoint", "", targetLoc[1], targetLoc[3], WAYPOINTBLUE, true, true, WAYPOINTQUESTTASK)
+		PlayerObject(pGhost):addWaypoint(zoneName, "Padawan Trial waypoint", "", targetLoc[1], 0, targetLoc[3], WAYPOINTBLUE, true, true, WAYPOINTQUESTTASK)
 	end
 end
 

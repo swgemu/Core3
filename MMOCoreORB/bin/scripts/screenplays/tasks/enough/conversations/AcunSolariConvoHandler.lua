@@ -38,11 +38,11 @@ function AcunSolariConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNpc, 
 		CreatureObject(pNpc):doAnimation("salute1")
 
 		-- Waypoint to Pilot
-		local waypointID = ghost:addWaypoint("corellia", "Escape Pod Crash Site", "Escape Pod Crash Site", -5463, -930, WAYPOINTYELLOW, true, true, EnoughQuest.REBEL_CRC)
+		local waypointID = ghost:addWaypoint("corellia", "Escape Pod Crash Site", "Escape Pod Crash Site", -5463, 0, -930, WAYPOINTYELLOW, true, true, EnoughQuest.REBEL_CRC)
 		writeScreenPlayData(pPlayer, "EnoughQuest", "PilotWaypointID", waypointID)
 
 		-- Waypoint to quest giver
-		waypointID = ghost:addWaypoint("corellia", "Acun Solari", "Acun Solari", -5200, -2575, WAYPOINTYELLOW, true, true, EnoughQuest.REBEL_CRC)
+		waypointID = ghost:addWaypoint("corellia", "Acun Solari", "Acun Solari", -5200, 0, -2575, WAYPOINTYELLOW, true, true, EnoughQuest.REBEL_CRC)
 		writeScreenPlayData(pPlayer, "EnoughQuest", "QuestGiverWaypointID", waypointID)
 
 		ghost:activateJournalQuest(EnoughQuest.REBEL_CRC, true)
@@ -50,7 +50,7 @@ function AcunSolariConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNpc, 
 		CreatureObject(pNpc):doAnimation("sigh_deeply")
 
 		-- Waypoint to Pilot
-		local waypointID = ghost:addWaypoint("corellia", "Escape Pod Crash Site", "Escape Pod Crash Site", -5463, -930, WAYPOINTYELLOW, true, true, EnoughQuest.REBEL_CRC)
+		local waypointID = ghost:addWaypoint("corellia", "Escape Pod Crash Site", "Escape Pod Crash Site", -5463, 0, -930, WAYPOINTYELLOW, true, true, EnoughQuest.REBEL_CRC)
 		writeScreenPlayData(pPlayer, "EnoughQuest", "PilotWaypointID", waypointID)
 
 	-- Give reward if the player has not yet received it
@@ -77,11 +77,11 @@ function AcunSolariConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNpc, 
 		CreatureObject(pPlayer):sendSystemMessage("You recieve " .. creditsAmount .. " credits for completing your task.")
 	elseif (screenID == "help_accept") then
 		-- Waypoint to Flail Camp
-		local waypointID = ghost:addWaypoint("corellia", "Flail Camp", "Flail Camp", -4737, -1519, WAYPOINTYELLOW, true, true, EnoughQuest.REBEL_CRC)
+		local waypointID = ghost:addWaypoint("corellia", "Flail Camp", "Flail Camp", -4737, 0, -1519, WAYPOINTYELLOW, true, true, EnoughQuest.REBEL_CRC)
 		writeScreenPlayData(pPlayer, "EnoughQuest", "KilllWaypointID", waypointID)
 
 		-- Waypoint to Binayre Camp
-		waypointID = ghost:addWaypoint("talus", "Binayre Camp", "Binayre Camp", -1622, 618, WAYPOINTYELLOW, true, true, EnoughQuest.REBEL_CRC)
+		waypointID = ghost:addWaypoint("talus", "Binayre Camp", "Binayre Camp", -1622, 0, 618, WAYPOINTYELLOW, true, true, EnoughQuest.REBEL_CRC)
 		writeScreenPlayData(pPlayer, "EnoughQuest", "BinayreWaypointID", waypointID)
 
 		ghost:completeJournalQuestTask(EnoughQuest.REBEL_CRC, EnoughQuest.REWARD1, true)

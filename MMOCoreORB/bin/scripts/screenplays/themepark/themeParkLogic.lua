@@ -1602,7 +1602,7 @@ function ThemeParkLogic:updateWaypoint(pConversingPlayer, planetName, x, y, dire
 	local activeNpcNumber = self:getActiveNpcNumber(pConversingPlayer)
 	local missionNumber = self:getCurrentMissionNumber(activeNpcNumber, pConversingPlayer)
 	local stfFile = self:getStfFile(activeNpcNumber)
-	local waypointID = PlayerObject(pGhost):addWaypoint(planetName, self:getMissionDescription(pConversingPlayer, direction), "", x, y, WAYPOINTPURPLE, true, true, WAYPOINTTHEMEPARK, 0)
+	local waypointID = PlayerObject(pGhost):addWaypoint(planetName, self:getMissionDescription(pConversingPlayer, direction), "", x, 0, y, WAYPOINTPURPLE, true, true, WAYPOINTTHEMEPARK, 0)
 	local pWaypoint = getSceneObject(waypointID)
 	if (pWaypoint == nil) then
 		return

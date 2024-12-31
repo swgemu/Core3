@@ -169,7 +169,7 @@ function seanTrenwellConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNpc
 			local curID = readData(playerID .. ":bestineElection:historyWaypointID")
 			PlayerObject(pGhost):removeWaypoint(curID, true)
 
-			local historyWaypointID = PlayerObject(pGhost):addWaypoint("tatooine", "Historical Site", "", -758, -3907, WAYPOINTBLUE, true, true, 0,0)
+			local historyWaypointID = PlayerObject(pGhost):addWaypoint("tatooine", "Historical Site", "", -758, 0, -3907, WAYPOINTBLUE, true, true, 0,0)
 			writeData(playerID .. ":bestineElection:historyWaypointID", historyWaypointID)
 		end
 	elseif (screenID == "seek_out_contact") then
@@ -182,7 +182,7 @@ function seanTrenwellConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNpc
 			local curID = readData(playerID .. ":bestineElection:contactWaypointID")
 			PlayerObject(pGhost):removeWaypoint(curID, true)
 
-			local contactWaypointID = PlayerObject(pGhost):addWaypoint("tatooine", "Sean's Contact", "", -1448, -3765, WAYPOINTBLUE, true, true, 0,0)
+			local contactWaypointID = PlayerObject(pGhost):addWaypoint("tatooine", "Sean's Contact", "", -1448, 0, -3765, WAYPOINTBLUE, true, true, 0,0)
 			writeData(playerID .. ":bestineElection:contactWaypointID", contactWaypointID)
 		end
 	elseif (screenID == "disappointed_but_understand") then

@@ -454,7 +454,7 @@ function SecretsOfTheSyren:updateWaypoint(pPlayer, ghost, planet, text, x, y)
 	self:removeWaypoint(pPlayer, ghost)
 
 	local playerID = SceneObject(pPlayer):getObjectID()
-	local waypointID = ghost:addWaypoint(planet, text, "", x, y, WAYPOINTPURPLE, true, true, WAYPOINTQUESTTASK, 0)
+	local waypointID = ghost:addWaypoint(planet, text, "", x, 0, y, WAYPOINTPURPLE, true, true, WAYPOINTQUESTTASK, 0)
 	writeData(playerID .. ":syrent:waypointID", waypointID)
 end
 

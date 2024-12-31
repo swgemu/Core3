@@ -167,19 +167,19 @@ function SafetyMeasures:startQuest(pPlayer, pNpc, quest)
 	elseif (quest == self.KILLBRIGANDS) then
 		ghost:activateJournalQuest(QuestManager.questCRC.QUEST_LF_SAFETY3, true)
 
-		local waypointID = ghost:addWaypoint(self.planet, "Brigand Camp 1", "Brigand Camp 1", self.brigandCampLocation1[1], self.brigandCampLocation1[3], WAYPOINTYELLOW, true, true, 0, 0)
+		local waypointID = ghost:addWaypoint(self.planet, "Brigand Camp 1", "Brigand Camp 1", self.brigandCampLocation1[1], 0, self.brigandCampLocation1[3], WAYPOINTYELLOW, true, true, 0, 0)
 		writeData(playerID .. ":SafetyMeasures:waypointID:", waypointID)
 		CreatureObject(pNpc):doAnimation("bow")
 	elseif (quest == self.LOOTDATAPAD) then
 		ghost:activateJournalQuest(QuestManager.questCRC.QUEST_LF_SAFETY4, true)
 
-		local waypointID = ghost:addWaypoint(self.planet, "Brigand Camp 2", "Brigand Camp 2", self.brigandCampLocation2[1], self.brigandCampLocation2[3], WAYPOINTYELLOW, true, true, 0, 0)
+		local waypointID = ghost:addWaypoint(self.planet, "Brigand Camp 2", "Brigand Camp 2", self.brigandCampLocation2[1], 0, self.brigandCampLocation2[3], WAYPOINTYELLOW, true, true, 0, 0)
 		writeData(playerID .. ":SafetyMeasures:waypointID:", waypointID)
 		CreatureObject(pNpc):doAnimation("bow")
 	elseif (quest == self.BRIGANDLEADER) then
 		ghost:activateJournalQuest(QuestManager.questCRC.QUEST_LF_SAFETY5, true)
 
-		local waypointID = ghost:addWaypoint(self.planet, "Brigand Leader Camp", "Brigand Leader Camp", self.brigandLeaderLocation[1], self.brigandLeaderLocation[3], WAYPOINTYELLOW, true, true, 0, 0)
+		local waypointID = ghost:addWaypoint(self.planet, "Brigand Leader Camp", "Brigand Leader Camp", self.brigandLeaderLocation[1], 0, self.brigandLeaderLocation[3], WAYPOINTYELLOW, true, true, 0, 0)
 		writeData(playerID .. ":SafetyMeasures:waypointID:", waypointID)
 
 		CreatureObject(pNpc):doAnimation("applause_excited")
@@ -298,7 +298,7 @@ function SafetyMeasures:removeWaypoint(pPlayer, giveReturn)
 	end
 
 	if (giveReturn > 0) then
-		local waypointID = ghost:addWaypoint(self.planet, "Gerak Vertimis", "Gerak Vertimis", self.questGiverLocation[1], self.questGiverLocation[3], WAYPOINTYELLOW, true, true, 0, 0)
+		local waypointID = ghost:addWaypoint(self.planet, "Gerak Vertimis", "Gerak Vertimis", self.questGiverLocation[1], 0, self.questGiverLocation[3], WAYPOINTYELLOW, true, true, 0, 0)
 
 		writeData(playerID .. ":SafetyMeasures:waypointID:", waypointID)
 	end

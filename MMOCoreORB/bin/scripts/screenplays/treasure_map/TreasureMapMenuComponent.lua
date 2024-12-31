@@ -94,7 +94,7 @@ function TreasureMapMenuComponent:doSearchArea(pObject, pPlayer)
 	end
 
 	CreatureObject(pPlayer):sendSystemMessage("@treasure_map/treasure_map:sys_pinpoint") -- You have successfully pinpointed the exact location of the treasure!
-	local waypointID = PlayerObject(pGhost):addWaypoint(mapData.planet, "@treasure_map/treasure_map:waypoint_name", "", spawnPoint[1], spawnPoint[3], WAYPOINTGREEN, true, true, WAYPOINTTREASUREMAP, 0)
+	local waypointID = PlayerObject(pGhost):addWaypoint(mapData.planet, "@treasure_map/treasure_map:waypoint_name", "", spawnPoint[1], 0, spawnPoint[3], WAYPOINTGREEN, true, true, WAYPOINTTREASUREMAP, 0)
 	writeData(playerID .. ":treasureMapExactWaypointID", waypointID)
 	deleteData(playerID .. ":treasureMapSearchAreaWaypointID")
 	deleteData(playerID .. ":treasureMapSearchAreaActiveAreaID")
@@ -332,7 +332,7 @@ function TreasureMapMenuComponent:handleTreasureMapSuiCallback(pCreature, pSui, 
 		spawnPoint = getSpawnPoint(zoneName, mapData.x, mapData.y, 1, 2000)
 	end
 
-	local waypointID = PlayerObject(pGhost):addWaypoint(mapData.planet, "@treasure_map/treasure_map:waypoint_name", "", spawnPoint[1], spawnPoint[3], WAYPOINTGREEN, true, true, WAYPOINTTREASUREMAP, 0)
+	local waypointID = PlayerObject(pGhost):addWaypoint(mapData.planet, "@treasure_map/treasure_map:waypoint_name", "", spawnPoint[1], 0, spawnPoint[3], WAYPOINTGREEN, true, true, WAYPOINTTREASUREMAP, 0)
 	local activeAreaID = self:spawnSearchArea(mapType, pCreature, spawnPoint[1], spawnPoint[3])
 	writeData(playerID .. ":treasureMapSearchAreaWaypointID", waypointID)
 	writeData(playerID .. ":treasureMapSearchAreaActiveAreaID", activeAreaID)

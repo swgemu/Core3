@@ -588,7 +588,7 @@ function Coa3Screenplay:setupCaravan(pPlayer)
 	local wayName = "@theme_park/alderaan/act3/shared_" .. faction .. "_missions:waypoint_name_2"
 	local wayDesc = "@theme_park/alderaan/act3/shared_" .. faction .. "_missions:waypoint_desc_2"
 
-	local wayID = PlayerObject(pGhost):addWaypoint(planet, wayName, wayDesc, missionLoc[1], missionLoc[3], WAYPOINTYELLOW, true, true, WAYPOINTQUESTTASK)
+	local wayID = PlayerObject(pGhost):addWaypoint(planet, wayName, wayDesc, missionLoc[1], 0, missionLoc[3], WAYPOINTYELLOW, true, true, WAYPOINTQUESTTASK)
 	local spawnIDs = {}
 
 	local x = missionLoc[1]
@@ -844,7 +844,7 @@ function Coa3Screenplay:onLootCaravanLeader(pLootedCreature, pLooter, nothing)
 				local wayName = "@theme_park/alderaan/act3/shared_" .. faction .. "_missions:waypoint_return_name_2"
 				local wayDesc = "@theme_park/alderaan/act3/shared_" .. faction .. "_missions:waypoint_return_desc_2"
 
-				local wayID = PlayerObject(pGhost):addWaypoint(returnPlanet, wayName, wayDesc, returnLocation[1], returnLocation[3], WAYPOINTYELLOW, true, true, WAYPOINTQUESTTASK)
+				local wayID = PlayerObject(pGhost):addWaypoint(returnPlanet, wayName, wayDesc, returnLocation[1], 0, returnLocation[3], WAYPOINTYELLOW, true, true, WAYPOINTQUESTTASK)
 			end
 		end
 		return 1
@@ -1256,7 +1256,7 @@ function Coa3Screenplay:abortMission(pPlayer, missionNum, returnToNpc)
 				local wayName = "@theme_park/alderaan/act3/shared_" .. faction .. "_missions:waypoint_return_name_" .. missionNum
 				local wayDesc = "@theme_park/alderaan/act3/shared_" .. faction .. "_missions:waypoint_return_desc_" .. missionNum
 
-				local wayID = PlayerObject(pGhost):addWaypoint(returnPlanet, wayName, wayDesc, returnLocation[1], returnLocation[3], WAYPOINTYELLOW, true, true, WAYPOINTQUESTTASK)
+				local wayID = PlayerObject(pGhost):addWaypoint(returnPlanet, wayName, wayDesc, returnLocation[1], 0, returnLocation[3], WAYPOINTYELLOW, true, true, WAYPOINTQUESTTASK)
 
 				writeData(playerID .. ":CoA3:ReturnWaypoint:", wayID)
 			end
@@ -1346,7 +1346,7 @@ function Coa3Screenplay:createMissionWaypoint(pPlayer, x, y, planet, missionNum,
 	local wayName = "@theme_park/alderaan/act3/shared_" .. faction .. "_missions:waypoint_name_" .. missionNum
 	local wayDesc = "@theme_park/alderaan/act3/shared_" .. faction .. "_missions:waypoint_desc_" .. missionNum
 
-	local wayID = PlayerObject(pGhost):addWaypoint(planet, wayName, wayDesc, x, y, WAYPOINTYELLOW, true, true, WAYPOINTQUESTTASK)
+	local wayID = PlayerObject(pGhost):addWaypoint(planet, wayName, wayDesc, x, 0, y, WAYPOINTYELLOW, true, true, WAYPOINTQUESTTASK)
 
 	writeData(playerID .. ":CoA3:Waypoint:", wayID)
 end

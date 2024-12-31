@@ -38,7 +38,7 @@ function BiogenicHeraldDealerConvoHandler:runScreenHandlers(pConvTemplate, pPlay
 					PlayerObject(pGhost):updateWaypoint(SceneObject(pWaypoint):getObjectID())
 				end
 			else
-				PlayerObject(pGhost):addWaypoint("yavin4", "Mysterious Cave", "", -6488, -417, WAYPOINTBLUE, true, true, 0)
+				PlayerObject(pGhost):addWaypoint("yavin4", "Mysterious Cave", "", -6488, 0, -417, WAYPOINTBLUE, true, true, 0)
 			end
 		end
 	elseif screenID == "knew_it" then
