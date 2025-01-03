@@ -65,8 +65,6 @@ Luna<LuaSceneObject>::RegType LuaSceneObject::Register[] = {
 		{ "isCreature", &LuaSceneObject::isCreature },
 		{ "isBuildingObject", &LuaSceneObject::isBuildingObject },
 		{ "isActiveArea", &LuaSceneObject::isActiveArea },
-		{ "isShipObject", &LuaSceneObject::isShipObject },
-		{ "isShipAiAgent", &LuaSceneObject::isShipAiAgent },
 		{ "isMissionObject", &LuaSceneObject::isMissionObject },
 		{ "sendTo", &LuaSceneObject::sendTo },
 		{ "getCustomObjectName", &LuaSceneObject::getCustomObjectName },
@@ -102,6 +100,11 @@ Luna<LuaSceneObject>::RegType LuaSceneObject::Register[] = {
 		{ "getPlayersInRange", &LuaSceneObject::getPlayersInRange },
 		{ "isInNavMesh", &LuaSceneObject::isInNavMesh },
 		{ "checkInConversationRange", &LuaSceneObject::checkInConversationRange },
+
+		// JTL
+		{ "isShipObject", &LuaSceneObject::isShipObject },
+		{ "isShipAiAgent", &LuaSceneObject::isShipAiAgent },
+		{ "isPlayerShip", &LuaSceneObject::isPlayerShip },
 		{ "isShipComponent", &LuaSceneObject::isShipComponent },
 		{ "isShipComponentRepairKit", &LuaSceneObject::isShipComponentRepairKit },
 		{ 0, 0 }
@@ -664,40 +667,8 @@ int LuaSceneObject::isActiveArea(lua_State* L) {
 	return 1;
 }
 
-int LuaSceneObject::isShipObject(lua_State* L) {
-	bool val = realObject->isShipObject();
-
-	lua_pushboolean(L, val);
-
-	return 1;
-}
-
-int LuaSceneObject::isShipAiAgent(lua_State* L) {
-	bool val = realObject->isShipAiAgent();
-
-	lua_pushboolean(L, val);
-
-	return 1;
-}
-
 int LuaSceneObject::isMissionObject(lua_State* L) {
 	bool val = realObject->isMissionObject();
-
-	lua_pushboolean(L, val);
-
-	return 1;
-}
-
-int LuaSceneObject::isShipComponent(lua_State* L) {
-	bool val = realObject->isShipComponentObject();
-
-	lua_pushboolean(L, val);
-
-	return 1;
-}
-
-int LuaSceneObject::isShipComponentRepairKit(lua_State* L) {
-	bool val = realObject->isShipComponentRepairKit();
 
 	lua_pushboolean(L, val);
 
@@ -1037,5 +1008,49 @@ int LuaSceneObject::checkInConversationRange(lua_State* L) {
 	bool val = realObject->checkInConversationRange(targetObject);
 
 	lua_pushboolean(L, val);
+	return 1;
+}
+
+/*
+	JTL
+*/
+
+int LuaSceneObject::isShipObject(lua_State* L) {
+	bool val = realObject->isShipObject();
+
+	lua_pushboolean(L, val);
+
+	return 1;
+}
+
+int LuaSceneObject::isShipAiAgent(lua_State* L) {
+	bool val = realObject->isShipAiAgent();
+
+	lua_pushboolean(L, val);
+
+	return 1;
+}
+
+int LuaSceneObject::isPlayerShip(lua_State* L) {
+	bool val = realObject->isPlayerShip();
+
+	lua_pushboolean(L, val);
+
+	return 1;
+}
+
+int LuaSceneObject::isShipComponent(lua_State* L) {
+	bool val = realObject->isShipComponentObject();
+
+	lua_pushboolean(L, val);
+
+	return 1;
+}
+
+int LuaSceneObject::isShipComponentRepairKit(lua_State* L) {
+	bool val = realObject->isShipComponentRepairKit();
+
+	lua_pushboolean(L, val);
+
 	return 1;
 }

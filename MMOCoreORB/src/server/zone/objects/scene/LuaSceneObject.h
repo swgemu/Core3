@@ -76,8 +76,6 @@ namespace scene {
 		int isCreature(lua_State* L);
 		int isBuildingObject(lua_State* L);
 		int isActiveArea(lua_State* L);
-		int isShipObject(lua_State* L);
-		int isShipAiAgent(lua_State* L);
 		int isMissionObject(lua_State* L);
 		int getZoneName(lua_State* L);
 		int sendTo(lua_State* L);
@@ -114,6 +112,11 @@ namespace scene {
 		int getPlayersInRange(lua_State* L);
 		int isInNavMesh(lua_State* L);
 		int checkInConversationRange(lua_State* L);
+
+		// JTL
+		int isShipObject(lua_State* L);
+		int isShipAiAgent(lua_State* L);
+		int isPlayerShip(lua_State* L);
 		int isShipComponent(lua_State* L);
 		int isShipComponentRepairKit(lua_State* L);
 

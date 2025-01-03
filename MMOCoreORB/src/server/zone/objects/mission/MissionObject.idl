@@ -75,6 +75,8 @@ class MissionObject extends IntangibleObject {
 
 	protected string targetOptionalTemplate;
 
+	protected boolean spaceDutyMission;
+
 	public MissionObject() {
 		typeCRC = MissionTypes.SURVEY;
 		questCRC = 0;
@@ -110,6 +112,8 @@ class MissionObject extends IntangibleObject {
 
 		missionNumber = 0;
 		missionLevel = 0;
+
+		spaceDutyMission = false;
 
 		Logger.setLoggingName("MissionObject");
 	}
@@ -440,5 +444,15 @@ class MissionObject extends IntangibleObject {
 	@read
 	public int getBonusCredits() {
 		return bonusCredits;
+	}
+
+	@preLocked
+	public void setSpaceDutyMission() {
+		spaceDutyMission = true;
+	}
+
+	@read
+	public boolean isSpaceDutyMission() {
+		return spaceDutyMission;
 	}
 }

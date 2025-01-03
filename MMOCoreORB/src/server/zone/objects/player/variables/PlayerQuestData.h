@@ -268,40 +268,44 @@ public:
 		questCounter = data.questCounter;
 	}
 
+	// Accessors
+
+	uint64 getOwnerId() const {
+		return ownerId;
+	}
+
 	uint16 getActiveStepBitmask() const {
 		return activeStepBitmask;
-	}
-
-	void setActiveStepBitmask(uint16 activeStepBitmask) {
-		this->activeStepBitmask = activeStepBitmask;
-	}
-
-	byte getCompletedFlag() const {
-		return completedFlag;
-	}
-
-	void setCompletedFlag(byte completedFlag) {
-		this->completedFlag = completedFlag;
 	}
 
 	uint16 getCompletedStepBitmask() const {
 		return completedStepBitmask;
 	}
 
-	void setCompletedStepBitmask(uint16 completedStepBitmask) {
-		this->completedStepBitmask = completedStepBitmask;
+	byte getCompletedFlag() const {
+		return completedFlag;
 	}
 
-	uint64 getOwnerId() const {
-		return ownerId;
+	int getQuestCounter() const {
+		return questCounter;
 	}
+
+	// Mutators
 
 	void setOwnerId(uint64 ownerId) {
 		this->ownerId = ownerId;
 	}
 
-	int getQuestCounter() const {
-		return questCounter;
+	void setActiveStepBitmask(uint16 activeStepBitmask) {
+		this->activeStepBitmask = activeStepBitmask;
+	}
+
+	void setCompletedStepBitmask(uint16 completedStepBitmask) {
+		this->completedStepBitmask = completedStepBitmask;
+	}
+
+	void setCompletedFlag(byte completedFlag) {
+		this->completedFlag = completedFlag;
 	}
 
 	void setQuestCounter(int questCounter) {

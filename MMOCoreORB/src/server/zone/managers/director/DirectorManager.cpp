@@ -106,6 +106,8 @@
 #include "server/zone/objects/ship/ai/LuaShipAiAgent.h"
 #include "server/zone/objects/ship/components/LuaShipComponent.h"
 #include "server/zone/objects/ship/components/ShipComponent.h"
+#include "server/zone/objects/area/space/SpaceActiveArea.h"
+#include "server/zone/objects/area/areashapes/SphereAreaShape.h"
 
 int DirectorManager::DEBUG_MODE = 0;
 int DirectorManager::ERROR_CODE = NO_ERROR;
@@ -457,6 +459,7 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	luaEngine->registerFunction("deleteStringVectorSharedMemory", deleteStringVectorSharedMemory);
 	luaEngine->registerFunction("spawnSceneObject", spawnSceneObject);
 	luaEngine->registerFunction("spawnActiveArea", spawnActiveArea);
+	luaEngine->registerFunction("spawnSpaceActiveArea", spawnSpaceActiveArea);
 	luaEngine->registerFunction("spawnBuilding", spawnBuilding);
 	luaEngine->registerFunction("spawnSecurityPatrol", spawnSecurityPatrol);
 	luaEngine->registerFunction("despawnSecurityPatrol", despawnSecurityPatrol);
@@ -3068,6 +3071,80 @@ int DirectorManager::spawnActiveArea(lua_State* L) {
 	} else {
 		lua_pushnil(L);
 	}
+
+	return 1;
+}
+
+int DirectorManager::spawnSpaceActiveArea(lua_State* L) {
+	int numberOfArguments = lua_gettop(L);
+
+	if (numberOfArguments != 6) {
+		String err = "incorrect number of arguments passed to DirectorManager::spawnSpaceActiveArea";
+		printTraceError(L, err);
+		ERROR_CODE = INCORRECT_ARGUMENTS;
+
+		lua_pushnil(L);
+		return 1;
+	}
+
+	float radius = lua_tonumber(L, -1);
+	float y = lua_tonumber(L, -2);
+	float z = lua_tonumber(L, -3);
+	float x = lua_tonumber(L, -4);
+	String areaTemplateName = lua_tostring(L, -5);
+	String zoneName = lua_tostring(L, -6);
+
+	auto zoneServer = ServerCore::getZoneServer();
+
+	if (zoneServer == nullptr) {
+		lua_pushnil(L);
+		return 1;
+	}
+
+	auto zone = zoneServer->getZone(zoneName);
+
+	if (zone == nullptr) {
+		lua_pushnil(L);
+		return 1;
+	}
+
+	ManagedReference<SceneObject*> object = zoneServer->createObject(areaTemplateName.hashCode(), 0);
+
+	if (object == nullptr) {
+		lua_pushnil(L);
+		return 1;
+	}
+
+	auto spaceArea = (object).castTo<SpaceActiveArea*>();
+	ManagedReference<SphereAreaShape*> sphereAreaShape = new SphereAreaShape();
+
+	if (spaceArea == nullptr || sphereAreaShape == nullptr) {
+		lua_pushnil(L);
+		return 1;
+	}
+
+	Locker locker(spaceArea);
+
+	spaceArea->setRadius(radius);
+	spaceArea->initializePosition(x, z, y);
+
+	// Lock the shape for mutation
+	Locker shapeLocker(sphereAreaShape, spaceArea);
+
+	sphereAreaShape->setAreaCenter(x, z, y);
+	sphereAreaShape->setRadius(radius);
+
+	spaceArea->setAreaShape(sphereAreaShape);
+
+	shapeLocker.release();
+
+	Locker zoneLocker(zone, spaceArea);
+
+	zone->transferObject(spaceArea, -1, true);
+
+	spaceArea->_setUpdated(true); //mark updated so the GC doesnt delete it while in LUA
+
+	lua_pushlightuserdata(L, spaceArea);
 
 	return 1;
 }

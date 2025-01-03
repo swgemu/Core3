@@ -43,8 +43,10 @@ namespace mission {
 		int setMissionNumber(lua_State* L);
 		int setRewardCredits(lua_State* L);
 		int setMissionDifficulty(lua_State* L);
+		int setSpaceDutyMission(lua_State* L);
 
 		int getQuestCRC(lua_State* L);
+		int isSpaceDutyMission(lua_State* L);
 
 	private:
 		MissionObject* realObject;
