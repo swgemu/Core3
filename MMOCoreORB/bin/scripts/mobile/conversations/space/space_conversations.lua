@@ -46,3 +46,8 @@ includeFile("conversations/space/greeters/tarth_jaxx_convo.lua")
 includeFile("conversations/space/greeters/rane_yarrow_convo.lua")
 includeFile("conversations/space/greeters/fern_yarrow_convo.lua")
 includeFile("conversations/space/greeters/kess_yarrow_convo.lua")
+
+-- Neutral Pilot
+
+-- Corsec Squadron
+includeFile("conversations/space/neutral/corsec_squadron/rhea_convo.lua")

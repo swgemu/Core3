@@ -27,8 +27,10 @@ Luna<LuaMissionObject>::RegType LuaMissionObject::Register[] = {
 	{ "setMissionNumber", &LuaMissionObject::setMissionNumber },
 	{ "setRewardCredits", &LuaMissionObject::setRewardCredits },
 	{ "setMissionDifficulty", &LuaMissionObject::setMissionDifficulty },
+	{ "setSpaceDutyMission", &LuaMissionObject::setSpaceDutyMission },
 
 	{ "getQuestCRC", &LuaMissionObject::getQuestCRC },
+	{ "isSpaceDutyMission", &LuaMissionObject::isSpaceDutyMission },
 	{ 0, 0}
 };
 
@@ -312,8 +314,24 @@ int LuaMissionObject::setMissionDifficulty(lua_State* L) {
 	return 0;
 }
 
+int LuaMissionObject::setSpaceDutyMission(lua_State* L) {
+	Locker lock(realObject);
+
+	realObject->setSpaceDutyMission();
+
+	return 0;
+}
+
 int LuaMissionObject::getQuestCRC(lua_State* L) {
 	lua_pushnumber(L, realObject->getQuestCRC());
+
+	return 1;
+}
+
+int LuaMissionObject::isSpaceDutyMission(lua_State* L) {
+	bool val = realObject->isSpaceDutyMission();
+
+	lua_pushboolean(L, val);
 
 	return 1;
 }

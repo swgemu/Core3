@@ -49,7 +49,6 @@ public:
 			String questName = args.getStringToken();
 			int questCRC = questName.hashCode();
 
-			PlayerQuestData data;
 			ghost->clearJournalQuest(questCRC, true);
 
 		} catch (Exception& e) {

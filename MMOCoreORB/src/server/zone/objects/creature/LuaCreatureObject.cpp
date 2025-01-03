@@ -174,6 +174,7 @@ Luna<LuaCreatureObject>::RegType LuaCreatureObject::Register[] = {
 		{ "isNeutralPilot", &LuaCreatureObject::isNeutralPilot },
 		{ "hasCertifiedShip", &LuaCreatureObject::hasCertifiedShip },
 		{ "abortQuestMission", &LuaCreatureObject::abortQuestMission },
+		{ "removeQuestMission", &LuaCreatureObject::removeQuestMission },
 		{ 0, 0 }
 };
 
@@ -1494,6 +1495,61 @@ int LuaCreatureObject::abortQuestMission(lua_State* L) {
 		}
 
 		missionManager->handleMissionAbort(mission, realObject);
+
+		return 0;
+	}
+
+	return 0;
+}
+
+int LuaCreatureObject::removeQuestMission(lua_State* L) {
+	int numberOfArguments = lua_gettop(L) - 1;
+
+	if (numberOfArguments != 1) {
+		realObject->error() << "Improper number of arguments in LuaCreatureObject::removeQuestMission.";
+		return 0;
+	}
+
+	uint32 questCRC = lua_tonumber(L, -1);
+
+	if (questCRC == 0) {
+		return 0;
+	}
+
+	auto datapad = realObject->getDatapad();
+
+	if (datapad == nullptr) {
+		return 0;
+	}
+
+	auto zoneServer = realObject->getZoneServer();
+
+	if (zoneServer == nullptr) {
+		return 0;
+	}
+
+	auto missionManager = zoneServer->getMissionManager();
+
+	if (missionManager == nullptr) {
+		return 0;
+	}
+
+	Locker lock(realObject);
+
+	for (int i = 0; i < datapad->getContainerObjectsSize(); i++) {
+		auto object = datapad->getContainerObject(i);
+
+		if (object == nullptr || !object->isMissionObject()) {
+			continue;
+		}
+
+		auto mission = object.castTo<MissionObject*>();
+
+		if (mission == nullptr || (mission->getQuestCRC() != questCRC)) {
+			continue;
+		}
+
+		missionManager->removeMission(mission, realObject);
 
 		return 0;
 	}

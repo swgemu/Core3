@@ -36,15 +36,6 @@ includeFile("space/ship_components/ship_interior_component_menu_component.lua")
 ]]
 includeFile("space/conversations/chassisDealerConvoHandler.lua")
 
--- Neutral
-includeFile("space/conversations/neutral/gilBurtinConvoHandler.lua")
-
--- Rebel
-includeFile("space/conversations/rebel/jPaiBrekConvoHandler.lua")
-
--- Imperial
-includeFile("space/conversations/imperial/imperialBrokerConvoHandler.lua")
-
 -- Greeters
 
 -- Theed
@@ -65,6 +56,23 @@ includeFile("space/conversations/greeters/tarthJaxxConvoHandler.lua")
 includeFile("space/conversations/greeters/raneYarrowConvoHandler.lua")
 includeFile("space/conversations/greeters/fernYarrowConvoHandler.lua")
 includeFile("space/conversations/greeters/kessYarrowConvoHandler.lua")
+
+-- Squadrons
+
+-- Neutral
+includeFile("space/conversations/neutral/gilBurtinConvoHandler.lua")
+
+-- Corsec
+includeFile("space/CorsecSquadronScreenplay.lua")
+includeFile("space/conversations/neutral/corsec_squadron/rheaConvoHandler.lua")
+
+
+-- Rebel
+includeFile("space/conversations/rebel/jPaiBrekConvoHandler.lua")
+
+
+-- Imperial
+includeFile("space/conversations/imperial/imperialBrokerConvoHandler.lua")
 
 
 -- Spawning Sub Folder

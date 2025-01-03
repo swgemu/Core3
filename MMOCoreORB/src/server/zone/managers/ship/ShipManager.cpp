@@ -1157,7 +1157,13 @@ void ShipManager::promptNameShip(CreatureObject* player, ShipControlDevice* ship
 	if (ghost == nullptr)
 		return;
 
-	auto ship = shipDevice->getControlledObject()->asShipObject();
+	auto controlledObject = shipDevice->getControlledObject();
+
+	if (controlledObject == nullptr) {
+		return;
+	}
+
+	auto ship = controlledObject->asShipObject();
 
 	if (ship == nullptr) {
 		return;
