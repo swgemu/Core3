@@ -92,13 +92,33 @@ void ShipWeaponComponentImplementation::fillAttributeList(AttributeListMessage* 
 	ShipComponentImplementation::fillAttributeList(alm, object);
 
 	StringBuffer display;
+
 	display << Math::getPrecision(minDamage, 3) << " - " << Math::getPrecision(maxDamage, 3);
 
-	alm->insertAttribute("@obj_attr_n:ship_component.ship_component_weapon_damage", display.toString());
-	alm->insertAttribute("@obj_attr_n:ship_component.ship_component_weapon_effectiveness_shields", String::valueOf(Math::getPrecision(shieldEffectiveness, 3)));
-	alm->insertAttribute("@obj_attr_n:ship_component.ship_component_weapon_effectiveness_armor", String::valueOf(Math::getPrecision(armorEffectiveness, 3)));
-	alm->insertAttribute("@obj_attr_n:ship_component.ship_component_weapon_energy_per_shot", String::valueOf(Math::getPrecision(energyPerShot, 1)));
-	alm->insertAttribute("@obj_attr_n:ship_component.ship_component_weapon_refire_rate", String::valueOf(Math::getPrecision(refireRate, 3)));
+	if (getGameObjectType()==SceneObjectType::SHIPWEAPONSUBCOMPONET) {
+		alm->insertAttribute("@obj_attr_n:wpn_comp_damage_min", String::valueOf(Math::getPrecision(minDamage, 3)));
+		alm->insertAttribute("@obj_attr_n:wpn_comp_damage_max", String::valueOf(Math::getPrecision(maxDamage, 3)));
+	} else {
+		if (minDamage != 0.f && maxDamage != 0.f) {
+			alm->insertAttribute("@obj_attr_n:ship_component.ship_component_weapon_damage", display.toString());
+		}
+	}
+
+	if (shieldEffectiveness != 0.f) {
+		alm->insertAttribute("@obj_attr_n:ship_component.ship_component_weapon_effectiveness_shields", String::valueOf(Math::getPrecision(shieldEffectiveness, 3)));
+	}
+
+	if (armorEffectiveness != 0.f) {
+		alm->insertAttribute("@obj_attr_n:ship_component.ship_component_weapon_effectiveness_armor", String::valueOf(Math::getPrecision(armorEffectiveness, 3)));
+	}
+
+	if (energyPerShot != 0.f) {
+		alm->insertAttribute("@obj_attr_n:ship_component.ship_component_weapon_energy_per_shot", String::valueOf(Math::getPrecision(energyPerShot, 1)));
+	}
+
+	if (refireRate != 0.f) {
+		alm->insertAttribute("@obj_attr_n:ship_component.ship_component_weapon_refire_rate", String::valueOf(Math::getPrecision(refireRate, 3)));
+	}
 
 	if (reverseEngineeringLevel != 0) {
 		alm->insertAttribute("@obj_attr_n:reverseengineeringlevel", reverseEngineeringLevel);

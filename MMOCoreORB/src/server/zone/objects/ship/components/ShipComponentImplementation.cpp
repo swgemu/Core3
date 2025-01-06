@@ -86,20 +86,25 @@ void ShipComponentImplementation::fillAttributeList(AttributeListMessage* alm, C
 	}
 
 	StringBuffer msg;
+	if (armorMax != 0.f && armor != 0.f){
+		msg << Math::getPrecision(armor, 1) << "/" << Math::getPrecision(armorMax, 1);
+		alm->insertAttribute("@obj_attr_n:ship_component.ship_component_armor", msg.toString());
+		msg.deleteAll();
+	}
 
-	msg << Math::getPrecision(armor, 1) << "/" << Math::getPrecision(armorMax, 1);
-	alm->insertAttribute("@obj_attr_n:ship_component.ship_component_armor", msg.toString());
-	msg.deleteAll();
-
-	msg << Math::getPrecision(hitpoints, 1) << "/" << Math::getPrecision(hitpointsMax, 1);
-	alm->insertAttribute("@obj_attr_n:ship_component.ship_component_hitpoints", msg.toString());
-	msg.deleteAll();
+	if (hitpoints != 0.f && hitpointsMax != 0.f){
+		msg << Math::getPrecision(hitpoints, 1) << "/" << Math::getPrecision(hitpointsMax, 1);
+		alm->insertAttribute("@obj_attr_n:ship_component.ship_component_hitpoints", msg.toString());
+		msg.deleteAll();
+	}
 
 	if (getEnergyCost() != 0.f) {
 		alm->insertAttribute("@obj_attr_n:ship_component.ship_component_energy_required", String::valueOf(Math::getPrecision(energyCost, 1)));
 	}
 
+	if (mass != 0.f){
 	alm->insertAttribute("@obj_attr_n:ship_component.ship_component_mass", String::valueOf(Math::getPrecision(mass, 1)));
+	}
 }
 
 void ShipComponentImplementation::addComponentFlag(uint32 value) {

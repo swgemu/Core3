@@ -387,6 +387,10 @@ public:
 	// Not in client ************
 	const static int SHIPINTERIORCOMPONENT = 0x40000011;
 	const static int SHIPPLASMACONDUIT= 0x40000012;
+	const static int SHIPSHIELDSUBCOMPONET = 0x40000013;
+	const static int SHIPWEAPONSUBCOMPONET = 0x40000014;
+	const static int SHIPCAPACITORSUBCOMPONET = 0x40000015;
+	const static int SHIPBOOSTERSUBCOMPONET = 0x40000016;
 
 public:
 	static const String typeToString(int gameObjectType);

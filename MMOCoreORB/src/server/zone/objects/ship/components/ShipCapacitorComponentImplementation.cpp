@@ -44,9 +44,17 @@ void ShipCapacitorComponentImplementation::fillAttributeList(AttributeListMessag
 	StringBuffer msg;
 
 	msg << "0.0/" << Math::getPrecision(capacitorEnergy, 1);
-	alm->insertAttribute("@obj_attr_n:ship_component.ship_component_capacitor_energy", msg.toString());
 
-	alm->insertAttribute("@obj_attr_n:ship_component.ship_component_capacitor_energy_recharge_rate", String::valueOf(Math::getPrecision(capacitorRechargeRate, 1)));
+	if (getGameObjectType()==SceneObjectType::SHIPCAPACITORSUBCOMPONET){
+		alm->insertAttribute("@obj_attr_n:ship_component.ship_component_capacitor_energy", String::valueOf(Math::getPrecision(capacitorEnergy, 1)));
+	} else {
+		if (capacitorEnergy != 0.f)
+			alm->insertAttribute("@obj_attr_n:ship_component.ship_component_capacitor_energy", msg.toString());
+	}
+
+	if (capacitorRechargeRate !=0) {
+		alm->insertAttribute("@obj_attr_n:ship_component.ship_component_capacitor_energy_recharge_rate", String::valueOf(Math::getPrecision(capacitorRechargeRate, 1)));
+	}
 
 	if (reverseEngineeringLevel != 0) {
 		alm->insertAttribute("@obj_attr_n:reverseengineeringlevel", reverseEngineeringLevel);

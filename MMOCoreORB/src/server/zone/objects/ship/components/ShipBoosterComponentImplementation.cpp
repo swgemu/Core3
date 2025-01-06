@@ -56,12 +56,28 @@ void ShipBoosterComponentImplementation::fillAttributeList(AttributeListMessage*
 	StringBuffer msg;
 
 	msg << "0.0/" << Math::getPrecision(boosterEnergy, 1);
-	alm->insertAttribute("@obj_attr_n:ship_component.ship_component_booster_energy", msg.toString());
+	if (getGameObjectType()==SceneObjectType::SHIPBOOSTERSUBCOMPONET) {
+		alm->insertAttribute("@obj_attr_n:ship_component.ship_component_booster_energy", String::valueOf(Math::getPrecision(boosterEnergy, 1)));
+	} else {
+		if (boosterEnergy != 0.f)
+			alm->insertAttribute("@obj_attr_n:ship_component.ship_component_booster_energy", msg.toString());
+	}
 
-	alm->insertAttribute("@obj_attr_n:ship_component.ship_component_booster_energy_recharge_rate", String::valueOf(Math::getPrecision(boosterRechargeRate, 1)));
-	alm->insertAttribute("@obj_attr_n:ship_component.ship_component_booster_energy_consumption_rate", String::valueOf(Math::getPrecision(boosterConsumptionRate, 1)));
-	alm->insertAttribute("@obj_attr_n:ship_component.ship_component_booster_acceleration", String::valueOf(Math::getPrecision(boosterAcceleration, 1)));
-	alm->insertAttribute("@obj_attr_n:ship_component.ship_component_booster_speed_maximum", String::valueOf(Math::getPrecision(boosterSpeed, 1)));
+	if (boosterRechargeRate != 0.f) {
+		alm->insertAttribute("@obj_attr_n:ship_component.ship_component_booster_energy_recharge_rate", String::valueOf(Math::getPrecision(boosterRechargeRate, 1)));
+	}
+
+	if (boosterConsumptionRate != 0.f) {
+		alm->insertAttribute("@obj_attr_n:ship_component.ship_component_booster_energy_consumption_rate", String::valueOf(Math::getPrecision(boosterConsumptionRate, 1)));
+	}
+
+	if (boosterAcceleration != 0.f) {
+		alm->insertAttribute("@obj_attr_n:ship_component.ship_component_booster_acceleration", String::valueOf(Math::getPrecision(boosterAcceleration, 1)));
+	}
+
+	if (boosterSpeed != 0.f) {
+		alm->insertAttribute("@obj_attr_n:ship_component.ship_component_booster_speed_maximum", String::valueOf(Math::getPrecision(boosterSpeed, 1)));
+	}
 
 	if (reverseEngineeringLevel != 0) {
 		alm->insertAttribute("@obj_attr_n:reverseengineeringlevel", reverseEngineeringLevel);
