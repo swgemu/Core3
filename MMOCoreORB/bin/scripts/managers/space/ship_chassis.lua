@@ -241,6 +241,7 @@ chassisData = {
 	{"spacestation_dantooine", "spacestation_neutral", "object/ship/spacestation_dantooine.iff"},
 	{"spacestation_dathomir", "spacestation_neutral", "object/ship/spacestation_dathomir.iff"},
 	{"spacestation_endor", "spacestation_neutral", "object/ship/spacestation_endor.iff"},
+	{"spacestation_freedom", "spacestation_rebel", "object/ship/spacestation_freedom.iff"},
 	{"spacestation_imperial", "spacestation_imperial", "object/ship/spacestation_imperial.iff"},
 	{"spacestation_lok", "spacestation_neutral", "object/ship/spacestation_lok.iff"},
 	{"spacestation_naboo", "spacestation_neutral", "object/ship/spacestation_naboo.iff"},
