@@ -147,7 +147,7 @@ space_endor = {
 
 space_heavy1 = {
 	spaceStations = {
-		{templateFile = "spacestation_rebel", x = 4927, z = 0, y = -7106, ow = 0, ox = 1, oy = 0, oz = 0, parentid = 0},
+		{templateFile = "spacestation_freedom", x = 4927, z = 0, y = -7106, ow = 0, ox = 1, oy = 0, oz = 0, parentid = 0},
 	}
 }
 
@@ -186,5 +186,3 @@ space_yavin4 = {
 		{templateFile = "spacestation_yavin4", x = -5570.46, z = -5168, y = -5234.88, ow = 0.994108, ox = 0.105996, oy = -0.0145207, oz = -0.0173906, parentid = 0}
 	}
 }
-
-
