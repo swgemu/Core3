@@ -42,7 +42,8 @@ public:
 		SHIPTYPE = 1 << 5,
 		PLAYERSHIPTYPE = 1 << 6,
 		SPACESTATIONTYPE = 1 << 7,
-		MAXTYPES = SPACESTATIONTYPE
+		SHIPCAPITALTYPE = 1 << 8,
+		MAXTYPES = SHIPCAPITALTYPE
 	};
 
 	CloseObjectsVector();
@@ -123,6 +124,12 @@ public:
 		if (flags & SPACESTATIONTYPE) {
 			flags = flags & ~SPACESTATIONTYPE;
 			buf << sep << "SPACESTATIONTYPE";
+			sep = ", ";
+		}
+
+		if (flags & SHIPCAPITALTYPE) {
+			flags = flags & ~SHIPCAPITALTYPE;
+			buf << sep << "SHIPCAPITALTYPE";
 			sep = ", ";
 		}
 
