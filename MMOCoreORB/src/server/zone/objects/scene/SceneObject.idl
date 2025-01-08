@@ -69,6 +69,7 @@ import server.zone.objects.ship.MultiPassengerShipObject;
 import server.zone.objects.ship.FighterShipObject;
 import server.zone.objects.ship.ai.ShipAiAgent;
 import server.zone.objects.ship.ai.SpaceStationObject;
+import server.zone.objects.ship.ai.ShipCapitalObject;
 
 @mock
 @json
@@ -1615,6 +1616,13 @@ class SceneObject extends TreeEntry implements Logger, Metrics {
 	@nativeStub
 	@virtualStub
 	public native abstract SpaceStationObject asSpaceStationObject();
+
+	@mock
+	@dirty
+	@local
+	@nativeStub
+	@virtualStub
+	public native abstract ShipCapitalObject asShipCapitalObject();
 
 	@dirty
 	@local

@@ -22,6 +22,7 @@
 #include "server/zone/objects/ship/ShipObject.h"
 #include "server/zone/objects/ship/FighterShipObject.h"
 #include "server/zone/objects/ship/ai/SpaceStationObject.h"
+#include "server/zone/objects/ship/ai/ShipCapitalObject.h"
 #include "server/zone/objects/ship/PobShipObject.h"
 #include "server/zone/objects/ship/MultiPassengerShipObject.h"
 #include "server/zone/objects/ship/ai/ShipAiAgent.h"

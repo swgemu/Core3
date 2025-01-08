@@ -128,6 +128,7 @@ class ZoneServer extends ManagedService implements Logger {
 	// Changing this will have a large impact on performance.
 	public static final float CLOSEOBJECTRANGE = 192;
 	public static final float SPACECLOSEOBJECTRANGE = 2048;
+	public static final float SHIPCAPITALRANGE = 8192;
 	public static final float SPACESTATIONRANGE = 32768;
 
 	public native ZoneServer(ConfigManager config);

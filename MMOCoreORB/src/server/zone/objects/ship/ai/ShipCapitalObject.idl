@@ -11,23 +11,14 @@ import server.zone.objects.scene.SceneObject;
 import engine.log.Logger;
 
 @json
-class SpaceStationObject extends ShipAiAgent {
+class ShipCapitalObject extends ShipAiAgent {
 
-	public SpaceStationObject() {
-		Logger.setLoggingName("SpaceStationObject");
+	public ShipCapitalObject() {
+		Logger.setLoggingName("ShipCapitalObject");
 		Logger.setLogging(false);
 		Logger.setGlobalLogging(true);
 	}
 
-	@dirty
-	@preLocked
-	public native boolean sendConversationStartTo(SceneObject player);
-
 	@read
 	public native abstract float getOutOfRangeDistance();
-
-	@dirty
-	public boolean isSpaceStation() {
-		return true;
-	}
 }

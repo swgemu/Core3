@@ -53,7 +53,7 @@ object_ship_corvette = object_ship_shared_corvette:new {
 	chassisHitpoints = 60000,
 	chassisMass = 50000,
 
-	gameObjectType = 536870919,
+	gameObjectType = 536870914,
 
 	reactor = {name = "rct_generic", hitpoints = 10000, armor = 5000},
 	engine = {name = "eng_generic", hitpoints = 10000, armor = 5000, speed = 32, acceleration = 8, deceleration = 8, yaw = 3, yawRate = 3, pitch = 3, pitchRate = 3, roll = 3, rollRate = 3},

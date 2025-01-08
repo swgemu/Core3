@@ -43,6 +43,7 @@
 #include "server/zone/objects/scene/SceneObjectType.h"
 #include "server/zone/objects/ship/ShipObject.h"
 #include "server/zone/objects/ship/ai/SpaceStationObject.h"
+#include "server/zone/objects/ship/ai/ShipCapitalObject.h"
 #include "server/zone/objects/ship/PobShipObject.h"
 //#include "PositionUpdateTask.h"
 
@@ -2167,6 +2168,14 @@ SpaceStationObject* SceneObject::asSpaceStationObject() {
 }
 
 SpaceStationObject* SceneObjectImplementation::asSpaceStationObject() {
+	return nullptr;
+}
+
+ShipCapitalObject* SceneObject::asShipCapitalObject() {
+	return nullptr;
+}
+
+ShipCapitalObject* SceneObjectImplementation::asShipCapitalObject() {
 	return nullptr;
 }
 

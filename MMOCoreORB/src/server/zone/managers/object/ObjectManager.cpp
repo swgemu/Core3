@@ -365,7 +365,7 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<SpaceshipTerminal>(SceneObjectType::SPACETERMINAL);
 	objectFactory.registerObject<ShipObject>(SceneObjectType::SHIP);
 	objectFactory.registerObject<FighterShipObject>(SceneObjectType::SHIPFIGHTER);
-	objectFactory.registerObject<ShipObject>(SceneObjectType::SHIPCAPITAL);
+	objectFactory.registerObject<ShipCapitalObject>(SceneObjectType::SHIPCAPITAL);
 	objectFactory.registerObject<SpaceObject>(SceneObjectType::SPACEOBJECT);
 	objectFactory.registerObject<ShipObject>(SceneObjectType::SHIPTRANSPORT);
 	objectFactory.registerObject<PobShipObject>(SceneObjectType::SHIPPOB);
