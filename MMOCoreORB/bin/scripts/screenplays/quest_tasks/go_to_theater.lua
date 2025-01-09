@@ -35,7 +35,7 @@ function GoToTheater:taskStart(pPlayer)
 	local zoneName = SceneObject(pPlayer):getZoneName()
 	local posX = SceneObject(pPlayer):getWorldPositionX()
 	local posY = SceneObject(pPlayer):getWorldPositionY()
-	
+
 	local spawnPoint = getSpawnArea(zoneName, posX, posY, self.minimumDistance, self.maximumDistance, 20, 10, true)
 	local playerID = SceneObject(pPlayer):getObjectID()
 	local attempts = 0
@@ -84,7 +84,7 @@ function GoToTheater:taskStart(pPlayer)
 		local pGhost = CreatureObject(pPlayer):getPlayerObject()
 
 		if (pGhost ~= nil) then
-			PlayerObject(pGhost):addWaypoint(zoneName, self.waypointDescription, "", spawnPoint[1], 0, spawnPoint[3], WAYPOINTYELLOW, true, true, WAYPOINTQUESTTASK)
+			PlayerObject(pGhost):addWaypoint(zoneName, self.waypointDescription, "", spawnPoint[1], 0, spawnPoint[3], WAYPOINT_YELLOW, true, true, WAYPOINTQUESTTASK)
 		end
 	end
 

@@ -377,7 +377,7 @@ function DarnDroid2:giveValanceWaypoint(pPlayer)
 		PlayerObject(pGhost):removeWaypoint(oldWaypointID, true)
 		removeQuestStatus(playerID .. ":DarnDroidValanceWaypointID")
 	end
-	local waypointID = PlayerObject(pGhost):addWaypoint("talus", "Valance Serth", "", -2389, 0, 2043, WAYPOINTYELLOW, false, true, 0, 0)
+	local waypointID = PlayerObject(pGhost):addWaypoint("talus", "Valance Serth", "", -2389, 0, 2043, WAYPOINT_YELLOW, false, true, 0, 0)
 	setQuestStatus(playerID .. ":DarnDroidValanceWaypointID", waypointID)
 end
 
@@ -419,7 +419,7 @@ function DarnDroid2:giveWaypoint(pPlayer, planet, name, x, y)
 		PlayerObject(pGhost):removeWaypoint(oldWaypointID, true)
 		removeQuestStatus(playerID .. ":DarnDroid2WaypointID")
 	end
-	local waypointID = PlayerObject(pGhost):addWaypoint(planet, name, "", x, 0, y, WAYPOINTYELLOW, true, true, 0, 0)
+	local waypointID = PlayerObject(pGhost):addWaypoint(planet, name, "", x, 0, y, WAYPOINT_YELLOW, true, true, 0, 0)
 	setQuestStatus(playerID .. ":DarnDroid2WaypointID", waypointID)
 end
 

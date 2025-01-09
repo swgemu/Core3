@@ -40,10 +40,24 @@ public:
 			return GENERALERROR;
 		}
 
+		auto ghost = creature->getPlayerObject();
+
+		if (ghost == nullptr) {
+			return GENERALERROR;
+		}
+
+		auto zoneServer = server->getZoneServer();
+
+		if (zoneServer == nullptr) {
+			return GENERALERROR;
+		}
+
 		isSpaceZone = zone->isSpaceZone();
+
 		String waypointData = arguments.toString();
 		String waypointName = "@ui:datapad_new_waypoint"; // New Waypoint
 		String planet = zone->getZoneName();
+
 		float x = creature->getPositionX();
 		float y = creature->getPositionY();
 		float z = (isSpaceZone) ? creature->getPositionZ() : 0.0f;
@@ -53,9 +67,11 @@ public:
 		if (rootParent != nullptr) {
 			x = rootParent ->getPositionX();
 			y = rootParent ->getPositionY();
-		}
 
-		Reference<ZoneServer*> zoneServer = server->getZoneServer(); 
+			if (isSpaceZone) {
+				z = rootParent->getPositionZ();
+			}
+		}
 
 		ManagedReference<SceneObject*> targetObject = zoneServer->getObject(target).get();
 
@@ -142,7 +158,7 @@ public:
 
 			x = targetObject->getWorldPositionX();
 			y = targetObject->getWorldPositionY();
-			z = (zone->isSpaceZone()) ? targetObject->getWorldPositionZ() : z;
+			z = isSpaceZone ? targetObject->getWorldPositionZ() : z;
 			waypointName = targetObject->getDisplayedName();
 		}
 
@@ -160,23 +176,26 @@ public:
 		z = (z < -8192) ? -8192 : z;
 		z = (z > 8192) ? 8192 : z;
 
-		PlayerObject* playerObject = creature->getPlayerObject();
+		ManagedReference<WaypointObject*> waypoint = zoneServer->createObject(0xc456e788, 1).castTo<WaypointObject*>();
 
-		ManagedReference<WaypointObject*> obj = zoneServer->createObject(0xc456e788, 1).castTo<WaypointObject*>();
-
-		if (obj == nullptr) {
+		if (waypoint == nullptr) {
 			return GENERALERROR;
 		}
 
-		Locker locker(obj);
+		Locker locker(waypoint, creature);
 
-		obj->setPlanetCRC(planet.hashCode());
-		obj->setPosition(x, z, y);
-		obj->setCustomObjectName(waypointName, false);
-		obj->setActive(true);
+		waypoint->setPlanetCRC(planet.hashCode());
+		waypoint->setPosition(x, z, y);
+		waypoint->setCustomObjectName(waypointName, false);
+
+		if (isSpaceZone) {
+			waypoint->setColor(WaypointObject::COLOR_SPACE);
+		}
+
+		waypoint->setActive(true);
 
 		// Should the second argument be true, and waypoints with the same name thus remove their old version?
-		playerObject->addWaypoint(obj, false, true);
+		ghost->addWaypoint(waypoint, false, true);
 
 		return SUCCESS;
 	}

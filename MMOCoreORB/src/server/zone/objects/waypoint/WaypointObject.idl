@@ -30,6 +30,8 @@ class WaypointObject extends IntangibleObject {
 	public static final byte COLOR_ORANGE = 0x03;
 	public static final byte COLOR_YELLOW = 0x04;
 	public static final byte COLOR_PURPLE = 0x05;
+	public static final byte COLOR_WHITE2 = 0x06;
+	public static final byte COLOR_SPACE = 0x07;
 
 	public static final int SPECIALTYPE_FIND = 1;
 	public static final int SPECIALTYPE_FINDFRIEND = 2;
