@@ -26,6 +26,7 @@ Luna<LuaShipObject>::RegType LuaShipObject::Register[] = {
 	{ "hasLowerTurret", &LuaShipObject::hasLowerTurret },
 	{ "isUpperTurretFunctional", &LuaShipObject::isUpperTurretFunctional },
 	{ "isLowerTurretFunctional", &LuaShipObject::isLowerTurretFunctional },
+	{ "getShipName", &LuaShipObject::getShipName },
 	{ 0, 0}
 };
 
@@ -311,6 +312,14 @@ int LuaShipObject::isLowerTurretFunctional(lua_State* L) {
 	bool isLowerTurretFunctional = realObject->isComponentFunctional(Components::WEAPON_START + 1);
 
 	lua_pushboolean(L, isLowerTurretFunctional);
+
+	return 1;
+}
+
+int LuaShipObject::getShipName(lua_State* L) {
+	String shipName = realObject->getShipName();
+
+	lua_pushstring(L, shipName.toCharArray());
 
 	return 1;
 }

@@ -108,6 +108,7 @@ public:
 		SHIPAGENTDESPAWNED,			// ManagedObject arg1 = ShipAiAgent that despawned, long arg2 = 0
 		SQUADRON,					// ManagedObject arg1 = ShipAiAgent, long arg2 = 0
 		ENTEREDPOBSHIP,				// ManagedObject arg1 = player who entered the ship, long arg2 = 0
+		DESTROYEDSHIP,				// ManagedObject arg1 = destructedShip long arg2 = 0 used when a player destroys any ship
 	};
 };
 

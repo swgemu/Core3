@@ -976,11 +976,46 @@ int ShipManager::notifyDestruction(ShipObject* destructorShip, ShipAiAgent* dest
 
 				auto attackerShip = attacker->asShipObject();
 
-				if (attackerShip == nullptr) {
+				if (attackerShip == nullptr || !attackerShip->isPlayerShip()) {
 					continue;
 				}
 
-				attackerShip->notifyObservers(ObserverEventType::QUESTKILL, destructedShip);
+				auto pilot = attackerShip->getPilot();
+
+				if (pilot == nullptr) {
+					continue;
+				}
+
+				pilot->notifyObservers(ObserverEventType::QUESTKILL, destructedShip);
+			}
+		}
+
+		ManagedReference<ShipObject*> playerShip = copyThreatMap.getHighestDamageGroupShip();
+
+		if (playerShip != nullptr) {
+			ManagedReference<CreatureObject*> pilot = playerShip->getPilot();
+
+			if (pilot != nullptr) {
+				if (pilot->isGrouped()) {
+					ManagedReference<GroupObject*> group = pilot->getGroup();
+
+					if (group != nullptr) {
+						for (int i = 0; i < group->getGroupSize(); i++) {
+							ManagedReference<CreatureObject*> groupMember = group->getGroupMember(i);
+
+							if (groupMember == nullptr || !groupMember->isPlayerCreature()) {
+								continue;
+							}
+
+							Locker locker(groupMember, destructedShip);
+
+							groupMember->notifyObservers(ObserverEventType::DESTROYEDSHIP, destructedShip);
+						}
+					}
+				} else {
+					Locker locker(pilot, destructedShip);
+					pilot->notifyObservers(ObserverEventType::DESTROYEDSHIP, destructedShip);
+				}
 			}
 		}
 
