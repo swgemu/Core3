@@ -619,8 +619,14 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	luaEngine->setGlobalInt("PROTOTYPECREATED", ObserverEventType::PROTOTYPECREATED);
 	luaEngine->setGlobalInt("SLICED", ObserverEventType::SLICED);
 	luaEngine->setGlobalInt("ABILITYUSED", ObserverEventType::ABILITYUSED);
+	luaEngine->setGlobalInt("COMBATCOMMANDENQUEUED", ObserverEventType::COMBATCOMMANDENQUEUED);
+	luaEngine->setGlobalInt("FACTIONCHAT", ObserverEventType::FACTIONCHAT);
+	luaEngine->setGlobalInt("NOPLAYERSINRANGE", ObserverEventType::NOPLAYERSINRANGE);
 	luaEngine->setGlobalInt("SPATIALCHAT", ObserverEventType::SPATIALCHAT);
 	luaEngine->setGlobalInt("SHIPAGENTDESPAWNED", ObserverEventType::SHIPAGENTDESPAWNED);
+	luaEngine->setGlobalInt("SQUADRON", ObserverEventType::SQUADRON);
+	luaEngine->setGlobalInt("ENTEREDPOBSHIP", ObserverEventType::ENTEREDPOBSHIP);
+	luaEngine->setGlobalInt("DESTROYEDSHIP", ObserverEventType::DESTROYEDSHIP);
 
 	luaEngine->setGlobalInt("UPRIGHT", CreaturePosture::UPRIGHT);
 	luaEngine->setGlobalInt("PRONE", CreaturePosture::PRONE);

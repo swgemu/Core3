@@ -52,6 +52,7 @@ template<> bool CheckFollowHasState::check(AiAgent* agent) const {
 
 template<> bool CheckProspectInRange::check(AiAgent* agent) const {
 	ManagedReference<SceneObject*> tar = nullptr;
+
 	if (agent->peekBlackboard("targetProspect"))
 		tar = agent->readBlackboard("targetProspect").get<ManagedReference<SceneObject*> >();
 

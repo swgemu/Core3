@@ -37,6 +37,7 @@ Luna<LuaShipAiAgent>::RegType LuaShipAiAgent::Register[] = {
 	{ "setMaximumGuardPatrol", &LuaShipAiAgent::setMaximumGuardPatrol },
 	{ "addFixedPatrolPoint", &LuaShipAiAgent::addFixedPatrolPoint },
 	{ "setDefender", &LuaShipAiAgent::setDefender },
+	{ "getShipAgentTemplateName", &LuaShipAiAgent::getShipAgentTemplateName },
 
 	{ 0, 0 }
 };
@@ -196,4 +197,12 @@ int LuaShipAiAgent::setDefender(lua_State* L) {
 	realObject->setDefender(shipObject);
 
 	return 0;
+}
+
+int LuaShipAiAgent::getShipAgentTemplateName(lua_State* L) {
+	String templateName = realObject->getShipAgentTemplateName();
+
+	lua_pushstring(L, templateName.toCharArray());
+
+	return 1;
 }

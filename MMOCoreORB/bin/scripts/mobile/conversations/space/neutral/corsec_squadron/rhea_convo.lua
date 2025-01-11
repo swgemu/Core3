@@ -348,6 +348,68 @@ when_done = ConvoScreen:new {
 }
 rhea_convo_template:addScreen(when_done);
 
+excellent_work = ConvoScreen:new {
+	id = "excellent_work",
+	leftDialog = "@conversation/corellia_privateer_trainer:s_f053b088", -- Excellent work!
+	stopConversation = "false",
+	options = {
+		{"@conversation/corellia_privateer_trainer:s_1c76874e", "i_was_attacked"}, -- I was attacked!
+		{"@conversation/corellia_privateer_trainer:s_3557fc9f", "nothing_to_it"}, -- Nothing to it.
+	}
+}
+rhea_convo_template:addScreen(excellent_work);
+
+i_was_attacked = ConvoScreen:new {
+	id = "i_was_attacked",
+	leftDialog = "@conversation/corellia_privateer_trainer:s_4801be96", -- So, you were ambushed as you ran that patrol.  We need to hit them hard to send a message... make an example out of them.  I'm going to send you in to run that scum out of the system. I am uploading some possible waypoints into your nav computer, destroy any Black Sun you find.
+	stopConversation = "false",
+	options = {
+		{"@conversation/corellia_privateer_trainer:s_133a724d", "train_me2"}, -- Are you going to train me after this?
+	}
+}
+rhea_convo_template:addScreen(i_was_attacked);
+
+nothing_to_it = ConvoScreen:new {
+	id = "nothing_to_it",
+	leftDialog = "@conversation/corellia_privateer_trainer:s_4801be96", -- So, you were ambushed as you ran that patrol.  We need to hit them hard to send a message... make an example out of them.  I'm going to send you in to run that scum out of the system. I am uploading some possible waypoints into your nav computer, destroy any Black Sun you find.
+	stopConversation = "false",
+	options = {
+		{"@conversation/corellia_privateer_trainer:s_133a724d", "train_me2"}, -- Are you going to train me after this?
+	}
+}
+rhea_convo_template:addScreen(nothing_to_it);
+
+excellent_work2 = ConvoScreen:new {
+	id = "excellent_work2",
+	leftDialog = "@conversation/corellia_privateer_trainer:s_926359dd", -- Excellent job taking out those pirates.  No doubt, this won't be the end of them.
+	stopConversation = "false",
+	options = {
+		{"@conversation/corellia_privateer_trainer:s_a927c891", "whats_next"}, -- What's next?
+		{"@conversation/corellia_privateer_trainer:s_257f178d", "was_a_snap"}, -- It was a snap.
+	}
+}
+rhea_convo_template:addScreen(excellent_work2);
+
+whats_next = ConvoScreen:new {
+	id = "whats_next",
+	leftDialog = "@conversation/corellia_privateer_trainer:s_964fb39a", -- Just to be sure that's the last of them, we need you to run another patrol.  It's a little longer than the last one, but you already know how crafty those criminals can be.
+	stopConversation = "false",
+	options = {
+		{"@conversation/corellia_privateer_trainer:s_133a724d", "train_me3"}, -- Are you going to train me after this?
+	}
+}
+rhea_convo_template:addScreen(whats_next);
+
+was_a_snap = ConvoScreen:new {
+	id = "was_a_snap",
+	leftDialog = "@conversation/corellia_privateer_trainer:s_964fb39a", -- Just to be sure that's the last of them, we need you to run another patrol.  It's a little longer than the last one, but you already know how crafty those criminals can be.-
+	stopConversation = "false",
+	options = {
+		{"@conversation/corellia_privateer_trainer:s_133a724d", "train_me3"}, -- Are you going to train me after this?
+	}
+}
+rhea_convo_template:addScreen(was_a_snap);
+
 --[[
 
 	Conversation Enders
@@ -451,6 +513,14 @@ goodbye = ConvoScreen:new {
 }
 rhea_convo_template:addScreen(goodbye);
 
+has_mission = ConvoScreen:new {
+	id = "has_mission",
+	leftDialog = "@conversation/corellia_privateer_trainer:s_333f5da9", -- What are you doing talking to me?  Isn't there somewhere you're supposed to be?
+	stopConversation = "true",
+	options = {}
+}
+rhea_convo_template:addScreen(has_mission);
+
 slow_down = ConvoScreen:new {
 	id = "slow_down",
 	leftDialog = "@conversation/corellia_privateer_trainer:s_8e5b619a", -- Oh no, not quite so fast, %NU.  You complete a few more assignments and then we'll see about getting you some training!
@@ -458,5 +528,29 @@ slow_down = ConvoScreen:new {
 	options = {}
 }
 rhea_convo_template:addScreen(slow_down);
+
+testing_reset = ConvoScreen:new {
+	id = "testing_reset",
+	customDialogText = "You quest line has been reset.",
+	stopConversation = "true",
+	options = {}
+}
+rhea_convo_template:addScreen(testing_reset);
+
+train_me2 = ConvoScreen:new {
+	id = "train_me2",
+	leftDialog = "@conversation/corellia_privateer_trainer:s_c91ba06e", -- Not just yet, %NU.  I have just a few more things for you to do before you get any training from me.
+	stopConversation = "true",
+	options = {}
+}
+rhea_convo_template:addScreen(train_me2);
+
+train_me3 = ConvoScreen:new {
+	id = "train_me3",
+	leftDialog = "@conversation/corellia_privateer_trainer:s_e926d5f0", -- Almost, %NU.  I have just a couple more things for you to take care of before you can be trained further.  Starting with that patrol...
+	stopConversation = "true",
+	options = {}
+}
+rhea_convo_template:addScreen(train_me3);
 
 addConversationTemplate("rhea_convo_template", rhea_convo_template);
