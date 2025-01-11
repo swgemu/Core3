@@ -976,13 +976,76 @@ int ShipManager::notifyDestruction(ShipObject* destructorShip, ShipAiAgent* dest
 
 				auto attackerShip = attacker->asShipObject();
 
-				if (attackerShip == nullptr) {
+				if (attackerShip == nullptr || !attackerShip->isPlayerShip()) {
 					continue;
 				}
 
-				attackerShip->notifyObservers(ObserverEventType::QUESTKILL, destructedShip);
+				auto pilot = attackerShip->getPilot();
+
+				if (pilot == nullptr) {
+					continue;
+				}
+
+				pilot->notifyObservers(ObserverEventType::QUESTKILL, destructedShip);
 			}
 		}
+
+		// Need to add SHIPDESTROYED observer for top threat, similar to KILLEDCREATURE
+
+		/*
+		ManagedReference<CreatureObject*> player = copyThreatMap.getHighestDamageGroupLeader();
+
+		uint64 ownerID = 0;
+
+		if (player != nullptr) {
+
+			if (player->isGrouped()) {
+				ownerID = player->getGroupID();
+			} else {
+				ownerID = player->getObjectID();
+			}
+
+			if (player->isPlayerCreature()) {
+				if (!destructedObject->isEventMob()) {
+					if (player->isGrouped()) {
+						ManagedReference<GroupObject*> group = player->getGroup();
+
+						if (group != nullptr) {
+							for (int i = 0; i < group->getGroupSize(); i++) {
+								ManagedReference<CreatureObject*> groupMember = group->getGroupMember(i);
+
+								if (groupMember->isPlayerCreature()) {
+									Locker locker(groupMember, destructedObject);
+									groupMember->notifyObservers(ObserverEventType::KILLEDCREATURE, destructedObject);
+								}
+							}
+						}
+					} else {
+						Locker locker(player, destructedObject);
+						player->notifyObservers(ObserverEventType::KILLEDCREATURE, destructedObject);
+					}
+				}
+
+				FactionManager* factionManager = FactionManager::instance();
+
+				if (!destructedObject->getFactionString().isEmpty() && !destructedObject->isEventMob()) {
+					int level = destructedObject->getLevel();
+
+					if(!player->isGrouped())
+						factionManager->awardFactionStanding(player, destructedObject->getFactionString(), level);
+					else
+						factionManager->awardFactionStanding(copyThreatMap.getHighestDamagePlayer(), destructedObject->getFactionString(), level);
+				}
+			}
+
+		}
+
+		*/
+
+
+
+
+
 
 		// Handle Awarding XP
 		ManagedReference<PlayerManager*> playerManager = zoneServer->getPlayerManager();

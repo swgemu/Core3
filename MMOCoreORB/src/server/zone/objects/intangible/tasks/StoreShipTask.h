@@ -130,8 +130,9 @@ public:
 		info(true) << "removePlayer called";
 #endif
 
-		if (player == nullptr)
+		if (player == nullptr) {
 			return false;
+		}
 
 		auto zoneServer = player->getZoneServer();
 
@@ -151,9 +152,8 @@ public:
 
 		if (parent != nullptr && parent->hasObjectInContainer(player->getObjectID())) {
 #ifdef DEBUG_SHIP_STORE
-			info(true) << "Clearing player parent: " << parent->getDisplayedName();
+			info(true) << "Clearing player parent ID: " << parent->getObjectID();
 #endif
-
 			parent->removeObject(player, nullptr, false);
 		}
 
