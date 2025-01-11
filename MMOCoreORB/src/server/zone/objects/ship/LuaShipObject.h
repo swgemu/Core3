@@ -37,6 +37,7 @@ namespace ship {
 		int hasLowerTurret(lua_State* L);
 		int isUpperTurretFunctional(lua_State* L);
 		int isLowerTurretFunctional(lua_State* L);
+		int getShipName(lua_State* L);
 	private:
 		ShipObject* realObject;
 	};
