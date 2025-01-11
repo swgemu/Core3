@@ -8,21 +8,6 @@ function rheaConvoHandler:getInitialScreen(pPlayer, pNpc, pConvTemplate)
 	local faction = CreatureObject(pPlayer):getFaction()
 	local playerID = CreatureObject(pPlayer):getObjectID()
 
-	-- Lets dump the players quest for testing
-	--[[
-	if (1 == 1) then
-		removeQuestStatus(playerID .. ":CorsecSquadron")
-		SpaceHelpers:clearSpaceQuest(pPlayer, "patrol", "corellia_privateer_1", 1)
-
-		--SpaceHelpers:clearSpaceQuest(pPlayer, "patrol", "corellia_privateer_1", 1)
-		--SpaceHelpers:clearSpaceQuest(pPlayer, "destroy", "corellia_privateer_2", 1)
-		--SpaceHelpers:clearSpaceQuest(pPlayer, "patrol", "corellia_privateer_3", 1)
-		--SpaceHelpers:clearSpaceQuest(pPlayer, "assassinate", "corellia_privateer_tier1_4a", 1)
-
-		return convoTemplate:getScreen("no_jtl")
-	end
-	]]
-
 	-- JTL is disabled
 	if (not isJtlEnabled()) then
 		CreatureObject(pNpc):doAnimation("shake_head_no")
@@ -123,9 +108,20 @@ function rheaConvoHandler:getInitialScreen(pPlayer, pNpc, pConvTemplate)
 	elseif (questOneComplete) then
 		CreatureObject(pPlayer):sendSystemMessage("Quest 2 is not implemented yet.")
 
-		--ThemeParkLogic:giveCredits(pPlayer, 100)
+
 
 		return convoTemplate:getScreen("no_jtl")
+
+	-- Player has finished quest 1 final task
+	elseif (not questOneComplete and SpaceHelpers:isSpaceQuestTaskComplete(pPlayer, "patrol", "corellia_privateer_1", 2)) then
+		CreatureObject(pNpc):doAnimation("applause_polite")
+
+		ThemeParkLogic:giveCredits(pPlayer, 100)
+
+		-- Complete Journal Quest 1
+		SpaceHelpers:completeSpaceQuest(pPilot, "patrol", "corellia_privateer_1", 1)
+
+		return convoTemplate:getScreen("")
 	-- Player has first quest active, the mission giver will offer assistance
 	elseif (questOneStarted and not questOneComplete) then
 		CreatureObject(pNpc):doAnimation("point_away")
@@ -152,7 +148,7 @@ function rheaConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNpc, select
 
 	clonedConversation:setDialogTextTU(CreatureObject(pPlayer):getFirstName())
 
-	--print("runScreenHandlers -- Screen ID: " .. screenID)
+	print("runScreenHandlers -- Screen ID: " .. screenID)
 
 	local pGhost = CreatureObject(pPlayer):getPlayerObject()
 
@@ -166,7 +162,12 @@ function rheaConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNpc, select
 		return pConvScreen
 	end
 
-	local corsecStanding = ghost:getFactionStanding("corsec")
+	if (screenID == "testing_reset") then
+		CorsecSquadronScreenplay:resetRheaQuests(pPlayer)
+		return pConvScreen
+	elseif (PlayerObject(pGhost):isPrivileged()) then
+		clonedConversation:addOption("GODMODE - Reset Sgt Rhea Quests", "testing_reset")
+	end
 
 	if (screenID == "non_corsec_pilot") then
 		local isOnQuest = true -- TODO add in function to check for active space quest?
@@ -179,6 +180,8 @@ function rheaConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNpc, select
 	elseif (screenID == "yes_join" or screenID == "i_see") then
 		CreatureObject(pPlayer):doAnimation("nod_head_once")
 		CreatureObject(pNpc):doAnimation("slow_down")
+
+		local corsecStanding = ghost:getFactionStanding("corsec")
 
 		if (corsecStanding < 0) then
 			clonedConversation:addOption("@conversation/corellia_privateer_trainer:s_1418de80", "of_course_no_good") -- Of course
@@ -281,7 +284,10 @@ function rheaConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNpc, select
 		setQuestStatus(SceneObject(pPlayer):getObjectID() .. ":CorsecSquadron", CorsecSquadronScreenplay.ACCEPTED_MISSION_1)
 
 		-- Create inital observer for player entering Corellia Space
-		createObserver(ZONESWITCHED, "CorsecSquadronScreenplay", "enteredZone", pPlayer, 1)
+
+		if (not hasObserver(ZONESWITCHED, "CorsecSquadronScreenplay", "enteredZone", pPlayer)) then
+			createObserver(ZONESWITCHED, "CorsecSquadronScreenplay", "enteredZone", pPlayer, 1)
+		end
 	elseif (screenID == "an_assignment_exp" or screenID == "where_to_go") then
 		CreatureObject(pNpc):doAnimation("point_away")
 	elseif (screenID == "what_ship" or screenID == "when_done") then

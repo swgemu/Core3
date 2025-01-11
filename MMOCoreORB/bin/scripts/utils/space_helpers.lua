@@ -44,7 +44,7 @@ local ObjectManager = require("managers.object.object_manager")
 local Logger = require("utils.logger")
 
 SpaceHelpers = {
-	DEBUG_SPACE_HELPERS = false,
+	DEBUG_SPACE_HELPERS = true,
 
 	pilotSkills = {
 		neutralPilot = {
@@ -70,6 +70,12 @@ SpaceHelpers = {
 		}
 	}
 }
+
+--[[
+
+	Space Player Management and Checks
+
+]]
 
 -- @param pPlayer pointer grants the novice pilot box
 function SpaceHelpers:grantNovicePilot(pPlayer, skillName)
@@ -342,7 +348,7 @@ function SpaceHelpers:addCorsecPilotWaypoint(pPlayer)
 		return
 	end
 
-	PlayerObject(pGhost):addWaypoint("corellia", "@npc_spawner_n:rhea", "@npc_spawner_n:rhea", -274, 0, -4730, WAYPOINTBLUE, true, true, 0)
+	PlayerObject(pGhost):addWaypoint("corellia", "@npc_spawner_n:rhea", "@npc_spawner_n:rhea", -274, 0, -4730, WAYPOINT_BLUE, true, true, 0)
 end
 
 
@@ -358,7 +364,7 @@ function SpaceHelpers:addRSFPilotWaypoint(pPlayer)
 		return
 	end
 
-	PlayerObject(pGhost):addWaypoint("naboo", "@npc_spawner_n:dinge", "@npc_spawner_n:dinge", -5496, 0, 4579, WAYPOINTBLUE, true, true, 0)
+	PlayerObject(pGhost):addWaypoint("naboo", "@npc_spawner_n:dinge", "@npc_spawner_n:dinge", -5496, 0, 4579, WAYPOINT_BLUE, true, true, 0)
 end
 
 -- @param pPlayer pointer adds waypoint to the starting neutral Smugglers Alliance Squadron trainer
@@ -373,7 +379,7 @@ function SpaceHelpers:addSmugglersPilotWaypoint(pPlayer)
 		return
 	end
 
-	PlayerObject(pGhost):addWaypoint("tatooine", "@npc_spawner_n:dravis", "@npc_spawner_n:dravis", 3429, 0, -4788, WAYPOINTBLUE, true, true, 0)
+	PlayerObject(pGhost):addWaypoint("tatooine", "@npc_spawner_n:dravis", "@npc_spawner_n:dravis", 3429, 0, -4788, WAYPOINT_BLUE, true, true, 0)
 end
 
 -- @param pPlayer pointer adds waypoint to the starting rebel pilot coordinator
@@ -388,7 +394,7 @@ function SpaceHelpers:addRebelPilotWaypoint(pPlayer)
 		return
 	end
 
-	PlayerObject(pGhost):addWaypoint("corellia", "@npc_spawner_n:j_pai_brek", "@npc_spawner_n:j_pai_brek", -5072, 0, -2343, WAYPOINTBLUE, true, true, 0)
+	PlayerObject(pGhost):addWaypoint("corellia", "@npc_spawner_n:j_pai_brek", "@npc_spawner_n:j_pai_brek", -5072, 0, -2343, WAYPOINT_BLUE, true, true, 0)
 end
 
 -- @param pPlayer pointer adds waypoint to the Rebel Vortex Squad Tier1 Trainer
@@ -403,7 +409,7 @@ function SpaceHelpers:addVortexSquadWaypoint(pPlayer)
 		return
 	end
 
-	PlayerObject(pGhost):addWaypoint("naboo", "@npc_spawner_n:v3_fx", "@npc_spawner_n:v3_fx", 4764, 0, -4795, WAYPOINTBLUE, true, true, 0)
+	PlayerObject(pGhost):addWaypoint("naboo", "@npc_spawner_n:v3_fx", "@npc_spawner_n:v3_fx", 4764, 0, -4795, WAYPOINT_BLUE, true, true, 0)
 end
 
 -- @param pPlayer pointer adds waypoint to the Rebel Akron's Havok Squad Tier1 Trainer
@@ -418,7 +424,7 @@ function SpaceHelpers:addAkronSquadWaypoint(pPlayer)
 		return
 	end
 
-	PlayerObject(pGhost):addWaypoint("corellia", "@npc_spawner_n:kreezo", "@npc_spawner_n:kreezo", -5176, 0, -2281, WAYPOINTBLUE, true, true, 0)
+	PlayerObject(pGhost):addWaypoint("corellia", "@npc_spawner_n:kreezo", "@npc_spawner_n:kreezo", -5176, 0, -2281, WAYPOINT_BLUE, true, true, 0)
 end
 
 -- @param pPlayer pointer adds waypoint to the Rebel Crimson Phoenix Squadron Tier1 Trainer
@@ -433,7 +439,7 @@ function SpaceHelpers:addCrimsonSquadWaypoint(pPlayer)
 		return
 	end
 
-	PlayerObject(pGhost):addWaypoint("tatooine", "@npc_spawner_n:da_la_socuna", "@npc_spawner_n:da_la_socuna", -3002, 0, 2202, WAYPOINTBLUE, true, true, 0)
+	PlayerObject(pGhost):addWaypoint("tatooine", "@npc_spawner_n:da_la_socuna", "@npc_spawner_n:da_la_socuna", -3002, 0, 2202, WAYPOINT_BLUE, true, true, 0)
 end
 
 -- @param pPlayer pointer adds waypoint to the starting imperial pilot coordinator
@@ -448,7 +454,7 @@ function SpaceHelpers:addImperialPilotWaypoint(pPlayer)
 		return
 	end
 
-	PlayerObject(pGhost):addWaypoint("naboo", "@npc_spawner_n:landau", "@npc_spawner_n:landau", -5516, 0, 4403, WAYPOINTBLUE, true, true, 0)
+	PlayerObject(pGhost):addWaypoint("naboo", "@npc_spawner_n:landau", "@npc_spawner_n:landau", -5516, 0, 4403, WAYPOINT_BLUE, true, true, 0)
 end
 
 -- @param pPlayer pointer adds waypoint to the Imperial Black Epsilon Squad
@@ -463,7 +469,7 @@ function SpaceHelpers:addBlackEpsilonSquadWaypoint(pPlayer)
 		return
 	end
 
-	PlayerObject(pGhost):addWaypoint("talus", "@npc_spawner_n:hakassha_sireen", "@npc_spawner_n:hakassha_sireen", -2184, 0, 2273, WAYPOINTBLUE, true, true, 0)
+	PlayerObject(pGhost):addWaypoint("talus", "@npc_spawner_n:hakassha_sireen", "@npc_spawner_n:hakassha_sireen", -2184, 0, 2273, WAYPOINT_BLUE, true, true, 0)
 end
 
 -- @param pPlayer pointer adds waypoint to the Imperial Storm Squadron
@@ -478,7 +484,7 @@ function SpaceHelpers:addStormSquadWaypoint(pPlayer)
 		return
 	end
 
-	PlayerObject(pGhost):addWaypoint("tatooine", "@npc_spawner_n:akal_colzet", "@npc_spawner_n:akal_colzet", -1132, 0, -3542, WAYPOINTBLUE, true, true, 0)
+	PlayerObject(pGhost):addWaypoint("tatooine", "@npc_spawner_n:akal_colzet", "@npc_spawner_n:akal_colzet", -1132, 0, -3542, WAYPOINT_BLUE, true, true, 0)
 end
 
 -- @param pPlayer pointer adds waypoint to the Imperial Inquisition Squadron
@@ -493,7 +499,7 @@ function SpaceHelpers:addImperialInquisitionSquadWaypoint(pPlayer)
 		return
 	end
 
-	PlayerObject(pGhost):addWaypoint("naboo", "@npc_spawner_n:barn_sinkko", "@npc_spawner_n:barn_sinkko", 5182, 0, 6750, WAYPOINTBLUE, true, true, 0)
+	PlayerObject(pGhost):addWaypoint("naboo", "@npc_spawner_n:barn_sinkko", "@npc_spawner_n:barn_sinkko", 5182, 0, 6750, WAYPOINT_BLUE, true, true, 0)
 end
 
 --[[
@@ -642,6 +648,10 @@ function SpaceHelpers:failSpaceQuest(pPlayer, questType, questName, notifyClient
 
 	if (self.DEBUG_SPACE_HELPERS) then
 		print("Failing Space Quest: " .. questString .. " Hash: " .. questCRC)
+	end
+
+	if (questType == "patrol") then
+		CreatureObject(pPlayer):sendSystemMessage("@space/quest:patrol_abandoned") -- "You abandoned your patrol!"
 	end
 
 	-- Failed Message
@@ -862,6 +872,82 @@ function SpaceHelpers:isSpaceQuestTaskComplete(pPlayer, questType, questName, ta
 	end
 
 	PlayerObject(pGhost):isJournalQuestTaskComplete(questCRC, taskNumber)
+end
+
+--[[
+
+	Space Mission Functions
+
+]]
+
+
+-- @param pPlayer pointer to check quest task on
+-- @param questType from tre directory questlist/spacequest
+-- @param questName
+-- @param taskNumber to check
+function SpaceHelpers:spawnSurpriseAttack(pPilot, questName, questTable)
+	if (pPilot == nil) then
+		return
+	end
+
+	local pPilotShip = SceneObject(pPilot):getRootParent()
+
+	if (pPilotShip == nil or not SceneObject(pPilotShip):isShipObject()) then
+		return 0
+	end
+
+	local x = SceneObject(pPilotShip):getPositionX()
+	local z = SceneObject(pPilotShip):getPositionZ()
+	local y = SceneObject(pPilotShip):getPositionY()
+
+	if (self.DEBUG_SPACE_HELPERS) then
+		print("SpaceHelpers:spawnSurpriseAttack Space Quest: " .. questName)
+	end
+
+	local spawnZone = questTable.zone
+	local shipsTable = questTable.spawns
+
+	if (self.DEBUG_SPACE_HELPERS) then
+		print("spawnSurpriseAttack -- spawnZone: " .. spawnZone .. " shipsTable size: " .. #shipsTable)
+	end
+
+	local totalSpawned = 0
+
+	for i = 1, #shipsTable, 1 do
+		local count = shipsTable[i].count
+		local shipName = shipsTable[i].shipName
+
+		if (self.DEBUG_SPACE_HELPERS) then
+			print("spawnSurpriseAttack -- spawning ship: " .. shipName .. " Spawn Count: " .. count)
+		end
+
+		for j = 1, count, 1 do
+			local pShipAgent = spawnShipAgent(shipName, spawnZone, x + (getRandomNumber(50, 250) - getRandomNumber(50, 250)), z  + (getRandomNumber(50, 250) - getRandomNumber(50, 250)), y  + (getRandomNumber(50, 250) - getRandomNumber(50, 250)))
+
+			if (pShipAgent ~= nil) then
+				-- Setup the patrol
+				ShipAiAgent(pShipAgent):setMinimumGuardPatrol(200)
+				ShipAiAgent(pShipAgent):setMaximumGuardPatrol(1000)
+
+				ShipAiAgent(pShipAgent):setGuardPatrol()
+
+				-- Make sure the extra mobs are despawned if all players leaves the area
+				ShipAiAgent(pShipAgent):setDespawnOnNoPlayerInRange(true)
+
+				-- Add kill observer
+				createObserver(OBJECTDESTRUCTION, questName, "notifyShipDestroyed", pShipAgent)
+
+				-- Set the player as ShipAgents Defender
+				ShipAiAgent(pShipAgent):setDefender(pPilotShip)
+
+				totalSpawned = totalSpawned + 1
+			end
+		end
+	end
+
+	if (totalSpawned > 0) then
+		writeData(SceneObject(pPilot):getObjectID() .. questName .. ":SurpriseAttackCount", totalSpawned)
+	end
 end
 
 return SpaceHelpers

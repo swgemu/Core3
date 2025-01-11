@@ -348,6 +348,49 @@ when_done = ConvoScreen:new {
 }
 rhea_convo_template:addScreen(when_done);
 
+excellent_work_ = ConvoScreen:new {
+	id = "excellent_work_",
+	leftDialog = "@conversation/corellia_privateer_trainer:s_f053b088", -- Excellent work!
+	stopConversation = "false",
+	options = {
+		{"@conversation/corellia_privateer_trainer:s_1c76874e", "i_was_attacked"}, -- I was attacked!
+		{"@conversation/corellia_privateer_trainer:s_3557fc9f", "nothing_to_it"}, -- Nothing to it.
+	}
+}
+rhea_convo_template:addScreen(excellent_work_);
+
+i_was_attacked = ConvoScreen:new {
+	id = "i_was_attacked",
+	leftDialog = "@conversation/corellia_privateer_trainer:s_a48c20c8", -- What's on your mind, officer? Thinking about performing some duty missions?
+	stopConversation = "false",
+	options = {
+		{"@conversation/corellia_privateer_trainer:s_95d0a1f6", "an_assignment_13"}, -- An assignment?
+
+	}
+}
+rhea_convo_template:addScreen(i_was_attacked);
+
+nothing_to_it = ConvoScreen:new {
+	id = "nothing_to_it",
+	leftDialog = "@conversation/corellia_privateer_trainer:s_a48c20c8", -- What's on your mind, officer? Thinking about performing some duty missions?
+	stopConversation = "false",
+	options = {
+
+	}
+}
+rhea_convo_template:addScreen(nothing_to_it);
+
+
+
+
+
+
+
+
+
+
+
+
 --[[
 
 	Conversation Enders
@@ -458,5 +501,13 @@ slow_down = ConvoScreen:new {
 	options = {}
 }
 rhea_convo_template:addScreen(slow_down);
+
+testing_reset = ConvoScreen:new {
+	id = "testing_reset",
+	customDialogText = "You quest line has been reset.",
+	stopConversation = "true",
+	options = {}
+}
+rhea_convo_template:addScreen(testing_reset);
 
 addConversationTemplate("rhea_convo_template", rhea_convo_template);
