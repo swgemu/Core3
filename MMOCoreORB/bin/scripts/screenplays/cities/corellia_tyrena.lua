@@ -400,7 +400,6 @@ function CorelliaTyrenaScreenPlay:spawnMobiles()
 
 	--{"commoner",60,-5192.9,21,-2545.55,46.5164,0, "calm", "Excited Journalist"},
 	--{"commoner",60,15.2091,0.639422,56.8933,284.328,1935687, "calm", "Amarent Loren"},
-	--{"jom_irimore",60,-5520,21.3,-2630.99,0,0, "calm", "Jom Irimore"},
 	--{"r2",60,-5295.88,21,-2528.24,196.589,0, "calm", "R2-B0"},
 	--{"r2",60,-5297.6,21,-2396.69,271.4,0, "calm", "R2-X2"},
 	--{"r2",60,-4954.63,21,-2376.82,26.4361,0, "calm", "R2-E3"},
