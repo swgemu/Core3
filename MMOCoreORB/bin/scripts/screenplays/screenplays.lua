@@ -377,6 +377,15 @@ includeFile("tasks/enough/enough_quest.lua")
 includeFile("tasks/enough/conversations/AcunSolariConvoHandler.lua")
 includeFile("tasks/enough/conversations/CethLaikeConvoHandler.lua")
 
+-- Defector Quests
+includeFile("tasks/defector_quests/defector_quest.lua")
+includeFile("tasks/defector_quests/conversations/JomIrimoreConvoHandler.lua")
+includeFile("tasks/defector_quests/conversations/TesloTendooraConvoHandler.lua")
+includeFile("tasks/defector_quests/conversations/ImperialDefectorConvoHandler.lua")
+includeFile("tasks/defector_quests/conversations/JaekVercetConvoHandler.lua")
+includeFile("tasks/defector_quests/conversations/AllardLissaraConvoHandler.lua")
+includeFile("tasks/defector_quests/conversations/RebelDefectorConvoHandler.lua")
+
 -- Task/Quest
 includeFile("tasks/corellia/blk_sun_tasks.lua")
 includeFile("tasks/corellia/chertyl_ruluwoor.lua")

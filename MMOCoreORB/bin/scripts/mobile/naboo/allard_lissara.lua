@@ -1,8 +1,8 @@
-jom_irimore = Creature:new {
-	objectName = "@npc_name:rebel_military",
-	customName = "Jom Irimore",
-	socialGroup = "rebel",
-	faction = "rebel",
+allard_lissara = Creature:new {
+	objectName = "@npc_name:imperial_military",
+	customName = "Lt. Allard Lissara",
+	socialGroup = "imperial",
+	faction = "imperial",
 	mobType = MOB_NPC,
 	level = 100,
 	chanceHit = 1,
@@ -28,7 +28,7 @@ jom_irimore = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {
-		"rebel_officer",
+		"imperial_officer"
 	},
 	lootGroups = {},
 
@@ -36,12 +36,12 @@ jom_irimore = Creature:new {
 	-- Unarmed should be put on secondary unless the mobile doesn't use weapons, in which case "unarmed" should be put primary and "none" as secondary
 	primaryWeapon = "unarmed",
 	secondaryWeapon = "none",
-	conversationTemplate = "jom_irimore_conv",
+	conversationTemplate = "allard_lissara_conv",
 
 	-- primaryAttacks and secondaryAttacks should be separate skill groups specific to the weapon type listed in primaryWeapon and secondaryWeapon
 	-- Use merge() to merge groups in creatureskills.lua together. If a weapon is set to "none", set the attacks variable to empty brackets
-	primaryAttacks = {},
+	primaryAttacks = merge(brawlernovice,marksmannovice),
 	secondaryAttacks = { }
 }
 
-CreatureTemplates:addCreatureTemplate(jom_irimore, "jom_irimore")
+CreatureTemplates:addCreatureTemplate(allard_lissara, "allard_lissara")

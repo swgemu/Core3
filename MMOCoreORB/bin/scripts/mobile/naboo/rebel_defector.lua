@@ -1,6 +1,6 @@
-jom_irimore = Creature:new {
+rebel_defector = Creature:new {
 	objectName = "@npc_name:rebel_military",
-	customName = "Jom Irimore",
+	customName = "a rebel defector",
 	socialGroup = "rebel",
 	faction = "rebel",
 	mobType = MOB_NPC,
@@ -36,7 +36,7 @@ jom_irimore = Creature:new {
 	-- Unarmed should be put on secondary unless the mobile doesn't use weapons, in which case "unarmed" should be put primary and "none" as secondary
 	primaryWeapon = "unarmed",
 	secondaryWeapon = "none",
-	conversationTemplate = "jom_irimore_conv",
+	conversationTemplate = "rebel_defector_conv",
 
 	-- primaryAttacks and secondaryAttacks should be separate skill groups specific to the weapon type listed in primaryWeapon and secondaryWeapon
 	-- Use merge() to merge groups in creatureskills.lua together. If a weapon is set to "none", set the attacks variable to empty brackets
@@ -44,4 +44,4 @@ jom_irimore = Creature:new {
 	secondaryAttacks = { }
 }
 
-CreatureTemplates:addCreatureTemplate(jom_irimore, "jom_irimore")
+CreatureTemplates:addCreatureTemplate(rebel_defector, "rebel_defector")

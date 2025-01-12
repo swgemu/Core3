@@ -133,6 +133,13 @@ includeFile("conversations/themepark/logic/mission_target_conv.lua")
 includeFile("conversations/tasks/enough/acun_solari_conv.lua")
 includeFile("conversations/tasks/enough/ceth_laike_conv.lua")
 
+-- Defector Quests
+includeFile("conversations/tasks/defector_quests/jom_irimore_conv.lua")
+includeFile("conversations/tasks/defector_quests/imperial_defector_conv.lua")
+includeFile("conversations/tasks/defector_quests/teslo_tendoora_conv.lua")
+includeFile("conversations/tasks/defector_quests/jaek_vercet_conv.lua")
+includeFile("conversations/tasks/defector_quests/rebel_defector_conv.lua")
+includeFile("conversations/tasks/defector_quests/allard_lissara_conv.lua")
 
 -- ** DUNGEONS **
 
