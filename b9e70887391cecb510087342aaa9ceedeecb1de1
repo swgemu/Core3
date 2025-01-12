@@ -1,0 +1,163 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "299f72ed_6851fc24",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/defector_quests/conversations/JaekVercetConvoHandler.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2025-01-12T22:44:01Z",
+      "side": 1,
+      "message": "Whitespace",
+      "revId": "b9e70887391cecb510087342aaa9ceedeecb1de1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c62d635_94df97bc",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/defector_quests/conversations/JomIrimoreConvoHandler.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2025-01-12T22:44:01Z",
+      "side": 1,
+      "message": "whitespace",
+      "revId": "b9e70887391cecb510087342aaa9ceedeecb1de1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f5df3e6c_da915e4b",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/defector_quests/conversations/JomIrimoreConvoHandler.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2025-01-12T22:44:01Z",
+      "side": 1,
+      "message": "Whitespace",
+      "revId": "b9e70887391cecb510087342aaa9ceedeecb1de1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "86f16e6a_0c526ae5",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/defector_quests/conversations/JomIrimoreConvoHandler.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2025-01-12T22:44:01Z",
+      "side": 1,
+      "message": "Whitespace",
+      "revId": "b9e70887391cecb510087342aaa9ceedeecb1de1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5fa08fe9_2c83427f",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/defector_quests/conversations/RebelDefectorConvoHandler.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2025-01-12T22:44:01Z",
+      "side": 1,
+      "message": "Use stf if available",
+      "revId": "b9e70887391cecb510087342aaa9ceedeecb1de1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "419da582_0c6fad07",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/defector_quests/conversations/RebelDefectorConvoHandler.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2025-01-12T22:44:01Z",
+      "side": 1,
+      "message": "Tabbing and can only do one notifyClient",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 105
+      },
+      "revId": "b9e70887391cecb510087342aaa9ceedeecb1de1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d71a320_e5032ea6",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/defector_quests/conversations/TesloTendooraConvoHandler.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2025-01-12T22:44:01Z",
+      "side": 1,
+      "message": "Only need one client notification for these.",
+      "revId": "b9e70887391cecb510087342aaa9ceedeecb1de1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e5204c6_1341da99",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/defector_quests/conversations/TesloTendooraConvoHandler.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2025-01-12T22:44:01Z",
+      "side": 1,
+      "message": "Whitespace.",
+      "revId": "b9e70887391cecb510087342aaa9ceedeecb1de1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8d142f6_c81b9f5a",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/defector_quests/defector_quest.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2025-01-12T22:44:01Z",
+      "side": 1,
+      "message": "Since CreatureObject is only used once to get the ghost, you do not need to init a local creature. Can just do CreatureObject(pPlayer):getPlayerObject()",
+      "revId": "b9e70887391cecb510087342aaa9ceedeecb1de1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    }
+  ]
+}
