@@ -42,7 +42,7 @@
 
 
 object_tangible_ship_crafted_droid_interface_maintenance_reduction_kit_mk1 = object_tangible_ship_crafted_droid_interface_shared_maintenance_reduction_kit_mk1:new {
-
+	gameObjectType = 1073741846,
 
 	numberExperimentalProperties = {1, 1, 2, 2},
 	experimentalProperties = {"XX", "XX", "CD", "OQ", "CD", "OQ"},

@@ -42,6 +42,7 @@
 
 
 object_tangible_ship_crafted_armor_armor_reinforcement_panel_mk2 = object_tangible_ship_crafted_armor_shared_armor_reinforcement_panel_mk2:new {
+	gameObjectType = 1073741843,
 
 
 	numberExperimentalProperties = {1, 1, 2, 2, 2},
