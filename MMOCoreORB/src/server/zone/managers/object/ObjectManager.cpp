@@ -331,13 +331,21 @@ void ObjectManager::registerObjectTypes() {
 	// JTL Related
 	objectFactory.registerObject<ShipComponent>(SceneObjectType::SHIPATTACHMENT);
 	objectFactory.registerObject<ShipReactorComponent>(SceneObjectType::SHIPREACTOR);
+	objectFactory.registerObject<ShipSubComponent>(SceneObjectType::SHIPREACTORSUBCOMPONENT);
 	objectFactory.registerObject<ShipEngineComponent>(SceneObjectType::SHIPENGINE);
+	objectFactory.registerObject<ShipSubComponent>(SceneObjectType::SHIPENGINESUBCOMPONENT);
 	objectFactory.registerObject<ShipShieldComponent>(SceneObjectType::SHIPSHIELDGENERATOR);
+	objectFactory.registerObject<ShipSubComponent>(SceneObjectType::SHIPSHIELDSUBCOMPONENT);
 	objectFactory.registerObject<ShipArmorComponent>(SceneObjectType::SHIPARMOR);
+	objectFactory.registerObject<ShipSubComponent>(SceneObjectType::SHIPARMORSUBCOMPONENT);
 	objectFactory.registerObject<ShipWeaponComponent>(SceneObjectType::SHIPWEAPON);
+	objectFactory.registerObject<ShipSubComponent>(SceneObjectType::SHIPWEAPONSUBCOMPONENT);
 	objectFactory.registerObject<ShipCapacitorComponent>(SceneObjectType::SHIPWEAPONCAPACITOR);
+	objectFactory.registerObject<ShipSubComponent>(SceneObjectType::SHIPCAPACITORSUBCOMPONENT);
 	objectFactory.registerObject<ShipBoosterComponent>(SceneObjectType::SHIPBOOSTER);
+	objectFactory.registerObject<ShipSubComponent>(SceneObjectType::SHIPBOOSTERSUBCOMPONENT);
 	objectFactory.registerObject<ShipDroidInterfaceComponent>(SceneObjectType::SHIPDRIODINTERFACE);
+	objectFactory.registerObject<ShipSubComponent>(SceneObjectType::SHIPDROIDINTERFACESUBCOMPONENT);
 	objectFactory.registerObject<ShipChassisComponent>(SceneObjectType::SHIPCHASSIS);
 	objectFactory.registerObject<ShipMissileComponent>(SceneObjectType::SHIPMISSILE);
 	objectFactory.registerObject<ShipCounterMeasureComponent>(SceneObjectType::SHIPCOUNTERMEASURE);
