@@ -1,0 +1,208 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b7c93277_9ff71774",
+        "filename": "MMOCoreORB/src/server/zone/managers/object/ObjectManager.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2025-01-16T14:51:48Z",
+      "side": 1,
+      "message": "Move all the Subcomponents together.",
+      "revId": "450e55d1a07d9236951737e1fc819e05f83d7826",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2975cb89_f7c705fb",
+        "filename": "MMOCoreORB/src/server/zone/objects/ship/components/ShipSubComponentImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2025-01-16T14:51:48Z",
+      "side": 1,
+      "message": "This is already loaded from template with ShipComponentImplementation::loadTemplateData(templateData)",
+      "revId": "450e55d1a07d9236951737e1fc819e05f83d7826",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e5590df_75ad344d",
+        "filename": "MMOCoreORB/src/server/zone/objects/ship/components/ShipSubComponentImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2025-01-16T14:51:48Z",
+      "side": 1,
+      "message": "Already loaded from template.",
+      "revId": "450e55d1a07d9236951737e1fc819e05f83d7826",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ff97ef7_5fc183ad",
+        "filename": "MMOCoreORB/src/server/zone/objects/ship/components/ShipSubComponentImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2025-01-16T14:51:48Z",
+      "side": 1,
+      "message": "Same, this is already loaded from template.",
+      "revId": "450e55d1a07d9236951737e1fc819e05f83d7826",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "68c9c01e_e8149a75",
+        "filename": "MMOCoreORB/src/server/zone/objects/ship/components/ShipSubComponentImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2025-01-16T14:51:48Z",
+      "side": 1,
+      "message": "Already loaded.",
+      "revId": "450e55d1a07d9236951737e1fc819e05f83d7826",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b67d4e4_6b7654e7",
+        "filename": "MMOCoreORB/src/server/zone/objects/ship/components/ShipSubComponentImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2025-01-16T14:51:48Z",
+      "side": 1,
+      "message": "These lines are not required, its the end of the function.",
+      "revId": "450e55d1a07d9236951737e1fc819e05f83d7826",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4be9e0ae_3d803f3c",
+        "filename": "MMOCoreORB/src/server/zone/objects/ship/components/ShipSubComponentImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2025-01-16T14:51:48Z",
+      "side": 1,
+      "message": "Remove this, these values are already set in ShipComponentImplementation::updateCraftingValues",
+      "revId": "450e55d1a07d9236951737e1fc819e05f83d7826",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "60ed663c_40ec5ed8",
+        "filename": "MMOCoreORB/src/server/zone/objects/ship/components/ShipSubComponentImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2025-01-16T14:51:48Z",
+      "side": 1,
+      "message": "Duplicate update.",
+      "revId": "450e55d1a07d9236951737e1fc819e05f83d7826",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6bb84139_4ddd2167",
+        "filename": "MMOCoreORB/src/server/zone/objects/ship/components/ShipSubComponentImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2025-01-16T14:51:48Z",
+      "side": 1,
+      "message": "Duplicate update.",
+      "revId": "450e55d1a07d9236951737e1fc819e05f83d7826",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "83add434_30e2f7a6",
+        "filename": "MMOCoreORB/src/server/zone/objects/ship/components/ShipSubComponentImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2025-01-16T14:51:48Z",
+      "side": 1,
+      "message": "Duplicate update.",
+      "revId": "450e55d1a07d9236951737e1fc819e05f83d7826",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d4f16dbd_073ef87c",
+        "filename": "MMOCoreORB/src/server/zone/objects/ship/components/ShipSubComponentImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2025-01-16T14:51:48Z",
+      "side": 1,
+      "message": "New line between these conditional statements, with exception to before the first and after the break.",
+      "revId": "450e55d1a07d9236951737e1fc819e05f83d7826",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a34785ca_e03403b5",
+        "filename": "MMOCoreORB/src/server/zone/objects/ship/components/ShipSubComponentImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2025-01-16T14:51:48Z",
+      "side": 1,
+      "message": "Move new line to above these breaks and remove the one after it.",
+      "revId": "450e55d1a07d9236951737e1fc819e05f83d7826",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    }
+  ]
+}
