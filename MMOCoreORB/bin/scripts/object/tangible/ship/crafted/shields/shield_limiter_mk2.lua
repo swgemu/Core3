@@ -42,7 +42,7 @@
 
 
 object_tangible_ship_crafted_shields_shield_limiter_mk2 = object_tangible_ship_crafted_shields_shared_shield_limiter_mk2:new {
-
+	gameObjectType = 1073741849,
 
 	numberExperimentalProperties = {1, 1, 2, 2, 2},
 	experimentalProperties = {"XX", "XX", "OQ", "UT", "OQ", "UT", "OQ", "UT"},

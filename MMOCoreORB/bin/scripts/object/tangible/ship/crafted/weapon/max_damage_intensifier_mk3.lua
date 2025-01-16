@@ -42,7 +42,7 @@
 
 
 object_tangible_ship_crafted_weapon_max_damage_intensifier_mk3 = object_tangible_ship_crafted_weapon_shared_max_damage_intensifier_mk3:new {
-
+	gameObjectType = 1073741856,
 
 	numberExperimentalProperties = {1, 1, 2, 2},
 	experimentalProperties = {"XX", "XX", "CD", "OQ", "CD", "OQ"},

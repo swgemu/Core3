@@ -42,7 +42,7 @@
 
 
 object_tangible_ship_crafted_engine_engine_overdriver_mk1 = object_tangible_ship_crafted_engine_shared_engine_overdriver_mk1:new {
-
+	gameObjectType = 1073741847,
 
 	numberExperimentalProperties = {1, 1, 2, 2},
 	experimentalProperties = {"XX", "XX", "CD", "OQ", "CD", "OQ"},

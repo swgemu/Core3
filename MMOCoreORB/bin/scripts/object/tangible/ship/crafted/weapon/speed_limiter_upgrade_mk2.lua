@@ -42,7 +42,7 @@
 
 
 object_tangible_ship_crafted_weapon_speed_limiter_upgrade_mk2 = object_tangible_ship_crafted_weapon_shared_speed_limiter_upgrade_mk2:new {
-
+	gameObjectType = 1073741856,
 
 	numberExperimentalProperties = {1, 1, 2, 2},
 	experimentalProperties = {"XX", "XX", "CD", "SR", "CD", "OQ"},

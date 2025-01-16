@@ -42,7 +42,7 @@
 
 
 object_tangible_ship_crafted_capacitor_energy_saver_battery_mk1 = object_tangible_ship_crafted_capacitor_shared_energy_saver_battery_mk1:new {
-
+	gameObjectType = 1073741845,
 
 	numberExperimentalProperties = {1, 1, 2, 2},
 	experimentalProperties = {"XX", "XX", "CD", "OQ", "CD", "OQ"},

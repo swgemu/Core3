@@ -336,6 +336,7 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<ShipArmorComponent>(SceneObjectType::SHIPARMOR);
 	objectFactory.registerObject<ShipWeaponComponent>(SceneObjectType::SHIPWEAPON);
 	objectFactory.registerObject<ShipCapacitorComponent>(SceneObjectType::SHIPWEAPONCAPACITOR);
+	objectFactory.registerObject<ShipSubComponent>(SceneObjectType::SHIPCAPACITORSUBCOMPONENT);
 	objectFactory.registerObject<ShipBoosterComponent>(SceneObjectType::SHIPBOOSTER);
 	objectFactory.registerObject<ShipDroidInterfaceComponent>(SceneObjectType::SHIPDRIODINTERFACE);
 	objectFactory.registerObject<ShipChassisComponent>(SceneObjectType::SHIPCHASSIS);
@@ -353,7 +354,14 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<ShipComponentRepairKit>(SceneObjectType::SHIPCOMPONENTREPAIRITEM);
 	objectFactory.registerObject<ShipInteriorComponent>(SceneObjectType::SHIPINTERIORCOMPONENT);
 	objectFactory.registerObject<ShipPlasmaConduit>(SceneObjectType::SHIPPLASMACONDUIT);
-
+	objectFactory.registerObject<ShipSubComponent>(SceneObjectType::SHIPREACTORSUBCOMPONENT);
+	objectFactory.registerObject<ShipSubComponent>(SceneObjectType::SHIPENGINESUBCOMPONENT);
+	objectFactory.registerObject<ShipSubComponent>(SceneObjectType::SHIPSHIELDSUBCOMPONENT);
+	objectFactory.registerObject<ShipSubComponent>(SceneObjectType::SHIPARMORSUBCOMPONENT);
+	objectFactory.registerObject<ShipSubComponent>(SceneObjectType::SHIPWEAPONSUBCOMPONENT);
+	objectFactory.registerObject<ShipSubComponent>(SceneObjectType::SHIPCAPACITORSUBCOMPONENT);
+	objectFactory.registerObject<ShipSubComponent>(SceneObjectType::SHIPBOOSTERSUBCOMPONENT);
+	objectFactory.registerObject<ShipSubComponent>(SceneObjectType::SHIPDROIDINTERFACESUBCOMPONENT);
 
 	objectFactory.registerObject<SpaceActiveArea>(SceneObjectType::SPACEACTIVEAREA);
 	objectFactory.registerObject<NebulaArea>(SceneObjectType::NEBULAAREA);

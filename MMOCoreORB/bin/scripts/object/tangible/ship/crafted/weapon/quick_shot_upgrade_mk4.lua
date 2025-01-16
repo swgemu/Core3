@@ -42,7 +42,7 @@
 
 
 object_tangible_ship_crafted_weapon_quick_shot_upgrade_mk4 = object_tangible_ship_crafted_weapon_shared_quick_shot_upgrade_mk4:new {
-
+	gameObjectType = 1073741856,
 
 	numberExperimentalProperties = {1, 1, 2, 2},
 	experimentalProperties = {"XX", "XX", "CD", "OQ", "CD", "OQ"},
