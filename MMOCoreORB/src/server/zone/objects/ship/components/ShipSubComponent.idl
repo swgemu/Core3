@@ -1,0 +1,243 @@
+/*
+Copyright <SWGEmu>
+See file COPYING for copying conditions.
+*/
+
+package server.zone.objects.ship.components;
+
+import server.zone.objects.ship.components.ShipComponent;
+import server.zone.objects.ship.ShipObject;
+include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
+include server.zone.packets.scene.AttributeListMessage;
+import server.zone.objects.creature.CreatureObject;
+include server.zone.objects.tangible.component.Component;
+include templates.SharedObjectTemplate;
+
+class ShipSubComponent extends ShipComponent {
+	protected float maxDamage;
+	protected float minDamage;
+	protected float armorEffectiveness;
+	protected float shieldEffectiveness;
+	protected float refireRate;
+	protected float energyPerShot;
+	protected float rechargeRate;
+	protected float frontHitpoints;
+	protected float rearHitpoints;
+	protected float reactorGenerationRate;
+	protected float droidCommandSpeed;
+	protected float capacitorRechargeRate;
+	protected float capacitorEnergy;
+	protected float boosterSpeed;
+	protected float boosterRechargeRate;
+	protected float boosterEnergy;
+	protected float boosterAcceleration;
+	protected float boosterConsumptionRate;
+	protected float engineSpeedMaximum;
+
+	public ShipSubComponent() {
+		super();
+
+		maxDamage = 0.f;
+		minDamage = 0.f;
+		armorEffectiveness = 0.f;
+		shieldEffectiveness = 0.f;
+		refireRate = 0.f;
+		energyPerShot = 0.f;
+		rechargeRate = 0.f;
+		frontHitpoints = 0.f;
+		rearHitpoints = 0.f;
+		reactorGenerationRate = 0.f;
+		droidCommandSpeed = 0.f;
+		engineSpeedMaximum = 0.f;
+		capacitorRechargeRate = 0.f;
+		capacitorEnergy = 0.f;
+		boosterSpeed = 0.f;
+		boosterRechargeRate = 0.f;
+		boosterEnergy = 0.f;
+		boosterAcceleration = 0.f;
+		boosterConsumptionRate = 0.f;
+
+	}
+
+	public float getMaxDamage() {
+		return maxDamage;
+	}
+
+	public float getMinDamage() {
+		return minDamage;
+	}
+
+	public float getarmorEffectiveness () {
+		return armorEffectiveness;
+	}
+
+	public float getshieldEffectiveness () {
+		return shieldEffectiveness;
+	}
+
+	public float getrefireRate () {
+		return refireRate;
+	}
+
+	public float getenergyPerShot () {
+		return energyPerShot;
+	}
+
+	public float getrechargeRate () {
+		return rechargeRate;
+	}
+
+	public float getfrontHitpoints () {
+		return frontHitpoints;
+	}
+
+	public float getrearHitPoints () {
+		return rearHitpoints;
+	}
+
+	public float getreactorGenerationRate () {
+		return reactorGenerationRate;
+	}
+
+	public float getdroidCommandSpeed () {
+		return droidCommandSpeed;
+	}
+
+	public float getengineSpeedMaximum () {
+		return engineSpeedMaximum;
+	}
+
+	public float getcapacitorRechargeRate () {
+		return capacitorRechargeRate;
+	}
+
+	public float getcapacitorEnergy () {
+		return capacitorEnergy;
+	}
+
+	public float getboosterSpeed () {
+		return boosterSpeed;
+	}
+
+	public float getboosterRechargeRate () {
+		return boosterRechargeRate;
+	}
+
+	public float getboosterEnergy () {
+		return boosterEnergy;
+	}
+
+	public float getboosterAcceleration () {
+		return boosterAcceleration;
+	}
+
+	public float getboosterConsumptionRate () {
+		return boosterConsumptionRate;
+	}
+
+	@local
+	public void setMaxDamage (float value) {
+		maxDamage = value;
+	}
+
+	@local
+	public void setMinDamage (float value) {
+		minDamage = value;
+	}
+
+	@local
+	public void setArmorEffectiveness (float value) {
+		armorEffectiveness = value;
+	}
+
+	@local
+	public void setShieldEffectiveness (float value) {
+		shieldEffectiveness = value;
+	}
+
+	@local
+	public void setRefireRate (float value) {
+		refireRate = value;
+	}
+
+	@local
+	public void setEnergyPerShot (float value) {
+		energyPerShot = value;
+	}
+
+	@local
+	public void setRechargeRate (float value) {
+		rechargeRate = value;
+	}
+
+	@local
+	public void setFrontHitPoints (float value) {
+		frontHitpoints = value;
+	}
+
+	@local
+	public void setRearHitPoints (float value) {
+		rearHitpoints = value;
+	}
+
+	@local
+	public void setReactorGenerationRate (float value) {
+		reactorGenerationRate = value;
+	}
+
+	@local
+	public void setdroidCommandSpeed (float value) {
+		droidCommandSpeed = value;
+	}
+
+	@local
+	public void setEngineSpeedMaximum (float value) {
+		engineSpeedMaximum = value;
+	}
+
+	@local
+	public void setCapacitorRechargeRate (float value) {
+		capacitorRechargeRate = value;
+	}
+
+	@local
+	public void setCapacitorEnergy (float value) {
+		capacitorEnergy = value;
+	}
+
+	@local
+	public void setBoosterSpeed (float value) {
+		boosterSpeed = value;
+	}
+
+	@local
+	public void setBoosterRechargeRate (float value) {
+		boosterRechargeRate = value;
+	}
+
+	@local
+	public void setBoosterEnergy (float value) {
+		boosterEnergy = value;
+	}
+
+	@local
+	public void setBoosterAcceleration (float value) {
+		boosterAcceleration = value;
+	}
+
+	@local
+	public void setBoosterComsumptionRate (float value) {
+		boosterConsumptionRate = value;
+	}
+
+	@local
+	public native void loadTemplateData(SharedObjectTemplate templateData);
+
+	@local
+	public abstract native void updateCraftingValues(CraftingValues values, boolean firstUpdate);
+
+	@local
+	@dirty
+	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
+
+}

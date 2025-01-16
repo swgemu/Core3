@@ -42,7 +42,7 @@
 
 
 object_tangible_ship_crafted_booster_fast_charge_fuel_cell_mk4 = object_tangible_ship_crafted_booster_shared_fast_charge_fuel_cell_mk4:new {
-
+	gameObjectType = 1073741844,
 
 	numberExperimentalProperties = {1, 1, 2, 2},
 	experimentalProperties = {"XX", "XX", "DR", "OQ", "DR", "OQ"},

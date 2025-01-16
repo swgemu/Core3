@@ -42,7 +42,7 @@
 
 
 object_tangible_ship_crafted_armor_mass_reduction_kit_mk1 = object_tangible_ship_crafted_armor_shared_mass_reduction_kit_mk1:new {
-
+	gameObjectType = 1073741843,
 
 	numberExperimentalProperties = {1, 1, 2, 2, 2},
 	experimentalProperties = {"XX", "XX", "OQ", "UT", "OQ", "UT", "OQ", "UT"},

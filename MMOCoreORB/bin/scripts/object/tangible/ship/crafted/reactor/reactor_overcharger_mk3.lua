@@ -42,7 +42,7 @@
 
 
 object_tangible_ship_crafted_reactor_reactor_overcharger_mk3 = object_tangible_ship_crafted_reactor_shared_reactor_overcharger_mk3:new {
-
+	gameObjectType = 1073741848,
 
 	numberExperimentalProperties = {1, 1, 2, 2},
 	experimentalProperties = {"XX", "XX", "OQ", "PE", "OQ", "PE"},
