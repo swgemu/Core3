@@ -344,7 +344,7 @@ void AiAgentImplementation::loadTemplateData(CreatureTemplate* templateData) {
 		containerComponent = cast<ContainerComponent*>(ComponentManager::instance()->getComponent<SceneObjectComponent*>(conTemp));
 	}
 
-	if (!isPet() && isNpc() && (getFaction() == 0) && getMoodID() == 0 && System::random(50) < 15) {
+	if (!isPet() && !(optionsBitmask & OptionBitmask::INTERESTING) && !(optionsBitmask & OptionBitmask::JTLINTERESTING) && isNpc() && (getFaction() == 0) && getMoodID() == 0 && System::random(50) < 15) {
 		ZoneServer* zoneServer = getZoneServer();
 
 		if (zoneServer != nullptr) {

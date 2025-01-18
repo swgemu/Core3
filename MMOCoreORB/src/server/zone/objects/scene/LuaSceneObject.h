@@ -37,6 +37,7 @@ namespace scene {
 		int getPositionZ(lua_State* L);
 		int getPositionY(lua_State* L);
 		int getDirectionAngle(lua_State* L);
+		int getDirection(lua_State* L);
 		int getWorldPositionX(lua_State* L);
 		int getWorldPositionZ(lua_State* L);
 		int getWorldPositionY(lua_State* L);
