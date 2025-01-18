@@ -275,6 +275,66 @@ function SpaceHelpers:isInquisitionSquadron(pPlayer)
 	return PlayerObject(pGhost):isSquadronType(INQUISITION_SQUADRON)
 end
 
+-- @param pPlayer pointer to return faction string by squadron type
+function SpaceHelpers:getPlayerSpaceFactionString(pPlayer)
+	if (pPlayer == nil) then
+		return 0
+	end
+
+	local pGhost = CreatureObject(pPlayer):getPlayerObject()
+
+	if (pGhost == nil) then
+		return 0
+	end
+
+	local squadronType = PlayerObject(pGhost):getSquadronType()
+	local factionString = ""
+
+	if (squadronType == CORSEC_SQUADRON) then
+		factionString = "corsec"
+	elseif (squadronType == SMUGGLER_SQUADRON) then
+		factionString = "smuggler"
+	elseif (squadronType == RSF_SQUADRON) then
+		factionString = "rsf"
+	elseif (squadronType == BLACK_EPSILON_SQUADRON or squadronType == STORM_SQUADRON or squadronType == INQUISITION_SQUADRON) then
+		factionString = "imperial"
+	elseif (squadronType == HAVOC_SQUADRON or squadronType == VORTEX_SQUADRON or squadronType == CRIMSON_PHOENIX_SQUADRON) then
+		factionString = "rebel"
+	end
+
+	return factionString
+end
+
+-- @param pPlayer pointer to return faction hash by squadron type
+function SpaceHelpers:getPlayerSpaceFactionHash(pPlayer)
+	if (pPlayer == nil) then
+		return 0
+	end
+
+	local pGhost = CreatureObject(pPlayer):getPlayerObject()
+
+	if (pGhost == nil) then
+		return 0
+	end
+
+	local squadronType = PlayerObject(pGhost):getSquadronType()
+	local factionHash = 0
+
+	if (squadronType == CORSEC_SQUADRON) then
+		factionHash = getHashCode("corsec")
+	elseif (squadronType == SMUGGLER_SQUADRON) then
+		factionHash = getHashCode("smuggler")
+	elseif (squadronType == RSF_SQUADRON) then
+		factionHash = getHashCode("rsf")
+	elseif (squadronType == BLACK_EPSILON_SQUADRON or squadronType == STORM_SQUADRON or squadronType == INQUISITION_SQUADRON) then
+		factionHash = getHashCode("imperial")
+	elseif (squadronType == HAVOC_SQUADRON or squadronType == VORTEX_SQUADRON or squadronType == CRIMSON_PHOENIX_SQUADRON) then
+		factionHash = getHashCode("rebel")
+	end
+
+	return factionHash
+end
+
 -- @param pPlayer pointer checks if the player has any type of pilot skills
 function SpaceHelpers:isPilot(pPlayer)
 	if (pPlayer == nil) then
@@ -310,11 +370,30 @@ function SpaceHelpers:hasCertifiedShip(pPlayer, skipYacht)
 	return CreatureObject(pPlayer):hasCertifiedShip(skipYacht)
 end
 
--- @param pPlayer pointer surrenders the entire pilot profession
--- @param pilotProfession string to match table above with list of skill boxes in selected pilot profession: neutralPilot, rebelPilot, imperialPilot
-function SpaceHelpers:surrenderPilot(pPlayer, pilotProfession)
+-- @param pPlayer pointer surrenders the entire pilot profession and resets all of the quests
+function SpaceHelpers:surrenderPilot(pPlayer)
 	if (pPlayer == nil) then
 		return
+	end
+
+	local pGhost = CreatureObject(pPlayer):getPlayerObject()
+
+	if (pGhost == nil) then
+		return false
+	end
+
+	local pilotSquadron = PlayerObject(pGhost):getSquadronType()
+	local pilotProfession = ""
+
+	if (pilotSquadron == CORSEC_SQUADRON or pilotSquadron == SMUGGLER_SQUADRON or pilotSquadron == RSF_SQUADRON) then
+		pilotProfession = "neutralPilot"
+
+		CorsecSquadronScreenplay:resetRheaQuests(pPlayer)
+
+	elseif (pilotSquadron == BLACK_EPSILON_SQUADRON or pilotSquadron == STORM_SQUADRON or pilotSquadron == INQUISITION_SQUADRON) then
+		pilotProfession = "imperialPilot"
+	elseif (pilotSquadron == HAVOC_SQUADRON or pilotSquadron == VORTEX_SQUADRON or pilotSquadron == CRIMSON_PHOENIX_SQUADRON) then
+		pilotProfession = "rebelPilot"
 	end
 
 	local pilotSkills = self.pilotSkills[pilotProfession]
@@ -571,7 +650,8 @@ function SpaceHelpers:activateSpaceQuest(pPlayer, pNpc, questType, questName, no
 	end
 
 	mission:setTypeCRC(getHashCode("space_" .. questType))
-	mission:setQuestCRC(questCRC)
+	mission:setQuestType(questType)
+	mission:setQuestName(questName)
 	mission:setMissionTitle("space/quest", questType)
 	mission:setMissionDescription(questString, "title_d")
 
@@ -591,13 +671,13 @@ function SpaceHelpers:activateSpaceQuest(pPlayer, pNpc, questType, questName, no
 	end
 
 	-- Update the players journal
-	PlayerObject(pGhost):activateJournalQuest(questCRC, tonumber(notifyClient))
+	PlayerObject(pGhost):activateJournalQuest(questCRC, notifyClient)
 
-	-- Send Player Message
-	local messageString = LuaStringIdChatParameter("@space/quest:quest_received")
-	messageString:setTO("@" .. questString .. ":title")
+	-- Send Player Messages
+	local missionMsg= LuaStringIdChatParameter("@space/quest:quest_received") -- " \\#pcontrast3 Mission Received: < \\#pcontrast1 %TO \\#pcontrast3 >"
+	missionMsg:setTO("@" .. questString .. ":title")
 
-	CreatureObject(pPlayer):sendSystemMessage(messageString:_getObject()) -- " \\#pcontrast3 Mission Received: < \\#pcontrast1 %TO \\#pcontrast3 >"
+	CreatureObject(pPlayer):sendSystemMessage(missionMsg:_getObject())
 
 	CreatureObject(pPlayer):playMusicMessage("sound/music_themequest_acc_criminal.snd")
 end
@@ -631,15 +711,14 @@ function SpaceHelpers:completeSpaceQuest(pPlayer, questType, questName, notifyCl
 	CreatureObject(pPlayer):removeQuestMission(questCRC)
 
 	-- Complete Quest in Journal
-	PlayerObject(pGhost):completeJournalQuest(questCRC, tonumber(notifyClient))
+	PlayerObject(pGhost):completeJournalQuest(questCRC, false)
 
-	-- Send Player Message
-	local messageString = LuaStringIdChatParameter("@space/quest:quest_won")
-	messageString:setTO("@" .. questString .. ":title")
+	if (notifyClient) then
+		-- Send Player Message
+		SpaceHelpers:sendQuestSuccess(pPlayer, "@" .. questString .. ":title")
 
-	CreatureObject(pPlayer):sendSystemMessage(messageString:_getObject()) -- " \\#pcontrast3 Mission Successful: < \\#pcontrast1 %TO \\#pcontrast3 >"
-
-	CreatureObject(pPlayer):playMusicMessage("sound/music_themequest_victory_rebel.snd")
+		CreatureObject(pPlayer):playMusicMessage("sound/music_themequest_victory_rebel.snd")
+	end
 end
 
 -- @param pPlayer pointer to complete quest on
@@ -659,20 +738,23 @@ function SpaceHelpers:failSpaceQuest(pPlayer, questType, questName, notifyClient
 	local questString = "spacequest/" .. questType .. "/" .. questName
 	local questCRC = getHashCode(questString)
 
-	if (not PlayerObject(pGhost):isJournalQuestActive(questCRC)) then
-		return
-	end
-
 	if (self.DEBUG_SPACE_HELPERS) then
 		print("Failing Space Quest: " .. questString .. " Hash: " .. questCRC)
 	end
 
-	if (questType == "patrol") then
-		CreatureObject(pPlayer):sendSystemMessage("@space/quest:patrol_abandoned") -- "You abandoned your patrol!"
-	end
+	if (notifyClient) then
+		if (questType == "patrol") then
+			SpaceHelpers:sendQuestUpdate(pPlayer, "@space/quest:patrol_abandoned") -- "You abandoned your patrol!"
+		elseif (questType == "destroy_surpriseattack") then
+			SpaceHelpers:sendQuestUpdate(pPlayer, "@space/quest:destroy_surprise_abandoned") -- "You ran away from the attack and abandoned your duty!"
+		else
+			-- Failed Message
+			SpaceHelpers:sendQuestUpdate(pPlayer, "@quest/quests:task_failure")
+		end
 
-	-- Failed Message
-	CreatureObject(pPlayer):sendSystemMessage("@quest/quests:task_failure")
+		-- Failed Message
+		CreatureObject(pPlayer):sendSystemMessage("@quest/quests:task_failure")
+	end
 
 	-- Clear the Quest from their Journal
 	PlayerObject(pGhost):clearJournalQuest(questCRC, false)
@@ -680,13 +762,15 @@ function SpaceHelpers:failSpaceQuest(pPlayer, questType, questName, notifyClient
 	-- Remove the Mission from players datapad
 	CreatureObject(pPlayer):abortQuestMission(questCRC)
 
-	-- Send Player Message
-	local messageString = LuaStringIdChatParameter("@space/quest:quest_failed")
-	messageString:setTO("@" .. questString .. ":title")
+	if (notifyClient) then
+		-- Send Player Message
+		local messageString = LuaStringIdChatParameter("@space/quest:quest_failed")
+		messageString:setTO("@" .. questString .. ":title")
 
-	CreatureObject(pPlayer):sendSystemMessage(messageString:_getObject()) -- " \\#pcontrast3 Mission Failed: < \\#pcontrast1 %TO \\#pcontrast3 >"
+		CreatureObject(pPlayer):sendSystemMessage(messageString:_getObject()) -- " \\#pcontrast3 Mission Failed: < \\#pcontrast1 %TO \\#pcontrast3 >"
 
-	CreatureObject(pPlayer):playMusicMessage("sound/music_themequest_fail_criminal.snd")
+		CreatureObject(pPlayer):playMusicMessage("sound/music_themequest_fail_criminal.snd")
+	end
 end
 
 -- @param pPlayer pointer to check quest on
@@ -734,7 +818,7 @@ function SpaceHelpers:clearSpaceQuest(pPlayer, questType, questName, notifyClien
 		print("Clearing Space Quest: " .. questString .. " Hash: " .. questCRC)
 	end
 
-	PlayerObject(pGhost):clearJournalQuest(questCRC, tonumber(notifyClient))
+	PlayerObject(pGhost):clearJournalQuest(questCRC, notifyClient)
 end
 
 -- @param pPlayer pointer to activate quest on
@@ -759,7 +843,7 @@ function SpaceHelpers:activateSpaceQuestTask(pPlayer, questType, questName, task
 		print("Activating Space Quest Task: " .. questString .. " Hash: " .. questCRC .. " Task Num: " .. taskNumber)
 	end
 
-	PlayerObject(pGhost):activateJournalQuestTask(questCRC, taskNumber, tonumber(notifyClient))
+	PlayerObject(pGhost):activateJournalQuestTask(questCRC, taskNumber, notifyClient)
 end
 
 -- @param pPlayer pointer to complete quest task on
@@ -788,7 +872,7 @@ function SpaceHelpers:completeSpaceQuestTask(pPlayer, questType, questName, task
 		print("Completing Space Quest Task: " .. questString .. " Hash: " .. questCRC .. " Task Num: " .. taskNumber)
 	end
 
-	PlayerObject(pGhost):completeJournalQuestTask(questCRC, taskNumber, tonumber(notifyClient))
+	PlayerObject(pGhost):completeJournalQuestTask(questCRC, taskNumber, notifyClient)
 end
 
 -- @param pPlayer pointer to check for quest task on
@@ -847,7 +931,7 @@ function SpaceHelpers:clearSpaceQuestTask(pPlayer, questType, questName, taskNum
 	end
 
 	-- Clear quest task from Journal
-	PlayerObject(pGhost):clearJournalQuestTask(questCRC, taskNumber,tonumber(notifyClient))
+	PlayerObject(pGhost):clearJournalQuestTask(questCRC, taskNumber,notifyClient)
 end
 
 -- @param pPlayer pointer to check quest on
@@ -901,83 +985,9 @@ end
 
 --[[
 
-	Space Mission Functions
+	Space General Mission Functions
 
 ]]
-
-
--- @param pPlayer pointer to check quest task on
--- @param questType from tre directory questlist/spacequest
--- @param questName
--- @param taskNumber to check
-function SpaceHelpers:spawnSurpriseAttack(pPilot, questScreenplay, questName, questTable)
-	if (pPilot == nil) then
-		return
-	end
-
-	local pPilotShip = SceneObject(pPilot):getRootParent()
-
-	if (pPilotShip == nil or not SceneObject(pPilotShip):isShipObject()) then
-		return 0
-	end
-
-	local x = SceneObject(pPilotShip):getPositionX()
-	local z = SceneObject(pPilotShip):getPositionZ()
-	local y = SceneObject(pPilotShip):getPositionY()
-
-	if (self.DEBUG_SPACE_HELPERS) then
-		print("SpaceHelpers:spawnSurpriseAttack - Screenplay: " .. questScreenplay .. " Space Quest: " .. questName)
-	end
-
-	local spawnZone = questTable.zone
-	local shipsTable = questTable.spawns
-	local pilotID = SceneObject(pPilot):getObjectID()
-
-	if (self.DEBUG_SPACE_HELPERS) then
-		print("spawnSurpriseAttack -- spawnZone: " .. spawnZone .. " shipsTable size: " .. #shipsTable)
-	end
-
-	local totalSpawned = 0
-
-	for i = 1, #shipsTable, 1 do
-		local count = shipsTable[i].count
-		local shipName = shipsTable[i].shipName
-
-		if (self.DEBUG_SPACE_HELPERS) then
-			print("spawnSurpriseAttack -- spawning ship: " .. shipName .. " Spawn Count: " .. count)
-		end
-
-		for j = 1, count, 1 do
-			local pShipAgent = spawnShipAgent(shipName, spawnZone, x + (getRandomNumber(50, 250) - getRandomNumber(50, 250)), z  + (getRandomNumber(50, 250) - getRandomNumber(50, 250)), y  + (getRandomNumber(50, 250) - getRandomNumber(50, 250)))
-
-			if (pShipAgent ~= nil) then
-				-- Setup the patrol
-				ShipAiAgent(pShipAgent):setMinimumGuardPatrol(200)
-				ShipAiAgent(pShipAgent):setMaximumGuardPatrol(1000)
-
-				ShipAiAgent(pShipAgent):setGuardPatrol()
-
-				-- Make sure the extra mobs are despawned if all players leaves the area
-				ShipAiAgent(pShipAgent):setDespawnOnNoPlayerInRange(true)
-
-				-- Add kill observer
-				createObserver(OBJECTDESTRUCTION, questScreenplay, "notifyShipDestroyed", pShipAgent)
-
-				-- Set the player as ShipAgents Defender
-				ShipAiAgent(pShipAgent):setDefender(pPilotShip)
-
-				totalSpawned = totalSpawned + 1
-
-				-- Store the quest owner
-				writeData(SceneObject(pShipAgent):getObjectID() .. ":QuestOwner", pilotID)
-			end
-		end
-	end
-
-	if (totalSpawned > 0) then
-		writeData(pilotID .. questName .. ":SurpriseAttackCount", totalSpawned)
-	end
-end
 
 -- @param pPlayer pointer to player to receive credits
 -- @param amount - total credits to give
@@ -994,6 +1004,160 @@ function SpaceHelpers:spaceCreditReward(pPlayer, amount)
 
 	-- Give the Credits to bank
 	CreatureObject(pPlayer):addBankCredits(amount, true)
+end
+
+-- @param pPlayer pointer to player to receive credits
+-- @param itemString - string for item reward
+function SpaceHelpers:spaceItemReward(pPlayer, itemString)
+	if (pPlayer == nil or itemString == "") then
+		return
+	end
+
+	local pInventory = CreatureObject(pPlayer):getSlottedObject("inventory")
+
+	if (pInventory == nil) then
+		return
+	end
+
+	giveItem(pInventory, rewardString, -1)
+end
+
+-- @param pPlayer pointer to player to receive message
+-- @param message string
+function SpaceHelpers:sendDelayedMessage(pPlayer, message)
+	if (pPlayer == nil) then
+		return
+	end
+
+	CreatureObject(pPlayer):sendSystemMessage(message)
+end
+
+-- @param pPlayer - pointer to player to remove waypoint from
+-- @param questClass
+function SpaceHelpers:clearQuestWaypoint(pPlayer, questClass)
+	if (pPlayer == nil) then
+		return
+	end
+
+	local pGhost = CreatureObject(pPlayer):getPlayerObject()
+
+	if (pGhost == nullptr) then
+		return
+	end
+
+	local playerID = SceneObject(pPlayer):getObjectID()
+	local waypointID = tonumber(getQuestStatus(playerID .. ":" .. questClass .. ":waypointID"))
+
+	-- Clear the waypointID and waypoint off the player
+	removeQuestStatus(playerID .. ":" .. questClass .. ":waypointID")
+
+	-- Clear the waypoint from the player object
+	PlayerObject(pGhost):removeWaypoint(waypointID, true)
+end
+
+-- @param pPlayer - pointer to player to remove waypoints table from
+-- @param questClass
+function SpaceHelpers:clearQuestWaypoints(pPlayer, questClass)
+	if (pPlayer == nil) then
+		return
+	end
+
+	local pGhost = CreatureObject(pPlayer):getPlayerObject()
+
+	if (pGhost == nullptr) then
+		return
+	end
+
+	local playerID = SceneObject(pPlayer):getObjectID()
+	local waypointTable = readStringVectorSharedMemory(playerID .. ":" .. questClass .. ":waypointVector")
+
+	for i = 1, #waypointTable, 1 do
+		local waypointID = tonumber(waypointTable[i])
+
+		-- Clear the waypoint from the player object
+		PlayerObject(pGhost):removeWaypoint(waypointID, true)
+	end
+
+	-- Clear the waypointIDs vector
+	deleteStringVectorSharedMemory(playerID .. ":" .. questClass .. ":waypointVector")
+end
+
+-- @param pPlayer - pointer to player
+-- @param messageString
+function SpaceHelpers:sendQuestUpdate(pPlayer, messageString)
+	if (pPlayer == nil) then
+		return
+	end
+
+	local updateMsg = LuaStringIdChatParameter("@space/quest:quest_update_s") --" \\#pcontrast3 Mission Update: < \\#pcontrast1 %TO \\#pcontrast3 >"
+	updateMsg:setTO(messageString)
+
+	CreatureObject(pPlayer):sendSystemMessage(updateMsg:_getObject())
+end
+
+-- @param pPlayer - pointer to player
+-- @param messageString
+function SpaceHelpers:sendQuestProgess(pPlayer, messageString)
+	if (pPlayer == nil) then
+		return
+	end
+
+	local progressMsg = LuaStringIdChatParameter("@space/quest:quest_in_progress") -- " \\#pcontrast3 Mission in Progress: < \\#pcontrast1 %TO \\#pcontrast3 > \\#pcontrast2 (You must complete the mission before leaving this sector.) \\#pcontrast3 "
+	progressMsg:setTO(messageString)
+
+	CreatureObject(pPlayer):sendSystemMessage(progressMsg:_getObject())
+
+	CreatureObject(pPlayer):playMusicMessage("sound/mus_quest_theme_opening.snd")
+end
+
+-- @param pPlayer - pointer to player
+-- @param messageString
+function SpaceHelpers:sendQuestAlert(pPlayer, messageString)
+	if (pPlayer == nil) then
+		return
+	end
+
+	local alertMsg = LuaStringIdChatParameter("@space/quest:quest_alert_s") -- " \\#pcontrast2 Mission Alert: \\#pcontrast3 < \\#pcontrast1 %TO \\#pcontrast3 >"
+	alertMsg:setTO(messageString)
+
+	CreatureObject(pPlayer):sendSystemMessage(alertMsg:_getObject())
+end
+
+-- @param pPlayer - pointer to player
+-- @param messageString
+function SpaceHelpers:sendQuestReward(pPlayer, messageString)
+	if (pPlayer == nil) then
+		return
+	end
+
+	local alertMsg = LuaStringIdChatParameter("@space/quest:quest_rewarded") -- " \\#pcontrast3 Reward Received: < \\#pcontrast1 %TO \\#pcontrast3 >"
+	alertMsg:setTO(messageString)
+
+	CreatureObject(pPlayer):sendSystemMessage(alertMsg:_getObject())
+
+	CreatureObject(pPlayer):playMusicMessage("sound/music_themequest_victory_rebel.snd")
+end
+
+-- @param pPlayer - pointer to player
+-- @param messageString
+function SpaceHelpers:sendQuestSuccess(pPlayer, messageString)
+	if (pPlayer == nil) then
+		return
+	end
+
+	local successString = LuaStringIdChatParameter("@space/quest:quest_won")
+	successString:setTO(messageString)
+
+	CreatureObject(pPlayer):sendSystemMessage(successString:_getObject()) -- " \\#pcontrast3 Mission Successful: < \\#pcontrast1 %TO \\#pcontrast3 >"
+end
+
+-- @param pShipAgent - pointer to ShipAiAgent to destroy
+function SpaceHelpers:delayedDestroyShipAgent(pShipAgent)
+	if (pShipAgent == nil) then
+		return
+	end
+
+	SceneObject(pShipAgent):destroyObjectFromWorld()
 end
 
 return SpaceHelpers

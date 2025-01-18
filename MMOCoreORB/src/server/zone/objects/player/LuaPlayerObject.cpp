@@ -106,6 +106,8 @@ Luna<LuaPlayerObject>::RegType LuaPlayerObject::Register[] = {
 		{ "resetPilotTier", &LuaPlayerObject::resetPilotTier },
 		{ "isSquadronType", &LuaPlayerObject::isSquadronType },
 		{ "setSquadronType", &LuaPlayerObject::setSquadronType },
+		{ "getSquadronType", &LuaPlayerObject::getSquadronType },
+
 		{ 0, 0 }
 };
 
@@ -990,4 +992,12 @@ int LuaPlayerObject::setSquadronType(lua_State* L) {
 	realObject->setPilotSquadron(squadron);
 
 	return 0;
+}
+
+int LuaPlayerObject::getSquadronType(lua_State* L) {
+	uint32 squadronType = realObject->getPilotSquadron();
+
+	lua_pushinteger(L, squadronType);
+
+	return 1;
 }

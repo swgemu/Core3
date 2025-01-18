@@ -349,8 +349,12 @@ void TangibleObjectImplementation::sendPvpStatusTo(CreatureObject* player) {
 		auto thisShipAgent = asShipAiAgent();
 		auto playerRoot =  player->getRootParent();
 
-		if (thisShipAgent != nullptr && playerRoot != nullptr && thisShipAgent->isEnemyShip(playerRoot->getObjectID())) {
-			newPvpStatusBitmask |= ObjectFlag::ENEMY;
+		if (thisShipAgent != nullptr) {
+			if (thisShipAgent->isPlayerFactionEnemy(player)) {
+				newPvpStatusBitmask |= ObjectFlag::ENEMY;
+			} else if (playerRoot != nullptr && thisShipAgent->isEnemyShip(playerRoot->getObjectID())) {
+				newPvpStatusBitmask |= ObjectFlag::ENEMY;
+			}
 		}
 	}
 
