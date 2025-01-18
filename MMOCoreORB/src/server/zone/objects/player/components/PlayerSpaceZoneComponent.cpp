@@ -89,18 +89,7 @@ void PlayerSpaceZoneComponent::switchZone(SceneObject* sceneObject, const String
 			ghost->unloadSpawnedChildren(true);
 		}
 
-		Reference<CreatureObject*> playerRef = player;
-		uint32 zoneHash = newTerrainName.hashCode();
-
-		Core::getTaskManager()->scheduleTask([playerRef, zoneHash] () {
-			if (playerRef == nullptr) {
-				return;
-			}
-
-			Locker lock(playerRef);
-
-			playerRef->notifyObservers(ObserverEventType::ZONESWITCHED, nullptr, zoneHash);
-		}, "notifyPlayerEnterSpaceLambda", 5000);
+		player->notifyObservers(ObserverEventType::ZONESWITCHED, nullptr, newTerrainName.hashCode());
 	}
 
 	SpaceZoneComponent::switchZone(sceneObject, newTerrainName, newPostionX, newPositionZ, newPositionY, parentID, toggleInvisibility, playerArrangement);
