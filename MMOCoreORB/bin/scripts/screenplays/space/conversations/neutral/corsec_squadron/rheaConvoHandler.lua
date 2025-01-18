@@ -79,16 +79,8 @@ function rheaConvoHandler:getInitialScreen(pPlayer, pNpc, pConvTemplate)
 			Quests
 	--]]
 
-	local currentStep = getQuestStatus(playerID .. ":CorsecSquadron")
-
-	if (currentStep == nil) then
-		currentStep = 0
-	else
-		currentStep = tonumber(currentStep)
-	end
-
 	-- Player has an active quest from Rhea
-	if ((questOneStarted and currentStep < CorsecSquadronScreenplay.FINISHED_MISSION_1) or (questTwoStarted and currentStep < CorsecSquadronScreenplay.FINISHED_MISSION_2) or (questThreeStarted and currentStep < CorsecSquadronScreenplay.FINISHED_MISSION_3) or (questFourStarted and currentStep < CorsecSquadronScreenplay.FINISHED_MISSION_4)) then
+	if ((questOneStarted and not SpaceHelpers:isSpaceQuestTaskComplete(pPlayer, patrol_corellia_privateer_1.questType, patrol_corellia_privateer_1.questName, 0)) or (questTwoStarted) or (questThreeStarted) or (questFourStarted)) then
 		return convoTemplate:getScreen("has_mission")
 	-- Player has finished quest 4
 	elseif (questFourComplete) then
@@ -295,7 +287,7 @@ function rheaConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNpc, select
 	elseif (screenID == "yes_im_ready") then
 		CreatureObject(pNpc):doAnimation("dismiss")
 
-		--patrol_corellia_privateer_1:startQuest(pPlayer, pNpc)
+		patrol_corellia_privateer_1:startQuest(pPlayer, pNpc)
 	elseif (screenID == "an_assignment_exp" or screenID == "where_to_go") then
 		CreatureObject(pNpc):doAnimation("point_away")
 	elseif (screenID == "what_ship" or screenID == "when_done") then
@@ -309,7 +301,7 @@ function rheaConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNpc, select
 	elseif (screenID == "train_me2") then
 		CreatureObject(pNpc):doAnimation("shake_head_no")
 
-		--destroy_corellia_privateer_2:startQuest(pPlayer, pNpc)
+		destroy_corellia_privateer_2:startQuest(pPlayer, pNpc)
 	elseif (screenID == "whats_next") then
 		CreatureObject(pPlayer):doAnimation("shrug_hands")
 	elseif (screenID == "was_a_snap") then
@@ -319,7 +311,7 @@ function rheaConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNpc, select
 		CreatureObject(pNpc):doAnimation("shake_head_no")
 		CreatureObject(pPlayer):doAnimation("belly_laugh")
 
-		--patrol_corellia_privateer_3:startQuest(pPlayer, pNpc)
+		patrol_corellia_privateer_3:startQuest(pPlayer, pNpc)
 		--[[
 
 		SpaceHelpers:activateSpaceQuest(pPlayer, pNpc, CorsecSquadronScreenplay.QUEST_STRING_3.type, CorsecSquadronScreenplay.QUEST_STRING_3.name, 1)
