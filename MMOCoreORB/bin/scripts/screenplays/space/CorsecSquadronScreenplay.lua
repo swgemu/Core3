@@ -6,8 +6,6 @@ local Logger = require("utils.logger")
 
 ]]
 
---[[
-
 patrol_corellia_privateer_1 = SpacePatrolScreenplay:new {
 	questName = "corellia_privateer_1",
 	questType = "patrol",
@@ -98,8 +96,6 @@ assassinate_corellia_privateer_tier1_4a = SpaceAssassinateScreenplay:new {
 }
 
 registerScreenPlay("assassinate_corellia_privateer_tier1_4a", false)
-
-]]
 
 --[[
 
