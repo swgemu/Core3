@@ -28,7 +28,7 @@ freighterheavy_tier1 = ShipAgent:new {
 	customShipAiMap = "",
 
 	conversationTemplate = "",
-	conversationMobile = "",
+	conversationMobile = "object/mobile/shared_space_comm_civilian_01.iff",
 	conversationMessage = "", --Too Far Message
 }
 
