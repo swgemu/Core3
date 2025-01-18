@@ -1,5 +1,11 @@
 -- Space Screenplays & Conversation Handlers
 
+includeFile("space/SpaceQuestLogic.lua")
+includeFile("space/SpaceAssassinateScreenplay.lua")
+includeFile("space/SpaceDestroyScreenplay.lua")
+includeFile("space/SpaceEscortScreenplay.lua")
+includeFile("space/SpacePatrolScreenplay.lua")
+includeFile("space/SpaceSurpriseAttackScreenplay.lua")
 
 includeFile("space/chassis_dealer.lua")
 
