@@ -28,6 +28,7 @@ Luna<LuaSceneObject>::RegType LuaSceneObject::Register[] = {
 		{ "getPositionY", &LuaSceneObject::getPositionY },
 		{ "getPositionZ", &LuaSceneObject::getPositionZ },
 		{ "getDirectionAngle", &LuaSceneObject::getDirectionAngle },
+		{ "getDirection", &LuaSceneObject::getDirection },
 		{ "getWorldPositionX", &LuaSceneObject::getWorldPositionX },
 		{ "getWorldPositionY", &LuaSceneObject::getWorldPositionY },
 		{ "getWorldPositionZ", &LuaSceneObject::getWorldPositionZ },
@@ -239,6 +240,30 @@ int LuaSceneObject::getPositionZ(lua_State* L) {
 
 int LuaSceneObject::getDirectionAngle(lua_State* L) {
 	lua_pushnumber(L, realObject->getDirectionAngle());
+
+	return 1;
+}
+
+int LuaSceneObject::getDirection(lua_State* L) {
+	auto direction = realObject->getDirection();
+
+	lua_newtable(L);
+
+	if (!lua_checkstack(L, 5)) {
+		Logger::console.fatal("getDirection - lua_checkstack failed.");
+	}
+
+	lua_pushnumber(L, direction->getZ());
+	lua_rawseti(L, -2, 4);
+
+	lua_pushnumber(L, direction->getY());
+	lua_rawseti(L, -2, 3);
+
+	lua_pushnumber(L, direction->getX());
+	lua_rawseti(L, -2, 2);
+
+	lua_pushnumber(L, direction->getW());
+	lua_rawseti(L, -2, 1);
 
 	return 1;
 }
