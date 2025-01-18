@@ -281,6 +281,10 @@ space_corellia = SpacePatrolPointTable:new {
 	{"rebel_gunboat_patrol_03_03", 1488, 1562, -3194},
 	{"rebel_gunboat_patrol_03_04", 48, 7162, -5626},
 	{"rebel_gunboat_patrol_03_05", -2863, 5850, -5738},
+	{"privateer_security_escort_1", -5034, -5439, -4558},
+	{"privateer_security_escort_2", -2103, -5336, -5600},
+	{"privateer_security_escort_3", 1262, -5572, -5035},
+	{"privateer_security_escort_4", 5940, -5892, -4039},
 }
 
  SpacePatrolPoints:addSpacePatrolPoints(space_corellia, "space_corellia")
