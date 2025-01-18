@@ -6,9 +6,9 @@ local Logger = require("utils.logger")
 
 ]]
 
---[[
-
 patrol_corellia_privateer_1 = SpacePatrolScreenplay:new {
+	className = "patrol_corellia_privateer_1",
+
 	questName = "corellia_privateer_1",
 	questType = "patrol",
 
@@ -25,9 +25,11 @@ patrol_corellia_privateer_1 = SpacePatrolScreenplay:new {
 	},
 }
 
-registerScreenPlay("patrol_corellia_privateer_1", false)
+registerScreenPlay("patrol_corellia_privateer_1", true)
 
 destroy_surpriseattack_corellia_privateer_1 = SpaceSurpriseAttackScreenplay:new {
+	className = "destroy_surpriseattack_corellia_privateer_1",
+
 	questName = "corellia_privateer_1",
 	questType = "destroy_surpriseattack",
 
@@ -38,9 +40,11 @@ destroy_surpriseattack_corellia_privateer_1 = SpaceSurpriseAttackScreenplay:new 
 	sideQuestType = "",
 }
 
-registerScreenPlay("destroy_surpriseattack_corellia_privateer_1", false)
+registerScreenPlay("destroy_surpriseattack_corellia_privateer_1", true)
 
 destroy_corellia_privateer_2 = SpaceDestroyScreenplay:new {
+	className = "destroy_corellia_privateer_2",
+
 	questName = "corellia_privateer_2",
 	questType = "destroy",
 
@@ -51,9 +55,11 @@ destroy_corellia_privateer_2 = SpaceDestroyScreenplay:new {
 	sideQuestType = "",
 }
 
-registerScreenPlay("destroy_corellia_privateer_2", false)
+registerScreenPlay("destroy_corellia_privateer_2", true)
 
 patrol_corellia_privateer_3 = SpacePatrolScreenplay:new {
+	className = "patrol_corellia_privateer_3",
+
 	questName = "corellia_privateer_3",
 	questType = "patrol",
 
@@ -71,9 +77,11 @@ patrol_corellia_privateer_3 = SpacePatrolScreenplay:new {
 	},
 }
 
-registerScreenPlay("patrol_corellia_privateer_3", false)
+registerScreenPlay("patrol_corellia_privateer_3", true)
 
 escort_corellia_privateer_3 = SpaceEscortScreenplay:new {
+	className = "escort_corellia_privateer_3",
+
 	questName = "corellia_privateer_3",
 	questType = "patrol",
 
@@ -84,9 +92,11 @@ escort_corellia_privateer_3 = SpaceEscortScreenplay:new {
 	sideQuestType = "",
 }
 
-registerScreenPlay("escort_corellia_privateer_3", false)
+registerScreenPlay("escort_corellia_privateer_3", true)
 
 assassinate_corellia_privateer_tier1_4a = SpaceAssassinateScreenplay:new {
+	className = "assassinate_corellia_privateer_tier1_4a",
+
 	questType = "assassinate",
 	questName = "corellia_privateer_tier1_4a",
 
@@ -97,9 +107,7 @@ assassinate_corellia_privateer_tier1_4a = SpaceAssassinateScreenplay:new {
 	sideQuestType = "",
 }
 
-registerScreenPlay("assassinate_corellia_privateer_tier1_4a", false)
-
-]]
+registerScreenPlay("assassinate_corellia_privateer_tier1_4a", true)
 
 --[[
 
