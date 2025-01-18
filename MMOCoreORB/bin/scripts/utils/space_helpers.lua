@@ -44,7 +44,7 @@ local ObjectManager = require("managers.object.object_manager")
 local Logger = require("utils.logger")
 
 SpaceHelpers = {
-	DEBUG_SPACE_HELPERS = false,
+	DEBUG_SPACE_HELPERS = true,
 
 	pilotSkills = {
 		neutralPilot = {
@@ -901,83 +901,9 @@ end
 
 --[[
 
-	Space Mission Functions
+	Space General Mission Functions
 
 ]]
-
-
--- @param pPlayer pointer to check quest task on
--- @param questType from tre directory questlist/spacequest
--- @param questName
--- @param taskNumber to check
-function SpaceHelpers:spawnSurpriseAttack(pPilot, questScreenplay, questName, questTable)
-	if (pPilot == nil) then
-		return
-	end
-
-	local pPilotShip = SceneObject(pPilot):getRootParent()
-
-	if (pPilotShip == nil or not SceneObject(pPilotShip):isShipObject()) then
-		return 0
-	end
-
-	local x = SceneObject(pPilotShip):getPositionX()
-	local z = SceneObject(pPilotShip):getPositionZ()
-	local y = SceneObject(pPilotShip):getPositionY()
-
-	if (self.DEBUG_SPACE_HELPERS) then
-		print("SpaceHelpers:spawnSurpriseAttack - Screenplay: " .. questScreenplay .. " Space Quest: " .. questName)
-	end
-
-	local spawnZone = questTable.zone
-	local shipsTable = questTable.spawns
-	local pilotID = SceneObject(pPilot):getObjectID()
-
-	if (self.DEBUG_SPACE_HELPERS) then
-		print("spawnSurpriseAttack -- spawnZone: " .. spawnZone .. " shipsTable size: " .. #shipsTable)
-	end
-
-	local totalSpawned = 0
-
-	for i = 1, #shipsTable, 1 do
-		local count = shipsTable[i].count
-		local shipName = shipsTable[i].shipName
-
-		if (self.DEBUG_SPACE_HELPERS) then
-			print("spawnSurpriseAttack -- spawning ship: " .. shipName .. " Spawn Count: " .. count)
-		end
-
-		for j = 1, count, 1 do
-			local pShipAgent = spawnShipAgent(shipName, spawnZone, x + (getRandomNumber(50, 250) - getRandomNumber(50, 250)), z  + (getRandomNumber(50, 250) - getRandomNumber(50, 250)), y  + (getRandomNumber(50, 250) - getRandomNumber(50, 250)))
-
-			if (pShipAgent ~= nil) then
-				-- Setup the patrol
-				ShipAiAgent(pShipAgent):setMinimumGuardPatrol(200)
-				ShipAiAgent(pShipAgent):setMaximumGuardPatrol(1000)
-
-				ShipAiAgent(pShipAgent):setGuardPatrol()
-
-				-- Make sure the extra mobs are despawned if all players leaves the area
-				ShipAiAgent(pShipAgent):setDespawnOnNoPlayerInRange(true)
-
-				-- Add kill observer
-				createObserver(OBJECTDESTRUCTION, questScreenplay, "notifyShipDestroyed", pShipAgent)
-
-				-- Set the player as ShipAgents Defender
-				ShipAiAgent(pShipAgent):setDefender(pPilotShip)
-
-				totalSpawned = totalSpawned + 1
-
-				-- Store the quest owner
-				writeData(SceneObject(pShipAgent):getObjectID() .. ":QuestOwner", pilotID)
-			end
-		end
-	end
-
-	if (totalSpawned > 0) then
-		writeData(pilotID .. questName .. ":SurpriseAttackCount", totalSpawned)
-	end
-end
 
 -- @param pPlayer pointer to player to receive credits
 -- @param amount - total credits to give
@@ -994,6 +920,66 @@ function SpaceHelpers:spaceCreditReward(pPlayer, amount)
 
 	-- Give the Credits to bank
 	CreatureObject(pPlayer):addBankCredits(amount, true)
+end
+
+-- @param pPlayer pointer to player to receive message
+-- @param message string
+function SpaceHelpers:sendDelayedMessage(pPlayer, message)
+	if (pPlayer == nil) then
+		return
+	end
+
+	CreatureObject(pPlayer):sendSystemMessage(message)
+end
+
+-- @param pPlayer - pointer to player to remove waypoint from
+-- @param questClass
+function SpaceHelpers:clearQuestWaypoint(pPlayer, questClass)
+	if (pPlayer == nil) then
+		return
+	end
+
+	local pGhost = CreatureObject(pPlayer):getPlayerObject()
+
+	if (pGhost == nullptr) then
+		return
+	end
+
+	local playerID = SceneObject(pPlayer):getObjectID()
+	local waypointID = tonumber(getQuestStatus(playerID .. ":" .. questClass .. ":waypointID"))
+
+	-- Clear the waypointID and waypoint off the player
+	removeQuestStatus(playerID .. ":" .. questClass .. ":waypointID")
+
+	-- Clear the waypoint from the player object
+	PlayerObject(pGhost):removeWaypoint(waypointID, true)
+end
+
+-- @param pPlayer - pointer to player to remove waypoints table from
+-- @param questClass
+function SpaceHelpers:clearQuestWaypoints(pPlayer, questClass)
+	if (pPlayer == nil) then
+		return
+	end
+
+	local pGhost = CreatureObject(pPlayer):getPlayerObject()
+
+	if (pGhost == nullptr) then
+		return
+	end
+
+	local playerID = SceneObject(pPlayer):getObjectID()
+	local waypointTable = readStringVectorSharedMemory(playerID .. ":" .. questClass .. ":waypointVector")
+
+	for i = 1, #waypointTable, 1 do
+		local waypointID = tonumber(waypointTable[i])
+
+		-- Clear the waypoint from the player object
+		PlayerObject(pGhost):removeWaypoint(waypointID, true)
+	end
+
+	-- Clear the waypointIDs vector
+	deleteStringVectorSharedMemory(playerID .. ":" .. questClass .. ":waypointVector")
 end
 
 return SpaceHelpers
