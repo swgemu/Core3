@@ -32,7 +32,7 @@ function lifeDayOraalarriConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, 
 	if screenID == "speak_to_others" then
 		writeData(SceneObject(pPlayer):getObjectID() .. ":lifeDayState", 2)
 	elseif screenID == "have_gifts" then
-		if CreatureObject(pPlayer):getSpecies() == 4 then
+		if CreatureObject(pPlayer):getSpecies() == SPECIES_WOOKIEE then
 			clonedConversation:addOption("@conversation/lifeday04b:s_afabf3ac", "gift_wookiee") -- What sort of gifts?
 		else
 			clonedConversation:addOption("@conversation/lifeday04b:s_afabf3ac", "gift_non_wookiee") -- What sort of gifts?

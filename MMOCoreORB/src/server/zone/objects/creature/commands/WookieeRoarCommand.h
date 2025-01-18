@@ -24,7 +24,7 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
-		if (creature->getSpecies() != CreatureObject::WOOKIE)
+		if (creature->getSpecies() != CreatureObject::WOOKIEE)
 			return GENERALERROR;
 
 		CreatureObject* player = cast<CreatureObject*>(creature);

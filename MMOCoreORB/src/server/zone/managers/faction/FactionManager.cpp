@@ -9,6 +9,7 @@
 #include "FactionMap.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "templates/manager/TemplateManager.h"
+#include "server/zone/managers/player/PlayerManager.h"
 
 FactionManager::FactionManager() {
 	setLoggingName("FactionManager");
@@ -315,4 +316,22 @@ bool FactionManager::isAlly(const String& faction1, const String& faction2) {
 	Faction* faction = factionMap.getFaction(faction1);
 
 	return faction->getAllies()->contains(faction2);
+}
+
+uint32 FactionManager::getSpaceFactionBySquadron(int spaceSquadron, int tier) {
+	uint32 factionHash = 0;
+
+	if (spaceSquadron == PlayerManager::CORSEC_SQUADRON) {
+		factionHash = STRING_HASHCODE("corsec");
+	} else if (spaceSquadron == PlayerManager::RSF_SQUADRON) {
+		factionHash = STRING_HASHCODE("rsf");
+	} else if (spaceSquadron == PlayerManager::SMUGGLER_SQUADRON) {
+		factionHash = STRING_HASHCODE("smuggler");
+	} else if (spaceSquadron == PlayerManager::BLACK_EPSILON_SQUADRON || spaceSquadron == PlayerManager::STORM_SQUADRON || spaceSquadron == PlayerManager::INQUISITION_SQUADRON) {
+		factionHash = STRING_HASHCODE("imperial");
+	} else if (spaceSquadron == PlayerManager::CRIMSON_PHOENIX_SQUADRON || spaceSquadron == PlayerManager::VORTEX_SQUADRON || spaceSquadron == PlayerManager::HAVOC_SQUADRON) {
+		factionHash = STRING_HASHCODE("rebel");
+	}
+
+	return factionHash;
 }

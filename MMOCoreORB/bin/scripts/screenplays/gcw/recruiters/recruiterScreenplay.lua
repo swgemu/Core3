@@ -466,7 +466,7 @@ function recruiterScreenplay:awardItem(pPlayer, faction, itemString, gcwDiscount
 
 	local bothanDiscount = 1.0
 
-	if (CreatureObject(pPlayer):getSpecies() == 5) then
+	if (CreatureObject(pPlayer):getSpecies() == SPECIES_BOTHAN) then
 		bothanDiscount = 0.9;
 	end
 

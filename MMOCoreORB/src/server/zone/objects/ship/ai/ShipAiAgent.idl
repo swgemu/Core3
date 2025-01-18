@@ -513,6 +513,24 @@ class ShipAiAgent extends FighterShipObject {
 	@dirty
 	public native boolean isEnemyShip(unsigned long shipID);
 
+	@dirty
+	public native boolean isPlayerFactionAlly(CreatureObject player);
+
+	@dirty
+	public native boolean isPlayerFactionEnemy(CreatureObject player);
+
+	@preLocked
+	public native void addSpaceFactionAlly(unsigned int factionHash);
+
+	@preLocked
+	public native void removeSpaceFactionAlly(unsigned int factionHash);
+
+	@preLocked
+	public native void addSpaceFactionEnemy(unsigned int factionHash);
+
+	@preLocked
+	public native void removeSpaceFactionEnemy(unsigned int factionHash);
+
 	/**
 	 * Evaluates if this creature is aggresive to the object
 	 * @pre { }

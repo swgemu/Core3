@@ -268,7 +268,7 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<ClothingObject>(SceneObjectType::ROBE);
 	objectFactory.registerObject<ClothingObject>(SceneObjectType::SHIRT);
 	objectFactory.registerObject<ClothingObject>(SceneObjectType::VEST);
-	objectFactory.registerObject<ClothingObject>(SceneObjectType::WOOKIEGARB);
+	objectFactory.registerObject<ClothingObject>(SceneObjectType::WOOKIEEGARB);
 	objectFactory.registerObject<ClothingObject>(SceneObjectType::MISCCLOTHING);
 	objectFactory.registerObject<ClothingObject>(SceneObjectType::SKIRT);
 	//objectFactory.registerObject<ClothingObject>(SceneObjectType::ITHOGARB);

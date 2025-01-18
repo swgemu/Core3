@@ -211,7 +211,7 @@ class CreatureObject extends TangibleObject {
 	public static final int RODIAN = 1;
 	public static final int TRANDOSHAN = 2;
 	public static final int MONCAL = 3;
-	public static final int WOOKIE = 4;
+	public static final int WOOKIEE = 4;
 	public static final int BOTHAN = 5;
 	public static final int TWILEK = 6;
 	public static final int ZABRAK = 7;

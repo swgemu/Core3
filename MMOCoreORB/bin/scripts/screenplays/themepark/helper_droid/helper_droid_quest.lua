@@ -40,11 +40,6 @@ HelperDroidQuest = ScreenPlay:new {
 		{"33", "ithorian"},
 		{"49", "sullustan"},
 	},
-
-	SPECIES_MONCAL = 3,
-	SPECIES_WOOKIEE = 4,
-	SPECIES_SULLUSTAN = 49,
-	SPECIES_ITHORIAN = 33,
 }
 
 registerScreenPlay("HelperDroidQuest", false)
@@ -197,7 +192,7 @@ function HelperDroidQuest:professionQuestSui(pDroid, pPlayer, profession)
 
 		prompt = prompt .. "_" .. string
 
-		if (species == self.SPECIES_MONCAL or species == self.SPECIES_WOOKIEE or species == self.SPECIES_SULLUSTAN or species == self.SPECIES_ITHORIAN) then
+		if (species == SPECIES_MONCAL or species == SPECIES_WOOKIEE or species == SPECIES_SULLUSTAN or species == SPECIES_ITHORIAN) then
 			-- These 4 species have to skip quest 3 for entertainer
 			sui.setOkButtonText("@new_player:continue_button")
 			sui.hideCancelButton()
@@ -246,7 +241,7 @@ function HelperDroidQuest:professionCallback(pPlayer, pSui, eventIndex, ...)
 		if (questStatus == 2 and profession == "entertainer") then
 			local species = CreatureObject(pPlayer):getSpecies()
 
-			if (species == self.SPECIES_MONCAL or species == self.SPECIES_WOOKIEE or species == self.SPECIES_SULLUSTAN or species == self.SPECIES_ITHORIAN) then
+			if (species == SPECIES_MONCAL or species == SPECIES_WOOKIEE or species == SPECIES_SULLUSTAN or species == SPECIES_ITHORIAN) then
 				setQuestStatus(playerID .. ":" .. profession .. ":HelperDroid:completeQuests:", 3)
 
 				self:professionQuestSui(pDroid, pPlayer, profession)

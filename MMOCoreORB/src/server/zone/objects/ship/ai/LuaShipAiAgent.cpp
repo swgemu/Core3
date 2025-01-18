@@ -33,6 +33,7 @@ Luna<LuaShipAiAgent>::RegType LuaShipAiAgent::Register[] = {
 	{ "setFixedPatrol", &LuaShipAiAgent::setFixedPatrol },
 	{ "setSquadronPatrol", &LuaShipAiAgent::setSquadronPatrol },
 	{ "setSquadronFollow", &LuaShipAiAgent::setSquadronFollow },
+	{ "setEscort", &LuaShipAiAgent::setEscort },
 	{ "setDespawnOnNoPlayerInRange", &LuaShipAiAgent::setDespawnOnNoPlayerInRange },
 	{ "setMinimumGuardPatrol", &LuaShipAiAgent::setMinimumGuardPatrol },
 	{ "setMaximumGuardPatrol", &LuaShipAiAgent::setMaximumGuardPatrol },
@@ -41,6 +42,10 @@ Luna<LuaShipAiAgent>::RegType LuaShipAiAgent::Register[] = {
 	{ "getShipAgentTemplateName", &LuaShipAiAgent::getShipAgentTemplateName },
 	{ "tauntPlayer", &LuaShipAiAgent::tauntPlayer },
 	{ "addAggro", &LuaShipAiAgent::addAggro },
+	{ "addSpaceFactionAlly", &LuaShipAiAgent::addSpaceFactionAlly },
+	{ "removeSpaceFactionAlly", &LuaShipAiAgent::removeSpaceFactionAlly },
+	{ "addSpaceFactionEnemy", &LuaShipAiAgent::addSpaceFactionEnemy },
+	{ "removeSpaceFactionEnemy", &LuaShipAiAgent::removeSpaceFactionEnemy },
 
 	{ 0, 0 }
 };
@@ -129,6 +134,16 @@ int LuaShipAiAgent::setSquadronFollow(lua_State* L) {
 
 	return 0;
 }
+
+int LuaShipAiAgent::setEscort(lua_State* L) {
+	Locker locker(realObject);
+
+	realObject->addShipFlag(ShipFlag::ESCORT);
+	realObject->setShipAiTemplate();
+
+	return 0;
+}
+
 
 int LuaShipAiAgent::setDespawnOnNoPlayerInRange(lua_State* L) {
 	bool val = lua_toboolean(L, -1);
@@ -260,6 +275,76 @@ int LuaShipAiAgent::addAggro(lua_State* L) {
 	Locker clock(shipTanO, realObject);
 
 	threatMap->addAggro(ship, aggroValue);
+
+	return 0;
+}
+
+int LuaShipAiAgent::addSpaceFactionAlly(lua_State* L) {
+	int numberOfArguments = lua_gettop(L) - 1;
+
+	if (numberOfArguments != 1) {
+		realObject->error() << "Improper number of arguments in LuaShipAiAgent::addSpaceFactionAlly.";
+		return 0;
+	}
+
+	uint32 factionHash = lua_tointeger(L, -1);
+
+	Locker lock(realObject);
+
+	realObject->addSpaceFactionAlly(factionHash);
+
+	return 0;
+}
+
+int LuaShipAiAgent::removeSpaceFactionAlly(lua_State* L) {
+	int numberOfArguments = lua_gettop(L) - 1;
+
+	if (numberOfArguments != 1) {
+		realObject->error() << "Improper number of arguments in LuaShipAiAgent::removeSpaceFactionAlly.";
+		return 0;
+	}
+
+	uint32 factionHash = lua_tointeger(L, -1);
+
+	Locker lock(realObject);
+
+	realObject->removeSpaceFactionAlly(factionHash);
+
+	return 0;
+}
+
+int LuaShipAiAgent::addSpaceFactionEnemy(lua_State* L) {
+	int numberOfArguments = lua_gettop(L) - 1;
+
+	if (numberOfArguments != 1) {
+		realObject->error() << "Improper number of arguments in LuaShipAiAgent::addSpaceFactionEnemy.";
+		return 0;
+	}
+
+	uint32 factionHash = lua_tointeger(L, -1);
+
+	Locker lock(realObject);
+
+	realObject->addSpaceFactionEnemy(factionHash);
+
+
+	return 0;
+}
+
+int LuaShipAiAgent::removeSpaceFactionEnemy(lua_State* L) {
+	int numberOfArguments = lua_gettop(L) - 1;
+
+	if (numberOfArguments != 1) {
+		realObject->error() << "Improper number of arguments in LuaShipAiAgent::removeSpaceFactionEnemy.";
+		return 0;
+	}
+
+	uint32 factionHash = lua_tointeger(L, -1);
+
+	Locker lock(realObject);
+
+	realObject->removeSpaceFactionEnemy(factionHash);
+
 
 	return 0;
 }

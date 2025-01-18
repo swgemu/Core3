@@ -635,6 +635,18 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	luaEngine->setGlobalInt("CROUCHED", CreaturePosture::CROUCHED);
 	luaEngine->setGlobalInt("LYINGDOWN", CreaturePosture::LYINGDOWN);
 
+	// Player Species
+	luaEngine->setGlobalInt("SPECIES_HUMAN", CreatureObject::HUMAN);
+	luaEngine->setGlobalInt("SPECIES_RODIAN", CreatureObject::RODIAN);
+	luaEngine->setGlobalInt("SPECIES_TRANDOSHAN", CreatureObject::TRANDOSHAN);
+	luaEngine->setGlobalInt("SPECIES_MONCAL", CreatureObject::MONCAL);
+	luaEngine->setGlobalInt("SPECIES_WOOKIEE", CreatureObject::WOOKIEE);
+	luaEngine->setGlobalInt("SPECIES_BOTHAN", CreatureObject::BOTHAN);
+	luaEngine->setGlobalInt("SPECIES_TWILEK", CreatureObject::TWILEK);
+	luaEngine->setGlobalInt("SPECIES_ZABRAK", CreatureObject::ZABRAK);
+	luaEngine->setGlobalInt("SPECIES_ITHORIAN", CreatureObject::ITHORIAN);
+	luaEngine->setGlobalInt("SPECIES_SULLUSTAN", CreatureObject::SULLUSTAN);
+
 	//Player Arrangements
 	luaEngine->setGlobalLong("RIDER", PlayerArrangement::RIDER);
 	luaEngine->setGlobalLong("SHIP_PILOT", PlayerArrangement::SHIP_PILOT);

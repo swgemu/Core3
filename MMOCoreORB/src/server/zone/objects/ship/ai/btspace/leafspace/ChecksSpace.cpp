@@ -61,7 +61,9 @@ template<> bool CheckRetreat::check(ShipAiAgent* agent) const {
 		return false;
 	}
 
-	if (agent->getShipBitmask() & ShipFlag::FIXED_PATROL) {
+	uint32 shipBitmask = agent->getShipBitmask();
+
+	if ((shipBitmask & ShipFlag::FIXED_PATROL) || (shipBitmask & ShipFlag::ESCORT)) {
 		return false;
 	}
 

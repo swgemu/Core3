@@ -1315,7 +1315,7 @@ bool CreatureManagerImplementation::addWearableItem(CreatureObject* creature, Ta
 		} else {
 			if (species == CreatureObject::ITHORIAN) {
 				message = "@event_perk_npc_actor:wear_no_ithorian";
-			} else if (species == CreatureObject::WOOKIE) {
+			} else if (species == CreatureObject::WOOKIEE) {
 				message = "@event_perk_npc_actor:wear_no_wookiee";
 			} else {
 				message = "@event_perk_npc_actor:wear_no";

@@ -410,6 +410,17 @@ was_a_snap = ConvoScreen:new {
 }
 rhea_convo_template:addScreen(was_a_snap);
 
+excellent_work3 = ConvoScreen:new {
+	id = "excellent_work3",
+	leftDialog = "@conversation/corellia_privateer_trainer:s_f8026f5d", -- Excellent work with that escort.  It's a good thing you were running that patrol, or there's no telling what might have happened to them.  I've got a little something extra for you, too.  It's a mercenary bandolier.  It'll help you keep your things organized.
+	stopConversation = "true",
+	options = {
+		{"@conversation/corellia_privateer_trainer:", ""}, --
+		{"@conversation/corellia_privateer_trainer:", ""}, --
+	}
+}
+rhea_convo_template:addScreen(excellent_work3);
+
 --[[
 
 	Conversation Enders

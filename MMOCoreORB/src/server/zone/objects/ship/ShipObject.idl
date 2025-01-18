@@ -1526,6 +1526,7 @@ class ShipObject extends TangibleObject {
 		return turretLadder;
 	}
 
+	@dirty
 	public unsigned int getShipFaction() {
 		return shipFaction;
 	}

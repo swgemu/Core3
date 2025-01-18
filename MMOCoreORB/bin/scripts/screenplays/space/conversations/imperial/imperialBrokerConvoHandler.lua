@@ -62,7 +62,7 @@ function imperialBrokerConvoHandler:getInitialScreen(pPlayer, pNpc, pConvTemplat
 
 		return convoTemplate:getScreen("neutral_female")
 	-- Neutral Wookiee
-	elseif (CreatureObject(pPlayer):getSpecies() == 4) then
+	elseif (CreatureObject(pPlayer):getSpecies() == SPECIES_WOOKIEE) then
 		CreatureObject(pNpc):doAnimation("belly_laugh")
 
 		return convoTemplate:getScreen("neutral_wookiee")
@@ -169,7 +169,7 @@ function imperialBrokerConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pN
 
 	-- Player is rebel
 	elseif (screenID == "rebel_player") then
-		if (CreatureObject(pPlayer):getSpecies() == 4) then -- Wookiee
+		if (CreatureObject(pPlayer):getSpecies() == SPECIES_WOOKIEE) then
 			-- Wookiee wants to be pilot
 			clonedConversation:addOption("@conversation/imperial_broker:s_61a663b2", "pilot_wookiee")
 		elseif (playerGender == 0) then
@@ -200,7 +200,7 @@ function imperialBrokerConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pN
 	elseif (screenID == "confirm_retirement") then
 		CreatureObject(pNpc):doAnimation("dismiss")
 
-		SpaceHelpers:surrenderPilot(pPlayer, "imperialPilot")
+		SpaceHelpers:surrenderPilot(pPlayer)
 	end
 
 	return pConvScreen

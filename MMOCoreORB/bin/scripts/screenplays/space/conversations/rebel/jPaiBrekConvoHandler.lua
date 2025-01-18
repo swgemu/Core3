@@ -92,7 +92,7 @@ function jPaiBrekConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNpc, se
 	elseif (screenID == "confirm_retirement") then
 		CreatureObject(pNpc):doAnimation("sigh_deeply")
 
-		SpaceHelpers:surrenderPilot(pPlayer, "rebelPilot")
+		SpaceHelpers:surrenderPilot(pPlayer)
 	end
 
 	return pConvScreen

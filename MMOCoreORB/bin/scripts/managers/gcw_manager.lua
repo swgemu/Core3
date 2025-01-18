@@ -130,7 +130,7 @@ HQValues = {
 
 -- race (raceid, penalty_multiplier)
 -- raceid found in creatureobject
---HUMAN = 0; RODIAN = 1; TRANDOSHAN = 2; MONCAL = 3; WOOKIE = 4; BOTHAN = 5; TWILEK = 6; ZABRAK = 7; ITHORIAN = 0x21; SULLUSTAN = 0x31;
+--HUMAN = 0; RODIAN = 1; TRANDOSHAN = 2; MONCAL = 3; WOOKIEE = 4; BOTHAN = 5; TWILEK = 6; ZABRAK = 7; ITHORIAN = 0x21; SULLUSTAN = 0x31;
 imperial_racial_penalty = {
 	{0, 1},
 	{1, 3}, --rodian

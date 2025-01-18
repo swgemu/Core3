@@ -39,6 +39,8 @@ namespace ship {
 		int isLowerTurretFunctional(lua_State* L);
 		int getShipName(lua_State* L);
 		int setHyperspacing(lua_State* L);
+		int setShipFactionString(lua_State* L);
+
 	private:
 		ShipObject* realObject;
 	};
