@@ -5,8 +5,8 @@
  *		Author: polonel
  */
 
-#ifndef SURVEYDRIODCALLBACK_H_
-#define SURVEYDRIODCALLBACK_H_
+#ifndef SURVEYDROIDCALLBACK_H_
+#define SURVEYDROIDCALLBACK_H_
 
 #include "server/zone/objects/player/sui/SuiCallback.h"
 
@@ -49,4 +49,4 @@ public:
 	}
 };
 
-#endif /* SURVEYDRIODCALLBACK_H_ */
+#endif /* SURVEYDROIDCALLBACK_H_ */

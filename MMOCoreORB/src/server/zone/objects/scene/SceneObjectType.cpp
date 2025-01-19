@@ -285,7 +285,7 @@ const String SceneObjectType::typeToString(int gameObjectType) {
 		case SHIPWEAPON:				return "@got_n:ship_component_weapon";
 		case SHIPWEAPONCAPACITOR:		return "@got_n:ship_component_capacitor";
 		case SHIPBOOSTER:				return "@got_n:ship_component_booster";
-		case SHIPDRIODINTERFACE:		return "@got_n:ship_component_droid_interface";
+		case SHIPDROIDINTERFACE:		return "@got_n:ship_component_droid_interface";
 		case HANGER:					return "@got_n:ship_component_hangar";
 		case TARGETINGSTATION:			return "@got_n:ship_component_targeting_station";
 		case BRIDGE:					return "@got_n:ship_component_bridge";

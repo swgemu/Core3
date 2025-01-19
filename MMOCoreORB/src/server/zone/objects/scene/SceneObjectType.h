@@ -374,7 +374,7 @@ public:
 	const static int SHIPWEAPON = 0x40000005;
 	const static int SHIPWEAPONCAPACITOR = 0x40000006;
 	const static int SHIPBOOSTER = 0x40000007;
-	const static int SHIPDRIODINTERFACE = 0x40000008;
+	const static int SHIPDROIDINTERFACE = 0x40000008;
 	const static int HANGER = 0x40000009;
 	const static int TARGETINGSTATION = 0x4000000A;
 	const static int BRIDGE = 0x4000000B;
