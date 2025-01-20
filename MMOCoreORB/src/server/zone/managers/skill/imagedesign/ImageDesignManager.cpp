@@ -124,12 +124,12 @@ void ImageDesignManager::updateCustomization(CreatureObject* imageDesigner, cons
 	if (creo == nullptr || value < 0 || value > 1)
 		return;
 
-	String speciesGender = getSpeciesGenderString(creo);
+	int objectCRC = creo->getServerObjectCRC();
 
-	const Vector<CustomizationData>* data = getCustomizationData(speciesGender, customizationName);
+	const Vector<CustomizationData>* data = getCustomizationData(objectCRC, customizationName);
 
 	if (data == nullptr) {
-		error("Unable to get CustomizationData for " + speciesGender + "_" + customizationName);
+		error("Unable to get CustomizationData for " + creo->getDisplayedName() + " - " + customizationName);
 		return;
 	}
 
@@ -260,12 +260,12 @@ void ImageDesignManager::updateColorCustomization(CreatureObject* imageDesigner,
 	if (value > 255 || creo == nullptr)
 		return;
 
-	String speciesGender = getSpeciesGenderString(creo);
+	int objectCRC = creo->getServerObjectCRC();
 
-	const Vector<CustomizationData>* data = getCustomizationData(speciesGender, customizationName);
+	const Vector<CustomizationData>* data = getCustomizationData(objectCRC, customizationName);
 
 	if (data == nullptr) {
-		error("Unable to get CustomizationData for " + speciesGender + "_" + customizationName);
+		error("Unable to get CustomizationData for " + creo->getDisplayedName() + " - " + customizationName);
 		return;
 	}
 
@@ -375,33 +375,15 @@ void ImageDesignManager::loadCustomizationData() {
 	}
 }
 
-const Vector<CustomizationData>* ImageDesignManager::getCustomizationData(const String& speciesGender, const String& customizationName) {
+const Vector<CustomizationData>* ImageDesignManager::getCustomizationData(int objectCRC, const String& customizationName) {
 	TemplateManager* templateManager = TemplateManager::instance();
 
-	uint32 templateCRC = String::hashCode("object/creature/player/" + speciesGender + ".iff");
-
-	PlayerCreatureTemplate* tmpl = dynamic_cast<PlayerCreatureTemplate*>(templateManager->getTemplate(templateCRC));
+	PlayerCreatureTemplate* tmpl = dynamic_cast<PlayerCreatureTemplate*>(templateManager->getTemplate(objectCRC));
 
 	if (tmpl == nullptr)
 		return nullptr;
 
 	return &tmpl->getCustomizationData(customizationName);
-}
-
-String ImageDesignManager::getSpeciesGenderString(CreatureObject* creo) {
-	if (creo == nullptr)
-		return "unknown";
-
-	int gender = creo->getGender();
-	String genderString;
-	if (gender == 0)
-		genderString = "male";
-	else if (gender == 1)
-		genderString = "female";
-	else
-		return "unknown";
-
-	return creo->getSpeciesName() + "_" + genderString;
 }
 
 TangibleObject* ImageDesignManager::createHairObject(CreatureObject* imageDesigner, CreatureObject* targetObject, const String& hairTemplate, const String& hairCustomization) {
@@ -410,10 +392,12 @@ TangibleObject* ImageDesignManager::createHairObject(CreatureObject* imageDesign
 	HairAssetData* hairAssetData = CustomizationIdManager::instance()->getHairAssetData(hairTemplate);
 
 	if (hairTemplate.isEmpty()) {
-		if (!CustomizationIdManager::instance()->canBeBald(getSpeciesGenderString(targetObject)))
+		if (!CustomizationIdManager::instance()->canBeBald(targetObject->getServerObjectCRC())) {
 			return oldHair;
-		else
+		} else {
+			removeHairObject(targetObject);
 			return nullptr;
+		}
 	}
 
 	if (hairAssetData == nullptr)
@@ -457,6 +441,9 @@ TangibleObject* ImageDesignManager::createHairObject(CreatureObject* imageDesign
 	if (validateCustomizationString(&data, appearanceFilename))
 		tanoHair->setCustomizationString(hairCustomization);
 
+	//Now that new hair is created and valid, remove the old hair
+	removeHairObject(targetObject);
+
 	return tanoHair;
 }
 
@@ -467,7 +454,7 @@ TangibleObject* ImageDesignManager::updateHairObject(CreatureObject* creo, Tangi
 	if (creo == nullptr || hairObject == nullptr)
 		return nullptr;
 
-	// Task out inserting hair into the slot to avoid incidents where the clien places the hair into the players inventory
+	// Task out inserting hair into the slot to avoid incidents where the client places the hair into the players inventory
 	ManagedReference<CreatureObject*> strongCreo = creo;
 	ManagedReference<TangibleObject*> strongHair = hairObject;
 
@@ -479,6 +466,15 @@ TangibleObject* ImageDesignManager::updateHairObject(CreatureObject* creo, Tangi
 	}, "TransferHairTask", 100);
 
 	return hairObject;
+}
+
+void ImageDesignManager::removeHairObject(CreatureObject* targetObject) {
+	Reference<TangibleObject*> hairObject = targetObject->getSlottedObject("hair").castTo<TangibleObject*>();
+	if (hairObject != nullptr) {
+		Locker hlock(hairObject);
+		hairObject->destroyObjectFromWorld(true);
+		hairObject->destroyObjectFromDatabase();
+	}
 }
 
 bool ImageDesignManager::validatePalette(PaletteColorCustomizationVariable* palette, int value) {

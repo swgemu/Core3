@@ -41,7 +41,7 @@ void CustomizationIdManager::loadAllowBald(IffStream* iffStream) {
 		row->getValue(0, species);
 		row->getValue(1, val);
 
-		allowBald.put(species, val);
+		allowBald.put(String::hashCode("object/creature/player/" + species + ".iff"), val);
 	}
 
 	info() << "loaded " << allowBald.size() << " allow bald species data";

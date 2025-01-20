@@ -34,13 +34,13 @@ public:
 	void updateCustomization(CreatureObject* imageDesigner, const String& customizationName, float value, int& modificationType, CreatureObject* creo = nullptr);
 	void updateColorCustomization(CreatureObject* imageDesigner, const String& customizationName, uint32 value, TangibleObject* hairObject, int& modificationType, CreatureObject* creo = nullptr);
 
-	const Vector<CustomizationData>* getCustomizationData(const String& speciesGender, const String& customizationName);
-
-	String getSpeciesGenderString(CreatureObject* creo = nullptr);
+	const Vector<CustomizationData>* getCustomizationData(int objectCRC, const String& customizationName);
 
 	TangibleObject* updateHairObject(CreatureObject* creo, TangibleObject* hairObject);
 
 	TangibleObject* createHairObject(CreatureObject* imageDesigner, CreatureObject* targetObject, const String& hairTemplate, const String& hairCustomization);
+
+	void removeHairObject(CreatureObject* targetObject);
 
 	//skillLevel: -1 creation, 0 novice... 5 master
 	static bool validateCustomizationString(CustomizationVariables* data, const String& appearanceFilename);
