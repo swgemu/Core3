@@ -18,7 +18,7 @@ class CustomizationIdManager : public Object, public Logger, public Singleton<Cu
 	HashTable<int, String> reverseIds;
 	HashTable<String, Reference<PaletteData*> > paletteColumns;
 	HashTable<String, Reference<HairAssetData*> > hairAssetSkillMods;
-	HashTable<String, bool> allowBald;
+	HashTable<int, bool> allowBald;
 
 public:
 	CustomizationIdManager();
@@ -44,8 +44,8 @@ public:
 		return hairAssetSkillMods.get(hairServerTemplate);
 	}
 
-	bool canBeBald(const String& speciesSubString) {
-		return allowBald.get(speciesSubString);
+	bool canBeBald(const int objectCRC) {
+		return allowBald.get(objectCRC);
 	}
 };
 
