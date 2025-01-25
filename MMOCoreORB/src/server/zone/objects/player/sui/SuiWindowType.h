@@ -274,6 +274,7 @@ public:
 
 		//JTL
 		SHIP_TEXTURE_SELECT					= 1100,
+		REVERSE_ENGINEER					= 1101,
 	};
 };
 

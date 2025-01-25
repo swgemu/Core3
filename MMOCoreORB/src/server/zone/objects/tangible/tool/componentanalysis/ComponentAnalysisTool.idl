@@ -1,0 +1,84 @@
+/*
+				Copyright <SWGEmu>
+		See file COPYING for copying conditions.*/
+
+package server.zone.objects.tangible.tool.componentanalysis;
+
+import server.zone.objects.tangible.Container;
+import server.zone.packets.scene.AttributeListMessage;
+import server.zone.objects.creature.CreatureObject;
+import server.zone.objects.scene.SceneObject;
+import server.zone.packets.object.ObjectMenuResponse;
+import server.zone.objects.ship.components.ShipComponent;
+include templates.SharedObjectTemplate;
+include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
+
+@json
+class ComponentAnalysisTool extends Container {
+	protected int componentType;
+	protected int engineeringLevel;
+	protected int chargeCounter;
+	protected transient SceneObject savedBaseComponent;
+
+	public ComponentAnalysisTool() {
+		setLoggingName("ComponentAnalysisTool");
+		initializePrivateData();
+	}
+
+	public native void initializePrivateData();
+
+	@dirty
+	public boolean isComponentAnalysisTool() {
+		return true;
+	}
+
+	/**
+	 * Fills the attribute list message options that are sent to player creature
+	 * @pre { }
+	 * @post { }
+	 * @param msg attribute list message with the attributes
+	 * @param object player creature to which the message is sent
+	 */
+	@local
+	@dirty
+	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
+
+	@local
+	@dirty
+	public native void fillObjectMenuResponse(ObjectMenuResponse menuResponse, CreatureObject player);
+
+	/**
+	 * Handles the radial selection sent by the client
+	 * @pre { this object is locked, player is locked }
+	 * @post { this object is locked, player is locked }
+	 * @returns 0 if successfull
+	 */
+
+	public native int handleObjectMenuSelect(CreatureObject player, byte selectedID);
+
+	@local
+	public native void updateCraftingValues(CraftingValues values, boolean firstUpdate);
+
+	@dirty
+	public native int canAddObject(SceneObject object, int containmentType, string errorDescription);
+
+	@local
+	public native int notifyObjectInserted(SceneObject object);
+
+	@local
+	public native int notifyObjectRemoved(SceneObject object);
+
+	@local
+	@preLocked
+	public native void decrementCharges(CreatureObject player);
+
+	@arg1preLocked
+	public native void reverseEngineer(CreatureObject player);
+
+	@local
+	public native void combineComponent(ShipComponent baseComponent, ShipComponent object);
+
+	@local
+	@arg1preLocked
+	public native void applyEngineeringBonus(CreatureObject player, SceneObject object);
+}
