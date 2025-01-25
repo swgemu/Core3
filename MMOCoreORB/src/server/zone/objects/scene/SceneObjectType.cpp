@@ -166,6 +166,7 @@ const String SceneObjectType::typeToString(int gameObjectType) {
 		case ARMORUPGRADEKIT:			return "@got_n:tool";
 		case RECYCLETOOL:				return "@got_n:tool";
 		case ANTIDECAYKIT:				return "@got_n:tool";
+		case COMPONENTANALYSISTOOL:			return "@got_n:tool";
 		case VEHICLE:					return "@got_n:vehicle";
 		case HOVERVEHICLE:				return "@got_n:vehicle_hover";
 		case WEAPON:					return "@got_n:weapon";
