@@ -61,6 +61,7 @@
 #include "server/zone/objects/tangible/tool/ToolTangibleObject.h"
 #include "server/zone/objects/tangible/tool/recycle/RecycleTool.h"
 #include "server/zone/objects/tangible/tool/antidecay/AntiDecayKit.h"
+#include "server/zone/objects/tangible/tool/componentanalysis/ComponentAnalysisTool.h"
 #include "server/zone/objects/tangible/tool/repair/RepairTool.h"
 #include "server/zone/objects/tangible/tool/SurveyTool.h"
 #include "server/zone/objects/tangible/tool/smuggler/SlicingTool.h"

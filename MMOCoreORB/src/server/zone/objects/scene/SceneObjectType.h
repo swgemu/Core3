@@ -221,6 +221,7 @@ public:
 	const static int ARMORUPGRADEKIT = 0x800B;
 	const static int RECYCLETOOL = 0x800C;
 	const static int ANTIDECAYKIT = 0x800D;
+	const static int COMPONENTANALYSISTOOL = 0x800E;
 	// End Not in client *****************
 
 	const static int VEHICLE = 0x10000;
