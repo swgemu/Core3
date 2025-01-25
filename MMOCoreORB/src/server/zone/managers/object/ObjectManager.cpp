@@ -128,6 +128,7 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<SurveyTool>(SceneObjectType::SURVEYTOOL);
 	objectFactory.registerObject<RecycleTool>(SceneObjectType::RECYCLETOOL);
 	objectFactory.registerObject<AntiDecayKit>(SceneObjectType::ANTIDECAYKIT);
+	objectFactory.registerObject<ComponentAnalysisTool>(SceneObjectType::COMPONENTANALYSISTOOL);
 	objectFactory.registerObject<CraftingStation>(SceneObjectType::CRAFTINGSTATION);
 	objectFactory.registerObject<SignObject>(SceneObjectType::SIGN);
 	objectFactory.registerObject<Instrument>(SceneObjectType::INSTRUMENT);

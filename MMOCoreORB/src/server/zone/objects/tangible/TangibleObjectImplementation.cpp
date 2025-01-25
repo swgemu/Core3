@@ -30,6 +30,7 @@
 #include "server/zone/managers/creature/PetManager.h"
 #include "server/zone/objects/intangible/PetControlDevice.h"
 #include "server/zone/objects/tangible/tool/antidecay/AntiDecayKit.h"
+#include "server/zone/objects/tangible/tool/componentanalysis/ComponentAnalysisTool.h"
 #include "server/zone/objects/player/events/StoreSpawnedChildrenTask.h"
 #include "server/zone/managers/gcw/GCWManager.h"
 #include "templates/faction/Factions.h"
