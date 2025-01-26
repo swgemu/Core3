@@ -1,0 +1,633 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "12ff8b81_39412b1e",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/sui/callbacks/NameComponentSuiCallback.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2025-01-26T16:03:56Z",
+      "side": 1,
+      "message": "Lest null check sui pointer here as well just in case.",
+      "revId": "08c18da741ef332a44366b8bee8e89bbac205b30",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ffedcde_8dbabd80",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/sui/callbacks/NameComponentSuiCallback.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2025-01-26T16:03:56Z",
+      "side": 1,
+      "message": "Nest less, if the componentName is empty just return instead of nesting the rest of the entire function.",
+      "revId": "08c18da741ef332a44366b8bee8e89bbac205b30",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21be171a_68af90ff",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/sui/callbacks/NameComponentSuiCallback.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2025-01-26T16:03:56Z",
+      "side": 1,
+      "message": "zps is not an ideal naming convention, yes I know its used other places, but is not a healthy descriptor for what it represents.",
+      "revId": "08c18da741ef332a44366b8bee8e89bbac205b30",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e940831_d3dc1d61",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/sui/callbacks/NameComponentSuiCallback.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2025-01-26T16:03:56Z",
+      "side": 1,
+      "message": "Give a line between the sending of the system message and the declaration of ghost.",
+      "revId": "08c18da741ef332a44366b8bee8e89bbac205b30",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e3fca9b1_05c7da8f",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/sui/callbacks/NameComponentSuiCallback.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2025-01-26T16:03:56Z",
+      "side": 1,
+      "message": "Oopsies 😄 the pasta strikes again.",
+      "revId": "08c18da741ef332a44366b8bee8e89bbac205b30",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4091285_9601ddf4",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/sui/callbacks/ReverseEngineeringSuiCallback.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2025-01-26T16:03:56Z",
+      "side": 1,
+      "message": "Null check creature and sui here before continuing on.",
+      "revId": "08c18da741ef332a44366b8bee8e89bbac205b30",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bacdbdf7_1fd178fe",
+        "filename": "MMOCoreORB/src/server/zone/objects/scene/SceneObjectType.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2025-01-26T16:03:56Z",
+      "side": 1,
+      "message": "Fix the spacing.",
+      "revId": "08c18da741ef332a44366b8bee8e89bbac205b30",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca81d3f5_90a4177d",
+        "filename": "MMOCoreORB/src/server/zone/objects/scene/SceneObjectType.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2025-01-26T16:03:56Z",
+      "side": 1,
+      "message": "This client object type for the RE tool is 8197. If the need was there that someone wanted to sort through objects with their base object type bitmask this would now fail.\n\nThe new object type should be in the same area as the base item type if we are going to assign a specific object type to it.",
+      "revId": "08c18da741ef332a44366b8bee8e89bbac205b30",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "22a472bc_cd1eb19f",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/tool/componentanalysis/ComponentAnalysisTool.idl",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2025-01-26T16:03:56Z",
+      "side": 1,
+      "message": "chargeCounter is not required, you can use the useCount variable from the TangibleObject parent.",
+      "revId": "08c18da741ef332a44366b8bee8e89bbac205b30",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0fcd3c1b_2893e320",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/tool/componentanalysis/ComponentAnalysisTool.idl",
+        "patchSetId": 3
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2025-01-26T16:03:56Z",
+      "side": 1,
+      "message": "@arg1preLocked",
+      "revId": "08c18da741ef332a44366b8bee8e89bbac205b30",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "32f62257_29419890",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/tool/componentanalysis/ComponentAnalysisTool.idl",
+        "patchSetId": 3
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2025-01-26T16:03:56Z",
+      "side": 1,
+      "message": "Why not keep this organized and put the RE functions together and the notifies and other checks separate?\n\nAlso @arg1preLocked",
+      "revId": "08c18da741ef332a44366b8bee8e89bbac205b30",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9d84741_490f5183",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/tool/componentanalysis/ComponentAnalysisTool.idl",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2025-01-26T16:03:56Z",
+      "side": 1,
+      "message": "@preLocked",
+      "revId": "08c18da741ef332a44366b8bee8e89bbac205b30",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b5ad1254_9b7fbfe0",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/tool/componentanalysis/ComponentAnalysisToolImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2025-01-26T16:03:56Z",
+      "side": 1,
+      "message": "This is not needed if there is no specific template data to load, it will just default to the parent class.",
+      "revId": "08c18da741ef332a44366b8bee8e89bbac205b30",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c3f32b4b_331f7a37",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/tool/componentanalysis/ComponentAnalysisToolImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2025-01-26T16:03:56Z",
+      "side": 1,
+      "message": "set useCount \u003d 3 on the lua template. It will be loaded upon creation.",
+      "revId": "08c18da741ef332a44366b8bee8e89bbac205b30",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "960a17d2_e6ffdcb9",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/tool/componentanalysis/ComponentAnalysisToolImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2025-01-26T16:03:56Z",
+      "side": 1,
+      "message": "New line here.",
+      "revId": "08c18da741ef332a44366b8bee8e89bbac205b30",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3aa5663_8921eec9",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/tool/componentanalysis/ComponentAnalysisToolImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2025-01-26T16:03:56Z",
+      "side": 1,
+      "message": "useCount",
+      "revId": "08c18da741ef332a44366b8bee8e89bbac205b30",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a72922d_ede9dbc2",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/tool/componentanalysis/ComponentAnalysisToolImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2025-01-26T16:03:56Z",
+      "side": 1,
+      "message": "useCount \u003d value;\n\nIf there is nothing else to update, return this instead of continuing the loop.",
+      "revId": "08c18da741ef332a44366b8bee8e89bbac205b30",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c39f9229_0ccdee10",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/tool/componentanalysis/ComponentAnalysisToolImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2025-01-26T16:03:56Z",
+      "side": 1,
+      "message": "new line",
+      "revId": "08c18da741ef332a44366b8bee8e89bbac205b30",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25277a9a_c1ff2ded",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/tool/componentanalysis/ComponentAnalysisToolImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2025-01-26T16:03:56Z",
+      "side": 1,
+      "message": "This is could be a stability issue. Get the object, if null continue.\n\nLocker cLock(candidate, finalComponent);",
+      "revId": "08c18da741ef332a44366b8bee8e89bbac205b30",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "82c816d5_47e5c308",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/tool/componentanalysis/ComponentAnalysisToolImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2025-01-26T16:03:56Z",
+      "side": 1,
+      "message": "combineComponent(finalComponent, candidate);",
+      "revId": "08c18da741ef332a44366b8bee8e89bbac205b30",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f9fad12e_a2b6efa7",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/tool/componentanalysis/ComponentAnalysisToolImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2025-01-26T16:03:56Z",
+      "side": 1,
+      "message": "Move this pointer for the final component above the first loop and null check it. Can also make this a ManagedRef then cast it to a ship component with auto and then null check that to use for combineComponent and applyEngineeringBonus.\n\n\nAdd a cross lock to this tool, compLock(finalComponent, _this.getReferenceUnsafeStaticCast()), and then you can cross lock the candidate components off of the finalComponent which you can pass the pointer into the combineComponent function",
+      "revId": "08c18da741ef332a44366b8bee8e89bbac205b30",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "87e8136f_dfd9e369",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/tool/componentanalysis/ComponentAnalysisToolImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2025-01-26T16:03:56Z",
+      "side": 1,
+      "message": "If we have passed all of our checks and began combining, why dont we just destroy the objects during the initial loop?",
+      "revId": "08c18da741ef332a44366b8bee8e89bbac205b30",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "95d3b165_69ff7346",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/tool/componentanalysis/ComponentAnalysisToolImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2025-01-26T16:03:56Z",
+      "side": 1,
+      "message": "This function should be thread safe if the above locks are added.",
+      "revId": "08c18da741ef332a44366b8bee8e89bbac205b30",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae67155c_6f40e565",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/tool/componentanalysis/ComponentAnalysisToolImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2025-01-26T16:03:56Z",
+      "side": 1,
+      "message": "Null check.",
+      "revId": "08c18da741ef332a44366b8bee8e89bbac205b30",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ef456cc_835062df",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/tool/componentanalysis/ComponentAnalysisToolImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2025-01-26T16:03:56Z",
+      "side": 1,
+      "message": "component could be null",
+      "revId": "08c18da741ef332a44366b8bee8e89bbac205b30",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc21a7d2_a955b709",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/tool/componentanalysis/ComponentAnalysisToolImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2025-01-26T16:03:56Z",
+      "side": 1,
+      "message": "If the size !\u003d 1, then return 0. Continue with the logic below unnested and give it a new line between the component declaration (which needs a null check as well).",
+      "revId": "08c18da741ef332a44366b8bee8e89bbac205b30",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d527aae8_c80d9713",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/tool/componentanalysis/ComponentAnalysisToolImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2025-01-26T16:03:56Z",
+      "side": 1,
+      "message": "check if it is not the object and return 0. Then you can un-nest the logic below and give it a new line between.\n\nAlso if the savedBaseComponent is removed and there are other components in the tool, shouldn\u0027t one of them become the new base?",
+      "revId": "08c18da741ef332a44366b8bee8e89bbac205b30",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b58718e5_f905d409",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/tool/componentanalysis/ComponentAnalysisToolImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2025-01-26T16:03:56Z",
+      "side": 1,
+      "message": "null check on component pointer.\n\nI also think we need to do some thorough locking here or else we might get some wild deadlocks. See notes in reverseEngineer about locking.",
+      "revId": "08c18da741ef332a44366b8bee8e89bbac205b30",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d308d30_fee3d525",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/tool/componentanalysis/ComponentAnalysisToolImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2025-01-26T16:03:56Z",
+      "side": 1,
+      "message": "pass this points from reverseEngineer function, null check it with component.",
+      "revId": "08c18da741ef332a44366b8bee8e89bbac205b30",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "062df7ff_90df2fa7",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/tool/componentanalysis/ComponentAnalysisToolImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2025-01-26T16:03:56Z",
+      "side": 1,
+      "message": "Null check for failed cast.",
+      "revId": "08c18da741ef332a44366b8bee8e89bbac205b30",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "49ff7f72_a168e70d",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/tool/componentanalysis/ComponentAnalysisToolImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2025-01-26T16:03:56Z",
+      "side": 1,
+      "message": "Help me I have been mutated and not locked!\n\nThis will be resolved if the locks are added in the reverseEngineer function",
+      "revId": "08c18da741ef332a44366b8bee8e89bbac205b30",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1f3f4a4_d1335099",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/tool/componentanalysis/ComponentAnalysisToolImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2025-01-26T16:03:56Z",
+      "side": 1,
+      "message": "new line for all of these between declarations and mutators.\n\nAlso they need null checks.",
+      "revId": "08c18da741ef332a44366b8bee8e89bbac205b30",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7497c8c2_c1d7ceb4",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/tool/componentanalysis/ComponentAnalysisToolImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2025-01-26T16:03:56Z",
+      "side": 1,
+      "message": "This does not need to be a manager reference, just use\n\nauto ghost \u003d player-\u003egetPlayerObject();",
+      "revId": "08c18da741ef332a44366b8bee8e89bbac205b30",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe5f6c72_5b457d82",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/tool/componentanalysis/ComponentAnalysisToolImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2025-01-26T16:03:56Z",
+      "side": 1,
+      "message": "This can be passed into this function as the proper type and already locked instead of casting it again.",
+      "revId": "08c18da741ef332a44366b8bee8e89bbac205b30",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "155add0e_e53c7689",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/tool/componentanalysis/ComponentAnalysisToolImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2025-01-26T16:03:56Z",
+      "side": 1,
+      "message": "New lines between the calculations the mutators and added result lines.",
+      "revId": "08c18da741ef332a44366b8bee8e89bbac205b30",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59a4cbe9_858795c3",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/tool/componentanalysis/ComponentAnalysisToolImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 526,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2025-01-26T16:03:56Z",
+      "side": 1,
+      "message": "change to useCount",
+      "revId": "08c18da741ef332a44366b8bee8e89bbac205b30",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1fb0730_cd683185",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/tool/componentanalysis/ComponentAnalysisToolImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 527,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2025-01-26T16:03:56Z",
+      "side": 1,
+      "message": "return if useCount \u003e 0 or continue to the logic to destroy. The lock is not needed, this object is preLocked and we check it in idl",
+      "revId": "08c18da741ef332a44366b8bee8e89bbac205b30",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    }
+  ]
+}
