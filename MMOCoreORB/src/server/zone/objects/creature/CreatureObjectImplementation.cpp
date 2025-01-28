@@ -93,7 +93,6 @@
 #include "server/zone/objects/tangible/Instrument.h"
 #include "server/zone/managers/director/ScreenPlayObserver.h"
 #include "server/zone/objects/player/events/SpawnHelperDroidTask.h"
-#include "server/zone/packets/object/StartNpcConversation.h"
 
 float CreatureObjectImplementation::DEFAULTRUNSPEED = 5.376f;
 

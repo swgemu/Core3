@@ -614,6 +614,13 @@ class ShipAiAgent extends FighterShipObject {
 	public native boolean isFixedPatrolShipAgent();
 
 	@dirty
+	@preLocked
+	public native boolean sendConversationStartTo(SceneObject player);
+
+	@preLocked
+	public native void tauntPlayer(CreatureObject player, final string message);
+
+	@dirty
 	public void setConversationTemplate(unsigned int convoTemplateCrc) {
 		conversationTemplate = convoTemplateCrc;
 	}

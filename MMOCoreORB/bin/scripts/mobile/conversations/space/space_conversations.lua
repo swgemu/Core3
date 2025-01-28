@@ -1,4 +1,6 @@
 
+includeFile("conversations/space/default_ship_conv.lua")
+
 -- Chassis Dealers
 includeFile("conversations/space/chassis_dealer_conv.lua")
 

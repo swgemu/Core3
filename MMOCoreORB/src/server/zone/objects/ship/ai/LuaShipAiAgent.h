@@ -42,6 +42,7 @@ public:
 	int addFixedPatrolPoint(lua_State* L);
 	int setDefender(lua_State* L);
 	int getShipAgentTemplateName(lua_State* L);
+	int tauntPlayer(lua_State* L);
 
 private:
 	ShipAiAgent* realObject;

@@ -24,11 +24,16 @@ ConversationObserver* ConversationManager::getConversationObserver(uint32 conver
 	} else {
 		if (CreatureTemplateManager::DEBUG_MODE)
 			return nullptr;
+
 		//No observer, create it.
 		ManagedReference<ConversationObserver*> conversationObserver = nullptr;
 		ConversationTemplate* conversationTemplate = CreatureTemplateManager::instance()->getConversationTemplate(conversationTemplateCRC);
-		if (conversationTemplate != nullptr) {
-			switch (conversationTemplate->getConversationTemplateType()) {
+
+		if (conversationTemplate == nullptr) {
+			return conversationObserver;
+		}
+
+		switch (conversationTemplate->getConversationTemplateType()) {
 			case ConversationTemplate::ConversationTemplateTypeNormal:
 				conversationObserver = new ConversationObserver(conversationTemplateCRC);
 				break;
@@ -47,13 +52,13 @@ ConversationObserver* ConversationManager::getConversationObserver(uint32 conver
 			default:
 				conversationObserver = new ConversationObserver(conversationTemplateCRC);
 				break;
-			}
-
-			if (conversationObserver != nullptr) {
-				//Add it to the map.
-				conversationObservers.put(conversationTemplateCRC, conversationObserver);
-			}
 		}
+
+		if (conversationObserver != nullptr) {
+			// Add it to the map.
+			conversationObservers.put(conversationTemplateCRC, conversationObserver);
+		}
+
 		return conversationObserver;
 	}
 }

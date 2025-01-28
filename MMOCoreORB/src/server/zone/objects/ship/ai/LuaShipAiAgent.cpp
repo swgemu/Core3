@@ -38,6 +38,7 @@ Luna<LuaShipAiAgent>::RegType LuaShipAiAgent::Register[] = {
 	{ "addFixedPatrolPoint", &LuaShipAiAgent::addFixedPatrolPoint },
 	{ "setDefender", &LuaShipAiAgent::setDefender },
 	{ "getShipAgentTemplateName", &LuaShipAiAgent::getShipAgentTemplateName },
+	{ "tauntPlayer", &LuaShipAiAgent::tauntPlayer },
 
 	{ 0, 0 }
 };
@@ -205,4 +206,27 @@ int LuaShipAiAgent::getShipAgentTemplateName(lua_State* L) {
 	lua_pushstring(L, templateName.toCharArray());
 
 	return 1;
+}
+
+int LuaShipAiAgent::tauntPlayer(lua_State* L) {
+	int numberOfArguments = lua_gettop(L) - 1;
+
+	if (numberOfArguments != 2) {
+		realObject->error() << "Improper number of arguments in LuaShipAiAgent::tauntPlayer.";
+		return 0;
+	}
+
+	String message = lua_tostring(L, -1);
+	CreatureObject* player = (CreatureObject*) lua_touserdata(L, -2);
+
+	if (player == nullptr || !player->isPlayerCreature()) {
+		return 0;
+	}
+
+	Locker lock(realObject);
+	Locker clock(player, realObject);
+
+	realObject->tauntPlayer(player, message);
+
+	return 0;
 }

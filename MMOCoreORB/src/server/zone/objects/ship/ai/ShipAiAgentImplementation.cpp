@@ -49,6 +49,12 @@
 #include "server/zone/objects/ship/ai/events/ShipAiPatrolPathFinder.h"
 #include "server/zone/managers/spacecombat/projectile/ShipMissile.h"
 #include "server/zone/managers/reaction/ReactionManager.h"
+#include "server/zone/packets/object/StartNpcConversation.h"
+#include "server/chat/StringIdChatParameter.h"
+#include "server/zone/managers/creature/CreatureTemplateManager.h"
+#include "server/zone/managers/conversation/ConversationManager.h"
+#include "server/zone/objects/creature/conversation/ConversationObserver.h"
+
 
 // #define DEBUG_SHIP_AI
 // #define DEBUG_FINDNEXTPOSITION
@@ -258,7 +264,13 @@ void ShipAiAgentImplementation::loadTemplateData(ShipAgentTemplate* agentTemp) {
 	rebelFactionReward = agentTemplate->getRebelFactionReward();
 
 	// Set conversation templates, out of range message and mobile
-	setConversationTemplate(agentTemplate->getConversationTemplate());
+	uint32 conversationTemp = agentTemplate->getConversationTemplate();
+
+	if (conversationTemp == 0) {
+		conversationTemp = STRING_HASHCODE("default_ship_convo_template");
+	}
+
+	setConversationTemplate(conversationTemp);
 	setConversationMessage(agentTemplate->getConversationMessage());
 	setConversationMobile(agentTemplate->getConversationMobile());
 
@@ -2303,6 +2315,99 @@ bool ShipAiAgentImplementation::checkLineOfSight(SceneObject* obj) {
 
 bool ShipAiAgentImplementation::isFixedPatrolShipAgent() const {
 	return (shipBitmask & ShipFlag::FIXED_PATROL);
+}
+
+bool ShipAiAgentImplementation::sendConversationStartTo(SceneObject* playerSceneO) {
+	if (playerSceneO == nullptr || !playerSceneO->isPlayerCreature()) {
+		return false;
+	}
+
+	auto player = playerSceneO->asCreatureObject();
+
+	if (player == nullptr) {
+		return false;
+	}
+
+	auto rootParent = player->getRootParent();
+
+	if (rootParent == nullptr || !rootParent->isShipObject()) {
+		return false;
+	}
+
+	ShipObject* playerShip = rootParent->asShipObject();
+
+	if (playerShip == nullptr) {
+		return false;
+	}
+
+	uint64 agentID = getObjectID();
+	uint32 mobileCRC = getConversationMobile();
+
+	StartNpcConversation* conversation = new StartNpcConversation(player, agentID, 0, "", mobileCRC);
+
+	if (conversation == nullptr) {
+		return false;
+	}
+
+	player->sendMessage(conversation);
+
+	uint32 convoCRC = getConversationTemplate();
+
+	SortedVector<ManagedReference<Observer*> > observers = getObservers(ObserverEventType::STARTCONVERSATION);
+
+	for (int i = 0; i < observers.size(); ++i) {
+		if (dynamic_cast<ConversationObserver*>(observers.get(i).get()) != nullptr)
+			return true;
+	}
+
+	ConversationObserver* conversationObserver = ConversationManager::instance()->getConversationObserver(convoCRC);
+
+	if (conversationObserver != nullptr) {
+		registerObserver(ObserverEventType::CONVERSE, conversationObserver);
+		registerObserver(ObserverEventType::STARTCONVERSATION, conversationObserver);
+		registerObserver(ObserverEventType::SELECTCONVERSATION, conversationObserver);
+		registerObserver(ObserverEventType::STOPCONVERSATION, conversationObserver);
+	} else {
+		error() << "Ship AI Agent: " << getObjectID() << " Failed to create conversation observer.";
+		return false;
+	}
+
+	return true;
+}
+
+void ShipAiAgentImplementation::tauntPlayer(CreatureObject* player, const String& tauntString) {
+	if (player == nullptr) {
+		return;
+	}
+
+	auto ghost = player->getPlayerObject();
+
+	if (ghost == nullptr) {
+		return;
+	}
+
+	// Start the Conversation
+	ghost->setConversatingObject(asShipAiAgent());
+
+	if (!sendConversationStartTo(player)) {
+		return;
+	}
+
+	notifyObservers(ObserverEventType::STARTCONVERSATION, player);
+
+	StringIdChatParameter tauntMessage(tauntString);
+
+	auto conversationScreen = new ConversationScreen(tauntMessage, true);
+
+	if (conversationScreen != nullptr) {
+		conversationScreen->sendTo(player, asShipAiAgent());
+	}
+
+	auto task = new SpaceCommTimerTask(player, getObjectID());
+
+	if (task != nullptr) {
+		player->addPendingTask("SpaceCommTimer", task, 10 * 1000);
+	}
 }
 
 void ShipAiAgentImplementation::handleException(const Exception& ex, const String& context) {

@@ -19,10 +19,6 @@ class SpaceStationObject extends ShipAiAgent {
 		Logger.setGlobalLogging(true);
 	}
 
-	@dirty
-	@preLocked
-	public native boolean sendConversationStartTo(SceneObject player);
-
 	@read
 	public native abstract float getOutOfRangeDistance();
 

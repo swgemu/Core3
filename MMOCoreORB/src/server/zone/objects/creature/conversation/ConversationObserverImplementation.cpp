@@ -14,6 +14,8 @@ ConversationObserverImplementation::ConversationObserverImplementation(uint32 co
 }
 
 int ConversationObserverImplementation::notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {
+	// info(true) << "ConversationObserverImplementation::notifyObserverEvent -- Observer event type: " << eventType;
+
 	//Verify needed parameters
 	if (eventType != ObserverEventType::CONVERSE && eventType != ObserverEventType::STARTCONVERSATION &&
 		eventType != ObserverEventType::SELECTCONVERSATION && eventType != ObserverEventType::STOPCONVERSATION &&
@@ -22,11 +24,13 @@ int ConversationObserverImplementation::notifyObserverEvent(unsigned int eventTy
 		return 0;
 	}
 
-	if (observable == nullptr)
+	if (observable == nullptr) {
 		return 0;
+	}
 
-	if (arg1 == nullptr && eventType != ObserverEventType::POSITIONCHANGED)
+	if (arg1 == nullptr && eventType != ObserverEventType::POSITIONCHANGED) {
 		return 0;
+	}
 
 	//Try to convert parameters to correct types.
 	SceneObject* conversingObject = nullptr;
@@ -82,16 +86,19 @@ int ConversationObserverImplementation::notifyObserverEvent(unsigned int eventTy
 		return 0;
 	}
 	case ObserverEventType::STOPCONVERSATION: {
-		if (player != nullptr)
+		if (player != nullptr) {
 			cancelConversationSession(player, conversingObject, conversingObject->isShipObject());
+		}
 
-		auto agent = conversingObject->asAiAgent();
+		if (conversingObject->isAiAgent()) {
+			auto agent = conversingObject->asAiAgent();
 
-		if (agent != nullptr && agent->getMovementState() == AiAgent::CONVERSING) {
-			if (agent->getFollowObject().get() == nullptr) {
-				agent->setMovementState(AiAgent::OBLIVIOUS);
-			} else {
-				agent->setMovementState(AiAgent::FOLLOWING);
+			if (agent != nullptr && agent->getMovementState() == AiAgent::CONVERSING) {
+				if (agent->getFollowObject().get() == nullptr) {
+					agent->setMovementState(AiAgent::OBLIVIOUS);
+				} else {
+					agent->setMovementState(AiAgent::FOLLOWING);
+				}
 			}
 		}
 
@@ -118,18 +125,17 @@ int ConversationObserverImplementation::notifyObserverEvent(unsigned int eventTy
 	if (player == nullptr)
 		return 0;
 
-	//Select next conversation screen.
+	// Select next conversation screen.
 	Reference<ConversationScreen*> conversationScreen = getNextConversationScreen(player, selectedOption, conversingObject);
 
 	if (conversationScreen != nullptr) {
 		//Modify the conversation screen.
 		conversationScreen = runScreenHandlers(player, conversingObject, selectedOption, conversationScreen);
-	}
 
-	//Send the conversation screen to the player.
-	sendConversationScreenToPlayer(player, conversingObject, conversationScreen);
-
-	if (conversationScreen == nullptr) {
+		//Send the conversation screen to the player.
+		sendConversationScreenToPlayer(player, conversingObject, conversationScreen);
+	// Do not run cancel for ship agents due to taunts
+	} else if (!conversingObject->isShipAiAgent()) {
 		cancelConversationSession(player, conversingObject);
 	}
 
@@ -156,8 +162,9 @@ void ConversationObserverImplementation::cancelConversationSession(CreatureObjec
 
 	conversingPlayer->dropObserver(ObserverEventType::POSITIONCHANGED, _this.getReferenceUnsafeStaticCast());
 
-	if (forceClose && conversingNPC != nullptr)
+	if (forceClose && conversingNPC != nullptr) {
 		conversingPlayer->sendMessage(new StopNpcConversation(conversingPlayer, conversingNPC->getObjectID()));
+	}
 
 	// If the player manually ends the conversation, cancel their pending SpaceCommTimer task
 	auto spaceCommTask = conversingPlayer->getPendingTask("SpaceCommTimer");

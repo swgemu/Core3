@@ -94,19 +94,21 @@ public:
 				e.printStackTrace();
 				creature->error("unreported ObjectControllerMessage::parseNpcStartConversation(creature* creature, Message* pack) exception");
 			}
-		} else if (object->isSpaceStation()) {
+		} else if (object->isShipAiAgent()) {
 			try {
-				SpaceStationObject* spaceStationObj = cast<SpaceStationObject*>(object.get());
+				auto shipAgent = object->asShipAiAgent();
 
-				if (spaceStationObj == nullptr)
+				if (shipAgent == nullptr) {
 					return INVALIDTARGET;
+				}
 
-				Locker lock(spaceStationObj, creature);
+				Locker lock(shipAgent, creature);
 
-				ghost->setConversatingObject(spaceStationObj);
+				ghost->setConversatingObject(shipAgent);
 
-				if (spaceStationObj->sendConversationStartTo(creature))
-					spaceStationObj->notifyObservers(ObserverEventType::STARTCONVERSATION, creature);
+				if (shipAgent->sendConversationStartTo(creature)) {
+					shipAgent->notifyObservers(ObserverEventType::STARTCONVERSATION, creature);
+				}
 			} catch (Exception& e) {
 				e.printStackTrace();
 			}

@@ -84,6 +84,11 @@ public:
 		readOnly = false;
 	}
 
+	ConversationScreen(StringIdChatParameter dialogue, bool stopConv) {
+		dialogText = dialogue;
+		stopConversation = stopConv;
+	}
+
 	/**
 	 * Copy constructor.
 	 */
@@ -200,18 +205,18 @@ public:
 
 		//Check if the conversation should be stopped.
 		if (stopConversation) {
-			if (npc->isShipObject()) {
+			if (npc->isShipAiAgent()) {
 				auto task = new SpaceCommTimerTask(player, npc->getObjectID());
 
 				if (task != nullptr) {
 					player->addPendingTask("SpaceCommTimer", task, 3000);
-					screenToSave = nullptr;
 				}
 			} else {
 				player->sendMessage(new StopNpcConversation(player, npc->getObjectID()));
 				npc->notifyObservers(ObserverEventType::STOPCONVERSATION, player);
-				screenToSave = nullptr;
 			}
+
+			screenToSave = nullptr;
 		}
 
 		Reference<ConversationSession*> session = player->getActiveSession(SessionFacadeType::CONVERSATION).castTo<ConversationSession* >();
