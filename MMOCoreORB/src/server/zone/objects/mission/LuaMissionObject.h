@@ -31,7 +31,8 @@ namespace mission {
 		int _setObject(lua_State* L);
 		int setTemplateStrings(lua_State* L);
 		int setTypeCRC(lua_State* L);
-		int setQuestCRC(lua_State* L);
+		int setQuestType(lua_State* L);
+		int setQuestName(lua_State* L);
 		int setFaction(lua_State* L);
 		int setCreatorName(lua_State* L);
 		int setMissionTitle(lua_State* L);

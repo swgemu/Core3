@@ -506,7 +506,7 @@ void MissionManagerImplementation::removeMission(MissionObject* mission, Creatur
 	}
 }
 
-void MissionManagerImplementation::handleMissionAbort(MissionObject* mission, CreatureObject* player) {
+void MissionManagerImplementation::handleMissionAbort(MissionObject* mission, CreatureObject* player, bool questMessage) {
 	if (player->isIncapacitated()) {
 		player->sendSystemMessage("You cannot abort a mission while incapacitated.");
 		return;
@@ -525,12 +525,22 @@ void MissionManagerImplementation::handleMissionAbort(MissionObject* mission, Cr
 			return;
 		}
 
+		// Space Missions
 		uint32 questCRC = mission->getQuestCRC();
 
 		if (questCRC > 0) {
-			Locker lock(player);
+			ghost->clearJournalQuest(questCRC, false);
 
-			ghost->clearJournalQuest(questCRC, true);
+			if (questMessage) {
+				String questString = "@spacequest/" + mission->getQuestType() + "/" + mission->getQuestName() + ":title";
+
+				StringIdChatParameter spaceAbort("space/quest", "quest_aborted");
+				spaceAbort.setTO(questString);
+
+				player->sendSystemMessage(spaceAbort);
+
+				player->playMusicMessage("sound/music_themequest_fail_criminal.snd");
+			}
 		}
 	}
 

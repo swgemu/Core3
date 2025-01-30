@@ -15,7 +15,8 @@ Luna<LuaMissionObject>::RegType LuaMissionObject::Register[] = {
 	{ "_getObject", &LuaIntangibleObject::_getObject },
 	{ "setTemplateStrings", &LuaMissionObject::setTemplateStrings },
 	{ "setTypeCRC", &LuaMissionObject::setTypeCRC },
-	{ "setQuestCRC", &LuaMissionObject::setQuestCRC },
+	{ "setQuestType", &LuaMissionObject::setQuestType },
+	{ "setQuestName", &LuaMissionObject::setQuestName },
 	{ "setFaction", &LuaMissionObject::setFaction },
 	{ "setCreatorName", &LuaMissionObject::setCreatorName },
 	{ "setMissionTitle", &LuaMissionObject::setMissionTitle },
@@ -102,19 +103,36 @@ int LuaMissionObject::setTypeCRC(lua_State* L) {
 	return 0;
 }
 
-int LuaMissionObject::setQuestCRC(lua_State* L) {
+int LuaMissionObject::setQuestType(lua_State* L) {
 	int numberOfArguments = lua_gettop(L) - 1;
 
 	if (numberOfArguments != 1) {
-		realObject->error() << "Improper number of arguments in LuaMissionObject::setTypeCRC.";
+		realObject->error() << "Improper number of arguments in LuaMissionObject::setQuestType.";
 		return 0;
 	}
 
-	int questCRC = lua_tointeger(L, -1);
+	String questType = lua_tostring(L, -1);
 
 	Locker lock(realObject);
 
-	realObject->setQuestCRC(questCRC);
+	realObject->setQuestType(questType);
+
+	return 0;
+}
+
+int LuaMissionObject::setQuestName(lua_State* L) {
+	int numberOfArguments = lua_gettop(L) - 1;
+
+	if (numberOfArguments != 1) {
+		realObject->error() << "Improper number of arguments in LuaMissionObject::setQuestName.";
+		return 0;
+	}
+
+	String questName = lua_tostring(L, -1);
+
+	Locker lock(realObject);
+
+	realObject->setQuestName(questName);
 
 	return 0;
 }

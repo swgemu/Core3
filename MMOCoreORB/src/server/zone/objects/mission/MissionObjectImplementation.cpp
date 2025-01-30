@@ -400,3 +400,17 @@ String MissionObjectImplementation::getTypeAsString() const {
 	asString << "MissionTypeCRC(" << hex << typeCRC << ")";
 	return asString.toString();
 }
+
+uint32 MissionObjectImplementation::getQuestCRC() const {
+	uint32 questCRC = 0;
+
+	if (questName.isEmpty()) {
+		return questCRC;
+	}
+
+	String questString = "spacequest/" + questType + "/" + questName;
+
+	questCRC = questString.hashCode();
+
+	return questCRC;
+}

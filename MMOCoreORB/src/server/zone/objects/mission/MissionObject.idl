@@ -25,7 +25,9 @@ class MissionObject extends IntangibleObject {
 	protected MissionObjective missionObjective;
 
 	protected unsigned int typeCRC;
-	protected unsigned int questCRC;
+
+	protected string questType;
+	protected string questName;
 
 	protected int difficultyLevel;
 	protected int difficultyDisplay;
@@ -79,7 +81,9 @@ class MissionObject extends IntangibleObject {
 
 	public MissionObject() {
 		typeCRC = MissionTypes.SURVEY;
-		questCRC = 0;
+
+		questType = "";
+		questName = "";
 
 		refreshCounter = 0;
 
@@ -156,8 +160,13 @@ class MissionObject extends IntangibleObject {
 	public native void setTypeCRC(unsigned int crc, boolean notifyClient = true);
 
 	@preLocked
-	public void setQuestCRC(unsigned int crc) {
-		questCRC = crc;
+	public void setQuestType(final string type) {
+		questType = type;
+	}
+
+	@preLocked
+	public void setQuestName(final string name) {
+		questName = name;
 	}
 
 	public native void initializeTransientMembers();
@@ -319,9 +328,17 @@ class MissionObject extends IntangibleObject {
 	}
 
 	@read
-	public unsigned int getQuestCRC() {
-		return questCRC;
+	public string getQuestType() {
+		return questType;
 	}
+
+	@read
+	public string getQuestName() {
+		return questName;
+	}
+
+	@read
+	public native unsigned int getQuestCRC();
 
 	@read
 	public native string getTypeAsString();
