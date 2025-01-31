@@ -10,9 +10,7 @@
 
 class CreatureObjectMessage4 : public BaseLineMessage {
 public:
-	CreatureObjectMessage4(const CreatureObject* creo)
-			: BaseLineMessage(creo, 0x4352454F, 4, 0x0E) {
-
+	CreatureObjectMessage4(CreatureObject* creo) : BaseLineMessage(creo, 0x4352454F, 4, 0x0E) {
 		// Accelerations.
 		insertFloat(creo->getAccelerationMultiplierBase());
 		insertFloat(creo->getAccelerationMultiplierMod());
@@ -48,13 +46,30 @@ public:
 		// Water Mod (Swimming)
 		insertFloat(creo->getWaterModPercent());
 
-		// Group Critical Objects List (Unused.)
-		insertInt(0);
-		insertInt(0);
+		// Group Mission Critical Objects List
+		const DeltaVectorMap<uint64, uint64>* missionCriticalObjects = creo->getMissionCriticalObjects();
+
+		// This is functional
+
+		if (missionCriticalObjects != nullptr) {
+			creo->info(true) << "CreatureObjectMessage4 -- updateMissionCriticalObjects called -- Size: " << missionCriticalObjects->size() << " Update Counter: " << missionCriticalObjects->getUpdateCounter();
+
+			int listSize = missionCriticalObjects->size();
+
+			insertInt(listSize);
+			insertInt(missionCriticalObjects->getUpdateCounter()); // Update Counter
+
+			for (int i = 0; i < listSize; i++) {
+				auto key = missionCriticalObjects->getKeyAt(i);
+				auto value = missionCriticalObjects->getValueAt(i);
+
+				insertLong(key);	// Mission Owner ID
+				insertLong(value);	// Mission Object ID
+			}
+		}
 
 		setSize();
 	}
-
 };
 
 #endif /*CREATUREOBJECTMESSAGE4_H_*/

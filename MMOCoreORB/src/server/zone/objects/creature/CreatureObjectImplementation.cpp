@@ -118,6 +118,9 @@ void CreatureObjectImplementation::initializeTransientMembers() {
 	setLoggingName("CreatureObject");
 
 	commandQueue = new CommandQueue(asCreatureObject());
+
+	missionCriticalObjects.setNullValue(0);
+	missionCriticalObjects.setAllowDuplicateInsert();
 }
 
 void CreatureObjectImplementation::initializeMembers() {
@@ -3685,6 +3688,110 @@ bool CreatureObjectImplementation::hasBountyMissionFor(CreatureObject* target) {
 		return false;
 
 	return mission->getTargetObjectId() == target->getObjectID();
+}
+
+void CreatureObjectImplementation::addMissionCriticalObject(uint64 missionOwnerID, uint64 missionObjectID, bool notifyClient, bool notifyGroup) {
+	if (missionObjectID <= 0 || missionCriticalObjects.contains(missionObjectID)) {
+		return;
+	}
+
+	info(true) << "addMissionCriticalObject -- Player: " << getDisplayedName() << " Object Owner ID: " << missionOwnerID << " Mission Object ID: " << missionObjectID;
+
+	// Add the Mission Object to the DeltaVectorMap
+	//missionCriticalObjects.add(missionObjectID, missionOwnerID);
+
+	//if (notifyClient) {
+	auto creoDelta4 = new CreatureObjectDeltaMessage4(asCreatureObject());
+
+	// This causes a ctd
+
+	/*
+		patrol_corellia_privateer_1:notifyEnteredQuestArea - Patrol Point Number: 2 Player Point: 1
+		(325 s) [CreatureObject 0x1000002A7CE1C] addMissionCriticalObject -- Player: hakry Object Owner ID: 281475021262364 Mission Object ID: 281475031960438
+		(325 s) [CreatureObject 0x1000002A7CE1C] missionCriticalObjects size: 1
+		(325 s) [CreatureObject 0x1000002A7CE1C] addMissionCriticalObject -- Player: hakry Object Owner ID: 281475021262364 Mission Object ID: 281475031960441
+		(325 s) [CreatureObject 0x1000002A7CE1C] missionCriticalObjects size: 2
+		(325 s) [CreatureObject 0x1000002A7CE1C] addMissionCriticalObject -- Player: hakry Object Owner ID: 281475021262364 Mission Object ID: 281475031960444
+		(325 s) [CreatureObject 0x1000002A7CE1C] missionCriticalObjects size: 3
+		(325 s) [CreatureObject 0x1000002A7CE1C] addMissionCriticalObject -- Player: hakry Object Owner ID: 281475021262364 Mission Object ID: 281475031960447
+		(325 s) [CreatureObject 0x1000002A7CE1C] missionCriticalObjects size: 4
+	*/
+
+	if (creoDelta4 != nullptr) {
+		creoDelta4->startUpdate(0x0D);
+
+		missionCriticalObjects.set(missionOwnerID, missionObjectID, creoDelta4);
+
+		//creoDelta4->updateMissionCriticalObjects();
+		creoDelta4->close();
+
+		sendMessage(creoDelta4);
+
+		info(true) << "missionCriticalObjects size: " << missionCriticalObjects.size();
+	}
+//	} else {
+
+	//}
+
+	if (!isGrouped() || !notifyGroup) {
+		return;
+	}
+
+	auto group = getGroup();
+
+	if (group == nullptr) {
+		return;
+	}
+
+	Locker groupLock(group, asCreatureObject());
+
+	// Update Group Members
+	group->addMissionCriticalObject(missionOwnerID, missionObjectID, notifyClient);
+}
+
+void CreatureObjectImplementation::removeMissionCriticalObject(uint64 missionObjectID, bool notifyClient, bool notifyGroup) {
+	if (missionObjectID <= 0 || !missionCriticalObjects.contains(missionObjectID)) {
+		return;
+	}
+
+	info(true) << "removeMissionCriticalObject -- Player: " << getDisplayedName() << " Mission Object ID: " << missionObjectID;
+
+	//missionCriticalObjects.drop(missionObjectID);
+
+	//if (notifyClient) {
+	auto creoDelta4 = new CreatureObjectDeltaMessage4(asCreatureObject());
+
+	if (creoDelta4 != nullptr) {
+		//creoDelta4->updateMissionCriticalObjects();
+		//creoDelta4->close();
+
+		//sendMessage(creoDelta4);
+
+		creoDelta4->startUpdate(0x0D);
+
+		missionCriticalObjects.drop(missionObjectID, creoDelta4);
+
+		//creoDelta4->updateMissionCriticalObjects();
+		creoDelta4->close();
+
+		sendMessage(creoDelta4);
+	}
+	//}
+
+	if (!isGrouped() || !notifyGroup) {
+		return;
+	}
+
+	auto group = getGroup();
+
+	if (group == nullptr) {
+		return;
+	}
+
+	Locker groupLock(group, asCreatureObject());
+
+	// Update Group Members
+	group->removeMissionCriticalObject(getObjectID(), missionObjectID, notifyClient);
 }
 
 int CreatureObjectImplementation::notifyObjectDestructionObservers(TangibleObject* attacker, int condition, bool isCombatAction) {

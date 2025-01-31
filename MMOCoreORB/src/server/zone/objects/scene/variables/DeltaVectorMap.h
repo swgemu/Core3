@@ -191,6 +191,10 @@ public:
 	inline void setNullValue(const V& val) {
 		vectorMap.setNullValue(val);
 	}
+
+	inline void setAllowDuplicateInsert() {
+		vectorMap.setAllowDuplicateInsertPlan();
+	}
 };
 
 
