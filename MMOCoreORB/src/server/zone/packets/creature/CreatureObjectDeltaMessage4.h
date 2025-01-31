@@ -11,8 +11,7 @@ class CreatureObjectDeltaMessage4 : public DeltaMessage {
 	CreatureObject* creo;
 
 public:
-	CreatureObjectDeltaMessage4(CreatureObject* cr)
-			: DeltaMessage(cr->getObjectID(), 0x4352454F, 4) {
+	CreatureObjectDeltaMessage4(CreatureObject* cr) : DeltaMessage(cr->getObjectID(), 'CREO', 0x04) {
 		creo = cr;
 	}
 

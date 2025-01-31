@@ -175,6 +175,8 @@ Luna<LuaCreatureObject>::RegType LuaCreatureObject::Register[] = {
 		{ "hasCertifiedShip", &LuaCreatureObject::hasCertifiedShip },
 		{ "abortQuestMission", &LuaCreatureObject::abortQuestMission },
 		{ "removeQuestMission", &LuaCreatureObject::removeQuestMission },
+		{ "addSpaceMissionObject", &LuaCreatureObject::addSpaceMissionObject },
+		{ "removeSpaceMissionObject", &LuaCreatureObject::removeSpaceMissionObject },
 		{ 0, 0 }
 };
 
@@ -1553,6 +1555,50 @@ int LuaCreatureObject::removeQuestMission(lua_State* L) {
 
 		return 0;
 	}
+
+	return 0;
+}
+
+int LuaCreatureObject::addSpaceMissionObject(lua_State* L) {
+	int numberOfArguments = lua_gettop(L) - 1;
+
+	if (numberOfArguments != 2) {
+		realObject->error() << "Improper number of arguments in LuaCreatureObject::addSpaceMissionObject.";
+		return 0;
+	}
+
+	bool notifyClient = lua_toboolean(L, -1);
+	uint64 missionObjectID = lua_tointeger(L, -2);
+
+	if (missionObjectID == 0) {
+		return 0;
+	}
+
+	Locker lock(realObject);
+
+	realObject->addSpaceMissionObject(realObject->getObjectID(), missionObjectID, notifyClient, true);
+
+	return 0;
+}
+
+int LuaCreatureObject::removeSpaceMissionObject(lua_State* L) {
+	int numberOfArguments = lua_gettop(L) - 1;
+
+	if (numberOfArguments != 2) {
+		realObject->error() << "Improper number of arguments in LuaCreatureObject::removeSpaceMissionObject.";
+		return 0;
+	}
+
+	bool notifyClient = lua_toboolean(L, -1);
+	uint64 missionObjectID = lua_tointeger(L, -2);
+
+	if (missionObjectID == 0) {
+		return 0;
+	}
+
+	Locker lock(realObject);
+
+	realObject->removeSpaceMissionObject(realObject->getObjectID(), missionObjectID, notifyClient, true);
 
 	return 0;
 }

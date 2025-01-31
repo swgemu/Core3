@@ -60,38 +60,71 @@ public:
 	virtual int add(const K& key, const V& value, DeltaMessage* message = nullptr, int updates = 1) {
 		int pos = vectorMap.put(key, value);
 
+		// Increase update Counter
+		updateCounter += updates;
+
 		if (message != nullptr) {
-			if (updates != 0)
-				message->startList(updates, updateCounter += updates);
+			message->startList(updates, updateCounter);
 
-			message->insertByte(1);
+			message->insertByte(0x01);
 
-			K& nonconstK = const_cast<K&>(key);
-			TypeInfo<K>::toBinaryStream(&nonconstK, message);
+			TypeInfo<K>::toBinaryStream(const_cast<K*>(&key), message);
+			TypeInfo<V>::toBinaryStream(const_cast<V*>(&value), message);
 		}
 
 		return pos;
 	}
 
 	virtual bool drop(const K& key, DeltaMessage* message = nullptr, int updates = 1) {
-		if (!vectorMap.contains(key))
+		if (!vectorMap.contains(key)) {
 			return false;
+		}
 
 		V& value = vectorMap.get(key);
 
 		vectorMap.drop(key);
 
+		// Increase update Counter
+		updateCounter += updates;
+
 		if (message != nullptr) {
-			if (updates != 0)
-				message->startList(updates, updateCounter += updates);
+			message->startList(updates, updateCounter);
 
 			message->insertByte(0);
 
-			K& nonconstK = const_cast<K&>(key);
-			TypeInfo<K>::toBinaryStream(&nonconstK, message);
+			TypeInfo<K>::toBinaryStream(const_cast<K*>(&key), message);
 		}
 
 		return true;
+	}
+
+	virtual bool dropByValue(const K& removeKey, const V& removeValue, DeltaMessage* message = nullptr, int updates = 1) {
+		for (int i = size() - 1; i >= 0; i--) {
+			const K& key = getKeyAt(i);
+			const V& value = getValueAt(i);
+
+			if (key != removeKey || value != removeValue) {
+				continue;
+			}
+
+			vectorMap.removeElementAt(i);
+
+			// Increase update Counter
+			updateCounter += updates;
+
+			if (message != nullptr) {
+				message->startList(updates, updateCounter);
+
+				message->insertByte(0x0);
+
+				TypeInfo<K>::toBinaryStream(const_cast<K*>(&key), message);
+				TypeInfo<V>::toBinaryStream(const_cast<V*>(&value), message);
+			}
+
+			return true;
+		}
+
+		return false;
 	}
 
 	virtual void removeAll(DeltaMessage* msg) {
@@ -108,10 +141,22 @@ public:
 		msg->insertInt(getUpdateCounter());
 
 		for (int i = 0; i < size(); ++i) {
-			K& key = getKeyAt(i);
+			msg->insertByte(0x01);
 
-			TypeInfo<K>::toBinaryStream(&key, msg);
+			const K& key = getKeyAt(i);
+			const V& value = getValueAt(i);
+
+			TypeInfo<K>::toBinaryStream(const_cast<K*>(&key), msg);
+			TypeInfo<V>::toBinaryStream(const_cast<V*>(&value), msg);
 		}
+	}
+
+	inline void setNullValue(const V& val) {
+		vectorMap.setNullValue(val);
+	}
+
+	inline void setAllowDuplicateInsert() {
+		vectorMap.setAllowDuplicateInsertPlan();
 	}
 
 	inline V& getValueAt(int index) {
@@ -122,24 +167,32 @@ public:
 		return vectorMap.elementAt(index).getKey();
 	}
 
+	inline const V& getValueAt(int index) const {
+		return vectorMap.elementAt(index).getValue();
+	}
+
+	inline const K& getKeyAt(int index) const {
+		return vectorMap.elementAt(index).getKey();
+	}
+
 	inline V& get(const K& key) {
 		return vectorMap.get(key);
 	}
 
-	inline bool contains(const K& key) {
+	inline const V& get(const K& key) const {
+		return vectorMap.get(key);
+	}
+
+	inline bool contains(const K& key) const {
 		return vectorMap.contains(key);
 	}
 
-	inline int size() {
+	inline int size() const {
 		return vectorMap.size();
 	}
 
-	inline uint32 getUpdateCounter() {
+	inline uint32 getUpdateCounter() const {
 		return updateCounter;
-	}
-
-	inline void setNullValue(const V& val) {
-		vectorMap.setNullValue(val);
 	}
 };
 

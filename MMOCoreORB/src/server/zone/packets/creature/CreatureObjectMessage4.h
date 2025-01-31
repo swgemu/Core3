@@ -10,9 +10,7 @@
 
 class CreatureObjectMessage4 : public BaseLineMessage {
 public:
-	CreatureObjectMessage4(const CreatureObject* creo)
-			: BaseLineMessage(creo, 0x4352454F, 4, 0x0E) {
-
+	CreatureObjectMessage4(CreatureObject* creo) : BaseLineMessage(creo, 'CREO', 4, 0x0E) {
 		// Accelerations.
 		insertFloat(creo->getAccelerationMultiplierBase());
 		insertFloat(creo->getAccelerationMultiplierMod());
@@ -48,13 +46,24 @@ public:
 		// Water Mod (Swimming)
 		insertFloat(creo->getWaterModPercent());
 
-		// Group Critical Objects List (Unused.)
-		insertInt(0);
-		insertInt(0);
+		// Space Mission Objects List
+		const DeltaSet<uint64, uint64>* spaceMissionObjects = creo->getSpaceMissionObjects();
+
+		int listSize = spaceMissionObjects->size();
+
+		insertInt(listSize);
+		insertInt(spaceMissionObjects->getUpdateCounter()); // Update Counter
+
+		for (int i = 0; i < listSize; i++) {
+			auto key = spaceMissionObjects->getKeyAt(i);
+			auto value = spaceMissionObjects->getValueAt(i);
+
+			insertLong(key);	// Mission Owner ID
+			insertLong(value);	// Mission Object ID
+		}
 
 		setSize();
 	}
-
 };
 
 #endif /*CREATUREOBJECTMESSAGE4_H_*/

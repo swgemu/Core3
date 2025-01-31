@@ -146,7 +146,11 @@ public:
 
 		auto parent = player->getParent().get();
 
+		// Clear the Players Space States
 		player->clearSpaceStates();
+
+		// Clear the Players Space Mission Objects
+		player->removeAllSpaceMissionObjects(false);
 
 		player->switchZone(newZoneName, location.getX(), location.getZ(), location.getY(), 0, false);
 
