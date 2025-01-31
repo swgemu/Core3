@@ -20,6 +20,7 @@
 #include "server/zone/managers/reaction/ReactionManager.h"
 #include "server/zone/objects/ship/ai/ShipAiAgent.h"
 #include "server/zone/objects/area/ActiveArea.h"
+#include "server/zone/objects/tangible/threat/ThreatMap.h"
 
 const char LuaShipAiAgent::className[] = "LuaShipAiAgent";
 
@@ -39,6 +40,7 @@ Luna<LuaShipAiAgent>::RegType LuaShipAiAgent::Register[] = {
 	{ "setDefender", &LuaShipAiAgent::setDefender },
 	{ "getShipAgentTemplateName", &LuaShipAiAgent::getShipAgentTemplateName },
 	{ "tauntPlayer", &LuaShipAiAgent::tauntPlayer },
+	{ "addAggro", &LuaShipAiAgent::addAggro },
 
 	{ 0, 0 }
 };
@@ -227,6 +229,37 @@ int LuaShipAiAgent::tauntPlayer(lua_State* L) {
 	Locker clock(player, realObject);
 
 	realObject->tauntPlayer(player, message);
+
+	return 0;
+}
+
+int LuaShipAiAgent::addAggro(lua_State* L) {
+	int numberOfArguments = lua_gettop(L) - 1;
+
+	if (numberOfArguments != 2) {
+		realObject->error() << "Improper number of arguments in LuaShipAiAgent::tauntPlayer.";
+		return 0;
+	}
+
+	int aggroValue = lua_tonumber(L, -1);
+	TangibleObject* shipTanO = (TangibleObject*) lua_touserdata(L, -2);
+
+	if (shipTanO == nullptr || !shipTanO->isShipObject()) {
+		return 0;
+	}
+
+	Locker lock(realObject);
+
+	auto ship = shipTanO->asShipObject();
+	auto threatMap = realObject->getThreatMap();
+
+	if (ship == nullptr || threatMap == nullptr) {
+		return 0;
+	}
+
+	Locker clock(shipTanO, realObject);
+
+	threatMap->addAggro(ship, aggroValue);
 
 	return 0;
 }

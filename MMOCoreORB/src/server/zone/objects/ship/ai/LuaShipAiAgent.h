@@ -43,6 +43,7 @@ public:
 	int setDefender(lua_State* L);
 	int getShipAgentTemplateName(lua_State* L);
 	int tauntPlayer(lua_State* L);
+	int addAggro(lua_State* L);
 
 private:
 	ShipAiAgent* realObject;
