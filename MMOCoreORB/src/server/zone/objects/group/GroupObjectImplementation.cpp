@@ -706,6 +706,38 @@ bool GroupObjectImplementation::isOtherMemberPlayingMusic(CreatureObject* player
 	return false;
 }
 
+void GroupObjectImplementation::addMissionCriticalObject(uint64 missionOwnerID, uint64 missionObjectID, bool notifyClient) {
+	auto thisGroup = _this.getReferenceUnsafeStaticCast();
+
+	for (int i = 0; i < getGroupSize(); ++i) {
+		Reference<CreatureObject*> member = getGroupMember(i);
+
+		if (member == nullptr || !member->isPlayerCreature() || missionOwnerID == member->getObjectID()) {
+			continue;
+		}
+
+		Locker memberClock(member, thisGroup);
+
+		member->addMissionCriticalObject(missionOwnerID, missionObjectID, notifyClient, false);
+	}
+}
+
+void GroupObjectImplementation::removeMissionCriticalObject(uint64 missionOwnerID, uint64 missionObjectID, bool notifyClient) {
+	auto thisGroup = _this.getReferenceUnsafeStaticCast();
+
+	for (int i = 0; i < getGroupSize(); ++i) {
+		Reference<CreatureObject*> member = getGroupMember(i);
+
+		if (member == nullptr || !member->isPlayerCreature() || missionOwnerID == member->getObjectID()) {
+			continue;
+		}
+
+		Locker memberClock(member, thisGroup);
+
+		member->removeMissionCriticalObject(missionObjectID, notifyClient, false);
+	}
+}
+
 void GroupObjectImplementation::scheduleUpdateNearestMissionForGroup(unsigned int planetCRC) {
 	Reference<UpdateNearestMissionForGroupTask*> task = nullptr;
 

@@ -142,6 +142,8 @@ namespace creature {
 		int hasCertifiedShip(lua_State* L);
 		int abortQuestMission(lua_State* L);
 		int removeQuestMission(lua_State* L);
+		int addMissionCriticalObject(lua_State* L);
+		int removeMissionCriticalObject(lua_State* L);
 	private:
 		// The pointer to the 'real object' defined in object.cc
 		CreatureObject* realObject;
