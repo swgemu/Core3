@@ -33,6 +33,10 @@ public:
 
 	void addToDeltaMessage(DeltaMessage* message) {
 		message->startUpdate(DeltaIndex);
+
+		Logger::console.info(true) << "DeltaAutoPackedMap -- addToDeltaMessage: DeltaIndex: " << DeltaIndex;
+
+
 		DeltaVectorMap<K,V>::insertToMessage(message);
 	}
 

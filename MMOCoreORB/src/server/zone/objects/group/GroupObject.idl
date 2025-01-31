@@ -195,6 +195,12 @@ class GroupObject extends SceneObject {
 	@dirty
 	public native boolean isOtherMemberPlayingMusic(CreatureObject player);
 
+	@preLocked
+	public native void addSpaceMissionObject(unsigned long missionOwnerID, unsigned long objectID, boolean notifyClient);
+
+	@preLocked
+	public native void removeSpaceMissionObject(unsigned long missionOwnerID, unsigned long objectID, boolean notifyClient);
+
 	@read
 	public int getLootRule() {
 		return lootRule;

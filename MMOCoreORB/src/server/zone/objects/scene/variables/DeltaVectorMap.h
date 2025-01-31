@@ -141,6 +141,8 @@ public:
 		msg->insertInt(size());
 		msg->insertInt(getUpdateCounter());
 
+		Logger::console.info(true) << "DeltaVectorMap -- insertToMessage - Size: " << size() << " Update Counter: " << getUpdateCounter();
+
 		for (int i = 0; i < size(); ++i) {
 			const K& key = getKeyAt(i);
 			const V& value = getValueAt(i);
@@ -190,6 +192,10 @@ public:
 
 	inline void setNullValue(const V& val) {
 		vectorMap.setNullValue(val);
+	}
+
+	inline void setAllowDuplicateInsert() {
+		vectorMap.setAllowDuplicateInsertPlan();
 	}
 };
 

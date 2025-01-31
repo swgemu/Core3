@@ -118,6 +118,12 @@ void CreatureObjectImplementation::initializeTransientMembers() {
 	setLoggingName("CreatureObject");
 
 	commandQueue = new CommandQueue(asCreatureObject());
+
+	spaceMissionObjects.setNullValue(0);
+	spaceMissionObjects.setAllowDuplicateInsert();
+
+	spaceMissionObjectsTest.setNullValue(0);
+	spaceMissionObjectsTest.setAllowDuplicateInsert();
 }
 
 void CreatureObjectImplementation::initializeMembers() {
@@ -3685,6 +3691,97 @@ bool CreatureObjectImplementation::hasBountyMissionFor(CreatureObject* target) {
 		return false;
 
 	return mission->getTargetObjectId() == target->getObjectID();
+}
+
+void CreatureObjectImplementation::addSpaceMissionObject(uint64 missionOwnerID, uint64 missionObjectID, bool notifyClient, bool notifyGroup) {
+	if (missionObjectID <= 0) {
+		return;
+	}
+
+	CreatureObjectDeltaMessage4* delta4 = (!notifyClient ? nullptr : new CreatureObjectDeltaMessage4(asCreatureObject()));
+
+	spaceMissionObjectsTest.update(missionOwnerID, missionObjectID, delta4, DeltaMapCommands::ADD);
+
+	if (delta4 != nullptr) {
+		sendMessage(delta4);
+	}
+
+
+	/*
+	Functional
+
+	info(true) << "addSpaceMissionObject -- Player: " << getDisplayedName() << " Object Owner ID: " << missionOwnerID << " Mission Object ID: " << missionObjectID;
+
+	// Add object to the list
+	spaceMissionObjects.add(missionOwnerID, missionObjectID);
+
+	// This should be a delta update, needs to be straightened out
+	if (notifyClient) {
+		auto creo4Msg = new CreatureObjectMessage4(asCreatureObject());
+		sendMessage(creo4Msg);
+	}
+	*/
+
+
+	if (!isGrouped() || !notifyGroup) {
+		return;
+	}
+
+	auto group = getGroup();
+
+	if (group == nullptr) {
+		return;
+	}
+
+	Locker groupLock(group, asCreatureObject());
+
+	// Update Group Members
+	group->addSpaceMissionObject(missionOwnerID, missionObjectID, notifyClient);
+}
+
+void CreatureObjectImplementation::removeSpaceMissionObject(uint64 missionOwnerID, uint64 missionObjectID, bool notifyClient, bool notifyGroup) {
+	if (missionObjectID <= 0 || !spaceMissionObjects.contains(missionObjectID)) {
+		return;
+	}
+
+	CreatureObjectDeltaMessage4* delta4 = (!notifyClient ? nullptr : new CreatureObjectDeltaMessage4(asCreatureObject()));
+
+	spaceMissionObjectsTest.update(missionOwnerID, missionObjectID, delta4, DeltaMapCommands::DROP);
+
+	if (delta4 != nullptr) {
+		sendMessage(delta4);
+	}
+
+	/*
+	Functional
+
+	info(true) << "removeSpaceMissionObject -- Player: " << getDisplayedName() << " Mission Object ID: " << missionObjectID;
+
+	// Remove object from the list
+	spaceMissionObjectsTest.drop(missionObjectID);
+
+	// This should be a delta update, needs to be straightened out
+	if (notifyClient) {
+		auto creo4Msg = new CreatureObjectMessage4(asCreatureObject());
+		sendMessage(creo4Msg);
+	}
+
+	*/
+
+	if (!isGrouped() || !notifyGroup) {
+		return;
+	}
+
+	auto group = getGroup();
+
+	if (group == nullptr) {
+		return;
+	}
+
+	Locker groupLock(group, asCreatureObject());
+
+	// Update Group Members
+	group->removeSpaceMissionObject(getObjectID(), missionObjectID, notifyClient);
 }
 
 int CreatureObjectImplementation::notifyObjectDestructionObservers(TangibleObject* attacker, int condition, bool isCombatAction) {

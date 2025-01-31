@@ -23,6 +23,8 @@ include server.zone.objects.creature.variables.CooldownTimerMap;
 include server.zone.objects.creature.buffs.BuffList;
 include server.zone.objects.creature.damageovertime.DamageOverTimeList;
 include server.zone.objects.scene.variables.DeltaVector;
+include server.zone.objects.scene.variables.DeltaVectorMap;
+include server.zone.objects.scene.variables.DeltaAutoPackedMap;
 include server.zone.objects.creature.variables.SkillList;
 include server.zone.objects.creature.variables.SkillModList;
 include templates.params.creature.CreaturePosture;
@@ -135,6 +137,13 @@ class CreatureObject extends TangibleObject {
 
 	@dereferenced
 	protected DeltaVector<int> maxHamList;
+
+	@dereferenced
+	protected transient DeltaVectorMap<unsigned long, unsigned long> spaceMissionObjects;
+
+	@rawTemplate(value = "uint64, uint64, 'CREO', 4, 13")
+	@dereferenced
+	protected transient DeltaAutoPackedMap spaceMissionObjectsTest;
 
 	protected byte frozen;
 
@@ -1122,6 +1131,32 @@ class CreatureObject extends TangibleObject {
 	 */
 	@dirty
 	public native boolean hasBountyMissionFor(CreatureObject target);
+
+	/**
+	 * DeltaVectorMap of objects of CreO and Group for JTL Misisons.
+	 * @param object ID of the mission object to add.
+	 */
+	@preLocked
+	public native void addSpaceMissionObject(unsigned long missionOwnerID, unsigned long objectID, boolean notifyClient, boolean notifyGroup = false);
+
+	/**
+	 * DeltaVectorMap of objects of CreO and Group for JTL Misisons.
+	 * @param object ID of the mission object to remove.
+	 */
+	@preLocked
+	public native void removeSpaceMissionObject(unsigned long missionOwnerID, unsigned long objectID, boolean notifyClient, boolean notifyGroup = false);
+
+	@local
+	@read
+	public final DeltaVectorMap<unsigned long, unsigned long> getSpaceMissionObjects() {
+		return spaceMissionObjects;
+	}
+
+	@local
+	@rawTemplate(value = "uint64, uint64, 'CREO', 4, 13")
+	public final DeltaAutoPackedMap getSpaceMissionObjects() {
+		return spaceMissionObjectsTest;
+	}
 
 	/**
 	 * sends the conversation list
