@@ -74,7 +74,7 @@ corellia = {
 	},
 
 	jtlTravelPoints = {
-		{"Coronet Starport", -66.760902, 28, -4641.23},
+		{"Coronet Starport", -66.760902, 28, -4711.3281},
 		{"Doaba Guerfel Starport", 3349.8933, 308, 5598.1362},
 		{"Kor Vella Starport", -3157.2834, 31, 2876.2029},
 		{"Tyrena Starport", -5003.0649, 21, -2228.3665}
