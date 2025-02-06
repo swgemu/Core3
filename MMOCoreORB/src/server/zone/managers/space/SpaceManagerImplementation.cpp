@@ -416,7 +416,7 @@ void SpaceManagerImplementation::loadLuaConfig() {
 
 			shipAgent->createChildObjects();
 
-			uint32 factionHash = shipAgent->getShipFaction().hashCode();
+			uint32 factionHash = shipAgent->getShipFaction();
 			uint64 stationID = shipAgent->getObjectID();
 			Vector3 stationPosition = shipAgent->getPosition();
 

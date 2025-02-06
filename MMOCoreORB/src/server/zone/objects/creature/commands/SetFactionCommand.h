@@ -147,7 +147,7 @@ public:
 				}
 
 				targetShip->setFactionStatus(targetFactionStatus);
-				targetShip->setShipFaction(targetFaction, true);
+				targetShip->setShipFactionString(factionArgs, true);
 			}
 		} else {
 			targetObject->setFaction(targetFaction);
@@ -170,7 +170,7 @@ public:
 							Locker slocker(targetShipParent, creature);
 
 							targetShipParent->setFactionStatus(targetFactionStatus);
-							targetShipParent->setShipFaction(targetFaction, true);
+							targetShipParent->setShipFactionString(factionArgs, true);
 
 							targetShipParent->broadcastPvpStatusBitmask();
 						}

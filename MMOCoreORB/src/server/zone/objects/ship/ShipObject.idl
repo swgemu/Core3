@@ -12,6 +12,8 @@ import server.zone.objects.ship.events.ShipRecoveryEvent;
 import server.zone.Zone;
 import engine.service.proto.BaseMessage;
 import server.zone.objects.ship.ai.ShipAiAgent;
+import system.util.SortedVector;
+import system.lang.String;
 
 include server.zone.TreeEntry;
 include server.zone.objects.scene.SceneObject;
@@ -35,7 +37,6 @@ include server.zone.objects.ship.ShipTargetVector;
 include engine.util.u3d.Quaternion;
 include engine.util.u3d.Matrix4;
 include server.zone.objects.player.variables.SpaceLaunchPoint;
-import system.util.SortedVector;
 include system.util.Vector;
 include engine.util.u3d.Vector3;
 
@@ -124,6 +125,8 @@ class ShipObject extends TangibleObject {
 	protected Matrix4 conjugateMatrix;
 
 	protected transient float staffModifiedSpeed;
+
+	protected unsigned int shipFaction;
 
 	// DeltaAutoVariable template <class K, class V, int BaselineName, uint8 DeltaType, int DeltaIndex>
 
@@ -309,7 +312,7 @@ class ShipObject extends TangibleObject {
 
 	@rawTemplate(value = "String, 'SHIP', 6, 19")
 	@dereferenced
-	protected DeltaAutoVariable shipFaction;
+	protected DeltaAutoVariable shipFactionString;
 
 	@rawTemplate(value = "float, 'SHIP', 6, 20")
 	@dereferenced
@@ -787,19 +790,22 @@ class ShipObject extends TangibleObject {
 
 	// 6:19
 	@local
-	public void setShipFaction(@dereferenced final string value, boolean notifyClient = true, DeltaMessage delta = null, ShipDeltaVector vector = null) {
-		if (value == "rebel") {
-			super.setFaction(0x16148850);
-		} else if (value == "imperial") {
-			super.setFaction(0xDB4ACC54);
+	public void setShipFactionString(@dereferenced final string factionString, boolean notifyClient = true, DeltaMessage delta = null, ShipDeltaVector vector = null) {
+		if (factionString == "rebel") {
+			super.setFaction(String.hashCode(factionString));
+		} else if (factionString == "imperial") {
+			super.setFaction(String.hashCode(factionString));
 		} else {
 			super.setFaction(0);
 		}
 
-		shipFaction.update(value, notifyClient, this, delta, vector);
+		shipFactionString.update(factionString, notifyClient, this, delta, vector);
+		setShipFaction(String.hashCode(factionString));
 	}
 
-	public native void setShipFaction(unsigned int value, boolean notifyClient = true);
+	public void setShipFaction(unsigned int value) {
+		shipFaction = value;
+	}
 
 	// 6:20
 	@local
@@ -1454,8 +1460,8 @@ class ShipObject extends TangibleObject {
 	// 6:19
 	@read
 	@dereferenced
-	public string getShipFaction() {
-		return shipFaction.get();
+	public string getShipFactionString() {
+		return shipFactionString.get();
 	}
 
 	// 6:20
@@ -1518,6 +1524,10 @@ class ShipObject extends TangibleObject {
 	@weakReference
 	public SceneObject getTurretLadder() {
 		return turretLadder;
+	}
+
+	public unsigned int getShipFaction() {
+		return shipFaction;
 	}
 
 	@preLocked

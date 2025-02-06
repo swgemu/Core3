@@ -64,7 +64,7 @@ public:
 		insertAscii(""); // wingName
 		insertAscii(getShipTypeName(ship));
 		insertAscii(ship->getShipDifficulty());
-		insertAscii(ship->getShipFaction());
+		insertAscii(ship->getShipFactionString());
 
 		insertFloat(ship->getFrontShield());
 		insertFloat(ship->getRearShield());

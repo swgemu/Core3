@@ -2210,7 +2210,7 @@ void PlayerManagerImplementation::disseminateSpaceExperience(ShipAiAgent* destru
 	}
 
 	uint32 shipDifficulty = destructedObject->getShipDifficulty().hashCode();
-	String factionName = destructedObject->getShipFaction();
+	String factionName = destructedObject->getShipFactionString();
 	uint32 shipTypeHash = destructedObject->getShipType().hashCode();
 
 	float experienceReward = destructedObject->getExperienceValue();

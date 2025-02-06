@@ -52,8 +52,6 @@ ShipObject* ShipControlDeviceImplementation::launchShip(CreatureObject* player, 
 		return nullptr;
 	}
 
-	ship->setFactionStatus(player->getFactionStatus());
-	ship->setShipFaction(player->getFaction());
 	ship->scheduleRecovery();
 
 	if (player->isInvulnerable()) {
