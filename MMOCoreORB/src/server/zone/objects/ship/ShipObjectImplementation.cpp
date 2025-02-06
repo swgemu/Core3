@@ -2139,6 +2139,10 @@ void ShipObjectImplementation::updateActualEngineValues(bool notifyClient, ShipD
 	}
 
 	if (getActualMaxSpeed() != actualSpeed) {
+		if (staffModifiedSpeed > 1.f) {
+			actualSpeed = staffModifiedSpeed;
+		}
+
 		setActualMaxSpeed(actualSpeed, false, nullptr, deltaVector);
 	}
 

@@ -90,6 +90,9 @@ public:
 			playersOnBoard.remove(i);
 		}
 
+		// Clear Staff Speed
+		ship->setStaffShipSpeed(0.f);
+
 		// Destroy the ship from the zone.
 		ship->destroyObjectFromWorld(false);
 

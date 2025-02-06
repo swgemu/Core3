@@ -123,6 +123,8 @@ class ShipObject extends TangibleObject {
 	@dereferenced
 	protected Matrix4 conjugateMatrix;
 
+	protected transient float staffModifiedSpeed;
+
 	// DeltaAutoVariable template <class K, class V, int BaselineName, uint8 DeltaType, int DeltaIndex>
 
 	@rawTemplate(value = "float, 'SHIP', 1, 17")
@@ -441,6 +443,7 @@ class ShipObject extends TangibleObject {
 
 		boundingRadius = 1.f;
 		currentSpeed = 0.f;
+		staffModifiedSpeed = 0.f;
 		speedRotationFactorMax = 1.f;
 		speedRotationFactorMin = 1.f;
 		speedRotationFactorOptimal = 0.5f;
@@ -1029,6 +1032,11 @@ class ShipObject extends TangibleObject {
 
 	public void setSpeedRotationFactorOptimal(float value) {
 		speedRotationFactorOptimal = value;
+	}
+
+	@preLocked
+	public void setStaffShipSpeed(float speed) {
+		staffModifiedSpeed = speed;
 	}
 
 	@preLocked
