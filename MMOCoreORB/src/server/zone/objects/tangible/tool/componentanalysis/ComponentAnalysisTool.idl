@@ -81,4 +81,8 @@ class ComponentAnalysisTool extends Container {
 	@local
 	@arg1preLocked
 	public native void applyEngineeringBonus(CreatureObject player, SceneObject object);
+
+	@local
+	@arg1preLocked
+	public native void createSchematic(CreatureObject player);
 }

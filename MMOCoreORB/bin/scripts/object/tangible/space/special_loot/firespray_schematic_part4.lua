@@ -42,7 +42,11 @@
 
 
 object_tangible_space_special_loot_firespray_schematic_part4 = object_tangible_space_special_loot_shared_firespray_schematic_part4:new {
-
+	templateType = SCHEMATICFRAGMENT,
+	gameObjectType = 8257,
+	targetSchematic = "object/tangible/space/special_loot/firespray_schematic.iff",
+	totalFragments = 8,
+	fragmentBitmask = 8
 }
 
 ObjectTemplates:addTemplate(object_tangible_space_special_loot_firespray_schematic_part4, "object/tangible/space/special_loot/firespray_schematic_part4.iff")
