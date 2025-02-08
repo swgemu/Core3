@@ -171,6 +171,7 @@ public:
 	const static int SPACESPAWNER = 0x203E;
 	const static int CREDITCHIP = 0x203F;
 	const static int COMPONENTANALYSISTOOL = 0x2040;
+	const static int SCHEMATICFRAGMENT = 0x2041;
 	/// End Not in client **************
 
 	const static int TERMINAL = 0x4000;

@@ -4,6 +4,7 @@
 
 #include "server/zone/objects/tangible/tool/componentanalysis/ComponentAnalysisTool.h"
 #include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/managers/loot/LootManager.h"
 #include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
 #include "server/zone/packets/scene/AttributeListMessage.h"
@@ -18,6 +19,7 @@
 #include "server/zone/objects/ship/components/ShipReactorComponent.h"
 #include "server/zone/objects/ship/components/ShipShieldComponent.h"
 #include "server/zone/objects/ship/components/ShipWeaponComponent.h"
+#include "server/zone/objects/tangible/misc/SchematicFragment.h"
 #include "server/zone/objects/player/sui/callbacks/ReverseEngineeringSuiCallback.h"
 
 void ComponentAnalysisToolImplementation::initializePrivateData() {
@@ -66,6 +68,7 @@ int ComponentAnalysisToolImplementation::handleObjectMenuSelect(CreatureObject* 
 		int skillMod = 0;
 
 		switch (componentType) {
+			case SceneObjectType::SCHEMATICFRAGMENT:
 			case SceneObjectType::SHIPARMOR:
 				skillMod = player->getSkillMod("engineering_reverse");
 				break;
@@ -100,7 +103,7 @@ int ComponentAnalysisToolImplementation::handleObjectMenuSelect(CreatureObject* 
 
 int ComponentAnalysisToolImplementation::canAddObject(SceneObject* object, int containmentType, String& errorDescription) {
 	//first check - it must be a ship component
-	if (!object->isShipComponentObject()) {
+	if (!object->isShipComponentObject() && !object->isSchematicFragmentObject()) {
 		errorDescription = "@reverse_engineering_tool:wrong_component_type";
 		return TransferErrorCode::INVALIDTYPE;
 	}
@@ -116,18 +119,23 @@ int ComponentAnalysisToolImplementation::canAddObject(SceneObject* object, int c
 		return TransferErrorCode::INVALIDTYPE;
 	}
 
-	//fourth check - component must be of same RE level as those already in tool
-	ShipComponent* component = cast<ShipComponent*>(object);
-
-	if (component == nullptr || component->getReverseEngineeringLevel() != engineeringLevel) {
-		errorDescription = "@reverse_engineering_tool:invalid";
-		return TransferErrorCode::INVALIDTYPE;
-	}
-
-	//fifth check - make sure tool isn't full
+	//fourth check - make sure tool isn't full
 	if (getContainerObjectsSize() >= getContainerVolumeLimit()) {
 		errorDescription = "@container_error_message:container03"; //This container is full.
 		return TransferErrorCode::CONTAINERFULL;
+	}
+
+	//differentiate on whether it's a schematic fragment or a ship component
+	if (object->isSchematicFragmentObject()) {
+		return 0;
+	} else {
+		//ship components must be of same RE level as those already in tool
+		ShipComponent* component = cast<ShipComponent*>(object);
+
+		if (component == nullptr || component->getReverseEngineeringLevel() != engineeringLevel) {
+			errorDescription = "@reverse_engineering_tool:invalid";
+			return TransferErrorCode::INVALIDTYPE;
+		}
 	}
 
 	return 0;
@@ -138,14 +146,24 @@ int ComponentAnalysisToolImplementation::notifyObjectInserted(SceneObject* objec
 	if (getContainerObjectsSize() != 1)
 		return 0;
 
-	ShipComponent* component = cast<ShipComponent*>(object);
+	componentType = object->getGameObjectType();
+	savedBaseComponent = object;
 
-	if (component == nullptr)
-		return 0;
+	if (object->isSchematicFragmentObject()) {
+		SchematicFragment* fragment = cast<SchematicFragment*>(object);
 
-	engineeringLevel = component->getReverseEngineeringLevel();
-	componentType = component->getGameObjectType();
-	savedBaseComponent = component;
+		if (fragment == nullptr)
+			return 0;
+
+		engineeringLevel = fragment->getTotalFragments();
+	} else {
+		ShipComponent* component = cast<ShipComponent*>(object);
+
+		if (component == nullptr)
+			return 0;
+
+		engineeringLevel = component->getReverseEngineeringLevel();
+	}
 
 	return 0;
 }
@@ -160,7 +178,7 @@ int ComponentAnalysisToolImplementation::notifyObjectRemoved(SceneObject* object
 
 	//if there are still objects in the tool, select the new base
 	if (getContainerObjectsSize() > 0)
-		savedBaseComponent = getContainerObject(0).castTo<ShipComponent*>();
+		savedBaseComponent = getContainerObject(0);
 
 	return 0;
 }
@@ -187,6 +205,12 @@ void ComponentAnalysisToolImplementation::reverseEngineer(CreatureObject* player
 
 	// Ensure we have a base component
 	if (baseComponent == nullptr) {
+		return;
+	}
+
+	//if it's a schematic fragment, proceed with combination
+	if (baseComponent->isSchematicFragmentObject()){
+		createSchematic(player);
 		return;
 	}
 
@@ -227,7 +251,23 @@ void ComponentAnalysisToolImplementation::reverseEngineer(CreatureObject* player
 
 	decrementCharges(player);
 
-	return;
+	//random chance of getting a KSE Firespray schematic fragment at the end
+	//default chance is 1 in 200
+	if (System::random(199) != 1)
+		return;
+
+	ManagedReference<LootManager*> lootManager = getZoneServer()->getLootManager();
+
+	if (lootManager == nullptr)
+		return;
+
+	TransactionLog trx(TrxCode::PLAYERMISCACTION, player);
+	if (lootManager->createLoot(trx, inventory, "space_firespray_schematic_fragments", 1) > 0) {
+		player->sendSystemMessage("@reverse_engineering_tool:gotpiece");
+		trx.commit(true);
+	} else {
+		trx.abort() << "KSE fragment creation failed";
+	}
 }
 
 void ComponentAnalysisToolImplementation::combineComponent(ShipComponent* baseComponent, ShipComponent* component) {
@@ -665,4 +705,93 @@ void ComponentAnalysisToolImplementation::applyEngineeringBonus(CreatureObject* 
 	player->sendMessage(resultsWindow->generateMessage());
 
 	return;
+}
+
+void ComponentAnalysisToolImplementation::createSchematic(CreatureObject* player) {
+	if (player == nullptr)
+		return;
+
+	auto toolObject = getContainerObject(0);
+
+	// Ensure we have a fragment
+	if (toolObject == nullptr || !toolObject->isSchematicFragmentObject()) {
+		return;
+	}
+
+	SchematicFragment* fragmentObject = toolObject.castTo<SchematicFragment*>();
+
+	if (fragmentObject == nullptr) {
+		return;
+	}
+
+	uint schematicMask = fragmentObject->getFragmentBitmask();
+	uint schematicCRC = fragmentObject->getTargetSchematic();
+	uint schematicCount = fragmentObject->getTotalFragments();
+
+	int componentCount = getContainerObjectsSize();
+
+	if (componentCount != schematicCount) {
+		player->sendSystemMessage("@reverse_engineering_tool:not_enough");
+		return;
+	}
+
+	//evaluate all fragments
+	for (int i = 1; i < componentCount; ++i) {
+		SchematicFragment* candidate = getContainerObject(i).castTo<SchematicFragment*>();
+
+		if (candidate == nullptr || candidate == fragmentObject) {
+			continue;
+		}
+
+		//if the fragments aren't for the same schematic, abort
+		if (schematicCRC != candidate->getTargetSchematic()) {
+			player->sendSystemMessage("@reverse_engineering_tool:notunique");
+			return;
+		}
+
+		schematicMask = schematicMask | candidate->getFragmentBitmask();
+	}
+
+	//check if the bitmask is filled appropriately
+	if (schematicMask != (std::pow(2, componentCount) - 1)) {
+		player->sendSystemMessage("@reverse_engineering_tool:notunique");
+		return;
+	}
+
+	//ready to create schematic
+	ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
+
+	if (inventory == nullptr)
+		return ;
+
+	auto zoneServer = player->getZoneServer();
+
+	if (zoneServer == nullptr)
+		return;
+
+	ManagedReference<TangibleObject*> rewardSchematic = (zoneServer->createObject(schematicCRC, 1)).castTo<TangibleObject*>();
+
+	if (rewardSchematic == nullptr)
+		return;
+
+	inventory->transferObject(rewardSchematic, -1, true, true);
+	inventory->broadcastObject(rewardSchematic, true);
+
+	player->sendSystemMessage("@reverse_engineering_tool:gotschematic");
+
+	//destroy the fragments
+	for (int i = componentCount - 1; i >= 0; --i) {
+		SceneObject* usedFragment = getContainerObject(i);
+
+		if (usedFragment == nullptr) {
+			continue;
+		}
+
+		Locker cross(usedFragment, player);
+
+		usedFragment->destroyObjectFromDatabase(true);
+		usedFragment->destroyObjectFromWorld(true);
+	}
+
+	decrementCharges(player);
 }
