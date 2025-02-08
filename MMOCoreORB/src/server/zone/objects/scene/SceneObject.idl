@@ -1681,6 +1681,11 @@ class SceneObject extends TreeEntry implements Logger, Metrics {
 	}
 
 	@dirty
+	public abstract boolean isSchematicFragmentObject() {
+		return false;
+	}
+
+	@dirty
 	public abstract boolean isDroidObject() {
 		return false;
 	}

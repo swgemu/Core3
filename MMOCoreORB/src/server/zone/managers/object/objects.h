@@ -160,6 +160,7 @@
 #include "server/zone/objects/region/space/SpaceRegion.h"
 #include "server/zone/objects/region/space/SpaceSpawnArea.h"
 #include "server/zone/objects/tangible/misc/ContractCrate.h"
+#include "server/zone/objects/tangible/misc/SchematicFragment.h"
 #include "server/zone/objects/tangible/misc/DeadEyePrototype.h"
 #include "server/zone/objects/tangible/misc/FurnitureObject.h"
 #include "server/zone/objects/tangible/misc/LightObject.h"

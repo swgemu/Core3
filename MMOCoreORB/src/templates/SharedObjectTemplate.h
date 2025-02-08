@@ -200,7 +200,8 @@ public:
 	const static int DROIDMODULEPERSONALITY = 0x4000057;
 	const static int VEHICLE = 0x4000058;
 	const static int XPPURCHASE = 0x4000059;
-	const static int SHIPCOMPONENT = 0x4000060;
+	const static int SHIPCOMPONENT = 0x400005A;
+	const static int SCHEMATICFRAGMENT = 0x400005B;
 public:
 	SharedObjectTemplate();
 

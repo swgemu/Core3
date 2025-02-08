@@ -492,6 +492,9 @@ includeFile("groups/space/faction/space_valarian_tier3.lua")
 includeFile("groups/space/faction/space_valarian_tier4.lua")
 includeFile("groups/space/faction/space_valarian_tier5.lua")
 
+-- space/special_loot sub-folder
+includeFile("groups/space/special_loot/space_firespray_schematic_fragments.lua")
+
 -- space/story_loot sub-folder
 includeFile("groups/space/story_loot/space_story_tatooine_valarian.lua")
 includeFile("groups/space/story_loot/space_story_series_tinrilo.lua")

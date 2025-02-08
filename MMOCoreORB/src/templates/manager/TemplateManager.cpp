@@ -100,6 +100,7 @@
 #include "templates/tangible/PetDeedTemplate.h"
 #include "templates/tangible/PowerupTemplate.h"
 #include "templates/tangible/RangedStimPackTemplate.h"
+#include "templates/tangible/SchematicFragmentTemplate.h"
 #include "templates/tangible/SharedBattlefieldMarkerObjectTemplate.h"
 #include "templates/tangible/SharedCountingObjectTemplate.h"
 #include "templates/tangible/SharedFactoryObjectTemplate.h"
@@ -573,6 +574,7 @@ void TemplateManager::registerTemplateObjects() {
 	templateFactory.registerObject<XpPurchaseTemplate>(SharedObjectTemplate::XPPURCHASE);
 	templateFactory.registerObject<ShipComponentTemplate>(SharedObjectTemplate::SHIPCOMPONENT);
 	templateFactory.registerObject<ShipChassisTemplate>(SharedObjectTemplate::SHIPCHASSIS);
+	templateFactory.registerObject<SchematicFragmentTemplate>(SharedObjectTemplate::SCHEMATICFRAGMENT);
 }
 
 void TemplateManager::registerFunctions() {
@@ -760,6 +762,7 @@ void TemplateManager::registerGlobals() {
 	luaTemplatesInstance->setGlobalInt("DROIDPERSONALITYCHIP", SharedObjectTemplate::DROIDMODULEPERSONALITY);
 	luaTemplatesInstance->setGlobalInt("VEHICLE", SharedObjectTemplate::VEHICLE);
 	luaTemplatesInstance->setGlobalInt("XPPURCHASE", SharedObjectTemplate::XPPURCHASE);
+	luaTemplatesInstance->setGlobalInt("SCHEMATICFRAGMENT", SharedObjectTemplate::SCHEMATICFRAGMENT);
 
 	luaTemplatesInstance->setGlobalInt("NO_HITLOCATION", ArmorObjectTemplate::NOLOCATION);
 	luaTemplatesInstance->setGlobalInt("CHEST_HITLOCATION", ArmorObjectTemplate::CHEST);
