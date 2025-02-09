@@ -140,6 +140,12 @@ class CreatureObject extends TangibleObject {
 	@dereferenced
 	protected transient DeltaSet<unsigned long, unsigned long> spaceMissionObjects;
 
+	@dereferenced
+	private transient Mutex missionRangeObjectsMutex;
+
+	@dereferenced
+	protected transient SortedVector<unsigned int> missionRangeObjects;
+
 	protected byte frozen;
 
 	protected string templateString;
@@ -2390,4 +2396,7 @@ class CreatureObject extends TangibleObject {
 	public native void setQueueCommandDeltaTime(@dereferenced final String commandName, @dereferenced final String commandGroup);
 
 	public native unsigned long getQueueCommandDeltaTime(@dereferenced final String commandName);
+
+	@dirty
+	public native abstract float getOutOfRangeDistance(unsigned long specialRangeObjectID = 0);
 }

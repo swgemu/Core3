@@ -6,6 +6,6 @@
 #include "server/zone/objects/ship/ai/CapitalShipObject.h"
 #include "server/zone/ZoneServer.h"
 
-float CapitalShipObjectImplementation::getOutOfRangeDistance() const {
+float CapitalShipObjectImplementation::getOutOfRangeDistance(uint64 specialRangeID) {
 	return ZoneServer::CAPITALSHIPRANGE;
 }

@@ -461,8 +461,8 @@ class BuildingObject extends StructureObject {
 	@local
 	public abstract native final BaseBoundingVolume getBoundingVolume();
 
-	@read
-	public native abstract float getOutOfRangeDistance();
+	@dirty
+	public native abstract float getOutOfRangeDistance(unsigned long specialRangeObjectID = 0);
 
 	@read
 	public native string getCellName(unsigned long cellID);

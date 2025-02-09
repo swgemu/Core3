@@ -209,9 +209,7 @@ bool SpaceZoneContainerComponent::transferObject(SceneObject* sceneObject, Scene
 	newSpaceZone->insert(object);
 
 	// Updates objects in range
-	float spaceZoneRange = object->getOutOfRangeDistance();
-
-	newSpaceZone->inRange(object, spaceZoneRange);
+	newSpaceZone->inRange(object, ZoneServer::SPACESTATIONRANGE);
 
 	TangibleObject* tanoObject = object->asTangibleObject();
 
@@ -268,9 +266,7 @@ bool SpaceZoneContainerComponent::removeObject(SceneObject* sceneObject, SceneOb
 			SortedVector<ManagedReference<TreeEntry*> > closeSceneObjects;
 
 			// Updates objects in range
-			float spaceZoneRange = object->getOutOfRangeDistance();
-
-			spaceZone->getInRangeObjects(object->getPositionX(), object->getPositionZ(), object->getPositionY(), spaceZoneRange, &closeSceneObjects, false);
+			spaceZone->getInRangeObjects(object->getPositionX(), object->getPositionZ(), object->getPositionY(), ZoneServer::SPACESTATIONRANGE, &closeSceneObjects, false);
 
 			for (int i = 0; i < closeSceneObjects.size(); ++i) {
 				TreeEntry* obj = closeSceneObjects.get(i);

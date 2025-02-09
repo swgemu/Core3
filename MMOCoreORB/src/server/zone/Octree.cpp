@@ -134,15 +134,13 @@ bool Octree::update(TreeEntry* obj) {
 	}
 }
 
-void Octree::inRange(TreeEntry *obj, float range) {
+void Octree::inRange(TreeEntry* obj, float range) {
 	if (Octree::doLog())
 		Logger::console.info(true) << "Octree::inRange-1";
 
 	ReadLocker locker(&mutex);
 
 	CloseObjectsVector* closeObjects = obj->getCloseObjects();
-
-	int rangesq = range * range;
 
 	float x = obj->getPositionX();
 	float y = obj->getPositionY();
@@ -151,6 +149,8 @@ void Octree::inRange(TreeEntry *obj, float range) {
 	float oldx = obj->getPreviousPositionX();
 	float oldy = obj->getPreviousPositionY();
 	float oldz = obj->getPreviousPositionZ();
+
+	uint64 objectID = obj->getObjectID();
 
 	try {
 		if (closeObjects != nullptr) {
@@ -163,18 +163,22 @@ void Octree::inRange(TreeEntry *obj, float range) {
 					o = rootParent;
 
 				if (o != obj) {
+					float nearEntryOutOfRange = Math::max(o->getOutOfRangeDistance(objectID), obj->getOutOfRangeDistance(o->getObjectID()));
+					float outOfRangeSqr = Math::sqr(nearEntryOutOfRange);
+
 					float deltaX = x - o->getPositionX();
 					float deltaY = y - o->getPositionY();
 					float deltaZ = z - o->getPositionZ();
 					int deltaCalc = deltaX * deltaX + deltaY * deltaY + deltaZ * deltaZ;
 
-					if (deltaCalc > rangesq) {
+					if (deltaCalc > outOfRangeSqr) {
 						float oldDeltaX = oldx - o->getPositionX();
 						float oldDeltaY = oldy - o->getPositionY();
 						float oldDeltaZ = oldz - o->getPositionZ();
+
 						int deltaCalc2 = deltaX * deltaX + deltaY * deltaY + deltaZ * deltaZ;
 
-						if (deltaCalc2 <= rangesq) {
+						if (deltaCalc2 <= outOfRangeSqr) {
 							obj->removeInRangeObject(objectToRemove);
 
 							CloseObjectsVector* objCloseObjects = objectToRemove->getCloseObjects();
@@ -596,6 +600,7 @@ void Octree::safeInRange(TreeEntry* obj, float range) {
 	float x = obj->getPositionX();
 	float y = obj->getPositionY();
 	float z = obj->getPositionZ();
+	uint64 objectID = obj->getObjectID();
 
 	if (obj->getReceiverFlags() & CloseObjectsVector::CREOTYPE) {
 		x = obj->getWorldPositionX();
@@ -612,13 +617,13 @@ void Octree::safeInRange(TreeEntry* obj, float range) {
 	ReadLocker locker(&mutex);
 
 	// Space has a much lower number of objects and we need to be able to add space stations and special mission ships to cov at all times.
-	copyObjects(root, x, y, z, 28347.f, inRangeObjects);
+	copyObjects(root, x, y, z, 32768.f, inRangeObjects);
 
 	locker.release();
 
 	if (Octree::doLog()) {
 		SceneObject* sceneO = cast<SceneObject*>(obj);
-		Logger::console.info(true) << "Octree::safeInRange -- " << sceneO->getDisplayedName() << " Range: " << range << " Objects: " << inRangeObjects.size();
+		Logger::console.info(true) << "Octree::safeInRange -- " << sceneO->getDisplayedName() << " Range: " << range << " Objects: " << inRangeObjects.size() << "\n";
 	}
 
 	for (int i = 0; i < inRangeObjects.size(); ++i) {
@@ -640,7 +645,7 @@ void Octree::safeInRange(TreeEntry* obj, float range) {
 		int deltaCalc = deltaX * deltaX + deltaY * deltaY + deltaZ * deltaZ;
 
 		try {
-			float nearEntryOutOfRange = Math::max(nearEntry->getOutOfRangeDistance(), range);
+			float nearEntryOutOfRange = Math::max(nearEntry->getOutOfRangeDistance(objectID), obj->getOutOfRangeDistance(nearEntry->getObjectID()));
 			float outOfRangeSqr = Math::sqr(nearEntryOutOfRange);
 
 			if (Octree::doLog()) {
@@ -701,9 +706,6 @@ void Octree::copyObjects(const Reference<TreeNode*>& node, float x, float y, flo
 }
 
 void Octree::copyObjects(const Reference<TreeNode*>& node, float x, float y, float z, float range, SortedVector<server::zone::TreeEntry*>& objects) {
-	if (Octree::doLog())
-		Logger::console.info(true) << "Octree::copyObjects -- called";
-
 	for (int i = 0; i < node->objects.size(); ++i) {
 		objects.add(node->objects.getUnsafe(i).get());
 	}
@@ -735,8 +737,6 @@ void Octree::_inRange(const Reference<TreeNode*>& node, TreeEntry *obj, float ra
 	if (Octree::doLog())
 		Logger::console.info(true) << "Octree::_inRange-1 -- Total Objects = " << node->objects.size();
 
-	int rangesq = range * range;
-
 	float x = obj->getPositionX();
 	float y = obj->getPositionY();
 	float z = obj->getPositionZ();
@@ -744,17 +744,21 @@ void Octree::_inRange(const Reference<TreeNode*>& node, TreeEntry *obj, float ra
 	float oldx = obj->getPreviousPositionX();
 	float oldy = obj->getPreviousPositionY();
 	float oldz = obj->getPreviousPositionZ();
+	uint64 objectID = obj->getObjectID();
 
 	for (int i = 0; i < refNode->objects.size(); i++) {
 		TreeEntry* treeEntry = refNode->objects.get(i);
 
 		if (treeEntry != obj) {
+			float nearEntryOutOfRange = Math::max(treeEntry->getOutOfRangeDistance(objectID), obj->getOutOfRangeDistance(treeEntry->getObjectID()));
+			float outOfRangeSqr = Math::sqr(nearEntryOutOfRange);
+
 			float deltaX = x - treeEntry->getPositionX();
 			float deltaY = y - treeEntry->getPositionY();
 			float deltaZ = z - treeEntry->getPositionZ();
 			int deltaCalc = deltaX * deltaX + deltaY * deltaY + deltaZ * deltaZ;
 
-			if (deltaCalc < rangesq) {
+			if (deltaCalc < outOfRangeSqr) {
 				CloseObjectsVector* objCloseObjects = obj->getCloseObjects();
 
 				if (objCloseObjects != nullptr && !objCloseObjects->contains(treeEntry)) {
@@ -780,7 +784,7 @@ void Octree::_inRange(const Reference<TreeNode*>& node, TreeEntry *obj, float ra
 
 				int deltaCalc2 = (oldDeltaX * oldDeltaX) + (oldDeltaY * oldDeltaY) + (oldDeltaZ * oldDeltaZ);
 
-				if (deltaCalc2 < rangesq) {
+				if (deltaCalc2 < outOfRangeSqr) {
 					CloseObjectsVector* objCloseObjects = obj->getCloseObjects();
 
 					if (objCloseObjects != nullptr) {

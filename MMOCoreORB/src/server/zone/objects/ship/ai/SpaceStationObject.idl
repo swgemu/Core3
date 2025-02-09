@@ -19,8 +19,8 @@ class SpaceStationObject extends ShipAiAgent {
 		Logger.setGlobalLogging(true);
 	}
 
-	@read
-	public native abstract float getOutOfRangeDistance();
+	@dirty
+	public native abstract float getOutOfRangeDistance(unsigned long specialRangeObjectID = 0);
 
 	@dirty
 	public boolean isSpaceStation() {

@@ -1954,7 +1954,15 @@ int ShipObjectImplementation::getReceiverFlags() const {
 	return type | TangibleObjectImplementation::getReceiverFlags();
 }
 
-float ShipObjectImplementation::getOutOfRangeDistance() const {
+float ShipObjectImplementation::getOutOfRangeDistance(uint64 specialRangeID) {
+	if (specialRangeID > 0) {
+		auto pilot = getPilot();
+
+		if (pilot != nullptr) {
+			return pilot->getOutOfRangeDistance(specialRangeID);
+		}
+	}
+
 	return ZoneServer::SPACECLOSEOBJECTRANGE;
 }
 

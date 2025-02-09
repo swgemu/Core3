@@ -519,7 +519,6 @@ void TangibleObjectImplementation::removeOutOfRangeObjects() {
 	float ourY = worldPos.getY();
 	float ourZ = worldPos.getZ();
 
-	float ourRange = rangeCheckObject->getOutOfRangeDistance();
 	bool objectIsShip = rangeCheckObject->isShipObject();
 
 	uint64 thisObjectID = getObjectID();
@@ -560,8 +559,8 @@ void TangibleObjectImplementation::removeOutOfRangeObjects() {
 		float deltaX = ourX - objectWorldPos.getX();
 		float deltaY = ourY - objectWorldPos.getY();
 
-		float outOfRangeDistance = covObject->getOutOfRangeDistance();
-		float outOfRangeSqr = Math::sqr(Math::max(ourRange, outOfRangeDistance));
+		float outOfRangeDistance = Math::max(covObject->getOutOfRangeDistance(thisObjectID), rangeCheckObject->getOutOfRangeDistance(covObject->getObjectID()));
+		float outOfRangeSqr = Math::sqr(outOfRangeDistance);
 		float deltaDistance = 0.f;
 
 		// This range calculation is used for everything in GroundZone

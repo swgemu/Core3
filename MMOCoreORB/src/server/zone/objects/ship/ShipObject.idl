@@ -1736,8 +1736,8 @@ class ShipObject extends TangibleObject {
 
 	public native float calculateActualMaxSpeed();
 
-	@read
-	public native abstract float getOutOfRangeDistance();
+	@dirty
+	public native abstract float getOutOfRangeDistance(unsigned long specialRangeObjectID = 0);
 
 	@preLocked
 	@local

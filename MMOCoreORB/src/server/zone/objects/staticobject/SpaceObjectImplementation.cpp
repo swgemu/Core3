@@ -8,6 +8,6 @@
 #include "server/zone/objects/staticobject/SpaceObject.h"
 #include "server/zone/ZoneServer.h"
 
-float SpaceObjectImplementation::getOutOfRangeDistance() const {
+float SpaceObjectImplementation::getOutOfRangeDistance(uint64 specialRangeID) {
 	return ZoneServer::SPACESTATIONRANGE;
 }

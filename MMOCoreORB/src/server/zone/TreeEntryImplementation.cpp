@@ -38,6 +38,15 @@ void TreeEntryImplementation::addInRangeObject(TreeEntry* obj, bool doNotifyUpda
 		return;
 	}
 
+	/*
+	auto objSceneO = static_cast<SceneObject*>(obj);
+	auto sceneO = static_cast<SceneObject*>(_this.getReferenceUnsafeStaticCast());
+
+	if ((objSceneO->isShipObject() && sceneO->isShipObject()) || (objSceneO->isShipObject() && sceneO->isPlayerCreature()) || (objSceneO->isPlayerCreature() && sceneO->isShipObject())) {
+		sceneO->info(true) << sceneO->getDisplayedName() << " is ADDING in range object: " << objSceneO->getDisplayedName();
+	}
+	*/
+
 	if (closeobjects != nullptr && closeobjects->put(obj) != -1) {
  		notifyInsert(obj);
 	} else if (doNotifyUpdate) {
@@ -49,6 +58,15 @@ void TreeEntryImplementation::removeInRangeObject(TreeEntry* obj, bool notifyDis
 	if (obj == nullptr) {
 		return;
 	}
+
+	/*
+	auto objSceneO = static_cast<SceneObject*>(obj);
+	auto sceneO = static_cast<SceneObject*>(_this.getReferenceUnsafeStaticCast());
+
+	if ((objSceneO->isShipObject() && sceneO->isShipObject()) || (objSceneO->isShipObject() && sceneO->isPlayerCreature()) || (objSceneO->isPlayerCreature() && sceneO->isShipObject())) {
+		sceneO->info(true) << sceneO->getDisplayedName() << " is REMOVING in range object: " << objSceneO->getDisplayedName();
+	}
+	*/
 
 	if (closeobjects != nullptr && closeobjects->drop(obj) && notifyDisappear) {
 		notifyDissapear(obj);
@@ -364,7 +382,7 @@ uint64 TreeEntryImplementation::getDirtyObjectID() {
 	return _this.getReferenceUnsafeStaticCast()->_getObjectID();
 }
 
-float TreeEntryImplementation::getOutOfRangeDistance() const {
+float TreeEntryImplementation::getOutOfRangeDistance(uint64 specialRangeID) {
 	float closeRange = ZoneServer::CLOSEOBJECTRANGE;
 
 	if (radius > (closeRange * 0.5f)) {

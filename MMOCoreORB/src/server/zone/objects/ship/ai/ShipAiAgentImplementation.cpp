@@ -2409,7 +2409,7 @@ String ShipAiAgentImplementation::getShipAgentTemplateName() {
 	return templateName;
 }
 
-float ShipAiAgentImplementation::getOutOfRangeDistance() const {
+float ShipAiAgentImplementation::getOutOfRangeDistance(uint64 specialRangeID) {
 	return ZoneServer::SPACECLOSEOBJECTRANGE;
 }
 

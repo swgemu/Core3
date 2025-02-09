@@ -3714,6 +3714,12 @@ void CreatureObjectImplementation::addSpaceMissionObject(uint64 missionOwnerID, 
 		}
 	}
 
+	Locker locker(&missionRangeObjectsMutex);
+
+	missionRangeObjects.add(missionObjectID);
+
+	locker.release();
+
 	if (!isGrouped() || !notifyGroup) {
 		return;
 	}
@@ -3753,6 +3759,12 @@ void CreatureObjectImplementation::removeSpaceMissionObject(uint64 missionOwnerI
 			sendMessage(delta4);
 		}
 	}
+
+	Locker locker(&missionRangeObjectsMutex);
+
+	missionRangeObjects.drop(missionObjectID);
+
+	locker.release();
 
 	if (!isGrouped() || !notifyGroup) {
 		return;
@@ -4553,4 +4565,16 @@ uint64 CreatureObjectImplementation::getQueueCommandDeltaTime(const String& comm
 	}
 
 	return commandTime->miliDifference();
+}
+
+float CreatureObjectImplementation::getOutOfRangeDistance(uint64 specialRangeID) {
+	if (specialRangeID > 0) {
+		Locker locker(&missionRangeObjectsMutex);
+
+		if (missionRangeObjects.contains(specialRangeID)) {
+			return ZoneServer::SPACESTATIONRANGE;
+		}
+	}
+
+	return ZoneServer::SPACECLOSEOBJECTRANGE;
 }

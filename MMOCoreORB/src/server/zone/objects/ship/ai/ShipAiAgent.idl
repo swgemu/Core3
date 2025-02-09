@@ -944,6 +944,6 @@ class ShipAiAgent extends FighterShipObject {
 
 	public native string getShipAgentTemplateName();
 
-	@read
-	public native abstract float getOutOfRangeDistance();
+	@dirty
+	public native abstract float getOutOfRangeDistance(unsigned long specialRangeObjectID = 0);
 }

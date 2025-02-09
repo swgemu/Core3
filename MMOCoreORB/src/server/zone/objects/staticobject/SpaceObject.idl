@@ -11,6 +11,6 @@ class SpaceObject extends StaticObject {
 	public SpaceObject() {
 	}
 
-	@read
-	public native abstract float getOutOfRangeDistance();
+	@dirty
+	public native abstract float getOutOfRangeDistance(unsigned long specialRangeObjectID = 0);
 }

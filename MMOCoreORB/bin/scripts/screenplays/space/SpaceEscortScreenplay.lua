@@ -10,7 +10,9 @@ SpaceEscortScreenplay = SpaceQuestLogic:new {
 		--{zoneName = "space_corellia", x = -4381, z = -4943, y = -7262, patrolNumber = 1, radius = 150},
 	},
 
+	spawnAttackWaves = true,
 	checkPlayerDistance = true,
+
 	attackDelay = 0, -- In Seconds
 	attackShips = {},
 }
@@ -264,7 +266,7 @@ function SpaceEscortScreenplay:spawnEscortShip(pPlayer)
 	ShipAiAgent(pShipAgent):setFixedPatrol()
 	ShipAiAgent(pShipAgent):setEscort()
 
-	ShipAiAgent(pShipAgent):setEscortSpeed(50)
+	ShipAiAgent(pShipAgent):setEscortSpeed(20)
 
 	-- Set as same space faction
 	ShipObject(pShipAgent):setShipFactionString(SpaceHelpers:getPlayerSpaceFactionString(pPlayer))
@@ -441,7 +443,7 @@ function SpaceEscortScreenplay:removeEscortShip(pShipAgent)
 end
 
 function SpaceEscortScreenplay:spawnAttackWave(pEscortAgent)
-	if (pEscortAgent == nil) then
+	if (pEscortAgent == nil or not self.spawnAttackWaves) then
 		return
 	end
 
@@ -449,7 +451,7 @@ function SpaceEscortScreenplay:spawnAttackWave(pEscortAgent)
 	local pPlayer = getSceneObject(playerID)
 
 	-- This will fail to spawn the scheduled wave if the escort is over
-	if (pPlayer == nil) then
+	if (pPlayer == nil or not SpaceHelpers:isSpaceQuestActive(pPlayer, self.questType, self.questName)) then
 		return
 	end
 
@@ -493,7 +495,7 @@ function SpaceEscortScreenplay:spawnAttackWave(pEscortAgent)
 		local agentID = SceneObject(pShipAgent):getObjectID()
 
 		-- Set as space mission object
-		CreatureObject(pPlayer):addSpaceMissionObject(agentID, true)
+		CreatureObject(pPlayer):addSpaceMissionObject(agentID, (i == #spawnTable))
 
 		-- Add to the list of shipIDs
 		shipIDs[#shipIDs + 1] = agentID
@@ -501,7 +503,7 @@ function SpaceEscortScreenplay:spawnAttackWave(pEscortAgent)
 		-- Write the playersID that is escorting
 		writeData(agentID .. ":" .. self.className .. ":escorterID:", playerID)
 
-		-- Set the player as ShipAgents Defender
+		-- Add aggo and set the escort ship as ShipAgents Defender
 		ShipAiAgent(pShipAgent):addAggro(pEscortAgent, 1)
 		ShipAiAgent(pShipAgent):setDefender(pEscortAgent)
 
