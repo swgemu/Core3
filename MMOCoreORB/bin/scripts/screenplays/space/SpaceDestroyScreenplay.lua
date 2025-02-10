@@ -218,9 +218,8 @@ function SpaceDestroyScreenplay:notifyDestroyedShip(pPlayer, pShipAgent)
 
 	if (isValid) then
 		killCount = killCount + 1
-
-		-- Remove Ship as Mission Critical Object
-		CreatureObject(pPlayer):removeSpaceMissionObject(SceneObject(pShipAgent):getObjectID(), true)
+	else
+		return 0
 	end
 
 	-- Check if player has enough kills
@@ -241,18 +240,16 @@ function SpaceDestroyScreenplay:notifyDestroyedShip(pPlayer, pShipAgent)
 		createEvent(200, self.className, "completeQuest", pPlayer, "true")
 
 		return 1
-	else
-		if (killCount == 1) then
-			SpaceHelpers:sendQuestProgess(pPlayer, "@spacequest/" .. self.questType .. "/" .. self.questName .. ":title")
-		end
-
-		-- Kill counter sent to player
-		SpaceHelpers:sendQuestUpdate(pPlayer, self.killsRequired - killCount .. " targets remaining to be destroyed.") --  "destroy_remainder_update"
-
-		writeData(playerID .. ":" .. self.className .. ":killCount", killCount)
-
-		return 0
 	end
 
-	return 1
+	if (killCount == 1) then
+		SpaceHelpers:sendQuestProgess(pPlayer, "@spacequest/" .. self.questType .. "/" .. self.questName .. ":title")
+	end
+
+	-- Kill counter sent to player
+	SpaceHelpers:sendQuestUpdate(pPlayer, self.killsRequired - killCount .. " targets remaining to be destroyed.") --  "destroy_remainder_update"
+
+	writeData(playerID .. ":" .. self.className .. ":killCount", killCount)
+
+	return 0
 end

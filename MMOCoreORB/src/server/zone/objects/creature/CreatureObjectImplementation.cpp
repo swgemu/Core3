@@ -3737,9 +3737,11 @@ void CreatureObjectImplementation::addSpaceMissionObject(uint64 missionOwnerID, 
 }
 
 void CreatureObjectImplementation::removeSpaceMissionObject(uint64 missionOwnerID, uint64 missionObjectID, bool notifyClient, bool notifyGroup) {
-	if (missionObjectID <= 0 || !spaceMissionObjects.contains(missionObjectID)) {
+	if (missionObjectID <= 0 || !spaceMissionObjects.containsValue(missionObjectID)) {
 		return;
 	}
+
+	// info(true) << "removeSpaceMissionObject - called missionOwnerID: " << missionOwnerID << " missionObjectID: " << missionObjectID;
 
 	// Remove Mission object from DeltaSet
 	spaceMissionObjects.dropByValue(missionOwnerID, missionObjectID);
@@ -3754,7 +3756,7 @@ void CreatureObjectImplementation::removeSpaceMissionObject(uint64 missionOwnerI
 
 			delta4->close();
 
-			// info(true) << "removeSpaceMissionObject - Delta4 Packet: " << delta4->toStringData();
+			// info(true) << "removeSpaceMissionObject - Vector Size: " << spaceMissionObjects.size() << " Delta4 Packet: " << delta4->toStringData();
 
 			sendMessage(delta4);
 		}

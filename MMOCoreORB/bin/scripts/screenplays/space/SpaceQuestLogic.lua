@@ -42,18 +42,19 @@ function SpaceQuestLogic:rewardPlayer(pPlayer)
 		SpaceHelpers:spaceCreditReward(pPlayer, self.creditReward)
 	end
 
-	local rewardOptions = #self.itemReward
+	local rewardOptions = self.itemReward
 	local playerSpecies = CreatureObject(pPlayer):getSpecies()
 	local rewardString = ""
 
-	for i = 1, rewardOptions, 1 do
+	for i = 1, #rewardOptions, 1 do
 		local itemTable = rewardOptions[i]
 
 		for j = 1, #itemTable.species, 1 do
 			local speciesIdentifier = itemTable.species[j]
 
-			if (speciesIdentifier == playerSpecies or speciesIdentifier == -1) then
+			if (rewardString == "" and speciesIdentifier == playerSpecies or speciesIdentifier == -1) then
 				rewardString = itemTable.item
+
 				break
 			end
 		end

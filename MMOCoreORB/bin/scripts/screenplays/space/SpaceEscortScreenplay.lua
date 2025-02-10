@@ -435,7 +435,7 @@ function SpaceEscortScreenplay:removeEscortShip(pShipAgent)
 
 	if (pPlayer ~= nil) then
 		-- Remove the agent a mission object
-		CreatureObject(pPlayer):removeSpaceMissionObject(shipAgentID, false)
+		CreatureObject(pPlayer):removeSpaceMissionObject(shipAgentID, true)
 	end
 
 	-- Remove the escort ship
@@ -537,6 +537,12 @@ function SpaceEscortScreenplay:removeAttackShips(pShipAgent)
 	for i = 1, #shipIDs, 1 do
 		local attackAgentID = tonumber(shipIDs[i])
 
+		-- Remove the attacking ship agent as a mission object
+		if (pPlayer ~= nil) then
+			CreatureObject(pPlayer):removeSpaceMissionObject(attackAgentID, true)
+		end
+
+		-- Get pointer to attack ship
 		local pAttackShip = getSceneObject(attackAgentID)
 
 		if (pAttackShip == nil) then
@@ -552,7 +558,7 @@ function SpaceEscortScreenplay:removeAttackShips(pShipAgent)
 
 		if (pPlayer ~= nil) then
 			-- Remove the attacking ship agent as a mission object
-			CreatureObject(pPlayer):removeSpaceMissionObject(attackAgentID, false)
+			CreatureObject(pPlayer):removeSpaceMissionObject(attackAgentID, true)
 		end
 
 		-- Remove the escort ship
