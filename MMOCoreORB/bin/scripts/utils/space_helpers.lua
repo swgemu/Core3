@@ -1019,7 +1019,7 @@ function SpaceHelpers:spaceItemReward(pPlayer, itemString)
 		return
 	end
 
-	giveItem(pInventory, rewardString, -1)
+	giveItem(pInventory, itemString, -1)
 end
 
 -- @param pPlayer pointer to player to receive message

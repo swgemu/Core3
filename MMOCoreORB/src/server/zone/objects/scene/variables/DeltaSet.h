@@ -217,6 +217,18 @@ public:
 		return vectorMap.contains(key);
 	}
 
+	inline bool containsValue(const V& value) {
+		for (int i = 0; i < vectorMap.size(); i++) {
+			if (vectorMap.elementAt(i).getValue() != value) {
+				continue;
+			}
+
+			return true;
+		}
+
+		return false;
+	}
+
 	inline int size() const {
 		return vectorMap.size();
 	}

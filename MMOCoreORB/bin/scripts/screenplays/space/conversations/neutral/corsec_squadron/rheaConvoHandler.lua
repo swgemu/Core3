@@ -86,7 +86,7 @@ function rheaConvoHandler:getInitialScreen(pPlayer, pNpc, pConvTemplate)
 
 
 	-- Player has completed quest 4 and needs reward
-	elseif (questThreeComplete and getQuestStatus(playerID .. CorsecSquadronScreenplay.QUEST_STRING_4.name .. ":reward") ~= "1") then
+	elseif (questFourComplete and getQuestStatus(playerID .. CorsecSquadronScreenplay.QUEST_STRING_4.name .. ":reward") ~= "1") then
 		CreatureObject(pNpc):doAnimation("salute1")
 
 		-- Give player the reward and update that they received it
