@@ -78,6 +78,7 @@ SpaceHelpers = {
 ]]
 
 -- @param pPlayer pointer grants the novice pilot box
+-- @param skillName - pilot skill name to correlate with the pilotSkills table
 function SpaceHelpers:grantNovicePilot(pPlayer, skillName)
 	if (pPlayer == nil) then
 		return
@@ -94,6 +95,25 @@ function SpaceHelpers:grantNovicePilot(pPlayer, skillName)
 
 	local messageString = LuaStringIdChatParameter("@skill_teacher:" .. "prose_skill_learned")
 	messageString:setTO("@skl_n:" .. noviceSkill)
+
+	CreatureObject(pPlayer):sendSystemMessage(messageString:_getObject())
+end
+
+-- @param pPlayer pointer grants the novice pilot box
+-- @param skillString - string for skill to grant the player
+function SpaceHelpers:grantSpaceSkill(pPlayer, skillString)
+	if (pPlayer == nil) then
+		return
+	end
+
+	if (CreatureObject(pPlayer):hasSkill(skillString)) then
+		return
+	end
+
+	awardSkill(pPlayer, skillString)
+
+	local messageString = LuaStringIdChatParameter("@skill_teacher:" .. "prose_skill_learned")
+	messageString:setTO("@skl_n:" .. skillString)
 
 	CreatureObject(pPlayer):sendSystemMessage(messageString:_getObject())
 end
@@ -388,6 +408,7 @@ function SpaceHelpers:surrenderPilot(pPlayer)
 	if (pilotSquadron == CORSEC_SQUADRON or pilotSquadron == SMUGGLER_SQUADRON or pilotSquadron == RSF_SQUADRON) then
 		pilotProfession = "neutralPilot"
 
+		-- All the Space Quests need to be reset here
 		CorsecSquadronScreenplay:resetRheaQuests(pPlayer)
 
 	elseif (pilotSquadron == BLACK_EPSILON_SQUADRON or pilotSquadron == STORM_SQUADRON or pilotSquadron == INQUISITION_SQUADRON) then
@@ -1019,7 +1040,14 @@ function SpaceHelpers:spaceItemReward(pPlayer, itemString)
 		return
 	end
 
-	giveItem(pInventory, itemString, -1)
+	local pItem = giveItem(pInventory, itemString, -1)
+
+	if (pItem ~= nil) then
+		local messageString = LuaStringIdChatParameter("@space/quest:quest_rewarded")
+		messageString:setTO(SceneObject(pItem):getDisplayedName())
+
+		CreatureObject(pPlayer):sendSystemMessage(messageString:_getObject()) -- " \\#pcontrast3 Reward Received: < \\#pcontrast1 %TO \\#pcontrast3 >"
+	end
 end
 
 -- @param pPlayer pointer to player to receive message

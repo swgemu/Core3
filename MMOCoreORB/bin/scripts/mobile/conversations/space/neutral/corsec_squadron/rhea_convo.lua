@@ -8,6 +8,7 @@ rhea_convo_template = ConvoTemplate:new {
 no_jtl = ConvoScreen:new {
 	id = "no_jtl",
 	leftDialog = "@conversation/corellia_privateer_trainer:s_698d80f7", -- Sorry, but you don't look like a pilot to me.
+	animation = "shake_head_no",
 	stopConversation = "true",
 	options = {}
 }
@@ -16,6 +17,7 @@ rhea_convo_template:addScreen(no_jtl);
 rebel_pilot = ConvoScreen:new {
 	id = "rebel_pilot",
 	leftDialog = "@conversation/corellia_privateer_trainer:s_c9f74b42", -- Greetings, citizen.  Keep your nose clean and we won't have any trouble.
+	animation = "wave_on_dismissing",
 	stopConversation = "true",
 	options = {}
 }
@@ -24,6 +26,7 @@ rhea_convo_template:addScreen(rebel_pilot);
 imperial_pilot = ConvoScreen:new {
 	id = "imperial_pilot",
 	leftDialog = "@conversation/corellia_privateer_trainer:s_15502961", -- Nothing to worry about here, sir.  CorSec has the area well secured.
+	animation = "standing_placate",
 	stopConversation = "true",
 	options = {}
 }
@@ -35,7 +38,10 @@ non_corsec_pilot = ConvoScreen:new {
 	id = "non_corsec_pilot",
 	leftDialog = "@conversation/corellia_privateer_trainer:s_ff684aed", -- Ah, I've heard of you!  You're not a bad pilot from what I understand. What can the CorSec do for you?
 	stopConversation = "false",
-	options = {}
+	animation = "point_accusingly",
+	options = {
+		{"@conversation/corellia_privateer_trainer:s_c1ff5062", "not_corsec_duty_missions"}, -- I'm looking for a mission. Do you have any?
+	}
 }
 rhea_convo_template:addScreen(non_corsec_pilot);
 
@@ -45,6 +51,7 @@ recruitment = ConvoScreen:new {
 	id = "recruitment",
 	leftDialog = "@conversation/corellia_privateer_trainer:s_f518ba4f", -- Hello!  Come to join the ranks of CorSec?
 	stopConversation = "false",
+	animation = "greet",
 	options = {
 		{"@conversation/corellia_privateer_trainer:s_370822d1", "yes_join"}, -- Yes
 		{"@conversation/corellia_privateer_trainer:s_457a7010", "no_join"}, -- No
@@ -57,6 +64,7 @@ yes_join = ConvoScreen:new {
 	id = "yes_join",
 	leftDialog = "@conversation/corellia_privateer_trainer:s_63a61222", -- We don't let just anyone join.  There'll be a background check of course.
 	stopConversation = "false",
+	animation = "slow_down",
 	options = {
 		-- Replies added via handler
 	}
@@ -228,6 +236,7 @@ i_see = ConvoScreen:new {
 	id = "i_see",
 	leftDialog = "@conversation/corellia_privateer_trainer:s_63a61222", -- We don't let just anyone join.  There'll be a background check of course.
 	stopConversation = "false",
+	animation = "slow_down",
 	options = {} -- Replies added via handler
 }
 rhea_convo_template:addScreen(i_see);
@@ -238,6 +247,7 @@ no_ship = ConvoScreen:new {
 	id = "no_ship",
 	leftDialog = "@conversation/corellia_privateer_trainer:s_4e95069b", -- You're going to need a ship, if you're going to fly for CorSec.  I'll add the Ship Control Codes to your datapad for you.  It's not a great ship, but it will get you around.
 	stopConversation = "false",
+	animation = "explain",
 	options = {
 		{"@conversation/corellia_privateer_trainer:s_b9b27823", "thank_you"}, -- Thank you.
 	}
@@ -269,7 +279,7 @@ rhea_convo_template:addScreen(yes_ship);
 
 --[[
 
-	Missions
+	Quest Line Missions
 
 ]]
 
@@ -277,6 +287,7 @@ yes_im_ready = ConvoScreen:new {
 	id = "yes_im_ready",
 	leftDialog = "@conversation/corellia_privateer_trainer:s_cc53ba8f", -- Alright, your first assignment is to run a simple patrol.  From time to time pirates move into the area and harass merchants in our system. Just run this simple patrol and make sure there's no criminal activity going on.
 	stopConversation = "false",
+	animation = "dismiss",
 	options = {
 		{"@conversation/corellia_privateer_trainer:s_133a724d", "slow_down"}, -- Are you going to train me after this?
 	}
@@ -287,6 +298,7 @@ first_assignment = ConvoScreen:new {
 	id = "first_assignment",
 	leftDialog = "@conversation/corellia_privateer_trainer:s_9e5f75be", -- You've got your assignment and the control device for your ship in your datapad.  Go to the Starport and access the terminal to launch into space.
 	stopConversation = "false",
+	animation = "point_away",
 	options = {
 		{"@conversation/corellia_privateer_trainer:s_95d0a1f6", "an_assignment_exp"}, -- An assignment?
 		{"@conversation/corellia_privateer_trainer:s_bdd269be", "what_ship"}, -- What ship?
@@ -300,6 +312,7 @@ an_assignment_exp = ConvoScreen:new {
 	id = "an_assignment_exp",
 	leftDialog = "@conversation/corellia_privateer_trainer:s_cda1bb94", -- Yes. You have your first mission, now. You'll need to fly into space to complete it. Start by launching your starship at the starport.
 	stopConversation = "false",
+	animation = "point_away",
 	options = {
 		{"@conversation/corellia_privateer_trainer:s_95d0a1f6", "an_assignment_exp"}, -- An assignment?
 		{"@conversation/corellia_privateer_trainer:s_bdd269be", "what_ship"}, -- What ship?
@@ -313,6 +326,7 @@ what_ship = ConvoScreen:new {
 	id = "what_ship",
 	leftDialog = "@conversation/corellia_privateer_trainer:s_198b5a97", -- I've given you the control codes to a basic ship. The codes are visible in your datapad. Open your personal datapad, and review your ship status before you launch.
 	stopConversation = "false",
+	animation = "explain",
 	options = {
 		{"@conversation/corellia_privateer_trainer:s_95d0a1f6", "an_assignment_exp"}, -- An assignment?
 		{"@conversation/corellia_privateer_trainer:s_bdd269be", "what_ship"}, -- What ship?
@@ -326,6 +340,7 @@ where_to_go = ConvoScreen:new {
 	id = "where_to_go",
 	leftDialog = "@conversation/corellia_privateer_trainer:s_4ffb02bd", -- Go to the starport. Inside the starport you will find a number of 'starship terminals.' Interface with the terminals in order to launch your starship.
 	stopConversation = "false",
+	animation = "point_away",
 	options = {
 		{"@conversation/corellia_privateer_trainer:s_95d0a1f6", "an_assignment_exp"}, -- An assignment?
 		{"@conversation/corellia_privateer_trainer:s_bdd269be", "what_ship"}, -- What ship?
@@ -339,6 +354,7 @@ when_done = ConvoScreen:new {
 	id = "when_done",
 	leftDialog = "@conversation/corellia_privateer_trainer:s_2bbff5e2", -- When you're finished with your first mission - fly back to the 'launch waypoint' that we automatically add to your datapad. Communicate with the space station and indicate that you want to land.
 	stopConversation = "false",
+	animation = "explain",
 	options = {
 		{"@conversation/corellia_privateer_trainer:s_95d0a1f6", "an_assignment_exp"}, -- An assignment?
 		{"@conversation/corellia_privateer_trainer:s_bdd269be", "what_ship"}, -- What ship?
@@ -352,6 +368,7 @@ excellent_work = ConvoScreen:new {
 	id = "excellent_work",
 	leftDialog = "@conversation/corellia_privateer_trainer:s_f053b088", -- Excellent work!
 	stopConversation = "false",
+	animation = "applause_polite",
 	options = {
 		{"@conversation/corellia_privateer_trainer:s_1c76874e", "i_was_attacked"}, -- I was attacked!
 		{"@conversation/corellia_privateer_trainer:s_3557fc9f", "nothing_to_it"}, -- Nothing to it.
@@ -383,6 +400,7 @@ excellent_work2 = ConvoScreen:new {
 	id = "excellent_work2",
 	leftDialog = "@conversation/corellia_privateer_trainer:s_926359dd", -- Excellent job taking out those pirates.  No doubt, this won't be the end of them.
 	stopConversation = "false",
+	animation = "salute1",
 	options = {
 		{"@conversation/corellia_privateer_trainer:s_a927c891", "whats_next"}, -- What's next?
 		{"@conversation/corellia_privateer_trainer:s_257f178d", "was_a_snap"}, -- It was a snap.
@@ -413,13 +431,83 @@ rhea_convo_template:addScreen(was_a_snap);
 excellent_work3 = ConvoScreen:new {
 	id = "excellent_work3",
 	leftDialog = "@conversation/corellia_privateer_trainer:s_f8026f5d", -- Excellent work with that escort.  It's a good thing you were running that patrol, or there's no telling what might have happened to them.  I've got a little something extra for you, too.  It's a mercenary bandolier.  It'll help you keep your things organized.
-	stopConversation = "true",
+	stopConversation = "false",
+	animation = "bow",
 	options = {
-		{"@conversation/corellia_privateer_trainer:", ""}, --
-		{"@conversation/corellia_privateer_trainer:", ""}, --
+		{"@conversation/corellia_privateer_trainer:s_a927c891", "enough_of_this"}, -- What's next?
+		{"@conversation/corellia_privateer_trainer:s_ebb99364", "enough_of_this"}, -- There are too many pirates in this system!
 	}
 }
 rhea_convo_template:addScreen(excellent_work3);
+
+enough_of_this = ConvoScreen:new {
+	id = "enough_of_this",
+	leftDialog = "@conversation/corellia_privateer_trainer:s_8e1ed7f0", -- Enough of this!  Every time we send you out, you find more pirates.  We need to go straight to the source of the problem:  Their leader.  I know you're up to this:  Go find the pirate's leader and take him out.  Let the rest of them go to the outer rim if they want easy prey.
+	stopConversation = "false",
+	options = {
+		{"@conversation/corellia_privateer_trainer:s_133a724d", "train_me4"}, -- Are you going to train me after this?
+	}
+}
+rhea_convo_template:addScreen(enough_of_this);
+
+missions_complete = ConvoScreen:new {
+	id = "missions_complete",
+	leftDialog = "@conversation/corellia_privateer_trainer:s_dc993cdb", -- "Ha!  That'll show those thugs that CorSec is not to be trifled with.  You're really going to go places in this organization, I can tell already."
+	stopConversation = "false",
+	animation = "point_forward",
+	options = {
+		{"@conversation/corellia_privateer_trainer:s_a78a4ac3", "what_now"}, -- What do I do now?
+		{"@conversation/corellia_privateer_trainer:s_af264a19", "what_now"}, -- I love being a starfighter pilot.
+	}
+}
+rhea_convo_template:addScreen(missions_complete);
+
+what_now = ConvoScreen:new {
+	id = "what_now",
+	leftDialog = "@conversation/corellia_privateer_trainer:s_5e6c7400", -- You are definitely ready to move up.  So I'll tell you what. I'll teach you about basic fighters.
+	animation = "nod_head_multiple",
+	stopConversation = "false",
+	options = {
+		{"@conversation/corellia_privateer_trainer:s_c06c7aa9", "train_player"}, -- That sounds great.
+	}
+}
+rhea_convo_template:addScreen(what_now);
+
+train_player = ConvoScreen:new {
+	id = "train_player",
+	leftDialog = "@conversation/corellia_privateer_trainer:s_db7653ed", -- Excellent.  Review this information regarding your new skills, and report back to me when you're ready for another assignment.
+	animation = "nod_head_once",
+	stopConversation = "true",
+	options = {}
+}
+rhea_convo_template:addScreen(train_player);
+
+--[[
+
+	Duty Missions
+
+]]
+
+duty_missions = ConvoScreen:new {
+	id = "duty_missions",
+	leftDialog = "@conversation/corellia_privateer_trainer:s_a48c20c8", --What's on your mind, officer? Thinking about performing some duty missions?"
+	animation = "nod_head_once",
+	stopConversation = "true",
+	options = {}
+}
+rhea_convo_template:addScreen(duty_missions);
+
+not_corsec_duty_missions = ConvoScreen:new {
+	id = "not_corsec_duty_missions",
+	leftDialog = "@conversation/corellia_privateer_trainer:s_dadaabf", -- As a matter of fact, I do have some duty missions that you could perform. Who knows, maybe if you do well, you might be invited to join the CorSec. Are you ready for a duty mission?
+	animation = "nod_head_once",
+	stopConversation = "true",
+	options = {}
+}
+rhea_convo_template:addScreen(not_corsec_duty_missions);
+
+
+
 
 --[[
 
@@ -447,6 +535,7 @@ yes_denied = ConvoScreen:new {
 	id = "yes_denied",
 	leftDialog = "@conversation/corellia_privateer_trainer:s_2c6a1c50", -- I'm sorry, but I'm afraid it's completely out of the question with your history.  You're going to have to clean up your act before you can join CorSec.
 	stopConversation = "true",
+	animation = "shake_head_no",
 	options = {}
 }
 rhea_convo_template:addScreen(yes_denied);
@@ -455,6 +544,7 @@ no_denied = ConvoScreen:new {
 	id = "no_denied",
 	leftDialog = "@conversation/corellia_privateer_trainer:s_2b418533", -- Perhaps you'll turn your life around, decide to be a part of the solution instead of a part of the problem.  When you're ready to help enforce the law instead of breaking it, come see me.
 	stopConversation = "true",
+	animation = "shake_head_no",
 	options = {}
 }
 rhea_convo_template:addScreen(no_denied);
@@ -536,6 +626,7 @@ slow_down = ConvoScreen:new {
 	id = "slow_down",
 	leftDialog = "@conversation/corellia_privateer_trainer:s_8e5b619a", -- Oh no, not quite so fast, %NU.  You complete a few more assignments and then we'll see about getting you some training!
 	stopConversation = "true",
+	animation = "slow_down",
 	options = {}
 }
 rhea_convo_template:addScreen(slow_down);
@@ -552,6 +643,7 @@ train_me2 = ConvoScreen:new {
 	id = "train_me2",
 	leftDialog = "@conversation/corellia_privateer_trainer:s_c91ba06e", -- Not just yet, %NU.  I have just a few more things for you to do before you get any training from me.
 	stopConversation = "true",
+	animation = "shake_head_no",
 	options = {}
 }
 rhea_convo_template:addScreen(train_me2);
@@ -563,5 +655,13 @@ train_me3 = ConvoScreen:new {
 	options = {}
 }
 rhea_convo_template:addScreen(train_me3);
+
+train_me4 = ConvoScreen:new {
+	id = "train_me4",
+	leftDialog = "@conversation/corellia_privateer_trainer:s_28435d2", -- Tell you what, %NU.  Kill that pirate leader and YES, I will train you.
+	stopConversation = "true",
+	options = {}
+}
+rhea_convo_template:addScreen(train_me4);
 
 addConversationTemplate("rhea_convo_template", rhea_convo_template);

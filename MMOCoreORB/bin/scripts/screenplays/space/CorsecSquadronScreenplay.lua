@@ -168,6 +168,21 @@ assassinate_corellia_privateer_tier1_4a = SpaceAssassinateScreenplay:new {
 
 	sideQuest = false,
 	sideQuestType = "",
+
+	arrivalDelay = 6, -- Seconds
+	failTimer = 20, -- Minutes
+
+	assassinateSpawns = {
+		target = "hidden_daggers_eliminator_tier2",
+		escorts = {"hidden_daggers_enforcer_tier1", "hidden_daggers_enforcer_tier1", "hidden_daggers_enforcer_tier1"},
+	},
+
+	targetPatrols = {
+		{name = "assassinate_4", x = 2650, z = -1672, y = -105},
+		{name = "assassinate_5", x = 4431, z = -1858, y = 2196},
+		{name = "corellia_imperial_tier2_assassinate_1", x = -6932, z = -1364, y = -644},
+		{name = "corellia_imperial_tier2_assassinate_2", x = -5276, z = -1117, y = -6270},
+	},
 }
 
 registerScreenPlay("assassinate_corellia_privateer_tier1_4a", true)
@@ -194,6 +209,24 @@ CorsecSquadronScreenplay = ScreenPlay:new {
 registerScreenPlay("CorsecSquadronScreenplay", false)
 
 function CorsecSquadronScreenplay:start()
+end
+
+function CorsecSquadronScreenplay:hasTier1Skill(pPlayer)
+	if (pPlayer == nil) then
+		return
+	end
+
+	local skillsTable = {"pilot_neutral_droid_01", "pilot_neutral_procedures_01", "pilot_neutral_starships_01", "pilot_neutral_weapons_01"}
+
+	for i = 1, #skillsTable, 1 do
+		local checkSkill = skillsTable[i]
+
+		if (CreatureObject(pPlayer):hasSkill(checkSkill)) then
+			return true
+		end
+	end
+
+	return false
 end
 
 function CorsecSquadronScreenplay:resetRheaQuests(pPlayer)
