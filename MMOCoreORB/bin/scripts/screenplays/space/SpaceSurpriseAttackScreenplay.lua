@@ -248,7 +248,7 @@ function SpaceSurpriseAttackScreenplay:notifyShipDestroyed(pShipAgent, pKillerSh
 	-- Clear the old kill count off the player
 	deleteData(playerID .. self.className .. ":Count")
 
-	-- Remove Ship as Mission Critical Object
+	-- Remove Ship as Space Mission Object
 	CreatureObject(pPlayer):removeSpaceMissionObject(agentID, false)
 
 	if (spawnCount > 0) then

@@ -285,6 +285,16 @@ space_corellia = SpacePatrolPointTable:new {
 	{"privateer_security_escort_2", -2103, -5336, -5600},
 	{"privateer_security_escort_3", 1262, -5572, -5035},
 	{"privateer_security_escort_4", 5940, -5892, -4039},
+	{"assassinate_1", 2650, -1672, -105},
+	{"assassinate_2", -887, 951, 1312},
+	{"assassinate_3", 1095, -1020, -364},
+	{"assassinate_4", 2650, -1672, -105},
+	{"assassinate_5", 4431, -1858, 2196},
+	{"corellia_imperial_tier2_assassinate_1", -6932, -1364, -644},
+	{"corellia_imperial_tier2_assassinate_2", -5276, -1117, -6270},
+	{"corellia_imperial_tier2_assassinate_3", -2855, -237, -6779},
+	{"corellia_imperial_tier2_assassinate_4", 15, 877, -7203},
+	{"corellia_imperial_tier2_assassinate_5", 3102, 2928, -6842},
 }
 
  SpacePatrolPoints:addSpacePatrolPoints(space_corellia, "space_corellia")

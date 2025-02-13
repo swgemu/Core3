@@ -104,6 +104,7 @@ Luna<LuaPlayerObject>::RegType LuaPlayerObject::Register[] = {
 		// JTL
 		{ "incrementPilotTier", &LuaPlayerObject::incrementPilotTier },
 		{ "resetPilotTier", &LuaPlayerObject::resetPilotTier },
+		{ "getPilotTier", &LuaPlayerObject::getPilotTier },
 		{ "isSquadronType", &LuaPlayerObject::isSquadronType },
 		{ "setSquadronType", &LuaPlayerObject::setSquadronType },
 		{ "getSquadronType", &LuaPlayerObject::getSquadronType },
@@ -965,6 +966,12 @@ int LuaPlayerObject::resetPilotTier(lua_State* L) {
 	realObject->resetPilotTier();
 
 	return 0;
+}
+
+int LuaPlayerObject::getPilotTier(lua_State* L) {
+	lua_pushinteger(L, realObject->getPilotTier());
+
+	return 1;
 }
 
 int LuaPlayerObject::isSquadronType(lua_State* L) {

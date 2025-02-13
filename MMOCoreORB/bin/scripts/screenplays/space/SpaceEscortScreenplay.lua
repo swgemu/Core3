@@ -259,7 +259,7 @@ function SpaceEscortScreenplay:spawnEscortShip(pPlayer)
 
 	local agentID = SceneObject(pShipAgent):getObjectID()
 
-	-- Set the agent a mission object
+	-- Set the agent as a mission object
 	CreatureObject(pPlayer):addSpaceMissionObject(agentID, true)
 
 	-- Set Fixed Patrol and escort flags
