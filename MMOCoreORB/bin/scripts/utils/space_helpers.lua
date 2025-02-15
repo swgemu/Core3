@@ -104,7 +104,8 @@ end
 
 -- @param pPlayer pointer grants the novice pilot box
 -- @param skillString - string for skill to grant the player
-function SpaceHelpers:grantSpaceSkill(pPlayer, skillString)
+-- @param deductExperience - boolean to charge experience from the player
+function SpaceHelpers:grantSpaceSkill(pPlayer, skillString, deductExperience)
 	if (pPlayer == nil) then
 		return
 	end
@@ -113,7 +114,13 @@ function SpaceHelpers:grantSpaceSkill(pPlayer, skillString)
 		return
 	end
 
-	awardSkill(pPlayer, skillString)
+	if (deductExperience) then
+		local skillManager = LuaSkillManager()
+
+		skillManager:awardSkill(pPlayer, skillString)
+	else
+		awardSkill(pPlayer, skillString)
+	end
 
 	local messageString = LuaStringIdChatParameter("@skill_teacher:" .. "prose_skill_learned")
 	messageString:setTO("@skl_n:" .. skillString)
@@ -606,17 +613,18 @@ function SpaceHelpers:addImperialInquisitionSquadWaypoint(pPlayer)
 end
 
 -- @param pPlayer pointer to check for skills
-function SpaceHelpers:hasNeutralTier1Skill(pPlayer)
-	if (pPlayer == nil) then
+-- @param factionString - neutral, rebel_navy, imperial_navy
+-- @param tierNumber
+function SpaceHelpers:hasPilotTierSkill(pPlayer, factionString, tierNumber)
+	if (pPlayer == nil or factionString == "" or tierNumber < 1 or tierNumber > 5) then
 		return false
 	end
 
-	local skillsTable = {"pilot_neutral_droid_01", "pilot_neutral_procedures_01", "pilot_neutral_starships_01", "pilot_neutral_weapons_01"}
+	local skillsTable = {"_droid_0", "_procedures_0", "_starships_0", "_weapons_0"}
+	local tierString = tostring(tierNumber)
 
-	for i = 1, #skillsTable, 1 do
-		local checkSkill = skillsTable[i]
-
-		if (CreatureObject(pPlayer):hasSkill(checkSkill)) then
+	for i = 1, 4, 1 do
+		if (CreatureObject(pPlayer):hasSkill("pilot_" .. factionString .. skillsTable[i] .. tierString)) then
 			return true
 		end
 	end
@@ -625,71 +633,59 @@ function SpaceHelpers:hasNeutralTier1Skill(pPlayer)
 end
 
 -- @param pPlayer pointer to check for skills
-function SpaceHelpers:hasNeutralTier2Skill(pPlayer)
-	if (pPlayer == nil) then
+-- @param factionString - neutral, rebel_navy, imperial_navy
+function SpaceHelpers:hasMasterSkill(pPlayer, factionString)
+	if (pPlayer == nil or factionString == "") then
 		return false
 	end
 
-	local skillsTable = {"pilot_neutral_droid_02", "pilot_neutral_procedures_02", "pilot_neutral_starships_02", "pilot_neutral_weapons_02"}
-
-	for i = 1, #skillsTable, 1 do
-		local checkSkill = skillsTable[i]
-
-		if (CreatureObject(pPlayer):hasSkill(checkSkill)) then
-			return true
-		end
-	end
-
-	return false
+	return CreatureObject(pPlayer):hasSkill("pilot_" .. factionString .. "_master")
 end
 
--- @param pPlayer pointer to check for skills
-function SpaceHelpers:hasNeutralTier3Skill(pPlayer)
-	if (pPlayer == nil) then
+-- @param pPlayer - pointer to check for skills
+-- @param factionString - neutral, rebel_navy, imperial_navy
+-- @param tierNumber
+function SpaceHelpers:hasCompletedPilotTier(pPlayer, factionString, tierNumber)
+	if (pPlayer == nil or factionString == "" or tierNumber < 1 or tierNumber > 5) then
 		return false
 	end
 
-	local skillsTable = {"pilot_neutral_droid_03", "pilot_neutral_procedures_03", "pilot_neutral_starships_03", "pilot_neutral_weapons_03"}
+	local skillsTable = {"_droid_0", "_procedures_0", "_starships_0", "_weapons_0"}
+	local tierString = tostring(tierNumber)
 
-	for i = 1, #skillsTable, 1 do
-		local checkSkill = skillsTable[i]
-
-		if (CreatureObject(pPlayer):hasSkill(checkSkill)) then
-			return true
-		end
-	end
-
-	return false
+	return CreatureObject(pPlayer):hasSkill("pilot_" .. factionString .. skillsTable[1] .. tierString) and CreatureObject(pPlayer):hasSkill("pilot_" .. factionString .. skillsTable[2] .. tierString) and
+			CreatureObject(pPlayer):hasSkill("pilot_" .. factionString .. skillsTable[3] .. tierString) and CreatureObject(pPlayer):hasSkill("pilot_" .. factionString .. skillsTable[4] .. tierString)
 end
 
--- @param pPlayer pointer to check for skills
-function SpaceHelpers:hasNeutralTier4Skill(pPlayer)
-	if (pPlayer == nil) then
+-- @param pPlayer - pointer to check for skills
+-- @param tierNumber
+function SpaceHelpers:hasExperienceForTraining(pPlayer, tierNumber)
+	if (pPlayer == nil or tierNumber < 1 or tierNumber > 5) then
 		return false
 	end
 
-	local skillsTable = {"pilot_neutral_droid_04", "pilot_neutral_procedures_04", "pilot_neutral_starships_04", "pilot_neutral_weapons_04"}
+	local pGhost = CreatureObject(pPlayer):getPlayerObject()
 
-	for i = 1, #skillsTable, 1 do
-		local checkSkill = skillsTable[i]
-
-		if (CreatureObject(pPlayer):hasSkill(checkSkill)) then
-			return true
-		end
+	if (pGhost == nil) then
+		return
 	end
 
-	return false
-end
+	local xpNeeded = -1
 
--- @param pPlayer pointer to check for skills
-function SpaceHelpers:hasNeutralMasterSkill(pPlayer)
-	if (pPlayer == nil) then
-		return false
+	if (tierNumber == 1) then
+		xpNeeded = 7500
+	elseif (tierNumber == 2) then
+		xpNeeded = 60000
+	elseif (tierNumber == 3) then
+		xpNeeded = 200000
+	elseif (tierNumber == 4) then
+		xpNeeded = 1000000
+	elseif (tierNumber == 5) then
+		xpNeeded = 7500000
 	end
 
-	return CreatureObject(pPlayer):hasSkill("pilot_neutral_master")
+	return (PlayerObject(pGhost):getExperience("space_combat_general") >= xpNeeded)
 end
-
 
 --[[
 
