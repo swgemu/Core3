@@ -497,12 +497,78 @@ rhea_convo_template:addScreen(what_now);
 
 duty_missions = ConvoScreen:new {
 	id = "duty_missions",
-	leftDialog = "@conversation/corellia_privateer_trainer:s_a48c20c8", --What's on your mind, officer? Thinking about performing some duty missions?"
-	animation = "nod_head_once",
+	leftDialog = "@conversation/corellia_privateer_trainer:s_a48c20c8", --What's on your mind, officer? Thinking about performing some duty missions?
+	stopConversation = "false",
+	animation = "salute1",
+	options = {
+		{"@conversation/corellia_privateer_trainer:s_6106187c", "what_is_duty"}, -- What is a duty mission?
+		{"@conversation/corellia_privateer_trainer:s_1a7f1a1b", "what_missions"}, -- Yes I am. What duty missions are available?
+		{"@conversation/corellia_privateer_trainer:s_6276c98", "about_training"}, -- No, but how about some training?
+		{"@conversation/corellia_privateer_trainer:s_2883b989", "not_right_now"}, -- Not right now, thanks.
+	}
+}
+rhea_convo_template:addScreen(duty_missions);
+
+what_is_duty = ConvoScreen:new {
+	id = "what_is_duty",
+	leftDialog = "@conversation/corellia_privateer_trainer:s_d43b2932", -- Duty missions are a good way for you to get experience as a pilot. Only experienced pilots can receive the proper training to learn new skills and abilities.There's no real final objective so you can end the mission whenever you want. So, would you like to take a duty mission?
+	stopConversation = "false",
+	options = {
+		{"@conversation/corellia_privateer_trainer:s_6106187c", "what_is_duty"}, -- What is a duty mission?
+		{"@conversation/corellia_privateer_trainer:s_1a7f1a1b", "what_missions"}, -- Yes I am. What duty missions are available?
+		{"@conversation/corellia_privateer_trainer:s_6276c98", "about_training"}, -- No, but how about some training?
+		{"@conversation/corellia_privateer_trainer:s_2883b989", "not_right_now"}, -- Not right now, thanks.
+	}
+}
+rhea_convo_template:addScreen(what_is_duty);
+
+about_training = ConvoScreen:new {
+	id = "about_training",
+	leftDialog = "@conversation/corellia_privateer_trainer:s_e5c453e0", -- You're not ready for more training yet. But duty missions are a good way of getting good experience so that you'll be ready for training soon. What do you say? Are you ready to try a duty mission?
+	stopConversation = "false",
+	options = {
+		{"@conversation/corellia_privateer_trainer:s_6106187c", "what_is_duty"}, -- What is a duty mission?
+		{"@conversation/corellia_privateer_trainer:s_1a7f1a1b", "what_missions"}, -- Yes I am. What duty missions are available?
+		{"@conversation/corellia_privateer_trainer:s_6276c98", "about_training"}, -- No, but how about some training?
+		{"@conversation/corellia_privateer_trainer:s_2883b989", "not_right_now"}, -- Not right now, thanks.
+	}
+}
+rhea_convo_template:addScreen(about_training);
+
+what_missions = ConvoScreen:new {
+	id = "what_missions",
+	leftDialog = "@conversation/corellia_privateer_trainer:s_d6a6a9fc", -- Well, merchant freighters are always in need of escorts, or if you like you can help in the fight against the pirate leaders. What interests you?
+	stopConversation = "false",
+	options = {
+		{"@conversation/corellia_privateer_trainer:s_9e417b37", "destroy_duty"}, -- The Pirate Leaders
+		{"@conversation/corellia_privateer_trainer:s_221daf73", "escort_duty"}, -- Escorting Merchants
+		{"@conversation/corellia_privateer_trainer:s_c35e70d2", "not_right_now"}, -- Nothing right now.
+	}
+}
+rhea_convo_template:addScreen(what_missions);
+
+destroy_duty = ConvoScreen:new {
+	id = "destroy_duty",
+	leftDialog = "@conversation/corellia_privateer_trainer:s_cebaf0db", -- You're right.  No sooner do we eliminate one leader than another shows up.  Take out the Corellian Space Pirates!
+	animation = "pound_fist_palm",
 	stopConversation = "true",
 	options = {}
 }
-rhea_convo_template:addScreen(duty_missions);
+rhea_convo_template:addScreen(destroy_duty);
+
+escort_duty = ConvoScreen:new {
+	id = "escort_duty",
+	leftDialog = "@conversation/corellia_privateer_trainer:s_3f62bf0", -- Right, those merchants rely on us to provide them with safe passage through the Corellia system.  Just keep escorting them through.
+	animation = "nod_head_multiple",
+	stopConversation = "true",
+	options = {}
+}
+rhea_convo_template:addScreen(escort_duty);
+
+
+
+
+
 
 not_corsec_duty_missions = ConvoScreen:new {
 	id = "not_corsec_duty_missions",
@@ -743,5 +809,13 @@ train_player_component_free = ConvoScreen:new {
 	options = {}
 }
 rhea_convo_template:addScreen(train_player_component_free);
+
+not_right_now = ConvoScreen:new {
+	id = "not_right_now",
+	leftDialog = "@conversation/corellia_privateer_trainer:s_27d40413", -- Maybe next time then.
+	stopConversation = "true",
+	options = {}
+}
+rhea_convo_template:addScreen(not_right_now);
 
 addConversationTemplate("rhea_convo_template", rhea_convo_template);

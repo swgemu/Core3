@@ -855,13 +855,12 @@ function SpaceHelpers:failSpaceQuest(pPlayer, questType, questName, notifyClient
 			SpaceHelpers:sendQuestUpdate(pPlayer, "@space/quest:patrol_abandoned") -- "You abandoned your patrol!"
 		elseif (questType == "destroy_surpriseattack") then
 			SpaceHelpers:sendQuestUpdate(pPlayer, "@space/quest:destroy_surprise_abandoned") -- "You ran away from the attack and abandoned your duty!"
+		elseif (questType == "escort_duty" or questType == "destroy_duty") then
+			SpaceHelpers:sendDutyUpdate(pPlayer, "@space/quest:mission_abandoned") -- "You abandoned your mission!"
 		else
 			-- Failed Message
 			SpaceHelpers:sendQuestUpdate(pPlayer, "@quest/quests:task_failure")
 		end
-
-		-- Failed Message
-		CreatureObject(pPlayer):sendSystemMessage("@quest/quests:task_failure")
 	end
 
 	-- Clear the Quest from their Journal
@@ -871,11 +870,11 @@ function SpaceHelpers:failSpaceQuest(pPlayer, questType, questName, notifyClient
 	CreatureObject(pPlayer):abortQuestMission(questCRC)
 
 	if (notifyClient) then
-		-- Send Player Message
-		local messageString = LuaStringIdChatParameter("@space/quest:quest_failed")
-		messageString:setTO("@" .. questString .. ":title")
-
-		CreatureObject(pPlayer):sendSystemMessage(messageString:_getObject()) -- " \\#pcontrast3 Mission Failed: < \\#pcontrast1 %TO \\#pcontrast3 >"
+		if (string.find(questType, "duty")) then
+			SpaceHelpers:sendMissionEnded(pPlayer, "@" .. questString .. ":title")
+		else
+			SpaceHelpers:sendMissionFailed(pPlayer, "@" .. questString .. ":title")
+		end
 
 		CreatureObject(pPlayer):playMusicMessage("sound/music_themequest_fail_criminal.snd")
 	end
@@ -1212,6 +1211,20 @@ end
 
 -- @param pPlayer - pointer to player
 -- @param messageString
+function SpaceHelpers:sendDutyUpdate(pPlayer, messageString)
+	if (pPlayer == nil) then
+		return
+	end
+
+	local updateMsg = LuaStringIdChatParameter("@space/quest:duty_update_s") -- " \\#pcontrast3 Duty Update: < \\#pcontrast1 %TO \\#pcontrast3 >"
+	updateMsg:setTO(messageString)
+
+	CreatureObject(pPlayer):sendSystemMessage(updateMsg:_getObject())
+end
+
+
+-- @param pPlayer - pointer to player
+-- @param messageString
 function SpaceHelpers:sendQuestProgess(pPlayer, messageString)
 	if (pPlayer == nil) then
 		return
@@ -1264,6 +1277,32 @@ function SpaceHelpers:sendQuestSuccess(pPlayer, messageString)
 	successString:setTO(messageString)
 
 	CreatureObject(pPlayer):sendSystemMessage(successString:_getObject()) -- " \\#pcontrast3 Mission Successful: < \\#pcontrast1 %TO \\#pcontrast3 >"
+end
+
+-- @param pPlayer - pointer to player
+-- @param messageString
+function SpaceHelpers:sendMissionEnded(pPlayer, messageString)
+	if (pPlayer == nil) then
+		return
+	end
+
+	local successString = LuaStringIdChatParameter("@space/quest:quest_ended")
+	successString:setTO(messageString)
+
+	CreatureObject(pPlayer):sendSystemMessage(successString:_getObject()) -- " \\#pcontrast3 Mission Ended: < \\#pcontrast1 %TO \\#pcontrast3 >"
+end
+
+-- @param pPlayer - pointer to player
+-- @param messageString
+function SpaceHelpers:sendMissionFailed(pPlayer, messageString)
+	if (pPlayer == nil) then
+		return
+	end
+
+	local successString = LuaStringIdChatParameter("@space/quest:quest_failed")
+	successString:setTO(messageString)
+
+	CreatureObject(pPlayer):sendSystemMessage(successString:_getObject()) -- " \\#pcontrast3 Mission Failed: < \\#pcontrast1 %TO \\#pcontrast3 >"
 end
 
 -- @param pShipAgent - pointer to ShipAiAgent to destroy

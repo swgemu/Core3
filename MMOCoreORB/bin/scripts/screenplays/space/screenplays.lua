@@ -3,7 +3,9 @@
 includeFile("space/SpaceQuestLogic.lua")
 includeFile("space/SpaceAssassinateScreenplay.lua")
 includeFile("space/SpaceDestroyScreenplay.lua")
+includeFile("space/SpaceDutyDestroyScreenplay.lua")
 includeFile("space/SpaceEscortScreenplay.lua")
+includeFile("space/SpaceDutyEscortScreenplay.lua")
 includeFile("space/SpacePatrolScreenplay.lua")
 includeFile("space/SpaceSurpriseAttackScreenplay.lua")
 

@@ -14,6 +14,8 @@ SpaceQuestLogic = ScreenPlay:new {
 		--{species = {}, item = ""},
 	},
 
+	dutyMission = false,
+
 	sideQuest = false,
 	sideQuestType = "",
 	sideQuestStart = 0, -- Patrol Point Number

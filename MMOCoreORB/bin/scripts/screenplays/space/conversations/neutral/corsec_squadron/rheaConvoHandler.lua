@@ -36,6 +36,12 @@ function rheaConvoHandler:getInitialScreen(pPlayer, pNpc, pConvTemplate)
 	local questThreeComplete = SpaceHelpers:isSpaceQuestComplete(pPlayer, CorsecSquadronScreenplay.QUEST_STRING_3.type, CorsecSquadronScreenplay.QUEST_STRING_3.name) and SpaceHelpers:isSpaceQuestComplete(pPlayer, CorsecSquadronScreenplay.QUEST_STRING_3_SIDE.type, CorsecSquadronScreenplay.QUEST_STRING_3_SIDE.name)
 	local questFourComplete = SpaceHelpers:isSpaceQuestComplete(pPlayer, CorsecSquadronScreenplay.QUEST_STRING_4.type, CorsecSquadronScreenplay.QUEST_STRING_4.name)
 
+	local destroyDutyStarted = SpaceHelpers:isSpaceQuestActive(pPlayer, CorsecSquadronScreenplay.QUEST_STRING_DUTY_5.type, CorsecSquadronScreenplay.QUEST_STRING_DUTY_5.name)
+	local escortDutyStarted = SpaceHelpers:isSpaceQuestActive(pPlayer, CorsecSquadronScreenplay.QUEST_STRING_DUTY_6.type, CorsecSquadronScreenplay.QUEST_STRING_DUTY_6.name)
+
+	local destroyDutyComplete = SpaceHelpers:isSpaceQuestComplete(pPlayer, CorsecSquadronScreenplay.QUEST_STRING_DUTY_5.type, CorsecSquadronScreenplay.QUEST_STRING_DUTY_5.name)
+	local escortDutyComplete = SpaceHelpers:isSpaceQuestComplete(pPlayer, CorsecSquadronScreenplay.QUEST_STRING_DUTY_6.type, CorsecSquadronScreenplay.QUEST_STRING_DUTY_6.name)
+
 	if (isNeutralPilot and not SpaceHelpers:isCorsecSquadron(pPlayer)) then
 		return convoTemplate:getScreen("non_corsec_pilot") -- Ah, I've heard of you!  You're not a bad pilot from what I understand. What can the CorSec do for you?
 	-- Player does not have neutral pilot novice skill
@@ -69,9 +75,11 @@ function rheaConvoHandler:getInitialScreen(pPlayer, pNpc, pConvTemplate)
 			Quests
 	--]]
 
-
+	-- Player has an active quest from Sgt Rhea
+	if ((questTwoStarted and not questTwoComplete) or (questThreeStarted and not questThreeComplete) or (questFourStarted and not questFourComplete) or (destroyDutyStarted and not destroyDutyComplete) or (escortDutyStarted and not escortDutyComplete)) then
+		return convoTemplate:getScreen("has_mission")
 	-- Check if players have all the tier1 skill boxes, send them to next trainer.
-	if (SpaceHelpers:hasCompletedPilotTier(pPlayer, "neutral", 1)) then
+	elseif (SpaceHelpers:hasCompletedPilotTier(pPlayer, "neutral", 1)) then
 		return convoTemplate:getScreen("completed_rhea")
 	-- Player is a CorSec pilot and has at least one of the Tier1 skill boxes
 	elseif (SpaceHelpers:hasPilotTierSkill(pPlayer, "neutral", 1)) then
@@ -80,14 +88,10 @@ function rheaConvoHandler:getInitialScreen(pPlayer, pNpc, pConvTemplate)
 			return convoTemplate:getScreen("more_training")
 		-- Offer Duty missions
 		else
-
-			-- TODO: Offer duty missions
+			CreatureObject(pPlayer):doAnimation("salute1")
 
 			return convoTemplate:getScreen("duty_missions")
 		end
-	-- Player has an active quest from Sgt Rhea
-	elseif ((questTwoStarted and not questTwoComplete) or (questThreeStarted and not questThreeComplete) or (questFourStarted and not questFourComplete)) then
-			return convoTemplate:getScreen("has_mission")
 	-- Player has finished 4 and has received the reward, but needs to accept training of first pilot skill
 	elseif (questFourComplete and getQuestStatus(playerID .. CorsecSquadronScreenplay.QUEST_STRING_4.name .. ":reward") == "1") then
 		return convoTemplate:getScreen("missions_complete")
@@ -222,6 +226,10 @@ function rheaConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNpc, select
 		end
 
 		return pClonedScreen
+	elseif (screenID == "destroy_duty") then
+		--destroy_duty_corellia_privateer_6:startQuest(pPlayer, pNpc)
+	elseif (screenID == "escort_duty") then
+		escort_duty_corellia_privateer_7:startQuest(pPlayer, pNpc)
 	elseif (screenID == "yes_join" or screenID == "i_see") then
 		CreatureObject(pPlayer):doAnimation("nod_head_once")
 
