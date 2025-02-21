@@ -28,7 +28,7 @@ function JaekVercetConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNpc, 
 	local pDefectorTasks = getQuestTasks(questCrc)
 
 	if pDefectorTasks == nil then
-		Logger:log("ERROR: Could not load DefectorQuest Tasks.", LT_ERROR)
+		Logger:log("ERROR: Could not load DefectorQuest Tasks in JaekVercetConvoHandler.", LT_ERROR)
 		return 0
 	end
 
@@ -37,7 +37,6 @@ function JaekVercetConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNpc, 
 	if (screenID == "response_deny_neutral" or screenID == "response_deny_imperial") then
 		CreatureObject(pPlayer):doAnimation("shrug_shoulders")
 		CreatureObject(pNpc):doAnimation("shake_head_no")
-
 	elseif (screenID == "response_start_imperial" or screenID == "response_start_neutral" or screenID == "response_start2") then
 		CreatureObject(pPlayer):doAnimation("salute1")
 		CreatureObject(pNpc):doAnimation("salute1")
@@ -52,8 +51,8 @@ function JaekVercetConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNpc, 
 
 		ghost:activateJournalQuest(questCrc, true)
 		ghost:activateJournalQuestTask(questCrc, taskIndex, true)
-		writeScreenPlayData(pPlayer, "DefectorQuest", "taskIndex", taskIndex)
 
+		writeScreenPlayData(pPlayer, "DefectorQuest", "taskIndex", taskIndex)
 	elseif (screenID == "where_defector") then
 		CreatureObject(pNpc):doAnimation("sigh_deeply")
 
@@ -98,7 +97,6 @@ function JaekVercetConvoHandler:getInitialScreen(pPlayer, pNpc, pConvTemplate)
 	end
 
 	if not PlayerObject(pGhost):isJournalQuestActive(questCrc) then
-
 		-- Check if player has already completed quest
 		if PlayerObject(pGhost):isJournalQuestComplete(questCrc) then
 			return convoTemplate:getScreen("welcome_back")

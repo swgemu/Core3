@@ -32,43 +32,48 @@ function AllardLissaraConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNp
 	local defectorTasks = LuaQuestTasks(pDefectorTasks)
 
 	if (screenID == "response_correct_1" or screenID == "response_correct_2") then
-		ghost:completeJournalQuestTask(questCrc, DefectorQuest.WAIT_FOR_SIGNAL2, false)
-		ghost:activateJournalQuestTask(questCrc, DefectorQuest.REWARD1, false)
-		ghost:activateJournalQuestTask(questCrc, DefectorQuest.REWARD2, false)
-		ghost:activateJournalQuestTask(questCrc, DefectorQuest.COMPLETE_QUEST, false)
-		ghost:completeJournalQuest(questCrc, true)
+		local pQuestTask1 = defectorTasks:getTask(DefectorQuest.REWARD1)
+		local pQuestTask2 = defectorTasks:getTask(DefectorQuest.REWARD2)
 
-		-- Add Imperial faction and credits
-		local pQuestTask = defectorTasks:getTask(DefectorQuest.REWARD1)
-
-		if pQuestTask == nil then
-			Logger:log("ERROR: Could not load Defector Quest Task - REWARD1", LT_ERROR)
+		if (pQuestTask1 == nil or pQuestTask2 == nil) then
+			Logger:log("ERROR: Unable to load Defector Quest REWARD1 or REWARD2 Quest Tasks in AllardLissaraConvoHandler.", LT_ERROR)
 			return 0
 		end
 
-		local questTask = LuaQuestTask(pQuestTask)
-		local faction = string.lower(questTask:getFactionName())
+		local questTask1 = LuaQuestTask(pQuestTask1)
+		local questTask2 = LuaQuestTask(pQuestTask2)
 
-		ghost:increaseFactionStanding(faction, questTask:getFactionAmount())
+		-- Remove the Waypoint
+		local waypointID = tonumber(readScreenPlayData(pPlayer, "DefectorQuest", "rebQuestReceiverWaypointID"))
+		deleteScreenPlayData(pPlayer, "DefectorQuest", "rebQuestReceiverWaypointID")
 
-		local creditsAmount = questTask:getBankCredits()
+		ghost:completeJournalQuestTask(questCrc, DefectorQuest.WAIT_FOR_SIGNAL2, false)
+
+		ghost:activateJournalQuestTask(questCrc, DefectorQuest.REWARD1, false)
+		ghost:activateJournalQuestTask(questCrc, DefectorQuest.REWARD2, false)
+		ghost:activateJournalQuestTask(questCrc, DefectorQuest.COMPLETE_QUEST, false)
+
+		ghost:completeJournalQuest(questCrc, true)
+
+		-- Add Imperial faction and credits
+		local faction = string.lower(questTask1:getFactionName())
+		local amount = questTask1:getFactionAmount()
+
+		ghost:increaseFactionStanding(faction, amount)
+
+		local creditsAmount = questTask1:getBankCredits()
 		CreatureObject(pPlayer):addBankCredits(creditsAmount, true)
 
 		CreatureObject(pPlayer):sendSystemMessage("You recieve " .. creditsAmount .. " credits for completing your task.")
 
 		-- Subtract Rebel faction
-		pQuestTask = defectorTasks:getTask(DefectorQuest.REWARD2)
+		faction = string.lower(questTask2:getFactionName())
+		amount = questTask2:getFactionAmount()
 
-		if pQuestTask == nil then
-			Logger:log("ERROR: Could not load Defector Quest Task - REWARD2", LT_ERROR)
-			return 0
-		end
+		ghost:decreaseFactionStanding(faction, -1 * amount)
 
-		questTask = LuaQuestTask(pQuestTask)
-		faction = string.lower(questTask:getFactionName())
-
-		ghost:decreaseFactionStanding(faction, -(questTask:getFactionAmount()))
-
+		DefectorQuest:despawnAmbushMobiles(pPlayer)
+		DefectorQuest:cleanUp(pPlayer)
 	end
 
 	return pScreenClone
