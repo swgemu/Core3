@@ -35,7 +35,6 @@ function RebelDefectorConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNp
 		ghost:completeJournalQuestTask(questCrc, DefectorQuest.WAIT_FOR_SIGNAL1, true)
 
 	elseif (screenID == "response_start") then
-
 		-- Waypoint to quest receiver
 		local waypointID = ghost:addWaypoint("naboo", "@quest/ground/c_rebdefector:task06_journal_entry_title", "@quest/ground/c_rebdefector:task06_journal_entry_description", 2415, 0, -3948, WAYPOINT_YELLOW, true, true, questCrc)
 		writeScreenPlayData(pPlayer, "DefectorQuest", "rebQuestReceiverWaypointID", waypointID)
@@ -46,14 +45,16 @@ function RebelDefectorConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNp
 			ghost:removeWaypoint(waypoints[i], true)
 		end
 
+		deleteScreenPlayData(pPlayer, "DefectorQuest", "rebQuestGiverWaypointID")
+		deleteScreenPlayData(pPlayer, "DefectorQuest", "rebDefectorWaypointID")
+
 		ghost:activateJournalQuestTask(questCrc, DefectorQuest.WAIT_FOR_SIGNAL2, true)
 		ghost:activateJournalQuestTask(questCrc, DefectorQuest.TIMER3, false)
 		ghost:activateJournalQuestTask(questCrc, DefectorQuest.TIMER4, false)
 
-	DefectorQuest:startMissionTimer(pPlayer)
+		DefectorQuest:startMissionTimer(pPlayer)
 
-	createEvent(getRandomNumber(100, 150) * 1000, "DefectorQuest", "spawnAttack", pPlayer, "")
-
+		createEvent(getRandomNumber(100, 150) * 1000, "DefectorQuest", "spawnAttack", pPlayer, "")
 	elseif (screenID == "get_moving") then
 
 		-- Check for waypoint to quest receiver, and add if missing

@@ -52,8 +52,8 @@ function JomIrimoreConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNpc, 
 
 		ghost:activateJournalQuest(questCrc, true)
 		ghost:activateJournalQuestTask(questCrc, taskIndex, true)
-		writeScreenPlayData(pPlayer, "DefectorQuest", "taskIndex", taskIndex)
 
+		writeScreenPlayData(pPlayer, "DefectorQuest", "taskIndex", taskIndex)
 	elseif (screenID == "where_defector") then
 		CreatureObject(pNpc):doAnimation("sigh_deeply")
 
@@ -93,12 +93,11 @@ function JomIrimoreConvoHandler:getInitialScreen(pPlayer, pNpc, pConvTemplate)
 
 	local ghost = LuaPlayerObject(pGhost)
 
-	if ghost:isJournalQuestActive(REBEL_CRC)  or faction == FACTIONIMPERIAL then
+	if (ghost:isJournalQuestActive(DefectorQuest.REBEL_CRC) or faction == FACTIONIMPERIAL) then
 		return convoTemplate:getScreen("imperial_greeting")
 	end
 
 	if not PlayerObject(pGhost):isJournalQuestActive(questCrc) then
-
 		-- Check if player has already completed quest
 		if PlayerObject(pGhost):isJournalQuestComplete(questCrc) then
 			return convoTemplate:getScreen("welcome_back")
@@ -110,10 +109,8 @@ function JomIrimoreConvoHandler:getInitialScreen(pPlayer, pNpc, pConvTemplate)
 				return convoTemplate:getScreen("neutral_greeting")
 			end
 		end
-
 	elseif DefectorQuest:activeTask(ghost, questCrc, taskIndex) then
 		return convoTemplate:getScreen("where_defector")
-
 	else
 		return convoTemplate:getScreen("nice_day")
 	end
