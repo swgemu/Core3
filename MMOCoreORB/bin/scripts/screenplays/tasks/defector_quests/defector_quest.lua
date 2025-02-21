@@ -102,12 +102,7 @@ function DefectorQuest:spawnActiveAreas(questCrc)
 
 			local questAreaID = SceneObject(pQuestArea):getObjectID()
 
-			if questCrc == self.REBEL_CRC then
-				writeData(questAreaID .. ":DefectorQuestRebelCrc:", questCrc)
-			elseif questCrc == self.IMPERIAL_CRC then
-				writeData(questAreaID .. ":DefectorQuestImperialCrc:", questCrc)
-			end
-
+			writeData(questAreaID .. ":DefectorQuest:AreaCRC:", questCrc)
 			writeData(questAreaID .. ":DefectorTaskIndex:", taskIndex)
 		end
 	end
@@ -244,24 +239,20 @@ function DefectorQuest:notifyEnteredQuestArea(pActiveArea, pPlayer)
 	local ghost = LuaPlayerObject(pGhost)
 	local activeAreaID = SceneObject(pActiveArea):getObjectID()
 	local taskIndex = readData(activeAreaID .. ":DefectorTaskIndex:")
-	local questCrc = nil
+	local questCrc = readData(activeAreaID .. ":DefectorQuest:AreaCRC:")
 
-	if ghost:isJournalQuestActive(self.REBEL_CRC) then
-		questCrc = readData(activeAreaID .. ":DefectorQuestRebelCrc:")
-	elseif ghost:isJournalQuestActive(self.IMPERIAL_CRC) then
-		questCrc = readData(activeAreaID .. ":DefectorQuestImperialCrc:")
+	if (questCrc == 0 or not ghost:isJournalQuestActive(questCrc)) then
+		return 0
 	end
 
 	local pDefectorTasks = getQuestTasks(questCrc)
 
 	if pDefectorTasks == nil then
-		Logger:log("ERROR: Could not load Defector Quests correctly. Quest line will not function correctly.", LT_ERROR)
-		return
+		Logger:log("ERROR: Could not load Defector Quests Tasks in notifyEnteredQuestArea.", LT_ERROR)
+		return 0
 	end
 
-	local defectorTasks = LuaQuestTasks(pDefectorTasks)
-
-	local pQuestTask = defectorTasks:getTask(taskIndex)
+	local pQuestTask = LuaQuestTasks(pDefectorTasks):getTask(taskIndex)
 
 	if pQuestTask == nil then
 		Logger:log("Defector Quest: pQuestTask is nil", LT_ERROR)
