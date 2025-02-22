@@ -329,17 +329,15 @@ public:
 		Vector3 position = transform.predictPosition(creO->getPosition(), creO->getDirection(), deltaTime);
 		float transformSpeed = transform.getSpeed();
 
-		/*
 		// Last validated world position
 		Vector3 lastValidatedWorldPosition = validPosition->getWorldPosition(zoneServer);
 		float validWorldZ = lastValidatedWorldPosition.getZ();
 
 		if (!privilegedPlayer && ((parent == nullptr && validPosition->getParent() == 0) || (parent != nullptr && (parent->isVehicleObject() || parent->isMount()))) &&
-			!CollisionManager::checkMovementCollision(creO, closeObjects, zone, Vector3(lastValidatedWorldPosition.getX(), lastValidatedWorldPosition.getY(), validWorldZ), Vector3(position.getX(), position.getY(), positionZ))) {
+			!CollisionManager::checkMovementCollision(creO, closeObjects, zone, Vector3(lastValidatedWorldPosition.getX(), lastValidatedWorldPosition.getY(), validWorldZ), creO->getPosition())) {
 
-			return updateError(creO, "!DT-checkCollision", true, (transformSpeed < 3.f ? 3.f : transformSpeed));
+			return updateError(creO, "!DT_checkCollision", true);
 		}
-		*/
 
 		playerManager->updateSwimmingState(creO, positionZ, &intersections, closeObjects);
 
