@@ -4179,7 +4179,7 @@ bool PlayerManagerImplementation::checkSpeedHackTests(CreatureObject* player, Pl
 
 	float dist = newWorldPosition.distanceTo(lastValidatedWorldPosition);
 
-	if (dist > 1.f) {
+	if (dist > 1.f && !ghost->isPrivileged()) {
 		float speed = dist / deltaTime * 1000.f;
 
 #ifdef DEBUG_SPEED_HACK

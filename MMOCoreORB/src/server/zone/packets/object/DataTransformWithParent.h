@@ -409,7 +409,7 @@ public:
 		Vector3 lastValidatedWorldPosition = validPosition.getWorldPosition(zoneServer);
 		lastValidatedWorldPosition.setZ(0.f);
 
-		if (!privilegedPlayer && !playerManager->checkSpeedHackTests(creO, ghost, lastValidatedWorldPosition, transform.getPosition(), transform.getTimeStamp(), transform.getPositionZ(), parent)) {
+		if (!playerManager->checkSpeedHackTests(creO, ghost, lastValidatedWorldPosition, transform.getPosition(), transform.getTimeStamp(), transform.getPositionZ(), parent)) {
 			return updateError(creO, "!DTWP_checkSpeedHackTests_POS");
 		}
 
@@ -472,7 +472,7 @@ public:
 		Vector3 lastValidatedWorldPosition = validPosition.getWorldPosition(zoneServer);
 		lastValidatedWorldPosition.setZ(0.f);
 
-		if (!ghost->isPrivileged() && !playerManager->checkSpeedHackTests(creO, ghost, lastValidatedWorldPosition, transform.getPosition(), transform.getTimeStamp(), transform.getPositionZ(), parent)) {
+		if (!playerManager->checkSpeedHackTests(creO, ghost, lastValidatedWorldPosition, transform.getPosition(), transform.getTimeStamp(), transform.getPositionZ(), parent)) {
 			return updateError(creO, "!DTWP_checkSpeedHackTests_STAT");
 		}
 

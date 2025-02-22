@@ -293,7 +293,7 @@ public:
 		lastValidatedWorldPosition.setZ(0.f);
 
 		// Final Checks for Speed
-		if (!privilegedPlayer && !playerManager->checkSpeedHackTests(creO, ghost, lastValidatedWorldPosition, transform.getPosition(), transform.getTimeStamp(), positionZ, nullptr)) {
+		if (!playerManager->checkSpeedHackTests(creO, ghost, lastValidatedWorldPosition, transform.getPosition(), transform.getTimeStamp(), positionZ, nullptr)) {
 			return updateError(creO, "!DT-checkSpeedHackTests_POS", true);
 		}
 
@@ -306,13 +306,11 @@ public:
 
 		float transformSpeed = transform.getSpeed();
 
-		/*
 		if (!privilegedPlayer && ((parent == nullptr && validPosition.getParent() == 0) || (parent != nullptr && (parent->isVehicleObject() || parent->isMount()))) &&
 			!CollisionManager::checkMovementCollision(creO, closeObjects, zone, Vector3(lastValidatedWorldPosition.getX(), lastValidatedWorldPosition.getY(), validWorldZ), Vector3(position.getX(), position.getY(), positionZ))) {
 
-			return updateError(creO, "!DT-checkCollision", true, (transformSpeed < 3.f ? 3.f : transformSpeed));
+			return updateError(creO, "!DT-checkCollision", true);
 		}
-		*/
 
 		playerManager->updateSwimmingState(creO, positionZ, &intersections, closeObjects);
 
@@ -364,7 +362,7 @@ public:
 		Vector3 lastValidatedWorldPosition = validPosition.getWorldPosition(zoneServer);
 		lastValidatedWorldPosition.setZ(0.f);
 
-		if (!ghost->isPrivileged() && !playerManager->checkSpeedHackTests(creO, ghost, lastValidatedWorldPosition, transformPosition, transform.getTimeStamp(), transformPosition.getZ(), nullptr)) {
+		if (!playerManager->checkSpeedHackTests(creO, ghost, lastValidatedWorldPosition, transformPosition, transform.getTimeStamp(), transformPosition.getZ(), nullptr)) {
 			return updateError(creO, "!DT-checkSpeedHackTests_STAT", true);
 		}
 
