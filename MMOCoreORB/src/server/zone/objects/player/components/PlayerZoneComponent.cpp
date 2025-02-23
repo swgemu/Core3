@@ -153,6 +153,9 @@ void PlayerZoneComponent::teleport(SceneObject* sceneObject, float newPositionX,
 
 		if (ghost != nullptr) {
 			ghost->setTeleporting(true);
+
+			player->info(true) << " PlayerZoneComponent::teleport -- has called: updateLastValidatedPosition()";
+
 			ghost->updateLastValidatedPosition();
 			ghost->setClientLastMovementStamp(0);
 		}

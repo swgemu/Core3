@@ -52,25 +52,29 @@ void GroundZoneComponent::teleport(SceneObject* sceneObject, float newPositionX,
 	ZoneServer* zoneServer = sceneObject->getZoneServer();
 	Zone* zone = sceneObject->getZone();
 
-	if (zone == nullptr)
+	if (zone == nullptr) {
 		return;
+	}
 
 	Locker locker(zone);
 
 	if (parentID != 0) {
 		Reference<SceneObject*> newParent = zoneServer->getObject(parentID);
 
-		if (newParent == nullptr || !newParent->isCellObject())
+		if (newParent == nullptr || !newParent->isCellObject()) {
 			return;
+		}
 
 		if (newPositionX != sceneObject->getPositionX() || newPositionZ != sceneObject->getPositionZ() || newPositionY != sceneObject->getPositionY()) {
 			sceneObject->setPosition(newPositionX, newPositionZ, newPositionY);
 			sceneObject->updateZoneWithParent(newParent, false, false);
 		}
 
-		//sceneObject->info("sending data transform with parent", true);
-
 		sceneObject->incrementMovementCounter();
+
+		if (sceneObject->isPlayerCreature()) {
+			sceneObject->info(true) << "GroundZoneComponent::teleport -- sending data transform with parent";
+		}
 
 		DataTransformWithParent* pack = new DataTransformWithParent(sceneObject);
 		sceneObject->broadcastMessage(pack, true, false);
@@ -80,9 +84,11 @@ void GroundZoneComponent::teleport(SceneObject* sceneObject, float newPositionX,
 			sceneObject->updateZone(false, false);
 		}
 
-		//sceneObject->info("sending data transform", true);
-
 		sceneObject->incrementMovementCounter();
+
+		if (sceneObject->isPlayerCreature()) {
+			sceneObject->info(true) << "GroundZoneComponent::teleport -- sending data transform";
+		}
 
 		DataTransform* pack = new DataTransform(sceneObject);
 		sceneObject->broadcastMessage(pack, true, false);

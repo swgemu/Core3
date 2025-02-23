@@ -171,11 +171,11 @@ public:
 
 		deltaTime = (long)counter - (long)ghost->getClientLastMovementStamp();
 
-		if (deltaTime < -Transform::SYNCDELTA) {
+		if (deltaTime < -Transform::SYNC_DELTA) {
 			return updateError(pilot, "!syncDelta", true);
 		}
 
-		if (deltaTime < Transform::MINDELTA) {
+		if (deltaTime < Transform::MIN_DELTA) {
 			return;
 		}
 
@@ -219,7 +219,7 @@ public:
 			return true;
 		}
 
-		if (deltaTime > Transform::MAXDELTA) {
+		if (deltaTime > Transform::MAX_DELTA) {
 			return true;
 		}
 
