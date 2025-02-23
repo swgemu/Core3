@@ -160,7 +160,6 @@ public:
 		deltaTime = transform.getTimeStamp() - ghost->getClientLastMovementStamp();
 
 		if (deltaTime < -Transform::SYNCDELTA) {
-			validPosition.update(creO);
 			return updateError(creO, "syncDelta", true);
 		}
 
@@ -178,12 +177,7 @@ public:
 			parent->wlock(creO);
 		}
 
-		if (ghost->isForcedTransform()) {
-			validPosition = *ghost->getLastValidatedPosition();
-		} else {
-			// Update Valid Position
-			validPosition.update(creO);
-		}
+		validPosition = *ghost->getLastValidatedPosition();
 
 		try {
 			if (validPosition.getParent() != transform.getParentID() || transform.get2dSquaredDistance(validPosition.getPosition()) >= 0.015625f) {
@@ -257,7 +251,7 @@ public:
 			}
 		}
 
-		Zone* zone = creO->getZone();
+		auto zone = creO->getZone();
 
 		if (zone == nullptr) {
 			return updateError(creO, "!zone");
@@ -293,7 +287,9 @@ public:
 		lastValidatedWorldPosition.setZ(0.f);
 
 		// Final Checks for Speed
-		if (!privilegedPlayer && !playerManager->checkSpeedHackTests(creO, ghost, lastValidatedWorldPosition, transform.getPosition(), transform.getTimeStamp(), positionZ, nullptr)) {
+		int movementValidation = playerManager->checkSpeedHackTests(creO, ghost, lastValidatedWorldPosition, transform.getPosition(), transform.getTimeStamp(), positionZ, nullptr);
+
+		if (movementValidation == Transform::INVALID_POSITION) {
 			return updateError(creO, "!DT-checkSpeedHackTests_POS", true);
 		}
 
@@ -319,6 +315,11 @@ public:
 		creO->setPosition(transform.getPositionX(), positionZ, transform.getPositionY());
 		creO->setDirection(transform.getDirection());
 		creO->setCurrentSpeed(transformSpeed);
+
+		// Update the validated position
+		if (movementValidation == Transform::FULL_VALIDATED) {
+			ghost->updateLastValidatedPosition();
+		}
 
 		updateTransform(creO, parent, position);
 	}
@@ -364,12 +365,19 @@ public:
 		Vector3 lastValidatedWorldPosition = validPosition.getWorldPosition(zoneServer);
 		lastValidatedWorldPosition.setZ(0.f);
 
-		if (!ghost->isPrivileged() && !playerManager->checkSpeedHackTests(creO, ghost, lastValidatedWorldPosition, transformPosition, transform.getTimeStamp(), transformPosition.getZ(), nullptr)) {
+		// Final Checks for Speed
+		int movementValidation = playerManager->checkSpeedHackTests(creO, ghost, lastValidatedWorldPosition, transformPosition, transform.getTimeStamp(), transformPosition.getZ(), nullptr);
+
+		if (movementValidation == Transform::INVALID_POSITION) {
 			return updateError(creO, "!DT-checkSpeedHackTests_STAT", true);
 		}
 
 		creO->setDirection(direction);
 		creO->setCurrentSpeed(0.f);
+
+		if (movementValidation == Transform::FULL_VALIDATED) {
+			ghost->updateLastValidatedPosition();
+		}
 
 		updateTransform(creO, parent, creO->getPosition());
 
