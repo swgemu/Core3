@@ -992,8 +992,9 @@ void SceneObjectImplementation::notifyInsertToZone(Zone* newZone) {
 void SceneObjectImplementation::teleport(float newPositionX, float newPositionZ, float newPositionY, uint64 parentID) {
 	auto zone = getZone();
 
-	if (zone == nullptr)
+	if (zone == nullptr) {
 		return;
+	}
 
 	if (zone->isSpaceZone()) {
 		spaceZoneComponent->teleport(asSceneObject(), newPositionX, newPositionZ, newPositionY, parentID);
@@ -1003,10 +1004,11 @@ void SceneObjectImplementation::teleport(float newPositionX, float newPositionZ,
 }
 
 void SceneObjectImplementation::switchZone(const String& newTerrainName, float newPostionX, float newPositionZ, float newPositionY, uint64 parentID, bool toggleInvisibility, int playerArrangement) {
-	if (newTerrainName.contains("space"))
+	if (newTerrainName.contains("space")) {
 		spaceZoneComponent->switchZone(asSceneObject(), newTerrainName, newPostionX, newPositionZ, newPositionY, parentID, toggleInvisibility, playerArrangement);
-	else
+	} else {
 		groundZoneComponent->switchZone(asSceneObject(), newTerrainName, newPostionX, newPositionZ, newPositionY, parentID, toggleInvisibility, playerArrangement);
+	}
 }
 
 void SceneObjectImplementation::updateDirection(float fw, float fx, float fy, float fz) {
@@ -2470,7 +2472,6 @@ String SceneObjectImplementation::getGameObjectTypeStringID() {
 }
 
 bool SceneObjectImplementation::isNearBank() {
-
 	SortedVector<ManagedReference<TreeEntry*> > closeObjects;
 	CloseObjectsVector* closeObjectsVector = (CloseObjectsVector*) getCloseObjects();
 

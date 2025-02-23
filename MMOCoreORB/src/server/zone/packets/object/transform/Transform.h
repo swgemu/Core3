@@ -22,14 +22,20 @@ protected:
 	float speed;
 
 public:
-	const static constexpr float POSITIONMOD = 6.f; // broadcast position update distance multiplier
+	const static constexpr float POSITION_MOD = 6.f; // broadcast position update distance multiplier
 
-	const static int MINDELTA = 200; // minimum ms elapsed between updates
-	const static int MIDDELTA = 400; // ideal ms between low priority update
-	const static int MAXDELTA = 800; // maximum ms before high priority update
+	const static int MIN_DELTA = 200; // minimum ms elapsed between updates
+	const static int MID_DELTA = 400; // ideal ms between low priority update
+	const static int MAX_DELTA = 800; // maximum ms before high priority update
 
-	const static int SYNCDELTA = 10000; // minimum ms before synchronize update
-	const static int SYNCCOUNT = 50; // minimum moveCount for synchronize update
+	const static int SYNC_DELTA = 10000; // minimum ms before synchronize update
+	const static int SYNC_COUNT = 50; // minimum moveCount for synchronize update
+
+	const static int INVALID_POSITION = 1;
+	const static int TIME_VALIDATED = 2;
+	const static int FULL_VALIDATED = 3;
+
+	constexpr static float UPDATE_THRESHOLD = 0.015625f;
 
 	Transform() {
 		timeStamp = 0u;
@@ -154,7 +160,7 @@ public:
 	}
 
 	bool isSynchronizeUpdate(const Quaternion* creoDirection, float creoSpeed) const {
-		return moveCount >= SYNCCOUNT && speed == 0.f && creoSpeed == 0.f && !isYawUpdate(creoDirection);
+		return moveCount >= SYNC_COUNT && speed == 0.f && creoSpeed == 0.f && !isYawUpdate(creoDirection);
 	}
 
 	bool isYawUpdate(const Quaternion* creoDirection) const {
@@ -201,12 +207,12 @@ public:
 	}
 
 	Vector3 predictPosition(const Vector3& creoPosition, const Quaternion* creoDirection, int deltaTime) const {
-		if (speed < 1.f || deltaTime > MAXDELTA) {
+		if (speed < 1.f || deltaTime > MAX_DELTA) {
 			return position;
 		}
 
 		float interval = (int)(deltaTime * 0.005f);
-		float vector = POSITIONMOD;
+		float vector = POSITION_MOD;
 
 		vector *= (getMoveScale(creoPosition, interval) * 2.f) -1.f;
 
@@ -227,7 +233,7 @@ public:
 			}
 		}
 
-		if (vector <= interval || vector > POSITIONMOD) {
+		if (vector <= interval || vector > POSITION_MOD) {
 			return position;
 		}
 
@@ -253,15 +259,15 @@ public:
 
 		sendFlyText(creature, message, deltaTime);
 
-		if (!message.beginsWith("info") && !message.beginsWith("warning")) {
+		if (!message.contains("info") && !message.contains("warning")) {
 			sendPathMessage(creature, newPosition);
 		}
 
-		if (message.beginsWith("warning") || message.beginsWith("error")) {
+		if (message.contains("warning") || message.contains("error")) {
 			sendSystemMessage(creature, newPosition, message, deltaTime);
 		}
 
-		creature->info(true) << message;
+		creature->info(true) << message << " -- Delta Time: " << deltaTime << " New Position: " << newPosition.toString();
 	}
 
 	void sendFlyText(CreatureObject* creature, const String& type, int deltaTime) const {
@@ -272,19 +278,19 @@ public:
 		int g = 128;
 		int b = 128;
 
-		if (type.beginsWith("sta")) { // static
+		if (type.contains("static")) { // static
 			g = b = 0;
-		} else if (type.beginsWith("pos")) { // position
+		} else if (type.contains("position")) { // position
 			r = b = 0;
-		} else if (type.beginsWith("pre")) { // prediction
+		} else if (type.contains("prediction")) { // prediction
 			r = g = 0;
-		} else if (type.beginsWith("syn")) { // synchronize
+		} else if (type.contains("synchronize")) { // synchronize
 			r = 0;
-		} else if (type.beginsWith("err")) { // error
+		} else if (type.contains("error")) { // error
 			g = 0;
-		} else if (type.beginsWith("war")) { // warning
+		} else if (type.contains("warning")) { // warning
 			b = 0;
-		} else if (type.beginsWith("inf")) { // info
+		} else if (type.contains("info")) { // info
 			r = g = b = 64;
 		}
 
@@ -373,7 +379,6 @@ public:
 
 		creature->info(true) << msg.toString();
 		creature->sendSystemMessage(msg.toString());
-		creature->info(true) << msg.toString();
 	}
 #endif // TRANSFORM_DEBUG
 };

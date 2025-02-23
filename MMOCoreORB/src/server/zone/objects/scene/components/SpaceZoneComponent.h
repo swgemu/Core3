@@ -9,7 +9,6 @@
 #define SPACEZONECOMPONENT_H_
 
 #include "engine/engine.h"
-#include "server/zone/TreeEntry.h"
 #include "SceneObjectComponent.h"
 
 
@@ -32,6 +31,8 @@ namespace server {
 using namespace server::zone::objects::scene;
 using namespace server::zone::objects::building;
 using namespace server::zone;
+
+#include "server/zone/TreeEntry.h"
 
 class SpaceZoneComponent : public SceneObjectComponent, public Logger {
 protected:
