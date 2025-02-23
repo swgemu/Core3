@@ -154,11 +154,7 @@ public:
 			return updateError(creO, "!parent");
 		}
 
-		if (ghost->isForcedTransform()) {
-			validPosition = *ghost->getLastValidatedPosition();
-		} else {
-			validPosition.update(creO);
-		}
+		validPosition = *ghost->getLastValidatedPosition();
 
 		try {
 			if (validPosition.getParent() != transform.getParentID() || (!spaceZone && transform.get2dSquaredDistance(validPosition.getPosition()) > 0.015625f) ||
@@ -409,7 +405,10 @@ public:
 		Vector3 lastValidatedWorldPosition = validPosition.getWorldPosition(zoneServer);
 		lastValidatedWorldPosition.setZ(0.f);
 
-		if (!privilegedPlayer && !playerManager->checkSpeedHackTests(creO, ghost, lastValidatedWorldPosition, transform.getPosition(), transform.getTimeStamp(), transform.getPositionZ(), parent)) {
+		// Final Checks for Speed
+		int movementValidation = playerManager->checkSpeedHackTests(creO, ghost, lastValidatedWorldPosition, transform.getPosition(), transform.getTimeStamp(), transform.getPositionZ(), parent);
+
+		if (movementValidation == Transform::INVALID_POSITION) {
 			return updateError(creO, "!DTWP_checkSpeedHackTests_POS");
 		}
 
@@ -434,6 +433,11 @@ public:
 
 		// Update the players direction
 		creO->setDirection(transform.getDirection());
+
+		// Update the validated position
+		if (movementValidation == Transform::FULL_VALIDATED) {
+			ghost->updateLastValidatedPosition();
+		}
 
 		// Broadcast the position move
 		broadcastTransform(creO, parent, position, lightUpdate);
@@ -472,7 +476,10 @@ public:
 		Vector3 lastValidatedWorldPosition = validPosition.getWorldPosition(zoneServer);
 		lastValidatedWorldPosition.setZ(0.f);
 
-		if (!ghost->isPrivileged() && !playerManager->checkSpeedHackTests(creO, ghost, lastValidatedWorldPosition, transform.getPosition(), transform.getTimeStamp(), transform.getPositionZ(), parent)) {
+		// Final Checks for Speed
+		int movementValidation = playerManager->checkSpeedHackTests(creO, ghost, lastValidatedWorldPosition, transform.getPosition(), transform.getTimeStamp(), transform.getPositionZ(), parent);
+
+		if (movementValidation == Transform::INVALID_POSITION) {
 			return updateError(creO, "!DTWP_checkSpeedHackTests_STAT");
 		}
 
@@ -487,6 +494,11 @@ public:
 		if (creO->getCurrentSpeed() != 0.f) {
 			creO->setCurrentSpeed(0.f);
 			creO->updateLocomotion();
+		}
+
+		// Update the validated position
+		if (movementValidation == Transform::FULL_VALIDATED) {
+			ghost->updateLastValidatedPosition();
 		}
 
 		bool lightUpdate = objectControllerMain->getPriority() != 0x23;

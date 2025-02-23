@@ -10,6 +10,8 @@
 #include "server/zone/ZoneServer.h"
 
 void ValidatedPosition::update(SceneObject* object) {
+	const auto currentPoint = getWorldPosition(object->getZoneServer());
+
 	point = object->getPosition();
 
 	ManagedReference<SceneObject*> parentPointer = object->getParent().get();
@@ -18,6 +20,18 @@ void ValidatedPosition::update(SceneObject* object) {
 		parent = parentPointer->getObjectID();
 	} else {
 		parent = 0;
+	}
+
+	if (object->isPlayerCreature()) {
+		const auto newPosition = object->getWorldPosition();
+
+		float distance = newPosition.distanceTo2d(currentPoint);
+
+		object->info(true) << object->getDisplayedName() << " Calling -- ValidatedPosition::update - To new position: " << newPosition.toString() << " Distance: " << distance << " Old Position: " << currentPoint.toString();
+
+		if (distance > 100.f) {
+			object->info(true) << "LARGE DISTANCE FOR ValidatedPosition - Distance: " << distance;
+		}
 	}
 }
 

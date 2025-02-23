@@ -1,7 +1,7 @@
 #ifndef TRANSFORM_H_
 #define TRANSFORM_H_
 
-// #define TRANSFORM_DEBUG
+#define TRANSFORM_DEBUG
 
 #include "server/zone/objects/creature/CreatureObject.h"
 
@@ -30,6 +30,10 @@ public:
 
 	const static int SYNCDELTA = 10000; // minimum ms before synchronize update
 	const static int SYNCCOUNT = 50; // minimum moveCount for synchronize update
+
+	const static int INVALID_POSITION = 1;
+	const static int TIME_VALIDATED = 2;
+	const static int FULL_VALIDATED = 3;
 
 	Transform() {
 		timeStamp = 0u;
@@ -261,7 +265,7 @@ public:
 			sendSystemMessage(creature, newPosition, message, deltaTime);
 		}
 
-		creature->info(true) << message;
+		creature->info(true) << message << " -- Delta Time: " << deltaTime;
 	}
 
 	void sendFlyText(CreatureObject* creature, const String& type, int deltaTime) const {

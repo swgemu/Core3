@@ -118,7 +118,7 @@
 
 #include "server/zone/managers/statistics/StatisticsManager.h"
 
-// #define DEBUG_SPEED_HACK
+#define DEBUG_SPEED_HACK
 
 PlayerManagerImplementation::PlayerManagerImplementation(ZoneServer* zoneServer, ZoneProcessServer* impl, bool trackOnlineUsers) : Logger("PlayerManager") {
 	playerLoggerFilename = "log/player.log";
@@ -4123,16 +4123,20 @@ bool PlayerManagerImplementation::checkPlayerSpeedTest(CreatureObject* player, S
 	return true;
 }
 
-bool PlayerManagerImplementation::checkSpeedHackTests(CreatureObject* player, PlayerObject* ghost, const Vector3& lastValidatedWorldPosition, const Vector3& newPosition, uint32 newStamp, float floorZ, SceneObject* newParent) {
+int PlayerManagerImplementation::checkSpeedHackTests(CreatureObject* player, PlayerObject* ghost, const Vector3& lastValidatedWorldPosition, const Vector3& newPosition, uint32 newStamp, float floorZ, SceneObject* newParent) {
 	if (player == nullptr || ghost == nullptr) {
-		return false;
+		return Transform::INVALID_POSITION;
 	}
 
 	// newStamp - stamp;
 	uint32 deltaTime = ghost->getServerMovementTimeDelta();
 
 	if (deltaTime < DELTA_SPEED_CHECK) {
-		return true;
+#ifdef DEBUG_SPEED_HACK
+		player->info(true)  << "checkSpeedHackTests -- Returning Transform::TIME_VALIDATED due to being below DELTA_SPEED_CHECK";
+#endif // DEBUG_SPEED_HACK
+
+		return Transform::TIME_VALIDATED;
 	}
 
 	uint32 stamp = ghost->getClientLastMovementStamp();
@@ -4141,7 +4145,7 @@ bool PlayerManagerImplementation::checkSpeedHackTests(CreatureObject* player, Pl
 #ifdef DEBUG_SPEED_HACK
 		player->info(true)  << "checkSpeedHackTests -- FAILED -- older client movement stamp received";
 #endif // DEBUG_SPEED_HACK
-		return false;
+		return Transform::INVALID_POSITION;
 	}
 
 	Vector3 newWorldPosition(newPosition);
@@ -4152,7 +4156,7 @@ bool PlayerManagerImplementation::checkSpeedHackTests(CreatureObject* player, Pl
 
 		if (!root->isBuildingObject() && !root->isShipObject()) {
 			player->info()  << "checkSpeedHackTests -- FAILED due to improper root parent type.";
-			return false;
+			return Transform::INVALID_POSITION;
 		}
 
 		float newX = newPosition.getX();
@@ -4166,11 +4170,11 @@ bool PlayerManagerImplementation::checkSpeedHackTests(CreatureObject* player, Pl
 		newWorldPosition.setZ(root->getPositionZ() + newPosition.getZ());
 
 #ifdef DEBUG_SPEED_HACK
-		player->info(true) << "\n\ncheckSpeedHackTests -- Parent Transform with newWorldPosition X = " << newWorldPosition.getX() << " Z = " << newWorldPosition.getZ() << " Y = " << newWorldPosition.getY() << " Distance Length = " << length;
+		player->info(true) << "\n\ncheckSpeedHackTests -- Parent Transform with newWorldPosition: " << newWorldPosition.toString() << " Validated World Position: " << lastValidatedWorldPosition.toString() << " Distance Length = " << length;
 #endif // DEBUG_SPEED_HACK
 	} else {
 #ifdef DEBUG_SPEED_HACK
-		player->info(true) << "\n\ncheckSpeedHackTests -- Non-Parent Transform newWorldPosition X = " << newWorldPosition.getX() << " Z = " << newWorldPosition.getZ() << " Y = " << newWorldPosition.getY();
+		player->info(true) << "\n\ncheckSpeedHackTests -- Non-Parent Transform newWorldPosition: " << newWorldPosition.toString() << " Validated World Position: " << lastValidatedWorldPosition.toString();
 #endif // DEBUG_SPEED_HACK
 	}
 
@@ -4178,13 +4182,14 @@ bool PlayerManagerImplementation::checkSpeedHackTests(CreatureObject* player, Pl
 	newWorldPosition.setZ(0);
 
 	float dist = newWorldPosition.distanceTo(lastValidatedWorldPosition);
+	int validation = Transform::TIME_VALIDATED;
 
-	if (dist > 1.f) {
+	if (dist > 1.f && !ghost->isPrivileged()) {
 		float speed = dist / deltaTime * 1000.f;
 
 #ifdef DEBUG_SPEED_HACK
 		StringBuffer msg;
-		msg <<  "Next Position Dist Sq: " << dist << " Player Position: " << lastValidatedWorldPosition.toString() << " Speed: " << speed << " Delta Time: " << (int)(deltaTime * 1000.f);
+		msg <<  "Next Position Distance: " << dist << " Speed: " << speed << " Delta Time: " << deltaTime;
 		player->info(true) << msg.toString();
 #endif // DEBUG_SPEED_HACK
 
@@ -4194,23 +4199,13 @@ bool PlayerManagerImplementation::checkSpeedHackTests(CreatureObject* player, Pl
 
 		// Run speed tests
 		if (!checkPlayerSpeedTest(player, parent, speed, *lastValidatedPosition, lastValidatedWorldPosition, newWorldPosition, errorVariable)) {
-			return false;
+			return Transform::INVALID_POSITION;
 		}
 	}
 
 #ifdef DEBUG_SPEED_HACK
-	player->info(true) << "Setting New Validated Position to - X: " << newWorldPosition.getX() << " Z: " << floorZ << " Y: " << newWorldPosition.getY();
+	player->info(true) << "Setting New Validated Position to newWorldPosition: " << newWorldPosition.toString() << " Travel Distance: " << dist;
 #endif // DEBUG_SPEED_HACK
-
-	lastValidatedPosition->setPosition(newPosition.getX(), floorZ, newPosition.getY());
-
-	if (newParent != nullptr) {
-		lastValidatedPosition->setParent(newParent->getObjectID());
-	} else {
-		lastValidatedPosition->setParent(0);
-	}
-
-	ghost->updateServerLastMovementStamp();
 
 	if (ghost->isOnLoadScreen()) {
 		ghost->setOnLoadScreen(false);
@@ -4222,7 +4217,7 @@ bool PlayerManagerImplementation::checkSpeedHackTests(CreatureObject* player, Pl
 	player->info(true) << "checkSpeedHackTests -- PASSED -- Distance: " << dist;
 #endif // DEBUG_SPEED_HACK
 
-	return true;
+	return Transform::FULL_VALIDATED;
 }
 
 void PlayerManagerImplementation::lootAll(CreatureObject* player, CreatureObject* ai) {
