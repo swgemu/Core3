@@ -121,6 +121,18 @@ public:
 			return;
 		}
 
+		auto ghost = creature->getPlayerObject();
+
+		if (ghost == nullptr) {
+			return;
+		}
+
+		auto playerValidated = ghost->getLastValidatedPosition();
+
+		if (playerValidated == nullptr) {
+			return;
+		}
+
 		Locker clocker(vehicle, creature);
 
 		vehicle->clearState(CreatureState::MOUNTEDCREATURE);
@@ -128,7 +140,7 @@ public:
 		// Handle dismounting player
 		if (vehicle == creature->getParent().get()) {
 			// Player will be sent to the vehicles position in the world
-			Vector3 vehiclePosition = vehicle->getWorldPosition();
+			Vector3 validatedPosition = playerValidated->getPosition();
 
 			float vehicleSpeed = vehicle->getCurrentSpeed();
 
@@ -143,8 +155,8 @@ public:
 					angle = M_PI + a;
 				}
 
-				vehiclePosition.setX(vehiclePosition.getX() + (Math::cos(angle) * -1.f));
-				vehiclePosition.setY(vehiclePosition.getY() + (Math::sin(angle) * -1.f));
+				validatedPosition.setX(validatedPosition.getX() + (Math::cos(angle) * -1.f));
+				validatedPosition.setY(validatedPosition.getY() + (Math::sin(angle) * -1.f));
 			}
 
 			auto planetManager = zone->getPlanetManager();
@@ -154,15 +166,16 @@ public:
 
 				if (terrainManager != nullptr) {
 					IntersectionResults intersections;
-					CollisionManager::getWorldFloorCollisions(vehiclePosition.getX(), vehiclePosition.getY(), zone, &intersections, (CloseObjectsVector*)creature->getCloseObjects());
-					vehiclePosition.setZ(planetManager->findClosestWorldFloor(vehiclePosition.getX(), vehiclePosition.getY(), vehiclePosition.getZ(), creature->getSwimHeight(), &intersections, (CloseObjectsVector*)creature->getCloseObjects()));
+					CollisionManager::getWorldFloorCollisions(validatedPosition.getX(), validatedPosition.getY(), zone, &intersections, (CloseObjectsVector*)creature->getCloseObjects());
+					validatedPosition.setZ(planetManager->findClosestWorldFloor(validatedPosition.getX(), validatedPosition.getY(), validatedPosition.getZ(), creature->getSwimHeight(), &intersections, (CloseObjectsVector*)creature->getCloseObjects()));
 				}
 			}
 
 			// Transfer them into the zone
 			zone->transferObject(creature, -1, false);
 
-			creature->teleport(vehiclePosition.getX(), vehiclePosition.getZ(), vehiclePosition.getY(), 0);
+			// Update the players position
+			creature->teleport(validatedPosition.getX(), validatedPosition.getZ(), validatedPosition.getY(), 0);
 
 			// debug markers
 			/*
@@ -179,7 +192,7 @@ public:
 			ManagedReference<PlayerManager*> playerManager = server->getPlayerManager();
 
 			if (playerManager != nullptr) {
-				playerManager->updateSwimmingState(creature, vehiclePosition.getZ());
+				playerManager->updateSwimmingState(creature, validatedPosition.getZ());
 			}
 		}
 
