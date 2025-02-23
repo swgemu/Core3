@@ -54,7 +54,7 @@ public:
 class DataTransformWithParentCallback : public MessageCallback {
 	ObjectControllerMessageCallback* objectControllerMain;
 
-	ValidatedPosition validPosition;
+	ValidatedPosition* validPosition = nullptr;
 	Transform transform;
 
 	long deltaTime;
@@ -89,22 +89,28 @@ public:
 			creO->sendSystemMessage(message);
 		}
 
-#ifdef TRANSFORM_DEBUG
-		String type = (bounceBack ? "error: " : (message.beginsWith("!") ? "warning: " : "info: "));
-		transform.sendDebug(creO, type + message, validPosition.getPosition(), deltaTime);
-#endif // TRANSFORM_DEBUG
-
 		if (bounceBack) {
 			if (creO->getCurrentSpeed() != 0.f) {
 				creO->setCurrentSpeed(0.f);
 				creO->updateLocomotion();
 			}
 
-			const Vector3& position = validPosition.getPosition();
-			const uint64& parentID = validPosition.getParent();
+			if (validPosition != nullptr) {
+				const Vector3& position = validPosition->getPosition();
+				const uint64& parentID = validPosition->getParent();
 
-			creO->teleport(position.getX(), position.getZ(), position.getY(), parentID);
+				creO->teleport(position.getX(), position.getZ(), position.getY(), parentID);
+
+#ifdef TRANSFORM_DEBUG
+				creO->info(true) << "DTWP -- Player position is being set by teleport in bounceBack - Position: " << position.toString();
+#endif // TRANSFORM_DEBUG
+			}
 		}
+
+#ifdef TRANSFORM_DEBUG
+		String type = (bounceBack ? "error: " : (message.beginsWith("!") ? "warning: " : "info: "));
+		transform.sendDebug(creO, type + message, (validPosition != nullptr ? validPosition->getPosition() : Vector3(0,0,0)), deltaTime);
+#endif // TRANSFORM_DEBUG
 	}
 
 	void run() {
@@ -121,17 +127,31 @@ public:
 		}
 
 		bool spaceZone = zone->isSpaceZone();
+		uint32 timeStamp = transform.getTimeStamp();
+
+#ifdef TRANSFORM_DEBUG
+		creO->info(true) << "DTWP -- Transform Start - Transform Timestamp: " << timeStamp;
+#endif // TRANSFORM_DEBUG
 
 		auto ghost = creO->getPlayerObject();
 
-		if (ghost == nullptr || ghost->isTeleporting()) {
+		if (ghost == nullptr) {
 			return updateError(creO, "!ghost");
+		}
+
+		validPosition = ghost->getLastValidatedPosition();
+
+		if (validPosition == nullptr) {
+			return updateError(creO, "!validPosition");
+		}
+
+		if (ghost->isTeleporting()) {
+			return updateError(creO, "!teleporting");
 		}
 
 		deltaTime = transform.getTimeStamp() - ghost->getClientLastMovementStamp();
 
 		if (deltaTime < -Transform::SYNCDELTA) {
-			validPosition.update(creO);
 			return updateError(creO, "syncDelta", true);
 		}
 
@@ -154,15 +174,9 @@ public:
 			return updateError(creO, "!parent");
 		}
 
-		if (ghost->isForcedTransform()) {
-			validPosition = *ghost->getLastValidatedPosition();
-		} else {
-			validPosition.update(creO);
-		}
-
 		try {
-			if (validPosition.getParent() != transform.getParentID() || (!spaceZone && transform.get2dSquaredDistance(validPosition.getPosition()) > 0.015625f) ||
-				(spaceZone && transform.get3dSquaredDistance(validPosition.getPosition()) > 0.015625f)) {
+			if (validPosition->getParent() != transform.getParentID() || (!spaceZone && transform.get2dSquaredDistance(validPosition->getPosition()) > 0.015625f) ||
+				(spaceZone && transform.get3dSquaredDistance(validPosition->getPosition()) > 0.015625f)) {
 
 				updatePosition(creO, parent);
 			} else {
@@ -406,10 +420,13 @@ public:
 			}
 		}
 
-		Vector3 lastValidatedWorldPosition = validPosition.getWorldPosition(zoneServer);
+		Vector3 lastValidatedWorldPosition = validPosition->getWorldPosition(zoneServer);
 		lastValidatedWorldPosition.setZ(0.f);
 
-		if (!privilegedPlayer && !playerManager->checkSpeedHackTests(creO, ghost, lastValidatedWorldPosition, transform.getPosition(), transform.getTimeStamp(), transform.getPositionZ(), parent)) {
+		// Final Checks for Speed
+		int movementValidation = playerManager->checkSpeedHackTests(creO, ghost, lastValidatedWorldPosition, transform.getPosition(), transform.getTimeStamp(), transform.getPositionZ(), parent);
+
+		if (movementValidation == Transform::INVALID_POSITION) {
 			return updateError(creO, "!DTWP_checkSpeedHackTests_POS");
 		}
 
@@ -424,19 +441,27 @@ public:
 		// Set the players new position in the cell
 		creO->setPosition(transform.getPositionX(), transform.getPositionZ(), transform.getPositionY());
 
-#ifdef TRANSFORM_DEBUG
-		String type = transform.getPosition() != position ? "prediction" : "position";
-		transform.sendDebug(creO, type, position, deltaTime);
-#endif // TRANSFORM_DEBUG
-
 		// Update the players parent
 		creO->updateZoneWithParent(parent, lightUpdate, false);
 
 		// Update the players direction
 		creO->setDirection(transform.getDirection());
 
+		// Update the validated position
+		if (movementValidation == Transform::FULL_VALIDATED) {
+			validPosition->setPosition(transform.getPositionX(), transform.getPositionZ(), transform.getPositionY());
+			validPosition->setParent(transform.getParentID());
+
+			ghost->updateServerLastMovementStamp();
+		}
+
 		// Broadcast the position move
 		broadcastTransform(creO, parent, position, lightUpdate);
+
+#ifdef TRANSFORM_DEBUG
+		String type = transform.getPosition() != position ? "prediction" : "position";
+		transform.sendDebug(creO, type, position, deltaTime);
+#endif // TRANSFORM_DEBUG
 	}
 
 	void updateStatic(CreatureObject* creO, SceneObject* parent) {
@@ -458,6 +483,7 @@ public:
 			return updateError(creO, "!zoneServer");
 		}
 
+		/*
 		auto playerManager = zoneServer->getPlayerManager();
 
 		if (playerManager == nullptr) {
@@ -469,12 +495,16 @@ public:
 		transform.sendDebug(creO, type, creO->getPosition(), deltaTime);
 #endif // TRANSFORM_DEBUG
 
-		Vector3 lastValidatedWorldPosition = validPosition.getWorldPosition(zoneServer);
+		Vector3 lastValidatedWorldPosition = validPosition->getWorldPosition(zoneServer);
 		lastValidatedWorldPosition.setZ(0.f);
 
-		if (!ghost->isPrivileged() && !playerManager->checkSpeedHackTests(creO, ghost, lastValidatedWorldPosition, transform.getPosition(), transform.getTimeStamp(), transform.getPositionZ(), parent)) {
+		// Final Checks for Speed
+		int movementValidation = playerManager->checkSpeedHackTests(creO, ghost, lastValidatedWorldPosition, transform.getPosition(), transform.getTimeStamp(), transform.getPositionZ(), parent);
+
+		if (movementValidation == Transform::INVALID_POSITION) {
 			return updateError(creO, "!DTWP_checkSpeedHackTests_STAT");
 		}
+		*/
 
 		Quaternion direction = transform.getDirection();
 
@@ -488,6 +518,16 @@ public:
 			creO->setCurrentSpeed(0.f);
 			creO->updateLocomotion();
 		}
+
+		/*
+		// Update the validated position
+		if (movementValidation == Transform::FULL_VALIDATED) {
+			validPosition->setPosition(transform.getPositionX(), transform.getPositionZ(), transform.getPositionY());
+			validPosition->setParent(transform.getParentID());
+
+			ghost->updateServerLastMovementStamp();
+		}
+			*/
 
 		bool lightUpdate = objectControllerMain->getPriority() != 0x23;
 

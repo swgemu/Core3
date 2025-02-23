@@ -1670,6 +1670,8 @@ class PlayerObject extends IntangibleObject {
 	}
 
 	public void updateLastValidatedPosition() {
+		Logger.info("lastValidatedPosition update called from ghost", true);
+
 		SceneObject par = super.getParent();
 		lastValidatedPosition.update(par);
 		serverLastMovementStamp.updateToCurrentTime();
