@@ -227,7 +227,7 @@ function rheaConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNpc, select
 
 		return pClonedScreen
 	elseif (screenID == "destroy_duty") then
-		--destroy_duty_corellia_privateer_6:startQuest(pPlayer, pNpc)
+		destroy_duty_corellia_privateer_6:startQuest(pPlayer, pNpc)
 	elseif (screenID == "escort_duty") then
 		escort_duty_corellia_privateer_7:startQuest(pPlayer, pNpc)
 	elseif (screenID == "yes_join" or screenID == "i_see") then
