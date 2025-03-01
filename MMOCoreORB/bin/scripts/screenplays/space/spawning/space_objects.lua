@@ -150,20 +150,20 @@ SpaceObjects = ScreenPlay:new {
 		{"space_light1", "object/static/space/ship/cargo_freighter.iff", 2264, -3464, 1469},
 
 		-- Lok Space
-		{"space_light1", "object/static/space/beacon/hyperspace_route_beacon_01.iff", 6416, -6864, -5632},
-		{"space_light1", "object/static/space/beacon/hyperspace_route_beacon_01.iff", 5273, -5878, -5543},
-		{"space_light1", "object/static/space/spacestation/rsf_spacestation.iff", 5994, -6027, -6474},
-		{"space_light1", "object/static/space/spacestation/pirate_outpost_01.iff", -6194, 6429, 6176},
-		{"space_light1", "object/static/space/spacestation/rebel_outpost_01.iff", 6342, 6116, 6635},
-		{"space_light1", "object/static/space/spacestation/corsec_outpost_01.iff", 1964, 4030, 4168},
-		{"space_light1", "object/static/space/beacon/hyperspace_generator_01.iff", -6120, -1391, -6720},
-		{"space_light1", "object/static/space/spacestation/imperial_spacestation_01.iff", 5986, -4617, -201},
-		{"space_light1", "object/static/space/beacon/hyperspace_route_beacon_01.iff", 2653, -4957, -4238},
-		{"space_light1", "object/static/space/beacon/hyperspace_route_beacon_01.iff", -47, -2389, -1662},
-		{"space_light1", "object/static/space/beacon/hyperspace_route_beacon_01.iff", -307, -4142, -6556},
-		{"space_light1", "object/static/space/beacon/hyperspace_route_beacon_01.iff", -1212, -3947, -3323},
-		{"space_light1", "object/static/space/beacon/hyperspace_route_beacon_01.iff", -3569, -4192, -4654},
-		{"space_light1", "object/static/space/beacon/hyperspace_route_beacon_01.iff", -574, -3659, -3779},
+		{"space_lok", "object/static/space/beacon/hyperspace_route_beacon_01.iff", 6416, -6864, -5632},
+		{"space_lok", "object/static/space/beacon/hyperspace_route_beacon_01.iff", 5273, -5878, -5543},
+		{"space_lok", "object/static/space/spacestation/rsf_spacestation.iff", 5994, -6027, -6474},
+		{"space_lok", "object/static/space/spacestation/pirate_outpost_01.iff", -6194, 6429, 6176},
+		{"space_lok", "object/static/space/spacestation/rebel_outpost_01.iff", 6342, 6116, 6635},
+		{"space_lok", "object/static/space/spacestation/corsec_outpost_01.iff", 1964, 4030, 4168},
+		{"space_lok", "object/static/space/beacon/hyperspace_generator_01.iff", -6120, -1391, -6720},
+		{"space_lok", "object/static/space/spacestation/imperial_spacestation_01.iff", 5986, -4617, -201},
+		{"space_lok", "object/static/space/beacon/hyperspace_route_beacon_01.iff", 2653, -4957, -4238},
+		{"space_lok", "object/static/space/beacon/hyperspace_route_beacon_01.iff", -47, -2389, -1662},
+		{"space_lok", "object/static/space/beacon/hyperspace_route_beacon_01.iff", -307, -4142, -6556},
+		{"space_lok", "object/static/space/beacon/hyperspace_route_beacon_01.iff", -1212, -3947, -3323},
+		{"space_lok", "object/static/space/beacon/hyperspace_route_beacon_01.iff", -3569, -4192, -4654},
+		{"space_lok", "object/static/space/beacon/hyperspace_route_beacon_01.iff", -574, -3659, -3779},
 
 		-- Naboo Space
 		{"space_naboo", "object/static/space/beacon/hyperspace_route_beacon_01.iff", -7525, -4177, 112},
@@ -285,10 +285,10 @@ function SpaceObjects:spawnSceneObjects()
 		local zoneName = spawnInfo[1]
 
 		if (isZoneEnabled(zoneName)) then
-			-- print("Spawning Space Object in " .. zoneName .. " Object: " .. spawnInfo[2])
-
 			-- spawnSceneObject("zoneName", "object.iff", x, z, y, cellID, ow, ox, oy, oz)
-			spawnSceneObject(zoneName, spawnInfo[2], spawnInfo[3], spawnInfo[4], spawnInfo[5], 0, 0, 1, 0, 0)
+			local pObject = spawnSceneObject(zoneName, spawnInfo[2], spawnInfo[3], spawnInfo[4], spawnInfo[5], 0, 0, 1, 0, 0)
+
+			-- print("Spawning Space Object in " .. zoneName .. " Object: " .. spawnInfo[2] .. " -- Object type: " .. SceneObject(pObject):getGameObjectType())
 		end
 	end
 end
