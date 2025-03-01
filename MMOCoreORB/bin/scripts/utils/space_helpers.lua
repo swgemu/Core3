@@ -1314,4 +1314,23 @@ function SpaceHelpers:delayedDestroyShipAgent(pShipAgent)
 	SceneObject(pShipAgent):destroyObjectFromWorld()
 end
 
+-- @param x, z, y - center coordinates
+-- @param minRange - min distance to find the location
+-- @param maxRange - max distance to find the location
+function SpaceHelpers:getRandomPositionInSphere(x, z, y, minRange, maxRange)
+	local function randomInRange(min, max)
+		return min + math.random() * (max - min)
+	end
+
+	local radius = randomInRange(minRange, maxRange)
+	local theta = math.random() * (2 * math.pi)  -- Random angle in XY plane
+	local phi = math.acos(2 * math.random() - 1) -- Random angle in vertical plane
+
+	local dx = radius * math.sin(phi) * math.cos(theta)
+	local dy = radius * math.sin(phi) * math.sin(theta)
+	local dz = radius * math.cos(phi)
+
+	return {x = x + dx, z = z + dz, y = y + dy}
+end
+
 return SpaceHelpers

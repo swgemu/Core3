@@ -48,7 +48,7 @@ function SpaceDestroyScreenplay:startQuest(pPlayer, pNpc)
 		print(self.className .. ":startQuest called -- QuestType: " .. self.questType .. " Quest Name: " .. self.questName)
 	end
 
-	SpaceHelpers:activateSpaceQuest(pPlayer, pNpc, self.questType, self.questName, 1)
+	SpaceHelpers:activateSpaceQuest(pPlayer, pNpc, self.questType, self.questName, false)
 
 	-- Create inital observer for player entering Zone
 	if (not hasObserver(ZONESWITCHED, self.className, "enteredZone", pPlayer)) then
