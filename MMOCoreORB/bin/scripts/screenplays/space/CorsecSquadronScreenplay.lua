@@ -197,24 +197,13 @@ destroy_duty_corellia_privateer_6 = SpaceDutyDestroyScreenplay:new {
 	sideQuest = false,
 	sideQuestType = "",
 
-	killsRequired = 4,
+	-- Screenplay Specific Variables
+	totalLevels = 2, -- Amount of levels a player has to complete to finish mission
+	totalRounds = 2, -- Total Rounds for each of the levels
+	totalWaves = 2, -- Total waves at each location that is not the boss ship
 
-	shipLocations = {
-		{name = "black_sun_asteroid_1", x = 590, z = -3500, y = -6000},
-		{name = "blacksun_asteroid_three_spawner", x = -6420, z = 6215, y = 6292},
-		{name = "blacksun_asteroid_two_spawner", x = -5209, z = 6681, y = 6765},
-		{name = "blacksun_deep_one_spawner", x = -5175, z = 5404, y = 6138},
-		{name = "blacksun_fighter_five_spawner", x = -1894, z = 3873, y = 3360},
-	},
-
-	shipTypes = {
-		"blacksun_ace_s04_tier1", "blacksun_ace_s04_tier2", "blacksun_aggressor_tier1", "blacksun_aggressor_tier2", "blacksun_bomber_ace_s04_tier1", "blacksun_bomber_ace_s04_tier2",
-		"blacksun_bomber_s01_tier1", "blacksun_bomber_s01_tier2", "blacksun_bomber_s02_tier1", "blacksun_bomber_s02_tier2", "blacksun_bomber_s03_tier1", "blacksun_bomber_s03_tier2",
-		"blacksun_fighter_s01_tier1", "blacksun_fighter_s01_tier2", "blacksun_fighter_s02_tier1", "blacksun_fighter_s02_tier2", "blacksun_fighter_s03_tier1", "blacksun_fighter_s03_tier2",
-		"blacksun_gunship_tier1", "blacksun_gunship_tier2", "blacksun_marauder_tier1", "blacksun_marauder_tier2", "blacksun_vehement_tier1", "blacksun_vehement_tier2", "blacksun_yt1300_tier1",
-		"blacksun_yt1300_tier2", "blacksun_bomber_ace_tier3_dantooine", "blacksun_bomber_s01_tier2_tatooine", "blacksun_bomber_s02_tier3_dantooine", "blacksun_fighter_s01_tier2_tatooine",
-		"blacksun_fighter_s02_tier3_dantooine",
-	},
+	bossShip = "hidden_daggers_executioner_tier1",
+	shipTypes = {"hidden_daggers_enforcer_tier1", "hidden_daggers_eliminator_tier1"},
 }
 
 registerScreenPlay("destroy_duty_corellia_privateer_6", true)
