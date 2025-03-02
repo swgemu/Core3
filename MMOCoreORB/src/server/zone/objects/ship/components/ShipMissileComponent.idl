@@ -5,20 +5,56 @@ See file COPYING for copying conditions.
 
 package server.zone.objects.ship.components;
 
-import server.zone.objects.ship.components.ShipWeaponComponent;
-import server.zone.objects.ship.ShipObject;
+import server.zone.objects.tangible.component.Component;
+include templates.SharedObjectTemplate;
+include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
 include server.zone.packets.scene.AttributeListMessage;
-import server.zone.objects.creature.CreatureObject;
-include server.zone.objects.tangible.component.Component;
+include server.zone.objects.creature.CreatureObject;
 
-class ShipMissileComponent extends ShipWeaponComponent {
+class ShipMissileComponent extends Component {
+	protected float maxDamage;
+	protected float minDamage;
+	protected float armorEffectiveness;
+	protected float shieldEffectiveness;
+	protected float refireRate;
 
 	public ShipMissileComponent() {
-	super();
+		super();
+
+		maxDamage = 0.f;
+		minDamage = 0.f;
+		armorEffectiveness = 0.f;
+		shieldEffectiveness = 0.f;
+		refireRate = 0.f;
 	}
+
+	public float getMaxDamage() {
+		return maxDamage;
+	}
+
+	public float getMinDamage() {
+		return minDamage;
+	}
+
+	public float getArmorEffectiveness() {
+		return armorEffectiveness;
+	}
+
+	public float getShieldEffectiveness() {
+		return shieldEffectiveness;
+	}
+
+	public float getRefireRate() {
+		return refireRate;
+	}
+
+	@local
+	public native void loadTemplateData(SharedObjectTemplate templateData);
+
+	@local
+	public abstract native void updateCraftingValues(CraftingValues values, boolean firstUpdate);
 
 	@local
 	@dirty
 	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
-
 }

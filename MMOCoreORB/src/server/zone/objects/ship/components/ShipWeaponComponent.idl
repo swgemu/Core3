@@ -21,11 +21,6 @@ class ShipWeaponComponent extends ShipComponent {
 	protected float refireRate;
 	protected float energyPerShot;
 	protected int ammoClass;
-	protected int ammunition;
-	protected float chaffMinEffectiveness;
-	protected float chaffMaxEffectiveness;
-	protected float missileArmorEffectiveness;
-	protected float missileShieldEffectiveness;
 
 	public ShipWeaponComponent() {
 		super();
@@ -37,11 +32,6 @@ class ShipWeaponComponent extends ShipComponent {
 		refireRate = 0.f;
 		energyPerShot = 0.f;
 		ammoClass = 0;
-		ammunition = 0;
-		chaffMinEffectiveness = 0.f;
-		chaffMaxEffectiveness = 0.f;
-		missileArmorEffectiveness = 0.f;
-		missileShieldEffectiveness = 0.f;
 	}
 
 	public float getMaxDamage() {
@@ -70,46 +60,6 @@ class ShipWeaponComponent extends ShipComponent {
 
 	public int getAmmoClass() {
 		return ammoClass;
-	}
-
-	public int getAmmunition () {
-		return ammunition;
-	}
-
-	public int getChaffMinEffectiveness() {
-		return chaffMinEffectiveness;
-	}
-
-	public int getChaffMaxEffectiveness() {
-		return chaffMaxEffectiveness;
-	}
-
-	public int getMissileArmorEffectiveness () {
-		return missileArmorEffectiveness;
-	}
-
-	public int getmissileShieldEffectiveness () {
-		return missileShieldEffectiveness;
-	}
-
-	@local
-	public void setMissileArmorEffectiveness (float value) {
-		missileArmorEffectiveness = value;
-	}
-
-	@local
-	public void setMissileShieldEffectiveness (float value) {
-		missileShieldEffectiveness = value;
-	}
-
-	@local
-	public void setChaffMinEffectiveness (float value) {
-		chaffMinEffectiveness = value;
-	}
-
-	@local
-	public void setChaffMaxEffectiveness (float value) {
-		chaffMaxEffectiveness = value;
 	}
 
 	@local
@@ -145,11 +95,6 @@ class ShipWeaponComponent extends ShipComponent {
 	@local
 	public void setAmmoClass(int value) {
 		ammoClass = value;
-	}
-
-	@local
-	public void setAmmunition(int value){
-		ammunition = value;
 	}
 
 	@local

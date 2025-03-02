@@ -5,20 +5,50 @@ See file COPYING for copying conditions.
 
 package server.zone.objects.ship.components;
 
-import server.zone.objects.ship.components.ShipWeaponComponent;
-import server.zone.objects.ship.ShipObject;
+import server.zone.objects.tangible.component.Component;
+include templates.SharedObjectTemplate;
+include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
 include server.zone.packets.scene.AttributeListMessage;
-import server.zone.objects.creature.CreatureObject;
-include server.zone.objects.tangible.component.Component;
+include server.zone.objects.creature.CreatureObject;
 
-class ShipCounterMeasureComponent extends ShipWeaponComponent {
+class ShipCounterMeasureComponent extends Component {
+	protected float effectivenessMin;
+	protected float effectivenessMax;
+	protected float refireRate;
+	protected float energyPerShot;
 
 	public ShipCounterMeasureComponent() {
 		super();
+
+		effectivenessMin = 0.f;
+		effectivenessMax = 0.f;
+		refireRate = 0.f;
+		energyPerShot = 0.f;
 	}
+
+	public float getEffectivenessMin() {
+		return effectivenessMin;
+	}
+
+	public float getEffectivenessMax() {
+		return effectivenessMax;
+	}
+
+	public float getRefireRate() {
+		return refireRate;
+	}
+
+	public float getEnergyPerShot() {
+		return energyPerShot;
+	}
+
+	@local
+	public native void loadTemplateData(SharedObjectTemplate templateData);
+
+	@local
+	public abstract native void updateCraftingValues(CraftingValues values, boolean firstUpdate);
 
 	@local
 	@dirty
 	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
-
 }

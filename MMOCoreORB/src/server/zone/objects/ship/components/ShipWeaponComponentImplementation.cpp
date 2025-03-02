@@ -3,6 +3,8 @@
 #include "server/zone/packets/DeltaMessage.h"
 #include "server/zone/objects/ship/ShipMissileData.h"
 #include "server/zone/objects/ship/ShipCountermeasureData.h"
+#include "server/zone/objects/ship/components/ShipMissileComponent.h"
+#include "server/zone/objects/ship/components/ShipCounterMeasureComponent.h"
 
 void ShipWeaponComponentImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
 	ShipComponentImplementation::loadTemplateData(templateData);
@@ -16,28 +18,18 @@ void ShipWeaponComponentImplementation::loadTemplateData(SharedObjectTemplate* t
 			const auto& attribute = attributeMap.elementAt(i).getKey();
 			float value = attributeMap.elementAt(i).getValue();
 
-			if (attribute == "maxDamage" || attribute == "fltmaxdamage") {
+			if (attribute == "maxDamage") {
 				maxDamage = value;
-			} else if (attribute == "minDamage" || attribute == "fltmindamage") {
+			} else if (attribute == "minDamage") {
 				minDamage = value;
 			} else if (attribute == "shieldEffectiveness") {
 				shieldEffectiveness = value;
 			} else if (attribute == "armorEffectiveness") {
 				armorEffectiveness = value;
-			} else if (attribute == "fltshieldeffectiveness") {
-				missileShieldEffectiveness = value;
-			} else if (attribute == "fltarmoreffectivness") {
-				missileArmorEffectiveness = value;
 			} else if (attribute == "energyPerShot") {
 				energyPerShot = value;
-			} else if (attribute == "refireRate" || attribute == "fltrefirerate") {
+			} else if (attribute == "refireRate") {
 				refireRate = value;
-			} else if (attribute == "minEffectivness") {
-				chaffMinEffectiveness = value;
-			} else if (attribute == "maxEffectiveness") {
-				chaffMaxEffectiveness = value;
-			} else if (attribute == "ammo" || attribute == "fltmaxammo") {
-				ammunition = value;
 			}
 		}
 	}
@@ -60,35 +52,20 @@ void ShipWeaponComponentImplementation::updateCraftingValues(CraftingValues* val
 
 	for (int i = 0; i < values->getTotalExperimentalAttributes(); ++i) {
 		const auto& attribute = values->getAttribute(i);
-		const auto& group = values->getAttributeGroup(attribute);
 		auto value = values->getCurrentValue(attribute);
 
-		if (attribute == "damage_max" || attribute == "ship_component_weapon_damage_maximum" || attribute == "fltmaxdamage") {
+		if (attribute == "damage_max" || attribute == "ship_component_weapon_damage_maximum") {
 			maxDamage = value;
-		} else if (attribute == "damage_min" || attribute == "ship_component_weapon_damage_minimum" || attribute == "fltmindamage") {
+		} else if (attribute == "damage_min" || attribute == "ship_component_weapon_damage_minimum") {
 			minDamage = value;
 		} else if (attribute == "effective_shields" || attribute == "ship_component_weapon_effectiveness_shields") {
 			shieldEffectiveness = value * 0.001f;
 		} else if (attribute == "effective_armor" || attribute == "ship_component_weapon_effectiveness_armor") {
 			armorEffectiveness = value * 0.001f;
-		} else if (attribute == "fltshieldeffectiveness") {
-			missileShieldEffectiveness = value;
-		} else if (attribute == "fltarmoreffectiveness") {
-			missileArmorEffectiveness = value;
 		} else if (attribute == "energy_per_shot" || attribute == "ship_component_weapon_energy_per_shot") {
 			energyPerShot = value;
-		} else if (attribute == "refire_rate" || attribute == "ship_component_weapon_refire_rate" || attribute == "fltrefirerate") {
+		} else if (attribute == "refire_rate" || attribute == "ship_component_weapon_refire_rate") {
 			refireRate = value * 0.001f;
-		} else if (attribute == "fltmineffectiveness") {
-			chaffMinEffectiveness = value;
-		} else if (attribute == "fltmaxeffectiveness") {
-			chaffMaxEffectiveness = value;
-		} else if (attribute == "ammo" || attribute == "fltmaxammo") {
-			ammunition = value;
-		}
-
-		if (firstUpdate && group == "misc") {
-			values->setHidden(attribute);
 		}
 	}
 }
@@ -155,7 +132,7 @@ void ShipWeaponComponentImplementation::uninstall(CreatureObject* pilot, ShipObj
 }
 
 void ShipWeaponComponentImplementation::installAmmo(CreatureObject* pilot, ShipObject* ship, Component* ammo, int slot, bool notifyClient) {
-	if (pilot == nullptr || ship == nullptr) {
+	if (pilot == nullptr || ship == nullptr || ammo == nullptr) {
 		return;
 	}
 
@@ -167,18 +144,28 @@ void ShipWeaponComponentImplementation::installAmmo(CreatureObject* pilot, ShipO
 	float ammoShield = 0.f;
 	float ammoArmor = 0.f;
 	float ammoEnergy = 0.f;
-	float ammoRefire = ammo->getAttributeValue("refire_rate");
-	float ammoCount = ammo->getAttributeValue("ammo");
+	float ammoRefire = 0.f;
+	float ammoCount = ammo->getUseCount();
 
-	if (ammo->getClientGameObjectType() == SceneObjectType::SHIPCOUNTERMEASURE) {
-		ammoMin = ammo->getAttributeValue("fltmineffectiveness");
-		ammoMax = ammo->getAttributeValue("fltmaxeffectiveness");
-		ammoEnergy = ammo->getAttributeValue("energy_per_shot");
-	} else if (ammo->getClientGameObjectType() == SceneObjectType::SHIPMISSILE) {
-		ammoMin = ammo->getAttributeValue("fltmindamage");
-		ammoMax = ammo->getAttributeValue("fltmaxdamage");
-		ammoShield = ammo->getAttributeValue("fltshieldeffectiveness");
-		ammoArmor = ammo->getAttributeValue("fltarmoreffectiveness");
+	if (ammo->getGameObjectType() == SceneObjectType::SHIPCOUNTERMEASURE) {
+		auto counter = dynamic_cast<ShipCounterMeasureComponent*>(ammo);
+
+		if (counter != nullptr) {
+			ammoMin = counter->getEffectivenessMin();
+			ammoMax =  counter->getEffectivenessMax();
+			ammoEnergy =  counter->getEnergyPerShot();
+			ammoRefire =  counter->getRefireRate();
+		}
+	} else if (ammo->getGameObjectType() == SceneObjectType::SHIPMISSILE) {
+		auto missile = dynamic_cast<ShipMissileComponent*>(ammo);
+
+		if (missile != nullptr) {
+			ammoMin = missile->getMinDamage();
+			ammoMax =  missile->getMinDamage();
+			ammoShield = missile->getShieldEffectiveness();
+			ammoArmor = missile->getArmorEffectiveness();
+			ammoRefire =  missile->getRefireRate();
+		}
 	}
 
 	ship->setMinDamage(slot, ammoMin, nullptr, command, deltaVector);
