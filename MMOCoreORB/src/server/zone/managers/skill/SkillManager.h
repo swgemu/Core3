@@ -50,6 +50,8 @@ class SkillManager : public Singleton<SkillManager>, public Logger, public Objec
 
 	VectorMap<String, int> defaultXpLimits;
 
+	VectorMap<uint32, int> droidProgramSizes;
+
 	bool apprenticeshipEnabled;
 
 public:
@@ -130,6 +132,10 @@ public:
 	}
 
 	void removeSkillRelatedMissions(CreatureObject* creature, Skill* skill);
+
+	int getDroidProgramSize(uint32 programHash) {
+		return droidProgramSizes.get(programHash);
+	}
 };
 
 }

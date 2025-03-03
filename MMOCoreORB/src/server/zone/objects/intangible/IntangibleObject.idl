@@ -11,11 +11,14 @@ include server.zone.objects.scene.variables.ContainerPermissions;
 @json
 class IntangibleObject extends SceneObject {
 	protected unsigned int status;
+	protected float datapadSize;
+	protected string itemIdentifier;
 
 	public IntangibleObject() {
 		Logger.setLoggingName("IntangibleObject");
 
 		status = 0;
+		datapadSize = 1;
 
 		super.setContainerInheritPermissionsFromParent(false);
 		super.setContainerDefaultDenyPermission(ContainerPermissions.MOVECONTAINER);
@@ -50,11 +53,27 @@ class IntangibleObject extends SceneObject {
 	@preLocked
 	public native void updateStatus(int newStatus, boolean notifyClient = true);
 
+	@preLocked
+	public native void setCustomObjectName(final unicode name, boolean notifyClient);
+
+	@preLocked
+	public native void setDataSize(float dataSize, boolean notifyClient);
+
+	@preLocked
+	public native void setItemIdentifier(final string itemName, boolean notifyClient);
+
 	@read
 	public unsigned int getStatus() {
 		return status;
 	}
 
-	@preLocked
-	public native void setCustomObjectName(final unicode name, boolean notifyClient);
+	@read
+	public float getDataSize() {
+		return datapadSize;
+	}
+
+	@read
+	public string getItemIdentifier() {
+		return itemIdentifier;
+	}
 }

@@ -354,14 +354,16 @@ int DroidDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte
 		}
 
 		Reference<PetControlDevice*> controlDevice = (server->getZoneServer()->createObject(controlDeviceObjectTemplate.hashCode(), 1)).castTo<PetControlDevice*>();
+
 		if (controlDevice == nullptr) {
 			player->sendSystemMessage("wrong droid control device template " + controlDeviceObjectTemplate);
 			return 1;
 		}
 
-		Locker locker(controlDevice);
+		Locker locker(controlDevice, player);
 
 		Reference<CreatureObject*> creatureObject = creatureManager->createCreature(generatedObjectTemplate.hashCode(), true, mobileTemplate.hashCode());
+
 		if (creatureObject == nullptr) {
 			controlDevice->destroyObjectFromDatabase(true);
 			player->sendSystemMessage("wrong droid templates;mobileTemplate=[" + mobileTemplate + "];generatedObjectTemplate=[" + generatedObjectTemplate + "]");
@@ -371,6 +373,7 @@ int DroidDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte
 		Locker clocker(creatureObject, player);
 
 		Reference<DroidObject*> droid = creatureObject.castTo<DroidObject*>();
+
 		if (droid == nullptr) {
 			controlDevice->destroyObjectFromDatabase(true);
 			creatureObject->destroyObjectFromDatabase(true);
@@ -384,6 +387,7 @@ int DroidDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte
 		droid->setLevel(level);
 
 		float maxHam = DroidMechanics::determineHam(overallQuality, species);
+
 		for (int i = 0; i < 9; ++i) {
 			if (i % 3 == 0) {
 				droid->setBaseHAM(i, maxHam, false);
@@ -405,14 +409,19 @@ int DroidDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte
 
 		for (int i = 0; i < modules.size(); ++i) {
 			iterator.getNextKeyAndValue(key, comp);
-			if (comp != nullptr) {
-				if (!craftingComponentsSatchel->transferObject(comp, -1, false)) {
-					error("Error transferring droid module from Deed to Object");
-				}
 
-				BaseDroidModuleComponent* data = cast<BaseDroidModuleComponent*>(comp->getDataObjectComponent()->get());
-				if (data != nullptr)
-					data->initialize(droid);
+			if (comp == nullptr) {
+				continue;
+			}
+
+			if (!craftingComponentsSatchel->transferObject(comp, -1, false)) {
+				error("Error transferring droid module from Deed to Object");
+			}
+
+			BaseDroidModuleComponent* data = cast<BaseDroidModuleComponent*>(comp->getDataObjectComponent()->get());
+
+			if (data != nullptr) {
+				data->initialize(droid);
 			}
 		}
 
