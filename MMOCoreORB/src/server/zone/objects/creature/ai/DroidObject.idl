@@ -447,8 +447,12 @@ class DroidObject extends AiAgent {
 	}
 	@dirty
 	public native boolean isMerchantBarker();
+
 	@dirty
 	public native string getPersonalityStf();
+
+	@dirty
+	public native int getDataStorageCapacity();
 
 	@dirty
 	public native boolean isAdvancedModel();

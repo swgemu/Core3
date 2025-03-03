@@ -160,14 +160,19 @@ int ContainerComponent::canAddObject(SceneObject* sceneObject, SceneObject* obje
 bool ContainerComponent::checkContainerPermission(SceneObject* sceneObject, CreatureObject* creature, uint16 permission) const {
 	auto permissions = sceneObject->getContainerPermissions();
 
+	creature->info(true) << "ContainerComponent::checkContainerPermission -- Perm: " << permission << " Object ID: " << sceneObject->getObjectID();
+
 	if (permissions->getOwnerID() == creature->getObjectID()) {
+		creature->info(true) << "ret @ 1";
+
 		return permissions->hasOwnerPermission(permission);
 	}
 
 	PlayerObject* ghost = creature->getPlayerObject();
 
-	if (ghost == nullptr)
+	if (ghost == nullptr) {
 		return false;
+	}
 
 	if ((permission == ContainerPermissions::OPEN || permission == ContainerPermissions::WALKIN) && ghost->isPrivileged())
 		return true;
@@ -175,6 +180,8 @@ bool ContainerComponent::checkContainerPermission(SceneObject* sceneObject, Crea
 	ManagedReference<SceneObject*> parent = sceneObject->getParent().get();
 
 	if (permission != ContainerPermissions::MOVECONTAINER && permissions->hasInheritPermissionsFromParent() && parent != nullptr && parent != sceneObject) {
+		creature->info(true) << "ret @ parent usage";
+
 		return parent->checkContainerPermission(creature, permission);
 	} else if (permission == ContainerPermissions::MOVECONTAINER && sceneObject->isClientObject()) {
 		return false;
@@ -187,6 +194,8 @@ bool ContainerComponent::checkContainerPermission(SceneObject* sceneObject, Crea
 	for (int i = 0; i < groups->size(); ++i) {
 		const String& group = groups->get(i);
 
+		creature->info(true) << "Pulling From Permission group: " << group;
+
 		uint16 allow = permissions->getAllowPermissions(group);
 
 		allowPermissions |= allow;
@@ -195,6 +204,8 @@ bool ContainerComponent::checkContainerPermission(SceneObject* sceneObject, Crea
 
 		denyPermissions |= deny;
 	}
+
+	creature->info(true) << "return @ final";
 
 	return permission & (allowPermissions & ~denyPermissions);
 }

@@ -42,7 +42,7 @@
 
 
 object_intangible_data_item_droid_command = object_intangible_data_item_shared_droid_command:new {
-
+	containerComponent = "DroidCommandContainerComponent",
 }
 
 ObjectTemplates:addTemplate(object_intangible_data_item_droid_command, "object/intangible/data_item/droid_command.iff")

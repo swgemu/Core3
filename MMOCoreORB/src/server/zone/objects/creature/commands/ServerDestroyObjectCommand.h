@@ -30,7 +30,7 @@ public:
 			return GENERALERROR;
 		}
 
-		// creature->info(true) << "ServerDestroyObjectCommand - Target: " << target << " Args: " << arguments.toString();
+		creature->info(true) << "ServerDestroyObjectCommand - Target: " << target << " Args: " << arguments.toString();
 
 		ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(target);
 
@@ -59,15 +59,20 @@ public:
 		ManagedReference<SceneObject*> objectParent = object->getParent().get();
 
 		if (!object->checkContainerPermission(creature, ContainerPermissions::MOVECONTAINER)) {
+			creature->info(true) << "fail 1"; // this does not allow the command modules to be destroyed
+
 			return GENERALERROR;
 		}
 
 		if (objectParent != nullptr && !objectParent->checkContainerPermission(creature, ContainerPermissions::MOVEOUT)) {
+			creature->info(true) << "fail 2";
+
 			return GENERALERROR;
 		}
 
 		for (int i = 0; i < object->getArrangementDescriptorSize(); ++i) {
 			const Vector<String>* descriptors = object->getArrangementDescriptor(i);
+
 			for (int j = 0; j < descriptors->size(); ++j) {
 				const String& descriptor = descriptors->get(j);
 
@@ -75,6 +80,8 @@ public:
 					return GENERALERROR;
 			}
 		}
+
+		creature->info(true) << "past the checks";
 
 		TransactionLog trx(creature, TrxCode::SERVERDESTROYOBJECT, object);
 

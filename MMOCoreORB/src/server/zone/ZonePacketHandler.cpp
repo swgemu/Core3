@@ -54,6 +54,7 @@
 #include "packets/object/JtlShipListRequestCallback.h"
 #include "packets/object/GroupMemberSendSpaceInviteCallback.h"
 #include "packets/object/GroupMemberSpaceInviteResponseCallback.h"
+#include "packets/object/DroidCommandProgrammingCallback.h"
 
 #include "packets/jtl/CreateProjectileMessage.h"
 
@@ -214,6 +215,7 @@ void ZonePacketHandler::registerObjectControllerMessages() {
 	// Space Callbacks
 	objectMessageControllerFactory->registerObject<InsertedAsPilotCallback>(0x3fa);
 	objectMessageControllerFactory->registerObject<JtlShipListRequestCallback>(0x41C);
+	objectMessageControllerFactory->registerObject<DroidCommandProgrammingCallback>(0x435);
 	objectMessageControllerFactory->registerObject<GroupMemberSendSpaceInviteCallback>(0x436);
 	objectMessageControllerFactory->registerObject<GroupMemberSpaceInviteResponseCallback>(0x438);
 }

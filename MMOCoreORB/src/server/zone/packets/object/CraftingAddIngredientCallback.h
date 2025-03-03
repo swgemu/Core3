@@ -28,7 +28,8 @@ public:
 	}
 
 	void parse(Message* message) {
-		//System::out << message->toStringData() << endl;
+		// Logger::console.info(true) << "Raw Message: " << message->toStringData();
+
 		message->parseInt();
 
 		objectID = message->parseLong();

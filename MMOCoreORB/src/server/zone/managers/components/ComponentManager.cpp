@@ -32,6 +32,7 @@
 #include "server/zone/objects/installation/components/TurretContainerComponent.h"
 #include "server/zone/objects/installation/components/ScannerZoneComponent.h"
 #include "server/zone/objects/intangible/components/WarrenDiskContainerComponent.h"
+#include "server/zone/objects/intangible/components/DroidCommandContainerComponent.h"
 #include "server/zone/objects/tangible/components/vendor/AuctionTerminalDataComponent.h"
 #include "server/zone/objects/player/components/PlayerZoneComponent.h"
 #include "server/zone/objects/player/components/PlayerSpaceZoneComponent.h"
@@ -382,4 +383,5 @@ ComponentManager::ComponentManager() {
 	components.put("PobShipObjectMenuComponent", new PobShipObjectMenuComponent());
 	components.put("StarshipPaintKitObjectMenuComponent", new StarshipPaintKitObjectMenuComponent());
 	components.put("StarshipTextureKitObjectMenuComponent", new StarshipTextureKitObjectMenuComponent());
+	components.put("DroidCommandContainerComponent", new DroidCommandContainerComponent());
 }
