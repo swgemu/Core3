@@ -68,6 +68,7 @@ public:
 
 		for (int i = 0; i < object->getArrangementDescriptorSize(); ++i) {
 			const Vector<String>* descriptors = object->getArrangementDescriptor(i);
+
 			for (int j = 0; j < descriptors->size(); ++j) {
 				const String& descriptor = descriptors->get(j);
 

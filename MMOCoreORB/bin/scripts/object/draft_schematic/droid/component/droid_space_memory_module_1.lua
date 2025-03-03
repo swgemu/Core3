@@ -42,22 +42,19 @@
 
 
 object_draft_schematic_droid_component_droid_space_memory_module_1 = object_draft_schematic_droid_component_shared_droid_space_memory_module_1:new {
-
    templateType = DRAFTSCHEMATIC,
 
-   customObjectName = "Unprogrammed Droid Command Module",
-
    craftingToolTab = 32, -- (See DraftSchematicObjectTemplate.h)
-   complexity = 22, 
-   size = 1, 
+   complexity = 22,
+   size = 1,
 	factoryCrateType = "object/factory/factory_crate_electronics.iff",
 
-   xpType = "crafting_droid_general", 
-   xp = 80, 
+   xpType = "crafting_droid_general",
+   xp = 80,
 
-   assemblySkill = "droid_assembly", 
-   experimentingSkill = "droid_experimentation", 
-   customizationSkill = "droid_customization", 
+   assemblySkill = "droid_assembly",
+   experimentingSkill = "droid_experimentation",
+   customizationSkill = "droid_customization",
 
    customizationOptions = {},
    customizationStringNames = {},
@@ -73,8 +70,6 @@ object_draft_schematic_droid_component_droid_space_memory_module_1 = object_draf
 
    targetTemplate = "object/tangible/droid/droid_space_memory_module_1.iff",
 
-   additionalTemplates = {
-             }
-
+   additionalTemplates = {}
 }
 ObjectTemplates:addTemplate(object_draft_schematic_droid_component_droid_space_memory_module_1, "object/draft_schematic/droid/component/droid_space_memory_module_1.iff")

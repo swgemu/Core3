@@ -23,8 +23,11 @@ public:
 		// Volume
 		int volume = 0;
 
-		if (itno->isTangibleObject())
+		if (itno->isTangibleObject()) {
 			volume = itno->asTangibleObject()->getVolume();
+		} else {
+			volume = itno->getDataSize();
+		}
 
 		insertInt(volume);
 
