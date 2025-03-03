@@ -19,7 +19,7 @@ void ObjectControllerMessageCallback::parse(Message* message) {
 
 	objectID = message->parseLong();
 
-	// info(true) << "Object controller message - Priority: " << priority << " Type: " << type << " ObjectID: " << objectID;
+	info(true) << "Object controller message - Priority: " << priority << " Type: " << type << " ObjectID: " << objectID;
 
 	if (client != nullptr) {
 		client->debug() << "parsing objc type 0x" << hex << type;

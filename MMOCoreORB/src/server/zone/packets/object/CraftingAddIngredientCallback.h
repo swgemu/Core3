@@ -28,6 +28,10 @@ public:
 	}
 
 	void parse(Message* message) {
+		Logger::console.info(true) << "Raw Message: " << message->toStringData();
+
+		// Raw Message: Stream [43] 05 00 46 5E CE 80 83 00 00 00 07 01 00 00 A8 8E D8 03 00 00 01 00 00 00 00 00 03 92 D8 03 00 00 01 00 00 00 00 00 00 00 00 00 17
+
 		//System::out << message->toStringData() << endl;
 		message->parseInt();
 
