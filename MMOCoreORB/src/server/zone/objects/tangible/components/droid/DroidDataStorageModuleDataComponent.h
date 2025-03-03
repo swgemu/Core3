@@ -24,21 +24,11 @@ public:
 
 	~DroidDataStorageModuleDataComponent();
 
-	String getModuleName() const;
+	void initialize(DroidObject* droid);
 
 	void initializeTransientMembers();
 
 	void fillAttributeList(AttributeListMessage* msg, CreatureObject* droid);
-
-	int getBatteryDrain() { return 0;}
-
-	String toString() const;
-
-	void onCall();
-
-	void onStore();
-
-	bool isStackable() { return true; }
 
 	void copy(BaseDroidModuleComponent* other);
 
@@ -46,13 +36,31 @@ public:
 
 	void updateCraftingValues(CraftingValues* values, bool firstUpdate);
 
-	int getStorageRating();
-
 	void fillObjectMenuResponse(SceneObject* droidObject, ObjectMenuResponse* menuResponse, CreatureObject* player);
 
 	int handleObjectMenuSelect(CreatureObject* player, byte selectedID, PetControlDevice* controller);
 
-	void initialize(DroidObject* droid);
+	String getModuleName() const;
+
+	int getStorageRating();
+
+	String toString() const;
+
+	void onCall();
+
+	void onStore();
+
+	int getRating() {
+		return rating;
+	}
+
+	int getBatteryDrain() {
+		return 0;
+	}
+
+	bool isStackable() {
+		return true;
+	}
 };
 
 } // droid

@@ -5,17 +5,24 @@
 package server.zone.objects.intangible;
 
 import server.zone.objects.scene.SceneObject;
+import server.zone.packets.scene.AttributeListMessage;
+import server.zone.objects.creature.CreatureObject;
+
 include templates.SharedObjectTemplate;
 include server.zone.objects.scene.variables.ContainerPermissions;
 
 @json
 class IntangibleObject extends SceneObject {
 	protected unsigned int status;
+	protected float datapadSize;
+	protected string itemIdentifier;
 
 	public IntangibleObject() {
 		Logger.setLoggingName("IntangibleObject");
 
 		status = 0;
+		datapadSize = 0;
+		itemIdentifier = "";
 
 		super.setContainerInheritPermissionsFromParent(false);
 		super.setContainerDefaultDenyPermission(ContainerPermissions.MOVECONTAINER);
@@ -40,21 +47,41 @@ class IntangibleObject extends SceneObject {
 	}
 
 	@dirty
-	public boolean isIntangibleObject() {
-		return true;
-	}
+	public native void sendBaselinesTo(SceneObject player);
 
 	@dirty
-	public native void sendBaselinesTo(SceneObject player);
+	@local
+	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
 
 	@preLocked
 	public native void updateStatus(int newStatus, boolean notifyClient = true);
+
+	@preLocked
+	public native void setCustomObjectName(final unicode name, boolean notifyClient);
+
+	@preLocked
+	public native void setDataSize(float dataSize, boolean notifyClient);
+
+	@preLocked
+	public native void setItemIdentifier(final string itemName, boolean notifyClient);
 
 	@read
 	public unsigned int getStatus() {
 		return status;
 	}
 
-	@preLocked
-	public native void setCustomObjectName(final unicode name, boolean notifyClient);
+	@read
+	public float getDataSize() {
+		return datapadSize;
+	}
+
+	@read
+	public string getItemIdentifier() {
+		return itemIdentifier;
+	}
+
+	@dirty
+	public boolean isIntangibleObject() {
+		return true;
+	}
 }

@@ -12,6 +12,9 @@
 UniqueReference<MessageCallbackFactory<MessageCallback* (ObjectControllerMessageCallback*), uint32>*> ObjectControllerMessageCallback::objectMessageControllerFactory;
 
 void ObjectControllerMessageCallback::parse(Message* message) {
+	// StringBuffer msg;
+	// msg << "Object controller message Start -- Offset: " << message->getOffset();
+
 	priority = message->parseInt();
 	type = message->parseInt();
 
@@ -19,7 +22,7 @@ void ObjectControllerMessageCallback::parse(Message* message) {
 
 	objectID = message->parseLong();
 
-	// info(true) << "Object controller message - Priority: " << priority << " Type: " << type << " ObjectID: " << objectID;
+	// msg << "Priority: " << priority << " Type: " << type << " ObjectID: " << objectID;
 
 	if (client != nullptr) {
 		client->debug() << "parsing objc type 0x" << hex << type;
@@ -38,6 +41,8 @@ void ObjectControllerMessageCallback::parse(Message* message) {
 	if (!newTaskQueue.isEmpty()) {
 		setCustomTaskQueue(newTaskQueue);
 	}
+
+	// info(true) << msg.toString();
 
 	try {
 		objectControllerCallback->parse(message);

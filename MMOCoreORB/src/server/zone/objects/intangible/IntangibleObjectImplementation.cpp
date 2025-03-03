@@ -8,6 +8,7 @@
 #include "server/zone/packets/intangible/IntangibleObjectMessage3.h"
 #include "server/zone/packets/intangible/IntangibleObjectMessage6.h"
 #include "server/zone/packets/intangible/IntangibleObjectDeltaMessage3.h"
+#include "server/zone/packets/intangible/IntangibleObjectDeltaMessage6.h"
 #include "server/zone/packets/scene/IsFlattenedTheaterMessage.h"
 
 void IntangibleObjectImplementation::initializeTransientMembers() {
@@ -35,6 +36,16 @@ void IntangibleObjectImplementation::sendBaselinesTo(SceneObject* player) {
 	}
 }
 
+void IntangibleObjectImplementation::fillAttributeList(AttributeListMessage* alm, CreatureObject* player) {
+	if (datapadSize > 0) {
+		alm->insertAttribute("droid_command_program_size", datapadSize);
+	}
+
+	if (!itemIdentifier.isEmpty()) {
+		alm->insertAttribute("droid_command_name", itemIdentifier);
+	}
+}
+
 void IntangibleObjectImplementation::updateStatus(int newStatus, bool notifyClient) {
 	if (status == newStatus)
 		return;
@@ -53,21 +64,71 @@ void IntangibleObjectImplementation::updateStatus(int newStatus, bool notifyClie
 	if (player == nullptr)
 		return;
 
-	IntangibleObjectDeltaMessage3* delta = new IntangibleObjectDeltaMessage3(_this.getReferenceUnsafeStaticCast());
-	delta->updateStatus(newStatus);
-	delta->close();
-	player->sendMessage(delta);
+	IntangibleObjectDeltaMessage3* intangibleDelta3 = new IntangibleObjectDeltaMessage3(_this.getReferenceUnsafeStaticCast());
+
+	if (intangibleDelta3 == nullptr) {
+		return;
+	}
+
+	intangibleDelta3->updateStatus(newStatus);
+	intangibleDelta3->close();
+
+	player->sendMessage(intangibleDelta3);
 }
 
 void IntangibleObjectImplementation::setCustomObjectName(const UnicodeString& name, bool notifyClient) {
 	customName = name;
 
-	if (!notifyClient)
+	if (!notifyClient) {
 		return;
+	}
 
-	IntangibleObjectDeltaMessage3* ditno3 = new IntangibleObjectDeltaMessage3(_this.getReferenceUnsafeStaticCast());
-	ditno3->updateName(name);
-	ditno3->close();
+	IntangibleObjectDeltaMessage3* intangibleDelta3 = new IntangibleObjectDeltaMessage3(_this.getReferenceUnsafeStaticCast());
 
-	broadcastMessage(ditno3, true);
+	if (intangibleDelta3 == nullptr) {
+		return;
+	}
+
+	intangibleDelta3->updateName(name);
+	intangibleDelta3->close();
+
+	broadcastMessage(intangibleDelta3, true);
+}
+
+void IntangibleObjectImplementation::setDataSize(const float dataSize, bool notifyClient) {
+	datapadSize = dataSize;
+
+	if (!notifyClient) {
+		return;
+	}
+
+	IntangibleObjectDeltaMessage3* intangibleDelta3 = new IntangibleObjectDeltaMessage3(_this.getReferenceUnsafeStaticCast());
+
+	if (intangibleDelta3 == nullptr) {
+		return;
+	}
+
+	intangibleDelta3->updateDataSize(datapadSize);
+	intangibleDelta3->close();
+
+	broadcastMessage(intangibleDelta3, true);
+}
+
+void IntangibleObjectImplementation::setItemIdentifier(const String& itemName, bool notifyClient) {
+	itemIdentifier = itemName;
+
+	if (!notifyClient) {
+		return;
+	}
+
+	IntangibleObjectDeltaMessage6* intangibleDelta6 = new IntangibleObjectDeltaMessage6(_this.getReferenceUnsafeStaticCast());
+
+	if (intangibleDelta6 == nullptr) {
+		return;
+	}
+
+	intangibleDelta6->updateItemIdentifier(itemIdentifier);
+	intangibleDelta6->close();
+
+	broadcastMessage(intangibleDelta6, true);
 }

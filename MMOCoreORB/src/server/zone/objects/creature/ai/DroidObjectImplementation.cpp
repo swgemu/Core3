@@ -13,6 +13,7 @@
 #include "server/zone/objects/tangible/components/droid/DroidCraftingModuleDataComponent.h"
 #include "server/zone/objects/tangible/components/droid/DroidPersonalityModuleDataComponent.h"
 #include "server/zone/objects/tangible/components/droid/DroidMaintenanceModuleDataComponent.h"
+#include "server/zone/objects/tangible/components/droid/DroidDataStorageModuleDataComponent.h"
 #include "server/zone/objects/structure/StructureObject.h"
 #include "server/zone/objects/creature/conversation/ConversationObserver.h"
 #include "server/zone/objects/tangible/weapon/WeaponObject.h"
@@ -526,4 +527,27 @@ String DroidObjectImplementation::getPersonalityStf() {
 	}
 
 	return "";
+}
+
+int DroidObjectImplementation::getDataStorageCapacity() {
+	int capacity = 0;
+
+	for (int i = 0; i < modules.size(); i++) {
+		auto module = modules.get(i);
+
+		if (module == nullptr || module->getModuleName() != "datapad_storage_module") {
+			continue;
+		}
+
+		DroidDataStorageModuleDataComponent* dataModule = cast<DroidDataStorageModuleDataComponent*>(module.get());
+
+		if (dataModule == nullptr) {
+			continue;
+		}
+
+		capacity += (dataModule->getRating() * 10);
+		break;
+	}
+
+	return capacity + 10;
 }
