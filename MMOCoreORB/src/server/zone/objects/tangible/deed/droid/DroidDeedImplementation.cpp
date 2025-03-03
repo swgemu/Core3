@@ -405,14 +405,19 @@ int DroidDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte
 
 		for (int i = 0; i < modules.size(); ++i) {
 			iterator.getNextKeyAndValue(key, comp);
-			if (comp != nullptr) {
-				if (!craftingComponentsSatchel->transferObject(comp, -1, false)) {
-					error("Error transferring droid module from Deed to Object");
-				}
 
-				BaseDroidModuleComponent* data = cast<BaseDroidModuleComponent*>(comp->getDataObjectComponent()->get());
-				if (data != nullptr)
-					data->initialize(droid);
+			if (comp == nullptr) {
+				continue;
+			}
+
+			if (!craftingComponentsSatchel->transferObject(comp, -1, false)) {
+				error("Error transferring droid module from Deed to Object");
+			}
+
+			BaseDroidModuleComponent* data = cast<BaseDroidModuleComponent*>(comp->getDataObjectComponent()->get());
+
+			if (data != nullptr) {
+				data->initialize(droid);
 			}
 		}
 
