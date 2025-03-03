@@ -107,6 +107,36 @@ void SkillManager::loadClientData() {
 		}
 	}
 
+	// Load Droid Command Sizes
+	iffStream = TemplateManager::instance()->openIffFile("datatables/space_command/droid_program_size.iff");
+
+	if (iffStream != nullptr) {
+		DataTableIff datatableIff;
+		datatableIff.readObject(iffStream);
+
+		delete iffStream;
+
+		for (int i = 0; i < datatableIff.getTotalRows(); ++i) {
+			DataTableRow* row = datatableIff.getRow(i);
+
+			if (row == nullptr) {
+				continue;
+			}
+
+			String programName = "";
+			int programSize = 1;
+
+			row->getValue(0, programName);
+			row->getValue(1, programSize);
+
+			if (programName.isEmpty()) {
+				continue;
+			}
+
+			droidProgramSizes.put(programName.hashCode(), programSize);
+		}
+	}
+
 	loadFromLua();
 
 	//If the admin ability isn't in the ability map, then we want to add it manually.
@@ -123,8 +153,8 @@ void SkillManager::loadClientData() {
 
 	loadXpLimits();
 
-	info(true) << "Successfully loaded " << skillMap.size() <<
-	       	" skills and " << abilityMap.size() << " abilities.";
+	info(true) << "Loaded " << skillMap.size() << " skills and " << abilityMap.size() << " abilities.";
+	info(true) << "Loaded " << droidProgramSizes.size() << " Droid Space Command Sizes.";
 }
 
 void SkillManager::loadFromLua() {

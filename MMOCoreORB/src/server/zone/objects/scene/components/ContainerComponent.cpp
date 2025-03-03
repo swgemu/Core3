@@ -160,17 +160,21 @@ int ContainerComponent::canAddObject(SceneObject* sceneObject, SceneObject* obje
 bool ContainerComponent::checkContainerPermission(SceneObject* sceneObject, CreatureObject* creature, uint16 permission) const {
 	auto permissions = sceneObject->getContainerPermissions();
 
+	// creature->info(true) << "ContainerComponent::checkContainerPermission -- Perm: " << permission << " Object ID: " << sceneObject->getObjectID();
+
 	if (permissions->getOwnerID() == creature->getObjectID()) {
 		return permissions->hasOwnerPermission(permission);
 	}
 
 	PlayerObject* ghost = creature->getPlayerObject();
 
-	if (ghost == nullptr)
+	if (ghost == nullptr) {
 		return false;
+	}
 
-	if ((permission == ContainerPermissions::OPEN || permission == ContainerPermissions::WALKIN) && ghost->isPrivileged())
+	if ((permission == ContainerPermissions::OPEN || permission == ContainerPermissions::WALKIN) && ghost->isPrivileged()) {
 		return true;
+	}
 
 	ManagedReference<SceneObject*> parent = sceneObject->getParent().get();
 
