@@ -11,19 +11,17 @@
 
 class AssociateDroidControlDeviceWithShipCommand : public QueueCommand {
 public:
-
-	AssociateDroidControlDeviceWithShipCommand(const String& name, ZoneProcessServer* server)
-		: QueueCommand(name, server) {
-
+	AssociateDroidControlDeviceWithShipCommand(const String& name, ZoneProcessServer* server) : QueueCommand(name, server) {
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
-
-		if (!checkStateMask(creature))
+		if (!checkStateMask(creature)) {
 			return INVALIDSTATE;
+		}
 
-		if (!checkInvalidLocomotions(creature))
+		if (!checkInvalidLocomotions(creature)) {
 			return INVALIDLOCOMOTION;
+		}
 
 		auto zoneServer = creature->getZoneServer();
 
@@ -114,4 +112,4 @@ public:
 	}
 };
 
-#endif //ASSOCIATEDROIDCONTROLDEVICEWITHSHIPCOMMAND_H_
+#endif // ASSOCIATEDROIDCONTROLDEVICEWITHSHIPCOMMAND_H_
