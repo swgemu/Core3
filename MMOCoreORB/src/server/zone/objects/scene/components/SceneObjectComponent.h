@@ -9,6 +9,7 @@
 #define SCENEOBJECTCOMPONENT_H_
 
 #include "engine/engine.h"
+#include "templates/params/creature/PlayerArrangement.h"
 
 class SceneObjectComponent : public virtual Object {
 
