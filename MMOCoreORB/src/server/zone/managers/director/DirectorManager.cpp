@@ -108,6 +108,7 @@
 #include "server/zone/objects/ship/components/ShipComponent.h"
 #include "server/zone/objects/area/space/SpaceActiveArea.h"
 #include "server/zone/objects/area/areashapes/SphereAreaShape.h"
+#include "server/zone/packets/ui/CreateClientPathMessage.h"
 
 int DirectorManager::DEBUG_MODE = 0;
 int DirectorManager::ERROR_CODE = NO_ERROR;
@@ -542,6 +543,7 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	luaEngine->registerFunction("broadcastToGalaxy", broadcastToGalaxy);
 	luaEngine->registerFunction("getWorldFloor", getWorldFloor);
 	luaEngine->registerFunction("useCovertOvert", useCovertOvert);
+	luaEngine->registerFunction("drawClientPath", drawClientPath);
 
 	// JTL
 	luaEngine->registerFunction("generateShipDeed", generateShipDeed);
@@ -5107,3 +5109,29 @@ int DirectorManager::grantStarterShip(lua_State* L) {
 	return 0;
 }
 
+int DirectorManager::drawClientPath(lua_State* L) {
+	if (checkArgumentCount(L, 7) == 1) {
+		String err = "incorrect number of arguments passed to DirectorManager::grantStarterShip";
+		printTraceError(L, err);
+		ERROR_CODE = INCORRECT_ARGUMENTS;
+		return 0;
+	}
+
+	SceneObject* obj = (SceneObject*) lua_touserdata(L, -7);
+
+	float x1 = lua_tonumber(L, -6);
+	float z1 = lua_tonumber(L, -5);
+	float y1 = lua_tonumber(L, -4);
+	float x2 = lua_tonumber(L, -3);
+	float z2 = lua_tonumber(L, -2);
+	float y2 = lua_tonumber(L, -1);
+
+	CreateClientPathMessage* pathMessage = new CreateClientPathMessage();
+
+	pathMessage->addCoordinate(x1, z1, y1);
+	pathMessage->addCoordinate(x2, z2, y2);
+
+	obj->broadcastMessage(pathMessage, true);
+
+	return 0;
+}

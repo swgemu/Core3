@@ -16,11 +16,11 @@ SpaceEscortScreenplay = SpaceQuestLogic:new {
 	sideQuest = false,
 	sideQuestType = "",
 
-	DEBUG_SPACE_ESCORT = false,
+	DEBUG_SPACE_ESCORT = true,
 
 	escortRange = 1000,
 	escortSpeed = 20,
-	testEscortSpeed = 75,
+	testEscortSpeed = 40,
 
 	escortShip = "",
 
@@ -421,7 +421,11 @@ function SpaceEscortScreenplay:spawnEscortShip(pPlayer)
 	ShipAiAgent(pShipAgent):tauntPlayer(pPlayer, "@spacequest/" .. self.questType .. "/" .. self.questName .. ":reason_" .. tostring(getRandomNumber(1, self.tauntData.tauntCount)))
 
 	-- Schedule attack wave
-	createEvent(self.attackDelay * 1000, self.className, "spawnAttackWave", pShipAgent, "")
+	--createEvent(self.attackDelay * 1000, self.className, "spawnAttackWave", pShipAgent, "")
+
+	createEvent(10 * 1000, self.className, "spawnAttackWave", pShipAgent, "")
+
+
 end
 
 function SpaceEscortScreenplay:assignEscortPoints(pShipAgent)
@@ -581,6 +585,8 @@ function SpaceEscortScreenplay:spawnAttackWave(pEscortAgent)
 	local y = SceneObject(pEscortAgent):getPositionY()
 	local spawnZone = self.questZone
 
+	local spawnLocation = ShipObject(pEscortAgent):getSpawnPointInFrontOfShip(600, 1200)
+
 	local spawnTable = {}
 
 	if (self.dutyMission) then
@@ -596,10 +602,13 @@ function SpaceEscortScreenplay:spawnAttackWave(pEscortAgent)
 
 	if (self.DEBUG_SPACE_ESCORT) then
 		print(self.className .. ":spawnAttackWave -- Spawn Table Size: " .. #spawnTable .. " Spawn Zone: " .. spawnZone .. " Player Faction Hash: " .. playerFactionHash)
+		print("Player Position - x = " .. x .. " z = " .. z .. " y = " .. y .. " Spawn Position - x = " .. spawnLocation[1] .. " z = " .. spawnLocation[2] .. " y = " .. spawnLocation[3])
+
+		drawClientPath(pEscortAgent, x, z, y, spawnLocation.x, spawnLocation.z, spawnLocation.y)
 	end
 
 	for i = 1, #spawnTable, 1 do
-		local pShipAgent = spawnShipAgent(spawnTable[i], spawnZone, x + (getRandomNumber(200, 850) - getRandomNumber(200, 850)), z  + (getRandomNumber(200, 850) - getRandomNumber(200, 850)), y  + (getRandomNumber(200, 850) - getRandomNumber(200, 850)))
+		local pShipAgent = spawnShipAgent(spawnTable[i], spawnZone, spawnLocation[1] + getRandomNumber(50, 150), spawnLocation[2] + getRandomNumber(50, 150), spawnLocation[3] + getRandomNumber(50, 150))
 
 		if (pShipAgent == nil) then
 			goto continue
@@ -700,6 +709,10 @@ function SpaceEscortScreenplay:enteredZone(pPlayer, nill, zoneNameHash)
 		return 0
 	end
 
+	if (not SpaceHelpers:isSpaceQuestActive(pPlayer, self.questType, self.questName)) then
+		return 1
+	end
+
 	local pGhost = CreatureObject(pPlayer):getPlayerObject()
 
 	if (pGhost == nullptr) then
@@ -731,7 +744,7 @@ function SpaceEscortScreenplay:enteredZone(pPlayer, nill, zoneNameHash)
 		createEvent(4000, self.className, "setupEscort", pPlayer, "")
 
 		return 0
-	else
+	elseif (zoneNameHash ~= spaceQuestHash and SpaceHelpers:isSpaceQuestTaskComplete(pPlayer, self.questType, self.questName, 1)) then
 		createEvent(2000, self.className, "failQuest", pPlayer, "true")
 
 		return 1
