@@ -101,6 +101,9 @@ function SpaceDestroyScreenplay:failQuest(pPlayer, notifyClient)
 	-- Remove any patrol points
 	SpaceHelpers:clearQuestWaypoints(pPlayer, self.className)
 
+	-- Remove the kill data
+	deleteData(SceneObject(pPlayer):getObjectID() .. ":" .. self.className .. ":killCount")
+
 	-- Remove the zone entry observer
 	dropObserver(ZONESWITCHED, self.className, "enteredZone", pPlayer)
 
@@ -129,6 +132,10 @@ function SpaceDestroyScreenplay:enteredZone(pPlayer, nill, zoneNameHash)
 		return 0
 	end
 
+	if (not SpaceHelpers:isSpaceQuestActive(pPlayer, self.questType, self.questName)) then
+		return 1
+	end
+
 	local pGhost = CreatureObject(pPlayer):getPlayerObject()
 
 	if (pGhost == nullptr) then
@@ -153,11 +160,10 @@ function SpaceDestroyScreenplay:enteredZone(pPlayer, nill, zoneNameHash)
 		-- Complete the quest task 0
 		SpaceHelpers:completeSpaceQuestTask(pPlayer, self.questType, self.questName, 0, false)
 
-		-- Activate quest task 1
-		SpaceHelpers:activateSpaceQuestTask(pPlayer, self.questType, self.questName, 1, false)
-
 		-- Create Ship Destruction observer
-		createObserver(DESTROYEDSHIP, self.className, "notifyDestroyedShip", pPlayer, true)
+		if (not hasObserver(DESTROYEDSHIP, self.className, "notifyDestroyedShip", pPlayer)) then
+			createObserver(DESTROYEDSHIP, self.className, "notifyDestroyedShip", pPlayer, true)
+		end
 
 		-- Give Waypoints for Spawns
 		local waypointTable = self.shipLocations
@@ -194,7 +200,7 @@ function SpaceDestroyScreenplay:enteredZone(pPlayer, nill, zoneNameHash)
 
 		-- Player effect for player
 		CreatureObject(pPlayer):playEffect("clienteffect/ui_quest_waypoint_target.cef", "")
-	elseif (not hasObserver(DESTROYEDSHIP, self.className, "notifyDestroyedShip", pPlayer)) then
+	elseif (zoneNameHash ~= spaceQuestHash and SpaceHelpers:isSpaceQuestTaskActive(pPlayer, self.questType, self.questName, 1)) then
 		self:failQuest(pPlayer, "true")
 	end
 
@@ -211,11 +217,6 @@ function SpaceDestroyScreenplay:notifyDestroyedShip(pPlayer, pShipAgent)
 	end
 
 	if (pPlayer == nil or not SceneObject(pPlayer):isPlayerCreature()) then
-		return 1
-	end
-
-	-- Check is kill task is active
-	if (not SpaceHelpers:isSpaceQuestTaskActive(pPlayer, self.questType, self.questName, 1)) then
 		return 1
 	end
 
@@ -265,6 +266,9 @@ function SpaceDestroyScreenplay:notifyDestroyedShip(pPlayer, pShipAgent)
 	end
 
 	if (killCount == 1) then
+		-- Activate quest task 1
+		SpaceHelpers:activateSpaceQuestTask(pPlayer, self.questType, self.questName, 1, false)
+
 		SpaceHelpers:sendQuestProgess(pPlayer, "@spacequest/" .. self.questType .. "/" .. self.questName .. ":title")
 	end
 

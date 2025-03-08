@@ -140,7 +140,7 @@ namespace creature {
 		int isImperialPilot(lua_State* L);
 		int isNeutralPilot(lua_State* L);
 		int hasCertifiedShip(lua_State* L);
-		int abortQuestMission(lua_State* L);
+		int failQuestMission(lua_State* L);
 		int removeQuestMission(lua_State* L);
 		int addSpaceMissionObject(lua_State* L);
 		int removeSpaceMissionObject(lua_State* L);
