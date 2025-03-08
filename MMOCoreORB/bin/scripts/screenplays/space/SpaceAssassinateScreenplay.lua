@@ -355,6 +355,10 @@ function SpaceAssassinateScreenplay:enteredZone(pPlayer, nill, zoneNameHash)
 		return 0
 	end
 
+	if (not SpaceHelpers:isSpaceQuestActive(pPlayer, self.questType, self.questName)) then
+		return 1
+	end
+
 	local pGhost = CreatureObject(pPlayer):getPlayerObject()
 
 	if (pGhost == nullptr) then
@@ -374,8 +378,10 @@ function SpaceAssassinateScreenplay:enteredZone(pPlayer, nill, zoneNameHash)
 		print(self.className .. ":enteredZone called -- QuestType: " .. self.questType .. " Quest Name: " .. self.questName .. " Player Zone Hash: " .. zoneNameHash .. " questZone hash: " .. spaceQuestHash)
 	end
 
+	local hasEnteredZone = SpaceHelpers:isSpaceQuestTaskComplete(pPlayer, self.questType, self.questName, 0)
+
 	-- Player is in the correct zone
-	if (zoneNameHash == spaceQuestHash and not SpaceHelpers:isSpaceQuestTaskComplete(pPlayer, self.questType, self.questName, 0)) then
+	if (zoneNameHash == spaceQuestHash and not hasEnteredZone) then
 		-- Complete the quest task 0
 		SpaceHelpers:completeSpaceQuestTask(pPlayer, self.questType, self.questName, 0, false)
 
@@ -387,7 +393,7 @@ function SpaceAssassinateScreenplay:enteredZone(pPlayer, nill, zoneNameHash)
 
 		-- Schedule the deployment
 		createEvent(self.arrivalDelay * 1000, self.className, "deployTargets", pPlayer, "")
-	else
+	elseif (zoneNameHash ~= spaceQuestHash and hasEnteredZone) then
 		createEvent(2000, self.className, "failQuest", pPlayer, "true")
 	end
 
