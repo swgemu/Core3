@@ -172,6 +172,10 @@ function SpacePatrolScreenplay:enteredZone(pPlayer, nill, zoneNameHash)
 		return 0
 	end
 
+	if (not SpaceHelpers:isSpaceQuestActive(pPlayer, self.questType, self.questName)) then
+		return 1
+	end
+
 	local pGhost = CreatureObject(pPlayer):getPlayerObject()
 
 	if (pGhost == nullptr) then
@@ -193,7 +197,7 @@ function SpacePatrolScreenplay:enteredZone(pPlayer, nill, zoneNameHash)
 
 	-- Player is in the correct zone
 	if (zoneNameHash == spaceQuestHash and not SpaceHelpers:isSpaceQuestTaskComplete(pPlayer, self.questType, self.questName, 0)) then
-		-- Complete the quest task 1
+		-- Complete the quest task 0
 		SpaceHelpers:completeSpaceQuestTask(pPlayer, self.questType, self.questName, 0, false)
 
 		-- Activate quest task 2
@@ -215,7 +219,7 @@ function SpacePatrolScreenplay:enteredZone(pPlayer, nill, zoneNameHash)
 		createEvent(4000, self.className, "alertPatrolPoint", pPlayer, "")
 
 		return 0
-	else
+	elseif (zoneNameHash ~= spaceQuestHash and SpaceHelpers:isSpaceQuestTaskComplete(pPlayer, self.questType, self.questName, 2)) then
 		createEvent(2000, self.className, "failQuest", pPlayer, "true")
 		return 1
 	end
@@ -275,6 +279,8 @@ function SpacePatrolScreenplay:notifyEnteredQuestArea(pActiveArea, pShip)
 	-- Arrived at first waypoint, send them the initial progress message
 	elseif (playerPointCount == 0) then
 		SpaceHelpers:sendQuestProgess(pPilot, "@spacequest/" .. self.questType .. "/" .. self.questName .. ":title")
+
+		SpaceHelpers:completeSpaceQuestTask(pPilot, self.questType, self.questName, 2, false)
 	end
 
 	-- Update players point count

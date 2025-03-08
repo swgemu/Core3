@@ -43,11 +43,7 @@ public:
 
 		ManagedReference<SceneObject*> mission = zoneServer->getObject(missionObjectID);
 
-		if (mission == nullptr) {
-			return;
-		}
-
-		if (!mission->isMissionObject()) {
+		if (mission == nullptr || !mission->isMissionObject()) {
 			return;
 		}
 
