@@ -105,8 +105,12 @@ function SpaceSurpriseAttackScreenplay:spawnSurpriseAttack(pPilot)
 	local z = SceneObject(pPilotShip):getPositionZ()
 	local y = SceneObject(pPilotShip):getPositionY()
 
+	local direction = SceneObject(pPilotShip):getDirection()
+	local spawnLocation = SpaceHelpers:getRandomPositionInDirection({x = x, z = z, y = y}, 600, 1200, {w = direction[1], x = direction[2], y = direction[3], z = direction[4]})
+
 	if (self.DEBUG_SPACE_SURPRISE_ATTACK) then
-		print(self.className .. ":spawnSurpriseAttack - Space Quest: " .. self.questName)
+		print(self.className .. ":spawnSurpriseAttack - Space Quest: " .. self.questName .. " Player Position - x = " .. x .. " z = " .. z .. " y = " .. y .. " Spawn Position - x = " .. spawnLocation.x .. " z = " .. spawnLocation.z .. " y = " .. spawnLocation.y)
+		drawClientPath(pPilotShip, x, z, y, spawnLocation.x, spawnLocation.z, spawnLocation.y)
 	end
 
 	local attackShips = self.surpriseAttackShips
@@ -130,7 +134,7 @@ function SpaceSurpriseAttackScreenplay:spawnSurpriseAttack(pPilot)
 		end
 
 		for j = 1, count, 1 do
-			local pShipAgent = spawnShipAgent(shipName, spawnZone, x + (getRandomNumber(50, 250) - getRandomNumber(50, 250)), z  + (getRandomNumber(50, 250) - getRandomNumber(50, 250)), y  + (getRandomNumber(50, 250) - getRandomNumber(50, 250)))
+			local pShipAgent = spawnShipAgent(shipName, spawnZone, spawnLocation.x + getRandomNumber(50, 150), spawnLocation.z  + getRandomNumber(50, 150), spawnLocation.y  + getRandomNumber(50, 150))
 
 			if (pShipAgent ~= nil) then
 				-- Setup the patrol
@@ -191,6 +195,10 @@ function SpaceSurpriseAttackScreenplay:enteredZone(pPlayer, nill, zoneNameHash)
 		return 0
 	end
 
+	if (not SpaceHelpers:isSpaceQuestActive(pPlayer, self.questType, self.questName)) then
+		return 1
+	end
+
 	local pGhost = CreatureObject(pPlayer):getPlayerObject()
 
 	if (pGhost == nullptr) then
@@ -210,7 +218,7 @@ function SpaceSurpriseAttackScreenplay:enteredZone(pPlayer, nill, zoneNameHash)
 		print(self.className .. ":enteredZone called -- QuestType: " .. self.questType .. " Quest Name: " .. self.questName .. " Player Zone Hash: " .. zoneNameHash .. " questZone hash: " .. spaceQuestHash)
 	end
 
-	if (spaceQuestHash ~= zoneNameHash) then
+	if (spaceQuestHash ~= zoneNameHash and SpaceHelpers:isSpaceQuestTaskComplete(pPlayer, self.questType, self.questName, 0)) then
 		createEvent(2000, self.className, "failQuest", pPlayer, "true")
 		return 1
 	end
