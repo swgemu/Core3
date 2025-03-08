@@ -1314,4 +1314,61 @@ function SpaceHelpers:delayedDestroyShipAgent(pShipAgent)
 	SceneObject(pShipAgent):destroyObjectFromWorld()
 end
 
+-- @param x, z, y - center coordinates
+-- @param minRange - min distance to find the location
+-- @param maxRange - max distance to find the location
+function SpaceHelpers:getRandomPositionInSphere(x, z, y, minRange, maxRange)
+	local radius = getRandomNumber(minRange, maxRange)
+	local theta = math.random() * (2 * math.pi)  -- Random angle in XY plane
+	local phi = math.acos(2 * math.random() - 1) -- Random angle in vertical plane
+
+	local dx = radius * math.sin(phi) * math.cos(theta)
+	local dy = radius * math.sin(phi) * math.sin(theta)
+	local dz = radius * math.cos(phi)
+
+	return {x = x + dx, z = z + dz, y = y + dy}
+end
+
+-- @param x, z, y - center coordinates
+-- @param minRange - min distance to find the location
+-- @param maxRange - max distance to find the location
+-- @param qw, qx, qy, qz - quaternion direction
+function SpaceHelpers:getRandomPositionInDirection(startPos, minRange, maxRange, quaternion)
+	local distance = getRandomNumber(minRange, maxRange)
+
+	-- Function to apply quaternion rotation to a vector
+	local function rotateVectorByQuaternion(position, quat)
+		local x, y, z = position.x, position.y, position.z
+		local qx, qy, qz, qw = quat.x, quat.y, quat.z, quat.w
+
+		-- Quaternion-vector multiplication (rotating the vector)
+		local tx = 2 * (qy * z - qz * y)
+		local ty = 2 * (qz * x - qx * z)
+		local tz = 2 * (qx * y - qy * x)
+
+		local rx = x + qw * tx + (qy * tz - qz * ty)
+		local ry = y + qw * ty + (qz * tx - qx * tz)
+		local rz = z + qw * tz + (qx * ty - qy * tx)
+
+		return { x = rx, y = ry, z = rz }
+	end
+
+	--print("getRandomPositionInDirection - Coords: x = " .. startPos.x .. " z = " .. startPos.z .. " y = " .. startPos.y .. " Distance = " .. distance .. " Quat: qw = " .. quaternion.w .. " qx = " .. quaternion.x .. " qy = " .. quaternion.y .. " qz = " .. quaternion.z)
+
+	-- Define the forward vector (assuming +Z is forward)
+	local forward = { x = 0, y = 0, z = 1 }
+
+	-- Rotate forward vector by quaternion
+	local direction = rotateVectorByQuaternion(forward, quaternion)
+
+	-- Scale by distance and add to start position
+	local newX = startPos.x + direction.x * distance
+	local newZ = startPos.y + direction.y * distance
+	local newY = startPos.z + direction.z * distance
+
+	--print(string.format("New Position: x=%.2f, z=%.2f, y=%.2f", newX, newZ, newY))
+
+	return {x = newX, z = newZ, y = newY}
+end
+
 return SpaceHelpers
