@@ -130,14 +130,14 @@ function SpawnMobiles.spawnMobileObjects(pSceneObject, prefix, mobileList, spawn
 			spawnedObject = spawnMobile(SceneObject(pSceneObject):getZoneName(), mobileList[spawnNumber]["template"], 0, spawnPoints[spawnNumber][1], spawnPoints[spawnNumber][2], spawnPoints[spawnNumber][3], getRandomNumber(360) - 180, SceneObject(pSceneObject):getParentID())
 		end
 
-		if (spawnedObject ~= nil) then
+		if (SpawnMobiles.isValidMobile(spawnedObject)) then
 			if (mobileList[spawnNumber]["setNotAttackable"]) then
 				AiAgent(spawnedObject):setNoAiAggro()
 			end
 
 			spawnedObjects[spawnNumber] = spawnedObject
 		else
-			spawnedObjects[spawnNumber] = -1
+			spawnedObjects[spawnNumber] = nil
 		end
 	end
 

@@ -172,6 +172,10 @@ function SpacePatrolScreenplay:enteredZone(pPlayer, nill, zoneNameHash)
 		return 0
 	end
 
+	if (not SpaceHelpers:isSpaceQuestActive(pPlayer, self.questType, self.questName)) then
+		return 1
+	end
+
 	local pGhost = CreatureObject(pPlayer):getPlayerObject()
 
 	if (pGhost == nullptr) then
@@ -191,9 +195,11 @@ function SpacePatrolScreenplay:enteredZone(pPlayer, nill, zoneNameHash)
 		print(self.className .. ":enteredZone called -- QuestType: " .. self.questType .. " Quest Name: " .. self.questName .. " Player Zone Hash: " .. zoneNameHash .. " questZone hash: " .. spaceQuestHash)
 	end
 
+	local hasEnteredZone = SpaceHelpers:isSpaceQuestTaskComplete(pPlayer, self.questType, self.questName, 0)
+
 	-- Player is in the correct zone
-	if (zoneNameHash == spaceQuestHash and not SpaceHelpers:isSpaceQuestTaskComplete(pPlayer, self.questType, self.questName, 0)) then
-		-- Complete the quest task 1
+	if (zoneNameHash == spaceQuestHash and not hasEnteredZone) then
+		-- Complete the quest task 0
 		SpaceHelpers:completeSpaceQuestTask(pPlayer, self.questType, self.questName, 0, false)
 
 		-- Activate quest task 2
@@ -215,7 +221,7 @@ function SpacePatrolScreenplay:enteredZone(pPlayer, nill, zoneNameHash)
 		createEvent(4000, self.className, "alertPatrolPoint", pPlayer, "")
 
 		return 0
-	else
+	elseif (zoneNameHash ~= spaceQuestHash and hasEnteredZone) then
 		createEvent(2000, self.className, "failQuest", pPlayer, "true")
 		return 1
 	end
