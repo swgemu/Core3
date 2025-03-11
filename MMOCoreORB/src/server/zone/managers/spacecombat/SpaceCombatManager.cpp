@@ -59,6 +59,14 @@ void SpaceCombatManager::broadcastCountermeasure(ShipObject* ship, const ShipCou
 	ship->broadcastMessage(message, true);
 }
 
+void SpaceCombatManager::broadcastProjectileCollision(ShipObject* ship, const ShipProjectile* projectile, int hitType, const SpaceCollisionResult& result) const {
+	const Vector3& position = result.getPosition();
+	String cefType	= "clienteffect/combat_ship_hit_" + shipHitTypeToString(hitType) + ".cef";
+
+	auto message = new PlayClientEffectLoc(cefType, "", position.getX(), position.getZ(), position.getY());
+	ship->broadcastMessage(message, true);
+}
+
 void SpaceCombatManager::getHitEffectMessages(ShipObject* target, const SpaceCollisionResult& result, int hitType, float newPercent, float oldPercent, Vector<BasePacket*>& messages) const {
 	const Vector3& position = result.getPosition();
 	String cefType	= "clienteffect/combat_ship_hit_" + shipHitTypeToString(hitType) + ".cef";
@@ -80,16 +88,14 @@ void SpaceCombatManager::applyDamage(ShipObject* ship, const ShipProjectile* pro
 	auto target = result.getObject().get();
 
 	if (target == nullptr || !target->isShipObject()) {
-		auto effect = new PlayClientEffectLoc("clienteffect/combat_ship_hit_armor.cef", "", result.getPosition().getX(), result.getPosition().getZ(), result.getPosition().getY());
-		ship->broadcastMessage(effect, true);
+		broadcastProjectileCollision(ship, projectile, ShipHitType::HITARMOR, result);
 		return;
 	}
 
 	auto targetShip = target->asShipObject();
 
 	if (targetShip == nullptr || !targetShip->isAttackableBy(ship)) {
-		auto effect = new PlayClientEffectLoc("clienteffect/combat_ship_hit_shield.cef", "", result.getPosition().getX(), result.getPosition().getZ(), result.getPosition().getY());
-		ship->broadcastMessage(effect, true);
+		broadcastProjectileCollision(ship, projectile, ShipHitType::HITSHIELD, result);
 		return;
 	}
 
@@ -103,17 +109,12 @@ void SpaceCombatManager::applyDamage(ShipObject* ship, const ShipProjectile* pro
 
 	uint8 targetSlot = projectile->getComponentSlot();
 	uint8 weaponSlot = projectile->getWeaponSlot();
-
 	uint32 weaponIndex = ShipObject::WEAPON_COMPONENT_START + weaponSlot;
 
-	float weaponEffect = ship->getComponentEfficiency(weaponIndex);
+	float weaponEffect = Math::clamp(0.1f, ship->getComponentEfficiency(weaponIndex), 10.f);
+	float minDamage = Math::max(ship->getComponentMinDamageMap()->get(weaponIndex) * weaponEffect, 0.f);
+	float maxDamage = Math::max(ship->getComponentMaxDamageMap()->get(weaponIndex) * weaponEffect, minDamage);
 
-	if (weaponEffect <= 0) {
-		return;
-	}
-
-	float minDamage = ship->getComponentMinDamageMap()->get(weaponIndex) * weaponEffect;
-	float maxDamage = ship->getComponentMaxDamageMap()->get(weaponIndex) * weaponEffect;
 	float shieldEffect = ship->getShieldEffectivenessMap()->get(weaponIndex);
 	float armorEffect  = ship->getArmorEffectivenessMap()->get(weaponIndex);
 
@@ -141,30 +142,45 @@ void SpaceCombatManager::applyDamage(ShipObject* ship, const ShipProjectile* pro
 		}
 	}
 
-	const Vector3& collisionPoint = result.getPosition();
-	int collisionSlot = result.getSlot();
-	bool hitFront = result.isHitFront();
-
 	Vector<BasePacket*> messages;
 
-	if (damage > 0.f) {
-		damage = applyShieldDamage(targetShip, result, damage, shieldEffect, hitFront, deltaVector, messages);
-	}
+	if (targetShip->isComponentFunctional(Components::BRIDGE) && targetShip->isSlotTargetable(Components::BRIDGE)) {
+		for(int i = 0; i < result.size(); ++i) {
+			int collisionSlot = result.getSlot(i);
 
-	if (damage > 0.f) {
-		damage = applyArmorDamage(targetShip, result, damage, armorEffect,  hitFront, deltaVector, messages);
-	}
+			if (targetShip->isComponentTargetable(collisionSlot)) {
+				damage = applyComponentDamage(targetShip, result, damage, collisionSlot, deltaVector, messages);
 
-	if (damage > 0.f && collisionSlot != Components::CHASSIS) {
-		damage = applyComponentDamage(targetShip, result, damage, collisionSlot, deltaVector, messages);
-	}
+				if (damage <= 0.f) {
+					break;
+				}
+			}
+		}
+	} else {
+		for (int hitType = 0; hitType < ShipHitType::SIZE; ++hitType) {
+			switch (hitType) {
+				case ShipHitType::HITSHIELD: {
+					damage = applyShieldDamage(targetShip, result, damage, shieldEffect, deltaVector, messages);
+					break;
+				}
+				case ShipHitType::HITARMOR: {
+					damage = applyArmorDamage(targetShip, result, damage, armorEffect, deltaVector, messages);
+					break;
+				}
+				case ShipHitType::HITCOMPONENT: {
+					damage = applyActiveComponentDamage(targetShip, result, damage, targetSlot, deltaVector, messages);
+					break;
+				}
+				case ShipHitType::HITCHASSIS: {
+					damage = applyChassisDamage(targetShip, result, damage, deltaVector, messages);
+					break;
+				}
+			}
 
-	if (damage > 0.f) {
-		damage = applyActiveComponentDamage(targetShip, result, damage, targetSlot, deltaVector, messages);
-	}
-
-	if (damage > 0.f && targetShip->getShipComponentMap()->get(Components::BRIDGE) == 0) {
-		damage = applyChassisDamage(targetShip, result, damage, deltaVector, messages);
+			if (damage <= 0.f) {
+				break;
+			}
+		}
 	}
 
 	if (deltaVector != nullptr) {
@@ -173,6 +189,8 @@ void SpaceCombatManager::applyDamage(ShipObject* ship, const ShipProjectile* pro
 
 	if (messages.size() > 0) {
 		target->broadcastMessages(&messages, true);
+	} else {
+		broadcastProjectileCollision(ship, projectile, ShipHitType::HITSHIELD, result);
 	}
 
 	if (targetShip->getChassisCurrentHealth() == 0.f) {
@@ -204,7 +222,9 @@ void SpaceCombatManager::applyDamage(ShipObject* ship, const ShipProjectile* pro
 	}
 }
 
-float SpaceCombatManager::applyShieldDamage(ShipObject* target, const SpaceCollisionResult& result, float damage, float effect, bool hitFront, ShipDeltaVector* deltaVector, Vector<BasePacket*>& messages) const {
+float SpaceCombatManager::applyShieldDamage(ShipObject* target, const SpaceCollisionResult& result, float damage, float effect, ShipDeltaVector* deltaVector, Vector<BasePacket*>& messages) const {
+	bool hitFront = result.isHitFront();
+
 	float shieldCurrent = hitFront ? target->getFrontShield() : target->getRearShield();
 	float shieldMax = hitFront ? target->getMaxFrontShield() : target->getMaxRearShield();
 
@@ -214,21 +234,16 @@ float SpaceCombatManager::applyShieldDamage(ShipObject* target, const SpaceColli
 
 	float shieldDamage = damage * effect;
 
-	if (shieldDamage == 0.f) {
+	if (shieldDamage <= 0.f) {
 		return 0.f;
 	}
 
-	float effectDamage = 0.f;
 	float shieldOld = shieldCurrent / shieldMax;
 
 	if (shieldDamage > shieldCurrent) {
-		effectDamage = shieldCurrent;
-
 		shieldDamage -= shieldCurrent;
 		shieldCurrent = 0.f;
 	} else {
-		effectDamage = shieldDamage;
-
 		shieldCurrent -= shieldDamage;
 		shieldDamage = 0;
 	}
@@ -248,7 +263,7 @@ float SpaceCombatManager::applyShieldDamage(ShipObject* target, const SpaceColli
 			Reference<PobShipObject*> pobTarget = target->asPobShip();
 
 			if (pobTarget != nullptr) {
-				float damageDifferential = (effectDamage / shieldMax);
+				float damageDifferential = shieldOld - shieldNew;
 
 				Core::getTaskManager()->scheduleTask([pobTarget, damageDifferential]() {
 					if (pobTarget == nullptr) {
@@ -270,8 +285,8 @@ float SpaceCombatManager::applyShieldDamage(ShipObject* target, const SpaceColli
 	return shieldDamage / effect;
 }
 
-float SpaceCombatManager::applyArmorDamage(ShipObject* target, const SpaceCollisionResult& result, float damage, float effect, bool hitFront, ShipDeltaVector* deltaVector, Vector<BasePacket*>& messages) const {
-	uint32 slot = hitFront ? Components::ARMOR0 : Components::ARMOR1;
+float SpaceCombatManager::applyArmorDamage(ShipObject* target, const SpaceCollisionResult& result, float damage, float effect, ShipDeltaVector* deltaVector, Vector<BasePacket*>& messages) const {
+	uint32 slot = result.isHitFront() ? Components::ARMOR0 : Components::ARMOR1;
 
 	float armorMin = target->getCurrentArmorMap()->get(slot);
 	float armorMax = target->getMaxArmorMap()->get(slot);
@@ -494,65 +509,81 @@ float SpaceCombatManager::applyComponentDamage(ShipObject* target, const SpaceCo
 }
 
 float SpaceCombatManager::applyActiveComponentDamage(ShipObject* target, const SpaceCollisionResult& result, float damage, int targetSlot, ShipDeltaVector* deltaVector, Vector<BasePacket*>& messages) const {
-	auto componentMap = target->getShipComponentMap();
+	const auto componentMap = target->getShipComponentMap();
 
 	if (componentMap == nullptr) {
 		return damage;
 	}
 
-	auto hitpointsMap = target->getCurrentHitpointsMap();
+	const auto hitpointsMap = target->getCurrentHitpointsMap();
 
 	if (hitpointsMap == nullptr) {
 		return damage;
 	}
 
-	auto collisionData = ShipManager::instance()->getCollisionData(target);
+	const auto collisionData = ShipManager::instance()->getCollisionData(target);
 
 	if (collisionData == nullptr) {
 		return damage;
 	}
 
-	Vector<int> activeComponents;
+	for (int i = 0; i < result.size(); ++i) {
+		int resultSlot = result.getSlot(i);
 
-	if (targetSlot != Components::CHASSIS) {
-		int weight = collisionData->getSlotWeight(targetSlot);
+		if (target->isComponentTargetable(resultSlot)) {
+			damage = applyComponentDamage(target, result, damage, resultSlot, deltaVector, messages);
 
-		if (weight > 0 && weight <= System::random(100)) {
-			activeComponents.add(targetSlot);
+			if (damage <= 0.f) {
+				return damage;
+			}
 		}
 	}
+
+	if (target->isComponentTargetable(targetSlot)) {
+		damage = applyComponentDamage(target, result, damage, targetSlot, deltaVector, messages);
+
+		if (damage <= 0.f) {
+			return damage;
+		}
+	}
+
+	VectorMap<int, int> componentWeightMap;
+	int weightTotal = 0;
 
 	for (int i = 0; i < componentMap->size(); ++i) {
 		auto slot = componentMap->getKeyAt(i);
 		auto compCRC = componentMap->getValueAt(i);
 
-		if (compCRC == 0 || hitpointsMap->get(slot) == 0) {
-			continue;
-		}
-
-		if (slot == Components::ARMOR0 || slot == Components::ARMOR1) {
+		if (compCRC == 0 || hitpointsMap->get(slot) <= 0.f) {
 			continue;
 		}
 
 		int weight = collisionData->getSlotWeight(slot);
 
-		if (weight > 0 && weight <= System::random(100)) {
-			activeComponents.add(slot);
+		if (weight <= 0) {
+			continue;
 		}
+
+		componentWeightMap.put(slot, weight);
+		weightTotal += weight;
 	}
 
-	for (int i = activeComponents.size(); -1 < --i;) {
-		int index = System::random(activeComponents.size() - 1);
-		int slot = activeComponents.get(index);
+	int weightIndex = System::random(weightTotal);
+
+	for (int i = componentWeightMap.size(); -1 < --i;) {
+		int slot = componentWeightMap.elementAt(i).getKey();
+		int weight = componentWeightMap.elementAt(i).getValue();
+
+		weightIndex -= weight;
+
+		if (weightIndex > 0) {
+			continue;
+		}
 
 		damage = applyComponentDamage(target, result, damage, slot, deltaVector, messages);
 
-		if (hitpointsMap->get(slot) == 0) {
-			activeComponents.remove(index);
-		}
-
 		if (damage <= 0.f) {
-			break;
+			return damage;
 		}
 	}
 
