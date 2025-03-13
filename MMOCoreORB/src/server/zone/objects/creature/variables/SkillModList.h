@@ -184,33 +184,35 @@ public:
 		VectorMap<String, int> skills;
 		skills.setAllowOverwriteInsertPlan();
 
-		for (int i = 0; i < mods.size(); ++i) {
+		for (int i = 0; i < mods.size(); i++) {
 			uint32 modType = mods.elementAt(i).getKey();
 			const SkillModGroup* group = &mods.elementAt(i).getValue();
 
-			for(int j = 0; j < group->size(); ++j) {
+			for (int j = 0; j < group->size(); j++) {
 				String skillMod = group->elementAt(j).getKey();
-				int skillModValue = group->get(skillMod);
+				int skillModValue = group->elementAt(j).getValue();
 
 				int maxSkill = SkillModManager::instance()->getMaxSkill(modType);
 				int minSkill = SkillModManager::instance()->getMinSkill(modType);
 
-				if(maxSkill != 0 && minSkill != 0) {
+				if (maxSkill != 0 && minSkill != 0) {
 					if (skillModValue >= 0)
 						skillModValue = Math::min(skillModValue, maxSkill);
 					else
 						skillModValue = Math::max(skillModValue, minSkill);
 				}
 
-				if(skills.contains(skillMod))
+				if (skills.contains(skillMod)) {
 					skillModValue += skills.get(skillMod);
+				}
 
 				skills.put(skillMod, skillModValue);
 			}
 		}
 
 		StringBuffer skill;
-		for(int i = 0; i < skills.size(); ++i) {
+
+		for (int i = 0; i < skills.size(); ++i) {
 			skill << skills.elementAt(i).getKey() << " : " << skills.get(i) << "\n";
 		}
 
