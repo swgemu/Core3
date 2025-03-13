@@ -138,14 +138,11 @@ int PlayerContainerComponent::notifyObjectInserted(SceneObject* sceneObject, Sce
 		}
 	}
 
-	if (object->isInstrument() && creo->isEntertaining())
+	if (object->isInstrument() && creo->isEntertaining()) {
 		creo->stopEntertaining();
+	}
 
-	//this it to update the equipment list
-	//we need a DeltaVector with all the slotted objects it seems
-	/*CreatureObjectMessage6* msg6 = new CreatureObjectMessage6(creo);
-	creo->broadcastMessage(msg6, true, true);*/
-
+	// Update wearables vector
 	if (object->isTangibleObject() && object->getArrangementDescriptorSize() != 0 && object->getArrangementDescriptor(0)->size() != 0) {
 		const String& arrangement = object->getArrangementDescriptor(0)->get(0);
 
@@ -192,7 +189,7 @@ int PlayerContainerComponent::notifyObjectRemoved(SceneObject* sceneObject, Scen
 		ManagedReference<TangibleObject*> tano = object->asTangibleObject();
 
 		if (tano != nullptr) {
-			// creo->info(true) << "Removing template & wearable skill mods from: " << tano->getDisplayedName();
+			creo->info(true) << "Removing template & wearable skill mods from: " << tano->getDisplayedName();
 
 			tano->removeTemplateSkillMods(creo);
 			tano->removeSkillModsFrom(creo);
@@ -203,11 +200,7 @@ int PlayerContainerComponent::notifyObjectRemoved(SceneObject* sceneObject, Scen
 		creo->stopEntertaining();
 	}
 
-	//this it to update the equipment list
-	//we need a DeltaVector with all the slotted objects it seems
-	/*CreatureObjectMessage6* msg6 = new CreatureObjectMessage6(creo);
-	creo->broadcastMessage(msg6, true, true);*/
-
+	// Update wearables vector
 	if (object->isTangibleObject() && object->getArrangementDescriptorSize() != 0 && object->getArrangementDescriptor(0)->size() != 0) {
 		const String& arrangement = object->getArrangementDescriptor(0)->get(0); //CHK
 

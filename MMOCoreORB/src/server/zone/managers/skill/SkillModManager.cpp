@@ -13,7 +13,7 @@
 #include "server/zone/objects/structure/StructureObject.h"
 #include "server/zone/objects/area/CampSiteActiveArea.h"
 
-// #define DEBUG_SKILL_MOD
+#define DEBUG_SKILL_MOD
 
 SkillModManager::SkillModManager()
 		: Logger("SkillModManager") {
@@ -108,7 +108,7 @@ void SkillModManager::verifyWearableSkillMods(CreatureObject* creature) {
 	mods.setAllowOverwriteInsertPlan();
 	mods.setNullValue(0);
 
-	SortedVector<ManagedReference<SceneObject*>> usedObjects;
+	SortedVector<uint64> usedObjects;
 	usedObjects.setNoDuplicateInsertPlan();
 
 #ifdef DEBUG_SKILL_MOD
@@ -118,7 +118,8 @@ void SkillModManager::verifyWearableSkillMods(CreatureObject* creature) {
 	for (int i = 0; i < creature->getSlottedObjectsSize(); ++i) {
 		ManagedReference<TangibleObject*> object = creature->getSlottedObject(i).castTo<TangibleObject*>();
 
-		if (object == nullptr || usedObjects.contains(object.get())) {
+		// Check if null and verify mods have not been calculated already
+		if (object == nullptr || usedObjects.contains(object->getObjectID())) {
 			continue;
 		}
 
@@ -302,10 +303,10 @@ void SkillModManager::verifyWearableSkillMods(CreatureObject* creature) {
 			}
 		}
 
-		usedObjects.put(object.get());
+		usedObjects.put(object->getObjectID());
 	}
 
-	if (!compareMods(mods, creature, WEARABLE)) {
+	if (!compareMods(mods, creature, SkillModManager::WEARABLE)) {
 		warning() << "Wearable mods don't match for " << creature->getFirstName() << " ID: " << creature->getObjectID();
 	}
 }
@@ -366,8 +367,8 @@ void SkillModManager::verifyStructureSkillMods(TangibleObject* tano) {
 		}
 	}
 
-	if (!compareMods(mods, creature, STRUCTURE)) {
-		warning() << "Structure mods don't match for " << creature->getFirstName() << " ID: " << creature->getObjectID();
+	if (!compareMods(mods, creature, SkillModManager::STRUCTURE)) {
+		warning() << "Structure mods don't match for Player: " << creature->getFirstName() << " ID: " << creature->getObjectID();
 	}
 }
 
@@ -425,14 +426,16 @@ void SkillModManager::verifyBuffSkillMods(CreatureObject* creature) {
 	mods.setNullValue(0);
 
 	const BuffList* buffList = creature->getBuffList();
-	for(int i = 0; i < buffList->getBuffListSize(); ++i) {
+
+	for (int i = 0; i < buffList->getBuffListSize(); ++i) {
 		ManagedReference<Buff*> buff = buffList->getBuffByIndex(i);
 		const VectorMap<String, int>* skillMods = buff->getSkillModifiers();
-		for(int j = 0; j < skillMods->size(); ++j) {
+
+		for (int j = 0; j < skillMods->size(); ++j) {
 			const String& name = skillMods->elementAt(j).getKey();
 			int value = skillMods->elementAt(j).getValue();
 
-			if(mods.contains(name)) {
+			if (mods.contains(name)) {
 				value += mods.get(name);
 			}
 
@@ -440,8 +443,8 @@ void SkillModManager::verifyBuffSkillMods(CreatureObject* creature) {
 		}
 	}
 
-	if(!compareMods(mods, creature, BUFF)) {
-		warning("Buff mods don't match for " + creature->getFirstName());
+	if (!compareMods(mods, creature, SkillModManager::BUFF)) {
+		warning() << "Buff mods don't match for Player: " << creature->getFirstName() << " ID: " << creature->getObjectID();
 	}
 }
 
@@ -506,7 +509,7 @@ bool SkillModManager::compareMods(VectorMap<String, int>& mods, CreatureObject* 
 
 			// If the mod values are different, adjust to proper value
 			if (value != properValue) {
-				creature->removeSkillMod(TEMPLATE, key, value, false);
+				creature->removeSkillMod(TEMPLATE, key, value, true);
 				creature->addSkillMod(TEMPLATE, key, properValue, true);
 
 				match = false;
@@ -529,7 +532,7 @@ bool SkillModManager::compareMods(VectorMap<String, int>& mods, CreatureObject* 
 
 	if (match == false) {
 		// Send output to log
-		creature->info() << compare;
+		creature->info(true) << compare;
 
 		// Only send system message if player is actively set to debug
 		auto ghost = creature->getPlayerObject();
