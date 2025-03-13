@@ -446,19 +446,17 @@ class StructureObject extends TangibleObject {
 	 * Adds this object's skill mod map to the target object's skill mod map
 	 * @param targetObject The targeted object containing the SkillModMap which will be affected.
 	 */
-	@local
 	@read
 	@arg1preLocked
-	public native void addTemplateSkillMods(TangibleObject targetObject);
+	public abstract native void addTemplateSkillMods(TangibleObject targetObject);
 
 	/*
 	 * Removes this object's skill mod map from the target object's skill mod map
 	 * @param targetObject the targeted object containing the SkillModMap which will be affected.
 	 */
-	@local
 	@read
 	@arg1preLocked
-	public native void removeTemplateSkillMods(TangibleObject tangibleObject);
+	public abstract native void removeTemplateSkillMods(TangibleObject tangibleObject);
 
 	@dirty
 	public abstract string getRedeedMessage() {

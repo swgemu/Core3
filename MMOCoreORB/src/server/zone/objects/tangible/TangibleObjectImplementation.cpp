@@ -1234,6 +1234,10 @@ Reference<FactoryCrate*> TangibleObjectImplementation::createFactoryCrate(int ma
 }
 
 void TangibleObjectImplementation::addTemplateSkillMods(TangibleObject* targetObject) const {
+	if (targetObject == nullptr) {
+		return;
+	}
+
 	SharedTangibleObjectTemplate* tanoTemplate = dynamic_cast<SharedTangibleObjectTemplate*>(templateObject.get());
 
 	if (tanoTemplate == nullptr) {
@@ -1250,6 +1254,10 @@ void TangibleObjectImplementation::addTemplateSkillMods(TangibleObject* targetOb
 }
 
 void TangibleObjectImplementation::removeTemplateSkillMods(TangibleObject* targetObject) const {
+	if (targetObject == nullptr) {
+		return;
+	}
+
 	const SharedTangibleObjectTemplate* tanoTemplate = dynamic_cast<const SharedTangibleObjectTemplate*>(templateObject.get());
 
 	if (tanoTemplate == nullptr) {
