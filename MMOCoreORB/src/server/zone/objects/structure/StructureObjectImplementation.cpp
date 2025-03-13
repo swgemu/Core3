@@ -708,15 +708,17 @@ bool StructureObjectImplementation::isCampStructure() const {
 }
 
 void StructureObjectImplementation::addTemplateSkillMods(TangibleObject* targetObject) const {
-	if(!targetObject->isPlayerCreature())
+	if (targetObject == nullptr || !targetObject->isPlayerCreature()) {
 		return;
+	}
 
-	const SharedTangibleObjectTemplate* tano = dynamic_cast<SharedTangibleObjectTemplate*>(templateObject.get());
+	const SharedTangibleObjectTemplate* tanoTemplate = dynamic_cast<SharedTangibleObjectTemplate*>(templateObject.get());
 
-	if (tano == nullptr)
+	if (tanoTemplate == nullptr) {
 		return;
+	}
 
-	const auto mods = tano->getSkillMods();
+	const auto mods = tanoTemplate->getSkillMods();
 
 	for (int i = 0; i < mods->size(); ++i) {
 		const auto& entry = mods->elementAt(i);
@@ -728,15 +730,17 @@ void StructureObjectImplementation::addTemplateSkillMods(TangibleObject* targetO
 }
 
 void StructureObjectImplementation::removeTemplateSkillMods(TangibleObject* targetObject) const {
-	if(!targetObject->isPlayerCreature())
+	if (targetObject == nullptr || !targetObject->isPlayerCreature()) {
 		return;
+	}
 
-	const SharedTangibleObjectTemplate* tano = dynamic_cast<SharedTangibleObjectTemplate*>(templateObject.get());
+	const SharedTangibleObjectTemplate* tanoTemplate = dynamic_cast<SharedTangibleObjectTemplate*>(templateObject.get());
 
-	if (tano == nullptr)
+	if (tanoTemplate == nullptr) {
 		return;
+	}
 
-	const auto mods = tano->getSkillMods();
+	const auto mods = tanoTemplate->getSkillMods();
 
 	for (int i = 0; i < mods->size(); ++i) {
 		const auto& entry = mods->elementAt(i);

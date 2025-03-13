@@ -108,17 +108,18 @@ void SkillModManager::verifyWearableSkillMods(CreatureObject* creature) {
 	mods.setAllowOverwriteInsertPlan();
 	mods.setNullValue(0);
 
-	SortedVector<ManagedReference<SceneObject*>> usedObjects;
+	SortedVector<uint64> usedObjects;
 	usedObjects.setNoDuplicateInsertPlan();
 
 #ifdef DEBUG_SKILL_MOD
 	info(true) << "SkillModManager::verifyWearableSkillMods - Player: " << creature->getDisplayedName() << " ID: " << creature->getObjectID();
 #endif // DEBUG_SKILL_MOD
 
-	for (int i = 0; i < creature->getSlottedObjectsSize(); ++i) {
+	for (int i = 0; i < creature->getSlottedObjectsSize(); i++) {
 		ManagedReference<TangibleObject*> object = creature->getSlottedObject(i).castTo<TangibleObject*>();
 
-		if (object == nullptr || usedObjects.contains(object.get())) {
+		// Check if null and verify mods have not been calculated already
+		if (object == nullptr || usedObjects.contains(object->getObjectID())) {
 			continue;
 		}
 
@@ -135,7 +136,7 @@ void SkillModManager::verifyWearableSkillMods(CreatureObject* creature) {
 			info(true) << "Checking Wearable - " << wearable->getDisplayedName() << " Total Wearable Mods: " << wearableSkillMods->size();
 #endif // DEBUG_SKILL_MOD
 
-			for (int j = 0; j < wearableSkillMods->size(); ++j) {
+			for (int j = 0; j < wearableSkillMods->size(); j++) {
 				String name = wearableSkillMods->elementAt(j).getKey();
 
 				if (isWearableModDisabled(name)) {
@@ -162,7 +163,7 @@ void SkillModManager::verifyWearableSkillMods(CreatureObject* creature) {
 			info(true) << "Checking Wearable - " << wearable->getDisplayedName() << " Total Template Mods: " << templateSkillMods->size();
 #endif // DEBUG_SKILL_MOD
 
-			for (int j = 0; j < templateSkillMods->size(); ++j) {
+			for (int j = 0; j < templateSkillMods->size(); j++) {
 				String name = templateSkillMods->elementAt(j).getKey();
 
 				if (isWearableModDisabled(name)) {
@@ -195,7 +196,7 @@ void SkillModManager::verifyWearableSkillMods(CreatureObject* creature) {
 			info(true) << "Checking Wearable Container - " << wearable->getDisplayedName() << " Total Wearable Mods: " << wearableSkillMods->size();
 #endif // DEBUG_SKILL_MOD
 
-			for (int j = 0; j < wearableSkillMods->size(); ++j) {
+			for (int j = 0; j < wearableSkillMods->size(); j++) {
 				String name = wearableSkillMods->elementAt(j).getKey();
 
 				if (isWearableModDisabled(name)) {
@@ -222,7 +223,7 @@ void SkillModManager::verifyWearableSkillMods(CreatureObject* creature) {
 			info(true) << "Checking Wearable Container - " << wearable->getDisplayedName() << " Total Template Mods: " << templateSkillMods->size();
 #endif // DEBUG_SKILL_MOD
 
-			for (int j = 0; j < templateSkillMods->size(); ++j) {
+			for (int j = 0; j < templateSkillMods->size(); j++) {
 				String name = templateSkillMods->elementAt(j).getKey();
 
 				if (isWearableModDisabled(name)) {
@@ -254,7 +255,7 @@ void SkillModManager::verifyWearableSkillMods(CreatureObject* creature) {
 			info(true) << "Checking Weapon - " << weapon->getDisplayedName() << " Total Wearable Mods: " << wearableSkillMods->size();
 #endif // DEBUG_SKILL_MOD
 
-			for (int j = 0; j < wearableSkillMods->size(); ++j) {
+			for (int j = 0; j < wearableSkillMods->size(); j++) {
 				String name = wearableSkillMods->elementAt(j).getKey();
 
 				if (isWearableModDisabled(name)) {
@@ -281,7 +282,7 @@ void SkillModManager::verifyWearableSkillMods(CreatureObject* creature) {
 			info(true) << "Checking Weapon - " << weapon->getDisplayedName() << " Total Template Mods: " << templateSkillMods->size();
 #endif // DEBUG_SKILL_MOD
 
-			for (int j = 0; j < templateSkillMods->size(); ++j) {
+			for (int j = 0; j < templateSkillMods->size(); j++) {
 				String name = templateSkillMods->elementAt(j).getKey();
 
 				if (isWearableModDisabled(name)) {
@@ -302,10 +303,10 @@ void SkillModManager::verifyWearableSkillMods(CreatureObject* creature) {
 			}
 		}
 
-		usedObjects.put(object.get());
+		usedObjects.put(object->getObjectID());
 	}
 
-	if (!compareMods(mods, creature, WEARABLE)) {
+	if (!compareMods(mods, creature, SkillModManager::WEARABLE)) {
 		warning() << "Wearable mods don't match for " << creature->getFirstName() << " ID: " << creature->getObjectID();
 	}
 }
@@ -349,7 +350,7 @@ void SkillModManager::verifyStructureSkillMods(TangibleObject* tano) {
 			info(true) << "Checking Structure - " << structure->getDisplayedName() << " Total Template Mods: " << templateMods->size();
 #endif // DEBUG_SKILL_MOD
 
-			for (int i = 0; i < templateMods->size(); ++i) {
+			for (int i = 0; i < templateMods->size(); i++) {
 				String name = templateMods->elementAt(i).getKey();
 				int value = templateMods->get(name);
 
@@ -366,8 +367,8 @@ void SkillModManager::verifyStructureSkillMods(TangibleObject* tano) {
 		}
 	}
 
-	if (!compareMods(mods, creature, STRUCTURE)) {
-		warning() << "Structure mods don't match for " << creature->getFirstName() << " ID: " << creature->getObjectID();
+	if (!compareMods(mods, creature, SkillModManager::STRUCTURE)) {
+		warning() << "Structure mods don't match for Player: " << creature->getFirstName() << " ID: " << creature->getObjectID();
 	}
 }
 
@@ -388,7 +389,7 @@ void SkillModManager::verifySkillBoxSkillMods(CreatureObject* creature) {
 
 	const SkillList* skillList = creature->getSkillList();
 
-	for (int i = 0; i < skillList->size(); ++i) {
+	for (int i = 0; i < skillList->size(); i++) {
 		Reference<Skill*> skill = skillList->get(i);
 		auto skillMods = skill->getSkillModifiers();
 
@@ -396,7 +397,7 @@ void SkillModManager::verifySkillBoxSkillMods(CreatureObject* creature) {
 		info(true) << "Skill: " << skill->getSkillName() << " Total Mods: " << skillMods->size();
 #endif // DEBUG_SKILL_MOD
 
-		for (int j = 0; j < skillMods->size(); ++j) {
+		for (int j = 0; j < skillMods->size(); j++) {
 			const String& name = skillMods->elementAt(j).getKey();
 			int value = skillMods->get(name);
 
@@ -412,7 +413,7 @@ void SkillModManager::verifySkillBoxSkillMods(CreatureObject* creature) {
 		}
 	}
 
-	if (!compareMods(mods, creature, SKILLBOX)) {
+	if (!compareMods(mods, creature, SkillModManager::SKILLBOX)) {
 		warning() << "SkillBox mods don't match for " << creature->getFirstName() << " ID: " << creature->getObjectID();
 	}
 }
@@ -425,14 +426,15 @@ void SkillModManager::verifyBuffSkillMods(CreatureObject* creature) {
 	mods.setNullValue(0);
 
 	const BuffList* buffList = creature->getBuffList();
-	for(int i = 0; i < buffList->getBuffListSize(); ++i) {
+	for (int i = 0; i < buffList->getBuffListSize(); i++) {
 		ManagedReference<Buff*> buff = buffList->getBuffByIndex(i);
 		const VectorMap<String, int>* skillMods = buff->getSkillModifiers();
-		for(int j = 0; j < skillMods->size(); ++j) {
+
+		for (int j = 0; j < skillMods->size(); j++) {
 			const String& name = skillMods->elementAt(j).getKey();
 			int value = skillMods->elementAt(j).getValue();
 
-			if(mods.contains(name)) {
+			if (mods.contains(name)) {
 				value += mods.get(name);
 			}
 
@@ -440,8 +442,8 @@ void SkillModManager::verifyBuffSkillMods(CreatureObject* creature) {
 		}
 	}
 
-	if(!compareMods(mods, creature, BUFF)) {
-		warning("Buff mods don't match for " + creature->getFirstName());
+	if (!compareMods(mods, creature, SkillModManager::BUFF)) {
+		warning() << "Buff mods don't match for Player: " << creature->getFirstName() << " ID: " << creature->getObjectID();
 	}
 }
 
@@ -470,46 +472,56 @@ bool SkillModManager::compareMods(VectorMap<String, int>& mods, CreatureObject* 
 	bool match = true;
 
 	StringBuffer compare;
-	compare << "SkillModManager::compareMods\nPlayer: " << creature->getDisplayedName() << " ID: " << creature->getObjectID() << " Modifier Type: " << type << "\n";
+	compare << "SkillModManager::compareMods\nPlayer: " << creature->getDisplayedName() << " ID: " << creature->getObjectID() << " Modifier Type: " << type << " Mod Group Size: " << group->size() << "\n";
 
-	// Check the SkillModGroup for the passed type
-	for (int i = 0; i < group->size(); ++i) {
-		String key = group->elementAt(i).getKey();
-		int value = group->get(key);
+	if (group->size() > 0) {
+		SkillModGroup checkGroup = *group;
 
-		int properValue = mods.get(key);
-		mods.drop(key);
-
-		compare << "Modifier: " << key << " Current Value on Player: " << value << " Proper Value from Equipped Items: " << properValue << "\n";
-
-		// If the mod values are different, adjust to proper value
-		if (value != properValue) {
-			creature->removeSkillMod(type, key, value, false);
-			creature->addSkillMod(type, key, properValue, true);
-
-			match = false;
-		}
-	}
-
-	const SkillModGroup* templateGroup = skillModList->getSkillModGroup(TEMPLATE);
-
-	if (templateGroup != nullptr) {
-		// Check the TEMPLATE SkillModGroup
-		for (int i = 0; i < templateGroup->size(); ++i) {
-			String key = templateGroup->elementAt(i).getKey();
-			int value = templateGroup->get(key);
+		// Check the SkillModGroup for the passed type
+		for (int i = 0; i < checkGroup.size(); i++) {
+			String key = checkGroup.elementAt(i).getKey();
+			int value = checkGroup.elementAt(i).getValue();
 
 			int properValue = mods.get(key);
 			mods.drop(key);
 
-			compare << "TEMPLATE Modifier: " << key << " Current Value on Player: " << value << " Proper Value from Equipped Items: " << properValue << "\n";
+			compare << "Modifier: " << key << " Current Value on Player: " << value << " Proper Value from Equipped Items: " << properValue << "\n";
 
 			// If the mod values are different, adjust to proper value
 			if (value != properValue) {
-				creature->removeSkillMod(TEMPLATE, key, value, false);
-				creature->addSkillMod(TEMPLATE, key, properValue, true);
+				creature->removeSkillMod(type, key, value, false);
+				creature->addSkillMod(type, key, properValue, true);
 
 				match = false;
+			}
+		}
+	}
+
+	if (type == SkillModManager::WEARABLE) {
+		const SkillModGroup* templateGroup = skillModList->getSkillModGroup(TEMPLATE);
+
+		if (templateGroup != nullptr) {
+			compare << "Template Modifier Group Size: " << templateGroup->size() << "\n";
+
+			SkillModGroup tempGroup = *templateGroup;
+
+			// Check the TEMPLATE SkillModGroup
+			for (int i = 0; i < tempGroup.size(); i++) {
+				String key = tempGroup.elementAt(i).getKey();
+				int value = tempGroup.elementAt(i).getValue();
+
+				int properValue = mods.get(key);
+				mods.drop(key);
+
+				compare << "TEMPLATE Modifier: " << key << " Current Value on Player: " << value << " Proper Value from Equipped Items: " << properValue << "\n";
+
+				// If the mod values are different, adjust to proper value
+				if (value != properValue) {
+					creature->removeSkillMod(TEMPLATE, key, value, true);
+					creature->addSkillMod(TEMPLATE, key, properValue, true);
+
+					match = false;
+				}
 			}
 		}
 	}
@@ -521,15 +533,17 @@ bool SkillModManager::compareMods(VectorMap<String, int>& mods, CreatureObject* 
 		// Player has improper mods on them, remove the remaining
 		for (int i = 0; i < mods.size(); i++) {
 			String key = mods.elementAt(i).getKey();
-			int value = mods.get(key);
+			int value = mods.elementAt(i).getValue();
 
 			compare << "Excess Modifier: " << key << " Value: " << value << "\n";
 		}
 	}
 
 	if (match == false) {
+#ifdef DEBUG_SKILL_MOD
 		// Send output to log
-		creature->info() << compare;
+		creature->info(true) << compare;
+#endif // DEBUG_SKILL_MOD
 
 		// Only send system message if player is actively set to debug
 		auto ghost = creature->getPlayerObject();

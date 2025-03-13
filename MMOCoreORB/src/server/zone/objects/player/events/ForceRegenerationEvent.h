@@ -14,42 +14,48 @@ namespace player {
 namespace events {
 
 class ForceRegenerationEvent : public Task {
-	ManagedWeakReference<PlayerObject*> player;
+	ManagedWeakReference<PlayerObject*> weakGhost;
 
 public:
-	ForceRegenerationEvent(PlayerObject* pl) {
-		player = pl;
+	ForceRegenerationEvent(PlayerObject* ghost) {
+		weakGhost = ghost;
 	}
 
 	void run() {
-		ManagedReference<PlayerObject*> play = player.get();
+		ManagedReference<PlayerObject*> ghost = weakGhost.get();
 
-		if (play == nullptr)
+		if (ghost == nullptr) {
 			return;
-
-		ManagedReference<SceneObject*> strongParent = play->getParent().get();
-
-		if (strongParent == nullptr)
-			return;
-
-		Locker _locker(strongParent);
-
-		if (play->isOnline() || play->isLinkDead()) {
-			if (play->getForcePowerMax() > 0  && (play->getForcePowerMax() - play->getForcePower() > 0)){
-				play->doForceRegen();
-			}
 		}
 
+		ManagedReference<CreatureObject*> player = dynamic_cast<CreatureObject*>(ghost->getParent().get().get());
 
+		if (player == nullptr) {
+			return;
+		}
+
+		Locker lock(player);
+
+		if (!ghost->isOnline() && !ghost->isLinkDead()) {
+			return;
+		}
+
+		int forceMax = ghost->getForcePowerMax();
+		int forceCurrent = ghost->getForcePower();
+
+		if (forceMax < 1 || ((forceMax - forceCurrent) < 1)) {
+			return;
+		}
+
+		ghost->doForceRegen();
 	}
-
 };
 
-}
-}
-}
-}
-}
+} // namespace events
+} // namespace player
+} // namespace objects
+} // namespace zone
+} // namespace server
 
 using namespace server::zone::objects::player::events;
 
