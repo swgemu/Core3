@@ -137,6 +137,9 @@ class PlayerObject extends IntangibleObject {
 	protected AbilityList abilityList;
 
 	@dereferenced
+	protected transient AbilityList droidCommandList;
+
+	@dereferenced
 	protected FriendList friendList;
 
 	@dereferenced
@@ -682,6 +685,12 @@ class PlayerObject extends IntangibleObject {
 
 	@local
 	public native void removeAbility(Ability ability, boolean notifyClient = true);
+
+	@local
+	public native void addDroidCommand(Ability droidCommand);
+
+	@local
+	public native void removeDroidCommands();
 
 	@local
 	public native boolean addSchematics(@dereferenced Vector<DraftSchematic> schematics, boolean notifyClient = true);
@@ -1463,9 +1472,7 @@ class PlayerObject extends IntangibleObject {
 
 	@local
 	@read
-	public final AbilityList getAbilityList() {
-		return abilityList;
-	}
+	public native AbilityList getAbilityList();
 
 	@local
 	@dirty

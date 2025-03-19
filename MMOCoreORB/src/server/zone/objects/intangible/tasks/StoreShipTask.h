@@ -59,6 +59,12 @@ public:
 			removeDroid(ship, player);
 		}
 
+		// Remove droid commands from the owner
+		auto pilotGhost = player->getPlayerObject();
+
+		if (pilotGhost != nullptr)
+			pilotGhost->removeDroidCommands();
+
 		// Copy list of the players onboard for removal
 		Vector<uint64> playersOnBoard = ship->getPlayersOnBoard();
 
@@ -74,6 +80,11 @@ public:
 			if (shipMember == nullptr) {
 				continue;
 			}
+
+			auto crewGhost = shipMember->getPlayerObject();
+
+			if (crewGhost != nullptr)
+				crewGhost->removeDroidCommands();
 
 			try {
 				// Cross lock the player for removal
@@ -178,39 +189,27 @@ public:
 			return false;
 		}
 
-		const uint64& droidID = ship->getShipDroidID();
+		const uint64& controlDeviceID = ship->getShipDroidID();
 
-		if (droidID == 0) {
+		if (controlDeviceID == 0) {
 			return false;
 		}
 
-		ManagedReference<SceneObject*> droidRef = zoneServer->getObject(droidID);
+		ManagedReference<SceneObject*> controlDeviceRef = zoneServer->getObject(controlDeviceID);
 
-		if (droidRef == nullptr || !droidRef->isDroidObject()) {
+		if (controlDeviceRef == nullptr || !controlDeviceRef->isPetControlDevice()) {
 			return false;
 		}
 
-		auto droidObject = dynamic_cast<DroidObject*>(droidRef.get());
+		ManagedReference<PetControlDevice*> controlDevice = dynamic_cast<PetControlDevice*>(controlDeviceRef.get());
 
-		if (droidObject == nullptr) {
-			return false;
-		}
-
-		ManagedReference<ControlDevice*> controlDevice = droidObject->getControlDevice().get();
-
-		if (controlDevice == nullptr || !controlDevice->isPetControlDevice()) {
-			return false;
-		}
-
-		auto petControlDevice = dynamic_cast<PetControlDevice*>(controlDevice.get());
-
-		if (petControlDevice == nullptr) {
+		if (controlDevice == nullptr) {
 			return false;
 		}
 
 		Locker cLock(controlDevice, ship);
 
-		auto storeTask = new PetControlDeviceStoreTask(petControlDevice, player, true);
+		auto storeTask = new PetControlDeviceStoreTask(controlDevice, player, true);
 
 		if (storeTask != nullptr) {
 			storeTask->execute();

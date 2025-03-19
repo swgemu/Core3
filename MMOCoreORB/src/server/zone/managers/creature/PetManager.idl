@@ -31,6 +31,7 @@ class PetManager extends ManagedService implements Logger {
 	public static final int CREATUREPET = 1;
 	public static final int DROIDPET = 2;
 	public static final int HELPERDROIDPET = 3;
+	public static final int FLIGHTCOMPUTER = 4;
 
 	// Mount Training States
 	public static final short INVALIDCREATURE = 0x00;
