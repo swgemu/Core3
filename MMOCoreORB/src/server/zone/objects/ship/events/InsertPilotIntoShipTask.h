@@ -70,6 +70,8 @@ public:
 
 			player->switchZone(zone->getZoneName(), 0.0f, 0.5f, 0.0f, pilotChair->getObjectID(), false, PlayerArrangement::SHIP_PILOT_POB);
 		} else {
+			ship->populateDroidCommands(player);
+
 			player->setState(CreatureState::PILOTINGSHIP);
 
 			// Set the pilots direction to the same as the ship

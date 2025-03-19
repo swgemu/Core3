@@ -77,13 +77,7 @@ public:
 			return GENERALERROR;
 		}
 
-		ManagedReference<TangibleObject*> droid = droidControl->getControlledObject();
-
-		if (droid == nullptr || !droid->isDroidObject()) {
-			return GENERALERROR;
-		}
-
-		uint32 droidType = ShipDroidData::getDroidType(droid->getServerObjectCRC());
+		uint32 droidType = ShipDroidData::getDroidType(droidControl->getServerObjectCRC());
 		uint32 shipType = ShipDroidData::getShipDroidType(ship->getShipChassisName().hashCode());
 
 		if (droidType != shipType) {
@@ -105,7 +99,7 @@ public:
 
 		Locker sLock(ship, creature);
 
-		ship->setShipDroidID(droid->getObjectID(), true);
+		ship->setShipDroidID(droidControl->getObjectID(), true);
 
 		creature->sendSystemMessage("@space/space_interaction:ship_droid_set");
 		return SUCCESS;

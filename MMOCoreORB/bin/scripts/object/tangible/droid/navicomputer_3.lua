@@ -43,6 +43,11 @@
 
 object_tangible_droid_navicomputer_3 = object_tangible_droid_shared_navicomputer_3:new {
 
+	templateType = NAVICOMPUTERDEED,
+	gameObjectType = 8388618,
+
+	controlDeviceObjectTemplate = "object/intangible/ship/navicomputer_3.iff",
+	datapadObjectTemplate = "object/tangible/datapad/droid_datapad_3.iff",
 
 	numberExperimentalProperties = {1, 1},
 	experimentalProperties = {"XX", "XX"},

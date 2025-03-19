@@ -43,9 +43,7 @@ public:
 			return;
 		}
 
-		Locker lock(player);
-
-		player->executeObjectControllerAction(STRING_HASHCODE("npcconversationstop"), shipID, "");
+		player->sendExecuteConsoleCommand("/conversationstop");
 	}
 };
 

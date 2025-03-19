@@ -889,6 +889,18 @@ WaypointObject* PlayerObjectImplementation::addWaypoint(const String& planet, fl
 	return obj;
 }
 
+AbilityList* PlayerObjectImplementation::getAbilityList() const {
+	AbilityList* workingList = new AbilityList();
+
+	for (int i = 0; i < abilityList.size(); ++i)
+		workingList->add(abilityList.get(i));
+
+	for (int i = 0; i < droidCommandList.size(); ++i)
+		workingList->add(droidCommandList.get(i));
+
+	return workingList;
+}
+
 void PlayerObjectImplementation::addAbility(Ability* ability, bool notifyClient) {
 	if (notifyClient) {
 		PlayerObjectDeltaMessage9* msg = new PlayerObjectDeltaMessage9(asPlayerObject());
@@ -960,6 +972,31 @@ void PlayerObjectImplementation::removeAbilities(Vector<Ability*>& abilities, bo
 		for (int i = 0; i < abilities.size(); ++i)
 			abilityList.remove(abilityList.find(abilities.get(i)));
 	}
+}
+
+void PlayerObjectImplementation::addDroidCommand(Ability* droidCommand) {
+	PlayerObjectDeltaMessage9* msg = new PlayerObjectDeltaMessage9(asPlayerObject());
+	msg->startUpdate(0);
+	droidCommandList.add(droidCommand, msg, 1);
+	msg->close();
+	sendMessage(msg);
+}
+
+void PlayerObjectImplementation::removeDroidCommands() {
+	if (droidCommandList.size() == 0)
+		return;
+
+	PlayerObjectDeltaMessage9* msg = new PlayerObjectDeltaMessage9(asPlayerObject());
+	msg->startUpdate(0);
+
+	droidCommandList.remove(droidCommandList.size() - 1, msg, droidCommandList.size());
+
+	for (int i = droidCommandList.size() - 1; i >= 0; --i)
+		droidCommandList.remove(i, msg, 0);
+
+	msg->close();
+
+	sendMessage(msg);
 }
 
 bool PlayerObjectImplementation::addSchematics(Vector<ManagedReference<DraftSchematic* > >& schematics, bool notifyClient) {

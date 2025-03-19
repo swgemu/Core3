@@ -34,11 +34,16 @@
 #include "server/zone/objects/ship/ai/ShipAiAgent.h"
 #include "server/zone/objects/tangible/item/CreditChipObject.h"
 #include "server/zone/managers/loot/LootManager.h"
+#include "server/zone/managers/skill/SkillManager.h"
+#include "server/zone/packets/object/StartNpcConversation.h"
+#include "server/zone/managers/conversation/ConversationManager.h"
+#include "server/zone/objects/creature/conversation/ConversationObserver.h"
 
 // #define DEBUG_COV
 
 void ShipObjectImplementation::initializeTransientMembers() {
 	hyperspacing = false;
+	droidFeedback = true;
 
 	if (shipRecoveryEvent == nullptr && !isShipAiAgent()) {
 		shipRecoveryEvent = new ShipRecoveryEvent(asShipObject());
@@ -1297,6 +1302,11 @@ int ShipObjectImplementation::getHyperspaceDelay() {
 	return (now.miliDifference() - hyperspaceTime.miliDifference()) / 1000;
 }
 
+int ShipObjectImplementation::timeUntilNextDroidCommand() {
+	Time now;
+	return (now.miliDifference() - droidTimer.miliDifference()) / 1000;
+}
+
 bool ShipObjectImplementation::checkInConversationRange(SceneObject* targetObject) {
 	if (targetObject == nullptr)
 		return false;
@@ -1633,6 +1643,180 @@ void ShipObjectImplementation::updateLastDamageReceived() {
 
 uint64 ShipObjectImplementation::getLastDamageReceivedMili() {
 	return lastDamageReceived.getMiliTime();
+}
+
+void ShipObjectImplementation::loadDroidCommands() {
+	availableDroidCommands.removeAll();
+
+	auto zoneServer = getZoneServer();
+
+	if (zoneServer == nullptr)
+		return;
+
+	auto droidControlDevice = cast<IntangibleObject*>(zoneServer->getObject(getShipDroidID()).get());
+
+	if (droidControlDevice == nullptr) {
+		return;
+	}
+
+	auto droidDatapad = droidControlDevice->getDatapad();
+
+	if (droidDatapad == nullptr)
+		return;
+
+	int containerSize = droidDatapad->getContainerObjectsSize();
+
+	for (int i = 0; i < containerSize; i++) {
+		auto commandModule = droidDatapad->getContainerObject(i).castTo<IntangibleObject*>();
+
+		if (commandModule == nullptr) {
+			continue;
+		}
+
+		String commandName = commandModule->getItemIdentifier();
+
+		availableDroidCommands.put(commandName.hashCode(), commandName);
+	}
+}
+
+void ShipObjectImplementation::populateDroidCommands(CreatureObject* player) {
+	if (player == nullptr)
+		return;
+
+	SkillManager* skillManager = server->getSkillManager();
+
+	if (skillManager == nullptr)
+		return;
+
+	Locker locker(player);
+
+	auto ghost = player->getPlayerObject();
+
+	if (ghost == nullptr)
+		return;
+
+	for (int i = 0; i < availableDroidCommands.size(); ++i)
+		skillManager->addDroidCommand(ghost, "droid+" + availableDroidCommands.get(i));
+}
+
+bool ShipObjectImplementation::sendDroidMessageStartTo(SceneObject* playerSceneO, SceneObject* droid) {
+	if (playerSceneO == nullptr || !playerSceneO->isPlayerCreature()) {
+		return false;
+	}
+
+	auto player = playerSceneO->asCreatureObject();
+
+	if (player == nullptr) {
+		return false;
+	}
+
+	auto rootParent = player->getRootParent();
+
+	if (rootParent == nullptr || !rootParent->isShipObject()) {
+		return false;
+	}
+
+	ShipObject* playerShip = rootParent->asShipObject();
+
+	if (playerShip == nullptr) {
+		return false;
+	}
+
+	uint32 convoMobileCrc = 0;
+
+	if (!droid->isDroidObject()) {
+		String convoMobile = "object/tangible/droid/shared_navicomputer_1.iff";
+		convoMobileCrc = convoMobile.hashCode();
+	}
+
+	uint64 agentID = droid->getObjectID();
+
+	StartNpcConversation* conversation = new StartNpcConversation(player, agentID, 0, "", convoMobileCrc);
+
+	if (conversation == nullptr) {
+		return false;
+	}
+
+	player->sendMessage(conversation);
+
+	String defaultConvo = "default_ship_convo_template";
+
+	uint32 convoCRC = defaultConvo.hashCode();
+
+	SortedVector<ManagedReference<Observer*> > observers = getObservers(ObserverEventType::STARTCONVERSATION);
+
+	for (int i = 0; i < observers.size(); ++i) {
+		if (dynamic_cast<ConversationObserver*>(observers.get(i).get()) != nullptr)
+			return true;
+	}
+
+	ConversationObserver* conversationObserver = ConversationManager::instance()->getConversationObserver(convoCRC);
+
+	if (conversationObserver != nullptr) {
+		registerObserver(ObserverEventType::CONVERSE, conversationObserver);
+		registerObserver(ObserverEventType::STARTCONVERSATION, conversationObserver);
+		registerObserver(ObserverEventType::SELECTCONVERSATION, conversationObserver);
+		registerObserver(ObserverEventType::STOPCONVERSATION, conversationObserver);
+	} else {
+		error() << "Ship droid chatter: " << getObjectID() << " Failed to create conversation observer.";
+		return false;
+	}
+
+	return true;
+}
+
+void ShipObjectImplementation::droidChatter(CreatureObject* player, StringIdChatParameter& message) {
+	if (player == nullptr)
+		return;
+
+	auto ghost = player->getPlayerObject();
+
+	if (ghost == nullptr) {
+		return;
+	}
+
+	auto zoneServer = getZoneServer();
+
+	if (zoneServer == nullptr)
+		return;
+
+	//get the droid for the chatter window
+	auto droidControlDevice = cast<IntangibleObject*>(zoneServer->getObject(getShipDroidID()).get());
+
+	if (droidControlDevice == nullptr) {
+		return;
+	}
+
+	SceneObject* droid = getSlottedObject("ship_droid");
+
+	if (droid == nullptr)
+		droid = droidControlDevice;
+
+	// Start the Conversation
+	ghost->setConversatingObject(droid);
+
+	if (!sendDroidMessageStartTo(player, droid)) {
+		return;
+	}
+
+	notifyObservers(ObserverEventType::STARTCONVERSATION, player);
+
+	auto conversationScreen = new ConversationScreen(message, false);
+
+	if (conversationScreen != nullptr) {
+		conversationScreen->sendTo(player, droid);
+	}
+
+	auto task = new SpaceCommTimerTask(player, droid->getObjectID());
+
+	if (task != nullptr) {
+		player->addPendingTask("SpaceCommTimer", task, 5 * 1000);
+	}
+}
+
+void ShipObjectImplementation::setDroidCommandDelay(float delay) {
+	droidTimer.updateToCurrentTime();
+	droidTimer.addMiliTime(delay * 1000);
 }
 
 CreatureObject* ShipObjectImplementation::getPlayerOnBoard(int index) {
@@ -2268,6 +2452,25 @@ void ShipObjectImplementation::updateComponentTargetableBitfield(bool notifyClie
 		bool value = getComponentTargetable(Components::REACTOR);
 		setComponentTargetable(Components::REACTOR, value, notifyClient, nullptr, deltaVector);
 	}
+}
+
+void ShipObjectImplementation::resetEfficiency() {
+	auto deltaVector = getDeltaVector();
+
+	auto efficiencyMap = getComponentEfficiencyMap();
+	if (efficiencyMap == nullptr)
+		return;
+
+	for (int i = 0; i < efficiencyMap->size(); ++i) {
+		auto slot = efficiencyMap->getKeyAt(i);
+
+		setEfficiency(slot, 1.0f, nullptr, DeltaMapCommands::SET, deltaVector);
+		setEnergyEfficiency(slot, 1.0f, nullptr, DeltaMapCommands::SET, deltaVector);
+		setRefireEfficiency(slot, 1.0f, nullptr, DeltaMapCommands::SET, deltaVector);
+	}
+
+	if (deltaVector != nullptr)
+		deltaVector->sendMessages(this->asShipObject());
 }
 
 void ShipObjectImplementation::initializeUniqueID(bool notifyClient) {

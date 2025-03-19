@@ -41,7 +41,7 @@
 
 int ShipManager::ERROR_CODE = NO_ERROR;
 
-ShipManager::ShipManager() : Logger("ShipManger") {
+ShipManager::ShipManager() : Logger("ShipManager") {
 	setGlobalLogging(false);
 	setLogging(false);
 
@@ -66,6 +66,7 @@ void ShipManager::initialize() {
 	loadShipCollisionData();
 	loadShipTurretIffData();
 	loadShipTurretLuaData();
+	loadDroidCommands();
 
 	// Load the ship spawn groups
 	loadShipSpawnGroups();
@@ -393,6 +394,48 @@ void ShipManager::loadShipTurretLuaData() {
 	delete lua;
 
 	info(true) << "Ship Turret Lua Data Loading Complete - Total: " << turretData.size();
+}
+
+void ShipManager::loadDroidCommands() {
+	info(true) << "Loading Droid Command Data";
+
+	Lua* lua = new Lua();
+	lua->init();
+
+	lua->runFile("scripts/managers/space/droid_commands.lua");
+
+	LuaObject base = lua->getGlobalObject("droidCommands");
+
+	if (!base.isValidTable())
+		return;
+
+	for (int i = 1; i <= base.getTableSize(); ++i) {
+		LuaObject droidCommand = base.getObjectAt(i);
+
+		if (!droidCommand.isValidTable())
+			continue;
+
+		String commandName = droidCommand.getStringField("commandName");
+		String stringID = droidCommand.getStringField("stringID");
+		float delayModifier = droidCommand.getFloatField("delayModifier");
+		int componentType = droidCommand.getIntField("component");
+		float energyEfficiency = droidCommand.getFloatField("energyEfficiency");
+		float generalEfficiency = droidCommand.getFloatField("generalEfficiency");
+		float damage = droidCommand.getFloatField("damage");
+		float frontReinforceRatio = droidCommand.getFloatField("frontReinforceRatio");
+		float capacitorReinforcePercentage = droidCommand.getFloatField("capacitorReinforcePercentage");
+		float frontAdjustRatio = droidCommand.getFloatField("frontAdjustRatio");
+
+		Reference<DroidCommandData*> data = new DroidCommandData(commandName, stringID, delayModifier, componentType, energyEfficiency, generalEfficiency, damage, frontReinforceRatio, capacitorReinforcePercentage, frontAdjustRatio);
+
+		DroidCommands.put(commandName.hashCode(), data);
+
+		droidCommand.pop();
+	}
+
+	base.pop();
+
+	info(true) << "Droid Command Loading Complete - Total: " << DroidCommands.size();
 }
 
 void ShipManager::loadShipCollisionData() {

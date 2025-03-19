@@ -71,6 +71,7 @@ Luna<LuaPlayerObject>::RegType LuaPlayerObject::Register[] = {
 		{ "clearCompletedQuestsBit", &LuaPlayerObject::clearCompletedQuestsBit },
 		{ "hasAbility", &LuaPlayerObject::hasAbility},
 		{ "addAbility", &LuaPlayerObject::addAbility},
+		{ "removeAbility", &LuaPlayerObject::removeAbility},
 		{ "getExperience", &LuaPlayerObject::getExperience },
 		{ "addEventPerk", &LuaPlayerObject::addEventPerk},
 		{ "getEventPerkCount", &LuaPlayerObject::getEventPerkCount},
@@ -108,6 +109,8 @@ Luna<LuaPlayerObject>::RegType LuaPlayerObject::Register[] = {
 		{ "isSquadronType", &LuaPlayerObject::isSquadronType },
 		{ "setSquadronType", &LuaPlayerObject::setSquadronType },
 		{ "getSquadronType", &LuaPlayerObject::getSquadronType },
+		{ "addDroidCommand", &LuaPlayerObject::addDroidCommand },
+		{ "removeDroidCommands", &LuaPlayerObject::removeDroidCommands },
 
 		{ 0, 0 }
 };
@@ -624,7 +627,6 @@ int LuaPlayerObject::hasAbility(lua_State* L) {
 	lua_pushboolean(L, check);
 
 	return 1;
-
 }
 
 int LuaPlayerObject::addAbility(lua_State* L) {
@@ -636,7 +638,19 @@ int LuaPlayerObject::addAbility(lua_State* L) {
 		skillManager->addAbility(realObject, value);
 
 	return 1;
+}
 
+int LuaPlayerObject::removeAbility(lua_State* L) {
+	String value = lua_tostring(L, -1);
+
+	SkillManager* skillManager = SkillManager::instance();
+
+	Locker locker(realObject);
+
+	if (realObject->hasAbility(value))
+		skillManager->removeAbility(realObject, value);
+
+	return 1;
 }
 
 int LuaPlayerObject::getExperience(lua_State* L) {
@@ -1007,4 +1021,25 @@ int LuaPlayerObject::getSquadronType(lua_State* L) {
 	lua_pushinteger(L, squadronType);
 
 	return 1;
+}
+
+int LuaPlayerObject::addDroidCommand(lua_State* L) {
+	String value = lua_tostring(L, -1);
+
+	SkillManager* skillManager = SkillManager::instance();
+
+	skillManager->addDroidCommand(realObject, value);
+
+	return 1;
+
+}
+
+int LuaPlayerObject::removeDroidCommands(lua_State* L) {
+
+	SkillManager* skillManager = SkillManager::instance();
+
+	skillManager->removeDroidCommands(realObject);
+
+	return 1;
+
 }

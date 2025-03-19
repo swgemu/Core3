@@ -1,0 +1,77 @@
+/*
+				Copyright <SWGEmu>
+		See file COPYING for copying conditions.*/
+
+package server.zone.objects.tangible.deed;
+
+import server.zone.objects.tangible.deed.Deed;
+import server.zone.packets.scene.AttributeListMessage;
+import server.zone.packets.object.ObjectMenuResponse;
+import server.zone.objects.creature.CreatureObject;
+include templates.SharedObjectTemplate;
+include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
+import system.util.Vector;
+
+@lua
+@json
+class NavicomputerDeed extends Deed {
+	protected string controlDeviceTemplate;
+	protected string datapadTemplate;
+
+	public NavicomputerDeed() {
+		Logger.setLoggingName("NavicomputerDeed");
+
+		controlDeviceTemplate = "";
+		datapadTemplate = "";
+	}
+
+	public native void initializeTransientMembers();
+
+	/**
+	 * Reads and sets the template data from a SharedTangibleObjectTemplate LuaObject
+	 * @pre { templateData is a valid pointer }
+	 * @post { TangibleObject members are initialized }
+	 * @param templateData templateData points to the SharedTangibleObjectTemplate LuaObject that is used to initialize the TangibleObject members
+	 */
+	@local
+	public native void loadTemplateData(SharedObjectTemplate templateData);
+
+	@local
+	@dirty
+	public native void fillAttributeList(AttributeListMessage alm, CreatureObject object);
+
+	@local
+	@dirty
+	public native abstract void fillObjectMenuResponse(ObjectMenuResponse menuResponse, CreatureObject player);
+
+	@local
+	@dirty
+	@preLocked
+	@arg1preLocked
+	public native abstract int handleObjectMenuSelect(CreatureObject player, byte selectedID);
+
+	@local
+	public native void updateCraftingValues(CraftingValues values, boolean firstUpdate);
+
+	// Setters
+	@preLocked
+	public void setControlDeviceTemplate(string templateString) {
+		controlDeviceTemplate = templateString;
+	}
+
+	// Getters
+	@read
+	public string getControlDeviceTemplate() {
+		return controlDeviceTemplate;
+	}
+
+	@read
+	/*public string getCertificationRequired() {
+		return certRequired;
+	}*/
+
+	@dirty
+	public boolean isNavicomputerDeedObject() {
+		return true;
+	}
+}

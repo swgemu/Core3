@@ -96,6 +96,8 @@ public:
 			if (droidTask != nullptr) {
 				droidTask->schedule(150);
 			}
+
+			ship->loadDroidCommands();
 		}
 
 		if (groupMembers.size() > 0 && (ship->isPobShip() || ship->isMultiPassengerShip())) {

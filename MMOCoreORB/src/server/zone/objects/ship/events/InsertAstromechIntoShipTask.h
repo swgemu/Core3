@@ -45,13 +45,18 @@ public:
 			return;
 		}
 
-		ManagedReference<SceneObject*> droidRef = zoneServer->getObject(ship->getShipDroidID());
+		ManagedReference<SceneObject*> droidControlDeviceRef = zoneServer->getObject(ship->getShipDroidID());
 
-		if (droidRef == nullptr || !droidRef->isDroidObject()) {
+		if (droidControlDeviceRef == nullptr || !droidControlDeviceRef->isControlDevice()) {
 			return;
 		}
 
-		auto droidObject = dynamic_cast<DroidObject*>(droidRef.get());
+		auto droidControlDevice = dynamic_cast<PetControlDevice*>(droidControlDeviceRef.get());
+
+		if (droidControlDevice == nullptr)
+			return;
+
+		auto droidObject = dynamic_cast<DroidObject*>(droidControlDevice->getControlledObject());
 
 		if (droidObject == nullptr) {
 			return;

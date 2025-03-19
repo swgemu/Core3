@@ -12,7 +12,7 @@
 #include "server/zone/managers/skill/SkillManager.h"
 #include "server/zone/managers/stringid/StringIdManager.h"
 
-// #define DEBUG_DROID_COMMAND
+#define DEBUG_DROID_COMMAND
 
 class DroidCommandProgrammingCallback : public MessageCallback {
 protected:
@@ -136,12 +136,6 @@ public:
 			return;
 		}
 
-		auto droid = cast<DroidObject*>(petControlDevice->getControlledObject());
-
-		if (droid == nullptr) {
-			return;
-		}
-
 		Locker clock(datapad, player);
 
 #ifdef DEBUG_DROID_COMMAND
@@ -171,7 +165,7 @@ public:
 #endif // DEBUG_DROID_COMMAND
 		}
 
-		int capacity = droid->getDataStorageCapacity();
+		int capacity = petControlDevice->getDataStorageCapacity();
 
 		// Add Commands
 		for (int i = 0; i < commandsToAdd.size(); i++) {
