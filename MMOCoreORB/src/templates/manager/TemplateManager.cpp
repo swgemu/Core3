@@ -97,6 +97,7 @@
 #include "templates/tangible/LootkitObjectTemplate.h"
 #include "templates/tangible/LootSchematicTemplate.h"
 #include "templates/tangible/MissionTerminalTemplate.h"
+#include "templates/tangible/NavicomputerDeedTemplate.h"
 #include "templates/tangible/PetDeedTemplate.h"
 #include "templates/tangible/PowerupTemplate.h"
 #include "templates/tangible/RangedStimPackTemplate.h"
@@ -532,6 +533,7 @@ void TemplateManager::registerTemplateObjects() {
 	templateFactory.registerObject<DroidDeedTemplate>(SharedObjectTemplate::DROIDDEED);
 	templateFactory.registerObject<EventPerkDeedTemplate>(SharedObjectTemplate::EVENTPERKDEED);
 	templateFactory.registerObject<ShipDeedTemplate>(SharedObjectTemplate::SHIPDEED);
+	templateFactory.registerObject<NavicomputerDeedTemplate>(SharedObjectTemplate::NAVICOMPUTERDEED);
 	templateFactory.registerObject<MissionTerminalTemplate>(SharedObjectTemplate::MISSIONTERMINAL);
 	templateFactory.registerObject<CloningBuildingObjectTemplate>(SharedObjectTemplate::CLONINGBUILDING);
 	templateFactory.registerObject<HospitalBuildingObjectTemplate>(SharedObjectTemplate::HOSPITALBUILDING);
@@ -720,6 +722,7 @@ void TemplateManager::registerGlobals() {
 	luaTemplatesInstance->setGlobalInt("PETDEED", SharedObjectTemplate::PETDEED);
 	luaTemplatesInstance->setGlobalInt("DROIDDEED", SharedObjectTemplate::DROIDDEED);
 	luaTemplatesInstance->setGlobalInt("SHIPDEED", SharedObjectTemplate::SHIPDEED);
+	luaTemplatesInstance->setGlobalInt("NAVICOMPUTERDEED", SharedObjectTemplate::NAVICOMPUTERDEED);
 	luaTemplatesInstance->setGlobalInt("EVENTPERKDEED", SharedObjectTemplate::EVENTPERKDEED);
 	luaTemplatesInstance->setGlobalInt("MISSIONTERMINAL", SharedObjectTemplate::MISSIONTERMINAL);
 	luaTemplatesInstance->setGlobalInt("CLONINGBUILDING", SharedObjectTemplate::CLONINGBUILDING);

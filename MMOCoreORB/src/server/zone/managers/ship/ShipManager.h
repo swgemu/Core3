@@ -21,6 +21,7 @@
 #include "server/zone/objects/ship/ShipCountermeasureData.h"
 #include "server/zone/objects/ship/components/ShipChassisComponent.h"
 #include "server/zone/objects/ship/ShipTurretData.h"
+#include "server/zone/managers/ship/DroidCommandData.h"
 #include "ShipUniqueIdMap.h"
 #include "SpaceSpawnGroup.h"
 
@@ -119,6 +120,8 @@ protected:
 
 	HashTable<uint32, Reference<SpaceSpawnGroup*>> spawnGroupMap;
 
+	HashTable<uint32, Reference<DroidCommandData*>> DroidCommands;
+
 	ShipUniqueIdMap shipUniqueIdMap;
 	ShipAiAgentUpdateTransformTask* updateTransformTask;
 
@@ -133,6 +136,7 @@ protected:
 	void loadShipCollisionData();
 	void loadShipTurretIffData();
 	void loadShipTurretLuaData();
+	void loadDroidCommands();
 
 public:
 	enum {
@@ -290,6 +294,10 @@ public:
 	uint16 setShipUniqueID(ShipObject* ship);
 
 	void dropShipUniqueID(ShipObject* ship);
+
+	DroidCommandData* getDroidCommandData(uint32 hashCode) const {
+		return DroidCommands.get(hashCode);
+	}
 };
 
 } // namespace ship
