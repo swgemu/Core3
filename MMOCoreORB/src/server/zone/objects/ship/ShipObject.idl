@@ -40,6 +40,7 @@ include engine.util.u3d.Matrix4;
 include server.zone.objects.player.variables.SpaceLaunchPoint;
 include system.util.Vector;
 include engine.util.u3d.Vector3;
+include server.chat.StringIdChatParameter;
 
 
 class ShipObject extends TangibleObject {
@@ -91,6 +92,9 @@ class ShipObject extends TangibleObject {
 	protected Time boostTimer;
 
 	@dereferenced
+	protected Time droidTimer;
+
+	@dereferenced
 	protected Time hyperspaceTime;
 
 	@dereferenced
@@ -128,6 +132,8 @@ class ShipObject extends TangibleObject {
 	protected transient float staffModifiedSpeed;
 
 	protected unsigned int shipFaction;
+
+	protected transient boolean droidFeedback;
 
 	// DeltaAutoVariable template <class K, class V, int BaselineName, uint8 DeltaType, int DeltaIndex>
 
@@ -428,6 +434,9 @@ class ShipObject extends TangibleObject {
 
 	float wingsOpenSpeed;
 
+	@dereferenced
+	protected VectorMap<unsigned int, string> availableDroidCommands;
+
 	public ShipObject() {
 		Logger.setLoggingName("ShipObject");
 
@@ -441,6 +450,7 @@ class ShipObject extends TangibleObject {
 		controlDeviceID = 0;
 		hyperspacing = false;
 		hasWings = false;
+		droidFeedback = true;
 
 		chassisLevel = 0;
 		totalCellNumber = 0;
@@ -1002,6 +1012,11 @@ class ShipObject extends TangibleObject {
 		hasWings = value;
 	}
 
+	@preLocked
+	public void setDroidFeedback(boolean value) {
+		droidFeedback = value;
+	}
+
 	public native void setShipName(@dereferenced final string name, boolean notifyClient = true);
 
 
@@ -1059,6 +1074,22 @@ class ShipObject extends TangibleObject {
 
 	@preLocked
 	public native void clearPlayersOnBoard();
+
+	public native void loadDroidCommands();
+
+	public native void populateDroidCommands(CreatureObject player);
+
+	public boolean hasDroidCommand(unsigned int commandNameHash) {
+		return availableDroidCommands.contains(commandNameHash);
+	}
+
+	@dirty
+	@preLocked
+	public native boolean sendDroidMessageStartTo(SceneObject player, SceneObject droid);
+
+	public native void droidChatter(CreatureObject player, @dereferenced StringIdChatParameter message);
+
+	public native void setDroidCommandDelay(float delay);
 
 	/*
 
@@ -1572,6 +1603,11 @@ class ShipObject extends TangibleObject {
 		return hasComponentFlag(7,4);
 	}
 
+	@dirty
+	public boolean isDroidMuted() {
+		return !droidFeedback;
+	}
+
 	public final string getChassisCategory() {
 		return chassisCategory;
 	}
@@ -1599,6 +1635,14 @@ class ShipObject extends TangibleObject {
 	public boolean isReadyToBoost() {
 		return boostTimer.isPast();
 	}
+
+	@dirty
+	public boolean isReadyForDroidCommand() {
+		return droidTimer.isPast();
+	}
+
+	@dirty
+	public native int timeUntilNextDroidCommand();
 
 	public native boolean hasComponentFlag(unsigned int slot, unsigned int flag);
 
@@ -1765,6 +1809,8 @@ class ShipObject extends TangibleObject {
 	public boolean getComponentTargetable(int slot) {
 		return componentTargetableBitfield.getBitValue(slot);
 	}
+
+	public native void resetEfficiency();
 
 	public native void initializeUniqueID(boolean notifyClient = true);
 
