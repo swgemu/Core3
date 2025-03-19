@@ -241,6 +241,7 @@ const String SceneObjectType::typeToString(int gameObjectType) {
 		case RESOURCEDEED:				return "@got_n:deed";
 		case EVENTPERKDEED:				return "@got_n:deed";
 		case VETHARVESTERDEED:			return "@got_n:deed";
+		case NAVICOMPUTERDEED:				return "@got_n:deed_droid";
 		case CLOTHING:					return "@got_n:clothing";
 		case BANDOLIER:					return "@got_n:clothing_bandolier";
 		case BELT:						return "@got_n:clothing_belt";

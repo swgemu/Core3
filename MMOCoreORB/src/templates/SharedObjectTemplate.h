@@ -202,6 +202,7 @@ public:
 	const static int XPPURCHASE = 0x4000059;
 	const static int SHIPCOMPONENT = 0x400005A;
 	const static int SCHEMATICFRAGMENT = 0x400005B;
+	const static int NAVICOMPUTERDEED = 0x400005C;
 public:
 	SharedObjectTemplate();
 
