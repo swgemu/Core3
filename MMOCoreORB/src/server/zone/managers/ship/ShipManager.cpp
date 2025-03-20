@@ -38,7 +38,6 @@
 #include "server/zone/objects/tangible/threat/ThreatMap.h"
 #include "server/zone/managers/ship/ShipAgentTemplateManager.h"
 
-
 int ShipManager::ERROR_CODE = NO_ERROR;
 
 ShipManager::ShipManager() : Logger("ShipManager") {
@@ -67,6 +66,7 @@ void ShipManager::initialize() {
 	loadShipTurretIffData();
 	loadShipTurretLuaData();
 	loadDroidCommands();
+	loadShipAiAgentPilotData();
 
 	// Load the ship spawn groups
 	loadShipSpawnGroups();
@@ -494,6 +494,45 @@ void ShipManager::loadShipCollisionData() {
 	delete lua;
 
 	info(true) << "Ship Collision Data Loading Complete - Total: " << shipCollisionData.size();
+}
+
+void ShipManager::loadShipAiAgentPilotData() {
+	info(true) << "Loading ShipAiAgent Pilot Data";
+
+	Lua* lua = new Lua();
+	lua->init();
+
+	if (lua->runFile("scripts/managers/space/ship_pilot.lua")) {
+		LuaObject luaData = lua->getGlobalObject("pilotChassisData");
+
+		if (luaData.isValidTable() && luaData.getTableSize() > 0) {
+			for (int i = 1; i <= luaData.getTableSize(); ++i) {
+				auto row = luaData.getObjectAt(i);
+
+				if (!row.isValidTable() || row.getTableSize() < ShipAiAgentPilotData::DATA_SIZE) {
+					row.pop();
+					continue;
+				}
+
+				String dataName = row.getStringAt(1);
+
+				if (dataName.isEmpty() || pilotData.get(dataName) != nullptr) {
+					row.pop();
+					continue;
+				}
+
+				Reference<ShipAiAgentPilotData*> data = new ShipAiAgentPilotData();
+				data->readObject(&row);
+				row.pop();
+
+				pilotData.put(dataName, data);
+			}
+		}
+	}
+
+	delete lua;
+
+	info(true) << "ShipAiAgent Pilot Data Loading Complete - Total: " << pilotData.size();
 }
 
 void ShipManager::loadShipComponentObjects(ShipObject* ship) {
