@@ -61,6 +61,7 @@
 // #define DEBUG_SHIP_AI
 // #define DEBUG_FINDNEXTPOSITION
 // #define DEBUG_SHIP_DESPAWN
+// #define DEBUG_SHIP_AI_CLIENT_MESSAGES
 
 /*
 
@@ -311,6 +312,42 @@ void ShipAiAgentImplementation::loadTemplateData(ShipAgentTemplate* agentTemp) {
 
 	setCustomizationVariable(indexOneKey, agentTemplate->getColor1(), true);
 	setCustomizationVariable(indexTwoKey, agentTemplate->getColor2(), true);
+
+	const String& pilotDataName = agentTemplate->getPilotTemplate();
+
+	if (!pilotDataName.isEmpty() && agentTemplate->getShipType() != "capital") {
+		auto pilotData = ShipManager::instance()->getPilotData(pilotDataName);
+
+		if (pilotData != nullptr) {
+			float speedRotationFactorMin = pilotData->getSpeedRotationFactorMin();
+			float speedRotationFactorOptimal = pilotData->getSpeedRotationFactorOptimal();
+			float speedRotationFactorMax = pilotData->getSpeedRotationFactorMin();
+			float slideDamp = pilotData->getSlideDamp();
+			float engineSpeed = pilotData->getEngineSpeed();
+			float engineAccel = pilotData->getEngineAccel();
+			float engineDecel = pilotData->getEngineDecel();
+			float engineYaw = pilotData->getEngineYaw();
+			float engineYawAccel = pilotData->getEngineYawAccel();
+			float enginePitch = pilotData->getEnginePitch();
+			float enginePitchAccel = pilotData->getEnginePitchAccel();
+			float engineRoll = pilotData->getEngineRoll();
+			float engineRollAccel = pilotData->getEngineRollAccel();
+
+			setSpeedRotationFactorMin(speedRotationFactorMin);
+			setSpeedRotationFactorOptimal(speedRotationFactorOptimal);
+			setSpeedRotationFactorMax(speedRotationFactorMax);
+			setSlipRate(slideDamp, false);
+			setEngineMaxSpeed(engineSpeed, false);
+			setEngineAccelerationRate(engineAccel, false);
+			setEngineDecelerationRate(engineDecel, false);
+			setEngineYawRate(engineYaw, false);
+			setEngineYawAccelerationRate(engineYawAccel, false);
+			setEnginePitchRate(enginePitch, false);
+			setEnginePitchAccelerationRate(enginePitchAccel, false);
+			setEngineRollRate(engineRoll, false);
+			setEngineRollAccelerationRate(engineRollAccel, false);
+		}
+	}
 }
 
 void ShipAiAgentImplementation::initializeTransientMembers() {
@@ -853,7 +890,11 @@ Vector3 ShipAiAgentImplementation::getInterceptPosition(ShipObject* target, floa
 
 	float vRange = qNormalize(deltaV);
 	float tSpeed = target->getCurrentSpeed();
-	float vTime = Math::clamp(0.f, vRange / speed, 10.f);
+	float vTime = Math::clamp(0.f, vRange / speed, 5.f);
+
+	if (slot == Components::CHASSIS) {
+		vTime += Math::clamp(0.f, getDirectionTime(deltaV), 5.f);
+	}
 
 	return (deltaT * tSpeed * vTime) + tPosition;
 }
@@ -992,7 +1033,9 @@ int ShipAiAgentImplementation::setDestination() {
 Quaternion ShipAiAgentImplementation::radiansToQuaterion(float yaw, float pitch, float roll) {
 	yaw = getRotationRate(-yaw + M_PI_2);
 
-	if (getBoundingRadius() >= 128.f) {
+	bool usePrecision = getBoundingRadius() >= 128.f || movementState == ShipAiAgent::ATTACKING;
+
+	if (usePrecision) {
 		int degY = Math::rad2deg(yaw);
 		int degP = Math::rad2deg(pitch);
 		int degR = Math::rad2deg(roll);
@@ -1093,26 +1136,6 @@ float ShipAiAgentImplementation::getMinThrottle() {
 	}
 }
 
-float ShipAiAgentImplementation::getMaxTurnRate() {
-	switch (movementState) {
-		case ShipAiAgent::OBLIVIOUS:
-		case ShipAiAgent::WATCHING:
-		case ShipAiAgent::FOLLOWING:
-		case ShipAiAgent::PATROLLING: {
-			return 0.5f;
-		}
-		case ShipAiAgent::ATTACKING:
-		case ShipAiAgent::FLEEING:
-		case ShipAiAgent::LEASHING:
-		case ShipAiAgent::EVADING:
-		case ShipAiAgent::PATHING_HOME:
-		case ShipAiAgent::FOLLOW_FORMATION:
-		default: {
-			return 1.f;
-		}
-	}
-}
-
 float ShipAiAgentImplementation::qInvSqrt(float x) {
 	float xHalf = 0.5f * x;
 	int32_t i = 0;
@@ -1169,13 +1192,14 @@ bool ShipAiAgentImplementation::isTargetForward() {
 }
 
 void ShipAiAgentImplementation::setNextSpeed() {
-	float speedMax = getActualMaxSpeed() * getMaxThrottle();
-	float speedMin = getActualMaxSpeed() * getMinThrottle();
-
-	float escortSpeed = getEscortSpeed();
+	float speedActual = getActualMaxSpeed();
+	float speedIdeal = speedActual * getSpeedRotationFactorOptimal();
+	float speedMin = Math::min(speedActual * getMinThrottle(), speedIdeal);
+	float speedMax = Math::max(speedActual * getMaxThrottle(), speedMin);
 
 	if (escortSpeed > 0.f) {
-		speedMax = escortSpeed;
+		speedMax = Math::min(speedMax, escortSpeed);
+		speedMin = Math::min(speedMin, escortSpeed);
 	}
 
 	const Vector3& currentPosition = getWorldPosition();
@@ -1185,17 +1209,58 @@ void ShipAiAgentImplementation::setNextSpeed() {
 	float speed = speedMin;
 
 	if (distanceSqr > 0.f || currentSpeed > 0.f) {
-		float decelRate = getActualDecelerationRate() * 2.f;
+		float decelRate = getActualDecelerationRate();
 		float accelRate = getActualAccelerationRate();
-		float turnRate = calculateTurnRate();
-
 		float decelDistSqr = Math::sqr((speedMax * speedMax) / decelRate);
-		speed = decelDistSqr > distanceSqr ? qSqrt(distanceSqr / decelDistSqr) * speedMax : speedMax;
-		speed = Math::clamp(-decelRate * deltaTime, (speed * turnRate) - currentSpeed, accelRate * deltaTime) + currentSpeed;
+		float throttle = 1.f;
+
+		if (decelDistSqr > distanceSqr) {
+			throttle = qSqrt(distanceSqr / decelDistSqr);
+		}
+
+		if (throttle > 0.f) {
+			float rotationRate =  Math::clamp(0.f, 1.f - getRotationTime(nextRotation), 1.f);
+			throttle = Math::min(rotationRate, throttle);
+		}
+
+		float speedIdeal = ((speedMax - speedMin) * throttle) + speedMin;
+		speed = Math::clamp(-decelRate * deltaTime, speedIdeal - currentSpeed, accelRate * deltaTime) + currentSpeed;
 	}
 
 	lastSpeed = currentSpeed;
 	currentSpeed = Math::clamp(speedMin, ceil(speed), speedMax);
+
+	if (currentSpeed != lastSpeed) {
+		updateSpeedRotationValues(false);
+	}
+}
+
+float ShipAiAgentImplementation::getRotationTime(const Vector3& rotationVector) {
+	float nextY = fabs(getRotationRate(rotationVector.getX(), currentRotation.getX()));
+	float nextP = fabs(getRotationRate(rotationVector.getY(), currentRotation.getY()));
+
+	if (nextY <= 0.001f && nextP <= 0.001f) {
+		return 0.f;
+	}
+
+	float maxY  = getActualYawRate();
+	float maxP = getActualPitchRate();
+
+	if (maxY > 0.f && nextY >= nextP) {
+		return nextY / maxY;
+	}
+
+	if (maxP > 0.f) {
+		return nextP / maxP;
+	}
+
+	return 0.f;
+}
+
+float ShipAiAgentImplementation::getDirectionTime(const Vector3& directionVector) {
+	auto rotation = Vector3(atan2(directionVector.getY(),directionVector.getX()), asin(directionVector.getZ()), 0.f);
+
+	return getRotationTime(rotation);
 }
 
 void ShipAiAgentImplementation::setNextDirection() {
@@ -1218,15 +1283,14 @@ void ShipAiAgentImplementation::setNextDirection() {
 	}
 
 	Vector3 thrustV = nextDirection;
-	Vector3 thrustR = currentRotation;
+	Vector3 thrustR = nextRotation;
 
 	if (currentDirection.dotProduct(nextDirection) <= 0.999f || currentRotation.dotProduct(nextRotation) <= 0.999f) {
-		float rateMax = getMaxTurnRate() * deltaTime;
 		float rollDamp = Math::clamp(0.f, 1.f - (getBoundingRadius() / 128.f), 1.f);
 		float rollMax = M_PI_2 * rollDamp;
 
-		Vector3 accel = Vector3(getActualYawAccelerationRate(), getActualPitchAccelerationRate(), getActualRollAccelerationRate() * rollDamp) * rateMax;
-		Vector3 actual = Vector3(getActualYawRate(), getActualPitchRate(), getActualRollRate() * rollDamp) * rateMax;
+		Vector3 accel = Vector3(getActualYawAccelerationRate(), getActualPitchAccelerationRate(), getActualRollAccelerationRate() * rollDamp) * deltaTime;
+		Vector3 actual = Vector3(getActualYawRate(), getActualPitchRate(), getActualRollRate() * rollDamp) * deltaTime;
 		Vector3 delta;
 		Vector3 rate;
 
@@ -1332,7 +1396,7 @@ void ShipAiAgentImplementation::updateTransform(bool lightUpdate) {
 	setNextDirection();
 	setNextPosition();
 
-#ifdef DEBUG_SHIP_AI
+#ifdef DEBUG_SHIP_AI_CLIENT_MESSAGES
 	sendDebugMessage();
 	sendDebugPath();
 #endif
@@ -2413,22 +2477,6 @@ float ShipAiAgentImplementation::getLastSpeed() const {
 	return lastSpeed;
 }
 
-float ShipAiAgentImplementation::calculateTurnRate() {
-	float rateY  = getRotationRate(currentRotation.getX(), lastRotation.getX());
-	float rateP = getRotationRate(currentRotation.getY(), lastRotation.getY());
-	float rate = 1.f;
-
-	if (fabs(rateY) > fabs(rateP)) {
-		float maxY = getActualYawRate() * getMaxTurnRate() * deltaTime;
-		rate -= rateY / (maxY == 0.f ? 1.f : maxY);
-	} else if (rateP != 0.f) {
-		float maxP = getActualPitchRate() * getMaxTurnRate() * deltaTime;
-		rate -= rateP / (maxP == 0.f ? 1.f : maxP);
-	}
-
-	return Math::clamp(0.f, rate, 1.f);
-}
-
 String ShipAiAgentImplementation::getShipAgentTemplateName() {
 	String templateName = "";
 
@@ -2609,23 +2657,26 @@ ShipAiAgent* ShipAiAgent::asShipAiAgent() {
 
 // Debugging
 void ShipAiAgentImplementation::sendDebugMessage() {
-#ifdef DEBUG_SHIP_AI
-
-	if (!peekBlackboard("aiDebug") || readBlackboard("aiDebug") == false)
+#ifdef DEBUG_SHIP_AI_CLIENT_MESSAGES
+	if (!peekBlackboard("aiDebugSystemMessage") || readBlackboard("aiDebugSystemMessage") == false) {
 		return;
+	}
 
 	StringBuffer msg;
 
 	const Vector3& currentPosition = getPosition();
 	Vector3 nextPosition = nextStepPosition.getWorldPosition();
 
-	float yawMax  = round(getActualYawRate() * deltaTime * Math::RAD2DEG * 1000.f) * 0.001f;
-	float pitchMax = round(getActualPitchRate() * deltaTime * Math::RAD2DEG * 1000.f) * 0.001f;
-	float rollMax = round(getActualRollRate() * deltaTime * Math::RAD2DEG * 1000.f) * 0.001f;
+	float yawMax  = getActualYawRate() * deltaTime;
+	float pitchMax = getActualPitchRate() * deltaTime;
+	float rollMax = getActualRollRate() * deltaTime;
 
-	float yawRate  = round(getRotationRate(currentRotation.getX(), lastRotation.getX()) * Math::RAD2DEG * 1000.f) * 0.001f;
-	float pitchRate = round(getRotationRate(currentRotation.getY(), lastRotation.getY()) * Math::RAD2DEG * 1000.f) * 0.001f;
-	float rollRate = round(getRotationRate(currentRotation.getZ(), lastRotation.getZ()) * Math::RAD2DEG * 1000.f) * 0.001f;
+	float yawRate  = getRotationRate(currentRotation.getX(), lastRotation.getX());
+	float pitchRate = getRotationRate(currentRotation.getY(), lastRotation.getY());
+	float rollRate = getRotationRate(currentRotation.getZ(), lastRotation.getZ());
+
+	float velocity = Math::clamp(0.f, currentSpeed / VELOCITY_MAX, 1.f);
+	float slipRate = Math::clamp(0.f, getSlip() * velocity, 1.f);
 
 	String movementString = "";
 
@@ -2657,22 +2708,25 @@ void ShipAiAgentImplementation::sendDebugMessage() {
 		<< " thisDirection:   " << currentDirection.getX() << " " << currentDirection.getY() << " " << currentDirection.getZ() << endl
 		<< " lastRotation:	  " << lastRotation.getX() << " " << lastRotation.getY() << " " << lastRotation.getZ() << endl
 		<< " thisRotation:	  " << currentRotation.getX() << " " << currentRotation.getY() << " " << currentRotation.getZ() << endl
-		<< " yawRate:         " << yawRate << "/" << yawMax << endl
-		<< " pitchRate:       " << pitchRate << "/" << pitchMax<< endl
-		<< " yawRate:         " << rollRate << "/" << rollMax<< endl
+		<< " yawPercent       " << (int)round((yawRate / yawMax) * 100.f) << "%" << endl
+		<< " pitchPercent     " << (int)round((pitchRate / pitchMax) * 100.f) << "%" << endl
+		<< " rollPercent      " << (int)round((rollRate / rollMax) * 100.f) << "%" << endl
+		<< " slipRate:	      " << slipRate << endl
+		<< " rotationRate:    " << calculateSpeedRotationFactor() << endl
 		<< " currentSpeed:	  " << currentSpeed << endl
 		<< " lastSpeed:	      " << lastSpeed << endl
 		<< "--------------------------------";
 
 	ChatSystemMessage* smsg = new ChatSystemMessage(msg.toString());
 	broadcastMessage(smsg, false);
-#endif // DEBUG_SHIP_AI
+#endif // DEBUG_SHIP_AI_CLIENT_MESSAGES
 }
 
 void ShipAiAgentImplementation::sendDebugPath() {
-#ifdef DEBUG_SHIP_AI
-	if (!peekBlackboard("aiDebug") || readBlackboard("aiDebug") == false)
+#ifdef DEBUG_SHIP_AI_CLIENT_MESSAGES
+	if (!peekBlackboard("aiDebugPathMessage") || readBlackboard("aiDebugPathMessage") == false) {
 		return;
+	}
 
 	auto data = ShipManager::instance()->getCollisionData(asShipObject());
 	if (data == nullptr) {
@@ -2721,5 +2775,5 @@ void ShipAiAgentImplementation::sendDebugPath() {
 	}
 
 	broadcastMessage(path, false);
-#endif // DEBUG_SHIP_AI
+#endif // DEBUG_SHIP_AI_CLIENT_MESSAGES
 }
