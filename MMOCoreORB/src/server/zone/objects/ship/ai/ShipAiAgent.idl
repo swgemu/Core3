@@ -391,8 +391,6 @@ class ShipAiAgent extends FighterShipObject {
 
 	public native float getMinThrottle();
 
-	public native float getMaxTurnRate();
-
 	public native float getRotationRate(float currentRadians, float lastRadians = 0.f);
 
 	public native float qInvSqrt(float x);
@@ -404,6 +402,10 @@ class ShipAiAgent extends FighterShipObject {
 	public native boolean setDisabledEngineSpeed();
 
 	public native void setNextSpeed();
+
+	public native float getRotationTime(@dereferenced final Vector3 rotation);
+
+	public native float getDirectionTime(@dereferenced final Vector3 direction);
 
 	public native void setNextDirection();
 
@@ -950,6 +952,4 @@ class ShipAiAgent extends FighterShipObject {
 
 	@dirty
 	public native abstract float getOutOfRangeDistance(unsigned long specialRangeObjectID = 0);
-
-	public native float calculateTurnRate();
 }

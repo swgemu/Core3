@@ -23,6 +23,7 @@
 #include "server/zone/objects/ship/ShipTurretData.h"
 #include "ShipUniqueIdMap.h"
 #include "SpaceSpawnGroup.h"
+#include "server/zone/objects/ship/ai/ShipAiAgentPilotData.h"
 
 namespace server {
 namespace zone {
@@ -109,6 +110,7 @@ protected:
 	HashTable<String, ShipProjectileData*> shipProjectiletTemplateNames;
 	HashTable<uint32, Reference<ShipCollisionData*>> shipCollisionData;
 	HashTable<String, Reference<ShipChassisData*>> chassisData;
+	HashTable<String, Reference<ShipAiAgentPilotData*>> pilotData;
 
 	HashTable<uint32, Reference<ShipMissileData*>> missileData;
 	HashTable<uint32, Reference<ShipCountermeasureData*>> countermeasureData;
@@ -133,6 +135,7 @@ protected:
 	void loadShipCollisionData();
 	void loadShipTurretIffData();
 	void loadShipTurretLuaData();
+	void loadShipAiAgentPilotData();
 
 public:
 	enum {
@@ -222,6 +225,10 @@ public:
 
 	const ShipCountermeasureData* getCountermeasureData(uint32 ammoType) const {
 		return countermeasureData.get(ammoType);
+	}
+
+	const ShipAiAgentPilotData* getPilotData(const String& pilotType) const {
+		return pilotData.get(pilotType);
 	}
 
 	ShipUniqueIdMap* getShipUniqueIdMap() {
