@@ -143,8 +143,15 @@ void DroidDataStorageModuleDataComponent::fillAttributeList(AttributeListMessage
 				continue;
 			}
 
+			const auto itemIdentifier = commandModule->getItemIdentifier();
+
 			currentDataSize += commandModule->getDataSize();
-			storedCommands.add(commandModule->getItemIdentifier());
+
+			if (itemIdentifier.isEmpty()) {
+				continue;
+			}
+
+			storedCommands.add(itemIdentifier);
 		}
 
 		// Used Memory

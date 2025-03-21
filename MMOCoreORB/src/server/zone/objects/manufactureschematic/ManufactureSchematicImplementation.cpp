@@ -22,6 +22,15 @@
 #include "ingredientslots/ResourceSlot.h"
 #include "ingredientslots/ComponentSlot.h"
 
+void ManufactureSchematicImplementation::initializeTransientMembers() {
+	// Update old Manu Schems data size to parent object variable
+	if (dataSize > 0 && getDataSize() != dataSize) {
+		datapadSize = dataSize;
+	}
+
+	IntangibleObjectImplementation::initializeTransientMembers();
+}
+
 void ManufactureSchematicImplementation::destroyObjectFromDatabase(bool destroyContainedObjects) {
 	if (prototype != nullptr) {
 		prototype->destroyObjectFromDatabase(true);
@@ -32,7 +41,7 @@ void ManufactureSchematicImplementation::destroyObjectFromDatabase(bool destroyC
 }
 
 void ManufactureSchematicImplementation::fillAttributeList(AttributeListMessage* alm, CreatureObject* object) {
-	alm->insertAttribute("data_volume", dataSize);
+	alm->insertAttribute("data_volume", getDataSize());
 
 	try {
 		for (int i = 0; i < factoryBlueprint.getCompleteSize(); ++i) {
@@ -553,7 +562,7 @@ void ManufactureSchematicImplementation::setPrototype(TangibleObject* tano) {
 
 	prototype = tano;
 	crafter = nullptr;
-	dataSize = draftSchematic->getSize();
+	datapadSize = draftSchematic->getSize();
 
 	createFactoryBlueprint();
 
