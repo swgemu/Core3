@@ -9,6 +9,7 @@
 #include "ObjectControllerMessageCallback.h"
 #include "server/zone/objects/intangible/PetControlDevice.h"
 #include "server/zone/objects/creature/ai/DroidObject.h"
+#include "server/zone/objects/tangible/misc/DroidProgrammingChip.h"
 #include "server/zone/managers/skill/SkillManager.h"
 #include "server/zone/managers/stringid/StringIdManager.h"
 
@@ -209,14 +210,25 @@ public:
 
 		// Add memory modules
 		for (int i = 0; i < modulesToAdd.size(); i++) {
-			auto programmedModule = zoneServer->getObject(modulesToAdd.get(i));
+			auto programmedModule = zoneServer->getObject(modulesToAdd.get(i)).castTo<DroidProgrammingChip*>();
 
 			if (programmedModule == nullptr || programmedModule->getGameObjectType() != SceneObjectType::DROIDPROGRAMMINGCHIP) {
 				continue;
 			}
 
-			// TODO: Add from programmed module
-			addModuleFromInventory();
+			if (hasCommand(datapad, programmedModule->getItemIdentifier())) {
+				player->sendSystemMessage("@space/droid_commands:droid_command_programmed_already"); // "This program is already programmed, and cannot be loaded a second time."
+				continue;
+			}
+
+			if (!hasSpaceForCommand(datapad, capacity, programmedModule->getDatapadSize())) {
+				player->sendSystemMessage("@space/droid_commands:droid_command_full"); // "Your droid's datapad is full."
+
+				continue;
+			}
+
+			// Passed checks so add from programmed module
+			addModuleFromInventory(zoneServer, datapad, programmedModule);
 		}
 	}
 
@@ -260,8 +272,52 @@ public:
 		datapad->broadcastObject(commandModule, true);
 	}
 
-	void addModuleFromInventory() {
+	void addModuleFromInventory(ZoneServer* zoneServer, SceneObject* datapad, DroidProgrammingChip* programmedModule) {
+		if (zoneServer == nullptr || datapad == nullptr || programmedModule == nullptr) {
+			return;
+		}
 
+		String commandTemplate = "object/intangible/data_item/droid_command.iff";
+
+		auto commandModule = zoneServer->createObject(commandTemplate.hashCode(), 1).castTo<IntangibleObject*>();
+
+		if (commandModule == nullptr) {
+			return;
+		}
+
+		Locker modLock(commandModule, datapad);
+
+		// Set the module name
+		String commandName = programmedModule->getItemIdentifier();
+		String moduleName = "@space/droid_commands:" + commandName + "_chipname";
+
+		commandModule->setCustomObjectName(StringIdManager::instance()->getStringId(moduleName.hashCode()), false);
+
+		// Set the size of the module
+		commandModule->setDataSize(programmedModule->getDatapadSize(), false);
+		commandModule->updateStatus(1, false);
+		commandModule->setItemIdentifier(commandName, false);
+
+		if (!datapad->transferObject(commandModule, -1)) {
+			datapad->error() << "Failed to transfer Space Command Intangible into Droid Datapad ID: " << datapad->getObjectID();
+			return;
+		}
+
+		ContainerPermissions* permissions = commandModule->getContainerPermissionsForUpdate();
+
+		permissions->setInheritPermissionsFromParent(true);
+		permissions->clearDefaultDenyPermission(ContainerPermissions::MOVECONTAINER);
+		permissions->clearDenyPermission("owner", ContainerPermissions::MOVECONTAINER);
+
+		modLock.release();
+
+		datapad->broadcastObject(commandModule, true);
+
+		//destroy the programmed chip
+		Locker chipLock(programmedModule, datapad);
+
+		programmedModule->destroyObjectFromDatabase(true);
+		programmedModule->destroyObjectFromWorld(true);
 	}
 
 	bool hasCommand(SceneObject* datapad, String commandName) {
