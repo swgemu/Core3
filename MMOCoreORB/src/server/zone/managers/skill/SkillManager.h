@@ -52,6 +52,8 @@ class SkillManager : public Singleton<SkillManager>, public Logger, public Objec
 
 	VectorMap<uint32, int> droidProgramSizes;
 
+	SortedVector<String> droidCommands;
+
 	bool apprenticeshipEnabled;
 
 public:
@@ -139,6 +141,8 @@ public:
 	int getDroidProgramSize(uint32 programHash) {
 		return droidProgramSizes.get(programHash);
 	}
+
+	void getPlayerDroidCommands(PlayerObject* ghost, Vector<String>& playerDroidCommands);
 };
 
 }
