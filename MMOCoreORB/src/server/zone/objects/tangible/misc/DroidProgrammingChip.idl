@@ -1,0 +1,69 @@
+/*
+				Copyright <SWGEmu>
+		See file COPYING for copying conditions.*/
+
+package server.zone.objects.tangible.misc;
+
+import server.zone.objects.tangible.TangibleObject;
+import server.zone.objects.scene.SceneObject;
+import server.zone.Zone;
+import server.zone.packets.scene.AttributeListMessage;
+import server.zone.ZoneServer;
+include templates.SharedObjectTemplate;
+import server.zone.packets.object.ObjectMenuResponse;
+
+import server.zone.objects.creature.CreatureObject;
+
+@lua
+@json
+class DroidProgrammingChip extends TangibleObject {
+	protected float datapadSize;
+	protected string itemIdentifier;
+
+	public DroidProgrammingChip() {
+		setLoggingName("DroidProgrammingChip");
+
+		datapadSize = 0;
+		itemIdentifier = "";
+
+		initializeMembers();
+	}
+
+	@dirty
+	public void initializeMembers(){
+	}
+
+	@local
+	@dirty
+	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
+
+	@local
+	@dirty
+	public native abstract void fillObjectMenuResponse(ObjectMenuResponse menuResponse, CreatureObject player);
+
+	public native abstract int handleObjectMenuSelect(CreatureObject player, byte selectedID);
+
+	@dirty
+	public boolean isDroidProgrammingChipObject() {
+		return true;
+	}
+
+	public void setItemIdentifier(string identifier) {
+		itemIdentifier = identifier;
+	}
+
+	public void setDatapadSize(int size) {
+		datapadSize = size;
+	}
+
+	public string getItemIdentifier() {
+		return itemIdentifier;
+	}
+
+	public int getDatapadSize() {
+		return datapadSize;
+	}
+
+	public native void programChip(string commandName, int programSize);
+
+}
