@@ -50,11 +50,11 @@
 #include "packets/object/LotteryWindowCallback.h"
 
 #include "packets/ship/ShipUpdateTransformCallback.h"
-#include "packets/object/InsertedAsPilotCallback.h"
 #include "packets/object/JtlShipListRequestCallback.h"
 #include "packets/object/GroupMemberSendSpaceInviteCallback.h"
 #include "packets/object/GroupMemberSpaceInviteResponseCallback.h"
 #include "packets/object/DroidCommandProgrammingCallback.h"
+#include "packets/object/UpdateShipTargetSlot.h"
 
 #include "packets/jtl/CreateProjectileMessage.h"
 
@@ -213,7 +213,7 @@ void ZonePacketHandler::registerObjectControllerMessages() {
 	objectMessageControllerFactory->registerObject<LotteryWindowCallback>(0x43f);
 
 	// Space Callbacks
-	objectMessageControllerFactory->registerObject<InsertedAsPilotCallback>(0x3fa);
+	objectMessageControllerFactory->registerObject<UpdateShipTargetSlotCallback>(0x3FA);
 	objectMessageControllerFactory->registerObject<JtlShipListRequestCallback>(0x41C);
 	objectMessageControllerFactory->registerObject<DroidCommandProgrammingCallback>(0x435);
 	objectMessageControllerFactory->registerObject<GroupMemberSendSpaceInviteCallback>(0x436);

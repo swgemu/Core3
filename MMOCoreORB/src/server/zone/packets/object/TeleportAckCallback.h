@@ -34,6 +34,27 @@ public:
 		}
 
 		ghost->setTeleporting(false);
+
+		if (player->isPilotingShip()) {
+			setHyperspacing(player);
+		}
+	}
+
+	void setHyperspacing(CreatureObject* player) {
+		auto root = player->getRootParent();
+
+		if (root == nullptr || !root->isShipObject()) {
+			return;
+		}
+
+		auto ship = root->asShipObject();
+
+		if (ship == nullptr || !ship->isHyperspacing()) {
+			return;
+		}
+
+		Locker lock(root, player);
+		ship->setHyperspacing(false);
 	}
 };
 

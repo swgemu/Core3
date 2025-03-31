@@ -12,46 +12,65 @@
 
 class TargetUpdateCallback : public MessageCallback {
 	int size;
-	uint64 target;
+	uint64 targetID;
 
 	ObjectControllerMessageCallback* objectControllerMain;
 public:
 	TargetUpdateCallback(ObjectControllerMessageCallback* objectControllerCallback) :
 		MessageCallback(objectControllerCallback->getClient(), objectControllerCallback->getServer()),
-		size(0), target(0), objectControllerMain(objectControllerCallback) {
+		size(0), targetID(0), objectControllerMain(objectControllerCallback) {
 	}
 
 	void parse(Message* message) {
 		size = message->parseInt();
-		target = message->parseLong();
+		targetID = message->parseLong();
 	}
 
 	void run() {
 		ManagedReference<CreatureObject*> object = client->getPlayer();
 
-		if (object == nullptr)
+		if (object == nullptr) {
 			return;
-
-		//object->info("received target update");
-
-		object->setTargetID(target, true);
-
-		object->unlock();
-
-		Reference<SceneObject*> scene;
-
-		try {
-			scene = object->getZoneServer()->getObject(target);
-
-			object->wlock();
-		} catch (...) {
-			object->wlock();
-
-			throw;
 		}
 
-		if (scene != nullptr)
-			object->notifyObservers(ObserverEventType::PLAYERCHANGEDTARGET, scene);
+		if (object->getTargetID() != targetID) {
+			setPlayerTargetID(object);
+		}
+
+		if (object->isPilotingShip()) {
+			setShipTargetID(object);
+		}
+	}
+	
+	void setPlayerTargetID(CreatureObject* object) {
+		if (targetID != 0) {
+			ManagedReference<SceneObject*> target = object->getZoneServer()->getObject(targetID);
+
+			if (target != nullptr) {
+				object->notifyObservers(ObserverEventType::PLAYERCHANGEDTARGET, target);
+			} else {
+				targetID = 0;
+			}
+		}
+
+		object->setTargetID(targetID, true);
+	}
+
+	void setShipTargetID(CreatureObject* object) {
+		auto root = object->getRootParent();
+
+		if (root == nullptr || !root->isShipObject()) {
+			return;
+		}
+
+		auto ship = root->asShipObject();
+
+		if (ship == nullptr || ship->getShipTargetID() == targetID) {
+			return;
+		}
+		
+		Locker cLock(root, object);
+		ship->setShipTargetID(targetID, true);
 	}
 };
 
