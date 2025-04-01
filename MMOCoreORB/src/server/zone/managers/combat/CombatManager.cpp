@@ -2738,6 +2738,11 @@ float CombatManager::doObjectDetonation(TangibleObject* attackerTanO, CreatureOb
 			}
 		// Calculate player armor reduction
 		} else {
+			// PvP Damage Reduction
+			if (attackerTanO->isDroidObject() && defender->isPlayerCreature()) {
+				damage *= 0.25;
+			}
+
 			ArmorObject* psgArmor = getPSGArmor(defender);
 
 			// PSG Reduction
@@ -2772,6 +2777,33 @@ float CombatManager::doObjectDetonation(TangibleObject* attackerTanO, CreatureOb
 				Locker alocker(armor, attackerTanO);
 
 				armor->inflictDamage(armor, 0, damage * 0.2, true, true);
+			}
+
+			// Calculate Spill over
+			int numSpillOverPools = 2;
+			float spillMultPerPool = (0.0834f * numSpillOverPools);
+
+			// Calculate spill damage
+			int spilledDamage = (int)(damage * spillMultPerPool);
+
+			// subtract spill damage from total damage
+			damage -= spilledDamage;
+
+			 // Split the spill over damage between the pools damaged
+			int spillDamagePerPool = (int)(spilledDamage / numSpillOverPools);
+			int spillOverRemainder = (spilledDamage % numSpillOverPools) + spillDamagePerPool;
+			int spillToApply = (numSpillOverPools-- > 1 ? spillDamagePerPool : spillOverRemainder);
+
+			if ((pool ^ 0x7) & HEALTH) {
+				defender->inflictDamage(attackerTanO, CreatureAttribute::HEALTH, spillToApply, true, true, false);
+			}
+
+			if ((pool ^ 0x7) & ACTION) {
+				defender->inflictDamage(attackerTanO, CreatureAttribute::ACTION, spillToApply, true, true, false);
+			}
+
+			if ((pool ^ 0x7) & MIND) {
+				defender->inflictDamage(attackerTanO, CreatureAttribute::MIND, spillToApply, true, true, false);
 			}
 		}
 

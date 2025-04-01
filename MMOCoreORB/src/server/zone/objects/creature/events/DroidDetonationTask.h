@@ -91,8 +91,7 @@ public:
 				break;
 			}
 			case 3: {
-				// BOOM
-				int areaDamage = module->calculateDamage(droid);
+				// Detonate Droid
 				bool shouldGcwCrackdownTef = false, shouldGcwTef = false, shouldBhTef = false;
 
 				// find all valid targets in 17 m range and hit them with the damage
@@ -164,7 +163,7 @@ public:
 						// apply the damage to the target and send themessage
 						if (CollisionManager::checkLineOfSight(object, droid)) {
 							// apply the damage
-							float amount = CombatManager::instance()->doObjectDetonation(droid, creo, areaDamage);
+							float amount = CombatManager::instance()->doObjectDetonation(droid, creo, module->calculateDamage(droid));
 
 							if (amount > 0) {
 								if (creo->isPlayerCreature()) {
