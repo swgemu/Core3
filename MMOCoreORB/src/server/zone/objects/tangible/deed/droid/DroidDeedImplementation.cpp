@@ -43,6 +43,7 @@ void DroidDeedImplementation::onCloneObject(SceneObject* objectToClone) {
 	DeedImplementation::onCloneObject(objectToClone);
 
 	ManagedReference<DroidDeed*> deed = cast<DroidDeed*>(objectToClone);
+
 	if (deed == nullptr) {
 		error("Invalid object type used in DroidDeedImplementation::onCloneObject");
 		return;
@@ -299,21 +300,47 @@ void DroidDeedImplementation::updateCraftingValues(CraftingValues* values, bool 
 void DroidDeedImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
 	DeedImplementation::fillObjectMenuResponse(menuResponse, player);
 
-	if (isASubChildOf(player))
-		menuResponse->addRadialMenuItem(20, 3, "@pet/pet_menu:menu_unpack"); //"Ready Droid Unit"
+	if (!isASubChildOf(player)) {
+		return;
+	}
+
+	menuResponse->addRadialMenuItem(RadialOptions::ITEM_USE, 3, "@pet/pet_menu:menu_unpack"); //"Ready Droid Unit"
 }
 
 int DroidDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	if (selectedID == 20) {
-		if (generated || !isASubChildOf(player))
-			return 1;
+	if (player == nullptr) {
+		return 1;
+	}
 
-		if (player->isInCombat() || player->isRidingMount() || player->isSwimming() || player->isDead() || player->isIncapacitated()) {
+	if (selectedID == RadialOptions::ITEM_USE) {
+		if (generated || !isASubChildOf(player)) {
+			return 1;
+		}
+
+		bool bombDroid = isBombDroid();
+
+		if (player->isDead() ) {
 			player->sendSystemMessage("@pet/pet_menu:cant_call"); // "You cannot call this pet right now."
 			return 1;
 		}
 
-		ManagedReference<SceneObject*> datapad = player->getSlottedObject("datapad");
+		if ((!bombDroid && player->isIncapacitated()) || (bombDroid && player->isIncapacitated() && !player->isFeigningDeath())) {
+			player->sendSystemMessage("@pet/pet_menu:cant_call"); // "You cannot call this pet right now."
+			return 1;
+		}
+
+		if (!bombDroid && (player->isInCombat() || player->isRidingMount() || player->isSwimming())) {
+			player->sendSystemMessage("@pet/pet_menu:cant_call"); // "You cannot call this pet right now."
+			return 1;
+		}
+
+		auto zoneServer = player->getZoneServer();
+
+		if (zoneServer == nullptr) {
+			return 1;
+		}
+
+		ManagedReference<SceneObject*> datapad = player->getDatapad();
 
 		if (datapad == nullptr) {
 			player->sendSystemMessage("Datapad doesn't exist when trying to generate droid");
@@ -342,21 +369,24 @@ int DroidDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte
 			return 1;
 		}
 
-		Reference<CreatureManager*> creatureManager = player->getZone()->getCreatureManager();
-		if (creatureManager == nullptr)
+		Reference<CreatureManager*> creatureManager = player->getZone()->getCreatureManager();\
+
+		if (creatureManager == nullptr) {
 			return 1;
+		}
 
 		CreatureTemplateManager* creatureTemplateManager = CreatureTemplateManager::instance();
 		Reference<CreatureTemplate*> creatureTemplate =  creatureTemplateManager->getTemplate(mobileTemplate.hashCode());
+
 		if (creatureTemplate == nullptr) {
-			player->sendSystemMessage("wrong droid template;mobileTemplate=[" + mobileTemplate + "]" );
+			warning() << "Improper droid template: " << mobileTemplate;
 			return 1;
 		}
 
 		Reference<PetControlDevice*> controlDevice = (server->getZoneServer()->createObject(controlDeviceObjectTemplate.hashCode(), 1)).castTo<PetControlDevice*>();
 
 		if (controlDevice == nullptr) {
-			player->sendSystemMessage("wrong droid control device template " + controlDeviceObjectTemplate);
+			warning() << "Improper droid control device template " << controlDeviceObjectTemplate;
 			return 1;
 		}
 
@@ -366,7 +396,8 @@ int DroidDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte
 
 		if (creatureObject == nullptr) {
 			controlDevice->destroyObjectFromDatabase(true);
-			player->sendSystemMessage("wrong droid templates;mobileTemplate=[" + mobileTemplate + "];generatedObjectTemplate=[" + generatedObjectTemplate + "]");
+
+			warning() << "Improper droid templates -- mobileTemplate: " << mobileTemplate << " generatedObjectTemplate: " << generatedObjectTemplate;
 			return 1;
 		}
 
@@ -433,6 +464,7 @@ int DroidDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte
 
 		// Copy color customization from deed to droid
 		CustomizationVariables* customVars = getCustomizationVariables();
+
 		if (customVars != nullptr) {
 			for (int i = 0; i < customVars->size(); ++i) {
 				uint8 id = customVars->elementAt(i).getKey();
@@ -464,7 +496,7 @@ int DroidDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte
 
 		datapad->broadcastObject(controlDevice, true);
 
-		controlDevice->callObject(player);
+		controlDevice->callObject(player, true);
 
 		//Remove the deed from its container.
 		ManagedReference<SceneObject*> deedContainer = getParent().get();
@@ -481,4 +513,27 @@ int DroidDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte
 	}
 
 	return DeedImplementation::handleObjectMenuSelect(player, selectedID);
+}
+
+bool DroidDeedImplementation::isBombDroid() {
+	ManagedReference<DroidComponent*> droidComponent = nullptr;
+	HashTableIterator<String, ManagedReference<DroidComponent*> > iterator = modules.iterator();
+
+	for (int i = 0; i < modules.size(); ++i) {
+		droidComponent = iterator.getNextValue();
+
+		if (droidComponent == nullptr) {
+			continue;
+		}
+
+		BaseDroidModuleComponent* data = cast<BaseDroidModuleComponent*>(droidComponent->getDataObjectComponent()->get());
+
+		if (data == nullptr || !data->isDetonationModule()) {
+			continue;
+		}
+
+		return true;
+	}
+
+	return false;
 }

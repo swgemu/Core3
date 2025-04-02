@@ -103,7 +103,7 @@ class PetControlDevice extends ControlDevice {
 
 	@preLocked
 	@arg1preLocked
-	public native void callObject(CreatureObject player);
+	public native void callObject(CreatureObject player, boolean initialCall = false);
 
 	@preLocked
 	@arg1preLocked

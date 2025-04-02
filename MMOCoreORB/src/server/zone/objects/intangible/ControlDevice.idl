@@ -55,7 +55,7 @@ class ControlDevice extends IntangibleObject {
 		Logger.error("called generateObject on an abstract method");
 	}
 
-	public abstract void callObject(CreatureObject player) {
+	public abstract void callObject(CreatureObject player, boolean initialCall = false) {
 		Logger.error("called callObject on an abstract method");
 	}
 

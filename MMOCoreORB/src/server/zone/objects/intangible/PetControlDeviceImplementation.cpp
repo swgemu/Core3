@@ -30,12 +30,22 @@
 #include "server/zone/objects/creature/commands/QueueCommand.h"
 #include "server/zone/objects/intangible/tasks/PetControlDeviceStoreTask.h"
 
-void PetControlDeviceImplementation::callObject(CreatureObject* player) {
-	if (player->isInCombat() || player->isDead() || player->isIncapacitated() || player->getPendingTask("tame_pet") != nullptr) {
+void PetControlDeviceImplementation::callObject(CreatureObject* player, bool initialCall) {
+	if (player == nullptr) {
+		return;
+	}
+
+	if (!isASubChildOf(player)) {
+		return;
+	}
+
+	// Player is Dead or currently taming a pet
+	if (player->isDead() || player->getPendingTask("tame_pet") != nullptr) {
 		player->sendSystemMessage("@pet/pet_menu:cant_call"); // You cannot call this pet right now.
 		return;
 	}
 
+	// No Pet active area check
 	SortedVector<ManagedReference<ActiveArea*> >* areas = player->getActiveAreas();
 
 	for (int i = 0; i < areas->size(); i++) {
@@ -47,12 +57,10 @@ void PetControlDeviceImplementation::callObject(CreatureObject* player) {
 		}
 	}
 
-	if (player->isRidingMount()) {
-		player->sendSystemMessage("@pet/pet_menu:mounted_call_warning"); // You cannot call a pet while mounted or riding a vehicle.
-		return;
-	}
+	// Private Building Check
+	auto parent = player->getParent().get();
 
-	if (player->getParent() != nullptr) {
+	if (parent != nullptr && !parent->isMount() && !parent->isVehicleObject()) {
 		ManagedReference<SceneObject*> strongRef = player->getRootParent();
 
 		if (strongRef != nullptr && !strongRef->isPobShip()) {
@@ -65,31 +73,42 @@ void PetControlDeviceImplementation::callObject(CreatureObject* player) {
 		}
 	}
 
-	if (!isASubChildOf(player))
+	auto zoneServer = player->getZoneServer();
+
+	if (zoneServer == nullptr) {
 		return;
+	}
+
+	// Player is in FRS Enclave Check
+	FrsManager* frsManager = zoneServer->getFrsManager();
+
+	if (frsManager == nullptr || (frsManager->isFrsEnabled() && frsManager->isPlayerInEnclave(player))) {
+		player->sendSystemMessage("@pet/pet_menu:cant_call"); //  You cannot call this pet right now.
+		return;
+	}
 
 	ManagedReference<TangibleObject*> controlledObject = this->controlledObject.get();
 
-	if (controlledObject == nullptr || !controlledObject->isAiAgent())
+	if (controlledObject == nullptr || !controlledObject->isAiAgent()) {
 		return;
+	}
 
 	ManagedReference<AiAgent*> pet = cast<AiAgent*>(controlledObject.get());
+
+	if (pet == nullptr) {
+		return;
+	}
+
 	ManagedReference<PlayerObject*> ghost = player->getPlayerObject();
 
-	if (ghost == nullptr || ghost->hasActivePet(pet))
+	if (ghost == nullptr || ghost->hasActivePet(pet)) {
 		return;
+	}
 
 	if (pet->getDefaultWeapon() == nullptr) {
 		pet->createDefaultWeapon();
 		player->sendSystemMessage("This pet does not have a proper default weapon, attempting to create one. Please call your pet again.");
 
-		return;
-	}
-
-	FrsManager* frsManager = server->getZoneServer()->getFrsManager();
-
-	if (frsManager->isFrsEnabled() && frsManager->isPlayerInEnclave(player)) {
-		player->sendSystemMessage("@pet/pet_menu:cant_call"); //  You cannot call this pet right now.
 		return;
 	}
 
@@ -104,6 +123,29 @@ void PetControlDeviceImplementation::callObject(CreatureObject* player) {
 			player->sendSystemMessage("@pet/droid_modules:droid_maint_on_maint_run"); //You cannot call that droid. It is currently on a maintenance run.
 		else
 			player->sendSystemMessage("@pet/pet_menu:cant_call"); // cant call pet right now
+		return;
+	}
+
+	bool isBombDroid = false;
+
+	// Bomb Droid bool only can be true on initial call
+	if (initialCall && pet->isDroid()) {
+		auto droid = pet.castTo<DroidObject*>();
+
+		if (droid != nullptr && droid->isBombDroid()) {
+			isBombDroid = true;
+		}
+	}
+
+	// Only Bomb droids can be called while in combat and while feigning death
+	if ((!isBombDroid && (player->isInCombat() || player->isIncapacitated())) || (isBombDroid && (player->isIncapacitated() && !player->isFeigningDeath()))) {
+		player->sendSystemMessage("@pet/pet_menu:cant_call"); // You cannot call this pet right now.
+		return;
+	}
+
+	// Bomb Droids can be called while riding a mount only when direct from deed form
+	if (!isBombDroid && player->isRidingMount()) {
+		player->sendSystemMessage("@pet/pet_menu:mounted_call_warning"); // You cannot call a pet while mounted or riding a vehicle.
 		return;
 	}
 
@@ -177,6 +219,7 @@ void PetControlDeviceImplementation::callObject(CreatureObject* player) {
 
 	if (petType == PetManager::CREATUREPET) {
 		ManagedReference<Creature*> creaturePet = cast<Creature*>(pet.get());
+
 		if (creaturePet == nullptr)
 			return;
 
@@ -254,8 +297,7 @@ void PetControlDeviceImplementation::callObject(CreatureObject* player) {
 		server->getZoneServer()->getPlayerManager()->handleAbortTradeMessage(player);
 	}
 
-	if (player->getCurrentCamp() == nullptr && player->getCityRegion() == nullptr && !ghost->isPrivileged()) {
-
+	if (player->getCurrentCamp() == nullptr && player->getCityRegion() == nullptr && !ghost->isPrivileged() && !isBombDroid) {
 		Reference<CallPetTask*> callPet = new CallPetTask(_this.getReferenceUnsafeStaticCast(), player, "call_pet");
 
 		StringIdChatParameter message("pet/pet_menu", "call_pet_delay"); // Calling pet in %DI seconds. Combat will terminate pet call.
@@ -270,8 +312,7 @@ void PetControlDeviceImplementation::callObject(CreatureObject* player) {
 		}
 
 		player->registerObserver(ObserverEventType::STARTCOMBAT, petControlObserver);
-
-	} else { // Player is in a city or camp, spawn pet immediately
+	} else { // Player is in a city or camp or the player is calling a bomb droid from a deed, spawn pet immediately
 		// Check cooldown
 		if (!player->checkCooldownRecovery("petCallOrStoreCooldown")) {
 			player->sendSystemMessage("@pet/pet_menu:cant_call_1sec"); //"You cannot CALL for 1 second."
@@ -1170,18 +1211,25 @@ void PetControlDeviceImplementation::setDefaultCommands() {
 	trainedCommands.put(PetManager::STORE, "store");
 
 	ManagedReference<DroidObject*> droid = this->controlledObject.get().castTo<DroidObject*>();
+
 	if (droid != nullptr) {
 		if (droid->isCombatDroid()) {
 			trainedCommands.put(PetManager::ATTACK, "attack");
 			trainedCommands.put(PetManager::GUARD, "guard");
 		}
+
+		if (droid->isBombDroid()) {
+			trainedCommands.put(PetManager::FOLLOWOTHER, "chase");
+		} else {
+			trainedCommands.put(PetManager::FOLLOWOTHER, "followother");
+		}
 	} else {
 		trainedCommands.put(PetManager::ATTACK, "attack");
 		trainedCommands.put(PetManager::GUARD, "guard");
+		trainedCommands.put(PetManager::FOLLOWOTHER, "followother");
 	}
 
 	trainedCommands.put(PetManager::FRIEND, "friend");
-	trainedCommands.put(PetManager::FOLLOWOTHER, "followother");
 	trainedCommands.put(PetManager::PATROL, "patrol");
 	trainedCommands.put(PetManager::GETPATROLPOINT, "getpatrolpoint");
 	trainedCommands.put(PetManager::CLEARPATROLPOINTS, "clearpatrolpoints");
