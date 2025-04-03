@@ -3888,28 +3888,25 @@ void PlayerManagerImplementation::updatePermissionName(CreatureObject* player, i
 
 void PlayerManagerImplementation::updateSwimmingState(CreatureObject* player, float newZ, IntersectionResults* intersections, CloseObjectsVector* closeObjectsVector) {
 	player->notifySelfPositionUpdate();
-	if (player->getParent() != nullptr) {
-		return;
-	}
 
 	Zone* zone = player->getZone();
 
 	if (zone == nullptr) {
-		player->info("No zone.", true);
+		// player->info("No zone.", true);
 		return;
 	}
 
 	PlanetManager* planetManager = zone->getPlanetManager();
 
 	if (planetManager == nullptr) {
-		player->info("No planet manager.", true);
+		// player->info("No planet manager.", true);
 		return;
 	}
 
 	TerrainManager* terrainManager = planetManager->getTerrainManager();
 
 	if (terrainManager == nullptr) {
-		player->info("No terrain manager.", true);
+		// player->info("No terrain manager.", true);
 		return;
 	}
 
