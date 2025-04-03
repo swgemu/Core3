@@ -269,11 +269,19 @@ void SkillManager::removeAbilities(PlayerObject* ghost, const Vector<String>& ab
 	ghost->removeAbilities(abilities, notifyClient);
 }
 
-void SkillManager::addDroidCommand(PlayerObject* ghost, const String& abilityName) {
-	Ability* ability = abilityMap.get(abilityName);
+void SkillManager::addDroidCommands(PlayerObject* ghost, const Vector<String>& abilityNames, bool notifyClient) {
+	Vector<Ability*> abilities;
 
-	if (ability != nullptr)
-		ghost->addDroidCommand(ability);
+	for (int i = 0; i < abilityNames.size(); ++i) {
+		const String& abilityName = abilityNames.get(i);
+
+		Ability* ability = abilityMap.get(abilityName);
+
+		if (ability != nullptr && !ghost->hasAbility(abilityName))
+			abilities.add(ability);
+	}
+
+	ghost->addDroidCommands(abilities, notifyClient);
 }
 
 void SkillManager::removeDroidCommands(PlayerObject* ghost) {

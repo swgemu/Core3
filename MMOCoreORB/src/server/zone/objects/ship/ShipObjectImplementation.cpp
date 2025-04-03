@@ -1680,23 +1680,29 @@ void ShipObjectImplementation::resetDroidCommands() {
 }
 
 void ShipObjectImplementation::populateDroidCommands(CreatureObject* player) {
-	if (player == nullptr)
+	if (player == nullptr) {
 		return;
+	}
 
 	SkillManager* skillManager = server->getSkillManager();
 
-	if (skillManager == nullptr)
+	if (skillManager == nullptr) {
 		return;
-
-	Locker locker(player);
+	}
 
 	auto ghost = player->getPlayerObject();
 
-	if (ghost == nullptr)
+	if (ghost == nullptr) {
 		return;
+	}
 
-	for (int i = 0; i < availableDroidCommands.size(); ++i)
-		skillManager->addDroidCommand(ghost, "droid+" + availableDroidCommands.get(i));
+	Vector<String> droidCommandNames;
+
+	for (int i = 0; i < availableDroidCommands.size(); ++i) {
+		droidCommandNames.add("droid+" + availableDroidCommands.get(i));
+	}
+
+	skillManager->addDroidCommands(ghost, droidCommandNames, true);
 }
 
 bool ShipObjectImplementation::sendDroidMessageStartTo(SceneObject* playerSceneO, SceneObject* droid) {

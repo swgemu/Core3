@@ -112,6 +112,11 @@ void PlayerObjectImplementation::initializeTransientMembers() {
 	sessionStatsTotalCredits = 0;
 	sessionStatsIPAddress = "";
 	miliSecsSession = 0;
+
+	// Build the transient ability list
+	for (int i = 0; i < abilityList.size(); i++) {
+		activeAbilities.add(abilityList.get(i));
+	}
 }
 
 PlayerObject* PlayerObjectImplementation::asPlayerObject() {
@@ -889,114 +894,240 @@ WaypointObject* PlayerObjectImplementation::addWaypoint(const String& planet, fl
 	return obj;
 }
 
-AbilityList* PlayerObjectImplementation::getAbilityList() const {
-	AbilityList* workingList = new AbilityList();
-
-	for (int i = 0; i < abilityList.size(); ++i)
-		workingList->add(abilityList.get(i));
-
-	for (int i = 0; i < droidCommandList.size(); ++i)
-		workingList->add(droidCommandList.get(i));
-
-	return workingList;
-}
-
 void PlayerObjectImplementation::addAbility(Ability* ability, bool notifyClient) {
 	if (notifyClient) {
-		PlayerObjectDeltaMessage9* msg = new PlayerObjectDeltaMessage9(asPlayerObject());
-		msg->startUpdate(0);
-		abilityList.add(ability, msg, 1);
-		msg->close();
-		sendMessage(msg);
+		abilityList.add(ability);
+
+		PlayerObjectDeltaMessage9* delta9 = new PlayerObjectDeltaMessage9(asPlayerObject());
+
+		if (delta9 == nullptr) {
+			return;
+		}
+
+		delta9->startUpdate(0x0);
+
+		activeAbilities.add(ability, delta9, 1);
+
+		delta9->close();
+
+		sendMessage(delta9);
 	} else {
 		abilityList.add(ability);
+		activeAbilities.add(ability);
 	}
 }
 
 void PlayerObjectImplementation::addAbilities(Vector<Ability*>& abilities, bool notifyClient) {
-	if (abilities.size() == 0)
+	if (abilities.size() == 0) {
 		return;
+	}
 
 	if (notifyClient) {
-		PlayerObjectDeltaMessage9* msg = new PlayerObjectDeltaMessage9(asPlayerObject());
-		msg->startUpdate(0);
+		auto initialAbility = abilities.get(0);
 
-		abilityList.add(abilities.get(0), msg, abilities.size());
+		if (initialAbility == nullptr) {
+			return;
+		}
 
-		for (int i = 1; i < abilities.size(); ++i)
-			abilityList.add(abilities.get(i), msg, 0);
+		abilityList.add(initialAbility);
 
-		msg->close();
+		PlayerObjectDeltaMessage9* delta9 = new PlayerObjectDeltaMessage9(asPlayerObject());
 
-		sendMessage(msg);
+		if (delta9 == nullptr) {
+			return;
+		}
+
+		delta9->startUpdate(0x0);
+
+		activeAbilities.add(initialAbility, delta9, abilities.size());
+
+		for (int i = 1; i < abilities.size(); ++i) {
+			auto ability = abilities.get(i);
+
+			if (ability == nullptr) {
+				continue;
+			}
+
+			abilityList.add(ability);
+			activeAbilities.add(ability, delta9, 0);
+		}
+
+		delta9->close();
+
+		sendMessage(delta9);
 	} else {
-		for (int i = 0; i < abilities.size(); ++i)
-			abilityList.add(abilities.get(i));
+		for (int i = 0; i < abilities.size(); ++i) {
+			auto ability = abilities.get(i);
+
+			if (ability == nullptr) {
+				continue;
+			}
+
+			abilityList.add(ability);
+			activeAbilities.add(ability);
+		}
 	}
 }
 
 void PlayerObjectImplementation::removeAbility(Ability* ability, bool notifyClient) {
-	int index = abilityList.find(ability);
+	int abilityIndex = abilityList.find(ability);
+	int activeIndex = activeAbilities.find(ability);
 
-	if (index == -1)
+	if (abilityIndex != -1) {
+		abilityList.remove(abilityIndex);
+	}
+
+	if (activeIndex == -1) {
 		return;
+	}
 
 	if (notifyClient) {
-		PlayerObjectDeltaMessage9* msg = new PlayerObjectDeltaMessage9(asPlayerObject());
-		msg->startUpdate(0);
-		abilityList.remove(index, msg, 1);
-		msg->close();
-		sendMessage(msg);
+		PlayerObjectDeltaMessage9* delta9 = new PlayerObjectDeltaMessage9(asPlayerObject());
+
+		if (delta9 == nullptr) {
+			return;
+		}
+
+		delta9->startUpdate(0x0);
+
+		activeAbilities.remove(activeIndex, delta9, 1);
+
+		delta9->close();
+
+		sendMessage(delta9);
+
 	} else {
-		abilityList.remove(index);
+		activeAbilities.remove(activeIndex);
 	}
 }
 
 void PlayerObjectImplementation::removeAbilities(Vector<Ability*>& abilities, bool notifyClient) {
-	if (abilities.size() == 0)
+	if (abilities.size() == 0) {
 		return;
+	}
 
 	if (notifyClient) {
-		PlayerObjectDeltaMessage9* msg = new PlayerObjectDeltaMessage9(asPlayerObject());
-		msg->startUpdate(0);
+		PlayerObjectDeltaMessage9* delta9 = new PlayerObjectDeltaMessage9(asPlayerObject());
 
-		abilityList.remove(abilityList.find(abilities.get(0)), msg, abilities.size());
+		if (delta9 == nullptr) {
+			return;
+		}
 
-		for (int i = 1; i < abilities.size(); ++i)
-			abilityList.remove(abilityList.find(abilities.get(i)), msg, 0);
+		delta9->startUpdate(0x0);
 
-		msg->close();
+		abilityList.remove(abilityList.find(abilities.get(0)), delta9, abilities.size());
 
-		sendMessage(msg);
+		for (int i = 1; i < abilities.size(); ++i) {
+			auto ability = abilities.get(i);
+
+			if (ability == nullptr) {
+				continue;
+			}
+
+			abilityList.remove(abilityList.find(ability));
+			activeAbilities.remove(activeAbilities.find(ability), delta9, 0);
+		}
+
+		delta9->close();
+
+		sendMessage(delta9);
 	} else {
-		for (int i = 0; i < abilities.size(); ++i)
-			abilityList.remove(abilityList.find(abilities.get(i)));
+		for (int i = 0; i < abilities.size(); ++i) {
+			auto ability = abilities.get(i);
+
+			if (ability == nullptr) {
+				continue;
+			}
+
+			abilityList.remove(abilityList.find(ability));
+			activeAbilities.remove(activeAbilities.find(ability));
+		}
 	}
 }
 
-void PlayerObjectImplementation::addDroidCommand(Ability* droidCommand) {
-	PlayerObjectDeltaMessage9* msg = new PlayerObjectDeltaMessage9(asPlayerObject());
-	msg->startUpdate(0);
-	droidCommandList.add(droidCommand, msg, 1);
-	msg->close();
-	sendMessage(msg);
+void PlayerObjectImplementation::addDroidCommands(Vector<Ability*>& abilities, bool notifyClient) {
+	if (abilities.size() == 0) {
+		return;
+	}
+
+	if (notifyClient) {
+		auto initialAbility = abilities.get(0);
+
+		if (initialAbility == nullptr) {
+			return;
+		}
+
+		droidCommandList.add(initialAbility);
+
+		PlayerObjectDeltaMessage9* delta9 = new PlayerObjectDeltaMessage9(asPlayerObject());
+
+		if (delta9 == nullptr) {
+			return;
+		}
+
+		delta9->startUpdate(0x0);
+
+		activeAbilities.add(initialAbility, delta9, abilities.size());
+
+		for (int i = 1; i < abilities.size(); ++i) {
+			auto ability = abilities.get(i);
+
+			if (ability == nullptr) {
+				continue;
+			}
+
+			droidCommandList.add(ability);
+			activeAbilities.add(ability, delta9, 0);
+		}
+
+		delta9->close();
+
+		sendMessage(delta9);
+	} else {
+		for (int i = 0; i < abilities.size(); ++i) {
+			auto ability = abilities.get(i);
+
+			if (ability == nullptr) {
+				continue;
+			}
+
+			droidCommandList.add(ability);
+			activeAbilities.add(ability);
+		}
+	}
 }
 
 void PlayerObjectImplementation::removeDroidCommands() {
-	if (droidCommandList.size() == 0)
+	if (droidCommandList.size() == 0) {
 		return;
+	}
 
-	PlayerObjectDeltaMessage9* msg = new PlayerObjectDeltaMessage9(asPlayerObject());
-	msg->startUpdate(0);
+	auto initialAbility = droidCommandList.get(0);
 
-	droidCommandList.remove(droidCommandList.size() - 1, msg, droidCommandList.size());
+	if (initialAbility == nullptr) {
+		return;
+	}
 
-	for (int i = droidCommandList.size() - 1; i >= 0; --i)
-		droidCommandList.remove(i, msg, 0);
+	PlayerObjectDeltaMessage9* delta9 = new PlayerObjectDeltaMessage9(asPlayerObject());
 
-	msg->close();
+	if (delta9 == nullptr) {
+		return;
+	}
 
-	sendMessage(msg);
+	delta9->startUpdate(0x0);
+
+	activeAbilities.remove(activeAbilities.find(initialAbility), delta9, droidCommandList.size());
+
+	for (int i = 1; i < droidCommandList.size(); i++) {
+		activeAbilities.remove(i, delta9, 0);
+	}
+
+	delta9->close();
+
+	sendMessage(delta9);
+
+	// Clear the droid commands
+	droidCommandList.removeAll();
 }
 
 bool PlayerObjectImplementation::addSchematics(Vector<ManagedReference<DraftSchematic* > >& schematics, bool notifyClient) {
