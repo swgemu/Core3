@@ -11,8 +11,7 @@
 
 class PlayerObjectMessage9 : public BaseLineMessage {
 public:
-	PlayerObjectMessage9(PlayerObjectImplementation* play)
-			: BaseLineMessage(play->getObjectID(), 0x504C4159, 9, 0x13) {
+	PlayerObjectMessage9(PlayerObjectImplementation* play) : BaseLineMessage(play->getObjectID(), 0x504C4159, 9, 0x13) {
 		// certifications && skills
 		const AbilityList* skills = play->getAbilityList();
 		skills->insertToMessage(this);

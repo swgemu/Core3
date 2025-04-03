@@ -1030,7 +1030,11 @@ int LuaPlayerObject::addDroidCommand(lua_State* L) {
 
 	Locker locker(realObject);
 
-	skillManager->addDroidCommand(realObject, value);
+	Vector<String> droidCommandNames;
+
+	droidCommandNames.add(value);
+
+	skillManager->addDroidCommands(realObject, droidCommandNames, true);
 
 	return 1;
 }
