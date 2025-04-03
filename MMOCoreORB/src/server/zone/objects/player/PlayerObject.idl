@@ -140,6 +140,9 @@ class PlayerObject extends IntangibleObject {
 	protected transient AbilityList droidCommandList;
 
 	@dereferenced
+	protected transient AbilityList activeAbilities;
+
+	@dereferenced
 	protected FriendList friendList;
 
 	@dereferenced
@@ -687,7 +690,7 @@ class PlayerObject extends IntangibleObject {
 	public native void removeAbility(Ability ability, boolean notifyClient = true);
 
 	@local
-	public native void addDroidCommand(Ability droidCommand);
+	public native void addDroidCommands(@dereferenced Vector<Ability> abilities, boolean notifyClient = true);
 
 	@local
 	public native void removeDroidCommands();
@@ -1335,6 +1338,11 @@ class PlayerObject extends IntangibleObject {
 	}
 
 	@read
+	public boolean hasDroidCommand(final string ability) {
+		return droidCommandList.contains(ability);
+	}
+
+	@read
 	public boolean hasCommandMessageString(unsigned int actionCRC) {
 		return commandMessageStrings.contains(actionCRC);
 	}
@@ -1472,7 +1480,9 @@ class PlayerObject extends IntangibleObject {
 
 	@local
 	@read
-	public native AbilityList getAbilityList();
+	public final AbilityList getAbilityList() {
+		return activeAbilities;
+	}
 
 	@local
 	@dirty
