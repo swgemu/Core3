@@ -47,20 +47,20 @@ int FishingPoleObjectImplementation::handleObjectMenuSelect(CreatureObject* play
 }
 
 void FishingPoleObjectImplementation::updateCraftingValues(CraftingValues* values, bool firstUpdate) {
-	/// useModifer is the quality
-
+	// useModifer is the quality
 	quality = values->getCurrentValue("usemodifier");
-
-	//craftingValues->toString();
 }
 
 void FishingPoleObjectImplementation::doFishing(CreatureObject* player) {
-	ManagedReference<FishingManager*> manager = server->getFishingManager();
+	auto fishingManager = server->getFishingManager();
 
-	if (manager->getFishingState(player) != FishingManager::NOTFISHING) {
-		manager->stopFishing(player, manager->getFishBoxID(player), true);
+	if (fishingManager == nullptr) {
+		return;
+	}
+
+	if (fishingManager->getFishingState(player) != FishingManager::NOTFISHING) {
+		fishingManager->stopFishing(player, fishingManager->getFishBoxID(player), true);
 	} else {
-		//manager->freeBait(player);
 		player->executeObjectControllerAction(STRING_HASHCODE("fish"));
 	}
 }
