@@ -16,41 +16,59 @@ namespace minigames {
 namespace events {
 
 class FishingEvent : public Task {
-	ManagedWeakReference<CreatureObject*> player;
+	ManagedWeakReference<CreatureObject*> weakPlayer;
 	int fishingState;
 
 public:
-	FishingEvent(CreatureObject* player, int fishingState) : Task(7000) {
-		this->player = player;
-		this->fishingState = fishingState;
+	FishingEvent(CreatureObject* player, int state) : Task(7000) {
+		weakPlayer = player;
+		fishingState = state;
 	}
 
 	void run() {
-		ManagedReference<CreatureObject*> strong = player.get();
+		ManagedReference<CreatureObject*> player = weakPlayer.get();
 
-		if (strong == nullptr) {
+		if (player == nullptr) {
+			return;
+		}
+
+		auto zoneProcessServer = player->getZoneProcessServer();
+
+		if (zoneProcessServer == nullptr) {
+			clearPlayerFishing(player);
+			return;
+		}
+
+		auto fishingManager = zoneProcessServer->getFishingManager();
+
+		if (fishingManager == nullptr) {
+			clearPlayerFishing(player);
 			return;
 		}
 
 		try {
-			Locker _locker(strong);
+			Locker lock(player);
 
-			ManagedReference<FishingManager*> manager = strong->getZoneProcessServer()->getFishingManager();
+			ManagedReference<FishingManager*> manager = zoneProcessServer->getFishingManager();
 
 			if (fishingState != FishingManagerImplementation::NOTFISHING) {
-				manager->fishingStep(strong);
-
+				manager->continueFishing(player);
 			} else {
-				manager->stopFishingEvent(strong);
+				manager->stopFishingEvent(player);
 			}
-
 		} catch (...) {
-			// player = nullptr;
-
 			throw;
 		}
+	}
 
-		// player = nullptr;
+	void clearPlayerFishing(CreatureObject* player) {
+		if (player == nullptr) {
+			return;
+		}
+
+		Locker lock(player);
+
+		player->setMoodString("none");
 	}
 };
 
