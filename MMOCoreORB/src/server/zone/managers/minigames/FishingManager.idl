@@ -90,10 +90,10 @@ class FishingManager extends Observer implements Logger {
 	public int notifyObserverEvent(unsigned int eventType, Observable observable, ManagedObject arg1, long arg2) {
 		if (eventType == ObserverEventType.POSITIONCHANGED) {
 			checkFishingOnPositionUpdate((CreatureObject) observable);
-
-			return 0;
 		} else if (eventType == ObserverEventType.CLOSECONTAINER) {
 			return notifyCloseContainer((CreatureObject)arg1, (SceneObject)observable);
+		} else if (eventType == ObserverEventType.STARTCOMBAT || eventType == ObserverEventType.PLAYERKILLED) {
+			stopFishing((CreatureObject) observable, 0, true);
 		}
 
 		return 0;
@@ -147,6 +147,7 @@ class FishingManager extends Observer implements Logger {
 	 * @param player CreatureObject which wants to start fishing
 	 * @return { 0: everything worked, 1: No Pole, 2: No Bait, 3: No Water, 4: Water under terrain, 5: Player Swimming, 6: Exception case }
 	 */
+	@arg1preLocked
 	public native int startFishing(CreatureObject player);
 
 	/**
@@ -162,15 +163,15 @@ class FishingManager extends Observer implements Logger {
 	public native void stopFishing(CreatureObject player, unsigned int boxID, boolean rem);
 
 	/**
-	 * fishingStep gets called from FishingEvent::run()
-	 * fishingStep closes the menu, gets the current state and computes two random numbers
+	 * continueFishing gets called from FishingEvent::run()
+	 * continueFishing closes the menu, gets the current state and computes two random numbers
 	 * If the player hasnt reached CATCH state yet and the bait is MUSH, it will be tossed and fishing ends
 	 * @pre { this object is locked }
 	 * @post { this object is locked }
 	 * @param player CreatureObject which is currently fishing
 	 */
-	 @arg1preLocked
-	public native void fishingStep(CreatureObject player);
+	@arg1preLocked
+	public native void continueFishing(CreatureObject player);
 
 	/**
 	 * success is called to give the Player his reward
@@ -185,6 +186,7 @@ class FishingManager extends Observer implements Logger {
 	 * @param marker Fishing Marker that is used as Container
 	 * @param boxID Fishing window being closed
 	 */
+	@arg1preLocked
 	public native void success(CreatureObject player, int fish, SceneObject marker, unsigned int boxID);
 
 	/**
@@ -373,17 +375,6 @@ class FishingManager extends Observer implements Logger {
 	public native void setFishMarker(CreatureObject player, SceneObject marker);
 
 	/**
-	 * Hands out free Bait
-	 * freeBait is used for debugging: in case the Pole is empty, a bait will be created
-	 * and added to the pole
-	 * @TODO { Remove this and it's call at FishCommand when testing is complete }
-	 * @pre { object is locked }
-	 * @post { object is locked }
-	 * @param player CreatureObject for which to put free bait into the fishing pole
-	 */
-	public native void freeBait(CreatureObject player);
-
-	/**
 	 * fishingProceed notifies the Player and create the new Event
 	 * fishingProceed is called from FishingStep unless fishing has ended
 	 * It will notify the Player through fly text and system messages of what is going on
@@ -475,7 +466,7 @@ class FishingManager extends Observer implements Logger {
 	@local
 	public native boolean checkUpdateMarker(CreatureObject player, @dereferenced Vector3 location);
 
-	public native boolean isPlaying(CreatureObject player);
+	public native boolean hasFishingSession(CreatureObject player);
 
 	/**
 	 * Updates the fishing Marker
