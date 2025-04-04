@@ -634,7 +634,7 @@ void FishingManagerImplementation::success(CreatureObject* player, int fish, Sce
 				// Determine fish length
 				float length = fishLengths.get(fishName);
 				float totalLength = length;
-				float harvestingMod = player->getSkillMod("creature_harvesting");
+				float harvestingMod = player->getSkillMod("creature_harvesting") + 5.f;
 				float randBonus = System::frandom(length * 0.5f) - System::frandom(length * 0.5f);
 
 				totalLength += randBonus;
