@@ -291,6 +291,7 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<DroidObject>(SceneObjectType::DROIDCREATURE);
 	objectFactory.registerObject<HelperDroidObject>(SceneObjectType::HELPERDROIDCREATURE);
 	objectFactory.registerObject<ResourceSpawn>(SceneObjectType::RESOURCESPAWN);
+	objectFactory.registerObject<SpawnEggObject>(SceneObjectType::CREATURESPAWNER);
 	objectFactory.registerObject<ResourceContainer>(SceneObjectType::RESOURCECONTAINER);
 	objectFactory.registerObject<ResourceContainer>(SceneObjectType::ENERGYGAS);
 	objectFactory.registerObject<ResourceContainer>(SceneObjectType::ENERGYLIQUID);
