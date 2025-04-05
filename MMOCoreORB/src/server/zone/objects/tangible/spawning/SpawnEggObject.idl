@@ -1,0 +1,107 @@
+/*
+				Copyright <SWGEmu>
+		See file COPYING for copying conditions.
+*/
+
+package server.zone.objects.tangible.spawning;
+
+import server.zone.objects.tangible.TangibleObject;
+import server.zone.objects.creature.CreatureObject;
+import server.zone.packets.scene.AttributeListMessage;
+import server.zone.packets.object.ObjectMenuResponse;
+
+include server.zone.TreeEntry;
+include system.lang.Time;
+
+@json
+@lua
+class SpawnEggObject extends TangibleObject {
+	@dereferenced
+	protected transient Time activeTime;
+
+	@dereferenced
+	protected transient Time inactiveTime;
+
+	protected transient string spawnerName;
+	protected transient string currentSpawnList;
+
+	public SpawnEggObject() {
+		Logger.setLoggingName("SpawnEggObject");
+
+		spawnerName = "InterestAreaSpawner";
+	}
+
+	/**
+	 * Fills the attribute list message options that are sent to player creature
+	 * @pre { }
+	 * @post { }
+	 * @param msg attribute list message with the attributes
+	 * @param object player creature to which the message is sent
+	 */
+	@local
+	@dirty
+	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
+
+	/**
+	 * Fills the radial options, needs to be overriden
+	 * @pre { this object is locked }
+	 * @post { this object is locked, menuResponse is complete}
+	 * @param menuResponse ObjectMenuResponse that will be sent to the client
+	 */
+	@local
+	@dirty
+	public native void fillObjectMenuResponse(ObjectMenuResponse menuResponse, CreatureObject player);
+
+	/**
+	 * Handles the radial selection sent by the client, must be overriden by inherited objects
+	 * @pre { this object is locked, player is locked }
+	 * @post { this object is locked, player is locked }
+	 * @param player CreatureObject that selected the option
+	 * @param selectedID selected menu id
+	 * @returns 0 if successfull
+	 */
+	@preLocked
+	@arg1preLocked
+	public native int handleObjectMenuSelect(CreatureObject player, byte selectedID);
+
+	// Mutators
+
+	@dirty
+	public native void setActive(unsigned long miliTime);
+
+	@dirty
+	public native void setInactive(unsigned long miliTime);
+
+	@dirty
+	public void setSpawnerName(string name) {
+		spawnerName = name;
+	}
+
+	@dirty
+	public void setSpawnListName(string listName) {
+		currentSpawnList = listName;
+	}
+
+	// Accessors
+
+	@read
+	public native boolean isActive();
+
+	@read
+	public native boolean isInactive();
+
+	@read
+	public string getSpawnListName() {
+		return currentSpawnList;
+	}
+
+	@read
+	public string getSpawnerName() {
+		return spawnerName;
+	}
+
+	@dirty
+	public boolean isSpawnEggObject() {
+		return true;
+	}
+}

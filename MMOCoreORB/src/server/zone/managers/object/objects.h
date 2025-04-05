@@ -133,6 +133,7 @@
 #include "server/zone/objects/tangible/misc/PlantObject.h"
 #include "server/zone/objects/tangible/terminal/mission/MissionTerminal.h"
 #include "server/zone/objects/tangible/sign/SignObject.h"
+#include "server/zone/objects/tangible/spawning/SpawnEggObject.h"
 #include "server/zone/objects/mission/MissionObject.h"
 #include "server/zone/objects/waypoint/WaypointObject.h"
 #include "server/zone/objects/tangible/fishing/FishingPoleObject.h"
