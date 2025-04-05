@@ -79,6 +79,8 @@ namespace scene {
 		int isCellObject(lua_State* L);
 		int isActiveArea(lua_State* L);
 		int isMissionObject(lua_State* L);
+		int isVehicleObject(lua_State* L);
+		int isSpawnEggObject(lua_State* L);
 		int getZoneName(lua_State* L);
 		int sendTo(lua_State* L);
 		int getCustomObjectName(lua_State* L);

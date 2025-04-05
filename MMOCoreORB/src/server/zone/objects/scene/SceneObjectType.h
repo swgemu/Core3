@@ -301,6 +301,7 @@ public:
 
 	// Not in client ************
 	const static int RESOURCESPAWN = 0x410000;
+	const static int CREATURESPAWNER = 0x410001;
 	// **************************
 
 	const static int DEED = 0x800000;
