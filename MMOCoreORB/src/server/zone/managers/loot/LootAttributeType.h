@@ -218,6 +218,13 @@ public:
 			}
 		}
 
+		if (objectType == SceneObjectType::FISHINGBAIT) {
+			switch (attributeCRC) {
+				case String::hashCode("quantity"):						return RandomType::UNIFORM;
+				default:												return RandomType::STATIC;
+			}
+		}
+
 		if (objectType & SceneObjectType::SHIPATTACHMENT) {
 			switch (attributeCRC) {
 				case String::hashCode("reverseengineeringlevel"):		return RandomType::STATIC;
