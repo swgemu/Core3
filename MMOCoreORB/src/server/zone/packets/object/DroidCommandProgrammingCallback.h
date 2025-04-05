@@ -285,10 +285,16 @@ public:
 			return;
 		}
 
+		//check to ensure the module is programmed
+		String commandName = programmedModule->getItemIdentifier();
+
+		if (commandName.length() == 0) {
+			return;
+		}
+
 		Locker modLock(commandModule, datapad);
 
 		// Set the module name
-		String commandName = programmedModule->getItemIdentifier();
 		String moduleName = "@space/droid_commands:" + commandName + "_chipname";
 
 		commandModule->setCustomObjectName(StringIdManager::instance()->getStringId(moduleName.hashCode()), false);
