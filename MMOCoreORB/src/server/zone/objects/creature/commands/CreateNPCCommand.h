@@ -10,17 +10,14 @@
 #include "server/zone/objects/ship/ai/ShipAiAgent.h"
 #include "templates/params/ship/ShipFlag.h"
 #include "server/zone/objects/creature/commands/QueueCommand.h"
+#include "server/zone/objects/tangible/spawning/SpawnEggObject.h"
 
 class CreateNPCCommand : public QueueCommand {
 public:
-
-	CreateNPCCommand(const String& name, ZoneProcessServer* server)
-		: QueueCommand(name, server) {
-
+	CreateNPCCommand(const String& name, ZoneProcessServer* server) : QueueCommand(name, server) {
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
-
 		if (!checkStateMask(creature))
 			return INVALIDSTATE;
 
@@ -135,6 +132,41 @@ public:
 			shipAgent->setFollowShipObject(shipParent);
 
 			return SUCCESS;
+		} else if (arg == "locatespawners") {
+			auto zone = creature->getZone();
+
+			if (zone == nullptr) {
+				return GENERALERROR;
+			}
+
+			auto playerPosition = creature->getWorldPosition();
+
+			SortedVector<TreeEntry*> closeObjects;
+			zone->getInRangeObjects(playerPosition.getX(), playerPosition.getZ(), playerPosition.getY(), 128, &closeObjects, true);
+
+			for (int i = 0; i < closeObjects.size(); i++) {
+				SceneObject* object = static_cast<SceneObject*>(closeObjects.get(i));
+
+				if (object == nullptr || !object->isSpawnEggObject()) {
+					continue;
+				}
+
+				auto spawnEgg = dynamic_cast<SpawnEggObject*>(object);
+
+				if (spawnEgg == nullptr) {
+					continue;
+				}
+
+				Locker clock(spawnEgg, creature);
+
+				spawnEgg->setInvisible(false);
+				creature->broadcastObject(spawnEgg, false);
+
+				StringBuffer msg;
+				msg << spawnEgg->getDisplayedName() << " --- Location: " << spawnEgg->getWorldPosition().toString()
+				<< " -- Spawner Set Visible. Please target with /tar spawn and use the radial option to set invisible.";
+				creature->sendSystemMessage(msg.toString());
+			}
 		}
 
 
