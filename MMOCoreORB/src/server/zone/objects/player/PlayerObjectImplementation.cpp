@@ -1152,7 +1152,13 @@ void PlayerObjectImplementation::removeDroidCommands() {
 	activeAbilities.remove(activeAbilities.find(initialAbility), delta9, droidCommandList.size());
 
 	for (int i = 1; i < droidCommandList.size(); i++) {
-		activeAbilities.remove(i, delta9, 0);
+		auto ability = droidCommandList.get(i);
+
+		if (ability == nullptr) {
+			continue;
+		}
+
+		activeAbilities.remove(activeAbilities.find(ability), delta9, 0);
 	}
 
 	delta9->close();
