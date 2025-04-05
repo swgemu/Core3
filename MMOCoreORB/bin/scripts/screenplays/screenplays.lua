@@ -714,6 +714,9 @@ includeFile("racetracks/racetracks.lua")
 --Space
 includeFile("space/screenplays.lua")
 
+--Spawner
+includeFile("spawner/screenplays.lua")
+
 --Record Keepers
 includeFile("record_keepers/record_keepers.lua")
 
