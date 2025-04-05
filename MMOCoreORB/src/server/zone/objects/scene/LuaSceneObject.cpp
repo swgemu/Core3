@@ -68,6 +68,8 @@ Luna<LuaSceneObject>::RegType LuaSceneObject::Register[] = {
 		{ "isCellObject", &LuaSceneObject::isCellObject },
 		{ "isActiveArea", &LuaSceneObject::isActiveArea },
 		{ "isMissionObject", &LuaSceneObject::isMissionObject },
+		{ "isVehicleObject", &LuaSceneObject::isVehicleObject },
+		{ "isSpawnEggObject", &LuaSceneObject::isSpawnEggObject },
 		{ "sendTo", &LuaSceneObject::sendTo },
 		{ "getCustomObjectName", &LuaSceneObject::getCustomObjectName },
 		{ "getDisplayedName", &LuaSceneObject::getDisplayedName },
@@ -703,6 +705,22 @@ int LuaSceneObject::isActiveArea(lua_State* L) {
 
 int LuaSceneObject::isMissionObject(lua_State* L) {
 	bool val = realObject->isMissionObject();
+
+	lua_pushboolean(L, val);
+
+	return 1;
+}
+
+int LuaSceneObject::isVehicleObject(lua_State* L) {
+	bool val = realObject->isVehicleObject();
+
+	lua_pushboolean(L, val);
+
+	return 1;
+}
+
+int LuaSceneObject::isSpawnEggObject(lua_State* L) {
+	bool val = realObject->isSpawnEggObject();
 
 	lua_pushboolean(L, val);
 
