@@ -16,17 +16,16 @@
 #include "server/zone/objects/creature/buffs/ConcealBuff.h"
 
 void PlayerZoneComponent::notifyInsertToZone(SceneObject* sceneObject, Zone* newZone) const {
-	String zoneName = newZone->getZoneName();
-
 	if (sceneObject->isPlayerCreature() && newZone != nullptr) {
 		CreatureObject* player = sceneObject->asCreatureObject();
 
 		if (player != nullptr) {
-			PlayerObject* ghost = player->getPlayerObject();
-			String zoneName = newZone->getZoneName();
+			auto ghost = player->getPlayerObject();
 
-			if (ghost != nullptr)
+			if (ghost != nullptr) {
+				String zoneName = newZone->getZoneName();
 				ghost->setSavedTerrainName(zoneName);
+			}
 
 			// Remove MaskScent state from concealed players when their buff is for a different zone
 			uint32 concealCrc = STRING_HASHCODE("skill_buff_mask_scent");

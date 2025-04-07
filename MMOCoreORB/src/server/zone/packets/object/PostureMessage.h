@@ -9,12 +9,10 @@
 
 class PostureMessage : public ObjectControllerMessage {
 public:
-	PostureMessage(CreatureObject* creo) 
-			: ObjectControllerMessage(creo->getObjectID(), 0x1B, 0x131) {
+	PostureMessage(CreatureObject* creo) : ObjectControllerMessage(creo->getObjectID(), 0x1B, 0x131) {
 		insertByte(creo->getPosture());
-		insertByte(1);
+		insertByte(0x01);
 	}
-
 };
 
 #endif /*POSTUREMESSAGE_H_*/
