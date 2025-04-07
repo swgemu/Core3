@@ -457,7 +457,7 @@ void PlayerObjectImplementation::sendBaselinesTo(SceneObject* player) {
 }
 
 void PlayerObjectImplementation::notifySceneReady() {
-	// info(true) << cast<CreatureObject*>(parent.get().get())->getDisplayedName() << " --- notifySceneReady called";
+	info(true) << cast<CreatureObject*>(parent.get().get())->getDisplayedName() << " --- notifySceneReady called";
 
 	teleporting = false;
 	onLoadScreen = false;
@@ -577,7 +577,7 @@ void PlayerObjectImplementation::notifySceneReady() {
 		createHelperDroid();
 	}
 
-	// info(true) << creature->getDisplayedName() << " --- notifySceneReady COMPLETE with Zone Name: " << zone->getZoneName() << " World Pos: " << creature->getWorldPosition().toString();
+	info(true) << creature->getDisplayedName() << " --- notifySceneReady COMPLETE with Zone Name: " << zone->getZoneName() << " World Pos: " << creature->getWorldPosition().toString();
 }
 
 void PlayerObjectImplementation::sendFriendLists() {
