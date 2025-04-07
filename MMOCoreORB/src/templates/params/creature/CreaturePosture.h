@@ -261,17 +261,17 @@ public:
 		const CreatureMovementEntry* move = &movementTable.get(pos);
 
 		switch (speed) {
-		case CreatureLocomotion::STATIONARY:
-			return move->stationary;
-			break;
-		case CreatureLocomotion::SLOW:
-			return move->slow;
-			break;
-		case CreatureLocomotion::FAST:
-			return move->fast;
-			break;
-		default:
-			return CreatureLocomotion::INVALID;
+			case CreatureLocomotion::STATIONARY:
+				return move->stationary;
+				break;
+			case CreatureLocomotion::SLOW:
+				return move->slow;
+				break;
+			case CreatureLocomotion::FAST:
+				return move->fast;
+				break;
+			default:
+				return CreatureLocomotion::INVALID;
 		}
 
 		return CreatureLocomotion::INVALID;
@@ -280,14 +280,17 @@ public:
 	uint8 getSpeed(uint8 pos, uint8 loc) const {
 		const CreatureMovementEntry* move = &movementTable.get(pos);
 
-		if (loc == move->stationary)
+		if (loc == move->stationary) {
 			return CreatureLocomotion::STATIONARY;
+		}
 
-		if (loc == move->slow)
+		if (loc == move->slow) {
 			return CreatureLocomotion::SLOW;
+		}
 
-		if (loc == move->fast)
+		if (loc == move->fast) {
 			return CreatureLocomotion::FAST;
+		}
 
 		return CreatureLocomotion::INVALID;
 	}
