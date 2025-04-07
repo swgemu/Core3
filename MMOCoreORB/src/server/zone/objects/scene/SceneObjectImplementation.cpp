@@ -349,20 +349,20 @@ void SceneObjectImplementation::sendTo(SceneObject* player, bool doClose, bool f
 	if ((isClientObject() && !forceSend) || !sendToClient || player == nullptr || player->getClient() == nullptr)
 		return;
 
-
-	/*
 	if (isVehicleObject() || isPlayerCreature()) {
 		StringBuffer msgInfo;
 		msgInfo << getDisplayedName() << " sendTo --- Parent: ";
 		msgInfo << (getParent().get() != nullptr ? getParent().get()->getDisplayedName() : "nullptr") << " ";
 		msgInfo << " ID: " << getObjectID() << " to " << player->getDisplayedName();
 		info(true)  << msgInfo.toString();
-	}*/
+	}
 
 	BaseMessage* msg = new SceneObjectCreateMessage(asSceneObject());
 	player->sendMessage(msg);
 
 	link(player, containmentType);
+
+	// has to be one of these
 
 	try {
 		sendBaselinesTo(player);
