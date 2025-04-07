@@ -362,7 +362,6 @@ void SceneObjectImplementation::sendTo(SceneObject* player, bool doClose, bool f
 	if ((isClientObject() && !forceSend) || !sendToClient || player == nullptr || player->getClient() == nullptr)
 		return;
 
-
 	/*
 	if (isVehicleObject() || isPlayerCreature()) {
 		StringBuffer msgInfo;

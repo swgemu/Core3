@@ -1760,14 +1760,13 @@ class CreatureObject extends TangibleObject {
 	@read
 	public native float getSlopeModPercent();
 
+	@local
+	@dirty
+	public native float getRunSpeed();
+
 	@read
 	public float getWaterModPercent() {
 		return waterModPercent;
-	}
-
-	@read
-	public float getRunSpeed() {
-		return runSpeed;
 	}
 
 	@read
