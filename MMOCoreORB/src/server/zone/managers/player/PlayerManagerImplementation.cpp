@@ -118,7 +118,7 @@
 
 #include "server/zone/managers/statistics/StatisticsManager.h"
 
-// #define DEBUG_SPEED_HACK
+#define DEBUG_SPEED_HACK
 
 PlayerManagerImplementation::PlayerManagerImplementation(ZoneServer* zoneServer, ZoneProcessServer* impl, bool trackOnlineUsers) : Logger("PlayerManager") {
 	playerLoggerFilename = "log/player.log";
@@ -128,6 +128,9 @@ PlayerManagerImplementation::PlayerManagerImplementation(ZoneServer* zoneServer,
 
 	server = zoneServer;
 	processor = impl;
+
+	speedAverage = 0.f;
+	readingCount = 0;
 
 	nameMap = new CharacterNameMap();
 
@@ -3979,9 +3982,16 @@ bool PlayerManagerImplementation::checkPlayerSpeedTest(CreatureObject* player, S
 
 	float maxAllowedSpeed = allowedSpeedMod * allowedSpeedBase;
 
-#ifdef DEBUG_SPEED_HACK
+
+	readingCount++;
+	speedAverage += parsedSpeed;
+
+
+
+//#ifdef DEBUG_SPEED_HACK
 	player->info(true) << "checkPlayerSpeedTest -- parsedSpeed: " << parsedSpeed << " Error Multiplier: " << errorMultiplier << " Teleport position: " << lastValidVec.toString();
-#endif // DEBUG_SPEED_HACK
+	player->info(true) << "Current Speed Average: " << (speedAverage / readingCount);
+//#endif // DEBUG_SPEED_HACK
 
 	/*
 	// Z Coordinate Check
@@ -4008,7 +4018,9 @@ bool PlayerManagerImplementation::checkPlayerSpeedTest(CreatureObject* player, S
 	}
 	*/
 
-	if (parsedSpeed > (maxAllowedSpeed * errorMultiplier)) {
+	float maxSpeedVariable = (maxAllowedSpeed * errorMultiplier);
+
+	if (parsedSpeed > maxSpeedVariable) {
 		// Outdoors get proper Z to try to prevent getting players stuck in terrain
 		if (lastValidParentParentID == 0) {
 			auto zone = player->getZone();
@@ -4027,62 +4039,30 @@ bool PlayerManagerImplementation::checkPlayerSpeedTest(CreatureObject* player, S
 			} else {
 				player->error() << "Possible Speed Hack Attempt - Player: " << player->getDisplayedName() << " ID: " << player->getObjectID() << " Speed Variable: " << parsedSpeed << " Max Allowed Speed: " << maxAllowedSpeed << " Error Multiplier: " << errorMultiplier << " Last Validated World Position: " << lastValidatedWorldPosition.toString() << " Last Valid Position:" << lastValidVec.toString() << " Last Valid Parent: " << lastValidParentParentID << " New World Position: " << newWorldPosition.toString();
 
-				/*
-				player->setRootedState(7 * 24 * 60 * 60);
-				player->setState(CreatureState::FROZEN, true);
-				player->setSpeedMultiplierBase(0.f, true);
-
-				player->sendSystemMessage("You have been frozen by the system. Please go to SWGEmu Support.");
-
-				Reference<CreatureObject*> playerRef = player;
-
-				Core::getTaskManager()->scheduleTask([playerRef, lastValidVec, lastValidParentParentID] () {
-					if (playerRef == nullptr) {
-						return;
-					}
-
-					auto zone = playerRef->getZone();
-
-					if (zone == nullptr) {
-						return;
-					}
-
-					Locker lock(playerRef);
-
-#ifdef DEBUG_SPEED_HACK
-					playerRef->info(true) << "switchZone for player -- Position: " << lastValidVec.toString() << " ID: " << lastValidParentParentID;
-#endif // DEBUG_SPEED_HACK
-
-					playerRef->switchZone(zone->getZoneName(), lastValidVec.getX(), lastValidVec.getZ(), lastValidVec.getY(), lastValidParentParentID);
-				}, "SpeedHackTransportLambda", 2000);
-				*/
-
 				return false;
 			}
 		}
 
 		if (changeBuffer->size() == 0) { // no speed changes
-#ifdef DEBUG_SPEED_HACK
+//#ifdef DEBUG_SPEED_HACK
 			auto msg = player->info(true);
-			msg << "checkPlayerSpeedTest -- FAILED -- changeBuffer - Max Allowed Speed: " << maxAllowedSpeed * errorMultiplier;
-			msg << " Parsed Speed: " << parsedSpeed;
+			msg << "checkPlayerSpeedTest -- FAILED -- changeBuffer size of 0 - Parsed Speed: " << parsedSpeed << " Max Allowed Speed: " << maxSpeedVariable;
 			msg.flush();
-#endif // DEBUG_SPEED_HACK
+//#endif // DEBUG_SPEED_HACK
 
 			return false;
 		}
 
-		SpeedModChange* firstChange = &changeBuffer->get(changeBuffer->size() - 1);
-		const Time* timeStamp = &firstChange->getTimeStamp();
+		SpeedModChange* latestChange = &changeBuffer->get(changeBuffer->size() - 1);
+		const Time* timeStamp = &latestChange->getTimeStamp();
 
 		// we already should have lowered the speed, 2 seconds lag
 		if (timeStamp->miliDifference() > 2000) {
-#ifdef DEBUG_SPEED_HACK
+//#ifdef DEBUG_SPEED_HACK
 			auto msg = player->info(true);
-			msg << endl << "checkPlayerSpeedTest -- FAILED -- Due to timeStamp diff: " << timeStamp->miliDifference() << " with Max Allowed Speed: " << maxAllowedSpeed * errorMultiplier;
-			msg << " Parsed Speed: " << parsedSpeed << endl;
+			msg << endl << "checkPlayerSpeedTest -- FAILED -- Due to timeStamp diff: " << timeStamp->miliDifference() << " Parsed Speed: " << parsedSpeed << " Max Allowed Speed: " << maxSpeedVariable;
 			msg.flush();
-#endif // DEBUG_SPEED_HACK
+//#endif // DEBUG_SPEED_HACK
 
 			return false;
 		}
@@ -4094,15 +4074,16 @@ bool PlayerManagerImplementation::checkPlayerSpeedTest(CreatureObject* player, S
 			float allowed = allowedSpeedBase * oldSpeedMod * errorMultiplier;
 
 			if (allowed >= parsedSpeed) {
-#ifdef DEBUG_SPEED_HACK
+//#ifdef DEBUG_SPEED_HACK
 				player->info() << "checkPlayerSpeedTest -- PASSED";
-#endif
+//#endif
 
 				return true; // no hack detected
 			}
 
-			if (allowed > maxAllowedSpeed)
+			if (allowed > maxAllowedSpeed) {
 				maxAllowedSpeed = allowed;
+			}
 		}
 
 #ifdef DEBUG_SPEED_HACK
@@ -4185,7 +4166,8 @@ int PlayerManagerImplementation::checkSpeedHackTests(CreatureObject* player, Pla
 	float dist = newWorldPosition.distanceTo(lastValidatedWorldPosition);
 
 	if (dist > 1.f && !ghost->isPrivileged()) {
-		float speed = dist / deltaTime * 1000.f;
+		//float speed = dist / deltaTime * 1000.f;
+		float speed = dist / (deltaTime / 1000.f);
 
 #ifdef DEBUG_SPEED_HACK
 		player->info(true) << "Next Position Distance: " << dist << " Speed: " << speed << " Delta Time: " << deltaTime;
