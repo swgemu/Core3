@@ -54,6 +54,9 @@ public:
 
 		creature->clearState(CreatureState::RIDINGMOUNT);
 
+		// Remove Mounted combat slow from player
+		creature->removeMountedCombatSlow(false);
+
 		ManagedReference<SceneObject*> mount = creature->getParent().get();
 
 		// Handle dismount, removal of gallop and storing of Jetpacks
@@ -75,31 +78,36 @@ public:
 			}
 		}
 
-		SpeedMultiplierModChanges* changeBuffer = creature->getSpeedMultiplierModChanges();
-		int bufferSize = changeBuffer->size();
+		//SpeedMultiplierModChanges* changeBuffer = creature->getSpeedMultiplierModChanges();
+		//int bufferSize = changeBuffer->size();
 
-		if (bufferSize > 5) {
-			changeBuffer->remove(0);
-		}
+		//if (bufferSize > 5) {
+		//	changeBuffer->remove(0);
+		//}
 
-		changeBuffer->add(SpeedModChange(creature->getSpeedMultiplierMod()));
+		info(true) << "DismountCommand -- adding to change buffer";
 
-		Vector<FloatParam> speedTempl = playerTemplate->getSpeed();
+		//changeBuffer->add(SpeedModChange(creature->getSpeedMultiplierMod()));
+
+		//Vector<FloatParam> speedTempl = playerTemplate->getSpeed();
+		//float newSpeed = speedTempl.get(0);
+
+		// info(true) << "DismountCommand -- Setting Player Speed: " << newSpeed;
 
 		// Reset Run Speed from template
-		creature->setRunSpeed(speedTempl.get(0));
+		//creature->setRunSpeed(newSpeed, true);
+
+
 
  		// Reset Force Sensitive control mods to default.
-		creature->updateSpeedAndAccelerationMods();
+		//creature->updateSpeedAndAccelerationMods();
 
 		// Update players stats in the database
-		creature->updateToDatabase();
+		//creature->updateToDatabase();
 
+		// Update dismount timer
 		creature->updateCooldownTimer("mount_dismount", 2000);
 		creature->setNextAllowedMoveTime(500);
-
-		// these are already removed off the player - Just remove it off the mount
-		creature->removeMountedCombatSlow(false);
 
 		return SUCCESS;
 	}
@@ -186,7 +194,7 @@ public:
 			zone->transferObject(movementMarker, -1, true);
 			moveLock.release();
 
-			// END debug markers\
+			// END debug markers
 			*/
 
 			ManagedReference<PlayerManager*> playerManager = server->getPlayerManager();

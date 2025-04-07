@@ -143,6 +143,9 @@ class PlayerManager extends Observer implements Logger {
 	public static final unsigned int VORTEX_SQUADRON = 8;
 	public static final unsigned int HAVOC_SQUADRON = 9;
 
+	protected transient float speedAverage;
+	protected transient int readingCount;
+
 	public native PlayerManager(ZoneServer zoneServer, ZoneProcessServer impl, boolean trackOnlineUsers);
 	public native void loadNameMap();
 
