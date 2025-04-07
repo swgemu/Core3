@@ -150,8 +150,6 @@ void WeaponObjectImplementation::createChildObjects() {
 }
 
 void WeaponObjectImplementation::sendBaselinesTo(SceneObject* player) {
-	debug("sending weapon object baselines");
-
 	BaseMessage* weao3 = new WeaponObjectMessage3(_this.getReferenceUnsafeStaticCast());
 	player->sendMessage(weao3);
 

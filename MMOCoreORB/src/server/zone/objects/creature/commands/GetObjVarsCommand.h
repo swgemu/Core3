@@ -236,6 +236,27 @@ public:
 					}
 				}
 
+				// Movement Modifiers
+				msg << "Walk Speed: " << creoObject->getWalkSpeed() << endl;
+				msg << "Run Speed: " << creoObject->getRunSpeed() << endl;
+				msg << "Current Speed: " << creoObject->getCurrentSpeed() << endl;
+				msg << "Speed Multi Base: " << creoObject->getSpeedMultiplierBase() << endl;
+				msg << "Speed Multi Mod: " << creoObject->getSpeedMultiplierMod() << endl;
+				msg << "Creature Height: " << creoObject->getHeight() << endl;
+
+				msg << "Walk Acceleration: " << creoObject->getWalkAcceleration() << endl;
+				msg << "Run Acceleration: " << creoObject->getRunAcceleration() << endl;
+				msg << "Acceleration Multi Base: " << creoObject->getAccelerationMultiplierBase() << endl;
+				msg << "Acceleration Multi Mod: " << creoObject->getAccelerationMultiplierMod() << endl;
+
+				// Slope Modifiers
+				msg << "Slope Angle: " << creoObject->getSlopeModAngle() << endl;
+				msg << "Slope Mod Percent: " << creoObject->getSlopeModPercent() << endl;
+				msg << "Water Mod Percent: " << creoObject->getWaterModPercent() << endl;
+				msg << "Turn Scale: " << creoObject->getTurnScale() << endl;
+
+				msg << endl;
+
 				// List the active areas
 				SortedVector<ManagedReference<ActiveArea*>>* areas = creoObject->getActiveAreas();
 

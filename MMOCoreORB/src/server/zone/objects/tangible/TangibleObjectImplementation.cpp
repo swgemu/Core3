@@ -159,8 +159,6 @@ void TangibleObjectImplementation::destroyObjectFromDatabase(bool destroyContain
 }
 
 void TangibleObjectImplementation::sendBaselinesTo(SceneObject* player) {
-	debug("sending tano baselines");
-
 	TangibleObject* thisPointer = asTangibleObject();
 
 	BaseMessage* tano3 = new TangibleObjectMessage3(thisPointer);

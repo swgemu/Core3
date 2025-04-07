@@ -16,12 +16,26 @@ public:
 		creo = cr;
 	}
 
+	void updateLevel(uint16 value) {
+		startUpdate(0x02);
+		insertShort(value);
+	}
+
+	void updatePerformanceAnimation(const String& pAnimation) {
+		startUpdate(0x03);
+		insertAscii(pAnimation);
+	}
+
+	void updateMoodStr() {
+		addAsciiUpdate(0x04, creo->getMoodString());
+	}
+
 	void updateWeapon() {
 		addLongUpdate(0x05, creo->getWeaponID());
 	}
 
-	void updateTarget() {
-		addLongUpdate(0x09, creo->getTargetID());
+	void updateGroupID() {
+		addLongUpdate(0x06, creo->getGroupID());
 	}
 
 	void updateInviterId() {
@@ -31,25 +45,16 @@ public:
 		insertLong(creo->getGroupInviteCounter());
 	}
 
-	void updateGroupID() {
-		addLongUpdate(0x06, creo->getGroupID());
-	}
-
 	void updateGuildID() {
 		addIntUpdate(0x08, creo->getGuildID());
 	}
 
+	void updateTarget() {
+		addLongUpdate(0x09, creo->getTargetID());
+	}
+
 	void updateMoodID() {
 		addByteUpdate(0x0A, creo->getMoodID());
-	}
-
-	void updateMoodStr() {
-		addAsciiUpdate(0x04, creo->getMoodString());
-	}
-
-	void updatePerformanceType(int value) {
-		startUpdate(0x0C);
-		insertInt(value);
 	}
 
 	void updatePerformanceStartTime(uint32 startTime) {
@@ -57,14 +62,9 @@ public:
 		insertInt(startTime);
 	}
 
-	void updatePerformanceAnimation(const String& pAnimation) {
-		startUpdate(0x03);
-		insertAscii(pAnimation);
-	}
-
-	void updateLevel(uint16 value) {
-		startUpdate(0x02);
-		insertShort(value);
+	void updatePerformanceType(int value) {
+		startUpdate(0x0C);
+		insertInt(value);
 	}
 
 	void updateAlternateAppearance() {

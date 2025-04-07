@@ -324,20 +324,20 @@ void CreatureObjectImplementation::sendToOwner(bool doClose) {
 	for (int i = 0; i < closeObjects.size(); ++i) {
 		SceneObject* obj = static_cast<SceneObject*> (closeObjects.get(i));
 
-		if (obj != asCreatureObject()) {
-			if (obj != rootParent) {
-				notifyInsert(obj);
-				//obj->sendTo(asCreatureObject(), true);
-			}
-
-			if (obj->isPlayerCreature()) { //we need to destroy object to reset movement counter on near clients
-				obj->notifyDissapear(asCreatureObject());
-			}
-
-			//obj->notifyInsert(asCreatureObject());
-			sendTo(obj, true, false);
+		if (obj == nullptr || obj == asCreatureObject()) {
+			continue;
 		}
 
+		if (obj != rootParent) {
+			notifyInsert(obj);
+		}
+
+		// we need to destroy object to reset movement counter on near clients
+		if (obj->isPlayerCreature()) {
+			obj->notifyDissapear(asCreatureObject());
+		}
+
+		sendTo(obj, true, false);
 	}
 
 	if (group != nullptr) {
@@ -350,11 +350,15 @@ void CreatureObjectImplementation::sendToOwner(bool doClose) {
 }
 
 void CreatureObjectImplementation::sendBaselinesTo(SceneObject* player) {
-	CreatureObject* thisPointer = asCreatureObject();
-	Zone* zone = getZoneUnsafe();
+	// info(true) << getDisplayedName() << " sendBaselinesTo -- Player: " << player->getDisplayedName();
 
-	if (zone == nullptr)
+	CreatureObject* thisPointer = asCreatureObject();
+
+	auto zone = getZoneUnsafe();
+
+	if (zone == nullptr) {
 		return;
+	}
 
 	if (player == thisPointer) {
 		debug() << "sending baselines to myself";
@@ -481,24 +485,35 @@ void CreatureObjectImplementation::clearQueueActions(bool combatOnly) {
 		commandQueue->clearQueueActions(combatOnly);
 }
 
-void CreatureObjectImplementation::setWeapon(WeaponObject* weao,
-		bool notifyClient) {
-	if (weao == nullptr)
-		weao = asCreatureObject()->getDefaultWeapon();
-
-	weapon = weao;
-
-	if (notifyClient) {
-		CreatureObjectDeltaMessage6* msg = new CreatureObjectDeltaMessage6(
-				asCreatureObject());
-		msg->updateWeapon();
-		msg->close();
-
-		broadcastMessage(msg, true);
-
-		WeaponRanges* ranges = new WeaponRanges(asCreatureObject(), getWeapon());
-		sendMessage(ranges);
+void CreatureObjectImplementation::setWeapon(WeaponObject* newWeapon, bool notifyClient) {
+	if (newWeapon == nullptr) {
+		newWeapon = getDefaultWeapon();
 	}
+
+	weapon = newWeapon;
+
+	if (!notifyClient) {
+		return;
+	}
+
+	CreatureObjectDeltaMessage6* delta6 = new CreatureObjectDeltaMessage6(asCreatureObject());
+
+	if (delta6 == nullptr) {
+		return;
+	}
+
+	delta6->updateWeapon();
+	delta6->close();
+
+	broadcastMessage(delta6, true);
+
+	WeaponRanges* ranges = new WeaponRanges(asCreatureObject(), weapon);
+
+	if (ranges == nullptr) {
+		return;
+	}
+
+	sendMessage(ranges);
 }
 
 void CreatureObjectImplementation::setLevel(int level, bool randomHam) {
@@ -867,64 +882,63 @@ bool CreatureObjectImplementation::setState(uint64 state, bool notifyClient) {
 			}
 
 			switch (state) {
-			case CreatureState::STUNNED:
-				playEffect("clienteffect/combat_special_defender_stun.cef");
-				sendSystemMessage("@cbt_spam:go_stunned_single");
-				sendStateCombatSpam("cbt_spam", "go_stunned", 0);
-				break;
-			case CreatureState::BLINDED:
-				playEffect("clienteffect/combat_special_defender_blind.cef");
-				sendSystemMessage("@cbt_spam:go_blind_single");
-				sendStateCombatSpam("cbt_spam", "go_blind", 0);
-				break;
-			case CreatureState::DIZZY: {
-				playEffect("clienteffect/combat_special_defender_dizzy.cef");
-				sendSystemMessage("@cbt_spam:go_dizzy_single");
-				sendStateCombatSpam("cbt_spam", "go_dizzy", 0);
-				break;
+				case CreatureState::STUNNED:
+					playEffect("clienteffect/combat_special_defender_stun.cef");
+					sendSystemMessage("@cbt_spam:go_stunned_single");
+					sendStateCombatSpam("cbt_spam", "go_stunned", 0);
+					break;
+				case CreatureState::BLINDED:
+					playEffect("clienteffect/combat_special_defender_blind.cef");
+					sendSystemMessage("@cbt_spam:go_blind_single");
+					sendStateCombatSpam("cbt_spam", "go_blind", 0);
+					break;
+				case CreatureState::DIZZY: {
+					playEffect("clienteffect/combat_special_defender_dizzy.cef");
+					sendSystemMessage("@cbt_spam:go_dizzy_single");
+					sendStateCombatSpam("cbt_spam", "go_dizzy", 0);
+					break;
+				}
+				case CreatureState::POISONED:
+					break;
+				case CreatureState::DISEASED:
+					break;
+				case CreatureState::ONFIRE:
+					break;
+				case CreatureState::BLEEDING:
+					break;
+				case CreatureState::INTIMIDATED:
+					playEffect("clienteffect/combat_special_defender_intimidate.cef");
+					break;
+				case CreatureState::IMMOBILIZED:
+					showFlyText("combat_effects", "go_snare", 0, 0xFF, 0);
+					break;
+				case CreatureState::FROZEN:
+					showFlyText("combat_effects", "go_rooted", 0, 0xFF, 0);
+					break;
+				case CreatureState::RALLIED:
+					showFlyText("combat_effects", "go_rally", 0, 0xFF, 0);
+					break;
+				case CreatureState::BERSERK:
+					playEffect("clienteffect/combat_special_attacker_berserk.cef");
+					break;
+				case CreatureState::AIMING:
+					playEffect("clienteffect/combat_special_attacker_aim.cef");
+					break;
+				case CreatureState::COVER:
+					playEffect("clienteffect/combat_special_attacker_cover.cef");
+					sendSystemMessage("@cbt_spam:cover_success_single");
+					sendStateCombatSpam("cbt_spam", "cover_success", 0);
+					break;
+				case CreatureState::PEACE:
+					sendSystemMessage("@cbt_spam:peace_single");
+					sendStateCombatSpam("cbt_spam", "peace", 0);
+					break;
+				case CreatureState::SWIMMING:
+					updateSpeedAndAccelerationMods();
+					break;
+				default:
+					break;
 			}
-			case CreatureState::POISONED:
-				break;
-			case CreatureState::DISEASED:
-				break;
-			case CreatureState::ONFIRE:
-				break;
-			case CreatureState::BLEEDING:
-				break;
-			case CreatureState::INTIMIDATED:
-				playEffect("clienteffect/combat_special_defender_intimidate.cef");
-				break;
-			case CreatureState::IMMOBILIZED:
-				showFlyText("combat_effects", "go_snare", 0, 0xFF, 0);
-				break;
-			case CreatureState::FROZEN:
-				showFlyText("combat_effects", "go_rooted", 0, 0xFF, 0);
-				break;
-			case CreatureState::RALLIED:
-				showFlyText("combat_effects", "go_rally", 0, 0xFF, 0);
-				break;
-			case CreatureState::BERSERK:
-				playEffect("clienteffect/combat_special_attacker_berserk.cef");
-				break;
-			case CreatureState::AIMING:
-				playEffect("clienteffect/combat_special_attacker_aim.cef");
-				break;
-			case CreatureState::COVER:
-				playEffect("clienteffect/combat_special_attacker_cover.cef");
-				sendSystemMessage("@cbt_spam:cover_success_single");
-				sendStateCombatSpam("cbt_spam", "cover_success", 0);
-				break;
-			case CreatureState::PEACE:
-				sendSystemMessage("@cbt_spam:peace_single");
-				sendStateCombatSpam("cbt_spam", "peace", 0);
-				break;
-			case CreatureState::SWIMMING:
-				updateSpeedAndAccelerationMods();
-				break;
-			default:
-				break;
-			}
-
 		}
 
 		return true;
@@ -944,18 +958,21 @@ int CreatureObjectImplementation::getReceiverFlags() const {
 }
 
 bool CreatureObjectImplementation::clearState(uint64 state, bool notifyClient) {
-	if (stateBitmask & state) {
-		stateBitmask &= ~state;
+	if (!(stateBitmask & state)) {
+		return false;
+	}
 
-		if (notifyClient) {
-			CreatureObjectDeltaMessage3* dcreo3 = new CreatureObjectDeltaMessage3(asCreatureObject());
-			dcreo3->updateStatesBitmask();
-			dcreo3->close();
+	stateBitmask &= ~state;
 
-			broadcastMessage(dcreo3, true);
-		}
+	if (notifyClient) {
+		CreatureObjectDeltaMessage3* dcreo3 = new CreatureObjectDeltaMessage3(asCreatureObject());
+		dcreo3->updateStatesBitmask();
+		dcreo3->close();
 
-		switch (state) {
+		broadcastMessage(dcreo3, true);
+	}
+
+	switch (state) {
 		case CreatureState::STUNNED:
 			sendSystemMessage("@cbt_spam:no_stunned_single");
 			sendStateCombatSpam("cbt_spam", "no_stunned", 0);
@@ -1006,12 +1023,9 @@ bool CreatureObjectImplementation::clearState(uint64 state, bool notifyClient) {
 			break;
 		default:
 			break;
-		}
-
-		return true;
-	} else {
-		return false;
 	}
+
+	return true;
 }
 
 void CreatureObjectImplementation::clearSpaceStates() {
@@ -1608,8 +1622,9 @@ void CreatureObjectImplementation::updatePostures(bool immediate) {
 	//CreaturePosture::instance()->getTurnScale((uint8)newPosture);
 	//CreaturePosture::instance()->getCanSeeHeightMod((uint8)newPosture);
 
-	if (posture != CreaturePosture::SITTING && hasState(CreatureState::SITTINGONCHAIR))
+	if (posture != CreaturePosture::SITTING && hasState(CreatureState::SITTINGONCHAIR)) {
 		clearState(CreatureState::SITTINGONCHAIR);
+	}
 
 	Vector<BasePacket*> messages;
 
@@ -1643,7 +1658,7 @@ void CreatureObjectImplementation::updatePostures(bool immediate) {
 
 	broadcastMessages(&messages, true);
 
-	if(posture != CreaturePosture::UPRIGHT && posture != CreaturePosture::DRIVINGVEHICLE && posture != CreaturePosture::RIDINGCREATURE && posture != CreaturePosture::SKILLANIMATING) {
+	if (posture != CreaturePosture::UPRIGHT && posture != CreaturePosture::DRIVINGVEHICLE && posture != CreaturePosture::RIDINGCREATURE && posture != CreaturePosture::SKILLANIMATING) {
 		setCurrentSpeed(0);
 	}
 
@@ -1661,8 +1676,9 @@ void CreatureObjectImplementation::setPosture(int newPosture, bool immediate, bo
 
 	posture = newPosture;
 
-	if(!notifyClient)
+	if (!notifyClient) {
 		return;
+	}
 
 	updatePostures(immediate);
 }
@@ -1735,6 +1751,18 @@ void CreatureObjectImplementation::updateSpeedAndAccelerationMods() {
 	if (mScale != 0.f) {
 		mScale *= getSpeedModifier();
 	}
+
+	/*
+	if (isPlayerCreature()) {
+		auto msg = info(true);
+		msg << "CreatureObjectImplementation::updateSpeedAndAccelerationMods -- " << getDisplayedName() << endl;
+		msg << "Acceleration Old: " << accelerationMultiplierMod << " Acceleration New: " << aScale << endl;
+		msg << "Speed Mod Old: " << speedMultiplierMod << " Speed Mod New: " << mScale << endl;
+		msg << "Turnscale Old: " << turnScale << " Turnscale New: " << tScale << endl;
+		msg.flush();
+
+	}
+	*/
 
 	int updateSize = 0;
 
@@ -1941,6 +1969,9 @@ void CreatureObjectImplementation::setSpeedMultiplierMod(float newMultiplierMod,
 		newValue *= getSpeedModifier();
 	}
 
+	// if (isPlayerCreature())
+	//	info(true) << "setSpeedMultiplierMod -- newMultiplierMod: " << newValue << " Old speedMultiplierMod: " << speedMultiplierMod;
+
 	if (speedMultiplierMod != newValue) {
 		speedMultiplierMod = newValue;
 
@@ -1960,21 +1991,27 @@ void CreatureObjectImplementation::setSpeedMultiplierMod(float newMultiplierMod,
 	}
 }
 
-void CreatureObjectImplementation::setRunSpeed(float newSpeed,
-		bool notifyClient) {
-	if (runSpeed == newSpeed)
+void CreatureObjectImplementation::setRunSpeed(float newSpeed, bool notifyClient) {
+	if (runSpeed == newSpeed) {
 		return;
+	}
 
 	runSpeed = newSpeed;
 
-	if (notifyClient) {
-		CreatureObjectDeltaMessage4* dcreo4 = new CreatureObjectDeltaMessage4(
-				asCreatureObject());
-		dcreo4->updateRunSpeed();
-		dcreo4->close();
-
-		sendMessage(dcreo4);
+	if (!notifyClient) {
+		return;
 	}
+
+	CreatureObjectDeltaMessage4* dcreo4 = new CreatureObjectDeltaMessage4(asCreatureObject());
+
+	if (dcreo4 == nullptr) {
+		return;
+	}
+
+	dcreo4->updateRunSpeed();
+	dcreo4->close();
+
+	sendMessage(dcreo4);
 }
 
 void CreatureObjectImplementation::setMoodString(
@@ -2068,11 +2105,17 @@ void CreatureObjectImplementation::updateSlopeMods(bool notifyClient) {
 	}
 
 	if (notifyClient) {
-		CreatureObjectDeltaMessage4* codm4 = new CreatureObjectDeltaMessage4(asCreatureObject());
-		codm4->updateSlopeModAngle();
-		codm4->updateSlopeModPercent();
-		codm4->close();
-		sendMessage(codm4);
+		CreatureObjectDeltaMessage4* delta4 = new CreatureObjectDeltaMessage4(asCreatureObject());
+
+		if (delta4 == nullptr) {
+			return;
+		}
+
+		delta4->updateSlopeModAngle();
+		delta4->updateSlopeModPercent();
+		delta4->close();
+
+		sendMessage(delta4);
 	}
 }
 
@@ -2086,6 +2129,42 @@ float CreatureObjectImplementation::getSlopeModPercent() const {
 	float slopeMod = slopeMove / 50.0f;
 
 	return slopeMod;
+}
+
+float CreatureObjectImplementation::getRunSpeed() {
+	float allowedSpeed = runSpeed;
+
+	if (isRidingMount()) {
+		auto parent = getParent().get();
+
+		if (parent != nullptr && (parent->isMount() || parent->isVehicleObject())) {
+			auto vehicle = parent->asCreatureObject();
+
+			if (vehicle != nullptr) {
+				// Get the vehicles max speed
+				allowedSpeed = vehicle->getRunSpeed();
+
+				// Get the pet mounts run speed
+				if (vehicle->isMount()) {
+					auto zoneServer = getZoneServer();
+
+					if (zoneServer != nullptr) {
+						auto petManager = zoneServer->getPetManager();
+
+						if (petManager != nullptr) {
+							allowedSpeed = petManager->getMountedRunSpeed(vehicle);
+						}
+					}
+				}
+
+				if (vehicle->getSpeedMultiplierMod() != 0) {
+					allowedSpeed *= vehicle->getSpeedMultiplierMod();
+				}
+			}
+		}
+	}
+
+	return allowedSpeed;
 }
 
 void CreatureObjectImplementation::sendCommand(const String& action, const UnicodeString& args, uint64 targetID, int priority) {
