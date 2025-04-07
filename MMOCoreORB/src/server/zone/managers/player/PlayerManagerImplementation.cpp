@@ -3979,9 +3979,9 @@ bool PlayerManagerImplementation::checkPlayerSpeedTest(CreatureObject* player, S
 
 	float maxAllowedSpeed = allowedSpeedMod * allowedSpeedBase;
 
-#ifdef DEBUG_SPEED_HACK
+//#ifdef DEBUG_SPEED_HACK
 	player->info(true) << "checkPlayerSpeedTest -- parsedSpeed: " << parsedSpeed << " Error Multiplier: " << errorMultiplier << " Teleport position: " << lastValidVec.toString();
-#endif // DEBUG_SPEED_HACK
+//#endif // DEBUG_SPEED_HACK
 
 	/*
 	// Z Coordinate Check
@@ -4062,27 +4062,27 @@ bool PlayerManagerImplementation::checkPlayerSpeedTest(CreatureObject* player, S
 		}
 
 		if (changeBuffer->size() == 0) { // no speed changes
-#ifdef DEBUG_SPEED_HACK
+//#ifdef DEBUG_SPEED_HACK
 			auto msg = player->info(true);
 			msg << "checkPlayerSpeedTest -- FAILED -- changeBuffer - Max Allowed Speed: " << maxAllowedSpeed * errorMultiplier;
 			msg << " Parsed Speed: " << parsedSpeed;
 			msg.flush();
-#endif // DEBUG_SPEED_HACK
+//#endif // DEBUG_SPEED_HACK
 
 			return false;
 		}
 
-		SpeedModChange* firstChange = &changeBuffer->get(changeBuffer->size() - 1);
-		const Time* timeStamp = &firstChange->getTimeStamp();
+		SpeedModChange* latestChange = &changeBuffer->get(changeBuffer->size() - 1);
+		const Time* timeStamp = &latestChange->getTimeStamp();
 
 		// we already should have lowered the speed, 2 seconds lag
 		if (timeStamp->miliDifference() > 2000) {
-#ifdef DEBUG_SPEED_HACK
+//#ifdef DEBUG_SPEED_HACK
 			auto msg = player->info(true);
 			msg << endl << "checkPlayerSpeedTest -- FAILED -- Due to timeStamp diff: " << timeStamp->miliDifference() << " with Max Allowed Speed: " << maxAllowedSpeed * errorMultiplier;
 			msg << " Parsed Speed: " << parsedSpeed << endl;
 			msg.flush();
-#endif // DEBUG_SPEED_HACK
+//#endif // DEBUG_SPEED_HACK
 
 			return false;
 		}
@@ -4094,15 +4094,16 @@ bool PlayerManagerImplementation::checkPlayerSpeedTest(CreatureObject* player, S
 			float allowed = allowedSpeedBase * oldSpeedMod * errorMultiplier;
 
 			if (allowed >= parsedSpeed) {
-#ifdef DEBUG_SPEED_HACK
+//#ifdef DEBUG_SPEED_HACK
 				player->info() << "checkPlayerSpeedTest -- PASSED";
-#endif
+//#endif
 
 				return true; // no hack detected
 			}
 
-			if (allowed > maxAllowedSpeed)
+			if (allowed > maxAllowedSpeed) {
 				maxAllowedSpeed = allowed;
+			}
 		}
 
 #ifdef DEBUG_SPEED_HACK

@@ -82,6 +82,8 @@ public:
 			changeBuffer->remove(0);
 		}
 
+		info(true) << "DismountCommand -- adding to change buffer";
+
 		changeBuffer->add(SpeedModChange(creature->getSpeedMultiplierMod()));
 
 		Vector<FloatParam> speedTempl = playerTemplate->getSpeed();
@@ -89,17 +91,17 @@ public:
 		// Reset Run Speed from template
 		creature->setRunSpeed(speedTempl.get(0));
 
+		creature->updateCooldownTimer("mount_dismount", 2000);
+		creature->setNextAllowedMoveTime(500);
+
+		// Remove Mounted combat slow from player
+		creature->removeMountedCombatSlow(false);
+
  		// Reset Force Sensitive control mods to default.
 		creature->updateSpeedAndAccelerationMods();
 
 		// Update players stats in the database
 		creature->updateToDatabase();
-
-		creature->updateCooldownTimer("mount_dismount", 2000);
-		creature->setNextAllowedMoveTime(500);
-
-		// these are already removed off the player - Just remove it off the mount
-		creature->removeMountedCombatSlow(false);
 
 		return SUCCESS;
 	}

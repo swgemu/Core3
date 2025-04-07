@@ -27,8 +27,9 @@ public:
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
 		ZoneServer* zoneServer = server->getZoneServer();
 
-		if (zoneServer == nullptr || !creature->checkCooldownRecovery("mount_dismount"))
+		if (zoneServer == nullptr || !creature->checkCooldownRecovery("mount_dismount")) {
 			return GENERALERROR;
+		}
 
 		if (creature->isRidingMount()) {
 			ManagedReference<ObjectController*> objectController = zoneServer->getObjectController();
@@ -37,8 +38,9 @@ public:
 			return GENERALERROR;
 		}
 
-		if (target == 0)
+		if (target == 0) {
 			return GENERALERROR;
+		}
 
 		ManagedReference<SceneObject*> object = zoneServer->getObject(target);
 
@@ -46,10 +48,15 @@ public:
 			return INVALIDTARGET;
 		}
 
-		if (!object->isVehicleObject() && !object->isMount())
+		if (!object->isVehicleObject() && !object->isMount()) {
 			return INVALIDTARGET;
+		}
 
-		CreatureObject* vehicle = cast<CreatureObject*>( object.get());
+		CreatureObject* vehicle = object->asCreatureObject();
+
+		if (vehicle == nullptr) {
+			return INVALIDTARGET;
+		}
 
 		Locker clocker(vehicle, creature);
 
@@ -62,19 +69,22 @@ public:
 		if (vehicle->getCreatureLinkID() != creature->getObjectID())
 			return GENERALERROR;
 
-		if (!vehicle->isInRange(creature, 5) || !CollisionManager::checkLineOfSight(vehicle, creature))
+		if (!vehicle->isInRange(creature, 7.f) || !CollisionManager::checkLineOfSight(vehicle, creature)) {
 			return GENERALERROR;
+		}
 
-		if (creature->getParent() != nullptr || vehicle->getParent() != nullptr)
+		if (creature->getParent() != nullptr || vehicle->getParent() != nullptr) {
 			return GENERALERROR;
+		}
 
 		if (vehicle->isDisabled()) {
 			creature->sendSystemMessage("@pet/pet_menu:cant_mount_veh_disabled");
 			return GENERALERROR;
 		}
 
-		if (vehicle->isIncapacitated() || vehicle->isDead())
+		if (vehicle->isIncapacitated() || vehicle->isDead()) {
 			return GENERALERROR;
+		}
 
 		if (vehicle->getPosture() == CreaturePosture::LYINGDOWN || vehicle->getPosture() == CreaturePosture::SITTING) {
 			vehicle->setPosture(CreaturePosture::UPRIGHT);
@@ -132,15 +142,6 @@ public:
 			}, "AddGallopModsLambda");
 		}
 
-		// Speed hack buffer
-		SpeedMultiplierModChanges* changeBuffer = creature->getSpeedMultiplierModChanges();
-		const int bufferSize = changeBuffer->size();
-
-		// Drop old change off the buffer
-		if (bufferSize > 5) {
-			changeBuffer->remove(0);
-		}
-
 		// get vehicle speed
 		float newSpeed = vehicle->getRunSpeed();
 		float newAccel = vehicle->getAccelerationMultiplierMod();
@@ -156,13 +157,21 @@ public:
 		}
 
 		// add speed multiplier mod for existing buffs
-		if(vehicle->getSpeedMultiplierMod() != 0)
+		if (vehicle->getSpeedMultiplierMod() != 0) {
 			newSpeed *= vehicle->getSpeedMultiplierMod();
+		}
+
+		// Speed hack buffer
+		SpeedMultiplierModChanges* changeBuffer = creature->getSpeedMultiplierModChanges();
+		const int bufferSize = changeBuffer->size();
+
+		// Drop old change off the buffer
+		if (bufferSize > 5) {
+			changeBuffer->remove(0);
+		}
 
 		// Add our change to the buffer history
 		changeBuffer->add(SpeedModChange(newSpeed / creature->getRunSpeed()));
-
-		creature->updateToDatabase();
 
 		// Force Sensitive SkillMods
 		if (vehicle->isVehicleObject()) {
@@ -174,6 +183,10 @@ public:
 		creature->setTurnScale(newTurn, true);
 		creature->setAccelerationMultiplierMod(newAccel, true);
 		creature->addMountedCombatSlow();
+
+		creature->updateSpeedAndAccelerationMods();
+
+		creature->updateToDatabase();
 
 		return SUCCESS;
 	}

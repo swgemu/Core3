@@ -481,16 +481,14 @@ void CreatureObjectImplementation::clearQueueActions(bool combatOnly) {
 		commandQueue->clearQueueActions(combatOnly);
 }
 
-void CreatureObjectImplementation::setWeapon(WeaponObject* weao,
-		bool notifyClient) {
+void CreatureObjectImplementation::setWeapon(WeaponObject* weao, bool notifyClient) {
 	if (weao == nullptr)
 		weao = asCreatureObject()->getDefaultWeapon();
 
 	weapon = weao;
 
 	if (notifyClient) {
-		CreatureObjectDeltaMessage6* msg = new CreatureObjectDeltaMessage6(
-				asCreatureObject());
+		CreatureObjectDeltaMessage6* msg = new CreatureObjectDeltaMessage6(asCreatureObject());
 		msg->updateWeapon();
 		msg->close();
 
@@ -1608,8 +1606,9 @@ void CreatureObjectImplementation::updatePostures(bool immediate) {
 	//CreaturePosture::instance()->getTurnScale((uint8)newPosture);
 	//CreaturePosture::instance()->getCanSeeHeightMod((uint8)newPosture);
 
-	if (posture != CreaturePosture::SITTING && hasState(CreatureState::SITTINGONCHAIR))
+	if (posture != CreaturePosture::SITTING && hasState(CreatureState::SITTINGONCHAIR)) {
 		clearState(CreatureState::SITTINGONCHAIR);
+	}
 
 	Vector<BasePacket*> messages;
 
@@ -1643,7 +1642,7 @@ void CreatureObjectImplementation::updatePostures(bool immediate) {
 
 	broadcastMessages(&messages, true);
 
-	if(posture != CreaturePosture::UPRIGHT && posture != CreaturePosture::DRIVINGVEHICLE && posture != CreaturePosture::RIDINGCREATURE && posture != CreaturePosture::SKILLANIMATING) {
+	if (posture != CreaturePosture::UPRIGHT && posture != CreaturePosture::DRIVINGVEHICLE && posture != CreaturePosture::RIDINGCREATURE && posture != CreaturePosture::SKILLANIMATING) {
 		setCurrentSpeed(0);
 	}
 
@@ -1735,6 +1734,9 @@ void CreatureObjectImplementation::updateSpeedAndAccelerationMods() {
 	if (mScale != 0.f) {
 		mScale *= getSpeedModifier();
 	}
+
+	if (isPlayerCreature())
+		info(true) << "updateSpeedAndAccelerationMods called -- " << getDisplayedName() << " Speed Mod Old: " << speedMultiplierMod << " Speed Mod New: " << mScale;
 
 	int updateSize = 0;
 
@@ -1941,6 +1943,9 @@ void CreatureObjectImplementation::setSpeedMultiplierMod(float newMultiplierMod,
 		newValue *= getSpeedModifier();
 	}
 
+	if (isPlayerCreature())
+		info(true) << "setSpeedMultiplierMod -- newMultiplierMod: " << newValue << " Old speedMultiplierMod: " << speedMultiplierMod;
+
 	if (speedMultiplierMod != newValue) {
 		speedMultiplierMod = newValue;
 
@@ -1949,6 +1954,10 @@ void CreatureObjectImplementation::setSpeedMultiplierMod(float newMultiplierMod,
 		}
 
 		speedMultiplierModChanges.add(SpeedModChange(speedMultiplierMod));
+
+
+		if (isPlayerCreature())
+			info(true) << "!!!!!!!!! setSpeedMultiplierMod !!!!!!!!!!-- adding to change buffer from CreO -- New Speed Multiplier: " << speedMultiplierMod << " Mod Changes Size: " << speedMultiplierModChanges.size();
 	}
 
 	if (notifyClient) {
@@ -1960,16 +1969,23 @@ void CreatureObjectImplementation::setSpeedMultiplierMod(float newMultiplierMod,
 	}
 }
 
-void CreatureObjectImplementation::setRunSpeed(float newSpeed,
-		bool notifyClient) {
-	if (runSpeed == newSpeed)
+void CreatureObjectImplementation::setRunSpeed(float newSpeed, bool notifyClient) {
+	if (runSpeed == newSpeed) {
 		return;
+	}
+
+	if (isPlayerCreature())
+		info(true) << "setRunSpeed -- Current Speed: " << runSpeed << " New Speed: " << newSpeed;
 
 	runSpeed = newSpeed;
 
 	if (notifyClient) {
-		CreatureObjectDeltaMessage4* dcreo4 = new CreatureObjectDeltaMessage4(
-				asCreatureObject());
+		CreatureObjectDeltaMessage4* dcreo4 = new CreatureObjectDeltaMessage4(asCreatureObject());
+
+		if (dcreo4 == nullptr) {
+			return;
+		}
+
 		dcreo4->updateRunSpeed();
 		dcreo4->close();
 
