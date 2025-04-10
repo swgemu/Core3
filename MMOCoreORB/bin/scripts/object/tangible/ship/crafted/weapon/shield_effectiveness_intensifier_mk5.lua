@@ -51,7 +51,7 @@ object_tangible_ship_crafted_weapon_shield_effectiveness_intensifier_mk5 = objec
 	experimentalSubGroupTitles = {"null", "null", "effective_shields", "effective_armor"},
 	experimentalMin = {0, 0, 120, -140},
 	experimentalMax = {0, 0, 140, -120},
-	experimentalPrecision = {0, 0, 1, 1},
+	experimentalPrecision = {0, 0, 3, 3},
 	experimentalCombineType = {0, 0, 1, 1},
 }
 

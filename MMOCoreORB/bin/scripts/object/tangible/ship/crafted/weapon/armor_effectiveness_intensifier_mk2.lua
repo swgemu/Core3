@@ -51,7 +51,7 @@ object_tangible_ship_crafted_weapon_armor_effectiveness_intensifier_mk2 = object
 	experimentalSubGroupTitles = {"null", "null", "effective_shields", "effective_armor"},
 	experimentalMin = {0, 0, -75, 65},
 	experimentalMax = {0, 0, -65, 75},
-	experimentalPrecision = {0, 0, 1, 1},
+	experimentalPrecision = {0, 0, 3, 3},
 	experimentalCombineType = {0, 0, 1, 1},
 }
 
