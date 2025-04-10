@@ -51,7 +51,7 @@ object_tangible_ship_crafted_weapon_speed_limiter_upgrade_mk4 = object_tangible_
 	experimentalSubGroupTitles = {"null", "null", "refire_rate", "energy_per_shot"},
 	experimentalMin = {0, 0, 60, -3},
 	experimentalMax = {0, 0, 32, -6},
-	experimentalPrecision = {0, 0, 1, 1},
+	experimentalPrecision = {0, 0, 3, 1},
 	experimentalCombineType = {0, 0, 1, 1},
 }
 

@@ -51,7 +51,7 @@ object_tangible_ship_crafted_weapon_quick_shot_upgrade_mk3 = object_tangible_shi
 	experimentalSubGroupTitles = {"null", "null", "refire_rate", "energy_per_shot"},
 	experimentalMin = {0, 0, -27, 5},
 	experimentalMax = {0, 0, -51, 3},
-	experimentalPrecision = {0, 0, 1, 1},
+	experimentalPrecision = {0, 0, 3, 1},
 	experimentalCombineType = {0, 0, 1, 1},
 }
 
