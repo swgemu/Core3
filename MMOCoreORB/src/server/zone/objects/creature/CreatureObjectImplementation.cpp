@@ -121,6 +121,18 @@ void CreatureObjectImplementation::initializeTransientMembers() {
 
 	spaceMissionObjects.setNullValue(0);
 	spaceMissionObjects.setAllowDuplicateInsert();
+
+	auto creatureTemplate = dynamic_cast<SharedCreatureObjectTemplate*>(getObjectTemplate());
+
+	if (creatureTemplate != nullptr) {
+		float x = creatureTemplate->getCollisionOffsetX();
+		float y = creatureTemplate->getCollisionOffsetZ();
+		float templateRadius = Vector3(x, y, 0).length() + creatureTemplate->getCollisionRadius();
+
+		if (getBoundingRadius() <= templateRadius) {
+			setBoundingRadius(templateRadius);
+		}
+	}
 }
 
 void CreatureObjectImplementation::initializeMembers() {
@@ -4570,13 +4582,22 @@ uint64 CreatureObjectImplementation::getQueueCommandDeltaTime(const String& comm
 }
 
 float CreatureObjectImplementation::getOutOfRangeDistance(uint64 specialRangeID) {
-	if (specialRangeID > 0) {
-		Locker locker(&missionRangeObjectsMutex);
+	auto root = getRootParent();
 
-		if (missionRangeObjects.contains(specialRangeID)) {
-			return ZoneServer::SPACESTATIONRANGE;
-		}
+	if (root != nullptr && root->isShipObject()) {
+		return root->getOutOfRangeDistance(specialRangeID);
 	}
 
 	return TangibleObjectImplementation::getOutOfRangeDistance(specialRangeID);
+}
+
+bool CreatureObjectImplementation::isMissionRangeObject(const uint64& objectID) {
+	if (objectID <= 0 || objectID > std::numeric_limits<uint64_t>::max()) {
+		return false;
+	}
+
+	Locker locker(&missionRangeObjectsMutex);
+	int index = missionRangeObjects.find(objectID);
+
+	return index != -1;
 }

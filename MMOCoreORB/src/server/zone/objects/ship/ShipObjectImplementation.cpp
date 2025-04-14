@@ -42,6 +42,8 @@
 // #define DEBUG_COV
 
 void ShipObjectImplementation::initializeTransientMembers() {
+	TangibleObjectImplementation::initializeTransientMembers();
+
 	hyperspacing = false;
 	droidFeedback = true;
 
@@ -55,7 +57,16 @@ void ShipObjectImplementation::initializeTransientMembers() {
 
 	initializeUniqueID(false);
 
-	TangibleObjectImplementation::initializeTransientMembers();
+	auto volume = getCollisionVolume();
+
+	if (volume != nullptr) {
+		const auto& sphere = volume->getBoundingSphere();
+		float sphereRadius = sphere.getCenter().length() + sphere.getRadius();
+
+		if (getBoundingRadius() <= sphereRadius) {
+			setBoundingRadius(sphereRadius);
+		}
+	}
 }
 
 void ShipObjectImplementation::notifyLoadFromDatabase() {
@@ -180,17 +191,6 @@ void ShipObjectImplementation::loadTemplateData(SharedObjectTemplate* templateDa
 		}
 
 		wingsOpenSpeed = chassisData->getWingOpenSpeed();
-	}
-
-	auto appearance = getAppearanceTemplate();
-
-	if (appearance != nullptr) {
-		auto volume = appearance->getBoundingVolume();
-
-		if (volume != nullptr) {
-			const auto& sphere = volume->getBoundingSphere();
-			boundingRadius = sphere.getCenter().length() + sphere.getRadius();
-		}
 	}
 }
 
@@ -2146,15 +2146,17 @@ int ShipObjectImplementation::getReceiverFlags() const {
 }
 
 float ShipObjectImplementation::getOutOfRangeDistance(uint64 specialRangeID) {
+	float radiusMax = getBoundingRadius();
+
 	if (specialRangeID > 0) {
 		auto pilot = getPilot();
 
-		if (pilot != nullptr) {
-			return pilot->getOutOfRangeDistance(specialRangeID);
+		if (pilot != nullptr && pilot->isMissionRangeObject(specialRangeID)) {
+			return ZoneServer::SPACESTATIONRANGE + radiusMax;
 		}
 	}
 
-	return ZoneServer::SPACECLOSEOBJECTRANGE;
+	return ZoneServer::SPACECLOSEOBJECTRANGE + radiusMax;
 }
 
 bool ShipObjectImplementation::isComponentInstalled(uint32 slot) {

@@ -101,6 +101,19 @@ void SceneObjectImplementation::initializeTransientMembers() {
 	}
 
 	updateWorldPosition(true);
+
+	boundingRadius = Math::max(radius, 0.f);
+
+	auto volume = getBoundingVolume();
+
+	if (volume != nullptr) {
+		const auto& sphere = volume->getBoundingSphere();
+		float sphereRadius = sphere.getCenter().length() + sphere.getRadius();
+
+		if (getBoundingRadius() <= sphereRadius) {
+			setBoundingRadius(sphereRadius);
+		}
+	}
 }
 
 void SceneObjectImplementation::initializePrivateData() {
@@ -2231,14 +2244,24 @@ Vector<Reference<MeshData*>> SceneObjectImplementation::getTransformedMeshData(c
 	return data;
 }
 
-const BaseBoundingVolume* SceneObjectImplementation::getBoundingVolume() {
-	if (templateObject != nullptr) {
-		AppearanceTemplate *appr = templateObject->getAppearanceTemplate();
-		if (appr != nullptr) {
-			return appr->getBoundingVolume();
-		}
+const BaseBoundingVolume* SceneObjectImplementation::getBoundingVolume() const {
+	auto appearance = getAppearanceTemplate();
+
+	if (appearance == nullptr) {
+		return nullptr;
 	}
-	return nullptr;
+
+	return appearance->getBoundingVolume();
+}
+
+const BaseBoundingVolume* SceneObjectImplementation::getCollisionVolume() const {
+	auto appearance = getAppearanceTemplate();
+
+	if (appearance == nullptr) {
+		return nullptr;
+	}
+
+	return appearance->getCollisionVolume();
 }
 
 void SceneObjectImplementation::executeOrderedTask(const StdFunction& function, const String& name) {
@@ -2547,4 +2570,27 @@ const AppearanceTemplate* SceneObjectImplementation::getAppearanceTemplate() con
 	}
 
 	return shot->getAppearanceTemplate();
+}
+
+void SceneObjectImplementation::setBoundingRadius(float value) {
+	boundingRadius = value;
+}
+
+float SceneObjectImplementation::getBoundingRadius() {
+	return Math::max(boundingRadius, radius);
+}
+
+float SceneObjectImplementation::getOutOfRangeDistance(uint64 specialRangeID) {
+	float radiusMax = getBoundingRadius();
+	auto zone = getZone();
+
+	if (zone != nullptr && zone->isSpaceZone()) {
+		return ZoneServer::SPACECLOSEOBJECTRANGE + radiusMax;
+	}
+
+	if (0.5f * ZoneServer::CLOSEOBJECTRANGE < radiusMax) {
+		return ZoneServer::CLOSEOBJECTRANGE + radiusMax;
+	}
+
+	return ZoneServer::CLOSEOBJECTRANGE;
 }
