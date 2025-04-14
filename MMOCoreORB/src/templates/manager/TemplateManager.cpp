@@ -920,6 +920,8 @@ AppearanceTemplate* TemplateManager::instantiateAppearanceTemplate(IffStream* if
 			break;
 		case 'PEFT':
 			break;
+		case 'LSAT':
+			break;
 		case 'APT ': {
 			AppearanceRedirect redirect;
 			redirect.readObject(iffStream);
@@ -928,7 +930,7 @@ AppearanceTemplate* TemplateManager::instantiateAppearanceTemplate(IffStream* if
 			break;
 		}
 		default:
-			error("unknown appearance type " + String::hexvalueOf((int)formType));
+			error() << "unknown appearance type " << (char)((formType >> 24) & 0xFF) << (char)((formType >> 16) & 0xFF) << (char)((formType >> 8) & 0xFF) << (char)(formType & 0xFF);
 			break;
 		}
 
