@@ -84,21 +84,16 @@ public:
 
 		pilotLock.release();
 
-		InsertPilotIntoShipTask* pilotTask = new InsertPilotIntoShipTask(player, ship);
-
-		if (pilotTask != nullptr) {
-			pilotTask->schedule(100);
+		if (ship->getShipDroidID() != 0) {
+			handleDroid(player, ship, shipControlDevice);
 		}
 
 		ship->resetDroidCommands();
 
-		if (ship->getShipDroidID() != 0) {
-			auto droidTask = new InsertAstromechIntoShipTask(ship);
+		InsertPilotIntoShipTask* pilotTask = new InsertPilotIntoShipTask(player, ship);
 
-			if (droidTask != nullptr) {
-				droidTask->schedule(150);
-			}
-
+		if (pilotTask != nullptr) {
+			pilotTask->schedule(150);
 		}
 
 		if (groupMembers.size() > 0 && (ship->isPobShip() || ship->isMultiPassengerShip())) {
@@ -121,6 +116,49 @@ public:
 			}
 		}
 	}
+
+	void handleDroid(CreatureObject* player, ShipObject* ship, ShipControlDevice* shipControlDevice) {
+		if (player == nullptr || ship == nullptr || shipControlDevice == nullptr) {
+			return;
+		}
+
+		auto zoneServer = player->getZoneServer();
+
+		if (zoneServer == nullptr) {
+			return;
+		}
+
+		ManagedReference<SceneObject*> droidControlDeviceRef = zoneServer->getObject(ship->getShipDroidID());
+
+		if (droidControlDeviceRef == nullptr || !droidControlDeviceRef->isPetControlDevice()) {
+			return;
+		}
+
+		if (!droidControlDeviceRef->isASubChildOf(player)) {
+			Locker shipLock(ship, shipControlDevice);
+
+			ship->setShipDroidID(0, true);
+			return;
+		}
+
+		auto droidControlDevice = dynamic_cast<PetControlDevice*>(droidControlDeviceRef.get());
+
+		if (droidControlDevice == nullptr)
+			return;
+
+		PetControlDeviceStoreTask* storeTask = new PetControlDeviceStoreTask(droidControlDevice, player, true);
+
+		if (storeTask != nullptr)
+			storeTask->execute();
+
+		//insert the droid into the ship
+		auto droidTask = new InsertAstromechIntoShipTask(ship);
+
+		if (droidTask != nullptr) {
+			droidTask->schedule(100);
+		}
+	}
+
 };
 
 #endif /* LAUNCHSHIPTASK_H_ */
