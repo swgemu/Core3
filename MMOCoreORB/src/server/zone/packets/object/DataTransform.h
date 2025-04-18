@@ -341,11 +341,13 @@ public:
 		}
 		*/
 
-		playerManager->updateSwimmingState(creO, positionZ, &intersections, closeObjects);
-
+		// Update the the players position on the server
 		creO->setPosition(transform.getPositionX(), positionZ, transform.getPositionY());
 		creO->setDirection(transform.getDirection());
 		creO->setCurrentSpeed(transformSpeed);
+
+		// Check for swimming state update after the players position has been changed
+		playerManager->updateSwimmingState(creO, positionZ, &intersections, closeObjects);
 
 		// Update the validated position
 		if (movementValidation == Transform::FULL_VALIDATED) {
