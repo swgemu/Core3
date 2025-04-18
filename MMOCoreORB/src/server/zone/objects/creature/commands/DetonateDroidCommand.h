@@ -15,11 +15,11 @@ public:
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
-		if (!creature->isPlayerCreature() || creature->isDead() || (creature->isIncapacitated() && !creature->isFeigningDeath())) {
+		if (!checkStateMask(creature)) {
 			return INVALIDSTATE;
 		}
 
-		if (creature->isFrozen()) {
+		if (!checkInvalidLocomotions(creature)) {
 			return INVALIDLOCOMOTION;
 		}
 

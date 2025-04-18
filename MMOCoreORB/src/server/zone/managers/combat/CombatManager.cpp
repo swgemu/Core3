@@ -2778,7 +2778,10 @@ float CombatManager::doObjectDetonation(TangibleObject* attackerTanO, CreatureOb
 
 				armor->inflictDamage(armor, 0, damage * 0.2, true, true);
 			}
+		}
 
+		// Handle spill over damage for all pools
+		if (defender->isCreatureObject() && !defender->isVehicleObject()) {
 			// Calculate Spill over
 			int numSpillOverPools = 2;
 			float spillMultPerPool = (0.0834f * numSpillOverPools);
@@ -2789,7 +2792,7 @@ float CombatManager::doObjectDetonation(TangibleObject* attackerTanO, CreatureOb
 			// subtract spill damage from total damage
 			damage -= spilledDamage;
 
-			 // Split the spill over damage between the pools damaged
+			// Split the spill over damage between the pools damaged
 			int spillDamagePerPool = (int)(spilledDamage / numSpillOverPools);
 			int spillOverRemainder = (spilledDamage % numSpillOverPools) + spillDamagePerPool;
 			int spillToApply = (numSpillOverPools-- > 1 ? spillDamagePerPool : spillOverRemainder);
