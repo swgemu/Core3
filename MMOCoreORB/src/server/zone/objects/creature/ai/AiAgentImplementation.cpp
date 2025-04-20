@@ -4394,6 +4394,35 @@ bool AiAgentImplementation::isAttackableBy(CreatureObject* creature) {
 	return true;
 }
 
+bool AiAgentImplementation::isHealableBy(CreatureObject* healerCreo) {
+	if (healerCreo == nullptr) {
+		return false;
+	}
+
+	if (isVehicleType()) {
+		return false;
+	}
+
+	return CreatureObjectImplementation::isHealableBy(healerCreo);
+}
+
+bool AiAgentImplementation::hasDotImmunity(uint32 dotType) const {
+	switch (dotType) {
+		case CreatureState::POISONED:
+		case CreatureState::BLEEDING:
+		case CreatureState::DISEASED:
+			if (isVehicleType()) {
+				return false;
+			}
+			break;
+		default:
+			return false;
+	}
+
+	return CreatureObjectImplementation::hasDotImmunity(dotType);
+}
+
+
 bool AiAgentImplementation::hasLoot(){
 	SceneObject* inventory = asAiAgent()->getSlottedObject("inventory");
 

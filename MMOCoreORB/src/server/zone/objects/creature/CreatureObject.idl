@@ -1117,7 +1117,7 @@ class CreatureObject extends TangibleObject {
 	public native boolean isAttackableBy(TangibleObject object, boolean bypassDeadCheck);
 
 	@dirty
-	public native boolean isHealableBy(CreatureObject object);
+	public abstract native boolean isHealableBy(CreatureObject object);
 
 	@dirty
 	public native boolean healFactionChecks(CreatureObject object, boolean isPlayer);
@@ -1919,7 +1919,7 @@ class CreatureObject extends TangibleObject {
 	public native boolean hasEffectImmunity(byte effectType);
 
 	@read
-	public native boolean hasDotImmunity(unsigned int dotType);
+	public abstract native boolean hasDotImmunity(unsigned int dotType);
 
 	@read
 	public abstract native int getSpecies();
