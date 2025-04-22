@@ -1618,10 +1618,6 @@ void CreatureObjectImplementation::addSkill(const String& skill,
 void CreatureObjectImplementation::updatePostures(bool immediate) {
 	updateSpeedAndAccelerationMods();
 
-	// TODO: these two seem to be as of yet unused (maybe only necessary in client)
-	//CreaturePosture::instance()->getTurnScale((uint8)newPosture);
-	//CreaturePosture::instance()->getCanSeeHeightMod((uint8)newPosture);
-
 	if (posture != CreaturePosture::SITTING && hasState(CreatureState::SITTINGONCHAIR)) {
 		clearState(CreatureState::SITTINGONCHAIR);
 	}
@@ -1713,6 +1709,16 @@ float CreatureObjectImplementation::getAccelerationModifier() const {
 	}
 
 	return modifier;
+}
+
+float CreatureObjectImplementation::getHeight(bool postureMod) const {
+	float retHeight = height;
+
+	if (postureMod) {
+		retHeight *= CreaturePosture::instance()->getCanSeeHeightMod(posture);
+	}
+
+	return retHeight;
 }
 
 void CreatureObjectImplementation::sendSpeedAndAccelerationMods(SceneObject* player) {

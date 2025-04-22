@@ -118,7 +118,7 @@
 
 #include "server/zone/managers/statistics/StatisticsManager.h"
 
-// #define DEBUG_SPEED_HACK
+#define DEBUG_SPEED_HACK
 
 PlayerManagerImplementation::PlayerManagerImplementation(ZoneServer* zoneServer, ZoneProcessServer* impl, bool trackOnlineUsers) : Logger("PlayerManager") {
 	playerLoggerFilename = "log/player.log";
@@ -3998,37 +3998,49 @@ bool PlayerManagerImplementation::checkPlayerSpeedTest(CreatureObject* player, S
 
 	float maxAllowedSpeed = allowedSpeedMod * allowedSpeedBase;
 
-#ifdef DEBUG_SPEED_HACK
-	player->info(true) << "checkPlayerSpeedTest -- parsedSpeed: " << parsedSpeed << " Error Multiplier: " << errorMultiplier << " Teleport position: " << lastValidVec.toString();
-	player->info(true) << "Player Run Speed: " << allowedSpeedBase << " Player Run Modifier: " << allowedSpeedMod;
-#endif // DEBUG_SPEED_HACK
-
-	/*
 	// Z Coordinate Check
-	float oldValidZ = lastValidVec.getZ();
-	float newPosZ = newWorldPosition.getZ();
+	float heightDiff = fabs(lastValidatedWorldPosition.getZ() - newWorldPosition.getZ());
 
-	if (newPosZ > oldValidZ) {
-		float heightDist = fabs(newPosZ - oldValidZ);
+	if (heightDiff > 0.f) {
+		// Need to allow for some form of boost when moving down or up a slope
+
 		float slopeMod = player->getSlopeModPercent();
+		//float slopeSpeed = (allowedSpeedMod * allowedSpeedBase);
 
 		if (slopeMod > 0.f) {
-			parsedSpeed += (parsedSpeed * (slopeMod / 100.f));
+			//slopeSpeed *= slopeMod;
+			maxAllowedSpeed += (slopeMod * 10.f);
 		}
 
-		parsedSpeed += (heightDist * 0.75f); // Account for players moving quickly up and down steep slopes
+		maxAllowedSpeed += heightDiff;
 
-		if (heightDist > parsedSpeed) {
+		//player->info(true) << "checkPlayerSpeedTest -- Height Difference: " << heightDiff << " Parsed Speed: " << parsedSpeed << " Allowed Slope Speed: " << slopeSpeed << " Slope Mod Percentage: " << slopeMod;
+
+		/*
+		if (heightDiff > slopeSpeed) {
 			StringBuffer msg;
-			msg << "checkSpeedHackTests -- FAILED --  heightDist: " << heightDist << " speed: " << parsedSpeed << " Slope Mod Percentage: " << slopeMod;
+			msg << "checkSpeedHackTests -- FAILED --  Height Difference: " << heightDiff << " Parsed Speed: " << parsedSpeed << " Allowed Slope Speed: " << slopeSpeed << " Slope Mod Percentage: " << slopeMod;
 			player->info(msg.toString(), true);
 
 			return false;
+#ifndef DEBUG_SPEED_HACK
 		}
-	}
+#else
+		} else {
+			player->info(true) << "checkPlayerSpeedTest -- Height Difference: " << heightDiff << " Parsed Speed: " << parsedSpeed << " Allowed Slope Speed: " << slopeSpeed << " Slope Mod Percentage: " << slopeMod;\
+		}
+#endif // DEBUG_SPEED_HACK
 	*/
+	}
 
 	float maxSpeedVariable = (maxAllowedSpeed * errorMultiplier);
+
+#ifdef DEBUG_SPEED_HACK
+	auto speedMsg = player->info(true);
+	speedMsg << "checkPlayerSpeedTest -- parsedSpeed: " << parsedSpeed << " Max Allowed Speed: " << maxSpeedVariable << " Error Multiplier: " << errorMultiplier << endl;
+	speedMsg << "checkPlayerSpeedTest -- Player Run Speed: " << allowedSpeedBase << " Player Run Modifier: " << allowedSpeedMod;
+	speedMsg.flush();
+#endif // DEBUG_SPEED_HACK
 
 	if (parsedSpeed > maxSpeedVariable) {
 		// Outdoors get proper Z to try to prevent getting players stuck in terrain
@@ -4166,14 +4178,15 @@ int PlayerManagerImplementation::checkSpeedHackTests(CreatureObject* player, Pla
 #endif // DEBUG_SPEED_HACK
 	} else {
 		// Hills cause issues
-		newWorldPosition.setZ(0);
-		lastValidatedWorldPosition.setZ(0.f);
+		//newWorldPosition.setZ(0);
+		//lastValidatedWorldPosition.setZ(0.f);
 
 #ifdef DEBUG_SPEED_HACK
 		player->info(true) << "checkSpeedHackTests -- Non-Parent Transform newWorldPosition: " << newWorldPosition.toString() << " Validated World Position: " << lastValidatedWorldPosition.toString();
 #endif // DEBUG_SPEED_HACK
 	}
 
+	// float movementDistance = newWorldPosition.distanceTo2d(lastValidatedWorldPosition);
 	float movementDistance = newWorldPosition.distanceTo(lastValidatedWorldPosition);
 
 	if (movementDistance > 1.f && !ghost->isPrivileged()) {
