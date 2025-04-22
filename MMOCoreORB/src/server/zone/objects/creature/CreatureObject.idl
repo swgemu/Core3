@@ -1896,11 +1896,6 @@ class CreatureObject extends TangibleObject {
 	}
 
 	@read
-	public float getHeight() {
-		return height;
-	}
-
-	@read
 	public boolean isDroidSpecies() {
 		//Determine if creature is a droid.
 		return getSpecies() >= 203 && getSpecies() <= 225 && getSpecies() != 207;
@@ -2300,6 +2295,9 @@ class CreatureObject extends TangibleObject {
 
 	@read
 	public native float getAccelerationModifier();
+
+	@read
+	public native float getHeight(boolean postureMod = false);
 
 	@local
 	public native void sendSpeedAndAccelerationMods(SceneObject player);
