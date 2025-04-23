@@ -77,8 +77,8 @@ The ZoneServer contains numerous managers that handle different aspects of the g
 - **[LootManager](https://github.com/swgemu/Core3/blob/master/MMOCoreORB/src/server/zone/managers/loot/LootManager.idl)**: Controls loot drops from creatures and other sources.
 - **[ResourceManager](https://github.com/swgemu/Core3/blob/master/MMOCoreORB/src/server/zone/managers/resource/ResourceManager.idl)**: Manages resource spawns, harvesting, and resource pools.
 - **[MissionManager](https://github.com/swgemu/Core3/blob/master/MMOCoreORB/src/server/zone/managers/mission/MissionManager.idl)**: Handles mission generation, assignment, and completion.
-- **[SkillManager](https://github.com/swgemu/Core3/blob/master/MMOCoreORB/src/server/zone/managers/skill/SkillManager.idl)**: Manages player skills, including skill acquisition and progression.
-- **[FactionManager](https://github.com/swgemu/Core3/blob/master/MMOCoreORB/src/server/zone/managers/faction/FactionManager.idl)**: Handles faction-related functionality, including Imperial vs. Rebel standings.
+- **[SkillManager](https://github.com/swgemu/Core3/blob/master/MMOCoreORB/src/server/zone/managers/skill/SkillManager.h)**: Manages player skills, including skill acquisition and progression.
+- **[FactionManager](https://github.com/swgemu/Core3/blob/master/MMOCoreORB/src/server/zone/managers/faction/FactionManager.h)**: Handles faction-related functionality, including Imperial vs. Rebel standings.
 
 These managers provide the core functionality of the game and can be accessed through the REST API for sidecar applications.
 
@@ -99,7 +99,7 @@ The game uses a comprehensive object model with SceneObject as the base class:
   - **[IntangibleObject](https://github.com/swgemu/Core3/blob/master/MMOCoreORB/src/server/zone/objects/intangible/IntangibleObject.idl)**: Non-physical objects such as waypoints and data items.
     - **[MissionObject](https://github.com/swgemu/Core3/blob/master/MMOCoreORB/src/server/zone/objects/mission/MissionObject.idl)**: Mission data objects.
     - **[WaypointObject](https://github.com/swgemu/Core3/blob/master/MMOCoreORB/src/server/zone/objects/waypoint/WaypointObject.idl)**: Navigation waypoints.
-    - **[DatapadObject](https://github.com/swgemu/Core3/blob/master/MMOCoreORB/src/server/zone/objects/tangible/terminal/Terminal.idl)**: Player datapads containing waypoints and missions.
+    - **[Datapad](https://github.com/swgemu/Core3/blob/master/MMOCoreORB/src/server/zone/objects/scene/SceneObject.idl)**: Player datapads containing waypoints and missions (implemented as a slot in SceneObject).
 
 Understanding this object hierarchy is important for working with the REST API, as many endpoints operate on specific object types.
 
@@ -216,7 +216,7 @@ Response:
 
 #### Look Up a Character
 
-This example shows how to look up a character by name using the [PlayerManager](https://github.com/swgemu/Core3/blob/master/MMOCoreORB/src/server/web/APIProxyPlayerManager.cpp#L33):
+This example shows how to look up a character by name using the [APIProxyPlayerManager](https://github.com/swgemu/Core3/blob/master/MMOCoreORB/src/server/web/APIProxyPlayerManager.cpp):
 
 ```bash
 curl -s -k -H "Authorization: Bearer your_secure_token_here" "https://127.0.0.1:44443/v1/lookup/character/?name=Luke"
@@ -239,7 +239,7 @@ Response:
 
 #### Send a Galaxy-Wide Message
 
-This example shows how to send a galaxy-wide message using the [ChatManager](https://github.com/swgemu/Core3/blob/master/MMOCoreORB/src/server/web/APIProxyChatManager.cpp):
+This example shows how to send a galaxy-wide message using the [APIProxyChatManager](https://github.com/swgemu/Core3/blob/master/MMOCoreORB/src/server/web/APIProxyChatManager.cpp):
 
 ```bash
 curl -s -k -H "Authorization: Bearer your_secure_token_here" -X POST -d '{"message": "Server maintenance in 15 minutes!"}' "https://127.0.0.1:44443/v1/chat/galaxy/"
