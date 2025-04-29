@@ -134,14 +134,14 @@ This will install the latest and symlink all the files to /usr/bin so CMake find
         cd ~/workspace
         git clone https://review.swgemu.com/Core3
 
-  * Build Core3
+  * Build Core3 For Development
 
         cd Core3/MMOCoreORB
-
-      For Development
         make build-ninja-debug
 
-      For Production
+  * Build Core3 For Production
+
+        cd Core3/MMOCoreORB
         make -j$(nproc)
 
   * Import sql database into mariadb
@@ -151,8 +151,17 @@ This will install the latest and symlink all the files to /usr/bin so CMake find
 
 ### How to Run
 
-    cd ~/workspace/Core3/MMOCoreORB/bin
-    ./core3
+    * Navigate to the Directory
+
+        cd ~/workspace/Core3/MMOCoreORB/bin
+
+    * Load GDB
+
+        gdb ./core3
+
+    * Start Core3
+
+        r
 
 # License
 
