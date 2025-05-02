@@ -827,6 +827,9 @@ class AiAgent extends CreatureObject {
 	public abstract native boolean isHealableBy(CreatureObject object);
 
 	@read
+	public abstract native boolean hasEffectImmunity(byte effectType);
+
+	@read
 	public abstract native boolean hasDotImmunity(unsigned int dotType);
 
 	public void setOblivious() {

@@ -616,156 +616,166 @@ public:
 
 	// this goes in command in order to allow for overriding for special commands
 	virtual void applyEffect(CreatureObject* attacker, CreatureObject* defender, uint8 effectType, uint32 mod) const {
-		CombatManager* combatManager = CombatManager::instance();
 		StateEffect effect = getStateEffect(effectType);
 		Reference<Buff*> buff = nullptr;
 
 		Vector<String> defenseMods = effect.getDefenderStateDefenseModifiers();
 		float targetDefense = 0.f;
-		for (int j = 0; j < defenseMods.size(); j++)
+
+		for (int j = 0; j < defenseMods.size(); j++) {
 			targetDefense += defender->getSkillMod(defenseMods.get(j));
+		}
 
 		targetDefense -= mod;
 
 		uint32 duration = (uint32) Math::max(5.f, effect.getStateLength()*(1.f-targetDefense/120.f));
 
 		switch (effectType) {
-		case CommandEffect::BLIND:
-			defender->setBlindedState(duration);
-			break;
-		case CommandEffect::DIZZY:
-			defender->setDizziedState(duration);
-			break;
-		case CommandEffect::INTIMIDATE: {
-			if (defender->isAiAgent()) {
-				AiAgent* defenderAgent = defender->asAiAgent();
-
-				if (defenderAgent != nullptr && (defenderAgent->getCreatureBitmask() & ObjectFlag::NOINTIMIDATE))
+			case CommandEffect::BLIND:
+				defender->setBlindedState(duration);
+				break;
+			case CommandEffect::DIZZY:
+				defender->setDizziedState(duration);
+				break;
+			case CommandEffect::INTIMIDATE: {
+				defender->setIntimidatedState(duration);
+				break;
+			}
+			case CommandEffect::STUN:
+				defender->setStunnedState(duration);
+				break;
+			case CommandEffect::KNOCKDOWN:
+				if (!defender->checkKnockdownRecovery()) {
+					if (defender->getPosture() != CreaturePosture::UPRIGHT) {
+						defender->setPosture(CreaturePosture::UPRIGHT, false, false);
+					}
 					break;
-			}
+				}
 
-			defender->setIntimidatedState(duration);
-			break;
-		}
-		case CommandEffect::STUN:
-			defender->setStunnedState(duration);
-			break;
-		case CommandEffect::KNOCKDOWN:
-			if (!defender->checkKnockdownRecovery()) {
-				if (defender->getPosture() != CreaturePosture::UPRIGHT)
-					defender->setPosture(CreaturePosture::UPRIGHT, false, false);
+				if (defender->isRidingMount()) {
+					defender->updateCooldownTimer("mount_dismount", 0);
+					defender->dismount();
+				}
+
+				if (!defender->isDead() && !defender->isIncapacitated()) {
+					defender->setPosture(CreaturePosture::KNOCKEDDOWN, false, false);
+				}
+
+				defender->updateKnockdownRecovery();
+				defender->setPostureChangeDelay(5000);
+
+				defender->removeBuff(STRING_HASHCODE("burstrun"));
+				defender->removeBuff(STRING_HASHCODE("retreat"));
+
+				defender->sendSystemMessage("@cbt_spam:posture_knocked_down");
+				defender->sendStateCombatSpam("cbt_spam", "posture_knocked_down", 0, 0, false);
 				break;
-			}
+			case CommandEffect::POSTUREUP:
+				if (!defender->checkPostureUpRecovery()) {
+					if (defender->getPosture() != CreaturePosture::UPRIGHT) {
+						defender->setPosture(CreaturePosture::UPRIGHT, false, false);
+					}
+					break;
+				}
 
-			if (defender->isRidingMount()) {
-				defender->updateCooldownTimer("mount_dismount", 0);
-				defender->dismount();
-			}
+				if (defender->isRidingMount()) {
+					defender->updateCooldownTimer("mount_dismount", 0);
+					defender->dismount();
+				}
 
-			if (!defender->isDead() && !defender->isIncapacitated())
-				defender->setPosture(CreaturePosture::KNOCKEDDOWN, false, false);
+				if (defender->getPosture() == CreaturePosture::PRONE) {
+					defender->setPosture(CreaturePosture::CROUCHED, false, false);
 
-			defender->updateKnockdownRecovery();
-			defender->setPostureChangeDelay(5000);
-			defender->removeBuff(STRING_HASHCODE("burstrun"));
-			defender->removeBuff(STRING_HASHCODE("retreat"));
-			defender->sendSystemMessage("@cbt_spam:posture_knocked_down");
-			defender->sendStateCombatSpam("cbt_spam", "posture_knocked_down", 0, 0, false);
-			break;
-		case CommandEffect::POSTUREUP:
-			if (!defender->checkPostureUpRecovery()) {
-				if (defender->getPosture() != CreaturePosture::UPRIGHT)
+					defender->sendSystemMessage("@cbt_spam:force_posture_change_1");
+					defender->sendStateCombatSpam("cbt_spam", "force_posture_change_1", 0, 0, false);
+				} else if (defender->getPosture() == CreaturePosture::CROUCHED) {
 					defender->setPosture(CreaturePosture::UPRIGHT, false, false);
+
+					defender->sendSystemMessage("@cbt_spam:force_posture_change_0");
+					defender->sendStateCombatSpam("cbt_spam", "force_posture_change_0", 0, 0, false);
+				}
+
+				defender->updatePostureUpRecovery();
+				defender->setPostureChangeDelay(2500);
+
+				defender->removeBuff(STRING_HASHCODE("burstrun"));
+				defender->removeBuff(STRING_HASHCODE("retreat"));
 				break;
-			}
+			case CommandEffect::POSTUREDOWN:
+				if (!defender->checkPostureDownRecovery()) {
+					if (defender->getPosture() != CreaturePosture::UPRIGHT) {
+						defender->setPosture(CreaturePosture::UPRIGHT, false, false);
+					}
+					break;
+				}
 
-			if (defender->isRidingMount()) {
-				defender->updateCooldownTimer("mount_dismount", 0);
-				defender->dismount();
-			}
+				if (defender->isRidingMount()) {
+					defender->updateCooldownTimer("mount_dismount", 0);
+					defender->dismount();
+				}
 
-			if (defender->getPosture() == CreaturePosture::PRONE) {
-				defender->setPosture(CreaturePosture::CROUCHED, false, false);
-				defender->sendSystemMessage("@cbt_spam:force_posture_change_1");
-				defender->sendStateCombatSpam("cbt_spam", "force_posture_change_1", 0, 0, false);
-			} else if (defender->getPosture() == CreaturePosture::CROUCHED) {
-				defender->setPosture(CreaturePosture::UPRIGHT, false, false);
-				defender->sendSystemMessage("@cbt_spam:force_posture_change_0");
-				defender->sendStateCombatSpam("cbt_spam", "force_posture_change_0", 0, 0, false);
-			}
+				if (defender->getPosture() == CreaturePosture::UPRIGHT) {
+					defender->setPosture(CreaturePosture::CROUCHED, false, false);
 
-			defender->updatePostureUpRecovery();
-			defender->setPostureChangeDelay(2500);
-			defender->removeBuff(STRING_HASHCODE("burstrun"));
-			defender->removeBuff(STRING_HASHCODE("retreat"));
-			break;
-		case CommandEffect::POSTUREDOWN:
-			if (!defender->checkPostureDownRecovery()) {
-				if (defender->getPosture() != CreaturePosture::UPRIGHT)
-					defender->setPosture(CreaturePosture::UPRIGHT, false, false);
+					defender->sendSystemMessage("@cbt_spam:force_posture_change_1");
+					defender->sendStateCombatSpam("cbt_spam", "force_posture_change_1", 0, 0, false);
+				} else if (defender->getPosture() == CreaturePosture::CROUCHED) {
+					defender->setPosture(CreaturePosture::PRONE, false, false);
+
+					defender->sendSystemMessage("@cbt_spam:force_posture_change_2");
+					defender->sendStateCombatSpam("cbt_spam", "force_posture_change_2", 0, 0, false);
+				}
+
+				defender->updatePostureDownRecovery();
+				defender->setPostureChangeDelay(2500);
+
+				defender->removeBuff(STRING_HASHCODE("burstrun"));
+				defender->removeBuff(STRING_HASHCODE("retreat"));
 				break;
-			}
-
-			if (defender->isRidingMount()) {
-				defender->updateCooldownTimer("mount_dismount", 0);
-				defender->dismount();
-			}
-
-			if (defender->getPosture() == CreaturePosture::UPRIGHT) {
-				defender->setPosture(CreaturePosture::CROUCHED, false, false);
-				defender->sendSystemMessage("@cbt_spam:force_posture_change_1");
-				defender->sendStateCombatSpam("cbt_spam", "force_posture_change_1", 0, 0, false);
-			} else if (defender->getPosture() == CreaturePosture::CROUCHED) {
-				defender->setPosture(CreaturePosture::PRONE, false, false);
-				defender->sendSystemMessage("@cbt_spam:force_posture_change_2");
-				defender->sendStateCombatSpam("cbt_spam", "force_posture_change_2", 0, 0, false);
-			}
-
-			defender->updatePostureDownRecovery();
-			defender->setPostureChangeDelay(2500);
-			defender->removeBuff(STRING_HASHCODE("burstrun"));
-			defender->removeBuff(STRING_HASHCODE("retreat"));
-			break;
-		case CommandEffect::NEXTATTACKDELAY:
-			defender->setNextAttackDelay(attacker, name, mod, duration);
-			break;
-		case CommandEffect::HEALTHDEGRADE:
-			buff = new Buff(defender, STRING_HASHCODE("healthdegrade"), duration, BuffType::STATE);
-			buff->setAttributeModifier(CreatureAttribute::CONSTITUTION, -1*effect.getStateStrength());
-			buff->setAttributeModifier(CreatureAttribute::STRENGTH, -1*effect.getStateStrength());
-			defender->addBuff(buff);
-			break;
-		case CommandEffect::ACTIONDEGRADE:
-			buff = new Buff(defender, STRING_HASHCODE("actiondegrade"), duration, BuffType::STATE);
-			buff->setAttributeModifier(CreatureAttribute::QUICKNESS, -1*effect.getStateStrength());
-			buff->setAttributeModifier(CreatureAttribute::STAMINA, -1*effect.getStateStrength());
-			defender->addBuff(buff);
-			break;
-		case CommandEffect::MINDDEGRADE:
-			buff = new Buff(defender, STRING_HASHCODE("minddegrade"), duration, BuffType::STATE);
-			buff->setAttributeModifier(CreatureAttribute::FOCUS, -1*effect.getStateStrength());
-			buff->setAttributeModifier(CreatureAttribute::WILLPOWER, -1*effect.getStateStrength());
-			defender->addBuff(buff);
-			break;
-		case CommandEffect::REMOVECOVER:
-			if (defender->hasState(CreatureState::COVER)) {
-				defender->clearState(CreatureState::COVER);
-				defender->sendSystemMessage("@combat_effects:strafe_system");
+			case CommandEffect::NEXTATTACKDELAY:
 				defender->setNextAttackDelay(attacker, name, mod, duration);
+				break;
+			case CommandEffect::HEALTHDEGRADE:
+				buff = new Buff(defender, STRING_HASHCODE("healthdegrade"), duration, BuffType::STATE);
+
+				buff->setAttributeModifier(CreatureAttribute::CONSTITUTION, -1*effect.getStateStrength());
+				buff->setAttributeModifier(CreatureAttribute::STRENGTH, -1*effect.getStateStrength());
+				defender->addBuff(buff);
+				break;
+			case CommandEffect::ACTIONDEGRADE:
+				buff = new Buff(defender, STRING_HASHCODE("actiondegrade"), duration, BuffType::STATE);
+
+				buff->setAttributeModifier(CreatureAttribute::QUICKNESS, -1*effect.getStateStrength());
+				buff->setAttributeModifier(CreatureAttribute::STAMINA, -1*effect.getStateStrength());
+				defender->addBuff(buff);
+				break;
+			case CommandEffect::MINDDEGRADE:
+				buff = new Buff(defender, STRING_HASHCODE("minddegrade"), duration, BuffType::STATE);
+
+				buff->setAttributeModifier(CreatureAttribute::FOCUS, -1*effect.getStateStrength());
+				buff->setAttributeModifier(CreatureAttribute::WILLPOWER, -1*effect.getStateStrength());
+				defender->addBuff(buff);
+				break;
+			case CommandEffect::REMOVECOVER:
+				if (defender->hasState(CreatureState::COVER)) {
+					defender->clearState(CreatureState::COVER);
+
+					defender->sendSystemMessage("@combat_effects:strafe_system");
+					defender->setNextAttackDelay(attacker, name, mod, duration);
+				}
+				break;
+			case CommandEffect::ATTACKER_FORCE_STAND:
+				attacker->setPosture(CreaturePosture::UPRIGHT, false, false);
+				break;
+			case CommandEffect::ATTACKER_FORCE_CROUCH:
+				attacker->setPosture(CreaturePosture::CROUCHED, false, false);
+				break;
+			case CommandEffect::ATTACKER_FORCE_PRONE:
+				attacker->setPosture(CreaturePosture::PRONE, false, false);
+				break;
+			default:
+				break;
 			}
-			break;
-		case CommandEffect::ATTACKER_FORCE_STAND:
-			attacker->setPosture(CreaturePosture::UPRIGHT, false, false);
-			break;
-		case CommandEffect::ATTACKER_FORCE_CROUCH:
-			attacker->setPosture(CreaturePosture::CROUCHED, false, false);
-			break;
-		case CommandEffect::ATTACKER_FORCE_PRONE:
-			attacker->setPosture(CreaturePosture::PRONE, false, false);
-			break;
-		default:
-			break;
-		}
 		return;
 	}
 

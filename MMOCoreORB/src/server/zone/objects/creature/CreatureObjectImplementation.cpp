@@ -4201,22 +4201,22 @@ float CreatureObjectImplementation::getTemplateRadius() {
 
 bool CreatureObjectImplementation::hasEffectImmunity(uint8 effectType) const {
 	switch (effectType) {
-	case CommandEffect::BLIND:
-	case CommandEffect::DIZZY:
-	case CommandEffect::INTIMIDATE:
-	case CommandEffect::STUN:
-	case CommandEffect::NEXTATTACKDELAY:
-		if (isDroidSpecies() || const_cast<CreatureObjectImplementation*>(this)->isVehicleObject() || isWalkerSpecies())
-			return true;
-		break;
-	case CommandEffect::KNOCKDOWN:
-	case CommandEffect::POSTUREUP:
-	case CommandEffect::POSTUREDOWN:
-		if (const_cast<CreatureObjectImplementation*>(this)->isVehicleObject() || isWalkerSpecies())
-			return true;
-		break;
-	default:
-		return false;
+		case CommandEffect::BLIND:
+		case CommandEffect::DIZZY:
+		case CommandEffect::INTIMIDATE:
+		case CommandEffect::STUN:
+		case CommandEffect::NEXTATTACKDELAY:
+			if (const_cast<CreatureObjectImplementation*>(this)->isVehicleObject())
+				return true;
+			break;
+		case CommandEffect::KNOCKDOWN:
+		case CommandEffect::POSTUREUP:
+		case CommandEffect::POSTUREDOWN:
+			if (const_cast<CreatureObjectImplementation*>(this)->isVehicleObject())
+				return true;
+			break;
+		default:
+			return false;
 	}
 
 	return false;

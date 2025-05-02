@@ -1913,7 +1913,7 @@ class CreatureObject extends TangibleObject {
 	}
 
 	@read
-	public native boolean hasEffectImmunity(byte effectType);
+	public abstract native boolean hasEffectImmunity(byte effectType);
 
 	@read
 	public abstract native boolean hasDotImmunity(unsigned int dotType);
