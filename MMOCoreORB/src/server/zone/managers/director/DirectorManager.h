@@ -226,6 +226,7 @@ namespace server {
 		static int getWorldFloor(lua_State* L);
 		static int useCovertOvert(lua_State* L);
 		static int drawClientPath(lua_State* L);
+		static int disableHelperDroid(lua_State* L);
 
 		// JTL
 		static int generateShipDeed(lua_State* L);

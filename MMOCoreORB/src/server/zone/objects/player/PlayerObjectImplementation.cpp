@@ -83,6 +83,8 @@
 #include "server/zone/managers/gcw/GCWManager.h"
 #include "server/zone/objects/ship/ShipObject.h"
 
+#include "engine/log/Logger.h"
+
 #ifdef WITH_SESSION_API
 #include "server/login/SessionAPIClient.h"
 #endif // WITH_SESSION_API
@@ -3766,6 +3768,13 @@ String PlayerObjectImplementation::getPlayedTimeString(bool verbose) const {
 }
 
 void PlayerObjectImplementation::createHelperDroid() {
+	// Do not create helper droid if config flag is false
+	bool disableHelperDroid = ConfigManager::instance()->getBool("Core3.PlayerManager.disableHelperDroid", false);
+
+	if (disableHelperDroid) {
+		return;
+	}
+
 	// Only spawn droid if character is less than 1 days old
 	if (getCharacterAgeInDays() >= 1 || isPrivileged())
 		return;
