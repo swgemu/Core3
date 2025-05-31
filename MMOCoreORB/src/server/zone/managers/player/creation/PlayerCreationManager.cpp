@@ -26,6 +26,7 @@
 #include "server/zone/managers/jedi/JediManager.h"
 #include "server/zone/objects/transaction/TransactionLog.h"
 #include "server/zone/managers/player/creation/SendJtlRecruitment.h"
+#include "engine/log/Logger.h"
 
 PlayerCreationManager::PlayerCreationManager() : Logger("PlayerCreationManager") {
 	setLogging(false);
@@ -423,9 +424,9 @@ bool PlayerCreationManager::createCharacter(ClientCreateCharacterCallback* callb
 		addStartingItems(playerCreature, clientTemplate, false);
 		addRacialMods(playerCreature, fileName, &playerTemplate->getStartingSkills(), &playerTemplate->getStartingItems(), false);
 	} else {
-		addProfessionStartingItems(playerCreature, profession, clientTemplate, true);
 		addStartingItems(playerCreature, clientTemplate, true);
 		addRacialMods(playerCreature, fileName, &playerTemplate->getStartingSkills(), &playerTemplate->getStartingItems(), true);
+		addProfessionStartingItems(playerCreature, profession, clientTemplate, true);
 	}
 
 	if (ghost != nullptr) {
@@ -910,11 +911,11 @@ void PlayerCreationManager::addStartingItemsInto(CreatureObject* creature,
 			dynamic_cast<PlayerCreatureTemplate*>(creature->getObjectTemplate());
 
 	if (playerTemplate == nullptr) {
-		instance()->info("addStartingItemsInto: playerTemplate nullptr");
 		return;
 	}
 
 	//Add common starting items.
+	creature->info("\n\npcm: adding commonStartingItems...\n\n", true);
 	for (int itemNumber = 0; itemNumber < commonStartingItems.size();
 			itemNumber++) {
 		ManagedReference<SceneObject*> item = zoneServer->createObject(
@@ -931,11 +932,11 @@ void PlayerCreationManager::addStartingItemsInto(CreatureObject* creature,
 	//Add profession specific items.
 	PlayerObject* player = creature->getPlayerObject();
 	if (player == nullptr) {
-		instance()->info("addStartingItemsInto: playerObject nullptr");
 		return;
 	}
 
 	String profession = player->getStarterProfession();
+	player->info("\n\npcm: player profession = " + profession + "\n\n", true);
 
 	ProfessionDefaultsInfo* professionData = professionDefaultsInfo.get(
 			profession);
@@ -987,14 +988,12 @@ void PlayerCreationManager::addStartingWeaponsInto(CreatureObject* creature,
 			dynamic_cast<PlayerCreatureTemplate*>(creature->getObjectTemplate());
 
 	if (playerTemplate == nullptr) {
-		instance()->info("addStartingWeaponsInto: playerTemplate nullptr");
 		return;
 	}
 
 	PlayerObject* player = creature->getPlayerObject();
 
 	if (player == nullptr) {
-		instance()->info("addStartingWeaponsInto: playerObject nullptr");
 		return;
 	}
 

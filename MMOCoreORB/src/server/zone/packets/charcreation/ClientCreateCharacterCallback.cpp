@@ -33,6 +33,7 @@ void ClientCreateCharacterCallback::parse(Message* message) {
 	message->parseUnicode(bio); //get the biography.
 
 	tutflag = message->parseByte(); //tutorial bool.
+	client->info("\n\ntutflag: " + std::to_string(tutflag) + "\n\n", true);
 
 	int raceID = Races::getRaceID(racefile);
 	species = Races::getSpeciesID(raceID);
