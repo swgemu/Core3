@@ -102,7 +102,7 @@ public:
 			ManagedReference<TutorialBuildingObject*> bldg = player->getParentRecursively(SceneObjectType::TUTORIALBUILDING).castTo<TutorialBuildingObject*>();
 
 			if (bldg != nullptr && bldg->getTutorialOwnerID() == player->getObjectID()) {
-				DirectorManager::instance()->startScreenPlay(player, "TutorialScreenPlay");
+				DirectorManager::instance()->startScreenPlay(player, "Tutorial");
 			}
 		}
 	}
