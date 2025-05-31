@@ -376,8 +376,6 @@ bool PlayerCreationManager::createCharacter(ClientCreateCharacterCallback* callb
 	UnicodeString bio;
 	callback->getBiography(bio);
 
-	bool doTutorial = ConfigManager::instance()->getBool("Core3.PlayerCreationManager.EnableTutorial", false) && callback->getTutorialFlag();
-
 	ManagedReference<CreatureObject*> playerCreature = zoneServer.get()->createObject(serverObjectCRC, 2).castTo<CreatureObject*>();
 
 	if (playerCreature == nullptr) {
@@ -418,15 +416,12 @@ bool PlayerCreationManager::createCharacter(ClientCreateCharacterCallback* callb
 	addCustomization(playerCreature, customization, playerTemplate->getAppearanceFilename());
 	addHair(playerCreature, hairTemplate, hairCustomization);
 
-	if (!doTutorial) {
-		addProfessionStartingItems(playerCreature, profession, clientTemplate, false);
-		addStartingItems(playerCreature, clientTemplate, false);
-		addRacialMods(playerCreature, fileName, &playerTemplate->getStartingSkills(), &playerTemplate->getStartingItems(), false);
-	} else {
-		addProfessionStartingItems(playerCreature, profession, clientTemplate, true);
-		addStartingItems(playerCreature, clientTemplate, true);
-		addRacialMods(playerCreature, fileName, &playerTemplate->getStartingSkills(), &playerTemplate->getStartingItems(), true);
-	}
+	// if tutorial is enabled, pass 'true' to equipmentOnly, otherwise 'false'
+	bool doTutorial = ConfigManager::instance()->getBool("Core3.PlayerCreationManager.disableTutorial", true) && callback->getTutorialFlag();
+
+	addProfessionStartingItems(playerCreature, profession, clientTemplate, doTutorial);
+	addStartingItems(playerCreature, clientTemplate, doTutorial);
+	addRacialMods(playerCreature, fileName, &playerTemplate->getStartingSkills(), &playerTemplate->getStartingItems(), doTutorial);
 
 	if (ghost != nullptr) {
 		int accID = client->getAccountID();
@@ -910,7 +905,7 @@ void PlayerCreationManager::addStartingItemsInto(CreatureObject* creature,
 			dynamic_cast<PlayerCreatureTemplate*>(creature->getObjectTemplate());
 
 	if (playerTemplate == nullptr) {
-		instance()->info("addStartingItemsInto: playerTemplate nullptr");
+		// instance()->info("addStartingItemsInto: playerTemplate nullptr");
 		return;
 	}
 
