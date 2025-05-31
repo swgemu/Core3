@@ -547,6 +547,8 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	luaEngine->registerFunction("getWorldFloor", getWorldFloor);
 	luaEngine->registerFunction("useCovertOvert", useCovertOvert);
 	luaEngine->registerFunction("drawClientPath", drawClientPath);
+	luaEngine->registerFunction("disableHelperDroid", disableHelperDroid);
+	luaEngine->registerFunction("doTutorial", doTutorial);
 
 	// JTL
 	luaEngine->registerFunction("generateShipDeed", generateShipDeed);
@@ -5228,4 +5230,20 @@ int DirectorManager::drawClientPath(lua_State* L) {
 	obj->broadcastMessage(pathMessage, true);
 
 	return 0;
+}
+
+int DirectorManager::disableHelperDroid(lua_State* L) {
+	bool result = ConfigManager::instance()->disableHelperDroid();
+
+	lua_pushboolean(L, result);
+
+	return 1;
+}
+
+int DirectorManager::doTutorial(lua_State* L) {
+	bool result = ConfigManager::instance()->doTutorial();
+
+	lua_pushboolean(L, result);
+
+	return 1;
 }

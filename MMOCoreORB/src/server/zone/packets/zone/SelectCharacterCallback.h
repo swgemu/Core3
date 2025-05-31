@@ -8,6 +8,7 @@
 #ifndef SELECTCHARACTERCALLBACK_H_
 #define SELECTCHARACTERCALLBACK_H_
 
+#include "server/login/packets/ErrorMessage.h"
 #include "server/zone/packets/MessageCallback.h"
 #include "server/zone/ZoneServer.h"
 #include "server/zone/Zone.h"
