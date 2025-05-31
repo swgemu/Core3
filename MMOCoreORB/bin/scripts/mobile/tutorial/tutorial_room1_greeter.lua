@@ -1,17 +1,17 @@
-mouse_droid = Creature:new {
-	objectName = "@mob/creature_names:mouse_droid",
-	socialGroup = "",
-	faction = "",
-	mobType = MOB_DROID,
-	level = 7,
-	chanceHit = 0.26,
-	damageMin = 55,
-	damageMax = 65,
-	baseXp = 147,
-	baseHAM = 270,
-	baseHAMmax = 330,
+tutorial_room1_greeter = Creature:new {
+	objectName = "@newbie_tutorial/system_messages:imp_name",
+	socialGroup = "imperial",
+	faction = "imperial",
+	mobType = MOB_NPC,
+	level = 19,
+	chanceHit = 0.33,
+	damageMin = 180,
+	damageMax = 190,
+	baseXp = 1609,
+	baseHAM = 4500,
+	baseHAMmax = 5500,
 	armor = 0,
-	resists = {0,0,40,0,0,0,0,-1,-1},
+	resists = {0,0,0,0,0,0,0,-1,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -19,25 +19,26 @@ mouse_droid = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = NONE,
-	creatureBitmask = NONE,
-	optionsBitmask = AIENABLED + INVULNERABLE,
+	pvpBitmask = ATTACKABLE,
+	creatureBitmask = PACK + KILLER,
+	optionsBitmask = INVULNERABLE + CONVERSABLE,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/mouse_droid.iff"},
+	templates = {"imperial_officer"},
 	lootGroups = {},
 
 	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)
 	-- Unarmed should be put on secondary unless the mobile doesn't use weapons, in which case "unarmed" should be put primary and "none" as secondary
 	primaryWeapon = "unarmed",
 	secondaryWeapon = "none",
+	conversationTemplate = "tutorialRoomOneGreeterConvoTemplate",
 
 	-- primaryAttacks and secondaryAttacks should be separate skill groups specific to the weapon type listed in primaryWeapon and secondaryWeapon
 	-- Use merge() to merge groups in creatureskills.lua together. If a weapon is set to "none", set the attacks variable to empty brackets
-	primaryAttacks = {},
-	secondaryAttacks = { }
+	primaryAttacks = merge(marksmannovice,brawlernovice),
+	secondaryAttacks = { },
 }
 
-CreatureTemplates:addCreatureTemplate(mouse_droid, "mouse_droid")
+CreatureTemplates:addCreatureTemplate(tutorial_room1_greeter, "tutorial_room1_greeter")

@@ -105,6 +105,7 @@ namespace player {
 		int hasPvpTef(lua_State* L);
 		int hasGcwTef(lua_State* L);
 		int getPvpRating(lua_State* L);
+		int getStarterProfession(lua_State* L);
 
 		// JTL
 		int incrementPilotTier(lua_State* L);
