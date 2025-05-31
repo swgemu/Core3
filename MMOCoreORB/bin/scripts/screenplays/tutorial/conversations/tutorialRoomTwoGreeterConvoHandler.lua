@@ -17,7 +17,7 @@ function tutorialRoomTwoGreeterConvoHandler:runScreenHandlers(pConvTemplate, pPl
 	elseif (screenID == "in_the_drum" or screenID == "they_were_dissidents") then
 		CreatureObject(pNpc):doAnimation("point_left")
 		writeData(playerID .. ":tutorial:hasDoneRoomTwoConvo", 1)
-		createEvent(1000, "TutorialScreenPlay", "handleRoomTwo", pPlayer, "")
+		createEvent(1000, "Tutorial", "handleRoomTwo", pPlayer, "")
 	end
 
 	return pConvScreen
