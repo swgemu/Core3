@@ -720,6 +720,19 @@ namespace conf {
 			return cachedCovertOvertSystem;
 		}
 
+		inline bool disableHelperDroid() {
+			static uint32 cachedVersion = 0;
+			static bool cachedHelperDroid;
+
+			if (configVersion.get() > cachedVersion) {
+				Locker guard(&mutex);
+				cachedHelperDroid = getBool("Core3.PlayerManager.disableHelperDroid", false);
+				cachedVersion = configVersion.get();
+			}
+
+			return cachedHelperDroid;
+		}
+
 		inline bool getLoginEnableSessionId() {
 			static uint32 cachedVersion = 0;
 			static bool cachedEnableSessionId;
