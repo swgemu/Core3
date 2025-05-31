@@ -23,13 +23,13 @@ function tutorialMissionGiverConvoHandler:runScreenHandlers(pConvTemplate, pPlay
 
 		if pGhost ~= nil and pQuartermaster ~= nil and pInvItem == nil then
 			local pItem = giveItem(pInventory, "object/tangible/loot/dungeon/death_watch_bunker/viewscreen_s2.iff", -1)
-			
+
 			if (pItem ~= nil) then
 				SceneObject(pItem):setCustomObjectName("Release Documents")
 			end
 		end
 		CreatureObject(pNpc):clearOptionBit(CONVERSABLE)
-		TutorialScreenPlay:handleRoomTen(pPlayer)
+		Tutorial:handleRoomTen(pPlayer)
 	end
 
 	return pConvScreen

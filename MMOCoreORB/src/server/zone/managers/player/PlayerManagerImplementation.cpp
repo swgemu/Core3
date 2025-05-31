@@ -1104,7 +1104,7 @@ void PlayerManagerImplementation::createTutorialBuilding(CreatureObject* player)
 	auto ghost = player->getPlayerObject();
 
 	if (ghost != nullptr) {
-		ghost->setTutorialParticpant();
+		ghost->setTutorialParticipant();
 	}
 
 	uint64 cellID = tutorialCell->getObjectID();
