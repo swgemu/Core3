@@ -8,6 +8,7 @@
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/managers/player/StartingLocation.h"
 #include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/objects/waypoint/WaypointObject.h"
 
 class NewbieSelectStartingLocationCommand : public QueueCommand {
 public:
@@ -58,10 +59,36 @@ public:
 			return GENERALERROR;
 		}
 
+		ManagedReference<PlayerObject*> ghost = player->getPlayerObject();
+
+		if (ghost != nullptr) {
+			// Transfer any items from tutorial bank to player inventory before leaving
+			ManagedReference<SceneObject*> bank = player->getSlottedObject("bank");
+			ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
+
+			if (bank != nullptr && inventory != nullptr) {
+				while (bank->getContainerObjectsSize() > 0) {
+					ManagedReference<SceneObject*> item = bank->getContainerObject(0);
+
+					if (item != nullptr) {
+						inventory->transferObject(item, -1, true);
+					}
+				}
+			}
+
+			// Add waypoint for starting location
+			ManagedReference<WaypointObject*> waypoint = ghost->addWaypoint(startingLocation->getZoneName(), startingLocation->getX(), startingLocation->getY(), false);
+
+			if (waypoint != nullptr) {
+				Locker cLock(waypoint, player);
+
+				waypoint->setCustomObjectName(startingLocation->getLocation(), false);
+				waypoint->setColor(WaypointObject::COLOR_YELLOW);
+				waypoint->setActive(true);
+			}
+		}
 		player->switchZone(startingLocation->getZoneName(), startingLocation->getX(), startingLocation->getZ(), startingLocation->getY(), startingLocation->getCell());
 		player->setDirection(startingLocation->getHeading());
-
-		ManagedReference<PlayerObject*> ghost = player->getPlayerObject();
 
 		if (ghost != nullptr) {
 			ghost->setCloningFacility(nullptr);
