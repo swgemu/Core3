@@ -58,3 +58,4 @@ professionSpecificItems = {
 }
 
 commonStartingItems = { marojMelon, survivalKnife, x31Speeder }
+
