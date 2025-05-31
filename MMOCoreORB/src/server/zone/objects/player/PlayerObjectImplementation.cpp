@@ -88,6 +88,8 @@
 #include "server/login/SWGRealmsAPI.h"
 #endif // WITH_SWGREALMS_API
 
+#include "engine/log/Logger.h"
+
 void PlayerObjectImplementation::initializeTransientMembers() {
 	playerLogLevel = ConfigManager::instance()->getPlayerLogLevel();
 
@@ -3844,6 +3846,13 @@ String PlayerObjectImplementation::getPlayedTimeString(bool verbose) const {
 }
 
 void PlayerObjectImplementation::createHelperDroid() {
+	// Do not create helper droid if config flag is false
+	bool disableHelperDroid = ConfigManager::instance()->getBool("Core3.PlayerManager.disableHelperDroid", false);
+
+	if (disableHelperDroid) {
+		return;
+	}
+
 	// Only spawn droid if character is less than 1 days old
 	if (getCharacterAgeInDays() >= 1 || isPrivileged())
 		return;
