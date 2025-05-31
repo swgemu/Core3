@@ -8,6 +8,7 @@
 #ifndef SELECTCHARACTERCALLBACK_H_
 #define SELECTCHARACTERCALLBACK_H_
 
+#include "server/login/packets/ErrorMessage.h"
 #include "server/zone/packets/MessageCallback.h"
 #include "server/zone/ZoneServer.h"
 #include "server/zone/Zone.h"
@@ -21,6 +22,8 @@
 #include "server/zone/objects/player/events/DisconnectClientEvent.h"
 #include "server/zone/managers/collision/CollisionManager.h"
 #include "templates/params/creature/PlayerArrangement.h"
+
+#include "server/zone/managers/player/creation/PlayerCreationManager.h"
 
 #ifdef WITH_SWGREALMS_API
 #include "server/login/SWGRealmsAPI.h"
@@ -60,6 +63,14 @@ public:
 
 			return;
 		}
+
+        PlayerCreationManager* pcm = PlayerCreationManager::instance();
+
+        if (pcm == nullptr) {
+            return;
+        }
+
+		bool doTutorial = true; //ConfigManager::instance()->getBool("Core3.PlayerCreationManager.EnableTutorial", ghost);
 
 #ifdef WITH_SWGREALMS_API
 		auto clientIP = client->getIPAddress();
