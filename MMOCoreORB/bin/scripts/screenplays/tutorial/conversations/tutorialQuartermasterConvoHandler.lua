@@ -26,15 +26,15 @@ function tutorialQuartermasterConvoHandler:runScreenHandlers(pConvTemplate, pPla
 		local pTerminal = getSceneObject(terminalID)
 		if (pTerminal ~= nil) then
 			setAuthorizationState(pTerminal, true)
-			TutorialScreenPlay:markRoomComplete(pPlayer, "r11")
+			Tutorial:markRoomComplete(pPlayer, "r11")
 		end
 
 		CreatureObject(pNpc):clearOptionBit(CONVERSABLE)
 	elseif (screenID == "intro_nodocs") then
 		local giverID = readData(CreatureObject(pPlayer):getObjectID() .. ":tutorial:roomTenMissionGiver")
-		
+
 		local pMissionGiver = getSceneObject(giverID)
-		
+
 		if (pMissionGiver ~= nil) then
 			CreatureObject(pMissionGiver):setOptionBit(CONVERSABLE)
 		end

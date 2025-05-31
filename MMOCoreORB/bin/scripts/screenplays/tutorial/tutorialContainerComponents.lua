@@ -14,9 +14,9 @@ function tutorialItemDrumContainerComponent:removeObject(pContainer, pObj, slot)
 	if (pContainer ~= nil) then
 		local playerID = readData(SceneObject(pContainer):getObjectID() .. ":playerOwnerID")
 		local pPlayer = getSceneObject(playerID)
-		
+
 		if (pPlayer ~= nil) then
-			TutorialScreenPlay:drumItemLootEvent(pContainer, pPlayer)
+			Tutorial:drumItemLootEvent(pContainer, pPlayer)
 		end
 	end
 	return -1

@@ -910,7 +910,6 @@ void PlayerCreationManager::addStartingItemsInto(CreatureObject* creature,
 			dynamic_cast<PlayerCreatureTemplate*>(creature->getObjectTemplate());
 
 	if (playerTemplate == nullptr) {
-		instance()->info("addStartingItemsInto: playerTemplate nullptr");
 		return;
 	}
 
