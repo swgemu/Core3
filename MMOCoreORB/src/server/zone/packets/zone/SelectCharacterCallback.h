@@ -8,6 +8,7 @@
 #ifndef SELECTCHARACTERCALLBACK_H_
 #define SELECTCHARACTERCALLBACK_H_
 
+#include "server/login/packets/ErrorMessage.h"
 #include "server/zone/packets/MessageCallback.h"
 #include "server/zone/ZoneServer.h"
 #include "server/zone/Zone.h"
@@ -25,6 +26,12 @@
 #ifdef WITH_SWGREALMS_API
 #include "server/login/SWGRealmsAPI.h"
 #endif // WITH_SWGREALMS_API
+
+#include "server/zone/managers/player/creation/PlayerCreationManager.h"
+
+#ifdef WITH_SESSION_API
+#include "server/login/SessionAPIClient.h"
+#endif // WITH_SESSION_API
 
 // #define DEBUG_SELECT_CHAR_CALLBACK
 
@@ -62,6 +69,14 @@ public:
 		}
 
 #ifdef WITH_SWGREALMS_API
+        PlayerCreationManager* pcm = PlayerCreationManager::instance();
+
+        if (pcm == nullptr) {
+            return;
+        }
+
+		bool doTutorial = ConfigManager::instance()->getBool("Core3.PlayerCreationManager.EnableTutorial", ghost);
+
 		auto clientIP = client->getIPAddress();
 		auto loggedInAccounts = zoneServer->getPlayerManager()->getOnlineZoneClientMap()->getAccountsLoggedIn(clientIP);
 
@@ -127,6 +142,12 @@ public:
 			player->info(true) << debugMsg.toString();
 #endif // DEBUG_SELECT_CHAR_CALLBACK
 			return;
+		} else if (zoneName == "tutorial") {
+			if (doTutorial) {
+				zoneServer->getPlayerManager()->createTutorialBuilding(player);
+			} else {
+				zoneServer->getPlayerManager()->createSkippedTutorialBuilding(player);
+			}
 		}
 
 		if (!zoneServer->getPlayerManager()->increaseOnlineCharCountIfPossible(client)) {
