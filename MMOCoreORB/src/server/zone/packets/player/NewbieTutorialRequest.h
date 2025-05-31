@@ -81,8 +81,6 @@ public:
 
 		Locker locker(player);
 
-		//player->info("received response: " + response, true);
-
 		if (response == "zoomCamera") {
 			player->notifyObservers(ObserverEventType::NEWBIETUTORIALZOOMCAMERA, nullptr, 0);
 		} else if (response == "chatbox") {
@@ -102,7 +100,7 @@ public:
 			ManagedReference<TutorialBuildingObject*> bldg = player->getParentRecursively(SceneObjectType::TUTORIALBUILDING).castTo<TutorialBuildingObject*>();
 
 			if (bldg != nullptr && bldg->getTutorialOwnerID() == player->getObjectID()) {
-				DirectorManager::instance()->startScreenPlay(player, "TutorialScreenPlay");
+				DirectorManager::instance()->startScreenPlay(player, "Tutorial");
 			}
 		}
 	}
