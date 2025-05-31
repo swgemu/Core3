@@ -101,6 +101,7 @@ Luna<LuaPlayerObject>::RegType LuaPlayerObject::Register[] = {
 		{ "hasPvpTef", &LuaPlayerObject::hasPvpTef },
 		{ "hasGcwTef", &LuaPlayerObject::hasGcwTef },
 		{ "getPvpRating", &LuaPlayerObject::getPvpRating },
+		{ "getStarterProfession", &LuaPlayerObject::getStarterProfession },
 
 		// JTL
 		{ "incrementPilotTier", &LuaPlayerObject::incrementPilotTier },
@@ -1064,6 +1065,12 @@ int LuaPlayerObject::removeDroidCommands(lua_State* L) {
 	Locker locker(realObject);
 
 	skillManager->removeDroidCommands(realObject);
+
+	return 1;
+}
+
+int LuaPlayerObject::getStarterProfession(lua_State* L) {
+	lua_pushstring(L, realObject->getStarterProfession().toCharArray());
 
 	return 1;
 }

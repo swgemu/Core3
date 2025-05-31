@@ -2177,7 +2177,7 @@ class PlayerObject extends IntangibleObject {
 	@read
 	public native string getPlayedTimeString(boolean verbose = false);
 
-	public void setTutorialParticpant() {
+	public void setTutorialParticipant() {
 		tutorialParticipant = true;
 	}
 
