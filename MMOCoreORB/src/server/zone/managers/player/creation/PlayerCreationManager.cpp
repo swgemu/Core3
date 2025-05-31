@@ -25,6 +25,7 @@
 #include "server/zone/managers/jedi/JediManager.h"
 #include "server/zone/objects/transaction/TransactionLog.h"
 #include "server/zone/managers/player/creation/SendJtlRecruitment.h"
+#include "engine/log/Logger.h"
 
 PlayerCreationManager::PlayerCreationManager() : Logger("PlayerCreationManager") {
 	setLogging(false);
@@ -319,12 +320,12 @@ bool PlayerCreationManager::createCharacter(ClientCreateCharacterCallback* callb
 	auto client = callback->getClient();
 	auto maxchars = ConfigManager::instance()->getInt("Core3.PlayerCreationManager.MaxCharactersPerGalaxy", 10);
 
-	if (client->getCharacterCount(zoneServer.get()->getGalaxyID()) >= maxchars) {
+	/*if (client->getCharacterCount(zoneServer.get()->getGalaxyID()) >= maxchars) {
 		ErrorMessage* errMsg = new ErrorMessage("Create Error", "You are limited to 10 characters per galaxy.", 0x0);
 		client->sendMessage(errMsg);
 
 		return false;
-	}
+	}*/
 
 	PlayerManager* playerManager = zoneServer.get()->getPlayerManager();
 
@@ -375,7 +376,9 @@ bool PlayerCreationManager::createCharacter(ClientCreateCharacterCallback* callb
 	UnicodeString bio;
 	callback->getBiography(bio);
 
-	bool doTutorial = ConfigManager::instance()->getBool("Core3.PlayerCreationManager.EnableTutorial", callback->getTutorialFlag());
+	bool doTutorial = ConfigManager::instance()->getBool("Core3.PlayerCreationManager.EnableTutorial", false) && callback->getTutorialFlag();
+	info(true) << "getTutorialFlag: " << callback->getTutorialFlag() << "\n";
+	info(true) << "doTutorial: " << doTutorial << "\n";
 
 	ManagedReference<CreatureObject*> playerCreature = zoneServer.get()->createObject(serverObjectCRC, 2).castTo<CreatureObject*>();
 
@@ -843,7 +846,7 @@ void PlayerCreationManager::addStartingItemsInto(CreatureObject* creature,
 
 	if (creature == nullptr || container == nullptr
 			|| !creature->isPlayerCreature()) {
-		instance()->info("addStartingItemsInto: nullptr or not PlayerCreature");
+		info(true) << "addStartingItemsInto: nullptr or not PlayerCreature";
 		return;
 	}
 
@@ -851,7 +854,7 @@ void PlayerCreationManager::addStartingItemsInto(CreatureObject* creature,
 			dynamic_cast<PlayerCreatureTemplate*>(creature->getObjectTemplate());
 
 	if (playerTemplate == nullptr) {
-		instance()->info("addStartingItemsInto: playerTemplate nullptr");
+		info(true) << "addStartingItemsInto: playerTemplate nullptr";
 		return;
 	}
 
@@ -872,7 +875,7 @@ void PlayerCreationManager::addStartingItemsInto(CreatureObject* creature,
 	//Add profession specific items.
 	PlayerObject* player = creature->getPlayerObject();
 	if (player == nullptr) {
-		instance()->info("addStartingItemsInto: playerObject nullptr");
+		info(true) << "addStartingItemsInto: playerObject nullptr";
 		return;
 	}
 
@@ -928,14 +931,14 @@ void PlayerCreationManager::addStartingWeaponsInto(CreatureObject* creature,
 			dynamic_cast<PlayerCreatureTemplate*>(creature->getObjectTemplate());
 
 	if (playerTemplate == nullptr) {
-		instance()->info("addStartingWeaponsInto: playerTemplate nullptr");
+		info(true) << "addStartingWeaponsInto: playerTemplate nullptr";
 		return;
 	}
 
 	PlayerObject* player = creature->getPlayerObject();
 
 	if (player == nullptr) {
-		instance()->info("addStartingWeaponsInto: playerObject nullptr");
+		info(true) << "addStartingWeaponsInto: playerObject nullptr";
 		return;
 	}
 
@@ -946,7 +949,6 @@ void PlayerCreationManager::addStartingWeaponsInto(CreatureObject* creature,
 
 	if (professionData == nullptr)
 		professionData = professionDefaultsInfo.get(0);
-
 
 	//Add common starting items.
 	for (int itemNumber = 0; itemNumber < commonStartingItems.size();

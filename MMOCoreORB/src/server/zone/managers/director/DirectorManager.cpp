@@ -285,7 +285,6 @@ uint64 DirectorManager::readSharedMemory(const String& key) {
 #ifndef WITH_STM
 	DirectorManager::instance()->rlock();
 #endif
-
 	uint64 data = DirectorManager::instance()->sharedMemory->get(key);
 
 #ifndef WITH_STM
@@ -545,6 +544,7 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	luaEngine->registerFunction("getWorldFloor", getWorldFloor);
 	luaEngine->registerFunction("useCovertOvert", useCovertOvert);
 	luaEngine->registerFunction("drawClientPath", drawClientPath);
+	luaEngine->registerFunction("disableHelperDroid", disableHelperDroid);
 
 	// JTL
 	luaEngine->registerFunction("generateShipDeed", generateShipDeed);
@@ -5014,7 +5014,6 @@ int DirectorManager::sellSpaceLoot(lua_State* L) {
 
 int DirectorManager::isJtlEnabled(lua_State* L) {
 	bool result = ConfigManager::instance()->isJtlEnabled();
-
 	lua_pushboolean(L, result);
 
 	return 1;
@@ -5111,6 +5110,7 @@ int DirectorManager::grantStarterShip(lua_State* L) {
 	return 0;
 }
 
+<<<<<<< Updated upstream
 int DirectorManager::drawClientPath(lua_State* L) {
 	if (checkArgumentCount(L, 7) == 1) {
 		String err = "incorrect number of arguments passed to DirectorManager::grantStarterShip";
@@ -5136,4 +5136,12 @@ int DirectorManager::drawClientPath(lua_State* L) {
 	obj->broadcastMessage(pathMessage, true);
 
 	return 0;
+=======
+int DirectorManager::disableHelperDroid(lua_State* L) {
+	bool result = ConfigManager::instance()->disableHelperDroid();
+
+	lua_pushboolean(L, result);
+
+	return 1;
+>>>>>>> Stashed changes
 }

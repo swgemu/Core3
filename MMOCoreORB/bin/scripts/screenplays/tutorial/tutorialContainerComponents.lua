@@ -16,7 +16,7 @@ function tutorialItemDrumContainerComponent:removeObject(pContainer, pObj, slot)
 		local pPlayer = getSceneObject(playerID)
 		
 		if (pPlayer ~= nil) then
-			TutorialScreenPlay:drumItemLootEvent(pContainer, pPlayer)
+			Tutorial:drumItemLootEvent(pContainer, pPlayer)
 		end
 	end
 	return -1

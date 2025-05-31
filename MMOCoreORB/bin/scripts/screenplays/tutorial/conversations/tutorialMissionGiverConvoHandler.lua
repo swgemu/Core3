@@ -29,7 +29,7 @@ function tutorialMissionGiverConvoHandler:runScreenHandlers(pConvTemplate, pPlay
 			end
 		end
 		CreatureObject(pNpc):clearOptionBit(CONVERSABLE)
-		TutorialScreenPlay:handleRoomTen(pPlayer)
+		Tutorial:handleRoomTen(pPlayer)
 	end
 
 	return pConvScreen

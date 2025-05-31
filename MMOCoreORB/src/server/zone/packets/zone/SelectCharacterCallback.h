@@ -8,6 +8,7 @@
 #ifndef SELECTCHARACTERCALLBACK_H_
 #define SELECTCHARACTERCALLBACK_H_
 
+#include "server/login/packets/ErrorMessage.h"
 #include "server/zone/packets/MessageCallback.h"
 #include "server/zone/ZoneServer.h"
 #include "server/zone/Zone.h"
@@ -21,6 +22,8 @@
 #include "server/zone/objects/player/events/DisconnectClientEvent.h"
 #include "server/zone/managers/collision/CollisionManager.h"
 #include "templates/params/creature/PlayerArrangement.h"
+
+#include "server/zone/managers/player/creation/PlayerCreationManager.h"
 
 #ifdef WITH_SESSION_API
 #include "server/login/SessionAPIClient.h"
@@ -61,6 +64,14 @@ public:
 			return;
 		}
 
+        PlayerCreationManager* pcm = PlayerCreationManager::instance();
+
+        if (pcm == nullptr) {
+            return;
+        }
+
+		bool doTutorial = ConfigManager::instance()->getBool("Core3.PlayerCreationManager.EnableTutorial", ghost);
+
 #ifdef WITH_SESSION_API
 		auto clientIP = client->getIPAddress();
 		auto loggedInAccounts = zoneServer->getPlayerManager()->getOnlineZoneClientMap()->getAccountsLoggedIn(clientIP);
@@ -98,6 +109,7 @@ public:
 		if (ghost == nullptr) {
 			return;
 		}
+
 #endif // WITH_SESSION_API
 
 		// Tie client to player object
@@ -125,6 +137,12 @@ public:
 			player->info(true) << debugMsg.toString();
 #endif // DEBUG_SELECT_CHAR_CALLBACK
 			return;
+		} else if (zoneName == "tutorial") {
+			if (doTutorial) {
+				zoneServer->getPlayerManager()->createTutorialBuilding(player);
+			} else {
+				zoneServer->getPlayerManager()->createSkippedTutorialBuilding(player);
+			}
 		}
 
 		if (!zoneServer->getPlayerManager()->increaseOnlineCharCountIfPossible(client)) {

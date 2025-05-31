@@ -1074,6 +1074,8 @@ void PlayerManagerImplementation::createTutorialBuilding(CreatureObject* player)
 	ghost->setSavedTerrainName(zone->getZoneName());
 	ghost->setSavedParentID(cellTutPlayer->getObjectID());
 
+	info(true) << "ghost ZoneName: " << ghost->getSavedTerrainName() << " ParentID: " << ghost->getSavedParentID();
+
 	tutorial->updateToDatabase();
 }
 
@@ -1111,6 +1113,8 @@ void PlayerManagerImplementation::createSkippedTutorialBuilding(CreatureObject* 
 	PlayerObject* ghost = player->getPlayerObject();
 	ghost->setSavedTerrainName(zone->getZoneName());
 	ghost->setSavedParentID(cellTut->getObjectID());
+
+	info(true) << "ghost ZoneName: " << ghost->getSavedTerrainName() << " ParentID: " << ghost->getSavedParentID();
 
 	tutorial->updateToDatabase();
 }
