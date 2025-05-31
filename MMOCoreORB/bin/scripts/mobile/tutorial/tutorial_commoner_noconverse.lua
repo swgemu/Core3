@@ -23,9 +23,9 @@ tutorial_commoner_noconverse = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE,
-	creatureBitmask = HERD,
-	optionsBitmask = AIENABLED,
+	pvpBitmask = NONE,
+	creatureBitmask = NONE,
+	optionsBitmask = AIENABLED + INVULNERABLE,
 	diet = HERBIVORE,
 
 	templates = {
