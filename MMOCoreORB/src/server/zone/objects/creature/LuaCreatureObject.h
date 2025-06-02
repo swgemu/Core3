@@ -133,6 +133,8 @@ namespace creature {
 		int attemptPeace(lua_State* L);
 		int forcePeace(lua_State* L);
 		int isPilotingShip(lua_State* L);
+		int setSpawnerID(lua_State* L);
+		int getSpawnerID(lua_State* L);
 		int storePets(lua_State* L);
 
 		// JTL
