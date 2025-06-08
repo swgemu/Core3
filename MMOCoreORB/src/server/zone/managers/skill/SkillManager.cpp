@@ -791,7 +791,18 @@ void SkillManager::updateXpLimits(PlayerObject* ghost) {
 	}
 
 	VectorMap<String, int>* xpTypeCapList = ghost->getXpTypeCapList();
-	xpTypeCapList->removeAll();
+
+		//Clear all xp limits to the default limits.
+	for (int i = 0; i < defaultXpLimits.size(); ++i) {
+		String xpType = defaultXpLimits.elementAt(i).getKey();
+		int xpLimit = defaultXpLimits.elementAt(i).getValue();
+
+		if (xpTypeCapList->contains(xpType)) {
+			xpTypeCapList->get(xpType) = xpLimit;
+		} else {
+			xpTypeCapList->put(xpType, xpLimit);
+		}
+	}
 
 	//Iterate over the player skills and update xp limits accordingly.
 	ManagedReference<CreatureObject*> player = ghost->getParentRecursively(SceneObjectType::PLAYERCREATURE).castTo<CreatureObject*>();
@@ -804,23 +815,12 @@ void SkillManager::updateXpLimits(PlayerObject* ghost) {
 	for(int i = 0; i < playerSkillBoxList->size(); ++i) {
 		Skill* skillBox = playerSkillBoxList->get(i);
 
-		if (skillBox == nullptr || skillBox->getXpCap() == 0)
+		if (skillBox == nullptr)
 			continue;
 
-		if (!xpTypeCapList->contains(skillBox->getXpType())) {
-			xpTypeCapList->put(skillBox->getXpType(), skillBox->getXpCap());
-		} else if (xpTypeCapList->get(skillBox->getXpType()) < skillBox->getXpCap()) {
-			xpTypeCapList->get(skillBox->getXpType()) = skillBox->getXpCap();
-		}
-	}
-
-	//Add defaults when no skill box caps exist
-	for (int i = 0; i < defaultXpLimits.size(); ++i) {
-		String xpType = defaultXpLimits.elementAt(i).getKey();
-		int xpLimit = defaultXpLimits.elementAt(i).getValue();
-
-		if (!xpTypeCapList->contains(xpType))
-			xpTypeCapList->put(xpType, xpLimit);
+//		if (xpTypeCapList->contains(skillBox->getXpType()) && (xpTypeCapList->get(skillBox->getXpType()) < skillBox->getXpCap())) {
+//			xpTypeCapList->get(skillBox->getXpType()) = skillBox->getXpCap();
+//		}
 	}
 
 	//Iterate over the player xp types and cap all xp types to the limits.
@@ -828,10 +828,9 @@ void SkillManager::updateXpLimits(PlayerObject* ghost) {
 
 	for (int i = 0; i < experienceList->size(); ++i) {
 		String xpType = experienceList->getKeyAt(i);
-		if (experienceList->get(xpType) > xpTypeCapList->get(xpType)) {
-			TransactionLog trx(TrxCode::EXPERIENCE, player);
-			ghost->addExperience(trx, xpType, xpTypeCapList->get(xpType) - experienceList->get(xpType), true);
-		}
+//		if (experienceList->get(xpType) > xpTypeCapList->get(xpType)) {
+//			ghost->addExperience(xpType, xpTypeCapList->get(xpType) - experienceList->get(xpType), true);
+//		}
 	}
 }
 
