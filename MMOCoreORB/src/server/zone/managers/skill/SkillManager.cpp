@@ -790,9 +790,10 @@ void SkillManager::updateXpLimits(PlayerObject* ghost) {
 		return;
 	}
 
-	VectorMap<String, int>* xpTypeCapList = ghost->getXpTypeCapList();
+	VectorMap<String,
+ int>* xpTypeCapList = ghost->getXpTypeCapList();
 
-		//Clear all xp limits to the default limits.
+	//Clear all xp limits to the default limits.
 	for (int i = 0; i < defaultXpLimits.size(); ++i) {
 		String xpType = defaultXpLimits.elementAt(i).getKey();
 		int xpLimit = defaultXpLimits.elementAt(i).getValue();
