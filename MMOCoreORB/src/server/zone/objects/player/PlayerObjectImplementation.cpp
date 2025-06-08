@@ -678,48 +678,43 @@ void PlayerObjectImplementation::awardBadge(uint32 badge) {
 	playerManager->awardBadge(asPlayerObject(), badge);
 }
 
-int PlayerObjectImplementation::addExperience(TransactionLog& trx, const String& xpType, int xp, bool notifyClient) {
-	if (xp == 0) {
-		trx.discard();
+int PlayerObjectImplementation::addExperience(const String& xpType, int xp, bool notifyClient) {
+	if (xp == 0)
 		return 0;
-	}
 
 	int valueToAdd = xp;
 
 	Locker locker(asPlayerObject());
 
-	if (xp > 0) {
+	if (xp > 0)
 		sessionStatsActivityXP += xp; // Count all xp as we're looking for activity not caps etc.
-		trx.addState("activityXP", xp);
-	}
 
 	if (experienceList.contains(xpType)) {
 		xp += experienceList.get(xpType);
 
-		if (xp <= 0 && xpType != "jedi_general") {
-			removeExperience(trx, xpType, notifyClient);
+		//xp doesnt go negative
+		if (xp <= 0) {
+			removeExperience(xpType, notifyClient);
 			return 0;
 		// -10 million experience cap for Jedi experience loss
-		} else if(xp < -10000000 && xpType == "jedi_general") {
-			xp = -10000000;
+//		} else if(xp < -10000000 && xpType == "jedi_general") {
+//			xp = -10000000;
 		}
 	}
 
-	int xpCap = -1;
+	int xpCap = 10000000;
 
-	if (xpTypeCapList.contains(xpType))
-		xpCap = xpTypeCapList.get(xpType);
+//	if (xpTypeCapList.contains(xpType))
+//		xpCap = xpTypeCapList.get(xpType);
 
-	if (xpType.beginsWith("prestige_")) {
-		xpCap = INT_MAX;
-	} else if (xpCap < 0) {
-		xpCap = 2000;
-	}
+//	if (xpCap < 0)
+//		xpCap = 2000;
 
-	if (xp > xpCap) {
-		valueToAdd = xpCap - (xp - valueToAdd);
-		xp = xpCap;
-	}
+//remove cap entirely
+//	if (xp > xpCap) {
+//		valueToAdd = xpCap - (xp - valueToAdd);
+//		xp = xpCap;
+//	}
 
 	if (notifyClient) {
 		PlayerObjectDeltaMessage8* dplay8 = new PlayerObjectDeltaMessage8(this);
@@ -731,8 +726,6 @@ int PlayerObjectImplementation::addExperience(TransactionLog& trx, const String&
 	} else {
 		experienceList.set(xpType, xp);
 	}
-
-	trx.setExperience(xpType, valueToAdd, experienceList.get(xpType));
 
 	return valueToAdd;
 }
