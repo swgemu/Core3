@@ -1,0 +1,30 @@
+name: Sync with SWGEmu Core3 Upstream
+
+on:
+  schedule:
+    - cron: '0 2 * * *'  # Runs at 2 AM UTC daily
+  workflow_dispatch:  # Allows manual triggering
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Add upstream remote
+        run: |
+          git remote add upstream https://github.com/swgemu/Core3.git
+          git fetch upstream
+
+      - name: Merge upstream changes
+        run: |
+          git checkout unstable
+          git merge upstream/unstable --no-edit
+
+      - name: Push changes
+        run: |
+          git push origin unstable
