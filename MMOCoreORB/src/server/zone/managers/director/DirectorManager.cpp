@@ -813,6 +813,7 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	luaEngine->setGlobalInt("SHIP_AI_FIXED_PATROL", ShipFlag::FIXED_PATROL);
 	luaEngine->setGlobalInt("SHIP_AI_SQUADRON_PATROL", ShipFlag::SQUADRON_PATROL);
 	luaEngine->setGlobalInt("SHIP_AI_SQUADRON_FOLLOW", ShipFlag::SQUADRON_FOLLOW);
+	luaEngine->setGlobalInt("SHIP_AI_WAVE_ATTACK", ShipFlag::WAVE_ATTACK);
 
 	// ShipComponents
 	luaEngine->setGlobalInt("SHIP_REACTOR", Components::REACTOR);

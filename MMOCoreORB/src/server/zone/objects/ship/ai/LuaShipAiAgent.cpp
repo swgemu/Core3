@@ -21,6 +21,7 @@
 #include "server/zone/objects/ship/ai/ShipAiAgent.h"
 #include "server/zone/objects/area/ActiveArea.h"
 #include "server/zone/objects/tangible/threat/ThreatMap.h"
+#include "server/zone/objects/tangible/threat/ThreatStates.h"
 
 const char LuaShipAiAgent::className[] = "LuaShipAiAgent";
 
@@ -34,6 +35,7 @@ Luna<LuaShipAiAgent>::RegType LuaShipAiAgent::Register[] = {
 	{ "setSquadronPatrol", &LuaShipAiAgent::setSquadronPatrol },
 	{ "setSquadronFollow", &LuaShipAiAgent::setSquadronFollow },
 	{ "setEscort", &LuaShipAiAgent::setEscort },
+	{ "setWaveAttack", &LuaShipAiAgent::setWaveAttack },
 	{ "setDespawnOnNoPlayerInRange", &LuaShipAiAgent::setDespawnOnNoPlayerInRange },
 	{ "setMinimumGuardPatrol", &LuaShipAiAgent::setMinimumGuardPatrol },
 	{ "setMaximumGuardPatrol", &LuaShipAiAgent::setMaximumGuardPatrol },
@@ -42,6 +44,7 @@ Luna<LuaShipAiAgent>::RegType LuaShipAiAgent::Register[] = {
 	{ "getShipAgentTemplateName", &LuaShipAiAgent::getShipAgentTemplateName },
 	{ "tauntPlayer", &LuaShipAiAgent::tauntPlayer },
 	{ "addAggro", &LuaShipAiAgent::addAggro },
+	{ "engageShipTarget", &LuaShipAiAgent::engageShipTarget },
 	{ "addSpaceFactionAlly", &LuaShipAiAgent::addSpaceFactionAlly },
 	{ "removeSpaceFactionAlly", &LuaShipAiAgent::removeSpaceFactionAlly },
 	{ "addSpaceFactionEnemy", &LuaShipAiAgent::addSpaceFactionEnemy },
@@ -145,6 +148,14 @@ int LuaShipAiAgent::setEscort(lua_State* L) {
 	return 0;
 }
 
+int LuaShipAiAgent::setWaveAttack(lua_State* L) {
+	Locker locker(realObject);
+
+	realObject->addShipFlag(ShipFlag::WAVE_ATTACK);
+	realObject->setShipAiTemplate();
+
+	return 0;
+}
 
 int LuaShipAiAgent::setDespawnOnNoPlayerInRange(lua_State* L) {
 	bool val = lua_toboolean(L, -1);
@@ -275,7 +286,38 @@ int LuaShipAiAgent::addAggro(lua_State* L) {
 
 	Locker clock(shipTanO, realObject);
 
-	threatMap->addAggro(ship, aggroValue);
+	threatMap->addAggro(ship, aggroValue, 20 * 60 * 1000);
+
+	return 0;
+}
+
+int LuaShipAiAgent::engageShipTarget(lua_State* L) {
+	int numberOfArguments = lua_gettop(L) - 1;
+
+	if (numberOfArguments != 1) {
+		realObject->error() << "Improper number of arguments in LuaShipAiAgent::addAggro.";
+		return 0;
+	}
+
+	TangibleObject* shipTanO = (TangibleObject*) lua_touserdata(L, -1);
+
+	if (shipTanO == nullptr || !shipTanO->isShipObject()) {
+		return 0;
+	}
+
+	Locker lock(realObject);
+
+	auto ship = shipTanO->asShipObject();
+	auto threatMap = realObject->getThreatMap();
+
+	if (ship == nullptr || threatMap == nullptr) {
+		return 0;
+	}
+
+	Locker clock(ship, realObject);
+
+	threatMap->addAggro(shipTanO, 50, 10 * 60 * 1000);
+	threatMap->setThreatState(shipTanO, ThreatStates::TAUNTED, 10 * 60 * 1000, 10 * 60 * 1000);
 
 	return 0;
 }

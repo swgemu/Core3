@@ -17,8 +17,9 @@ public:
 		FIXED_PATROL		= 0x000020,
 		SQUADRON_PATROL		= 0x000040,
 		SQUADRON_FOLLOW		= 0x000080,
-		TEST 				= 0x000100,
-		LASTAIMASK 			= 0x000200, // keep this updated so we can loop through the masks
+		WAVE_ATTACK			= 0x000100,
+		TEST 				= 0x000200,
+		LASTAIMASK 			= 0x000400, // keep this updated so we can loop through the masks
 	};
 };
 

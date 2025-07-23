@@ -37,6 +37,7 @@ public:
 	int setSquadronPatrol(lua_State* L);
 	int setSquadronFollow(lua_State* L);
 	int setEscort(lua_State* L);
+	int setWaveAttack(lua_State* L);
 	int setDespawnOnNoPlayerInRange(lua_State* L);
 	int setMinimumGuardPatrol(lua_State* L);
 	int setMaximumGuardPatrol(lua_State* L);
@@ -45,6 +46,7 @@ public:
 	int getShipAgentTemplateName(lua_State* L);
 	int tauntPlayer(lua_State* L);
 	int addAggro(lua_State* L);
+	int engageShipTarget(lua_State* L);
 	int addSpaceFactionAlly(lua_State* L);
 	int removeSpaceFactionAlly(lua_State* L);
 	int addSpaceFactionEnemy(lua_State* L);

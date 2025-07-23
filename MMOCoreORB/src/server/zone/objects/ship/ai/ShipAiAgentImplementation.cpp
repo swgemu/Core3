@@ -918,105 +918,105 @@ int ShipAiAgentImplementation::setDestination() {
 	}
 
 	switch (stateCopy) {
-	case ShipAiAgent::OBLIVIOUS: {
-		break;
-	}
-	case ShipAiAgent::FOLLOWING: {
-		ManagedReference<ShipObject*> followCopy = getFollowShipObject().get();
-
-		if (followCopy == nullptr) {
+		case ShipAiAgent::OBLIVIOUS: {
 			break;
 		}
+		case ShipAiAgent::FOLLOWING: {
+			ManagedReference<ShipObject*> followCopy = getFollowShipObject().get();
 
-		clearPatrolPoints();
-
-		patrolPoints.add(getNextFollowPosition(followCopy));
-		break;
-	}
-	case ShipAiAgent::WATCHING:
-	case ShipAiAgent::PATROLLING: {
-		if (getOptionsBitmask() & OptionBitmask::WINGS_OPEN) {
-			clearOptionBit(OptionBitmask::WINGS_OPEN, true);
-		}
-
-		if (patrolPoints.size() <= 1) {
-			const SpacePatrolPoint finalPosition = getFinalPosition();
-
-			if (finalPosition.isReached()) {
-				clearPatrolPoints();
+			if (followCopy == nullptr) {
+				break;
 			}
-		}
 
-		break;
-	}
-	case ShipAiAgent::ATTACKING: {
-		ManagedReference<ShipObject*> targetShip = getTargetShipObject().get();
-
-		if (targetShip == nullptr) {
-			break;
-		}
-
-		clearPatrolPoints();
-
-		if (!(getOptionsBitmask() & OptionBitmask::WINGS_OPEN)) {
-			setOptionBit(OptionBitmask::WINGS_OPEN, true);
-		}
-
-		patrolPoints.add(getNextAttackPosition(targetShip));
-		break;
-	}
-	case ShipAiAgent::FLEEING:
-	case ShipAiAgent::LEASHING:{
-		clearPatrolPoints();
-
-		if (!homeLocation.isInRange(asShipAiAgent(), getMaxDistance())) {
-			homeLocation.setReached(false);
-
-			patrolPoints.add(homeLocation);
-		} else {
-			homeLocation.setReached(true);
-
-			setMovementState(ShipAiAgent::PATROLLING);
-		}
-
-		break;
-	}
-	case ShipAiAgent::EVADING: {
-		// We have no evade point, set one
-		if (getPatrolPointSize() == 0) {
-			SpacePatrolPoint evadePoint = getNextEvadePosition();
-			evadePoint.setEvadePoint(true);
-
-			patrolPoints.add(evadePoint);
-			break;
-		}
-
-		// we have at least one patrol point, if it is not and evade point, clear all points and set one
-		const SpacePatrolPoint finalPoint = getFinalPosition();
-
-		if (!finalPoint.isEvadePoint()) {
 			clearPatrolPoints();
 
-			SpacePatrolPoint evadePoint = getNextEvadePosition();
-			evadePoint.setEvadePoint(true);
-
-			patrolPoints.add(evadePoint);
+			patrolPoints.add(getNextFollowPosition(followCopy));
+			break;
 		}
+		case ShipAiAgent::WATCHING:
+		case ShipAiAgent::PATROLLING: {
+			if (getOptionsBitmask() & OptionBitmask::WINGS_OPEN) {
+				clearOptionBit(OptionBitmask::WINGS_OPEN, true);
+			}
 
-		if (!(getOptionsBitmask() & OptionBitmask::WINGS_OPEN)) {
-			setOptionBit(OptionBitmask::WINGS_OPEN, true);
+			if (patrolPoints.size() <= 1) {
+				const SpacePatrolPoint finalPosition = getFinalPosition();
+
+				if (finalPosition.isReached()) {
+					clearPatrolPoints();
+				}
+			}
+
+			break;
 		}
+		case ShipAiAgent::ATTACKING: {
+			ManagedReference<ShipObject*> targetShip = getTargetShipObject().get();
 
-		break;
-	}
-	case ShipAiAgent::PATHING_HOME: {
-		clearPatrolPoints();
+			if (targetShip == nullptr) {
+				break;
+			}
 
-		patrolPoints.add(homeLocation);
-	}
-	default: {
-		break;
-	}
+			clearPatrolPoints();
+
+			if (!(getOptionsBitmask() & OptionBitmask::WINGS_OPEN)) {
+				setOptionBit(OptionBitmask::WINGS_OPEN, true);
+			}
+
+			patrolPoints.add(getNextAttackPosition(targetShip));
+			break;
+		}
+		case ShipAiAgent::FLEEING:
+		case ShipAiAgent::LEASHING:{
+			clearPatrolPoints();
+
+			if (!homeLocation.isInRange(asShipAiAgent(), getMaxDistance())) {
+				homeLocation.setReached(false);
+
+				patrolPoints.add(homeLocation);
+			} else {
+				homeLocation.setReached(true);
+
+				setMovementState(ShipAiAgent::PATROLLING);
+			}
+
+			break;
+		}
+		case ShipAiAgent::EVADING: {
+			// We have no evade point, set one
+			if (getPatrolPointSize() == 0) {
+				SpacePatrolPoint evadePoint = getNextEvadePosition();
+				evadePoint.setEvadePoint(true);
+
+				patrolPoints.add(evadePoint);
+				break;
+			}
+
+			// we have at least one patrol point, if it is not and evade point, clear all points and set one
+			const SpacePatrolPoint finalPoint = getFinalPosition();
+
+			if (!finalPoint.isEvadePoint()) {
+				clearPatrolPoints();
+
+				SpacePatrolPoint evadePoint = getNextEvadePosition();
+				evadePoint.setEvadePoint(true);
+
+				patrolPoints.add(evadePoint);
+			}
+
+			if (!(getOptionsBitmask() & OptionBitmask::WINGS_OPEN)) {
+				setOptionBit(OptionBitmask::WINGS_OPEN, true);
+			}
+
+			break;
+		}
+		case ShipAiAgent::PATHING_HOME: {
+			clearPatrolPoints();
+
+			patrolPoints.add(homeLocation);
+		}
+		default: {
+			break;
+		}
 	};
 
 	movementCount += 1;

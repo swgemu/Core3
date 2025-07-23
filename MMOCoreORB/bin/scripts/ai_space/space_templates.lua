@@ -2,6 +2,7 @@ includeFile("default.lua")
 includeFile("escort.lua")
 includeFile("spaceStations.lua")
 includeFile("turretship.lua")
+includeFile("waveAttack.lua")
 
 customMap = {
 	{ "spaceStations", {
@@ -30,6 +31,10 @@ bitmaskLookup = {
 
 	{TURRETSHIP, {
 		{ATTACKSPACE, "attackTurretship"},
+	}},
+
+	{WAVE_ATTACK, {
+		{MOVESPACE, "moveWaveattack"},
 	}},
 
 	{TEST, {
