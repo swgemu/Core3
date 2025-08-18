@@ -389,7 +389,6 @@ void ShipAiAgentImplementation::initializeTransientMembers() {
 	nextBehaviorInterval = BEHAVIORINTERVALMIN;
 
 	updateZoneTime = 0;
-	doRecoveryTime = 0;
 }
 
 void ShipAiAgentImplementation::notifyInsertToZone(Zone* zone) {
@@ -563,7 +562,6 @@ void ShipAiAgentImplementation::activateAiBehavior(bool reschedule) {
 
 	if (zoneServer == nullptr || zoneServer->isServerShuttingDown()) {
 		cancelBehaviorEvent();
-		cancelRecovery();
 
 		return;
 	}
@@ -647,7 +645,6 @@ void ShipAiAgentImplementation::runBehaviorTree() {
 
 		if (zoneServer == nullptr || zoneServer->isServerShuttingDown()) {
 			cancelBehaviorEvent();
-			cancelRecovery();
 
 			setFollowShipObject(nullptr);
 			setTargetShipObject(nullptr);
@@ -680,7 +677,6 @@ void ShipAiAgentImplementation::runBehaviorTree() {
 		activateAiBehavior(true);
 	} catch (Exception& ex) {
 		cancelBehaviorEvent();
-		cancelRecovery();
 
 		handleException(ex, __FUNCTION__);
 	}
@@ -1378,14 +1374,6 @@ bool ShipAiAgentImplementation::findNextPosition(int maxDistance) {
 void ShipAiAgentImplementation::updateTransform(bool lightUpdate) {
 	if (lightUpdate && numberOfPlayersInRange < 1) {
 		return;
-	}
-
-	int64 timeNow = System::getMiliTime();
-	int64 deltaTime = timeNow - doRecoveryTime;
-
-	if (deltaTime >= DORECOVERYINTERVAL) {
-		doRecoveryTime = timeNow;
-		doRecovery(deltaTime);
 	}
 
 	setDeltaTime();
@@ -2712,6 +2700,7 @@ void ShipAiAgentImplementation::sendDebugMessage() {
 		<< " rotationRate:    " << calculateSpeedRotationFactor() << endl
 		<< " currentSpeed:	  " << currentSpeed << endl
 		<< " lastSpeed:	      " << lastSpeed << endl
+		<< " actualMaxSpeed:  " << getActualMaxSpeed() << endl
 		<< "--------------------------------";
 
 	ChatSystemMessage* smsg = new ChatSystemMessage(msg.toString());

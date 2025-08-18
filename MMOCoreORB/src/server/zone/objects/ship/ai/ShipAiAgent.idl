@@ -155,8 +155,6 @@ class ShipAiAgent extends FighterShipObject {
 
 	protected transient unsigned long updateZoneTime;
 
-	protected transient unsigned long doRecoveryTime;
-
 	protected transient float lastDeltaTime;
 
 	protected transient float deltaTime;
@@ -166,7 +164,6 @@ class ShipAiAgent extends FighterShipObject {
 	@weakReference
 	protected SceneObject homeObject;
 
-	public static final int DORECOVERYINTERVAL = 2000;
 	public static final int UPDATEZONEINTERVAL = 2000; // msec
 	public static final int BEHAVIORINTERVALMAX = 1000; // msec
 	public static final int BEHAVIORINTERVAL = 500; // msec
