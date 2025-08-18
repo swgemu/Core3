@@ -106,7 +106,6 @@ public:
 		Locker sLock(shipControlDevice, ship);
 
 		if (shipControlDevice->transferObject(ship, PlayerArrangement::RIDER, false, false, false)) {
-			ship->cancelRecovery();
 			ship->clearOptionBit(OptionBitmask::WINGS_OPEN, true);
 			ship->clearPlayersOnBoard();
 		}

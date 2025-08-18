@@ -50,8 +50,8 @@ ShipManager::ShipManager() : Logger("ShipManager") {
 	lua->registerFunction("includeFile", includeFile);
 	lua->registerFunction("addShipSpawnGroup", addShipSpawnGroup);
 
-	updateTransformTask = new ShipAiAgentUpdateTransformTask(this);
-	updateTransformTask->schedule(60000);
+	timerTask = new ShipObjectTimerTask(this);
+	timerTask->schedule(60000);
 }
 
 void ShipManager::initialize() {
@@ -991,7 +991,6 @@ int ShipManager::notifyDestruction(ShipObject* destructorShip, ShipAiAgent* dest
 	// info(true) << "ShipManager::notifyDestruction -- called for: " << destructedShip->getDisplayedName() << " Attacker: " << destructorShip->getDisplayedName();
 
 	destructedShip->cancelBehaviorEvent();
-	destructedShip->cancelRecovery();
 
 	destructedShip->wipeBlackboard();
 	destructedShip->clearRunningChain();

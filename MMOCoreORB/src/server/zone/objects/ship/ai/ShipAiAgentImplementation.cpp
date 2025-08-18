@@ -387,9 +387,6 @@ void ShipAiAgentImplementation::initializeTransientMembers() {
 	deltaTime = 0.f;
 
 	nextBehaviorInterval = BEHAVIORINTERVALMIN;
-
-	updateZoneTime = 0;
-	doRecoveryTime = 0;
 }
 
 void ShipAiAgentImplementation::notifyInsertToZone(Zone* zone) {
@@ -563,7 +560,6 @@ void ShipAiAgentImplementation::activateAiBehavior(bool reschedule) {
 
 	if (zoneServer == nullptr || zoneServer->isServerShuttingDown()) {
 		cancelBehaviorEvent();
-		cancelRecovery();
 
 		return;
 	}
@@ -647,7 +643,6 @@ void ShipAiAgentImplementation::runBehaviorTree() {
 
 		if (zoneServer == nullptr || zoneServer->isServerShuttingDown()) {
 			cancelBehaviorEvent();
-			cancelRecovery();
 
 			setFollowShipObject(nullptr);
 			setTargetShipObject(nullptr);
@@ -680,7 +675,6 @@ void ShipAiAgentImplementation::runBehaviorTree() {
 		activateAiBehavior(true);
 	} catch (Exception& ex) {
 		cancelBehaviorEvent();
-		cancelRecovery();
 
 		handleException(ex, __FUNCTION__);
 	}
@@ -1357,16 +1351,6 @@ void ShipAiAgentImplementation::setNextPosition() {
 }
 
 bool ShipAiAgentImplementation::findNextPosition(int maxDistance) {
-	int64 timeNow = System::getMiliTime();
-	int64 deltaTime = timeNow - updateZoneTime;
-
-	if (deltaTime >= UPDATEZONEINTERVAL) {
-		updateZoneTime = timeNow;
-
-		updateZone(false, false);
-		removeOutOfRangeObjects();
-	}
-
 	if (getPatrolPointSize() <= 0) {
 		return false;
 	}
@@ -1380,12 +1364,9 @@ void ShipAiAgentImplementation::updateTransform(bool lightUpdate) {
 		return;
 	}
 
-	int64 timeNow = System::getMiliTime();
-	int64 deltaTime = timeNow - doRecoveryTime;
-
-	if (deltaTime >= DORECOVERYINTERVAL) {
-		doRecoveryTime = timeNow;
-		doRecovery(deltaTime);
+	if (!lightUpdate) {
+		updateZone(false, false);
+		removeOutOfRangeObjects();
 	}
 
 	setDeltaTime();
@@ -2712,6 +2693,7 @@ void ShipAiAgentImplementation::sendDebugMessage() {
 		<< " rotationRate:    " << calculateSpeedRotationFactor() << endl
 		<< " currentSpeed:	  " << currentSpeed << endl
 		<< " lastSpeed:	      " << lastSpeed << endl
+		<< " actualMaxSpeed:  " << getActualMaxSpeed() << endl
 		<< "--------------------------------";
 
 	ChatSystemMessage* smsg = new ChatSystemMessage(msg.toString());
