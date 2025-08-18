@@ -54,8 +54,6 @@ ShipObject* ShipControlDeviceImplementation::launchShip(CreatureObject* player, 
 		return nullptr;
 	}
 
-	ship->scheduleRecovery();
-
 	if (player->isInvulnerable()) {
 		ship->setOptionBit(OptionBitmask::INVULNERABLE, false);
 	} else {

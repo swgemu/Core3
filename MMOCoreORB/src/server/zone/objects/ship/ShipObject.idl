@@ -58,9 +58,6 @@ class ShipObject extends TangibleObject {
 	public unsigned long controlDeviceID;
 
 	@dereferenced
-	protected transient Reference<ShipRecoveryEvent> shipRecoveryEvent;
-
-	@dereferenced
 	protected transient Reference<ShipDeltaVector> shipDeltaVector;
 
 	@dereferenced
@@ -479,12 +476,6 @@ class ShipObject extends TangibleObject {
 
 	@preLocked
 	public native void repairShip(float repairAmount, boolean decay = true);
-
-	@preLocked
-	public native void scheduleRecovery();
-
-	@preLocked
-	public native void cancelRecovery();
 
 	@dirty
 	@nativeStub

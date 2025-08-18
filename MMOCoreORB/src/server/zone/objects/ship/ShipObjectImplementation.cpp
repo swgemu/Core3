@@ -47,10 +47,6 @@ void ShipObjectImplementation::initializeTransientMembers() {
 	hyperspacing = false;
 	droidFeedback = true;
 
-	if (shipRecoveryEvent == nullptr && !isShipAiAgent()) {
-		shipRecoveryEvent = new ShipRecoveryEvent(asShipObject());
-	}
-
 	for (int i = 0; i < componentOptions.size(); ++i) {
 		resetComponentFlag(componentOptions.getKeyAt(i), false);
 	}
@@ -639,8 +635,6 @@ void ShipObjectImplementation::notifyInsertToZone(Zone* zone) {
 
 	setLoggingName(newName.toString());
 
-	scheduleRecovery();
-
 	TangibleObjectImplementation::notifyInsertToZone(zone);
 }
 
@@ -688,13 +682,13 @@ void ShipObjectImplementation::updatePlayersInShip(bool lightUpdate, bool sendPa
 }
 
 void ShipObjectImplementation::doRecovery(int mselapsed) {
-	float deltaTime = mselapsed * 0.001f;
-
-	if (deltaTime <= 0.f) {
+	if (mselapsed < ShipObjectTimerTask::SCHEDULE_MIN) {
 		return;
 	}
 
-	auto pilot = owner.get();
+	float deltaTime = Math::clamp(0.1f, mselapsed * 0.001f, 10.f);
+
+	auto pilot = getPilot();
 	auto deltaVector = getDeltaVector();
 	auto componentMap = getShipComponentMap();
 
@@ -875,8 +869,6 @@ void ShipObjectImplementation::doRecovery(int mselapsed) {
 	if (targetVector != nullptr) {
 		targetVector->update();
 	}
-
-	scheduleRecovery();
 }
 
 float ShipObjectImplementation::getTotalShipDamage() {
@@ -1135,16 +1127,6 @@ void ShipObjectImplementation::repairShip(float value, bool decay) {
 #ifdef DEBUG_SHIP_REPAIR
 	info(true) << "---------- Repair Ship END - Value: " << value << " ------";
 #endif
-}
-
-void ShipObjectImplementation::scheduleRecovery() {
-	if (shipRecoveryEvent != nullptr && !shipRecoveryEvent->isScheduled())
-		shipRecoveryEvent->schedule(1000);
-}
-
-void ShipObjectImplementation::cancelRecovery() {
-	if (shipRecoveryEvent != nullptr && shipRecoveryEvent->isScheduled())
-		shipRecoveryEvent->cancel();
 }
 
 bool ShipObject::isShipObject() {
