@@ -21,10 +21,6 @@ bool Octree::logTree = false;
 // #define OUTPUT_OT_ERRORS
 // #define DEBUG_OCTREE_AI
 
-Octree::Octree() {
-	root = nullptr;
-}
-
 Octree::Octree(float minx, float miny, float minz, float maxx, float maxy, float maxz) {
 	root = new TreeNode(minx, miny, minz, maxx, maxy, maxz, nullptr);
 }
@@ -169,41 +165,41 @@ void Octree::inRange(TreeEntry* obj, float range) {
 					float deltaX = x - o->getPositionX();
 					float deltaY = y - o->getPositionY();
 					float deltaZ = z - o->getPositionZ();
-					int deltaCalc = deltaX * deltaX + deltaY * deltaY + deltaZ * deltaZ;
+
+					double deltaCalc = deltaX * deltaX + deltaY * deltaY + deltaZ * deltaZ;
 
 					if (deltaCalc > outOfRangeSqr) {
 						float oldDeltaX = oldx - o->getPositionX();
 						float oldDeltaY = oldy - o->getPositionY();
 						float oldDeltaZ = oldz - o->getPositionZ();
 
-						int deltaCalc2 = deltaX * deltaX + deltaY * deltaY + deltaZ * deltaZ;
+						double deltaCalc2 = oldDeltaX * oldDeltaX + oldDeltaY * oldDeltaY + oldDeltaZ * oldDeltaZ;
 
 						if (deltaCalc2 <= outOfRangeSqr) {
 							obj->removeInRangeObject(objectToRemove);
 
 							CloseObjectsVector* objCloseObjects = objectToRemove->getCloseObjects();
 
-							if (objCloseObjects != nullptr)
+							if (objCloseObjects != nullptr) {
 								objectToRemove->removeInRangeObject(obj);
+							}
 						}
 					}
 				}
 			}
 		}
 
-		//	try {
-			_inRange(root, obj, range);
+		_inRange(root, obj, range);
 
-			SceneObject* scno = cast<SceneObject*>(obj);
+		SceneObject* scno = cast<SceneObject*>(obj);
 
-			if (Octree::doLog()) {
-				Logger::console.info(true) << "Octree - Object ID # [" << scno->getDisplayedName() <<  "] in range (";
+		if (Octree::doLog()) {
+			Logger::console.info(true) << "Octree - Object ID # [" << scno->getDisplayedName() <<  "] in range (";
 
-				/*for (int i = 0; i < obj->inRangeObjectCount(); ++i) {
-					Logger::console.info(true) << obj->getInRangeObject(i)->getObjectID() << ", ";
-				}*/
-			}
-
+			/*for (int i = 0; i < obj->inRangeObjectCount(); ++i) {
+				Logger::console.info(true) << obj->getInRangeObject(i)->getObjectID() << ", ";
+			}*/
+		}
 	} catch (Exception& e) {
 		Logger::console.info(true) << "[Octree] " << e.getMessage();
 		e.printStackTrace();
