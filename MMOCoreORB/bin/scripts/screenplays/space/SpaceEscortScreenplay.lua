@@ -16,7 +16,7 @@ SpaceEscortScreenplay = SpaceQuestLogic:new {
 	sideQuest = false,
 	sideQuestType = "",
 
-	DEBUG_SPACE_ESCORT = false,
+	DEBUG_SPACE_ESCORT = true,
 
 	escortRange = 1000,
 	escortSpeed = 20,

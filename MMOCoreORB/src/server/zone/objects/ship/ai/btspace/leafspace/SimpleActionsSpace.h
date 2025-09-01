@@ -329,6 +329,43 @@ public:
 	}
 };
 
+class UpdateHomePosition : public BehaviorSpace {
+	public:
+		UpdateHomePosition(const String& className, const uint32 id, const LuaObject& args) : BehaviorSpace(className, id, args) {
+			parseArgs(args);
+		}
+
+		UpdateHomePosition(const UpdateHomePosition& a) : BehaviorSpace(a) {
+		}
+
+		void parseArgs(const LuaObject& args) {
+			useTargetPosition = getArg<bool>()(args, "useTargetPosition");
+		}
+
+		BehaviorSpace::Status execute(ShipAiAgent* agent, unsigned int startIdx = 0) const {
+			uint32 shipFlag = agent->getShipBitmask();
+
+			auto newHome = agent->getPosition();
+
+			if (useTargetPosition) {
+				ManagedReference<ShipObject*> targetShip = agent->getTargetShipObject().get();
+
+				if (targetShip != nullptr) {
+					Locker clock(targetShip, agent);
+
+					newHome = targetShip->getPosition();
+				}
+			}
+
+			agent->setHomeLocation(newHome.getX(), newHome.getZ(), newHome.getY(), Quaternion::IDENTITY);
+
+			return SUCCESS;
+		}
+
+	private:
+		bool useTargetPosition;
+};
+
 } // namespace leafspace
 } // namespace btspace
 } // namespace ai

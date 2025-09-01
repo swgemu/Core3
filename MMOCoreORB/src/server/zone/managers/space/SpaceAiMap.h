@@ -306,6 +306,7 @@ private:
 		_REGISTERSPACELEAF(SetDisabledEngineSpeed);
 		_REGISTERSPACELEAF(Leash);
 		_REGISTERSPACELEAF(GetProspectFromDefenders);
+		_REGISTERSPACELEAF(UpdateHomePosition);
 	}
 
 	void putBitmask(Lua* lua, String key) {
