@@ -54,6 +54,13 @@ namespace server {
 		bool update(TreeEntry *obj);
 
 	private:
+		// --- Octree subdivision safety limits ---
+		// Minimum allowed size of a node before we stop subdividing
+		static constexpr float MIN_NODE_SIZE = 64.f;
+
+		// Maximum depth of recursion to prevent pathological stack overflow
+		static constexpr int MAX_DEPTH = 32;
+
 		void _insert(const Reference<TreeNode*>& node, TreeEntry *obj);
 		bool _update(const Reference<TreeNode*>& node, TreeEntry *obj);
 

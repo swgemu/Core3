@@ -316,18 +316,20 @@ void Octree::_insert(const Reference<TreeNode*>& node, TreeEntry* obj) {
 		float yDiff = node->maxY - node->minY;
 		float zDiff = node->maxZ - node->minZ;
 
-		if ((xDiff < 64.f) && (yDiff < 64.f) && (zDiff < 64.f)) {
-			/*
-			* This protects from killing the stack. If something is messed up it may
-			* blow the stack because the recursion runs forever. Stop squaring when
-			* it doesnt make sense anymore. If the two objects have the same coordinate
-			* we add the new one to the map. The search is linear for objects inside
-			* .1 Unit. So what.
-			*/
+		// compute current depth
+		int depth = 0;
+		Reference<TreeNode*> depthNode = node;\
 
+		while (depthNode != nullptr) {
+			depth++;
+			depthNode = depthNode->parentNode.get();
+		}
+
+		// Stop subdividing: either the node is already too small or we hit max depth
+		if (((xDiff < MIN_NODE_SIZE) && (yDiff < MIN_NODE_SIZE) && (zDiff < MIN_NODE_SIZE)) || depth >= MAX_DEPTH) {
 #ifdef DEBUG_OCTREE_AI
 			if (isShipAgent) {
-				Logger::console.info(true) << "Octree::_insert[" << obj->getObjectID() << "] -- @ lowest node diff " << node->toStringData();
+				Logger::console.info(true) << "Octree::_insert[" << obj->getObjectID() << "] -- hit subdivision limit (" + << "diff: " << xDiff << "," << yDiff << "," << zDiff + << " depth: " << depth << ") keeping in current node.";
 			}
 #endif // DEBUG_OCTREE_AI
 
@@ -516,13 +518,22 @@ void Octree::_insert(const Reference<TreeNode*>& node, TreeEntry* obj) {
 #ifdef DEBUG_OCTREE_AI
 		else {
 			if (isShipAgent) {
-				Logger::console.info(true) << "Octree::_insert [" << obj->getObjectID() << "] -- Node: " << node->toStringData() << " --  Object was not in any node area.";
+				Logger::console.info(true) << "Octree::_insert [" << obj->getObjectID() << "] -- Node: " << node->toStringData() << " --  Object was not in any lower node area and set bounded to current.";
 			}
 		}
 #endif // DEBUG_OCTREE_AI
 
+		// If we reach here, the node has subnodes but the object didn’t classify
+		// into any child. This can happen due to FP edge cases or if the object
+		// conceptually spans multiple children. Fall back to keeping it in the
+		// current node and mark it as bounding so future rebalancing doesn’t
+		// endlessly try to push it down.
+
+		obj->setBounding();
+		node->addObject(obj);
+
 		if (Octree::doLog()) {
-			Logger::console.info(true) << "Octree::_insert -- Node: " << node->toStringData() << " -- Object ID # " << obj->getObjectID() << " HITTING RETURN, object not added!";
+			Logger::console.info(true) << "Octree::_insert -- Node: " << node->toStringData() << " -- Object ID # " << obj->getObjectID() << " did not match subnodes, kept in current node and setBounding.";
 		}
 
 		return;
@@ -638,7 +649,7 @@ void Octree::safeInRange(TreeEntry* obj, float range) {
 		float deltaX = x - nearObjPos.getX();
 		float deltaY = y - nearObjPos.getY();
 		float deltaZ = z - nearObjPos.getZ();
-		int deltaCalc = deltaX * deltaX + deltaY * deltaY + deltaZ * deltaZ;
+		float deltaCalc = deltaX * deltaX + deltaY * deltaY + deltaZ * deltaZ;
 
 		try {
 			float nearEntryOutOfRange = Math::max(nearEntry->getOutOfRangeDistance(objectID), obj->getOutOfRangeDistance(nearEntry->getObjectID()));
@@ -752,7 +763,7 @@ void Octree::_inRange(const Reference<TreeNode*>& node, TreeEntry *obj, float ra
 			float deltaX = x - treeEntry->getPositionX();
 			float deltaY = y - treeEntry->getPositionY();
 			float deltaZ = z - treeEntry->getPositionZ();
-			int deltaCalc = deltaX * deltaX + deltaY * deltaY + deltaZ * deltaZ;
+			float deltaCalc = deltaX * deltaX + deltaY * deltaY + deltaZ * deltaZ;
 
 			if (deltaCalc < outOfRangeSqr) {
 				CloseObjectsVector* objCloseObjects = obj->getCloseObjects();
@@ -778,7 +789,7 @@ void Octree::_inRange(const Reference<TreeNode*>& node, TreeEntry *obj, float ra
 				float oldDeltaY = oldy - treeEntry->getPositionY();
 				float oldDeltaZ = oldz - treeEntry->getPositionZ();
 
-				int deltaCalc2 = (oldDeltaX * oldDeltaX) + (oldDeltaY * oldDeltaY) + (oldDeltaZ * oldDeltaZ);
+				float deltaCalc2 = (oldDeltaX * oldDeltaX) + (oldDeltaY * oldDeltaY) + (oldDeltaZ * oldDeltaZ);
 
 				if (deltaCalc2 < outOfRangeSqr) {
 					CloseObjectsVector* objCloseObjects = obj->getCloseObjects();
