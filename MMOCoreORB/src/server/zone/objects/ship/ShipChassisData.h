@@ -63,6 +63,25 @@ public:
 			componentHardpoints = rhs.componentHardpoints;
 		}
 
+		~ComponentSlotData() {
+			// Clear the ComponentHardpoints
+			for (int i = componentHardpoints.size() - 1; i >= 0; i--) {
+				auto hardpoints = componentHardpoints.elementAt(i).getValue();
+
+				for (int j = hardpoints.size() - 1; j >= 0; j--) {
+					auto hardpoint = hardpoints.get(j);
+
+					if (hardpoint != nullptr) {
+						delete hardpoint;
+					}
+
+					hardpoints.remove(j);
+				}
+
+				componentHardpoints.drop(componentHardpoints.elementAt(i).getKey());
+			}
+		}
+
 		const VectorMap<String, Vector<const ComponentHardpoint*>>& getComponentHardpoints() const {
 			return componentHardpoints;
 		}

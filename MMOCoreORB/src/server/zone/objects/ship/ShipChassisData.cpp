@@ -12,18 +12,23 @@ ShipChassisData::ShipChassisData(DataTableRow* row, Vector<String>& columnNames)
 	row->getCell(3)->getValue(wingOpenSpeed);
 
 	const int start = 4;
-	const int numComponents = (columnNames.size()-start)/3;
-	String compatability;
-	int hitweight;
-	bool targetable;
+	const int numComponents = (columnNames.size()-start) / 3;
+
+	String compatability = "";
+	int hitweight = 0;
+	bool targetable = false;
+
 	for (int i=start; i<columnNames.size(); i+=3) {
 		String componentName = columnNames.get(i);
+
 		row->getCell(i)->getValue(compatability);
+
 		if (compatability.isEmpty()) {
 			continue;
 		}
-		row->getCell(i+1)->getValue(hitweight);
-		row->getCell(i+2)->getValue(targetable);
+		row->getCell(i + 1)->getValue(hitweight);
+		row->getCell(i + 2)->getValue(targetable);
+
 		componentMap.put(componentName, new ComponentSlotData(componentName, compatability, hitweight, targetable));
 	}
 
@@ -31,7 +36,16 @@ ShipChassisData::ShipChassisData(DataTableRow* row, Vector<String>& columnNames)
 }
 
 ShipChassisData::~ShipChassisData() {
-	componentMap.removeAll();
+	// Clear the Chassis Data
+	for (int i = componentMap.size() - 1; i >= 0; i--) {
+		auto slotData = componentMap.elementAt(i).getValue();
+
+		if (slotData != nullptr) {
+			delete slotData;
+		}
+
+		componentMap.drop(componentMap.elementAt(i).getKey());
+	}
 }
 
 void ShipChassisData::loadComponentHardpoints() {
@@ -46,13 +60,15 @@ void ShipChassisData::loadComponentHardpoints() {
 	dtiff.readObject(iffStream);
 
 	Vector<String> columns(dtiff.getTotalColumns(), 3);
+
 	for (int i = 0; i < dtiff.getTotalColumns(); i++) {
 		columns.add(dtiff.getColumnNameByIndex(i));
 	}
 
 	for (int i = 0; i < dtiff.getTotalRows(); ++i) {
 		DataTableRow* row = dtiff.getRow(i);
-		String name;
+		String name = "";
+
 		row->getCell(0)->getValue(name);
 
 		float range = 0.0f;
@@ -65,7 +81,8 @@ void ShipChassisData::loadComponentHardpoints() {
 				continue;
 			}
 
-			String value;
+			String value = "";
+
 			row->getCell(j)->getValue(value);
 
 			if (value.isEmpty()) {
@@ -85,14 +102,16 @@ void ShipChassisData::loadComponentHardpoints() {
 			Vector<const ComponentHardpoint*> hardpoints;
 
 			while (hardpointTokenizer.hasMoreTokens()) {
-				String hardpoint;
+				String hardpoint = "";
+
 				hardpointTokenizer.getStringToken(hardpoint);
 
 				StringTokenizer templateTokenizer(hardpoint);
 				templateTokenizer.setDelimiter(":");
 
-				String first;
-				String second;
+				String first = "";
+				String second = "";
+
 				templateTokenizer.getStringToken(first);
 
 				if (!templateTokenizer.hasMoreTokens()) {
