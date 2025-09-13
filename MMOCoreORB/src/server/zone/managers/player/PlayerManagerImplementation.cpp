@@ -437,6 +437,9 @@ void PlayerManagerImplementation::finalize() {
 	jukeboxSongs.removeAll();
 
 	questInfo.removeAll();
+
+	questCrcTable.removeAll();
+	questTasksCache.removeAll();
 }
 
 void PlayerManagerImplementation::loadNameMap() {
@@ -612,39 +615,39 @@ QuestTasks* PlayerManagerImplementation::getQuestTasks(const unsigned int questC
 	if (!questCrcTable.contains(questCrc)) {
 		error("QuestTasks with CRC 0x" + String::hexvalueOf(questCrc) + " not found.");
 		return nullptr;
-	} else {
-		if (!questTasksCache.contains(questCrc)) {
-			String questPath = "datatables/questtask/" + questCrcTable.get(questCrc) + ".iff";
+	}
 
-			TemplateManager* templateManager = TemplateManager::instance();
+	if (!questTasksCache.contains(questCrc)) {
+		String questPath = "datatables/questtask/" + questCrcTable.get(questCrc) + ".iff";
 
-			IffStream* iffStream = templateManager->openIffFile(questPath);
+		TemplateManager* templateManager = TemplateManager::instance();
 
-			if (iffStream == nullptr) {
-				error("QuestTask at " + questPath + " cannot be found.");
-				return nullptr;
-			}
+		IffStream* iffStream = templateManager->openIffFile(questPath);
 
-			DataTableIff dtable;
-			dtable.readObject(iffStream);
-
-			delete iffStream;
-
-			QuestTasks* questTasks = new QuestTasks();
-			try {
-				questTasks->parseDataTable(dtable);
-
-				questTasksCache.put(questCrc, questTasks);
-			}
-			catch (UnknownDatatableException& e) {
-				error() << "Parsing of " << questPath << " - " << e.getMessage();
-				return nullptr;
-			}
+		if (iffStream == nullptr) {
+			error("QuestTask at " + questPath + " cannot be found.");
+			return nullptr;
 		}
 
-		Reference<QuestTasks*> questTasks = questTasksCache.get(questCrc);
-		return questTasks;
+		DataTableIff dtable;
+		dtable.readObject(iffStream);
+
+		delete iffStream;
+
+		QuestTasks* questTasks = new QuestTasks();
+
+		try {
+			questTasks->parseDataTable(dtable);
+
+			questTasksCache.put(questCrc, questTasks);
+		} catch (UnknownDatatableException& e) {
+			error() << "Parsing of " << questPath << " - " << e.getMessage();
+			return nullptr;
+		}
 	}
+
+	Reference<QuestTasks*> questTasks = questTasksCache.get(questCrc);
+	return questTasks;
 }
 
 String PlayerManagerImplementation::getPlayerQuestParent(int questID) {

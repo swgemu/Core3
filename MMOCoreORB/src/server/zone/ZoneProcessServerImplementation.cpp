@@ -17,7 +17,6 @@
 #include "server/zone/managers/minigames/FishingManager.h"
 #include "server/zone/managers/minigames/GamblingManager.h"
 #include "server/zone/managers/minigames/ForageManager.h"
-#include "server/zone/managers/ship/ShipManager.h"
 
 ZoneProcessServerImplementation::ZoneProcessServerImplementation(ZoneServer* server) {
 	zoneServer = server;
