@@ -58,6 +58,12 @@ public:
 			return;
 		}
 
+		auto ghost = player->getPlayerObject();
+
+		if (ghost == nullptr) {
+			return;
+		}
+
 		Vector3 launchPosition = planetManager->getJtlLaunchLocations();
 
 		float randomX = Math::clamp(-7680.f, ((System::random(1500.f) - 750.f) + launchPosition.getX()), 7680.f);
@@ -76,6 +82,13 @@ public:
 			error() << "Ship failed to launch - Device: " << shipControlDevice->getDisplayedName() << " ID: " << shipControlDevice->getObjectID();
 			return;
 		}
+
+		// set the ship's faction
+		Locker shipLock(ship, shipControlDevice);
+
+		ship->resetShipFaction();
+
+		shipLock.release();
 
 		// Lock player to store launch point
 		Locker pilotLock(player, shipControlDevice);

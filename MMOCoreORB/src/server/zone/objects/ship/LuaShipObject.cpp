@@ -30,6 +30,7 @@ Luna<LuaShipObject>::RegType LuaShipObject::Register[] = {
 	{ "setHyperspacing", &LuaShipObject::setHyperspacing },
 	{ "setShipFactionString", &LuaShipObject::setShipFactionString },
 	{ "getSpawnPointInFrontOfShip", &LuaShipObject::getSpawnPointInFrontOfShip },
+	{ "isShipLaunched", &LuaShipObject::isShipLaunched },
 
 	{ 0, 0}
 };
@@ -403,6 +404,14 @@ int LuaShipObject::getSpawnPointInFrontOfShip(lua_State* L) {
 	lua_rawseti(L, -4, 3);
 	lua_rawseti(L, -3, 2);
 	lua_rawseti(L, -2, 1);
+
+	return 1;
+}
+
+int LuaShipObject::isShipLaunched(lua_State* L) {
+	bool isLaunched = realObject->isShipLaunched();
+
+	lua_pushboolean(L, isLaunched);
 
 	return 1;
 }

@@ -38,6 +38,7 @@
 #include "server/zone/packets/object/StartNpcConversation.h"
 #include "server/zone/managers/conversation/ConversationManager.h"
 #include "server/zone/objects/creature/conversation/ConversationObserver.h"
+#include "server/zone/managers/faction/FactionManager.h"
 
 // #define DEBUG_COV
 
@@ -678,6 +679,56 @@ void ShipObjectImplementation::updatePlayersInShip(bool lightUpdate, bool sendPa
 		}
 
 		shipMember->updateZoneWithParent(parent, lightUpdate, sendPackets);
+	}
+}
+
+void ShipObjectImplementation::broadcastPvpStatusBitmask() {
+	info(true) << "in ShipObject broadcastPvpStatusBitmask()";
+
+	if (closeobjects == nullptr) {
+		return;
+	}
+
+	Zone* zone = getZoneUnsafe();
+
+	if (zone == nullptr) {
+		return;
+	}
+
+	CreatureObject* thisPilot = getPilot();
+
+	SortedVector<TreeEntry*> closeObjects(closeobjects->size(), 10);
+
+	closeobjects->safeCopyReceiversTo(closeObjects, CloseObjectsVector::CREOTYPE);
+
+	for (int i = 0; i < closeObjects.size(); ++i) {
+		SceneObject* obj = cast<SceneObject*>(closeObjects.get(i));
+
+		if (obj == nullptr || !obj->isCreatureObject())
+			continue;
+
+		CreatureObject* creo = obj->asCreatureObject();
+
+		if (creo->isPlayerCreature())
+			sendPvpStatusTo(creo);
+		else
+			continue;
+
+		auto creoParent = creo->getRootParent();
+
+		if (creoParent == nullptr || !creoParent->isShipObject()) {
+			continue;
+		}
+
+		ShipObject* creoShip = creoParent->asShipObject();
+
+		if (creoShip == nullptr) {
+			continue;
+		}
+
+		if (thisPilot != nullptr && thisPilot->isPlayerCreature()) {
+			creoShip->sendPvpStatusTo(thisPilot);
+		}
 	}
 }
 
@@ -1349,22 +1400,37 @@ bool ShipObjectImplementation::isAggressiveTo(TangibleObject* object) {
 	if (!isShipLaunched())
 		return false;
 
-	auto thisOwner = getOwner().get();
+	if (object->isPlayerCreature()) {
+		auto rootParent = object->getRootParent();
 
- 	if (thisOwner != nullptr) {
-		if (!object->isShipAiAgent() && object->isShipObject()) {
-			auto objectShip = object->asShipObject();
+		if (rootParent == nullptr || !rootParent->isShipObject()) {
+			return false;
+		}
 
-			if (objectShip != nullptr) {
-				auto attackerOwner = objectShip->getOwner().get();
+		ShipObject* creatureShip = rootParent->asShipObject();
 
-				// Owner of the other player ship for pvp checks
-				if (attackerOwner != nullptr) {
-					return thisOwner->isAggressiveTo(attackerOwner);
-				}
-			}
+		if (creatureShip == nullptr) {
+			return false;
+		}
+
+		return isAggressiveTo(creatureShip);
+	}
+
+	int thisFaction = getShipFaction();
+	int tanoFaction = object->getFaction();
+
+	if (!isShipAiAgent() && !object->isShipAiAgent()) { // PvP check
+		if (getFactionStatus() == FactionStatus::OVERT && object->getFactionStatus() == FactionStatus::OVERT && thisFaction != tanoFaction) {
+			return true;
 		} else {
-			thisOwner->isAggressiveTo(object);
+			return false;
+		}
+	} else { //PvE check
+		if (object->isShipAiAgent()) {
+			auto attackerAiAgent = object->asShipAiAgent();
+			if (attackerAiAgent != nullptr) {
+				return attackerAiAgent->isAggressiveTo(asTangibleObject());
+			}
 		}
 	}
 
@@ -1387,35 +1453,24 @@ bool ShipObjectImplementation::isAttackableBy(TangibleObject* attackerTano) {
 		return false;
 	}
 
+	int thisFaction = getShipFaction();
+	int tanoFaction = attackerTano->getFaction();
+
 	// info(true) << getDisplayedName() << " ShipObjectImplementation::isAttackableBy -- " << attackerTano->getDisplayedName();
 
-	auto thisOwner = getOwner().get();
-
-	if (thisOwner != nullptr) {
-		// Player ship attacking another player ship. Pass the owners to the CreO isAttackable Check
-		if (!attackerTano->isShipAiAgent() && attackerTano->isShipObject()) {
-			auto attackerShip = attackerTano->asShipObject();
-
-			if (attackerShip != nullptr) {
-				auto attackerOwner = attackerShip->getOwner().get();
-
-				// Owner of the other player ship for pvp checks
-				if (attackerOwner != nullptr) {
-					// info(true) << getDisplayedName() << "Using ship owners -- thisOwner: " << thisOwner->getDisplayedName() << " attackerOwner: " << attackerOwner->getDisplayedName();
-
-					return thisOwner->isAttackableBy(attackerOwner);
-				}
-			}
+	if (!isShipAiAgent() && !attackerTano->isShipAiAgent()) { // PvP check
+		if (getFactionStatus() == FactionStatus::OVERT && attackerTano->getFactionStatus() == FactionStatus::OVERT && thisFaction != tanoFaction) {
+			return true;
 		} else {
-			// info(true) << getDisplayedName() << "Using thisOwner: " << thisOwner->getDisplayedName() << " against tangible object: " << attackerTano->getDisplayedName();
-
-			// Attacking object is a TanO, likely another ship. Pass to CreO isAttackableBy TanO check
-			thisOwner->isAttackableBy(attackerTano);
+			return false;
 		}
-	} else if (attackerTano->isCreatureObject()) {
-		// info(true) << getDisplayedName() << " isAttackableBy creature: " << attackerTano->getDisplayedName();
-
-		return isAttackableBy(attackerTano->asCreatureObject());
+	} else { //PvE check
+		if (attackerTano->isShipAiAgent()) {
+			auto attackerAiAgent = attackerTano->asShipAiAgent();
+			if (attackerAiAgent != nullptr) {
+				return attackerAiAgent->isAttackableBy(asTangibleObject());
+			}
+		}
 	}
 
 	/*
@@ -1423,9 +1478,6 @@ bool ShipObjectImplementation::isAttackableBy(TangibleObject* attackerTano) {
 	*/
 
 	// info(true) << "ShipObjectImplementation::isAttackableBy TANGIBLE -- attacking object: " << attackerTano->getDisplayedName();
-
-	int thisFaction = getFaction();
-	int tanoFaction = attackerTano->getFaction();
 
 	// GCW Faction Checks
 	if (thisFaction > 0 && tanoFaction > 0 && thisFaction == tanoFaction) {
@@ -1451,15 +1503,19 @@ bool ShipObjectImplementation::isAttackableBy(CreatureObject* creature) {
 	if (!isShipLaunched())
 		return false;
 
-	auto owner = getOwner().get();
+	auto rootParent = creature->getRootParent();
 
-	// This should handle most of our pvp checks, using the CreO isAttackable checks
-	if (owner != nullptr)
-		return owner->isAttackableBy(creature);
+	if (rootParent == nullptr || !rootParent->isShipObject()) {
+		return false;
+	}
 
-	// info(true) << "ShipObjectImplementation::isAttackableBy CREATURE == TRUE -- attacking creature: " << creature->getDisplayedName();
+	ShipObject* creatureShip = rootParent->asShipObject();
 
-	return true;
+	if (creatureShip == nullptr) {
+		return false;
+	}
+
+	return isAttackableBy(creatureShip);
 }
 
 ShipDeltaVector* ShipObjectImplementation::getDeltaVector() {
@@ -1805,6 +1861,27 @@ void ShipObjectImplementation::droidChatter(CreatureObject* player, StringIdChat
 void ShipObjectImplementation::setDroidCommandDelay(float delay) {
 	droidTimer.updateToCurrentTime();
 	droidTimer.addMiliTime(delay * 1000);
+}
+
+void ShipObjectImplementation::resetShipFaction() {
+	auto pilot = getOwner().get();
+
+	if (pilot == nullptr) {
+		return;
+	}
+
+	auto ghost = pilot->getPlayerObject();
+
+	if (ghost == nullptr) {
+		return;
+	}
+
+	int pilotSquadron = ghost->getPilotSquadron();
+	int pilotTier = ghost->getPilotTier();
+	String pilotFaction = FactionManager::instance()->getSpaceFactionBySquadron(pilotSquadron, pilotTier);
+
+	setShipFactionString(pilotFaction);
+	setFactionStatus(0);
 }
 
 CreatureObject* ShipObjectImplementation::getPlayerOnBoard(int index) {
