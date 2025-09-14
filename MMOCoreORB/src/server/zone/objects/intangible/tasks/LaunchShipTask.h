@@ -77,6 +77,13 @@ public:
 			return;
 		}
 
+		// set the ship's faction
+		Locker shipLock(ship, shipControlDevice);
+
+		ship->resetShipFaction();
+
+		shipLock.release();
+
 		// Lock player to store launch point
 		Locker pilotLock(player, shipControlDevice);
 

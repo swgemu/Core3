@@ -41,6 +41,7 @@ public:
 	int setHyperspacing(lua_State* L);
 	int setShipFactionString(lua_State* L);
 	int getSpawnPointInFrontOfShip(lua_State* L);
+	int isShipLaunched(lua_State* L);
 
 private:
 	ShipObject* realObject;
