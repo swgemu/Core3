@@ -50,6 +50,8 @@ ShipObject* ShipControlDeviceImplementation::launchShip(CreatureObject* player, 
 
 	ship->resetEfficiency();
 
+	ship->resetShipFaction();
+
 	if (!zone->transferObject(ship, -1, true)) {
 		return nullptr;
 	}

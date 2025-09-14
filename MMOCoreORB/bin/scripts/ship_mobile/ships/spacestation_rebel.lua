@@ -25,9 +25,9 @@ spacestation_rebel = ShipAgent:new {
 
 	customShipAiMap = "spaceStations",
 
-	conversationTemplate = "",
-	conversationMobile = "",
-	conversationMessage = "", -- Too Far Message
+	conversationTemplate = "spacestation_rebel_convotemplate",
+	conversationMobile = "object/mobile/shared_space_comm_rebel_transport_01.iff",
+	conversationMessage = "@conversation/pvp_station_rebel:s_48f82131", -- Too Far Message
 }
 
 ShipAgentTemplates:addShipAgentTemplate(spacestation_rebel, "spacestation_rebel")
