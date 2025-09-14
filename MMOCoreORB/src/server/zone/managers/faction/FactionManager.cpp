@@ -318,15 +318,54 @@ bool FactionManager::isAlly(const String& faction1, const String& faction2) {
 	return faction->getAllies()->contains(faction2);
 }
 
-uint32 FactionManager::getSpaceFactionBySquadron(int spaceSquadron, int tier) {
-	uint32 factionHash = 0;
+String FactionManager::getSpaceFactionBySquadron(int spaceSquadron, int tier) {
+	if (spaceSquadron == PlayerManager::CORSEC_SQUADRON) {
+		return "corsec";
+	} else if (spaceSquadron == PlayerManager::RSF_SQUADRON) {
+		return "rsf";
+	} else if (spaceSquadron == PlayerManager::SMUGGLER_SQUADRON) {
+		switch(tier) {
+			case 5:
+			case 4:
+			case 3:
+				return "hutt";
+			case 2:
+				return "valarian";
+			case 1:
+			default:
+				return "smuggler";
+		}
+	} else if (spaceSquadron == PlayerManager::BLACK_EPSILON_SQUADRON || spaceSquadron == PlayerManager::STORM_SQUADRON || spaceSquadron == PlayerManager::INQUISITION_SQUADRON) {
+		return "imperial";
+	} else if (spaceSquadron == PlayerManager::CRIMSON_PHOENIX_SQUADRON || spaceSquadron == PlayerManager::VORTEX_SQUADRON || spaceSquadron == PlayerManager::HAVOC_SQUADRON) {
+		return "rebel";
+	}
+
+	return "civilian";
+}
+
+uint32 FactionManager::getSpaceFactionHashBySquadron(int spaceSquadron, int tier) {
+	uint32 factionHash = STRING_HASHCODE("civilian");
 
 	if (spaceSquadron == PlayerManager::CORSEC_SQUADRON) {
 		factionHash = STRING_HASHCODE("corsec");
 	} else if (spaceSquadron == PlayerManager::RSF_SQUADRON) {
 		factionHash = STRING_HASHCODE("rsf");
 	} else if (spaceSquadron == PlayerManager::SMUGGLER_SQUADRON) {
-		factionHash = STRING_HASHCODE("smuggler");
+		switch(tier) {
+			case 5:
+			case 4:
+			case 3:
+				factionHash = STRING_HASHCODE("hutt");
+				break;
+			case 2:
+				factionHash = STRING_HASHCODE("valarian");
+				break;
+			case 1:
+			default:
+				factionHash = STRING_HASHCODE("smuggler");
+				break;
+		}
 	} else if (spaceSquadron == PlayerManager::BLACK_EPSILON_SQUADRON || spaceSquadron == PlayerManager::STORM_SQUADRON || spaceSquadron == PlayerManager::INQUISITION_SQUADRON) {
 		factionHash = STRING_HASHCODE("imperial");
 	} else if (spaceSquadron == PlayerManager::CRIMSON_PHOENIX_SQUADRON || spaceSquadron == PlayerManager::VORTEX_SQUADRON || spaceSquadron == PlayerManager::HAVOC_SQUADRON) {

@@ -25,9 +25,9 @@ spacestation_imperial = ShipAgent:new {
 
 	customShipAiMap = "spaceStations",
 
-	conversationTemplate = "",
-	conversationMobile = "",
-	conversationMessage = "", --Too Far Message
+	conversationTemplate = "spacestation_imperial_convotemplate",
+	conversationMobile = "object/mobile/shared_space_comm_imperial_officer_01.iff",
+	conversationMessage = "@conversation/pvp_station_imperial:s_48f82131", -- Too Far Message
 }
 
 ShipAgentTemplates:addShipAgentTemplate(spacestation_imperial, "spacestation_imperial")

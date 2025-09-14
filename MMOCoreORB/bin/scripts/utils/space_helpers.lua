@@ -1329,4 +1329,19 @@ function SpaceHelpers:getRandomPositionInSphere(x, z, y, minRange, maxRange)
 	return {x = x + dx, z = z + dz, y = y + dy}
 end
 
+-- @param pShip - pointer to player ship
+-- @param faction to declare overt
+function SpaceHelpers:declareOvert(pShip, faction)
+	if (pShip == nil or faction == nil) then
+		return
+	end
+
+	if (not ShipObject(pShip):isShipLaunched()) then
+		return
+	end
+
+	TangibleObject(pShip):setFaction(faction)
+	TangibleObject(pShip):setFactionStatus(OVERT)
+end
+
 return SpaceHelpers

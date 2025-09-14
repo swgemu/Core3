@@ -509,6 +509,8 @@ class ShipObject extends TangibleObject {
 
 	public abstract native void updatePlayersInShip(boolean lightUpdate, boolean sendPackets = true);
 
+	@dirty
+	public native void broadcastPvpStatusBitmask();
 	/*
 
 		Mutators
@@ -1076,6 +1078,9 @@ class ShipObject extends TangibleObject {
 	public native void droidChatter(CreatureObject player, @dereferenced StringIdChatParameter message);
 
 	public native void setDroidCommandDelay(float delay);
+
+	@preLocked
+	public native void resetShipFaction();
 
 	/*
 
