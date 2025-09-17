@@ -258,11 +258,13 @@ namespace server {
 			void notifyGalaxyStart(uint32 galaxyID);
 			void notifyGalaxyShutdown();
 			void approveNewSession(const String& ip, uint32 accountID, const SessionAPICallback& resultCallback);
+			void validateSession(const String& sessionID, uint32 accountID, const String& ip, const SessionAPICallback& resultCallback);
 			void notifySessionStart(const String& ip, uint32 accountID);
 			void notifyDisconnectClient(const String& ip, uint32 accountID, uint64_t characterID, String eventType);
 			void approvePlayerConnect(const String& ip, uint32 accountID, uint64_t characterID,
 					const ArrayList<uint32>& loggedInAccounts, const SessionAPICallback& resultCallback);
-			void notifyPlayerOnline(const String& ip, uint32 accountID, uint64_t characterID);
+			void notifyPlayerOnline(const String& ip, uint32 accountID, uint64_t characterID,
+					const SessionAPICallback& resultCallback = nullptr);
 			void notifyPlayerOffline(const String& ip, uint32 accountID, uint64_t characterID);
 		};
 	}

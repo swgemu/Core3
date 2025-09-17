@@ -294,6 +294,19 @@ void SessionAPIClient::approveNewSession(const String& ip, uint32 accountID, con
 	apiCall(__FUNCTION__, path.toString(), resultCallback);
 }
 
+void SessionAPIClient::validateSession(const String& sessionID, uint32 accountID, const String& ip, const SessionAPICallback& resultCallback) {
+	StringBuffer path;
+
+	path << "/v1/core3/account/" << accountID
+		<< "/galaxy/" << galaxyID
+		<< "/session/ip/" << ip
+		<< "/sessionHash/" << Crypto::SHA256Hash(String::valueOf(accountID) + sessionID + ip)
+		<< "/isvalidsession"
+		;
+
+	apiCall(__FUNCTION__, path.toString(), resultCallback);
+}
+
 void SessionAPIClient::notifySessionStart(const String& ip, uint32 accountID) {
 	StringBuffer path;
 
@@ -328,12 +341,17 @@ void SessionAPIClient::approvePlayerConnect(const String& ip, uint32 accountID, 
 	apiCall(__FUNCTION__, path.toString(), resultCallback);
 }
 
-void SessionAPIClient::notifyPlayerOnline(const String& ip, uint32 accountID, uint64_t characterID) {
+void SessionAPIClient::notifyPlayerOnline(const String& ip, uint32 accountID, uint64_t characterID,
+		const SessionAPICallback& resultCallback) {
 	StringBuffer path;
 
 	path << "/v1/core3/account/" << accountID << "/galaxy/" << galaxyID << "/session/ip/" << ip << "/player/" << characterID << "/online";
 
-	apiNotify(__FUNCTION__, path.toString());
+	if (resultCallback != nullptr) {
+		apiCall(__FUNCTION__, path.toString(), resultCallback);
+	} else {
+		apiNotify(__FUNCTION__, path.toString());
+	}
 }
 
 void SessionAPIClient::notifyPlayerOffline(const String& ip, uint32 accountID, uint64_t characterID) {
