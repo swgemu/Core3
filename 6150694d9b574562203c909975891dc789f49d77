@@ -1,0 +1,350 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "57fc91b5_c8ab1c74",
+        "filename": "MMOCoreORB/bin/scripts/utils/space_helpers.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 1335,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2025-09-17T17:07:17Z",
+      "side": 1,
+      "message": "No need to nil check faction, not a pointer",
+      "revId": "6150694d9b574562203c909975891dc789f49d77",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "92768ce2_d302ef92",
+        "filename": "MMOCoreORB/bin/scripts/utils/space_helpers.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 1339,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2025-09-17T17:07:17Z",
+      "side": 1,
+      "message": "if (not ShipObject(pShip):isShipLaunched()) then",
+      "revId": "6150694d9b574562203c909975891dc789f49d77",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "add8b5f4_aca7c9c0",
+        "filename": "MMOCoreORB/bin/scripts/utils/space_helpers.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 1344,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2025-09-17T17:07:17Z",
+      "side": 1,
+      "message": "TangibleObject(pShip):setFactionStatus(OVERT)\n\nYes, most places in Lua do not use the globals but I only added them to the DirectorManager 3 years ago.",
+      "revId": "6150694d9b574562203c909975891dc789f49d77",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aebb9fd2_71991157",
+        "filename": "MMOCoreORB/src/server/zone/objects/intangible/tasks/LaunchShipTask.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2025-09-17T17:07:17Z",
+      "side": 1,
+      "message": "Move this to the launchShip function so we do not have to lock, release and then relock / release just to set the faction (see line 72).",
+      "revId": "6150694d9b574562203c909975891dc789f49d77",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2683343d_40c0a4a7",
+        "filename": "MMOCoreORB/src/server/zone/objects/ship/ShipObject.idl",
+        "patchSetId": 2
+      },
+      "lineNbr": 513,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2025-09-17T17:07:17Z",
+      "side": 1,
+      "message": "Use abstraction on the parent function in TangibleObject.idl, this way ship objects will always properly call this function without object type declaration.",
+      "revId": "6150694d9b574562203c909975891dc789f49d77",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "89775060_04dc58b1",
+        "filename": "MMOCoreORB/src/server/zone/objects/ship/ShipObject.idl",
+        "patchSetId": 2
+      },
+      "lineNbr": 1082,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2025-09-17T17:07:17Z",
+      "side": 1,
+      "message": "@preLocked",
+      "revId": "6150694d9b574562203c909975891dc789f49d77",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5664db7a_9502009f",
+        "filename": "MMOCoreORB/src/server/zone/objects/ship/ShipObjectImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 710,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2025-09-17T17:07:17Z",
+      "side": 1,
+      "message": "if (!creo-\u003eisPlayerCreature()) {\n\tcontinue;\n}\n\nsendPvpStatusTo(creo);",
+      "revId": "6150694d9b574562203c909975891dc789f49d77",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d579f347_c6c2cea0",
+        "filename": "MMOCoreORB/src/server/zone/objects/ship/ShipObjectImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1420,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2025-09-17T17:07:17Z",
+      "side": 1,
+      "message": "This ship will not be a ShipAgent, given the isAggressiveTo (and isAttackableBy) functions use abstraction and their ship agent functions are handled by the ShipAiAgent",
+      "revId": "6150694d9b574562203c909975891dc789f49d77",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3856e74f_3ddf863b",
+        "filename": "MMOCoreORB/src/server/zone/objects/ship/ShipObjectImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1424,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2025-09-17T17:07:17Z",
+      "side": 1,
+      "message": "Does not need to else and return false, it should fall to the end of the function for that",
+      "revId": "6150694d9b574562203c909975891dc789f49d77",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bfbf3eca_125bd577",
+        "filename": "MMOCoreORB/src/server/zone/objects/ship/ShipObjectImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1426,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2025-09-17T17:07:17Z",
+      "side": 1,
+      "message": "else if for this, do not need to end into this check if the object we are checking against is not a ship agent\n\nNew line between the attackerShipAgent and conditional check under it.",
+      "revId": "6150694d9b574562203c909975891dc789f49d77",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db47914d_f2546999",
+        "filename": "MMOCoreORB/src/server/zone/objects/ship/ShipObjectImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1459,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2025-09-17T17:07:17Z",
+      "side": 1,
+      "message": "Same as above, this ship will not be a Ship agent.",
+      "revId": "6150694d9b574562203c909975891dc789f49d77",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "89510de8_d8f5637f",
+        "filename": "MMOCoreORB/src/server/zone/objects/ship/ShipObjectImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1461,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2025-09-17T17:07:17Z",
+      "side": 1,
+      "message": "This should check for a false return, if not allow the function to continue where it will return true",
+      "revId": "6150694d9b574562203c909975891dc789f49d77",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b56554dc_b5a290a4",
+        "filename": "MMOCoreORB/src/server/zone/objects/ship/ShipObjectImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1465,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2025-09-17T17:07:17Z",
+      "side": 1,
+      "message": "Also else if here",
+      "revId": "6150694d9b574562203c909975891dc789f49d77",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da81f2b4_cc8d1905",
+        "filename": "MMOCoreORB/src/server/zone/objects/ship/ai/ShipAiAgentImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1943,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2025-09-17T17:07:17Z",
+      "side": 1,
+      "message": "Don\u0027t stack declarations and conditionals.",
+      "revId": "6150694d9b574562203c909975891dc789f49d77",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee2b468b_10463f60",
+        "filename": "MMOCoreORB/src/server/zone/objects/ship/ai/ShipAiAgentImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1962,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2025-09-17T17:07:17Z",
+      "side": 1,
+      "message": "Same as above.",
+      "revId": "6150694d9b574562203c909975891dc789f49d77",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1cb2243d_cd0d0723",
+        "filename": "MMOCoreORB/src/server/zone/objects/ship/ai/ShipAiAgentImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1974,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2025-09-17T17:07:17Z",
+      "side": 1,
+      "message": "No new line needed, function is returnin.",
+      "revId": "6150694d9b574562203c909975891dc789f49d77",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ece2af4_4e07d98f",
+        "filename": "MMOCoreORB/src/server/zone/objects/ship/ai/ShipAiAgentImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2116,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2025-09-17T17:07:17Z",
+      "side": 1,
+      "message": "New line above, can also stick with using auto for type declaration.",
+      "revId": "6150694d9b574562203c909975891dc789f49d77",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3aa6c4a2_5a1ab4b7",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/TangibleObjectImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2025-09-17T17:07:17Z",
+      "side": 1,
+      "message": "} else if (isPlayerShip()) {\n\nThis way the player creature checks will not attempt this check at all given they are handled above",
+      "revId": "6150694d9b574562203c909975891dc789f49d77",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85bcfe62_dad73d55",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/TangibleObjectImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2025-09-17T17:07:17Z",
+      "side": 1,
+      "message": "Should be able to remove one set of the parenthesis for the first portion of the conditional.",
+      "revId": "6150694d9b574562203c909975891dc789f49d77",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f94ce4a0_6d91629f",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/TangibleObjectImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2025-09-17T17:07:17Z",
+      "side": 1,
+      "message": "Too many tabs.",
+      "range": {
+        "startLine": 380,
+        "startChar": 2,
+        "endLine": 380,
+        "endChar": 4
+      },
+      "revId": "6150694d9b574562203c909975891dc789f49d77",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    }
+  ]
+}
