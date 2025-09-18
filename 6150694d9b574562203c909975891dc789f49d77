@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "be3a1e6d_90c98665",
+        "filename": "MMOCoreORB/bin/scripts/utils/space_helpers.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 1339,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2025-09-18T18:46:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "92768ce2_d302ef92",
+      "revId": "6150694d9b574562203c909975891dc789f49d77",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "add8b5f4_aca7c9c0",
         "filename": "MMOCoreORB/bin/scripts/utils/space_helpers.lua",
         "patchSetId": 2
@@ -50,6 +68,24 @@
       "revId": "6150694d9b574562203c909975891dc789f49d77",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f46b590f_ec524e5f",
+        "filename": "MMOCoreORB/bin/scripts/utils/space_helpers.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 1344,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2025-09-18T18:46:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "add8b5f4_aca7c9c0",
+      "revId": "6150694d9b574562203c909975891dc789f49d77",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     },
     {
       "key": {
@@ -70,6 +106,24 @@
     },
     {
       "key": {
+        "uuid": "6eaf19a1_8768a269",
+        "filename": "MMOCoreORB/src/server/zone/objects/intangible/tasks/LaunchShipTask.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2025-09-18T18:46:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aebb9fd2_71991157",
+      "revId": "6150694d9b574562203c909975891dc789f49d77",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2683343d_40c0a4a7",
         "filename": "MMOCoreORB/src/server/zone/objects/ship/ShipObject.idl",
         "patchSetId": 2
@@ -84,6 +138,24 @@
       "revId": "6150694d9b574562203c909975891dc789f49d77",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "42b6d92b_afb139fa",
+        "filename": "MMOCoreORB/src/server/zone/objects/ship/ShipObject.idl",
+        "patchSetId": 2
+      },
+      "lineNbr": 513,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2025-09-18T18:46:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2683343d_40c0a4a7",
+      "revId": "6150694d9b574562203c909975891dc789f49d77",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     },
     {
       "key": {
@@ -104,6 +176,24 @@
     },
     {
       "key": {
+        "uuid": "91fecbb2_384f9e73",
+        "filename": "MMOCoreORB/src/server/zone/objects/ship/ShipObject.idl",
+        "patchSetId": 2
+      },
+      "lineNbr": 1082,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2025-09-18T18:46:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "89775060_04dc58b1",
+      "revId": "6150694d9b574562203c909975891dc789f49d77",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5664db7a_9502009f",
         "filename": "MMOCoreORB/src/server/zone/objects/ship/ShipObjectImplementation.cpp",
         "patchSetId": 2
@@ -118,6 +208,24 @@
       "revId": "6150694d9b574562203c909975891dc789f49d77",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b70c86bc_764d9b0f",
+        "filename": "MMOCoreORB/src/server/zone/objects/ship/ShipObjectImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 710,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2025-09-18T18:46:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5664db7a_9502009f",
+      "revId": "6150694d9b574562203c909975891dc789f49d77",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     },
     {
       "key": {
@@ -138,6 +246,24 @@
     },
     {
       "key": {
+        "uuid": "04ec14cd_1de9f274",
+        "filename": "MMOCoreORB/src/server/zone/objects/ship/ShipObjectImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1420,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2025-09-18T18:46:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d579f347_c6c2cea0",
+      "revId": "6150694d9b574562203c909975891dc789f49d77",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3856e74f_3ddf863b",
         "filename": "MMOCoreORB/src/server/zone/objects/ship/ShipObjectImplementation.cpp",
         "patchSetId": 2
@@ -152,6 +278,24 @@
       "revId": "6150694d9b574562203c909975891dc789f49d77",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d34e30c_9df3b1b1",
+        "filename": "MMOCoreORB/src/server/zone/objects/ship/ShipObjectImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1424,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2025-09-18T18:46:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3856e74f_3ddf863b",
+      "revId": "6150694d9b574562203c909975891dc789f49d77",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     },
     {
       "key": {
@@ -172,6 +316,24 @@
     },
     {
       "key": {
+        "uuid": "290da97d_50f9cb13",
+        "filename": "MMOCoreORB/src/server/zone/objects/ship/ShipObjectImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1426,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2025-09-18T18:46:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bfbf3eca_125bd577",
+      "revId": "6150694d9b574562203c909975891dc789f49d77",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "db47914d_f2546999",
         "filename": "MMOCoreORB/src/server/zone/objects/ship/ShipObjectImplementation.cpp",
         "patchSetId": 2
@@ -186,6 +348,24 @@
       "revId": "6150694d9b574562203c909975891dc789f49d77",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eff3240b_7204dc0c",
+        "filename": "MMOCoreORB/src/server/zone/objects/ship/ShipObjectImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1459,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2025-09-18T18:46:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "db47914d_f2546999",
+      "revId": "6150694d9b574562203c909975891dc789f49d77",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     },
     {
       "key": {
@@ -206,6 +386,24 @@
     },
     {
       "key": {
+        "uuid": "494282e0_fa9a1752",
+        "filename": "MMOCoreORB/src/server/zone/objects/ship/ShipObjectImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1461,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2025-09-18T18:46:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "89510de8_d8f5637f",
+      "revId": "6150694d9b574562203c909975891dc789f49d77",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b56554dc_b5a290a4",
         "filename": "MMOCoreORB/src/server/zone/objects/ship/ShipObjectImplementation.cpp",
         "patchSetId": 2
@@ -220,6 +418,24 @@
       "revId": "6150694d9b574562203c909975891dc789f49d77",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "781404f6_b096eed5",
+        "filename": "MMOCoreORB/src/server/zone/objects/ship/ShipObjectImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1465,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2025-09-18T18:46:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b56554dc_b5a290a4",
+      "revId": "6150694d9b574562203c909975891dc789f49d77",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     },
     {
       "key": {
@@ -240,6 +456,24 @@
     },
     {
       "key": {
+        "uuid": "35d30b96_1580a6c3",
+        "filename": "MMOCoreORB/src/server/zone/objects/ship/ai/ShipAiAgentImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1943,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2025-09-18T18:46:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da81f2b4_cc8d1905",
+      "revId": "6150694d9b574562203c909975891dc789f49d77",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ee2b468b_10463f60",
         "filename": "MMOCoreORB/src/server/zone/objects/ship/ai/ShipAiAgentImplementation.cpp",
         "patchSetId": 2
@@ -254,6 +488,24 @@
       "revId": "6150694d9b574562203c909975891dc789f49d77",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a6f824be_be164f76",
+        "filename": "MMOCoreORB/src/server/zone/objects/ship/ai/ShipAiAgentImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1962,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2025-09-18T18:46:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ee2b468b_10463f60",
+      "revId": "6150694d9b574562203c909975891dc789f49d77",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     },
     {
       "key": {
@@ -274,6 +526,24 @@
     },
     {
       "key": {
+        "uuid": "2a9a4b21_beb8cbf9",
+        "filename": "MMOCoreORB/src/server/zone/objects/ship/ai/ShipAiAgentImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1974,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2025-09-18T18:46:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1cb2243d_cd0d0723",
+      "revId": "6150694d9b574562203c909975891dc789f49d77",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9ece2af4_4e07d98f",
         "filename": "MMOCoreORB/src/server/zone/objects/ship/ai/ShipAiAgentImplementation.cpp",
         "patchSetId": 2
@@ -288,6 +558,24 @@
       "revId": "6150694d9b574562203c909975891dc789f49d77",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f60be92e_6042c18c",
+        "filename": "MMOCoreORB/src/server/zone/objects/ship/ai/ShipAiAgentImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2116,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2025-09-18T18:46:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ece2af4_4e07d98f",
+      "revId": "6150694d9b574562203c909975891dc789f49d77",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     },
     {
       "key": {
@@ -308,6 +596,24 @@
     },
     {
       "key": {
+        "uuid": "531b3fbc_75c2bca4",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/TangibleObjectImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2025-09-18T18:46:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3aa6c4a2_5a1ab4b7",
+      "revId": "6150694d9b574562203c909975891dc789f49d77",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "85bcfe62_dad73d55",
         "filename": "MMOCoreORB/src/server/zone/objects/tangible/TangibleObjectImplementation.cpp",
         "patchSetId": 2
@@ -322,6 +628,24 @@
       "revId": "6150694d9b574562203c909975891dc789f49d77",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b8f5dfdb_f7b94e20",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/TangibleObjectImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2025-09-18T18:46:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "85bcfe62_dad73d55",
+      "revId": "6150694d9b574562203c909975891dc789f49d77",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     },
     {
       "key": {
@@ -345,6 +669,30 @@
       "revId": "6150694d9b574562203c909975891dc789f49d77",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13d00a69_df2132f5",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/TangibleObjectImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2025-09-18T18:46:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f94ce4a0_6d91629f",
+      "range": {
+        "startLine": 380,
+        "startChar": 2,
+        "endLine": 380,
+        "endChar": 4
+      },
+      "revId": "6150694d9b574562203c909975891dc789f49d77",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     }
   ]
 }

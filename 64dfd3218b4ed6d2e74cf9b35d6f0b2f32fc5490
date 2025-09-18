@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f373940d_c4372b80",
+        "filename": "MMOCoreORB/src/server/zone/objects/ship/ShipObjectImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1425,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2025-09-18T18:46:18Z",
+      "side": 1,
+      "message": "New line after.",
+      "revId": "64dfd3218b4ed6d2e74cf9b35d6f0b2f32fc5490",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8aaf0cd3_c931085e",
+        "filename": "MMOCoreORB/src/server/zone/objects/ship/ShipObjectImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1457,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2025-09-18T18:46:18Z",
+      "side": 1,
+      "message": "This still should check and should return false, if you need to modify or remove the GCW checks further down in the function you can do so.",
+      "revId": "64dfd3218b4ed6d2e74cf9b35d6f0b2f32fc5490",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "09f9cc6b_ebb28770",
+        "filename": "MMOCoreORB/src/server/zone/objects/ship/ShipObjectImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1460,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2025-09-18T18:46:18Z",
+      "side": 1,
+      "message": "New line after.",
+      "revId": "64dfd3218b4ed6d2e74cf9b35d6f0b2f32fc5490",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f922a852_9f7f8b40",
+        "filename": "MMOCoreORB/src/server/zone/objects/ship/ShipObjectImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1484,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2025-09-18T18:46:18Z",
+      "side": 1,
+      "message": "This should not change and return true. All of the isAttackableBy functions have been written to end true unless logically returned prior to function end.",
+      "revId": "64dfd3218b4ed6d2e74cf9b35d6f0b2f32fc5490",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    }
+  ]
+}
