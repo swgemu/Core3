@@ -308,6 +308,12 @@ public:
 			auto data = new DataTransform(ship);
 			ship->sendMembersBaseMessage(data);
 		}
+
+		auto transform = ship->getShipTransform();
+
+		if (transform != nullptr) {
+			transform->setCurrentTransform(ship);
+		}
 	}
 
 	void broadcastTransform(ShipObject* ship, CreatureObject* pilot, const Vector3& position) {

@@ -35,8 +35,13 @@ PackedQuaternion RotationLookupTable::getPackedDirection(float yaw, float pitch,
 	int stepY = (int)round(Math::rad2deg(yaw + M_PI) * Y_INVERSE_INCREMENT) % Y_STEPS;
 	int stepP = (int)round(Math::rad2deg(pitch + M_PI) * P_INVERSE_INCREMENT) % P_STEPS;
 	int stepR = (int)round(Math::rad2deg(roll + M_PI) * R_INVERSE_INCREMENT) % R_STEPS;
+	int index = combineIndices(stepY, stepP, stepR);
 
-	return directionTable.get(combineIndices(stepY, stepP, stepR));
+	if (index < 0 || index >= directionTable.size()) {
+		return PackedQuaternion();
+	}
+
+	return directionTable.get(index);
 }
 
 Quaternion RotationLookupTable::getDirection(float yaw, float pitch, float roll) {
