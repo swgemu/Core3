@@ -54,27 +54,6 @@ class ShipAiAgent extends FighterShipObject {
 	@dereferenced
 	protected transient SpacePatrolPoint homeLocation;
 
-	@dereferenced
-	protected transient SpacePatrolPoint nextStepPosition;
-
-	@dereferenced
-	protected transient Vector3 lastDirection;
-
-	@dereferenced
-	protected transient Vector3 currentDirection;
-
-	@dereferenced
-	protected transient Vector3 nextDirection;
-
-	@dereferenced
-	protected transient Vector3 lastRotation;
-
-	@dereferenced
-	protected transient Vector3 currentRotation;
-
-	@dereferenced
-	protected transient Vector3 nextRotation;
-
 	protected boolean despawnOnNoPlayerInRange;
 
 	@weakReference
@@ -105,7 +84,6 @@ class ShipAiAgent extends FighterShipObject {
 	protected float coordinateMin;
 	protected float coordinateMax;
 
-	private float lastSpeed;
 	private transient float escortSpeed;
 
 	@dereferenced
@@ -154,10 +132,6 @@ class ShipAiAgent extends FighterShipObject {
 	protected unsigned int shipBitmask;
 
 	protected transient unsigned long updateZoneTime;
-
-	protected transient float lastDeltaTime;
-
-	protected transient float deltaTime;
 
 	protected transient float missileLockTime;
 
@@ -361,56 +335,15 @@ class ShipAiAgent extends FighterShipObject {
 	@dirty
 	public abstract native float getMaxDistance();
 
+	@dirty
+	public abstract native int getTransformType();
+
 	@preLocked
 	public abstract native int setDestination();
 
-	@local
-	@dereferenced
-	public native Quaternion radiansToQuaterion(float yaw, float pitch, float roll);
-
-	@local
-	@dereferenced
-	public native Vector3 radiansToUnitVector(float yaw, float pitch);
-
-	@local
-	@dereferenced
-	public native Quaternion unitVectorToQuaternion();
-
-	@local
-	@dereferenced
-	public native Vector3 unitVectorToRotation();
-
-	@local
-	@dereferenced
-	public native Vector3 matrixToUnitVector();
-
-	public native float getMaxThrottle();
-
-	public native float getMinThrottle();
-
-	public native float getRotationRate(float currentRadians, float lastRadians = 0.f);
-
-	public native float qInvSqrt(float x);
-
-	public native float qSqrt(float x);
-
-	public native float qNormalize(@dereferenced Vector3 vec);
-
 	public native boolean setDisabledEngineSpeed();
 
-	public native void setNextSpeed();
-
-	public native float getRotationTime(@dereferenced final Vector3 rotation);
-
-	public native float getDirectionTime(@dereferenced final Vector3 direction);
-
-	public native void setNextDirection();
-
-	public native void setNextPosition();
-
 	public native void updateTransform(boolean lightUpdate = true);
-
-	public native void setDeltaTime();
 
 	public native int getNextBehaviorInterval();
 
@@ -423,10 +356,6 @@ class ShipAiAgent extends FighterShipObject {
 
 	@preLocked
 	public abstract native void leash();
-
-	public abstract native void broadcastTransform(@dereferenced final Vector3 position);
-
-	public native float calculatePixelHeight(@dereferenced final Vector3 position);
 
 	public void clearPatrolPoints() {
 		synchronized (targetMutex) {
@@ -846,8 +775,6 @@ class ShipAiAgent extends FighterShipObject {
 		movementCount = val;
 	}
 
-	public native boolean isTargetForward();
-
 	public native boolean checkLineOfSight(SceneObject obj);
 
 	public native void sendDebugMessage();
@@ -892,48 +819,9 @@ class ShipAiAgent extends FighterShipObject {
 
 	public native void setWeaponRefireDeltaTime(unsigned int slot);
 
-	public native void initializeTransform(@dereferenced final Vector3 position, @dereferenced final Quaternion direction);
-
 	@local
 	@dereferenced
 	public native Vector3 getHomePosition();
-
-	@local
-	@dereferenced
-	public native Vector3 getNextStepPosition();
-
-	@read
-	@local
-	@dereferenced
-	public native Vector3 getNextDirectionVector();
-
-	@read
-	@local
-	@dereferenced
-	public native Vector3 getCurrentDirectionVector();
-
-	@read
-	@local
-	@dereferenced
-	public native Vector3 getLastDirectionVector();
-
-	@read
-	@local
-	@dereferenced
-	public native Vector3 getNextRotationVector();
-
-	@read
-	@local
-	@dereferenced
-	public native Vector3 getCurrentRotationVector();
-
-	@read
-	@local
-	@dereferenced
-	public native Vector3 getLastRotationVector();
-
-	@read
-	public native float getLastSpeed();
 
 	@read
 	public float getEscortSpeed() {
