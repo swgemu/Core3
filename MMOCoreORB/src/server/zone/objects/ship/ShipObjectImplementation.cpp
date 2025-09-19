@@ -39,6 +39,8 @@
 #include "server/zone/managers/conversation/ConversationManager.h"
 #include "server/zone/objects/creature/conversation/ConversationObserver.h"
 #include "server/zone/managers/faction/FactionManager.h"
+#include "server/zone/objects/ship/transform/ShipObjectTransform.h"
+#include "server/zone/objects/ship/transform/SpaceTransform.h"
 
 // #define DEBUG_COV
 
@@ -48,11 +50,14 @@ void ShipObjectImplementation::initializeTransientMembers() {
 	hyperspacing = false;
 	droidFeedback = true;
 
+	resetOptionsBitmask(false);
+
 	for (int i = 0; i < componentOptions.size(); ++i) {
 		resetComponentFlag(componentOptions.getKeyAt(i), false);
 	}
 
 	initializeUniqueID(false);
+	initializeTransform(getPosition(), *getDirection());
 
 	auto volume = getCollisionVolume();
 
@@ -1302,6 +1307,32 @@ void ShipObjectImplementation::resetComponentFlag(uint32 slot, bool notifyClient
 	}
 }
 
+void ShipObjectImplementation::resetOptionsBitmask(bool notifyClient) {
+	uint32 optionsFlag = optionsBitmask;
+
+	if (optionsFlag & OptionBitmask::WINGS_OPEN) {
+		optionsFlag &= ~OptionBitmask::WINGS_OPEN;
+	}
+
+	if (optionsFlag & OptionBitmask::DOCKING) {
+		optionsFlag &= ~OptionBitmask::DOCKING;
+	}
+
+	if (optionsFlag & OptionBitmask::DESTROYING) {
+		optionsFlag &= ~OptionBitmask::DESTROYING;
+	}
+
+	if (optionsFlag & OptionBitmask::EJECT) {
+		optionsFlag &= ~OptionBitmask::EJECT;
+	}
+
+	if (optionsFlag == optionsBitmask) {
+		return;
+	}
+
+	setOptionsBitmask(optionsFlag, notifyClient);
+}
+
 void ShipObjectImplementation::setComponentDemolished(uint32 slot, bool notifyClient, ShipDeltaVector* deltaVector) {
 	if (deltaVector == nullptr && notifyClient) {
 		deltaVector = getDeltaVector();
@@ -1562,6 +1593,10 @@ ShipTargetVector* ShipObjectImplementation::getTargetVector() {
 	}
 
 	return shipTargetVector.get();
+}
+
+ShipObjectTransform* ShipObjectImplementation::getShipTransform() {
+	return &shipTransform;
 }
 
 void ShipObjectImplementation::destroyObjectFromDatabase(bool destroyContainedObjects) {
@@ -2244,6 +2279,14 @@ float ShipObjectImplementation::getOutOfRangeDistance(uint64 specialRangeID) {
 	return ZoneServer::SPACECLOSEOBJECTRANGE;
 }
 
+bool ShipObjectImplementation::isShipDisabled() {
+	return isShipDestroyed() || !isComponentFunctional(Components::REACTOR) || !isComponentFunctional(Components::ENGINE);
+}
+
+bool ShipObjectImplementation::isShipDestroyed() {
+	return getChassisCurrentHealth() <= 0.f;
+}
+
 bool ShipObjectImplementation::isComponentInstalled(uint32 slot) {
 	return getShipComponentMap()->get(slot) != 0;
 }
@@ -2621,4 +2664,25 @@ bool ShipObjectImplementation::isSorosuubSpaceYacht() {
 	auto chassisName = getShipChassisName().hashCode();
 
 	return (STRING_HASHCODE("player_sorosuub_space_yacht") == chassisName);
+}
+
+void ShipObjectImplementation::initializeTransform(const Vector3& position, const Quaternion& direction) {
+	initializePosition(position);
+	setDirection(direction);
+	setRotationMatrix(direction);
+	setCurrentSpeed(0.f);
+
+	shipTransform.initializeTransform(asShipObject());
+}
+
+SpaceTransform ShipObjectImplementation::getPreviousTransform() {
+	return shipTransform.getPreviousTransform();
+}
+
+SpaceTransform ShipObjectImplementation::getCurrentTransform() {
+	return shipTransform.getCurrentTransform();
+}
+
+SpaceTransform ShipObjectImplementation::getNextTransform() {
+	return shipTransform.getNextTransform();
 }
