@@ -40,7 +40,7 @@
 #include "server/zone/objects/creature/conversation/ConversationObserver.h"
 #include "server/zone/managers/faction/FactionManager.h"
 
-// #define DEBUG_COV
+#define DEBUG_COV
 
 void ShipObjectImplementation::initializeTransientMembers() {
 	TangibleObjectImplementation::initializeTransientMembers();
@@ -449,7 +449,9 @@ void ShipObjectImplementation::uninstall(CreatureObject* player, int slot, bool 
 }
 
 void ShipObjectImplementation::notifyObjectInsertedToZone(SceneObject* object) {
-	// info(true) << getDisplayedName() << " ShipObjectImplementation --- notifyObjectInsertedToZone - Object " << object->getDisplayedName();
+	if (!isShipAiAgent()) {
+		info(true) << getDisplayedName() << " ShipObjectImplementation --- notifyObjectInsertedToZone - Object " << object->getDisplayedName() << " SceneO Zone: " << object->getZone()->getZoneName();
+	}
 
 	auto closeObjectsVector = getCloseObjects();
 	Vector<TreeEntry*> closeObjects(closeObjectsVector->size(), 10);
@@ -533,7 +535,9 @@ void ShipObjectImplementation::notifyInsert(TreeEntry* object) {
 	uint64 scnoID = sceneO->getObjectID();
 
 #ifdef DEBUG_COV
-	info(true) << "Ship: " << getDisplayedName() << " -- ShipObjectImplementation::notifyInsert -- Object inserted: " << sceneO->getDisplayedName() << " ID: " << scnoID << " Players on Board Size: " << getTotalPlayersOnBoard();
+	if (!isShipAiAgent()) {
+		info(true) << "ShipObjectImplementation::notifyInsert -- Players on Board Size: " << getTotalPlayersOnBoard() << " ---- Object inserted: " << sceneO->getDisplayedName() << " ID: " << scnoID << " SceneO Zone: " << sceneO->getZone()->getZoneName();
+	}
 #endif // DEBUG_COV
 
 	try {
@@ -588,7 +592,9 @@ void ShipObjectImplementation::notifyDissapear(TreeEntry* object) {
 	uint64 scnoID = sceneO->getObjectID();
 
 #ifdef DEBUG_COV
-	info(true) << "ShipObjectImplementation::notifyDissapear -- Object removed: " << sceneO->getDisplayedName() << " ID: " << scnoID;
+	if (!isShipAiAgent()) {
+		info(true) << "ShipObjectImplementation::notifyDissapear -- Object removed: " << sceneO->getDisplayedName() << " ID: " << scnoID << " SceneO Zone: " << sceneO->getZone()->getZoneName();
+	}
 #endif // DEBUG_COV
 
 	try {
@@ -632,7 +638,7 @@ void ShipObjectImplementation::sendDestroyTo(SceneObject* player) {
 
 void ShipObjectImplementation::notifyInsertToZone(Zone* zone) {
 	StringBuffer newName;
-	newName << getDisplayedName() << " - " << zone->getZoneName();
+	newName << getDisplayedName() << " -- ID: " << getObjectID() << " - " << zone->getZoneName();
 
 	setLoggingName(newName.toString());
 
