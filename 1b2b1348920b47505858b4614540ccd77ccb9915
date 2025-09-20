@@ -1,0 +1,123 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ccaef199_2c4ddb53",
+        "filename": "MMOCoreORB/src/server/zone/objects/ship/ShipObjectImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2025-09-20T01:13:50Z",
+      "side": 1,
+      "message": "Does this cause any issues when called when the ship is in the control device?",
+      "revId": "1b2b1348920b47505858b4614540ccd77ccb9915",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1ce1768_3af1c50d",
+        "filename": "MMOCoreORB/src/server/zone/objects/ship/ai/ShipAiAgentImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1045,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2025-09-20T01:13:50Z",
+      "side": 1,
+      "message": "Remove tab for definition.",
+      "revId": "1b2b1348920b47505858b4614540ccd77ccb9915",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bde18844_d222fe86",
+        "filename": "MMOCoreORB/src/server/zone/objects/ship/ai/ShipAiAgentImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1219,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2025-09-20T01:13:50Z",
+      "side": 1,
+      "message": "Both are floats, definitely best to not do equals comparison and leave it as less than.",
+      "revId": "1b2b1348920b47505858b4614540ccd77ccb9915",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6f479b7_4cb97dfb",
+        "filename": "MMOCoreORB/src/server/zone/objects/ship/transform/ShipObjectTransform.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2025-09-20T01:13:50Z",
+      "side": 1,
+      "message": "All of the ship pointers need to be nullptr checked.",
+      "revId": "1b2b1348920b47505858b4614540ccd77ccb9915",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d0aa1354_6edc2288",
+        "filename": "MMOCoreORB/src/server/zone/objects/ship/transform/ShipObjectTransform.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2025-09-20T01:13:50Z",
+      "side": 1,
+      "message": "This can just be greater than.",
+      "revId": "1b2b1348920b47505858b4614540ccd77ccb9915",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e369dcc_f71baa94",
+        "filename": "MMOCoreORB/src/server/zone/objects/ship/transform/ShipObjectTransform.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2025-09-20T01:13:50Z",
+      "side": 1,
+      "message": "Use clang formatter on this file.",
+      "revId": "1b2b1348920b47505858b4614540ccd77ccb9915",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8f58c09_6f03c97e",
+        "filename": "MMOCoreORB/src/server/zone/objects/ship/transform/SpaceMath.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2025-09-20T01:13:50Z",
+      "side": 1,
+      "message": "null checks on ship pointers.",
+      "revId": "1b2b1348920b47505858b4614540ccd77ccb9915",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    }
+  ]
+}
