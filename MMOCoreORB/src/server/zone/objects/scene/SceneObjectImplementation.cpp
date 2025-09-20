@@ -1725,10 +1725,11 @@ void SceneObjectImplementation::removeSlottedObject(int index) {
 void SceneObjectImplementation::setZone(Zone* newZone) {
 	zone = newZone;
 
-	if (zone == nullptr)
+	if (zone == nullptr) {
 		updateSavedRootParentRecursive(nullptr);
-	else
+	} else {
 		updateSavedRootParentRecursive(asSceneObject());
+	}
 }
 
 void SceneObjectImplementation::showFlyText(const String& file, const String& aux, uint8 red, uint8 green, uint8 blue, bool isPrivate) {

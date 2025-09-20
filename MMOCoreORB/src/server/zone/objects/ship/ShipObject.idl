@@ -504,6 +504,8 @@ class ShipObject extends TangibleObject {
 
 	public native void notifyInsertToZone(Zone zone);
 
+	public native void notifyRemoveFromZone();
+
 	@local
 	public native abstract void updateZone(boolean lightUpdate, boolean sendPackets = true);
 

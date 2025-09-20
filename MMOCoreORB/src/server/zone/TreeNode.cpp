@@ -74,8 +74,25 @@ TreeNode::~TreeNode() {
 }
 
 void TreeNode::addObject(TreeEntry* obj) {
-	if (!validateNode())
+	if (!validateNode()) {
 		Logger::console.error() << "[TreeNode] invalid node in addObject() - " << toStringData() << "\n";
+	}
+
+#ifdef DEBUG_TREE_NODE
+	SceneObject* sceneO = cast<SceneObject*>(obj);
+
+	if (sceneO != nullptr && sceneO->isPlayerShip()) {
+		if (obj->getNode() != nullptr) {
+			auto oldNode = obj->getNode();
+
+			Logger::console.info(true) << "\033[42;30m" << " Player ship is already assigned to a tree node!!! Old Node: " << oldNode->toStringData()<< "\n" << "\033[0m";
+		}
+
+		Logger::console.info(true) << "\033[42;30m" << __FUNCTION__ << "() -- ADDED Octree Object ID: " << sceneO->getObjectID() << " " << sceneO->getDisplayedName() <<  " - Octree Node: " << toStringData() << "\n" << "\033[0m";
+
+		// StackTrace::printStackTrace();
+	}
+#endif // DEBUG_TREE_NODE
 
 	objects.put(obj);
 	obj->setNode(this);
@@ -83,18 +100,19 @@ void TreeNode::addObject(TreeEntry* obj) {
 
 void TreeNode::removeObject(TreeEntry* obj) {
 	if (!objects.drop(obj)) {
-		Logger::console.info(true) << "TreeNode::removeObject -- Object ID: " << obj->getObjectID() <<  "] not found on Tree" << toStringData() << "\n";
-	} else {
-		obj->setNode(nullptr);
-
-		if (Octree::doLog()) {
-			SceneObject* sceneO = cast<SceneObject*>(obj);
-
-			if (sceneO != nullptr && dividerX != 0) {
-				//Logger::console.info(true) << "TreeNode::removeObject -- Octree Object ID: " << sceneO->getObjectID() << " " << sceneO->getDisplayedName() <<  " - removed object from Oct Tree Node: " << toStringData() << "\n";
-			}
-		}
+		Logger::console.error() << "TreeNode::removeObject -- Object ID: " << obj->getObjectID() <<  "] not found on Tree" << toStringData() << "\n";
+		return;
 	}
+
+	obj->setNode(nullptr);
+
+#ifdef DEBUG_TREE_NODE
+	SceneObject* sceneO = cast<SceneObject*>(obj);
+
+	if (sceneO != nullptr && sceneO->isPlayerShip()) {
+		Logger::console.info(true) << "\033[42;30m" << __FUNCTION__ << "() -- REMOVED Octree Object ID: " << sceneO->getObjectID() << " " << sceneO->getDisplayedName() <<  " - Octree Node: " << toStringData() << "\n" << "\033[0m";
+	}
+#endif // DEBUG_TREE_NODE
 }
 
 void TreeNode::removeObject(int index) {

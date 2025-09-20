@@ -128,32 +128,37 @@ void SpaceZoneImplementation::insert(TreeEntry* entry) {
 	/*
 	SceneObject* sceneO = cast<SceneObject*>(entry);
 
-	if (sceneO != nullptr)
+	if (sceneO != nullptr && sceneO->isPlayerShip()) {
 		info(true) << "Inserting object into Octree: " + sceneO->getDisplayedName() << " ID: " << sceneO->getObjectID();
+	}
 	*/
 }
 
 void SpaceZoneImplementation::remove(TreeEntry* entry) {
 	Locker locker(_this.getReferenceUnsafeStaticCast());
 
-	if (entry->isInOctree()) {
-		octree->remove(entry);
-
-		/*
-		SceneObject* sceneO = cast<SceneObject*>(entry);
-
-		if (sceneO != nullptr)
-			info(true) << "Removing object from Octree: " + sceneO->getDisplayedName() << " ID: " << sceneO->getObjectID();
-		*/
+	if (!entry->isInOctree()) {
+		return;
 	}
+
+	octree->remove(entry);
+
+	/*
+	SceneObject* sceneO = cast<SceneObject*>(entry);
+
+	if (sceneO != nullptr && sceneO->isPlayerShip()) {
+		info(true) << "Removing object from Octree: " + sceneO->getDisplayedName() << " ID: " << sceneO->getObjectID();
+	}
+	*/
 }
 
 void SpaceZoneImplementation::update(TreeEntry* entry) {
 	/*
 	SceneObject* sceneO = cast<SceneObject*>(entry);
 
-	if (sceneO != nullptr)
+	if (sceneO != nullptr && sceneO->isPlayerShip()) {
 		info(true) << "Updating object in Octree: " + sceneO->getDisplayedName() << " ID: " << sceneO->getObjectID();
+	}
 	*/
 
 	Locker locker(_this.getReferenceUnsafeStaticCast());

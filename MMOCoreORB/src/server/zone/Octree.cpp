@@ -19,7 +19,7 @@ using namespace server::zone;
 bool Octree::logTree = false;
 
 // #define OUTPUT_OT_ERRORS
-// #define DEBUG_OCTREE_AI
+// #define DEBUG_OCTREE
 
 Octree::Octree(float minx, float miny, float minz, float maxx, float maxy, float maxz) {
 	root = new TreeNode(minx, miny, minz, maxx, maxy, maxz, nullptr);
@@ -69,13 +69,13 @@ void Octree::insert(TreeEntry *obj) {
 
 		_insert(root, obj);
 
-#ifdef DEBUG_OCTREE_AI
+#ifdef DEBUG_OCTREE
 		SceneObject* shipScno = cast<SceneObject*>(obj);
 
-		if (shipScno->isShipAiAgent()) {
+		if (shipScno->isPlayerShip()) {
 			Logger::console.info(true) << "Octree::insert[" << shipScno->getObjectID() <<  "] finished inserting " << shipScno->getDisplayedName() << " " << obj->getNode()->toStringData();
 		}
-#endif // DEBUG_OCTREE_AI
+#endif // DEBUG_OCTREE
 
 		if (Octree::doLog()) {
 			SceneObject* scno = cast<SceneObject*>(obj);
@@ -108,7 +108,7 @@ bool Octree::update(TreeEntry* obj) {
 #ifdef OUTPUT_OT_ERRORS
 			SceneObject* scno = cast<SceneObject*>(obj);
 
-			if (scno->isShipAiAgent()) {
+			if (scno->isPlayerShip()) {
 				Logger::console.info(true) << "";
 				Logger::console.error() << "Octree::update[" << obj->getObjectID() <<  "] ERROR -- updating error, object has a null node!\n";
 			}
@@ -259,7 +259,6 @@ void Octree::remove(TreeEntry *obj) {
 		node->removeObject(obj);
 
 		node->check();
-		obj->setNode(nullptr);
 	} else {
 		Logger::console.info(true) << "Octree::remove - Object ID # [" << obj->getObjectID() <<  "] ERROR - removing the node\n";
 		StackTrace::printStackTrace();
@@ -275,15 +274,14 @@ void Octree::removeAll() {
 
 	if (root != nullptr) {
 		root = nullptr;
-		//delete root;
 	}
 }
 
 void Octree::_insert(const Reference<TreeNode*>& node, TreeEntry* obj) {
-#ifdef DEBUG_OCTREE_AI
+#ifdef DEBUG_OCTREE
 	auto sceneO = static_cast<SceneObject*>(obj);
-	bool isShipAgent = sceneO->isShipAiAgent();
-#endif // DEBUG_OCTREE_AI
+	bool isPlayerShip = sceneO->isPlayerShip();
+#endif // DEBUG_OCTREE
 
 	if (Octree::doLog()) {
 		Logger::console.info(true) << "Octree::_insert -- " << node->toStringData() << " for Object ID # " << obj->getObjectID();
@@ -327,11 +325,11 @@ void Octree::_insert(const Reference<TreeNode*>& node, TreeEntry* obj) {
 
 		// Stop subdividing: either the node is already too small or we hit max depth
 		if (((xDiff < MIN_NODE_SIZE) && (yDiff < MIN_NODE_SIZE) && (zDiff < MIN_NODE_SIZE)) || depth >= MAX_DEPTH) {
-#ifdef DEBUG_OCTREE_AI
-			if (isShipAgent) {
-				Logger::console.info(true) << "Octree::_insert[" << obj->getObjectID() << "] -- hit subdivision limit (" + << "diff: " << xDiff << "," << yDiff << "," << zDiff + << " depth: " << depth << ") keeping in current node.";
+#ifdef DEBUG_OCTREE
+			if (isPlayerShip) {
+				Logger::console.info(true) << "Octree::_insert[" << obj->getObjectID() << "] -- hit subdivision limit (" << "diff: " << xDiff << "," << yDiff << "," << zDiff << " depth: " << depth << ") keeping in current node.";
 			}
-#endif // DEBUG_OCTREE_AI
+#endif // DEBUG_OCTREE
 
 			node->addObject(obj);
 			return;
@@ -350,11 +348,11 @@ void Octree::_insert(const Reference<TreeNode*>& node, TreeEntry* obj) {
 				continue;
 			}
 
-#ifdef DEBUG_OCTREE_AI
-			if (isShipAgent) {
+#ifdef DEBUG_OCTREE
+			if (isPlayerShip) {
 				Logger::console.info(true) << "Octree::_insert[" << obj->getObjectID() << "] checking existing object for recursive node update ID: " << existing->getObjectID();
 			}
-#endif // DEBUG_OCTREE_AI
+#endif // DEBUG_OCTREE
 
 			// First find out which cube it needs, then Insert it into it
 			// We divide the Node area into 8 squares, reusing existing children
@@ -429,11 +427,11 @@ void Octree::_insert(const Reference<TreeNode*>& node, TreeEntry* obj) {
 			} else {
 				existing->setBounding();
 
-#ifdef DEBUG_OCTREE_AI
-				if (isShipAgent) {
-					Logger::console.info(true) << "Octree::_insert[" << existing->getObjectID() << "] object was not in any children nodes, keeping current - Position: " << existing->getPosition().toString();
+#ifdef DEBUG_OCTREE
+				if (isPlayerShip) {
+					Logger::console.info(true) << "Octree::_insert -- Line: 432 -- [" << existing->getObjectID() << "] object was not in any children nodes, keeping current - Position: " << existing->getPosition().toString();
 				}
-#endif // DEBUG_OCTREE_AI
+#endif // DEBUG_OCTREE
 			}
 		}
 	}
@@ -447,11 +445,11 @@ void Octree::_insert(const Reference<TreeNode*>& node, TreeEntry* obj) {
 		obj->setBounding();
 		node->addObject(obj);
 
-#ifdef DEBUG_OCTREE_AI
-		if (isShipAgent) {
-			Logger::console.info(true) << "Octree::_insert [" << obj->getObjectID() << "] -- Node: " << node->toStringData() << " is in area, ADDDING to node and setBounding due to crossing node boundaries";
+#ifdef DEBUG_OCTREE
+		if (isPlayerShip) {
+			Logger::console.info(true) << "Octree::_insert -- Line: 450 -- [" << obj->getObjectID() << "] -- Node: " << node->toStringData() << " is in area, ADDDING to node and setBounding due to crossing node boundaries";
 		}
-#endif // DEBUG_OCTREE_AI
+#endif // DEBUG_OCTREE
 		return;
 	}
 
@@ -462,7 +460,7 @@ void Octree::_insert(const Reference<TreeNode*>& node, TreeEntry* obj) {
 	*/
 	if (node->hasSubNodes()) {
 		if (Octree::doLog()) {
-			Logger::console.info(true) << "Octree::_insert [" << obj->getObjectID() << "] -- has subnodes for " << node->toStringData();
+			Logger::console.info(true) << "Octree::_insert -- Line: 463 -- [" << obj->getObjectID() << "] -- has subnodes for " << node->toStringData();
 		}
 
 		if (obj->isInSWArea(node)) {
@@ -508,50 +506,45 @@ void Octree::_insert(const Reference<TreeNode*>& node, TreeEntry* obj) {
 			}
 
 			_insert(node->nwNode2, obj);
-		} else if (obj->isInNE2Area(node)) {
+		} else {
 			if (node->neNode2 == nullptr) {
 				node->neNode2 = new TreeNode(node->dividerX, node->dividerY, node->dividerZ, node->maxX, node->maxY, node->maxZ, node);
 			}
 
 			_insert(node->neNode2, obj);
 		}
-#ifdef DEBUG_OCTREE_AI
-		else {
-			if (isShipAgent) {
-				Logger::console.info(true) << "Octree::_insert [" << obj->getObjectID() << "] -- Node: " << node->toStringData() << " --  Object was not in any lower node area and set bounded to current.";
-			}
+
+#ifdef DEBUG_OCTREE
+		if (isPlayerShip) {
+			Logger::console.info(true) << "Octree::_insert -- Line: 524 -- [" << obj->getObjectID() << "] -- Node: " << node->toStringData() << " --  Object was not in any lower node area and set bounded to current.";
 		}
-#endif // DEBUG_OCTREE_AI
-
-		// If we reach here, the node has subnodes but the object didn’t classify
-		// into any child. This can happen due to FP edge cases or if the object
-		// conceptually spans multiple children. Fall back to keeping it in the
-		// current node and mark it as bounding so future rebalancing doesn’t
-		// endlessly try to push it down.
-
-		obj->setBounding();
-		node->addObject(obj);
-
-		if (Octree::doLog()) {
-			Logger::console.info(true) << "Octree::_insert -- Node: " << node->toStringData() << " -- Object ID # " << obj->getObjectID() << " did not match subnodes, kept in current node and setBounding.";
-		}
+#endif // DEBUG_OCTREE
 
 		return;
 	}
 
-	// No children nodes were created and we have only one data entry, so it can stay
-	// this way. Data can be Inserted, and the recursion is over.
+	/*
+	* If we reach here, the node has subnodes but the object didn’t classify
+	* into any child. This can happen due to FP edge cases or if the object
+	* conceptually spans multiple children. Fall back to keeping it in the
+	* current node and mark it as bounding so future rebalancing doesn’t
+	* endlessly try to push it down.
 
+	* No children nodes were created and we have only one data entry, so it can stay
+	* this way. Data can be Inserted, and the recursion is over.
+	*/
+
+	obj->setBounding();
 	node->addObject(obj);
 
 	if (Octree::doLog()) {
-		Logger::console.info(true) << "Octree::_insert [" << obj->getObjectID() << "] -- Node: " << obj->getNode()->toStringData() << " -- node added object - Total Objects: " << obj->getNode()->objects.size();
+		Logger::console.info(true) << "Octree::_insert -- Line: 541 -- [" << obj->getObjectID() << "] -- Node: " << obj->getNode()->toStringData() << " -- node added object - Total Objects: " << obj->getNode()->objects.size();
 	}
 }
 
 bool Octree::_update(const Reference<TreeNode*>& node, TreeEntry* obj) {
 	if (Octree::doLog()) {
-		Logger::console.info(true) << "Octree::_update -- Poisition (" << obj->getPositionX() << "," << obj->getPositionZ() << "," << obj->getPositionY() << ")\n";
+		Logger::console.info(true) << "Octree::_update -- Line: 547 -- Poisition (" << obj->getPositionX() << "," << obj->getPositionZ() << "," << obj->getPositionY() << ")\n";
 	}
 
 	// Still in the same node square
@@ -579,8 +572,9 @@ bool Octree::_update(const Reference<TreeNode*>& node, TreeEntry* obj) {
 	else {
 		SceneObject* scno = cast<SceneObject*>(obj);
 
-		if (scno->isShipAiAgent())
+		if (scno->isPlayerShip()) {
 			Logger::console.info(true) << "Octree::_update[" << obj->getObjectID() << "] ERROR -- currentNode is a nullptr";
+		}
 	}
 #endif // OUTPUT_OT_ERRORS
 

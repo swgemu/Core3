@@ -449,7 +449,9 @@ void ShipObjectImplementation::uninstall(CreatureObject* player, int slot, bool 
 }
 
 void ShipObjectImplementation::notifyObjectInsertedToZone(SceneObject* object) {
-	// info(true) << getDisplayedName() << " ShipObjectImplementation --- notifyObjectInsertedToZone - Object " << object->getDisplayedName();
+	if (!isShipAiAgent()) {
+		info(true) << getDisplayedName() << " ShipObjectImplementation --- notifyObjectInsertedToZone - Object " << object->getDisplayedName() << " SceneO Zone: " << object->getZone()->getZoneName();
+	}
 
 	auto closeObjectsVector = getCloseObjects();
 	Vector<TreeEntry*> closeObjects(closeObjectsVector->size(), 10);
@@ -533,7 +535,11 @@ void ShipObjectImplementation::notifyInsert(TreeEntry* object) {
 	uint64 scnoID = sceneO->getObjectID();
 
 #ifdef DEBUG_COV
-	info(true) << "Ship: " << getDisplayedName() << " -- ShipObjectImplementation::notifyInsert -- Object inserted: " << sceneO->getDisplayedName() << " ID: " << scnoID << " Players on Board Size: " << getTotalPlayersOnBoard();
+	if (!isShipAiAgent()) {
+		auto zone = getLocalZone();
+
+		info(true) << "ShipObjectImplementation::notifyInsert -- Players on Board Size: " << getTotalPlayersOnBoard() << " ---- Object inserted: " << sceneO->getDisplayedName() << " ID: " << scnoID << " Zone: " << (zone != nullptr ? zone->getZoneName() : "null zone");
+	}
 #endif // DEBUG_COV
 
 	try {
@@ -588,7 +594,11 @@ void ShipObjectImplementation::notifyDissapear(TreeEntry* object) {
 	uint64 scnoID = sceneO->getObjectID();
 
 #ifdef DEBUG_COV
-	info(true) << "ShipObjectImplementation::notifyDissapear -- Object removed: " << sceneO->getDisplayedName() << " ID: " << scnoID;
+	if (!isShipAiAgent()) {
+		auto zone = getLocalZone();
+
+		info(true) << "ShipObjectImplementation::notifyDissapear -- Object removed: " << sceneO->getDisplayedName() << " ID: " << scnoID << " Zone: " << (zone != nullptr ? zone->getZoneName() : "null zone");
+	}
 #endif // DEBUG_COV
 
 	try {
@@ -632,17 +642,43 @@ void ShipObjectImplementation::sendDestroyTo(SceneObject* player) {
 
 void ShipObjectImplementation::notifyInsertToZone(Zone* zone) {
 	StringBuffer newName;
-	newName << getDisplayedName() << " - " << zone->getZoneName();
+	newName << getDisplayedName() << " -- ID: " << getObjectID() << " - " << zone->getZoneName();
 
 	setLoggingName(newName.toString());
 
 	TangibleObjectImplementation::notifyInsertToZone(zone);
+
+#ifdef DEBUG_COV
+	if (isPlayerShip()) {
+		info(true) << "ShipObjectImplementation::notifyInsertToZone -- Zone: " << zone->getZoneName();
+	}
+#endif // DEBUG_COV
+}
+
+void ShipObjectImplementation::notifyRemoveFromZone() {
+	TangibleObjectImplementation::notifyRemoveFromZone();
+
+#ifdef DEBUG_COV
+	if (isPlayerShip()) {
+		auto zone = getLocalZone();
+
+		info(true) << "ShipObjectImplementation::notifyRemoveFromZone -- Zone: " << (zone != nullptr ? zone->getZoneName() : "null zone");
+	}
+#endif // DEBUG_COV
 }
 
 void ShipObjectImplementation::updateZone(bool lightUpdate, bool sendPackets) {
 	updatePlayersInShip(lightUpdate, sendPackets);
 
 	SceneObjectImplementation::updateZone(lightUpdate, sendPackets);
+
+#ifdef DEBUG_COV
+	if (isPlayerShip()) {
+		auto zone = getLocalZone();
+
+		info(true) << "ShipObjectImplementation::updateZone -- Zone: " << (zone != nullptr ? zone->getZoneName() : "null zone");
+	}
+#endif // DEBUG_COV
 }
 
 void ShipObjectImplementation::updatePlayersInShip(bool lightUpdate, bool sendPackets) {

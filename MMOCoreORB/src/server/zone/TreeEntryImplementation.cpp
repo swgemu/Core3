@@ -21,14 +21,17 @@ TreeEntryImplementation::TreeEntryImplementation(TreeNode* n) {
 }
 
 void TreeEntryImplementation::setNode(TreeNode* n) {
-#ifdef DEBUG_TREE_ENTRY_AI
-	if (n == nullptr) {
-		auto sceneO = static_cast<SceneObject*>(_this.getReferenceUnsafeStaticCast());
+#ifdef DEBUG_TREE_ENTRY
+	auto sceneO = static_cast<SceneObject*>(_this.getReferenceUnsafeStaticCast());
 
-		if (sceneO->isShipAiAgent())
-			Logger::console.info(true) << sceneO->getDisplayedName() << " setting a null treeNode - ID: " << sceneO->getObjectID();
+	if (sceneO->isPlayerShip()) {
+		if (n == nullptr) {
+			Logger::console.info(true) << "TreeEntryImplementation::setNode -- " << sceneO->getDisplayedName() << " setting a NULL treeNode - ID: " << sceneO->getObjectID();
+		} else {
+			Logger::console.info(true) << "TreeEntryImplementation::setNode -- " << sceneO->getDisplayedName() << " setting a NEW treeNode - ID: " << sceneO->getObjectID();
+		}
 	}
-#endif // DEBUG_TREE_ENTRY_AI
+#endif // DEBUG_TREE_ENTRY
 
 	node = n;
 }
@@ -38,14 +41,14 @@ void TreeEntryImplementation::addInRangeObject(TreeEntry* obj, bool doNotifyUpda
 		return;
 	}
 
-	/*
+#ifdef DEBUG_TREE_ENTRY
 	auto objSceneO = static_cast<SceneObject*>(obj);
 	auto sceneO = static_cast<SceneObject*>(_this.getReferenceUnsafeStaticCast());
 
-	if ((objSceneO->isShipObject() && sceneO->isShipObject()) || (objSceneO->isShipObject() && sceneO->isPlayerCreature()) || (objSceneO->isPlayerCreature() && sceneO->isShipObject())) {
-		sceneO->info(true) << sceneO->getDisplayedName() << " is ADDING in range object: " << objSceneO->getDisplayedName();
+	if (objSceneO->isShipObject() && sceneO->isPlayerShip()) {
+		//sceneO->info(true) << "TreeEntryImplementation::addInRangeObject -- " << sceneO->getDisplayedName() << " is ADDING in range object: " << objSceneO->getDisplayedName();
 	}
-	*/
+#endif // DEBUG_TREE_ENTRY
 
 	if (closeobjects != nullptr && closeobjects->put(obj) != -1) {
  		notifyInsert(obj);

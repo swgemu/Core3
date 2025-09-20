@@ -151,8 +151,9 @@ bool SpaceZoneContainerComponent::transferObject(SceneObject* sceneObject, Scene
 
 	auto zone = object->getZone();
 
-	if (object->isActiveArea())
+	if (object->isActiveArea()) {
 		return insertActiveArea(newSpaceZone, dynamic_cast<ActiveArea*>(object));
+	}
 
 	Locker zoneLocker(newSpaceZone);
 
@@ -248,8 +249,9 @@ bool SpaceZoneContainerComponent::removeObject(SceneObject* sceneObject, SceneOb
 
 		if (parent != nullptr) {
 			parent->removeObject(object, nullptr, false);
-		} else
+		} else {
 			spaceZone->remove(object);
+		}
 
 		SpaceZone* oldZone = spaceZone;
 
@@ -261,8 +263,11 @@ bool SpaceZoneContainerComponent::removeObject(SceneObject* sceneObject, SceneOb
 			SpaceZoneComponent::removeAllObjectsFromCOV(closeObjects, closeSceneObjects, sceneObject, object);
 		} else {
 #ifdef COV_DEBUG
-			object->info("Null closeobjects vector in SpaceZoneContainerComponent::removeObject", true);
-#endif
+			if (object->isPlayerShip()) {
+				object->info("Null closeobjects vector in SpaceZoneContainerComponent::removeObject", true);
+			}
+#endif // COV_DEBUG
+
 			SortedVector<ManagedReference<TreeEntry*> > closeSceneObjects;
 
 			// Updates objects in range
@@ -321,5 +326,10 @@ bool SpaceZoneContainerComponent::removeObject(SceneObject* sceneObject, SceneOb
 
 	object->setZone(nullptr);
 
+#ifdef COV_DEBUG
+	if (object->isPlayerShip()) {
+		object->info(true) << "SpaceZoneContainerComponent::removeObject -- player ship" << object->getDisplayedName() << " removed from Space Zone: " << oldZoneName;
+	}
+#endif // COV_DEBUG
 	return true;
 }

@@ -151,7 +151,7 @@ public:
 
 		ShipObject* ship = rootParent->asShipObject();
 
-		if (ship == nullptr|| ship->isHyperspacing()) {
+		if (ship == nullptr) {
 			return updateError(pilot, "!ship", false);
 		}
 
