@@ -28,7 +28,9 @@ Luna<LuaShipObject>::RegType LuaShipObject::Register[] = {
 	{ "isLowerTurretFunctional", &LuaShipObject::isLowerTurretFunctional },
 	{ "getShipName", &LuaShipObject::getShipName },
 	{ "setHyperspacing", &LuaShipObject::setHyperspacing },
+	{ "getShipFactionString", &LuaShipObject::getShipFactionString },
 	{ "setShipFactionString", &LuaShipObject::setShipFactionString },
+	{ "getShipFactionHash", &LuaShipObject::getShipFactionHash },
 	{ "getSpawnPointInFrontOfShip", &LuaShipObject::getSpawnPointInFrontOfShip },
 	{ "isShipLaunched", &LuaShipObject::isShipLaunched },
 
@@ -346,6 +348,14 @@ int LuaShipObject::setHyperspacing(lua_State* L) {
 	return 0;
 }
 
+int LuaShipObject::getShipFactionString(lua_State* L) {
+	String data = realObject->getShipFactionString();
+
+	lua_pushstring(L, data.toCharArray());
+
+	return 1;
+}
+
 int LuaShipObject::setShipFactionString(lua_State* L) {
 	int numberOfArguments = lua_gettop(L) - 1;
 
@@ -366,6 +376,14 @@ int LuaShipObject::setShipFactionString(lua_State* L) {
 	realObject->broadcastPvpStatusBitmask();
 
 	return 0;
+}
+
+int LuaShipObject::getShipFactionHash(lua_State* L) {
+	uint64 factionHash = realObject->getShipFaction();
+
+	lua_pushinteger(L, factionHash);
+
+	return 1;
 }
 
 int LuaShipObject::getSpawnPointInFrontOfShip(lua_State* L) {
