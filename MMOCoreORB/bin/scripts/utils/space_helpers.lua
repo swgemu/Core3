@@ -337,6 +337,42 @@ function SpaceHelpers:getPlayerSpaceFactionString(pPlayer)
 	return factionString
 end
 
+-- @param pPlayer pointer to return faction string according to ship's current alignment
+function SpaceHelpers:getPlayerShipFactionString(pPlayer)
+	if (pPlayer == nil) then
+		return 0
+	end
+
+	local factionString = ""
+	local pShip = SceneObject(pPlayer):getRootParent()
+
+	if (pShip == nil or not SceneObject(pShip):isShipObject()) then
+		return
+	end
+
+	factionString = ShipObject(pShip):getShipFactionString()
+
+	return factionString
+end
+
+-- @param pPlayer pointer to return faction string according to ship's current alignment
+function SpaceHelpers:getPlayerShipFactionHash(pPlayer)
+	if (pPlayer == nil) then
+		return 0
+	end
+
+	local factionHash = 0
+	local pShip = SceneObject(pPlayer):getRootParent()
+
+	if (pShip == nil or not SceneObject(pShip):isShipObject()) then
+		return
+	end
+
+	factionHash = ShipObject(pShip):getShipFactionHash()
+
+	return factionHash
+end
+
 -- @param pPlayer pointer to return faction hash by squadron type
 function SpaceHelpers:getPlayerSpaceFactionHash(pPlayer)
 	if (pPlayer == nil) then
