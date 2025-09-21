@@ -382,7 +382,8 @@ function SpaceEscortScreenplay:spawnEscortShip(pPlayer)
 	end
 
 	-- Set as same space faction
-	ShipObject(pShipAgent):setShipFactionString(SpaceHelpers:getPlayerSpaceFactionString(pPlayer))
+	ShipObject(pShipAgent):setShipFactionString(SpaceHelpers:getPlayerShipFactionString(pPlayer))
+	ShipAiAgent(pShipAgent):addSpaceFactionAlly(SpaceHelpers:getPlayerShipFactionHash(pPlayer))
 
 	-- Add kill observer
 	createObserver(OBJECTDESTRUCTION, self.className, "notifyEscortShipDestroyed", pShipAgent)
