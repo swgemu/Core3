@@ -50,7 +50,7 @@ registerScreenPlay("SpaceDutyDestroyScreenplay", false)
 
 function SpaceDutyDestroyScreenplay:startQuest(pPlayer, pNpc)
 	if (pPlayer == nil) then
-		Logger:log("Quest: " .. self.questName .. " Type: " .. self.QuestType .. " -- Failed to startQuest due to pPlayer being nil.", LT_ERROR)
+		Logger:log("Quest: " .. self.questName .. " Type: " .. self.questType .. " -- Failed to startQuest due to pPlayer being nil.", LT_ERROR)
 		return
 	end
 
@@ -320,8 +320,12 @@ function SpaceDutyDestroyScreenplay:spawnAttackWave(pPlayer)
 	local randomLocation = SpaceHelpers:getRandomPositionInSphere(x, z, y, 150, 400)
 	local shipIDs = readStringVectorSharedMemory(playerID .. self.className .. ":attackShips:")
 	local bossLevel = readData(playerID .. ":" .. self.className .. ":bossLevel:")
+	local currentWave = readData(playerID .. ":" .. self.className .. ":CurrentWave:")
+	local currentLevel = readData(playerID .. ":" .. self.className .. ":CurrentLevel:")
 
 	deleteStringVectorSharedMemory(playerID .. self.className .. ":attackShips:")
+
+	local playerFactionHash = SpaceHelpers:getPlayerShipFactionHash(pPlayer)
 
 	-- Spawn Boss Wave
 	if (bossLevel > 0) then
@@ -346,10 +350,11 @@ function SpaceDutyDestroyScreenplay:spawnAttackWave(pPlayer)
 		CreatureObject(pPlayer):addSpaceMissionObject(bossID, true)
 
 		-- Add aggo and set the pPlayerShip as ShipAgents Defender
+		ShipAiAgent(pBossAgent):addSpaceFactionEnemy(playerFactionHash)
 		ShipAiAgent(pBossAgent):engageShipTarget(pPlayerShip)
 
 		-- Taunt player
-		self:tauntPlayer(pShipAgent, pPlayer, true)
+		self:tauntPlayer(pBossAgent, pPlayer, true)
 
 		-- Play effect for player
 		CreatureObject(pPlayer):playEffect("clienteffect/ui_quest_spawn_boss.cef", "")
@@ -361,9 +366,11 @@ function SpaceDutyDestroyScreenplay:spawnAttackWave(pPlayer)
 	-- Spawn regular attack wave
 	else
 		local shipTable = self.shipTypes
+		local fighterCount = currentWave + currentLevel
 
-		for i = 1, #shipTable, 1 do
-			local pShipAgent = spawnShipAgent(shipTable[i], self.questZone, randomLocation.x, randomLocation.z, randomLocation.y)
+		for i = 1, fighterCount, 1 do
+			local shipType = shipTable[((i - 1) % #shipTable) + 1]
+			local pShipAgent = spawnShipAgent(shipType, self.questZone, randomLocation.x, randomLocation.z, randomLocation.y)
 
 			if (pShipAgent == nil) then
 				goto continue
@@ -377,8 +384,9 @@ function SpaceDutyDestroyScreenplay:spawnAttackWave(pPlayer)
 			createObserver(OBJECTDESTRUCTION, self.className, "notifyAttackShipDestroyed", pShipAgent)
 
 			-- Set as space mission object
-			CreatureObject(pPlayer):addSpaceMissionObject(agentID, (i == #shipTable))
+			CreatureObject(pPlayer):addSpaceMissionObject(agentID, (i == fighterCount))
 
+			ShipAiAgent(pShipAgent):addSpaceFactionEnemy(playerFactionHash)
 			ShipAiAgent(pShipAgent):addAggro(pPlayer, 1)
 			ShipAiAgent(pShipAgent):setDefender(pPlayer)
 
@@ -388,7 +396,7 @@ function SpaceDutyDestroyScreenplay:spawnAttackWave(pPlayer)
 			-- Add to the list of shipIDs
 			shipIDs[#shipIDs + 1] = agentID
 
-			if (i == #shipTable) then
+			if (i == fighterCount) then
 				-- Send Taunt to player
 				self:tauntPlayer(pShipAgent, pPlayer, false)
 			end
@@ -454,7 +462,6 @@ function SpaceDutyDestroyScreenplay:removeAttackShips(pPlayer)
 	end
 
 	-- Destroy Boss Ship
-
 	local bossID = readData(playerID .. ":" .. self.className .. ":BossShipID:")
 
 	-- Remove the attacking ship agent as a mission object
