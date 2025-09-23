@@ -55,3 +55,4 @@ includeFile("conversations/space/greeters/kess_yarrow_convo.lua")
 
 -- Corsec Squadron
 includeFile("conversations/space/neutral/corsec_squadron/rhea_convo.lua")
+includeFile("conversations/space/neutral/corsec_squadron/rikkh_convo.lua")

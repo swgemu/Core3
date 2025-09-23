@@ -78,6 +78,7 @@ includeFile("space/conversations/neutral/gilBurtinConvoHandler.lua")
 -- Corsec
 includeFile("space/CorsecSquadronScreenplay.lua")
 includeFile("space/conversations/neutral/corsec_squadron/rheaConvoHandler.lua")
+includeFile("space/conversations/neutral/corsec_squadron/rikkhConvoHandler.lua")
 
 -- Smuggler
 includeFile("space/SmugglerSquadronScreenplay.lua")

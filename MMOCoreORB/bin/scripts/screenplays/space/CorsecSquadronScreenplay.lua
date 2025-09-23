@@ -2,11 +2,11 @@ local Logger = require("utils.logger")
 
 --[[
 
-	Corsec Squadron Quests
+	Corsec Squadron Missions
 
 ]]
 
--- Sgt Rhea Main Quests
+-- Sgt Rhea Main Missions
 
 patrol_corellia_privateer_1 = SpacePatrolScreenplay:new {
 	className = "patrol_corellia_privateer_1",
@@ -182,7 +182,7 @@ assassinate_corellia_privateer_tier1_4a = SpaceAssassinateScreenplay:new {
 
 registerScreenPlay("assassinate_corellia_privateer_tier1_4a", true)
 
--- Sgt Rhea Duty Quests
+-- Sgt Rhea Duty Missions
 
 destroy_duty_corellia_privateer_6 = SpaceDutyDestroyScreenplay:new {
 	className = "destroy_duty_corellia_privateer_6",
@@ -253,7 +253,20 @@ escort_duty_corellia_privateer_7 = SpaceDutyEscortScreenplay:new {
 
 registerScreenPlay("escort_duty_corellia_privateer_7", true)
 
--- Captain Rikkh Main Quests
+-- Cpt Rikkh Main Missions
+
+
+
+
+
+
+
+
+-- Cpt Rikkh Duty Missions
+
+
+
+
 
 
 --[[
