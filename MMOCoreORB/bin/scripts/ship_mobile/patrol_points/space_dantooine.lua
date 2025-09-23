@@ -962,6 +962,9 @@ space_dantooine = SpacePatrolPointTable:new {
 	{"mining_route_1_07", 1427, -939, -2225},
 	{"mining_route_1_08", 1382, -895, -2277},
 	{"mining_route_1_09", 1352, -767, -2311},
+	{"corellia_imperial_tier3_leg_4_assassinate_three_1", -137, -1281, 2629},
+	{"corellia_imperial_tier4_recovery1_2", 1014, -432, 1398},
+	{"corellia_privateer_tier4_rescue_duty_2", 2514, 4958, 2580},
 }
 
  SpacePatrolPoints:addSpacePatrolPoints(space_dantooine, "space_dantooine")

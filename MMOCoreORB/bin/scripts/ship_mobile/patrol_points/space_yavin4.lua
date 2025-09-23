@@ -408,6 +408,10 @@ space_yavin4 = SpacePatrolPointTable:new {
 	{"nice_miners_1_06", -849, -5821, -5760},
 	{"nice_miners_1_07", -1580, -5748, -5673},
 	{"nice_miners_1_08", -2466, -5660, -5569},
+	{"privateer_escort_1", -2163, 956, 4991},
+	{"privateer_escort_2", -637, -295, 4770},
+	{"privateer_escort_3",  2043, -1230, 5414},
+	{"privateer_escort_4", -2064, -929, -3183},
 }
 
  SpacePatrolPoints:addSpacePatrolPoints(space_yavin4, "space_yavin4")

@@ -442,8 +442,13 @@ function SpaceEscortScreenplay:assignEscortPoints(pShipAgent)
 	-- Add escort points randomly
 	local totalPoints = 0
 	local escortWaypoints = {}
+
 	for i = 1, #self.escortPoints do
 		table.insert(escortWaypoints, self.escortPoints[i])
+	end
+
+	if (self.DEBUG_SPACE_ESCORT) then
+		print(self.className .. ":assignEscortPoints -- Total Available escort Points: " .. #escortWaypoints)
 	end
 
 	while (#escortWaypoints > 0) do
@@ -455,10 +460,18 @@ function SpaceEscortScreenplay:assignEscortPoints(pShipAgent)
 			ShipAiAgent(pShipAgent):addFixedPatrolPoint(pointName)
 
 			totalPoints = totalPoints + 1
+
+			if (self.DEBUG_SPACE_ESCORT) then
+				print(self.className .. ":assignEscortPoints -- Assining Point: " .. pointName)
+			end
 		end
 
 		-- Drop the point from the table
 		table.remove(escortWaypoints, randomPoint)
+	end
+
+	if (self.DEBUG_SPACE_ESCORT) then
+		print(self.className .. ":assignEscortPoints -- Total Points Assigned: " .. totalPoints)
 	end
 
 	writeData(agentID .. ":" .. self.className .. ":escortShipProgress:", totalPoints)
@@ -752,7 +765,7 @@ function SpaceEscortScreenplay:enteredZone(pPlayer, nill, zoneNameHash)
 		createEvent(4000, self.className, "setupEscort", pPlayer, "")
 
 		return 0
-	elseif (zoneNameHash ~= spaceQuestHash and SpaceHelpers:isSpaceQuestTaskComplete(pPlayer, self.questType, self.questName, 1)) then
+	elseif (zoneNameHash ~= spaceQuestHash and SpaceHelpers:isSpaceQuestTaskComplete(pPlayer, self.questType, self.questName, 0)) then
 		createEvent(2000, self.className, "failQuest", pPlayer, "true")
 
 		return 1
@@ -829,6 +842,10 @@ function SpaceEscortScreenplay:notifyEnteredQuestArea(pActiveArea, pShip)
 
 		-- The escort ship will be inside one of the active areas before it can be assigned the data to track its escorting player
 		if (playerID == 0) then
+			if (self.DEBUG_SPACE_ESCORT) then
+				print(self.className .. ":notifyEnteredQuestArea - Escort Ship: " .. SceneObject(pShip):getDisplayedName() .. " owning playerID is 0.")
+			end
+
 			return 0
 		end
 
@@ -836,6 +853,10 @@ function SpaceEscortScreenplay:notifyEnteredQuestArea(pActiveArea, pShip)
 
 		-- Prevent attacking ships triggering escort progress
 		if (escortID ~= shipAgentID) then
+			if (self.DEBUG_SPACE_ESCORT) then
+				print(self.className .. ":notifyEnteredQuestArea - Escort ship does not match the entering shipAgent.")
+			end
+
 			return 0
 		end
 

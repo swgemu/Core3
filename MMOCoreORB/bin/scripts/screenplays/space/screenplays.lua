@@ -5,6 +5,7 @@ includeFile("space/SpaceAssassinateScreenplay.lua")
 includeFile("space/SpaceDestroyScreenplay.lua")
 includeFile("space/SpaceDutyDestroyScreenplay.lua")
 includeFile("space/SpaceEscortScreenplay.lua")
+includeFile("space/SpaceInspectScreenplay.lua")
 includeFile("space/SpaceDutyEscortScreenplay.lua")
 includeFile("space/SpacePatrolScreenplay.lua")
 includeFile("space/SpaceSurpriseAttackScreenplay.lua")
@@ -78,6 +79,7 @@ includeFile("space/conversations/neutral/gilBurtinConvoHandler.lua")
 -- Corsec
 includeFile("space/CorsecSquadronScreenplay.lua")
 includeFile("space/conversations/neutral/corsec_squadron/rheaConvoHandler.lua")
+includeFile("space/conversations/neutral/corsec_squadron/rikkhConvoHandler.lua")
 
 -- Smuggler
 includeFile("space/SmugglerSquadronScreenplay.lua")
