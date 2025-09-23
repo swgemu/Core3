@@ -167,36 +167,39 @@ function SpaceDestroyScreenplay:enteredZone(pPlayer, nill, zoneNameHash)
 
 		-- Give Waypoints for Spawns
 		local waypointTable = self.shipLocations
-		local waypointIDs = {}
 
-		if (self.DEBUG_SPACE_DESTROY) then
-			print(self.className .. " -- Waypoint table size: " .. #waypointTable)
-		end
+		if (#waypointTable > 0) then
+			local waypointIDs = {}
 
-		for i = 1, #waypointTable, 1 do
-			local point = waypointTable[i]
+			if (self.DEBUG_SPACE_DESTROY) then
+				print(self.className .. " -- Waypoint table size: " .. #waypointTable)
+			end
 
-			local waypointID = PlayerObject(pGhost):addWaypoint(self.questZone, "@spacequest/destroy/" .. self.questName .. ":quest_destroy_t", "", point.x, point.z, point.y, WAYPOINT_SPACE, true, true, 0)
+			for i = 1, #waypointTable, 1 do
+				local point = waypointTable[i]
 
-			if (waypointID > 0) then
-				waypointIDs[#waypointIDs + 1] = tostring(waypointID)
+				local waypointID = PlayerObject(pGhost):addWaypoint(self.questZone, "@spacequest/destroy/" .. self.questName .. ":quest_destroy_t", "", point.x, point.z, point.y, WAYPOINT_SPACE, true, true, 0)
 
-				if (self.DEBUG_SPACE_DESTROY) then
-					print(self.className .. " -- Waypoint Added #" .. i .. " ID: " .. waypointID)
-				end
+				if (waypointID > 0) then
+					waypointIDs[#waypointIDs + 1] = tostring(waypointID)
 
-				local pWaypoint = getSceneObject(waypointID)
+					if (self.DEBUG_SPACE_DESTROY) then
+						print(self.className .. " -- Waypoint Added #" .. i .. " ID: " .. waypointID)
+					end
 
-				if (pWaypoint ~= nil) then
-					WaypointObject(pWaypoint):setQuestDetails("@spacequest/" .. self.questType .. "/" .. self.questName .. ":title_d")
+					local pWaypoint = getSceneObject(waypointID)
+
+					if (pWaypoint ~= nil) then
+						WaypointObject(pWaypoint):setQuestDetails("@spacequest/" .. self.questType .. "/" .. self.questName .. ":title_d")
+					end
 				end
 			end
+
+			writeStringVectorSharedMemory(playerID .. ":" .. self.className .. ":waypointVector", waypointIDs)
+
+			-- Quest update message
+			SpaceHelpers:sendQuestUpdate(pPlayer, #waypointTable .. " waypoint(s) to possible destroy target locations have been added to your datapad.") -- "destroy_target_waypoints"
 		end
-
-		writeStringVectorSharedMemory(playerID .. ":" .. self.className .. ":waypointVector", waypointIDs)
-
-		-- Quest update message
-		SpaceHelpers:sendQuestUpdate(pPlayer, #waypointTable .. " waypoint(s) to possible destroy target locations have been added to your datapad.") -- "destroy_target_waypoints"
 
 		-- Player effect for player
 		CreatureObject(pPlayer):playEffect("clienteffect/ui_quest_waypoint_target.cef", "")

@@ -2,11 +2,11 @@ local Logger = require("utils.logger")
 
 --[[
 
-	Corsec Squadron Quests
+	Corsec Squadron Missions
 
 ]]
 
--- Sgt Rhea Main Quests
+-- Sgt Rhea Main Missions
 
 patrol_corellia_privateer_1 = SpacePatrolScreenplay:new {
 	className = "patrol_corellia_privateer_1",
@@ -182,7 +182,7 @@ assassinate_corellia_privateer_tier1_4a = SpaceAssassinateScreenplay:new {
 
 registerScreenPlay("assassinate_corellia_privateer_tier1_4a", true)
 
--- Sgt Rhea Duty Quests
+-- Sgt Rhea Duty Missions
 
 destroy_duty_corellia_privateer_6 = SpaceDutyDestroyScreenplay:new {
 	className = "destroy_duty_corellia_privateer_6",
@@ -253,8 +253,175 @@ escort_duty_corellia_privateer_7 = SpaceDutyEscortScreenplay:new {
 
 registerScreenPlay("escort_duty_corellia_privateer_7", true)
 
--- Captain Rikkh Main Quests
+-- Cpt Rikkh Main Missions
 
+destroy_corellia_privateer_13a = SpaceDestroyScreenplay:new {
+	className = "destroy_corellia_privateer_13a",
+
+	questName = "corellia_privateer_13a",
+	questType = "destroy",
+
+	questZone = "space_lok",
+
+	creditReward = 5000,
+
+	sideQuest = false,
+	sideQuestType = "",
+
+	killsRequired = 5,
+
+	shipLocations = {},
+
+	shipTypes = {
+		"nym_blastboat_tier2", "nym_blastboat_tier3", "nym_blastboat_tier3", "nym_blastboat_tier4", "nym_blastboat_tier5",
+		"nym_bomber_tier2", "nym_bomber_tier3", "nym_bomber_tier3", "nym_bomber_tier4", "nym_bomber_tier5", "nym_cannon_ship",
+		"nym_cannon_ship_tier2", "nym_cannon_ship_tier4", "nym_enforcer_tier2", "nym_enforcer_tier3", "nym_enforcer_tier3",
+		"nym_enforcer_tier4", "nym_enforcer_tier5", "nym_fighter_tier2", "nym_fighter_tier3", "nym_fighter_tier3", "nym_fighter_tier4",
+		"nym_fighter_tier5", "nym_gunship_tier1", "nym_gunship_tier2", "nym_gunship_tier3", "nym_gunship_tier4", "nym_gunship_tier5",
+		"nym_interceptor_tier4", "nym_lieutenant_tier4", "nym_patrol_craft_tier2", "nym_patrol_craft_tier3", "nym_patrol_craft_tier4",
+		"nym_patrol_craft_tier5", "nym_patrol_craft_tier5", "nym_enforcer_captain_tier4", "nym_escort_fighter_tier4"
+	},
+}
+
+registerScreenPlay("destroy_corellia_privateer_13a", true)
+
+
+
+
+
+
+
+
+
+
+-- Cpt Rikkh Duty Missions
+
+destroy_duty_corellia_privateer_9 = SpaceDutyDestroyScreenplay:new {
+	className = "destroy_duty_corellia_privateer_9",
+
+	questName = "corellia_privateer_9",
+	questType = "destroy_duty",
+
+	questZone = "space_corellia",
+
+	creditReward = 100,
+
+	sideQuest = false,
+	sideQuestType = "",
+
+	-- Screenplay Specific Variables
+	totalLevels = 2, -- Amount of levels a player has to complete to finish mission
+	totalRounds = 2, -- Total Rounds for each of the levels
+	totalWaves = 2, -- Total waves at each location that is not the boss ship
+
+	minDistance = 12500, -- Minimum distance away for new location
+	maxDistance = 17500, -- Maximum distance away for new location
+
+	bossShip = "hidden_daggers_executioner_tier1",
+	shipTypes = {"hidden_daggers_enforcer_tier1", "hidden_daggers_eliminator_tier1"},
+
+	creditReward = 100,
+}
+
+registerScreenPlay("destroy_duty_corellia_privateer_9", true)
+
+escort_duty_corellia_privateer_10 = SpaceDutyEscortScreenplay:new {
+	className = "escort_duty_corellia_privateer_10",
+
+	questName = "corellia_privateer_10",
+	questType = "escort_duty",
+
+	questZone = "space_corellia",
+
+	creditReward = 1000,
+
+	itemReward = {
+		--{species = {}, item = ""},
+	},
+
+	sideQuest = false,
+	sideQuestType = "",
+
+	escortShips = {"freighterheavy_tier1", "freighterlight_tier1", "freightermedium_tier1"},
+
+	escortPoints = {
+		{name = "privateer_security_escort_1", zoneName = "space_corellia", x = -5034, z = -5439, y = -4558, escortNumber = 1, radius = 250},
+		{name = "privateer_security_escort_2", zoneName = "space_corellia", x = -2103, z = -5336, y = -5600, escortNumber = 2, radius = 250},
+		{name = "privateer_security_escort_3", zoneName = "space_corellia", x = 1262, z = -5572, y = -5035, escortNumber = 3, radius = 250},
+		{name = "privateer_security_escort_4", zoneName = "space_corellia", x = 5940, z = -5892, y = -4039, escortNumber = 4, radius = 250},
+	},
+
+	attackDelay = 90, -- In Seconds
+
+	totalAttackGroups = 2,
+
+	attackGroups = {
+		{"blacksun_fighter_s01_tier1", "blacksun_fighter_s02_tier1"},
+		{"blacklight_bomber_tier1", "blacksun_fighter_s03_tier1"},
+	},
+
+	creditKillBonus = 100,
+}
+
+registerScreenPlay("escort_duty_corellia_privateer_10", true)
+
+destroy_duty_corellia_privateer_11 = SpaceDutyDestroyScreenplay:new {
+	className = "destroy_duty_corellia_privateer_11",
+
+	questName = "corellia_privateer_11",
+	questType = "destroy_duty",
+
+	questZone = "space_corellia",
+
+	creditReward = 100,
+
+	sideQuest = false,
+	sideQuestType = "",
+
+	-- Screenplay Specific Variables
+	totalLevels = 2, -- Amount of levels a player has to complete to finish mission
+	totalRounds = 2, -- Total Rounds for each of the levels
+	totalWaves = 2, -- Total waves at each location that is not the boss ship
+
+	minDistance = 12500, -- Minimum distance away for new location
+	maxDistance = 17500, -- Maximum distance away for new location
+
+	bossShip = "hidden_daggers_executioner_tier1",
+	shipTypes = {"hidden_daggers_enforcer_tier1", "hidden_daggers_eliminator_tier1"},
+
+	creditReward = 100,
+}
+
+registerScreenPlay("destroy_duty_corellia_privateer_11", true)
+
+recovery_duty_corellia_privateer_12 = SpaceDutyDestroyScreenplay:new {
+	className = "recovery_duty_corellia_privateer_12",
+
+	questName = "corellia_privateer_12",
+	questType = "recovery_duty",
+
+	questZone = "space_corellia",
+
+	creditReward = 100,
+
+	sideQuest = false,
+	sideQuestType = "",
+
+	-- Screenplay Specific Variables
+	totalLevels = 2, -- Amount of levels a player has to complete to finish mission
+	totalRounds = 2, -- Total Rounds for each of the levels
+	totalWaves = 2, -- Total waves at each location that is not the boss ship
+
+	minDistance = 12500, -- Minimum distance away for new location
+	maxDistance = 17500, -- Maximum distance away for new location
+
+	bossShip = "hidden_daggers_executioner_tier1",
+	shipTypes = {"hidden_daggers_enforcer_tier1", "hidden_daggers_eliminator_tier1"},
+
+	creditReward = 100,
+}
+
+registerScreenPlay("recovery_duty_corellia_privateer_12", true)
 
 --[[
 
@@ -267,6 +434,7 @@ CorsecSquadronScreenplay = ScreenPlay:new {
 
 	DEBUG_CORSEC = false,
 
+	-- Tier1
 	QUEST_STRING_1 = {type = "patrol", name = "corellia_privateer_1"},
 	QUEST_STRING_1_SIDE = {type = "destroy_surpriseattack", name = "corellia_privateer_1"},
 	QUEST_STRING_2 = {type = "destroy", name = "corellia_privateer_2"},
@@ -275,6 +443,16 @@ CorsecSquadronScreenplay = ScreenPlay:new {
 	QUEST_STRING_4 = {type = "assassinate", name = "corellia_privateer_tier1_4a"},
 	QUEST_STRING_DUTY_4_1 = {type = "destroy_duty", name = "corellia_privateer_6"},
 	QUEST_STRING_DUTY_4_2 = {type = "escort_duty", name = "corellia_privateer_7"},
+
+	-- Tier2
+	TIER2_QUEST_STRING_1 = {type = "destroy", name = "corellia_privateer_13a"},
+	TIER2_QUEST_STRING_2 = {type = "escort", name = "corellia_privateer_14"},
+	TIER2_QUEST_STRING_3 = {type = "inspect", name = "corellia_privateer_15"},
+	TIER2_QUEST_STRING_4 = {type = "assassinate", name = "corellia_privateer_tier2_4a"},
+	TIER2_QUEST_STRING_DUTY_1 = {type = "destroy_duty", name = "corellia_privateer_9"},
+	TIER2_QUEST_STRING_DUTY_2 = {type = "escort_duty", name = "corellia_privateer_10"},
+	TIER2_QUEST_STRING_DUTY_3 = {type = "destroy_duty", name = "corellia_privateer_11"},
+	TIER2_QUEST_STRING_DUTY_4 = {type = "recovery_duty", name = "corellia_privateer_12"},
 }
 
 registerScreenPlay("CorsecSquadronScreenplay", false)
@@ -318,4 +496,38 @@ function CorsecSquadronScreenplay:resetRheaQuests(pPlayer)
 	removeQuestStatus(playerID .. CorsecSquadronScreenplay.QUEST_STRING_2.name .. ":reward")
 	removeQuestStatus(playerID .. CorsecSquadronScreenplay.QUEST_STRING_3.name .. ":reward")
 	removeQuestStatus(playerID .. CorsecSquadronScreenplay.QUEST_STRING_4.name .. ":reward")
+end
+
+function CorsecSquadronScreenplay:resetRikkhQuests(pPlayer)
+	if (pPlayer == nil) then
+		return
+	end
+
+	patrol_corellia_privateer_1:failQuest(pPlayer, "false")
+	destroy_surpriseattack_corellia_privateer_1:failQuest(pPlayer, "false")
+	destroy_corellia_privateer_2:failQuest(pPlayer, "false")
+	patrol_corellia_privateer_3:failQuest(pPlayer, "false")
+	escort_corellia_privateer_3:failQuest(pPlayer, "false")
+	assassinate_corellia_privateer_tier1_4a:failQuest(pPlayer, "false")
+
+	SpaceHelpers:failSpaceQuest(pPlayer, self.TIER2_QUEST_STRING_1.type, self.TIER2_QUEST_STRING_1.name, false)
+	SpaceHelpers:clearSpaceQuest(pPlayer, self.TIER2_QUEST_STRING_1.type, self.TIER2_QUEST_STRING_1.name, false)
+
+
+	SpaceHelpers:failSpaceQuest(pPlayer, self.TIER2_QUEST_STRING_2.type, self.TIER2_QUEST_STRING_2.name, false)
+	SpaceHelpers:clearSpaceQuest(pPlayer, self.TIER2_QUEST_STRING_2.type, self.TIER2_QUEST_STRING_2.name, false)
+
+	SpaceHelpers:failSpaceQuest(pPlayer, self.TIER2_QUEST_STRING_3.type, self.TIER2_QUEST_STRING_3.name, false)
+	SpaceHelpers:clearSpaceQuest(pPlayer, self.TIER2_QUEST_STRING_3.type, self.TIER2_QUEST_STRING_3.name, false)
+
+
+	SpaceHelpers:failSpaceQuest(pPlayer, self.TIER2_QUEST_STRING_4.type, self.TIER2_QUEST_STRING_4.name, false)
+	SpaceHelpers:clearSpaceQuest(pPlayer, self.TIER2_QUEST_STRING_4.type, self.TIER2_QUEST_STRING_4.name, false)
+
+	local playerID = SceneObject(pPlayer):getObjectID()
+
+	removeQuestStatus(playerID .. CorsecSquadronScreenplay.TIER2_QUEST_STRING_1.name .. ":reward")
+	removeQuestStatus(playerID .. CorsecSquadronScreenplay.TIER2_QUEST_STRING_2.name .. ":reward")
+	removeQuestStatus(playerID .. CorsecSquadronScreenplay.TIER2_QUEST_STRING_3.name .. ":reward")
+	removeQuestStatus(playerID .. CorsecSquadronScreenplay.TIER2_QUEST_STRING_4.name .. ":reward")
 end
