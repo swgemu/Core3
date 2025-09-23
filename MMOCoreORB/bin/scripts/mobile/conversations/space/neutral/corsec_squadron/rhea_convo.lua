@@ -565,11 +565,6 @@ escort_duty = ConvoScreen:new {
 }
 rhea_convo_template:addScreen(escort_duty);
 
-
-
-
-
-
 not_corsec_duty_missions = ConvoScreen:new {
 	id = "not_corsec_duty_missions",
 	leftDialog = "@conversation/corellia_privateer_trainer:s_dadaabf", -- As a matter of fact, I do have some duty missions that you could perform. Who knows, maybe if you do well, you might be invited to join the CorSec. Are you ready for a duty mission?
@@ -578,9 +573,6 @@ not_corsec_duty_missions = ConvoScreen:new {
 	options = {}
 }
 rhea_convo_template:addScreen(not_corsec_duty_missions);
-
-
-
 
 --[[
 
