@@ -3,6 +3,10 @@ local QuestManager = require("managers.quest.quest_manager")
 rheaConvoHandler = conv_handler:new {}
 
 function rheaConvoHandler:getInitialScreen(pPlayer, pNpc, pConvTemplate)
+	if (pPlayer == nil or pNpc == nil or pConvTemplate == nil) then
+		return nil
+	end
+
 	local convoTemplate = LuaConversationTemplate(pConvTemplate)
 
 	local faction = CreatureObject(pPlayer):getFaction()
@@ -225,6 +229,11 @@ function rheaConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNpc, select
 			end
 		end
 
+		if (SpaceHelpers:hasCompletedPilotTier(pPlayer, "neutral", 1) and ghost:getPilotTier() == 1) then
+			-- Increment pilot to Tier 2!
+			ghost:incrementPilotTier()
+		end
+
 		return pClonedScreen
 	elseif (screenID == "destroy_duty") then
 		destroy_duty_corellia_privateer_6:startQuest(pPlayer, pNpc)
@@ -284,7 +293,9 @@ function rheaConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNpc, select
 		SpaceHelpers:setSquadronType(pPlayer, CORSEC_SQUADRON)
 
 		-- Set pilot tier
-		PlayerObject(pGhost):incrementPilotTier()
+		if (ghost:getPilotTier() < 1) then
+			ghost:incrementPilotTier()
+		end
 	elseif (screenID == "goodbye") then
 		CreatureObject(pPlayer):doAnimation("slump_head")
 		CreatureObject(pNpc):doAnimation("goodbye")
@@ -299,7 +310,9 @@ function rheaConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNpc, select
 		SpaceHelpers:setSquadronType(pPlayer, CORSEC_SQUADRON)
 
 		-- Set pilot tier
-		PlayerObject(pGhost):incrementPilotTier()
+		if (ghost:getPilotTier() < 1) then
+			ghost:incrementPilotTier()
+		end
 
 		if (not SpaceHelpers:hasCertifiedShip(pPlayer, true)) then
 			clonedConversation:addOption("@conversation/corellia_privateer_trainer:s_5091cb8e", "no_ship") -- Ah... no I don't.
