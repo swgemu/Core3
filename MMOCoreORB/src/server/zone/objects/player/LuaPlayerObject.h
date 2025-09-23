@@ -109,6 +109,7 @@ namespace player {
 		// JTL
 		int incrementPilotTier(lua_State* L);
 		int resetPilotTier(lua_State* L);
+		int setPilotTier(lua_State* L);
 		int getPilotTier(lua_State* L);
 		int isSquadronType(lua_State* L);
 		int setSquadronType(lua_State* L);

@@ -129,6 +129,19 @@ public:
 
 						msg << "Player Level: " << playerLevel << endl;
 					}
+
+					auto tarGhost = creoObject->getPlayerObject();
+
+					if (tarGhost != nullptr) {
+						int pilotSquadron = tarGhost->getPilotSquadron();
+						int pilotTier = tarGhost->getPilotTier();
+						String pilotFaction = FactionManager::instance()->getSpaceFactionBySquadron(pilotSquadron, pilotTier);
+
+						msg <<
+						"Pilot Tier: " << pilotTier << endl <<
+						"Pilot Squadron: " << pilotSquadron << " (Defined in PlayerManager.idl)" << endl <<
+						"Pilot Faction: " << pilotFaction << endl;
+					}
 				}
 
 				if (creoObject->isGrouped()) {
