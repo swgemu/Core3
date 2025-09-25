@@ -22,8 +22,6 @@ void ClientCore::initialize() {
 	info(true) << __PRETTY_FUNCTION__ << " start";
 }
 
-int connectCount = 0, disconnectCount = 0;
-
 void ClientCore::run() {
 	for (int i = 0; i < instances; ++i) {
 		zones.add(nullptr);
@@ -38,26 +36,12 @@ void ClientCore::run() {
 
 	info(true) << "Waiting for zone connection...";
 
-	// Wait for zone to be fully loaded
-	bool zoneReady = false;
-	int attempts = 0;
-	const int maxAttempts = 60; // 30 seconds max wait
-
-	while (!zoneReady && attempts < maxAttempts) {
-		Thread::sleep(500);
-		attempts++;
-
-		Zone* zone = zones.get(0);
-		if (zone != nullptr && zone->isSceneLoaded()) {
-			zoneReady = true;
-			info(true) << "Zone connection established and scene loaded!";
-		}
-	}
-
-	if (!zoneReady) {
-		info(true) << "Timeout waiting for zone connection";
-	} else {
+	Zone* zone = zones.get(0);
+	if (zone != nullptr && zone->waitForSceneReady()) {
+		info(true) << "Zone connection established and scene loaded!";
 		info(true) << "Login flow test completed successfully!";
+	} else {
+		info(true) << "Timeout waiting for zone connection";
 	}
 
 	info(true) << "Shutting down...";
@@ -122,8 +106,6 @@ bool ClientCore::loginCharacter(int index) {
 		zone = new Zone(index, objid, acc, sessionID, galaxy.getAddress(), galaxy.getPort());
 		zone->start();
 		zones.set(index, zone);
-
-		connectCount++;
 	} catch (Exception& e) {
 		e.printMessage();
 		return false;
@@ -142,8 +124,6 @@ void ClientCore::logoutCharacter(int index) {
 	zones.set(index, nullptr);
 
 	zone->disconnect();
-
-	disconnectCount++;
 
 	delete zone;
 }

@@ -40,19 +40,6 @@ public:
 
 	void run();
 
-	void addCharacter(uint64 objectID) {
-		CharacterListEntry entry;
-		entry.setObjectID(objectID);
-		characters.add(entry);
-	}
-
-	void addCharacter(uint64 objectID, uint32 galaxyID) {
-		CharacterListEntry entry;
-		entry.setObjectID(objectID);
-		entry.setGalaxyID(galaxyID);
-		characters.add(entry);
-	}
-
 	void addCharacter(const CharacterListEntry& entry) {
 		characters.add(entry);
 	}

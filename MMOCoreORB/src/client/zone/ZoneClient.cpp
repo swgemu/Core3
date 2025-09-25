@@ -16,7 +16,6 @@ ZoneClient::ZoneClient(const String& address, int port) {
 
 	player = nullptr;
 
-	key = 0;
 	accountID = 0;
 
 	zone = nullptr;

@@ -6,6 +6,7 @@
 #define ZONECLIENT_H_
 
 #include "client/zone/objects/player/PlayerCreature.h"
+#include "client/zone/ZonePacketHandler.h"
 
 class Zone;
 class ZonePacketHandler;
@@ -14,15 +15,10 @@ class ZoneClient : public ServiceHandler {
 	Reference<BaseClient*> client;
 
 	Zone* zone;
-	SpaceZone* spaceZone;
 
 	Reference<PlayerCreature*> player;
 
-	uint32 key;
 	uint32 accountID;
-
-	//bool doRun;
-	//bool disconnecting;
 
 	BasePacketHandler* basePacketHandler;
 	ZonePacketHandler* zonePacketHandler;
@@ -41,10 +37,13 @@ public:
 	}
 
 	void disconnect() {
+		if (zonePacketHandler != nullptr) {
+			client->info(true) << "disconnecting after " << zonePacketHandler->getPacketCount() << " packets.";
+		}
+
 		client->disconnect();
 
-
-		client->info("disconnected" , true);
+		client->info(true) << "disconnected";
 	}
 
 	ServiceClient* createConnection(Socket* sock, SocketAddress& addr) {
@@ -83,16 +82,8 @@ public:
 		return messageQueue.pop();
 	}
 
-	//void disconnect(bool doLock = true);
-
 	void setZone(Zone* zone) {
 		ZoneClient::zone = zone;
-		ZoneClient::spaceZone = nullptr;
-	}
-
-	void setZone(SpaceZone* zone) {
-		ZoneClient::spaceZone = zone;
-		ZoneClient::zone = nullptr;
 	}
 
 	void setAccountID(uint32 id) {
@@ -101,10 +92,6 @@ public:
 
 	void setPlayer(PlayerCreature* p) {
 		player = p;
-	}
-
-	void setKey(uint32 key) {
-		ZoneClient::key = key;
 	}
 
 	BaseClient* getClient() {
@@ -119,18 +106,9 @@ public:
 		return zone;
 	}
 
-	SpaceZone* getSpaceZone() {
-		return spaceZone;
-	}
-
-	uint32 getKey(){
-		return key;
-	}
-
 	uint32 getAccountID() {
 		return accountID;
 	}
-
 };
 
 #endif /* ZONECLIENT_H_ */

@@ -9,13 +9,18 @@
 
 class Zone;
 
-class ZonePacketHandler : public Logger {
+class ZonePacketHandler : public Mutex, public Logger {
 	Zone* zone;
+	AtomicInteger packetCount;
 
 public:
 	ZonePacketHandler(const String& s, Zone * z);
 
 	~ZonePacketHandler() {
+	}
+
+	int getPacketCount() {
+		return packetCount.get();
 	}
 
 	void handleMessage(Message* pack);
@@ -31,7 +36,7 @@ public:
 	void handleUpdateContainmentMessage(Message* pack);
 	void handleSceneObejctDestroyMessage(Message* pack);
 	void handleClientPermissionsMessage(Message* pack);
-
+	void handleCmdSceneReady(Message* pack);
 };
 
 #endif /* ZONEPACKETHANDLER_H_ */

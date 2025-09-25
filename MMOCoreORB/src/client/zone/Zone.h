@@ -13,10 +13,6 @@ class ObjectController;
 class ObjectManager;
 
 class Zone : public Thread, public Mutex, public Logger {
-	//LoginSession* loginSession;
-
-	//ObjectMap objectMap;
-
 	uint64 characterID;
 	uint32 accountID;
 	String sessionID;
@@ -31,8 +27,7 @@ class Zone : public Thread, public Mutex, public Logger {
 	ObjectController* objectController;
 
 	Condition characterCreatedCondition;
-
-	Vector<PlayerCreature*> playerArray;
+	Condition sceneReadyCondition;
 
 	ObjectManager* objectManager;
 
@@ -40,38 +35,49 @@ class Zone : public Thread, public Mutex, public Logger {
 
 	Time startTime;
 	bool started;
-	bool sceneLoaded;
+	bool sceneReady;
 
 public:
 	Zone(int instance, uint64 characterObjectID, uint32 account, const String& sessionID, const String& galaxyAddress, uint32 galaxyPort);
 	~Zone();
 
-	static int createdChar;
-
 	void run();
-	//void initConnection();
 
-	void disconnect();
+	void disconnect() {
+		if (client != nullptr) {
+			client->disconnect();
+		}
+	}
 
-	void sceneStarted();
+	void setSceneStarted() {
+		info(true) << __FUNCTION__ << " in " << startTime.miliDifference() << "ms";
+	}
 
-	void follow(const String& name);
-	void stopFollow();
+	void setSceneReady() {
+		Locker locker(this);
+		
+		info(true) << __FUNCTION__ << " in " << startTime.miliDifference() << "ms";
+		sceneReady = true;
+		
+		sceneReadyCondition.signal(this);
+	}
 
-	void lurk();
+	bool waitForSceneReady(int timeoutMs = 30000) {
+		Locker locker(this);
+		
+		if (sceneReady) {
+			return true;
+		}
+		
+		Time timeout;
+		timeout.addMiliTime(timeoutMs);
+		bool success = !sceneReadyCondition.timedWait(this, &timeout);
+		
+		return success && sceneReady;
+	}
 
-	bool doCommand(const String& command, const String& arguments);
-
-	//LocalPlayer* createLocalPlayer(uint64 pid);
-
-	void insertPlayer();
-	void insertPlayer(PlayerCreature* player);
-
-	//void waitFor();
-
-	/*inline void addEvent(Event* event, uint64 time) {
-		scheduler->addEvent(event, time);
-	}*/
+	//DELETE?void insertPlayer();
+	//DELETE?void insertPlayer(PlayerCreature* player);
 
 	PlayerCreature* getSelfPlayer();
 
@@ -90,6 +96,10 @@ public:
 
 	void setCharacterID(uint64 val) {
 		lock();
+
+		if (characterID != 0 && val != characterID) {
+			warning() << __FUNCTION__ << "(" << val << "): oid changing, current characterID=" << characterID;
+		}
 
 		characterID = val;
 
@@ -113,16 +123,12 @@ public:
 		return objectController;
 	}
 
-	Vector<PlayerCreature*>* getNotInitiatedPlayers() {
-		return &playerArray;
-	}
-
 	bool isStarted() {
 		return started;
 	}
 
-	bool isSceneLoaded() {
-		return sceneLoaded;
+	bool isSceneReady() {
+		return sceneReady;
 	}
 };
 

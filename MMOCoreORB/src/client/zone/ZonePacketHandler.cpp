@@ -9,18 +9,28 @@
 ZonePacketHandler::ZonePacketHandler(const String& s, Zone * z) : Logger(s) {
 	zone = z;
 
+	packetCount.set(0);
 	setLogging(true);
 	setGlobalLogging(true);
 	setInfoLogLevel();
 }
 
 void ZonePacketHandler::handleMessage(Message* pack) {
-	debug() << "parsing " << *pack;
+	Locker lock(this);
 
+	packetCount.increment();
 	sys::uint16 opcount = pack->parseShort();
 	sys::uint32 opcode = pack->parseInt();
 
+	// info(true) << packetCount.get() << ": -------------------- (" << opcount << "; 0x" << hex << opcode << ") --------------------";
+
 	switch (opcount) {
+	case 01:
+		switch (opcode) {
+		case 0x43FD1C22: // CmdSceneReady
+			handleCmdSceneReady(pack);
+			break;
+		}
 	case 02:
 		switch (opcode) {
 		case 0x1DB575CC: // char create success
@@ -52,6 +62,10 @@ void ZonePacketHandler::handleMessage(Message* pack) {
 		case 0x56CBDE9E:
 			handleUpdateContainmentMessage(pack);
 			break;
+
+		case 0x6D2A6413: // chat system message
+			handleChatSystemMessage(pack);
+			break;
 		}
 		break;
 	case 05:
@@ -66,10 +80,6 @@ void ZonePacketHandler::handleMessage(Message* pack) {
 
 		case 0x3C565CED: // instant msg
 			handleChatInstantMessageToClient(pack);
-			break;
-
-		case 0x6D2A6413: // chat system message
-			handleChatSystemMessage(pack);
 			break;
 
 		case 0x80CE5E46: // objc
@@ -98,31 +108,20 @@ void ZonePacketHandler::handleMessage(Message* pack) {
 }
 
 void ZonePacketHandler::handleClientPermissionsMessage(Message* pack) {
+	info(true) << __FUNCTION__ << " packet#" << packetCount.get();
+
+	info(true) << "    canLogin = " << pack->parseByte();
+	info(true) << "    canCreateRegularCharacter = " << pack->parseByte();
+	info(true) << "    canCreateJediCharacter = " << pack->parseByte();
+	info(true) << "    canSkipTutorial = " << pack->parseByte();
+
 	BaseClient* client = (BaseClient*) pack->getClient();
 
 	if (zone->getCharacterID() == 0) {
-		//client->info("enter new Character Name to create", true);
-		/*char name[256];
-				fgets(name, sizeof(name), stdin);*/
-
-		client->info("creating new character");
-
-		String name = "character";
-		name += ('a' + System::random(22));
-		name += ('a' + System::random(22));
-		name += ('a' + System::random(22));
-		name += ('a' + System::random(22));
-		name += ('a' + System::random(22));
-
-		client->info("name " + name);
-
-		String charName = name;
-		charName = charName.replaceFirst("\n", "");
-
-		BaseMessage* msg = new ClientCreateCharacter(charName);
-		client->sendPacket(msg);
+		client->error() << __FUNCTION__ << ": no character OID set in zone?";
+		throw Exception("ClientPermissionsMessage: Zone does not have a character OID");
 	} else {
-		client->info("selecting sent character");
+		client->info(true) << __FUNCTION__ << ": Sending SelectCharacter(" << zone->getCharacterID() << ")";
 
 		BaseMessage* selectChar = new SelectCharacter(zone->getCharacterID());
 		client->sendPacket(selectChar);
@@ -130,9 +129,9 @@ void ZonePacketHandler::handleClientPermissionsMessage(Message* pack) {
 }
 
 void ZonePacketHandler::handleCmdStartScene(Message* pack) {
-	BaseClient* client = (BaseClient*) pack->getClient();
+	info(true) << __FUNCTION__ << " packet#" << packetCount.get();
 
-	client->info("received start scene");
+	BaseClient* client = (BaseClient*) pack->getClient();
 
 	uint8 unknown = pack->parseByte();
 	uint64 selfPlayerObjectID = pack->parseLong();
@@ -153,7 +152,7 @@ void ZonePacketHandler::handleCmdStartScene(Message* pack) {
 	BaseMessage* msg = new CmdSceneReady();
 	client->sendPacket(msg);
 
-	zone->sceneStarted();
+	zone->setSceneStarted();
 }
 
 void ZonePacketHandler::handleSceneObjectCreateMessage(Message* pack) {
@@ -300,20 +299,25 @@ void ZonePacketHandler::handleChatInstantMessageToClient(Message* pack) {
 }
 
 void ZonePacketHandler::handleChatSystemMessage(Message* pack) {
+	info(true) << __FUNCTION__ << " packet#" << packetCount.get();
+
 	BaseClient* client = (BaseClient*) pack->getClient();
 
 	uint8 type = pack->parseByte();
 
-	if (type == 1) {
-		UnicodeString message;
-		pack->parseUnicode(message);
+	info(true) << "type=" << type;
 
-		StringBuffer systemMessage;
-		systemMessage << "SystemMessage:[" << message.toString() << "]";
+	UnicodeString message;
+	pack->parseUnicode(message);
 
-		client->info(systemMessage.toString());
+	StringTokenizer lines(message.toString());
+	lines.setDelimeter("\n");
+
+	while (lines.hasMoreTokens()) {
+		String line;
+		lines.getStringToken(line);
+		info(true) << "> " << line;
 	}
-
 }
 
 void ZonePacketHandler::handleObjectControllerMessage(Message* pack) {
@@ -358,4 +362,10 @@ void ZonePacketHandler::handleUpdateContainmentMessage(Message* pack) {
 	}
 
 	parent->transferObject(object, type);
+}
+
+void ZonePacketHandler::handleCmdSceneReady(Message* pack) {
+	info(true) << __FUNCTION__ << " packet#" << packetCount.get();
+
+	zone->setSceneReady();
 }
