@@ -50,6 +50,7 @@ Luna<LuaShipAiAgent>::RegType LuaShipAiAgent::Register[] = {
 	{ "addSpaceFactionEnemy", &LuaShipAiAgent::addSpaceFactionEnemy },
 	{ "removeSpaceFactionEnemy", &LuaShipAiAgent::removeSpaceFactionEnemy },
 	{ "setEscortSpeed", &LuaShipAiAgent::setEscortSpeed },
+	{ "setMissionOwner", &LuaShipAiAgent::setMissionOwner },
 
 	{ 0, 0 }
 };
@@ -403,6 +404,27 @@ int LuaShipAiAgent::setEscortSpeed(lua_State* L) {
 	Locker lock(realObject);
 
 	realObject->setEscortSpeed(escortSpeed);
+
+	return 0;
+}
+
+int LuaShipAiAgent::setMissionOwner(lua_State* L) {
+	int numberOfArguments = lua_gettop(L) - 1;
+
+	if (numberOfArguments != 1) {
+		realObject->error() << "Improper number of arguments in LuaShipAiAgent::setOwner.";
+		return 0;
+	}
+
+	CreatureObject* player = (CreatureObject*) lua_touserdata(L, -1);
+
+	if (player == nullptr || !player->isPlayerCreature()) {
+		return 0;
+	}
+
+	Locker lock(realObject);
+
+	realObject->setMissionOwner(player);
 
 	return 0;
 }

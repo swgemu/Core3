@@ -2083,12 +2083,46 @@ bool ShipAiAgentImplementation::isAttackableBy(TangibleObject* attackerTano) {
 
 	auto attackerShip = attackerTano->asShipObject();
 
-	if (attackerShip != nullptr) {
-		auto attackerSpaceFaction = attackerShip->getShipFaction();
+	if (attackerShip == nullptr) {
+		return false;
+	}
 
-		if (attackerSpaceFaction > 0 && alliedFactions.contains(attackerSpaceFaction) && !enemyFactions.contains(attackerSpaceFaction)) {
+	if (isMissionShip() && attackerShip->isPlayerShip()) {
+		auto zoneServer = getZoneServer();
+
+		if (zoneServer == nullptr) {
 			return false;
 		}
+
+		auto missionOwner = cast<CreatureObject*>(zoneServer->getObject(missionOwnerID).get());
+
+		if (missionOwner == nullptr) {
+			return false;
+		}
+
+		auto attackerOwner = attackerShip->getOwner().get();
+
+		if (attackerOwner == nullptr) {
+			return false;
+		}
+
+		bool isGroupedWith = false;
+
+		ManagedReference<GroupObject*> group = missionOwner->getGroup();
+
+		if (group != nullptr && group->hasMember(attackerOwner)) {
+			isGroupedWith = true;
+		}
+
+		if (attackerOwner != missionOwner && !isGroupedWith) {
+			return false;
+		}
+	}
+
+	auto attackerSpaceFaction = attackerShip->getShipFaction();
+
+	if (attackerSpaceFaction > 0 && alliedFactions.contains(attackerSpaceFaction) && !enemyFactions.contains(attackerSpaceFaction)) {
+		return false;
 	}
 
 	return true;
@@ -2108,6 +2142,31 @@ bool ShipAiAgentImplementation::isAttackableBy(CreatureObject* attacker) {
 	if (!attacker->isPlayerCreature()) {
 		return false;
 	}
+
+	/*if (isMissionShip()) {
+		auto zoneServer = getZoneServer();
+
+		if (zoneServer == nullptr) {
+			return false;
+		}
+		
+		auto missionOwner = cast<CreatureObject*>(zoneServer->getObject(missionOwnerID).get());
+
+		if (missionOwner == nullptr) {
+			return false;
+		}
+
+		bool isGroupedWith = false;
+		ManagedReference<GroupObject*> group = missionOwner->getGroup();
+
+		if (group != nullptr && group->hasMember(attacker)) {
+			isGroupedWith = true;
+		}
+
+		if (attacker != missionOwner && !isGroupedWith) {
+			return false;
+		}
+	}*/
 
 	auto rootParent = attacker->getRootParent();
 

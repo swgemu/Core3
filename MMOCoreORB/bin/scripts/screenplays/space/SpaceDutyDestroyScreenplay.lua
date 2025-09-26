@@ -334,6 +334,9 @@ function SpaceDutyDestroyScreenplay:spawnAttackWave(pPlayer)
 			return
 		end
 
+		-- Set as a mission-specific ship locked to the mission holder
+		ShipAiAgent(pBossAgent):setMissionOwner(pPlayer)
+
 		local bossID = SceneObject(pBossAgent):getObjectID()
 
 		writeData(bossID .. ":" .. self.className .. ":QuestOwnerID:", playerID)
@@ -368,6 +371,9 @@ function SpaceDutyDestroyScreenplay:spawnAttackWave(pPlayer)
 			if (pShipAgent == nil) then
 				goto continue
 			end
+
+			-- Set as a mission-specific ship locked to the mission holder
+			ShipAiAgent(pPrimaryAgent):setMissionOwner(pPlayer)
 
 			local agentID = SceneObject(pShipAgent):getObjectID()
 
@@ -544,8 +550,8 @@ function SpaceDutyDestroyScreenplay:enteredZone(pPlayer, nill, zoneNameHash)
 
 		-- Find a target location
 		createEvent(2000, self.className, "getTargetLocation", pPlayer, "true")
-	else
-		self:failQuest(pPlayer, "true")
+	elseif (zoneNameHash ~= spaceQuestHash and SpaceHelpers:isSpaceQuestTaskComplete(pPlayer, self.questType, self.questName, 1)) then
+		createEvent(2000, self.className, "failQuest", pPlayer, "true")
 	end
 
 	return 0

@@ -158,6 +158,9 @@ function SpaceAssassinateScreenplay:deployTargets(pPlayer)
 		return
 	end
 
+	-- Set as a mission-specific ship locked to the mission holder
+	ShipAiAgent(pPrimaryAgent):setMissionOwner(pPlayer)
+
 	local shipIDs = {}
 	local primaryID = SceneObject(pPrimaryAgent):getObjectID()
 
@@ -191,6 +194,9 @@ function SpaceAssassinateScreenplay:deployTargets(pPlayer)
 		local pShipAgent = spawnShipAgent(shipName, spawnZone, x + (getRandomNumber(25, 400) - getRandomNumber(25, 400)), z, y - getRandomNumber(50, 300))
 
 		if (pShipAgent ~= nil) then
+			-- Set as a mission-specific ship locked to the mission holder
+			ShipAiAgent(pShipAgent):setMissionOwner(pPlayer)
+
 			-- Set Fixed Patrol
 			ShipAiAgent(pShipAgent):setFixedPatrol()
 
