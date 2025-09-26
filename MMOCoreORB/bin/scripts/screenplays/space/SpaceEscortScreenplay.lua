@@ -371,6 +371,9 @@ function SpaceEscortScreenplay:spawnEscortShip(pPlayer)
 	-- Set the agent as a mission object
 	CreatureObject(pPlayer):addSpaceMissionObject(agentID, true)
 
+	-- Set as a mission-specific ship locked to the mission holder
+	ShipAiAgent(pShipAgent):setMissionOwner(pPlayer)
+
 	-- Set Fixed Patrol and escort flags
 	ShipAiAgent(pShipAgent):setFixedPatrol()
 	ShipAiAgent(pShipAgent):setEscort()
@@ -613,6 +616,9 @@ function SpaceEscortScreenplay:spawnAttackWave(pEscortAgent)
 		if (pShipAgent == nil) then
 			goto continue
 		end
+
+		-- Set as a mission-specific ship locked to the mission holder
+		ShipAiAgent(pShipAgent):setMissionOwner(pPlayer)
 
 		-- Set as a wave attack ship
 		ShipAiAgent(pShipAgent):setWaveAttack()

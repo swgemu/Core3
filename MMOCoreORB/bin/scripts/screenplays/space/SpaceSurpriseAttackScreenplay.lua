@@ -136,6 +136,9 @@ function SpaceSurpriseAttackScreenplay:spawnSurpriseAttack(pPilot)
 			local pShipAgent = spawnShipAgent(shipName, spawnZone, spawnLocation[1] + getRandomNumber(50, 150), spawnLocation[2]  + getRandomNumber(50, 150), spawnLocation[3]  + getRandomNumber(50, 150))
 
 			if (pShipAgent ~= nil) then
+				-- Set as a mission-specific ship locked to the mission holder
+				ShipAiAgent(pShipAgent):setMissionOwner(pPlayer)
+
 				-- Setup the patrol
 				ShipAiAgent(pShipAgent):setMinimumGuardPatrol(200)
 				ShipAiAgent(pShipAgent):setMaximumGuardPatrol(1000)

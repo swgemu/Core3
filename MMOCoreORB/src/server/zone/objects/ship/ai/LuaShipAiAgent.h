@@ -52,6 +52,7 @@ public:
 	int addSpaceFactionEnemy(lua_State* L);
 	int removeSpaceFactionEnemy(lua_State* L);
 	int setEscortSpeed(lua_State* L);
+	int setMissionOwner(lua_State* L);
 
 private:
 	ShipAiAgent* realObject;

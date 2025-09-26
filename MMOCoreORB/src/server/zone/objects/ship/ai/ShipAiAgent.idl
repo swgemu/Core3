@@ -202,6 +202,8 @@ class ShipAiAgent extends FighterShipObject {
 	@dereferenced
 	protected transient Vector<unsigned long> enemyShipList;
 
+	unsigned long missionOwnerID;
+
 	public ShipAiAgent() {
 		movementState = OBLIVIOUS;
 
@@ -242,6 +244,8 @@ class ShipAiAgent extends FighterShipObject {
 
 		minGuardPatrol = 0;
 		maxGuardPatrol = 0;
+
+		missionOwnerID = 0;
 	}
 
 	/**
@@ -453,6 +457,19 @@ class ShipAiAgent extends FighterShipObject {
 
 	@dirty
 	public native boolean isPlayerFactionEnemy(CreatureObject player);
+
+	public native boolean isMissionShip() {
+		return (missionOwnerID != 0);
+	}
+
+	@preLocked
+	public void setMissionOwner(CreatureObject object) {
+		missionOwnerID = object.getObjectID();
+	}
+
+	public unsigned long getMissionOwnerID() {
+		return missionOwnerID;
+	}
 
 	@preLocked
 	public native void addSpaceFactionAlly(unsigned int factionHash);
