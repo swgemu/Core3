@@ -32,6 +32,7 @@ Luna<LuaShipObject>::RegType LuaShipObject::Register[] = {
 	{ "setShipFactionString", &LuaShipObject::setShipFactionString },
 	{ "getShipFactionHash", &LuaShipObject::getShipFactionHash },
 	{ "getSpawnPointInFrontOfShip", &LuaShipObject::getSpawnPointInFrontOfShip },
+	{ "getSpawnPointBehindShip", &LuaShipObject::getSpawnPointBehindShip },
 	{ "isShipLaunched", &LuaShipObject::isShipLaunched },
 
 	{ 0, 0}
@@ -414,6 +415,46 @@ int LuaShipObject::getSpawnPointInFrontOfShip(lua_State* L) {
 
 	// Scale by the chosen distance
 	Vector3 newPosition = (forward * distance) + shipPosition;
+
+	lua_newtable(L);
+	lua_pushnumber(L, newPosition.getX());
+	lua_pushnumber(L, newPosition.getZ());
+	lua_pushnumber(L, newPosition.getY());
+	lua_rawseti(L, -4, 3);
+	lua_rawseti(L, -3, 2);
+	lua_rawseti(L, -2, 1);
+
+	return 1;
+}
+
+int LuaShipObject::getSpawnPointBehindShip(lua_State* L) {
+	int numberOfArguments = lua_gettop(L) - 1;
+
+	if (numberOfArguments != 2) {
+		realObject->error() << "Improper number of arguments in LuaShipObject::getSpawnPointBehindShip.";
+		return 0;
+	}
+
+	float maxRange = lua_tonumber(L, -1);
+	float minRange = lua_tonumber(L, -2);
+
+	if (minRange > maxRange) {
+		std::swap(minRange, maxRange);
+	}
+
+	// Generate a random range value between minRange and maxRange
+	float distance = System::random(maxRange - minRange) + minRange;
+
+	Locker lock(realObject);
+
+	const Vector3& shipPosition = realObject->getWorldPosition();
+	const Matrix4& rotation = *realObject->getConjugateMatrix();
+
+	// Get the forward vector and negate it to get the backward vector
+	Vector3 backward = Vector3(-rotation[2][0], -rotation[2][2], -rotation[2][1]);
+
+	// Scale by the chosen distance
+	Vector3 newPosition = (backward * distance) + shipPosition;
 
 	lua_newtable(L);
 	lua_pushnumber(L, newPosition.getX());
