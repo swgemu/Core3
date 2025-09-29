@@ -206,7 +206,9 @@ destroy_duty_corellia_privateer_6 = SpaceDutyDestroyScreenplay:new {
 	maxDistance = 17500, -- Maximum distance away for new location
 
 	bossShip = "hidden_daggers_executioner_tier1",
-	shipTypes = {"hidden_daggers_enforcer_tier1", "hidden_daggers_eliminator_tier1"},
+	shipTypes = {
+		{"hidden_daggers_eliminator_tier1", "hidden_daggers_enforcer_tier1"},
+	},
 }
 
 registerScreenPlay("destroy_duty_corellia_privateer_6", true)
@@ -384,7 +386,11 @@ destroy_duty_corellia_privateer_9 = SpaceDutyDestroyScreenplay:new {
 	maxDistance = 17500, -- Maximum distance away for new location
 
 	bossShip = "imp_tie_advanced_tier3",
-	shipTypes = {"imp_tie_fighter_tier2", "imp_tie_bomber_tier2", "imp_tie_interceptor_tier2"},
+	shipTypes = {
+		{"imp_tie_fighter_tier2", "imp_tie_fighter_tier2", "imp_tie_fighter_tier2"},
+		{"imp_tie_bomber_tier2", "imp_tie_bomber_tier2"},
+		{"imp_tie_interceptor_tier2", "imp_tie_interceptor_tier2"},
+	},
 }
 
 registerScreenPlay("destroy_duty_corellia_privateer_9", true)
@@ -451,7 +457,11 @@ destroy_duty_corellia_privateer_11 = SpaceDutyDestroyScreenplay:new {
 	maxDistance = 17500, -- Maximum distance away for new location
 
 	bossShip = "hidden_daggers_enforcer_tier3",
-	shipTypes = {"hidden_daggers_slayer_tier2", "hidden_daggers_killer_tier2", "hidden_daggers_executioner_tier2"},
+	shipTypes = {
+		{"hidden_daggers_slayer_tier2", "hidden_daggers_slayer_tier2", "hidden_daggers_slayer_tier2"},
+		{"hidden_daggers_killer_tier2", "hidden_daggers_killer_tier2", "hidden_daggers_killer_tier2"},
+		{"hidden_daggers_executioner_tier2", "hidden_daggers_executioner_tier2", "hidden_daggers_executioner_tier2"},
+	}
 }
 
 registerScreenPlay("destroy_duty_corellia_privateer_11", true)

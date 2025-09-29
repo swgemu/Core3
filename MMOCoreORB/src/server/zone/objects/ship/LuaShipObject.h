@@ -43,6 +43,7 @@ public:
 	int setShipFactionString(lua_State* L);
 	int getShipFactionHash(lua_State* L);
 	int getSpawnPointInFrontOfShip(lua_State* L);
+	int getSpawnPointBehindShip(lua_State* L);
 	int isShipLaunched(lua_State* L);
 
 private:

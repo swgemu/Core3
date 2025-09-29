@@ -32,7 +32,11 @@ SpaceDutyDestroyScreenplay = SpaceQuestLogic:new {
 	maxDistance = 5000, -- Maximum distance away for new location
 
 	bossShip = "",
-	shipTypes = {},
+
+	-- Table of ship tables
+	shipTypes = {
+		{},
+	},
 
 	creditReward = 50,
 }
@@ -148,7 +152,6 @@ function SpaceDutyDestroyScreenplay:failQuest(pPlayer, notifyClient)
 	deleteData(playerID .. ":" .. self.className .. ":CurrentWave:")
 	deleteData(playerID .. ":" .. self.className .. ":CurrentRound:")
 	deleteData(playerID .. ":" .. self.className .. ":CurrentLevel:")
-	deleteData(playerID .. ":" .. self.className .. ":BossShipID:")
 	deleteData(playerID .. ":" .. self.className .. ":DestroyKillCount:")
 end
 
@@ -198,7 +201,6 @@ function SpaceDutyDestroyScreenplay:completeQuest(pPlayer, notifyClient)
 	deleteData(playerID .. ":" .. self.className .. ":CurrentWave:")
 	deleteData(playerID .. ":" .. self.className .. ":CurrentRound:")
 	deleteData(playerID .. ":" .. self.className .. ":CurrentLevel:")
-	deleteData(playerID .. ":" .. self.className .. ":BossShipID:")
 	deleteData(playerID .. ":" .. self.className .. ":DestroyKillCount:")
 
 	-- Complete System Message
@@ -226,7 +228,7 @@ function SpaceDutyDestroyScreenplay:getTargetLocation(pPlayer, initial)
 	local minDistance = self.minDistance
 	local maxDistance = self.maxDistance
 
-	if (initial == "false") then
+	if (initial == "false" or self.DEBUG_SPACE_DUTY_DESTROY) then
 		minDistance = 1500
 		maxDistance = 2500
 	end
@@ -313,66 +315,107 @@ function SpaceDutyDestroyScreenplay:spawnAttackWave(pPlayer)
 		return
 	end
 
+	if (self.DEBUG_SPACE_DUTY_DESTROY) then
+		print(self.className .. ":spawnAttackWave called")
+	end
+
 	local x = SceneObject(pQuestArea):getPositionX()
 	local z = SceneObject(pQuestArea):getPositionZ()
 	local y = SceneObject(pQuestArea):getPositionY()
 
-	local randomLocation = SpaceHelpers:getRandomPositionInSphere(x, z, y, 150, 400)
 	local shipIDs = readStringVectorSharedMemory(playerID .. self.className .. ":attackShips:")
 	local bossLevel = readData(playerID .. ":" .. self.className .. ":bossLevel:")
 	local currentWave = readData(playerID .. ":" .. self.className .. ":CurrentWave:")
-	local currentLevel = readData(playerID .. ":" .. self.className .. ":CurrentLevel:")
+	local currentLevel = readData(playerID .. ":" .. self.className .. ":CurrentLevel:") + 1
 	local playerFactionHash = SpaceHelpers:getPlayerShipFactionHash(pPlayer)
 
 	deleteStringVectorSharedMemory(playerID .. self.className .. ":attackShips:")
+
+	local shipTable = self.shipTypes
 
 	-- Spawn Boss Wave
 	if (bossLevel > 0) then
 		deleteData(playerID .. ":" .. self.className .. ":bossLevel:")
 
-		local pBossAgent = spawnShipAgent(self.bossShip, self.questZone, randomLocation.x, randomLocation.z, randomLocation.y)
+		local spawnLocation = ShipObject(pPlayerShip):getSpawnPointInFrontOfShip(600, 1200)
+		local bossSquadSize = currentLevel
 
-		if (pBossAgent == nil) then
-			self:failQuest(pPlayer)
-			return
+		for i = 1, bossSquadSize, 1 do
+			local shipAgentString = ""
+
+			if (i == 1) then
+				shipAgentString = self.bossShip
+			else
+				shipAgentString = shipTable[1][((i - 1) % #shipTable[1]) + 1]
+			end
+
+			if (self.DEBUG_SPACE_DUTY_DESTROY) then
+				print(self.className .. ":spawnAttackWave -- Spawning Boss Level Ship: " .. shipAgentString)
+			end
+
+			local pBossLevelAgent = spawnShipAgent(shipAgentString, self.questZone, spawnLocation[1], spawnLocation[2], spawnLocation[3])
+
+			if (pBossLevelAgent == nil) then
+				self:failQuest(pPlayer)
+				return
+			end
+
+			-- Set as a mission-specific ship locked to the mission holder
+			ShipAiAgent(pBossLevelAgent):setMissionOwner(pPlayer)
+
+			local bossID = SceneObject(pBossLevelAgent):getObjectID()
+
+			writeData(bossID .. ":" .. self.className .. ":QuestOwnerID:", playerID)
+
+			-- Add to the list of shipIDs
+			shipIDs[#shipIDs + 1] = bossID
+
+			-- Set as space mission object
+			CreatureObject(pPlayer):addSpaceMissionObject(bossID, (i == bossSquadSize))
+
+			-- Add kill observer
+			createObserver(OBJECTDESTRUCTION, self.className, "notifyBossShipDestroyed", pBossLevelAgent)
+
+			-- Add aggo and set the pPlayerShip as ShipAgents Defender
+			ShipAiAgent(pBossLevelAgent):addSpaceFactionEnemy(playerFactionHash)
+			ShipAiAgent(pBossLevelAgent):engageShipTarget(pPlayerShip)
+
+			if (i == 1) then
+				-- Taunt player
+				self:tauntPlayer(pBossLevelAgent, pPlayer, true)
+
+				-- Play effect for player
+				CreatureObject(pPlayer):playEffect("clienteffect/ui_quest_spawn_boss.cef", "")
+				CreatureObject(pPlayer):playMusicMessage("sound/music_com_enter_battle.snd")
+
+				-- Quest Message for Boss
+				CreatureObject(pPlayer):sendSystemMessage("@spacequest/destroy_duty/" .. self.questName .. ":boss_detected")
+			end
 		end
-
-		-- Set as a mission-specific ship locked to the mission holder
-		ShipAiAgent(pBossAgent):setMissionOwner(pPlayer)
-
-		local bossID = SceneObject(pBossAgent):getObjectID()
-
-		writeData(bossID .. ":" .. self.className .. ":QuestOwnerID:", playerID)
-		writeData(playerID .. ":" .. self.className .. ":BossShipID:", bossID)
-
-		-- Add kill observer
-		createObserver(OBJECTDESTRUCTION, self.className, "notifyBossShipDestroyed", pBossAgent)
-
-		-- Set as space mission object
-		CreatureObject(pPlayer):addSpaceMissionObject(bossID, true)
-
-		-- Add aggo and set the pPlayerShip as ShipAgents Defender
-		ShipAiAgent(pBossAgent):addSpaceFactionEnemy(playerFactionHash)
-		ShipAiAgent(pBossAgent):engageShipTarget(pPlayerShip)
-
-		-- Taunt player
-		self:tauntPlayer(pBossAgent, pPlayer, true)
-
-		-- Play effect for player
-		CreatureObject(pPlayer):playEffect("clienteffect/ui_quest_spawn_boss.cef", "")
-		CreatureObject(pPlayer):playMusicMessage("sound/music_com_enter_battle.snd")
-
-		-- Quest Message for Boss
-		CreatureObject(pPlayer):sendSystemMessage("@spacequest/destroy_duty/" .. self.questName .. ":boss_detected")
-
 	-- Spawn regular attack wave
 	else
-		local shipTable = self.shipTypes
-		local fighterCount = currentWave + currentLevel
+		local spawnLocation = {}
+
+		if (getRandomNumber(100) > 50) then
+			spawnLocation = ShipObject(pPlayerShip):getSpawnPointInFrontOfShip(600, 1200)
+			CreatureObject(pPlayer):sendSystemMessage("@spacequest/destroy_duty/" .. self.questName .. ":targets_detected")
+		else
+			spawnLocation = ShipObject(pPlayerShip):getSpawnPointBehindShip(600, 1200)
+			CreatureObject(pPlayer):sendSystemMessage("@spacequest/destroy_duty/" .. self.questName .. ":targets_behind")
+		end
+
+		local fighterCount = currentWave + (currentLevel - 1)
+		local shipTableSize = #shipTable
+		local tableSet = 1
 
 		for i = 1, fighterCount, 1 do
-			local shipType = shipTable[((i - 1) % #shipTable) + 1]
-			local pShipAgent = spawnShipAgent(shipType, self.questZone, randomLocation.x, randomLocation.z, randomLocation.y)
+			local shipType = shipTable[tableSet][((i - 1) % #shipTable[tableSet]) + 1]
+
+			if (self.DEBUG_SPACE_DUTY_DESTROY) then
+				print(self.className .. ":spawnAttackWave -- Spawning Regular Attack Ship: " .. shipType)
+			end
+
+			local pShipAgent = spawnShipAgent(shipType, self.questZone, spawnLocation[1], spawnLocation[2], spawnLocation[3])
 
 			if (pShipAgent == nil) then
 				goto continue
@@ -404,24 +447,24 @@ function SpaceDutyDestroyScreenplay:spawnAttackWave(pPlayer)
 			if (i == fighterCount) then
 				-- Send Taunt to player
 				self:tauntPlayer(pShipAgent, pPlayer, false)
+			-- Reset tableSet var
+			elseif (tableSet >= shipTableSize) then
+				tableSet = 1
+			-- Increment tableSet if there are available tables
+			elseif (shipTableSize > 1) then
+				tableSet = tableSet + 1
 			end
 
 			::continue::
-		end
-
-		-- Store the Spawned Attack Ships
-		writeStringVectorSharedMemory(playerID .. self.className .. ":attackShips:", shipIDs)
-
-		if (getRandomNumber(100) > 50) then
-			CreatureObject(pPlayer):sendSystemMessage("@spacequest/destroy_duty/" .. self.questName .. ":targets_detected")
-		else
-			CreatureObject(pPlayer):sendSystemMessage("@spacequest/destroy_duty/" .. self.questName .. ":targets_behind")
 		end
 
 		-- Play effect for player
 		CreatureObject(pPlayer):playEffect("clienteffect/ui_quest_spawn_wave.cef", "")
 		CreatureObject(pPlayer):playMusicMessage("sound/music_event_danger.snd")
 	end
+
+	-- Store the Spawned Attack Ships
+	writeStringVectorSharedMemory(playerID .. self.className .. ":attackShips:", shipIDs)
 end
 
 function SpaceDutyDestroyScreenplay:removeAttackShips(pPlayer)
@@ -465,31 +508,6 @@ function SpaceDutyDestroyScreenplay:removeAttackShips(pPlayer)
 
 		::continue::
 	end
-
-	-- Destroy Boss Ship
-	local bossID = readData(playerID .. ":" .. self.className .. ":BossShipID:")
-
-	-- Remove the attacking ship agent as a mission object
-	CreatureObject(pPlayer):removeSpaceMissionObject(attackAgentID, false)
-
-	-- Get pointer to boss ship
-	local pBossShip = getSceneObject(attackAgentID)
-
-	if (pBossShip ~= nil) then
-		-- Remove the kill observer
-		dropObserver(OBJECTDESTRUCTION, self.className, "notifyBossShipDestroyed", pBossShip)
-
-		-- Make ship fly away first
-		ShipObject(pBossShip):setHyperspacing(true);
-
-		SceneObject(pBossShip):setPosition(8000, 8000, 8000)
-
-		-- Remove the attack ship
-		createEvent(2000, "SpaceHelpers", "delayedDestroyShipAgent", pBossShip, "")
-	end
-
-	deleteData(bossID .. ":" .. self.className .. ":QuestOwnerID:")
-	deleteData(playerID .. ":" .. self.className .. ":BossShipID:")
 end
 
 function SpaceDutyDestroyScreenplay:tauntPlayer(pShipAgent, pPlayer, isBoss)
@@ -556,7 +574,7 @@ function SpaceDutyDestroyScreenplay:enteredZone(pPlayer, nill, zoneNameHash)
 
 		-- Find a target location
 		createEvent(2000, self.className, "getTargetLocation", pPlayer, "true")
-	elseif (zoneNameHash ~= spaceQuestHash and SpaceHelpers:isSpaceQuestTaskComplete(pPlayer, self.questType, self.questName, 1)) then
+	elseif (zoneNameHash ~= spaceQuestHash and SpaceHelpers:isSpaceQuestTaskComplete(pPlayer, self.questType, self.questName, 0)) then
 		createEvent(2000, self.className, "failQuest", pPlayer, "true")
 	end
 
@@ -607,7 +625,6 @@ function SpaceDutyDestroyScreenplay:notifyBossShipDestroyed(pShipAgent, pBossShi
 	local playerID = readData(agentID .. ":" .. self.className .. ":QuestOwnerID:")
 
 	deleteData(agentID .. ":" .. self.className .. ":QuestOwnerID:")
-	deleteData(playerID .. ":" .. self.className .. ":BossShipID:")
 
 	local pPlayer = getSceneObject(playerID)
 
@@ -615,6 +632,9 @@ function SpaceDutyDestroyScreenplay:notifyBossShipDestroyed(pShipAgent, pBossShi
 		Logger:log(self.className .. ":notifyBossShipDestroyed - Quest Owner is nil.", LT_ERROR)
 		return 1
 	end
+
+	-- Remove as Mission Object
+	CreatureObject(pPlayer):removeSpaceMissionObject(agentID, true)
 
 	if (self.DEBUG_SPACE_DUTY_DESTROY) then
 		print(self.className .. ":notifyBossShipDestroyed - Boss Ship Destoyed: " .. SceneObject(pShipAgent):getDisplayedName() .. " Quest Owner Name: " .. SceneObject(pPlayer):getDisplayedName())
@@ -630,69 +650,97 @@ function SpaceDutyDestroyScreenplay:notifyBossShipDestroyed(pShipAgent, pBossShi
 		destroyObjectFromWorld(pQuestArea)
 	end
 
-	-- Remove waypoint
-	SpaceHelpers:clearQuestWaypoint(pPlayer, self.className)
+	-- Remove from Attack Ships Vector
+	local shipIDs = readStringVectorSharedMemory(playerID .. self.className .. ":attackShips:")
+	local newIDs = {}
 
-	-- Boss killed message
-	CreatureObject(pPlayer):sendSystemMessage("@space/quest:destroy_duty_boss_dead")
+	deleteStringVectorSharedMemory(playerID .. self.className .. ":attackShips:")
 
-	-- read the current level
-	local currentLevel = readData(playerID .. ":" .. self.className .. ":CurrentLevel:") + 1
-	deleteData(playerID .. ":" .. self.className .. ":CurrentLevel:")
+	for i = 1, #shipIDs, 1 do
+		local shipID = tonumber(shipIDs[i])
 
-	-- Calculate Reward
-	local rewardCredits = self.creditReward * 3
-
-	-- Duty Mission is complete
-	if (currentLevel == self.totalLevels) then
-		if (self.DEBUG_SPACE_DUTY_DESTROY) then
-			print(self.className .. ":notifyBossShipDestroyed - Duty Mission Complete")
+		if (agentID ~= shipID) then
+			newIDs[#newIDs + 1] = shipID
 		end
+	end
 
-		-- Set Quest Complete
-		self:completeQuest(pPlayer, true)
+	if (#newIDs > 0) then
+		-- Store the Spawned Attack Ships
+		writeStringVectorSharedMemory(playerID .. self.className .. ":attackShips:", newIDs)
 
-		-- Calculate reward
-		rewardCredits = rewardCredits * 25
+		local messageString = LuaStringIdChatParameter("@space/quest:destroy_duty_targets_remaining")
+		messageString:setDI(#newIDs)
 
-		-- Complete message
-		local targetsMsg = LuaStringIdChatParameter("@space/quest:destroy_duty_complete_reward")
-		targetsMsg:setDI(rewardCredits)
+		CreatureObject(pPlayer):sendSystemMessage(messageString:_getObject())
 
-		CreatureObject(pPlayer):sendSystemMessage(targetsMsg:_getObject())
-
-		-- Give completion reward credits
-		SpaceHelpers:spaceCreditReward(pPlayer, rewardCredits)
-
-	-- Start next level of rounds
+		if (self.DEBUG_SPACE_DUTY_DESTROY) then
+			print(self.className .. ":notifyBossShipDestroyed - Boss Ships remaining: " .. #newIDs)
+		end
 	else
-		if (self.DEBUG_SPACE_DUTY_DESTROY) then
-			print(self.className .. ":notifyBossShipDestroyed - Duty Mission Level Finished, Starting Next Level -- Current Level: " .. currentLevel .. " out of " .. self.totalLevels .. " Total Levels.")
-		end
-
-		-- Update the level
-		writeData(playerID .. ":" .. self.className .. ":CurrentLevel:", currentLevel)
-
 		-- Remove waypoint
 		SpaceHelpers:clearQuestWaypoint(pPlayer, self.className)
 
-		-- Calculate reward
-		rewardCredits = rewardCredits * 3
+		-- Boss killed message
+		CreatureObject(pPlayer):sendSystemMessage("@space/quest:destroy_duty_boss_dead")
 
-		-- Boss Reward message
-		local targetsMsg = LuaStringIdChatParameter("@space/quest:destroy_duty_boss_reward")
-		targetsMsg:setDI(rewardCredits)
+		-- read the current level
+		local currentLevel = readData(playerID .. ":" .. self.className .. ":CurrentLevel:") + 1
+		deleteData(playerID .. ":" .. self.className .. ":CurrentLevel:")
 
-		CreatureObject(pPlayer):sendSystemMessage(targetsMsg:_getObject())
+		-- Calculate Reward
+		local rewardCredits = self.creditReward * 3
 
-		-- Give boss reward credits
-		SpaceHelpers:spaceCreditReward(pPlayer, rewardCredits)
+		-- Duty Mission is complete
+		if (currentLevel == self.totalLevels) then
+			if (self.DEBUG_SPACE_DUTY_DESTROY) then
+				print(self.className .. ":notifyBossShipDestroyed - Duty Mission Complete")
+			end
 
-		-- Find the next target location
-		createEvent(6000, self.className, "getTargetLocation", pPlayer, "false")
+			-- Set Quest Complete
+			self:completeQuest(pPlayer, true)
 
-		-- "destroy_duty_level_boss_dead", " \\#pcontrast3 > \\#00ff00 The enemy commander has been defeated! \\#pcontrast3 < \\#pcontrast3 > \\#ff0000 In response, more enemy ships have entered the sector! \\#pcontrast3 <"
-		createEvent(2000, "SpaceHelpers", "sendDelayedMessage", pPlayer, "@space/quest:destroy_duty_level_boss_dead")
+			-- Calculate reward
+			rewardCredits = rewardCredits * 25
+
+			-- Complete message
+			local targetsMsg = LuaStringIdChatParameter("@space/quest:destroy_duty_complete_reward")
+			targetsMsg:setDI(rewardCredits)
+
+			CreatureObject(pPlayer):sendSystemMessage(targetsMsg:_getObject())
+
+			-- Give completion reward credits
+			SpaceHelpers:spaceCreditReward(pPlayer, rewardCredits)
+
+		-- Start next level of rounds
+		else
+			if (self.DEBUG_SPACE_DUTY_DESTROY) then
+				print(self.className .. ":notifyBossShipDestroyed - Duty Mission Level Finished, Starting Next Level -- Current Level: " .. currentLevel .. " out of " .. self.totalLevels .. " Total Levels.")
+			end
+
+			-- Update the level
+			writeData(playerID .. ":" .. self.className .. ":CurrentLevel:", currentLevel)
+
+			-- Remove waypoint
+			SpaceHelpers:clearQuestWaypoint(pPlayer, self.className)
+
+			-- Calculate reward
+			rewardCredits = rewardCredits * 3
+
+			-- Boss Reward message
+			local targetsMsg = LuaStringIdChatParameter("@space/quest:destroy_duty_boss_reward")
+			targetsMsg:setDI(rewardCredits)
+
+			CreatureObject(pPlayer):sendSystemMessage(targetsMsg:_getObject())
+
+			-- Give boss reward credits
+			SpaceHelpers:spaceCreditReward(pPlayer, rewardCredits)
+
+			-- Find the next target location
+			createEvent(6000, self.className, "getTargetLocation", pPlayer, "false")
+
+			-- "destroy_duty_level_boss_dead", " \\#pcontrast3 > \\#00ff00 The enemy commander has been defeated! \\#pcontrast3 < \\#pcontrast3 > \\#ff0000 In response, more enemy ships have entered the sector! \\#pcontrast3 <"
+			createEvent(2000, "SpaceHelpers", "sendDelayedMessage", pPlayer, "@space/quest:destroy_duty_level_boss_dead")
+		end
 	end
 
 	return 1
@@ -725,8 +773,6 @@ function SpaceDutyDestroyScreenplay:notifyAttackShipDestroyed(pShipAgent, pKille
 	local newIDs = {}
 
 	deleteStringVectorSharedMemory(playerID .. self.className .. ":attackShips:")
-
-	local index = 0
 
 	for i = 1, #shipIDs, 1 do
 		local shipID = tonumber(shipIDs[i])
@@ -799,6 +845,19 @@ function SpaceDutyDestroyScreenplay:notifyAttackShipDestroyed(pShipAgent, pKille
 
 			SpaceHelpers:spaceCreditReward(pPlayer, rewardCredits)
 
+			-- Destroy the area
+			local playerAreaID = readData(playerID .. ":" .. self.className .. ":targetArea:")
+			deleteData(playerID .. ":" .. self.className .. ":targetArea:", questAreaID)
+
+			local pQuestArea = getSceneObject(questAreaID)
+
+			if (pQuestArea ~= nil) then
+				destroyObjectFromWorld(pQuestArea)
+			end
+
+			-- Remove waypoint
+			SpaceHelpers:clearQuestWaypoint(pPlayer, self.className)
+
 			-- All of the rounds are complete, spawn boss
 			if (currentRound > self.totalRounds) then
 				if (self.DEBUG_SPACE_DUTY_DESTROY) then
@@ -810,32 +869,26 @@ function SpaceDutyDestroyScreenplay:notifyAttackShipDestroyed(pShipAgent, pKille
 				-- Set boss data
 				writeData(playerID .. ":" .. self.className .. ":bossLevel:", 1)
 
-				-- Spawn boss level
-				createEvent(3000, self.className, "spawnAttackWave", pPlayer, "")
+				local currentLevel = readData(playerID .. ":" .. self.className .. ":CurrentLevel:") + 1
 
-			-- Round is complete, give next location
+				local messageString = LuaStringIdChatParameter("@spacequest/destroy_duty/" .. self.questName .. ":level_boss")
+				messageString:setTO("@spacequest/destroy_duty/" .. self.questName .. ":boss_title_" .. tostring(currentLevel))
+
+				CreatureObject(pPlayer):sendSystemMessage(messageString:_getObject())
+
+				-- Find the boss target location
+				createEvent(3000, self.className, "getTargetLocation", pPlayer, "false")
+
+				-- Round is complete, give next location
 			else
 				if (self.DEBUG_SPACE_DUTY_DESTROY) then
 					print(self.className .. ":notifyAttackShipDestroyed - Round not complete - " .. currentRound .. " of " .. self.totalRounds .. " Total Rounds.")
 				end
 
-				CreatureObject(pPlayer):playMusicMessage("sound/music_int_complete_neutral.snd")
-
-				-- Destroy the area
-				local playerAreaID = readData(playerID .. ":" .. self.className .. ":targetArea:")
-				deleteData(playerID .. ":" .. self.className .. ":targetArea:", questAreaID)
-
-				local pQuestArea = getSceneObject(questAreaID)
-
-				if (pQuestArea ~= nil) then
-					destroyObjectFromWorld(pQuestArea)
-				end
-
-				-- Remove waypoint
-				SpaceHelpers:clearQuestWaypoint(pPlayer, self.className)
-
 				-- Find the next target location
 				createEvent(6000, self.className, "getTargetLocation", pPlayer, "false")
+
+				CreatureObject(pPlayer):playMusicMessage("sound/music_int_complete_neutral.snd")
 
 				writeData(playerID .. ":" .. self.className .. ":CurrentRound:", currentRound)
 			end
