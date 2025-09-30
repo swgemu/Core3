@@ -5,13 +5,13 @@
 #ifndef UNDOCK_H_
 #define UNDOCK_H_
 
-#include "CombatQueueCommand.h"
+#include "SpaceQueueCommand.h"
 
-class UndockCommand : public CombatQueueCommand {
+class UndockCommand : public SpaceQueueCommand {
 public:
 
 	UndockCommand(const String& name, ZoneProcessServer* server)
-		: CombatQueueCommand(name, server) {
+		: SpaceQueueCommand(name, server) {
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
@@ -22,7 +22,17 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
-		return doCombatAction(creature, target);
+		auto ship = getPlayerShip(creature);
+
+		if (ship == nullptr || !(ship->getOptionsBitmask() & OptionBitmask::DOCKING)) {
+			return GENERALERROR;
+		}
+
+		Locker sLock(ship, creature);
+		ship->sendShipMembersMessage("@space/cargo:dock_abort");
+		ship->clearOptionBit(OptionBitmask::DOCKING, true);
+
+		return SUCCESS;
 	}
 
 };

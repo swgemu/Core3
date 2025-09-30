@@ -46,7 +46,11 @@ public:
 
 	static Vector3 predictTransform(const SpaceTransform& transform, float timeSec);
 
-	static Vector3 rotateVector(const Vector3 &velocity, const Vector3 &rotation);
+	static Vector3 rotateVector(const Vector3& velocity, const Vector3& rotation);
+
+	static Vector3 getLocalVector(const Vector3& worldPosition, const Matrix4& rotationMatrix);
+
+	static Vector3 getGlobalVector(const Vector3& localPosition, const Matrix4& conjugateMatrix);
 
 	static Quaternion rotationToQuaternion(const Vector3& rotation, bool precision = true);
 };

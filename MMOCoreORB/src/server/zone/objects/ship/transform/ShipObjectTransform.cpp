@@ -169,22 +169,22 @@ void ShipObjectTransform::setSpeed(ShipObject* ship) {
 		speedMax = Math::min(nextTransform.getSpeed(), speedMax);
 	}
 
-	float radius = (speedCurrent * deltaTime) + 0.5f;
+	float radius = (speedCurrent * deltaTime) + POSITION_EPSILON;
 	float distance = Math::max(nextDistance - radius, 0.f);
 	float speedNew = speedMin;
 
-	if (distance > radius || speedCurrent > 0.f) {
+	if (distance > 0.f || speedCurrent > 0.f) {
 		float accelRate = Math::max(ship->getActualAccelerationRate(), 1.f);
 		float decelRate = Math::max(ship->getActualDecelerationRate(), 1.f);
 		float decelDist = (speedMax * speedMax) / decelRate;
 
 		if (distance < decelDist) {
-			speedNew = radius >= distance ? distance : (distance / decelDist) * speedMax;
+			speedNew = (distance / decelDist) * speedMax;
 		} else {
 			speedNew = speedMax;
 		}
 
-		if (speedNew > speedMin) {
+		if (nextRotation > ROTATION_EPSILON) {
 			float rotationTime = Math::clamp(0.f,SpaceMath::getRotationTime(nextTransform.getRotation(), currentTransform.getRotation(), ship->getActualYawRate(), ship->getActualPitchRate()), 5.f);
 			float distanceTime = distance / Math::max(speedMax, 1.f);
 			float speedTurn = speedMax;
@@ -205,7 +205,7 @@ void ShipObjectTransform::setSpeed(ShipObject* ship) {
 
 		if (speedNew != speedCurrent) {
 			speedNew = Math::clamp(-decelRate * deltaTime, speedNew - speedCurrent, accelRate * deltaTime) + speedCurrent;
-			speedNew = Math::clamp(speedMin, speedNew, speedMax);
+			speedNew = Math::clamp(speedMin, ceilf(speedNew), speedMax);
 		}
 	}
 
@@ -221,27 +221,33 @@ void ShipObjectTransform::setRotation(ShipObject* ship) {
 	const auto& nextRotation = nextTransform.getRotation();
 
 	Vector3 rotation = currentRotation;
-	Vector3 yprRates = currentYprRates;
+	Vector3 yprRates = Vector3::ZERO;
 
 	if (currentRotation != nextRotation) {
-		Vector3 accel = Vector3(ship->getActualYawAccelerationRate(), ship->getActualPitchAccelerationRate(), ship->getActualRollAccelerationRate()) * deltaTime;
-		Vector3 actual = Vector3(ship->getActualYawRate(), ship->getActualPitchRate(), ship->getActualRollRate()) * deltaTime;
+		Vector3 accel = Vector3::ZERO;
+		Vector3 actual = Vector3::ZERO;
 		Vector3 delta = SpaceMath::getRotationRate(nextRotation, currentRotation);
 
-		if (transformType.getTransformType() != SpaceTransformType::DOCK) {
-			const auto& rateDamp = transformType.getRotationRate();
+		const auto& rateDamp = transformType.getRotationRate();
+		Vector3 deltaRate = rateDamp * deltaTime;
 
-			if (rateDamp != Vector3::ZERO) {
-				actual = actual * rateDamp;
-				accel = accel * rateDamp;
-			}
+		if (transformType.getTransformType() == SpaceTransformType::DOCK) {
+			accel = Vector3(ship->getEngineYawAccelerationRate(), ship->getEnginePitchAccelerationRate(), ship->getEngineRollAccelerationRate()) * deltaRate;
+			actual = Vector3(ship->getEngineYawRate(), ship->getEnginePitchRate(), ship->getEngineRollRate()) * deltaRate;
+		} else {
+			accel = Vector3(ship->getActualYawAccelerationRate(), ship->getActualPitchAccelerationRate(), ship->getActualRollAccelerationRate()) * deltaRate;
+			actual = Vector3(ship->getActualYawRate(), ship->getActualPitchRate(), ship->getActualRollRate()) * deltaRate;
 
-			if (fabs(delta[SpaceTransformType::YAW]) >= 0.01f) {
-				delta[SpaceTransformType::ROLL] = SpaceMath::getRotationRate(delta[SpaceTransformType::ROLL] + (-delta[SpaceTransformType::YAW] * rateDamp[SpaceTransformType::ROLL]));
-			}
+			delta[SpaceTransformType::ROLL] += (-delta[SpaceTransformType::YAW] * rateDamp[SpaceTransformType::ROLL]);
+			delta[SpaceTransformType::ROLL] = SpaceMath::getRotationRate(delta[SpaceTransformType::ROLL]);
 		}
 
 		for (int axis = 0; axis < 3; ++axis) {
+			if (fabs(delta[axis]) <= ROTATION_EPSILON) {
+				rotation[axis] = nextRotation[axis];
+				continue;
+			}
+
 			float lastDelta = currentYprRates[axis] * deltaTime;
 			float thisDelta = Math::clamp(lastDelta - accel[axis], delta[axis], lastDelta + accel[axis]);
 			rotation[axis] = SpaceMath::getRotationRate(Math::clamp(-actual[axis], thisDelta, actual[axis]) + currentRotation[axis]);
@@ -279,7 +285,7 @@ void ShipObjectTransform::setPosition(ShipObject* ship) {
 }
 
 void ShipObjectTransform::setVelocity(ShipObject* ship) {
-	if (currentTransform.getRotation() == previousTransform.getRotation()) {
+	if (currentTransform.getRotation() == previousTransform.getRotation() && currentTransform.getVelocity() == previousTransform.getVelocity()) {
 		return;
 	}
 
@@ -291,7 +297,7 @@ void ShipObjectTransform::setVelocity(ShipObject* ship) {
 
 	Vector3 velocity = SpaceMath::rotationToVelocity(currentTransform.getRotation());
 
-	if (currentTransform.getSpeed() >= 1.f) {
+	if (currentTransform.getSpeed() > 1.f) {
 		float t = Math::clamp(0.f, (currentTransform.getSpeed() / (float)VELOCITY_MAX) * ship->getSlip(), 1.f);
 		velocity = Math::linearInterpolate(currentTransform.getVelocity(), velocity, 1.f - t);
 		SpaceMath::qNormalize(velocity);
@@ -315,26 +321,24 @@ void ShipObjectTransform::updateCurrentTransform(ShipObject* ship) {
 }
 
 void ShipObjectTransform::updateNextTransform(ShipObject* ship) {
-	if (nextTransform.getPosition() == currentTransform.getPosition()) {
-		return;
-	}
+	float radius = (currentTransform.getSpeed() * deltaTime) + POSITION_EPSILON;
 
-	Vector3 velocity = nextTransform.getPosition() - currentTransform.getPosition();
-	float distance = SpaceMath::qNormalize(velocity);
-	float radius = (currentTransform.getSpeed() * deltaTime) + 0.5f;
-
-	if (distance <= radius) {
-		nextTransform.setPosition(currentTransform.getPosition());
+	if (nextDistance <= radius) {
+		currentTransform.setPosition(nextTransform.getPosition());
 		nextDistance = 0.f;
-		return;
+	} else {
+		auto velocity = nextTransform.getPosition() - currentTransform.getPosition();
+		nextDistance = SpaceMath::qNormalize(velocity);
+		nextTransform.setVelocity(velocity);
 	}
 
-	nextTransform.setVelocity(velocity);
-	nextDistance = distance;
+	if (nextTransform.getVelocity() != currentTransform.getVelocity()) {
+		if (transformType.getTransformType() != SpaceTransformType::DOCK) {
+			auto rotation = SpaceMath::velocityToRotation(nextTransform.getVelocity());
+			nextTransform.setRotation(rotation);
+		}
 
-	if (transformType.getTransformType() != SpaceTransformType::DOCK) {
-		auto rotation = SpaceMath::velocityToRotation(velocity);
-		nextTransform.setRotation(rotation);
+		nextRotation = SpaceMath::getRotationTime(nextTransform.getRotation(), currentTransform.getRotation()) * M_PI;;
 	}
 }
 

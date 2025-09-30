@@ -163,6 +163,16 @@ Vector3 SpaceMath::rotateVector(const Vector3 &velocity, const Vector3 &rotation
 	return Vector3(vX, vY, vZ);
 }
 
+Vector3 SpaceMath::getLocalVector(const Vector3& worldPosition, const Matrix4& rotationMatrix) {
+	auto vector = Vector3(worldPosition.getX(), worldPosition.getZ(), worldPosition.getY());
+	return vector * rotationMatrix;
+}
+
+Vector3 SpaceMath::getGlobalVector(const Vector3& localPosition, const Matrix4& conjugateMatrix) {
+	auto vector = localPosition * conjugateMatrix;
+	return Vector3(vector.getX(), vector.getZ(), vector.getY());
+}
+
 Quaternion SpaceMath::rotationToQuaternion(const Vector3& rotation, bool precision) {
 	float radY = getRotationRate(-rotation.getX() + M_PI_2);
 	float radP = getRotationRate(rotation.getY());
@@ -172,15 +182,25 @@ Quaternion SpaceMath::rotationToQuaternion(const Vector3& rotation, bool precisi
 		return RotationLookupTable::instance()->getDirection(radY, radP, radR);
 	}
 
-	int degY = Math::rad2deg(radY);
-	int degP = Math::rad2deg(radP);
-	int degR = Math::rad2deg(radR);
+	float hZ = -radR * 0.5f;
+	float hX = -radP * 0.5f;
+	float hY = radY * 0.5f;
 
-	Quaternion qDirection;
-	qDirection.rotate(Vector3::UNIT_Z, -degR);
-	qDirection.rotate(Vector3::UNIT_X, -degP);
-	qDirection.rotate(Vector3::UNIT_Y, degY);
+	float cZ = cosf(hZ);
+	float sZ = sinf(hZ);
+	float cX = cosf(hX);
+	float sX = sinf(hX);
+	float cY = cosf(hY);
+	float sY = sinf(hY);
+
+	float w = cY * cX * cZ + sY * sX * sZ;
+	float x = cY * sX * cZ + sY * cX * sZ;
+	float y = sY * cX * cZ - cY * sX * sZ;
+	float z = cY * cX * sZ - sY * sX * cZ;
+
+	Quaternion qDirection(w, x, y, z);
 	qNormalize(qDirection);
 
 	return qDirection;
 }
+
