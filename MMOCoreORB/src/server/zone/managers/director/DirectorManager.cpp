@@ -2732,7 +2732,7 @@ int DirectorManager::spawnEventMobile(lua_State* L) {
 int DirectorManager::spawnShipAgent(lua_State* L) {
 	int numberOfArguments = lua_gettop(L);
 
-	if (numberOfArguments != 5) {
+	if (numberOfArguments < 5 || numberOfArguments > 6) {
 		String err = "incorrect number of arguments passed to DirectorManager::spawnShipAgent";
 		printTraceError(L, err);
 		ERROR_CODE = INCORRECT_ARGUMENTS;
@@ -2741,6 +2741,7 @@ int DirectorManager::spawnShipAgent(lua_State* L) {
 
 	float x, z, y;
 	String shipName, zoneName;
+	ShipObject* targetShip = nullptr;
 
 	auto shipManager = ShipManager::instance();
 
@@ -2749,11 +2750,20 @@ int DirectorManager::spawnShipAgent(lua_State* L) {
 		return 1;
 	}
 
-	y = lua_tonumber(L, -1);
-	z = lua_tonumber(L, -2);
-	x = lua_tonumber(L, -3);
-	zoneName = lua_tostring(L, -4);
-	shipName = lua_tostring(L, -5);
+	if (numberOfArguments == 5) {
+		y = lua_tonumber(L, -1);
+		z = lua_tonumber(L, -2);
+		x = lua_tonumber(L, -3);
+		zoneName = lua_tostring(L, -4);
+		shipName = lua_tostring(L, -5);
+	} else {
+		targetShip = (ShipObject*) lua_touserdata(L, -1);
+		y = lua_tonumber(L, -2);
+		z = lua_tonumber(L, -3);
+		x = lua_tonumber(L, -4);
+		zoneName = lua_tostring(L, -5);
+		shipName = lua_tostring(L, -6);
+	}
 
 	auto zoneServer = ServerCore::getZoneServer();
 
@@ -2778,12 +2788,24 @@ int DirectorManager::spawnShipAgent(lua_State* L) {
 
 	Locker lock(shipAgent);
 
+	Quaternion targetDirection = Quaternion::IDENTITY;
+
+	if (targetShip != nullptr) {
+		const auto& spawnPosition = Vector3(x, y, z);
+		const auto& targetPosition = targetShip->getPosition();
+
+		Vector3 velocity = targetPosition - spawnPosition; // direction to target
+		float distance = SpaceMath::qNormalize(velocity);
+		auto rotation = SpaceMath::velocityToRotation(velocity); // get our phi vector
+
+		targetDirection = SpaceMath::rotationToQuaternion(rotation, false);
+	}
+
+	shipAgent->setHomeLocation(x, z, y, targetDirection);
+
 	shipAgent->setHyperspacing(true);
 
-	shipAgent->initializePosition(x, z, y);
-
-	shipAgent->setHomeLocation(x, z, y, Quaternion::IDENTITY);
-	shipAgent->initializeTransform(Vector3(x, y, z), Quaternion::IDENTITY);
+	shipAgent->initializeTransform(Vector3(x, y, z), targetDirection);
 
 	if (!spaceZone->transferObject(shipAgent, -1, true)) {
 		shipAgent->destroyObjectFromWorld(true);

@@ -590,6 +590,13 @@ function SpaceEscortScreenplay:spawnAttackWave(pEscortAgent)
 		return
 	end
 
+	local pPlayerShip = SceneObject(pPlayer):getRootParent()
+
+	if (pPlayerShip == nil or not SceneObject(pPlayerShip):isShipObject()) then
+		Logger:log(self.className .. ":spawnAttackWave - pPlayerShip is nil.", LT_ERROR)
+		return
+	end
+
 	-- Send attack alert message
 	CreatureObject(pPlayer):sendSystemMessage("@spacequest/" .. self.questType .. "/" .. self.questName .. ":attack_notify")
 
@@ -624,7 +631,7 @@ function SpaceEscortScreenplay:spawnAttackWave(pEscortAgent)
 	end
 
 	for i = 1, #spawnTable, 1 do
-		local pShipAgent = spawnShipAgent(spawnTable[i], spawnZone, spawnLocation[1] + getRandomNumber(50, 150), spawnLocation[2] + getRandomNumber(50, 150), spawnLocation[3] + getRandomNumber(50, 150))
+		local pShipAgent = spawnShipAgent(spawnTable[i], spawnZone, spawnLocation[1], spawnLocation[2], spawnLocation[3], pPlayerShip)
 
 		if (pShipAgent == nil) then
 			goto continue

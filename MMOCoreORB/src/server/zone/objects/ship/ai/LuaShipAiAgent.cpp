@@ -296,7 +296,7 @@ int LuaShipAiAgent::engageShipTarget(lua_State* L) {
 	int numberOfArguments = lua_gettop(L) - 1;
 
 	if (numberOfArguments != 1) {
-		realObject->error() << "Improper number of arguments in LuaShipAiAgent::addAggro.";
+		realObject->error() << "Improper number of arguments in LuaShipAiAgent::engageShipTarget.";
 		return 0;
 	}
 
@@ -319,6 +319,8 @@ int LuaShipAiAgent::engageShipTarget(lua_State* L) {
 
 	threatMap->addAggro(shipTanO, 50, 10 * 60 * 1000);
 	threatMap->setThreatState(shipTanO, ThreatStates::TAUNTED, 10 * 60 * 1000, 10 * 60 * 1000);
+
+	realObject->setDefender(ship);
 
 	return 0;
 }

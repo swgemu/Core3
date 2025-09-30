@@ -300,7 +300,7 @@ function SpaceDutyDestroyScreenplay:spawnAttackWave(pPlayer)
 
 	local pPlayerShip = SceneObject(pPlayer):getRootParent()
 
-	if (pPlayerShip == nil) then
+	if (pPlayerShip == nil or not SceneObject(pPlayerShip):isShipObject()) then
 		Logger:log(self.className .. ":spawnAttackWave - pPlayerShip is nil.", LT_ERROR)
 		return
 	end
@@ -353,7 +353,7 @@ function SpaceDutyDestroyScreenplay:spawnAttackWave(pPlayer)
 				print(self.className .. ":spawnAttackWave -- Spawning Boss Level Ship: " .. shipAgentString)
 			end
 
-			local pBossLevelAgent = spawnShipAgent(shipAgentString, self.questZone, spawnLocation[1], spawnLocation[2], spawnLocation[3])
+			local pBossLevelAgent = spawnShipAgent(shipAgentString, self.questZone, spawnLocation[1], spawnLocation[2], spawnLocation[3], pPlayerShip)
 
 			if (pBossLevelAgent == nil) then
 				self:failQuest(pPlayer)
@@ -396,7 +396,7 @@ function SpaceDutyDestroyScreenplay:spawnAttackWave(pPlayer)
 	else
 		local spawnLocation = {}
 
-		if (getRandomNumber(100) > 50) then
+		if (getRandomNumber(1, 100) > 20) then
 			spawnLocation = ShipObject(pPlayerShip):getSpawnPointInFrontOfShip(600, 1200)
 			CreatureObject(pPlayer):sendSystemMessage("@spacequest/destroy_duty/" .. self.questName .. ":targets_detected")
 		else
@@ -415,7 +415,7 @@ function SpaceDutyDestroyScreenplay:spawnAttackWave(pPlayer)
 				print(self.className .. ":spawnAttackWave -- Spawning Regular Attack Ship: " .. shipType)
 			end
 
-			local pShipAgent = spawnShipAgent(shipType, self.questZone, spawnLocation[1], spawnLocation[2], spawnLocation[3])
+			local pShipAgent = spawnShipAgent(shipType, self.questZone, spawnLocation[1], spawnLocation[2], spawnLocation[3], pPlayerShip)
 
 			if (pShipAgent == nil) then
 				goto continue
@@ -434,11 +434,16 @@ function SpaceDutyDestroyScreenplay:spawnAttackWave(pPlayer)
 			-- Set as space mission object
 			CreatureObject(pPlayer):addSpaceMissionObject(agentID, (i == fighterCount))
 
-			ShipAiAgent(pShipAgent):addSpaceFactionEnemy(playerFactionHash)
-			ShipAiAgent(pShipAgent):addAggro(pPlayer, 1)
-			ShipAiAgent(pShipAgent):setDefender(pPlayer)
+			if (self.DEBUG_SPACE_DUTY_DESTROY) then
+				local testLocation = ShipObject(pShipAgent):getSpawnPointInFrontOfShip(1500, 1700)
 
-			-- Add aggo and set the pPlayerShip as ShipAgents Defender
+				drawClientPath(pShipAgent,spawnLocation[1], spawnLocation[2], spawnLocation[3], testLocation[1], testLocation[2], testLocation[3])
+			end
+
+			-- Add the players faction to the agents faction enemy vector
+			ShipAiAgent(pShipAgent):addSpaceFactionEnemy(playerFactionHash)
+
+			-- Engage the target ship, in this case pPlayerShip
 			ShipAiAgent(pShipAgent):engageShipTarget(pPlayerShip)
 
 			-- Add to the list of shipIDs
