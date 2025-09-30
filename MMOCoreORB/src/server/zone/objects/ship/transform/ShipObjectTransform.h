@@ -23,6 +23,9 @@ public:
 	constexpr static float DELTA_MAX = 0.5f;
 	constexpr static float DELTA_MIN = 0.1f;
 
+	constexpr static float POSITION_EPSILON = 0.25f;
+	constexpr static float ROTATION_EPSILON = 0.25f * (M_PI / 180.0f);
+
 private:
 	mutable ReadWriteLock mutex;
 	uint64 serverTime;
@@ -35,6 +38,7 @@ protected:
 
 	SpaceTransformType transformType;
 	float nextDistance;
+	float nextRotation;
 
 public:
 	ShipObjectTransform() : Object() {
@@ -42,6 +46,7 @@ public:
 		deltaTime = 0.f;
 
 		nextDistance = 0.f;
+		nextRotation = 0.f;
 	}
 
 	ShipObjectTransform(ShipObject* ship);
@@ -74,6 +79,10 @@ public:
 		return nextDistance;
 	}
 
+	float getNextRotation() const {
+		return nextRotation;
+	}
+
 private:
 	void setTransform(ShipObject* ship);
 
@@ -104,7 +113,7 @@ private:
 	}
 
 	bool isStaticUpdate() const {
-		return deltaTime < DELTA_MIN || (nextDistance <= 1.f && currentTransform.getSpeed() <= 0.f);
+		return deltaTime < DELTA_MIN || (nextRotation <= ROTATION_EPSILON && nextDistance <= POSITION_EPSILON && currentTransform.getSpeed() <= 0.f);
 	}
 
 	bool isInertiaUpdate() const {
@@ -119,10 +128,10 @@ public:
 			<< "  currentTransform:  " << endl << currentTransform.toDebugString() << endl
 			<< "  nextTransform:     " << endl << nextTransform.toDebugString() << endl
 			<< "  transformType:     " << endl << transformType.toDebugString() << endl
+			<< "  nextRotation:      " << nextRotation << endl
 			<< "  nextDistance:      " << nextDistance << endl;
 
 		return msg.toString();
-
 	}
 };
 
