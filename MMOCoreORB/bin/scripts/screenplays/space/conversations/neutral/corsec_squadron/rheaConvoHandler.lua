@@ -1,5 +1,3 @@
-local QuestManager = require("managers.quest.quest_manager")
-
 rheaConvoHandler = conv_handler:new {}
 
 function rheaConvoHandler:getInitialScreen(pPlayer, pNpc, pConvTemplate)
