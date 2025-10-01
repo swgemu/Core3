@@ -1,8 +1,5 @@
 idleEscort = {
 	{id="3878147956",	name="SequenceSpace",	pid="none"},
-	{id="4233020465",	name="NotSpace",	pid="3878147956"},
-	{id="3024864836",	name="IfSpace",	pid="4233020465"},
-	{id="1614536018",	name="CheckMovementState",	pid="3024864836",	args={condition=FOLLOWING}},
 	{id="3826170193",	name="NotSpace",	pid="3878147956"},
 	{id="1569932203",	name="IfSpace",	pid="3826170193"},
 	{id="1062834130",	name="CheckHasPatrol",	pid="1569932203"},
@@ -20,6 +17,29 @@ addAiTemplate("moveEscort", moveEscort)
 rootEscort = {
 	{id="763915188",	name="SelectorSpace",	pid="none"},
 	{id="2765964998",	name="TreeSocketSpace",	pid="763915188",	args={slot=MOVESPACE}},
+	{id="274678305",	name="SequenceSpace",	pid="763915188"},
+	{id="1389030440",	name="TreeSocketSpace",	pid="274678305",	args={slot=TARGETSPACE}},
+	{id="4055234843",	name="SetDefenderFromProspect",	pid="274678305"},
+	{id="861764988",	name="TreeSocketSpace",	pid="274678305",	args={slot=ATTACKSPACE}},
 	{id="3409670866",	name="TreeSocketSpace",	pid="763915188",	args={slot=IDLESPACE}}}
 addAiTemplate("rootEscort", rootEscort)
+
+targetEscort = {
+	{id="3290098785",	name="SelectorSpace",	pid="none"},
+	{id="3951740411",	name="SequenceSpace",	pid="3290098785"},
+	{id="2841003354",	name="SelectorSpace",	pid="3951740411"},
+	{id="1620568575",	name="GetProspectFromThreatMap",	pid="2841003354"},
+	{id="1345817549",	name="GetProspectFromDefenders",	pid="2841003354"},
+	{id="1343376248",	name="IfSpace",	pid="3951740411"},
+	{id="1733346912",	name="CheckTargetIsValid",	pid="1343376248"},
+	{id="3495893386",	name="IfSpace",	pid="3951740411"},
+	{id="3289951717",	name="CheckProspectInRange",	pid="3495893386"},
+	{id="1668662319",	name="IfSpace",	pid="3951740411"},
+	{id="3857117896",	name="CheckProspectLOS",	pid="1668662319"},
+	{id="934802909",	name="AlwaysFailSpace",	pid="3290098785"},
+	{id="1252347732",	name="SequenceSpace",	pid="934802909"},
+	{id="4111572918",	name="EraseBlackboard",	pid="1252347732",	args={param="aggroMod"}},
+	{id="428911276",	name="EraseBlackboard",	pid="1252347732",	args={param="targetShipProspect"}},
+	{id="1001791584",	name="ExitCombat",	pid="1252347732"}}
+addAiTemplate("targetEscort", targetEscort)
 

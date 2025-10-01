@@ -2,11 +2,10 @@ aggroDefault = {
 	{id="1109954618",	name="SequenceSpace",	pid="none"},
 	{id="2050102950",	name="IfSpace",	pid="1109954618"},
 	{id="305546007",	name="CheckProspectAggression",	pid="2050102950"},
-	{id="3897258376",	name="IfSpace",	pid="1109954618"},
-	{id="487075687",	name="CheckProspectInRange",	pid="3897258376"},
 	{id="2593013780",	name="IfSpace",	pid="1109954618"},
 	{id="2407318360",	name="CheckProspectLOS",	pid="2593013780"},
-	{id="908237602",	name="SetDefenderFromProspect",	pid="1109954618"}}
+	{id="908237602",	name="SetDefenderFromProspect",	pid="1109954618"},
+	{id="308570118",	name="SetMovementState",	pid="1109954618",	args={state=ATTACKING}}}
 addAiTemplate("aggroDefault", aggroDefault)
 
 attackDefault = {
