@@ -452,7 +452,14 @@ function SpaceHelpers:surrenderPilot(pPlayer)
 		pilotProfession = "neutralPilot"
 
 		-- All the Space Quests need to be reset here
+		-- Tier 1
 		CorsecSquadronScreenplay:resetRheaQuests(pPlayer)
+		-- Tier 2
+		CorsecSquadronScreenplay:resetRikkhQuests(pPlayer)
+		-- Tier 3
+		CorsecSquadronScreenplay:resetRamnaQuests(pPlayer)
+		-- Tier 4
+		CorsecSquadronScreenplay:resetTuroldineQuests(pPlayer)
 
 	elseif (pilotSquadron == BLACK_EPSILON_SQUADRON or pilotSquadron == STORM_SQUADRON or pilotSquadron == INQUISITION_SQUADRON) then
 		pilotProfession = "imperialPilot"
@@ -663,6 +670,27 @@ function SpaceHelpers:hasPilotTierSkill(pPlayer, factionString, tierNumber)
 	end
 
 	return false
+end
+
+-- @param pPlayer pointer to check for skills
+-- @param factionString - neutral, rebel_navy, imperial_navy
+-- @param tierNumber
+function SpaceHelpers:getPilotTierSkillCount(pPlayer, factionString, tierNumber)
+	if (pPlayer == nil or factionString == "" or tierNumber < 1 or tierNumber > 5) then
+		return false
+	end
+
+	local skillsTable = {"_droid_0", "_procedures_0", "_starships_0", "_weapons_0"}
+	local tierString = tostring(tierNumber)
+	local count = 0
+
+	for i = 1, 4, 1 do
+		if (CreatureObject(pPlayer):hasSkill("pilot_" .. factionString .. skillsTable[i] .. tierString)) then
+			count = count + 1
+		end
+	end
+
+	return count
 end
 
 -- @param pPlayer pointer to check for skills

@@ -18,6 +18,8 @@ SpaceQuestLogic = ScreenPlay:new {
 
 	sideQuest = false,
 	sideQuestType = "",
+	sideQuestName = "",
+
 	sideQuestStart = 0, -- Patrol Point Number
 	sideQuestDelay = 0, -- Time in seconds to wait to trigger side quest
 
