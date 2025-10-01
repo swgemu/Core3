@@ -1,5 +1,3 @@
-local QuestManager = require("managers.quest.quest_manager")
-
 rikkhConvoHandler = conv_handler:new {}
 
 function rikkhConvoHandler:getInitialScreen(pPlayer, pNpc, pConvTemplate)
@@ -272,19 +270,22 @@ function rikkhConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNpc, selec
 	elseif (screenID == "accept_assassinate" or screenID == "nonsense" or screenID == "let_me_know" or screenID == "report_back_success" or screenID == "key_to_success" or screenID == "just_malfunctioned") then
 		setQuestStatus(playerID .. CorsecSquadronScreenplay.TIER2_QUEST_STRING_4.name .. ":attempted", 1)
 
-		--	Give second mission to player
+		--	Give fourth mission to player
 		assassinate_corellia_privateer_tier2_4a:startQuest(pPlayer, pNpc)
 	elseif (screenID == "accept_inspect" or screenID == "on_your_way" or screenID == "take_it_serious" or screenID == "bad_liar") then
 		setQuestStatus(playerID .. CorsecSquadronScreenplay.TIER2_QUEST_STRING_3.name .. ":attempted", 1)
 
-		--	Give second mission to player
+		--	Give third mission to player
 		inspect_corellia_privateer_15:startQuest(pPlayer, pNpc)
 
 
 		-- REMOVE AFTER INSPECT IMPLEMENTATION
+
 		CreatureObject(pPlayer):sendSystemMessage("Inspect Missions have not been implemented yet, mission has been auto-completed.")
 
 		createEvent(2000, "inspect_corellia_privateer_15", "completeQuest", pPlayer, "true")
+
+		-- REMOVE AFTER INSPECT IMPLEMENTATION
 
 	elseif (screenID == "accept_escort" or screenID == "back_to_yavin" or screenID == "now_is_good" or screenID == "be_smarter") then
 		setQuestStatus(playerID .. CorsecSquadronScreenplay.TIER2_QUEST_STRING_2.name .. ":attempted", 1)
@@ -294,7 +295,7 @@ function rikkhConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNpc, selec
 	elseif ((screenID == "start_first_mission") or (screenID == "try_first_mission") or (screenID == "cant_wait_first")) then
 		setQuestStatus(playerID .. CorsecSquadronScreenplay.TIER2_QUEST_STRING_1.name .. ":attempted", 1)
 
-		--	Give First mission to player
+		--	Give first mission to player
 		destroy_corellia_privateer_13a:startQuest(pPlayer, pNpc)
 	end
 
