@@ -1,5 +1,5 @@
-SpaceInspectScreenplay = SpaceQuestLogic:new {
-	className = "SpaceInspectScreenplay",
+SpaceRecoveryScreenplay = ScreenPlay:new {
+	className = "SpaceRecoveryScreenplay",
 
 	questName = "",
 	questType = "",
@@ -15,22 +15,25 @@ SpaceInspectScreenplay = SpaceQuestLogic:new {
 
 	sideQuest = false,
 	sideQuestType = "",
+	sideQuestStart = 0, -- Patrol Point Number
+	sideQuestDelay = 0, -- Time in seconds to wait to trigger side quest
 
-	DEBUG_SPACE_INSPECT = false,
+	parentQuest = "",
+	parentQuestType = "", -- Quest type of parent quest, used for completing tasks
 }
 
-registerScreenPlay("SpaceInspectScreenplay", false)
+registerScreenPlay("SpaceRecoveryScreenplay", false)
 
 --[[
 
-		Space Inspect Quest Functions
+		Space Recovery Quest Functions
 
 --]]
 
-function SpaceInspectScreenplay:start()
+function SpaceRecoveryScreenplay:start()
 end
 
-function SpaceInspectScreenplay:startQuest(pPlayer, pNpc)
+function SpaceRecoveryScreenplay:startQuest(pPlayer, pNpc)
 	if (pPlayer == nil) then
 		Logger:log("Quest: " .. self.questName .. " Type: " .. self.QuestType .. " -- Failed to startQuest due to pPlayer being nil.", LT_ERROR)
 		return
@@ -69,7 +72,7 @@ function SpaceInspectScreenplay:startQuest(pPlayer, pNpc)
 	end
 end
 
-function SpaceInspectScreenplay:completeQuest(pPlayer, notifyClient)
+function SpaceRecoveryScreenplay:completeQuest(pPlayer, notifyClient)
 	if (pPlayer == nil) then
 		Logger:log("Quest: " .. self.questName .. " Type: " .. self.questType .. " -- Failed to completeQuest due to pPlayer being nil.", LT_ERROR)
 		return
@@ -94,7 +97,7 @@ function SpaceInspectScreenplay:completeQuest(pPlayer, notifyClient)
 	self:cleanUpQuestData(SceneObject(pPlayer):getObjectID())
 end
 
-function SpaceInspectScreenplay:failQuest(pPlayer, notifyClient)
+function SpaceRecoveryScreenplay:failQuest(pPlayer, notifyClient)
 	if (pPlayer == nil) then
 		Logger:log(self.questName .. " Type: " .. self.questType .. " -- Failed to failQuest due to pPlayer being nil.", LT_ERROR)
 		return
@@ -132,7 +135,7 @@ function SpaceInspectScreenplay:failQuest(pPlayer, notifyClient)
 	end
 end
 
-function SpaceInspectScreenplay:cleanUpQuestData(playerID)
+function SpaceRecoveryScreenplay:cleanUpQuestData(playerID)
 	-- Delete the stored escorted ship ID
 	deleteData(playerID .. ":" .. self.className .. ":escortID:")
 
@@ -148,11 +151,3 @@ function SpaceInspectScreenplay:cleanUpQuestData(playerID)
 	-- Kill Count Tracking
 	deleteData(playerID .. ":" .. self.className .. ":" .. ":EscortKillCount:")
 end
-
-
-
-
-
-
-
-
