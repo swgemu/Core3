@@ -25,8 +25,10 @@ bitmaskLookup = {
 
 	{ESCORT, {
 		{NONESPACE, "rootEscort"},
-		{MOVESPACE, "moveEscort"},
+		{AWARESPACE, "awareEscort"},
 		{IDLESPACE, "idleEscort"},
+		{MOVESPACE, "moveEscort"},
+		{TARGETSPACE, "targetEscort"},
 	}},
 
 	{TURRETSHIP, {

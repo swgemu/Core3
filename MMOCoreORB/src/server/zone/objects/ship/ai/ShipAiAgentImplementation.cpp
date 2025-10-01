@@ -1510,7 +1510,6 @@ void ShipAiAgentImplementation::setDefender(ShipObject* defender) {
 	TangibleObjectImplementation::setDefender(defender);
 
 	setTargetShipObject(defender);
-	setMovementState(ShipAiAgent::ATTACKING);
 
 	defender->addDefender(asShipAiAgent());
 

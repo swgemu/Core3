@@ -143,6 +143,7 @@ function SpaceEscortScreenplay:failQuest(pPlayer, notifyClient)
 	-- Remove the zone entry observer
 	dropObserver(ZONESWITCHED, self.className, "enteredZone", pPlayer)
 
+	self:despawnShips(pPlayer)
 	self:cleanUpQuestData(SceneObject(pPlayer):getObjectID())
 
 	-- Fail the parent quest
@@ -332,6 +333,13 @@ function SpaceEscortScreenplay:spawnEscortShip(pPlayer)
 		return
 	end
 
+	local pPlayerShip = SceneObject(pPlayer):getRootParent()
+
+	if (pPlayerShip == nil or not SceneObject(pPlayerShip):isShipObject()) then
+		Logger:log(self.className .. ":spawnEscortShip - pPlayerShip is nil.", LT_ERROR)
+		return
+	end
+
 	-- Remove the rendevous waypoint from player
 	SpaceHelpers:clearQuestWaypoint(pPlayer, self.className)
 
@@ -340,9 +348,7 @@ function SpaceEscortScreenplay:spawnEscortShip(pPlayer)
 	local randomStart = readData(playerID .. self.className .. ":startPoint:")
 	deleteData(playerID .. self.className .. ":startPoint:")
 
-	local x = self.escortPoints[randomStart].x
-	local z = self.escortPoints[randomStart].z
-	local y = self.escortPoints[randomStart].y
+	local spawnLocation = ShipObject(pPlayerShip):getSpawnPointInFrontOfShip(50, 150)
 
 	local escortShip = ""
 
@@ -353,11 +359,11 @@ function SpaceEscortScreenplay:spawnEscortShip(pPlayer)
 	end
 
 	if (self.DEBUG_SPACE_ESCORT) then
-		print(self.className .. ":spawnEscortShip called -- Escort Ship: " .. escortShip .. " Space Zone: " .. self.questZone .. " X: " .. x .. " Z: " .. z .. " Y: " .. y)
+		print(self.className .. ":spawnEscortShip called -- Escort Ship: " .. escortShip .. " Space Zone: " .. self.questZone .. " X: " .. spawnLocation[1] .. " Z: " .. spawnLocation[2] .. " Y: " .. spawnLocation[3])
 	end
 
 	-- Spawn the ship to be escorted
-	local pShipAgent = spawnShipAgent(escortShip, self.questZone, x, z + 40, y)
+	local pShipAgent = spawnShipAgent(escortShip, self.questZone, spawnLocation[1], spawnLocation[2], spawnLocation[3], pPlayerShip)
 
 	if (pShipAgent == nil) then
 		self:failQuest(pPlayer, "true")
@@ -386,7 +392,11 @@ function SpaceEscortScreenplay:spawnEscortShip(pPlayer)
 
 	-- Set as same space faction
 	ShipObject(pShipAgent):setShipFactionString(SpaceHelpers:getPlayerShipFactionString(pPlayer))
-	ShipAiAgent(pShipAgent):addSpaceFactionAlly(SpaceHelpers:getPlayerShipFactionHash(pPlayer))
+
+	local playerFactionHash = SpaceHelpers:getPlayerShipFactionHash(pPlayer)
+
+	ShipAiAgent(pShipAgent):addSpaceFactionAlly(playerFactionHash)
+	ShipAiAgent(pShipAgent):removeSpaceFactionEnemy(playerFactionHash)
 
 	-- Add kill observer
 	createObserver(OBJECTDESTRUCTION, self.className, "notifyEscortShipDestroyed", pShipAgent)
@@ -648,6 +658,7 @@ function SpaceEscortScreenplay:spawnAttackWave(pEscortAgent)
 
 		-- Add players faction as enemy
 		ShipAiAgent(pShipAgent):addSpaceFactionEnemy(playerFactionHash)
+		ShipAiAgent(pShipAgent):removeSpaceFactionAlly(playerFactionHash)
 
 		-- Add kill observer
 		createObserver(OBJECTDESTRUCTION, self.className, "notifyAttackShipDestroyed", pShipAgent)
@@ -724,6 +735,27 @@ function SpaceEscortScreenplay:removeAttackShips(pShipAgent)
 
 		::continue::
 	end
+end
+
+function SpaceEscortScreenplay:despawnShips(pPlayer)
+	if (pPlayer == nil) then
+		return 0
+	end
+
+	local playerID = SceneObject(pPlayer):getObjectID()
+	local escortShipID = readData(playerID .. ":" .. self.className .. ":escortID:")
+	deleteData(playerID .. ":" .. self.className .. ":escortID:")
+
+	local pEscortAgent = getSceneObject(escortShipID)
+
+	if (pEscortAgent == nil) then
+		Logger:log(self.className .. ":despawnShips - Escort ship is nil.", LT_ERROR)
+		return
+	end
+
+	self:removeAttackShips(pEscortAgent)
+
+	createEvent(2000, "SpaceHelpers", "delayedDestroyShipAgent", pEscortAgent, "")
 end
 
 --[[

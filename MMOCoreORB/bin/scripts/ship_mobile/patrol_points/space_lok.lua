@@ -394,6 +394,10 @@ space_lok = SpacePatrolPointTable:new {
 	{"trade_fed_station_patrol_12", 1272, -6135, -7037},
 	{"trade_fed_station_patrol_13", 436, -5653, -6579},
 	{"trade_fed_station_patrol_14", -1373, -4465, -5356},
+	{"privateer_security_escort_1", -5034, -5439, -4558},
+	{"privateer_security_escort_2", -2103, -5336, -5600},
+	{"privateer_ecurity_escort_3", 1262, -5572, -5035},
+	{"privateer_security_escort_4", 5940, -5892, -4039},
 }
 
  SpacePatrolPoints:addSpacePatrolPoints(space_lok, "space_lok")
