@@ -17,18 +17,43 @@ SpaceInspectScreenplay = SpaceQuestLogic:new {
 	sideQuestType = "",
 
 	DEBUG_SPACE_INSPECT = false,
+
+	escortRange = 1000,
+	escortSpeed = 20,
+	testEscortSpeed = 40,
+
+	escortShip = "",
+
+	escortPoints = {
+		--{zoneName = "space_corellia", x = -4381, z = -4943, y = -7262, patrolNumber = 1, radius = 150},
+	},
+
+	spawnAttackWaves = true,
+	checkPlayerDistance = true,
+
+	attackDelay = 0, -- In Seconds
+	attackShips = {},
+
+	tauntData = {
+		goodbyeCount = 5,
+		reasonCount = 5,
+		tauntCount = 5,
+		thanksCount = 5,
+	},
 }
 
 registerScreenPlay("SpaceInspectScreenplay", false)
 
 --[[
 
-		Space Inspect Quest Functions
+		Space Escort Quest Functions
 
 --]]
 
 function SpaceInspectScreenplay:start()
+
 end
+
 
 function SpaceInspectScreenplay:startQuest(pPlayer, pNpc)
 	if (pPlayer == nil) then

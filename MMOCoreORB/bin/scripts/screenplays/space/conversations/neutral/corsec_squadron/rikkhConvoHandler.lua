@@ -1,3 +1,5 @@
+local QuestManager = require("managers.quest.quest_manager")
+
 rikkhConvoHandler = conv_handler:new {}
 
 function rikkhConvoHandler:getInitialScreen(pPlayer, pNpc, pConvTemplate)
