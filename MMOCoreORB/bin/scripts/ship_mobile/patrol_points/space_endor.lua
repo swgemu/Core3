@@ -369,6 +369,10 @@ space_endor = SpacePatrolPointTable:new {
 	{"scientists_route_1_20", 1232, -418, 2697},
 	{"scientists_route_1_21", 912, -575, 2880},
 	{"scientists_route_1_22", 693, -456, 2588},
+	{"privateer_tier3_assassin_1", 5978, 1103, -3021},
+	{"privateer_tier3_assassin_2", 1503, 857, -4461},
+	{"privateer_tier3_assassin_3", -1962, 658, -3496},
+	{"privateer_tier3_assassin_4", -5906, 487, -2508},
 }
 
  SpacePatrolPoints:addSpacePatrolPoints(space_endor, "space_endor")

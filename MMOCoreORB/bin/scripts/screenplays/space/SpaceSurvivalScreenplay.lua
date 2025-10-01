@@ -1,5 +1,5 @@
-SpaceInspectScreenplay = SpaceQuestLogic:new {
-	className = "SpaceInspectScreenplay",
+SpaceSurvivalScreenplay = SpaceQuestLogic:new {
+	className = "SpaceSurvivalScreenplay",
 
 	questName = "",
 	questType = "",
@@ -15,11 +15,12 @@ SpaceInspectScreenplay = SpaceQuestLogic:new {
 
 	sideQuest = false,
 	sideQuestType = "",
+	sideQuestName = "",
 
-	DEBUG_SPACE_INSPECT = false,
+	DEBUG_SPACE_SURVIVAL = false,
 }
 
-registerScreenPlay("SpaceInspectScreenplay", false)
+registerScreenPlay("SpaceSurvivalScreenplay", false)
 
 --[[
 
@@ -27,16 +28,16 @@ registerScreenPlay("SpaceInspectScreenplay", false)
 
 --]]
 
-function SpaceInspectScreenplay:start()
+function SpaceSurvivalScreenplay:start()
 end
 
-function SpaceInspectScreenplay:startQuest(pPlayer, pNpc)
+function SpaceSurvivalScreenplay:startQuest(pPlayer, pNpc)
 	if (pPlayer == nil) then
 		Logger:log("Quest: " .. self.questName .. " Type: " .. self.QuestType .. " -- Failed to startQuest due to pPlayer being nil.", LT_ERROR)
 		return
 	end
 
-	if (self.DEBUG_SPACE_INSPECT) then
+	if (self.DEBUG_SPACE_SURVIVAL) then
 		print(self.className .. ":startQuest called -- QuestType: " .. self.questType .. " Quest Name: " .. self.questName)
 	end
 
@@ -69,13 +70,13 @@ function SpaceInspectScreenplay:startQuest(pPlayer, pNpc)
 	end
 end
 
-function SpaceInspectScreenplay:completeQuest(pPlayer, notifyClient)
+function SpaceSurvivalScreenplay:completeQuest(pPlayer, notifyClient)
 	if (pPlayer == nil) then
 		Logger:log("Quest: " .. self.questName .. " Type: " .. self.questType .. " -- Failed to completeQuest due to pPlayer being nil.", LT_ERROR)
 		return
 	end
 
-	if (self.DEBUG_SPACE_INSPECT) then
+	if (self.DEBUG_SPACE_SURVIVAL) then
 		print(self.className .. ":completeQuest called -- QuestType: " .. self.questType .. " Quest Name: " .. self.questName)
 	end
 
@@ -94,13 +95,13 @@ function SpaceInspectScreenplay:completeQuest(pPlayer, notifyClient)
 	self:cleanUpQuestData(SceneObject(pPlayer):getObjectID())
 end
 
-function SpaceInspectScreenplay:failQuest(pPlayer, notifyClient)
+function SpaceSurvivalScreenplay:failQuest(pPlayer, notifyClient)
 	if (pPlayer == nil) then
 		Logger:log(self.questName .. " Type: " .. self.questType .. " -- Failed to failQuest due to pPlayer being nil.", LT_ERROR)
 		return
 	end
 
-	if (self.DEBUG_SPACE_INSPECT) then
+	if (self.DEBUG_SPACE_SURVIVAL) then
 		print(self.className .. ":failQuest called -- QuestType: " .. self.questType .. " Quest Name: " .. self.questName)
 	end
 
@@ -132,7 +133,7 @@ function SpaceInspectScreenplay:failQuest(pPlayer, notifyClient)
 	end
 end
 
-function SpaceInspectScreenplay:cleanUpQuestData(playerID)
+function SpaceSurvivalScreenplay:cleanUpQuestData(playerID)
 	-- Delete the stored escorted ship ID
 	deleteData(playerID .. ":" .. self.className .. ":escortID:")
 
@@ -148,11 +149,3 @@ function SpaceInspectScreenplay:cleanUpQuestData(playerID)
 	-- Kill Count Tracking
 	deleteData(playerID .. ":" .. self.className .. ":" .. ":EscortKillCount:")
 end
-
-
-
-
-
-
-
-
