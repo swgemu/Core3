@@ -401,7 +401,7 @@ escort_duty_corellia_privateer_10 = SpaceDutyEscortScreenplay:new {
 	questName = "corellia_privateer_10",
 	questType = "escort_duty",
 
-	questZone = "space_corellia",
+	questZone = "space_lok",
 
 	creditReward = 1000,
 
@@ -415,10 +415,10 @@ escort_duty_corellia_privateer_10 = SpaceDutyEscortScreenplay:new {
 	escortShips = {"freighterheavy_tier1", "freighterlight_tier1", "freightermedium_tier1"},
 
 	escortPoints = {
-		{name = "privateer_security_escort_1", zoneName = "space_corellia", x = -5034, z = -5439, y = -4558, escortNumber = 1, radius = 250},
-		{name = "privateer_security_escort_2", zoneName = "space_corellia", x = -2103, z = -5336, y = -5600, escortNumber = 2, radius = 250},
-		{name = "privateer_security_escort_3", zoneName = "space_corellia", x = 1262, z = -5572, y = -5035, escortNumber = 3, radius = 250},
-		{name = "privateer_security_escort_4", zoneName = "space_corellia", x = 5940, z = -5892, y = -4039, escortNumber = 4, radius = 250},
+		{name = "privateer_security_escort_1", zoneName = "space_lok", x = -5034, z = -5439, y = -4558, escortNumber = 1, radius = 250},
+		{name = "privateer_security_escort_2", zoneName = "space_lok", x = -2103, z = -5336, y = -5600, escortNumber = 2, radius = 250},
+		{name = "privateer_security_escort_3", zoneName = "space_lok", x = 1262, z = -5572, y = -5035, escortNumber = 3, radius = 250},
+		{name = "privateer_security_escort_4", zoneName = "space_lok", x = 5940, z = -5892, y = -4039, escortNumber = 4, radius = 250},
 	},
 
 	attackDelay = 90, -- In Seconds

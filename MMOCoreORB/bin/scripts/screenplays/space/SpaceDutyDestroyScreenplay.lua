@@ -319,10 +319,6 @@ function SpaceDutyDestroyScreenplay:spawnAttackWave(pPlayer)
 		print(self.className .. ":spawnAttackWave called")
 	end
 
-	local x = SceneObject(pQuestArea):getPositionX()
-	local z = SceneObject(pQuestArea):getPositionZ()
-	local y = SceneObject(pQuestArea):getPositionY()
-
 	local shipIDs = readStringVectorSharedMemory(playerID .. self.className .. ":attackShips:")
 	local bossLevel = readData(playerID .. ":" .. self.className .. ":bossLevel:")
 	local currentWave = readData(playerID .. ":" .. self.className .. ":CurrentWave:")
