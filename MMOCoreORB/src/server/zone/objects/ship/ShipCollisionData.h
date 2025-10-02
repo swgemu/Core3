@@ -20,6 +20,7 @@ public:
 protected:
 	VectorMap<String, VectorMap<uint32, ShipCollisionHardpoint>> hardpointMap;
 	VectorMap<uint32, uint32> slotWeights;
+	Vector<uint32> targetableSlots;
 	int hardpointSize;
 
 	const AppearanceTemplate* appearance;
@@ -125,6 +126,10 @@ public:
 
 	const VectorMap<uint32, ShipCollisionHardpoint>& getHardpoints(const String& slotName) const {
 		return hardpointMap.get(slotName);
+	}
+
+	const Vector<uint32>& getTargetableSlots() const {
+		return targetableSlots;
 	}
 
 	int getSlotWeight(uint32 slot) const {

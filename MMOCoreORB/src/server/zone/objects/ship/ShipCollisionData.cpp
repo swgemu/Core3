@@ -139,10 +139,6 @@ void ShipCollisionData::setComponentData(SharedShipObjectTemplate* templateData,
 				const auto& hardpointName = componentHardpoint->getHardpointName();
 				float hardpointRadius = componentHardpoint->getRange();
 
-				if (hardpointRadius <= 0.f) {
-					continue;
-				}
-
 				String attachmentFileName = "";
 
 				if (attachmentName != "") {
@@ -156,7 +152,7 @@ void ShipCollisionData::setComponentData(SharedShipObjectTemplate* templateData,
 
 				if (attachmentFileName != "") {
 					addCollisionHardpoint(templateData, componentName, attachmentFileName, hardpointName, slot, hardpointRadius);
-				} else {
+				} else if (hardpointRadius > 0.f){
 					addCollisionHardpoint(templateData, componentName, hardpointName, slot, hardpointRadius);
 				}
 			}
@@ -208,9 +204,14 @@ void ShipCollisionData::addCollisionHardpoint(SharedShipObjectTemplate* shipTemp
 	collisionEntry.setVolumeType(RADIUS);
 	collisionEntry.setRadius(radius);
 	collisionEntry.setSlot(slot);
+	collisionEntry.setTargetable(radius > 0.f);
 
 	auto hardPointEntry = &hardpointMap.get(slotName);
 	hardPointEntry->put(componentName.hashCode(), std::move(collisionEntry));
+
+	if (collisionEntry.isTargetable() && !targetableSlots.contains(slot)) {
+		targetableSlots.add(slot);
+	}
 }
 
 void ShipCollisionData::addCollisionHardpoint(SharedShipObjectTemplate* shipTemplate, const String& componentName, const String& attachmentName, const String& hardpointName, int slot, float radius) {
@@ -285,6 +286,7 @@ void ShipCollisionData::addCollisionHardpoint(SharedShipObjectTemplate* shipTemp
 	collisionEntry.setVolumeType(hardpointType);
 	collisionEntry.setRadius(hardpointRadius);
 	collisionEntry.setSlot(slot);
+	collisionEntry.setTargetable(radius > 0.f);
 
 	if (!isIdentityMatrix(hardpointRotation)) {
 		collisionEntry.setRotation(new Matrix4(hardpointRotation));
@@ -292,4 +294,8 @@ void ShipCollisionData::addCollisionHardpoint(SharedShipObjectTemplate* shipTemp
 
 	auto hardPointEntry = &hardpointMap.get(slotName);
 	hardPointEntry->put(componentName.hashCode(), std::move(collisionEntry));
+
+	if (collisionEntry.isTargetable() && !targetableSlots.contains(slot)) {
+		targetableSlots.add(slot);
+	}
 }

@@ -1434,17 +1434,14 @@ bool ShipAiAgentImplementation::fireTurretAtTarget(ShipObject* targetShip, const
 	const Vector3& targetPosition = getInterceptPosition(targetShip, projectileData->getSpeed(), slot, targetSlot);
 	const Vector3& hardpointPosition = hardpoint.getSphere().getCenter();
 
-	Vector3 turretGlobal = (hardpointPosition * shipRotation);
-	turretGlobal = Vector3(turretGlobal.getX(), turretGlobal.getZ(), turretGlobal.getY()) + shipPosition;
-
+	Vector3 turretGlobal = SpaceMath::getGlobalVector(hardpointPosition, conjugateMatrix) + shipPosition;
 	Vector3 targetGlobal = targetPosition - turretGlobal;
 
 	if (targetGlobal.squaredLength() > projectileData->getRange() * projectileData->getRange()) {
 		return false;
 	}
 
-	Vector3 targetLocal = targetGlobal;
-	targetLocal = Vector3(targetLocal.getX(), targetLocal.getZ(), targetLocal.getY()) * shipRotation;
+	Vector3 targetLocal = SpaceMath::getLocalVector(targetGlobal, rotationMatrix);
 
 	const Matrix4* hardpointRotation = hardpoint.getRotation();
 

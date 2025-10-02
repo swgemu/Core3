@@ -64,7 +64,7 @@ float SpaceCollisionManager::getProjectileCollision(ShipObject* ship, const Ship
 				}
 			}
 
-			if (data->getHardpointSize() > 0) {
+			if (data->getTargetableSlots().size() > 0) {
 				getComponentHardpointCollision(targetShip, data, projectile, result);
 			}
 		} else {
@@ -287,7 +287,11 @@ float SpaceCollisionManager::getComponentHardpointCollision(ShipObject* target, 
 		resultPosition = (localDirection * resultIntersection) + localStart;
 	}
 
-	for (int slot = -1; slot <= Components::CAPITALSLOTMAX; ++slot) {
+	const auto& targetableSlots = data->getTargetableSlots();
+
+	for (int i = Components::CHASSIS; i < targetableSlots.size(); ++i) {
+		int slot = i < 0 ? i : targetableSlots.get(i);
+
 		String slotName = Components::shipComponentSlotToString(slot);
 		uint32 compCrc = componentMap->get(slot);
 		float hitpoints = hitpointsMap->get(slot);
@@ -306,6 +310,11 @@ float SpaceCollisionManager::getComponentHardpointCollision(ShipObject* target, 
 			}
 
 			const auto& hardpoint = hardPoints.elementAt(i).getValue();
+
+			if (!hardpoint.isTargetable()) {
+				continue;
+			}
+
 			const auto& boundingPosition = hardpoint.getSphere().getCenter();
 			float boundingRadius = hardpoint.getSphere().getRadius();
 

@@ -18,6 +18,8 @@ protected:
 	float radius;
 	int slot;
 
+	bool targetable;
+
 public:
 	ShipCollisionHardpoint() {
 		appearance = nullptr;
@@ -26,6 +28,8 @@ public:
 		volumeType = -1;
 		radius = -1.f;
 		slot = -1;
+
+		targetable = false;
 	}
 
 	ShipCollisionHardpoint(const String& componentNameValue, const String& hardpointNameValue) : ShipCollisionHardpoint() {
@@ -73,6 +77,10 @@ public:
 		slot = value;
 	}
 
+	void setTargetable(bool value) {
+		targetable = value;
+	}
+
 	const AppearanceTemplate* getAppearanceTemplate() const {
 		return appearance;
 	}
@@ -113,6 +121,10 @@ public:
 		return slot;
 	}
 
+	bool isTargetable() const {
+		return targetable;
+	}
+
 	String toDebugString() const {
 		StringBuffer msg;
 
@@ -126,6 +138,7 @@ public:
 		<< " box:            " << box.getMinBound()->toString() << ", " << box.getMaxBound()->toString() << endl
 		<< " volumeType:     " << volumeType << endl
 		<< " slot:           " << Components::shipComponentSlotToString(slot) << endl
+		<< " targetable:     " << targetable << endl
 		<< "--------------------------------" << endl;
 
 		return msg.toString();
