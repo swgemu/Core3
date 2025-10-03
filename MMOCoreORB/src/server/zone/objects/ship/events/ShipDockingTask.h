@@ -33,6 +33,9 @@ protected:
 	uint64 timeStart;
 	uint64 timeTotal;
 
+	float rotationTime;
+	float positionTime;
+
 	int dockingStage;
 	bool interlockStatus;
 
@@ -58,6 +61,9 @@ public:
 		timeStart = System::getMiliTime();
 		timeTotal = 0;
 
+		rotationTime = 0.f;
+		positionTime = 0.f;
+
 		dockingStage = INITIALIZE;
 		interlockStatus = false;
 	}
@@ -70,7 +76,13 @@ private:
 	}
 
 	void setSpeed(ShipObject* ship) {
-		dockTransform.setSpeed(Math::clamp((float)SPEED_MIN, ship->getEngineMaxSpeed(), (float)SPEED_MAX));
+		float throttle = 1.f;
+
+		if (rotationTime > 0.f && rotationTime > positionTime) {
+			throttle = Math::clamp(0.f, positionTime / rotationTime, 1.f);
+		}
+
+		dockTransform.setSpeed(Math::clamp((float)SPEED_MIN, ship->getEngineMaxSpeed() * throttle, (float)SPEED_MAX));
 	}
 
 	void setTimeTotal(ShipObject* ship) {
@@ -80,18 +92,19 @@ private:
 		const auto& dPosition = dockTransform.getPosition();
 		const auto& dRotation = dockTransform.getRotation();
 
-		float pTime = 0.f;
-		float rTime = 0.f;
-
 		if (sPosition != dPosition) {
-			pTime = sPosition.distanceTo(dPosition) / Math::max(dockTransform.getSpeed(), 1.f);
+			positionTime = sPosition.distanceTo(dPosition) / Math::max(ship->getEngineMaxSpeed() * 0.5f, 1.f);
 		}
 
 		if (sRotation != dRotation) {
-			rTime = SpaceMath::getRotationTime(dRotation, sRotation, ship->getEngineYawRate(), ship->getEnginePitchRate());
+			float tY = SpaceMath::getRotationRate(dRotation[0], sRotation[0]) / Math::max(ship->getEngineYawRate() * 0.5f, 1.f);
+			float tP = SpaceMath::getRotationRate(dRotation[1], sRotation[1]) / Math::max(ship->getEnginePitchRate() * 0.5f, 1.f);
+			float tR = SpaceMath::getRotationRate(dRotation[2], sRotation[2]) / Math::max(ship->getEngineRollRate() * 0.5f, 1.f);
+
+			rotationTime = Math::max(tY, Math::max(tP, tR));
 		}
 
-		timeTotal = Math::clamp((float)DURATION_MIN, Math::max(pTime, rTime), (float)DURATION_MAX);
+		timeTotal = Math::clamp((float)DURATION_MIN, Math::max(positionTime, rotationTime), (float)DURATION_MAX);
 	}
 
 	void initializeDocking(ShipObject* ship, ShipObject* target);
@@ -110,13 +123,15 @@ private:
 
 	void setDockingTransform(ShipObject* ship, ShipObject* target);
 
-	void setBoundingTransform(ShipObject* ship, ShipObject* target);
-
 	void setAppearanceTransform(ShipObject* ship, ShipObject* target);
 
 	bool checkLineOfSight(ShipObject* ship, ShipObject* target);
 
-	Vector3 getBoundingPosition(ShipObject* ship);
+	Vector3 getBoundingPosition(ShipObject* ship, const Vector3& axis);
+
+	Vector3 getBoundingAxis(ShipObject* ship, ShipObject* target);
+
+	Vector3 getRotationAxis(const Vector3& axis);
 };
 
 #endif // SHIPDOCKINGTASK_H_

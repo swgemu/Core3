@@ -45,6 +45,7 @@ void SpaceTransformType::setRotationRate() {
 		case Type::DOCK: {
 			rotationRate[Rotation::YAW] = 0.5f;
 			rotationRate[Rotation::PITCH] = 0.5f;
+			rotationRate[Rotation::ROLL] = 0.5f;
 			break;
 		}
 		case Type::FAST:
@@ -52,10 +53,10 @@ void SpaceTransformType::setRotationRate() {
 		default: {
 			rotationRate[Rotation::YAW] = 1.f;
 			rotationRate[Rotation::PITCH] = 1.f;
+			rotationRate[Rotation::ROLL] = 0.5f;
 		}
 	}
 
-	rotationRate[Rotation::ROLL] = rotationRate[Rotation::YAW] * 0.5f;
 	rotationRate = rotationRate * rotationDamp;
 }
 
