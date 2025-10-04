@@ -154,9 +154,10 @@ template<> bool CheckEnginesDisabled::check(ShipAiAgent* agent) const {
 	if (componentOptMap == nullptr)
 		return false;
 
-	uint32 flags = componentOptMap->get(Components::ENGINE);
+	uint32 engineFlags = componentOptMap->get(Components::ENGINE);
+	uint32 reactorFlags = componentOptMap->get(Components::REACTOR);
 
-	return (flags & ShipComponentFlag::DISABLED) || (flags & ShipComponentFlag::DEMOLISHED);
+	return (engineFlags & ShipComponentFlag::DISABLED) || (engineFlags & ShipComponentFlag::DEMOLISHED) || (reactorFlags & ShipComponentFlag::DISABLED) || (reactorFlags & ShipComponentFlag::DEMOLISHED);
 }
 
 template<> bool CheckEvadeChance::check(ShipAiAgent* agent) const {

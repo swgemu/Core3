@@ -26,10 +26,9 @@ function SpaceAssassinateScreenplay:startQuest(pPlayer)
 	local spaceQuestHash = getHashCode(self.questZone)
 	local zoneName = SceneObject(pPlayer):getZoneName()
 	local playerZoneHash = getHashCode(zoneName)
-	local pRootParent = SceneObject(pPlayer):getRootParent()
 
 	-- Check if the player is in the proper zone already
-	if (playerZoneHash == spaceQuestHash and pRootParent ~= nil and SceneObject(pRootParent):getObjectName() ~= "player_sorosuub_space_yacht") then
+	if (playerZoneHash == spaceQuestHash and not SpaceHelpers:isInYacht(pPlayer)) then
 		createEvent(2000, self.className, "deployTargets", pPlayer, "")
 	end
 
@@ -183,7 +182,7 @@ function SpaceAssassinateScreenplay:deployTargets(pPlayer)
 	local shipIDs = {}
 	local primaryID = SceneObject(pPrimaryAgent):getObjectID()
 
-	shipIDs[#shipIDs + 1] = primaryID
+	table.insert(shipIDs, primaryID)
 
 	-- Set Fixed Patrol
 	ShipAiAgent(pPrimaryAgent):setFixedPatrol()
@@ -222,7 +221,7 @@ function SpaceAssassinateScreenplay:deployTargets(pPlayer)
 			ShipAiAgent(pShipAgent):setFixedPatrol()
 
 			-- Assign the patrols to the escort
-			createEvent(i * 500, self.className, "assignPatrols", pShipAgent, "")
+			self:assignPatrols(pShipAgent)
 
 			-- Set to not despawn. Screenplay will handle cleanup if time runs out of player fails
 			ShipAiAgent(pShipAgent):setDespawnOnNoPlayerInRange(false)
@@ -232,7 +231,7 @@ function SpaceAssassinateScreenplay:deployTargets(pPlayer)
 
 			local agentID = SceneObject(pShipAgent):getObjectID()
 
-			shipIDs[#shipIDs + 1] = agentID
+			table.insert(shipIDs, agentID)
 
 			-- Store the quest owner
 			writeData(agentID .. ":" .. self.className .. ":QuestOwner", playerID)
@@ -328,11 +327,7 @@ function SpaceAssassinateScreenplay:assignPatrols(pShipAgent)
 
 	local patrols = self.targetPatrols
 
-	for i = 1, #patrols, 1 do
-		local pointName = patrols[i].name
-
-		ShipAiAgent(pShipAgent):addFixedPatrolPoint(pointName)
-	end
+	ShipAiAgent(pShipAgent):assignFixedPatrolPointsTable(patrols)
 end
 
 function SpaceAssassinateScreenplay:despawnTargetShips(pPlayer)
@@ -342,8 +337,6 @@ function SpaceAssassinateScreenplay:despawnTargetShips(pPlayer)
 
 	local playerID = SceneObject(pPlayer):getObjectID()
 	local shipIDs = readStringVectorSharedMemory(playerID .. self.className .. ":targetShips:")
-
-	local pPlayer = getSceneObject(playerID)
 
 	-- Remove the vector, it is no longer needed
 	deleteStringVectorSharedMemory(playerID .. self.className .. ":targetShips:")

@@ -1623,6 +1623,13 @@ void ShipAiAgentImplementation::removeSpaceFactionEnemy(uint32 factionHash) {
 	broadcastPvpStatusBitmask();
 }
 
+void ShipAiAgentImplementation::swapSpaceFactionAssociations() {
+	auto tempAllies = alliedFactions;
+
+	alliedFactions = enemyFactions;
+	enemyFactions = tempAllies;
+}
+
 bool ShipAiAgentImplementation::isAggressiveTo(TangibleObject* target) {
 	if (target == nullptr || getObjectID() == target->getObjectID())
 		return false;
@@ -1945,8 +1952,16 @@ void ShipAiAgentImplementation::removeShipFlag(uint32 flag) {
 		shipBitmask &= ~flag;
 }
 
+bool ShipAiAgentImplementation::isDisabledInvulnerable() {
+	return shipBitmask & ShipFlag::DISABLED_INVULNERABLE;
+}
+
 void ShipAiAgentImplementation::addFixedPatrolPoint(uint32 pointHash) {
 	fixedPatrolPoints.add(pointHash);
+}
+
+void ShipAiAgentImplementation::clearFixedPatrolPoints() {
+	fixedPatrolPoints.removeAll();
 }
 
 Vector3 ShipAiAgentImplementation::getHomePosition() {
@@ -2077,6 +2092,40 @@ void ShipAiAgentImplementation::tauntPlayer(CreatureObject* player, const String
 
 	if (task != nullptr) {
 		player->addPendingTask("SpaceCommTimer", task, 10 * 1000);
+	}
+
+	if (!player->isGrouped()) {
+		return;
+	}
+
+	auto group = player->getGroup();
+
+	if (group == nullptr) {
+		return;
+	}
+
+	for (int i = 0; i < group->getGroupSize(); i++) {
+		auto groupMember = group->getGroupMember(i);
+
+		if (groupMember == nullptr || groupMember->getObjectID() == player->getObjectID()) {
+			continue;
+		}
+
+		if (!groupMember->isPilotingShip() && !groupMember->isInShipStation()) {
+			continue;
+		}
+
+		auto conversationScreen = new ConversationScreen(tauntMessage, true);
+
+		if (conversationScreen != nullptr) {
+			conversationScreen->sendTo(groupMember, asShipAiAgent());
+		}
+
+		auto task = new SpaceCommTimerTask(groupMember, getObjectID());
+
+		if (task != nullptr) {
+			groupMember->addPendingTask("SpaceCommTimer", task, 10 * 1000);
+		}
 	}
 }
 
