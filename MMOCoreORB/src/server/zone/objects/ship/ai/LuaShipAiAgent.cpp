@@ -51,6 +51,11 @@ Luna<LuaShipAiAgent>::RegType LuaShipAiAgent::Register[] = {
 	{ "removeSpaceFactionEnemy", &LuaShipAiAgent::removeSpaceFactionEnemy },
 	{ "setEscortSpeed", &LuaShipAiAgent::setEscortSpeed },
 	{ "setMissionOwner", &LuaShipAiAgent::setMissionOwner },
+	{ "getMissionOwnerID", &LuaShipAiAgent::getMissionOwnerID },
+	{ "repairShipAgent", &LuaShipAiAgent::repairShipAgent },
+	{ "removeEnemyShip", &LuaShipAiAgent::removeEnemyShip },
+	{ "setConversationMobile", &LuaShipAiAgent::setConversationMobile },
+	{ "swapSpaceFactionAssociations", &LuaShipAiAgent::swapSpaceFactionAssociations },
 
 	{ 0, 0 }
 };
@@ -189,13 +194,25 @@ int LuaShipAiAgent::setMaximumGuardPatrol(lua_State* L) {
 }
 
 int LuaShipAiAgent::addFixedPatrolPoint(lua_State* L) {
-	String name = lua_tostring(L, -1);
+	int numberOfArguments = lua_gettop(L) - 1;
+
+	if (numberOfArguments != 2) {
+		realObject->error() << "Improper number of arguments in LuaShipAiAgent::addFixedPatrolPoint.";
+		return 0;
+	}
+
+	String name = lua_tostring(L, -2);
+	bool clearPoints = lua_toboolean(L, -1);
+
+	Locker locker(realObject);
+
+	if (clearPoints) {
+		realObject->clearPatrolPoints();
+	}
 
 	if (name.isEmpty()) {
 		return 0;
 	}
-
-	Locker locker(realObject);
 
 	realObject->addFixedPatrolPoint(name.hashCode());
 
@@ -427,6 +444,75 @@ int LuaShipAiAgent::setMissionOwner(lua_State* L) {
 	Locker lock(realObject);
 
 	realObject->setMissionOwner(player);
+
+	return 0;
+}
+
+int LuaShipAiAgent::getMissionOwnerID(lua_State* L) {
+	lua_pushinteger(L, realObject->getMissionOwnerID());
+
+	return 1;
+}
+
+int LuaShipAiAgent::repairShipAgent(lua_State* L) {
+	int numberOfArguments = lua_gettop(L) - 1;
+
+	if (numberOfArguments != 1) {
+		realObject->error() << "Improper number of arguments in LuaShipAiAgent::repairShipAgent.";
+		return 0;
+	}
+
+	float repairPercent = lua_tonumber(L, -1);
+
+	// Lock the ship agent
+	Locker lock(realObject);
+
+	realObject->repairShip(repairPercent, false);
+
+	return 0;
+}
+
+int LuaShipAiAgent::removeEnemyShip(lua_State* L) {
+	int numberOfArguments = lua_gettop(L) - 1;
+
+	if (numberOfArguments != 1) {
+		realObject->error() << "Improper number of arguments in LuaShipAiAgent::removeEnemyShip.";
+		return 0;
+	}
+
+	uint64 enemyShipID = lua_tointeger(L, -1);
+
+	// Lock the ship agent
+	Locker lock(realObject);
+
+	realObject->removeEnemyShip(enemyShipID);
+
+	return 0;
+}
+
+int LuaShipAiAgent::setConversationMobile(lua_State* L) {
+	int numberOfArguments = lua_gettop(L) - 1;
+
+	if (numberOfArguments != 1) {
+		realObject->error() << "Improper number of arguments in LuaShipAiAgent::setConversationMobile.";
+		return 0;
+	}
+
+	String conversationMobile = lua_tostring(L, -1);
+
+	// Lock the ship agent
+	Locker lock(realObject);
+
+	realObject->setConversationMobile(conversationMobile.trim().hashCode());
+
+	return 0;
+}
+
+int LuaShipAiAgent::swapSpaceFactionAssociations(lua_State* L) {
+	// Lock the ship agent
+	Locker lock(realObject);
+
+	realObject->swapSpaceFactionAssociations();
 
 	return 0;
 }
