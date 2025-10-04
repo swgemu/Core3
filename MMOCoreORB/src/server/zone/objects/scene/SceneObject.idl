@@ -1683,6 +1683,11 @@ class SceneObject extends TreeEntry implements Logger, Metrics {
 	}
 
 	@dirty
+	public abstract boolean isDisabledInvulnerable() {
+		return false;
+	}
+
+	@dirty
 	public abstract boolean isSchematicFragmentObject() {
 		return false;
 	}

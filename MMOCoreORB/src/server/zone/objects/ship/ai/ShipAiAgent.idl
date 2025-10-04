@@ -483,6 +483,9 @@ class ShipAiAgent extends FighterShipObject {
 	@preLocked
 	public native void removeSpaceFactionEnemy(unsigned int factionHash);
 
+	@preLocked
+	public native void swapSpaceFactionAssociations();
+
 	/**
 	 * Evaluates if this creature is aggresive to the object
 	 * @pre { }
@@ -618,6 +621,8 @@ class ShipAiAgent extends FighterShipObject {
 
 	@preLocked
 	public native void removeShipFlag(unsigned int option);
+
+	public native boolean isDisabledInvulnerable();
 
 	@preLocked
 	public native void addFixedPatrolPoint(unsigned int pointHash);

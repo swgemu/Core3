@@ -42,6 +42,7 @@ public:
 	int setMinimumGuardPatrol(lua_State* L);
 	int setMaximumGuardPatrol(lua_State* L);
 	int addFixedPatrolPoint(lua_State* L);
+	int assignFixedPatrolPointsTable(lua_State* L);
 	int setDefender(lua_State* L);
 	int getShipAgentTemplateName(lua_State* L);
 	int tauntPlayer(lua_State* L);
@@ -53,6 +54,12 @@ public:
 	int removeSpaceFactionEnemy(lua_State* L);
 	int setEscortSpeed(lua_State* L);
 	int setMissionOwner(lua_State* L);
+	int getMissionOwnerID(lua_State* L);
+	int repairShipAgent(lua_State* L);
+	int removeEnemyShip(lua_State* L);
+	int setConversationMobile(lua_State* L);
+	int swapSpaceFactionAssociations(lua_State* L);
+	int clearPatrolPoints(lua_State* L);
 
 private:
 	ShipAiAgent* realObject;
