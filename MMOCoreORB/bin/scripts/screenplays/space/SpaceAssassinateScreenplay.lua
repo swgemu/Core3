@@ -26,10 +26,9 @@ function SpaceAssassinateScreenplay:startQuest(pPlayer)
 	local spaceQuestHash = getHashCode(self.questZone)
 	local zoneName = SceneObject(pPlayer):getZoneName()
 	local playerZoneHash = getHashCode(zoneName)
-	local pRootParent = SceneObject(pPlayer):getRootParent()
 
 	-- Check if the player is in the proper zone already
-	if (playerZoneHash == spaceQuestHash and pRootParent ~= nil and SceneObject(pRootParent):getObjectName() ~= "player_sorosuub_space_yacht") then
+	if (playerZoneHash == spaceQuestHash and not SpaceHelpers:isInYacht(pPlayer)) then
 		createEvent(2000, self.className, "deployTargets", pPlayer, "")
 	end
 
@@ -331,7 +330,7 @@ function SpaceAssassinateScreenplay:assignPatrols(pShipAgent)
 	for i = 1, #patrols, 1 do
 		local pointName = patrols[i].name
 
-		ShipAiAgent(pShipAgent):addFixedPatrolPoint(pointName)
+		ShipAiAgent(pShipAgent):addFixedPatrolPoint(pointName, true)
 	end
 end
 
@@ -342,8 +341,6 @@ function SpaceAssassinateScreenplay:despawnTargetShips(pPlayer)
 
 	local playerID = SceneObject(pPlayer):getObjectID()
 	local shipIDs = readStringVectorSharedMemory(playerID .. self.className .. ":targetShips:")
-
-	local pPlayer = getSceneObject(playerID)
 
 	-- Remove the vector, it is no longer needed
 	deleteStringVectorSharedMemory(playerID .. self.className .. ":targetShips:")

@@ -2078,6 +2078,40 @@ void ShipAiAgentImplementation::tauntPlayer(CreatureObject* player, const String
 	if (task != nullptr) {
 		player->addPendingTask("SpaceCommTimer", task, 10 * 1000);
 	}
+
+	if (!player->isGrouped()) {
+		return;
+	}
+
+	auto group = player->getGroup();
+
+	if (group == nullptr) {
+		return;
+	}
+
+	for (int i = 0; i < group->getGroupSize(); i++) {
+		auto groupMember = group->getGroupMember(i);
+
+		if (groupMember == nullptr || groupMember->getObjectID() == player->getObjectID()) {
+			continue;
+		}
+
+		if (!groupMember->isPilotingShip() && !groupMember->isInShipStation()) {
+			continue;
+		}
+
+		auto conversationScreen = new ConversationScreen(tauntMessage, true);
+
+		if (conversationScreen != nullptr) {
+			conversationScreen->sendTo(groupMember, asShipAiAgent());
+		}
+
+		auto task = new SpaceCommTimerTask(groupMember, getObjectID());
+
+		if (task != nullptr) {
+			groupMember->addPendingTask("SpaceCommTimer", task, 10 * 1000);
+		}
+	}
 }
 
 void ShipAiAgentImplementation::handleException(const Exception& ex, const String& context) {
