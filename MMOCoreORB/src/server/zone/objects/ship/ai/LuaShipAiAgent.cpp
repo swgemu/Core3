@@ -40,6 +40,7 @@ Luna<LuaShipAiAgent>::RegType LuaShipAiAgent::Register[] = {
 	{ "setMinimumGuardPatrol", &LuaShipAiAgent::setMinimumGuardPatrol },
 	{ "setMaximumGuardPatrol", &LuaShipAiAgent::setMaximumGuardPatrol },
 	{ "addFixedPatrolPoint", &LuaShipAiAgent::addFixedPatrolPoint },
+	{ "assignFixedPatrolPointsTable", &LuaShipAiAgent::assignFixedPatrolPointsTable },
 	{ "setDefender", &LuaShipAiAgent::setDefender },
 	{ "getShipAgentTemplateName", &LuaShipAiAgent::getShipAgentTemplateName },
 	{ "tauntPlayer", &LuaShipAiAgent::tauntPlayer },
@@ -51,6 +52,12 @@ Luna<LuaShipAiAgent>::RegType LuaShipAiAgent::Register[] = {
 	{ "removeSpaceFactionEnemy", &LuaShipAiAgent::removeSpaceFactionEnemy },
 	{ "setEscortSpeed", &LuaShipAiAgent::setEscortSpeed },
 	{ "setMissionOwner", &LuaShipAiAgent::setMissionOwner },
+	{ "getMissionOwnerID", &LuaShipAiAgent::getMissionOwnerID },
+	{ "repairShipAgent", &LuaShipAiAgent::repairShipAgent },
+	{ "removeEnemyShip", &LuaShipAiAgent::removeEnemyShip },
+	{ "setConversationMobile", &LuaShipAiAgent::setConversationMobile },
+	{ "swapSpaceFactionAssociations", &LuaShipAiAgent::swapSpaceFactionAssociations },
+	{ "clearPatrolPoints", &LuaShipAiAgent::clearPatrolPoints },
 
 	{ 0, 0 }
 };
@@ -189,15 +196,57 @@ int LuaShipAiAgent::setMaximumGuardPatrol(lua_State* L) {
 }
 
 int LuaShipAiAgent::addFixedPatrolPoint(lua_State* L) {
-	String name = lua_tostring(L, -1);
+	int numberOfArguments = lua_gettop(L) - 1;
+
+	if (numberOfArguments != 2) {
+		realObject->error() << "Improper number of arguments in LuaShipAiAgent::addFixedPatrolPoint.";
+		return 0;
+	}
+
+	String name = lua_tostring(L, -2);
+	bool clearPoints = lua_toboolean(L, -1);
+
+	Locker locker(realObject);
+
+	if (clearPoints) {
+		realObject->clearPatrolPoints();
+		realObject->clearFixedPatrolPoints();
+	}
 
 	if (name.isEmpty()) {
 		return 0;
 	}
 
+	realObject->addFixedPatrolPoint(name.hashCode());
+
+	return 0;
+}
+
+int LuaShipAiAgent::assignFixedPatrolPointsTable(lua_State* L) {
+	int numberOfArguments = lua_gettop(L) - 1;
+
+	if (numberOfArguments != 1) {
+		realObject->error() << "Improper number of arguments in LuaShipAiAgent::assignFixedPatrolPointsTable.";
+		return 0;
+	}
+
+	lua_settop(L, -1);
+
+	LuaObject table(L);
+	int tableSize = table.getTableSize();
+
 	Locker locker(realObject);
 
-	realObject->addFixedPatrolPoint(name.hashCode());
+	realObject->clearPatrolPoints();
+	realObject->clearFixedPatrolPoints();
+
+	for (int i = 1; i <= tableSize; ++i) {
+		String pointName = table.getStringAt(i);
+
+		realObject->addFixedPatrolPoint(pointName.hashCode());
+	}
+
+	table.pop();
 
 	return 0;
 }
@@ -427,6 +476,84 @@ int LuaShipAiAgent::setMissionOwner(lua_State* L) {
 	Locker lock(realObject);
 
 	realObject->setMissionOwner(player);
+
+	return 0;
+}
+
+int LuaShipAiAgent::getMissionOwnerID(lua_State* L) {
+	lua_pushinteger(L, realObject->getMissionOwnerID());
+
+	return 1;
+}
+
+int LuaShipAiAgent::repairShipAgent(lua_State* L) {
+	int numberOfArguments = lua_gettop(L) - 1;
+
+	if (numberOfArguments != 1) {
+		realObject->error() << "Improper number of arguments in LuaShipAiAgent::repairShipAgent.";
+		return 0;
+	}
+
+	float repairPercent = lua_tonumber(L, -1);
+
+	// Lock the ship agent
+	Locker lock(realObject);
+
+	realObject->repairShip(repairPercent, false);
+
+	return 0;
+}
+
+int LuaShipAiAgent::removeEnemyShip(lua_State* L) {
+	int numberOfArguments = lua_gettop(L) - 1;
+
+	if (numberOfArguments != 1) {
+		realObject->error() << "Improper number of arguments in LuaShipAiAgent::removeEnemyShip.";
+		return 0;
+	}
+
+	uint64 enemyShipID = lua_tointeger(L, -1);
+
+	// Lock the ship agent
+	Locker lock(realObject);
+
+	realObject->removeEnemyShip(enemyShipID);
+
+	return 0;
+}
+
+int LuaShipAiAgent::setConversationMobile(lua_State* L) {
+	int numberOfArguments = lua_gettop(L) - 1;
+
+	if (numberOfArguments != 1) {
+		realObject->error() << "Improper number of arguments in LuaShipAiAgent::setConversationMobile.";
+		return 0;
+	}
+
+	String conversationMobile = lua_tostring(L, -1);
+
+	// Lock the ship agent
+	Locker lock(realObject);
+
+	realObject->setConversationMobile(conversationMobile.trim().hashCode());
+
+	return 0;
+}
+
+int LuaShipAiAgent::swapSpaceFactionAssociations(lua_State* L) {
+	// Lock the ship agent
+	Locker lock(realObject);
+
+	realObject->swapSpaceFactionAssociations();
+
+	return 0;
+}
+
+int LuaShipAiAgent::clearPatrolPoints(lua_State* L) {
+	// Lock the ship agent
+	Locker lock(realObject);
+
+	realObject->clearPatrolPoints();
 
 	return 0;
 }
