@@ -9,17 +9,18 @@
 class ShipFlag {
 public:
 	enum {
-		ESCORT				= 0x000001,
-		FOLLOW				= 0x000002,
-		TURRETSHIP			= 0x000004,
-		GUARD_PATROL		= 0x000008,
-		RANDOM_PATROL		= 0x000010,
-		FIXED_PATROL		= 0x000020,
-		SQUADRON_PATROL		= 0x000040,
-		SQUADRON_FOLLOW		= 0x000080,
-		WAVE_ATTACK			= 0x000100,
-		TEST 				= 0x000200,
-		LASTAIMASK 			= 0x000400, // keep this updated so we can loop through the masks
+		ESCORT					= 0x000001,
+		FOLLOW					= 0x000002,
+		TURRETSHIP				= 0x000004,
+		GUARD_PATROL			= 0x000008,
+		RANDOM_PATROL			= 0x000010,
+		FIXED_PATROL			= 0x000020,
+		SQUADRON_PATROL			= 0x000040,
+		SQUADRON_FOLLOW			= 0x000080,
+		WAVE_ATTACK				= 0x000100,
+		DISABLED_INVULNERABLE	= 0x000200,
+		TEST 					= 0x000400,
+		LASTAIMASK 				= 0x000800, // keep this updated so we can loop through the masks
 	};
 };
 
@@ -33,6 +34,8 @@ public:
 	FIXED_PATROL - For ships that have specific set of patrol points assigned to them and will only navigate to those points.alignas
 	SQUADRON_PATROL - For ships that are in a squadron, this will be used to create and assign them to an observer as well as the behaviors needed to operate in the squadron.alignas
 	SQUADRON_FOLLOW - Similar to above, but for ships that have to follow another ship while in a squadron.
+	WAVE_ATTACK - Ships that are spawned for wave attacks during escort missions.
+	DISABLED_INVULNERABLE - Used to flag ships invulnerable for a brief period after being disabled.
 */
 
 #endif /* SHIPFLAG_H_ */

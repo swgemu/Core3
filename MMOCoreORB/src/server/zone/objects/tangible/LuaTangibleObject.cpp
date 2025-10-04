@@ -21,6 +21,7 @@ Luna<LuaTangibleObject>::RegType LuaTangibleObject::Register[] = {
 		{ "setOptionsBitmask", &LuaTangibleObject::setOptionsBitmask },
 		{ "setPvpStatusBitmask", &LuaTangibleObject::setPvpStatusBitmask },
 		{ "setPvpStatusBit", &LuaTangibleObject::setPvpStatusBit },
+		{ "clearPvpStatusBit", &LuaTangibleObject::clearPvpStatusBit },
 		{ "broadcastPvpStatusBitmask", &LuaTangibleObject::broadcastPvpStatusBitmask },
 		{ "sendPvpStatusTo", &LuaTangibleObject::sendPvpStatusTo },
 		{ "getPvpStatusBitmask", &LuaTangibleObject::getPvpStatusBitmask },
@@ -163,6 +164,14 @@ int LuaTangibleObject::setPvpStatusBit(lua_State* L) {
 	uint32 bit = lua_tointeger(L, -1);
 
 	realObject->setPvpStatusBit(bit, true);
+
+	return 0;
+}
+
+int LuaTangibleObject::clearPvpStatusBit(lua_State* L) {
+	uint32 bit = lua_tointeger(L, -1);
+
+	realObject->clearPvpStatusBit(bit, true);
 
 	return 0;
 }
