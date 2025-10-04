@@ -261,14 +261,6 @@ function ramnaConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNpc, selec
 
 		--	Give First mission to player
 		recovery_corellia_privateer_tier3_1:startQuest(pPlayer, pNpc)
-
-		-- REMOVE AFTER IMPLEMENTATION RECOVERY
-
-		CreatureObject(pPlayer):sendSystemMessage("Recovery Missions have not been implemented yet, mission has been auto-completed.")
-
-		createEvent(2000, "recovery_corellia_privateer_tier3_1", "completeQuest", pPlayer, "true")
-
-		-- REMOVE AFTER IMPLEMENTATION RECOVERY
 	end
 
 	return pClonedScreen

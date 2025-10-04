@@ -51,6 +51,7 @@ Luna<LuaShipAiAgent>::RegType LuaShipAiAgent::Register[] = {
 	{ "removeSpaceFactionEnemy", &LuaShipAiAgent::removeSpaceFactionEnemy },
 	{ "setEscortSpeed", &LuaShipAiAgent::setEscortSpeed },
 	{ "setMissionOwner", &LuaShipAiAgent::setMissionOwner },
+	{ "getMissionOwnerID", &LuaShipAiAgent::getMissionOwnerID },
 
 	{ 0, 0 }
 };
@@ -189,13 +190,25 @@ int LuaShipAiAgent::setMaximumGuardPatrol(lua_State* L) {
 }
 
 int LuaShipAiAgent::addFixedPatrolPoint(lua_State* L) {
-	String name = lua_tostring(L, -1);
+	int numberOfArguments = lua_gettop(L) - 1;
+
+	if (numberOfArguments != 2) {
+		realObject->error() << "Improper number of arguments in LuaShipAiAgent::addFixedPatrolPoint.";
+		return 0;
+	}
+
+	String name = lua_tostring(L, -2);
+	bool clearPoints = lua_toboolean(L, -1);
+
+	Locker locker(realObject);
+
+	if (clearPoints) {
+		realObject->clearPatrolPoints();
+	}
 
 	if (name.isEmpty()) {
 		return 0;
 	}
-
-	Locker locker(realObject);
 
 	realObject->addFixedPatrolPoint(name.hashCode());
 
@@ -429,4 +442,10 @@ int LuaShipAiAgent::setMissionOwner(lua_State* L) {
 	realObject->setMissionOwner(player);
 
 	return 0;
+}
+
+int LuaShipAiAgent::getMissionOwnerID(lua_State* L) {
+	lua_pushnumber(L, realObject->getMissionOwnerID());
+
+	return 1;
 }

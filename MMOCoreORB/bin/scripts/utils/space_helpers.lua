@@ -433,6 +433,21 @@ function SpaceHelpers:hasCertifiedShip(pPlayer, skipYacht)
 	return CreatureObject(pPlayer):hasCertifiedShip(skipYacht)
 end
 
+-- @param pPlayer pointer to check if root parent is yacht
+function SpaceHelpers:isInYacht(pPlayer)
+	if (pPlayer == nil) then
+		return false
+	end
+
+	local pRootParent = SceneObject(pPlayer):getRootParent()
+
+	if (pRootParent == nil or SceneObject(pRootParent):getObjectName() == "player_sorosuub_space_yacht") then
+		return true
+	end
+
+	return false
+end
+
 -- @param pPlayer pointer surrenders the entire pilot profession and resets all of the quests
 function SpaceHelpers:surrenderPilot(pPlayer)
 	if (pPlayer == nil) then

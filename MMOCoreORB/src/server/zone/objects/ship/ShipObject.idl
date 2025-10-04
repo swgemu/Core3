@@ -1824,6 +1824,10 @@ class ShipObject extends TangibleObject {
 
 	public native boolean isSorosuubSpaceYacht();
 
+	public abstract boolean isDisabledInvulnerable() {
+		return false;
+	}
+
 	public void setSpaceLaunchZone(string zoneName) {
 		launchPoint.setGroundZoneName(zoneName);
 	}
