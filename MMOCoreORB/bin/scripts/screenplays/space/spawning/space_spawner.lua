@@ -133,7 +133,7 @@ function SpaceSpawnerScreenPlay:spawnShipAgent(pNil, indexString)
 			while (totalToAdd >= count) do
 				local patrolName = patrolPoints[startPoint]
 
-				ShipAiAgent(pShipAgent):addFixedPatrolPoint(patrolName)
+				ShipAiAgent(pShipAgent):addFixedPatrolPoint(patrolName, false)
 
 				--print(shipName .. " -- adding point #" .. startPoint .. " Point: " .. patrolName)
 

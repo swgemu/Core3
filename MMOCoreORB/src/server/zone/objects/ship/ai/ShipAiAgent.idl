@@ -619,6 +619,8 @@ class ShipAiAgent extends FighterShipObject {
 	@preLocked
 	public native void removeShipFlag(unsigned int option);
 
+	public native boolean isDisabledInvulnerable();
+
 	@preLocked
 	public native void addFixedPatrolPoint(unsigned int pointHash);
 
