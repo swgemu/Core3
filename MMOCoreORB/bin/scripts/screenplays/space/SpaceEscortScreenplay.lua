@@ -77,7 +77,7 @@ function SpaceEscortScreenplay:startQuest(pPlayer, pNpc)
 	local pRootParent = SceneObject(pPlayer):getRootParent()
 
 	-- Check if the player is in the proper zone already
-	if (playerZoneHash == spaceQuestHash and pRootParent ~= nil and SceneObject(pRootParent):getObjectName() ~= "player_sorosuub_space_yacht") then
+	if (playerZoneHash == spaceQuestHash and not SpaceHelpers:isInYacht(pPlayer)) then
 		-- Complete the quest task 0
 		SpaceHelpers:completeSpaceQuestTask(pPlayer, self.questType, self.questName, 0, false)
 
@@ -467,7 +467,7 @@ function SpaceEscortScreenplay:assignEscortPoints(pShipAgent)
 
 		if (pointName ~= startingPointName) then
 			-- Add the name escort points to the agent
-			ShipAiAgent(pShipAgent):addFixedPatrolPoint(pointName)
+			ShipAiAgent(pShipAgent):addFixedPatrolPoint(pointName, false)
 
 			totalPoints = totalPoints + 1
 
