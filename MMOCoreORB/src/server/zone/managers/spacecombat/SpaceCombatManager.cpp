@@ -124,7 +124,6 @@ void SpaceCombatManager::applyDamage(ShipObject* ship, const ShipProjectile* pro
 		return;
 	}
 
-
 	if (ship->isPlayerShip() && targetShip->isPlayerShip()) {
 		damage *= 0.75f;
 	}
@@ -154,7 +153,7 @@ void SpaceCombatManager::applyDamage(ShipObject* ship, const ShipProjectile* pro
 			int collisionSlot = result.getSlot(i);
 
 			if (targetShip->isComponentTargetable(collisionSlot)) {
-				damage = applyComponentDamage(targetShip, result, damage, collisionSlot, deltaVector, messages);
+				damage = applyComponentDamage(ship, targetShip, result, damage, collisionSlot, deltaVector, messages);
 
 				if (damage <= 0.f) {
 					break;
@@ -173,7 +172,7 @@ void SpaceCombatManager::applyDamage(ShipObject* ship, const ShipProjectile* pro
 					break;
 				}
 				case ShipHitType::HITCOMPONENT: {
-					damage = applyActiveComponentDamage(targetShip, result, damage, targetSlot, deltaVector, messages);
+					damage = applyActiveComponentDamage(ship, targetShip, result, damage, targetSlot, deltaVector, messages);
 					break;
 				}
 				case ShipHitType::HITCHASSIS: {
@@ -427,11 +426,11 @@ float SpaceCombatManager::applyChassisDamage(ShipObject* target, const SpaceColl
 	return damage;
 }
 
-float SpaceCombatManager::applyComponentDamage(ShipObject* target, const SpaceCollisionResult& result, float damage, int slot, ShipDeltaVector* deltaVector, Vector<BasePacket*>& messages) const {
-	float armorMin = target->getCurrentArmorMap()->get(slot);
-	float armorMax = target->getMaxArmorMap()->get(slot);
-	float healthMin = target->getCurrentHitpointsMap()->get(slot);
-	float healthMax = target->getMaxHitpointsMap()->get(slot);
+float SpaceCombatManager::applyComponentDamage(ShipObject* attackerShip, ShipObject* defenderShip, const SpaceCollisionResult& result, float damage, int slot, ShipDeltaVector* deltaVector, Vector<BasePacket*>& messages) const {
+	float armorMin = defenderShip->getCurrentArmorMap()->get(slot);
+	float armorMax = defenderShip->getMaxArmorMap()->get(slot);
+	float healthMin = defenderShip->getCurrentHitpointsMap()->get(slot);
+	float healthMax = defenderShip->getMaxHitpointsMap()->get(slot);
 
 	if (armorMax == 0.f || healthMax == 0.f) {
 		return damage;
@@ -466,21 +465,42 @@ float SpaceCombatManager::applyComponentDamage(ShipObject* target, const SpaceCo
 
 	if (armorMin != armorOld || healthMin != healthOld) {
 		if (armorMin != armorOld) {
-			target->setComponentArmor(slot, armorMin, nullptr, 2, deltaVector);
+			defenderShip->setComponentArmor(slot, armorMin, nullptr, 2, deltaVector);
 		}
 
 		if (healthMin != healthOld) {
-			target->setComponentHitpoints(slot, healthMin, nullptr, 2, deltaVector);
+			// Trigger Ship Disabled Observer
+			if (((slot == Components::REACTOR) || (slot == Components::ENGINE)) && healthMin <= 0.f) {
+				Reference<ShipObject*> attackerShipRef = attackerShip;
+				Reference<ShipObject*> defenderShipRef = defenderShip;
+
+				Core::getTaskManager()->scheduleTask([attackerShipRef, defenderShipRef]() {
+					if (attackerShipRef == nullptr || defenderShipRef == nullptr) {
+						return;
+					}
+
+					try {
+						Locker lock(defenderShipRef);
+						Locker clock(attackerShipRef, defenderShipRef);
+
+						defenderShipRef->notifyObservers(ObserverEventType::SHIPDISABLED, attackerShipRef);
+					} catch (const Exception& e) {
+						defenderShipRef->error() << "Failed SHIPDISABLED observer notification.";
+					}
+				}, "ShipDisabledObserverLambda", 200);
+			}
+
+			defenderShip->setComponentHitpoints(slot, healthMin, nullptr, 2, deltaVector);
 		}
 
 		float totalMax = armorMax + healthMax;
 		float totalNew = (armorMin + healthMin) / totalMax;
 		float totalOld = (armorOld + healthOld) / totalMax;
 
-		getHitEffectMessages(target, result, ShipHitType::HITCOMPONENT, totalNew, totalOld, messages);
+		getHitEffectMessages(defenderShip, result, ShipHitType::HITCOMPONENT, totalNew, totalOld, messages);
 
-		if (target->isPobShip()) {
-			Reference<PobShipObject*> pobTarget = target->asPobShip();
+		if (defenderShip->isPobShip()) {
+			Reference<PobShipObject*> pobTarget = defenderShip->asPobShip();
 
 			if (pobTarget != nullptr) {
 				float damageDifferential = (totalOld - totalNew);
@@ -502,23 +522,23 @@ float SpaceCombatManager::applyComponentDamage(ShipObject* target, const SpaceCo
 		}
 	}
 
-	if (target->getCurrentHitpointsMap()->get(slot) <= 0.f) {
-		target->setComponentDemolished(slot, false, deltaVector);
+	if (defenderShip->getCurrentHitpointsMap()->get(slot) <= 0.f) {
+		defenderShip->setComponentDemolished(slot, false, deltaVector);
 
 		if (slot == Components::BRIDGE) {
-			applyChassisDamage(target, result, target->getChassisCurrentHealth(), deltaVector, messages);
+			applyChassisDamage(defenderShip, result, defenderShip->getChassisCurrentHealth(), deltaVector, messages);
 		}
 	}
 
 	return damage;
 }
 
-float SpaceCombatManager::applyActiveComponentDamage(ShipObject* target, const SpaceCollisionResult& result, float damage, int targetSlot, ShipDeltaVector* deltaVector, Vector<BasePacket*>& messages) const {
+float SpaceCombatManager::applyActiveComponentDamage(ShipObject* attackerShip, ShipObject* defenderShip, const SpaceCollisionResult& result, float damage, int targetSlot, ShipDeltaVector* deltaVector, Vector<BasePacket*>& messages) const {
 	for (int i = 0; i < result.size(); ++i) {
 		int resultSlot = result.getSlot(i);
 
-		if (resultSlot != Components::CHASSIS && target->isComponentTargetable(resultSlot)) {
-			damage = applyComponentDamage(target, result, damage, resultSlot, deltaVector, messages);
+		if (resultSlot != Components::CHASSIS && defenderShip->isComponentTargetable(resultSlot)) {
+			damage = applyComponentDamage(attackerShip, defenderShip, result, damage, resultSlot, deltaVector, messages);
 
 			if (damage <= 0.f) {
 				return damage;
@@ -526,18 +546,18 @@ float SpaceCombatManager::applyActiveComponentDamage(ShipObject* target, const S
 		}
 	}
 
-	if (targetSlot != Components::CHASSIS && target->isComponentTargetable(targetSlot)) {
-		damage = applyComponentDamage(target, result, damage, targetSlot, deltaVector, messages);
+	if (targetSlot != Components::CHASSIS && defenderShip->isComponentTargetable(targetSlot)) {
+		damage = applyComponentDamage(attackerShip, defenderShip, result, damage, targetSlot, deltaVector, messages);
 
 		if (damage <= 0.f) {
 			return damage;
 		}
 	}
 
-	int activeSlot = getActiveComponentToDamage(target);
+	int activeSlot = getActiveComponentToDamage(defenderShip);
 
 	if (activeSlot != Components::CHASSIS) {
-		damage = applyComponentDamage(target, result, damage, activeSlot, deltaVector, messages);
+		damage = applyComponentDamage(attackerShip, defenderShip, result, damage, activeSlot, deltaVector, messages);
 	}
 
 	return damage;

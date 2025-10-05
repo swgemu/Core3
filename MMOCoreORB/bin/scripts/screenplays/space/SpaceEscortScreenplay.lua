@@ -56,7 +56,7 @@ end
 
 function SpaceEscortScreenplay:startQuest(pPlayer, pNpc)
 	if (pPlayer == nil) then
-		Logger:log("Quest: " .. self.questName .. " Type: " .. self.QuestType .. " -- Failed to startQuest due to pPlayer being nil.", LT_ERROR)
+		Logger:log("Quest: " .. self.questName .. " Type: " .. self.questType .. " -- Failed to startQuest due to pPlayer being nil.", LT_ERROR)
 		return
 	end
 
@@ -242,7 +242,7 @@ end
 
 function SpaceEscortScreenplay:setupEscort(pPlayer)
 	if (pPlayer == nil) then
-		Logger:log("Quest: " .. self.questName .. " Type: " .. self.QuestType .. " -- Failed to setupEscort due to pPlayer being nil.", LT_ERROR)
+		Logger:log("Quest: " .. self.questName .. " Type: " .. self.questType .. " -- Failed to setupEscort due to pPlayer being nil.", LT_ERROR)
 		return
 	end
 
@@ -329,7 +329,7 @@ end
 
 function SpaceEscortScreenplay:spawnEscortShip(pPlayer)
 	if (pPlayer == nil) then
-		Logger:log(self.className .. " -- Quest: " .. self.questName .. " Type: " .. self.QuestType .. " -- Failed to spawnEscortShip due to pPlayer being nil.", LT_ERROR)
+		Logger:log(self.className .. " -- Quest: " .. self.questName .. " Type: " .. self.questType .. " -- Failed to spawnEscortShip due to pPlayer being nil.", LT_ERROR)
 		return
 	end
 
@@ -399,7 +399,7 @@ function SpaceEscortScreenplay:spawnEscortShip(pPlayer)
 	ShipAiAgent(pShipAgent):removeSpaceFactionEnemy(playerFactionHash)
 
 	-- Add kill observer
-	createObserver(OBJECTDESTRUCTION, self.className, "notifyEscortShipDestroyed", pShipAgent)
+	createObserver(DESTROYEDSHIP, self.className, "notifyEscortShipDestroyed", pShipAgent)
 
 	-- Assign the escort points
 	createEvent(5 * 1000, self.className, "assignEscortPoints", pShipAgent, "")
@@ -489,7 +489,7 @@ end
 
 function SpaceEscortScreenplay:checkEscort(pShipAgent)
 	if (pShipAgent == nil) then
-		Logger:log("Quest: " .. self.questName .. " Type: " .. self.QuestType .. " -- Failed escort check due to null escort Ship.", LT_ERROR)
+		Logger:log("Quest: " .. self.questName .. " Type: " .. self.questType .. " -- Failed escort check due to null escort Ship.", LT_ERROR)
 		return
 	end
 
@@ -576,7 +576,7 @@ function SpaceEscortScreenplay:removeEscortShip(pShipAgent)
 	end
 
 	-- Remove the kill observer
-	dropObserver(OBJECTDESTRUCTION, self.className, "notifyEscortShipDestroyed", pShipAgent)
+	dropObserver(DESTROYEDSHIP, self.className, "notifyEscortShipDestroyed", pShipAgent)
 
 	-- Make ship fly away first
 	ShipObject(pShipAgent):setHyperspacing(true);
@@ -661,7 +661,7 @@ function SpaceEscortScreenplay:spawnAttackWave(pEscortAgent)
 		ShipAiAgent(pShipAgent):removeSpaceFactionAlly(playerFactionHash)
 
 		-- Add kill observer
-		createObserver(OBJECTDESTRUCTION, self.className, "notifyAttackShipDestroyed", pShipAgent)
+		createObserver(DESTROYEDSHIP, self.className, "notifyAttackShipDestroyed", pShipAgent)
 
 		local agentID = SceneObject(pShipAgent):getObjectID()
 
@@ -723,7 +723,7 @@ function SpaceEscortScreenplay:removeAttackShips(pShipAgent)
 		end
 
 		-- Remove the kill observer
-		dropObserver(OBJECTDESTRUCTION, self.className, "notifyAttackShipDestroyed", pAttackShip)
+		dropObserver(DESTROYEDSHIP, self.className, "notifyAttackShipDestroyed", pAttackShip)
 
 		-- Make ship fly away first
 		ShipObject(pAttackShip):setHyperspacing(true);

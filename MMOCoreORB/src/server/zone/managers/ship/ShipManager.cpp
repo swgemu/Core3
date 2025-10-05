@@ -1087,12 +1087,13 @@ int ShipManager::notifyDestruction(ShipObject* destructorShip, ShipAiAgent* dest
 
 							Locker locker(groupMember, destructedShip);
 
-							groupMember->notifyObservers(ObserverEventType::DESTROYEDSHIP, destructedShip);
+							destructedShip->notifyObservers(ObserverEventType::DESTROYEDSHIP, groupMember);
 						}
 					}
 				} else {
 					Locker locker(pilot, destructedShip);
-					pilot->notifyObservers(ObserverEventType::DESTROYEDSHIP, destructedShip);
+
+					destructedShip->notifyObservers(ObserverEventType::DESTROYEDSHIP, pilot);
 				}
 			}
 		}

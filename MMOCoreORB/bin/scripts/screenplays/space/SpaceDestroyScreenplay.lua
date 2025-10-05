@@ -40,7 +40,7 @@ registerScreenPlay("SpaceDestroyScreenplay", false)
 
 function SpaceDestroyScreenplay:startQuest(pPlayer, pNpc)
 	if (pPlayer == nil) then
-		Logger:log("Quest: " .. self.questName .. " Type: " .. self.QuestType .. " -- Failed to startQuest due to pPlayer being nil.", LT_ERROR)
+		Logger:log("Quest: " .. self.questName .. " Type: " .. self.questType .. " -- Failed to startQuest due to pPlayer being nil.", LT_ERROR)
 		return
 	end
 
@@ -211,7 +211,7 @@ function SpaceDestroyScreenplay:enteredZone(pPlayer, nill, zoneNameHash)
 	return 0
 end
 
-function SpaceDestroyScreenplay:notifyDestroyedShip(pPlayer, pShipAgent)
+function SpaceDestroyScreenplay:notifyDestroyedShip(pShipAgent, pPlayer)
 	if (pShipAgent == nil or not SceneObject(pShipAgent):isShipAiAgent()) then
 		return 0
 	end

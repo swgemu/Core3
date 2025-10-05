@@ -103,9 +103,9 @@ private:
 
 	float applyChassisDamage(ShipObject* target, const SpaceCollisionResult& result, float damage, ShipDeltaVector* deltaVector, Vector<BasePacket*>& messages) const;
 
-	float applyComponentDamage(ShipObject* target, const SpaceCollisionResult& result, float damage, int slot, ShipDeltaVector* deltaVector, Vector<BasePacket*>& messages) const;
+	float applyComponentDamage(ShipObject* attackerShip, ShipObject* defenderShip, const SpaceCollisionResult& result, float damage, int slot, ShipDeltaVector* deltaVector, Vector<BasePacket*>& messages) const;
 
-	float applyActiveComponentDamage(ShipObject* target, const SpaceCollisionResult& result, float damage, int slot, ShipDeltaVector* deltaVector, Vector<BasePacket*>& messages) const;
+	float applyActiveComponentDamage(ShipObject* attackerShip, ShipObject* defenderShip, const SpaceCollisionResult& result, float damage, int slot, ShipDeltaVector* deltaVector, Vector<BasePacket*>& messages) const;
 
 	int getActiveComponentToDamage(ShipObject* target) const;
 
