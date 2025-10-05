@@ -81,20 +81,19 @@ void ShipDockingTask::finalizeDocking(ShipObject* ship, ShipObject* target) {
 }
 
 void ShipDockingTask::notifyObservers(ShipObject* ship, ShipObject* target) {
-/*
 	Reference<ShipObject*> shipRef = ship;
 	Reference<ShipObject*> targetRef = target;
 
 	Core::getTaskManager()->scheduleTask([shipRef, targetRef] () {
-		if (shipRef == nullptr || targetRef == nullptr)
+		if (shipRef == nullptr || targetRef == nullptr) {
 			return;
+		}
 
 		Locker lock(shipRef);
 		Locker clocker(targetRef, shipRef);
 
 		targetRef->notifyObservers(ObserverEventType::SHIPDOCKED, shipRef);
 	}, "notifyShipDockedLambda", 200);
-*/
 }
 
 void ShipDockingTask::sendSystemMessage(ShipObject* ship, const String& message) {

@@ -33,7 +33,7 @@ end
 
 function SpaceSurvivalScreenplay:startQuest(pPlayer, pNpc)
 	if (pPlayer == nil) then
-		Logger:log("Quest: " .. self.questName .. " Type: " .. self.QuestType .. " -- Failed to startQuest due to pPlayer being nil.", LT_ERROR)
+		Logger:log("Quest: " .. self.questName .. " Type: " .. self.questType .. " -- Failed to startQuest due to pPlayer being nil.", LT_ERROR)
 		return
 	end
 

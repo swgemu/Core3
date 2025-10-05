@@ -27,7 +27,7 @@ end
 
 function SpaceSurpriseAttackScreenplay:completeQuest(pPlayer, notifyClient)
 	if (pPlayer == nil) then
-		Logger:log("Quest: " .. self.questName .. " Type: " .. self.QuestType .. " -- Failed to completeQuest due to pPlayer being nil.", LT_ERROR)
+		Logger:log("Quest: " .. self.questName .. " Type: " .. self.questType .. " -- Failed to completeQuest due to pPlayer being nil.", LT_ERROR)
 		return
 	end
 
@@ -53,7 +53,7 @@ end
 
 function SpaceSurpriseAttackScreenplay:failQuest(pPlayer, notifyClient)
 	if (pPlayer == nil) then
-		Logger:log("Quest: " .. self.questName .. " Type: " .. self.QuestType .. " -- Failed to failQuest due to pPlayer being nil.", LT_ERROR)
+		Logger:log("Quest: " .. self.questName .. " Type: " .. self.questType .. " -- Failed to failQuest due to pPlayer being nil.", LT_ERROR)
 		return
 	end
 
@@ -149,7 +149,7 @@ function SpaceSurpriseAttackScreenplay:spawnSurpriseAttack(pPilot)
 				ShipAiAgent(pShipAgent):setDespawnOnNoPlayerInRange(true)
 
 				-- Add kill observer
-				createObserver(OBJECTDESTRUCTION, self.className, "notifyShipDestroyed", pShipAgent)
+				createObserver(DESTROYEDSHIP, self.className, "notifyShipDestroyed", pShipAgent)
 
 				local agentID = SceneObject(pShipAgent):getObjectID()
 

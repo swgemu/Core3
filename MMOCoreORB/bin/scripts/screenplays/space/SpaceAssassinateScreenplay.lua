@@ -12,7 +12,7 @@ SpaceAssassinateScreenplay = SpaceQuestLogic:new {
 
 function SpaceAssassinateScreenplay:startQuest(pPlayer)
 	if (pPlayer == nil) then
-		Logger:log("Quest: " .. self.questName .. " Type: " .. self.QuestType .. " -- Failed to startQuest due to pPlayer being nil.", LT_ERROR)
+		Logger:log("Quest: " .. self.questName .. " Type: " .. self.questType .. " -- Failed to startQuest due to pPlayer being nil.", LT_ERROR)
 		return
 	end
 
@@ -87,7 +87,7 @@ end
 
 function SpaceAssassinateScreenplay:failQuest(pPlayer, notifyClient)
 	if (pPlayer == nil) then
-		Logger:log("Quest: " .. self.questName .. " Type: " .. self.QuestType .. " -- Failed to failQuest due to pPlayer being nil.", LT_ERROR)
+		Logger:log("Quest: " .. self.questName .. " Type: " .. self.questType .. " -- Failed to failQuest due to pPlayer being nil.", LT_ERROR)
 		return
 	end
 
@@ -193,7 +193,7 @@ function SpaceAssassinateScreenplay:deployTargets(pPlayer)
 	ShipAiAgent(pPrimaryAgent):setDespawnOnNoPlayerInRange(false)
 
 	-- Add kill observer
-	createObserver(OBJECTDESTRUCTION, self.className, "notifyShipDestroyed", pPrimaryAgent)
+	createObserver(DESTROYEDSHIP, self.className, "notifyShipDestroyed", pPrimaryAgent)
 
 	-- Store the quest owner
 	writeData(primaryID .. ":" .. self.className .. ":QuestOwner", playerID)
@@ -227,7 +227,7 @@ function SpaceAssassinateScreenplay:deployTargets(pPlayer)
 			ShipAiAgent(pShipAgent):setDespawnOnNoPlayerInRange(false)
 
 			-- Add kill observer
-			createObserver(OBJECTDESTRUCTION, self.className, "notifyShipDestroyed", pShipAgent)
+			createObserver(DESTROYEDSHIP, self.className, "notifyShipDestroyed", pShipAgent)
 
 			local agentID = SceneObject(pShipAgent):getObjectID()
 
@@ -355,6 +355,8 @@ function SpaceAssassinateScreenplay:despawnTargetShips(pPlayer)
 		deleteData(shipID .. ":" .. self.className .. ":PrimaryTarget:")
 
 		if (pShipAgent ~= nil) then
+			dropObserver(DESTROYEDSHIP, self.className, "notifyShipDestroyed", pShipAgent)
+
 			-- Make ship fly away first
 			ShipObject(pShipAgent):setHyperspacing(true);
 
@@ -365,7 +367,7 @@ function SpaceAssassinateScreenplay:despawnTargetShips(pPlayer)
 
 		if (pPlayer ~= nil) then
 			-- Remove as Space Mission Object
-			CreatureObject(pPlayer):removeSpaceMissionObject(shipID, false)
+			CreatureObject(pPlayer):removeSpaceMissionObject(shipID, (i == #shipIDs))
 		end
 	end
 end

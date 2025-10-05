@@ -37,8 +37,6 @@ SpaceDutyDestroyScreenplay = SpaceQuestLogic:new {
 	shipTypes = {
 		{},
 	},
-
-	creditReward = 50,
 }
 
 registerScreenPlay("SpaceDutyDestroyScreenplay", false)
@@ -370,7 +368,7 @@ function SpaceDutyDestroyScreenplay:spawnAttackWave(pPlayer)
 			CreatureObject(pPlayer):addSpaceMissionObject(bossID, (i == bossSquadSize))
 
 			-- Add kill observer
-			createObserver(OBJECTDESTRUCTION, self.className, "notifyBossShipDestroyed", pBossLevelAgent)
+			createObserver(DESTROYEDSHIP, self.className, "notifyBossShipDestroyed", pBossLevelAgent)
 
 			-- Add aggo and set the pPlayerShip as ShipAgents Defender
 			ShipAiAgent(pBossLevelAgent):addSpaceFactionEnemy(playerFactionHash)
@@ -425,7 +423,7 @@ function SpaceDutyDestroyScreenplay:spawnAttackWave(pPlayer)
 			writeData(agentID .. ":" .. self.className .. ":QuestOwnerID:", playerID)
 
 			-- Add kill observer
-			createObserver(OBJECTDESTRUCTION, self.className, "notifyAttackShipDestroyed", pShipAgent)
+			createObserver(DESTROYEDSHIP, self.className, "notifyAttackShipDestroyed", pShipAgent)
 
 			-- Set as space mission object
 			CreatureObject(pPlayer):addSpaceMissionObject(agentID, (i == fighterCount))
@@ -497,7 +495,7 @@ function SpaceDutyDestroyScreenplay:removeAttackShips(pPlayer)
 		end
 
 		-- Remove the kill observer
-		dropObserver(OBJECTDESTRUCTION, self.className, "notifyAttackShipDestroyed", pAttackShip)
+		dropObserver(DESTROYEDSHIP, self.className, "notifyAttackShipDestroyed", pAttackShip)
 
 		-- Make ship fly away first
 		ShipObject(pAttackShip):setHyperspacing(true);
