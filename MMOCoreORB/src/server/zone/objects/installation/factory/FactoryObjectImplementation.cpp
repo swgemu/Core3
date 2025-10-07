@@ -842,6 +842,7 @@ TangibleObject* FactoryObjectImplementation::createNewUncratedItem(TangibleObjec
 
 void FactoryObjectImplementation::collectMatchesInInputHopper(BlueprintEntry* entry, SceneObject* inputHopper) {
 	entry->clearMatches();
+
 	for (int i = 0; i < inputHopper->getContainerObjectsSize(); ++i) {
 		ManagedReference<TangibleObject*> object = inputHopper->getContainerObject(i).castTo<TangibleObject*>();
 
@@ -871,6 +872,10 @@ void FactoryObjectImplementation::collectMatchesInInputHopper(BlueprintEntry* en
 				prototype = crate->getPrototype();
 			} else {
 				prototype = object;
+			}
+
+			if (prototype == nullptr) {
+				continue;
 			}
 
 			key = String::valueOf(prototype->getServerObjectCRC());
