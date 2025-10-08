@@ -65,9 +65,11 @@ class ShipAiAgent extends FighterShipObject {
 	@weakReference
 	private ShipObject targetShip;
 
-	private unsigned int movementState;
+	protected transient unsigned int movementState;
 
-	protected unsigned int movementCount;
+	protected transient unsigned int movementCount;
+
+	protected transient unsigned long movementTime;
 
 	@dereferenced
 	private transient Mutex targetMutex;
@@ -305,7 +307,10 @@ class ShipAiAgent extends FighterShipObject {
 	@dirty
 	public native void setMovementState(int state);
 
-	public native void setNextPathPosition(ShipObject targetShip);
+	@dirty
+	public native unsigned long getMovementDeltaTime();
+
+	public native void addPatrolPoint(@dereferenced final SpacePatrolPoint value);
 
 	@local
 	@dereferenced
@@ -315,22 +320,20 @@ class ShipAiAgent extends FighterShipObject {
 	@dereferenced
 	public native SpacePatrolPoint getFinalPosition();
 
+	@local
 	public native boolean isInRangePosition(@dereferenced final Vector3 value, float radius);
 
 	@local
-	@dirty
-	@dereferenced
-	public native SpacePatrolPoint getNextFollowPosition(ShipObject followShip);
+	public native void setNextFollowPosition();
 
 	@local
-	@dirty
-	@dereferenced
-	public native SpacePatrolPoint getNextAttackPosition(ShipObject targetShip);
+	public native void setNextAttackPosition();
 
 	@local
-	@dirty
-	@dereferenced
-	public native SpacePatrolPoint getNextEvadePosition();
+	public native void setNextEvadePosition();
+
+	@local
+	public native void setNextLeashPosition();
 
 	@local
 	@dereferenced
@@ -341,6 +344,9 @@ class ShipAiAgent extends FighterShipObject {
 
 	@dirty
 	public abstract native int getTransformType();
+
+	@dirty
+	public abstract native int getPatrolSizeMax();
 
 	@preLocked
 	public abstract native int setDestination();
