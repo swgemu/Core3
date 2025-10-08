@@ -83,42 +83,45 @@ public:
 	BehaviorSpace::Status execute(ShipAiAgent* agent, unsigned int startIdx = 0) const {
 		ManagedReference<ShipObject*> targetShip = nullptr;
 
-		if (agent->peekBlackboard("targetShipProspect"))
+		if (agent->peekBlackboard("targetShipProspect")) {
 			targetShip = agent->readBlackboard("targetShipProspect").get<ManagedReference<ShipObject*>>();
+		}
 
 		// agent->info(true) << agent->getDisplayedName() << " set movement state: " << state;
 
 		switch (state) {
-		case ShipAiAgent::OBLIVIOUS:
-			break;
-		case ShipAiAgent::WATCHING: {
-			break;
-		}
-		case ShipAiAgent::FOLLOWING: {
-			targetShip = agent->getFollowShipObject().get();
-
-			if (targetShip != nullptr) {
+			case ShipAiAgent::OBLIVIOUS:
+			case ShipAiAgent::WATCHING:
+			case ShipAiAgent::PATROLLING: {
+				agent->clearOptionBit(OptionBitmask::WINGS_OPEN, true);
 				break;
 			}
-		}
-		case ShipAiAgent::PATROLLING:
-			break;
-		case ShipAiAgent::ATTACKING: {
-			if (targetShip != nullptr) {
-				Locker clocker(targetShip, agent);
+			case ShipAiAgent::ATTACKING: {
+				if (targetShip != nullptr) {
+					Locker clocker(targetShip, agent);
 
-				agent->setTargetShipObject(targetShip);
+					agent->setTargetShipObject(targetShip);
+				}
+
+				agent->setOptionBit(OptionBitmask::WINGS_OPEN, true);
+				agent->clearPatrolPoints();
+
+				break;
 			}
-			break;
-		}
-		case ShipAiAgent::FLEEING:
-		case ShipAiAgent::LEASHING:
-			break;
-		case ShipAiAgent::EVADING:
-		case ShipAiAgent::PATHING_HOME:
-		case ShipAiAgent::FOLLOW_FORMATION:
-		default:
-			break;
+			case ShipAiAgent::EVADING: {
+				agent->clearPatrolPoints();
+				break;
+			}
+			case ShipAiAgent::FLEEING:
+			case ShipAiAgent::LEASHING:
+			case ShipAiAgent::FOLLOWING:
+			case ShipAiAgent::PATHING_HOME:
+			case ShipAiAgent::FOLLOW_FORMATION:
+			default: {
+				agent->clearOptionBit(OptionBitmask::WINGS_OPEN, true);
+				agent->clearPatrolPoints();
+				break;
+			}
 		};
 
 		agent->setMovementState(state);

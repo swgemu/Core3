@@ -128,6 +128,10 @@ public:
 		return hardpointMap.get(slotName);
 	}
 
+	const VectorMap<uint32, ShipCollisionHardpoint>& getHardpoints(uint32 slot) const {
+		return hardpointMap.get(Components::shipComponentSlotToString(slot));
+	}
+
 	const Vector<uint32>& getTargetableSlots() const {
 		return targetableSlots;
 	}
