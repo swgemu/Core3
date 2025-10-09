@@ -110,6 +110,21 @@ function SpaceRecoveryScreenplay:completeQuest(pPlayer, notifyClient)
 	self:despawnShips(pPlayer)
 
 	self:cleanUpQuestData(SceneObject(pPlayer):getObjectID())
+
+	if (self.sideQuest and self.sideQuestSplitType == self.SIDE_QUEST_SPLIT_TYPES.COMPLETION) then
+		local alertMessage = "@spacequest/" .. self.questType .. "/" .. self.questName .. ":split_quest_alert"
+
+		-- Split Quest Alert
+		createEvent((self.sideQuestDelay * 1000), "SpaceHelpers", "sendQuestAlert", pPlayer, alertMessage)
+
+		-- Trigger Sidequest
+		createEvent(self.sideQuestDelay * 1050, self.sideQuestType .. "_" .. self.sideQuestName, "startQuest", pPlayer, "")
+
+		if (self.sideQuestType == "surival") then
+			-- REMOVE AFTER IMPLEMENTATION
+			createEvent((self.sideQuestDelay * 1000) + 2000, self.sideQuestType .. "_" .. self.sideQuestName, "completeQuest", pPlayer, "true")
+		end
+	end
 end
 
 function SpaceRecoveryScreenplay:failQuest(pPlayer, notifyClient)
@@ -161,12 +176,12 @@ function SpaceRecoveryScreenplay:failQuest(pPlayer, notifyClient)
 
 	-- Fail the parent quest
 	if (self.parentQuestType ~= "") then
-		createEvent(200, self.parentQuestType .. "_" .. self.questName, "failQuest", pPlayer, "false")
+		createEvent(200, self.parentQuestType .. "_" .. self.parentQuestName, "failQuest", pPlayer, "false")
 	end
 
 	-- Fail the side quest
-	if (self.sideQuest and SpaceHelpers:isSpaceQuestActive(pPlayer, self.sideQuestType, self.questName)) then
-		createEvent(200, self.sideQuestType .. "_" .. self.questName, "failQuest", pPlayer, "false")
+	if (self.sideQuest and SpaceHelpers:isSpaceQuestActive(pPlayer, self.sideQuestType, self.sideQuestName)) then
+		createEvent(200, self.sideQuestType .. "_" .. self.sideQuestName, "failQuest", pPlayer, "false")
 	end
 end
 
@@ -452,7 +467,9 @@ function SpaceRecoveryScreenplay:despawnShips(pPlayer)
 		-- Make ship fly away first
 		ShipObject(pRecoveryShip):setHyperspacing(true);
 
-		SceneObject(pRecoveryShip):setPosition(8000, 8000, 8000)
+		local hyperspaceLocation = ShipObject(pRecoveryShip):getSpawnPointInFrontOfShip(2500, 8000)
+
+		SceneObject(pRecoveryShip):setPosition(hyperspaceLocation[1], hyperspaceLocation[2], hyperspaceLocation[3])
 
 		createEvent(2000, "SpaceHelpers", "delayedDestroyShipAgent", pRecoveryShip, "")
 
@@ -481,7 +498,9 @@ function SpaceRecoveryScreenplay:despawnShips(pPlayer)
 		-- Make ship fly away first
 		ShipObject(pShipAgent):setHyperspacing(true);
 
-		SceneObject(pShipAgent):setPosition(8000, 8000, 8000)
+		local hyperspaceLocation = ShipObject(pShipAgent):getSpawnPointInFrontOfShip(2500, 8000)
+
+		SceneObject(pShipAgent):setPosition(hyperspaceLocation[1], hyperspaceLocation[2], hyperspaceLocation[3])
 
 		createEvent(2000, "SpaceHelpers", "delayedDestroyShipAgent", pShipAgent, "")
 

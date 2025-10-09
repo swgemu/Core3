@@ -21,7 +21,8 @@ SpaceDestroyScreenplay = SpaceQuestLogic:new {
 	sideQuestDelay = 0, -- Time in seconds to wait to trigger side quest
 
 	parentQuest = "",
-	parentQuestType = "", -- Quest type of parent quest, used for completing tasks
+	parentQuestType = "",
+	parentQuestName = "",
 
 	-- Screenplay Specific Variables
 	killsRequired = 0,
@@ -46,6 +47,10 @@ function SpaceDestroyScreenplay:startQuest(pPlayer, pNpc)
 
 	if (self.DEBUG_SPACE_DESTROY) then
 		print(self.className .. ":startQuest called -- QuestType: " .. self.questType .. " Quest Name: " .. self.questName)
+	end
+
+	if (pNpc == "") then
+		pNpc = nil
 	end
 
 	SpaceHelpers:activateSpaceQuest(pPlayer, pNpc, self.questType, self.questName, false)
@@ -112,12 +117,12 @@ function SpaceDestroyScreenplay:failQuest(pPlayer, notifyClient)
 
 	-- Fail the parent quest
 	if (self.parentQuestType ~= "") then
-		createEvent(200, self.parentQuestType .. "_" .. self.questName, "failQuest", pPlayer, "false")
+		createEvent(200, self.parentQuestType .. "_" .. self.parentQuestName, "failQuest", pPlayer, "false")
 	end
 
 	-- Fail the side quest
-	if (self.sideQuest and SpaceHelpers:isSpaceQuestActive(pPlayer, self.sideQuestType, self.questName)) then
-		createEvent(200, self.sideQuestType .. "_" .. self.questName, "failQuest", pPlayer, "false")
+	if (self.sideQuest and SpaceHelpers:isSpaceQuestActive(pPlayer, self.sideQuestType, self.sideQuestName)) then
+		createEvent(200, self.sideQuestType .. "_" .. self.sideQuestName, "failQuest", pPlayer, "false")
 	end
 end
 

@@ -21,7 +21,8 @@ SpaceDutyDestroyScreenplay = SpaceQuestLogic:new {
 	sideQuestDelay = 0, -- Time in seconds to wait to trigger side quest
 
 	parentQuest = "",
-	parentQuestType = "", -- Quest type of parent quest, used for completing tasks
+	parentQuestType = "",
+	parentQuestName = "",
 
 	-- Screenplay Specific Variables
 	totalLevels = 0, -- Amount of levels a player has to complete to finish mission
@@ -63,6 +64,10 @@ function SpaceDutyDestroyScreenplay:startQuest(pPlayer, pNpc)
 	-- This is a duty mission, if the player has complete the quest, clear it first
 	if (SpaceHelpers:isSpaceQuestComplete(pPlayer, self.questType, self.questName)) then
 		SpaceHelpers:failSpaceQuest(pPlayer, self.questType, self.questName, false)
+	end
+
+	if (pNpc == "") then
+		pNpc = nil
 	end
 
 	-- Activate the Journal Quest
@@ -138,12 +143,12 @@ function SpaceDutyDestroyScreenplay:failQuest(pPlayer, notifyClient)
 
 	-- Fail the parent quest
 	if (self.parentQuestType ~= "") then
-		createEvent(200, self.parentQuestType .. "_" .. self.questName, "failQuest", pPlayer, "false")
+		createEvent(200, self.parentQuestType .. "_" .. self.parentQuestName, "failQuest", pPlayer, "false")
 	end
 
 	-- Fail the side quest
-	if (self.sideQuest and SpaceHelpers:isSpaceQuestActive(pPlayer, self.sideQuestType, self.questName)) then
-		createEvent(200, self.sideQuestType .. "_" .. self.questName, "failQuest", pPlayer, "false")
+	if (self.sideQuest and SpaceHelpers:isSpaceQuestActive(pPlayer, self.sideQuestType, self.sideQuestName)) then
+		createEvent(200, self.sideQuestType .. "_" .. self.sideQuestName, "failQuest", pPlayer, "false")
 	end
 
 	-- Remove any data
@@ -500,7 +505,9 @@ function SpaceDutyDestroyScreenplay:removeAttackShips(pPlayer)
 		-- Make ship fly away first
 		ShipObject(pAttackShip):setHyperspacing(true);
 
-		SceneObject(pAttackShip):setPosition(8000, 8000, 8000)
+		local hyperspaceLocation = ShipObject(pAttackShip):getSpawnPointInFrontOfShip(2500, 8000)
+
+		SceneObject(pAttackShip):setPosition(hyperspaceLocation[1], hyperspaceLocation[2], hyperspaceLocation[3])
 
 		-- Remove the attack ship
 		createEvent(2000, "SpaceHelpers", "delayedDestroyShipAgent", pAttackShip, "")

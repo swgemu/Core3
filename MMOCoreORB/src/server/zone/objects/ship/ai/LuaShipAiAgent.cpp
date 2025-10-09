@@ -22,6 +22,8 @@
 #include "server/zone/objects/area/ActiveArea.h"
 #include "server/zone/objects/tangible/threat/ThreatMap.h"
 #include "server/zone/objects/tangible/threat/ThreatStates.h"
+#include "server/zone/Zone.h"
+#include "server/zone/managers/ship/ShipAgentTemplateManager.h"
 
 const char LuaShipAiAgent::className[] = "LuaShipAiAgent";
 
@@ -206,6 +208,30 @@ int LuaShipAiAgent::addFixedPatrolPoint(lua_State* L) {
 	String name = lua_tostring(L, -2);
 	bool clearPoints = lua_toboolean(L, -1);
 
+	if (name.isEmpty()) {
+		return 0;
+	}
+
+	auto shipAgentTempMan = ShipAgentTemplateManager::instance();
+
+	if (shipAgentTempMan == nullptr) {
+		return false;
+	}
+
+	auto zone = realObject->getZone();
+
+	if (zone == nullptr) {
+		return 0;
+	}
+
+	uint32 zoneHash = zone->getZoneName().hashCode();
+	uint32 pointNameHash = name.hashCode();
+
+	if (!shipAgentTempMan->hasSpacePatrolPoint(zoneHash, pointNameHash)) {
+		realObject->info(true) << "Failed to add fixed patrol point in Zone: " << zone->getZoneName() << " Point Name: " << name;
+		return 0;
+	}
+
 	Locker locker(realObject);
 
 	if (clearPoints) {
@@ -213,11 +239,7 @@ int LuaShipAiAgent::addFixedPatrolPoint(lua_State* L) {
 		realObject->clearFixedPatrolPoints();
 	}
 
-	if (name.isEmpty()) {
-		return 0;
-	}
-
-	realObject->addFixedPatrolPoint(name.hashCode());
+	realObject->addFixedPatrolPoint(pointNameHash);
 
 	return 0;
 }
@@ -235,6 +257,21 @@ int LuaShipAiAgent::assignFixedPatrolPointsTable(lua_State* L) {
 	LuaObject table(L);
 	int tableSize = table.getTableSize();
 
+	auto shipAgentTempMan = ShipAgentTemplateManager::instance();
+
+	if (shipAgentTempMan == nullptr) {
+		return false;
+	}
+
+	auto zone = realObject->getZone();
+
+	if (zone == nullptr) {
+		return 0;
+	}
+
+	String zoneName = zone->getZoneName();
+	uint32 zoneHash = zoneName.hashCode();
+
 	Locker locker(realObject);
 
 	realObject->clearPatrolPoints();
@@ -243,7 +280,19 @@ int LuaShipAiAgent::assignFixedPatrolPointsTable(lua_State* L) {
 	for (int i = 1; i <= tableSize; ++i) {
 		String pointName = table.getStringAt(i);
 
-		realObject->addFixedPatrolPoint(pointName.hashCode());
+		if (pointName.isEmpty()) {
+			realObject->info(true) << "Failed to add fixed patrol point in Zone: " << zone->getZoneName() << " with an empty point name.";
+			continue;
+		}
+
+		uint32 pointNameHash = pointName.hashCode();
+
+		if (!shipAgentTempMan->hasSpacePatrolPoint(zoneHash, pointNameHash)) {
+			realObject->info(true) << "Failed to add fixed patrol point in Zone: " << zone->getZoneName() << " Point Name: " << pointName;
+			continue;
+		}
+
+		realObject->addFixedPatrolPoint(pointNameHash);
 	}
 
 	table.pop();
