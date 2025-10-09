@@ -39,7 +39,8 @@ SpaceQuestLogic = ScreenPlay:new {
 
 	-- Flags used to tie side quest to parent quest
 	parentQuest = "",
-	parentQuestType = "", -- Quest type of parent quest, used for completing tasks
+	parentQuestType = "",
+	parentQuestName = "",
 }
 
 registerScreenPlay("SpaceQuestLogic", false)

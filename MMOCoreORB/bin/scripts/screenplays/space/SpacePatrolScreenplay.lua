@@ -107,7 +107,7 @@ function SpacePatrolScreenplay:failQuest(pPlayer, notifyClient)
 
 	-- Fail the parent quest
 	if (self.parentQuestType ~= "") then
-		createEvent(200, self.parentQuestType .. "_" .. self.questName, "failQuest", pPlayer, "false")
+		createEvent(200, self.parentQuestType .. "_" .. self.parentQuestName, "failQuest", pPlayer, "false")
 	end
 
 	-- Fail the side quest

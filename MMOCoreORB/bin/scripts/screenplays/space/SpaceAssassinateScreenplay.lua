@@ -80,8 +80,10 @@ function SpaceAssassinateScreenplay:completeQuest(pPlayer, notifyClient)
 		-- Trigger Sidequest
 		createEvent(self.sideQuestDelay * 1000, self.sideQuestType .. "_" .. self.sideQuestName, "startQuest", pPlayer, "")
 
-		-- REMOVE AFTER IMPLEMENTATION
-		createEvent((self.sideQuestDelay * 1000) + 2000, self.sideQuestType .. "_" .. self.sideQuestName, "completeQuest", pPlayer, "true")
+		if (self.sideQuestType == "surival") then
+			-- REMOVE AFTER IMPLEMENTATION
+			createEvent((self.sideQuestDelay * 1000) + 2000, self.sideQuestType .. "_" .. self.sideQuestName, "completeQuest", pPlayer, "true")
+		end
 	end
 end
 
@@ -124,7 +126,7 @@ function SpaceAssassinateScreenplay:failQuest(pPlayer, notifyClient)
 
 	-- Fail the parent quest
 	if (self.parentQuestType ~= "") then
-		createEvent(200, self.parentQuestType .. "_" .. self.questName, "failQuest", pPlayer, "false")
+		createEvent(200, self.parentQuestType .. "_" .. self.parentQuestName, "failQuest", pPlayer, "false")
 	end
 
 	-- Fail the side quest
