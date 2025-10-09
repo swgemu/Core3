@@ -42,8 +42,12 @@ function SpacePatrolScreenplay:startQuest(pPlayer, pNpc)
 		print(self.className .. ":startQuest called -- QuestType: " .. self.questType .. " Quest Name: " .. self.questName)
 	end
 
+	if (pNpc == "") then
+		pNpc = nil
+	end
+
 	-- Activate the Journal Quest
-	SpaceHelpers:activateSpaceQuest(pPlayer, pNpc, self.questType, self.questName, 1)
+	SpaceHelpers:activateSpaceQuest(pPlayer, pNpc, self.questType, self.questName, true)
 
 	-- Create inital observer for player entering Corellia Space
 	if (not hasObserver(ZONESWITCHED, self.className, "enteredZone", pPlayer)) then
@@ -107,7 +111,7 @@ function SpacePatrolScreenplay:failQuest(pPlayer, notifyClient)
 
 	-- Fail the parent quest
 	if (self.parentQuestType ~= "") then
-		createEvent(200, self.parentQuestType .. "_" .. self.questName, "failQuest", pPlayer, "false")
+		createEvent(200, self.parentQuestType .. "_" .. self.parentQuestName, "failQuest", pPlayer, "false")
 	end
 
 	-- Fail the side quest
@@ -314,13 +318,13 @@ function SpacePatrolScreenplay:notifyEnteredQuestArea(pActiveArea, pShip)
 		local alertMessage = "@spacequest/" .. self.questType .. "/" .. self.questName .. ":split_quest_alert"
 
 		-- Trigger Completion of this quest
-		createEvent((self.sideQuestDelay * 1000) - 500, self.className, "completeQuest", pPilot, "false")
+		createEvent(self.sideQuestDelay * 1000, self.className, "completeQuest", pPilot, "false")
 
 		-- Split Quest Alert
-		createEvent((self.sideQuestDelay * 1000) - 500, "SpaceHelpers", "sendQuestAlert", pPilot, alertMessage)
+		createEvent(self.sideQuestDelay * 1000, "SpaceHelpers", "sendQuestAlert", pPilot, alertMessage)
 
 		-- Trigger Sidequest
-		createEvent(self.sideQuestDelay * 1000, self.sideQuestType .. "_" .. self.sideQuestName, "startQuest", pPilot, "")
+		createEvent(self.sideQuestDelay * 1050, self.sideQuestType .. "_" .. self.sideQuestName, "startQuest", pPilot, "")
 
 		-- Trigger Removal of patrol Point
 		createEvent(self.sideQuestDelay * 1000, "SpaceHelpers", "clearQuestWaypoint", pPilot, self.className)

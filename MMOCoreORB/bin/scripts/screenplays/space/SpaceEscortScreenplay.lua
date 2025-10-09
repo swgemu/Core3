@@ -116,6 +116,16 @@ function SpaceEscortScreenplay:completeQuest(pPlayer, notifyClient)
 	dropObserver(ZONESWITCHED, self.className, "enteredZone", pPlayer)
 
 	self:cleanUpQuestData(SceneObject(pPlayer):getObjectID())
+
+	if (self.sideQuest and (self.sideQuestSplitType == self.SIDE_QUEST_SPLIT_TYPES.COMPLETION)) then
+		local alertMessage = "@spacequest/" .. self.questType .. "/" .. self.questName .. ":split_quest_alert"
+
+		-- Split Quest Alert
+		createEvent((self.sideQuestDelay * 1000) - 500, "SpaceHelpers", "sendQuestAlert", pPlayer, alertMessage)
+
+		-- Trigger Sidequest
+		createEvent(self.sideQuestDelay * 1000, self.sideQuestType .. "_" .. self.sideQuestName, "startQuest", pPlayer, "")
+	end
 end
 
 function SpaceEscortScreenplay:failQuest(pPlayer, notifyClient)
@@ -148,12 +158,12 @@ function SpaceEscortScreenplay:failQuest(pPlayer, notifyClient)
 
 	-- Fail the parent quest
 	if (self.parentQuestType ~= "") then
-		createEvent(200, self.parentQuestType .. "_" .. self.questName, "failQuest", pPlayer, "false")
+		createEvent(200, self.parentQuestType .. "_" .. self.parentQuestName, "failQuest", pPlayer, "false")
 	end
 
 	-- Fail the side quest
 	if (self.sideQuest and SpaceHelpers:isSpaceQuestActive(pPlayer, self.sideQuestType, self.questName)) then
-		createEvent(200, self.sideQuestType .. "_" .. self.questName, "failQuest", pPlayer, "false")
+		createEvent(200, self.sideQuestType .. "_" .. self.sideQuestName, "failQuest", pPlayer, "false")
 	end
 end
 
@@ -584,7 +594,9 @@ function SpaceEscortScreenplay:removeEscortShip(pShipAgent)
 	-- Make ship fly away first
 	ShipObject(pShipAgent):setHyperspacing(true);
 
-	SceneObject(pShipAgent):setPosition(8000, 8000, 8000)
+	local hyperspaceLocation = ShipObject(pShipAgent):getSpawnPointInFrontOfShip(2500, 8000)
+
+	SceneObject(pShipAgent):setPosition(hyperspaceLocation[1], hyperspaceLocation[2], hyperspaceLocation[3])
 
 	-- Remove the escort ship
 	createEvent(4000, "SpaceHelpers", "delayedDestroyShipAgent", pShipAgent, "")
@@ -628,7 +640,7 @@ function SpaceEscortScreenplay:spawnAttackWave(pEscortAgent)
 	if (self.dutyMission) then
 		spawnTable = self.attackGroups[getRandomNumber(1, #self.attackGroups)]
 	else
-		spawnTable = self.attackShips
+		spawnTable = self.attackShips[getRandomNumber(1, #self.attackShips)]
 	end
 
 	local shipIDs = readStringVectorSharedMemory(playerID .. self.className .. ":attackShips:")
@@ -730,7 +742,9 @@ function SpaceEscortScreenplay:removeAttackShips(pShipAgent)
 		-- Make ship fly away first
 		ShipObject(pAttackShip):setHyperspacing(true);
 
-		SceneObject(pAttackShip):setPosition(8000, 8000, 8000)
+		local hyperspaceLocation = ShipObject(pAttackShip):getSpawnPointInFrontOfShip(2500, 8000)
+
+		SceneObject(pAttackShip):setPosition(hyperspaceLocation[1], hyperspaceLocation[2], hyperspaceLocation[3])
 
 		-- Remove the attack ship
 		createEvent(2000, "SpaceHelpers", "delayedDestroyShipAgent", pAttackShip, "")

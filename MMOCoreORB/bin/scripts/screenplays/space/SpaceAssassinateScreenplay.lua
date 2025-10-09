@@ -10,7 +10,7 @@ SpaceAssassinateScreenplay = SpaceQuestLogic:new {
 	assassinateEscorts = {},
 }
 
-function SpaceAssassinateScreenplay:startQuest(pPlayer)
+function SpaceAssassinateScreenplay:startQuest(pPlayer, pNpc)
 	if (pPlayer == nil) then
 		Logger:log("Quest: " .. self.questName .. " Type: " .. self.questType .. " -- Failed to startQuest due to pPlayer being nil.", LT_ERROR)
 		return
@@ -75,13 +75,10 @@ function SpaceAssassinateScreenplay:completeQuest(pPlayer, notifyClient)
 		local alertMessage = "@spacequest/" .. self.questType .. "/" .. self.questName .. ":split_quest_alert"
 
 		-- Split Quest Alert
-		createEvent((self.sideQuestDelay * 1000) - 500, "SpaceHelpers", "sendQuestAlert", pPlayer, alertMessage)
+		createEvent(self.sideQuestDelay * 1000, "SpaceHelpers", "sendQuestAlert", pPlayer, alertMessage)
 
 		-- Trigger Sidequest
-		createEvent(self.sideQuestDelay * 1000, self.sideQuestType .. "_" .. self.sideQuestName, "startQuest", pPlayer, "")
-
-		-- REMOVE AFTER IMPLEMENTATION
-		createEvent((self.sideQuestDelay * 1000) + 2000, self.sideQuestType .. "_" .. self.sideQuestName, "completeQuest", pPlayer, "true")
+		createEvent(self.sideQuestDelay * 1050, self.sideQuestType .. "_" .. self.sideQuestName, "startQuest", pPlayer, "")
 	end
 end
 
@@ -124,7 +121,7 @@ function SpaceAssassinateScreenplay:failQuest(pPlayer, notifyClient)
 
 	-- Fail the parent quest
 	if (self.parentQuestType ~= "") then
-		createEvent(200, self.parentQuestType .. "_" .. self.questName, "failQuest", pPlayer, "false")
+		createEvent(200, self.parentQuestType .. "_" .. self.parentQuestName, "failQuest", pPlayer, "false")
 	end
 
 	-- Fail the side quest
@@ -354,7 +351,9 @@ function SpaceAssassinateScreenplay:despawnTargetShips(pPlayer)
 			-- Make ship fly away first
 			ShipObject(pShipAgent):setHyperspacing(true);
 
-			SceneObject(pShipAgent):setPosition(8000, 8000, 8000)
+			local hyperspaceLocation = ShipObject(pShipAgent):getSpawnPointInFrontOfShip(2500, 8000)
+
+			SceneObject(pShipAgent):setPosition(hyperspaceLocation[1], hyperspaceLocation[2], hyperspaceLocation[3])
 
 			createEvent(2000, "SpaceHelpers", "delayedDestroyShipAgent", pShipAgent, "")
 		end
