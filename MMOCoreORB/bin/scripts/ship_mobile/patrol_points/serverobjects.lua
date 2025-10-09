@@ -1,6 +1,7 @@
 includeFile("space_corellia.lua")
 includeFile("space_dantooine.lua")
 includeFile("space_dathomir.lua")
+includeFile("space_endor.lua")
 includeFile("space_heavy1.lua")
 includeFile("space_light1.lua")
 includeFile("space_lok.lua")

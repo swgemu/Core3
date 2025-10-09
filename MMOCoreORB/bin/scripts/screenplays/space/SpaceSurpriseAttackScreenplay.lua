@@ -13,8 +13,12 @@ function SpaceSurpriseAttackScreenplay:startQuest(pPlayer, pNpc)
 		return
 	end
 
+	if (pNpc == "") then
+		pNpc = nil
+	end
+
 	-- Activate Space Quest
-	SpaceHelpers:activateSpaceQuest(pPlayer, nil, self.questType, self.questName, true)
+	SpaceHelpers:activateSpaceQuest(pPlayer, pNpc, self.questType, self.questName, true)
 
 	-- Create inital observer for player entering Corellia Space
 	if (not hasObserver(ZONESWITCHED, self.className, "enteredZone", pPlayer)) then
@@ -81,12 +85,12 @@ function SpaceSurpriseAttackScreenplay:failQuest(pPlayer, notifyClient)
 
 	-- Fail the parent quest
 	if (self.parentQuestType ~= "") then
-		createEvent(200, self.parentQuestType .. "_" .. self.questName, "failQuest", pPlayer, "false")
+		createEvent(200, self.parentQuestType .. "_" .. self.parentQuestName, "failQuest", pPlayer, "false")
 	end
 
 	-- Fail the side quest
 	if (self.sideQuest) then
-		createEvent(200, self.sideQuestType .. "_" .. self.questName, "failQuest", pPlayer, "false")
+		createEvent(200, self.sideQuestType .. "_" .. self.sideQuestName, "failQuest", pPlayer, "false")
 	end
 end
 

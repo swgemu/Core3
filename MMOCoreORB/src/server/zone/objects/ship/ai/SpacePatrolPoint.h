@@ -81,6 +81,10 @@ public:
 	}
 #endif
 
+	inline bool operator != (const Vector3& location) const {
+		return position.getX() != location.getX() || position.getZ() != location.getZ() || position.getY() != location.getY();
+	}
+
 	inline void addSerializableVariables() {
 		addSerializableVariable("position", &position);
 		addSerializableVariable("reached", &reached);
