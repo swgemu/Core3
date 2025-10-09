@@ -369,10 +369,14 @@ space_endor = SpacePatrolPointTable:new {
 	{"scientists_route_1_20", 1232, -418, 2697},
 	{"scientists_route_1_21", 912, -575, 2880},
 	{"scientists_route_1_22", 693, -456, 2588},
-	{"privateer_tier3_assassin_1", 5978, 1103, -3021},
-	{"privateer_tier3_assassin_2", 1503, 857, -4461},
-	{"privateer_tier3_assassin_3", -1962, 658, -3496},
-	{"privateer_tier3_assassin_4", -5906, 487, -2508},
+	{"corellia_privateer_tier3_assassin_1", 5978, 1103, -3021},
+	{"corellia_privateer_tier3_assassin_2", 1503, 857, -4461},
+	{"corellia_privateer_tier3_assassin_3", -1962, 658, -3496},
+	{"corellia_privateer_tier3_assassin_4", -5906, 487, -2508},
+	{"corellia_privateer_tier3_supply_escort_1", 3799, -362, -3019},
+	{"corellia_privateer_tier3_supply_escort_2", 4281, 295, -2818},
+	{"corellia_privateer_tier3_supply_escort_3", 4775, 743, -1925},
+	{"corellia_privateer_tier3_supply_escort_4", 4895, 1220, -913},
 }
 
  SpacePatrolPoints:addSpacePatrolPoints(space_endor, "space_endor")

@@ -62,6 +62,10 @@ public:
 	SpacePatrolPoint getSpacePatrolPoint(uint32 zoneHash, uint32 pointHash) {
 		return spacePatrolPoints.get(zoneHash).get(pointHash);
 	}
+
+	bool hasSpacePatrolPoint(uint32 zoneHash, uint32 pointHash) {
+		return spacePatrolPoints.get(zoneHash).get(pointHash) != Vector3(0.f, 0.f, 0.f);
+	}
 };
 
 } // namespace ship
