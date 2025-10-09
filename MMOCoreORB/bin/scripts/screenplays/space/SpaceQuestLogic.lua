@@ -35,11 +35,12 @@ SpaceQuestLogic = ScreenPlay:new {
 	sideQuestPatrolStart = 0,
 
 	-- Delay in seconds to trigger side quest when triggered
-	sideQuestDelay = 0, -- Time in seconds to wait to trigger side quest
+	sideQuestDelay = 2, -- Time in seconds to wait to trigger side quest
 
 	-- Flags used to tie side quest to parent quest
 	parentQuest = "",
-	parentQuestType = "", -- Quest type of parent quest, used for completing tasks
+	parentQuestType = "",
+	parentQuestName = "",
 }
 
 registerScreenPlay("SpaceQuestLogic", false)
