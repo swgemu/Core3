@@ -355,6 +355,9 @@ function SpaceRecoveryScreenplay:spawnRecoveryShip(pPlayer)
 	-- Set Fixed Patrol and escort flags
 	ShipAiAgent(pShipAgent):setFixedPatrol()
 
+	-- Create Ship Squadron
+	ShipAiAgent(pShipAgent):createSquadron()
+
 	-- Store recover ship ID
 	writeData(playerID .. self.className .. ":recoveryShip:", agentID)
 
@@ -394,6 +397,9 @@ function SpaceRecoveryScreenplay:spawnRecoveryShip(pPlayer)
 
 		-- Set Fixed Patrol and escort flags
 		ShipAiAgent(pEscortShip):setFixedPatrol()
+
+		-- Assign to Squadron of main ship
+		ShipAiAgent(pEscortShip):assignToSquadron(pShipAgent)
 
 		-- Assign the flight path
 		self:assignEscortPoints(pEscortShip, availablePoints)
@@ -717,6 +723,8 @@ function SpaceRecoveryScreenplay:spawnAttackWave(pRecoveryShip)
 		drawClientPath(pRecoveryShip, x, z, y, spawnLocation[1], spawnLocation[2], spawnLocation[3])
 	end
 
+	local pSquadronLeader = nil
+
 	for i = 1, #spawnTable, 1 do
 		local pShipAgent = spawnShipAgent(spawnTable[i], spawnZone, spawnLocation[1], spawnLocation[2], spawnLocation[3], pRecoveryShip)
 
@@ -744,6 +752,13 @@ function SpaceRecoveryScreenplay:spawnAttackWave(pRecoveryShip)
 
 		-- Set as space mission object
 		CreatureObject(pPlayer):addSpaceMissionObject(agentID, (i == #spawnTable))
+
+		if (i == 1) then
+			pSquadronLeader = pShipAgent
+			ShipAiAgent(pShipAgent):createSquadron()
+		elseif (pSquadronLeader ~= nil) then
+			ShipAiAgent(pShipAgent):assignToSquadron(pSquadronLeader)
+		end
 
 		-- Add to the list of shipIDs
 		table.insert(newShipIDs, agentID)

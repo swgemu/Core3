@@ -91,6 +91,16 @@ public:
 		DUPLICATE_CONVO
 	};
 
+	enum FORMATION : uint32 {
+		NONE = 0,
+		LINE = 1,
+		WALL = 2,
+		WEDGE = 3,
+		SPHERE = 4,
+		LAST_FORMATION = 5,
+	};
+
+
 	static int ERROR_CODE;
 
 	ShipManager();

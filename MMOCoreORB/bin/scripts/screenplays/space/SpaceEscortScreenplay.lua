@@ -655,6 +655,8 @@ function SpaceEscortScreenplay:spawnAttackWave(pEscortAgent)
 		drawClientPath(pEscortAgent, x, z, y, spawnLocation[1], spawnLocation[2], spawnLocation[3])
 	end
 
+	local pSquadronLeader = nil
+
 	for i = 1, #spawnTable, 1 do
 		local pShipAgent = spawnShipAgent(spawnTable[i], spawnZone, spawnLocation[1], spawnLocation[2], spawnLocation[3], pEscortAgent)
 
@@ -682,6 +684,13 @@ function SpaceEscortScreenplay:spawnAttackWave(pEscortAgent)
 
 		-- Set as space mission object
 		CreatureObject(pPlayer):addSpaceMissionObject(agentID, (i == #spawnTable))
+
+		if (i == 1) then
+			pSquadronLeader = pShipAgent
+			ShipAiAgent(pShipAgent):createSquadron()
+		elseif (pSquadronLeader ~= nil) then
+			ShipAiAgent(pShipAgent):assignToSquadron(pSquadronLeader)
+		end
 
 		-- Add to the list of shipIDs
 		shipIDs[#shipIDs + 1] = agentID

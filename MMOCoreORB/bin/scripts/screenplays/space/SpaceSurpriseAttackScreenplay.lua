@@ -136,6 +136,8 @@ function SpaceSurpriseAttackScreenplay:spawnSurpriseAttack(pPilot)
 			print("spawnSurpriseAttack -- spawning ship: " .. shipName .. " Spawn Count: " .. count)
 		end
 
+		local pSquadronLeader = nil
+
 		for j = 1, count, 1 do
 			local pShipAgent = spawnShipAgent(shipName, spawnZone, spawnLocation[1] + getRandomNumber(50, 150), spawnLocation[2]  + getRandomNumber(50, 150), spawnLocation[3]  + getRandomNumber(50, 150))
 
@@ -155,13 +157,19 @@ function SpaceSurpriseAttackScreenplay:spawnSurpriseAttack(pPilot)
 				-- Add kill observer
 				createObserver(DESTROYEDSHIP, self.className, "notifyShipDestroyed", pShipAgent)
 
+				if (i == 1) then
+					pSquadronLeader = pShipAgent
+					ShipAiAgent(pShipAgent):createSquadron()
+				elseif (pSquadronLeader ~= nil) then
+					ShipAiAgent(pShipAgent):assignToSquadron(pSquadronLeader)
+				end
+
 				local agentID = SceneObject(pShipAgent):getObjectID()
 
 				shipIDs[#shipIDs + 1] = agentID
 
-				-- Set the player as ShipAgents Defender
-				ShipAiAgent(pShipAgent):addAggro(pPilotShip, 1)
-				ShipAiAgent(pShipAgent):setDefender(pPilotShip)
+				-- Add aggo and set the escort ship as ShipAgents Defender
+				ShipAiAgent(pShipAgent):engageShipTarget(pPilotShip)
 
 				totalSpawned = totalSpawned + 1
 
