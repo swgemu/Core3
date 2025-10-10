@@ -60,6 +60,9 @@ Luna<LuaShipAiAgent>::RegType LuaShipAiAgent::Register[] = {
 	{ "setConversationMobile", &LuaShipAiAgent::setConversationMobile },
 	{ "swapSpaceFactionAssociations", &LuaShipAiAgent::swapSpaceFactionAssociations },
 	{ "clearPatrolPoints", &LuaShipAiAgent::clearPatrolPoints },
+	{ "createSquadron", &LuaShipAiAgent::createSquadron },
+	{ "assignToSquadron", &LuaShipAiAgent::assignToSquadron },
+	{ "dropFromSquadron", &LuaShipAiAgent::dropFromSquadron },
 
 	{ 0, 0 }
 };
@@ -603,6 +606,47 @@ int LuaShipAiAgent::clearPatrolPoints(lua_State* L) {
 	Locker lock(realObject);
 
 	realObject->clearPatrolPoints();
+
+	return 0;
+}
+
+int LuaShipAiAgent::createSquadron(lua_State* L) {
+	// Lock the ship agent
+	Locker lock(realObject);
+
+	realObject->createSquadron();
+
+	return 0;
+}
+
+int LuaShipAiAgent::assignToSquadron(lua_State* L) {
+	int numberOfArguments = lua_gettop(L) - 1;
+
+	if (numberOfArguments != 1) {
+		realObject->error() << "Improper number of arguments in LuaShipAiAgent::assignToSquadron.";
+		return 0;
+	}
+
+	ShipAiAgent* squadronAgent = (ShipAiAgent*) lua_touserdata(L, -1);
+
+	if (squadronAgent == nullptr) {
+		return 0;
+	}
+
+	// Lock the ship agent
+	Locker lock(realObject);
+	Locker clock(squadronAgent, realObject);
+
+	realObject->assignToSquadron(squadronAgent);
+
+	return 0;
+}
+
+int LuaShipAiAgent::dropFromSquadron(lua_State* L) {
+	// Lock the ship agent
+	Locker lock(realObject);
+
+	realObject->dropFromSquadron();
 
 	return 0;
 }

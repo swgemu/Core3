@@ -60,6 +60,9 @@ public:
 	int setConversationMobile(lua_State* L);
 	int swapSpaceFactionAssociations(lua_State* L);
 	int clearPatrolPoints(lua_State* L);
+	int createSquadron(lua_State* L);
+	int assignToSquadron(lua_State* L);
+	int dropFromSquadron(lua_State* L);
 
 private:
 	ShipAiAgent* realObject;
