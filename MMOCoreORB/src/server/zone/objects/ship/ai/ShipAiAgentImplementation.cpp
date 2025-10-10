@@ -57,6 +57,7 @@
 #include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/managers/faction/FactionManager.h"
 #include "server/zone/objects/ship/transform/ShipObjectTransform.h"
+#include "server/zone/objects/ship/ai/SquadronObserver.h"
 
 
 // #define DEBUG_SHIP_AI
@@ -517,18 +518,13 @@ void ShipAiAgentImplementation::notifyDespawn() {
 		notifyObservers(ObserverEventType::SHIPAGENTDESPAWNED);
 	}
 
-	// Drop Squadron Observer when implemented
-	if (getObserverCount(ObserverEventType::SQUADRON) > 0) {
-		SortedVector<ManagedReference<Observer*> > observers = getObservers(ObserverEventType::SQUADRON);
+	// Clear the squadron observer
 
-		for (int i = 0; i < observers.size(); i++) {
-			/*SquadObserver* squadObserver = cast<SquadObserver*>(observers.get(i).get());
+	if (squadron != nullptr) {
+		squadron->dropSquadronShip(asShipAiAgent());
+		squadron = nullptr;
 
-			if (squadObserver != nullptr) {
-				dropObserver(ObserverEventType::SQUAD, squadObserver);
-			}
-			*/
-		}
+		removeShipFlag(ShipFlag::SQUADRON_FOLLOW);
 	}
 
 #ifdef DEBUG_SHIP_DESPAWN
@@ -2127,6 +2123,44 @@ void ShipAiAgentImplementation::tauntPlayer(CreatureObject* player, const String
 			groupMember->addPendingTask("SpaceCommTimer", task, 10 * 1000);
 		}
 	}
+}
+
+void ShipAiAgentImplementation::createSquadron() {
+	if (squadron != nullptr) {
+		squadron->dropSquadronShip(asShipAiAgent());
+		squadron = nullptr;
+	}
+
+	squadron = new SquadronObserver(asShipAiAgent());
+
+	addShipFlag(ShipFlag::SQUADRON_FOLLOW);
+}
+
+void ShipAiAgentImplementation::dropFromSquadron() {
+	if (squadron == nullptr) {
+		return;
+	}
+
+	squadron->dropSquadronShip(asShipAiAgent());
+	squadron = nullptr;
+
+	removeShipFlag(ShipFlag::SQUADRON_FOLLOW);
+}
+
+void ShipAiAgentImplementation::assignToSquadron(ShipAiAgent* squadronAgent) {
+	if (squadronAgent == nullptr) {
+		return;
+	}
+
+	squadron = squadronAgent->getSquadron();
+
+	if (squadron == nullptr) {
+		return;
+	}
+
+	squadron->addSquadronShip(asShipAiAgent());
+
+	addShipFlag(ShipFlag::SQUADRON_FOLLOW);
 }
 
 void ShipAiAgentImplementation::handleException(const Exception& ex, const String& context) {

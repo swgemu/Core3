@@ -32,6 +32,7 @@ import server.zone.objects.ship.ai.btspace.BlackboardDataSpace;
 include server.zone.objects.ship.ai.btspace.BlackboardDataMapSpace;
 import system.thread.atomic.AtomicInteger;
 import server.zone.objects.scene.SceneObject;
+import server.zone.objects.ship.ai.SquadronObserver;
 include system.util.VectorMap;
 include engine.util.u3d.Vector3;
 include server.zone.objects.creature.variables.CooldownTimerMap;
@@ -203,6 +204,8 @@ class ShipAiAgent extends FighterShipObject {
 	protected transient Vector<unsigned long> enemyShipList;
 
 	unsigned long missionOwnerID;
+
+	private transient SquadronObserver squadron;
 
 	public ShipAiAgent() {
 		movementState = OBLIVIOUS;
@@ -592,6 +595,19 @@ class ShipAiAgent extends FighterShipObject {
 
 	@preLocked
 	public native void tauntPlayer(CreatureObject player, final string message);
+
+	@preLocked
+	public native void createSquadron();
+
+	@preLocked
+	public native void dropFromSquadron();
+
+	@preLocked
+	public native void assignToSquadron(ShipAiAgent squadronAgent);
+
+	public SquadronObserver getSquadron() {
+		return squadron;
+	}
 
 	@dirty
 	public void setConversationTemplate(unsigned int convoTemplateCrc) {
