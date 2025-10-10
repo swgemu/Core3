@@ -25,7 +25,6 @@ public:
 		shipAgent->removePendingTask("despawn");
 
 		shipAgent->destroyObjectFromWorld(false);
-		shipAgent->notifyDespawn();
 	}
 
 	void schedule(uint64 delay = 0) {

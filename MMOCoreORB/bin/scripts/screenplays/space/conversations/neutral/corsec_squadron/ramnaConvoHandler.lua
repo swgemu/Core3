@@ -43,12 +43,15 @@ function ramnaConvoHandler:getInitialScreen(pPlayer, pNpc, pConvTemplate)
 		return convoTemplate:getScreen("not_tier3")
 	end
 
-	local questOneStarted = SpaceHelpers:isSpaceQuestActive(pPlayer, CorsecSquadronScreenplay.TIER3_QUEST_STRING_1.type, CorsecSquadronScreenplay.TIER3_QUEST_STRING_1.name)
+	local questOneStarted = SpaceHelpers:isSpaceQuestActive(pPlayer, CorsecSquadronScreenplay.TIER3_QUEST_STRING_1.type, CorsecSquadronScreenplay.TIER3_QUEST_STRING_1.name) or
+							SpaceHelpers:isSpaceQuestActive(pPlayer, CorsecSquadronScreenplay.TIER3_QUEST_STRING_1_SIDE1.type, CorsecSquadronScreenplay.TIER3_QUEST_STRING_1_SIDE1.name) or
+							SpaceHelpers:isSpaceQuestActive(pPlayer, CorsecSquadronScreenplay.TIER3_QUEST_STRING_1_SIDE2.type, CorsecSquadronScreenplay.TIER3_QUEST_STRING_1_SIDE2.name) or
+							SpaceHelpers:isSpaceQuestActive(pPlayer, CorsecSquadronScreenplay.TIER3_QUEST_STRING_1_SIDE3.type, CorsecSquadronScreenplay.TIER3_QUEST_STRING_1_SIDE3.name)
 	local questTwoStarted = SpaceHelpers:isSpaceQuestActive(pPlayer, CorsecSquadronScreenplay.TIER3_QUEST_STRING_2.type, CorsecSquadronScreenplay.TIER3_QUEST_STRING_2.name)
 	local questThreeStarted = SpaceHelpers:isSpaceQuestActive(pPlayer, CorsecSquadronScreenplay.TIER3_QUEST_STRING_3.type, CorsecSquadronScreenplay.TIER3_QUEST_STRING_3.name)
 	local questFourStarted = SpaceHelpers:isSpaceQuestActive(pPlayer, CorsecSquadronScreenplay.TIER3_QUEST_STRING_4.type, CorsecSquadronScreenplay.TIER3_QUEST_STRING_4.name)
 
-	local questOneComplete = SpaceHelpers:isSpaceQuestComplete(pPlayer, CorsecSquadronScreenplay.TIER3_QUEST_STRING_1.type, CorsecSquadronScreenplay.TIER3_QUEST_STRING_1.name)
+	local questOneComplete = SpaceHelpers:isSpaceQuestComplete(pPlayer, CorsecSquadronScreenplay.TIER3_QUEST_STRING_1_SIDE3.type, CorsecSquadronScreenplay.TIER3_QUEST_STRING_1_SIDE3.name)
 	local questTwoComplete = SpaceHelpers:isSpaceQuestComplete(pPlayer, CorsecSquadronScreenplay.TIER3_QUEST_STRING_2.type, CorsecSquadronScreenplay.TIER3_QUEST_STRING_2.name)
 	local questThreeComplete = SpaceHelpers:isSpaceQuestComplete(pPlayer, CorsecSquadronScreenplay.TIER3_QUEST_STRING_3.type, CorsecSquadronScreenplay.TIER3_QUEST_STRING_3.name)
 	local questFourComplete = SpaceHelpers:isSpaceQuestComplete(pPlayer, CorsecSquadronScreenplay.TIER3_QUEST_STRING_4.type, CorsecSquadronScreenplay.TIER3_QUEST_STRING_4.name)
