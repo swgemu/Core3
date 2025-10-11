@@ -31,9 +31,7 @@ SpaceDutyEscortScreenplay = SpaceEscortScreenplay:new {
 
 	attackDelay = 90, -- In Seconds
 
-	totalAttackGroups = 2,
-
-	attackGroups = {
+	attackShips = {
 		{},
 		{},
 	},

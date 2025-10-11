@@ -343,7 +343,7 @@ function SpaceRecoveryScreenplay:spawnRecoveryShip(pPlayer)
 	end
 
 	-- Recovery Ship Observers
-	createObserver(DESTROYEDSHIP, self.className, "notifyRecoveryShipDestroyed", pShipAgent)
+	createObserver(SHIPDESTROYED, self.className, "notifyRecoveryShipDestroyed", pShipAgent)
 	createObserver(SHIPDISABLED, self.className, "notifyRecoveryShipDisabled", pShipAgent)
 
 	-- Set the agent as a mission object
@@ -387,7 +387,7 @@ function SpaceRecoveryScreenplay:spawnRecoveryShip(pPlayer)
 			print(self.className .. " -- Recover Escort Ship Spawned: " .. ShipObject(pEscortShip):getShipName() .. " ID: " .. escortID)
 		end
 
-		createObserver(DESTROYEDSHIP, self.className, "notifyEscortShipDestroyed", pEscortShip)
+		createObserver(SHIPDESTROYED, self.className, "notifyEscortShipDestroyed", pEscortShip)
 
 		-- Set the agent as a mission object
 		CreatureObject(pPlayer):addSpaceMissionObject(escortID, (totalEscortingShips == i))
@@ -465,7 +465,7 @@ function SpaceRecoveryScreenplay:despawnShips(pPlayer)
 	end
 
 	if (pRecoveryShip ~= nil and ShipAiAgent(pRecoveryShip):getMissionOwnerID() == playerID) then
-		dropObserver(DESTROYEDSHIP, self.className, "notifyRecoveryShipDestroyed", pRecoveryShip)
+		dropObserver(SHIPDESTROYED, self.className, "notifyRecoveryShipDestroyed", pRecoveryShip)
 		dropObserver(SHIPDISABLED, self.className, "notifyRecoveryShipDisabled", pRecoveryShip)
 
 		deleteData(recoveryShipID .. ":" .. self.className .. ":recoveryShipProgress:")
@@ -498,8 +498,8 @@ function SpaceRecoveryScreenplay:despawnShips(pPlayer)
 		end
 
 		-- This function can all be used to despawn wave attack ships, check to remove both observers
-		dropObserver(DESTROYEDSHIP, self.className, "notifyEscortShipDestroyed", pShipAgent)
-		dropObserver(DESTROYEDSHIP, self.className, "notifyAttackShipDestroyed", pShipAgent)
+		dropObserver(SHIPDESTROYED, self.className, "notifyEscortShipDestroyed", pShipAgent)
+		dropObserver(SHIPDESTROYED, self.className, "notifyAttackShipDestroyed", pShipAgent)
 
 		-- Make ship fly away first
 		ShipObject(pShipAgent):setHyperspacing(true);
@@ -746,7 +746,7 @@ function SpaceRecoveryScreenplay:spawnAttackWave(pRecoveryShip)
 		ShipAiAgent(pShipAgent):removeSpaceFactionAlly(playerFactionHash)
 
 		-- Add kill observer
-		createObserver(DESTROYEDSHIP, self.className, "notifyAttackShipDestroyed", pShipAgent)
+		createObserver(SHIPDESTROYED, self.className, "notifyAttackShipDestroyed", pShipAgent)
 
 		local agentID = SceneObject(pShipAgent):getObjectID()
 
@@ -841,20 +841,13 @@ function SpaceRecoveryScreenplay:enteredZone(pPlayer, nill, zoneNameHash)
 	return 0
 end
 
-function SpaceRecoveryScreenplay:notifyRecoveryShipDestroyed(pShipAgent, pPlayer)
+function SpaceRecoveryScreenplay:notifyRecoveryShipDestroyed(pShipAgent, pKillerShip)
 	if (pShipAgent == nil or not SceneObject(pShipAgent):isShipAiAgent()) then
 		return 1
 	end
 
-	if (pPlayer == nil) then
-		return 1
-	end
-
 	local missionOwnerID = ShipAiAgent(pShipAgent):getMissionOwnerID()
-
-	if (missionOwnerID ~= SceneObject(pPlayer):getObjectID()) then
-		pPlayer = getSceneObject(missionOwnerID)
-	end
+	local pPlayer = getSceneObject(missionOwnerID)
 
 	if (pPlayer == nil or not SceneObject(pPlayer):isPlayerCreature()) then
 		return 1
@@ -913,16 +906,13 @@ function SpaceRecoveryScreenplay:notifyRecoveryShipDisabled(pShipAgent, pPlayer)
 	return 1
 end
 
-function SpaceRecoveryScreenplay:notifyEscortShipDestroyed(pShipAgent, pPlayer)
+function SpaceRecoveryScreenplay:notifyEscortShipDestroyed(pShipAgent, pKillerShip)
 	if (pShipAgent == nil or not SceneObject(pShipAgent):isShipAiAgent()) then
 		return 1
 	end
 
 	local missionOwnerID = ShipAiAgent(pShipAgent):getMissionOwnerID()
-
-	if (pPlayer == nil or missionOwnerID ~= SceneObject(pPlayer):getObjectID()) then
-		pPlayer = getSceneObject(missionOwnerID)
-	end
+	local pPlayer = getSceneObject(missionOwnerID)
 
 	if (pPlayer == nil or not SceneObject(pPlayer):isPlayerCreature()) then
 		return 1
@@ -977,16 +967,13 @@ function SpaceRecoveryScreenplay:notifyEscortShipDestroyed(pShipAgent, pPlayer)
 	return 1
 end
 
-function SpaceRecoveryScreenplay:notifyAttackShipDestroyed(pShipAgent, pPlayer)
+function SpaceRecoveryScreenplay:notifyAttackShipDestroyed(pShipAgent, pKillerShip)
 	if (pShipAgent == nil or not SceneObject(pShipAgent):isShipAiAgent()) then
 		return 1
 	end
 
 	local missionOwnerID = ShipAiAgent(pShipAgent):getMissionOwnerID()
-
-	if (pPlayer == nil or missionOwnerID ~= SceneObject(pPlayer):getObjectID()) then
-		pPlayer = getSceneObject(missionOwnerID)
-	end
+	local pPlayer = getSceneObject(missionOwnerID)
 
 	if (pPlayer == nil or not SceneObject(pPlayer):isPlayerCreature()) then
 		return 1

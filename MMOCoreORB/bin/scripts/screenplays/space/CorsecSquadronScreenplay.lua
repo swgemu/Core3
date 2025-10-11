@@ -161,7 +161,10 @@ escort_corellia_privateer_3 = SpaceEscortScreenplay:new {
 	},
 
 	attackDelay = 90, -- In Seconds
-	attackShips = {"blacksun_fighter_s02_tier1", "blacksun_fighter_s03_tier1", "blacksun_fighter_s02_tier1"},
+
+	attackShips = {
+		{"blacksun_fighter_s02_tier1", "blacksun_fighter_s03_tier1", "blacksun_fighter_s02_tier1"},
+	}
 }
 
 registerScreenPlay("escort_corellia_privateer_3", true)
@@ -264,9 +267,7 @@ escort_duty_corellia_privateer_7 = SpaceDutyEscortScreenplay:new {
 
 	attackDelay = 90, -- In Seconds
 
-	totalAttackGroups = 2,
-
-	attackGroups = {
+	attackShips = {
 		{"blacksun_fighter_s01_tier1", "blacksun_fighter_s02_tier1"},
 		{"blacklight_bomber_tier1", "blacksun_fighter_s03_tier1"},
 	},
@@ -333,7 +334,10 @@ escort_corellia_privateer_14 = SpaceEscortScreenplay:new {
 	},
 
 	attackDelay = 180, -- In Seconds
-	attackShips = {"reb_xwing_tier2", "reb_xwing_tier2", "reb_ywing_tier3", "reb_xwing_tier3", "reb_z95_tier2", "reb_z95_tier2"},
+
+	attackShips = {
+		{"reb_xwing_tier2", "reb_xwing_tier2", "reb_ywing_tier3", "reb_xwing_tier3", "reb_z95_tier2", "reb_z95_tier2"},
+	}
 }
 
 registerScreenPlay("escort_corellia_privateer_14", true)
@@ -449,9 +453,7 @@ escort_duty_corellia_privateer_10 = SpaceDutyEscortScreenplay:new {
 
 	attackDelay = 90, -- In Seconds
 
-	totalAttackGroups = 2,
-
-	attackGroups = {
+	attackShips = {
 		{"blacksun_fighter_s01_tier1", "blacksun_fighter_s02_tier1"},
 		{"blacklight_bomber_tier1", "blacksun_fighter_s03_tier1"},
 	},
@@ -638,6 +640,7 @@ escort_corellia_privateer_tier3_1_b = SpaceEscortScreenplay:new {
 	},
 
 	attackDelay = 110, -- In Seconds
+
 	attackShips = {
 		{"scavenger_hunter_tier3", "scavenger_hunter_tier3"},
 		{"scavenger_fanatic_tier3", "scavenger_fanatic_tier3", "scavenger_missileboat_tier3"},

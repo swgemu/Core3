@@ -190,7 +190,7 @@ function SpaceAssassinateScreenplay:deployTargets(pPlayer)
 	ShipAiAgent(pPrimaryAgent):setDespawnOnNoPlayerInRange(false)
 
 	-- Add kill observer
-	createObserver(DESTROYEDSHIP, self.className, "notifyShipDestroyed", pPrimaryAgent)
+	createObserver(SHIPDESTROYED, self.className, "notifyShipDestroyed", pPrimaryAgent)
 
 	-- Store the quest owner
 	writeData(primaryID .. ":" .. self.className .. ":QuestOwner", playerID)
@@ -224,7 +224,7 @@ function SpaceAssassinateScreenplay:deployTargets(pPlayer)
 			ShipAiAgent(pShipAgent):setDespawnOnNoPlayerInRange(false)
 
 			-- Add kill observer
-			createObserver(DESTROYEDSHIP, self.className, "notifyShipDestroyed", pShipAgent)
+			createObserver(SHIPDESTROYED, self.className, "notifyShipDestroyed", pShipAgent)
 
 			local agentID = SceneObject(pShipAgent):getObjectID()
 
@@ -346,7 +346,7 @@ function SpaceAssassinateScreenplay:despawnTargetShips(pPlayer)
 		deleteData(shipID .. ":" .. self.className .. ":PrimaryTarget:")
 
 		if (pShipAgent ~= nil) then
-			dropObserver(DESTROYEDSHIP, self.className, "notifyShipDestroyed", pShipAgent)
+			dropObserver(SHIPDESTROYED, self.className, "notifyShipDestroyed", pShipAgent)
 
 			-- Make ship fly away first
 			ShipObject(pShipAgent):setHyperspacing(true);
@@ -426,21 +426,18 @@ function SpaceAssassinateScreenplay:notifyShipDestroyed(pShipAgent, pKillerShip)
 		return 1
 	end
 
-	local agentID = SceneObject(pShipAgent):getObjectID()
-	local playerID = readData(agentID .. ":" .. self.className .. ":QuestOwner")
-	local pPlayer = getSceneObject(playerID)
+	local missionOwnerID = ShipAiAgent(pShipAgent):getMissionOwnerID()
+	local pPlayer = getSceneObject(missionOwnerID)
 
-	if (pPlayer == nil) then
-		Logger:log(self.className .. ":notifyShipDestroyed - Quest Owner is nil.", LT_ERROR)
+	if (pPlayer == nil or not SceneObject(pPlayer):isPlayerCreature()) then
 		return 1
 	end
-
-	-- Delete the quest owner data
-	deleteData(agentID .. ":" .. self.className .. ":QuestOwner")
 
 	if (self.DEBUG_SPACE_ASSASSINATE) then
 		print(self.className .. ":notifyShipDestroyed - Ship Destoyed: " .. SceneObject(pShipAgent):getDisplayedName() .. " Quest Owner Name: " .. SceneObject(pPlayer):getDisplayedName())
 	end
+
+	local agentID = SceneObject(pShipAgent):getObjectID()
 
 	local pGhost = CreatureObject(pPlayer):getPlayerObject()
 
@@ -452,11 +449,11 @@ function SpaceAssassinateScreenplay:notifyShipDestroyed(pShipAgent, pKillerShip)
 	CreatureObject(pPlayer):removeSpaceMissionObject(agentID, false)
 
 	local isPrimaryTarget = readData(agentID .. ":" .. self.className .. ":PrimaryTarget:")
-	local totalKills = readData(playerID .. ":" .. self.className .. ":TotalKills:")
-	local escortKills = readData(playerID .. ":" .. self.className .. ":EscortKills:")
+	local totalKills = readData(missionOwnerID .. ":" .. self.className .. ":TotalKills:")
+	local escortKills = readData(missionOwnerID .. ":" .. self.className .. ":EscortKills:")
 	local totalEscorts = #self.assassinateSpawns.escorts
 
-	deleteData(playerID .. ":" .. self.className .. ":TotalKills:")
+	deleteData(missionOwnerID .. ":" .. self.className .. ":TotalKills:")
 
 	totalKills = totalKills + 1
 
@@ -479,7 +476,7 @@ function SpaceAssassinateScreenplay:notifyShipDestroyed(pShipAgent, pKillerShip)
 		-- Increase the escort kill count
 		escortKills = escortKills + 1
 
-		deleteData(playerID .. ":" .. self.className .. ":EscortKills:")
+		deleteData(missionOwnerID .. ":" .. self.className .. ":EscortKills:")
 
 		-- All escort ships have been destroyed
 		if (escortKills >= totalEscorts) then
@@ -492,7 +489,7 @@ function SpaceAssassinateScreenplay:notifyShipDestroyed(pShipAgent, pKillerShip)
 			CreatureObject(pPlayer):sendSystemMessage(alertMsg:_getObject())
 
 			-- Store the kill count
-			writeData(playerID .. ":" .. self.className .. ":EscortKills:", escortKills)
+			writeData(missionOwnerID .. ":" .. self.className .. ":EscortKills:", escortKills)
 		end
 	end
 
@@ -508,7 +505,7 @@ function SpaceAssassinateScreenplay:notifyShipDestroyed(pShipAgent, pKillerShip)
 	end
 
 	-- Update the kill count
-	writeData(playerID .. ":" .. self.className .. ":TotalKills:", totalKills)
+	writeData(missionOwnerID .. ":" .. self.className .. ":TotalKills:", totalKills)
 
 	return 0
 end
