@@ -635,13 +635,7 @@ function SpaceEscortScreenplay:spawnAttackWave(pEscortAgent)
 
 	local spawnLocation = ShipObject(pEscortAgent):getSpawnPointInFrontOfShip(600, 1200)
 
-	local spawnTable = {}
-
-	if (self.dutyMission) then
-		spawnTable = self.attackGroups[getRandomNumber(1, #self.attackGroups)]
-	else
-		spawnTable = self.attackShips[getRandomNumber(1, #self.attackShips)]
-	end
+	local spawnTable = self.attackShips[getRandomNumber(1, #self.attackShips)]
 
 	local shipIDs = readStringVectorSharedMemory(playerID .. self.className .. ":attackShips:")
 	deleteStringVectorSharedMemory(playerID .. self.className .. ":attackShips:")

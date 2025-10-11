@@ -1098,26 +1098,6 @@ bool ShipAiAgentImplementation::generatePatrol(int totalPoints, float distance, 
 		return false;
 	}
 
-	uint32 savedState = getMovementState();
-
-	if (savedState == ShipAiAgent::LEASHING) {
-		return false;
-	}
-
-	if (savedState != ShipAiAgent::PATROLLING && savedState != ShipAiAgent::WATCHING) {
-		clearPatrolPoints();
-		setMovementState(ShipAiAgent::PATROLLING);
-	}
-
-	/* ShipFlag.h
-		GUARD_PATROL - For ships that patrol a specific area in a spherical pattern where they will have a min range and max range to stay within
-			used for ships in patrol around a point or object such as a space station.
-		RANDOM_PATROL - Default method for patrolling. Randomly generates points around its home location.
-		FIXED_PATROL - For ships that have specific set of patrol points assigned to them and will only navigate to those points.
-		SQUADRON_PATROL - For ships that are in a squadron, this will be used to create and assign them to an observer as well as the behaviors needed to operate in the squadron.
-		SQUADRON_FOLLOW - Similar to above, but for ships that have to follow another ship while in a squadron.
-	*/
-
 	Locker locker(&targetMutex);
 
 	const Vector3& homePosition = getHomePosition();
