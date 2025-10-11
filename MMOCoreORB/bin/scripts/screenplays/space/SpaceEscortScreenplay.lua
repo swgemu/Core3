@@ -409,7 +409,7 @@ function SpaceEscortScreenplay:spawnEscortShip(pPlayer)
 	ShipAiAgent(pShipAgent):removeSpaceFactionEnemy(playerFactionHash)
 
 	-- Add kill observer
-	createObserver(DESTROYEDSHIP, self.className, "notifyEscortShipDestroyed", pShipAgent)
+	createObserver(SHIPDESTROYED, self.className, "notifyEscortShipDestroyed", pShipAgent)
 
 	-- Assign the escort points
 	createEvent(5 * 1000, self.className, "assignEscortPoints", pShipAgent, "")
@@ -589,7 +589,7 @@ function SpaceEscortScreenplay:removeEscortShip(pShipAgent)
 	end
 
 	-- Remove the kill observer
-	dropObserver(DESTROYEDSHIP, self.className, "notifyEscortShipDestroyed", pShipAgent)
+	dropObserver(SHIPDESTROYED, self.className, "notifyEscortShipDestroyed", pShipAgent)
 
 	-- Make ship fly away first
 	ShipObject(pShipAgent):setHyperspacing(true);
@@ -635,13 +635,7 @@ function SpaceEscortScreenplay:spawnAttackWave(pEscortAgent)
 
 	local spawnLocation = ShipObject(pEscortAgent):getSpawnPointInFrontOfShip(600, 1200)
 
-	local spawnTable = {}
-
-	if (self.dutyMission) then
-		spawnTable = self.attackGroups[getRandomNumber(1, #self.attackGroups)]
-	else
-		spawnTable = self.attackShips[getRandomNumber(1, #self.attackShips)]
-	end
+	local spawnTable = self.attackShips[getRandomNumber(1, #self.attackShips)]
 
 	local shipIDs = readStringVectorSharedMemory(playerID .. self.className .. ":attackShips:")
 	deleteStringVectorSharedMemory(playerID .. self.className .. ":attackShips:")
@@ -678,7 +672,7 @@ function SpaceEscortScreenplay:spawnAttackWave(pEscortAgent)
 		ShipAiAgent(pShipAgent):removeSpaceFactionAlly(playerFactionHash)
 
 		-- Add kill observer
-		createObserver(DESTROYEDSHIP, self.className, "notifyAttackShipDestroyed", pShipAgent)
+		createObserver(SHIPDESTROYED, self.className, "notifyAttackShipDestroyed", pShipAgent)
 
 		local agentID = SceneObject(pShipAgent):getObjectID()
 
@@ -746,7 +740,7 @@ function SpaceEscortScreenplay:removeAttackShips(pShipAgent)
 		end
 
 		-- Remove the kill observer
-		dropObserver(DESTROYEDSHIP, self.className, "notifyAttackShipDestroyed", pAttackShip)
+		dropObserver(SHIPDESTROYED, self.className, "notifyAttackShipDestroyed", pAttackShip)
 
 		-- Make ship fly away first
 		ShipObject(pAttackShip):setHyperspacing(true);
@@ -1003,19 +997,18 @@ function SpaceEscortScreenplay:notifyEscortShipDestroyed(pShipAgent, pKillerShip
 		return 1
 	end
 
-	local agentID = SceneObject(pShipAgent):getObjectID()
-	local playerID = readData(agentID .. ":" .. self.className .. ":escorterID:")
+	local missionOwnerID = ShipAiAgent(pShipAgent):getMissionOwnerID()
+	local pPlayer = getSceneObject(missionOwnerID)
 
-	local pPlayer = getSceneObject(playerID)
-
-	if (pPlayer == nil) then
-		Logger:log(self.className .. ":notifyEscortShipDestroyed - Quest Owner is nil.", LT_ERROR)
+	if (pPlayer == nil or not SceneObject(pPlayer):isPlayerCreature()) then
 		return 1
 	end
 
 	if (self.DEBUG_SPACE_ESCORT) then
 		print(self.className .. ":notifyEscortShipDestroyed - Ship Destoyed: " .. SceneObject(pShipAgent):getDisplayedName() .. " Quest Owner Name: " .. SceneObject(pPlayer):getDisplayedName())
 	end
+
+	local agentID = SceneObject(pShipAgent):getObjectID()
 
 	-- Hyperspace out any remaining attack waves
 	createEvent(200, self.className, "removeAttackShips", pShipAgent, "")
@@ -1036,13 +1029,10 @@ function SpaceEscortScreenplay:notifyAttackShipDestroyed(pShipAgent, pKillerShip
 		return 1
 	end
 
-	local agentID = SceneObject(pShipAgent):getObjectID()
-	local playerID = readData(agentID .. ":" .. self.className .. ":escorterID:")
+	local missionOwnerID = ShipAiAgent(pShipAgent):getMissionOwnerID()
+	local pPlayer = getSceneObject(missionOwnerID)
 
-	local pPlayer = getSceneObject(playerID)
-
-	if (pPlayer == nil) then
-		Logger:log(self.className .. ":notifyAttackShipDestroyed - Quest Owner is nil.", LT_ERROR)
+	if (pPlayer == nil or not SceneObject(pPlayer):isPlayerCreature()) then
 		return 1
 	end
 
@@ -1050,14 +1040,16 @@ function SpaceEscortScreenplay:notifyAttackShipDestroyed(pShipAgent, pKillerShip
 		print(self.className .. ":notifyAttackShipDestroyed - Ship Destoyed: " .. SceneObject(pShipAgent):getDisplayedName() .. " Quest Owner Name: " .. SceneObject(pPlayer):getDisplayedName())
 	end
 
+	local agentID = SceneObject(pShipAgent):getObjectID()
+
 	-- Remove as Mission Objects
 	CreatureObject(pPlayer):removeSpaceMissionObject(agentID, true)
 
 	-- Remove from Attack Ships Vector
-	local shipIDs = readStringVectorSharedMemory(playerID .. self.className .. ":attackShips:")
+	local shipIDs = readStringVectorSharedMemory(missionOwnerID .. self.className .. ":attackShips:")
 	local newIDs = {}
 
-	deleteStringVectorSharedMemory(playerID .. self.className .. ":attackShips:")
+	deleteStringVectorSharedMemory(missionOwnerID .. self.className .. ":attackShips:")
 
 	local index = 0
 
@@ -1071,7 +1063,7 @@ function SpaceEscortScreenplay:notifyAttackShipDestroyed(pShipAgent, pKillerShip
 
 	if (#newIDs > 0) then
 		-- Store the Spawned Attack Ships
-		writeStringVectorSharedMemory(playerID .. self.className .. ":attackShips:", newIDs)
+		writeStringVectorSharedMemory(missionOwnerID .. self.className .. ":attackShips:", newIDs)
 
 		local messageString = LuaStringIdChatParameter("@space/quest:destroy_duty_targets_remaining")
 		messageString:setDI(#newIDs)
@@ -1083,7 +1075,7 @@ function SpaceEscortScreenplay:notifyAttackShipDestroyed(pShipAgent, pKillerShip
 
 		CreatureObject(pPlayer):playEffect("clienteffect/ui_quest_destroyed_wave.cef", "")
 
-		local escortID = readData(playerID .. ":" .. self.className .. ":escortID:")
+		local escortID = readData(missionOwnerID .. ":" .. self.className .. ":escortID:")
 		local pEscort = getSceneObject(escortID)
 
 		if (pEscort ~= nil and SceneObject(pEscort):isShipAiAgent()) then
@@ -1093,12 +1085,12 @@ function SpaceEscortScreenplay:notifyAttackShipDestroyed(pShipAgent, pKillerShip
 	end
 
 	-- Increase kill count
-	local totalKills = readData(playerID .. ":" .. self.className .. ":" .. ":EscortKillCount:")
-	deleteData(playerID .. ":" .. self.className .. ":" .. ":EscortKillCount:")
+	local totalKills = readData(missionOwnerID .. ":" .. self.className .. ":" .. ":EscortKillCount:")
+	deleteData(missionOwnerID .. ":" .. self.className .. ":" .. ":EscortKillCount:")
 
 	totalKills = totalKills + 1
 
-	writeData(playerID .. ":" .. self.className .. ":" .. ":EscortKillCount:", totalKills)
+	writeData(missionOwnerID .. ":" .. self.className .. ":" .. ":EscortKillCount:", totalKills)
 
 	return 1
 end

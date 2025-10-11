@@ -155,7 +155,7 @@ function SpaceSurpriseAttackScreenplay:spawnSurpriseAttack(pPilot)
 				ShipAiAgent(pShipAgent):setDespawnOnNoPlayerInRange(true)
 
 				-- Add kill observer
-				createObserver(DESTROYEDSHIP, self.className, "notifyShipDestroyed", pShipAgent)
+				createObserver(SHIPDESTROYED, self.className, "notifyShipDestroyed", pShipAgent)
 
 				if (i == 1) then
 					pSquadronLeader = pShipAgent
@@ -245,14 +245,14 @@ function SpaceSurpriseAttackScreenplay:notifyShipDestroyed(pShipAgent, pKillerSh
 		return 1
 	end
 
-	local agentID = SceneObject(pShipAgent):getObjectID()
-	local playerID = readData(agentID .. ":QuestOwner")
-	local pPlayer = getSceneObject(playerID)
+	local missionOwnerID = ShipAiAgent(pShipAgent):getMissionOwnerID()
+	local pPlayer = getSceneObject(missionOwnerID)
 
-	if (pPlayer == nil) then
-		Logger:log(self.className .. ":notifyShipDestroyed - Quest Owner is nil.", LT_ERROR)
+	if (pPlayer == nil or not SceneObject(pPlayer):isPlayerCreature()) then
 		return 1
 	end
+
+	local agentID = SceneObject(pShipAgent):getObjectID()
 
 	if (self.DEBUG_SPACE_SURPRISE_ATTACK) then
 		print(self.className .. ":notifyShipDestroyed - Ship Destoyed: " .. SceneObject(pShipAgent):getDisplayedName() .. " Quest Owner Name: " .. SceneObject(pPlayer):getDisplayedName())
@@ -264,11 +264,11 @@ function SpaceSurpriseAttackScreenplay:notifyShipDestroyed(pShipAgent, pKillerSh
 		return 1
 	end
 
-	local spawnCount = readData(playerID .. self.className .. ":Count")
+	local spawnCount = readData(missionOwnerID .. self.className .. ":Count")
 	spawnCount = spawnCount - 1
 
 	-- Clear the old kill count off the player
-	deleteData(playerID .. self.className .. ":Count")
+	deleteData(missionOwnerID .. self.className .. ":Count")
 
 	-- Remove Ship as Space Mission Object
 	CreatureObject(pPlayer):removeSpaceMissionObject(agentID, false)
@@ -278,7 +278,7 @@ function SpaceSurpriseAttackScreenplay:notifyShipDestroyed(pShipAgent, pKillerSh
 		SpaceHelpers:sendQuestUpdate(pPlayer, spawnCount .. " targets remaining to be destroyed.") -- "destroy_remainder_update"
 
 		-- Update the remaining count
-		writeData(playerID .. self.className .. ":Count", spawnCount)
+		writeData(missionOwnerID .. self.className .. ":Count", spawnCount)
 	else
 		-- Player effect for player
 		CreatureObject(pPlayer):playEffect("clienteffect/ui_quest_destroyed_wave.cef", "")

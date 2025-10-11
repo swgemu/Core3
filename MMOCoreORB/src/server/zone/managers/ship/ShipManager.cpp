@@ -1042,32 +1042,10 @@ int ShipManager::notifyDestruction(ShipObject* destructorShip, ShipAiAgent* dest
 			highestShip->awardLootItems(destructedShip, randomPayout);
 		}
 
-		// Quest Kill Observers
-		SortedVector<ManagedReference<Observer* > > observers = destructedShip->getObservers(ObserverEventType::QUESTKILL);
+		// Notify SHIPDESTROYED observer, used for mission spawned ships
+		destructedShip->notifyObservers(ObserverEventType::SHIPDESTROYED, destructorShip);
 
-		if (observers.size() > 0) {
-			for (int i = 0; i < copyThreatMap.size(); ++i) {
-				TangibleObject* attacker = copyThreatMap.elementAt(i).getKey();
-
-				if (attacker == nullptr || !attacker->isPlayerShip())
-					continue;
-
-				auto attackerShip = attacker->asShipObject();
-
-				if (attackerShip == nullptr || !attackerShip->isPlayerShip()) {
-					continue;
-				}
-
-				auto pilot = attackerShip->getPilot();
-
-				if (pilot == nullptr) {
-					continue;
-				}
-
-				pilot->notifyObservers(ObserverEventType::QUESTKILL, destructedShip);
-			}
-		}
-
+		// Notify DESTROYEDSHIP Observers, used for players killing non-mission spawned shipAgents
 		ManagedReference<ShipObject*> playerShip = copyThreatMap.getHighestDamageGroupShip();
 
 		if (playerShip != nullptr) {
@@ -1087,13 +1065,13 @@ int ShipManager::notifyDestruction(ShipObject* destructorShip, ShipAiAgent* dest
 
 							Locker locker(groupMember, destructedShip);
 
-							destructedShip->notifyObservers(ObserverEventType::DESTROYEDSHIP, groupMember);
+							groupMember->notifyObservers(ObserverEventType::DESTROYEDSHIP, destructedShip);
 						}
 					}
 				} else {
 					Locker locker(pilot, destructedShip);
 
-					destructedShip->notifyObservers(ObserverEventType::DESTROYEDSHIP, pilot);
+					pilot->notifyObservers(ObserverEventType::DESTROYEDSHIP, destructedShip);
 				}
 			}
 		}

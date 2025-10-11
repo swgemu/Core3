@@ -3,6 +3,7 @@ idleEscort = {
 	{id="3826170193",	name="NotSpace",	pid="3878147956"},
 	{id="1569932203",	name="IfSpace",	pid="3826170193"},
 	{id="1062834130",	name="CheckHasPatrol",	pid="1569932203"},
+	{id="4198534688",	name="SetMovementState",	pid="3878147956",	args={state=PATROLLING}},
 	{id="1111847443",	name="GeneratePatrol",	pid="3878147956",	args={distFromHome=256.0, numPoints=5}}}
 addAiTemplate("idleEscort", idleEscort)
 
