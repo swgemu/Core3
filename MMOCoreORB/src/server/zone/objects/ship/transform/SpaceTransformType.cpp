@@ -32,6 +32,7 @@ void SpaceTransformType::setThrottleRate() {
 			break;
 		}
 		case Type::AUTO:
+		case Type::FORM:
 		default: {
 			throttleMin = 0.f;
 			throttleMax = 1.f;
@@ -42,7 +43,8 @@ void SpaceTransformType::setThrottleRate() {
 void SpaceTransformType::setRotationRate() {
 	switch (transformType) {
 		case Type::SLOW:
-		case Type::DOCK: {
+		case Type::DOCK:
+		case Type::FORM: {
 			rotationRate[Rotation::YAW] = 0.5f;
 			rotationRate[Rotation::PITCH] = 0.5f;
 			rotationRate[Rotation::ROLL] = 0.5f;
