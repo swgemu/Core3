@@ -331,6 +331,9 @@ class ShipAiAgent extends FighterShipObject {
 	public native void setNextFollowPosition();
 
 	@local
+	public native void setNextSquadronPosition();
+
+	@local
 	public native void setNextAttackPosition();
 
 	@local
@@ -354,6 +357,15 @@ class ShipAiAgent extends FighterShipObject {
 
 	@preLocked
 	public native int setDestination();
+
+	@preLocked
+	public native void setNextTransform();
+
+	@preLocked
+	public native void setSquadronTransform();
+
+	@local
+	public native float getNextSpeed();
 
 	public native boolean setDisabledEngineSpeed();
 
@@ -611,6 +623,12 @@ class ShipAiAgent extends FighterShipObject {
 
 	@preLocked
 	public native void assignToSquadron(ShipAiAgent squadronAgent);
+
+	public native boolean isSquadronLeader();
+
+	public native boolean isSquadronMember();
+
+	public native boolean isSquadronTransform();
 
 	public SquadronObserver getSquadron() {
 		return squadron;
