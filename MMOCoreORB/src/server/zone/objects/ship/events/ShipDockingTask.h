@@ -5,7 +5,6 @@
 #include "server/zone/objects/ship/ShipObject.h"
 #include "server/zone/packets/ship/ShipUpdateTransformMessage.h"
 #include "server/zone/packets/scene/PlayClientEffectLocMessage.h"
-#include "server/zone/packets/scene/PlayClientEventObjectMessage.h"
 
 class ShipDockingTask: public Task, public Logger {
 private:
