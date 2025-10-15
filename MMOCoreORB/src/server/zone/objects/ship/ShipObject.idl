@@ -437,6 +437,9 @@ class ShipObject extends TangibleObject {
 	@dereferenced
 	protected VectorMap<unsigned int, string> availableDroidCommands;
 
+	@dereferenced
+	protected string cargoString;
+
 	public ShipObject() {
 		Logger.setLoggingName("ShipObject");
 
@@ -464,6 +467,7 @@ class ShipObject extends TangibleObject {
 		chassisSpeed.set(1.f);
 
 		certificationRequired = "";
+		cargoString = "";
 	}
 
 	public native void notifyLoadFromDatabase();
@@ -1859,6 +1863,15 @@ class ShipObject extends TangibleObject {
 
 	public void setCertificationRequired(final string cert) {
 		certificationRequired = cert;
+	}
+
+	@read
+	public string getCargoString() {
+		return cargoString;
+	}
+
+	public void setCargoString(final string cargo) {
+		cargoString = cargo;
 	}
 
 	@local
