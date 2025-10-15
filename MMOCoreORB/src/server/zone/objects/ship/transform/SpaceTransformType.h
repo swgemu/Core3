@@ -22,6 +22,7 @@ public:
 		AUTO = 1,
 		FAST = 2,
 		DOCK = 3,
+		FORM = 4,
 		SIZE
 	};
 
@@ -107,6 +108,8 @@ public:
 			typeStr = "FAST";
 		} else if (transformType == DOCK) {
 			typeStr = "DOCK";
+		} else if (transformType == FORM) {
+			typeStr = "FORM";
 		}
 
 		StringBuffer msg;
