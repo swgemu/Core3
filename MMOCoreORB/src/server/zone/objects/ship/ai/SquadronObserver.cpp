@@ -12,93 +12,151 @@
 
 SquadronObserver::SquadronObserver() {
 	setLoggingName("SquadronObserver");
-
 	setRandomFormation();
 }
 
 SquadronObserver::SquadronObserver(ShipAiAgent* shipAgent) {
 	setLoggingName("SquadronObserver");
-
 	setRandomFormation();
-
-	if (shipAgent != nullptr) {
-		squadronVector.add(shipAgent);
-	}
+	squadron.add(shipAgent);
 }
 
 SquadronObserver::~SquadronObserver() {
-	squadronVector.removeAll();
+
 }
 
 int SquadronObserver::notifyObserverEvent(uint32 eventType, Observable* observable, ManagedObject* arg1, int64 arg2) {
-
 	return 0;
 }
 
 void SquadronObserver::addSquadronShip(ShipAiAgent* shipAgent) {
-	if (shipAgent == nullptr) {
-		return;
-	}
-
 	Locker lock(&mutex);
-
-	// info(true) << __LINE__ << ":" << __FUNCTION__ << " -- Adding Ship Agent: " << shipAgent->getDisplayedName() << " Current Size: " << squadronVector.size();
-
-	squadronVector.add(shipAgent);
-
-	// info(true) << __LINE__ << ":" << __FUNCTION__ << " -- Adding Ship Agent Complete - New Size: " << squadronVector.size();
+	squadron.add(shipAgent);
 }
 
 void SquadronObserver::dropSquadronShip(ShipAiAgent* shipAgent) {
-	if (shipAgent == nullptr) {
-		return;
-	}
-
 	Locker lock(&mutex);
+	int index = squadron.find(shipAgent);
 
-	// info(true) << __LINE__ << ":" << __FUNCTION__ << " -- Dropping Ship Agent: " << shipAgent->getDisplayedName() << " Current Size: " << squadronVector.size();
+	if (index != -1) {
+		squadron.remove(shipAgent);
+	}
+}
 
-	squadronVector.drop(shipAgent);
-
-	// info(true) << __LINE__ << ":" << __FUNCTION__ << " -- Dropping Ship Agent Complete - New Size: " << squadronVector.size();
+void SquadronObserver::setFormationType(int type, float radius) {
+	Locker lock(&mutex);
+	squadron.setFormationType(type, radius);
 }
 
 void SquadronObserver::setRandomFormation() {
-	int totalFormations = ShipManager::FORMATION::LAST_FORMATION - 2;
-
-	formationType = System::random(totalFormations) + 1;
+	int type = System::random(ShipSquadronFormation::Type::SIZE - 1);
+	setFormationType(type);
 }
 
-void SquadronObserver::setFormationType(uint32 formation) {\
-	if (formation >= ShipManager::FORMATION::LAST_FORMATION) {
+ShipAiAgent* SquadronObserver::getSquadronLeader() const {
+	Locker lock(&mutex);
+	return squadron.size() > 0 ? squadron.get(0)->asShipAiAgent() : nullptr;
+}
+
+ShipAiAgent* SquadronObserver::getSquadronMember(int index) const {
+	Locker lock(&mutex);
+	return squadron.size() > index ? squadron.get(index)->asShipAiAgent() : nullptr;
+}
+
+uint64 SquadronObserver::getSquadronLeaderID() const {
+	Locker lock(&mutex);
+	return squadron.size() > 0 ? squadron.get(0)->getObjectID() : 0ull;
+}
+
+uint64 SquadronObserver::getSquadronMemberID(int index) const {
+	Locker lock(&mutex);
+	return squadron.size() > index ? squadron.get(index)->getObjectID() : 0ull;
+}
+
+int SquadronObserver::getSquadronIndex(ShipAiAgent* shipAgent) const {
+	Locker lock(&mutex);
+	return squadron.find(shipAgent);
+}
+
+int SquadronObserver::getSquadronSize() const {
+	Locker lock(&mutex);
+	return squadron.size();
+}
+
+int SquadronObserver::getFormationType() const {
+	Locker lock(&mutex);
+	return squadron.getFormationType();
+}
+
+float SquadronObserver::getFormationSpeed() const {
+	Locker lock(&mutex);
+	return squadron.getFormationSpeed();
+}
+
+bool SquadronObserver::isSquadronLeader(ShipAiAgent* shipAgent) const {
+	Locker lock(&mutex);
+	return squadron.find(shipAgent) == 0;
+}
+
+bool SquadronObserver::isSquadronMember(ShipAiAgent* shipAgent) const {
+	Locker lock(&mutex);
+	return squadron.find(shipAgent) >= 1;
+}
+
+Vector3 SquadronObserver::getPosition(ShipAiAgent* shipAgent) const {
+	Locker lock(&mutex);
+	return squadron.getPosition(squadron.find(shipAgent));
+}
+
+float SquadronObserver::getSpeed(ShipAiAgent* shipAgent) const {
+	Locker lock(&mutex);
+	return squadron.getSpeed(squadron.find(shipAgent));
+}
+
+void SquadronObserver::updateSquadron() {
+	Locker lock(&mutex);
+
+	auto leader = getSquadronLeader();
+
+	if (leader == nullptr || !leader->isShipLaunched() || leader->isDisabled()) {
 		return;
 	}
 
-	formationType = formation;
-}
+	Locker lLock(leader);
 
-ShipAiAgent* SquadronObserver::getSquadronLeader() {
-	Locker lock(&mutex);
+	const auto& lMatrix = *leader->getConjugateMatrix();
+	const auto& lTransform = leader->getNextTransform();
 
-	if (squadronVector.size() < 1) {
-		return nullptr;
+	for (int i = squadron.size(); 0 < --i;) {
+		auto shipAgent = squadron.get(i);
+
+		if (shipAgent == nullptr || !shipAgent->isShipLaunched() || shipAgent->isDisabled()) {
+			continue;
+		}
+
+		Locker sLock(shipAgent, leader);
+
+		const auto& sTransform = shipAgent->getCurrentTransform();
+		const auto& sVelocity = sTransform.getVelocity();
+		const auto& formation = squadron.getFormation(i);
+
+		Vector3 fPosition = SpaceMath::getGlobalVector(formation, lMatrix);
+		Vector3 tPosition = fPosition + leader->getPosition();
+		Vector3 velocity = tPosition - shipAgent->getPosition();
+		Vector3 position = (velocity * 2.f) + fPosition + lTransform.getPosition();
+
+		float intersection = sVelocity.dotProduct(velocity);
+		float speed = Math::max((intersection * 0.5f) + leader->getCurrentSpeed(), 0.f);
+
+		squadron.setPosition(i, position);
+		squadron.setSpeed(i, speed);
 	}
 
-	return squadronVector.get(0).get();
+	const auto& nextPosition =  leader->getNextPosition().getWorldPosition();
+	float nextSpeed = (getFormationSpeed() + leader->getActualMaxSpeed()) * 0.5f;
+
+	squadron.setPosition(0, nextPosition);
+	squadron.setSpeed(0, nextSpeed);
 }
 
-uint64 SquadronObserver::getSquadronLeaderID() {
-	Locker lock(&mutex);
 
-	if (squadronVector.size() < 1) {
-		return 0;
-	}
-
-	auto squadronLeader = squadronVector.get(0).get();
-
-	if (squadronLeader == nullptr) {
-		return 0;
-	}
-
-	return squadronLeader->getObjectID();
-}
