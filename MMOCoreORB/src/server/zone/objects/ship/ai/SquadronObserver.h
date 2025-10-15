@@ -13,7 +13,7 @@
 
 #include "engine/util/Observer.h"
 #include "server/zone/managers/ship/ShipManager.h"
-
+#include "server/zone/objects/ship/squadron/ShipObjectSquadron.h"
 
 namespace server {
 namespace zone {
@@ -22,15 +22,15 @@ namespace ship {
 namespace ai {
 
 class SquadronObserver : public Observer, public Logger {
-private:
-	Mutex mutex;
-
-	uint32 formationType;
-	SortedVector<WeakReference<ShipAiAgent*>> squadronVector;
+protected:
+	ShipObjectSquadron squadron;
+	mutable ReadWriteLock mutex;
 
 public:
 	SquadronObserver();
+
 	SquadronObserver(ShipAiAgent* shipAgent);
+
 	~SquadronObserver();
 
 	int notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2);
@@ -40,22 +40,36 @@ public:
 
 	void dropSquadronShip(ShipAiAgent* shipAgent);
 
+	void setFormationType(int type, float radius = -1.f);
+
 	void setRandomFormation();
 
-	void setFormationType(uint32 formation);
+	void updateSquadron();
 
 	// Accessors
-	ShipAiAgent* getSquadronLeader();
+	int getSquadronIndex(ShipAiAgent* shipAgent) const;
 
-	uint64 getSquadronLeaderID();
+	int getSquadronSize() const;
 
-	int getSquadronSize() {
-		return squadronVector.size();
-	}
+	int getFormationType() const;
 
-	uint32 getFormationType() {
-		return formationType;
-	}
+	float getFormationSpeed() const;
+
+	ShipAiAgent* getSquadronLeader() const;
+
+	ShipAiAgent* getSquadronMember(int index) const;
+
+	uint64 getSquadronLeaderID() const;
+
+	uint64 getSquadronMemberID(int index) const;
+
+	bool isSquadronLeader(ShipAiAgent* shipAgent) const;
+
+	bool isSquadronMember(ShipAiAgent* shipAgent) const;
+
+	Vector3 getPosition(ShipAiAgent* shipAgent) const;
+
+	float getSpeed(ShipAiAgent* shipAgent) const;
 };
 
 } // namespace ai
