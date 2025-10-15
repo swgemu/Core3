@@ -112,6 +112,7 @@ public:
 		SHIPDOCKED,					// ManagedObject arg1 = PlayerShip that docked with agent, long arg2 = 0
 		SHIPDISABLED,				// ManagedObject arg1 = playerShip that disabled agent, long arg2 = 0
 		SHIPDESTROYED,				// ManagedObject arg1 = player who destroyed the ship agent long arg2 = 0 used when a player destroys any ship
+		INSPECTEDSHIP,				// ManagedObject arg1 = shipAgent that was inspected by player long arg2 = cargo string hashCode
 	};
 };
 
