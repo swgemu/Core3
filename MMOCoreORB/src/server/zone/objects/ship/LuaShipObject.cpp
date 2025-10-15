@@ -34,6 +34,7 @@ Luna<LuaShipObject>::RegType LuaShipObject::Register[] = {
 	{ "getSpawnPointInFrontOfShip", &LuaShipObject::getSpawnPointInFrontOfShip },
 	{ "getSpawnPointBehindShip", &LuaShipObject::getSpawnPointBehindShip },
 	{ "isShipLaunched", &LuaShipObject::isShipLaunched },
+	{ "setCargoString", &LuaShipObject::setCargoString },
 
 	{ 0, 0}
 };
@@ -473,4 +474,21 @@ int LuaShipObject::isShipLaunched(lua_State* L) {
 	lua_pushboolean(L, isLaunched);
 
 	return 1;
+}
+
+int LuaShipObject::setCargoString(lua_State* L) {
+	int numberOfArguments = lua_gettop(L) - 1;
+
+	if (numberOfArguments != 1) {
+		realObject->error() << "Improper number of arguments in LuaShipObject::setCargoString.";
+		return 0;
+	}
+
+	String cargoString = lua_tostring(L, -1);
+
+	Locker lock(realObject);
+
+	realObject->setCargoString(cargoString);
+
+	return 0;
 }
