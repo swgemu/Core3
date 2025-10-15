@@ -9,10 +9,6 @@
 #include <utility>
 #include <mutex>
 
-#ifdef WITH_SWGREALMS_API
-#include "server/login/SWGRealmsAPI.h"
-#endif // WITH_SWGREALMS_API
-
 #include "server/zone/packets/charcreation/ClientCreateCharacterCallback.h"
 #include "server/zone/packets/charcreation/ClientCreateCharacterFailed.h"
 #include "server/zone/ZoneServer.h"
@@ -4507,7 +4503,6 @@ String PlayerManagerImplementation::banAccount(PlayerObject* admin, Account* acc
 	String escapedReason = reason;
 	Database::escapeString(escapedReason);
 
-#ifndef WITH_SWGREALMS_API
 	try {
 		StringBuffer query;
 		query << "INSERT INTO account_bans values (NULL, " << account->getAccountID() << ", " << admin->getAccountID() << ", now(), " << (uint64)time(0) + seconds << ", '" << escapedReason << "');";
@@ -4518,28 +4513,10 @@ String PlayerManagerImplementation::banAccount(PlayerObject* admin, Account* acc
 	}
 
 	Locker locker(account);
+
 	account->setBanReason(reason);
 	account->setBanExpires(time(0) + seconds);
 	account->setBanAdmin(admin->getAccountID());
-#else // WITH_SWGREALMS_API
-	// SWGRealms API implementation
-	String errorMessage;
-	auto swgRealmsAPI = SWGRealmsAPI::instance();
-	uint64 expiresTimestamp = (uint64)time(0) + seconds;
-
-	if (swgRealmsAPI != nullptr && swgRealmsAPI->banAccountBlocking(
-			account->getAccountID(), admin->getAccountID(), expiresTimestamp, escapedReason, errorMessage)) {
-		// API ban succeeded - update local account object
-		Locker locker(account);
-		account->setBanReason(reason);
-		account->setBanExpires(expiresTimestamp);
-		account->setBanAdmin(admin->getAccountID());
-	} else {
-		error() << "SWGRealms API banAccountBlocking failed for accountID " << account->getAccountID()
-			<< ": " << errorMessage << " (fail-closed, NOT falling back to MySQL)";
-		return "Failed to ban account: " + errorMessage;
-	}
-#endif // WITH_SWGREALMS_API
 
 	StringBuffer banResult;
 
@@ -4591,7 +4568,6 @@ String PlayerManagerImplementation::unbanAccount(PlayerObject* admin, Account* a
 	String escapedReason = reason;
 	Database::escapeString(escapedReason);
 
-#ifndef WITH_SWGREALMS_API
 	try {
 		StringBuffer query;
 		query << "UPDATE account_bans SET expires = UNIX_TIMESTAMP(), reason = '" << escapedReason << "'  WHERE account_id = " << account->getAccountID() << " and expires > UNIX_TIMESTAMP();";
@@ -4606,29 +4582,8 @@ String PlayerManagerImplementation::unbanAccount(PlayerObject* admin, Account* a
 	account->setBanReason(reason);
 
 	return "Account Successfully Unbanned";
-#else // WITH_SWGREALMS_API
-	// SWGRealms API implementation
-	String errorMessage;
-	auto swgRealmsAPI = SWGRealmsAPI::instance();
-
-	if (swgRealmsAPI != nullptr && swgRealmsAPI->unbanAccountBlocking(
-			account->getAccountID(), escapedReason, errorMessage)) {
-		// API unban succeeded - update local account object
-		Locker locker(account);
-		account->setBanExpires(System::getMiliTime());
-		account->setBanReason(reason);
-
-		return "Account Successfully Unbanned";
-	}
-
-	// API failed
-	error() << "SWGRealms API unbanAccountBlocking failed for accountID " << account->getAccountID()
-		<< ": " << errorMessage << " (fail-closed, NOT falling back to MySQL)";
-	return "Failed to unban account: " + errorMessage;
-#endif // WITH_SWGREALMS_API
 }
 
-#ifndef WITH_SWGREALMS_API
 String PlayerManagerImplementation::banFromGalaxy(PlayerObject* admin, Account* account, const uint32 galaxy, uint32 seconds, const String& reason) {
 
 	if (admin == nullptr || !admin->isPrivileged())
@@ -4703,82 +4658,7 @@ String PlayerManagerImplementation::banFromGalaxy(PlayerObject* admin, Account* 
 
 	return "Successfully Banned from Galaxy";
 }
-#else // WITH_SWGREALMS_API
-String PlayerManagerImplementation::banFromGalaxy(PlayerObject* admin, Account* account, const uint32 galaxy, uint32 seconds, const String& reason) {
 
-	if (admin == nullptr || !admin->isPrivileged())
-		return "";
-
-	if (account == nullptr)
-		return "Account Not Found";
-
-	String escapedReason = reason;
-	Database::escapeString(escapedReason);
-
-	// Use SWGRealms API
-	String errorMessage;
-	auto swgRealmsAPI = SWGRealmsAPI::instance();
-	uint64 expiresTimestamp = (uint64)time(0) + seconds;
-
-	if (swgRealmsAPI != nullptr && swgRealmsAPI->banFromGalaxyBlocking(
-			account->getAccountID(), galaxy, admin->getAccountID(), expiresTimestamp, escapedReason, errorMessage)) {
-
-		// API ban succeeded - update local account object
-		Locker locker(account);
-
-		Time current;
-		Time expires;
-		expires.addMiliTime(seconds*10000);
-
-		Reference<GalaxyBanEntry*> ban = new GalaxyBanEntry();
-		ban->setAccountID(account->getAccountID());
-		ban->setBanAdmin(admin->getAccountID());
-		ban->setGalaxyID(galaxy);
-		ban->setCreationDate(current);
-		ban->setBanExpiration(expires);
-		ban->setBanReason(reason);
-
-		account->addGalaxyBan(ban, galaxy);
-
-		// Kick characters if on current galaxy
-		try {
-			if (server->getGalaxyID() == galaxy) {
-				Reference<const CharacterList*> characters = account->getCharacterList();
-
-				for (int i = 0; i < characters->size(); ++i) {
-					const CharacterListEntry* entry = &characters->get(i);
-					if (entry->getGalaxyID() == galaxy) {
-						ManagedReference<CreatureObject*> player = getPlayer(entry->getFirstName());
-						if (player != nullptr) {
-							clearOwnedStructuresPermissions(player);
-
-							if (player->isOnline()) {
-								player->sendMessage(new LogoutMessage());
-								ManagedReference<ZoneClientSession*> session = player->getClient();
-								if (session != nullptr)
-									session->disconnect(true);
-							}
-						}
-					}
-				}
-			} else {
-				return "Successfully Banned from Galaxy, but cannot kick characters because Galaxy is not your current galaxy.";
-			}
-		} catch(Exception& e) {
-			return "Successfully Banned from Galaxy, but error kicking characters. " + e.getMessage();
-		}
-
-		return "Successfully Banned from Galaxy";
-	}
-
-	// API failed
-	error() << "SWGRealms API banFromGalaxyBlocking failed for accountID " << account->getAccountID()
-			<< ", galaxy " << galaxy << ": " << errorMessage;
-	return "Failed to ban from galaxy: " + errorMessage;
-}
-#endif // WITH_SWGREALMS_API
-
-#ifndef WITH_SWGREALMS_API
 String PlayerManagerImplementation::unbanFromGalaxy(PlayerObject* admin, Account* account, const uint32 galaxy, const String& reason) {
 
 	if (admin == nullptr || !admin->isPrivileged())
@@ -4805,38 +4685,6 @@ String PlayerManagerImplementation::unbanFromGalaxy(PlayerObject* admin, Account
 
 	return "Successfully Unbanned from Galaxy";
 }
-#else // WITH_SWGREALMS_API
-String PlayerManagerImplementation::unbanFromGalaxy(PlayerObject* admin, Account* account, const uint32 galaxy, const String& reason) {
-
-	if (admin == nullptr || !admin->isPrivileged())
-		return "";
-
-	if (account == nullptr)
-		return "Account Not Found";
-
-	String escapedReason = reason;
-	Database::escapeString(escapedReason);
-
-	// Use SWGRealms API
-	String errorMessage;
-	auto swgRealmsAPI = SWGRealmsAPI::instance();
-
-	if (swgRealmsAPI != nullptr && swgRealmsAPI->unbanFromGalaxyBlocking(
-			account->getAccountID(), galaxy, escapedReason, errorMessage)) {
-
-		// API unban succeeded - update local account object
-		Locker locker(account);
-		account->removeGalaxyBan(galaxy);
-
-		return "Successfully Unbanned from Galaxy";
-	}
-
-	// API failed
-	error() << "SWGRealms API unbanFromGalaxyBlocking failed for accountID " << account->getAccountID()
-			<< ", galaxy " << galaxy << ": " << errorMessage;
-	return "Failed to unban from galaxy: " + errorMessage;
-}
-#endif // WITH_SWGREALMS_API
 
 String PlayerManagerImplementation::banCharacter(PlayerObject* admin, Account* account, const String& name, const uint32 galaxyID, uint32 seconds, const String& reason) {
 

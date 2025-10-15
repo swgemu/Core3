@@ -136,6 +136,7 @@ void ZoneServerImplementation::loadGalaxyName() {
 		if (galaxyOpt.has_value()) {
 			galaxyName = galaxyOpt.value().getName();
 			setLoggingName("ZoneServer " + galaxyName);
+			loadLoginMessage();
 			return;
 		}
 	}
