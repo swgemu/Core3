@@ -50,7 +50,10 @@ public:
 	}
 };
 
-class ShipSquadronData : public Object, public Logger {
+class ShipSquadronData : public Object {
+private:
+	constexpr static float AUTO_RADIUS_MODIFIER = 5.f;
+
 protected:
 	Vector<ShipSquadronDataEntry> squadronData;
 	float formationRadius;

@@ -2653,3 +2653,11 @@ SpaceTransform ShipObjectImplementation::getCurrentTransform() {
 SpaceTransform ShipObjectImplementation::getNextTransform() {
 	return shipTransform.getNextTransform();
 }
+
+float ShipObjectImplementation::getNextDistance() {
+	return shipTransform.getNextDistance();
+}
+
+float ShipObjectImplementation::getNextRotation() {
+	return shipTransform.getNextRotation();
+}

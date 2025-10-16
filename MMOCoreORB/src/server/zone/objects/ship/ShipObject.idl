@@ -1892,4 +1892,10 @@ class ShipObject extends TangibleObject {
 	@local
 	@dereferenced
 	public native SpaceTransform getNextTransform();
+
+	@local
+	public native float getNextDistance();
+
+	@local
+	public native float getNextRotation();
 }

@@ -193,7 +193,9 @@ void SquadronObserver::updateSquadron() {
 		Vector3 fPosition = SpaceMath::getGlobalVector(formation, lMatrix);
 		Vector3 tPosition = fPosition + leader->getPosition();
 		Vector3 velocity = tPosition - shipAgent->getPosition();
-		Vector3 position = (velocity * 2.f) + fPosition + lTransform.getPosition();
+
+		float errorScale = leader->getNextDistance() / Math::max(shipAgent->getCurrentSpeed(), 1.f) * 0.5f;
+		Vector3 position = (velocity * errorScale) + fPosition + lTransform.getPosition();
 
 		float intersection = sVelocity.dotProduct(velocity);
 		float speed = Math::max((intersection * 0.5f) + leader->getCurrentSpeed(), 0.f);

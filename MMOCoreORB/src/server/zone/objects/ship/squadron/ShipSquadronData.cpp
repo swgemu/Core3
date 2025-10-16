@@ -25,7 +25,7 @@ void ShipSquadronData::remove(int index) {
 }
 
 void ShipSquadronData::setFormation(int index, float radius) {
-	float distance = radius * 2.f;
+	float distance = radius * AUTO_RADIUS_MODIFIER;
 
 	if (formationRadius > 0.f) {
 		distance = Math::max(formationRadius / (float)squadronData.size(), distance);
