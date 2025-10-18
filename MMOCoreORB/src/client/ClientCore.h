@@ -46,6 +46,7 @@ private:
 	String resolveFileReference(const String& value);
 	void parseArgumentsIntoActions(const Vector<String>& args);
 	void parseJSONIntoActions(const JSONSerializationType& jsonActions);
+	void resolveDependencies();
 };
 
 class ClientCore : public Core, public Logger {
@@ -54,6 +55,7 @@ public:
 	Reference<class LoginSession*> loginSession;
 	Zone* zone;
 	VectorMap<String, String> vars;
+	uint64 selectedCharacterOid;  // Which character we're playing as (set by SelectCharacter, confirmed by server)
 
 private:
 	Time overallStartTime;
@@ -138,9 +140,6 @@ public:
 	void initialize();
 
 	void run();
-
-	bool loginCharacter(Reference<class LoginSession*>& loginSession);
-	void logoutCharacter();
 
 	void executeActions();
 

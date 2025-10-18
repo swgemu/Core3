@@ -6,8 +6,7 @@
 #include "client/zone/managers/objectcontroller/ObjectController.h"
 #include "client/zone/managers/object/ObjectManager.h"
 
-Zone::Zone(uint64 characterObjectID, uint32 account, const String& sessionID, const String& galaxyAddress, uint32 galaxyPort) : Thread(), Mutex("Zone"), Logger("Zone") {
-	characterID = characterObjectID;
+Zone::Zone(uint32 account, const String& sessionID, const String& galaxyAddress, uint32 galaxyPort) : Thread(), Mutex("Zone"), Logger("Zone") {
 	accountID = account;
 	this->sessionID = sessionID;
 	this->galaxyAddress = galaxyAddress;
@@ -28,12 +27,17 @@ Zone::Zone(uint64 characterObjectID, uint32 account, const String& sessionID, co
 	characterCreationFailed = false;
 	createdCharacterOID = 0;
 
+	canLogin = false;
+	canCreateRegularCharacter = false;
+	canCreateJediCharacter = false;
+	canSkipTutorial = false;
+
 	lastError = "";
 	lastErrorCode = 0;
 
 	setLogLevel(static_cast<Logger::LogLevel>(ClientCore::getLogLevel()));
 
-	info(true) << "Zone created for character " << characterObjectID << " with sessionID: " << sessionID;
+	info(true) << "Zone connection created to " << galaxyAddress << ":" << galaxyPort;
 }
 
 Zone::~Zone() {
@@ -98,7 +102,6 @@ JSONSerializationType Zone::collectStats() {
 	stats["elapsedMs"] = startTime.miliDifference();
 	stats["packetCount"] = client != nullptr ? client->getPacketCount() : 0;
 	stats["sceneReady"] = sceneReady;
-	stats["characterId"] = characterID;
 
 	// Add unknown opcodes if any
 	if (client != nullptr) {

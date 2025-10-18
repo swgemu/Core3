@@ -27,10 +27,6 @@ public:
 		return "connectToZone";
 	}
 
-	int parseArgs(int index, int argc, char** argv) override {
-		// No CLI arguments - auto-inserted by framework
-		return 0;
-	}
 
 	void parseJSON(const JSONSerializationType& config) override {
 		// No JSON configuration needed
@@ -53,86 +49,43 @@ public:
 			core.loginSession->cleanup();
 		}
 
-		// Determine which character to zone into
-		uint64 characterOid = 0;
-		uint32 galaxyId = 0;
-		auto numCharacters = core.loginSession->getCharacterListSize();
-
-		if (numCharacters > 0) {
-			// Select character based on options
-			Optional<const CharacterListEntry&> character;
-
-			uint64 characterOidOption = core.options.get<uint64>("/characterOid", 0);
-			std::string characterFirstnameOption = core.options.get<std::string>("/characterFirstname", "");
-
-			if (characterOidOption != 0) {
-				character = core.loginSession->selectCharacterByOID(characterOidOption);
-				if (!character) {
-					result.setError("Character OID not found in account", 2);
-					return;
-				}
-			} else if (!characterFirstnameOption.empty()) {
-				character = core.loginSession->selectCharacterByFirstname(String(characterFirstnameOption.c_str()));
-				if (!character) {
-					result.setError("Character firstname not found in account", 3);
-					return;
-				}
-			} else {
-				// Select random character
-				character = core.loginSession->selectRandomCharacter();
-			}
-
-			if (!character) {
-				result.setError("Failed to select any character", 4);
-				return;
-			}
-
-			characterOid = character->getObjectID();
-			galaxyId = character->getGalaxyID();
-
-			info() << "Selected character: " << character->getFirstName() << " (OID: " << characterOid << ")";
-		} else {
-			// No characters available - CreateCharacterAction handles creation
-			result.setError("No characters on account", 5);
+		// Get first galaxy
+		auto& galaxyMap = core.loginSession->getGalaxies();
+		if (galaxyMap.size() == 0) {
+			result.setError("No galaxies available", 2);
 			return;
 		}
 
-		// Get galaxy info
-		auto& galaxy = core.loginSession->getGalaxy(galaxyId);
+		auto& galaxy = galaxyMap.get(0);
 		if (galaxy.getAddress().isEmpty()) {
-			result.setError("Invalid galaxy - missing IP address", 7);
+			result.setError("Invalid galaxy - missing IP address", 3);
 			return;
 		}
 
 		info() << "Connecting to zone: " << galaxy.getName()
 		       << " at " << galaxy.getAddress() << ":" << galaxy.getPort();
 
-		// Create and start zone connection
+		// Create and start zone connection (just socket, no packets)
+		// SelectCharacterAction or CreateCharacterAction will handle character selection
 		uint32 accountId = core.loginSession->getAccountID();
 		const String& sessionId = core.loginSession->getSessionID();
 
-		core.zone = new Zone(characterOid, accountId, sessionId, galaxy.getAddress(), galaxy.getPort());
+		core.zone = new Zone(accountId, sessionId, galaxy.getAddress(), galaxy.getPort());
 		core.zone->start();
 
-		// Wait for zone connection
-		int zoneTimeout = ClientCore::getZoneTimeout() * 1000;
-		if (!core.zone->waitForSceneReady(zoneTimeout)) {
-			result.setError(
-				core.zone->getLastError().isEmpty()
-					? "Zone connection timeout"
-					: core.zone->getLastError(),
-				core.zone->getLastErrorCode() != 0
-					? core.zone->getLastErrorCode()
-					: 8
-			);
+		// Wait briefly for connection to establish
+		Thread::sleep(100);
+
+		if (!core.zone->isConnected()) {
+			result.setError("Zone connection failed", 4);
 			return;
 		}
 
-		// Success
+		// Success - zone connection established
 		result.setSuccess();
-		result.setZoneInfo(galaxy.getAddress(), galaxy.getPort(), characterOid);
+		result.setZoneInfo(galaxy.getAddress(), galaxy.getPort(), 0);
 
-		info() << "Zone connection established successfully";
+		info() << "Zone connection established";
 	}
 
 	bool isOK() const override {
