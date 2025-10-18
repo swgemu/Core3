@@ -62,7 +62,10 @@ Luna<LuaShipAiAgent>::RegType LuaShipAiAgent::Register[] = {
 	{ "clearPatrolPoints", &LuaShipAiAgent::clearPatrolPoints },
 	{ "createSquadron", &LuaShipAiAgent::createSquadron },
 	{ "assignToSquadron", &LuaShipAiAgent::assignToSquadron },
+	{ "assignToSquadronByID", &LuaShipAiAgent::assignToSquadronByID },
 	{ "dropFromSquadron", &LuaShipAiAgent::dropFromSquadron },
+	{ "getSquadronLeaderID", &LuaShipAiAgent::getSquadronLeaderID },
+	{ "getSquadronID", &LuaShipAiAgent::getSquadronID },
 
 	{ 0, 0 }
 };
@@ -648,6 +651,33 @@ int LuaShipAiAgent::assignToSquadron(lua_State* L) {
 	return 0;
 }
 
+int LuaShipAiAgent::assignToSquadronByID(lua_State* L) {
+	int numberOfArguments = lua_gettop(L) - 1;
+
+	if (numberOfArguments != 2) {
+		realObject->error() << "Improper number of arguments in LuaShipAiAgent::assignToSquadronByID.";
+		return 0;
+	}
+
+	bool makeLeader = lua_toboolean(L, -1);
+	uint64 squadronID = lua_tonumber(L, -2);
+
+	auto zoneServer = realObject->getZoneServer();
+
+	if (zoneServer == nullptr) {
+		return 0;
+	}
+
+	realObject->info(true) << "assignToSquadronByID -- Squadron ID: " << squadronID;
+
+	// Lock the ship agent
+	Locker lock(realObject);
+
+	realObject->assignToSquadron(squadronID, makeLeader);
+
+	return 0;
+}
+
 int LuaShipAiAgent::dropFromSquadron(lua_State* L) {
 	// Lock the ship agent
 	Locker lock(realObject);
@@ -655,4 +685,20 @@ int LuaShipAiAgent::dropFromSquadron(lua_State* L) {
 	realObject->dropFromSquadron();
 
 	return 0;
+}
+
+int LuaShipAiAgent::getSquadronLeaderID(lua_State* L) {
+	uint64 squadronLeaderID = realObject->getSquadronID();
+
+	lua_pushnumber(L, squadronLeaderID);
+
+	return 1;
+}
+
+int LuaShipAiAgent::getSquadronID(lua_State* L) {
+	uint64 squadronID = realObject->getSquadronID();
+
+	lua_pushnumber(L, squadronID);
+
+	return 1;
 }

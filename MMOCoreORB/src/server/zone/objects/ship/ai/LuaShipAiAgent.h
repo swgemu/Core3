@@ -62,7 +62,10 @@ public:
 	int clearPatrolPoints(lua_State* L);
 	int createSquadron(lua_State* L);
 	int assignToSquadron(lua_State* L);
+	int assignToSquadronByID(lua_State* L);
 	int dropFromSquadron(lua_State* L);
+	int getSquadronLeaderID(lua_State* L);
+	int getSquadronID(lua_State* L);
 
 private:
 	ShipAiAgent* realObject;

@@ -111,6 +111,7 @@
 #include "server/zone/objects/area/areashapes/SphereAreaShape.h"
 #include "server/zone/packets/ui/CreateClientPathMessage.h"
 #include "server/zone/objects/ship/squadron/ShipSquadronFormation.h"
+#include "server/zone/objects/ship/ai/SquadronObserver.h"
 
 int DirectorManager::DEBUG_MODE = 0;
 int DirectorManager::ERROR_CODE = NO_ERROR;
@@ -2874,6 +2875,91 @@ int DirectorManager::spawnShipAgent(lua_State* L) {
 		lua_pushnil(L);
 		return 1;
 	}
+
+ 	// mark updated so the GC doesnt delete it while in LUA
+	shipAgent->_setUpdated(true);
+	lua_pushlightuserdata(L, shipAgent);
+
+	shipAgent->setHyperspacing(false);
+
+	return 1;
+}
+
+int DirectorManager::spawnShipAgentInSquadron(lua_State* L) {
+	int numberOfArguments = lua_gettop(L);
+
+	if (numberOfArguments != 4) {
+		String err = "incorrect number of arguments passed to DirectorManager::spawnShipAgentInSquadron";
+		printTraceError(L, err);
+		ERROR_CODE = INCORRECT_ARGUMENTS;
+		return 0;
+	}
+
+	bool makeLeader = lua_toboolean(L, -1);
+	uint64 squadronID = lua_tointeger(L, -2);
+	String zoneName = lua_tostring(L, -3);
+	String shipName = lua_tostring(L, -4);
+
+	auto shipManager = ShipManager::instance();
+
+	if (shipManager == nullptr) {
+		lua_pushnil(L);
+		return 1;
+	}
+
+	auto zoneServer = ServerCore::getZoneServer();
+
+	if (zoneServer == nullptr) {
+		lua_pushnil(L);
+		return 1;
+	}
+
+	auto spaceZone = zoneServer->getZone(zoneName);
+
+	if (spaceZone == nullptr || !spaceZone->isSpaceZone()) {
+		lua_pushnil(L);
+		return 1;
+	}
+
+	auto squadron = zoneServer->getObject(squadronID).castTo<SquadronObserver*>();
+
+	if (squadron == nullptr) {
+		lua_pushnil(L);
+		return 1;
+	}
+
+	auto squadronLeader = squadron->getSquadronLeader();
+
+	if (squadronLeader == nullptr) {
+		lua_pushnil(L);
+		return 1;
+	}
+
+	ShipAiAgent* shipAgent = shipManager->createAiShip(shipName);
+
+	if (shipAgent == nullptr) {
+		lua_pushnil(L);
+		return 1;
+	}
+
+	Locker lock(shipAgent);
+	Locker cLock(squadronLeader, shipAgent);
+
+	Vector3 leaderPosition = squadronLeader->getWorldPosition();
+	Quaternion targetDirection = Quaternion::IDENTITY;
+
+	shipAgent->setHomeLocation(leaderPosition.getX(), leaderPosition.getZ(), leaderPosition.getY(), targetDirection);
+	shipAgent->setHyperspacing(true);
+	shipAgent->initializeTransform(leaderPosition, targetDirection);
+
+	if (!spaceZone->transferObject(shipAgent, -1, true)) {
+		shipAgent->destroyObjectFromWorld(true);
+
+		lua_pushnil(L);
+		return 1;
+	}
+
+	shipAgent->assignToSquadron(squadronLeader);
 
  	// mark updated so the GC doesnt delete it while in LUA
 	shipAgent->_setUpdated(true);

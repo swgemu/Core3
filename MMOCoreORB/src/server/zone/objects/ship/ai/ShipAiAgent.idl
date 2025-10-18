@@ -624,9 +624,16 @@ class ShipAiAgent extends FighterShipObject {
 	@preLocked
 	public native void assignToSquadron(ShipAiAgent squadronAgent);
 
+	@preLocked
+	public native void assignToSquadron(unsigned long squadronID, boolean makeLeader = false);
+
 	public native boolean isSquadronLeader();
 
 	public native boolean isSquadronMember();
+
+	public native unsigned long getSquadronLeaderID();
+
+	public native unsigned long getSquadronID();
 
 	public native boolean isSquadronTransform();
 

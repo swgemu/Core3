@@ -295,13 +295,12 @@ function SpaceSpawnerScreenPlay:populateSpawns()
 		-- Spawn a squadron
 		if (spawnType == SHIP_SPAWN_SQUADRON) then
 			for j = 1, totalSpawns, 1 do
-				createEvent(getRandomNumber(2, 30) * 1000, self.screenplayName, "spawnShipSquadron", nil, tostring(i))
+				createEvent(getRandomNumber(spawnTable.minRespawn, spawnTable.maxRespawn) * 1000, self.screenplayName, "spawnShipSquadron", nil, tostring(i))
 			end
 		else
 			-- Spawn the single ships
 			for j = 1, totalSpawns, 1 do
-				-- Prevent stacking of single spawns
-				createEvent(1000, self.screenplayName, "spawnShipAgent", nil, tostring(i))
+				createEvent(getRandomNumber(spawnTable.minRespawn, spawnTable.maxRespawn) * 1000, self.screenplayName, "spawnShipAgent", nil, tostring(i))
 			end
 		end
 	end
@@ -441,6 +440,12 @@ function SpaceSpawnerScreenPlay:spawnShipSquadron(pNil, indexString)
 			else
 				ShipAiAgent(pLeadShip):setRandomPatrol()
 			end
+
+			local leadShipID = SceneObject(pLeadShip):getObjectID()
+
+			-- Store the agent data
+			writeData(leadShipID .. ":SpawnerIndex:", tableNum)
+			writeStringData(leadShipID .. ":SpawnerName:", spawnTable.spawnName)
 		else
 			Logger:log(self.screenplayName .. " -- ERROR: Failed to spawn Lead Squadron Ship: " .. leadShipName .. " Squadron Name: " .. squadronName, LT_ERROR)
 		end
@@ -494,8 +499,23 @@ function SpaceSpawnerScreenPlay:spawnShipSquadron(pNil, indexString)
 			end
 		end
 
+		local leadShipID = SceneObject(pLeadShip):getObjectID()
+
+		-- Store the agent data
+		writeData(leadShipID .. ":SpawnerIndex:", tableNum)
+		writeStringData(leadShipID .. ":SpawnerName:", spawnTable.spawnName)
+
 		::continue::
 	end
+end
+
+function SpaceSpawnerScreenPlay:respawnSquadronShip(pNil, indexString)
+	-- Spawn the ship agent
+	--local pShipAgent = spawnShipAgentInSquadron(shipName, self.spaceZone, squadronID, makeLeader)
+
+
+
+
 end
 
 function SpaceSpawnerScreenPlay:assignFixedPatrolpoints(pShipAgent, totalToAdd, patrolPoints)
@@ -542,15 +562,14 @@ end
 
 --]]
 
-function SpaceSpawnerScreenPlay:staticShipDestroyed(pShipAiAgent, pKillerShip)
-	if (pShipAiAgent == nil or not SceneObject(pShipAiAgent):isShipAiAgent()) then
+function SpaceSpawnerScreenPlay:staticShipDestroyed(pShipAgent, pKillerShip)
+	if (pShipAgent == nil or not SceneObject(pShipAgent):isShipAiAgent()) then
 		return
 	end
 
-	--print(self.screenplayName .. " -- staticShipDestroyed triggered for Ship: " .. SceneObject(pShipAiAgent):getDisplayedName())
+	print(self.screenplayName .. " -- staticShipDestroyed triggered for Ship: " .. SceneObject(pShipAgent):getDisplayedName())
 
-	local agentID = SceneObject(pShipAiAgent):getObjectID()
-
+	local agentID = SceneObject(pShipAgent):getObjectID()
 	local tableNum = readData(agentID .. ":SpawnerIndex:")
 
 	-- Delete the data so it does not leak
@@ -566,12 +585,36 @@ function SpaceSpawnerScreenPlay:staticShipDestroyed(pShipAiAgent, pKillerShip)
 	return 1
 end
 
-function SpaceSpawnerScreenPlay:squadronShipDestroyed(pShipAiAgent, pKillerShip)
-	if (pShipAiAgent == nil or not SceneObject(pShipAiAgent):isShipAiAgent()) then
+function SpaceSpawnerScreenPlay:squadronShipDestroyed(pShipAgent, pKillerShip)
+	if (pShipAgent == nil or not SceneObject(pShipAgent):isShipAiAgent()) then
 		return
 	end
 
-	--print(self.screenplayName .. " -- squadronShipDestroyed triggered for Ship: " .. SceneObject(pShipAiAgent):getDisplayedName())
+	local agentID = SceneObject(pShipAgent):getObjectID()
+	local tableNum = readData(agentID .. ":SpawnerIndex:")
+
+	-- Delete the data so it does not leak
+	deleteData(agentID .. ":SpawnerIndex:")
+	deleteStringData(agentID .. ":SpawnerName:")
+
+	local spawnTable = self.shipSpawns[tableNum]
+	local minRespawn = spawnTable.minRespawn
+	local maxRespawn = spawnTable.maxRespawn
+	local shipSpawns = spawnTable.shipSpawns
+	local agentTemplateName = ShipAiAgent(pShipAgent):getShipAgentTemplateName()
+
+	print(self.screenplayName .. " -- squadronShipDestroyed triggered for Ship: " .. agentTemplateName .. " Squadron Name: " .. spawnTable.squadronName .. " Boss Ship: " .. shipSpawns[#shipSpawns])
+
+	-- Ship is special squadron leader
+	if (agentTemplateName == shipSpawns[#shipSpawns]) then
+
+	else
+
+	end
+
+	createEvent(getRandomNumber(minRespawn, maxRespawn) * 1000, self.screenplayName, "respawnSquadronShip", nil, tostring(tableNum))
+
+
 
 
 	return 1

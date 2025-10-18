@@ -2208,12 +2208,38 @@ void ShipAiAgentImplementation::assignToSquadron(ShipAiAgent* squadronAgent) {
 	addShipFlag(ShipFlag::SQUADRON_FOLLOW);
 }
 
+void ShipAiAgentImplementation::assignToSquadron(uint64 squadronID, bool makeLeader) {
+	auto zoneServer = getZoneServer();
+
+	if (zoneServer == nullptr) {
+		return;
+	}
+
+	squadron = zoneServer->getObject(squadronID).castTo<SquadronObserver*>();
+
+	if (squadron == nullptr) {
+		return;
+	}
+
+	squadron->addSquadronShip(asShipAiAgent());
+
+	addShipFlag(ShipFlag::SQUADRON_FOLLOW);
+}
+
 bool ShipAiAgentImplementation::isSquadronLeader() {
 	return squadron != nullptr ? squadron->isSquadronLeader(asShipAiAgent()) : false;
 }
 
 bool ShipAiAgentImplementation::isSquadronMember() {
 	return squadron != nullptr ? squadron->isSquadronMember(asShipAiAgent()) : false;
+}
+
+uint64 ShipAiAgentImplementation::getSquadronLeaderID() {
+	return squadron != nullptr ? squadron->getSquadronLeaderID() : 0;
+}
+
+uint64 ShipAiAgentImplementation::getSquadronID() {
+	return squadron != nullptr ? squadron->getObjectID() : 0;
 }
 
 bool ShipAiAgentImplementation::isSquadronTransform() {
