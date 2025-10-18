@@ -39,11 +39,17 @@ class Zone : public Thread, public Mutex, public Logger {
 	bool characterCreationFailed;
 	uint64 createdCharacterOID;
 
+	// Client permissions from server
+	bool canLogin;
+	bool canCreateRegularCharacter;
+	bool canCreateJediCharacter;
+	bool canSkipTutorial;
+
 	String lastError;
 	uint16 lastErrorCode;
 
 public:
-	Zone(uint64 characterObjectID, uint32 account, const String& sessionID, const String& galaxyAddress, uint32 galaxyPort);
+	Zone(uint32 account, const String& sessionID, const String& galaxyAddress, uint32 galaxyPort);
 	~Zone();
 
 	void run();
@@ -152,6 +158,29 @@ public:
 
 	uint64 getCreatedCharacterOID() const {
 		return createdCharacterOID;
+	}
+
+	void setPermissions(bool login, bool createRegular, bool createJedi, bool skipTutorial) {
+		canLogin = login;
+		canCreateRegularCharacter = createRegular;
+		canCreateJediCharacter = createJedi;
+		canSkipTutorial = skipTutorial;
+	}
+
+	bool getCanLogin() const {
+		return canLogin;
+	}
+
+	bool getCanCreateCharacter() const {
+		return canCreateRegularCharacter;
+	}
+
+	bool getCanCreateJedi() const {
+		return canCreateJediCharacter;
+	}
+
+	bool getCanSkipTutorial() const {
+		return canSkipTutorial;
 	}
 
 	bool isConnected() const {

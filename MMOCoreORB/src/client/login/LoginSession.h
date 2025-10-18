@@ -150,6 +150,8 @@ public:
 	void cleanup();
 
 	JSONSerializationType collectStats();
+
+	void sendMessage(BaseMessage* msg);
 };
 
 

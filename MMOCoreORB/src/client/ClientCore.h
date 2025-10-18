@@ -46,6 +46,7 @@ private:
 	String resolveFileReference(const String& value);
 	void parseArgumentsIntoActions(const Vector<String>& args);
 	void parseJSONIntoActions(const JSONSerializationType& jsonActions);
+	void resolveDependencies();
 };
 
 class ClientCore : public Core, public Logger {
@@ -138,9 +139,6 @@ public:
 	void initialize();
 
 	void run();
-
-	bool loginCharacter(Reference<class LoginSession*>& loginSession);
-	void logoutCharacter();
 
 	void executeActions();
 
