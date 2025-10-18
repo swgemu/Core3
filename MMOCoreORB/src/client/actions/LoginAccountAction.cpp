@@ -24,12 +24,6 @@ public:
 		return "loginAccount";
 	}
 
-	int parseArgs(int index, int argc, char** argv) override {
-		// No CLI arguments for this action
-		// Uses ClientCoreOptions.username/password
-		return 0;
-	}
-
 	void parseJSON(const JSONSerializationType& config) override {
 		// JSON can override username/password if needed
 		// For Phase 1, we just use ClientCoreOptions

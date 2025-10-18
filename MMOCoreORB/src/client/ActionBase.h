@@ -43,18 +43,22 @@ public:
 	// ===== Argument Parsing =====
 
 	/**
-	 * Parse CLI arguments starting at given index
+	 * Parse CLI arguments from vector starting at given index
 	 *
-	 * @param index Current position in argv
-	 * @param argc Total argument count
-	 * @param argv Argument array
+	 * @param args Vector of argument strings
+	 * @param startIndex Current position in args vector
 	 * @return Number of arguments consumed (0 = not interested)
 	 *
 	 * Example:
-	 *   --delete-character 12345
-	 *   Should consume 2 arguments and return 2
+	 *   args = ["--create-character", "--char-name", "Foo"]
+	 *   startIndex = 0
+	 *   Should consume 1 and return 1
+	 *
+	 * Default implementation: doesn't consume (most actions are auto-inserted or JSON-only)
 	 */
-	virtual int parseArgs(int index, int argc, char** argv) = 0;
+	virtual int parseArgs(const Vector<String>& args, int startIndex) {
+		return 0;  // Default: doesn't consume any args
+	}
 
 	/**
 	 * Parse JSON configuration
@@ -80,6 +84,21 @@ public:
 	 *   - sendCommand: true (zone-phase action)
 	 */
 	virtual bool needsZone() const = 0;
+
+	/**
+	 * Does this action require a character to be selected?
+	 *
+	 * @return true if action needs character selected (triggers auto-insert of selectCharacter)
+	 *
+	 */
+	virtual bool needsCharacter() const { return false; }  // Default: not required
+
+	/**
+	 * Does this action require target context (character/galaxy selection)?
+	 *
+	 * @return true if action needs targetCharacterOid/targetGalaxyId (triggers auto-insert of selectContext)
+	 */
+	virtual bool needsTarget() const { return false; }  // Default: not required
 
 	// ===== Execution =====
 

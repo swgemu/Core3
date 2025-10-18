@@ -199,13 +199,24 @@ ClientCoreOptions::ClientCoreOptions(int argc, char** argv) {
 		parseJSONIntoActions(config["actions"]);
 	}
 
-	// Always run action arg parsing (even if empty) for auto-insertion logic
+	// Parse CLI args (can add to JSON actions or provide all actions if no JSON)
 	parseArgumentsIntoActions(unrecognizedArgs);
+
+	// Resolve dependencies (auto-insert prerequisites and handle special cases)
+	resolveDependencies();
+
+	// Validate we have actions
+	if (actions.size() == 0) {
+		throw Exception("ERROR: No actions specified. Use --login-only, JSON actions array, or CLI action flags (--create-character, etc.)");
+	}
 }
 
 ClientCore::ClientCore(const ClientCoreOptions& opts) : Core("log/core3client.log", "client3"), Logger("CoreClient") {
 	options = opts;
 	zone = nullptr;
+	selectedCharacterOid = 0;
+	targetCharacterOid = 0;
+	targetGalaxyId = 0;
 
 	overallStartTime.updateToCurrentTime();
 
@@ -241,9 +252,6 @@ void ClientCore::initialize() {
 }
 
 void ClientCoreOptions::parseJSONIntoActions(const JSONSerializationType& jsonActions) {
-	bool hasLoginAccount = false;
-	bool hasConnectToZone = false;
-
 	for (auto& actionConfig : jsonActions) {
 		if (!actionConfig.contains("action")) {
 			System::err << "JSON action missing 'action' field" << endl;
@@ -258,83 +266,26 @@ void ClientCoreOptions::parseJSONIntoActions(const JSONSerializationType& jsonAc
 			continue;
 		}
 
-		// Track connector actions
-		if (actionName == "loginAccount") {
-			hasLoginAccount = true;
-		}
-		if (actionName == "connectToZone") {
-			hasConnectToZone = true;
-		}
-
-		// Auto-insert connectToZone before first zone action
-		if (action->needsZone() && !hasConnectToZone) {
-			ActionBase* connector = ActionManager::createAction("connectToZone");
-			if (connector != nullptr) {
-				actions.add(connector);
-				hasConnectToZone = true;
-			}
-		}
-
-		// Parse action-specific config (no variable substitution at parse time)
+		// Parse action-specific config
 		action->parseJSON(actionConfig);
 		actions.add(action);
-	}
-
-	// Always ensure loginAccount at position 0
-	if (!hasLoginAccount) {
-		ActionBase* login = ActionManager::createAction("loginAccount");
-		if (login != nullptr) {
-			Vector<ActionBase*> temp;
-			temp.add(login);
-			for (int k = 0; k < actions.size(); k++) {
-				temp.add(actions.get(k));
-			}
-			actions = temp;
-		}
 	}
 }
 
 void ClientCoreOptions::parseArgumentsIntoActions(const Vector<String>& args) {
-	// Check what actions already exist (from JSON parsing)
-	bool hasLoginAccount = false;
-	bool hasConnectToZone = false;
-
-	for (int i = 0; i < actions.size(); i++) {
-		if (strcmp(actions.get(i)->getName(), "loginAccount") == 0) {
-			hasLoginAccount = true;
-		}
-		if (strcmp(actions.get(i)->getName(), "connectToZone") == 0) {
-			hasConnectToZone = true;
-		}
-	}
-
 	for (int i = 0; i < args.size(); ) {
-		bool consumed = false;
-		int consumedCount = 0;
+		int consumed = 0;
 
 		// First: Offer arg to existing actions in the array (in order)
 		for (int j = 0; j < actions.size(); j++) {
-			// Build argc/argv for this action's parseArgs call
-			int remainingArgc = args.size() - i + 1;
-			char** remainingArgv = new char*[remainingArgc];
-			remainingArgv[0] = const_cast<char*>("core3client");
-			for (int k = 0; k < args.size() - i; k++) {
-				remainingArgv[k + 1] = const_cast<char*>(args.get(i + k).toCharArray());
-			}
-
-			consumedCount = actions.get(j)->parseArgs(1, remainingArgc, remainingArgv);
-			delete[] remainingArgv;
-
-			if (consumedCount > 0) {
-				consumed = true;
-				i += consumedCount;
+			consumed = actions.get(j)->parseArgs(args, i);
+			if (consumed > 0) {
+				i += consumed;
 				break;
 			}
 		}
 
-		if (consumed) {
-			continue;  // Arg was consumed by existing action
-		}
+		if (consumed > 0) continue;
 
 		// Second: Try creating new action from registered types
 		Vector<String> actionNames = ActionManager::listActions();
@@ -342,47 +293,19 @@ void ClientCoreOptions::parseArgumentsIntoActions(const Vector<String>& args) {
 			ActionBase* action = ActionManager::createAction(actionNames.get(j).toCharArray());
 			if (action == nullptr) continue;
 
-			// Build argc/argv for this action's parseArgs call
-			int remainingArgc = args.size() - i + 1;
-			char** remainingArgv = new char*[remainingArgc];
-			remainingArgv[0] = const_cast<char*>("core3client");
-			for (int k = 0; k < args.size() - i; k++) {
-				remainingArgv[k + 1] = const_cast<char*>(args.get(i + k).toCharArray());
-			}
+			consumed = action->parseArgs(args, i);
 
-			consumedCount = action->parseArgs(1, remainingArgc, remainingArgv);
-			delete[] remainingArgv;
-
-			if (consumedCount > 0) {
-				consumed = true;
-
-				// Track connector actions
-				if (strcmp(action->getName(), "loginAccount") == 0) {
-					hasLoginAccount = true;
-				}
-				if (strcmp(action->getName(), "connectToZone") == 0) {
-					hasConnectToZone = true;
-				}
-
-				// Auto-insert connectToZone before first zone action
-				if (action->needsZone() && !hasConnectToZone) {
-					ActionBase* connector = ActionManager::createAction("connectToZone");
-					if (connector != nullptr) {
-						actions.add(connector);
-						hasConnectToZone = true;
-					}
-				}
-
+			if (consumed > 0) {
 				actions.add(action);
-				i += consumedCount;
+				i += consumed;
 				break;
 			}
 
-			delete action;  // Didn't want this arg
+			delete action;
 		}
 
-		if (!consumed) {
-			// Unrecognized arg - error and exit if it looks like an option
+		// Handle unrecognized
+		if (consumed == 0) {
 			if (args.get(i).charAt(0) == '-') {
 				System::err << "ERROR: Unrecognized option: " << args.get(i) << endl;
 				System::err << "Use --help to see available options" << endl;
@@ -391,28 +314,80 @@ void ClientCoreOptions::parseArgumentsIntoActions(const Vector<String>& args) {
 			i++;
 		}
 	}
+}
 
-	// Always ensure loginAccount at position 0
+void ClientCoreOptions::resolveDependencies() {
+	// Special case: --login-only with no actions → add loginAccount
+	if (config["loginOnly"].get<bool>() && actions.size() == 0) {
+		ActionBase* login = ActionManager::createAction("loginAccount");
+		if (login != nullptr) {
+			actions.add(login);
+		}
+	}
+
+	// Walk actions and auto-insert required dependencies
+	Vector<ActionBase*> final;
+	bool hasLoginAccount = false;
+	bool hasSelectContext = false;
+	bool hasConnectToZone = false;
+	bool hasZoneInCharacter = false;
+	bool hasLogoutCharacter = false;
+	bool needsLogout = false;
+
+	for (int i = 0; i < actions.size(); i++) {
+		ActionBase* action = actions.get(i);
+
+		// Track what we have
+		const char* name = action->getName();
+		if (strcmp(name, "loginAccount") == 0) hasLoginAccount = true;
+		if (strcmp(name, "selectContext") == 0) hasSelectContext = true;
+		if (strcmp(name, "connectToZone") == 0) hasConnectToZone = true;
+		if (strcmp(name, "zoneInCharacter") == 0) hasZoneInCharacter = true;
+		if (strcmp(name, "logoutCharacter") == 0) hasLogoutCharacter = true;
+
+		// Track if we need logout
+		if (strcmp(name, "zoneInCharacter") == 0 || strcmp(name, "createCharacter") == 0) {
+			needsLogout = true;
+		}
+
+		// Auto-insert selectContext before first action needing target
+		if (action->needsTarget() && !hasSelectContext) {
+			ActionBase* selector = ActionManager::createAction("selectContext");
+			if (selector != nullptr) {
+				final.add(selector);
+				hasSelectContext = true;
+			}
+		}
+
+		// Auto-insert connectToZone before first zone-needing action
+		if (action->needsZone() && !hasConnectToZone) {
+			ActionBase* connector = ActionManager::createAction("connectToZone");
+			if (connector != nullptr) {
+				final.add(connector);
+				hasConnectToZone = true;
+			}
+		}
+
+		final.add(action);
+	}
+
+	// Ensure loginAccount at position 0
 	if (!hasLoginAccount) {
 		ActionBase* login = ActionManager::createAction("loginAccount");
 		if (login != nullptr) {
-			Vector<ActionBase*> temp;
-			temp.add(login);
-			for (int k = 0; k < actions.size(); k++) {
-				temp.add(actions.get(k));
-			}
-			actions = temp;
+			final.add(0, login);
 		}
 	}
 
-	// If not login-only mode and no zone connection requested, add connectToZone
-	// This maintains backward compatibility with old behavior
-	if (!config["loginOnly"].get<bool>() && !hasConnectToZone) {
-		ActionBase* connector = ActionManager::createAction("connectToZone");
-		if (connector != nullptr) {
-			actions.add(connector);
+	// Ensure logoutCharacter at end if we zoned in (for cleanup)
+	if (needsLogout && !hasLogoutCharacter) {
+		ActionBase* logout = ActionManager::createAction("logoutCharacter");
+		if (logout != nullptr) {
+			final.add(logout);
 		}
 	}
+
+	actions = final;
 }
 
 void ClientCore::executeActions() {
@@ -465,127 +440,15 @@ void ClientCore::run() {
 
 	info(true) << "Shutting down...";
 
-	if (zone != nullptr && zone->isStarted()) {
-		logoutCharacter();
-	}
+	// Cleanup login session if still connected
 	if (loginSession != nullptr && loginSession->isConnected()) {
 		loginSession->cleanup();
 	}
 
+	// Cleanup actions
 	for (int i = 0; i < options.actions.size(); i++) {
 		delete options.actions.get(i);
 	}
-}
-
-bool ClientCore::loginCharacter(Reference<LoginSession*>& loginSession) {
-	try {
-		String username = String(options.config["username"].get<std::string>().c_str());
-		String password = String(options.config["password"].get<std::string>().c_str());
-
-		info(true) << "Logging in as: " << username;
-
-		loginSession = new LoginSession(username, password);
-		loginSession->run();
-
-		auto numCharacters = loginSession->getCharacterListSize();
-
-		if (numCharacters == 0) {
-			info(true) << __FUNCTION__ << ": No characters found";
-			return false;
-		}
-
-		Optional<const CharacterListEntry&> character;
-		uint64 objid = 0;
-		uint32 galaxyId = 0;
-
-		if (numCharacters > 0) {
-			uint64 characterOid = options.get<uint64>("/characterOid", 0);
-			std::string characterFirstname = options.get<std::string>("/characterFirstname", "");
-
-			if (characterOid != 0) {
-				character = loginSession->selectCharacterByOID(characterOid);
-				if (!character) {
-					info(true) << "ERROR: Character with OID " << characterOid << " not found";
-					return false;
-				}
-			} else if (!characterFirstname.empty()) {
-				character = loginSession->selectCharacterByFirstname(String(characterFirstname.c_str()));
-				if (!character) {
-					info(true) << "ERROR: Character with firstname '" << characterFirstname << "' not found";
-					return false;
-				}
-			} else {
-				character = loginSession->selectRandomCharacter();
-			}
-
-			if (!character) {
-				info(true) << __FUNCTION__ << ": Failed to select any character";
-				return false;
-			}
-
-			objid = character->getObjectID();
-			galaxyId = character->getGalaxyID();
-
-			info(true) << "Selected character: " << *character;
-		}
-
-		uint32 acc = loginSession->getAccountID();
-		const String& sessionID = loginSession->getSessionID();
-
-		info(true) << "Login completed - Account: " << acc << ", Session: " << sessionID;
-
-		auto galaxy = loginSession->getGalaxy(galaxyId);
-
-		// Store selected galaxy for JSON output
-		selectedGalaxy = galaxy;
-
-		info(true) << "Zone into " << galaxy;
-
-		if (galaxy.getAddress().isEmpty()) {
-			throw Exception("Invalid galaxy, missing IP address.");
-		}
-
-		bool loginOnly = options.get<bool>("/loginOnly", false);
-		if (!loginOnly) {
-			zone = new Zone(objid, acc, sessionID, galaxy.getAddress(), galaxy.getPort());
-			zone->start();
-		}
-	} catch (Exception& e) {
-		e.printMessage();
-		return false;
-	}
-
-	return true;
-}
-
-void ClientCore::logoutCharacter() {
-	if (zone == nullptr || !zone->isStarted())
-		return;
-
-	info(true) << __FUNCTION__ << "(" << index << ")";
-
-	// Disconnect from zone to stop receiving new packets
-	zone->disconnect();
-
-	// Wait for already-queued tasks to complete processing
-	auto taskManager = Core::getTaskManager();
-	int maxIterations = 20; // 20 x 50ms = 1 second max
-
-	for (int i = 0; i < maxIterations; i++) {
-		int executing = taskManager->getExecutingTaskSize();
-		int scheduled = taskManager->getScheduledTaskSize();
-
-		if (executing == 0 && scheduled == 0) {
-			info(true) << "All tasks completed after " << (i * 50) << "ms";
-			break;
-		}
-
-		Thread::sleep(50);
-	}
-
-	info(true) << "Processed " << zone->getZoneClient()->getPacketCount() << " total zone packets";
-
-	delete zone;
 }
 
 void ClientCore::saveStateToFile(const String& filename, LoginSession* loginSession) {
@@ -654,7 +517,7 @@ void ClientCore::saveStateToFile(const String& filename, LoginSession* loginSess
 
 			// Selected zone info
 			JSONSerializationType selectedZone;
-			selectedZone["characterId"] = zone->getCharacterID();
+			selectedZone["characterId"] = selectedCharacterOid;
 			selectedZone["address"] = zone->getGalaxyAddress().toCharArray();
 			selectedZone["port"] = zone->getGalaxyPort();
 			jsonData["selectedZone"] = selectedZone;

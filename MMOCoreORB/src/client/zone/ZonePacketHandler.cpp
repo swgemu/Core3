@@ -144,24 +144,14 @@ void ZonePacketHandler::handleClientPermissionsMessage(Message* pack) {
 	bool canCreateJediCharacter = pack->parseByte();
 	bool canSkipTutorial = pack->parseByte();
 
+	// Store permissions on zone for actions to check
+	zone->setPermissions(canLogin, canCreateRegularCharacter, canCreateJediCharacter, canSkipTutorial);
+
+	info(true) << "Client permissions received:";
 	info(true) << "    canLogin = " << canLogin;
-	info(true) << "    canCreateRegularCharacter = " << canCreateRegularCharacter;
-	info(true) << "    canCreateJediCharacter = " << canCreateJediCharacter;
+	info(true) << "    canCreateCharacter = " << canCreateRegularCharacter;
+	info(true) << "    canCreateJedi = " << canCreateJediCharacter;
 	info(true) << "    canSkipTutorial = " << canSkipTutorial;
-
-	BaseClient* client = (BaseClient*) pack->getClient();
-
-	// Character creation is now handled by CreateCharacterAction
-	// This handler just selects the character that was already created
-	if (zone->getCharacterID() == 0) {
-		client->error() << "No character OID provided";
-		throw Exception("ClientPermissionsMessage: No character to select");
-	}
-
-	info(true) << "Sending SelectCharacter(" << zone->getCharacterID() << ")";
-
-	BaseMessage* selectChar = new SelectCharacter(zone->getCharacterID());
-	client->sendPacket(selectChar);
 }
 
 void ZonePacketHandler::handleCmdStartScene(Message* pack) {
@@ -183,7 +173,13 @@ void ZonePacketHandler::handleCmdStartScene(Message* pack) {
 
 	uint64 galacticTime = pack->parseLong();
 
-	zone->setCharacterID(selfPlayerObjectID);
+	// Server confirms our character OID
+	Core* instance = Core::getCoreInstance();
+	if (instance) {
+		ClientCore* clientCore = static_cast<ClientCore*>(instance);
+		clientCore->selectedCharacterOid = selfPlayerObjectID;
+		clientCore->info(true) << "Server confirmed character OID: " << selfPlayerObjectID;
+	}
 
 	BaseMessage* msg = new CmdSceneReady();
 	client->sendPacket(msg);

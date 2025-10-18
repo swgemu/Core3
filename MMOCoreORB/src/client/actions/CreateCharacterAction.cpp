@@ -41,43 +41,45 @@ public:
 		return "createCharacter";
 	}
 
-	int parseArgs(int index, int argc, char** argv) override {
+	int parseArgs(const Vector<String>& args, int startIndex) override {
+		if (startIndex >= args.size()) return 0;
+
 		// Check for --create-character flag
-		if (strcmp(argv[index], "--create-character") == 0) {
+		if (args.get(startIndex) == "--create-character") {
 			return 1;
 		}
 
 		// Parse character creation options
-		if (strcmp(argv[index], "--char-name") == 0 && index + 1 < argc) {
-			characterName = argv[index + 1];
+		if (args.get(startIndex) == "--char-name" && startIndex + 1 < args.size()) {
+			characterName = args.get(startIndex + 1);
 			return 2;
 		}
-		if (strcmp(argv[index], "--char-race") == 0 && index + 1 < argc) {
-			race = argv[index + 1];
+		if (args.get(startIndex) == "--char-race" && startIndex + 1 < args.size()) {
+			race = args.get(startIndex + 1);
 			return 2;
 		}
-		if (strcmp(argv[index], "--char-profession") == 0 && index + 1 < argc) {
-			profession = argv[index + 1];
+		if (args.get(startIndex) == "--char-profession" && startIndex + 1 < args.size()) {
+			profession = args.get(startIndex + 1);
 			return 2;
 		}
-		if (strcmp(argv[index], "--char-height") == 0 && index + 1 < argc) {
-			height = Float::valueOf(argv[index + 1]);
+		if (args.get(startIndex) == "--char-height" && startIndex + 1 < args.size()) {
+			height = Float::valueOf(args.get(startIndex + 1));
 			return 2;
 		}
-		if (strcmp(argv[index], "--char-customization") == 0 && index + 1 < argc) {
-			customization = argv[index + 1];
+		if (args.get(startIndex) == "--char-customization" && startIndex + 1 < args.size()) {
+			customization = args.get(startIndex + 1);
 			return 2;
 		}
-		if (strcmp(argv[index], "--char-hair-template") == 0 && index + 1 < argc) {
-			hairTemplate = argv[index + 1];
+		if (args.get(startIndex) == "--char-hair-template" && startIndex + 1 < args.size()) {
+			hairTemplate = args.get(startIndex + 1);
 			return 2;
 		}
-		if (strcmp(argv[index], "--char-hair-customization") == 0 && index + 1 < argc) {
-			hairCustomization = argv[index + 1];
+		if (args.get(startIndex) == "--char-hair-customization" && startIndex + 1 < args.size()) {
+			hairCustomization = args.get(startIndex + 1);
 			return 2;
 		}
-		if (strcmp(argv[index], "--char-biography") == 0 && index + 1 < argc) {
-			biography = argv[index + 1];
+		if (args.get(startIndex) == "--char-biography" && startIndex + 1 < args.size()) {
+			biography = args.get(startIndex + 1);
 			return 2;
 		}
 
@@ -118,7 +120,16 @@ public:
 		return true;  // Zone-phase action
 	}
 
+	bool needsTarget() const override {
+		return true;  // Needs targetGalaxyId to know where to create
+	}
+
 	void run(ClientCore& core) override {
+		// Warn if targetCharacterOid is set (we're creating new, not using existing)
+		if (core.targetCharacterOid != 0) {
+			warning() << "Ignoring selected character OID " << core.targetCharacterOid
+			          << " (createCharacter creates new character)";
+		}
 		// Validate prerequisites
 		if (core.zone == nullptr || !core.zone->isConnected()) {
 			result.setError("No active zone connection", 1);

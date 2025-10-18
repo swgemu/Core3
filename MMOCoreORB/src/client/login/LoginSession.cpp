@@ -108,6 +108,12 @@ void LoginSession::cleanup() {
 	info(true) << "Login session cleanup complete.";
 }
 
+void LoginSession::sendMessage(BaseMessage* msg) {
+	if (login != nullptr) {
+		login->sendMessage(msg);
+	}
+}
+
 JSONSerializationType LoginSession::collectStats() {
 	JSONSerializationType stats;
 	stats["elapsedMs"] = loginStartTime.miliDifference();
