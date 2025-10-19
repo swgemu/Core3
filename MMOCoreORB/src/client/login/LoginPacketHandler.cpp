@@ -85,6 +85,12 @@ void LoginPacketHandler::handleErrorMessage(Message* pack) {
 
 	info(true) << "ERROR: " << errorType << " - " << errorMessage ;
 
+	// Store in vars for post-login actions using waitForAny
+	if (core != nullptr) {
+		core->setVar("ErrorMessage/type", errorType);
+		core->setVar("ErrorMessage/message", errorMessage);
+	}
+
 	loginSession->signalCompletion();
 }
 
@@ -196,7 +202,16 @@ void LoginPacketHandler::handleEnumerateCharacterId(Message* pack) {
 		CharacterListEntry entry;
 		entry.setObjectID(oid);
 		entry.setGalaxyID(galaxy);
-		entry.setFirstName(name.toString());
+
+		// Split full name into firstname and surname
+		String fullName = name.toString();
+		int spacePos = fullName.indexOf(' ');
+		if (spacePos != -1) {
+			entry.setFirstName(fullName.subString(0, spacePos));
+			entry.setSurName(fullName.subString(spacePos + 1));
+		} else {
+			entry.setFirstName(fullName);
+		}
 
 		loginSession->addCharacter(entry);
 
