@@ -609,6 +609,9 @@ class ShipAiAgent extends FighterShipObject {
 	@read
 	public native boolean isFixedPatrolShipAgent();
 
+	@read
+	public native boolean hasSinglePatrolRotation();
+
 	@dirty
 	@preLocked
 	public native boolean sendConversationStartTo(SceneObject player);

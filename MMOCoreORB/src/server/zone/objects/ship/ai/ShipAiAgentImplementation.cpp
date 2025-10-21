@@ -1245,6 +1245,8 @@ void ShipAiAgentImplementation::updatePatrolPoints() {
 
 	int transformType = getTransformType();
 
+	// info(true) << "ShipAiAgentImplementation::updatePatrolPoints() -- Movement State: " << getMovementState() << " Transform Type: " << transformType << " Patrol Points Size: " << patrolPoints.size();
+
 	switch (transformType) {
 		case SpaceTransformType::SLOW:
 		case SpaceTransformType::DOCK: {
@@ -1252,8 +1254,14 @@ void ShipAiAgentImplementation::updatePatrolPoints() {
 				const auto& nextPosition = patrolPoints.get(0).getWorldPosition();
 				const auto& thisPosition = getPosition();
 
-				if (thisPosition.squaredDistanceTo(nextPosition) <= Math::sqr(getMaxDistance())) {
+				if (thisPosition.squaredDistanceTo(nextPosition) < Math::sqr(getMaxDistance())) {
 					patrolPoints.remove(0);
+
+					int movementState = getMovementState();
+
+					if ((movementState == PATROLLING || movementState == WATCHING) && hasSinglePatrolRotation() && patrolPoints.size() < 1) {
+						notifyObservers(ObserverEventType::DESTINATIONREACHED);
+					}
 				}
 			}
 
@@ -1263,10 +1271,10 @@ void ShipAiAgentImplementation::updatePatrolPoints() {
 		case SpaceTransformType::FAST:
 		default: {
 			float distanceMaxSqr = Math::sqr(getMaxDistance());
+			const auto& thisPosition = getPosition();
 
 			for (int i = patrolPoints.size(); -1 < --i;) {
 				const auto& nextPosition = patrolPoints.get(i).getWorldPosition();
-				const auto& thisPosition = getPosition();
 
 				if (thisPosition.squaredDistanceTo(nextPosition) <= distanceMaxSqr) {
 					patrolPoints.removeRange(0, i+1);
@@ -2055,6 +2063,10 @@ bool ShipAiAgentImplementation::checkLineOfSight(SceneObject* obj) {
 
 bool ShipAiAgentImplementation::isFixedPatrolShipAgent() const {
 	return (shipBitmask & ShipFlag::FIXED_PATROL);
+}
+
+bool ShipAiAgentImplementation::hasSinglePatrolRotation() const {
+	return (shipBitmask & ShipFlag::SINGLE_PATROL_ROTATION);
 }
 
 bool ShipAiAgentImplementation::sendConversationStartTo(SceneObject* playerSceneO) {

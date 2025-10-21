@@ -25,7 +25,7 @@ SpaceDantooineSpawner = SpaceSpawnerScreenPlay:new {
 		{spawnName = "warrens_guards_1", spawnType = SHIP_SPAWN_SINGLE, x = -5921, z = 1303, y = -4991, patrolType = SHIP_AI_RANDOM_PATROL, minRespawn = 180, maxRespawn = 300, minSpawnDistance = 40, maxSpawnDistance = 80, minPatrol = 80, maxPatrol = 370, totalSpawns = 3,
 			shipSpawns = {"warrens_fighter"}
 		},
-		{spawnName = "vortex_mission_4_shuttle", spawnType = SHIP_SPAWN_SQUADRON, x = -3273, z = -3335, y = -3027, patrolType = SHIP_AI_FIXED_PATROL, minRespawn = 10, maxRespawn = 30, minSpawnDistance = 10, maxSpawnDistance = 100, totalSpawns = 1,
+		{spawnName = "vortex_mission_4_shuttle", spawnType = SHIP_SPAWN_SQUADRON, x = -3273, z = -3335, y = -3027, patrolType = SHIP_AI_SINGLE_PATROL_ROTATION, minRespawn = 10, maxRespawn = 30, minSpawnDistance = 10, maxSpawnDistance = 100, totalSpawns = 1,
 			patrolsToAssign = 5, fixedPatrolPoints = {"vortex_mission_4_shuttle_00", "vortex_mission_4_shuttle_01", "vortex_mission_4_shuttle_02", "vortex_mission_4_shuttle_03", "vortex_mission_4_shuttle_04", "vortex_mission_4_shuttle_05", "vortex_mission_4_shuttle_06", "vortex_mission_4_shuttle_07", "vortex_mission_4_shuttle_08", "vortex_mission_4_shuttle_09", "vortex_mission_4_shuttle_10", "vortex_mission_4_shuttle_11", "vortex_mission_4_shuttle_12"},
 			shipSpawns = {"squad_vortex_mission_4"}
 		},
@@ -42,7 +42,7 @@ SpaceDantooineSpawner = SpaceSpawnerScreenPlay:new {
 			patrolsToAssign = 5, fixedPatrolPoints = {"imperial_patrol_1_00", "imperial_patrol_1_01", "imperial_patrol_1_02", "imperial_patrol_1_03", "imperial_patrol_1_04", "imperial_patrol_1_05", "imperial_patrol_1_06", "imperial_patrol_1_07", "imperial_patrol_1_08", "imperial_patrol_1_09", "imperial_patrol_1_10", "imperial_patrol_1_11", "imperial_patrol_1_12", "imperial_patrol_1_13", "imperial_patrol_1_14", "imperial_patrol_1_15", "imperial_patrol_1_16", "imperial_patrol_1_17", "imperial_patrol_1_18"},
 			shipSpawns = {"imp_tie_fighter_tier2", "imp_tie_interceptor_tier3", "imp_tie_interceptor_tier3_dantooine", "imp_tie_aggressor_tier2", "imp_tie_advanced_tier2", "imp_tie_bomber_tier2", "imp_tie_interceptor_tier2", "imp_tie_oppressor_tier2"}
 		},
-		{spawnName = "naboo_rebel_tier3_pirate_leader_inspect", spawnType = SHIP_SPAWN_SINGLE, x = -711, z = -5678, y = 1064, patrolType = SHIP_AI_FIXED_PATROL, minRespawn = 10, maxRespawn = 20, minSpawnDistance = 10, maxSpawnDistance = 150, totalSpawns = 1,
+		{spawnName = "naboo_rebel_tier3_pirate_leader_inspect", spawnType = SHIP_SPAWN_SINGLE, x = -711, z = -5678, y = 1064, patrolType = SHIP_AI_SINGLE_PATROL_ROTATION, minRespawn = 10, maxRespawn = 20, minSpawnDistance = 10, maxSpawnDistance = 150, totalSpawns = 1,
 			patrolsToAssign = 5, fixedPatrolPoints = {"naboo_rebel_tier3_pirate_leader_inspect_00", "naboo_rebel_tier3_pirate_leader_inspect_01", "naboo_rebel_tier3_pirate_leader_inspect_02", "naboo_rebel_tier3_pirate_leader_inspect_03"},
 			shipSpawns = {"blacklight_pirate_fighter_quest"}
 		},
@@ -63,11 +63,11 @@ SpaceDantooineSpawner = SpaceSpawnerScreenPlay:new {
 		{spawnName = "imperial_generator_defense_d", spawnType = SHIP_SPAWN_SINGLE, x = 3140, z = 4326, y = -7336, patrolType = SHIP_AI_RANDOM_PATROL, minRespawn = 180, maxRespawn = 300, minSpawnDistance = 20, maxSpawnDistance = 40, minPatrol = 60, maxPatrol = 320, totalSpawns = 6,
 			shipSpawns = {"imp_tie_bomber_tier2", "imp_tie_bomber_tier3", "imp_tie_fighter_tier2", "imp_tie_fighter_tier3", "imp_tie_fighter_tier3_dantooine", "imp_tie_fighter_tier3_dantooine", "imp_tie_interceptor_tier3", "imp_tie_interceptor_tier3_dantooine", "imp_tie_aggressor_tier2", "imp_tie_advanced_tier2", "imp_tie_advanced_tier4", "imp_tie_oppressor_tier2", "imp_tie_oppressor_tier3", "imp_tie_interceptor_tier2", "imp_tie_interceptor_tier3"}
 		},
-		{spawnName = "slave_trader_out_2", spawnType = SHIP_SPAWN_SINGLE, x = 2299, z = -1583, y = 6678, patrolType = SHIP_AI_FIXED_PATROL, minRespawn = 180, maxRespawn = 300, minSpawnDistance = 40, maxSpawnDistance = 80, totalSpawns = 3,
+		{spawnName = "slave_trader_out_2", spawnType = SHIP_SPAWN_SINGLE, x = 2299, z = -1583, y = 6678, patrolType = SHIP_AI_SINGLE_PATROL_ROTATION, minRespawn = 180, maxRespawn = 300, minSpawnDistance = 40, maxSpawnDistance = 80, totalSpawns = 3,
 			patrolsToAssign = 5, fixedPatrolPoints = {"slave_trader_out_2_00", "slave_trader_out_2_01", "slave_trader_out_2_02", "slave_trader_out_2_03", "slave_trader_out_2_04", "slave_trader_out_2_05", "slave_trader_out_2_06", "slave_trader_out_2_07", "slave_trader_out_2_08", "slave_trader_out_2_09", "slave_trader_out_2_10", "slave_trader_out_2_11", "slave_trader_out_2_12"},
 			shipSpawns = {"slave_trader_trader_tier3", "slave_trader_trader_tier3_dantooine", "slave_trader_trader_tier3_dantooine"}
 		},
-		{spawnName = "slave_trader_out_1", spawnType = SHIP_SPAWN_SINGLE, x = 4999, z = -1574, y = 6617, patrolType = SHIP_AI_FIXED_PATROL, minRespawn = 180, maxRespawn = 300, minSpawnDistance = 40, maxSpawnDistance = 80, totalSpawns = 3,
+		{spawnName = "slave_trader_out_1", spawnType = SHIP_SPAWN_SINGLE, x = 4999, z = -1574, y = 6617, patrolType = SHIP_AI_SINGLE_PATROL_ROTATION, minRespawn = 180, maxRespawn = 300, minSpawnDistance = 40, maxSpawnDistance = 80, totalSpawns = 3,
 			patrolsToAssign = 5, fixedPatrolPoints = {"slave_trader_out_1_00", "slave_trader_out_1_01", "slave_trader_out_1_02", "slave_trader_out_1_03", "slave_trader_out_1_04", "slave_trader_out_1_05", "slave_trader_out_1_06", "slave_trader_out_1_07", "slave_trader_out_1_08"},
 			shipSpawns = {"slave_trader_trader_tier3", "slave_trader_trader_tier3_dantooine", "slave_trader_trader_tier3_dantooine"}
 		},
@@ -102,7 +102,7 @@ SpaceDantooineSpawner = SpaceSpawnerScreenPlay:new {
 			patrolsToAssign = 5, fixedPatrolPoints = {"antho_diplomat_route_1_00", "antho_diplomat_route_1_01", "antho_diplomat_route_1_02", "antho_diplomat_route_1_03", "antho_diplomat_route_1_04", "antho_diplomat_route_1_05", "antho_diplomat_route_1_06", "antho_diplomat_route_1_07", "antho_diplomat_route_1_08", "antho_diplomat_route_1_09", "antho_diplomat_route_1_10", "antho_diplomat_route_1_11", "antho_diplomat_route_1_12", "antho_diplomat_route_1_13", "antho_diplomat_route_1_14", "antho_diplomat_route_1_15", "antho_diplomat_route_1_16", "antho_diplomat_route_1_17", "antho_diplomat_route_1_18", "antho_diplomat_route_1_19", "antho_diplomat_route_1_20", "antho_diplomat_route_1_21", "antho_diplomat_route_1_22", "antho_diplomat_route_1_23", "antho_diplomat_route_1_24"},
 			shipSpawns = {"anthropology_diplomat", "anthropology_guardian", "anthropology_scout", "anthropology_guardian"}
 		},
-		{spawnName = "collector_hyperspace_patrol", spawnType = SHIP_SPAWN_SINGLE, x = -5783, z = -5198, y = 3690, patrolType = SHIP_AI_FIXED_PATROL, minRespawn = 180, maxRespawn = 300, minSpawnDistance = 40, maxSpawnDistance = 60, totalSpawns = 3,
+		{spawnName = "collector_hyperspace_patrol", spawnType = SHIP_SPAWN_SINGLE, x = -5783, z = -5198, y = 3690, patrolType = SHIP_AI_SINGLE_PATROL_ROTATION, minRespawn = 180, maxRespawn = 300, minSpawnDistance = 40, maxSpawnDistance = 60, totalSpawns = 3,
 			patrolsToAssign = 5, fixedPatrolPoints = {"collector_hyperspace_patrol_00", "collector_hyperspace_patrol_01", "collector_hyperspace_patrol_02", "collector_hyperspace_patrol_03", "collector_hyperspace_patrol_04", "collector_hyperspace_patrol_05", "collector_hyperspace_patrol_06", "collector_hyperspace_patrol_07", "collector_hyperspace_patrol_08", "collector_hyperspace_patrol_09", "collector_hyperspace_patrol_10", "collector_hyperspace_patrol_11", "collector_hyperspace_patrol_12", "collector_hyperspace_patrol_13", "collector_hyperspace_patrol_14", "collector_hyperspace_patrol_15", "collector_hyperspace_patrol_16", "collector_hyperspace_patrol_17", "collector_hyperspace_patrol_18", "collector_hyperspace_patrol_19", "collector_hyperspace_patrol_20", "collector_hyperspace_patrol_21"},
 			shipSpawns = {"anthropology_collector"}
 		},
@@ -149,14 +149,14 @@ SpaceDantooineSpawner = SpaceSpawnerScreenPlay:new {
 		{spawnName = "random_valarian_filler_4", spawnType = SHIP_SPAWN_SINGLE, x = 477, z = 3805, y = 3268, patrolType = SHIP_AI_RANDOM_PATROL, minRespawn = 180, maxRespawn = 300, minSpawnDistance = 40, maxSpawnDistance = 80, minPatrol = 80, maxPatrol = 350, totalSpawns = 2,
 			shipSpawns = {"valarian_bomber_tier3", "valarian_gunship_tier3"}
 		},
-		{spawnName = "slavers_route_2", spawnType = SHIP_SPAWN_SINGLE, x = 3000, z = -338, y = 6228, patrolType = SHIP_AI_FIXED_PATROL, minRespawn = 180, maxRespawn = 300, minSpawnDistance = 40, maxSpawnDistance = 80, totalSpawns = 2,
+		{spawnName = "slavers_route_2", spawnType = SHIP_SPAWN_SINGLE, x = 3000, z = -338, y = 6228, patrolType = SHIP_AI_SINGLE_PATROL_ROTATION, minRespawn = 180, maxRespawn = 300, minSpawnDistance = 40, maxSpawnDistance = 80, totalSpawns = 2,
 			patrolsToAssign = 5, fixedPatrolPoints = {"slavers_route_2_00", "slavers_route_2_01", "slavers_route_2_02", "slavers_route_2_03", "slavers_route_2_04", "slavers_route_2_05", "slavers_route_2_06", "slavers_route_2_07", "slavers_route_2_08", "slavers_route_2_09", "slavers_route_2_10", "slavers_route_2_11"},
 			shipSpawns = {"slave_trader_transport_tier3", "slave_trader_transport_tier3_dantooine", "slave_trader_transport_tier3_dantooine"}
 		},
 		{spawnName = "imperial_beacon_1", spawnType = SHIP_SPAWN_SINGLE, x = 2983, z = -77, y = 7483, patrolType = SHIP_AI_RANDOM_PATROL, minRespawn = 180, maxRespawn = 300, minSpawnDistance = 20, maxSpawnDistance = 40, minPatrol = 60, maxPatrol = 350, totalSpawns = 6,
 			shipSpawns = {"imp_tie_advanced_tier2", "imp_tie_bomber_tier2", "imp_tie_fighter_tier2", "imp_tie_interceptor_tier2", "imp_tie_interceptor_tier3_dantooine", "imp_tie_interceptor_tier3_dantooine", "imp_tie_aggressor_tier2", "imp_tie_oppressor_tier2"}
 		},
-		{spawnName = "slavers_route_1", spawnType = SHIP_SPAWN_SINGLE, x = 4475, z = -408, y = 7154, patrolType = SHIP_AI_FIXED_PATROL, minRespawn = 300, maxRespawn = 420, minSpawnDistance = 40, maxSpawnDistance = 80, totalSpawns = 2,
+		{spawnName = "slavers_route_1", spawnType = SHIP_SPAWN_SINGLE, x = 4475, z = -408, y = 7154, patrolType = SHIP_AI_SINGLE_PATROL_ROTATION, minRespawn = 300, maxRespawn = 420, minSpawnDistance = 40, maxSpawnDistance = 80, totalSpawns = 2,
 			patrolsToAssign = 5, fixedPatrolPoints = {"slavers_route_1_00", "slavers_route_1_01", "slavers_route_1_02", "slavers_route_1_03", "slavers_route_1_04", "slavers_route_1_05", "slavers_route_1_06", "slavers_route_1_07", "slavers_route_1_08", "slavers_route_1_09"},
 			shipSpawns = {"slave_trader_transport_tier3", "slave_trader_transport_tier3_dantooine", "slave_trader_transport_tier3_dantooine"}
 		},
@@ -241,14 +241,14 @@ SpaceDantooineSpawner = SpaceSpawnerScreenPlay:new {
 		{spawnName = "corellia_imperial_tier4_inspect1", spawnType = SHIP_SPAWN_SINGLE, x = 3133, z = 6113, y = -3618, patrolType = SHIP_AI_RANDOM_PATROL, minRespawn = 180, maxRespawn = 300, minSpawnDistance = 20, maxSpawnDistance = 40, minPatrol = 60, maxPatrol = 420, totalSpawns = 1,
 			shipSpawns = {"velocity_merc_captain_tier4"}
 		},
-		{spawnName = "hutt_gunships", spawnType = SHIP_SPAWN_SINGLE, x = -1252, z = -618, y = 1543, patrolType = SHIP_AI_FIXED_PATROL, minRespawn = 180, maxRespawn = 300, minSpawnDistance = 20, maxSpawnDistance = 40, totalSpawns = 5,
+		{spawnName = "hutt_gunships", spawnType = SHIP_SPAWN_SINGLE, x = -1252, z = -618, y = 1543, patrolType = SHIP_AI_SINGLE_PATROL_ROTATION, minRespawn = 180, maxRespawn = 300, minSpawnDistance = 20, maxSpawnDistance = 40, totalSpawns = 5,
 			patrolsToAssign = 5, fixedPatrolPoints = {"hutt_gunships_00", "hutt_gunships_01", "hutt_gunships_02", "hutt_gunships_03", "hutt_gunships_04", "hutt_gunships_05", "hutt_gunships_06", "hutt_gunships_07"},
 			shipSpawns = {"huttskiff_tier3", "hutt_pirate_s01_tier2"}
 		},
 		{spawnName = "imperial_area_generator_defense_2", spawnType = SHIP_SPAWN_SINGLE, x = -1366, z = 3537, y = -1804, patrolType = SHIP_AI_RANDOM_PATROL, minRespawn = 180, maxRespawn = 300, minSpawnDistance = 40, maxSpawnDistance = 80, minPatrol = 80, maxPatrol = 350, totalSpawns = 8,
 			shipSpawns = {"imp_tie_bomber_tier3_dantooine", "imp_tie_bomber_tier3_dantooine", "imp_tie_aggressor_tier3", "imp_tie_advanced_tier3", "imp_tie_interceptor_tier3", "imp_tie_fighter_tier3", "imp_tie_interceptor_tier3", "imp_tie_oppressor_tier3"}
 		},
-		{spawnName = "smuggle_route_1", spawnType = SHIP_SPAWN_SINGLE, x = -3158, z = 2978, y = -2521, patrolType = SHIP_AI_FIXED_PATROL, minRespawn = 300, maxRespawn = 420, minSpawnDistance = 20, maxSpawnDistance = 40, totalSpawns = 3,
+		{spawnName = "smuggle_route_1", spawnType = SHIP_SPAWN_SINGLE, x = -3158, z = 2978, y = -2521, patrolType = SHIP_AI_SINGLE_PATROL_ROTATION, minRespawn = 300, maxRespawn = 420, minSpawnDistance = 20, maxSpawnDistance = 40, totalSpawns = 3,
 			patrolsToAssign = 5, fixedPatrolPoints = {"smuggle_route_1_00", "smuggle_route_1_01", "smuggle_route_1_02", "smuggle_route_1_03", "smuggle_route_1_04", "smuggle_route_1_05", "smuggle_route_1_06", "smuggle_route_1_07", "smuggle_route_1_08", "smuggle_route_1_09", "smuggle_route_1_10", "smuggle_route_1_11", "smuggle_route_1_12"},
 			shipSpawns = {"nym_smuggle_vessel", "nym_smuggle_vessel", "nym_smuggle_vessel", "nym_enforcer_tier3"}
 		},
@@ -261,7 +261,7 @@ SpaceDantooineSpawner = SpaceSpawnerScreenPlay:new {
 		{spawnName = "mining_guard_2", spawnType = SHIP_SPAWN_SINGLE, x = 243, z = 214, y = -2237, patrolType = SHIP_AI_RANDOM_PATROL, minRespawn = 180, maxRespawn = 300, minSpawnDistance = 50, maxSpawnDistance = 100, minPatrol = 80, maxPatrol = 360, totalSpawns = 2,
 			shipSpawns = {"mining_guard_ship_tier3", "mining_guard_ship_tier3_dantooine", "mining_guard_ship_tier3_dantooine"}
 		},
-		{spawnName = "trade_route_1", spawnType = SHIP_SPAWN_SINGLE, x = 1348, z = -753, y = -2321, patrolType = SHIP_AI_FIXED_PATROL, minRespawn = 300, maxRespawn = 420, minSpawnDistance = 3, maxSpawnDistance = 6, totalSpawns = 3,
+		{spawnName = "trade_route_1", spawnType = SHIP_SPAWN_SINGLE, x = 1348, z = -753, y = -2321, patrolType = SHIP_AI_SINGLE_PATROL_ROTATION, minRespawn = 300, maxRespawn = 420, minSpawnDistance = 3, maxSpawnDistance = 6, totalSpawns = 3,
 			patrolsToAssign = 5, fixedPatrolPoints = {"trade_route_1_00", "trade_route_1_01", "trade_route_1_02", "trade_route_1_03", "trade_route_1_04", "trade_route_1_05", "trade_route_1_06", "trade_route_1_07", "trade_route_1_08", "trade_route_1_09", "trade_route_1_10"},
 			shipSpawns = {"freighterheavy", "freighterlight", "freightermedium", "freighterheavy_tier3_story", "freighterheavy_tier3_story", "freighterheavy_tier3_story"}
 		},
@@ -269,7 +269,7 @@ SpaceDantooineSpawner = SpaceSpawnerScreenPlay:new {
 			patrolsToAssign = 5, fixedPatrolPoints = {"mining_guard_patrol_1_00", "mining_guard_patrol_1_01", "mining_guard_patrol_1_02", "mining_guard_patrol_1_03", "mining_guard_patrol_1_04", "mining_guard_patrol_1_05", "mining_guard_patrol_1_06", "mining_guard_patrol_1_07"},
 			shipSpawns = {"mining_guard_ship_boss", "mining_guard_ship_tier3", "mining_guard_ship_tier3", "mining_guard_ship_tier3", "mining_guard_ship_tier3_dantooine", "mining_guard_ship_tier3_dantooine", "mining_guard_ship_tier3_dantooine", "mining_guard_ship_tier3_dantooine", "mining_guard_ship_tier3_dantooine", "mining_guard_ship_tier3_dantooine", "mining_guard_ship_tier3_dantooine", "mining_guard_ship_tier3_dantooine"}
 		},
-		{spawnName = "mining_route_1", spawnType = SHIP_SPAWN_SINGLE, x = 2041, z = -354, y = -1242, patrolType = SHIP_AI_FIXED_PATROL, minRespawn = 300, maxRespawn = 420, minSpawnDistance = 30, maxSpawnDistance = 50, totalSpawns = 3,
+		{spawnName = "mining_route_1", spawnType = SHIP_SPAWN_SINGLE, x = 2041, z = -354, y = -1242, patrolType = SHIP_AI_SINGLE_PATROL_ROTATION, minRespawn = 300, maxRespawn = 420, minSpawnDistance = 30, maxSpawnDistance = 50, totalSpawns = 3,
 			patrolsToAssign = 5, fixedPatrolPoints = {"mining_route_1_00", "mining_route_1_01", "mining_route_1_02", "mining_route_1_03", "mining_route_1_04", "mining_route_1_05", "mining_route_1_06", "mining_route_1_07", "mining_route_1_08", "mining_route_1_09"},
 			shipSpawns = {"freighterheavy_mining", "freighterlight_mining", "freightermedium_mining"}
 		},

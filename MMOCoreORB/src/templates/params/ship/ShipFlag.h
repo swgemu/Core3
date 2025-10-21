@@ -18,8 +18,9 @@ public:
 		WAVE_ATTACK					= 0x000040,
 		DISABLED_INVULNERABLE		= 0x000080,
 		ATTACKABLE_SPACE_STATION	= 0x000100,
-		TEST 						= 0x000200,
-		LASTAIMASK 					= 0x000400, // keep this updated so we can loop through the masks
+		SINGLE_PATROL_ROTATION		= 0x000200,
+		TEST 						= 0x000400,
+		LASTAIMASK 					= 0x000800, // keep this updated so we can loop through the masks
 	};
 };
 

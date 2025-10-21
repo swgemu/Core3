@@ -60,6 +60,7 @@ ShipAgentTemplateManager::ShipAgentTemplateManager() : Logger("ShipAgentTemplate
 	lua->setGlobalInt("WAVE_ATTACK",				ShipFlag::WAVE_ATTACK);
 	lua->setGlobalInt("DISABLED_INVULNERABLE",		ShipFlag::DISABLED_INVULNERABLE);
 	lua->setGlobalInt("ATTACKABLE_SPACE_STATION",	ShipFlag::ATTACKABLE_SPACE_STATION);
+	lua->setGlobalInt("SINGLE_PATROL_ROTATION",		ShipFlag::SINGLE_PATROL_ROTATION);
 	lua->setGlobalInt("TEST",						ShipFlag::TEST);
 
 	loadLuaConfig();

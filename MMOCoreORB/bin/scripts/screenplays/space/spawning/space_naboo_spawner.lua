@@ -14,7 +14,7 @@ SpaceNabooSpawner = SpaceSpawnerScreenPlay:new {
 			patrolsToAssign = 5, fixedPatrolPoints = {"rogue_droid_boss_00", "rogue_droid_boss_01", "rogue_droid_boss_02", "rogue_droid_boss_03", "rogue_droid_boss_04", "rogue_droid_boss_05", "rogue_droid_boss_06", "rogue_droid_boss_07", "rogue_droid_boss_08", "rogue_droid_boss_09", "rogue_droid_boss_10", "rogue_droid_boss_11", "rogue_droid_boss_12", "rogue_droid_boss_13", "rogue_droid_boss_14", "rogue_droid_boss_15", "rogue_droid_boss_16", "rogue_droid_boss_17", "rogue_droid_boss_18", "rogue_droid_boss_19", "rogue_droid_boss_20", "rogue_droid_boss_21", "rogue_droid_boss_22", "rogue_droid_boss_23", "rogue_droid_boss_24", "rogue_droid_boss_25", "rogue_droid_boss_26", "rogue_droid_boss_27", "rogue_droid_boss_28", "rogue_droid_boss_29", "rogue_droid_boss_30", "rogue_droid_boss_31", "rogue_droid_boss_32", "rogue_droid_boss_33", "rogue_droid_boss_34", "rogue_droid_boss_35", "rogue_droid_boss_36", "rogue_droid_boss_37", "rogue_droid_boss_38", "rogue_droid_boss_39", "rogue_droid_boss_40", "rogue_droid_boss_41", "rogue_droid_boss_42", "rogue_droid_boss_43", "rogue_droid_boss_44", "rogue_droid_boss_45", "rogue_droid_boss_46", "rogue_droid_boss_47"},
 			shipSpawns = {"rogue_droid_boss"}
 		},
-		{spawnName = "rogue_droid_scrapper_route", spawnType = SHIP_SPAWN_SINGLE, x = -7167, z = 1933, y = -1052, patrolType = SHIP_AI_FIXED_PATROL, minRespawn = 60, maxRespawn = 120, minSpawnDistance = 10, maxSpawnDistance = 30, totalSpawns = 5,
+		{spawnName = "rogue_droid_scrapper_route", spawnType = SHIP_SPAWN_SINGLE, x = -7167, z = 1933, y = -1052, patrolType = SHIP_AI_SINGLE_PATROL_ROTATION, minRespawn = 60, maxRespawn = 120, minSpawnDistance = 10, maxSpawnDistance = 30, totalSpawns = 5,
 			patrolsToAssign = 5, fixedPatrolPoints = {"rogue_droid_scrapper_route_00", "rogue_droid_scrapper_route_01", "rogue_droid_scrapper_route_02", "rogue_droid_scrapper_route_03", "rogue_droid_scrapper_route_04", "rogue_droid_scrapper_route_05", "rogue_droid_scrapper_route_06", "rogue_droid_scrapper_route_07", "rogue_droid_scrapper_route_08", "rogue_droid_scrapper_route_09", "rogue_droid_scrapper_route_10"},
 			shipSpawns = {"rogue_droid_scrapper_tier1", "rogue_droid_scrapper_tier1_naboo"}
 		},
@@ -76,7 +76,7 @@ SpaceNabooSpawner = SpaceSpawnerScreenPlay:new {
 			patrolsToAssign = 5, fixedPatrolPoints = {"naboo_miners_planetoid_00", "naboo_miners_planetoid_01", "naboo_miners_planetoid_02", "naboo_miners_planetoid_03", "naboo_miners_planetoid_04", "naboo_miners_planetoid_05", "naboo_miners_planetoid_06", "naboo_miners_planetoid_07", "naboo_miners_planetoid_08", "naboo_miners_planetoid_09", "naboo_miners_planetoid_10", "naboo_miners_planetoid_11", "naboo_miners_planetoid_12", "naboo_miners_planetoid_13", "naboo_miners_planetoid_14"},
 			shipSpawns = {"naboo_miner_transport"}
 		},
-		{spawnName = "ot_violator_squad", spawnType = SHIP_SPAWN_SQUADRON, x = -2535, z = 5374, y = 3629, patrolType = SHIP_AI_FIXED_PATROL, minRespawn = 259200, maxRespawn = 295200, minSpawnDistance = 10, maxSpawnDistance = 20, totalSpawns = 1,
+		{spawnName = "ot_violator_squad", spawnType = SHIP_SPAWN_SQUADRON, x = -2535, z = 5374, y = 3629, patrolType = SHIP_AI_SINGLE_PATROL_ROTATION, minRespawn = 259200, maxRespawn = 295200, minSpawnDistance = 10, maxSpawnDistance = 20, totalSpawns = 1,
 			patrolsToAssign = 5, fixedPatrolPoints = {"ot_violator_squad_00", "ot_violator_squad_01", "ot_violator_squad_02", "ot_violator_squad_03", "ot_violator_squad_04", "ot_violator_squad_05", "ot_violator_squad_06", "ot_violator_squad_07", "ot_violator_squad_08", "ot_violator_squad_09", "ot_violator_squad_10", "ot_violator_squad_11", "ot_violator_squad_12", "ot_violator_squad_13", "ot_violator_squad_14", "ot_violator_squad_15", "ot_violator_squad_16", "ot_violator_squad_17", "ot_violator_squad_18", "ot_violator_squad_19", "ot_violator_squad_20", "ot_violator_squad_21", "ot_violator_squad_22"},
 			shipSpawns = {"squad_naboo_boss"}
 		},
@@ -92,7 +92,7 @@ SpaceNabooSpawner = SpaceSpawnerScreenPlay:new {
 		{spawnName = "imperial_generic_1", spawnType = SHIP_SPAWN_SINGLE, x = 1036, z = -506, y = -1295, patrolType = SHIP_AI_RANDOM_PATROL, minRespawn = 60, maxRespawn = 120, minSpawnDistance = 8, maxSpawnDistance = 64, minPatrol = 55, maxPatrol = 380, totalSpawns = 3,
 			shipSpawns = {"imp_tie_bomber_tier1", "imp_tie_bomber_tier1_naboo", "imp_tie_fighter_tier1", "imp_tie_fighter_tier1", "imp_tie_fighter_tier1", "imp_tie_fighter_tier1", "imp_tie_fighter_tier1", "imp_tie_fighter_tier1", "imp_tie_fighter_tier1_naboo"}
 		},
-		{spawnName = "black_sun_route_1", spawnType = SHIP_SPAWN_SINGLE, x = -21, z = -289, y = -960, patrolType = SHIP_AI_FIXED_PATROL, minRespawn = 60, maxRespawn = 120, minSpawnDistance = 8, maxSpawnDistance = 32, totalSpawns = 3,
+		{spawnName = "black_sun_route_1", spawnType = SHIP_SPAWN_SINGLE, x = -21, z = -289, y = -960, patrolType = SHIP_AI_SINGLE_PATROL_ROTATION, minRespawn = 60, maxRespawn = 120, minSpawnDistance = 8, maxSpawnDistance = 32, totalSpawns = 3,
 			patrolsToAssign = 5, fixedPatrolPoints = {"black_sun_route_1_00", "black_sun_route_1_01", "black_sun_route_1_02", "black_sun_route_1_03"},
 			shipSpawns = {"blacksun_ace_s04_tier1", "blacksun_bomber_ace_s04_tier1", "blacksun_fighter_s01_tier1", "blacksun_fighter_s02_tier1", "blacksun_fighter_s02_tier1", "blacksun_fighter_s02_tier1", "blacksun_fighter_s02_tier1"}
 		},
@@ -102,7 +102,7 @@ SpaceNabooSpawner = SpaceSpawnerScreenPlay:new {
 		{spawnName = "hutt_generic_1", spawnType = SHIP_SPAWN_SINGLE, x = -16, z = 942, y = -1260, patrolType = SHIP_AI_RANDOM_PATROL, minRespawn = 60, maxRespawn = 120, minSpawnDistance = 8, maxSpawnDistance = 32, minPatrol = 100, maxPatrol = 400, totalSpawns = 3,
 			shipSpawns = {"hutt_bomber_s01_tier1", "hutt_fighter_s01_tier1", "hutt_fighter_s01_tier1", "hutt_pirate_s02_tier1"}
 		},
-		{spawnName = "rsf_to_station_2", spawnType = SHIP_SPAWN_SINGLE, x = -3125, z = 551, y = -4589, patrolType = SHIP_AI_FIXED_PATROL, minRespawn = 60, maxRespawn = 120, minSpawnDistance = 10, maxSpawnDistance = 50, totalSpawns = 7,
+		{spawnName = "rsf_to_station_2", spawnType = SHIP_SPAWN_SINGLE, x = -3125, z = 551, y = -4589, patrolType = SHIP_AI_SINGLE_PATROL_ROTATION, minRespawn = 60, maxRespawn = 120, minSpawnDistance = 10, maxSpawnDistance = 50, totalSpawns = 7,
 			patrolsToAssign = 5, fixedPatrolPoints = {"rsf_to_station_2_00", "rsf_to_station_2_01", "rsf_to_station_2_02"},
 			shipSpawns = {"rsf_rawl_tier1", "rsf_rawl_tier1_naboo", "rsf_stinger_tier1", "rsf_stinger_tier1_naboo"}
 		},
@@ -217,7 +217,7 @@ SpaceNabooSpawner = SpaceSpawnerScreenPlay:new {
 		{spawnName = "rsf_patrol_4", spawnType = SHIP_SPAWN_SINGLE, x = 1297, z = 4803, y = -4375, patrolType = SHIP_AI_RANDOM_PATROL, minRespawn = 60, maxRespawn = 120, minSpawnDistance = 30, maxSpawnDistance = 50, minPatrol = 70, maxPatrol = 310, totalSpawns = 3,
 			shipSpawns = {"rsf_ace_tier1", "rsf_hunter_tier1"}
 		},
-		{spawnName = "naboo_rori_transport_route", spawnType = SHIP_SPAWN_SINGLE, x = 3211, z = 2687, y = -2756, patrolType = SHIP_AI_FIXED_PATROL, minRespawn = 60, maxRespawn = 120, minSpawnDistance = 50, maxSpawnDistance = 70, totalSpawns = 5,
+		{spawnName = "naboo_rori_transport_route", spawnType = SHIP_SPAWN_SINGLE, x = 3211, z = 2687, y = -2756, patrolType = SHIP_AI_SINGLE_PATROL_ROTATION, minRespawn = 60, maxRespawn = 120, minSpawnDistance = 50, maxSpawnDistance = 70, totalSpawns = 5,
 			patrolsToAssign = 5, fixedPatrolPoints = {"naboo_rori_transport_route_00", "naboo_rori_transport_route_01", "naboo_rori_transport_route_02", "naboo_rori_transport_route_03", "naboo_rori_transport_route_04", "naboo_rori_transport_route_05", "naboo_rori_transport_route_06", "naboo_rori_transport_route_07", "naboo_rori_transport_route_08", "naboo_rori_transport_route_09", "naboo_rori_transport_route_10", "naboo_rori_transport_route_11", "naboo_rori_transport_route_12", "naboo_rori_transport_route_13", "naboo_rori_transport_route_14", "naboo_rori_transport_route_15", "naboo_rori_transport_route_16"},
 			shipSpawns = {"freighterheavy_tier3_story", "freighterheavy_tier3_story", "freighterheavy_tier3_story", "freighterlight_tier1", "freightermedium_tier1", "rsf_ace_tier1", "rsf_ace_tier1", "rsf_ace_tier1", "rsf_ace_tier1", "rsf_ace_tier1", "rsf_defender", "rsf_fighter"}
 		},
@@ -242,7 +242,7 @@ SpaceNabooSpawner = SpaceSpawnerScreenPlay:new {
 			patrolsToAssign = 5, fixedPatrolPoints = {"tradefed_patrol_1_00", "tradefed_patrol_1_01", "tradefed_patrol_1_02", "tradefed_patrol_1_03", "tradefed_patrol_1_04", "tradefed_patrol_1_05"},
 			shipSpawns = {"trade_fed_fighter", "trade_fed_bomber"}
 		},
-		{spawnName = "federation_poi_patrol", spawnType = SHIP_SPAWN_SINGLE, x = 2171, z = -5573, y = -4644, patrolType = SHIP_AI_FIXED_PATROL, minRespawn = 60, maxRespawn = 120, minSpawnDistance = 10, maxSpawnDistance = 20, totalSpawns = 5,
+		{spawnName = "federation_poi_patrol", spawnType = SHIP_SPAWN_SINGLE, x = 2171, z = -5573, y = -4644, patrolType = SHIP_AI_SINGLE_PATROL_ROTATION, minRespawn = 60, maxRespawn = 120, minSpawnDistance = 10, maxSpawnDistance = 20, totalSpawns = 5,
 			patrolsToAssign = 5, fixedPatrolPoints = {"federation_poi_patrol_00", "federation_poi_patrol_01", "federation_poi_patrol_02", "federation_poi_patrol_03", "federation_poi_patrol_04", "federation_poi_patrol_05", "federation_poi_patrol_06", "federation_poi_patrol_07", "federation_poi_patrol_08", "federation_poi_patrol_09", "federation_poi_patrol_10", "federation_poi_patrol_11"},
 			shipSpawns = {"trade_fed_fighter", "trade_fed_bomber"}
 		},
@@ -268,11 +268,11 @@ SpaceNabooSpawner = SpaceSpawnerScreenPlay:new {
 		{spawnName = "rebel_cadet_2", spawnType = SHIP_SPAWN_SINGLE, x = 4480, z = -4132, y = -6180, patrolType = SHIP_AI_RANDOM_PATROL, minRespawn = 60, maxRespawn = 120, minSpawnDistance = 8, maxSpawnDistance = 64, minPatrol = 50, maxPatrol = 380, totalSpawns = 3,
 			shipSpawns = {"reb_xwing_cadet_tier1", "reb_xwing_cadet_tier1", "reb_xwing_cadet_tier1"}
 		},
-		{spawnName = "rsf_station_patrol_1", spawnType = SHIP_SPAWN_SINGLE, x = 6928, z = -4258, y = -320, patrolType = SHIP_AI_FIXED_PATROL, minRespawn = 60, maxRespawn = 120, minSpawnDistance = 10, maxSpawnDistance = 50, totalSpawns = 7,
+		{spawnName = "rsf_station_patrol_1", spawnType = SHIP_SPAWN_SINGLE, x = 6928, z = -4258, y = -320, patrolType = SHIP_AI_SINGLE_PATROL_ROTATION, minRespawn = 60, maxRespawn = 120, minSpawnDistance = 10, maxSpawnDistance = 50, totalSpawns = 7,
 			patrolsToAssign = 5, fixedPatrolPoints = {"rsf_station_patrol_1_00", "rsf_station_patrol_1_01", "rsf_station_patrol_1_02", "rsf_station_patrol_1_03", "rsf_station_patrol_1_04", "rsf_station_patrol_1_05"},
 			shipSpawns = {"rsf_rawl_tier1", "rsf_stinger_tier1"}
 		},
-		{spawnName = "freighters_station_1", spawnType = SHIP_SPAWN_SINGLE, x = 7423, z = -4059, y = -443, patrolType = SHIP_AI_FIXED_PATROL, minRespawn = 300, maxRespawn = 420, minSpawnDistance = 10, maxSpawnDistance = 50, totalSpawns = 3,
+		{spawnName = "freighters_station_1", spawnType = SHIP_SPAWN_SINGLE, x = 7423, z = -4059, y = -443, patrolType = SHIP_AI_SINGLE_PATROL_ROTATION, minRespawn = 300, maxRespawn = 420, minSpawnDistance = 10, maxSpawnDistance = 50, totalSpawns = 3,
 			patrolsToAssign = 5, fixedPatrolPoints = {"freighters_station_1_00", "freighters_station_1_01", "freighters_station_1_02", "freighters_station_1_03", "freighters_station_1_04"},
 			shipSpawns = {"freighterheavy_tier3_story", "freighterheavy_tier3_story", "freighterheavy_tier1", "freighterlight_tier1", "freighterlight_tier1"}
 		},
@@ -347,11 +347,11 @@ SpaceNabooSpawner = SpaceSpawnerScreenPlay:new {
 			patrolsToAssign = 5, fixedPatrolPoints = {"imperial_squad_naboo_4_00", "imperial_squad_naboo_4_01", "imperial_squad_naboo_4_02", "imperial_squad_naboo_4_03", "imperial_squad_naboo_4_04", "imperial_squad_naboo_4_05"},
 			shipSpawns = {"squad_imperial_naboo_4"}
 		},
-		{spawnName = "civ_route_stations", spawnType = SHIP_SPAWN_SINGLE, x = -3102, z = 1794, y = 3032, patrolType = SHIP_AI_FIXED_PATROL, minRespawn = 300, maxRespawn = 420, minSpawnDistance = 10, maxSpawnDistance = 40, totalSpawns = 5,
+		{spawnName = "civ_route_stations", spawnType = SHIP_SPAWN_SINGLE, x = -3102, z = 1794, y = 3032, patrolType = SHIP_AI_SINGLE_PATROL_ROTATION, minRespawn = 300, maxRespawn = 420, minSpawnDistance = 10, maxSpawnDistance = 40, totalSpawns = 5,
 			patrolsToAssign = 5, fixedPatrolPoints = {"civ_route_stations_00", "civ_route_stations_01", "civ_route_stations_02", "civ_route_stations_03", "civ_route_stations_04", "civ_route_stations_05", "civ_route_stations_06", "civ_route_stations_07", "civ_route_stations_08", "civ_route_stations_09", "civ_route_stations_10", "civ_route_stations_11", "civ_route_stations_12", "civ_route_stations_13", "civ_route_stations_14", "civ_route_stations_15", "civ_route_stations_16", "civ_route_stations_17", "civ_route_stations_18", "civ_route_stations_19", "civ_route_stations_20", "civ_route_stations_21", "civ_route_stations_22", "civ_route_stations_23", "civ_route_stations_24", "civ_route_stations_25", "civ_route_stations_26", "civ_route_stations_27", "civ_route_stations_28", "civ_route_stations_29", "civ_route_stations_30", "civ_route_stations_31", "civ_route_stations_32", "civ_route_stations_33", "civ_route_stations_34", "civ_route_stations_35", "civ_route_stations_36", "civ_route_stations_37", "civ_route_stations_38", "civ_route_stations_39", "civ_route_stations_40"},
 			shipSpawns = {"civspeeder_naboo", "civspeeder_naboo", "freighterlight_smuggler", "freighterheavy_tier3_story", "freighterheavy_tier3_story", "freighterheavy_tier3_story"}
 		},
-		{spawnName = "commerce_route_1", spawnType = SHIP_SPAWN_SINGLE, x = -688, z = 776, y = -393, patrolType = SHIP_AI_FIXED_PATROL, minRespawn = 300, maxRespawn = 420, minSpawnDistance = 8, maxSpawnDistance = 64, totalSpawns = 3,
+		{spawnName = "commerce_route_1", spawnType = SHIP_SPAWN_SINGLE, x = -688, z = 776, y = -393, patrolType = SHIP_AI_SINGLE_PATROL_ROTATION, minRespawn = 300, maxRespawn = 420, minSpawnDistance = 8, maxSpawnDistance = 64, totalSpawns = 3,
 			patrolsToAssign = 5, fixedPatrolPoints = {"commerce_route_1_00", "commerce_route_1_01", "commerce_route_1_02", "commerce_route_1_03", "commerce_route_1_04"},
 			shipSpawns = {"freightermedium_tier1", "freighterheavy_tier3_story", "freighterheavy_tier3_story", "freighterheavy_tier3_story", "freighterlight_tier1", "imp_freighterlight_tier1", "freightermedium_tier1", "imp_freightermedium_tier1", "freighterlight_tier1", "freighterlight_tier1", "freightermedium_tier1"}
 		},
