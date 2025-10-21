@@ -18,11 +18,11 @@ SpaceEndorSpawner = SpaceSpawnerScreenPlay:new {
 		{spawnName = "artisan_peacekeeper_1", spawnType = SHIP_SPAWN_SINGLE, x = -6914, z = -6495, y = 214, patrolType = SHIP_AI_RANDOM_PATROL, minRespawn = 180, maxRespawn = 300, minSpawnDistance = 20, maxSpawnDistance = 40, minPatrol = 80, maxPatrol = 300, totalSpawns = 3,
 			shipSpawns = {"endor_artisan_peacekeeper_tier4", "endor_artisan_peacekeeper_tier4_endor"}
 		},
-		{spawnName = "artisan_to_trader_1", spawnType = SHIP_SPAWN_SINGLE, x = -6986, z = -6675, y = 271, patrolType = SHIP_AI_FIXED_PATROL, minRespawn = 180, maxRespawn = 300, minSpawnDistance = 20, maxSpawnDistance = 40, totalSpawns = 3,
+		{spawnName = "artisan_to_trader_1", spawnType = SHIP_SPAWN_SINGLE, x = -6986, z = -6675, y = 271, patrolType = SHIP_AI_SINGLE_PATROL_ROTATION, minRespawn = 180, maxRespawn = 300, minSpawnDistance = 20, maxSpawnDistance = 40, totalSpawns = 3,
 			patrolsToAssign = 5, fixedPatrolPoints = {"artisan_to_trader_1_00", "artisan_to_trader_1_01", "artisan_to_trader_1_02", "artisan_to_trader_1_03"},
 			shipSpawns = {"endor_artisan_diplomat_boss", "endor_artisan_diplomat_tier4", "endor_artisan_diplomat_tier4", "endor_artisan_diplomat_tier4", "endor_artisan_diplomat_tier4_endor", "endor_artisan_diplomat_tier4_endor", "endor_artisan_diplomat_tier4_endor", "endor_artisan_diplomat_tier4_endor", "endor_artisan_diplomat_tier4_endor"}
 		},
-		{spawnName = "artisan_to_station_1", spawnType = SHIP_SPAWN_SINGLE, x = -7035, z = -6614, y = 495, patrolType = SHIP_AI_FIXED_PATROL, minRespawn = 300, maxRespawn = 420, minSpawnDistance = 20, maxSpawnDistance = 40, totalSpawns = 3,
+		{spawnName = "artisan_to_station_1", spawnType = SHIP_SPAWN_SINGLE, x = -7035, z = -6614, y = 495, patrolType = SHIP_AI_SINGLE_PATROL_ROTATION, minRespawn = 300, maxRespawn = 420, minSpawnDistance = 20, maxSpawnDistance = 40, totalSpawns = 3,
 			patrolsToAssign = 5, fixedPatrolPoints = {"artisan_to_station_1_00", "artisan_to_station_1_01", "artisan_to_station_1_02", "artisan_to_station_1_03", "artisan_to_station_1_04", "artisan_to_station_1_05"},
 			shipSpawns = {"endor_artisan_freighter_tier4", "endor_artisan_freighter_tier4_endor", "freighterheavy_tier3_story", "freighterheavy_tier3_story"}
 		},
@@ -35,14 +35,14 @@ SpaceEndorSpawner = SpaceSpawnerScreenPlay:new {
 		{spawnName = "imperial_secret_station_guard_1", spawnType = SHIP_SPAWN_SQUADRON, x = 6109, z = -5905, y = 6350, patrolType = SHIP_AI_RANDOM_PATROL, minRespawn = 180, maxRespawn = 300, minSpawnDistance = 10, maxSpawnDistance = 100, minPatrol = 300, maxPatrol = 600, totalSpawns = 2,
 			shipSpawns = {"squad_tie_mix_ace"}
 		},
-		{spawnName = "imperial_death_squad", spawnType = SHIP_SPAWN_SQUADRON, x = 5957, z = -6209, y = 6618, patrolType = SHIP_AI_FIXED_PATROL, minRespawn = 3600, maxRespawn = 7200, minSpawnDistance = 20, maxSpawnDistance = 40, totalSpawns = 1,
+		{spawnName = "imperial_death_squad", spawnType = SHIP_SPAWN_SQUADRON, x = 5957, z = -6209, y = 6618, patrolType = SHIP_AI_SINGLE_PATROL_ROTATION, minRespawn = 3600, maxRespawn = 7200, minSpawnDistance = 20, maxSpawnDistance = 40, totalSpawns = 1,
 			patrolsToAssign = 5, fixedPatrolPoints = {"imperial_death_squad_00", "imperial_death_squad_01", "imperial_death_squad_02", "imperial_death_squad_03", "imperial_death_squad_04", "imperial_death_squad_05", "imperial_death_squad_06", "imperial_death_squad_07", "imperial_death_squad_08", "imperial_death_squad_09", "imperial_death_squad_10", "imperial_death_squad_11", "imperial_death_squad_12", "imperial_death_squad_13", "imperial_death_squad_14", "imperial_death_squad_15", "imperial_death_squad_16", "imperial_death_squad_17", "imperial_death_squad_18", "imperial_death_squad_19", "imperial_death_squad_20", "imperial_death_squad_21", "imperial_death_squad_22", "imperial_death_squad_23"},
 			shipSpawns = {"squad_imperial_fleet"}
 		},
 		{spawnName = "droid_guards_route_1", spawnType = SHIP_SPAWN_SINGLE, x = -5354, z = 1575, y = -1107, patrolType = SHIP_AI_RANDOM_PATROL, minRespawn = 180, maxRespawn = 300, minSpawnDistance = 20, maxSpawnDistance = 40, minPatrol = 80, maxPatrol = 360, totalSpawns = 3,
 			shipSpawns = {"junk_droid_fighter"}
 		},
-		{spawnName = "droid_engineer_1", spawnType = SHIP_SPAWN_SINGLE, x = -4619, z = 2631, y = -2037, patrolType = SHIP_AI_FIXED_PATROL, minRespawn = 180, maxRespawn = 300, minSpawnDistance = 20, maxSpawnDistance = 40, totalSpawns = 4,
+		{spawnName = "droid_engineer_1", spawnType = SHIP_SPAWN_SINGLE, x = -4619, z = 2631, y = -2037, patrolType = SHIP_AI_SINGLE_PATROL_ROTATION, minRespawn = 180, maxRespawn = 300, minSpawnDistance = 20, maxSpawnDistance = 40, totalSpawns = 4,
 			patrolsToAssign = 5, fixedPatrolPoints = {"droid_engineer_1_00", "droid_engineer_1_01", "droid_engineer_1_02", "droid_engineer_1_03", "droid_engineer_1_04", "droid_engineer_1_05"},
 			shipSpawns = {"junk_droid_engineer"}
 		},
@@ -87,7 +87,7 @@ SpaceEndorSpawner = SpaceSpawnerScreenPlay:new {
 			patrolsToAssign = 5, fixedPatrolPoints = {"spice_pirate_astroid_route_1_00", "spice_pirate_astroid_route_1_01", "spice_pirate_astroid_route_1_02", "spice_pirate_astroid_route_1_03", "spice_pirate_astroid_route_1_04", "spice_pirate_astroid_route_1_05", "spice_pirate_astroid_route_1_06", "spice_pirate_astroid_route_1_07", "spice_pirate_astroid_route_1_08", "spice_pirate_astroid_route_1_09", "spice_pirate_astroid_route_1_10", "spice_pirate_astroid_route_1_11", "spice_pirate_astroid_route_1_12", "spice_pirate_astroid_route_1_13", "spice_pirate_astroid_route_1_14", "spice_pirate_astroid_route_1_15", "spice_pirate_astroid_route_1_16"},
 			shipSpawns = {"spice_pirate_fighter_tier4", "spice_pirate_transport_tier4", "spice_pirate_boss", "spice_pirate_fighter_tier4", "spice_pirate_fighter_tier4", "spice_pirate_fighter_tier4", "spice_pirate_fighter_tier4", "spice_pirate_fighter_tier4", "spice_pirate_transport_tier4", "spice_pirate_transport_tier4", "spice_pirate_transport_tier4", "spice_pirate_transport_tier4"}
 		},
-		{spawnName = "spice_to_generator_1", spawnType = SHIP_SPAWN_SINGLE, x = 6356, z = -7061, y = 2, patrolType = SHIP_AI_FIXED_PATROL, minRespawn = 300, maxRespawn = 420, minSpawnDistance = 40, maxSpawnDistance = 80, totalSpawns = 5,
+		{spawnName = "spice_to_generator_1", spawnType = SHIP_SPAWN_SINGLE, x = 6356, z = -7061, y = 2, patrolType = SHIP_AI_SINGLE_PATROL_ROTATION, minRespawn = 300, maxRespawn = 420, minSpawnDistance = 40, maxSpawnDistance = 80, totalSpawns = 5,
 			patrolsToAssign = 5, fixedPatrolPoints = {"spice_to_generator_1_00", "spice_to_generator_1_01", "spice_to_generator_1_02", "spice_to_generator_1_03", "spice_to_generator_1_04", "spice_to_generator_1_05", "spice_to_generator_1_06", "spice_to_generator_1_07", "spice_to_generator_1_08", "spice_to_generator_1_09"},
 			shipSpawns = {"spice_pirate_spy_tier4", "spice_pirate_transport_tier4"}
 		},
@@ -97,7 +97,7 @@ SpaceEndorSpawner = SpaceSpawnerScreenPlay:new {
 		{spawnName = "scientist_lookout_1", spawnType = SHIP_SPAWN_SINGLE, x = 538, z = -1108, y = 4026, patrolType = SHIP_AI_RANDOM_PATROL, minRespawn = 180, maxRespawn = 300, minSpawnDistance = 40, maxSpawnDistance = 80, minPatrol = 90, maxPatrol = 300, totalSpawns = 4,
 			shipSpawns = {"nebula_scientist_bodyguard_tier4", "nebula_scientist_lookout_tier4"}
 		},
-		{spawnName = "scientist_operation_4", spawnType = SHIP_SPAWN_SINGLE, x = 1275, z = -2910, y = 6983, patrolType = SHIP_AI_FIXED_PATROL, minRespawn = 180, maxRespawn = 300, minSpawnDistance = 40, maxSpawnDistance = 80, totalSpawns = 3,
+		{spawnName = "scientist_operation_4", spawnType = SHIP_SPAWN_SINGLE, x = 1275, z = -2910, y = 6983, patrolType = SHIP_AI_SINGLE_PATROL_ROTATION, minRespawn = 180, maxRespawn = 300, minSpawnDistance = 40, maxSpawnDistance = 80, totalSpawns = 3,
 			patrolsToAssign = 5, fixedPatrolPoints = {"scientist_operation_4_00", "scientist_operation_4_01", "scientist_operation_4_02", "scientist_operation_4_03"},
 			shipSpawns = {"nebula_scientist_analyst_tier4", "nebula_scientist_researcher_tier4", "nebula_scientist_bodyguard_boss", "nebula_scientist_bodyguard_tier4", "nebula_scientist_bodyguard_tier4", "nebula_scientist_bodyguard_tier4", "nebula_scientist_researcher_tier4", "nebula_scientist_researcher_tier4", "nebula_scientist_researcher_tier4", "nebula_scientist_researcher_tier4", "nebula_scientist_researcher_tier4", "nebula_scientist_analyst_tier4", "nebula_scientist_analyst_tier4", "nebula_scientist_analyst_tier4", "nebula_scientist_analyst_tier4", "nebula_scientist_analyst_tier4", "nebula_scientist_analyst_tier4"}
 		},
@@ -143,28 +143,28 @@ SpaceEndorSpawner = SpaceSpawnerScreenPlay:new {
 			patrolsToAssign = 5, fixedPatrolPoints = {"imperial_to_scientist_route_00", "imperial_to_scientist_route_01", "imperial_to_scientist_route_02", "imperial_to_scientist_route_03", "imperial_to_scientist_route_04", "imperial_to_scientist_route_05", "imperial_to_scientist_route_06", "imperial_to_scientist_route_07", "imperial_to_scientist_route_08", "imperial_to_scientist_route_09", "imperial_to_scientist_route_10", "imperial_to_scientist_route_11", "imperial_to_scientist_route_12"},
 			shipSpawns = {"imperial_scout", "imp_tie_aggressor_tier4", "imp_tie_oppressor_tier4"}
 		},
-		{spawnName = "imperial_base_to_generator", spawnType = SHIP_SPAWN_SINGLE, x = -4779, z = -1875, y = -5083, patrolType = SHIP_AI_FIXED_PATROL, minRespawn = 600, maxRespawn = 720, minSpawnDistance = 20, maxSpawnDistance = 40, totalSpawns = 5,
+		{spawnName = "imperial_base_to_generator", spawnType = SHIP_SPAWN_SINGLE, x = -4779, z = -1875, y = -5083, patrolType = SHIP_AI_SINGLE_PATROL_ROTATION, minRespawn = 600, maxRespawn = 720, minSpawnDistance = 20, maxSpawnDistance = 40, totalSpawns = 5,
 			patrolsToAssign = 5, fixedPatrolPoints = {"imperial_base_to_generator_00", "imperial_base_to_generator_01", "imperial_base_to_generator_02", "imperial_base_to_generator_03", "imperial_base_to_generator_04", "imperial_base_to_generator_05", "imperial_base_to_generator_06", "imperial_base_to_generator_07", "imperial_base_to_generator_08", "imperial_base_to_generator_09", "imperial_base_to_generator_10", "imperial_base_to_generator_11", "imperial_base_to_generator_12", "imperial_base_to_generator_13", "imperial_base_to_generator_14", "imperial_base_to_generator_15", "imperial_base_to_generator_16", "imperial_base_to_generator_17", "imperial_base_to_generator_18", "imperial_base_to_generator_19", "imperial_base_to_generator_20", "imperial_base_to_generator_21", "imperial_base_to_generator_22", "imperial_base_to_generator_23"},
 			shipSpawns = {"imp_decimator_tier4", "imp_imperial_gunboat_tier4", "imp_tie_advanced_tier4", "imp_tie_aggressor_tier4", "imp_tie_bomber_tier4", "imp_tie_fighter_tier4", "imp_tie_interceptor_tier4", "imp_tie_oppressor_tier4"}
 		},
 		{spawnName = "imperial_base_defense_4", spawnType = SHIP_SPAWN_SINGLE, x = -7532, z = -2631, y = -4793, patrolType = SHIP_AI_RANDOM_PATROL, minRespawn = 180, maxRespawn = 300, minSpawnDistance = 10, maxSpawnDistance = 30, minPatrol = 70, maxPatrol = 340, totalSpawns = 6,
 			shipSpawns = {"imp_tie_fighter_tier4", "imp_tie_interceptor_tier4", "imp_tie_oppressor_tier4", "imp_tie_bomber_tier4", "imp_tie_advanced_tier4", "imp_tie_aggressor_tier4"}
 		},
-		{spawnName = "trade_to_station_1", spawnType = SHIP_SPAWN_SINGLE, x = -2520, z = -5051, y = 280, patrolType = SHIP_AI_FIXED_PATROL, minRespawn = 300, maxRespawn = 420, minSpawnDistance = 20, maxSpawnDistance = 40, totalSpawns = 3,
+		{spawnName = "trade_to_station_1", spawnType = SHIP_SPAWN_SINGLE, x = -2520, z = -5051, y = 280, patrolType = SHIP_AI_SINGLE_PATROL_ROTATION, minRespawn = 300, maxRespawn = 420, minSpawnDistance = 20, maxSpawnDistance = 40, totalSpawns = 3,
 			patrolsToAssign = 5, fixedPatrolPoints = {"trade_to_station_1_00", "trade_to_station_1_01", "trade_to_station_1_02", "trade_to_station_1_03", "trade_to_station_1_04", "trade_to_station_1_05", "trade_to_station_1_06", "trade_to_station_1_07"},
 			shipSpawns = {"endor_trader_freighter"}
 		},
 		{spawnName = "tatooine_imperial_tier3_destroy1_spawner", spawnType = SHIP_SPAWN_SINGLE, x = -3250, z = -4500, y = -1200, patrolType = SHIP_AI_RANDOM_PATROL, minRespawn = 180, maxRespawn = 300, minSpawnDistance = 10, maxSpawnDistance = 60, minPatrol = 100, maxPatrol = 300, totalSpawns = 6,
 			shipSpawns = {"reb_awing_tier4", "reb_bwing_tier4", "rebel_raider_bomber_tier3", "rebel_raider_captain_tier3", "reb_xwing_tier4", "reb_ywing_tier4", "reb_z95_tier4"}
 		},
-		{spawnName = "trader_mercenaries_1", spawnType = SHIP_SPAWN_SINGLE, x = -2927, z = -5157, y = 411, patrolType = SHIP_AI_FIXED_PATROL, minRespawn = 180, maxRespawn = 300, minSpawnDistance = 20, maxSpawnDistance = 40, totalSpawns = 4,
+		{spawnName = "trader_mercenaries_1", spawnType = SHIP_SPAWN_SINGLE, x = -2927, z = -5157, y = 411, patrolType = SHIP_AI_SINGLE_PATROL_ROTATION, minRespawn = 180, maxRespawn = 300, minSpawnDistance = 20, maxSpawnDistance = 40, totalSpawns = 4,
 			patrolsToAssign = 5, fixedPatrolPoints = {"trader_mercenaries_1_00", "trader_mercenaries_1_01", "trader_mercenaries_1_02", "trader_mercenaries_1_03", "trader_mercenaries_1_04", "trader_mercenaries_1_05", "trader_mercenaries_1_06", "trader_mercenaries_1_07", "trader_mercenaries_1_08", "trader_mercenaries_1_09", "trader_mercenaries_1_10", "trader_mercenaries_1_11", "trader_mercenaries_1_12", "trader_mercenaries_1_13"},
 			shipSpawns = {"endor_trader_mercenary", "endor_trader_bodyguard_boss", "endor_trader_bodyguard_hire", "endor_trader_bodyguard_hire", "endor_trader_bodyguard_hire", "endor_trader_bodyguard_hire", "endor_trader_mercenary", "endor_trader_mercenary", "endor_trader_mercenary", "endor_trader_mercenary", "endor_trader_bodyguard_hire"}
 		},
 		{spawnName = "trader_guards_2", spawnType = SHIP_SPAWN_SINGLE, x = -2933, z = -5459, y = 590, patrolType = SHIP_AI_RANDOM_PATROL, minRespawn = 180, maxRespawn = 300, minSpawnDistance = 20, maxSpawnDistance = 40, minPatrol = 80, maxPatrol = 300, totalSpawns = 3,
 			shipSpawns = {"endor_trader_bodyguard_hire"}
 		},
-		{spawnName = "trader_to_artisan_1", spawnType = SHIP_SPAWN_SINGLE, x = -3032, z = -5318, y = 717, patrolType = SHIP_AI_FIXED_PATROL, minRespawn = 180, maxRespawn = 300, minSpawnDistance = 20, maxSpawnDistance = 40, totalSpawns = 3,
+		{spawnName = "trader_to_artisan_1", spawnType = SHIP_SPAWN_SINGLE, x = -3032, z = -5318, y = 717, patrolType = SHIP_AI_SINGLE_PATROL_ROTATION, minRespawn = 180, maxRespawn = 300, minSpawnDistance = 20, maxSpawnDistance = 40, totalSpawns = 3,
 			patrolsToAssign = 5, fixedPatrolPoints = {"trader_to_artisan_1_00", "trader_to_artisan_1_01", "trader_to_artisan_1_02", "trader_to_artisan_1_03", "trader_to_artisan_1_04"},
 			shipSpawns = {"endor_trader_collector"}
 		},
@@ -282,7 +282,7 @@ SpaceEndorSpawner = SpaceSpawnerScreenPlay:new {
 		{spawnName = "spice_defenders_1", spawnType = SHIP_SPAWN_SINGLE, x = 2084, z = -5135, y = 481, patrolType = SHIP_AI_RANDOM_PATROL, minRespawn = 180, maxRespawn = 300, minSpawnDistance = 20, maxSpawnDistance = 40, minPatrol = 100, maxPatrol = 300, totalSpawns = 4,
 			shipSpawns = {"spice_pirate_fighter_tier4"}
 		},
-		{spawnName = "generator_to_spice_base_1", spawnType = SHIP_SPAWN_SINGLE, x = 2067, z = -5512, y = 462, patrolType = SHIP_AI_FIXED_PATROL, minRespawn = 300, maxRespawn = 420, minSpawnDistance = 20, maxSpawnDistance = 40, totalSpawns = 3,
+		{spawnName = "generator_to_spice_base_1", spawnType = SHIP_SPAWN_SINGLE, x = 2067, z = -5512, y = 462, patrolType = SHIP_AI_SINGLE_PATROL_ROTATION, minRespawn = 300, maxRespawn = 420, minSpawnDistance = 20, maxSpawnDistance = 40, totalSpawns = 3,
 			patrolsToAssign = 5, fixedPatrolPoints = {"generator_to_spice_base_1_00", "generator_to_spice_base_1_01", "generator_to_spice_base_1_02", "generator_to_spice_base_1_03", "generator_to_spice_base_1_04"},
 			shipSpawns = {"spice_pirate_transport_tier4"}
 		},
@@ -292,7 +292,7 @@ SpaceEndorSpawner = SpaceSpawnerScreenPlay:new {
 		{spawnName = "scientist_lookout_3", spawnType = SHIP_SPAWN_SINGLE, x = 635, z = 2847, y = 601, patrolType = SHIP_AI_RANDOM_PATROL, minRespawn = 180, maxRespawn = 300, minSpawnDistance = 40, maxSpawnDistance = 80, minPatrol = 90, maxPatrol = 300, totalSpawns = 4,
 			shipSpawns = {"nebula_scientist_bodyguard_tier4", "nebula_scientist_lookout_tier4"}
 		},
-		{spawnName = "corellia_privateer_tier3_inspect_spawner", spawnType = SHIP_SPAWN_SINGLE, x = 1317, z = -455, y = -2876, patrolType = SHIP_AI_FIXED_PATROL, minRespawn = 10, maxRespawn = 20, minSpawnDistance = 10, maxSpawnDistance = 100, totalSpawns = 3,
+		{spawnName = "corellia_privateer_tier3_inspect_spawner", spawnType = SHIP_SPAWN_SINGLE, x = 1317, z = -455, y = -2876, patrolType = SHIP_AI_SINGLE_PATROL_ROTATION, minRespawn = 10, maxRespawn = 20, minSpawnDistance = 10, maxSpawnDistance = 100, totalSpawns = 3,
 			patrolsToAssign = 5, fixedPatrolPoints = {"corellia_privateer_tier3_inspect_spawner_00", "corellia_privateer_tier3_inspect_spawner_01"},
 			shipSpawns = {"evil_raider_tyrant_tier3"}
 		},
@@ -305,7 +305,7 @@ SpaceEndorSpawner = SpaceSpawnerScreenPlay:new {
 		{spawnName = "imperial_generator_defense_1", spawnType = SHIP_SPAWN_SINGLE, x = -791, z = -2202, y = -96, patrolType = SHIP_AI_RANDOM_PATROL, minRespawn = 180, maxRespawn = 300, minSpawnDistance = 10, maxSpawnDistance = 30, minPatrol = 50, maxPatrol = 300, totalSpawns = 4,
 			shipSpawns = {"imp_tie_advanced_tier4", "imp_tie_aggressor_tier4", "imp_tie_oppressor_tier4"}
 		},
-		{spawnName = "scientist_operation_2", spawnType = SHIP_SPAWN_SINGLE, x = 563, z = 989, y = 1179, patrolType = SHIP_AI_FIXED_PATROL, minRespawn = 180, maxRespawn = 300, minSpawnDistance = 40, maxSpawnDistance = 80, totalSpawns = 3,
+		{spawnName = "scientist_operation_2", spawnType = SHIP_SPAWN_SINGLE, x = 563, z = 989, y = 1179, patrolType = SHIP_AI_SINGLE_PATROL_ROTATION, minRespawn = 180, maxRespawn = 300, minSpawnDistance = 40, maxSpawnDistance = 80, totalSpawns = 3,
 			patrolsToAssign = 5, fixedPatrolPoints = {"scientist_operation_2_00", "scientist_operation_2_01", "scientist_operation_2_02", "scientist_operation_2_03"},
 			shipSpawns = {"nebula_scientist_analyst_tier4", "nebula_scientist_researcher_tier4"}
 		},

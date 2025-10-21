@@ -820,6 +820,7 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	luaEngine->setGlobalInt("SHIP_AI_WAVE_ATTACK", ShipFlag::WAVE_ATTACK);
 	luaEngine->setGlobalInt("SHIP_AI_DISABLED_INVULNERABLE", ShipFlag::DISABLED_INVULNERABLE);
 	luaEngine->setGlobalInt("SHIP_AI_ATTACKABLE_SPACE_STATION", ShipFlag::ATTACKABLE_SPACE_STATION);
+	luaEngine->setGlobalInt("SHIP_AI_SINGLE_PATROL_ROTATION", ShipFlag::SINGLE_PATROL_ROTATION);
 
 	// Squad Formations
 	luaEngine->setGlobalInt("SHIP_SQUADRON_FORM_NONE", ShipSquadronFormation::Type::NONE);

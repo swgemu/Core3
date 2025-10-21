@@ -36,6 +36,7 @@ Luna<LuaShipAiAgent>::RegType LuaShipAiAgent::Register[] = {
 	{ "setFixedPatrol", &LuaShipAiAgent::setFixedPatrol },
 	{ "setEscort", &LuaShipAiAgent::setEscort },
 	{ "setWaveAttack", &LuaShipAiAgent::setWaveAttack },
+	{ "setSinglePatrolRotation", &LuaShipAiAgent::setSinglePatrolRotation },
 	{ "setDespawnOnNoPlayerInRange", &LuaShipAiAgent::setDespawnOnNoPlayerInRange },
 	{ "setMinimumGuardPatrol", &LuaShipAiAgent::setMinimumGuardPatrol },
 	{ "setMaximumGuardPatrol", &LuaShipAiAgent::setMaximumGuardPatrol },
@@ -145,6 +146,15 @@ int LuaShipAiAgent::setWaveAttack(lua_State* L) {
 	Locker locker(realObject);
 
 	realObject->addShipFlag(ShipFlag::WAVE_ATTACK);
+	realObject->setShipAiTemplate();
+
+	return 0;
+}
+
+int LuaShipAiAgent::setSinglePatrolRotation(lua_State* L) {
+	Locker locker(realObject);
+
+	realObject->addShipFlag(ShipFlag::SINGLE_PATROL_ROTATION);
 	realObject->setShipAiTemplate();
 
 	return 0;

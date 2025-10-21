@@ -12,11 +12,11 @@ SpaceDathomirSpawner = SpaceSpawnerScreenPlay:new {
 		{spawnName = "bh_target_escort_elite_01", spawnType = SHIP_SPAWN_SQUADRON, x = -1835, z = -33, y = 3647, patrolType = SHIP_AI_RANDOM_PATROL, minRespawn = 300, maxRespawn = 420, minSpawnDistance = 4, maxSpawnDistance = 24, minPatrol = 320, maxPatrol = 320, totalSpawns = 2,
 			shipSpawns = {"squad_dath_deathmarked_mercenary"}
 		},
-		{spawnName = "warlord_ship_to_imp", spawnType = SHIP_SPAWN_SINGLE, x = -2700, z = -6358, y = 1958, patrolType = SHIP_AI_FIXED_PATROL, minRespawn = 420, maxRespawn = 620, minSpawnDistance = 10, maxSpawnDistance = 20, totalSpawns = 6,
+		{spawnName = "warlord_ship_to_imp", spawnType = SHIP_SPAWN_SINGLE, x = -2700, z = -6358, y = 1958, patrolType = SHIP_AI_SINGLE_PATROL_ROTATION, minRespawn = 420, maxRespawn = 620, minSpawnDistance = 10, maxSpawnDistance = 20, totalSpawns = 6,
 			patrolsToAssign = 5, fixedPatrolPoints = {"warlord_ship_to_imp_00", "warlord_ship_to_imp_01", "warlord_ship_to_imp_02", "warlord_ship_to_imp_03", "warlord_ship_to_imp_04", "warlord_ship_to_imp_05", "warlord_ship_to_imp_06", "warlord_ship_to_imp_07", "warlord_ship_to_imp_08", "warlord_ship_to_imp_09", "warlord_ship_to_imp_10", "warlord_ship_to_imp_11", "warlord_ship_to_imp_12", "warlord_ship_to_imp_13", "warlord_ship_to_imp_14", "warlord_ship_to_imp_15", "warlord_ship_to_imp_16", "warlord_ship_to_imp_17", "warlord_ship_to_imp_18", "warlord_ship_to_imp_19", "warlord_ship_to_imp_20", "warlord_ship_to_imp_21", "warlord_ship_to_imp_22", "warlord_ship_to_imp_23", "warlord_ship_to_imp_24", "warlord_ship_to_imp_25", "warlord_ship_to_imp_26", "warlord_ship_to_imp_27", "warlord_ship_to_imp_28", "warlord_ship_to_imp_29", "warlord_ship_to_imp_30", "warlord_ship_to_imp_31", "warlord_ship_to_imp_32"},
 			shipSpawns = {"blacksun_dark_eclipse_tier5", "blacksun_bomber_s03_tier5", "blacksun_aggressor_tier5", "blacksun_ace_s04_tier5", "blacksun_fighter_s01_tier5"}
 		},
-		{spawnName = "rebel_attackers_are_cool", spawnType = SHIP_SPAWN_SQUADRON, x = -2448, z = -1160, y = 6868, patrolType = SHIP_AI_FIXED_PATROL, minRespawn = 3600, maxRespawn = 8200, minSpawnDistance = 5, maxSpawnDistance = 10, totalSpawns = 1,
+		{spawnName = "rebel_attackers_are_cool", spawnType = SHIP_SPAWN_SQUADRON, x = -2448, z = -1160, y = 6868, patrolType = SHIP_AI_SINGLE_PATROL_ROTATION, minRespawn = 3600, maxRespawn = 8200, minSpawnDistance = 5, maxSpawnDistance = 10, totalSpawns = 1,
 			patrolsToAssign = 5, fixedPatrolPoints = {"rebel_attackers_are_cool_00", "rebel_attackers_are_cool_01", "rebel_attackers_are_cool_02", "rebel_attackers_are_cool_03", "rebel_attackers_are_cool_04", "rebel_attackers_are_cool_05", "rebel_attackers_are_cool_06"},
 			shipSpawns = {"squad_corvette_blockade_run"}
 		},
@@ -50,7 +50,7 @@ SpaceDathomirSpawner = SpaceSpawnerScreenPlay:new {
 		{spawnName = "imperial_generator_defense_5", spawnType = SHIP_SPAWN_SINGLE, x = 4350, z = -5175, y = -7118, patrolType = SHIP_AI_RANDOM_PATROL, minRespawn = 180, maxRespawn = 300, minSpawnDistance = 5, maxSpawnDistance = 10, minPatrol = 90, maxPatrol = 300, totalSpawns = 6,
 			shipSpawns = {"tieaggressor_ace_tier4", "tieadvanced_inquisitor_tier4", "tieadvanced_ace_tier4", "tieoppressor_ace_tier4"}
 		},
-		{spawnName = "imperial_uber_fleet_1", spawnType = SHIP_SPAWN_SQUADRON, x = 5874, z = -5465, y = -7280, patrolType = SHIP_AI_FIXED_PATROL, minRespawn = 7200, maxRespawn = 8200, minSpawnDistance = 5, maxSpawnDistance = 10, totalSpawns = 1,
+		{spawnName = "imperial_uber_fleet_1", spawnType = SHIP_SPAWN_SQUADRON, x = 5874, z = -5465, y = -7280, patrolType = SHIP_AI_SINGLE_PATROL_ROTATION, minRespawn = 7200, maxRespawn = 8200, minSpawnDistance = 5, maxSpawnDistance = 10, totalSpawns = 1,
 			patrolsToAssign = 5, fixedPatrolPoints = {"imperial_uber_fleet_1_00", "imperial_uber_fleet_1_01", "imperial_uber_fleet_1_02", "imperial_uber_fleet_1_03", "imperial_uber_fleet_1_04", "imperial_uber_fleet_1_05"},
 			shipSpawns = {"squad_imperial_fleet"}
 		},
@@ -63,7 +63,7 @@ SpaceDathomirSpawner = SpaceSpawnerScreenPlay:new {
 		{spawnName = "imperial_secret_station_guard_2", spawnType = SHIP_SPAWN_SQUADRON, x = 6338, z = 6281, y = -6527, patrolType = SHIP_AI_RANDOM_PATROL, minRespawn = 180, maxRespawn = 300, minSpawnDistance = 10, maxSpawnDistance = 100, minPatrol = 100, maxPatrol = 300, totalSpawns = 1,
 			shipSpawns = {"squad_tie_mix_ace"}
 		},
-		{spawnName = "imp_gunboat_1", spawnType = SHIP_SPAWN_SINGLE, x = 6086, z = 6130, y = -6737, patrolType = SHIP_AI_FIXED_PATROL, minRespawn = 300, maxRespawn = 420, minSpawnDistance = 5, maxSpawnDistance = 10, totalSpawns = 1,
+		{spawnName = "imp_gunboat_1", spawnType = SHIP_SPAWN_SINGLE, x = 6086, z = 6130, y = -6737, patrolType = SHIP_AI_SINGLE_PATROL_ROTATION, minRespawn = 300, maxRespawn = 420, minSpawnDistance = 5, maxSpawnDistance = 10, totalSpawns = 1,
 			patrolsToAssign = 5, fixedPatrolPoints = {"imp_gunboat_1_00", "imp_gunboat_1_01", "imp_gunboat_1_02", "imp_gunboat_1_03", "imp_gunboat_1_04", "imp_gunboat_1_05", "imp_gunboat_1_06", "imp_gunboat_1_07", "imp_gunboat_1_08", "imp_gunboat_1_09", "imp_gunboat_1_10", "imp_gunboat_1_11", "imp_gunboat_1_12", "imp_gunboat_1_13", "imp_gunboat_1_14", "imp_gunboat_1_15", "imp_gunboat_1_16", "imp_gunboat_1_17", "imp_gunboat_1_18", "imp_gunboat_1_19", "imp_gunboat_1_20", "imp_gunboat_1_21", "imp_gunboat_1_22", "imp_gunboat_1_23", "imp_gunboat_1_24"},
 			shipSpawns = {"imp_imperial_gunboat_tier4"}
 		},
@@ -77,11 +77,11 @@ SpaceDathomirSpawner = SpaceSpawnerScreenPlay:new {
 			patrolsToAssign = 5, fixedPatrolPoints = {"imperial_fleet_to_imp_00", "imperial_fleet_to_imp_01", "imperial_fleet_to_imp_02", "imperial_fleet_to_imp_03", "imperial_fleet_to_imp_04", "imperial_fleet_to_imp_05", "imperial_fleet_to_imp_06", "imperial_fleet_to_imp_07", "imperial_fleet_to_imp_08", "imperial_fleet_to_imp_09", "imperial_fleet_to_imp_10", "imperial_fleet_to_imp_11", "imperial_fleet_to_imp_12", "imperial_fleet_to_imp_13", "imperial_fleet_to_imp_14", "imperial_fleet_to_imp_15", "imperial_fleet_to_imp_16", "imperial_fleet_to_imp_17", "imperial_fleet_to_imp_18", "imperial_fleet_to_imp_19", "imperial_fleet_to_imp_20", "imperial_fleet_to_imp_21"},
 			shipSpawns = {"squad_imperial_fleet"}
 		},
-		{spawnName = "tatooine_rebel_tier3_2_suspect_1", spawnType = SHIP_SPAWN_SINGLE, x = 5585, z = 4809, y = -2403, patrolType = SHIP_AI_FIXED_PATROL, minRespawn = 30, maxRespawn = 120, minSpawnDistance = 1, maxSpawnDistance = 100, totalSpawns = 6,
+		{spawnName = "tatooine_rebel_tier3_2_suspect_1", spawnType = SHIP_SPAWN_SINGLE, x = 5585, z = 4809, y = -2403, patrolType = SHIP_AI_SINGLE_PATROL_ROTATION, minRespawn = 30, maxRespawn = 120, minSpawnDistance = 1, maxSpawnDistance = 100, totalSpawns = 6,
 			patrolsToAssign = 5, fixedPatrolPoints = {"tatooine_rebel_tier3_2_suspect_1_00", "tatooine_rebel_tier3_2_suspect_1_01", "tatooine_rebel_tier3_2_suspect_1_02", "tatooine_rebel_tier3_2_suspect_1_03"},
 			shipSpawns = {"tatooine_tier3_2_inspect_awing", "tatooine_tier3_2_inspect_bwing", "tatooine_tier3_2_inspect_xwing", "tatooine_tier3_2_inspect_ywing", "reb_awing_tier4", "reb_bwing_tier4"}
 		},
-		{spawnName = "tatooine_rebel_tier3_2_suspect_2", spawnType = SHIP_SPAWN_SINGLE, x = 4719, z = 5053, y = -3111, patrolType = SHIP_AI_FIXED_PATROL, minRespawn = 30, maxRespawn = 120, minSpawnDistance = 1, maxSpawnDistance = 100, totalSpawns = 6,
+		{spawnName = "tatooine_rebel_tier3_2_suspect_2", spawnType = SHIP_SPAWN_SINGLE, x = 4719, z = 5053, y = -3111, patrolType = SHIP_AI_SINGLE_PATROL_ROTATION, minRespawn = 30, maxRespawn = 120, minSpawnDistance = 1, maxSpawnDistance = 100, totalSpawns = 6,
 			patrolsToAssign = 5, fixedPatrolPoints = {"tatooine_rebel_tier3_2_suspect_2_00", "tatooine_rebel_tier3_2_suspect_2_01", "tatooine_rebel_tier3_2_suspect_2_02", "tatooine_rebel_tier3_2_suspect_2_03", "tatooine_rebel_tier3_2_suspect_2_04", "tatooine_rebel_tier3_2_suspect_2_05"},
 			shipSpawns = {"reb_awing_tier4", "reb_bwing_tier4", "tatooine_tier3_2_inspect_awing", "tatooine_tier3_2_inspect_bwing", "tatooine_tier3_2_inspect_xwing", "tatooine_tier3_2_inspect_ywing", "tatooine_tier3_2_inspect_ywing"}
 		},
@@ -133,7 +133,7 @@ SpaceDathomirSpawner = SpaceSpawnerScreenPlay:new {
 			patrolsToAssign = 5, fixedPatrolPoints = {"imperial_squad_patrol_1_00", "imperial_squad_patrol_1_01", "imperial_squad_patrol_1_02", "imperial_squad_patrol_1_03", "imperial_squad_patrol_1_04", "imperial_squad_patrol_1_05", "imperial_squad_patrol_1_06"},
 			shipSpawns = {"squad_tie_oppressor_ace", "imp_decimator_boss"}
 		},
-		{spawnName = "engineers_to_base_1", spawnType = SHIP_SPAWN_SINGLE, x = 40, z = -687, y = -5, patrolType = SHIP_AI_FIXED_PATROL, minRespawn = 180, maxRespawn = 300, minSpawnDistance = 10, maxSpawnDistance = 20, totalSpawns = 4,
+		{spawnName = "engineers_to_base_1", spawnType = SHIP_SPAWN_SINGLE, x = 40, z = -687, y = -5, patrolType = SHIP_AI_SINGLE_PATROL_ROTATION, minRespawn = 180, maxRespawn = 300, minSpawnDistance = 10, maxSpawnDistance = 20, totalSpawns = 4,
 			patrolsToAssign = 5, fixedPatrolPoints = {"engineers_to_base_1_00", "engineers_to_base_1_01", "engineers_to_base_1_02", "engineers_to_base_1_03", "engineers_to_base_1_04"},
 			shipSpawns = {"imperial_engineer", "tieinterceptor_ace_tier4"}
 		},
@@ -153,7 +153,7 @@ SpaceDathomirSpawner = SpaceSpawnerScreenPlay:new {
 		{spawnName = "station_police_2", spawnType = SHIP_SPAWN_SINGLE, x = -5190, z = 2048, y = -1933, patrolType = SHIP_AI_RANDOM_PATROL, minRespawn = 180, maxRespawn = 300, minSpawnDistance = 5, maxSpawnDistance = 10, minPatrol = 90, maxPatrol = 300, totalSpawns = 3,
 			shipSpawns = {"corsec_fighter_tier4"}
 		},
-		{spawnName = "station_traders_to_generator", spawnType = SHIP_SPAWN_SINGLE, x = -7168, z = 2679, y = -3628, patrolType = SHIP_AI_FIXED_PATROL, minRespawn = 300, maxRespawn = 420, minSpawnDistance = 5, maxSpawnDistance = 10, totalSpawns = 2,
+		{spawnName = "station_traders_to_generator", spawnType = SHIP_SPAWN_SINGLE, x = -7168, z = 2679, y = -3628, patrolType = SHIP_AI_SINGLE_PATROL_ROTATION, minRespawn = 300, maxRespawn = 420, minSpawnDistance = 5, maxSpawnDistance = 10, totalSpawns = 2,
 			patrolsToAssign = 5, fixedPatrolPoints = {"station_traders_to_generator_00", "station_traders_to_generator_01"},
 			shipSpawns = {"freighterheavy", "freighterlight_mining", "freighterheavy_tier3_story", "freighterheavy_tier3_story"}
 		},
@@ -177,7 +177,7 @@ SpaceDathomirSpawner = SpaceSpawnerScreenPlay:new {
 		{spawnName = "nebula_assassin_guardians_1", spawnType = SHIP_SPAWN_SINGLE, x = -3149, z = -2583, y = -5926, patrolType = SHIP_AI_RANDOM_PATROL, minRespawn = 300, maxRespawn = 420, minSpawnDistance = 5, maxSpawnDistance = 10, minPatrol = 90, maxPatrol = 200, totalSpawns = 3,
 			shipSpawns = {"nebula_assassin_bomber_tier5", "nebula_assassin_bounty_hunter_tier5"}
 		},
-		{spawnName = "hutt_smuggler_route_1", spawnType = SHIP_SPAWN_SINGLE, x = -3378, z = 3317, y = -3140, patrolType = SHIP_AI_FIXED_PATROL, minRespawn = 180, maxRespawn = 300, minSpawnDistance = 10, maxSpawnDistance = 100, totalSpawns = 2,
+		{spawnName = "hutt_smuggler_route_1", spawnType = SHIP_SPAWN_SINGLE, x = -3378, z = 3317, y = -3140, patrolType = SHIP_AI_SINGLE_PATROL_ROTATION, minRespawn = 180, maxRespawn = 300, minSpawnDistance = 10, maxSpawnDistance = 100, totalSpawns = 2,
 			patrolsToAssign = 5, fixedPatrolPoints = {"hutt_smuggler_route_1_00", "hutt_smuggler_route_1_01", "hutt_smuggler_route_1_02", "hutt_smuggler_route_1_03", "hutt_smuggler_route_1_04", "hutt_smuggler_route_1_05"},
 			shipSpawns = {"hutt_bomber_s02_tier4", "hutt_fighter_s02_tier4", "hutt_pirate_s02_tier4"}
 		},

@@ -5,6 +5,8 @@ SpaceSpawnerScreenPlay = ScreenPlay:new {
 
 	spaceZone = "",
 
+	SPAWN_NO_DELAY = false,
+
 	SERVER_STARTUP_MIN = 120, -- Delay in seconds for spawns to start during server startup
 	SERVER_STARTUP_MAX = 300,
 
@@ -271,7 +273,13 @@ function SpaceSpawnerScreenPlay:start()
 		return
 	end
 
-	createEvent(getRandomNumber(self.SERVER_STARTUP_MIN, self.SERVER_STARTUP_MAX) * 1000, self.screenplayName, "populateSpawns", nil, "")
+	local randomDelay = getRandomNumber(self.SERVER_STARTUP_MIN, self.SERVER_STARTUP_MAX)
+
+	if (self.SPAWN_NO_DELAY) then
+		randomDelay = 20
+	end
+
+	createEvent(randomDelay * 1000, self.screenplayName, "populateSpawns", nil, "")
 end
 
 function SpaceSpawnerScreenPlay:populateSpawns()
@@ -298,7 +306,7 @@ function SpaceSpawnerScreenPlay:populateSpawns()
 			for j = 1, totalSpawns, 1 do
 				--print(self.screenplayName .. " Spawn #" .. i .. " -- Spawn Name: " .. spawnTable.spawnName .. " Total Spawns: " .. totalSpawns .. " Spawn Type: " .. spawnType .. " Spawn Time in (s): " .. (randSpawn* j))
 
-				--createEvent((randSpawn * j) * 1000, self.screenplayName, "spawnShipSquadron", nil, tostring(i))
+				createEvent((randSpawn * j) * 1000, self.screenplayName, "spawnShipSquadron", nil, tostring(i))
 			end
 		else
 			-- Spawn the single ships
@@ -352,13 +360,20 @@ function SpaceSpawnerScreenPlay:spawnShipAgent(pNil, indexString)
 
 	createObserver(SHIPDESTROYED, self.screenplayName, "staticShipDestroyed", pShipAgent)
 
-	if (spawnPatrolType == SHIP_AI_FIXED_PATROL) then
+	if (spawnPatrolType == SHIP_AI_FIXED_PATROL or spawnPatrolType == SHIP_AI_SINGLE_PATROL_ROTATION) then
 		ShipAiAgent(pShipAgent):setFixedPatrol()
 
 		local totalToAdd = spawnTable.patrolsToAssign
 		local patrolPoints = spawnTable.fixedPatrolPoints
 
 		self:assignFixedPatrolpoints(pShipAgent, totalToAdd, patrolPoints)
+
+		-- These patrol ships will have an end desination to despawn or have a task (dock etc)
+		if (spawnPatrolType == SHIP_AI_SINGLE_PATROL_ROTATION) then
+			createObserver(DESTINATIONREACHED, self.screenplayName, "shipDestinationReached", pShipAgent)
+
+			ShipAiAgent(pShipAgent):setSinglePatrolRotation()
+		end
 	elseif (spawnPatrolType == SHIP_AI_GUARD_PATROL) then
 		ShipAiAgent(pShipAgent):setMinimumGuardPatrol(spawnTable.minPatrol)
 		ShipAiAgent(pShipAgent):setMaximumGuardPatrol(spawnTable.maxPatrol)
@@ -424,14 +439,21 @@ function SpaceSpawnerScreenPlay:spawnShipSquadron(pNil, indexString)
 			ShipAiAgent(pLeadShip):createSquadron(squadFormation)
 
 			-- Set the patrol types
-			if (spawnPatrolType == SHIP_AI_FIXED_PATROL) then
+			if (patrolType == SHIP_AI_FIXED_PATROL or patrolType == SHIP_AI_SINGLE_PATROL_ROTATION) then
 				ShipAiAgent(pLeadShip):setFixedPatrol()
 
 				local totalToAdd = spawnTable.patrolsToAssign
 				local patrolPoints = spawnTable.fixedPatrolPoints
 
 				self:assignFixedPatrolpoints(pLeadShip, totalToAdd, patrolPoints)
-			elseif (spawnPatrolType == SHIP_AI_GUARD_PATROL) then
+
+				-- These patrol ships will have an end desination to despawn or have a task (dock etc)
+				if (patrolType == SHIP_AI_SINGLE_PATROL_ROTATION) then
+					createObserver(DESTINATIONREACHED, self.screenplayName, "squadronDestinationReached", pLeadShip)
+
+					ShipAiAgent(pLeadShip):setSinglePatrolRotation()
+				end
+			elseif (patrolType == SHIP_AI_GUARD_PATROL) then
 				ShipAiAgent(pLeadShip):setMinimumGuardPatrol(spawnTable.minPatrol)
 				ShipAiAgent(pLeadShip):setMaximumGuardPatrol(spawnTable.maxPatrol)
 
@@ -480,14 +502,21 @@ function SpaceSpawnerScreenPlay:spawnShipSquadron(pNil, indexString)
 			pLeadShip = pShipAgent
 
 			-- Set the patrol types
-			if (spawnPatrolType == SHIP_AI_FIXED_PATROL) then
+			if (patrolType == SHIP_AI_FIXED_PATROL) then
 				ShipAiAgent(pShipAgent):setFixedPatrol()
 
 				local totalToAdd = spawnTable.patrolsToAssign
 				local patrolPoints = spawnTable.fixedPatrolPoints
 
 				self:assignFixedPatrolpoints(pShipAgent, totalToAdd, patrolPoints)
-			elseif (spawnPatrolType == SHIP_AI_GUARD_PATROL) then
+
+				-- These patrol ships will have an end desination to despawn or have a task (dock etc)
+				if (patrolType == SHIP_AI_SINGLE_PATROL_ROTATION) then
+					createObserver(DESTINATIONREACHED, self.screenplayName, "squadronDestinationReached", pShipAgent)
+
+					ShipAiAgent(pLeadShip):setSinglePatrolRotation()
+				end
+			elseif (patrolType == SHIP_AI_GUARD_PATROL) then
 				ShipAiAgent(pShipAgent):setMinimumGuardPatrol(spawnTable.minPatrol)
 				ShipAiAgent(pShipAgent):setMaximumGuardPatrol(spawnTable.maxPatrol)
 
@@ -565,6 +594,9 @@ function SpaceSpawnerScreenPlay:staticShipDestroyed(pShipAgent, pKillerShip)
 	deleteData(agentID .. ":SpawnerIndex:")
 	deleteStringData(agentID .. ":SpawnerName:")
 
+	-- For the ships with destination reached observers, make sure they are removed
+	dropObserver(DESTINATIONREACHED, self.screenplayName, "shipDestinationReached", pShipAgent)
+
 	local spawnTable = self.shipSpawns[tableNum]
 	local minRespawn = spawnTable.minRespawn
 	local maxRespawn = spawnTable.maxRespawn
@@ -588,6 +620,9 @@ function SpaceSpawnerScreenPlay:squadronShipDestroyed(pShipAgent, pKillerShip, s
 	deleteData(agentID .. ":SpawnerIndex:")
 	deleteStringData(agentID .. ":SpawnerName:")
 
+	-- For the ships with destination reached observers, make sure they are removed
+	dropObserver(DESTINATIONREACHED, self.screenplayName, "squadronDestinationReached", pShipAgent)
+
 	-- Do not trigger respawn until the destroyed ship is the last in the squadron
 	if (squadronSize > 1) then
 		return 1
@@ -601,6 +636,72 @@ function SpaceSpawnerScreenPlay:squadronShipDestroyed(pShipAgent, pKillerShip, s
 	--print(self.screenplayName .. " -- squadronShipDestroyed triggered squadron respawn for: " .. spawnTable.spawnName)
 
 	createEvent(randSpawn * 1000, self.screenplayName, "spawnShipSquadron", nil, tostring(tableNum))
+
+	return 1
+end
+
+function SpaceSpawnerScreenPlay:shipDestinationReached(pShipAgent)
+	if (pShipAgent == nil) then
+		return 1
+	end
+
+	local agentID = SceneObject(pShipAgent):getObjectID()
+	local tableNum = readData(agentID .. ":SpawnerIndex:")
+
+	-- Delete the data so it does not leak
+	deleteData(agentID .. ":SpawnerIndex:")
+	deleteStringData(agentID .. ":SpawnerName:")
+
+	-- Make sure the destoyed observers are removed
+	dropObserver(SHIPDESTROYED, self.screenplayName, "staticShipDestroyed", pShipAgent)
+
+	--print("shipDestinationReached called... Agent ID: " .. agentID .. " Spawn Table Index: " .. tableNum)
+
+	-- Make ship fly away
+	ShipObject(pShipAgent):setHyperspacing(true);
+
+	local hyperspaceLocation = ShipObject(pShipAgent):getSpawnPointInFrontOfShip(1000, 5000)
+
+	SceneObject(pShipAgent):setPosition(hyperspaceLocation[1], hyperspaceLocation[2], hyperspaceLocation[3])
+
+	-- Remove the attack ship
+	createEvent(1000, "SpaceHelpers", "delayedDestroyShipAgent", pShipAgent, "")
+
+	local spawnTable = self.shipSpawns[tableNum]
+	local minRespawn = spawnTable.minRespawn
+	local maxRespawn = spawnTable.maxRespawn
+	local randSpawn = getRandomNumber(minRespawn, maxRespawn)
+
+	--print(self.screenplayName .. " -- shipDestinationReached triggered squadron respawn for: " .. spawnTable.spawnName .. " in " .. randSpawn .. " seconds.")
+
+	createEvent(randSpawn * 1000, self.screenplayName, "spawnShipAgent", nil, tostring(tableNum))
+
+	return 1
+end
+
+function SpaceSpawnerScreenPlay:squadronDestinationReached(pLeadShipAgent)
+	if (pLeadShipAgent == nil) then
+		return 1
+	end
+
+	--[[
+	local agentID = SceneObject(pLeadShipAgent):getObjectID()
+	local tableNum = readData(agentID .. ":SpawnerIndex:")
+
+	print("squadronDestinationReached called... Agent ID: " .. agentID .. " Spawn Table Index: " .. tableNum)
+
+	-- Delete the data so it does not leak
+	deleteData(agentID .. ":SpawnerIndex:")
+	deleteStringData(agentID .. ":SpawnerName:")
+
+	local squadronShips = ShipAiAgent(pLeadShipAgent):getSquadronMembers()
+
+	for i = 1, #squadronship, 1 do
+
+		-- Make sure the destoyed observers are removed
+
+	end
+	]]
 
 	return 1
 end

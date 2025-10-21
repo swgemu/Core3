@@ -29,7 +29,7 @@ SpaceYavin4Spawner = SpaceSpawnerScreenPlay:new {
 		{spawnName = "rebel_defenders_4", spawnType = SHIP_SPAWN_SINGLE, x = -6331, z = 3387, y = 787, patrolType = SHIP_AI_RANDOM_PATROL, minRespawn = 60, maxRespawn = 120, minSpawnDistance = 20, maxSpawnDistance = 40, minPatrol = 80, maxPatrol = 360, totalSpawns = 6,
 			shipSpawns = {"rebel_raider_fast_attack_tier3", "reb_z95_tier3", "reb_ywing_tier3", "reb_bwing_tier3", "reb_awing_tier3", "reb_xwing_tier3"}
 		},
-		{spawnName = "nice_mining_path_a", spawnType = SHIP_SPAWN_SINGLE, x = -507, z = -5392, y = -6678, patrolType = SHIP_AI_FIXED_PATROL, minRespawn = 60, maxRespawn = 120, minSpawnDistance = 10, maxSpawnDistance = 30, totalSpawns = 5,
+		{spawnName = "nice_mining_path_a", spawnType = SHIP_SPAWN_SINGLE, x = -507, z = -5392, y = -6678, patrolType = SHIP_AI_SINGLE_PATROL_ROTATION, minRespawn = 60, maxRespawn = 120, minSpawnDistance = 10, maxSpawnDistance = 30, totalSpawns = 5,
 			patrolsToAssign = 5, fixedPatrolPoints = {"nice_mining_path_a_00", "nice_mining_path_a_01", "nice_mining_path_a_02", "nice_mining_path_a_03", "nice_mining_path_a_04"},
 			shipSpawns = {"nebula_scientist_researcher_tier3", "junk_dealer_trader", "junk_dealer_collector"}
 		},
@@ -40,11 +40,11 @@ SpaceYavin4Spawner = SpaceSpawnerScreenPlay:new {
 		{spawnName = "rebel_raider_captain_2", spawnType = SHIP_SPAWN_SINGLE, x = -6200, z = -5408, y = -781, patrolType = SHIP_AI_RANDOM_PATROL, minRespawn = 500, maxRespawn = 1000, minSpawnDistance = 20, maxSpawnDistance = 40, minPatrol = 80, maxPatrol = 160, totalSpawns = 4,
 			shipSpawns = {"rebel_raider_captain_tier3", "reb_z95_tier3", "reb_xwing_tier3", "reb_bwing_tier3", "reb_awing_tier3"}
 		},
-		{spawnName = "corellian_corvette_1", spawnType = SHIP_SPAWN_SQUADRON, x = -6209, z = -5296, y = -525, patrolType = SHIP_AI_FIXED_PATROL, minRespawn = 3600, maxRespawn = 5400, minSpawnDistance = 10, maxSpawnDistance = 20, totalSpawns = 1,
+		{spawnName = "corellian_corvette_1", spawnType = SHIP_SPAWN_SQUADRON, x = -6209, z = -5296, y = -525, patrolType = SHIP_AI_SINGLE_PATROL_ROTATION, minRespawn = 3600, maxRespawn = 5400, minSpawnDistance = 10, maxSpawnDistance = 20, totalSpawns = 1,
 			patrolsToAssign = 5, fixedPatrolPoints = {"corellian_corvette_1_00", "corellian_corvette_1_01", "corellian_corvette_1_02", "corellian_corvette_1_03", "corellian_corvette_1_04", "corellian_corvette_1_05"},
 			shipSpawns = {"squad_rebel_gunboat_tier3"}
 		},
-		{spawnName = "rebel_route_2", spawnType = SHIP_SPAWN_SINGLE, x = -2199, z = -5552, y = -4680, patrolType = SHIP_AI_FIXED_PATROL, minRespawn = 120, maxRespawn = 240, minSpawnDistance = 10, maxSpawnDistance = 15, totalSpawns = 5,
+		{spawnName = "rebel_route_2", spawnType = SHIP_SPAWN_SINGLE, x = -2199, z = -5552, y = -4680, patrolType = SHIP_AI_SINGLE_PATROL_ROTATION, minRespawn = 120, maxRespawn = 240, minSpawnDistance = 10, maxSpawnDistance = 15, totalSpawns = 5,
 			patrolsToAssign = 5, fixedPatrolPoints = {"rebel_route_2_00", "rebel_route_2_01", "rebel_route_2_02", "rebel_route_2_03", "rebel_route_2_04", "rebel_route_2_05", "rebel_route_2_06"},
 			shipSpawns = {"reb_awing_boss", "reb_awing_tier2", "reb_xwing_tier2", "reb_xwing_tier2", "reb_xwing_tier2", "reb_xwing_tier2", "reb_xwing_tier2", "reb_xwing_tier2", "reb_ywing_tier2", "reb_ywing_tier2", "reb_ywing_tier2", "reb_ywing_tier2", "reb_ywing_tier2"}
 		},
@@ -72,7 +72,7 @@ SpaceYavin4Spawner = SpaceSpawnerScreenPlay:new {
 		{spawnName = "tatooine_imperial_tier2_inspect_rebagent", spawnType = SHIP_SPAWN_SINGLE, x = -3200, z = -3000, y = 6000, patrolType = SHIP_AI_RANDOM_PATROL, minRespawn = 60, maxRespawn = 120, minSpawnDistance = 10, maxSpawnDistance = 50, minPatrol = 100, maxPatrol = 500, totalSpawns = 6,
 			shipSpawns = {"reb_xwing_tier2", "rebel_agent_tier3", "reb_xwing_tier3", "reb_ywing_tier3", "reb_z95_tier3", "reb_bwing_tier3", "reb_awing_tier3"}
 		},
-		{spawnName = "imperial_station_lambda_patrol", spawnType = SHIP_SPAWN_SINGLE, x = -3686, z = -5547, y = 4127, patrolType = SHIP_AI_FIXED_PATROL, minRespawn = 60, maxRespawn = 120, minSpawnDistance = 10, maxSpawnDistance = 15, totalSpawns = 3,
+		{spawnName = "imperial_station_lambda_patrol", spawnType = SHIP_SPAWN_SINGLE, x = -3686, z = -5547, y = 4127, patrolType = SHIP_AI_SINGLE_PATROL_ROTATION, minRespawn = 60, maxRespawn = 120, minSpawnDistance = 10, maxSpawnDistance = 15, totalSpawns = 3,
 			patrolsToAssign = 5, fixedPatrolPoints = {"imperial_station_lambda_patrol_00", "imperial_station_lambda_patrol_01", "imperial_station_lambda_patrol_02", "imperial_station_lambda_patrol_03", "imperial_station_lambda_patrol_04", "imperial_station_lambda_patrol_05", "imperial_station_lambda_patrol_06", "imperial_station_lambda_patrol_07", "imperial_station_lambda_patrol_08", "imperial_station_lambda_patrol_09", "imperial_station_lambda_patrol_10", "imperial_station_lambda_patrol_11", "imperial_station_lambda_patrol_12", "imperial_station_lambda_patrol_13"},
 			shipSpawns = {"imp_lambda_shuttle_tier3", "imp_tie_bomber_tier2", "imp_tie_fighter_tier3"}
 		},
@@ -104,7 +104,7 @@ SpaceYavin4Spawner = SpaceSpawnerScreenPlay:new {
 		{spawnName = "rebel_xwing_guard_1", spawnType = SHIP_SPAWN_SINGLE, x = 2945, z = 4201, y = 5113, patrolType = SHIP_AI_GUARD_PATROL, minRespawn = 60, maxRespawn = 120, minSpawnDistance = 10, maxSpawnDistance = 50, minPatrol = 100, maxPatrol = 400, totalSpawns = 6,
 			shipSpawns = {"reb_awing_tier2", "reb_xwing_tier2", "reb_ywing_tier2", "reb_awing_tier3", "reb_bwing_tier3", "reb_xwing_tier3", "reb_ywing_tier3", "reb_z95_tier3"}
 		},
-		{spawnName = "yavin_rebel_2_shuttle", spawnType = SHIP_SPAWN_SINGLE, x = 1405, z = 2111, y = 4328, patrolType = SHIP_AI_FIXED_PATROL, minRespawn = 10, maxRespawn = 60, minSpawnDistance = 30, maxSpawnDistance = 60, totalSpawns = 1,
+		{spawnName = "yavin_rebel_2_shuttle", spawnType = SHIP_SPAWN_SINGLE, x = 1405, z = 2111, y = 4328, patrolType = SHIP_AI_SINGLE_PATROL_ROTATION, minRespawn = 10, maxRespawn = 60, minSpawnDistance = 30, maxSpawnDistance = 60, totalSpawns = 1,
 			patrolsToAssign = 5, fixedPatrolPoints = {"yavin_rebel_2_shuttle_00", "yavin_rebel_2_shuttle_01", "yavin_rebel_2_shuttle_02", "yavin_rebel_2_shuttle_03", "yavin_rebel_2_shuttle_04"},
 			shipSpawns = {"yavin_mission_2_shuttle"}
 		},
@@ -122,15 +122,15 @@ SpaceYavin4Spawner = SpaceSpawnerScreenPlay:new {
 			patrolsToAssign = 5, fixedPatrolPoints = {"imp_gunboat_to_rebel_1_00", "imp_gunboat_to_rebel_1_01", "imp_gunboat_to_rebel_1_02", "imp_gunboat_to_rebel_1_03", "imp_gunboat_to_rebel_1_04", "imp_gunboat_to_rebel_1_05", "imp_gunboat_to_rebel_1_06", "imp_gunboat_to_rebel_1_07", "imp_gunboat_to_rebel_1_08", "imp_gunboat_to_rebel_1_09", "imp_gunboat_to_rebel_1_10", "imp_gunboat_to_rebel_1_11", "imp_gunboat_to_rebel_1_12", "imp_gunboat_to_rebel_1_13", "imp_gunboat_to_rebel_1_14", "imp_gunboat_to_rebel_1_15"},
 			shipSpawns = {"imp_imperial_gunboat_tier2"}
 		},
-		{spawnName = "blockade_run_general_1", spawnType = SHIP_SPAWN_SINGLE, x = -2826, z = 4197, y = 750, patrolType = SHIP_AI_FIXED_PATROL, minRespawn = 300, maxRespawn = 420, minSpawnDistance = 20, maxSpawnDistance = 40, totalSpawns = 3,
+		{spawnName = "blockade_run_general_1", spawnType = SHIP_SPAWN_SINGLE, x = -2826, z = 4197, y = 750, patrolType = SHIP_AI_SINGLE_PATROL_ROTATION, minRespawn = 300, maxRespawn = 420, minSpawnDistance = 20, maxSpawnDistance = 40, totalSpawns = 3,
 			patrolsToAssign = 5, fixedPatrolPoints = {"blockade_run_general_1_00", "blockade_run_general_1_01", "blockade_run_general_1_02", "blockade_run_general_1_03", "blockade_run_general_1_04", "blockade_run_general_1_05", "blockade_run_general_1_06", "blockade_run_general_1_07", "blockade_run_general_1_08", "blockade_run_general_1_09", "blockade_run_general_1_10", "blockade_run_general_1_11", "blockade_run_general_1_12", "blockade_run_general_1_13", "blockade_run_general_1_14", "blockade_run_general_1_15", "blockade_run_general_1_16", "blockade_run_general_1_17", "blockade_run_general_1_18", "blockade_run_general_1_19", "blockade_run_general_1_20", "blockade_run_general_1_21", "blockade_run_general_1_22", "blockade_run_general_1_23", "blockade_run_general_1_24", "blockade_run_general_1_25"},
 			shipSpawns = {"reb_bwing_tier2", "reb_freighterheavy_tier3", "reb_freighterlight_tier3", "reb_freighterlight_tier3", "reb_freightermedium_tier3", "reb_xwing_tier2", "reb_ywing_tier2", "reb_ykl37r_tier2", "reb_z95_tier2", "rebel_smuggler_tier3"}
 		},
-		{spawnName = "smugglers_run_1", spawnType = SHIP_SPAWN_SINGLE, x = 2261, z = 3918, y = -3860, patrolType = SHIP_AI_FIXED_PATROL, minRespawn = 60, maxRespawn = 120, minSpawnDistance = 6, maxSpawnDistance = 10, totalSpawns = 6,
+		{spawnName = "smugglers_run_1", spawnType = SHIP_SPAWN_SINGLE, x = 2261, z = 3918, y = -3860, patrolType = SHIP_AI_SINGLE_PATROL_ROTATION, minRespawn = 60, maxRespawn = 120, minSpawnDistance = 6, maxSpawnDistance = 10, totalSpawns = 6,
 			patrolsToAssign = 5, fixedPatrolPoints = {"smugglers_run_1_00", "smugglers_run_1_01", "smugglers_run_1_02", "smugglers_run_1_03", "smugglers_run_1_04", "smugglers_run_1_05", "smugglers_run_1_06", "smugglers_run_1_07", "smugglers_run_1_08", "smugglers_run_1_09", "smugglers_run_1_10", "smugglers_run_1_11", "smugglers_run_1_12", "smugglers_run_1_13", "smugglers_run_1_14", "smugglers_run_1_15", "smugglers_run_1_16", "smugglers_run_1_17", "smugglers_run_1_18", "smugglers_run_1_19", "smugglers_run_1_20", "smugglers_run_1_21", "smugglers_run_1_22", "smugglers_run_1_23", "smugglers_run_1_24", "smugglers_run_1_25", "smugglers_run_1_26", "smugglers_run_1_27", "smugglers_run_1_28", "smugglers_run_1_29", "smugglers_run_1_30", "smugglers_run_1_31", "smugglers_run_1_32", "smugglers_run_1_33", "smugglers_run_1_34", "smugglers_run_1_35", "smugglers_run_1_36", "smugglers_run_1_37", "smugglers_run_1_38", "smugglers_run_1_39"},
 			shipSpawns = {"blacksun_vehement_tier2", "blacksun_marauder_tier2", "hidden_daggers_nebula_stalker_tier2", "huttfighter_tier3", "hutt_fighter_s01_tier2", "hutt_bomber_s01_tier2", "nym_enforcer_tier2", "nym_gunship_tier2"}
 		},
-		{spawnName = "blockade_run_corvette_1", spawnType = SHIP_SPAWN_SINGLE, x = -2197, z = 5884, y = -3691, patrolType = SHIP_AI_FIXED_PATROL, minRespawn = 7200, maxRespawn = 10800, minSpawnDistance = 30, maxSpawnDistance = 200, totalSpawns = 1,
+		{spawnName = "blockade_run_corvette_1", spawnType = SHIP_SPAWN_SINGLE, x = -2197, z = 5884, y = -3691, patrolType = SHIP_AI_SINGLE_PATROL_ROTATION, minRespawn = 7200, maxRespawn = 10800, minSpawnDistance = 30, maxSpawnDistance = 200, totalSpawns = 1,
 			patrolsToAssign = 5, fixedPatrolPoints = {"blockade_run_corvette_1_00", "blockade_run_corvette_1_01", "blockade_run_corvette_1_02", "blockade_run_corvette_1_03", "blockade_run_corvette_1_04", "blockade_run_corvette_1_05", "blockade_run_corvette_1_06"},
 			shipSpawns = {"reb_xwing_tier3", "reb_ykl37r_tier2", "reb_ywing_tier2"}
 		},
@@ -164,7 +164,7 @@ SpaceYavin4Spawner = SpaceSpawnerScreenPlay:new {
 		{spawnName = "imperial_tie_hyper1_patrol3", spawnType = SHIP_SPAWN_SINGLE, x = 3292, z = -787, y = 5141, patrolType = SHIP_AI_RANDOM_PATROL, minRespawn = 60, maxRespawn = 120, minSpawnDistance = 10, maxSpawnDistance = 50, minPatrol = 100, maxPatrol = 400, totalSpawns = 6,
 			shipSpawns = {"imp_tie_bomber_tier2", "imp_tie_fighter_tier3", "imp_tie_interceptor_tier3", "imp_tie_advanced_tier3", "imp_tie_aggressor_tier3", "imp_tie_oppressor_tier3"}
 		},
-		{spawnName = "yavin4_to_station_1", spawnType = SHIP_SPAWN_SINGLE, x = -4852, z = -6144, y = -5023, patrolType = SHIP_AI_FIXED_PATROL, minRespawn = 400, maxRespawn = 850, minSpawnDistance = 10, maxSpawnDistance = 20, totalSpawns = 2,
+		{spawnName = "yavin4_to_station_1", spawnType = SHIP_SPAWN_SINGLE, x = -4852, z = -6144, y = -5023, patrolType = SHIP_AI_SINGLE_PATROL_ROTATION, minRespawn = 400, maxRespawn = 850, minSpawnDistance = 10, maxSpawnDistance = 20, totalSpawns = 2,
 			patrolsToAssign = 5, fixedPatrolPoints = {"yavin4_to_station_1_00", "yavin4_to_station_1_01", "yavin4_to_station_1_02"},
 			shipSpawns = {"freighterheavy_tier3_story", "freighterheavy_tier3_story", "freighterlight_tier3"}
 		},
@@ -191,7 +191,7 @@ SpaceYavin4Spawner = SpaceSpawnerScreenPlay:new {
 		{spawnName = "rebel_vs_imp_3", spawnType = SHIP_SPAWN_SINGLE, x = -2081, z = 1546, y = 3814, patrolType = SHIP_AI_RANDOM_PATROL, minRespawn = 60, maxRespawn = 120, minSpawnDistance = 10, maxSpawnDistance = 30, minPatrol = 150, maxPatrol = 300, totalSpawns = 6,
 			shipSpawns = {"reb_awing_tier3", "reb_bwing_tier3", "reb_xwing_tier3", "reb_ywing_tier3", "reb_z95_tier3"}
 		},
-		{spawnName = "freighters_2", spawnType = SHIP_SPAWN_SINGLE, x = 240, z = -5299, y = -6160, patrolType = SHIP_AI_FIXED_PATROL, minRespawn = 300, maxRespawn = 420, minSpawnDistance = 10, maxSpawnDistance = 20, totalSpawns = 2,
+		{spawnName = "freighters_2", spawnType = SHIP_SPAWN_SINGLE, x = 240, z = -5299, y = -6160, patrolType = SHIP_AI_SINGLE_PATROL_ROTATION, minRespawn = 300, maxRespawn = 420, minSpawnDistance = 10, maxSpawnDistance = 20, totalSpawns = 2,
 			patrolsToAssign = 5, fixedPatrolPoints = {"freighters_2_00", "freighters_2_01", "freighters_2_02", "freighters_2_03", "freighters_2_04", "freighters_2_05"},
 			shipSpawns = {"freighterheavy_tier3_story", "freighterheavy_tier3_story", "freighterlight_tier3"}
 		},
@@ -206,7 +206,7 @@ SpaceYavin4Spawner = SpaceSpawnerScreenPlay:new {
 			patrolsToAssign = 5, fixedPatrolPoints = {"smuggler_outpost_1_00", "smuggler_outpost_1_01", "smuggler_outpost_1_02", "smuggler_outpost_1_03", "smuggler_outpost_1_04", "smuggler_outpost_1_05", "smuggler_outpost_1_06", "smuggler_outpost_1_07", "smuggler_outpost_1_08"},
 			shipSpawns = {"debris_smuggler_fighter_tier3", "debris_smuggler_boss", "debris_smuggler_fighter_tier3", "debris_smuggler_fighter_tier3", "debris_smuggler_fighter_tier3", "debris_smuggler_fighter_tier3", "debris_smuggler_fighter_tier3", "debris_smuggler_fighter_tier3", "debris_smuggler_fighter_tier3", "debris_smuggler_fighter_tier3", "debris_smuggler_fighter_tier3"}
 		},
-		{spawnName = "smuggler_transport_1", spawnType = SHIP_SPAWN_SINGLE, x = 6096, z = 1635, y = 25, patrolType = SHIP_AI_FIXED_PATROL, minRespawn = 500, maxRespawn = 1000, minSpawnDistance = 10, maxSpawnDistance = 15, totalSpawns = 2,
+		{spawnName = "smuggler_transport_1", spawnType = SHIP_SPAWN_SINGLE, x = 6096, z = 1635, y = 25, patrolType = SHIP_AI_SINGLE_PATROL_ROTATION, minRespawn = 500, maxRespawn = 1000, minSpawnDistance = 10, maxSpawnDistance = 15, totalSpawns = 2,
 			patrolsToAssign = 5, fixedPatrolPoints = {"smuggler_transport_1_00", "smuggler_transport_1_01", "smuggler_transport_1_02"},
 			shipSpawns = {"debris_smuggler_transport_tier3"}
 		},
@@ -277,7 +277,7 @@ SpaceYavin4Spawner = SpaceSpawnerScreenPlay:new {
 		{spawnName = "nice_miners_guard_4", spawnType = SHIP_SPAWN_SINGLE, x = 5985, z = -3830, y = -3580, patrolType = SHIP_AI_RANDOM_PATROL, minRespawn = 60, maxRespawn = 120, minSpawnDistance = 10, maxSpawnDistance = 30, minPatrol = 150, maxPatrol = 300, totalSpawns = 4,
 			shipSpawns = {"mercenary_guard_tier3", "mining_guard_ship_tier3", "nebula_scientist_bodyguard_tier3"}
 		},
-		{spawnName = "nice_miners_1", spawnType = SHIP_SPAWN_SINGLE, x = 5922, z = -6469, y = -6555, patrolType = SHIP_AI_FIXED_PATROL, minRespawn = 60, maxRespawn = 120, minSpawnDistance = 10, maxSpawnDistance = 20, totalSpawns = 6,
+		{spawnName = "nice_miners_1", spawnType = SHIP_SPAWN_SINGLE, x = 5922, z = -6469, y = -6555, patrolType = SHIP_AI_SINGLE_PATROL_ROTATION, minRespawn = 60, maxRespawn = 120, minSpawnDistance = 10, maxSpawnDistance = 20, totalSpawns = 6,
 			patrolsToAssign = 5, fixedPatrolPoints = {"nice_miners_1_00", "nice_miners_1_01", "nice_miners_1_02", "nice_miners_1_03", "nice_miners_1_04", "nice_miners_1_05", "nice_miners_1_06", "nice_miners_1_07", "nice_miners_1_08"},
 			shipSpawns = {"mining_guard_ship_tier3", "nebula_scientist_researcher_tier3"}
 		},

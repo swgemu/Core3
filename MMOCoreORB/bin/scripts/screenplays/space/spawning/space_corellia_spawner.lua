@@ -21,7 +21,7 @@ SpaceCorelliaSpawner = SpaceSpawnerScreenPlay:new {
 			patrolsToAssign = 5, fixedPatrolPoints = {"hutt_fighterleader_spawner_00", "hutt_fighterleader_spawner_01", "hutt_fighterleader_spawner_02", "hutt_fighterleader_spawner_03", "hutt_fighterleader_spawner_04", "hutt_fighterleader_spawner_05"},
 			shipSpawns = {"hutt_mesot_tier3", "hutt_pirate_s01_tier1", "hutt_pirate_s01_tier1", "hutt_pirate_s01_tier1", "hutt_pirate_s01_tier1", "hutt_pirate_s01_tier1", "hutt_pirate_s01_tier1", "hutt_pirate_s01_tier1", "hutt_pirate_s01_tier1", "hutt_pirate_s01_tier1"}
 		},
-		{spawnName = "civtransport_corellia_spawner", spawnType = SHIP_SPAWN_SINGLE, x = 5801, z = -4932, y = -3147, patrolType = SHIP_AI_FIXED_PATROL, minRespawn = 60, maxRespawn = 120, minSpawnDistance = 10, maxSpawnDistance = 15, totalSpawns = 2,
+		{spawnName = "civtransport_corellia_spawner", spawnType = SHIP_SPAWN_SINGLE, x = 5801, z = -4932, y = -3147, patrolType = SHIP_AI_SINGLE_PATROL_ROTATION, minRespawn = 60, maxRespawn = 120, minSpawnDistance = 10, maxSpawnDistance = 15, totalSpawns = 2,
 			patrolsToAssign = 5, fixedPatrolPoints = {"civtransport_corellia_spawner_00", "civtransport_corellia_spawner_01", "civtransport_corellia_spawner_02", "civtransport_corellia_spawner_03", "civtransport_corellia_spawner_04", "civtransport_corellia_spawner_05"},
 			shipSpawns = {"civilian_science_transport_tier1", "freighterheavy_tier3_story", "freighterheavy_tier3_story"}
 		},
@@ -33,7 +33,7 @@ SpaceCorelliaSpawner = SpaceSpawnerScreenPlay:new {
 			patrolsToAssign = 5, fixedPatrolPoints = {"talus_civi_two_spawner_00", "talus_civi_two_spawner_01", "talus_civi_two_spawner_02", "talus_civi_two_spawner_03", "talus_civi_two_spawner_04", "talus_civi_two_spawner_05", "talus_civi_two_spawner_06", "talus_civi_two_spawner_07", "talus_civi_two_spawner_08"},
 			shipSpawns = {"civilian_science_transport_tier1", "freighterheavy_tier1", "freighterlight_tier1", "freightermedium_tier1"}
 		},
-		{spawnName = "talus2corellia_transport_1", spawnType = SHIP_SPAWN_SINGLE, x = 5717, z = -5438, y = -3532, patrolType = SHIP_AI_FIXED_PATROL, minRespawn = 300, maxRespawn = 420, minSpawnDistance = 10, maxSpawnDistance = 11, totalSpawns = 1,
+		{spawnName = "talus2corellia_transport_1", spawnType = SHIP_SPAWN_SINGLE, x = 5717, z = -5438, y = -3532, patrolType = SHIP_AI_SINGLE_PATROL_ROTATION, minRespawn = 300, maxRespawn = 420, minSpawnDistance = 10, maxSpawnDistance = 11, totalSpawns = 1,
 			patrolsToAssign = 5, fixedPatrolPoints = {"talus2corellia_transport_1_00", "talus2corellia_transport_1_01", "talus2corellia_transport_1_02", "talus2corellia_transport_1_03", "talus2corellia_transport_1_04", "talus2corellia_transport_1_05", "talus2corellia_transport_1_06", "talus2corellia_transport_1_07", "talus2corellia_transport_1_08", "talus2corellia_transport_1_09"},
 			shipSpawns = {"freighterlight_tier1", "freighterheavy_tier1", "freightermedium_tier1"}
 		},
@@ -97,7 +97,7 @@ SpaceCorelliaSpawner = SpaceSpawnerScreenPlay:new {
 			patrolsToAssign = 5, fixedPatrolPoints = {"rebel_nebula_spawner_00", "rebel_nebula_spawner_01", "rebel_nebula_spawner_02", "rebel_nebula_spawner_03", "rebel_nebula_spawner_04", "rebel_nebula_spawner_05", "rebel_nebula_spawner_06", "rebel_nebula_spawner_07"},
 			shipSpawns = {"squad_rebel_gunboat_tier1"}
 		},
-		{spawnName = "rebel_transport_spawner", spawnType = SHIP_SPAWN_SINGLE, x = -6821, z = 2535, y = 2091, patrolType = SHIP_AI_FIXED_PATROL, minRespawn = 300, maxRespawn = 420, minSpawnDistance = 10, maxSpawnDistance = 20, totalSpawns = 3,
+		{spawnName = "rebel_transport_spawner", spawnType = SHIP_SPAWN_SINGLE, x = -6821, z = 2535, y = 2091, patrolType = SHIP_AI_SINGLE_PATROL_ROTATION, minRespawn = 300, maxRespawn = 420, minSpawnDistance = 10, maxSpawnDistance = 20, totalSpawns = 3,
 			patrolsToAssign = 5, fixedPatrolPoints = {"rebel_transport_spawner_00", "rebel_transport_spawner_01"},
 			shipSpawns = {"reb_freightermedium_tier1", "reb_xwing_tier1"}
 		},
@@ -156,18 +156,18 @@ SpaceCorelliaSpawner = SpaceSpawnerScreenPlay:new {
 		{spawnName = "rebel_fighter_seven_spawner", spawnType = SHIP_SPAWN_SINGLE, x = 4213, z = -937, y = -2413, patrolType = SHIP_AI_RANDOM_PATROL, minRespawn = 60, maxRespawn = 120, minSpawnDistance = 10, maxSpawnDistance = 50, minPatrol = 100, maxPatrol = 300, totalSpawns = 6,
 			shipSpawns = {"reb_xwing_cadet_tier1", "reb_xwing_tier1", "reb_z95_tier1", "reb_ywing_tier1", "reb_bwing_tier1", "reb_awing_tier1"}
 		},
-		{spawnName = "corelliatotalus_transport", spawnType = SHIP_SPAWN_SINGLE, x = -5761, z = -5231, y = -4493, patrolType = SHIP_AI_FIXED_PATROL, minRespawn = 300, maxRespawn = 420, minSpawnDistance = 10, maxSpawnDistance = 11, totalSpawns = 2,
+		{spawnName = "corelliatotalus_transport", spawnType = SHIP_SPAWN_SINGLE, x = -5761, z = -5231, y = -4493, patrolType = SHIP_AI_SINGLE_PATROL_ROTATION, minRespawn = 300, maxRespawn = 420, minSpawnDistance = 10, maxSpawnDistance = 11, totalSpawns = 2,
 			patrolsToAssign = 5, fixedPatrolPoints = {"corelliatotalus_transport_00", "corelliatotalus_transport_01", "corelliatotalus_transport_02", "corelliatotalus_transport_03", "corelliatotalus_transport_04", "corelliatotalus_transport_05", "corelliatotalus_transport_06", "corelliatotalus_transport_07", "corelliatotalus_transport_08", "corelliatotalus_transport_09", "corelliatotalus_transport_10"},
 			shipSpawns = {"freighterlight_tier1", "freighterheavy_tier3_story", "freighterheavy_tier3_story"}
 		},
 		{spawnName = "corellia_guard_1", spawnType = SHIP_SPAWN_SINGLE, x = -5868, z = -4844, y = -4600, patrolType = SHIP_AI_RANDOM_PATROL, minRespawn = 60, maxRespawn = 14, minSpawnDistance = 30, maxSpawnDistance = 120, minPatrol = 100, maxPatrol = 400, totalSpawns = 3,
 			shipSpawns = {"corsec_interceptor_tier1", "corsec_lancer_tier1"}
 		},
-		{spawnName = "corl_cmrs_way", spawnType = SHIP_SPAWN_SINGLE, x = -5628, z = -5335, y = -4672, patrolType = SHIP_AI_FIXED_PATROL, minRespawn = 120, maxRespawn = 240, minSpawnDistance = 3, maxSpawnDistance = 24, totalSpawns = 3,
+		{spawnName = "corl_cmrs_way", spawnType = SHIP_SPAWN_SINGLE, x = -5628, z = -5335, y = -4672, patrolType = SHIP_AI_SINGLE_PATROL_ROTATION, minRespawn = 120, maxRespawn = 240, minSpawnDistance = 3, maxSpawnDistance = 24, totalSpawns = 3,
 			patrolsToAssign = 5, fixedPatrolPoints = {"corl_cmrs_way_00", "corl_cmrs_way_01", "corl_cmrs_way_02", "corl_cmrs_way_03", "corl_cmrs_way_04", "corl_cmrs_way_05"},
 			shipSpawns = {"corsec_fighter_tier1", "freighterlight_tier1", "freighterheavy_tier3_story", "freighterheavy_tier3_story", "freightermedium_tier1"}
 		},
-		{spawnName = "corellia_commerce", spawnType = SHIP_SPAWN_SINGLE, x = -5775, z = -6034, y = -4691, patrolType = SHIP_AI_FIXED_PATROL, minRespawn = 300, maxRespawn = 420, minSpawnDistance = 4, maxSpawnDistance = 32, totalSpawns = 3,
+		{spawnName = "corellia_commerce", spawnType = SHIP_SPAWN_SINGLE, x = -5775, z = -6034, y = -4691, patrolType = SHIP_AI_SINGLE_PATROL_ROTATION, minRespawn = 300, maxRespawn = 420, minSpawnDistance = 4, maxSpawnDistance = 32, totalSpawns = 3,
 			patrolsToAssign = 5, fixedPatrolPoints = {"corellia_commerce_00", "corellia_commerce_01", "corellia_commerce_02", "corellia_commerce_03", "corellia_commerce_04", "corellia_commerce_05"},
 			shipSpawns = {"civilian_science_transport_tier1", "corsec_fighter_tier1", "freightermedium_tier1", "freighterheavy_tier3_story", "freighterheavy_tier3_story", "freighterlight_tier1"}
 		},
@@ -228,7 +228,7 @@ SpaceCorelliaSpawner = SpaceSpawnerScreenPlay:new {
 		{spawnName = "corsec_fighter_three_spawner", spawnType = SHIP_SPAWN_SINGLE, x = 145, z = -5604, y = -6045, patrolType = SHIP_AI_RANDOM_PATROL, minRespawn = 60, maxRespawn = 120, minSpawnDistance = 10, maxSpawnDistance = 50, minPatrol = 100, maxPatrol = 500, totalSpawns = 2,
 			shipSpawns = {"corsec_fighter_tier1", "corsec_interceptor_tier1"}
 		},
-		{spawnName = "corsectocorellia_transport_one", spawnType = SHIP_SPAWN_SINGLE, x = 130, z = -5345, y = -5694, patrolType = SHIP_AI_FIXED_PATROL, minRespawn = 300, maxRespawn = 420, minSpawnDistance = 10, maxSpawnDistance = 11, totalSpawns = 2,
+		{spawnName = "corsectocorellia_transport_one", spawnType = SHIP_SPAWN_SINGLE, x = 130, z = -5345, y = -5694, patrolType = SHIP_AI_SINGLE_PATROL_ROTATION, minRespawn = 300, maxRespawn = 420, minSpawnDistance = 10, maxSpawnDistance = 11, totalSpawns = 2,
 			patrolsToAssign = 5, fixedPatrolPoints = {"corsectocorellia_transport_one_00", "corsectocorellia_transport_one_01", "corsectocorellia_transport_one_02", "corsectocorellia_transport_one_03", "corsectocorellia_transport_one_04", "corsectocorellia_transport_one_05", "corsectocorellia_transport_one_06", "corsectocorellia_transport_one_07", "corsectocorellia_transport_one_08", "corsectocorellia_transport_one_09", "corsectocorellia_transport_one_10"},
 			shipSpawns = {"freighterlight_tier1", "freighterheavy_tier3_story", "freighterheavy_tier3_story"}
 		},
