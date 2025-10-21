@@ -292,6 +292,19 @@ public:
 				destroyTask->execute();
 			}
 
+			// Notify Destruction so respawn will trigger
+			Reference<ShipObject*> refTarget = targetShip;
+
+			Core::getTaskManager()->scheduleTask([refTarget] () {
+				if (refTarget == nullptr) {
+					return;
+				}
+
+				Locker lock(refTarget);
+
+				refTarget->notifyObjectDestructionObservers(nullptr, 0, true);
+			}, "notifyShipDestroyLambda", 200);
+
 			creature->sendSystemMessage("Kill Command Space Result -- Target Destroyed: " + targetShip->getShipName());
 			return SUCCESS;
 		}
@@ -336,6 +349,19 @@ public:
 			if (destroyTask != nullptr) {
 				destroyTask->execute();
 			}
+
+			// Notify Destruction so respawn will trigger
+			Reference<ShipObject*> refTarget = targetShip;
+
+			Core::getTaskManager()->scheduleTask([refTarget] () {
+				if (refTarget == nullptr) {
+					return;
+				}
+
+				Locker lock(refTarget);
+
+				refTarget->notifyObjectDestructionObservers(nullptr, 0, true);
+			}, "notifyShipDestroyLambda", 200);
 
 			count++;
 		}

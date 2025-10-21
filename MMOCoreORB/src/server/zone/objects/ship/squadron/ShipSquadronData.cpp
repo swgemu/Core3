@@ -26,6 +26,15 @@ void ShipSquadronData::remove(int index) {
 	}
 }
 
+void ShipSquadronData::makeLeader(ShipObject* ship) {
+	if (ship == nullptr) {
+		return;
+	}
+
+	ShipSquadronDataEntry tempData = squadronData.set(0, ShipSquadronDataEntry());
+	squadronData.add(tempData);
+}
+
 void ShipSquadronData::setFormation(int index, float radius) {
 	float distance = radius * AUTO_RADIUS_MODIFIER;
 

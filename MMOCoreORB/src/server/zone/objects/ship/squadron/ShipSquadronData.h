@@ -93,6 +93,8 @@ public:
 
 	void remove(int index);
 
+	void makeLeader(ShipObject* ship);
+
 	void setFormation(int index, float radius);
 
 	void setFormation(int index, const Vector3& position);

@@ -1042,8 +1042,8 @@ int ShipManager::notifyDestruction(ShipObject* destructorShip, ShipAiAgent* dest
 			highestShip->awardLootItems(destructedShip, randomPayout);
 		}
 
-		// Notify SHIPDESTROYED observer, used for mission spawned ships
-		destructedShip->notifyObservers(ObserverEventType::SHIPDESTROYED, destructorShip);
+		// Notify SHIPDESTROYED observer
+		destructedShip->notifyObservers(ObserverEventType::SHIPDESTROYED, destructorShip, destructedShip->getSquadronSize());
 
 		// Notify DESTROYEDSHIP Observers, used for players killing non-mission spawned shipAgents
 		ManagedReference<ShipObject*> playerShip = copyThreatMap.getHighestDamageGroupShip();

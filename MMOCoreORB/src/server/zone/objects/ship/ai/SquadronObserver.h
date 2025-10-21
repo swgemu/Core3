@@ -39,7 +39,7 @@ public:
 	// Mutators
 	void updateSquadron();
 
-	void addSquadronShip(ShipAiAgent* shipAgent);
+	void addSquadronShip(ShipAiAgent* shipAgent, bool makeLeader = false);
 
 	void dropSquadronShip(ShipAiAgent* shipAgent);
 

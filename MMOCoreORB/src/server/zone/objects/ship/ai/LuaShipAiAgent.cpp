@@ -34,8 +34,6 @@ Luna<LuaShipAiAgent>::RegType LuaShipAiAgent::Register[] = {
 	{ "setGuardPatrol", &LuaShipAiAgent::setGuardPatrol },
 	{ "setRandomPatrol", &LuaShipAiAgent::setRandomPatrol },
 	{ "setFixedPatrol", &LuaShipAiAgent::setFixedPatrol },
-	{ "setSquadronPatrol", &LuaShipAiAgent::setSquadronPatrol },
-	{ "setSquadronFollow", &LuaShipAiAgent::setSquadronFollow },
 	{ "setEscort", &LuaShipAiAgent::setEscort },
 	{ "setWaveAttack", &LuaShipAiAgent::setWaveAttack },
 	{ "setDespawnOnNoPlayerInRange", &LuaShipAiAgent::setDespawnOnNoPlayerInRange },
@@ -129,24 +127,6 @@ int LuaShipAiAgent::setFixedPatrol(lua_State* L) {
 	Locker locker(realObject);
 
 	realObject->addShipFlag(ShipFlag::FIXED_PATROL);
-	realObject->setShipAiTemplate();
-
-	return 0;
-}
-
-int LuaShipAiAgent::setSquadronPatrol(lua_State* L) {
-	Locker locker(realObject);
-
-	realObject->addShipFlag(ShipFlag::SQUADRON_PATROL);
-	realObject->setShipAiTemplate();
-
-	return 0;
-}
-
-int LuaShipAiAgent::setSquadronFollow(lua_State* L) {
-	Locker locker(realObject);
-
-	realObject->addShipFlag(ShipFlag::SQUADRON_FOLLOW);
 	realObject->setShipAiTemplate();
 
 	return 0;

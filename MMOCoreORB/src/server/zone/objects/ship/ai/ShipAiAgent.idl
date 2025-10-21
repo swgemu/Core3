@@ -276,6 +276,7 @@ class ShipAiAgent extends FighterShipObject {
 	public void finalize() {
 	}
 
+	@local
 	public native void notifyInsertToZone(Zone zone);
 
 	@local
@@ -619,16 +620,18 @@ class ShipAiAgent extends FighterShipObject {
 	public native void createSquadron(int formationType = -1);
 
 	@preLocked
-	public native void dropFromSquadron();
+	public native void assignToSquadron(ShipAiAgent squadronAgent);
 
 	@preLocked
-	public native void assignToSquadron(ShipAiAgent squadronAgent);
+	public native void dropFromSquadron();
 
 	public native boolean isSquadronLeader();
 
 	public native boolean isSquadronMember();
 
 	public native boolean isSquadronTransform();
+
+	public native int getSquadronSize();
 
 	public SquadronObserver getSquadron() {
 		return squadron;

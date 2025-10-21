@@ -394,21 +394,23 @@ void ShipAiAgentImplementation::initializeTransientMembers() {
 }
 
 void ShipAiAgentImplementation::notifyInsertToZone(Zone* zone) {
+	if (zone == nullptr) {
+		return;
+	}
+
 	// Schedule space agents to activate
 	Reference<ShipAiAgent*> agentRef = asShipAiAgent();
 
 	int randomTime = 500;
 
-	if (zone != nullptr) {
-		auto zoneServer = zone->getZoneServer();
+	auto zoneServer = zone->getZoneServer();
 
-		if (zoneServer == nullptr) {
-			return;
-		}
+	if (zoneServer == nullptr) {
+		return;
+	}
 
-		if (zoneServer->isServerLoading()) {
-			randomTime = (System::random(120) + 120) * 1000;
-		}
+	if (zoneServer->isServerLoading()) {
+		randomTime = (System::random(120) + 120) * 1000;
 	}
 
 	Core::getTaskManager()->scheduleTask([agentRef] () {
@@ -526,10 +528,10 @@ void ShipAiAgentImplementation::notifyDespawn(Zone* zone) {
 
 	// Clear the squadron observer
 	if (squadron != nullptr) {
+		Locker squadronLock(squadron, asShipAiAgent());
+
 		squadron->dropSquadronShip(asShipAiAgent());
 		squadron = nullptr;
-
-		removeShipFlag(ShipFlag::SQUADRON_FOLLOW);
 	}
 
 #ifdef DEBUG_SHIP_DESPAWN
@@ -540,9 +542,21 @@ void ShipAiAgentImplementation::notifyDespawn(Zone* zone) {
 void ShipAiAgentImplementation::destroyObjectFromWorld(bool sendSelfDestroy) {
 	numberOfPlayersInRange.set(0);
 
-	notifyDespawn(getZone());
-
 	ShipObjectImplementation::destroyObjectFromWorld(sendSelfDestroy);
+
+	// Schedule despawn notify
+	auto agentRef = asShipAiAgent();
+	auto zoneRef = getZone();
+
+	Core::getTaskManager()->scheduleTask([agentRef, zoneRef] () {
+		if (agentRef == nullptr) {
+			return;
+		}
+
+		Locker lock(agentRef);
+
+		agentRef->notifyDespawn(zoneRef);
+	}, "shipAgentDespawnNotify", 500);
 }
 
 /*
@@ -2177,19 +2191,6 @@ void ShipAiAgentImplementation::createSquadron(int formationType) {
 	}
 
 	squadron = new SquadronObserver(asShipAiAgent(), formationType);
-
-	addShipFlag(ShipFlag::SQUADRON_FOLLOW);
-}
-
-void ShipAiAgentImplementation::dropFromSquadron() {
-	if (squadron == nullptr) {
-		return;
-	}
-
-	squadron->dropSquadronShip(asShipAiAgent());
-	squadron = nullptr;
-
-	removeShipFlag(ShipFlag::SQUADRON_FOLLOW);
 }
 
 void ShipAiAgentImplementation::assignToSquadron(ShipAiAgent* squadronAgent) {
@@ -2203,9 +2204,23 @@ void ShipAiAgentImplementation::assignToSquadron(ShipAiAgent* squadronAgent) {
 		return;
 	}
 
-	squadron->addSquadronShip(asShipAiAgent());
+	Locker cLock(squadron, asShipAiAgent());
 
-	addShipFlag(ShipFlag::SQUADRON_FOLLOW);
+	squadron->addSquadronShip(asShipAiAgent());
+}
+
+void ShipAiAgentImplementation::dropFromSquadron() {
+	if (squadron == nullptr) {
+		return;
+	}
+
+	Locker cLock(squadron, asShipAiAgent());
+
+	squadron->dropSquadronShip(asShipAiAgent());
+
+	cLock.release();
+
+	squadron = nullptr;
 }
 
 bool ShipAiAgentImplementation::isSquadronLeader() {
@@ -2235,6 +2250,17 @@ bool ShipAiAgentImplementation::isSquadronTransform() {
 		}
 	}
 }
+
+int ShipAiAgentImplementation::getSquadronSize() {
+	if (squadron == nullptr) {
+		return 0;
+	}
+
+	Locker squadronLock(squadron, asShipAiAgent());
+
+	return squadron->getSquadronSize();
+}
+
 
 void ShipAiAgentImplementation::handleException(const Exception& ex, const String& context) {
 	auto numExceptions = SpaceAiMap::instance()->countExceptions.increment();
