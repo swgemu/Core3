@@ -5,7 +5,7 @@ SpaceSpawnerScreenPlay = ScreenPlay:new {
 
 	spaceZone = "",
 
-	SPAWN_NO_DELAY = false,
+	SPAWN_NO_DELAY = true,
 
 	SERVER_STARTUP_MIN = 120, -- Delay in seconds for spawns to start during server startup
 	SERVER_STARTUP_MAX = 300,
@@ -306,7 +306,7 @@ function SpaceSpawnerScreenPlay:populateSpawns()
 			for j = 1, totalSpawns, 1 do
 				--print(self.screenplayName .. " Spawn #" .. i .. " -- Spawn Name: " .. spawnTable.spawnName .. " Total Spawns: " .. totalSpawns .. " Spawn Type: " .. spawnType .. " Spawn Time in (s): " .. (randSpawn* j))
 
-				--createEvent((randSpawn * j) * 1000, self.screenplayName, "spawnShipSquadron", nil, tostring(i))
+				createEvent((randSpawn * j) * 1000, self.screenplayName, "spawnShipSquadron", nil, tostring(i))
 			end
 		else
 			-- Spawn the single ships

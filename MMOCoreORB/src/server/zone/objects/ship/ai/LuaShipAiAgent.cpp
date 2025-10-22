@@ -72,7 +72,7 @@ LuaShipAiAgent::LuaShipAiAgent(lua_State *L) : LuaShipObject(L) {
 
 	E3_ASSERT(!_getRealSceneObject() || realObject != nullptr);
 #else
-	realObject = static_cast<AiAgent*>(lua_touserdata(L, 1));
+	realObject = static_cast<ShipAiAgent*>(lua_touserdata(L, 1));
 #endif
 }
 
@@ -90,7 +90,7 @@ int LuaShipAiAgent::_setObject(lua_State* L) {
 
 	E3_ASSERT(!_getRealSceneObject() || realObject != nullptr);
 #else
-	auto obj = static_cast<AiAgent*>(lua_touserdata(L, -1));
+	auto obj = static_cast<ShipAiAgent*>(lua_touserdata(L, -1));
 
 	if (realObject != obj)
 		realObject = obj;

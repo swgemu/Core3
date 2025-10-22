@@ -45,6 +45,8 @@ _localLuaShipAiAgent1 = LuaShipAiAgent(nil)
 _localLuaShipAiAgent2 = LuaShipAiAgent(nil)
 _localLuaShipAiAgent3 = LuaShipAiAgent(nil)
 
+_localLuaShipSquadronObserver = LuaShipSquadronObserver(nil)
+
 
 AiAgent = function(pAiAgent)
   if (pAiAgent == nil) then
@@ -292,7 +294,7 @@ ShipAiAgent1 = function(pShipAiAgent)
     return nil
   end
 
-  _localLuaAiAgent1:_setObject(pShipAiAgent)
+  _localLuaShipAiAgent1:_setObject(pShipAiAgent)
 
   return _localLuaShipAiAgent1
 end
@@ -302,7 +304,7 @@ ShipAiAgent2 = function(pShipAiAgent)
     return nil
   end
 
-  _localLuaAiAgent2:_setObject(pShipAiAgent)
+  _localLuaShipAiAgent2:_setObject(pShipAiAgent)
 
   return _localLuaShipAiAgent2
 end
@@ -312,7 +314,17 @@ ShipAiAgent3 = function(pShipAiAgent)
     return nil
   end
 
-  _localLuaAiAgent3:_setObject(pShipAiAgent)
+  _localLuaShipAiAgent3:_setObject(pShipAiAgent)
 
   return _localLuaShipAiAgent3
+end
+
+ShipSquadronObserverObject = function(pSquadronObserver)
+	if (pSquadronObserver == nil) then
+		return nil
+	end
+
+	_localLuaShipSquadronObserver:_setObject(pSquadronObserver)
+
+	return _localLuaShipSquadronObserver
 end

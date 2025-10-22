@@ -105,6 +105,7 @@
 #include "server/zone/objects/ship/LuaShipObject.h"
 #include "server/zone/objects/ship/LuaPobShipObject.h"
 #include "server/zone/objects/ship/ai/LuaShipAiAgent.h"
+//#include "server/zone/objects/ship/ai/LuaShipSquadronObserver.h"
 #include "server/zone/objects/ship/components/LuaShipComponent.h"
 #include "server/zone/objects/ship/components/ShipComponent.h"
 #include "server/zone/objects/area/space/SpaceActiveArea.h"
@@ -876,6 +877,7 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	Luna<LuaShipObject>::Register(luaEngine->getLuaState());
 	Luna<LuaPobShipObject>::Register(luaEngine->getLuaState());
 	Luna<LuaShipAiAgent>::Register(luaEngine->getLuaState());
+	//Luna<LuaShipSquadronObserver>::Register(luaEngine->getLuaState());
 	Luna<LuaShipComponent>::Register(luaEngine->getLuaState());
 	Luna<LuaSceneObject>::Register(luaEngine->getLuaState());
 	Luna<LuaConversationScreen>::Register(luaEngine->getLuaState());
