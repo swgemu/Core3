@@ -69,6 +69,8 @@ class TreeNode: public Object {
 	float maxX, maxY, maxZ;
 
 	float dividerX, dividerY, dividerZ;
+	float centerX, centerY, centerZ;
+	float radius;
 
 	String nodeName;
 
@@ -151,6 +153,40 @@ public:
 
 	// Test if the object is inside this oct tree node
 	bool testInsideOctree(TreeEntry* obj) const;
+
+	void setBoundingSphere();
+
+	inline float squaredDistanceToCenter(float x, float y, float z) const {
+		float dx = x - centerX;
+		float dy = y - centerY;
+		float dz = z - centerZ;
+
+		return dx*dx + dy*dy + dz*dz;
+	}
+
+	inline bool testInRangeTop(float z, float range) const {
+		return (z + range) >= dividerZ;
+	}
+
+	inline bool testInRangeBottom(float z, float range) const {
+		return (z - range) <= dividerZ;
+	}
+
+	inline bool testInRangeNorth(float y, float range) const {
+		return (y + range) >= dividerY;
+	}
+
+	inline bool testInRangeSouth(float y, float range) const {
+		return (y - range) <= dividerY;
+	}
+
+	inline bool testInRangeEast(float x, float range) const {
+		return (x + range) >= dividerX;
+	}
+
+	inline bool testInRangeWest(float x, float range) const {
+		return (x - range) <= dividerX;
+	}
 
 	String toStringData();
 
