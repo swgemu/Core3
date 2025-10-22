@@ -305,6 +305,10 @@ void Octree::_insert(const Reference<TreeNode*>& node, TreeEntry* obj) {
 	obj->clearBounding();
 
 	if (!node->isEmpty() && !node->hasSubNodes()) {
+		if (node->objects.size() <= OBJECTS_PER_NODE_MIN) {
+			node->addObject(obj);
+			return;
+		}
 		/*
 		* We want to Insert another object, so we square this Node up and move
 		* all the Objects that arent locked (cause they cross a boundary) down.
@@ -324,7 +328,7 @@ void Octree::_insert(const Reference<TreeNode*>& node, TreeEntry* obj) {
 		}
 
 		// Stop subdividing: either the node is already too small or we hit max depth
-		if (((xDiff < MIN_NODE_SIZE) && (yDiff < MIN_NODE_SIZE) && (zDiff < MIN_NODE_SIZE)) || depth >= MAX_DEPTH) {
+		if (depth >= MAX_DEPTH || (xDiff <= MIN_NODE_SIZE && yDiff <= MIN_NODE_SIZE && zDiff <= MIN_NODE_SIZE)) {
 #ifdef DEBUG_OCTREE
 			if (isPlayerShip) {
 				Logger::console.info(true) << "Octree::_insert[" << obj->getObjectID() << "] -- hit subdivision limit (" << "diff: " << xDiff << "," << yDiff << "," << zDiff << " depth: " << depth << ") keeping in current node.";
@@ -585,28 +589,22 @@ void Octree::safeInRange(TreeEntry* obj, float range) {
 	CloseObjectsVector* closeObjectsVector = obj->getCloseObjects();
 
 #ifdef NO_ENTRY_REF_COUNTING
-	SortedVector<TreeEntry*> closeObjectsCopy;
+	HashSet<TreeEntry*> closeObjectsCopy;
 #else
-	SortedVector<ManagedReference<TreeEntry*> > closeObjectsCopy;
+	HashSet<ManagedReference<TreeEntry*> > closeObjectsCopy;
 #endif
 
 	Locker objLocker(obj);
 
 	if (closeObjectsVector != nullptr) {
-		closeObjectsCopy.removeAll(closeObjectsVector->size(), 50);
 		closeObjectsVector->safeCopyTo(closeObjectsCopy);
 	}
 
-	float x = obj->getPositionX();
-	float y = obj->getPositionY();
-	float z = obj->getPositionZ();
+	const auto& position = obj->getWorldPosition();
+	float x = position.getX();
+	float y = position.getY();
+	float z = position.getZ();
 	uint64 objectID = obj->getObjectID();
-
-	if (obj->getReceiverFlags() & CloseObjectsVector::CREOTYPE) {
-		x = obj->getWorldPositionX();
-		y = obj->getWorldPositionY();
-		z = obj->getWorldPositionZ();
-	}
 
 #ifdef NO_ENTRY_REF_COUNTING
 	SortedVector<TreeEntry*> inRangeObjects(1000, 250);
@@ -616,59 +614,50 @@ void Octree::safeInRange(TreeEntry* obj, float range) {
 
 	ReadLocker locker(&mutex);
 
-	// Space has a much lower number of objects and we need to be able to add space stations and special mission ships to cov at all times.
-	copyObjects(root, x, y, z, 32768.f, inRangeObjects);
+	if (range < INRANGE_DISTANCE_MAX) {
+		copyObjects(root, x, y, z, range, inRangeObjects);
+	} else {
+		safeCopyObjects(root, inRangeObjects);
+	}
 
 	locker.release();
 
-	if (Octree::doLog()) {
-		SceneObject* sceneO = cast<SceneObject*>(obj);
-		Logger::console.info(true) << "Octree::safeInRange -- " << sceneO->getDisplayedName() << " Range: " << range << " Objects: " << inRangeObjects.size() << "\n";
-	}
-
 	for (int i = 0; i < inRangeObjects.size(); ++i) {
-		TreeEntry* nearEntry = inRangeObjects.getUnsafe(i);
-
-		if (nearEntry == obj) {
-			if (obj->getCloseObjects() != nullptr) {
-				obj->addInRangeObject(obj, false);
-			}
-
-			continue;
-		}
-
-		Vector3 nearObjPos = nearEntry->getPosition();
-
-		float deltaX = x - nearObjPos.getX();
-		float deltaY = y - nearObjPos.getY();
-		float deltaZ = z - nearObjPos.getZ();
-		float deltaCalc = deltaX * deltaX + deltaY * deltaY + deltaZ * deltaZ;
-
 		try {
-			float nearEntryOutOfRange = Math::max(nearEntry->getOutOfRangeDistance(objectID), obj->getOutOfRangeDistance(nearEntry->getObjectID()));
-			float outOfRangeSqr = Math::sqr(nearEntryOutOfRange);
+			auto nearEntry = inRangeObjects.getUnsafe(i);
 
-			if (Octree::doLog()) {
-				SceneObject* nearSceneO = cast<SceneObject*>(nearEntry);
-				Logger::console.info(true) << "Octree::safeInRange -- Close Object #" << i << " " << nearSceneO->getDisplayedName() << " Out of Range Sq: " << outOfRangeSqr << " Delta Calc: " << deltaCalc << " Obj Position: " << nearObjPos.getX() << " " << nearObjPos.getZ() << " " << nearObjPos.getY();
+			if (nearEntry == nullptr || closeObjectsCopy.contains(nearEntry)) {
+				continue;
 			}
 
-			if (deltaCalc < outOfRangeSqr) {
-				CloseObjectsVector* objCloseObjects = obj->getCloseObjects();
-
-				if (objCloseObjects != nullptr) {
-					if (Octree::doLog()) {
-						SceneObject* nearSceneO = cast<SceneObject*>(nearEntry);
-						Logger::console.info(true) << "Added Object to COV: " << nearSceneO->getDisplayedName();
-					}
-
-					obj->addInRangeObject(nearEntry, false);
+			if (nearEntry == obj) {
+				if (closeObjectsVector != nullptr) {
+					obj->addInRangeObject(obj, false);
 				}
 
-				CloseObjectsVector* oCloseObjects = nearEntry->getCloseObjects();
+				continue;
+			}
 
-				if (oCloseObjects != nullptr)
-					nearEntry->addInRangeObject(obj);
+			float entryOutOfRange = Math::max(obj->getOutOfRangeDistance(nearEntry->getObjectID()), nearEntry->getOutOfRangeDistance(objectID));
+
+			if (entryOutOfRange < INRANGE_DISTANCE_MAX) {
+				const auto& tPosition = nearEntry->getWorldPosition();
+				float dX = tPosition.getX() - x;
+				float dY = tPosition.getY() - y;
+				float dZ = tPosition.getZ() - z;
+				float distanceSqr = (dX*dX + dY*dY + dZ*dZ);
+
+				if (distanceSqr > (entryOutOfRange * entryOutOfRange)) {
+					continue;
+				}
+			}
+
+			if (closeObjectsVector != nullptr) {
+				obj->addInRangeObject(nearEntry, false);
+			}
+
+			if (nearEntry->getCloseObjects() != nullptr) {
+				nearEntry->addInRangeObject(obj, false);
 			}
 		} catch (...) {
 			Logger::console.info(true) << "unreported exception caught in Octree::safeInRange()\n";
@@ -676,58 +665,177 @@ void Octree::safeInRange(TreeEntry* obj, float range) {
 	}
 }
 
-void Octree::copyObjects(const Reference<TreeNode*>& node, float x, float y, float z, float range, SortedVector<ManagedReference<server::zone::TreeEntry*> >& objects) {
-	//	ReadLocker locker(&mutex);
-
-	//objects.addAll(node->objects);
+void Octree::safeCopyObjects(const Reference<TreeNode*>& node, SortedVector<ManagedReference<TreeEntry*>>& objects) const {
 	for (int i = 0; i < node->objects.size(); ++i) {
 		objects.add(node->objects.getUnsafe(i).get());
 	}
 
 	if (node->hasSubNodes()) {
-		if (node->nwNode != nullptr && node->nwNode->testInRange(x, y, z, range))
-			copyObjects(node->nwNode, x, y, z, range, objects);
-		if (node->neNode != nullptr && node->neNode->testInRange(x, y, z, range))
-			copyObjects(node->neNode, x, y, z, range, objects);
-		if (node->swNode != nullptr && node->swNode->testInRange(x, y, z, range))
-			copyObjects(node->swNode, x, y, z, range, objects);
-		if (node->seNode != nullptr && node->seNode->testInRange(x, y, z, range))
-			copyObjects(node->seNode, x, y, z, range, objects);
-		//////
-		if (node->nwNode2 != nullptr && node->nwNode2->testInRange(x, y, z, range))
-			copyObjects(node->nwNode2, x, y, z, range, objects);
-		if (node->neNode2 != nullptr && node->neNode2->testInRange(x, y, z, range))
-			copyObjects(node->neNode2, x, y, z, range, objects);
-		if (node->swNode2 != nullptr && node->swNode2->testInRange(x, y, z, range))
-			copyObjects(node->swNode2, x, y, z, range, objects);
-		if (node->seNode2 != nullptr && node->seNode2->testInRange(x, y, z, range))
-			copyObjects(node->seNode2, x, y, z, range, objects);
+		if (node->nwNode != nullptr)
+			safeCopyObjects(node->nwNode, objects);
+		if (node->neNode != nullptr)
+			safeCopyObjects(node->neNode, objects);
+		if (node->swNode != nullptr)
+			safeCopyObjects(node->swNode, objects);
+		if (node->seNode != nullptr)
+			safeCopyObjects(node->seNode, objects);
+		if (node->nwNode2 != nullptr)
+			safeCopyObjects(node->nwNode2, objects);
+		if (node->neNode2 != nullptr)
+			safeCopyObjects(node->neNode2, objects);
+		if (node->swNode2 != nullptr)
+			safeCopyObjects(node->swNode2, objects);
+		if (node->seNode2 != nullptr)
+			safeCopyObjects(node->seNode2, objects);
+	}
+}
+
+void Octree::safeCopyObjects(const Reference<TreeNode*>& node, SortedVector<TreeEntry*>& objects) const {
+	for (int i = 0; i < node->objects.size(); ++i) {
+		objects.add(node->objects.getUnsafe(i).get());
+	}
+
+	if (node->hasSubNodes()) {
+		if (node->nwNode != nullptr)
+			safeCopyObjects(node->nwNode, objects);
+		if (node->neNode != nullptr)
+			safeCopyObjects(node->neNode, objects);
+		if (node->swNode != nullptr)
+			safeCopyObjects(node->swNode, objects);
+		if (node->seNode != nullptr)
+			safeCopyObjects(node->seNode, objects);
+		if (node->nwNode2 != nullptr)
+			safeCopyObjects(node->nwNode2, objects);
+		if (node->neNode2 != nullptr)
+			safeCopyObjects(node->neNode2, objects);
+		if (node->swNode2 != nullptr)
+			safeCopyObjects(node->swNode2, objects);
+		if (node->seNode2 != nullptr)
+			safeCopyObjects(node->seNode2, objects);
+	}
+}
+
+void Octree::copyObjects(const Reference<TreeNode*>& node, float x, float y, float z, float range, SortedVector<ManagedReference<server::zone::TreeEntry*> >& objects) {
+	if (node->hasSubNodes()) {
+		float distanceSqr = node->squaredDistanceToCenter(x, y, z);
+
+		if (distanceSqr > (range * range)) {
+			return;
+		}
+
+		float containment = range - node->radius;
+
+		if (containment >= 0.f && distanceSqr <= (containment * containment)) {
+			safeCopyObjects(node, objects);
+			return;
+		}
+	}
+
+	for (int i = 0; i < node->objects.size(); ++i) {
+		objects.add(node->objects.getUnsafe(i).get());
+	}
+
+	if (node->hasSubNodes()) {
+		bool checkTop = node->testInRangeTop(z, range);
+		bool checkBottom = node->testInRangeBottom(z, range);
+		bool checkSouth = node->testInRangeSouth(y, range);
+		bool checkNorth = node->testInRangeNorth(y, range);
+		bool checkWest = node->testInRangeWest(x, range);
+		bool checkEast = node->testInRangeEast(x, range);
+
+		if (checkTop) {
+			if (checkNorth) {
+				if (checkWest && node->nwNode != nullptr)
+					copyObjects(node->nwNode, x, y, z, range, objects);
+				if (checkEast && node->neNode != nullptr)
+					copyObjects(node->neNode, x, y, z, range, objects);
+			}
+
+			if (checkSouth) {
+				if (checkWest && node->swNode != nullptr)
+					copyObjects(node->swNode, x, y, z, range, objects);
+				if (checkEast && node->seNode != nullptr)
+					copyObjects(node->seNode, x, y, z, range, objects);
+			}
+		}
+
+		if (checkBottom) {
+			if (checkNorth) {
+				if (checkWest && node->nwNode2 != nullptr)
+					copyObjects(node->nwNode2, x, y, z, range, objects);
+				if (checkEast && node->neNode2 != nullptr)
+					copyObjects(node->neNode2, x, y, z, range, objects);
+			}
+
+			if (checkSouth) {
+				if (checkWest && node->swNode2 != nullptr)
+					copyObjects(node->swNode2, x, y, z, range, objects);
+				if (checkEast && node->seNode2 != nullptr)
+					copyObjects(node->seNode2, x, y, z, range, objects);
+			}
+		}
 	}
 }
 
 void Octree::copyObjects(const Reference<TreeNode*>& node, float x, float y, float z, float range, SortedVector<server::zone::TreeEntry*>& objects) {
+	if (node->hasSubNodes()) {
+		float distanceSqr = node->squaredDistanceToCenter(x, y, z);
+
+		if (distanceSqr > (range * range)) {
+			return;
+		}
+
+		float containment = range - node->radius;
+
+		if (containment >= 0.f && distanceSqr <= (containment * containment)) {
+			safeCopyObjects(node, objects);
+			return;
+		}
+	}
+
 	for (int i = 0; i < node->objects.size(); ++i) {
 		objects.add(node->objects.getUnsafe(i).get());
 	}
 
 	if (node->hasSubNodes()) {
-		if (node->nwNode != nullptr && node->nwNode->testInRange(x, y, z, range))
-			copyObjects(node->nwNode, x, y, z, range, objects);
-		if (node->neNode != nullptr && node->neNode->testInRange(x, y, z, range))
-			copyObjects(node->neNode, x, y, z, range, objects);
-		if (node->swNode != nullptr && node->swNode->testInRange(x, y, z, range))
-			copyObjects(node->swNode, x, y, z, range, objects);
-		if (node->seNode != nullptr && node->seNode->testInRange(x, y, z, range))
-			copyObjects(node->seNode, x, y, z, range, objects);
-		////////
-		if (node->nwNode2 != nullptr && node->nwNode2->testInRange(x, y, z, range))
-			copyObjects(node->nwNode2, x, y, z, range, objects);
-		if (node->neNode2 != nullptr && node->neNode2->testInRange(x, y, z, range))
-			copyObjects(node->neNode2, x, y, z, range, objects);
-		if (node->swNode2 != nullptr && node->swNode2->testInRange(x, y, z, range))
-			copyObjects(node->swNode2, x, y, z, range, objects);
-		if (node->seNode2 != nullptr && node->seNode2->testInRange(x, y, z, range))
-			copyObjects(node->seNode2, x, y, z, range, objects);
+		bool checkTop = node->testInRangeTop(z, range);
+		bool checkBottom = node->testInRangeBottom(z, range);
+		bool checkSouth = node->testInRangeSouth(y, range);
+		bool checkNorth = node->testInRangeNorth(y, range);
+		bool checkWest = node->testInRangeWest(x, range);
+		bool checkEast = node->testInRangeEast(x, range);
+
+		if (checkTop) {
+			if (checkNorth) {
+				if (checkWest && node->nwNode != nullptr)
+					copyObjects(node->nwNode, x, y, z, range, objects);
+				if (checkEast && node->neNode != nullptr)
+					copyObjects(node->neNode, x, y, z, range, objects);
+			}
+
+			if (checkSouth) {
+				if (checkWest && node->swNode != nullptr)
+					copyObjects(node->swNode, x, y, z, range, objects);
+				if (checkEast && node->seNode != nullptr)
+					copyObjects(node->seNode, x, y, z, range, objects);
+			}
+		}
+
+		if (checkBottom) {
+			if (checkNorth) {
+				if (checkWest && node->nwNode2 != nullptr)
+					copyObjects(node->nwNode2, x, y, z, range, objects);
+				if (checkEast && node->neNode2 != nullptr)
+					copyObjects(node->neNode2, x, y, z, range, objects);
+			}
+
+			if (checkSouth) {
+				if (checkWest && node->swNode2 != nullptr)
+					copyObjects(node->swNode2, x, y, z, range, objects);
+				if (checkEast && node->seNode2 != nullptr)
+					copyObjects(node->seNode2, x, y, z, range, objects);
+			}
+		}
 	}
 }
 

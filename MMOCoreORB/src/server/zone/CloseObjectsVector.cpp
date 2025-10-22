@@ -27,6 +27,32 @@ void CloseObjectsVector::safeCopyTo(Vector<ManagedReference<TreeEntry*> >& vec) 
 	}
 }
 
+void CloseObjectsVector::safeCopyTo(HashSet<TreeEntry*>& set) const {
+	set.removeAll();
+	ReadLocker locker(&mutex);
+
+	for (int i = 0; i < objects.size(); ++i) {
+		const auto& obj = objects.getUnsafe(i);
+
+		if (obj != nullptr) {
+			set.add(obj.get());
+		}
+	}
+}
+
+void CloseObjectsVector::safeCopyTo(HashSet<ManagedReference<TreeEntry*>>& set) const {
+	set.removeAll();
+	ReadLocker locker(&mutex);
+
+	for (int i = 0; i < objects.size(); ++i) {
+		const auto& obj = objects.getUnsafe(i);
+
+		if (obj != nullptr) {
+			set.add(obj.get());
+		}
+	}
+}
+
 SortedVector<ManagedReference<TreeEntry*> > CloseObjectsVector::getSafeCopy() const {
 	ReadLocker locker(&mutex);
 

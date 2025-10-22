@@ -19,6 +19,8 @@ TreeNode::TreeNode() {
 	minX = 0.f, minY = 0.f, minZ = 0.f, maxX = 0.f, maxY = 0.f, maxZ = 0.f;
 
 	dividerX = 0.f, dividerY = 0.f,	dividerZ = 0.f;
+
+	centerX = 0.f, centerY = 0.f, centerZ = 0.f, radius = 0.f;
 }
 
 // Octree node
@@ -45,6 +47,8 @@ TreeNode::TreeNode(float minx, float miny, float minz, float maxx, float maxy, f
 	dividerX = (minX + maxX) / 2;
 	dividerY = (minY + maxY) / 2;
 	dividerZ = (minZ + maxZ) / 2;
+
+	setBoundingSphere();
 }
 
 // Quadtree node
@@ -154,36 +158,8 @@ bool TreeNode::testInsideOctree(TreeEntry* obj) const {
 }
 
 bool TreeNode::testInRange(float x, float y, float z, float range) const {
-	bool insideX = (minX < x) && (x < maxX);
-	bool insideY = (minY < y) && (y < maxY);
-	bool insideZ = (minZ < z) && (z < maxZ);
-
-	/*
-	StringBuffer msg;
-	msg <<
-	" Node -- " << nodeName << " - " << this <<
-	" (Min X: " << (int)minX << ", Min Y: " << (int)minY << ", Min Z: " << (int)minZ <<
-	", Max X: " << (int)maxX << ", Max Y: " << (int)maxY << ", Max Z: " << (int)maxZ << ")" <<
-	"[Total Objects in Node: " << objects.size() << "]";
-
-	Logger::console.info(true) << "TreeNode - testInRange -- " << msg.toString() << " for X: " << x << " Z: " << z << " Y: " << y << " insideX: " << (insideX ? "TRUE" : "FALSE") << " insideZ: " << (insideZ ? "TRUE" : "FALSE") << " insideY: " << (insideY ? "TRUE" : "FALSE");
-	*/
-
-	if (insideX && insideY && insideZ) {
-		return true;
-	}
-
-	bool closeenoughX = ((fabs(minX - x) < range) || (fabs(maxX - x) < range));
-	bool closeenoughY = ((fabs(minY - y) < range) || (fabs(maxY - y) < range));
-	bool closeenoughZ = ((fabs(minZ - z) < range) || (fabs(maxZ - z) < range));
-
-	// Logger::console.info(true) << "TreeNode - testInRange -- " << msg.toString() << " for X: " << x << " Z: " << z << " Y: " << y << " closeenoughX: " << (closeenoughX ? "TRUE" : "FALSE") << " closeenoughZ: " << (closeenoughZ ? "TRUE" : "FALSE") << " closeenoughY: " << (closeenoughY ? "TRUE" : "FALSE");
-
-	if ((insideX || closeenoughX) && (insideY || closeenoughY) && (insideZ || closeenoughZ)) {
-		return true;
-	}
-
-	return false;
+	float distance = range + radius;
+	return squaredDistanceToCenter(x,y,z) <= (distance * distance);
 }
 
 bool TreeNode::testInRange(float x, float y, float range) const {
@@ -200,6 +176,20 @@ bool TreeNode::testInRange(float x, float y, float range) const {
 		return true;
 	else
 		return false;
+}
+
+void TreeNode::setBoundingSphere() {
+	if (nodeType == TreeNode::OCTREE_NODE) {
+		centerX = (maxX - minX) * 0.5f;
+		centerY = (maxY - minY) * 0.5f;
+		centerZ = (maxZ - minZ) * 0.5f;
+		radius = sqrtf(centerX*centerX + centerY*centerY + centerZ*centerZ);
+	} else {
+		/* unused variable in quadtree
+		centerX = (maxX - minX) * 0.5f;
+		centerY = (maxY - minY) * 0.5f;
+		radius = sqrtf(centerX*centerX + centerY*centerY);*/
+	}
 }
 
 void TreeNode::check () {
