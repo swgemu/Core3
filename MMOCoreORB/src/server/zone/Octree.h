@@ -15,6 +15,7 @@ namespace server {
   namespace zone {
 
 	class Octree : public Object {
+	protected:
 		Reference<TreeNode*> root;
 
 		static bool logTree;
@@ -56,10 +57,16 @@ namespace server {
 	private:
 		// --- Octree subdivision safety limits ---
 		// Minimum allowed size of a node before we stop subdividing
-		static constexpr float MIN_NODE_SIZE = 64.f;
+		static constexpr float MIN_NODE_SIZE = 1024.f;
 
 		// Maximum depth of recursion to prevent pathological stack overflow
-		static constexpr int MAX_DEPTH = 32;
+		static constexpr int MAX_DEPTH = 4;
+
+		// Minimum objects inserted into node before subdivision
+		static constexpr int OBJECTS_PER_NODE_MIN = 16;
+
+		// Maximum inRange distance threshold
+		constexpr static float INRANGE_DISTANCE_MAX = 28361.2305f; // 8192 * 2 * sqrt(3)
 
 		void _insert(const Reference<TreeNode*>& node, TreeEntry *obj);
 		bool _update(const Reference<TreeNode*>& node, TreeEntry *obj);
@@ -72,6 +79,9 @@ namespace server {
 
 		void copyObjects(const Reference<TreeNode*>& node, float x, float y, float z, float range, SortedVector<ManagedReference<TreeEntry*> >& objects);
 		void copyObjects(const Reference<TreeNode*>& node, float x, float y, float z, float range, SortedVector<TreeEntry*>& objects);
+
+		void safeCopyObjects(const Reference<TreeNode*>& node, SortedVector<ManagedReference<TreeEntry*>>& objects) const;
+		void safeCopyObjects(const Reference<TreeNode*>& node, SortedVector<TreeEntry*>& objects) const;
 
 	public:
 		static void setLogging(bool doLog) {

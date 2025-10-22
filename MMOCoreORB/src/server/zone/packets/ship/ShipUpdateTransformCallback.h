@@ -30,6 +30,8 @@ class ShipUpdateTransformCallback : public MessageCallback {
 private:
 	const static bool errorLog = false;
 
+	const static int PRIORITY_MAX = 25;
+
 #ifdef SHIP_TRANSFORM_DEBUG
 	const static bool sendText = true;
 	const static bool sendPath = true;
@@ -301,8 +303,9 @@ public:
 		ship->setPosition(position.getX(), position.getZ(), position.getY());
 		ship->setDirection(direction);
 
-		bool lightUpdate = priority != 0x23;
+		bool lightUpdate = (ship->getMovementCounter() % PRIORITY_MAX) != 0;
 		ship->updateZone(lightUpdate, false);
+		ship->incrementMovementCounter();
 
 		if (reorthonormalize) {
 			auto data = new DataTransform(ship);

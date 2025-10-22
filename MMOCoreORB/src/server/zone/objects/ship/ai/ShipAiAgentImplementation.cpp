@@ -1116,7 +1116,7 @@ bool ShipAiAgentImplementation::findNextPosition(int maxDistance) {
 	if (deltaTime >= UPDATEZONEINTERVAL) {
 		updateZoneTime = timeNow;
 
-		updateZone(false, false);
+		updateZone(true, false);
 		removeOutOfRangeObjects();
 	}
 
