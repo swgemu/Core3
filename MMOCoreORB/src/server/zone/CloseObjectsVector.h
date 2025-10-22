@@ -58,6 +58,9 @@ public:
 	void safeCopyTo(Vector<server::zone::TreeEntry*>& vec) const;
 	void safeCopyTo(Vector<ManagedReference<server::zone::TreeEntry*> >& vec) const;
 
+	void safeCopyTo(HashSet<TreeEntry*>& vec) const;
+	void safeCopyTo(HashSet<ManagedReference<TreeEntry*>>& vec) const;
+
 	void safeCopyReceiversTo(Vector<server::zone::TreeEntry*>& vec, uint32 receiverType) const;
 	void safeCopyReceiversTo(Vector<ManagedReference<server::zone::TreeEntry*> >& vec, uint32 receiverType) const;
 	void safeAppendReceiversTo(Vector<server::zone::TreeEntry*>& vec, uint32 receiverType) const;
