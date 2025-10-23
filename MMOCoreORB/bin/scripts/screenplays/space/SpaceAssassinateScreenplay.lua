@@ -176,6 +176,9 @@ function SpaceAssassinateScreenplay:deployTargets(pPlayer)
 	-- Set as a mission-specific ship locked to the mission holder
 	ShipAiAgent(pPrimaryAgent):setMissionOwner(pPlayer)
 
+	-- Create Squadron for the targets
+	ShipAiAgent(pPrimaryAgent):createSquadron()
+
 	local shipIDs = {}
 	local primaryID = SceneObject(pPrimaryAgent):getObjectID()
 
@@ -213,6 +216,9 @@ function SpaceAssassinateScreenplay:deployTargets(pPlayer)
 		if (pShipAgent ~= nil) then
 			-- Set as a mission-specific ship locked to the mission holder
 			ShipAiAgent(pShipAgent):setMissionOwner(pPlayer)
+
+			-- Assign any escorting targets to the squadron
+			ShipAiAgent(pShipAgent):assignToSquadron(pPrimaryAgent)
 
 			-- Set Fixed Patrol
 			ShipAiAgent(pShipAgent):setFixedPatrol()
