@@ -373,7 +373,7 @@ function SpaceEscortScreenplay:spawnEscortShip(pPlayer)
 	end
 
 	-- Spawn the ship to be escorted
-	local pShipAgent = spawnShipAgent(escortShip, self.questZone, spawnLocation[1], spawnLocation[2], spawnLocation[3], pPlayerShip)
+	local pShipAgent = spawnShipAgent(escortShip, self.questZone, spawnLocation[1], spawnLocation[2], spawnLocation[3], true, pPlayerShip)
 
 	if (pShipAgent == nil) then
 		self:failQuest(pPlayer, "true")
@@ -652,7 +652,7 @@ function SpaceEscortScreenplay:spawnAttackWave(pEscortAgent)
 	local pSquadronLeader = nil
 
 	for i = 1, #spawnTable, 1 do
-		local pShipAgent = spawnShipAgent(spawnTable[i], spawnZone, spawnLocation[1], spawnLocation[2], spawnLocation[3], pEscortAgent)
+		local pShipAgent = spawnShipAgent(spawnTable[i], spawnZone, spawnLocation[1], spawnLocation[2], spawnLocation[3], true, pEscortAgent)
 
 		if (pShipAgent == nil) then
 			goto continue

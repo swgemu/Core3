@@ -50,3 +50,34 @@ SpaceHeavy1Spawner = SpaceSpawnerScreenPlay:new {
 }
 
 registerScreenPlay("SpaceHeavy1Spawner", true)
+
+function SpaceHeavy1Spawner:start()
+	if (not isZoneEnabled(self.spaceZone)) then
+		return
+	end
+
+	-- Temporary Spawning Until Deep Space Spawning Logic is added here
+	local randomDelay = getRandomNumber(self.SERVER_STARTUP_MIN, self.SERVER_STARTUP_MAX)
+
+	if (self.SPAWN_NO_DELAY) then
+		randomDelay = 20
+	end
+
+	createEvent(randomDelay * 1000, self.screenplayName, "populateSpawns", nil, "")
+
+	self:spawnPrimaryTargets()
+end
+
+function SpaceHeavy1Spawner:spawnPrimaryTargets()
+	local pFreedomStation = spawnShipAgent("spacestation_freedom", self.spaceZone, -6000, 0, 0, false)
+
+	if (pFreedomStation ~= nil) then
+		ShipAiAgent(pFreedomStation):setDespawnOnNoPlayerInRange(false)
+	end
+
+	local pStarDestroyer = spawnShipAgent("star_destroyer", self.spaceZone, 6000, 0, 0, false, pFreedomStation)
+
+	if (pStarDestroyer ~= nil) then
+		ShipAiAgent(pStarDestroyer):setDespawnOnNoPlayerInRange(false)
+	end
+end

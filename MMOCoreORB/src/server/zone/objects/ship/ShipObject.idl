@@ -1001,7 +1001,7 @@ class ShipObject extends TangibleObject {
 	public void setHyperspacing(boolean value) {
 		hyperspacing = value;
 
-		if (hyperspacing) {
+		if (hyperspacing && !isShipAiAgent()) {
 			setHyperspaceDelay();
 		}
 	}

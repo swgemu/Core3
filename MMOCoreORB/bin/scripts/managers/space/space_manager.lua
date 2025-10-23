@@ -85,7 +85,6 @@ space_endor = {
 
 space_heavy1 = {
 	spaceStations = {
-		{templateFile = "spacestation_freedom", x = -6000, z = 0, y = 0, ow = 0, ox = 1, oy = 0, oz = 0, parentid = 0},
 	}
 }
 

@@ -2794,16 +2794,12 @@ int DirectorManager::spawnEventMobile(lua_State* L) {
 int DirectorManager::spawnShipAgent(lua_State* L) {
 	int numberOfArguments = lua_gettop(L);
 
-	if (numberOfArguments < 5 || numberOfArguments > 6) {
+	if (numberOfArguments < 5 || numberOfArguments > 7) {
 		String err = "incorrect number of arguments passed to DirectorManager::spawnShipAgent";
 		printTraceError(L, err);
 		ERROR_CODE = INCORRECT_ARGUMENTS;
 		return 0;
 	}
-
-	float x, z, y;
-	String shipName, zoneName;
-	ShipObject* targetShip = nullptr;
 
 	auto shipManager = ShipManager::instance();
 
@@ -2812,19 +2808,33 @@ int DirectorManager::spawnShipAgent(lua_State* L) {
 		return 1;
 	}
 
-	if (numberOfArguments == 5) {
-		y = lua_tonumber(L, -1);
-		z = lua_tonumber(L, -2);
-		x = lua_tonumber(L, -3);
-		zoneName = lua_tostring(L, -4);
-		shipName = lua_tostring(L, -5);
-	} else {
+	float x, z, y;
+	Vector3 spawnPosition = Vector3::ZERO;
+	String shipName, zoneName;
+	ShipObject* targetShip = nullptr;
+	bool hysperspace = true;
+
+	if (numberOfArguments == 7) {
 		targetShip = (ShipObject*) lua_touserdata(L, -1);
-		y = lua_tonumber(L, -2);
-		z = lua_tonumber(L, -3);
-		x = lua_tonumber(L, -4);
+		hysperspace = lua_toboolean(L, -2);
+		spawnPosition.setY(lua_tonumber(L, -3));
+		spawnPosition.setZ(lua_tonumber(L, -4));
+		spawnPosition.setX(lua_tonumber(L, -5));
+		zoneName = lua_tostring(L, -6);
+		shipName = lua_tostring(L, -7);
+	} else if (numberOfArguments == 6) {
+		hysperspace = lua_toboolean(L, -1);
+		spawnPosition.setY(lua_tonumber(L, -2));
+		spawnPosition.setZ(lua_tonumber(L, -3));
+		spawnPosition.setX(lua_tonumber(L, -4));
 		zoneName = lua_tostring(L, -5);
 		shipName = lua_tostring(L, -6);
+	} else {
+		spawnPosition.setY(lua_tonumber(L, -1));
+		spawnPosition.setZ(lua_tonumber(L, -2));
+		spawnPosition.setX(lua_tonumber(L, -3));
+		zoneName = lua_tostring(L, -4);
+		shipName = lua_tostring(L, -5);
 	}
 
 	auto zoneServer = ServerCore::getZoneServer();
@@ -2853,7 +2863,6 @@ int DirectorManager::spawnShipAgent(lua_State* L) {
 	Quaternion targetDirection = Quaternion::IDENTITY;
 
 	if (targetShip != nullptr) {
-		const auto& spawnPosition = Vector3(x, y, z);
 		const auto& targetPosition = targetShip->getPosition();
 
 		Vector3 velocity = targetPosition - spawnPosition; // direction to target
@@ -2861,13 +2870,21 @@ int DirectorManager::spawnShipAgent(lua_State* L) {
 		auto rotation = SpaceMath::velocityToRotation(velocity); // get our phi vector
 
 		targetDirection = SpaceMath::rotationToQuaternion(rotation, false);
+
+		shipAgent->setDirection(targetDirection);
 	}
 
-	shipAgent->setHomeLocation(x, z, y, targetDirection);
+	// Set the home location
+	shipAgent->setHomeLocation(spawnPosition.getX(), spawnPosition.getZ(), spawnPosition.getY(), targetDirection);
 
-	shipAgent->setHyperspacing(true);
+	if (hysperspace) {
+		shipAgent->setHyperspacing(true);
 
-	shipAgent->initializeTransform(Vector3(x, y, z), targetDirection);
+		shipAgent->initializeTransform(spawnPosition, targetDirection);
+	} else {
+		// Set Zone position
+		shipAgent->setPosition(spawnPosition);
+	}
 
 	if (!spaceZone->transferObject(shipAgent, -1, true)) {
 		shipAgent->destroyObjectFromWorld(true);
@@ -2880,7 +2897,9 @@ int DirectorManager::spawnShipAgent(lua_State* L) {
 	shipAgent->_setUpdated(true);
 	lua_pushlightuserdata(L, shipAgent);
 
-	shipAgent->setHyperspacing(false);
+	if (hysperspace) {
+		shipAgent->setHyperspacing(false);
+	}
 
 	return 1;
 }

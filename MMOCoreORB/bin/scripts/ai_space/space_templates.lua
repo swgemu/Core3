@@ -9,6 +9,11 @@ customMap = {
 	{ "spaceStations", {
 		{NONESPACE, "rootSpacestations"}
 	}},
+
+	{ "attackableSpaceStations", {
+		{NONESPACE, "rootAttackablespacestation"},
+		{IDLESPACE, "idleAttackablespacestation"},
+	}},
 }
 
 bitmaskLookup = {
@@ -37,10 +42,6 @@ bitmaskLookup = {
 
 	{WAVE_ATTACK, {
 		{MOVESPACE, "moveWaveattack"},
-	}},
-
-	{ATTACKABLE_SPACE_STATION, {
-		{IDLESPACE, "idleAttackablespacestation"},
 	}},
 
 	{TEST, {

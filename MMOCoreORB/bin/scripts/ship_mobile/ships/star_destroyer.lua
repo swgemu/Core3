@@ -28,7 +28,7 @@ star_destroyer = ShipAgent:new {
 	shipBitmask = TURRETSHIP,
 	optionsBitmask = AIENABLED,
 
-	customShipAiMap = "",
+	customShipAiMap = "attackableSpaceStations",
 
 	conversationTemplate = "",
 	conversationMobile = "",

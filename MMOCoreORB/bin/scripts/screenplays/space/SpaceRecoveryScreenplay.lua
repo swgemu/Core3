@@ -726,7 +726,7 @@ function SpaceRecoveryScreenplay:spawnAttackWave(pRecoveryShip)
 	local pSquadronLeader = nil
 
 	for i = 1, #spawnTable, 1 do
-		local pShipAgent = spawnShipAgent(spawnTable[i], spawnZone, spawnLocation[1], spawnLocation[2], spawnLocation[3], pRecoveryShip)
+		local pShipAgent = spawnShipAgent(spawnTable[i], spawnZone, spawnLocation[1], spawnLocation[2], spawnLocation[3], true, pRecoveryShip)
 
 		if (pShipAgent == nil) then
 			goto continue

@@ -352,7 +352,7 @@ function SpaceDutyDestroyScreenplay:spawnAttackWave(pPlayer)
 				print(self.className .. ":spawnAttackWave -- Spawning Boss Level Ship: " .. shipAgentString)
 			end
 
-			local pBossLevelAgent = spawnShipAgent(shipAgentString, self.questZone, spawnLocation[1], spawnLocation[2], spawnLocation[3], pPlayerShip)
+			local pBossLevelAgent = spawnShipAgent(shipAgentString, self.questZone, spawnLocation[1], spawnLocation[2], spawnLocation[3], true, pPlayerShip)
 
 			if (pBossLevelAgent == nil) then
 				self:failQuest(pPlayer)
@@ -412,7 +412,7 @@ function SpaceDutyDestroyScreenplay:spawnAttackWave(pPlayer)
 				print(self.className .. ":spawnAttackWave -- Spawning Regular Attack Ship: " .. shipType)
 			end
 
-			local pShipAgent = spawnShipAgent(shipType, self.questZone, spawnLocation[1], spawnLocation[2], spawnLocation[3], pPlayerShip)
+			local pShipAgent = spawnShipAgent(shipType, self.questZone, spawnLocation[1], spawnLocation[2], spawnLocation[3], true, pPlayerShip)
 
 			if (pShipAgent == nil) then
 				goto continue

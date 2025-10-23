@@ -208,7 +208,7 @@ function SpaceAssassinateScreenplay:deployTargets(pPlayer)
 			print(self.className .. "deployTargets -- spawning target escort ship: " .. shipName)
 		end
 
-		local pShipAgent = spawnShipAgent(shipName, spawnZone, escortSpawnLoc[1], escortSpawnLoc[2], escortSpawnLoc[3], pPrimaryAgent)
+		local pShipAgent = spawnShipAgent(shipName, spawnZone, escortSpawnLoc[1], escortSpawnLoc[2], escortSpawnLoc[3], true, pPrimaryAgent)
 
 		if (pShipAgent ~= nil) then
 			-- Set as a mission-specific ship locked to the mission holder

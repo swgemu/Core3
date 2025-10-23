@@ -131,8 +131,6 @@ function imperialBrokerConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pN
 			clonedConversation:addOption("@conversation/imperial_broker:s_70f18874", "not_interested_storm_female") -- I'm not interested in that.
 			clonedConversation:addOption("@conversation/imperial_broker:s_df2917b1", "storm_more_female") -- Tell me more
 		end
-	elseif (screenID == "storm_squadron") then
-		CreatureObject(pNpc):doAnimation("pose_proudly")
 	elseif (screenID == "not_interested_storm_male" or screenID == "not_interested_storm_female" or screenID == "storm_squadron_neutral_no_int") then
 		CreatureObject(pNpc):doAnimation("shrug_hands")
 	elseif (screenID == "storm_more_male" or screenID == "storm_more_female") then
