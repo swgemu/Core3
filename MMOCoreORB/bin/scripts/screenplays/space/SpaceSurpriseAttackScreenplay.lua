@@ -139,20 +139,17 @@ function SpaceSurpriseAttackScreenplay:spawnSurpriseAttack(pPilot)
 		local pSquadronLeader = nil
 
 		for j = 1, count, 1 do
-			local pShipAgent = spawnShipAgent(shipName, spawnZone, spawnLocation[1] + getRandomNumber(50, 150), spawnLocation[2]  + getRandomNumber(50, 150), spawnLocation[3]  + getRandomNumber(50, 150))
+			local pShipAgent = spawnShipAgent(shipName, spawnZone, spawnLocation[1] + getRandomNumber(100, 150), spawnLocation[2], spawnLocation[3] + getRandomNumber(100, 150))
 
 			if (pShipAgent ~= nil) then
 				-- Set as a mission-specific ship locked to the mission holder
-				ShipAiAgent(pShipAgent):setMissionOwner(pPlayer)
+				ShipAiAgent(pShipAgent):setMissionOwner(pPilot)
 
 				-- Setup the patrol
-				ShipAiAgent(pShipAgent):setMinimumGuardPatrol(200)
+				ShipAiAgent(pShipAgent):setMinimumGuardPatrol(100)
 				ShipAiAgent(pShipAgent):setMaximumGuardPatrol(1000)
 
 				ShipAiAgent(pShipAgent):setGuardPatrol()
-
-				-- Make sure the extra mobs are despawned if all players leaves the area
-				ShipAiAgent(pShipAgent):setDespawnOnNoPlayerInRange(true)
 
 				-- Add kill observer
 				createObserver(SHIPDESTROYED, self.className, "notifyShipDestroyed", pShipAgent)

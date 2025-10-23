@@ -1065,7 +1065,13 @@ void ShipAiAgentImplementation::setNextTransform() {
 }
 
 void ShipAiAgentImplementation::setSquadronTransform() {
-	if (squadron == nullptr || squadron->getSquadronIndex(asShipAiAgent()) == -1) {
+	if (squadron == nullptr) {
+		return;
+	}
+
+	Locker squadronLock(squadron, asShipAiAgent());
+
+	if (squadron->getSquadronIndex(asShipAiAgent()) == -1) {
 		return;
 	}
 
