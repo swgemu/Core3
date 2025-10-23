@@ -18,8 +18,10 @@ namespace server {
 class TreeEntry;
 
 class CloseObjectsVector : public Object {
+private:
 	mutable ReadWriteLock mutex;
 	SortedVector<Reference<server::zone::TreeEntry*> > objects;
+	HashSet<TreeEntry*> objectSet;
 
 	VectorMap<uint32, SortedVector<server::zone::TreeEntry*> > messageReceivers;
 
