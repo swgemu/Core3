@@ -28,16 +28,8 @@ void CloseObjectsVector::safeCopyTo(Vector<ManagedReference<TreeEntry*> >& vec) 
 }
 
 void CloseObjectsVector::safeCopyTo(HashSet<TreeEntry*>& set) const {
-	set.removeAll();
 	ReadLocker locker(&mutex);
-
-	for (int i = 0; i < objects.size(); ++i) {
-		const auto& obj = objects.getUnsafe(i);
-
-		if (obj != nullptr) {
-			set.add(obj.get());
-		}
-	}
+	set = objectSet;
 }
 
 void CloseObjectsVector::safeCopyTo(HashSet<ManagedReference<TreeEntry*>>& set) const {
@@ -78,17 +70,19 @@ void CloseObjectsVector::safeCopyTo(Vector<TreeEntry*>& vec) const {
 }
 
 bool CloseObjectsVector::contains(const Reference<TreeEntry*>& o) const {
+	if (o == nullptr) {
+		return false;
+	}
+
 	ReadLocker locker(&mutex);
-
-	bool ret = objects.find(o) != -1;
-
-	return ret;
+	return objectSet.contains(o.get());
 }
 
 void CloseObjectsVector::removeAll(int newSize, int newIncrement) {
 	Locker locker(&mutex);
 
 	objects.removeAll(newSize, newIncrement);
+	objectSet.removeAll();
 
 	messageReceivers.removeAll(newSize, newIncrement);
 
@@ -121,6 +115,7 @@ Reference<TreeEntry*> CloseObjectsVector::remove(int index) {
 	const auto& ref = objects.get(index);
 
 	dropReceiver(ref);
+	objectSet.remove(ref.get());
 
 	auto obj = objects.remove(index);
 
@@ -133,6 +128,7 @@ bool CloseObjectsVector::drop(const Reference<TreeEntry*>& o) {
 	Locker locker(&mutex);
 
 	dropReceiver(o);
+	objectSet.remove(o.get());
 
 	auto res = objects.drop(o);
 
@@ -235,28 +231,41 @@ void CloseObjectsVector::putReceiver(TreeEntry* entry, uint32 receiverTypes) {
 }
 
 int CloseObjectsVector::put(const Reference<TreeEntry*>& o) {
-	uint32 receiverTypes = o->registerToCloseObjectsReceivers();
+	if (o == nullptr || contains(o)) {
+		return -1;
+	}
 
 	Locker locker(&mutex);
+	int index = objects.put(o);
 
-	putReceiver(o.get(), receiverTypes);
-
-	auto res = objects.put(o);
+	if (index != -1) {
+		uint32 receiverTypes = o->registerToCloseObjectsReceivers();
+		putReceiver(o, receiverTypes);
+		objectSet.add(o);
+	}
 
 	count = objects.size();
-
-	return res;
+	return index;
 }
 
 int CloseObjectsVector::put(Reference<TreeEntry*>&& o) {
-	uint32 receiverTypes = o->registerToCloseObjectsReceivers();
+	if (o == nullptr || contains(o)) {
+		return -1;
+	}
 
 	Locker locker(&mutex);
-	putReceiver(o.get(), receiverTypes);
+	int index = objects.put(std::move(o));
 
-	auto res = objects.put(std::move(o));
+	if (index != -1) {
+		auto object = objects.get(index).get();
+
+		if (object != nullptr) {
+			uint32 receiverTypes = object->registerToCloseObjectsReceivers();
+			putReceiver(object, receiverTypes);
+			objectSet.add(object);
+		}
+	}
 
 	count = objects.size();
-
-	return res;
+	return index;
 }
