@@ -18,6 +18,7 @@ SpaceQuestLogic = ScreenPlay:new {
 
 	-- Side Quest Split Flag
 	SIDE_QUEST_SPLIT_TYPES = {
+		NONE = 0,
 		COMPLETION = 1,
 		PATROL_POINT = 2,
 	},

@@ -92,37 +92,38 @@ includeFile("space/squadrons/CorsecSquadronScreenplay.lua")
 includeFile("space/conversations/neutral/corsec_squadron/rheaConvoHandler.lua")
 includeFile("space/conversations/neutral/corsec_squadron/rikkhConvoHandler.lua")
 includeFile("space/conversations/neutral/corsec_squadron/ramnaConvoHandler.lua")
+includeFile("space/conversations/neutral/corsec_squadron/turoldineConvoHandler.lua")
 
--- Smuggler
+-- Smuggler Squadron
 includeFile("space/squadrons/SmugglerSquadronScreenplay.lua")
 
--- RSF
+-- RSF Squadron
 includeFile("space/squadrons/RsfSquadronScreenplay.lua")
 
 
 -- Rebel
 includeFile("space/conversations/rebel/jPaiBrekConvoHandler.lua")
 
--- Crimson Phoenix
+-- Crimson Phoenix Squadron
 includeFile("space/squadrons/CrimsonPhoenixSquadronScreenplay.lua")
 
--- Havoc
+-- Havoc Squadron
 includeFile("space/squadrons/HavocSquadronScreenplay.lua")
 
--- Vortex
+-- Vortex Squadron
 includeFile("space/squadrons/VortexSquadronScreenplay.lua")
 
 
 -- Imperial
 includeFile("space/conversations/imperial/imperialBrokerConvoHandler.lua")
 
--- Black Epsilon
+-- Black Epsilon Squadron
 includeFile("space/squadrons/BlackEpsilonSquadronScreenplay.lua")
 
--- Imperial Inquisition
+-- Imperial Inquisition Squadron
 includeFile("space/squadrons/InquisitionSquadronScreenplay.lua")
 
--- Storm
+-- Storm Squadron
 includeFile("space/squadrons/StormSquadronScreenplay.lua")
 
 
