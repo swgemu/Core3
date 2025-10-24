@@ -332,7 +332,7 @@ function SpaceAssassinateScreenplay:assignPatrols(pShipAgent)
 	local pointsTable = {}
 
 	for i = 1, #patrols, 1 do
-		table.insert(pointsTable, patrols[i].name)
+		table.insert(pointsTable, patrols[i].patrolPointName)
 	end
 
 	ShipAiAgent(pShipAgent):assignFixedPatrolPointsTable(pointsTable)

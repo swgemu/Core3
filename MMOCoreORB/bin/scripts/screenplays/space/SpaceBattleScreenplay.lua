@@ -7,17 +7,27 @@ SpaceBattleScreenplay = SpaceQuestLogic:new {
 	questZone = "",
 
 	creditReward = 0,
-	itemReward = {
-		--{species = {}, item = ""},
-	},
+	itemReward = {},
 
-	dutyMission = false,
+	parentQuest = "",
+	parentQuestType = "",
+	parentQuestName = "",
 
 	sideQuest = false,
 	sideQuestType = "",
 	sideQuestName = "",
+	sideQuestSplitType = SpaceQuestLogic.SIDE_QUEST_SPLIT_TYPES.NONE,
+	sideQuestDelay = 5, -- Time in seconds to wait to trigger side quest
 
-	DEBUG_SPACE_BATTLE = false,
+	-- Screenplay Specific Variables
+
+	battleLocation = {},
+
+	supportShipsDelay = 60,
+	enemyShipsDelay = 90,
+
+	supportShips = {},
+	enemyShips = {},
 }
 
 registerScreenPlay("SpaceBattleScreenplay", false)
