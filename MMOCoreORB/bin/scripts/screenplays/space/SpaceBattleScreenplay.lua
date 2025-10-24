@@ -1,5 +1,5 @@
-SpaceSurvivalScreenplay = SpaceQuestLogic:new {
-	className = "SpaceSurvivalScreenplay",
+SpaceBattleScreenplay = SpaceQuestLogic:new {
+	className = "SpaceBattleScreenplay",
 
 	questName = "",
 	questType = "",
@@ -17,27 +17,27 @@ SpaceSurvivalScreenplay = SpaceQuestLogic:new {
 	sideQuestType = "",
 	sideQuestName = "",
 
-	DEBUG_SPACE_SURVIVAL = false,
+	DEBUG_SPACE_BATTLE = false,
 }
 
-registerScreenPlay("SpaceSurvivalScreenplay", false)
+registerScreenPlay("SpaceBattleScreenplay", false)
 
 --[[
 
-		Space Survival Quest Functions
+		Space Rescue Quest Functions
 
 --]]
 
-function SpaceSurvivalScreenplay:start()
+function SpaceBattleScreenplay:start()
 end
 
-function SpaceSurvivalScreenplay:startQuest(pPlayer, pNpc)
+function SpaceBattleScreenplay:startQuest(pPlayer, pNpc)
 	if (pPlayer == nil) then
 		Logger:log("Quest: " .. self.questName .. " Type: " .. self.questType .. " -- Failed to startQuest due to pPlayer being nil.", LT_ERROR)
 		return
 	end
 
-	if (self.DEBUG_SPACE_SURVIVAL) then
+	if (self.DEBUG_SPACE_BATTLE) then
 		print(self.className .. ":startQuest called -- QuestType: " .. self.questType .. " Quest Name: " .. self.questName)
 	end
 
@@ -69,13 +69,13 @@ function SpaceSurvivalScreenplay:startQuest(pPlayer, pNpc)
 	end
 end
 
-function SpaceSurvivalScreenplay:completeQuest(pPlayer, notifyClient)
+function SpaceBattleScreenplay:completeQuest(pPlayer, notifyClient)
 	if (pPlayer == nil) then
 		Logger:log("Quest: " .. self.questName .. " Type: " .. self.questType .. " -- Failed to completeQuest due to pPlayer being nil.", LT_ERROR)
 		return
 	end
 
-	if (self.DEBUG_SPACE_SURVIVAL) then
+	if (self.DEBUG_SPACE_BATTLE) then
 		print(self.className .. ":completeQuest called -- QuestType: " .. self.questType .. " Quest Name: " .. self.questName)
 	end
 
@@ -94,13 +94,13 @@ function SpaceSurvivalScreenplay:completeQuest(pPlayer, notifyClient)
 	self:cleanUpQuestData(SceneObject(pPlayer):getObjectID())
 end
 
-function SpaceSurvivalScreenplay:failQuest(pPlayer, notifyClient)
+function SpaceBattleScreenplay:failQuest(pPlayer, notifyClient)
 	if (pPlayer == nil) then
 		Logger:log(self.questName .. " Type: " .. self.questType .. " -- Failed to failQuest due to pPlayer being nil.", LT_ERROR)
 		return
 	end
 
-	if (self.DEBUG_SPACE_SURVIVAL) then
+	if (self.DEBUG_SPACE_BATTLE) then
 		print(self.className .. ":failQuest called -- QuestType: " .. self.questType .. " Quest Name: " .. self.questName)
 	end
 
@@ -132,7 +132,7 @@ function SpaceSurvivalScreenplay:failQuest(pPlayer, notifyClient)
 	end
 end
 
-function SpaceSurvivalScreenplay:cleanUpQuestData(playerID)
+function SpaceBattleScreenplay:cleanUpQuestData(playerID)
 
 
 
@@ -140,11 +140,11 @@ end
 
 --[[
 
-		Space Survival Observers
+		Space Rescue Observers
 
 --]]
 
-function SpaceSurvivalScreenplay:enteredZone(pPlayer, nill, zoneNameHash)
+function SpaceBattleScreenplay:enteredZone(pPlayer, nill, zoneNameHash)
 	if (pPlayer == nil) then
 		return 0
 	end
