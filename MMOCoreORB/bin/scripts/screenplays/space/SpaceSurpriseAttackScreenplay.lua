@@ -280,10 +280,7 @@ function SpaceSurpriseAttackScreenplay:notifyShipDestroyed(pShipAgent, pKillerSh
 		-- Player effect for player
 		CreatureObject(pPlayer):playEffect("clienteffect/ui_quest_destroyed_wave.cef", "")
 
-		local questUpdate = LuaStringIdChatParameter("@spacequest/destroy_surpriseattack/" .. self.questName .. ":quest_update")
-		questUpdate:setTO("@spacequest/destroy_surpriseattack/" .. self.questName .. ":complete")
-
-		CreatureObject(pPlayer):sendSystemMessage(questUpdate:_getObject())
+		SpaceHelpers:sendQuestUpdate(pPlayer, "@spacequest/destroy_surpriseattack/" .. self.questName .. ":complete")
 
 		-- Complete the quest
 		self:completeQuest(pPlayer, "true")
