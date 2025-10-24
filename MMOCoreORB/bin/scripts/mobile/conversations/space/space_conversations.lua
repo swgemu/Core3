@@ -57,3 +57,20 @@ includeFile("conversations/space/greeters/kess_yarrow_convo.lua")
 includeFile("conversations/space/neutral/corsec_squadron/rhea_convo.lua")
 includeFile("conversations/space/neutral/corsec_squadron/rikkh_convo.lua")
 includeFile("conversations/space/neutral/corsec_squadron/ramna_convo.lua")
+includeFile("conversations/space/neutral/corsec_squadron/turoldine_convo.lua")
+
+-- Smuggler Squadron
+
+-- RSF Squadron
+
+-- Rebel Pilot
+
+-- Crimson Phoenix Squadron
+-- Havoc Squadron
+-- Vortex Squadron
+
+-- Imperial Pilot
+
+-- Black Epsilon Squadron
+-- Imperial Inquisition Squadron
+-- Storm Squadron
