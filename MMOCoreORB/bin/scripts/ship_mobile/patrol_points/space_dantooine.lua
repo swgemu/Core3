@@ -965,6 +965,15 @@ space_dantooine = SpacePatrolPointTable:new {
 	{"corellia_imperial_tier3_leg_4_assassinate_three_1", -137, -1281, 2629},
 	{"corellia_imperial_tier4_recovery1_2", 1014, -432, 1398},
 	{"corellia_privateer_tier4_rescue_duty_2", 2514, 4958, 2580},
+	{"corellia_privateer_tier4_leg_1_patrol_one_1", -856, 950, -2616},
+	{"corellia_privateer_tier4_leg_1_patrol_one_2", -1483, 1726, -4173},
+	{"corellia_privateer_tier4_leg_1_patrol_one_3", -2221, 2639, -6006},
+	{"corellia_privateer_tier4_leg_1_patrol_one_4", 293, 4512, -4777},
+	{"corellia_privateer_tier4_leg_1_patrol_one_5", 3152, 7350, -3831},
+	{"corellia_privateer_assassinate_42a_1", -6621, -6310, -1147},
+	{"corellia_privateer_assassinate_42a_2", -4435, -2591, -2467},
+	{"corellia_privateer_assassinate_42a_3", -2107, -1811, -4301},
+	{"corellia_privateer_assassinate_42a_4", -337, -3780, -7480},
 }
 
  SpacePatrolPoints:addSpacePatrolPoints(space_dantooine, "space_dantooine")

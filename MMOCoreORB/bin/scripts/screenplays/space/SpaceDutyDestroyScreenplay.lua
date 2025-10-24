@@ -13,8 +13,6 @@ SpaceDutyDestroyScreenplay = SpaceQuestLogic:new {
 
 	DEBUG_SPACE_DUTY_DESTROY = false,
 
-	dutyMission = false,
-
 	sideQuest = false,
 	sideQuestType = "",
 	sideQuestPatrolStart = 0,

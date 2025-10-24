@@ -206,6 +206,11 @@ space_dathomir = SpacePatrolPointTable:new {
 	{"tier3_privateer_witchblood_inspect_01_04", -2483, 333, -2297},
 	{"tier3_privateer_witchblood_inspect_01_05", -1550, 360, -2118},
 	{"tier3_privateer_witchblood_inspect_01_06", -1069, 538, -1469},
+	{"corellia_privateer_tier4_escort_duty_1", 3523, 400, -4024},
+	{"corellia_privateer_tier4_escort_duty_2", 2089, 4103, -4060},
+	{"corellia_privateer_tier4_escort_duty_3", 1396, 5751, -3946},
+	{"corellia_privateer_tier4_escort_duty_4", 817, 7127, -3851},
+	{"corellia_privateer_tier4_escort_duty_5", 23729, 7391, -1995},
 }
 
  SpacePatrolPoints:addSpacePatrolPoints(space_dathomir, "space_dathomir")
