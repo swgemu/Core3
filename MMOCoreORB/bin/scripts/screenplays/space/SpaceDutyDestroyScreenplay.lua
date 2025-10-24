@@ -13,8 +13,6 @@ SpaceDutyDestroyScreenplay = SpaceQuestLogic:new {
 
 	DEBUG_SPACE_DUTY_DESTROY = false,
 
-	dutyMission = false,
-
 	sideQuest = false,
 	sideQuestType = "",
 	sideQuestPatrolStart = 0,
@@ -150,6 +148,49 @@ function SpaceDutyDestroyScreenplay:failQuest(pPlayer, notifyClient)
 	if (self.sideQuest and SpaceHelpers:isSpaceQuestActive(pPlayer, self.sideQuestType, self.sideQuestName)) then
 		createEvent(200, self.sideQuestType .. "_" .. self.sideQuestName, "failQuest", pPlayer, "false")
 	end
+
+	-- Remove any data
+	deleteData(playerID .. ":" .. self.className .. ":CurrentWave:")
+	deleteData(playerID .. ":" .. self.className .. ":CurrentRound:")
+	deleteData(playerID .. ":" .. self.className .. ":CurrentLevel:")
+	deleteData(playerID .. ":" .. self.className .. ":DestroyKillCount:")
+end
+
+function SpaceDutyDestroyScreenplay:resetQuest(pPlayer)
+	if (pPlayer == nil) then
+		Logger:log(self.questName .. " Type: " .. self.questType .. " -- Failed to resetQuest due to pPlayer being nil.", LT_ERROR)
+		return
+	end
+
+	if (self.DEBUG_SPACE_DUTY_DESTROY) then
+		print(self.className .. ":resetQuest called -- QuestType: " .. self.questType .. " Quest Name: " .. self.questName)
+	end
+
+	-- Set Quest failed
+	SpaceHelpers:failSpaceQuest(pPlayer, self.questType, self.questName, false)
+
+	-- Remove any patrol points
+	SpaceHelpers:clearQuestWaypoint(pPlayer, self.className)
+
+	-- Remove the zone entry observer
+	dropObserver(ZONESWITCHED, self.className, "enteredZone", pPlayer)
+
+	local playerID = SceneObject(pPlayer):getObjectID()
+
+	-- Destroy the active area
+	local areaID = writeData(playerID .. ":" .. self.className .. ":targetArea:", questAreaID)
+	deleteData(playerID .. ":" .. self.className .. ":targetArea:")
+
+	local pQuestArea = getSceneObject(areaID)
+
+	if (pQuestArea ~= nil and SceneObject(pQuestArea):isActiveArea()) then
+		dropObserver(ENTEREDAREA, self.className, "notifyEnteredQuestArea", pQuestArea)
+
+		destroyObjectFromWorld(pQuestArea)
+	end
+
+	-- Remove any remaining ships
+	self:removeAttackShips(pPlayer)
 
 	-- Remove any data
 	deleteData(playerID .. ":" .. self.className .. ":CurrentWave:")

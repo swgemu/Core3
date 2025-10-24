@@ -11,8 +11,6 @@ SpaceSurvivalScreenplay = SpaceQuestLogic:new {
 		--{species = {}, item = ""},
 	},
 
-	dutyMission = false,
-
 	sideQuest = false,
 	sideQuestType = "",
 	sideQuestName = "",
@@ -67,6 +65,9 @@ function SpaceSurvivalScreenplay:startQuest(pPlayer, pNpc)
 	if (not hasObserver(ZONESWITCHED, self.className, "enteredZone", pPlayer)) then
 		createObserver(ZONESWITCHED, self.className, "enteredZone", pPlayer, 1)
 	end
+
+	-- REMOVE AFTER IMPLEMENTATION
+	createEvent(500, self.className, "completeQuest", pPlayer, "true")
 end
 
 function SpaceSurvivalScreenplay:completeQuest(pPlayer, notifyClient)
@@ -92,6 +93,16 @@ function SpaceSurvivalScreenplay:completeQuest(pPlayer, notifyClient)
 	dropObserver(ZONESWITCHED, self.className, "enteredZone", pPlayer)
 
 	self:cleanUpQuestData(SceneObject(pPlayer):getObjectID())
+
+	if (self.sideQuest and (self.sideQuestSplitType == self.SIDE_QUEST_SPLIT_TYPES.COMPLETION or self.sideQuestSplitType == self.SIDE_QUEST_SPLIT_TYPES.BIDIRECTIONAL)) then
+		local alertMessage = "@spacequest/" .. self.questType .. "/" .. self.questName .. ":split_quest_alert"
+
+		-- Split Quest Alert
+		createEvent(self.sideQuestDelay * 1000, "SpaceHelpers", "sendQuestAlert", pPlayer, alertMessage)
+
+		-- Trigger Sidequest
+		createEvent(self.sideQuestDelay * 1050, self.sideQuestType .. "_" .. self.sideQuestName, "startQuest", pPlayer, "")
+	end
 end
 
 function SpaceSurvivalScreenplay:failQuest(pPlayer, notifyClient)
@@ -130,6 +141,38 @@ function SpaceSurvivalScreenplay:failQuest(pPlayer, notifyClient)
 	if (self.sideQuest and SpaceHelpers:isSpaceQuestActive(pPlayer, self.sideQuestType, self.sideQuestName)) then
 		createEvent(200, self.sideQuestType .. "_" .. self.sideQuestName, "failQuest", pPlayer, "false")
 	end
+
+	if (self.sideQuest and (self.sideQuestSplitType == self.SIDE_QUEST_SPLIT_TYPES.FAILURE or self.sideQuestSplitType == self.SIDE_QUEST_SPLIT_TYPES.BIDIRECTIONAL)) then
+		local alertMessage = "@spacequest/" .. self.questType .. "/" .. self.questName .. ":split_quest_alert"
+
+		-- Split Quest Alert
+		createEvent(self.sideQuestDelay * 1000, "SpaceHelpers", "sendQuestAlert", pPlayer, alertMessage)
+
+		-- Trigger Sidequest
+		createEvent(self.sideQuestDelay * 1050, self.sideFailQuestType .. "_" .. self.sideFailQuestName, "startQuest", pPlayer, "")
+	end
+end
+
+function SpaceSurvivalScreenplay:resetQuest(pPlayer)
+	if (pPlayer == nil) then
+		Logger:log(self.questName .. " Type: " .. self.questType .. " -- Failed to failQuest due to pPlayer being nil.", LT_ERROR)
+		return
+	end
+
+	if (self.DEBUG_SPACE_SURVIVAL) then
+		print(self.className .. ":failQuest called -- QuestType: " .. self.questType .. " Quest Name: " .. self.questName)
+	end
+
+	-- Set Quest failed
+	SpaceHelpers:failSpaceQuest(pPlayer, self.questType, self.questName, false)
+
+	-- Remove any patrol points
+	SpaceHelpers:clearQuestWaypoint(pPlayer, self.className)
+
+	-- Remove the zone entry observer
+	dropObserver(ZONESWITCHED, self.className, "enteredZone", pPlayer)
+
+	self:cleanUpQuestData(SceneObject(pPlayer):getObjectID())
 end
 
 function SpaceSurvivalScreenplay:cleanUpQuestData(playerID)

@@ -46,10 +46,46 @@ function SpacePatrolScreenplay:startQuest(pPlayer, pNpc)
 		pNpc = nil
 	end
 
+	local pGhost = CreatureObject(pPlayer):getPlayerObject()
+
+	if (pGhost == nil) then
+		Logger:log("Quest: " .. self.questName .. " Type: " .. self.questType .. " -- Failed to startQuest due to pGhost being nil.", LT_ERROR)
+		return
+	end
+
 	-- Activate the Journal Quest
 	SpaceHelpers:activateSpaceQuest(pPlayer, pNpc, self.questType, self.questName, true)
 
-	-- Create inital observer for player entering Corellia Space
+	local spaceQuestHash = getHashCode(self.questZone)
+	local zoneName = SceneObject(pPlayer):getZoneName()
+	local playerZoneHash = getHashCode(zoneName)
+	local pRootParent = SceneObject(pPlayer):getRootParent()
+
+	-- Check if the player is in the proper zone already
+	if (playerZoneHash == spaceQuestHash and not SpaceHelpers:isInYacht(pPlayer)) then
+		-- Complete the quest task 0
+		SpaceHelpers:completeSpaceQuestTask(pPlayer, self.questType, self.questName, 0, false)
+
+		-- Activate quest task 2
+		SpaceHelpers:activateSpaceQuestTask(pPlayer, self.questType, self.questName, 2, false)
+
+		-- Add patrol point to the player
+		local patrolPoint = self.patrolPoints[1]
+		local waypointID = PlayerObject(pGhost):addWaypoint(self.questZone, "@spacequest/patrol/" .. self.questName .. ":quest_patrol_t", "", patrolPoint.x, patrolPoint.z, patrolPoint.y, WAYPOINT_SPACE, true, true, WAYPOINTQUESTTASK)
+
+		local pWaypoint = getSceneObject(waypointID)
+
+		if (pWaypoint ~= nil) then
+			WaypointObject(pWaypoint):setQuestDetails("@spacequest/" .. self.questType .. "/" .. self.questName .. ":title_d")
+		end
+
+		-- Store the waypointID on the player
+		setQuestStatus(SceneObject(pPlayer):getObjectID() .. ":" .. self.className .. ":waypointID", waypointID)
+
+		createEvent(4000, self.className, "alertPatrolPoint", pPlayer, "")
+	end
+
+	-- Create inital observer for player entering Zone and to handle failing quest
 	if (not hasObserver(ZONESWITCHED, self.className, "enteredZone", pPlayer)) then
 		createObserver(ZONESWITCHED, self.className, "enteredZone", pPlayer, 1)
 	end
@@ -79,6 +115,16 @@ function SpacePatrolScreenplay:completeQuest(pPlayer, notifyClient)
 
 	-- Remove the zone entry observer
 	dropObserver(ZONESWITCHED, self.className, "enteredZone", pPlayer)
+
+	if (self.sideQuest and (self.sideQuestSplitType == self.SIDE_QUEST_SPLIT_TYPES.COMPLETION or self.sideQuestSplitType == self.SIDE_QUEST_SPLIT_TYPES.BIDIRECTIONAL)) then
+		local alertMessage = "@spacequest/" .. self.questType .. "/" .. self.questName .. ":split_quest_alert"
+
+		-- Split Quest Alert
+		createEvent(self.sideQuestDelay * 1000, "SpaceHelpers", "sendQuestAlert", pPlayer, alertMessage)
+
+		-- Trigger Sidequest
+		createEvent(self.sideQuestDelay * 1050, self.sideQuestType .. "_" .. self.sideQuestName, "startQuest", pPlayer, "")
+	end
 end
 
 function SpacePatrolScreenplay:failQuest(pPlayer, notifyClient)
@@ -118,13 +164,46 @@ function SpacePatrolScreenplay:failQuest(pPlayer, notifyClient)
 	if (self.sideQuest and SpaceHelpers:isSpaceQuestActive(pPlayer, self.sideQuestType, self.sideQuestName)) then
 		createEvent(200, self.sideQuestType .. "_" .. self.sideQuestName, "failQuest", pPlayer, "false")
 	end
+
+	if (self.sideQuest and (self.sideQuestSplitType == self.SIDE_QUEST_SPLIT_TYPES.FAILURE or self.sideQuestSplitType == self.SIDE_QUEST_SPLIT_TYPES.BIDIRECTIONAL)) then
+		local alertMessage = "@spacequest/" .. self.questType .. "/" .. self.questName .. ":split_quest_alert"
+
+		-- Split Quest Alert
+		createEvent(self.sideQuestDelay * 1000, "SpaceHelpers", "sendQuestAlert", pPlayer, alertMessage)
+
+		-- Trigger Sidequest
+		createEvent(self.sideQuestDelay * 1050, self.sideFailQuestType .. "_" .. self.sideFailQuestName, "startQuest", pPlayer, "")
+	end
+end
+
+function SpacePatrolScreenplay:resetQuest(pPlayer)
+	if (pPlayer == nil) then
+		Logger:log("Quest: " .. self.questName .. " Type: " .. self.questType .. " -- Failed to resetQuest due to pPlayer being nil.", LT_ERROR)
+		return
+	end
+
+	if (self.DEBUG_SPACE_PATROL) then
+		print(self.className .. ":resetQuest called -- QuestType: " .. self.questType .. " Quest Name: " .. self.questName)
+	end
+
+	-- Set Quest failed
+	SpaceHelpers:failSpaceQuest(pPlayer, self.questType, self.questName, false)
+
+	-- Remove any patrol points
+	SpaceHelpers:clearQuestWaypoint(pPlayer, self.className)
+
+	-- Remove the zone entry observer
+	dropObserver(ZONESWITCHED, self.className, "enteredZone", pPlayer)
+
+	-- Clear Patrol progress
+	deleteData(SceneObject(pPlayer):getObjectID() .. ":" .. self.className)
 end
 
 function SpacePatrolScreenplay:spawnActiveAreas()
 	local areasTable = self.patrolPoints
 
 	for i = 1, #areasTable, 1 do
-		local zoneName = areasTable[i].zoneName
+		local zoneName = self.questZone
 		local x = areasTable[i].x
 		local z = areasTable[i].z
 		local y = areasTable[i].y
@@ -212,7 +291,7 @@ function SpacePatrolScreenplay:enteredZone(pPlayer, nill, zoneNameHash)
 
 		-- Add patrol point to the player
 		local patrolPoint = self.patrolPoints[1]
-		local waypointID = PlayerObject(pGhost):addWaypoint(patrolPoint.zoneName, "@spacequest/patrol/" .. self.questName .. ":quest_patrol_t", "", patrolPoint.x, patrolPoint.z, patrolPoint.y, WAYPOINT_SPACE, true, true, WAYPOINTQUESTTASK)
+		local waypointID = PlayerObject(pGhost):addWaypoint(self.questZone, "@spacequest/patrol/" .. self.questName .. ":quest_patrol_t", "", patrolPoint.x, patrolPoint.z, patrolPoint.y, WAYPOINT_SPACE, true, true, WAYPOINTQUESTTASK)
 
 		local pWaypoint = getSceneObject(waypointID)
 
@@ -295,7 +374,7 @@ function SpacePatrolScreenplay:notifyEnteredQuestArea(pActiveArea, pShip)
 
 	-- Add next patrol point to the player
 	local patrolPoint = self.patrolPoints[pointNumber + 1]
-	local waypointID = PlayerObject(pGhost):addWaypoint(patrolPoint.zoneName, "@spacequest/patrol/" .. self.questName .. ":quest_patrol_t", "", patrolPoint.x, patrolPoint.z, patrolPoint.y, WAYPOINT_SPACE, true, true, WAYPOINTQUESTTASK)
+	local waypointID = PlayerObject(pGhost):addWaypoint(self.questZone, "@spacequest/patrol/" .. self.questName .. ":quest_patrol_t", "", patrolPoint.x, patrolPoint.z, patrolPoint.y, WAYPOINT_SPACE, true, true, WAYPOINTQUESTTASK)
 
 	if (waypointID <= 0) then
 		return 0

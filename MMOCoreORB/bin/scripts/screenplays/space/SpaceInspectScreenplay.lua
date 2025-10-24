@@ -11,8 +11,6 @@ SpaceInspectScreenplay = SpaceQuestLogic:new {
 		--{species = {}, item = ""},
 	},
 
-	dutyMission = false,
-
 	sideQuest = false,
 	sideQuestType = "",
 
@@ -99,7 +97,7 @@ function SpaceInspectScreenplay:completeQuest(pPlayer, notifyClient)
 	-- Remove the zone entry observer
 	dropObserver(ZONESWITCHED, self.className, "enteredZone", pPlayer)
 
-	if (self.sideQuest and (self.sideQuestSplitType == self.SIDE_QUEST_SPLIT_TYPES.COMPLETION)) then
+	if (self.sideQuest and (self.sideQuestSplitType == self.SIDE_QUEST_SPLIT_TYPES.COMPLETION or self.sideQuestSplitType == self.SIDE_QUEST_SPLIT_TYPES.BIDIRECTIONAL)) then
 		local alertMessage = "@spacequest/" .. self.questType .. "/" .. self.questName .. ":split_quest_alert"
 
 		-- Split Quest Alert
@@ -146,6 +144,38 @@ function SpaceInspectScreenplay:failQuest(pPlayer, notifyClient)
 	if (self.sideQuest and SpaceHelpers:isSpaceQuestActive(pPlayer, self.sideQuestType, self.sideQuestName)) then
 		createEvent(200, self.sideQuestType .. "_" .. self.sideQuestName, "failQuest", pPlayer, "false")
 	end
+
+	if (self.sideQuest and (self.sideQuestSplitType == self.SIDE_QUEST_SPLIT_TYPES.FAILURE or self.sideQuestSplitType == self.SIDE_QUEST_SPLIT_TYPES.BIDIRECTIONAL)) then
+		local alertMessage = "@spacequest/" .. self.questType .. "/" .. self.questName .. ":split_quest_alert"
+
+		-- Split Quest Alert
+		createEvent(self.sideQuestDelay * 1000, "SpaceHelpers", "sendQuestAlert", pPlayer, alertMessage)
+
+		-- Trigger Sidequest
+		createEvent(self.sideQuestDelay * 1050, self.sideFailQuestType .. "_" .. self.sideFailQuestName, "startQuest", pPlayer, "")
+	end
+end
+
+function SpaceInspectScreenplay:resetQuest(pPlayer)
+	if (pPlayer == nil) then
+		Logger:log(self.questName .. " Type: " .. self.questType .. " -- Failed to resetQuest due to pPlayer being nil.", LT_ERROR)
+		return
+	end
+
+	if (self.DEBUG_SPACE_INSPECT) then
+		print(self.className .. ":resetQuest called -- QuestType: " .. self.questType .. " Quest Name: " .. self.questName)
+	end
+
+	-- Set Quest failed
+	SpaceHelpers:failSpaceQuest(pPlayer, self.questType, self.questName, false)
+
+	-- Remove any patrol points
+	SpaceHelpers:clearQuestWaypoint(pPlayer, self.className)
+
+	-- Remove the zone entry and inspect observer
+	dropObserver(ZONESWITCHED, self.className, "enteredZone", pPlayer)
+	dropObserver(INSPECTEDSHIP, self.className, "inspectedShip", pPlayer)
+	dropObserver(SHIPDOCKED, self.className, "dockedShip", pPlayer)
 end
 
 function SpaceInspectScreenplay:setupInspection(pPlayer)

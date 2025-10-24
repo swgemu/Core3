@@ -11,8 +11,6 @@ SpaceEscortScreenplay = SpaceQuestLogic:new {
 		--{species = {}, item = ""},
 	},
 
-	dutyMission = false,
-
 	sideQuest = false,
 	sideQuestType = "",
 
@@ -117,7 +115,7 @@ function SpaceEscortScreenplay:completeQuest(pPlayer, notifyClient)
 
 	self:cleanUpQuestData(SceneObject(pPlayer):getObjectID())
 
-	if (self.sideQuest and (self.sideQuestSplitType == self.SIDE_QUEST_SPLIT_TYPES.COMPLETION)) then
+	if (self.sideQuest and (self.sideQuestSplitType == self.SIDE_QUEST_SPLIT_TYPES.COMPLETION or self.sideQuestSplitType == self.SIDE_QUEST_SPLIT_TYPES.BIDIRECTIONAL)) then
 		local alertMessage = "@spacequest/" .. self.questType .. "/" .. self.questName .. ":split_quest_alert"
 
 		-- Split Quest Alert
@@ -165,6 +163,39 @@ function SpaceEscortScreenplay:failQuest(pPlayer, notifyClient)
 	if (self.sideQuest and SpaceHelpers:isSpaceQuestActive(pPlayer, self.sideQuestType, self.sideQuestName)) then
 		createEvent(200, self.sideQuestType .. "_" .. self.sideQuestName, "failQuest", pPlayer, "false")
 	end
+
+	if (self.sideQuest and (self.sideQuestSplitType == self.SIDE_QUEST_SPLIT_TYPES.FAILURE or self.sideQuestSplitType == self.SIDE_QUEST_SPLIT_TYPES.BIDIRECTIONAL)) then
+		local alertMessage = "@spacequest/" .. self.questType .. "/" .. self.questName .. ":split_quest_alert"
+
+		-- Split Quest Alert
+		createEvent(self.sideQuestDelay * 1000, "SpaceHelpers", "sendQuestAlert", pPlayer, alertMessage)
+
+		-- Trigger Sidequest
+		createEvent(self.sideQuestDelay * 1050, self.sideFailQuestType .. "_" .. self.sideFailQuestName, "startQuest", pPlayer, "")
+	end
+end
+
+function SpaceEscortScreenplay:resetQuest(pPlayer)
+	if (pPlayer == nil) then
+		Logger:log(self.questName .. " Type: " .. self.questType .. " -- Failed to resetQuest due to pPlayer being nil.", LT_ERROR)
+		return
+	end
+
+	if (self.DEBUG_SPACE_ESCORT) then
+		print(self.className .. ":resetQuest called -- QuestType: " .. self.questType .. " Quest Name: " .. self.questName)
+	end
+
+	-- Set Quest failed
+	SpaceHelpers:failSpaceQuest(pPlayer, self.questType, self.questName, false)
+
+	-- Remove any patrol points
+	SpaceHelpers:clearQuestWaypoint(pPlayer, self.className)
+
+	-- Remove the zone entry observer
+	dropObserver(ZONESWITCHED, self.className, "enteredZone", pPlayer)
+
+	self:despawnShips(pPlayer)
+	self:cleanUpQuestData(SceneObject(pPlayer):getObjectID())
 end
 
 function SpaceEscortScreenplay:cleanUpQuestData(playerID)
@@ -182,72 +213,6 @@ function SpaceEscortScreenplay:cleanUpQuestData(playerID)
 
 	-- Kill Count Tracking
 	deleteData(playerID .. ":" .. self.className .. ":" .. ":EscortKillCount:")
-end
-
-function SpaceEscortScreenplay:resetDutyMission(pPlayer)
-	if (pPlayer == nil) then
-		return
-	end
-
-	if (self.DEBUG_SPACE_ESCORT) then
-		print(self.className .. ":resetDutyMission called")
-	end
-
-	local playerID = SceneObject(pPlayer):getObjectID()
-
-	-- Delete the stored escorted ship ID
-	deleteData(playerID .. ":" .. self.className .. ":escortID:")
-
-	-- Delete player location data
-	deleteData(playerID .. ":" .. self.className .. ":location:")
-
-	-- Delete Start point
-	deleteData(playerID .. self.className .. ":startPoint:")
-
-	-- Delete the distance warnings
-	deleteData(playerID .. ":" .. self.className .. ":distanceWarnings:")
-
-	-- Kill Count Tracking
-	deleteData(playerID .. ":" .. self.className .. ":" .. ":EscortKillCount:")
-
-	local pGhost = CreatureObject(pPlayer):getPlayerObject()
-
-	if (pGhost == nullptr) then
-		return
-	end
-
-	-- Clear the quest tasks
-	SpaceHelpers:clearSpaceQuestTask(pPlayer, self.questType, self.questName, 2, false)
-	SpaceHelpers:clearSpaceQuestTask(pPlayer, self.questType, self.questName, 1, false)
-
-	-- Activate quest task 1 again
-	SpaceHelpers:activateSpaceQuestTask(pPlayer, self.questType, self.questName, 1, false)
-
-	-- Setup the next duty escort for the player
-	local randomStart = getRandomNumber(1, #self.escortPoints)
-	writeData(playerID .. self.className .. ":startPoint:", randomStart)
-
-	if (self.DEBUG_SPACE_ESCORT) then
-		print(self.className .. ":resetDutyMission called -- QuestType: " .. self.questType .. " Quest Name: " .. self.questName .. " Escort Point # Selected: " .. randomStart)
-	end
-
-	-- Add escort point to the player
-	local escortPoint = self.escortPoints[randomStart]
-	local waypointID = PlayerObject(pGhost):addWaypoint(escortPoint.zoneName, "Escort Rendevous", "Escort Rendevous", escortPoint.x, escortPoint.z, escortPoint.y, WAYPOINT_SPACE, true, true, WAYPOINTQUESTTASK)
-
-	local pWaypoint = getSceneObject(waypointID)
-
-	if (pWaypoint ~= nil) then
-		WaypointObject(pWaypoint):setQuestDetails("@spacequest/" .. self.questType .. "/" .. self.questName .. ":title_d")
-	end
-
-	-- Store the waypointID on the player
-	setQuestStatus(playerID .. ":" .. self.className .. ":waypointID", waypointID)
-
-	local dutyUpdate = LuaStringIdChatParameter("@spacequest/" .. self.questType .. "/" .. self.questName .. ":duty_update")
-	dutyUpdate:setTO("@spacequest/" .. self.questType .. "/" .. self.questName .. ":found_loc")
-
-	CreatureObject(pPlayer):sendSystemMessage(dutyUpdate:_getObject())
 end
 
 function SpaceEscortScreenplay:setupEscort(pPlayer)
@@ -287,17 +252,10 @@ function SpaceEscortScreenplay:setupEscort(pPlayer)
 	-- Store the waypointID on the player
 	setQuestStatus(playerID .. ":" .. self.className .. ":waypointID", waypointID)
 
-	if (self.dutyMission) then
-		local dutyUpdate = LuaStringIdChatParameter("@spacequest/" .. self.questType .. "/" .. self.questName .. ":duty_update")
-		dutyUpdate:setTO("@spacequest/" .. self.questType .. "/" .. self.questName .. ":found_loc")
+	local questUpdate = LuaStringIdChatParameter("@spacequest/" .. self.questType .. "/" .. self.questName .. ":quest_update")
+	questUpdate:setTO("@spacequest/" .. self.questType .. "/" .. self.questName .. ":found_loc")
 
-		CreatureObject(pPlayer):sendSystemMessage(dutyUpdate:_getObject())
-	else
-		local questUpdate = LuaStringIdChatParameter("@spacequest/" .. self.questType .. "/" .. self.questName .. ":quest_update")
-		questUpdate:setTO("@spacequest/" .. self.questType .. "/" .. self.questName .. ":found_loc")
-
-		CreatureObject(pPlayer):sendSystemMessage(questUpdate:_getObject())
-	end
+	CreatureObject(pPlayer):sendSystemMessage(questUpdate:_getObject())
 end
 
 function SpaceEscortScreenplay:spawnActiveAreas()
@@ -360,13 +318,7 @@ function SpaceEscortScreenplay:spawnEscortShip(pPlayer)
 
 	local spawnLocation = ShipObject(pPlayerShip):getSpawnPointInFrontOfShip(50, 150)
 
-	local escortShip = ""
-
-	if (self.dutyMission) then
-		escortShip = self.escortShips[getRandomNumber(1, #self.escortShips)]
-	else
-		escortShip = self.escortShip
-	end
+	local escortShip = self.escortShips[getRandomNumber(1, #self.escortShips)]
 
 	if (self.DEBUG_SPACE_ESCORT) then
 		print(self.className .. ":spawnEscortShip called -- Escort Ship: " .. escortShip .. " Space Zone: " .. self.questZone .. " X: " .. spawnLocation[1] .. " Z: " .. spawnLocation[2] .. " Y: " .. spawnLocation[3])
@@ -418,7 +370,7 @@ function SpaceEscortScreenplay:spawnEscortShip(pPlayer)
 	writeData(agentID .. ":" .. self.className .. ":escorterID:", playerID)
 
 	-- Write the starting point name
-	writeStringData(agentID .. ":" .. self.className .. ":startingPoint:", self.escortPoints[randomStart].name)
+	writeStringData(agentID .. ":" .. self.className .. ":startingPoint:", self.escortPoints[randomStart].patrolPointName)
 
 	-- Write the ship agent that is being escorted by the player
 	writeData(playerID .. ":" .. self.className .. ":escortID:", agentID)
@@ -474,7 +426,7 @@ function SpaceEscortScreenplay:assignEscortPoints(pShipAgent)
 
 	while (#escortWaypoints > 0) do
 		local randomPoint = getRandomNumber(1, #escortWaypoints)
-		local pointName = escortWaypoints[randomPoint].name
+		local pointName = escortWaypoints[randomPoint].patrolPointName
 
 		if (pointName ~= startingPointName) then
 			table.insert(randomPoints, pointName)
@@ -879,18 +831,11 @@ function SpaceEscortScreenplay:notifyEnteredQuestArea(pActiveArea, pShip)
 		-- Activate quest task 2
 		SpaceHelpers:activateSpaceQuestTask(pPilot, self.questType, self.questName, 2, false)
 
-		if (self.dutyMission) then
-			local dutyUpdate = LuaStringIdChatParameter("@spacequest/" .. self.questType .. "/" .. self.questName .. ":duty_update")
-			dutyUpdate:setTO("@spacequest/" .. self.questType .. "/" .. self.questName .. ":arrived_at_loc")
+		-- Send player arrival message
+		local questUpdate = LuaStringIdChatParameter("@spacequest/" .. self.questType .. "/" .. self.questName .. ":quest_update")
+		questUpdate:setTO("@spacequest/" .. self.questType .. "/" .. self.questName .. ":arrived_at_loc")
 
-			CreatureObject(pPilot):sendSystemMessage(dutyUpdate:_getObject())
-		else
-			-- Send player arrival message
-			local questUpdate = LuaStringIdChatParameter("@spacequest/" .. self.questType .. "/" .. self.questName .. ":quest_update")
-			questUpdate:setTO("@spacequest/" .. self.questType .. "/" .. self.questName .. ":arrived_at_loc")
-
-			CreatureObject(pPilot):sendSystemMessage(questUpdate:_getObject())
-		end
+		CreatureObject(pPilot):sendSystemMessage(questUpdate:_getObject())
 
 		-- Schedule escort ship spawning
 		createEvent(getRandomNumber(5, 11) * 1000, self.className, "spawnEscortShip", pPilot, "")
@@ -945,40 +890,13 @@ function SpaceEscortScreenplay:notifyEnteredQuestArea(pActiveArea, pShip)
 			-- Hyperspace out escort ship with thanks message
 			createEvent(500, self.className, "removeEscortShip", pShip, "")
 
-			if (self.dutyMission) then
-				local questUpdate = LuaStringIdChatParameter("@spacequest/" .. self.questType .. "/" .. self.questName .. ":duty_update")
-				questUpdate:setTO("@spacequest/" .. self.questType .. "/" .. self.questName .. ":complete")
+			local questUpdate = LuaStringIdChatParameter("@spacequest/" .. self.questType .. "/" .. self.questName .. ":quest_update")
+			questUpdate:setTO("@spacequest/" .. self.questType .. "/" .. self.questName .. ":complete")
 
-				CreatureObject(pPlayer):sendSystemMessage(questUpdate:_getObject())
+			CreatureObject(pPlayer):sendSystemMessage(questUpdate:_getObject())
 
-				-- Credit Reward
-				local amount = self.creditReward
-				local creditKillBonus = self.creditKillBonus
-				local totalKills = readData(playerID .. ":" .. self.className .. ":" .. ":EscortKillCount:")
-
-				if (totalKills > 0) then
-					amount = amount + (creditKillBonus * totalKills)
-				end
-
-				local messageString = LuaStringIdChatParameter("@space/quest:escort_reward")
-				messageString:setDI(amount)
-
-				CreatureObject(pPlayer):sendSystemMessage(messageString:_getObject()) -- "\\#pcontrast3 > \\#pcontrast1 Escort complete. Reward: \\#pcontrast2 %DI \\#pcontrast1 credits. \\#pcontrast3 <"
-
-				-- Give the Credits to bank
-				CreatureObject(pPlayer):addBankCredits(amount, true)
-
-				-- Reset the duty mission for the next escort
-				createEvent(10000, self.className, "resetDutyMission", pPlayer, "")
-			else
-				local questUpdate = LuaStringIdChatParameter("@spacequest/" .. self.questType .. "/" .. self.questName .. ":quest_update")
-				questUpdate:setTO("@spacequest/" .. self.questType .. "/" .. self.questName .. ":complete")
-
-				CreatureObject(pPlayer):sendSystemMessage(questUpdate:_getObject())
-
-				-- Complete quest
-				createEvent(1000, self.className, "completeQuest", pPlayer, "true")
-			end
+			-- Complete quest
+			createEvent(1000, self.className, "completeQuest", pPlayer, "true")
 
 			return 0
 		end
