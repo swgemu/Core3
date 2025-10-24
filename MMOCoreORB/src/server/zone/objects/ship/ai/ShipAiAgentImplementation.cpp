@@ -499,7 +499,7 @@ void ShipAiAgentImplementation::notifyDissapear(TreeEntry* entry) {
 	}
 }
 
-void ShipAiAgentImplementation::notifyDespawn(Zone* zone) {
+void ShipAiAgentImplementation::notifyDespawn() {
 #ifdef DEBUG_SHIP_DESPAWN
 	info(true) << "notifyDespawn called for - " << getDisplayedName() << " ID: " << getObjectID();
 #endif // DEBUG_SHIP_DESPAWN
@@ -532,10 +532,14 @@ void ShipAiAgentImplementation::notifyDespawn(Zone* zone) {
 
 		squadron->dropSquadronShip(asShipAiAgent());
 		squadron = nullptr;
+
+#ifdef DEBUG_SHIP_DESPAWN
+		info(true) << getDisplayedName() << " ID: " << getObjectID() << " notifying squadron and setting reference null";
+#endif // DEBUG_SHIP_DESPAWN
 	}
 
 #ifdef DEBUG_SHIP_DESPAWN
-	info(true) << getDisplayedName() << " ID: " << getObjectID() << " notifyDespawn complete - Reference Count: " << getReferenceCount();
+	info(true) << getDisplayedName() << " ID: " << getObjectID() << " notifyDespawn complete - Reference Count: " << getReferenceCount() << endl;
 #endif // DEBUG_SHIP_DESPAWN
 }
 
@@ -546,16 +550,15 @@ void ShipAiAgentImplementation::destroyObjectFromWorld(bool sendSelfDestroy) {
 
 	// Schedule despawn notify
 	Reference<ShipAiAgent*> agentRef = asShipAiAgent();
-	Reference<Zone*> zoneRef = getZone();
 
-	Core::getTaskManager()->scheduleTask([agentRef, zoneRef] () {
+	Core::getTaskManager()->scheduleTask([agentRef] () {
 		if (agentRef == nullptr) {
 			return;
 		}
 
 		Locker lock(agentRef);
 
-		agentRef->notifyDespawn(zoneRef);
+		agentRef->notifyDespawn();
 	}, "shipAgentDespawnNotify", 500);
 }
 
@@ -2209,6 +2212,8 @@ void ShipAiAgentImplementation::createSquadron(int formationType) {
 	}
 
 	squadron = new SquadronObserver(asShipAiAgent(), formationType);
+
+	info(true) << getDisplayedName() << " created a squadron";
 }
 
 void ShipAiAgentImplementation::assignToSquadron(ShipAiAgent* squadronAgent) {
@@ -2225,6 +2230,8 @@ void ShipAiAgentImplementation::assignToSquadron(ShipAiAgent* squadronAgent) {
 	Locker cLock(squadron, asShipAiAgent());
 
 	squadron->addSquadronShip(asShipAiAgent());
+
+	info(true) << getDisplayedName() << " assigned to squadron with Leader: " << squadronAgent->getDisplayedName();
 }
 
 void ShipAiAgentImplementation::dropFromSquadron() {

@@ -299,21 +299,25 @@ function SpaceSpawnerScreenPlay:populateSpawns()
 		local spawnType = spawnTable.spawnType
 		local minRespawn = spawnTable.minRespawn
 		local maxRespawn = spawnTable.maxRespawn
-		local randSpawn = getRandomNumber(minRespawn, maxRespawn)
+		local randomDelay = getRandomNumber(minRespawn, maxRespawn)
+
+		if (self.SPAWN_NO_DELAY) then
+			randomDelay = 2
+		end
 
 		-- Spawn a squadron
 		if (spawnType == SHIP_SPAWN_SQUADRON) then
 			for j = 1, totalSpawns, 1 do
 				--print(self.screenplayName .. " Spawn #" .. i .. " -- Spawn Name: " .. spawnTable.spawnName .. " Total Spawns: " .. totalSpawns .. " Spawn Type: " .. spawnType .. " Spawn Time in (s): " .. (randSpawn* j))
 
-				createEvent((randSpawn * j) * 1000, self.screenplayName, "spawnShipSquadron", nil, tostring(i))
+				createEvent((randomDelay * j) * 1000, self.screenplayName, "spawnShipSquadron", nil, tostring(i))
 			end
 		else
 			-- Spawn the single ships
 			for j = 1, totalSpawns, 1 do
 				--print(self.screenplayName .. " Spawn #" .. i .. " -- Spawn Name: " .. spawnTable.spawnName .. " Total Spawns: " .. totalSpawns .. " Spawn Type: " .. spawnType .. " Spawn Time in (s): " .. (randSpawn* j))
 
-				createEvent((randSpawn * j) * 1000, self.screenplayName, "spawnShipAgent", nil, tostring(i))
+				createEvent((randomDelay * j) * 1000, self.screenplayName, "spawnShipAgent", nil, tostring(i))
 			end
 		end
 	end
@@ -473,8 +477,8 @@ function SpaceSpawnerScreenPlay:spawnShipSquadron(pNil, indexString)
 	end
 
 	-- Spawn the remainder of the squadron
-	for j = 1, #squadronShipList, 1 do
-		local shipName = squadronShipList[j]
+	for i = 1, #squadronShipList, 1 do
+		local shipName = squadronShipList[i]
 
 		--print(self.screenplayName .. " -- Squadron Spawning -- Ship Template: " .. shipName)
 
@@ -500,30 +504,30 @@ function SpaceSpawnerScreenPlay:spawnShipSquadron(pNil, indexString)
 			ShipAiAgent(pShipAgent):createSquadron(squadFormation)
 
 			pLeadShip = pShipAgent
+		end
 
-			-- Set the patrol types
-			if (patrolType == SHIP_AI_FIXED_PATROL) then
-				ShipAiAgent(pShipAgent):setFixedPatrol()
+		-- Set the patrol types
+		if (patrolType == SHIP_AI_FIXED_PATROL) then
+			ShipAiAgent(pShipAgent):setFixedPatrol()
 
-				local totalToAdd = spawnTable.patrolsToAssign
-				local patrolPoints = spawnTable.fixedPatrolPoints
+			local totalToAdd = spawnTable.patrolsToAssign
+			local patrolPoints = spawnTable.fixedPatrolPoints
 
-				self:assignFixedPatrolpoints(pShipAgent, totalToAdd, patrolPoints)
+			self:assignFixedPatrolpoints(pShipAgent, totalToAdd, patrolPoints)
 
-				-- These patrol ships will have an end desination to despawn or have a task (dock etc)
-				if (patrolType == SHIP_AI_SINGLE_PATROL_ROTATION) then
-					createObserver(DESTINATIONREACHED, self.screenplayName, "squadronDestinationReached", pShipAgent)
+			-- These patrol ships will have an end desination to despawn or have a task (dock etc)
+			if (patrolType == SHIP_AI_SINGLE_PATROL_ROTATION) then
+				createObserver(DESTINATIONREACHED, self.screenplayName, "squadronDestinationReached", pShipAgent)
 
-					ShipAiAgent(pLeadShip):setSinglePatrolRotation()
-				end
-			elseif (patrolType == SHIP_AI_GUARD_PATROL) then
-				ShipAiAgent(pShipAgent):setMinimumGuardPatrol(spawnTable.minPatrol)
-				ShipAiAgent(pShipAgent):setMaximumGuardPatrol(spawnTable.maxPatrol)
-
-				ShipAiAgent(pShipAgent):setGuardPatrol()
-			else
-				ShipAiAgent(pShipAgent):setRandomPatrol()
+				ShipAiAgent(pShipAgent):setSinglePatrolRotation()
 			end
+		elseif (patrolType == SHIP_AI_GUARD_PATROL) then
+			ShipAiAgent(pShipAgent):setMinimumGuardPatrol(spawnTable.minPatrol)
+			ShipAiAgent(pShipAgent):setMaximumGuardPatrol(spawnTable.maxPatrol)
+
+			ShipAiAgent(pShipAgent):setGuardPatrol()
+		else
+			ShipAiAgent(pShipAgent):setRandomPatrol()
 		end
 
 		local agentID = SceneObject(pShipAgent):getObjectID()
