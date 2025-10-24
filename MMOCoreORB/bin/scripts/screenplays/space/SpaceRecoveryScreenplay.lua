@@ -183,6 +183,53 @@ function SpaceRecoveryScreenplay:failQuest(pPlayer, notifyClient)
 	if (self.sideQuest and SpaceHelpers:isSpaceQuestActive(pPlayer, self.sideQuestType, self.sideQuestName)) then
 		createEvent(200, self.sideQuestType .. "_" .. self.sideQuestName, "failQuest", pPlayer, "false")
 	end
+
+	if (self.sideQuest and (self.sideQuestSplitType == self.SIDE_QUEST_SPLIT_TYPES.FAILURE or self.SIDE_QUEST_SPLIT_TYPES.BIDIRECTIONAL)) then
+		local alertMessage = "@spacequest/" .. self.questType .. "/" .. self.questName .. ":split_quest_alert"
+
+		-- Split Quest Alert
+		createEvent(self.sideQuestDelay * 1000, "SpaceHelpers", "sendQuestAlert", pPlayer, alertMessage)
+
+		-- Trigger Sidequest
+		createEvent(self.sideQuestDelay * 1050, self.sideFailQuestType .. "_" .. self.sideFailQuestName, "startQuest", pPlayer, "")
+	end
+end
+
+function SpaceRecoveryScreenplay:resetQuest(pPlayer, notifyClient)
+	if (pPlayer == nil) then
+		Logger:log(self.questName .. " Type: " .. self.questType .. " -- Failed to resetQuest due to pPlayer being nil.", LT_ERROR)
+		return
+	end
+
+	if (self.DEBUG_SPACE_RECOVERY) then
+		print(self.className .. ":resetQuest called -- QuestType: " .. self.questType .. " Quest Name: " .. self.questName)
+	end
+
+	local notifyBool = true
+
+	if (notifyClient == "false") then
+		notifyBool = false
+	end
+
+	-- Despawn Any ships
+	self:despawnShips(pPlayer)
+
+	-- Set Quest failed
+	SpaceHelpers:failSpaceQuest(pPlayer, self.questType, self.questName, notifyBool)
+
+	-- Remove any patrol points
+	SpaceHelpers:clearQuestWaypoint(pPlayer, self.className)
+
+	-- Remove the zone entry observer
+	dropObserver(ZONESWITCHED, self.className, "enteredZone", pPlayer)
+
+	local playerID = SceneObject(pPlayer):getObjectID()
+
+	local failedType = readData(playerID .. self.className .. ":failedType:")
+	deleteData(playerID .. self.className .. ":failedType:")
+
+	-- Clean Up data last
+	self:cleanUpQuestData(playerID)
 end
 
 function SpaceRecoveryScreenplay:cleanUpQuestData(playerID)
@@ -282,7 +329,7 @@ function SpaceRecoveryScreenplay:spawnRecoveryShip(pPlayer)
 
 	-- Add Initial point to the player
 	local recoverPoint = self.preRecoveryPoints[1]
-	local startingPointName = recoverPoint.name
+	local startingPointName = recoverPoint.patrolPointName
 
 	local waypointID = PlayerObject(pGhost):addWaypoint(recoverPoint.zoneName, "Mission Target", "Mission Target", recoverPoint.x, recoverPoint.z, recoverPoint.y, WAYPOINT_SPACE, true, true, WAYPOINTQUESTTASK)
 
@@ -305,7 +352,7 @@ function SpaceRecoveryScreenplay:spawnRecoveryShip(pPlayer)
 	local availablePoints = {}
 
 	for i = 1, #self.preRecoveryPoints, 1 do
-		table.insert(availablePoints, self.preRecoveryPoints[i].name)
+		table.insert(availablePoints, self.preRecoveryPoints[i].patrolPointName)
 	end
 
 	if (self.DEBUG_SPACE_RECOVERY) then
@@ -636,7 +683,7 @@ function SpaceRecoveryScreenplay:assignRecoveryPoints(pRecoveryShip)
 	local pointsTable = {}
 
 	for i = 1, totalPoints, 1 do
-		table.insert(pointsTable, flightPath[i].name)
+		table.insert(pointsTable, flightPath[i].patrolPointName)
 	end
 
 	ShipAiAgent(pRecoveryShip):assignFixedPatrolPointsTable(pointsTable)
