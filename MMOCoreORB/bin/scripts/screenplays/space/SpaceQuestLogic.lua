@@ -13,14 +13,19 @@ SpaceQuestLogic = ScreenPlay:new {
 		--{species = {}, item = ""},
 	},
 
-	-- Duty Mission Bool
-	dutyMission = false,
-
 	-- Side Quest Split Flag
 	SIDE_QUEST_SPLIT_TYPES = {
+		NONE = 0,
 		COMPLETION = 1,
-		PATROL_POINT = 2,
+		FAILURE = 2,
+		BIDIRECTIONAL = 3,
+		PATROL_POINT = 4,
 	},
+
+	-- Flags used to tie side quest to parent quest
+	parentQuest = "",
+	parentQuestType = "",
+	parentQuestName = "",
 
 	-- Side Quest Bool
 	sideQuest = false,
@@ -30,17 +35,16 @@ SpaceQuestLogic = ScreenPlay:new {
 	sideQuestName = "",
 	-- Side Quest Split Type
 	sideQuestSplitType = 0,
-
-	-- Patrol point to start side quest for PATROL_POINT split type
-	sideQuestPatrolStart = 0,
-
 	-- Delay in seconds to trigger side quest when triggered
 	sideQuestDelay = 2, -- Time in seconds to wait to trigger side quest
 
-	-- Flags used to tie side quest to parent quest
-	parentQuest = "",
-	parentQuestType = "",
-	parentQuestName = "",
+	-- Fail Side Quest Type String
+	sideFailQuestType = "",
+	-- Fail Side Quest Name String
+	sideFailQuestName = "",
+
+	-- Patrol point to start side quest for PATROL_POINT split type
+	sideQuestPatrolStart = 0,
 }
 
 registerScreenPlay("SpaceQuestLogic", false)
