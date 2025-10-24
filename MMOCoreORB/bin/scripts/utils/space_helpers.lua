@@ -145,6 +145,15 @@ function SpaceHelpers:setSquadronType(pPlayer, squadron)
 	PlayerObject(pGhost):setSquadronType(squadron)
 end
 
+-- @param pPlayer pointer checks if the player has any type of pilot skills
+function SpaceHelpers:isPilot(pPlayer)
+	if (pPlayer == nil) then
+		return false
+	end
+
+	return (CreatureObject(pPlayer):isNeutralPilot() or CreatureObject(pPlayer):isRebelPilot() or CreatureObject(pPlayer):isImperialPilot())
+end
+
 -- @param pPlayer pointer checked if neutral pilot
 function SpaceHelpers:isNeutralPilot(pPlayer)
 	if (pPlayer == nil) then
@@ -396,15 +405,6 @@ function SpaceHelpers:getPlayerSpaceFactionHash(pPlayer)
 	end
 
 	return factionHash
-end
-
--- @param pPlayer pointer checks if the player has any type of pilot skills
-function SpaceHelpers:isPilot(pPlayer)
-	if (pPlayer == nil) then
-		return false
-	end
-
-	return (CreatureObject(pPlayer):isNeutralPilot() or CreatureObject(pPlayer):isRebelPilot() or CreatureObject(pPlayer):isImperialPilot())
 end
 
 -- @param pPlayer pointer checks if the player has space experience

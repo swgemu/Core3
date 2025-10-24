@@ -11,8 +11,6 @@ SpaceRescueScreenplay = SpaceQuestLogic:new {
 		--{species = {}, item = ""},
 	},
 
-	dutyMission = false,
-
 	sideQuest = false,
 	sideQuestType = "",
 	sideQuestName = "",

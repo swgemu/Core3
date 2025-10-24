@@ -151,7 +151,7 @@ escort_corellia_privateer_3 = SpaceEscortScreenplay:new {
 
 	-- Screenplay Specific Variables
 
-	escortShip = "freighterheavy_tier1",
+	escortShips = {"freighterheavy_tier1"},
 
 	escortPoints = {
 		{name = "corellia_privateer_security_escort_1", zoneName = "space_corellia", x = -5034, z = -5439, y = -4558, escortNumber = 1, radius = 250},
@@ -324,7 +324,7 @@ escort_corellia_privateer_14 = SpaceEscortScreenplay:new {
 
 	-- Screenplay Specific Variables
 
-	escortShip = "freighterheavy_tier3",
+	escortShips = {"freighterheavy_tier3"},
 
 	escortPoints = {
 		{name = "privateer_escort_1", zoneName = "space_yavin4", x = -2163, z = 956, y = 4991, escortNumber = 1, radius = 250},
@@ -639,7 +639,7 @@ escort_corellia_privateer_tier3_1_b = SpaceEscortScreenplay:new {
 
 	-- Screenplay Specific Variables
 
-	escortShip = "freighterlight_tier3",
+	escortShips = {"freighterlight_tier3"},
 
 	escortPoints = {
 		{name = "corellia_privateer_tier3_supply_escort_1", zoneName = "space_endor", x = 3799, z = -362, y = -3019, escortNumber = 1, radius = 250},
@@ -863,7 +863,415 @@ survival_corellia_privateer_tier3_4_a = SpaceSurvivalScreenplay:new {
 	-- Screenplay Specific Variables
 }
 
-registerScreenPlay("assassinate_corellia_privateer_tier3_4", true)
+registerScreenPlay("survival_corellia_privateer_tier3_4_a", true)
+
+-- Turoldine Main Missions
+
+patrol_corellia_privateer_tier4_1a = SpacePatrolScreenplay:new {
+	className = "patrol_corellia_privateer_tier4_1a",
+
+	questName = "corellia_privateer_tier4_1a",
+	questType = "patrol",
+
+	questZone = "space_dantooine",
+
+	creditReward = 0,
+
+	sideQuest = true,
+	sideQuestType = "assassinate",
+	sideQuestName = "corellia_privateer_tier4_1b",
+	sideQuestSplitType = SpaceQuestLogic.SIDE_QUEST_SPLIT_TYPES.PATROL_POINT,
+
+	sideQuestPatrolStart = 4, -- Patrol Point Number
+	sideQuestDelay = 11, -- Time in seconds to wait to trigger side quest
+
+	-- Screenplay Specific Variables
+
+	patrolPoints = {
+		{zoneName = "space_dantooine", x = -856, z = 950, y = -2616, patrolNumber = 1, radius = 150},
+		{zoneName = "space_dantooine", x = -1483, z = 1726, y = -4173, patrolNumber = 2, radius = 150},
+		{zoneName = "space_dantooine", x = -2221, z = 2639, y = -6006, patrolNumber = 3, radius = 150},
+		{zoneName = "space_dantooine", x = 293, z = 4512, y = -4777, patrolNumber = 4, radius = 150},
+		{zoneName = "space_dantooine", x = 3152, z = 7350, y = -3831, patrolNumber = 5, radius = 150},
+	},
+}
+
+registerScreenPlay("patrol_corellia_privateer_tier4_1a", true)
+
+assassinate_corellia_privateer_tier4_1b = SpaceAssassinateScreenplay:new {
+	className = "assassinate_corellia_privateer_tier4_1b",
+
+	questType = "assassinate",
+	questName = "corellia_privateer_tier4_1b",
+
+	questZone = "space_dantooine",
+
+	creditReward = 0,
+	itemReward = {
+	},
+
+	parentQuest = "patrol_corellia_privateer_tier4_1a",
+	parentQuestType = "patrol",
+	parentQuestName = "corellia_privateer_tier4_1a",
+
+	sideQuest = true,
+	sideQuestType = "destroy_surpriseattack",
+	sideQuestName = "corellia_privateer_tier4_1c",
+	sideQuestSplitType = SpaceQuestLogic.SIDE_QUEST_SPLIT_TYPES.COMPLETION,
+
+	-- Screenplay Specific Variables
+
+	arrivalDelay = 3, -- Seconds
+	failTimer = 20, -- Minutes
+
+	assassinateSpawns = {
+		target = "blacksun_yt1300_tier4",
+		escorts = {"blacksun_vehement_tier4", "blacksun_vehement_tier4", "blacksun_vehement_tier4"},
+	},
+
+	targetPatrols = {
+		{name = "corellia_privateer_assassinate_42a_1", x = -6621, z = -6310, y = -1147},
+		{name = "corellia_privateer_assassinate_42a_2", x = -4435, z = -2591, y = -2467},
+		{name = "corellia_privateer_assassinate_42a_3", x = -2107, z = -1811, y = -4301},
+		{name = "corellia_privateer_assassinate_42a_4", x = -337, z = -3780, y = -7480},
+	},
+}
+
+registerScreenPlay("assassinate_corellia_privateer_tier4_1b", true)
+
+destroy_surpriseattack_corellia_privateer_tier4_1c = SpaceSurpriseAttackScreenplay:new {
+	className = "destroy_surpriseattack_corellia_privateer_tier4_1c",
+
+	questName = "corellia_privateer_tier4_1c",
+	questType = "destroy_surpriseattack",
+
+	questZone = "space_dantooine",
+
+	parentQuest = "assassinate_corellia_privateer_tier4_1b",
+	parentQuestType = "assassinate",
+	parentQuestName = "corellia_privateer_tier4_1b",
+
+	sideQuest = false,
+	sideQuestType = "",
+	sideQuestName = "",
+
+	-- Screenplay Specific Variables
+
+	surpriseAttackShips = {
+		zone = "space_dantooine",
+		spawns = {{count = 2, shipName = "blacksun_ace_s04_tier4"}, {count = 2, shipName = "blacksun_bomber_ace_s04_tier4"}},
+		total = 4,
+	},
+}
+
+registerScreenPlay("destroy_surpriseattack_corellia_privateer_tier4_1c", true)
+
+assassinate_corellia_privateer_tier4_2a = SpaceAssassinateScreenplay:new {
+	className = "assassinate_corellia_privateer_tier4_2a",
+
+	questType = "assassinate",
+	questName = "corellia_privateer_tier4_2a",
+
+	questZone = "space_dathomir",
+
+	creditReward = 0,
+	itemReward = {},
+
+	sideQuest = true,
+	sideQuestType = "escort",
+	sideQuestName = "corellia_privateer_tier4_2b",
+	sideQuestSplitType = SpaceQuestLogic.SIDE_QUEST_SPLIT_TYPES.COMPLETION,
+	sideQuestDelay = 2, -- Time in seconds to wait to trigger side quest
+
+	-- Screenplay Specific Variables
+
+	arrivalDelay = 6, -- Seconds
+	failTimer = 20, -- Minutes
+
+	assassinateSpawns = {
+		target = "hidden_daggers_executioner_tier5",
+		escorts = {"hidden_daggers_eliminator_tier5", "hidden_daggers_eliminator_tier5", "hidden_daggers_eliminator_tier5", "hidden_daggers_eliminator_tier5"},
+	},
+
+	targetPatrols = {
+		{name = "bh_path_alpha_04", x = 520, z = 765, -5177},
+		{name = "corellia_imperial_tier3_leg_3_recovery_escort_3", x = -636, z = 3866, y = 330},
+		{name = "corellia_imperial_tier4_escort1_2", x = -7504, z = -314, y = -4018},
+		{name = "corellia_imperial_tier4_recovery2_7", x = 5904, z = -3381, y = -2643},
+	},
+}
+
+registerScreenPlay("assassinate_corellia_privateer_tier4_2a", true)
+
+escort_corellia_privateer_tier4_2b = SpaceEscortScreenplay:new {
+	className = "escort_corellia_privateer_tier4_2b",
+
+	questName = "corellia_privateer_tier4_2b",
+	questType = "escort",
+
+	questZone = "space_dathomir",
+
+	parentQuest = "assassinate_corellia_privateer_tier4_2a",
+	parentQuestType = "assassinate",
+	parentQuestName = "corellia_privateer_tier4_2a",
+
+	sideQuest = false,
+	sideQuestType = "",
+	sideQuestName = "",
+	sideQuestSplitType = SpaceQuestLogic.SIDE_QUEST_SPLIT_TYPES.NONE,
+	sideQuestDelay = 5, -- Time in seconds to wait to trigger side quest
+
+	-- Screenplay Specific Variables
+
+	escortShips = {"freighterlight_tier3"},
+
+	escortPoints = {
+		{name = "corellia_privateer_tier4_leg_2_escort_1", zoneName = "space_dathomir", x = 2611, z = -387, y = 3617, escortNumber = 1, radius = 250},
+		{name = "corellia_privateer_tier4_leg_2_escort_2", zoneName = "space_dathomir", x = 683, z = 1485, y = 3209, escortNumber = 2, radius = 250},
+		{name = "corellia_privateer_tier4_leg_2_escort_3", zoneName = "space_dathomir", x = -1642, z = 3578, y = 2633, escortNumber = 3, radius = 250},
+		{name = "corellia_privateer_tier4_leg_2_escort_4", zoneName = "space_dathomir", x = -2146, z = 5611, y = 2738, escortNumber = 4, radius = 250},
+		{name = "corellia_privateer_tier4_leg_2_escort_5", zoneName = "space_dathomir", x = -2682, z = 7408, y = 2855, escortNumber = 4, radius = 250},
+	},
+
+	attackDelay = 85, -- In Seconds
+
+	attackShips = {
+		{"hidden_daggers_slayer_tier4", "hidden_daggers_slayer_tier4"},
+		{"hidden_daggers_killer_tier4", "hidden_daggers_killer_tier4", "hidden_daggers_killer_tier4"},
+		{"hidden_daggers_nebula_stalker_tier4", "hidden_daggers_executioner_tier4", "hidden_daggers_executioner_tier4"},
+	}
+}
+
+registerScreenPlay("escort_corellia_privateer_tier4_2b", true)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+space_battle_corellia_privateer_tier4_3a = SpaceBattleScreenplay:new {
+	className = "space_battle_corellia_privateer_tier4_3a",
+
+	questType = "space_battle",
+	questName = "corellia_privateer_tier4_3a",
+
+	questZone = "space_endor",
+
+	creditReward = 0,
+	itemReward = {},
+
+	sideQuest = false,
+	sideQuestType = "",
+	sideQuestName = "",
+	sideQuestSplitType = SpaceQuestLogic.SIDE_QUEST_SPLIT_TYPES.NONE,
+	sideQuestDelay = 1, -- Time in seconds to wait to trigger side quest
+
+	-- Screenplay Specific Variables
+
+}
+
+registerScreenPlay("space_battle_corellia_privateer_tier4_3a", true)
+
+assassinate_corellia_privateer_tier4_4a = SpaceAssassinateScreenplay:new {
+	className = "assassinate_corellia_privateer_tier4_4a",
+
+	questType = "assassinate",
+	questName = "corellia_privateer_tier4_4a",
+
+	questZone = "space_endor",
+
+	creditReward = 0,
+	itemReward = {},
+
+	sideQuest = false,
+	sideQuestType = "",
+	sideQuestName = "",
+	sideQuestSplitType = SpaceQuestLogic.SIDE_QUEST_SPLIT_TYPES.NONE,
+	sideQuestDelay = 1, -- Time in seconds to wait to trigger side quest
+
+	-- Screenplay Specific Variables
+
+	arrivalDelay = 12, -- Seconds
+	failTimer = 20, -- Minutes
+
+	assassinateSpawns = {
+		target = "evil_raider_tyrant_tier3",
+		escorts = {"evil_raider_cutthroat_tier3", "evil_raider_cutthroat_tier3", "evil_raider_fighter_tier3", "evil_raider_fighter_tier3", "evil_raider_fighter_tier3"},
+	},
+
+	targetPatrols = {
+		{name = "corellia_privateer_tier3_assassin_1", x = 5978, z = 1103, y = -3021},
+		{name = "corellia_privateer_tier3_assassin_2", x = 1503, z = 857, y = -4461},
+		{name = "corellia_privateer_tier3_assassin_3", x = -1962, z = 658, y = -3496},
+		{name = "corellia_privateer_tier3_assassin_4", x = -5906, z = 487, y = -2508},
+	},
+}
+
+registerScreenPlay("assassinate_corellia_privateer_tier4_4a", true)
+
+-- Turoldine Duty Missions
+
+destroy_duty_corellia_privateer_tier4_1 = SpaceDutyDestroyScreenplay:new {
+	className = "destroy_duty_corellia_privateer_tier4_1",
+
+	questName = "corellia_privateer_tier4_1",
+	questType = "destroy_duty",
+
+	questZone = "space_dathomir",
+
+	creditReward = 300,
+
+	sideQuest = false,
+	sideQuestType = "",
+
+	-- Screenplay Specific Variables
+
+	totalLevels = 2, -- Amount of levels a player has to complete to finish mission
+	totalRounds = 4, -- Total Rounds for each of the levels
+	totalWaves = 3, -- Total waves at each location that is not the boss ship
+
+	minDistance = 12500, -- Minimum distance away for new location
+	maxDistance = 17500, -- Maximum distance away for new location
+
+	bossShip = "hidden_daggers_enforcer_tier4",
+	shipTypes = {
+		{"hidden_daggers_killer_tier4", "hidden_daggers_killer_tier4", "hidden_daggers_killer_tier4", "hidden_daggers_killer_tier4"},
+		{"hidden_daggers_eliminator_tier4", "hidden_daggers_eliminator_tier4", "hidden_daggers_eliminator_tier4", "hidden_daggers_eliminator_tier4"},
+		{"hidden_daggers_slayer_tier4", "hidden_daggers_slayer_tier4", "hidden_daggers_slayer_tier4", "hidden_daggers_slayer_tier4"},
+		{"hidden_daggers_executioner_tier4", "hidden_daggers_executioner_tier4", "hidden_daggers_executioner_tier4", "hidden_daggers_executioner_tier4"},
+	},
+}
+
+registerScreenPlay("destroy_duty_corellia_privateer_tier4_1", true)
+
+rescue_duty_corellia_privateer_tier4_1 = SpaceDutyRescueScreenplay:new {
+	className = "rescue_duty_corellia_privateer_tier4_1",
+
+	questName = "corellia_privateer_tier4_1",
+	questType = "rescue_duty",
+
+	questZone = "space_lok",
+
+	creditReward = 0,
+
+	itemReward = {
+		--{species = {}, item = ""},
+	},
+
+	sideQuest = false,
+	sideQuestType = "",
+
+	-- Screenplay Specific Variables
+
+}
+
+registerScreenPlay("rescue_duty_corellia_privateer_tier4_1", true)
+
+recovery_duty_corellia_privateer_tier4_1 = SpaceDutyRecoveryScreenplay:new {
+	className = "recovery_duty_corellia_privateer_tier4_1",
+
+	questName = "corellia_privateer_tier4_1",
+	questType = "recovery_duty",
+
+	questZone = "space_corellia",
+
+	creditReward = 200,
+
+	sideQuest = false,
+	sideQuestType = "",
+
+	-- Screenplay Specific Variables
+
+}
+
+registerScreenPlay("recovery_duty_corellia_privateer_tier4_1", true)
+
+escort_duty_corellia_privateer_tier4_1 = SpaceDutyEscortScreenplay:new {
+	className = "escort_duty_corellia_privateer_tier4_1",
+
+	questName = "corellia_privateer_tier4_1",
+	questType = "escort_duty",
+
+	questZone = "space_dathomir",
+
+	creditReward = 5000,
+
+	itemReward = {
+		--{species = {}, item = ""},
+	},
+
+	sideQuest = false,
+	sideQuestType = "",
+
+	-- Screenplay Specific Variables
+
+	escortShips = {"freighterheavy_tier4", "freighterlight_tier4"},
+
+	escortPoints = {
+		{name = "corellia_privateer_tier4_escort_duty_1", zoneName = "space_dathomir", x = 3523, z = 400, y = -4024, escortNumber = 1, radius = 250},
+		{name = "corellia_privateer_tier4_escort_duty_2", zoneName = "space_dathomir", x = 2089, z = 4103, y = -4060, escortNumber = 2, radius = 250},
+		{name = "corellia_privateer_tier4_escort_duty_3", zoneName = "space_dathomir", x = 1396, z = 5751, y = -3946, escortNumber = 3, radius = 250},
+		{name = "corellia_privateer_tier4_escort_duty_4", zoneName = "space_dathomir", x = 817, z = 7127, y = -3851, escortNumber = 4, radius = 250},
+		{name = "corellia_privateer_tier4_escort_duty_5", zoneName = "space_dathomir", x = 23729, z = 7391, y = -1995, escortNumber = 5, radius = 250},
+	},
+
+	attackDelay = 90, -- In Seconds
+
+	attackShips = {
+		{"dath_witchblood_clan_punisher_tier4", "dath_witchblood_clan_punisher_tier4", "dath_witchblood_clan_punisher_tier4", "dath_witchblood_clan_punisher_tier4"},
+		{"dath_witchblood_clan_soldier_tier4", "dath_witchblood_clan_soldier_tier4", "dath_witchblood_clan_soldier_tier4", "dath_witchblood_clan_soldier_tier4"},
+	},
+
+	creditKillBonus = 300,
+}
+
+registerScreenPlay("escort_duty_corellia_privateer_tier4_1", true)
+
+
+
+
+
 
 --[[
 
@@ -911,7 +1319,10 @@ CorsecSquadronScreenplay = ScreenPlay:new {
 
 	-- Tier4
 	TIER4_QUEST_STRING_1 = {type = "patrol", name = "corellia_privateer_tier4_1a"},
+	TIER4_QUEST_STRING_1_SIDE1 = {type = "assassinate", name = "corellia_privateer_tier4_1b"},
+	TIER4_QUEST_STRING_1_SIDE2 = {type = "destroy_surpriseattack", name = "corellia_privateer_tier4_1c"},
 	TIER4_QUEST_STRING_2 = {type = "assassinate", name = "corellia_privateer_tier4_2a"},
+	TIER4_QUEST_STRING_2_SIDE1 = {type = "escort", name = "corellia_privateer_tier4_2b"},
 	TIER4_QUEST_STRING_3 = {type = "space_battle", name = "corellia_privateer_tier4_3a"},
 	TIER4_QUEST_STRING_4 = {type = "assassinate", name = "corellia_privateer_tier4_4a"},
 	TIER4_QUEST_STRING_DUTY_1 = {type = "escort_duty", name = "corellia_privateer_tier4_1"},
@@ -1089,6 +1500,55 @@ function CorsecSquadronScreenplay:resetRamnaQuests(pPlayer)
 end
 
 function CorsecSquadronScreenplay:resetTuroldineQuests(pPlayer)
+	if (pPlayer == nil) then
+		return
+	end
+
+	local pGhost = CreatureObject(pPlayer):getPlayerObject()
+
+	if (pGhost == nil) then
+		return
+	end
+
+	PlayerObject(pGhost):setPilotTier(4)
+
+	patrol_corellia_privateer_tier4_1a:failQuest(pPlayer, "false")
+	assassinate_corellia_privateer_tier4_1b:failQuest(pPlayer, "false")
+	destroy_surpriseattack_corellia_privateer_tier4_1c:failQuest(pPlayer, "false")
+
+	assassinate_corellia_privateer_tier4_2a:failQuest(pPlayer, "false")
+	space_battle_corellia_privateer_tier4_3a:failQuest(pPlayer, "false")
+	assassinate_corellia_privateer_tier4_4a:failQuest(pPlayer, "false")
 
 
+	SpaceHelpers:failSpaceQuest(pPlayer, self.TIER4_QUEST_STRING_1.type, self.TIER4_QUEST_STRING_1.name, false)
+	SpaceHelpers:clearSpaceQuest(pPlayer, self.TIER4_QUEST_STRING_1.type, self.TIER4_QUEST_STRING_1.name, false)
+
+	SpaceHelpers:failSpaceQuest(pPlayer, self.TIER4_QUEST_STRING_1_SIDE1.type, self.TIER4_QUEST_STRING_1_SIDE1.name, false)
+	SpaceHelpers:clearSpaceQuest(pPlayer, self.TIER4_QUEST_STRING_1_SIDE1.type, self.TIER4_QUEST_STRING_1_SIDE1.name, false)
+
+	SpaceHelpers:failSpaceQuest(pPlayer, self.TIER4_QUEST_STRING_1_SIDE2.type, self.TIER4_QUEST_STRING_1_SIDE2.name, false)
+	SpaceHelpers:clearSpaceQuest(pPlayer, self.TIER4_QUEST_STRING_1_SIDE2.type, self.TIER4_QUEST_STRING_1_SIDE2.name, false)
+
+	SpaceHelpers:failSpaceQuest(pPlayer, self.TIER4_QUEST_STRING_2.type, self.TIER4_QUEST_STRING_2.name, false)
+	SpaceHelpers:clearSpaceQuest(pPlayer, self.TIER4_QUEST_STRING_2.type, self.TIER4_QUEST_STRING_2.name, false)
+
+	SpaceHelpers:failSpaceQuest(pPlayer, self.TIER4_QUEST_STRING_3.type, self.TIER4_QUEST_STRING_3.name, false)
+	SpaceHelpers:clearSpaceQuest(pPlayer, self.TIER4_QUEST_STRING_3.type, self.TIER4_QUEST_STRING_3.name, false)
+
+	SpaceHelpers:failSpaceQuest(pPlayer, self.TIER4_QUEST_STRING_4.type, self.TIER4_QUEST_STRING_4.name, false)
+	SpaceHelpers:clearSpaceQuest(pPlayer, self.TIER4_QUEST_STRING_4.type, self.TIER4_QUEST_STRING_4.name, false)
+
+	local playerID = SceneObject(pPlayer):getObjectID()
+
+	removeQuestStatus(playerID .. "CorsecSquadronScreenplay:StartedTuroldine")
+
+	removeQuestStatus(playerID .. CorsecSquadronScreenplay.TIER4_QUEST_STRING_1.name .. ":attempted")
+	removeQuestStatus(playerID .. CorsecSquadronScreenplay.TIER4_QUEST_STRING_2.name .. ":attempted")
+	removeQuestStatus(playerID .. CorsecSquadronScreenplay.TIER4_QUEST_STRING_3.name .. ":attempted")
+	removeQuestStatus(playerID .. CorsecSquadronScreenplay.TIER4_QUEST_STRING_4.name .. ":attempted")
+	removeQuestStatus(playerID .. CorsecSquadronScreenplay.TIER4_QUEST_STRING_1.name .. ":reward")
+	removeQuestStatus(playerID .. CorsecSquadronScreenplay.TIER4_QUEST_STRING_2.name .. ":reward")
+	removeQuestStatus(playerID .. CorsecSquadronScreenplay.TIER4_QUEST_STRING_3.name .. ":reward")
+	removeQuestStatus(playerID .. CorsecSquadronScreenplay.TIER4_QUEST_STRING_4.name .. ":reward")
 end

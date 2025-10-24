@@ -206,6 +206,20 @@ space_dathomir = SpacePatrolPointTable:new {
 	{"tier3_privateer_witchblood_inspect_01_04", -2483, 333, -2297},
 	{"tier3_privateer_witchblood_inspect_01_05", -1550, 360, -2118},
 	{"tier3_privateer_witchblood_inspect_01_06", -1069, 538, -1469},
+	{"corellia_privateer_tier4_escort_duty_1", 3523, 400, -4024},
+	{"corellia_privateer_tier4_escort_duty_2", 2089, 4103, -4060},
+	{"corellia_privateer_tier4_escort_duty_3", 1396, 5751, -3946},
+	{"corellia_privateer_tier4_escort_duty_4", 817, 7127, -3851},
+	{"corellia_privateer_tier4_escort_duty_5", 23729, 7391, -1995},
+	{"bh_path_alpha_04", 520, 765, -5177},
+	{"corellia_imperial_tier3_leg_3_recovery_escort_3", -636, 3866, 330},
+	{"corellia_imperial_tier4_escort1_2", -7504, -314, -4018},
+	{"corellia_imperial_tier4_recovery2_7", 5904, -3381, -2643},
+	{"corellia_privateer_tier4_leg_2_escort_1", 2611, -387, 3617},
+	{"corellia_privateer_tier4_leg_2_escort_2", 683, 1485, 3209},
+	{"corellia_privateer_tier4_leg_2_escort_3", -1642, 3578, 2633},
+	{"corellia_privateer_tier4_leg_2_escort_4", -2146, 5611, 2738},
+	{"corellia_privateer_tier4_leg_2_escort_5", -2682, 7408, 2855},
 }
 
  SpacePatrolPoints:addSpacePatrolPoints(space_dathomir, "space_dathomir")
