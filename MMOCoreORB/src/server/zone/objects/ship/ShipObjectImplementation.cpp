@@ -640,9 +640,6 @@ void ShipObjectImplementation::notifyDissapear(TreeEntry* object) {
 	}
 }
 
-void ShipObjectImplementation::notifyDespawn(Zone* zone) {
-}
-
 void ShipObjectImplementation::sendDestroyTo(SceneObject* player) {
 	SceneObjectImplementation::sendDestroyTo(player);
 }

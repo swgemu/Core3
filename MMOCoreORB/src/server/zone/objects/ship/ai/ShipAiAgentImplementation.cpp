@@ -499,7 +499,7 @@ void ShipAiAgentImplementation::notifyDissapear(TreeEntry* entry) {
 	}
 }
 
-void ShipAiAgentImplementation::notifyDespawn(Zone* zone) {
+void ShipAiAgentImplementation::notifyDespawn() {
 #ifdef DEBUG_SHIP_DESPAWN
 	info(true) << "notifyDespawn called for - " << getDisplayedName() << " ID: " << getObjectID();
 #endif // DEBUG_SHIP_DESPAWN
@@ -546,16 +546,15 @@ void ShipAiAgentImplementation::destroyObjectFromWorld(bool sendSelfDestroy) {
 
 	// Schedule despawn notify
 	Reference<ShipAiAgent*> agentRef = asShipAiAgent();
-	Reference<Zone*> zoneRef = getZone();
 
-	Core::getTaskManager()->scheduleTask([agentRef, zoneRef] () {
+	Core::getTaskManager()->scheduleTask([agentRef] () {
 		if (agentRef == nullptr) {
 			return;
 		}
 
 		Locker lock(agentRef);
 
-		agentRef->notifyDespawn(zoneRef);
+		agentRef->notifyDespawn();
 	}, "shipAgentDespawnNotify", 500);
 }
 

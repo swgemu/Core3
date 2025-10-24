@@ -286,7 +286,7 @@ class ShipAiAgent extends FighterShipObject {
 	public abstract native void notifyDissapear(TreeEntry entry);
 
 	@preLocked
-	public abstract native void notifyDespawn(Zone zone);
+	public native void notifyDespawn();
 
 	@weakReference
 	public ShipObject getFollowShipObject() {
