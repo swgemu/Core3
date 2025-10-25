@@ -236,10 +236,10 @@ int ShipAgentTemplateManager::addSpacePatrolPoints(lua_State* L) {
 			continue;
 		}
 
-		String name = var.getStringAt(1);
-		float x = var.getFloatAt(2);
-		float z = var.getFloatAt(3);
-		float y = var.getFloatAt(4);
+		String name = var.getStringField("patrolPointName");
+		float x = var.getFloatField("x");
+		float z = var.getFloatField("z");
+		float y = var.getFloatField("y");
 
 		var.pop();
 
