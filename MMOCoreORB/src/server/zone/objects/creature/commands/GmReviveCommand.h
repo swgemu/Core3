@@ -31,20 +31,22 @@ public:
 			PlayerManager* pm = server->getZoneServer()->getPlayerManager();
 
 			if (!args.hasMoreTokens()) { // No arguments passed
-
-				if (object != nullptr && (object->isPlayerCreature() || object->isPet())) { // Target is a player or pet, rez target
-					patient = cast<CreatureObject*>( object.get());
-					revivePatient(creature, patient);
-
+				if (object != nullptr) {
+					if (object->isPlayerCreature() || object->isPet()) { // Target is a player or pet, rez target
+						patient = cast<CreatureObject*>( object.get());
+						revivePatient(creature, patient);
+					} else if (object->isShipObject()) {
+						repairShip(creature, object);
+						return SUCCESS;
+					}
 				} else if (object == nullptr) { // No target, rez self
 					patient = creature;
 					revivePatient(creature, patient);
 
-				} else { // Target is not a player or pet
+				} else { // Target is not a creature or ship
 					creature->sendSystemMessage("Syntax: /gmrevive [buff] [ [<name>] | [area [<range>] [imperial | rebel | neutral]] ]");
 					return INVALIDTARGET;
 				}
-
 			} else { // Has arguments
 
 				String firstArg;
@@ -120,6 +122,10 @@ public:
 						for (int i = 0; i < closeObjects.size(); ++i) {
 							SceneObject* sceneObject = static_cast<SceneObject*>(closeObjects.get(i));
 
+							if (sceneObject == nullptr) {
+								continue;
+							}
+
 							if ((sceneObject->isPlayerCreature() || sceneObject->isPet()) && creature->isInRange(sceneObject, range)) {
 								ManagedReference<CreatureObject*> patientObject = cast<CreatureObject*>(sceneObject);
 
@@ -141,6 +147,8 @@ public:
 										}
 									}
 								}
+							} else if (sceneObject->isShipObject()) {
+								repairShip(creature, sceneObject);
 							}
 						}
 
@@ -160,7 +168,6 @@ public:
 					}
 
 				} else if (buff) {  // Buff was the only argument
-
 					if (object != nullptr && (object->isPlayerCreature() || object->isPet())) { // Target is a player or pet, buff target
 						patient = cast<CreatureObject*>( object.get());
 						Locker clocker(patient, creature);
@@ -220,7 +227,6 @@ public:
 					return INVALIDTARGET;
 				}
 			}
-
 		} catch (Exception& e) {
 			creature->sendSystemMessage("Syntax: /gmrevive [buff] [ [<name>] | [area [<range>] [imperial | rebel | neutral]] ]");
 		}
@@ -268,6 +274,24 @@ public:
 		} else {
 			creature->sendSystemMessage(patient->getDisplayedName() + " has been restored.");
 		}
+	}
+
+	void repairShip(CreatureObject* player, SceneObject* shipSceneO) const {
+		if (shipSceneO == nullptr) {
+			return;
+		}
+
+		auto ship = shipSceneO->asShipObject();
+
+		if (ship == nullptr) {
+			return;
+		}
+
+		Locker clocker(ship, player);
+
+		ship->repairShip(100.f, false);
+
+		player->sendSystemMessage(ship->getDisplayedName() + " has been repaired.");
 	}
 };
 
