@@ -1110,7 +1110,7 @@ float ShipAiAgentImplementation::getNextSpeed() {
 	float speed = getActualMaxSpeed();
 
 	if (escortSpeed > 0.f) {
-		speed = Math::min(escortSpeed, speed);
+		speed = escortSpeed;
 	}
 
 	return speed;
