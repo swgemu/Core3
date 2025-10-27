@@ -18,7 +18,7 @@ SpaceEscortScreenplay = SpaceQuestLogic:new {
 
 	escortRange = 1000,
 	escortSpeed = 20,
-	testEscortSpeed = 40,
+	testEscortSpeed = 60,
 
 	escortShip = "",
 

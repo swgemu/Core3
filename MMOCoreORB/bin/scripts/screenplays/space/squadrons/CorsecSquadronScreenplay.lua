@@ -1183,7 +1183,7 @@ escort_corellia_privateer_tier4_2b = SpaceEscortScreenplay:new {
 		{patrolPointName = "corellia_privateer_tier4_leg_2_escort_2", zoneName = "space_dathomir", x = 683, z = 1485, y = 3209, escortNumber = 2, radius = 250},
 		{patrolPointName = "corellia_privateer_tier4_leg_2_escort_3", zoneName = "space_dathomir", x = -1642, z = 3578, y = 2633, escortNumber = 3, radius = 250},
 		{patrolPointName = "corellia_privateer_tier4_leg_2_escort_4", zoneName = "space_dathomir", x = -2146, z = 5611, y = 2738, escortNumber = 4, radius = 250},
-		{patrolPointName = "corellia_privateer_tier4_leg_2_escort_5", zoneName = "space_dathomir", x = -2682, z = 7408, y = 2855, escortNumber = 4, radius = 250},
+		{patrolPointName = "corellia_privateer_tier4_leg_2_escort_5", zoneName = "space_dathomir", x = -2682, z = 7408, y = 2855, escortNumber = 5, radius = 250},
 	},
 
 	attackDelay = 85, -- In Seconds
@@ -1575,7 +1575,7 @@ recovery_duty_corellia_privateer_tier4_1 = SpaceDutyRecoveryScreenplay:new {
 	recoveryDelay = 24,
 
 	recoverShip = "blacksun_transport_tier4",
-	recoveryConversationMobile = "object/mobile/shared_dressed_nym_guard_elite_nikto_m.iff",
+	recoveryConversationMobile = "",
 
 	escortShips = {"blacksun_aggressor_tier4", "blacksun_aggressor_tier4"},
 

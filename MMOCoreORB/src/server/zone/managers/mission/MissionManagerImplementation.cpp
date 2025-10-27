@@ -557,8 +557,13 @@ void MissionManagerImplementation::handleMissionAbort(MissionObject* mission, Cr
 
 			if (questMessage) {
 				String questString = "@spacequest/" + questType + "/" + questName + ":title";
+				String abortedMessage = "quest_aborted";
 
-				StringIdChatParameter spaceAbort("space/quest", "quest_aborted");
+				if (questType.contains("duty")) {
+					abortedMessage = "duty_aborted";
+				}
+
+				StringIdChatParameter spaceAbort("space/quest", abortedMessage);
 				spaceAbort.setTO(questString);
 
 				player->sendSystemMessage(spaceAbort);
