@@ -568,9 +568,11 @@ function SpaceRecoveryScreenplay:startRecovery(pRecoveryShip)
 		print(self.className .. ":startRecovery -- Called for Recovered ShipAgent Object: " .. ShipObject(pRecoveryShip):getShipName() .. " Recovering Player: " .. SceneObject(pPlayer):getDisplayedName())
 	end
 
-	local tauntString = "@spacequest/" .. self.questType .. "/" .. self.questName .. ":capture_phase_1"
+	if (ShipAiAgent(pRecoveryShip):hasConversationMobile()) then
+		local tauntString = "@spacequest/" .. self.questType .. "/" .. self.questName .. ":capture_phase_1"
 
-	ShipAiAgent(pRecoveryShip):tauntPlayer(pPlayer, tauntString)
+		ShipAiAgent(pRecoveryShip):tauntPlayer(pPlayer, tauntString)
+	end
 
 	-- Docking Music
 	CreatureObject(pPlayer):playMusicMessage("sound/mus_quest_theme_docking.snd")
@@ -609,7 +611,9 @@ function SpaceRecoveryScreenplay:continueRecovery(pRecoveryShip)
 
 	local tauntString = "@spacequest/" .. self.questType .. "/" .. self.questName .. ":capture_phase_2"
 
-	ShipAiAgent(pRecoveryShip):tauntPlayer(pPlayer, tauntString)
+	if (ShipAiAgent(pRecoveryShip):hasConversationMobile()) then
+		ShipAiAgent(pRecoveryShip):tauntPlayer(pPlayer, tauntString)
+	end
 
 	local recoveryAgentID = SceneObject(pRecoveryShip):getObjectID()
 
@@ -621,9 +625,9 @@ function SpaceRecoveryScreenplay:continueRecovery(pRecoveryShip)
 	CreatureObject(pPlayer):removeSpaceMissionObject(recoveryAgentID, true)
 
 	-- Update the ships faction
-	ShipObject(pRecoveryShip):setShipFactionString(SpaceHelpers:getPlayerShipFactionString(pPlayer))
-
 	ShipAiAgent(pRecoveryShip):swapSpaceFactionAssociations()
+
+	ShipObject(pRecoveryShip):setShipFactionString(SpaceHelpers:getPlayerShipFactionString(pPlayer))
 
 	-- Remove as enemy
 	ShipAiAgent(pRecoveryShip):removeEnemyShip(SceneObject(pPlayerShip):getObjectID())
@@ -821,8 +825,10 @@ function SpaceRecoveryScreenplay:spawnAttackWave(pRecoveryShip)
 	-- Schedule next attack wave
 	createEvent(self.attackDelay * 1000, self.className, "spawnAttackWave", pRecoveryShip, "")
 
-	-- Send Panic Message to Players
-	ShipAiAgent(pRecoveryShip):tauntPlayer(pPlayer, "@spacequest/" .. self.questType .. "/" .. self.questName .. ":panic_" .. tostring(getRandomNumber(1, self.tauntData.panicCount)))
+	if (ShipAiAgent(pRecoveryShip):hasConversationMobile()) then
+		-- Send Panic Message to Players
+		ShipAiAgent(pRecoveryShip):tauntPlayer(pPlayer, "@spacequest/" .. self.questType .. "/" .. self.questName .. ":panic_" .. tostring(getRandomNumber(1, self.tauntData.panicCount)))
+	end
 end
 
 --[[
@@ -1172,8 +1178,10 @@ function SpaceRecoveryScreenplay:notifyEnteredQuestArea(pActiveArea, pShip)
 
 	CreatureObject(pPlayer):sendSystemMessage(questUpdate:_getObject())
 
-	-- Send Complete Message to Player & Group
-	ShipAiAgent(pShip):tauntPlayer(pPlayer, "@spacequest/" .. self.questType .. "/" .. self.questName .. ":complete")
+	if (ShipAiAgent(pShip):hasConversationMobile()) then
+		-- Send Complete Message to Player & Group
+		ShipAiAgent(pShip):tauntPlayer(pPlayer, "@spacequest/" .. self.questType .. "/" .. self.questName .. ":complete")
+	end
 
 	-- Complete quest
 	createEvent(1000, self.className, "completeQuest", pPlayer, "true")
