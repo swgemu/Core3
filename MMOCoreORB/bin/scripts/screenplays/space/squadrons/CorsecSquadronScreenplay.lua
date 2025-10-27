@@ -1575,7 +1575,7 @@ recovery_duty_corellia_privateer_tier4_1 = SpaceDutyRecoveryScreenplay:new {
 	recoveryDelay = 24,
 
 	recoverShip = "blacksun_transport_tier4",
-	recoveryConversationMobile = "object/mobile/shared_dressed_nym_guard_elite_nikto_m.iff",
+	recoveryConversationMobile = "",
 
 	escortShips = {"blacksun_aggressor_tier4", "blacksun_aggressor_tier4"},
 

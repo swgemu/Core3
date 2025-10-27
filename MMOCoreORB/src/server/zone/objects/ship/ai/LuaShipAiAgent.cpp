@@ -57,6 +57,7 @@ Luna<LuaShipAiAgent>::RegType LuaShipAiAgent::Register[] = {
 	{ "repairShipAgent", &LuaShipAiAgent::repairShipAgent },
 	{ "removeEnemyShip", &LuaShipAiAgent::removeEnemyShip },
 	{ "setConversationMobile", &LuaShipAiAgent::setConversationMobile },
+	{ "hasConversationMobile", &LuaShipAiAgent::hasConversationMobile },
 	{ "swapSpaceFactionAssociations", &LuaShipAiAgent::swapSpaceFactionAssociations },
 	{ "clearPatrolPoints", &LuaShipAiAgent::clearPatrolPoints },
 	{ "createSquadron", &LuaShipAiAgent::createSquadron },
@@ -580,6 +581,18 @@ int LuaShipAiAgent::setConversationMobile(lua_State* L) {
 	realObject->setConversationMobile(conversationMobile.trim().hashCode());
 
 	return 0;
+}
+
+int LuaShipAiAgent::hasConversationMobile(lua_State* L) {
+	bool hasMobile = false;
+
+	if (realObject->getConversationMobile() > 0) {
+		hasMobile = true;
+	}
+
+	lua_pushboolean(L, hasMobile);
+
+	return 1;
 }
 
 int LuaShipAiAgent::swapSpaceFactionAssociations(lua_State* L) {
