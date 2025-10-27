@@ -930,13 +930,12 @@ function SpaceHelpers:failSpaceQuest(pPlayer, questType, questName, notifyClient
 		elseif (questType == "destroy_surpriseattack") then
 			SpaceHelpers:sendQuestUpdate(pPlayer, "@space/quest:destroy_surprise_abandoned") -- "You ran away from the attack and abandoned your duty!"
 		elseif (questType == "escort_duty" or questType == "destroy_duty" or questType == "recovery_duty") then
-			SpaceHelpers:sendQuestUpdate(pPlayer, "@space/quest:destroy_abandoned") -- "You have ended your duty mission."
+			SpaceHelpers:sendDutyUpdate(pPlayer, "@space/quest:destroy_abandoned") -- "You have ended your duty mission."
 		elseif (questType == "inspect") then
 			SpaceHelpers:sendQuestUpdate(pPlayer, "@space/quest:inspect_abandoned") -- "You abandoned your inspection mission!"
 		else
 			-- Failed Message
-			--SpaceHelpers:sendQuestUpdate(pPlayer, "@quest/quests:task_failure")
-			SpaceHelpers:sendDutyUpdate(pPlayer, "@space/quest:mission_abandoned") -- "You abandoned your mission!"
+			SpaceHelpers:sendQuestUpdate(pPlayer, "@space/quest:mission_abandoned") -- "You abandoned your mission!"
 		end
 	end
 
