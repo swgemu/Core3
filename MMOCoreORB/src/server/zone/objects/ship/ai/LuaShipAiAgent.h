@@ -57,6 +57,7 @@ public:
 	int repairShipAgent(lua_State* L);
 	int removeEnemyShip(lua_State* L);
 	int setConversationMobile(lua_State* L);
+	int hasConversationMobile(lua_State* L);
 	int swapSpaceFactionAssociations(lua_State* L);
 	int clearPatrolPoints(lua_State* L);
 	int createSquadron(lua_State* L);
