@@ -77,6 +77,9 @@ class TreeEntry extends Observable {
 	public native abstract float getOutOfRangeDistance(unsigned long specialRangeObjectID = 0);
 
 	@dirty
+	public native abstract float getInRangeDistance(boolean lightUpdate);
+
+	@dirty
 	public abstract boolean isInRange(float x, float y, float z, float range) {
 		float rangeSq = range * range;
 

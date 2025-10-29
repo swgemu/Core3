@@ -1794,6 +1794,9 @@ class ShipObject extends TangibleObject {
 	@dirty
 	public native abstract float getOutOfRangeDistance(unsigned long specialRangeObjectID = 0);
 
+	@dirty
+	public native abstract float getInRangeDistance(boolean lightUpdate);
+
 	@preLocked
 	@local
 	public native void updateSpeedRotationValues(boolean notifyClient = true, ShipDeltaVector vector = null);

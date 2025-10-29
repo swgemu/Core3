@@ -631,6 +631,9 @@ void Octree::safeInRange(TreeEntry* obj, float range) {
 	}
 #endif // DEBUG_SAFE_IN_RANGE
 
+	float outOfRange = obj->getOutOfRangeDistance();
+	float outOfRangeSqr = Math::sqr(outOfRange);
+
 	for (int i = 0; i < inRangeObjects.size(); ++i) {
 		try {
 			auto nearEntry = inRangeObjects.getUnsafe(i);
@@ -647,22 +650,22 @@ void Octree::safeInRange(TreeEntry* obj, float range) {
 				continue;
 			}
 
-			float entryOutOfRange = Math::max(obj->getOutOfRangeDistance(nearEntry->getObjectID()), nearEntry->getOutOfRangeDistance(objectID));
-
 #ifdef DEBUG_SAFE_IN_RANGE
 			if (Octree::doLog()) {
 				SceneObject* nearSceneO = cast<SceneObject*>(nearEntry);
 				Logger::console.info(true)
-				<< "Octree::safeInRange -- Close Object #" << i << " " << nearSceneO->getDisplayedName() << "[" << objectID << "]" << " position: " << x << ", " << y << ", " << z << " entryOutOfRange: " << entryOutOfRange;
+				<< "Octree::safeInRange -- Close Object #" << i << " " << nearSceneO->getDisplayedName() << "[" << objectID << "]" << " position: " << x << ", " << y << ", " << z << " outOfRange: " << outOfRange;
 			}
 #endif // DEBUG_SAFE_IN_RANGE
 
-			if (entryOutOfRange < INRANGE_DISTANCE_MAX) {
-				const auto& tPosition = nearEntry->getPosition();
-				float dX = tPosition.getX() - x;
-				float dY = tPosition.getY() - y;
-				float dZ = tPosition.getZ() - z;
-				float distanceSqr = (dX*dX + dY*dY + dZ*dZ);
+			const auto& tPosition = nearEntry->getPosition();
+			float dX = tPosition.getX() - x;
+			float dY = tPosition.getY() - y;
+			float dZ = tPosition.getZ() - z;
+			float distanceSqr = (dX*dX + dY*dY + dZ*dZ);
+
+			if (distanceSqr > outOfRangeSqr) {
+				float entryOutOfRange = Math::max(obj->getOutOfRangeDistance(nearEntry->getObjectID()), nearEntry->getOutOfRangeDistance(objectID));
 
 				if (distanceSqr > (entryOutOfRange * entryOutOfRange)) {
 					continue;

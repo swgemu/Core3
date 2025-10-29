@@ -2243,6 +2243,14 @@ float ShipObjectImplementation::getOutOfRangeDistance(uint64 specialRangeID) {
 	return ZoneServer::SPACECLOSEOBJECTRANGE;
 }
 
+float ShipObjectImplementation::getInRangeDistance(bool lightUpdate) {
+	if (!lightUpdate && !isShipAiAgent()) {
+		return ZoneServer::SPACESTATIONRANGE;
+	}
+
+	return ZoneServer::SPACECLOSEOBJECTRANGE;
+}
+
 bool ShipObjectImplementation::isShipDisabled() {
 	return isShipDestroyed() || !isComponentFunctional(Components::REACTOR) || !isComponentFunctional(Components::ENGINE);
 }

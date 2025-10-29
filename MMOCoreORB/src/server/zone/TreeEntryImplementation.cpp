@@ -395,6 +395,10 @@ float TreeEntryImplementation::getOutOfRangeDistance(uint64 specialRangeID) {
 	return closeRange;
 }
 
+float TreeEntryImplementation::getInRangeDistance(bool lightUpdate) {
+	return ZoneServer::CLOSEOBJECTRANGE;
+}
+
 void TreeEntryImplementation::setParent(TreeEntry* value) {
 	parent = value;
 	updateWorldPosition(false);
