@@ -617,15 +617,16 @@ void ShipAiAgentImplementation::activateAiBehavior(bool reschedule) {
 
 	uint64 miliTime = System::getMiliTime();
 	uint64 nextInterval = getNextBehaviorInterval();
-	uint64 zoneDeltaTime = miliTime - updateZoneTime;
+	uint64 deltaTime = miliTime - updateZoneTime;
 
-	if (zoneDeltaTime >= UPDATEZONEINTERVAL) {
+	if (deltaTime >= UPDATEZONEINTERVAL) {
 		bool lightUpdate = serverSyncCount != 0;
 		serverSyncCount = (serverSyncCount + 1) % SERVERSYNCCOUNTMAX;
 		updateZoneTime = miliTime;
 
 		updateZone(lightUpdate, false);
 		removeOutOfRangeObjects();
+		doRecovery(deltaTime);
 	}
 
 	nextBehaviorInterval = nextInterval;
@@ -2078,6 +2079,17 @@ float ShipAiAgentImplementation::getInRangeDistance(bool lightUpdate) {
 
 void ShipAiAgentImplementation::updateZone(bool lightUpdate, bool sendPackets) {
 	SceneObjectImplementation::updateZone(lightUpdate, sendPackets);
+}
+
+void ShipAiAgentImplementation::doRecovery(int mselapsed) {
+	bool lightUpdate = serverSyncCount != 0;
+	bool notifyClient = numberOfPlayersInRange >= 1;
+
+	if (lightUpdate && !notifyClient) {
+		return;
+	}
+
+	ShipObjectImplementation::doRecovery(mselapsed);
 }
 
 String ShipAiAgentImplementation::getLootTable() {

@@ -902,4 +902,7 @@ class ShipAiAgent extends FighterShipObject {
 
 	@local
 	public native abstract void updateZone(boolean lightUpdate, boolean sendPackets = true);
+
+	@preLocked
+	public native abstract void doRecovery(int latency);
 }

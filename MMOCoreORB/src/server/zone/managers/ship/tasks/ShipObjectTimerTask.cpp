@@ -43,10 +43,6 @@ void ShipObjectTimerTask::updateAgents() {
 		Locker lock(agent);
 		bool lightUpdate = !getAsyncPriority(ITERATOR_MAX, i);
 
-		if (!lightUpdate) {
-			agent->doRecovery(deltaMax);
-		}
-
 		agent->updateTransform(lightUpdate);
 	}
 }

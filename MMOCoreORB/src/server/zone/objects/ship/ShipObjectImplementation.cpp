@@ -956,7 +956,7 @@ void ShipObjectImplementation::doRecovery(int mselapsed) {
 	auto targetVector = getTargetVector();
 
 	if (targetVector != nullptr) {
-		targetVector->update();
+		targetVector->update(asShipObject());
 	}
 }
 

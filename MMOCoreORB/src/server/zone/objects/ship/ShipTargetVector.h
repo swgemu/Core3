@@ -13,35 +13,27 @@ namespace server {
 	}
 }
 
-//#define SHIPTARGETVECTOR_DEBUG
-
 class ShipTargetVector : public Object, public Logger {
 public:
-	const static int UPDATEINTERVAL = 2000;
+	const static int UPDATE_INTERVAL = 2000;
 	const static int TARGETVECTORMAX = 32;
 
-	constexpr static float UPDATEMODIFIER = UPDATEINTERVAL * 0.001f;
-	constexpr static float PROJECTILERANGEMAX = 512.f * UPDATEMODIFIER;
+	const static int TARGET_DISTANCE_MAX = 2048;
+	const static int TARGET_DISTANCE_SQR = TARGET_DISTANCE_MAX * TARGET_DISTANCE_MAX;
 
 protected:
 	VectorMap<float, ManagedWeakReference<SceneObject*>> targetMap;
-	ManagedWeakReference<ShipObject*> shipRef;
+	uint64 serverTime;
 
 	mutable ReadWriteLock targetLock;
-	uint64 lastUpdateTime;
 
 public:
 	ShipTargetVector(ShipObject* ship) : Object() {
 		setLoggingName("ShipTargetVector");
-
-		shipRef = ship;
-		targetMap.setAllowDuplicateInsertPlan();
-		lastUpdateTime = 0;
+		serverTime = 0;
 	}
 
-	void update();
-
-	bool isTargetValid(ShipObject* ship, SceneObject* target) const;
+	void update(ShipObject* ship);
 
 	void safeCopyTo(Vector<ManagedReference<SceneObject*>>& vector) const;
 
@@ -49,9 +41,50 @@ public:
 
 	int size() const;
 
-#ifdef SHIPTARGETVECTOR_DEBUG
-	void debugTargetVector();
-#endif // SHIPTARGETVECTOR_DEBUG
+private:
+	float getTargetDistanceSqr(ShipObject* ship, SceneObject* target) const;
+
+	bool isTargetValid(ShipObject* ship, SceneObject* target) const;
+
+	bool isScheduled() const {
+		return (System::getMiliTime() - serverTime) >= UPDATE_INTERVAL;
+	}
+
+	void setServerTime() {
+		serverTime = System::getMiliTime();
+	}
+
+	bool isCollidableType(uint32 objectType) const {
+		switch (objectType) {
+			case SceneObjectType::SHIPCAPITAL:
+			case SceneObjectType::SPACESTATION:
+			case SceneObjectType::ASTEROID:
+			case SceneObjectType::SPACEOBJECT: {
+				return true;
+			}
+			default: {
+				return false;
+			}
+		}
+	}
+
+	String toDebugString() const {
+		StringBuffer msg;
+		msg << "ShipTargetVector: " << targetMap.size() << endl;
+
+		for (int i = 0; i < targetMap.size(); ++i) {
+			auto entry = targetMap.elementAt(i).getValue().get();
+
+			if (entry != nullptr) {
+				continue;
+			}
+
+			float distance = sqrtf(targetMap.elementAt(i).getKey());
+			msg << i << " distance: " << distance << " entry: " << entry->getDisplayedName();
+		}
+
+		return msg.toString();
+	}
 };
 
 #endif // SHIPTARGETVECTOR_H_

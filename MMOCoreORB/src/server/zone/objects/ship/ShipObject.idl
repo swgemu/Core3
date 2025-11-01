@@ -478,7 +478,7 @@ class ShipObject extends TangibleObject {
 	public native void initializeTransientMembers();
 
 	@preLocked
-	public native void doRecovery(int latency);
+	public native abstract void doRecovery(int latency);
 
 	@preLocked
 	public native float getTotalShipDamage();

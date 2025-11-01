@@ -1,41 +1,28 @@
 #include "server/zone/objects/ship/ShipObject.h"
 #include "server/zone/objects/ship/ShipTargetVector.h"
 
-#ifdef SHIPTARGETVECTOR_DEBUG
-#include "server/zone/packets/ui/CreateClientPathMessage.h"
-#include "server/zone/packets/chat/ChatSystemMessage.h"
-#include "server/zone/Zone.h"
-#endif // SHIPTARGETVECTOR_DEBUG
+void ShipTargetVector::update(ShipObject* ship) {
+	if (!isScheduled()) {
+		return;
+	}
 
-void ShipTargetVector::update() {
+	if (ship == nullptr || !ship->isShipLaunched()) {
+		targetMap.removeAll();
+		return;
+	}
+
 	Locker tLock(&targetLock);
-
-	uint64 updateTime = System::getMiliTime();
-	uint64 deltaTime = updateTime - lastUpdateTime;
-
-	if (deltaTime < UPDATEINTERVAL) {
-		return;
-	}
-
-	auto ship = shipRef.get();
-
-	if (ship == nullptr) {
-		return;
-	}
+	setServerTime();
 
 	auto closeObjects = ship->getCloseObjects();
 
-	if (closeObjects == nullptr || closeObjects->size() == 0) {
+	if (closeObjects == nullptr) {
 		return;
 	}
 
 	auto closeCopy = SortedVector<ManagedReference<TreeEntry*>>();
 	closeObjects->safeCopyTo(closeCopy);
-
-	targetMap.removeAll(closeCopy.size(), closeCopy.size());
-
-	float maxRange = (ship->getActualMaxSpeed() * UPDATEMODIFIER) + ship->getBoundingRadius() + PROJECTILERANGEMAX;
-	const auto& shipPosition = ship->getWorldPosition();
+	targetMap.removeAll();
 
 	for (int i = 0; i < closeCopy.size(); ++i) {
 		auto target = closeCopy.getUnsafe(i).castTo<SceneObject*>();
@@ -44,49 +31,31 @@ void ShipTargetVector::update() {
 			continue;
 		}
 
-		auto appearance = target->getAppearanceTemplate();
+		float distanceSqr = getTargetDistanceSqr(ship, target);
 
-		if (appearance == nullptr) {
+		if (distanceSqr > TARGET_DISTANCE_SQR) {
 			continue;
 		}
 
-		auto bounding = appearance->getBoundingVolume();
-
-		if (bounding == nullptr) {
-			continue;
-		}
-
-		const Vector3& targetPosition = target->getWorldPosition();
-		float targetRadius = bounding->getBoundingSphere().getRadius();
-		float distanceSqr = shipPosition.squaredDistanceTo(targetPosition);
-
-		if (distanceSqr > Math::sqr(targetRadius + maxRange)) {
-			continue;
-		}
-
-		distanceSqr -= Math::sqr(targetRadius);
 		targetMap.put(distanceSqr, target.get());
 	}
 
 	if (targetMap.size() > (int)TARGETVECTORMAX) {
 		targetMap.removeRange((int)TARGETVECTORMAX, targetMap.size());
 	}
+}
 
-#ifdef SHIPTARGETVECTOR_DEBUG
-	if (ship->isPlayerShip()) { debugTargetVector(); }
-#endif // SHIPTARGETVECTOR_DEBUG
-
-	lastUpdateTime = updateTime;
+float ShipTargetVector::getTargetDistanceSqr(ShipObject* ship, SceneObject* target) const {
+	float radius = ship->getBoundingRadius() + target->getBoundingRadius();
+	return ship->getPosition().squaredDistanceTo(target->getPosition()) - Math::sqr(radius);
 }
 
 bool ShipTargetVector::isTargetValid(ShipObject* ship, SceneObject* target) const {
-	if (ship == nullptr || target == nullptr || ship == target || target->getLocalZone() == nullptr) {
+	if (target == nullptr || ship == target || target->getLocalZone() == nullptr) {
 		return false;
 	}
 
-	uint32 objectType = target->getGameObjectType();
-
-	if (objectType == SceneObjectType::SHIPCAPITAL || objectType == SceneObjectType::SPACESTATION || objectType == SceneObjectType::ASTEROID || objectType == SceneObjectType::SPACEOBJECT) {
+	if (isCollidableType(target->getGameObjectType())) {
 		return true;
 	}
 
@@ -140,79 +109,3 @@ int ShipTargetVector::size() const {
 
 	return targetMap.size();
 }
-
-#ifdef SHIPTARGETVECTOR_DEBUG
-void ShipTargetVector::debugTargetVector() {
-	auto ship = shipRef.get();
-
-	if (ship == nullptr) {
-		return;
-	}
-
-	auto pilot = ship->getPilot();
-
-	if (pilot == nullptr) {
-		return;
-	}
-
-	const Vector3& sPosition = ship->getWorldPosition();
-	auto path = new CreateClientPathMessage();
-
-	for (int i = 0; i < targetMap.size(); ++i) {
-		float distanceSqr = targetMap.elementAt(i).getKey();
-		auto target = targetMap.elementAt(i).getValue().get();
-
-		if (target == nullptr) {
-			continue;
-		}
-
-		auto appearance = target->getAppearanceTemplate();
-
-		if (appearance == nullptr) {
-			continue;
-		}
-
-		auto bounding = appearance->getBoundingVolume();
-
-		if (bounding == nullptr) {
-			continue;
-		}
-
-		const Vector3& tPosition = target->getWorldPosition();
-
-		Matrix4 rotation;
-		rotation.setRotationMatrix(target->getDirection()->getConjugate().toMatrix3());
-
-		const Sphere& sphere = bounding->getBoundingSphere();
-		float boundingRadius = sphere.getRadius() + sphere.getCenter().length();
-
-		path->addCoordinate(sPosition);
-		path->addCoordinate(tPosition);
-		path->drawBoundingSphere(tPosition, rotation, Sphere(Vector3::ZERO, boundingRadius));
-		path->addCoordinate(tPosition);
-		path->addCoordinate(sPosition);
-	}
-
-	StringBuffer msg;
-	msg << "TargetVector: " << targetMap.size() << endl
-		<< "--------------------------------" << endl;
-
-	for (int i = 0; i < targetMap.size(); ++i) {
-		auto distanceSqr = targetMap.elementAt(i).getKey();
-		auto target = targetMap.elementAt(i).getValue().get();
-
-		if (target == nullptr) {
-			continue;
-		}
-
-		float distance = sqrt(fabs(distanceSqr)) * (distanceSqr >= 0.f ? 1.f : -1.f);
-		msg << i << "  " << distance << "  " << target->getDisplayedName() << endl;
-	}
-
-	msg << "--------------------------------" << endl;
-
-	auto smsg = new ChatSystemMessage(msg.toString());
-	ship->broadcastMessage(smsg, true);
-	ship->broadcastMessage(path, true);
-}
-#endif // SHIPTARGETVECTOR_DEBUG
