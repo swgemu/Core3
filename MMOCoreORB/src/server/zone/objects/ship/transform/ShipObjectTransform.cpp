@@ -101,14 +101,14 @@ void ShipObjectTransform::updateTransform(ShipObject* ship, bool lightUpdate, bo
 		return;
 	}
 
-	if (notifyClient) {
-		setSpeed(ship);
-		setRotation(ship);
-		setPosition(ship);
-		setVelocity(ship);
-	} else {
-		setTransform(ship);
+	if (!notifyClient) {
+		return setTransform(ship);
 	}
+
+	setSpeed(ship);
+	setRotation(ship);
+	setPosition(ship);
+	setVelocity(ship);
 
 	updateNextTransform(ship);
 	updateShip(ship);
@@ -123,7 +123,7 @@ void ShipObjectTransform::updateTransform(ShipObject* ship, bool lightUpdate, bo
 }
 
 void ShipObjectTransform::setTransform(ShipObject* ship) {
-	float speed = Math::min(transformType.getThrottleMax() * ship->getActualMaxSpeed(), nextDistance);
+	float speed = transformType.getThrottleMax() * ship->getActualMaxSpeed();
 
 	if (nextTransform.getSpeed() > 0.f) {
 		speed = Math::min(nextTransform.getSpeed(), speed);
@@ -131,7 +131,8 @@ void ShipObjectTransform::setTransform(ShipObject* ship) {
 
 	auto rotation = nextTransform.getRotation();
 	auto velocity = nextTransform.getVelocity();
-	auto position = (velocity * speed * deltaTime) + currentTransform.getPosition();
+	auto distance = Math::min(speed * deltaTime, nextDistance);
+	auto position = (velocity * distance) + currentTransform.getPosition();
 
 	position.setX(Math::clamp(-7999.f, position.getX(), 7999.f));
 	position.setY(Math::clamp(-7999.f, position.getY(), 7999.f));
@@ -145,6 +146,11 @@ void ShipObjectTransform::setTransform(ShipObject* ship) {
 
 	previousTransform = currentTransform;
 	currentTransform = transform;
+
+	nextDistance = Math::max(nextDistance - distance, 0.f);
+	nextRotation = 0.f;
+
+	updateShip(ship);
 }
 
 void ShipObjectTransform::setSpeed(ShipObject* ship) {
