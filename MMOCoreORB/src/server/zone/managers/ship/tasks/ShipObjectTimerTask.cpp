@@ -36,7 +36,6 @@ void ShipObjectTimerTask::updateAgents() {
 		auto agent = agentVector.get(i);
 
 		if (agent == nullptr || !agent->isShipLaunched()) {
-			agentVector.remove(i);
 			continue;
 		}
 
@@ -54,7 +53,6 @@ void ShipObjectTimerTask::updateShips() {
 		auto ship = shipVector.get(i);
 
 		if (ship == nullptr || !ship->isShipLaunched()) {
-			shipVector.remove(i);
 			continue;
 		}
 
@@ -67,28 +65,24 @@ void ShipObjectTimerTask::updateShips() {
 	}
 }
 
-int ShipObjectTimerTask::updateVectors() {
+void ShipObjectTimerTask::updateVectors() {
 	if (priority == Timers::MAX) {
 		auto shipManager = shipManagerRef.get();
 
 		if (shipManager == nullptr) {
-			return 0;
+			return;
 		}
 
 		auto shipMap = shipManager->getShipUniqueIdMap();
 
 		if (shipMap == nullptr) {
-			return 0;
+			return;
 		}
 
 		shipMap->safeCopyTo(queueVector);
+		agentVector.removeAll();
+		shipVector.removeAll();
 
-		int size = queueVector.size();
-		agentVector.removeAll(size,size);
-		shipVector.removeAll(size,size);
-	}
-
-	if (priority >= Timers::MID) {
 		for (int i = queueVector.size(); -1 < --i;) {
 			auto ship = queueVector.get(i).get();
 
@@ -107,12 +101,10 @@ int ShipObjectTimerTask::updateVectors() {
 
 				agentVector.add(agent);
 			} else {
-				shipVector.add(ship);
+				shipVector.add(std::move(ship));
 			}
-
-			queueVector.remove(i);
 		}
-	}
 
-	return shipVector.size() + agentVector.size();
+		queueVector.removeAll();
+	}
 }

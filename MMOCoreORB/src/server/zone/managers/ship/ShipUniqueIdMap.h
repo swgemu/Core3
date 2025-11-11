@@ -29,6 +29,16 @@ public:
 	uint16 getUniqueID() {
 		Locker mLock(&mutex);
 
+		for (uint16 i = 1; i < shipIdMap.size(); ++i) {
+			auto shipId = shipIdMap.elementAt(i).getKey();
+			auto entry = shipIdMap.elementAt(i).getValue();
+
+			if (entry == nullptr) {
+				shipIdMap.remove(i);
+				return shipId;
+			}
+		}
+
 		for (uint16 shipID = index; shipID < INDEXMAX; ++shipID) {
 			auto entry = shipIdMap.get(shipID);
 

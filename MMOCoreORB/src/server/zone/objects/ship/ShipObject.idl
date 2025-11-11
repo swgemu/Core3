@@ -515,7 +515,7 @@ class ShipObject extends TangibleObject {
 	@local
 	public native void notifyInsertToZone(Zone zone);
 
-	public native void notifyRemoveFromZone();
+	public native abstract void notifyRemoveFromZone();
 
 	@local
 	public native abstract void updateZone(boolean lightUpdate, boolean sendPackets = true);
@@ -1823,7 +1823,11 @@ class ShipObject extends TangibleObject {
 
 	public native void resetEfficiency();
 
+	@local
 	public native void initializeUniqueID(boolean notifyClient = true);
+
+	@local
+	public native void dropUniqueID(boolean notifyClient = true);
 
 	public native boolean canBePilotedBy(CreatureObject player);
 

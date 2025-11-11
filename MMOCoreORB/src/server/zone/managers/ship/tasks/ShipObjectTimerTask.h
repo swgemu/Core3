@@ -32,8 +32,8 @@ class ShipObjectTimerTask : public Task, public Logger {
 
 		static const int ITERATOR_MID = TIME_MID / TIME_MIN;
 		static const int ITERATOR_MAX = TIME_MAX / TIME_MIN;
-		static const int SCHEDULE_MIN = TIME_MIN * 0.5f;
-		static const int SCHEDULE_MAX = TIME_MIN * 1.5f;
+		static const int SCHEDULE_MIN = TIME_MIN * 0.125f;
+		static const int SCHEDULE_MAX = TIME_MIN;
 
 	protected:
 		Reference<ShipManager*> shipManagerRef;
@@ -95,7 +95,7 @@ class ShipObjectTimerTask : public Task, public Logger {
 
 		void updateShips();
 
-		int updateVectors();
+		void updateVectors();
 
 		String toDebugString(const String& message) const {
 			StringBuffer msg;

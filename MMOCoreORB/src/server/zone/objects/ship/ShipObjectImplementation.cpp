@@ -56,7 +56,10 @@ void ShipObjectImplementation::initializeTransientMembers() {
 		resetComponentFlag(componentOptions.getKeyAt(i), false);
 	}
 
-	initializeUniqueID(false);
+	if (!isShipAiAgent()) {
+		initializeUniqueID(false);
+	}
+
 	initializeTransform(getPosition(), *getDirection());
 
 	auto volume = getCollisionVolume();
@@ -2595,6 +2598,20 @@ void ShipObjectImplementation::initializeUniqueID(bool notifyClient) {
 
 	uint16 shipID = shipManager->setShipUniqueID(asShipObject());
 	setUniqueID(shipID, notifyClient);
+}
+
+void ShipObjectImplementation::dropUniqueID(bool notifyClient) {
+	auto shipManager = ShipManager::instance();
+
+	if (shipManager == nullptr) {
+		return;
+	}
+
+	if (getUniqueID() != 0) {
+		shipManager->dropShipUniqueID(asShipObject());
+	}
+
+	setUniqueID(0, notifyClient);
 }
 
 bool ShipObjectImplementation::canBePilotedBy(CreatureObject* player) {
