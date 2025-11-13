@@ -57,7 +57,7 @@ protected:
 	HashTable<uint32, Reference<DroidCommandData*>> DroidCommands;
 
 	ShipUniqueIdMap shipUniqueIdMap;
-	ShipObjectTimerTask* timerTask;
+	VectorMap<String, ShipObjectTimerTask*> timerTasks;
 
 private:
 	void loadShipComponentData();
@@ -232,6 +232,10 @@ public:
 
 	DroidCommandData* getDroidCommandData(uint32 hashCode) const {
 		return DroidCommands.get(hashCode);
+	}
+
+	ShipObjectTimerTask* getTimerTask(const String& taskName) {
+		return timerTasks.get(taskName);
 	}
 };
 

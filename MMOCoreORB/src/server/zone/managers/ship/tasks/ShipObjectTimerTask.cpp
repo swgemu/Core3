@@ -1,11 +1,8 @@
-#include "server/zone/Zone.h"
-#include "server/ServerCore.h"
-#include "server/zone/managers/ship/ShipManager.h"
 #include "server/zone/managers/ship/tasks/ShipObjectTimerTask.h"
 
-ShipObjectTimerTask::ShipObjectTimerTask(ShipManager* shipManager) : Task() {
-	setLoggingName("ShipObjectTimerTask ");
-	shipManagerRef = shipManager;
+ShipObjectTimerTask::ShipObjectTimerTask(const String& taskQueueName) : Task() {
+	setLoggingName("ShipObjectTimerTask_" + taskQueueName);
+	setCustomTaskQueue(taskQueueName);
 
 	uint64 timeNow = System::getMiliTime();
 
@@ -17,6 +14,16 @@ ShipObjectTimerTask::ShipObjectTimerTask(ShipManager* shipManager) : Task() {
 	startTime = timeNow;
 	iterator = 0;
 	priority = Timers::MIN;
+	taskCrc = taskQueueName.hashCode();
+}
+
+void ShipObjectTimerTask::addShip(ShipObject* ship) {
+	if (ship == nullptr || shipSet.contains(ship)) {
+		return;
+	}
+
+	Locker lock(&mutex);
+	queueVector.add(ship);
 }
 
 void ShipObjectTimerTask::run() {
@@ -35,7 +42,9 @@ void ShipObjectTimerTask::updateAgents() {
 	for (int i = agentVector.size(); -1 < --i;) {
 		auto agent = agentVector.get(i);
 
-		if (agent == nullptr || !agent->isShipLaunched()) {
+		if (!isShipValid(agent)) {
+			agentVector.remove(i);
+			shipSet.remove(agent);
 			continue;
 		}
 
@@ -52,7 +61,9 @@ void ShipObjectTimerTask::updateShips() {
 	for (int i = shipVector.size(); -1 < --i;) {
 		auto ship = shipVector.get(i);
 
-		if (ship == nullptr || !ship->isShipLaunched()) {
+		if (!isShipValid(ship)) {
+			shipVector.remove(i);
+			shipSet.remove(ship);
 			continue;
 		}
 
@@ -67,26 +78,16 @@ void ShipObjectTimerTask::updateShips() {
 
 void ShipObjectTimerTask::updateVectors() {
 	if (priority == Timers::MAX) {
-		auto shipManager = shipManagerRef.get();
+		ReadLocker rLock(&mutex);
 
-		if (shipManager == nullptr) {
-			return;
-		}
+		auto queueCopy = queueVector;
+		queueVector.removeAll();
+		rLock.release();
 
-		auto shipMap = shipManager->getShipUniqueIdMap();
+		for (int i = queueCopy.size(); -1 < --i;) {
+			auto ship = queueCopy.get(i).get();
 
-		if (shipMap == nullptr) {
-			return;
-		}
-
-		shipMap->safeCopyTo(queueVector);
-		agentVector.removeAll();
-		shipVector.removeAll();
-
-		for (int i = queueVector.size(); -1 < --i;) {
-			auto ship = queueVector.get(i).get();
-
-			if (ship == nullptr || !ship->isShipLaunched()) {
+			if (!isShipValid(ship) || shipSet.contains(ship)) {
 				continue;
 			}
 
@@ -100,11 +101,15 @@ void ShipObjectTimerTask::updateVectors() {
 				}
 
 				agentVector.add(agent);
+				shipSet.add(agent);
 			} else {
 				shipVector.add(ship);
+				shipSet.add(ship);
 			}
 		}
-
-		queueVector.removeAll();
 	}
+}
+
+bool ShipObjectTimerTask::isShipValid(ShipObject* ship) const {
+	return ship != nullptr && ship->isShipLaunched() && ship->getTimerTaskCrc() == taskCrc;
 }

@@ -41,8 +41,17 @@
 #include "server/zone/managers/faction/FactionManager.h"
 #include "server/zone/objects/ship/transform/ShipObjectTransform.h"
 #include "server/zone/objects/ship/transform/SpaceTransform.h"
+#include "server/zone/managers/ship/tasks/ShipObjectTimerTask.h"
 
 // #define DEBUG_COV
+
+void ShipObjectImplementation::finalize() {
+	if (getUniqueID() != 0) {
+		dropUniqueID(false);
+	}
+
+	TangibleObjectImplementation::finalize();
+}
 
 void ShipObjectImplementation::initializeTransientMembers() {
 	TangibleObjectImplementation::initializeTransientMembers();
@@ -72,6 +81,8 @@ void ShipObjectImplementation::initializeTransientMembers() {
 			setBoundingRadius(sphereRadius);
 		}
 	}
+
+	timerTaskCrc = 0;
 }
 
 void ShipObjectImplementation::notifyLoadFromDatabase() {
@@ -648,10 +659,23 @@ void ShipObjectImplementation::sendDestroyTo(SceneObject* player) {
 }
 
 void ShipObjectImplementation::notifyInsertToZone(Zone* zone) {
-	StringBuffer newName;
-	newName << getDisplayedName() << " -- ID: " << getObjectID() << " - " << zone->getZoneName();
+	if (zone != nullptr) {
+		const auto& zoneName = zone->getZoneName();
+		auto shipManager = ShipManager::instance();
 
-	setLoggingName(newName.toString());
+		if (shipManager != nullptr) {
+			auto timerTask = shipManager->getTimerTask(zoneName);
+
+			if (timerTask != nullptr) {
+				timerTaskCrc = timerTask->getTaskCrc();
+				timerTask->addShip(asShipObject());
+			}
+		}
+
+		setLoggingName(getDisplayedName() + " [" + String::valueOf(getObjectID()) + "] " + zoneName);
+	} else {
+		setLoggingName(getDisplayedName() + " [" + String::valueOf(getObjectID()) + "]");
+	}
 
 	TangibleObjectImplementation::notifyInsertToZone(zone);
 
@@ -663,6 +687,8 @@ void ShipObjectImplementation::notifyInsertToZone(Zone* zone) {
 }
 
 void ShipObjectImplementation::notifyRemoveFromZone() {
+	timerTaskCrc = 0;
+
 	TangibleObjectImplementation::notifyRemoveFromZone();
 
 #ifdef DEBUG_COV

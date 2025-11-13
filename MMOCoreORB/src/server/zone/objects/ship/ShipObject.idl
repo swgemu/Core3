@@ -135,6 +135,8 @@ class ShipObject extends TangibleObject {
 
 	protected transient boolean droidFeedback;
 
+	protected transient unsigned int timerTaskCrc;
+
 	// DeltaAutoVariable template <class K, class V, int BaselineName, uint8 DeltaType, int DeltaIndex>
 
 	@rawTemplate(value = "float, 'SHIP', 1, 17")
@@ -469,6 +471,8 @@ class ShipObject extends TangibleObject {
 		certificationRequired = "";
 		cargoString = "";
 	}
+
+	public native void finalize();
 
 	public native void notifyLoadFromDatabase();
 
@@ -1911,4 +1915,9 @@ class ShipObject extends TangibleObject {
 
 	@local
 	public native float getNextRotation();
+
+	@local
+	public native unsigned int getTimerTaskCrc() {
+		return timerTaskCrc;
+	}
 }
