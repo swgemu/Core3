@@ -49,21 +49,6 @@ ShipManager::ShipManager() : Logger("ShipManager") {
 
 	lua->registerFunction("includeFile", includeFile);
 	lua->registerFunction("addShipSpawnGroup", addShipSpawnGroup);
-
-	auto configManager = ConfigManager::instance();
-
-	if (configManager != nullptr) {
-		const auto& spaceZones = configManager->getEnabledSpaceZones();
-
-		for (int i = 0; i < spaceZones.size(); ++i) {
-			const auto& zoneName = spaceZones.get(i);
-
-			auto timerTask = new ShipObjectTimerTask(zoneName);
-			timerTask->schedule(60000 + (i * 20));
-
-			timerTasks.put(zoneName, timerTask);
-		}
-	}
 }
 
 void ShipManager::initialize() {

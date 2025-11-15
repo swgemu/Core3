@@ -24,11 +24,15 @@ include server.zone.OctreeReference;
 import server.zone.objects.tangible.TangibleObject;
 import server.zone.ActiveAreaOctree;
 
+include server.zone.managers.ship.tasks.ShipObjectTimerTask;
+
 @mock
 class SpaceZone extends Zone {
 	private transient SpaceManager spaceManager;
 
 	private transient ActiveAreaOctree areaOctree;
+
+	protected transient ShipObjectTimerTask timerTask;
 
 	@dereferenced
 	private OctreeReference octree;
@@ -150,5 +154,8 @@ class SpaceZone extends Zone {
 	public boolean isSpaceZone() {
 		return true;
 	}
+
+	@local
+	public native abstract ShipObjectTimerTask getTimerTask();
 }
 

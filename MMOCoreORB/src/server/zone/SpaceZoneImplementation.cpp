@@ -35,6 +35,9 @@ SpaceZoneImplementation::SpaceZoneImplementation(ZoneProcessServer* serv, const 
 	}
 
 	Core::getTaskManager()->initializeCustomQueue(zoneName, numThreads, true);
+
+	timerTask = new ShipObjectTimerTask(zoneName);
+	timerTask->schedule(60000);
 }
 
 /*
@@ -470,4 +473,8 @@ SpaceZone* SpaceZoneImplementation::asSpaceZone() {
 
 SpaceZone* SpaceZone::asSpaceZone() {
 	return this;
+}
+
+ShipObjectTimerTask* SpaceZoneImplementation::getTimerTask() {
+	return timerTask;
 }

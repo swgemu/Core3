@@ -663,15 +663,17 @@ void ShipObjectImplementation::notifyInsertToZone(Zone* zone) {
 		const auto& zoneName = zone->getZoneName();
 
 		if (timerTaskCrc != zoneName.hashCode()) {
-			auto shipManager = ShipManager::instance();
+			auto spaceZone = zone->isSpaceZone() ? zone->asSpaceZone() : nullptr;
 
-			if (shipManager != nullptr) {
-				auto timerTask = shipManager->getTimerTask(zoneName);
+			if (spaceZone != nullptr) {
+				auto timerTask = spaceZone->getTimerTask();
 
 				if (timerTask != nullptr) {
 					timerTaskCrc = timerTask->getTaskCrc();
 					timerTask->addShip(asShipObject());
 				}
+			} else {
+				timerTaskCrc = 0;
 			}
 		}
 
