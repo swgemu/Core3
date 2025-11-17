@@ -143,6 +143,27 @@ float ObjectControllerImplementation::activateCommand(CreatureObject* object, un
 
 	int errorNumber = queueCommand->doQueueCommand(object, targetID, arguments);
 
+#if NDEBUG
+	if(object->isPlayerCreature()) {
+		String name = "unknown";
+
+		Reference<SceneObject*> targetObject = Core::getObjectBroker()->lookUp(targetID).castTo<SceneObject*>();
+
+		if (targetObject != nullptr) {
+			name = targetObject->getDisplayedName();
+
+			if(targetObject->isPlayerCreature())
+				name += "(Player)";
+			else
+				name += "(NPC)";
+		} else {
+			name = "(null)";
+		}
+
+		info(true) << "\033[32;40m" << object->getDisplayedName() << "(" << object->getObjectID() << ") /" << queueCommand->getQueueCommandName() << ": target=" << name << "; arguments=[" << arguments.toString() << "]; actionCount=" << actionCount << "; addToQueue= " << queueCommand->addToCombatQueue() << "\033[0m";
+	}
+#endif
+
 	/// Remove Skillmods if any
 	for (int i = 0; i < queueCommand->getSkillModSize(); ++i) {
 		String skillMod;

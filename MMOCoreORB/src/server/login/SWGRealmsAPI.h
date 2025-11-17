@@ -22,6 +22,8 @@
 
 // Forward declarations
 class GalaxyBanEntry;
+class CharacterListEntry;
+class CharacterNameMap;
 
 namespace web {
 	namespace http {
@@ -402,6 +404,8 @@ namespace server {
 			bool parseAccountFromJSON(const String& jsonStr, Reference<account::Account*> account, String& errorMessage);
 			bool parseAccountBanStatusFromJSON(const String& jsonStr, Reference<account::Account*> account, String& errorMessage);
 			bool parseGalaxyBansFromJSON(const String& jsonStr, VectorMap<uint32, Reference<GalaxyBanEntry*>>& galaxyBans, String& errorMessage);
+			bool parseCharacterBansFromJSON(const String& jsonStr, VectorMap<String, Reference<CharacterListEntry*>>& characterBans, String& errorMessage);
+			bool parseCharacterListFromJSON(const String& jsonStr, Vector<CharacterListEntry>& characters, String& errorMessage);
 			bool parseGalaxyListFromJSON(const String& jsonStr, Vector<Galaxy>& galaxies, String& errorMessage);
 			Optional<Galaxy> parseGalaxyFromJSON(const String& jsonStr);
 
@@ -426,6 +430,34 @@ namespace server {
 			bool banFromGalaxyBlocking(uint32 accountID, uint32 galaxyID, uint32 issuerID, uint64 expiresTimestamp,
 			                           const String& reason, String& errorMessage);
 			bool unbanFromGalaxyBlocking(uint32 accountID, uint32 galaxyID, const String& reason, String& errorMessage);
+
+			// Character Ban Operations
+			bool getCharacterBansBlocking(uint32 accountID, VectorMap<String, Reference<CharacterListEntry*>>& characterBans,
+			                              String& errorMessage);
+			bool banCharacterBlocking(uint32 accountID, uint32 galaxyID, const String& name, uint32 issuerID,
+			                          uint64 expiresTimestamp, const String& reason, String& errorMessage);
+			bool unbanCharacterBlocking(uint32 accountID, uint32 galaxyID, const String& name, const String& reason,
+			                            String& errorMessage);
+
+			// Character Operations
+			bool createCharacterBlocking(uint64 characterOID, uint32 accountID, uint32 galaxyID,
+			                             const String& firstname, const String& surname,
+			                             uint32 race, uint32 gender, const String& templatePath,
+			                             const String& reservationID, String& errorMessage);
+			bool getCharacterListBlocking(uint32 accountID, Vector<CharacterListEntry>& characters, String& errorMessage);
+			bool loadCharacterNamesBlocking(uint32 galaxyID, CharacterNameMap& nameMap, String& errorMessage);
+			bool reserveCharacterNameBlocking(uint32 galaxyID, const String& firstname, const String& surname,
+			                                  String& reservationID, String& errorMessage);
+			bool beginCharactersCommitBlocking(uint32 galaxyID, String& errorMessage);
+			bool commitCharactersBlocking(uint32 galaxyID, String& errorMessage);
+			bool updateCharacterBlocking(uint64 characterOID, uint32 galaxyID,
+			                             const String& firstname, const String& surname,
+			                             String& errorMessage);
+			bool deleteCharacterBlocking(uint64 characterOID, uint32 accountID, uint32 galaxyID, String& errorMessage);
+			bool rollbackCharactersBlocking(uint32 galaxyID, String& errorMessage);
+			bool beginPurgeBatchBlocking(uint32 galaxyID, uint32 limit, Vector<uint64>& characterOIDs,
+			                             String& batchID, String& errorMessage);
+			bool commitPurgeBatchBlocking(uint32 galaxyID, const String& batchID, String& errorMessage);
 
 			// Galaxy Metadata Operations
 			Vector<Galaxy> getAuthorizedGalaxies(uint32 accountID);

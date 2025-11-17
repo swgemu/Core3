@@ -9,6 +9,10 @@
 #include "../objects/GalaxyList.h"
 #include "CharacterListEntry.h"
 
+#ifdef WITH_SWGREALMS_API
+#include "server/login/SWGRealmsAPI.h"
+#endif
+
 class CharacterList : public Vector<CharacterListEntry> {
 	uint32 accountid;
 	String username;
@@ -27,6 +31,7 @@ public:
 	void update() {
 		removeAll();
 
+#ifndef WITH_SWGREALMS_API
 		UniqueReference<ResultSet*> characters;
 
 		StringBuffer query;
@@ -85,6 +90,50 @@ public:
 
 			add(newEntry);
 		}
+#else // WITH_SWGREALMS_API
+		auto swgRealmsAPI = SWGRealmsAPI::instance();
+		if (swgRealmsAPI == nullptr) {
+			System::out << "SWGRealms API not available for character list" << endl;
+			return;
+		}
+
+		String errorMessage;
+
+		// Fetch character list (includes UNION of characters + characters_dirty)
+		Vector<CharacterListEntry> charactersData;
+		if (!swgRealmsAPI->getCharacterListBlocking(accountid, charactersData, errorMessage)) {
+			System::out << "Error fetching character list: " << errorMessage << endl;
+			return;
+		}
+
+		// Fetch character bans
+		VectorMap<String, Reference<CharacterListEntry*>> characterBans;
+		if (!swgRealmsAPI->getCharacterBansBlocking(accountid, characterBans, errorMessage)) {
+			System::out << "Error fetching character bans: " << errorMessage << endl;
+		}
+
+		auto galaxies = GalaxyList(accountid);
+
+		for (int i = 0; i < charactersData.size(); ++i) {
+			CharacterListEntry entry = charactersData.get(i);
+
+			if (!galaxies.isAllowed(entry.getGalaxyID()))
+				continue;
+
+			// Match ban data from API using "galaxyID:name" key
+			StringBuffer banKey;
+			banKey << entry.getGalaxyID() << ":" << entry.getFirstName();
+			if (characterBans.contains(banKey.toString())) {
+				CharacterListEntry* banData = characterBans.get(banKey.toString());
+				entry.setBanReason(banData->getBanReason());
+				Time expireTime(banData->getBanExpiration());
+				entry.setBanExpiration(expireTime);
+				entry.setBanAdmin(banData->getBanAdmin());
+			}
+
+			add(entry);
+		}
+#endif // WITH_SWGREALMS_API
 	}
 };
 

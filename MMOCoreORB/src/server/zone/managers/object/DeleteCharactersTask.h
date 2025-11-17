@@ -15,6 +15,9 @@
 
 class DeleteCharactersTask : public Task, public Logger {
 	SortedVector<uint64> deletedCharacters;
+#ifdef WITH_SWGREALMS_API
+	String currentPurgeBatchID;
+#endif
 
 public:
 	DeleteCharactersTask() : Task(), Logger("DeleteCharactersTask"), deletedCharacters(250, 250) {
@@ -33,6 +36,7 @@ public:
 
 		int galaxyid = server->getGalaxyID();
 
+#ifndef WITH_SWGREALMS_API
 		try {
 			Reference<ResultSet*> result = ServerDatabase::instance()->executeQuery("SELECT character_oid FROM deleted_characters WHERE db_deleted = 0 AND galaxy_id = " + String::valueOf(galaxyid) + " LIMIT 250");
 
@@ -68,6 +72,50 @@ public:
 		} catch (Exception& e) {
 			error(e.getMessage());
 		}
+#else // WITH_SWGREALMS_API
+		auto swgRealmsAPI = SWGRealmsAPI::instance();
+		String errorMessage;
+		Vector<uint64> deletedOIDs;
+
+		if (!swgRealmsAPI->beginPurgeBatchBlocking(galaxyid, 250, deletedOIDs, currentPurgeBatchID, errorMessage)) {
+			error("Failed to begin purge batch: " + errorMessage);
+			return;
+		}
+
+		try {
+			for (int i = 0; i < deletedOIDs.size(); ++i) {
+				uint64 oid = deletedOIDs.get(i);
+
+				deletedCharacters.put(oid);
+
+				ManagedReference<CreatureObject*> obj = server->getObject(oid).castTo<CreatureObject*>();
+
+				if (obj == nullptr || !obj->isPlayerCreature())
+					continue;
+
+				Locker _lock(obj.get());
+
+				ManagedReference<ZoneClientSession*> client = obj->getClient();
+
+				if (client != nullptr)
+					client->disconnect();
+
+				if (obj->getPersistenceLevel() > 0) {
+					TransactionLog trx(TrxCode::CHARACTERDELETE, nullptr, obj);
+
+					// Force a synchronous export because the objects will be deleted before we can export them!
+					trx.addRelatedObject(obj);
+					trx.setExportRelatedObjects(true);
+					trx.exportRelated();
+				}
+
+				obj->destroyObjectFromWorld(false); //Don't need to send destroy to the player - they are being disconnected.
+				obj->destroyPlayerCreatureFromDatabase(true);
+			}
+		} catch (Exception& e) {
+			error(e.getMessage());
+		}
+#endif // WITH_SWGREALMS_API
 	}
 
 	void updateDeletedCharacters() {
@@ -87,10 +135,11 @@ public:
 
 		info("Attempting to delete " + String::valueOf(size) + " characters from database.", true);
 
+		PlayerManager* playerManager = server->getPlayerManager();
+
+#ifndef WITH_SWGREALMS_API
 		StringBuffer query;
 		query << "UPDATE deleted_characters SET db_deleted = 1 WHERE galaxy_id = " << galaxyid << " AND (";
-
-		PlayerManager* playerManager = server->getPlayerManager();
 
 		for (int i = 0; i < size; ++i) {
 			uint64 oid = deletedCharacters.get(i);
@@ -108,6 +157,16 @@ public:
 		} catch (Exception& e) {
 			error(e.getMessage());
 		}
+#else // WITH_SWGREALMS_API
+		auto swgRealmsAPI = SWGRealmsAPI::instance();
+		String errorMessage;
+
+		if (!swgRealmsAPI->commitPurgeBatchBlocking(galaxyid, currentPurgeBatchID, errorMessage)) {
+			error("Failed to commit purge batch: " + errorMessage);
+		}
+
+		currentPurgeBatchID = "";
+#endif // WITH_SWGREALMS_API
 
 		for (int i = 0; i < size; ++i) {
 			uint64 oid = deletedCharacters.get(i);

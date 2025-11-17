@@ -17,7 +17,9 @@
 #include "server/login/account/Account.h"
 #include "server/zone/ZoneClientSession.h"
 #include "server/login/objects/GalaxyBanEntry.h"
+#include "server/login/objects/CharacterListEntry.h"
 #include "server/login/objects/GalaxyList.h"
+#include "server/zone/managers/player/CharacterNameMap.h"
 
 #include <cpprest/filestream.h>
 #include <cpprest/http_client.h>
@@ -192,11 +194,19 @@ void SWGRealmsAPI::apiCall(Reference<SWGRealmsAPIResult*> result, const String& 
 
 	API_TRACE(result, "apiCall_start");
 
-	web::http::method httpMethod = methods::GET;
-	if (method == "POST") {
+	web::http::method httpMethod;
+
+	if (method == "GET") {
+		httpMethod = methods::GET;
+	} else if (method == "POST") {
 		httpMethod = methods::POST;
 	} else if (method == "PUT") {
 		httpMethod = methods::PUT;
+	} else if (method == "DELETE") {
+		httpMethod = methods::DEL;
+	} else {
+		warning() << "Unknown HTTP method: " << method << " - defaulting to GET";
+		httpMethod = methods::GET;
 	}
 
 	http_request req(httpMethod);
@@ -1196,26 +1206,24 @@ bool SWGRealmsAPI::banAccountBlocking(uint32 accountID, uint32 issuerID, uint64 
 	StringBuffer pathBuffer;
 	pathBuffer << "/v1/core3/galaxy/" << galaxyID << "/account/" << accountID << "/ban";
 
-	StringBuffer jsonBody;
-	jsonBody << "{"
-	         << "\"issuer_id\":" << issuerID << ","
-	         << "\"expires\":" << expiresTimestamp << ","
-	         << "\"reason\":\"" << reason << "\""
-	         << "}";
+	auto jsonBody = json::value::object();
+	jsonBody[U("issuer_id")] = json::value::number(issuerID);
+	jsonBody[U("expires")] = json::value::number(static_cast<double>(expiresTimestamp));
+	jsonBody[U("reason")] = json::value::string(U(reason.toCharArray()));
 
 	Reference<SimpleResult*> result = new SimpleResult();
-	return apiCallBlocking(result.castTo<SWGRealmsAPIResult*>(), pathBuffer.toString(), "POST", jsonBody.toString(), errorMessage);
+	return apiCallBlocking(result.castTo<SWGRealmsAPIResult*>(), pathBuffer.toString(), "POST", String(jsonBody.serialize().c_str()), errorMessage);
 }
 
 bool SWGRealmsAPI::unbanAccountBlocking(uint32 accountID, const String& reason, String& errorMessage) {
 	StringBuffer pathBuffer;
 	pathBuffer << "/v1/core3/galaxy/" << galaxyID << "/account/" << accountID << "/unban";
 
-	StringBuffer jsonBody;
-	jsonBody << "{\"reason\":\"" << reason << "\"}";
+	auto jsonBody = json::value::object();
+	jsonBody[U("reason")] = json::value::string(U(reason.toCharArray()));
 
 	Reference<SimpleResult*> result = new SimpleResult();
-	return apiCallBlocking(result.castTo<SWGRealmsAPIResult*>(), pathBuffer.toString(), "PUT", jsonBody.toString(), errorMessage);
+	return apiCallBlocking(result.castTo<SWGRealmsAPIResult*>(), pathBuffer.toString(), "PUT", String(jsonBody.serialize().c_str()), errorMessage);
 }
 
 bool SWGRealmsAPI::parseGalaxyBansFromJSON(const String& jsonStr, VectorMap<uint32, Reference<GalaxyBanEntry*>>& galaxyBans, String& errorMessage) {
@@ -1310,27 +1318,534 @@ bool SWGRealmsAPI::banFromGalaxyBlocking(uint32 accountID, uint32 targetGalaxyID
 	StringBuffer pathBuffer;
 	pathBuffer << "/v1/core3/galaxy/" << galaxyID << "/account/" << accountID << "/galaxyban";
 
-	StringBuffer jsonBody;
-	jsonBody << "{"
-	         << "\"galaxy_id\":" << targetGalaxyID << ","
-	         << "\"issuer_id\":" << issuerID << ","
-	         << "\"expires\":" << expiresTimestamp << ","
-	         << "\"reason\":\"" << reason << "\""
-	         << "}";
+	auto jsonBody = json::value::object();
+	jsonBody[U("galaxy_id")] = json::value::number(targetGalaxyID);
+	jsonBody[U("issuer_id")] = json::value::number(issuerID);
+	jsonBody[U("expires")] = json::value::number(static_cast<double>(expiresTimestamp));
+	jsonBody[U("reason")] = json::value::string(U(reason.toCharArray()));
 
 	Reference<SimpleResult*> result = new SimpleResult();
-	return apiCallBlocking(result.castTo<SWGRealmsAPIResult*>(), pathBuffer.toString(), "POST", jsonBody.toString(), errorMessage);
+	return apiCallBlocking(result.castTo<SWGRealmsAPIResult*>(), pathBuffer.toString(), "POST", String(jsonBody.serialize().c_str()), errorMessage);
 }
 
 bool SWGRealmsAPI::unbanFromGalaxyBlocking(uint32 accountID, uint32 targetGalaxyID, const String& reason, String& errorMessage) {
 	StringBuffer pathBuffer;
 	pathBuffer << "/v1/core3/galaxy/" << galaxyID << "/account/" << accountID << "/galaxyban/" << targetGalaxyID;
 
-	StringBuffer jsonBody;
-	jsonBody << "{\"reason\":\"" << reason << "\"}";
+	auto jsonBody = json::value::object();
+	jsonBody[U("reason")] = json::value::string(U(reason.toCharArray()));
 
 	Reference<SimpleResult*> result = new SimpleResult();
-	return apiCallBlocking(result.castTo<SWGRealmsAPIResult*>(), pathBuffer.toString(), "PUT", jsonBody.toString(), errorMessage);
+	return apiCallBlocking(result.castTo<SWGRealmsAPIResult*>(), pathBuffer.toString(), "PUT", String(jsonBody.serialize().c_str()), errorMessage);
+}
+
+bool SWGRealmsAPI::parseCharacterBansFromJSON(const String& jsonStr, VectorMap<String, Reference<CharacterListEntry*>>& characterBans, String& errorMessage) {
+	try {
+		auto jsonValue = json::value::parse(conversions::to_string_t(jsonStr.toCharArray()));
+
+		if (!jsonValue.is_object()) {
+			errorMessage = "Response is not a JSON object";
+			return false;
+		}
+
+		// Check for bans array
+		if (!jsonValue.has_field(U("bans"))) {
+			errorMessage = "Missing bans field in response";
+			return false;
+		}
+
+		auto bansArray = jsonValue[U("bans")];
+		if (!bansArray.is_array()) {
+			errorMessage = "bans field is not an array";
+			return false;
+		}
+
+		// Clear existing bans
+		characterBans.removeAll();
+
+		// Parse each ban entry
+		for (auto& banValue : bansArray.as_array()) {
+			if (!banValue.is_object()) {
+				continue; // Skip invalid entries
+			}
+
+			Reference<CharacterListEntry*> entry = new CharacterListEntry();
+
+			uint32 galaxyID = 0;
+			String characterName;
+
+			if (banValue.has_field(U("account_id"))) {
+				entry->setAccountID(banValue[U("account_id")].as_integer());
+			}
+
+			if (banValue.has_field(U("issuer_id"))) {
+				entry->setBanAdmin(banValue[U("issuer_id")].as_integer());
+			}
+
+			if (banValue.has_field(U("galaxy_id"))) {
+				galaxyID = banValue[U("galaxy_id")].as_integer();
+				entry->setGalaxyID(galaxyID);
+			}
+
+			if (banValue.has_field(U("name"))) {
+				characterName = conversions::to_utf8string(banValue[U("name")].as_string());
+				entry->setFirstName(characterName);
+			}
+
+			if (banValue.has_field(U("expires"))) {
+				Time banexpires(banValue[U("expires")].as_integer());
+				entry->setBanExpiration(banexpires);
+			}
+
+			if (banValue.has_field(U("reason"))) {
+				String reason = conversions::to_utf8string(banValue[U("reason")].as_string());
+				entry->setBanReason(reason);
+			}
+
+			// Build key as "galaxyID:name"
+			StringBuffer keyBuffer;
+			keyBuffer << galaxyID << ":" << characterName;
+			characterBans.put(keyBuffer.toString(), entry);
+		}
+
+		return true;
+
+	} catch (const json::json_exception& e) {
+		errorMessage = String("JSON parse error: ") + e.what();
+		return false;
+	} catch (const Exception& e) {
+		errorMessage = String("Error parsing character bans: ") + e.getMessage();
+		return false;
+	}
+}
+
+bool SWGRealmsAPI::getCharacterBansBlocking(uint32 accountID, VectorMap<String, Reference<CharacterListEntry*>>& characterBans, String& errorMessage) {
+	StringBuffer pathBuffer;
+	pathBuffer << "/v1/core3/galaxy/" << galaxyID << "/account/" << accountID << "/characterbans";
+
+	Reference<SimpleResult*> result = new SimpleResult();
+	if (!apiCallBlocking(result.castTo<SWGRealmsAPIResult*>(), pathBuffer.toString(), "GET", "", errorMessage)) {
+		return false;
+	}
+
+	// Parse character bans from result's jsonData
+	return parseCharacterBansFromJSON(result->getRawJSON(), characterBans, errorMessage);
+}
+
+bool SWGRealmsAPI::banCharacterBlocking(uint32 accountID, uint32 targetGalaxyID, const String& name, uint32 issuerID,
+                                         uint64 expiresTimestamp, const String& reason, String& errorMessage) {
+	StringBuffer pathBuffer;
+	pathBuffer << "/v1/core3/galaxy/" << galaxyID << "/account/" << accountID << "/characterban";
+
+	auto jsonBody = json::value::object();
+	jsonBody[U("galaxy_id")] = json::value::number(targetGalaxyID);
+	jsonBody[U("name")] = json::value::string(U(name.toCharArray()));
+	jsonBody[U("issuer_id")] = json::value::number(issuerID);
+	jsonBody[U("expires")] = json::value::number(static_cast<double>(expiresTimestamp));
+	jsonBody[U("reason")] = json::value::string(U(reason.toCharArray()));
+
+	Reference<SimpleResult*> result = new SimpleResult();
+	return apiCallBlocking(result.castTo<SWGRealmsAPIResult*>(), pathBuffer.toString(), "POST", String(jsonBody.serialize().c_str()), errorMessage);
+}
+
+bool SWGRealmsAPI::unbanCharacterBlocking(uint32 accountID, uint32 targetGalaxyID, const String& name, const String& reason, String& errorMessage) {
+	StringBuffer pathBuffer;
+	pathBuffer << "/v1/core3/galaxy/" << galaxyID << "/account/" << accountID << "/characterban/";
+
+	// URL-encode name for path
+	String escapedName = name;
+	Database::escapeString(escapedName);
+	pathBuffer << escapedName;
+
+	auto jsonBody = json::value::object();
+	jsonBody[U("galaxy_id")] = json::value::number(targetGalaxyID);
+	jsonBody[U("reason")] = json::value::string(U(reason.toCharArray()));
+
+	Reference<SimpleResult*> result = new SimpleResult();
+	return apiCallBlocking(result.castTo<SWGRealmsAPIResult*>(), pathBuffer.toString(), "PUT", String(jsonBody.serialize().c_str()), errorMessage);
+}
+
+// ============================================================================
+// Character Operations
+// ============================================================================
+
+bool SWGRealmsAPI::createCharacterBlocking(uint64 characterOID, uint32 accountID, uint32 galaxyID,
+                                            const String& firstname, const String& surname,
+                                            uint32 race, uint32 gender, const String& templatePath,
+                                            const String& reservationID, String& errorMessage) {
+	StringBuffer pathBuffer;
+	pathBuffer << "/v1/core3/galaxy/" << galaxyID << "/account/" << accountID << "/characters";
+
+	auto jsonBody = json::value::object();
+	jsonBody[U("character_oid")] = json::value::number(static_cast<double>(characterOID));
+	jsonBody[U("account_id")] = json::value::number(accountID);
+	jsonBody[U("galaxy_id")] = json::value::number(galaxyID);
+	jsonBody[U("firstname")] = json::value::string(U(firstname.toCharArray()));
+	jsonBody[U("surname")] = json::value::string(U(surname.toCharArray()));
+	jsonBody[U("race")] = json::value::number(race);
+	jsonBody[U("gender")] = json::value::number(gender);
+	jsonBody[U("template")] = json::value::string(U(templatePath.toCharArray()));
+
+	if (!reservationID.isEmpty()) {
+		jsonBody[U("reservation_id")] = json::value::string(U(reservationID.toCharArray()));
+	}
+
+	Reference<SimpleResult*> result = new SimpleResult();
+	return apiCallBlocking(result.castTo<SWGRealmsAPIResult*>(), pathBuffer.toString(), "POST", String(jsonBody.serialize().c_str()), errorMessage);
+}
+
+bool SWGRealmsAPI::parseCharacterListFromJSON(const String& jsonStr, Vector<CharacterListEntry>& characters, String& errorMessage) {
+	try {
+		auto jsonValue = json::value::parse(conversions::to_string_t(jsonStr.toCharArray()));
+
+		if (!jsonValue.is_object()) {
+			errorMessage = "Response is not a JSON object";
+			return false;
+		}
+
+		if (!jsonValue.has_field(U("characters"))) {
+			errorMessage = "Missing characters field in response";
+			return false;
+		}
+
+		auto charactersArray = jsonValue[U("characters")];
+		if (!charactersArray.is_array()) {
+			errorMessage = "characters field is not an array";
+			return false;
+		}
+
+		characters.removeAll();
+
+		for (auto& charValue : charactersArray.as_array()) {
+			if (!charValue.is_object()) {
+				continue;
+			}
+
+			CharacterListEntry entry;
+
+			if (charValue.has_field(U("character_oid"))) {
+				entry.setObjectID(charValue[U("character_oid")].as_number().to_uint64());
+			}
+
+			if (charValue.has_field(U("account_id"))) {
+				entry.setAccountID(charValue[U("account_id")].as_integer());
+			}
+
+			if (charValue.has_field(U("galaxy_id"))) {
+				entry.setGalaxyID(charValue[U("galaxy_id")].as_integer());
+			}
+
+			if (charValue.has_field(U("firstname"))) {
+				entry.setFirstName(conversions::to_utf8string(charValue[U("firstname")].as_string()));
+			}
+
+			if (charValue.has_field(U("surname"))) {
+				entry.setSurName(conversions::to_utf8string(charValue[U("surname")].as_string()));
+			}
+
+			if (charValue.has_field(U("gender"))) {
+				entry.setGender(charValue[U("gender")].as_integer());
+			}
+
+			if (charValue.has_field(U("template"))) {
+				String templateStr = conversions::to_utf8string(charValue[U("template")].as_string());
+				entry.setRace(templateStr.hashCode());
+			}
+
+			if (charValue.has_field(U("creation_date"))) {
+				Time createdTime((uint32)charValue[U("creation_date")].as_number().to_uint64());
+				entry.setCreationDate(createdTime);
+			}
+
+			if (charValue.has_field(U("galaxy_name"))) {
+				entry.setGalaxyName(conversions::to_utf8string(charValue[U("galaxy_name")].as_string()));
+			}
+
+			characters.add(entry);
+		}
+
+		return true;
+
+	} catch (const json::json_exception& e) {
+		errorMessage = String("JSON parse error: ") + e.what();
+		return false;
+	} catch (const Exception& e) {
+		errorMessage = String("Error parsing character list: ") + e.getMessage();
+		return false;
+	}
+}
+
+bool SWGRealmsAPI::getCharacterListBlocking(uint32 accountID, Vector<CharacterListEntry>& characters, String& errorMessage) {
+	StringBuffer pathBuffer;
+	pathBuffer << "/v1/core3/galaxy/" << galaxyID << "/account/" << accountID << "/characters";
+
+	Reference<SimpleResult*> result = new SimpleResult();
+	if (!apiCallBlocking(result.castTo<SWGRealmsAPIResult*>(), pathBuffer.toString(), "GET", "", errorMessage)) {
+		return false;
+	}
+
+	return parseCharacterListFromJSON(result->getRawJSON(), characters, errorMessage);
+}
+
+bool SWGRealmsAPI::beginCharactersCommitBlocking(uint32 galaxyID, String& errorMessage) {
+	StringBuffer pathBuffer;
+	pathBuffer << "/v1/core3/galaxy/" << galaxyID << "/characters?filter=dirty";
+
+	Reference<SimpleResult*> result = new SimpleResult();
+	return apiCallBlocking(result.castTo<SWGRealmsAPIResult*>(), pathBuffer.toString(), "GET", "", errorMessage);
+}
+
+bool SWGRealmsAPI::commitCharactersBlocking(uint32 galaxyID, String& errorMessage) {
+	StringBuffer pathBuffer;
+	pathBuffer << "/v1/core3/galaxy/" << galaxyID << "/characters/commit";
+
+	Reference<SimpleResult*> result = new SimpleResult();
+	return apiCallBlocking(result.castTo<SWGRealmsAPIResult*>(), pathBuffer.toString(), "PUT", "", errorMessage);
+}
+
+bool SWGRealmsAPI::updateCharacterBlocking(uint64 characterOID, uint32 galaxyID,
+                                            const String& firstname, const String& surname,
+                                            String& errorMessage) {
+	StringBuffer pathBuffer;
+	pathBuffer << "/v1/core3/galaxy/" << galaxyID << "/characters/" << characterOID;
+
+	auto jsonBody = json::value::object();
+	bool hasFields = false;
+
+	if (!firstname.isEmpty()) {
+		jsonBody[U("firstname")] = json::value::string(U(firstname.toCharArray()));
+		hasFields = true;
+	}
+
+	if (!surname.isEmpty()) {
+		jsonBody[U("surname")] = json::value::string(U(surname.toCharArray()));
+		hasFields = true;
+	}
+
+	if (!hasFields) {
+		errorMessage = "No fields to update";
+		return false;
+	}
+
+	Reference<SimpleResult*> result = new SimpleResult();
+	return apiCallBlocking(result.castTo<SWGRealmsAPIResult*>(), pathBuffer.toString(), "PUT", String(jsonBody.serialize().c_str()), errorMessage);
+}
+
+bool SWGRealmsAPI::deleteCharacterBlocking(uint64 characterOID, uint32 accountID, uint32 galaxyID, String& errorMessage) {
+	StringBuffer pathBuffer;
+	pathBuffer << "/v1/core3/galaxy/" << galaxyID << "/account/" << accountID << "/characters/" << characterOID;
+
+	Reference<SimpleResult*> result = new SimpleResult();
+	return apiCallBlocking(result.castTo<SWGRealmsAPIResult*>(), pathBuffer.toString(), "DELETE", "", errorMessage);
+}
+
+bool SWGRealmsAPI::rollbackCharactersBlocking(uint32 galaxyID, String& errorMessage) {
+	StringBuffer pathBuffer;
+	pathBuffer << "/v1/core3/galaxy/" << galaxyID << "/characters/rollback";
+
+	Reference<SimpleResult*> result = new SimpleResult();
+	return apiCallBlocking(result.castTo<SWGRealmsAPIResult*>(), pathBuffer.toString(), "DELETE", "", errorMessage);
+}
+
+bool SWGRealmsAPI::beginPurgeBatchBlocking(uint32 galaxyID, uint32 limit, Vector<uint64>& characterOIDs,
+                                            String& batchID, String& errorMessage) {
+	StringBuffer pathBuffer;
+	pathBuffer << "/v1/core3/galaxy/" << galaxyID << "/characters?filter=deleted&limit=" << limit;
+
+	Reference<SimpleResult*> result = new SimpleResult();
+	if (!apiCallBlocking(result.castTo<SWGRealmsAPIResult*>(), pathBuffer.toString(), "GET", "", errorMessage)) {
+		return false;
+	}
+
+	// Parse response to get batch_id and character OIDs
+	try {
+		auto jsonValue = json::value::parse(conversions::to_string_t(result->getRawJSON().toCharArray()));
+
+		if (!jsonValue.is_object()) {
+			errorMessage = "Response is not a JSON object";
+			return false;
+		}
+
+		if (jsonValue.has_field(U("batch_id"))) {
+			auto batchIdValue = jsonValue[U("batch_id")];
+			if (batchIdValue.is_null()) {
+				// No deleted characters to purge
+				batchID = "";
+				characterOIDs.removeAll();
+				return true;
+			}
+			batchID = conversions::to_utf8string(batchIdValue.as_string());
+		} else {
+			errorMessage = "Missing batch_id in response";
+			return false;
+		}
+
+		if (!jsonValue.has_field(U("characters"))) {
+			errorMessage = "Missing characters field in response";
+			return false;
+		}
+
+		auto charactersArray = jsonValue[U("characters")];
+		if (!charactersArray.is_array()) {
+			errorMessage = "characters field is not an array";
+			return false;
+		}
+
+		characterOIDs.removeAll();
+
+		for (auto& charValue : charactersArray.as_array()) {
+			if (!charValue.is_object()) {
+				continue;
+			}
+
+			if (charValue.has_field(U("character_oid"))) {
+				uint64 oid = charValue[U("character_oid")].as_number().to_uint64();
+				characterOIDs.add(oid);
+			}
+		}
+
+		return true;
+
+	} catch (const json::json_exception& e) {
+		errorMessage = String("JSON parse error: ") + e.what();
+		return false;
+	} catch (const Exception& e) {
+		errorMessage = String("Error parsing begin purge response: ") + e.getMessage();
+		return false;
+	}
+}
+
+bool SWGRealmsAPI::commitPurgeBatchBlocking(uint32 galaxyID, const String& batchID, String& errorMessage) {
+	String escapedBatchID = batchID;
+	Database::escapeString(escapedBatchID);
+
+	StringBuffer pathBuffer;
+	pathBuffer << "/v1/core3/galaxy/" << galaxyID << "/characters/purge?batch_id=" << escapedBatchID;
+
+	Reference<SimpleResult*> result = new SimpleResult();
+	return apiCallBlocking(result.castTo<SWGRealmsAPIResult*>(), pathBuffer.toString(), "PUT", "", errorMessage);
+}
+
+bool SWGRealmsAPI::loadCharacterNamesBlocking(uint32 galaxyID, CharacterNameMap& nameMap, String& errorMessage) {
+	Time startTime;
+	startTime.updateToCurrentTime();
+
+	const uint32 pageSize = 10000;
+	uint32 offset = 0;
+	bool hasMore = true;
+	uint32 totalLoaded = 0;
+
+	while (hasMore) {
+		StringBuffer pathBuffer;
+		pathBuffer << "/v1/core3/galaxy/" << galaxyID << "/characters/names?limit=" << pageSize << "&offset=" << offset;
+
+		Reference<SimpleResult*> result = new SimpleResult();
+		if (!apiCallBlocking(result.castTo<SWGRealmsAPIResult*>(), pathBuffer.toString(), "GET", "", errorMessage)) {
+			return false;
+		}
+
+		// Parse response
+		try {
+			auto jsonValue = json::value::parse(conversions::to_string_t(result->getRawJSON().toCharArray()));
+
+			if (!jsonValue.is_object()) {
+				errorMessage = "Response is not a JSON object";
+				return false;
+			}
+
+			if (!jsonValue.has_field(U("names"))) {
+				errorMessage = "Missing names field in response";
+				return false;
+			}
+
+			auto namesArray = jsonValue[U("names")];
+			if (!namesArray.is_array()) {
+				errorMessage = "names field is not an array";
+				return false;
+			}
+
+			uint32 pageCount = 0;
+
+			for (auto& nameValue : namesArray.as_array()) {
+				// Compact tuple format: [character_oid, firstname]
+				if (!nameValue.is_array() || nameValue.size() < 2) {
+					continue;
+				}
+
+				uint64 oid = nameValue[0].as_number().to_uint64();
+				String firstname = conversions::to_utf8string(nameValue[1].as_string());
+
+				if (!nameMap.put(firstname.toLowerCase(), oid)) {
+					error("error colliding name: " + firstname.toLowerCase());
+				}
+
+				pageCount++;
+			}
+
+			totalLoaded += pageCount;
+			hasMore = (pageCount == pageSize);
+			offset += pageSize;
+
+		} catch (const json::json_exception& e) {
+			errorMessage = String("JSON parse error: ") + e.what();
+			return false;
+		} catch (const Exception& e) {
+			errorMessage = String("Error parsing character names: ") + e.getMessage();
+			return false;
+		}
+	}
+
+	Time endTime;
+	endTime.updateToCurrentTime();
+	uint64 elapsed = startTime.miliDifference(endTime);
+
+	float namesPerSec = totalLoaded > 0 ? (totalLoaded / (elapsed / 1000.0f)) : 0;
+
+	info(true) << "Loaded " << totalLoaded << " character names via API in " << elapsed << "ms (" << (int)namesPerSec << " names/s)";
+	return true;
+}
+
+bool SWGRealmsAPI::reserveCharacterNameBlocking(uint32 galaxyID, const String& firstname, const String& surname,
+                                                 String& reservationID, String& errorMessage) {
+	StringBuffer pathBuffer;
+	pathBuffer << "/v1/core3/galaxy/" << galaxyID << "/characters/names";
+
+	auto jsonBody = json::value::object();
+	jsonBody[U("firstname")] = json::value::string(U(firstname.toCharArray()));
+
+	if (!surname.isEmpty()) {
+		jsonBody[U("surname")] = json::value::string(U(surname.toCharArray()));
+	}
+
+	Reference<SimpleResult*> result = new SimpleResult();
+	if (!apiCallBlocking(result.castTo<SWGRealmsAPIResult*>(), pathBuffer.toString(), "POST", String(jsonBody.serialize().c_str()), errorMessage)) {
+		return false;
+	}
+
+	// Parse reservation_id from response
+	try {
+		auto jsonValue = json::value::parse(conversions::to_string_t(result->getRawJSON().toCharArray()));
+
+		if (!jsonValue.is_object()) {
+			errorMessage = "Response is not a JSON object";
+			return false;
+		}
+
+		if (jsonValue.has_field(U("reservation_id"))) {
+			reservationID = conversions::to_utf8string(jsonValue[U("reservation_id")].as_string());
+			return true;
+		} else {
+			errorMessage = "Missing reservation_id in response";
+			return false;
+		}
+
+	} catch (const json::json_exception& e) {
+		errorMessage = String("JSON parse error: ") + e.what();
+		return false;
+	} catch (const Exception& e) {
+		errorMessage = String("Error parsing name reservation: ") + e.getMessage();
+		return false;
+	}
 }
 
 bool SWGRealmsAPI::parseGalaxyListFromJSON(const String& jsonStr, Vector<Galaxy>& galaxies, String& errorMessage) {

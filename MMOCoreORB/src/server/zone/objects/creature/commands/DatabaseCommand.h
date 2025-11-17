@@ -121,8 +121,10 @@ private:
 	}
 
 	void doSQLQuery(CreatureObject* creature, String db, uint64 objectID) const {
-		StringBuffer selectStatement;
 		StringBuffer msg;
+
+#ifndef WITH_SWGREALMS_API
+		StringBuffer selectStatement;
 
 		try {
 			selectStatement << "SELECT * FROM " << db << " WHERE character_oid = " << objectID;
@@ -154,6 +156,9 @@ private:
 		} catch (const Exception& err) {
 			msg << endl << err.getMessage();
 		}
+#else // WITH_SWGREALMS_API
+		msg << endl << "Database command not available in API mode - use API endpoints instead" << endl;
+#endif // WITH_SWGREALMS_API
 
 		creature->sendSystemMessage(msg.toString());
 	}

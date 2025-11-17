@@ -14,6 +14,7 @@
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/packets/charcreation/ClientCreateCharacterCallback.h"
 #include "server/zone/packets/charcreation/ClientCreateCharacterSuccess.h"
+#include "server/zone/packets/charcreation/ClientCreateCharacterFailed.h"
 #include "templates/manager/TemplateManager.h"
 #include "templates/datatables/DataTableIff.h"
 #include "templates/datatables/DataTableRow.h"
@@ -449,6 +450,7 @@ bool PlayerCreationManager::createCharacter(ClientCreateCharacterCallback* callb
 				}
 
 				if (accountPermissionLevel < 9) {
+#ifndef WITH_SWGREALMS_API
 					try {
 						StringBuffer query;
 						uint32 galaxyId = zoneServer.get()->getGalaxyID();
@@ -473,6 +475,11 @@ bool PlayerCreationManager::createCharacter(ClientCreateCharacterCallback* callb
 					} catch (const DatabaseException& e) {
 						error(e.getMessage());
 					}
+#else // WITH_SWGREALMS_API
+				// Rate limiting is enforced by API during POST /characters
+				// If rate limited, API returns 429 and createCharacterBlocking fails
+				// No separate check needed
+#endif // WITH_SWGREALMS_API
 
 					Locker locker(&charCountMutex);
 
@@ -518,17 +525,11 @@ bool PlayerCreationManager::createCharacter(ClientCreateCharacterCallback* callb
 		ghost->setBirthDate(now.getTime());
 	}
 
-	ClientCreateCharacterSuccess* msg = new ClientCreateCharacterSuccess(
-			playerCreature->getObjectID());
-	playerCreature->sendMessage(msg);
-
-	ChatManager* chatManager = zoneServer.get()->getChatManager();
-	chatManager->addPlayer(playerCreature);
-
 	String firstName = playerCreature->getFirstName();
 	String lastName = playerCreature->getLastName();
 	int raceID = playerTemplate->getRace();
 
+#ifndef WITH_SWGREALMS_API
 	try {
 		StringBuffer query;
 		query
@@ -543,6 +544,65 @@ bool PlayerCreationManager::createCharacter(ClientCreateCharacterCallback* callb
 	} catch (const DatabaseException& e) {
 		error(e.getMessage());
 	}
+
+	ClientCreateCharacterSuccess* msg = new ClientCreateCharacterSuccess(
+			playerCreature->getObjectID());
+	playerCreature->sendMessage(msg);
+#else // WITH_SWGREALMS_API
+	auto swgRealmsAPI = SWGRealmsAPI::instance();
+	if (swgRealmsAPI == nullptr) {
+		error("SWGRealms API not available for character creation");
+		playerCreature->destroyPlayerCreatureFromDatabase(true);
+
+		ClientCreateCharacterFailed* failMsg = new ClientCreateCharacterFailed("Unable to create characters, please contact support and mention, code=NullAPI");
+		client->sendMessage(failMsg);
+
+		return false;
+	}
+
+	String errorMessage;
+	String reservationID = "";
+
+	// Reserve character name to prevent race conditions
+	if (!swgRealmsAPI->reserveCharacterNameBlocking(
+			zoneServer.get()->getGalaxyID(),
+			firstName,
+			lastName,
+			reservationID,
+			errorMessage)) {
+		error("Failed to reserve character name: " + errorMessage);
+		playerCreature->destroyPlayerCreatureFromDatabase(true);
+
+		ClientCreateCharacterFailed* failMsg = new ClientCreateCharacterFailed("Character name unavailable: " + errorMessage);
+		client->sendMessage(failMsg);
+
+		return false;
+	}
+
+	if (!swgRealmsAPI->createCharacterBlocking(
+			playerCreature->getObjectID(),
+			client->getAccountID(),
+			zoneServer.get()->getGalaxyID(),
+			firstName, lastName,
+			raceID, 0, raceFile,
+			reservationID,
+			errorMessage)) {
+		error("Failed to create character via API: " + errorMessage);
+		playerCreature->destroyPlayerCreatureFromDatabase(true);
+
+		ClientCreateCharacterFailed* failMsg = new ClientCreateCharacterFailed(errorMessage);
+		client->sendMessage(failMsg);
+
+		return false;
+	}
+
+	ClientCreateCharacterSuccess* msg = new ClientCreateCharacterSuccess(
+			playerCreature->getObjectID());
+	playerCreature->sendMessage(msg);
+#endif // WITH_SWGREALMS_API
+
+	ChatManager* chatManager = zoneServer.get()->getChatManager();
+	chatManager->addPlayer(playerCreature);
 
 	playerManager->addPlayer(playerCreature);
 

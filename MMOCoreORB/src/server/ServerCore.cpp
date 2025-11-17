@@ -690,9 +690,11 @@ void ServerCore::initialize() {
 			loginServer = new LoginServer(configManager);
 			loginServer->deploy("LoginServer");
 
+#ifndef WITH_SWGREALMS_API
 			if (!ConfigManager::instance()->getLoginEnableSessionId()) {
 				database->instance()->executeStatement("TRUNCATE TABLE sessions");
 			}
+#endif
 		}
 
 		if (configManager->getMakeZone()) {
@@ -768,9 +770,19 @@ void ServerCore::initialize() {
 				}
 #endif // WITH_SWGREALMS_API
 
+#ifndef WITH_SWGREALMS_API
 				database->instance()->executeStatement(
 						"DELETE FROM characters_dirty WHERE galaxy_id = "
 						+ String::valueOf(galaxyID));
+#else // WITH_SWGREALMS_API
+			auto swgRealmsAPI = SWGRealmsAPI::instance();
+			if (swgRealmsAPI != nullptr) {
+				String errorMessage;
+				if (!swgRealmsAPI->rollbackCharactersBlocking(galaxyID, errorMessage)) {
+					error() << "Failed to rollback uncommitted characters: " << errorMessage;
+				}
+			}
+#endif // WITH_SWGREALMS_API
 			} catch (const DatabaseException &e) {
 				fatal(e.getMessage());
 			}

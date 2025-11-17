@@ -412,8 +412,6 @@ class PlayerManager extends Observer implements Logger {
 
 	public native void ejectPlayerFromBuilding(CreatureObject player);
 
-	public native boolean checkExistentNameInDatabase(final string firstName);
-
 	public native void createTutorialBuilding(CreatureObject player);
 	public native void createSkippedTutorialBuilding(CreatureObject player);
 
