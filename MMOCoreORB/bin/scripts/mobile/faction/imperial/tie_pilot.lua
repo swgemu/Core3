@@ -1,17 +1,17 @@
-ds_297 = Creature:new {
+tie_pilot = Creature:new {
 	randomNameType = NAME_TIEPILOT,
 	socialGroup = "imperial",
-	faction = "imperial",
 	mobType = MOB_NPC,
-	level = 20,
-	chanceHit = 0.33,
-	damageMin = 190,
-	damageMax = 200,
-	baseXp = 1803,
-	baseHAM = 5000,
-	baseHAMmax = 6100,
+	faction = "imperial",
+	level = 25,
+	chanceHit = 0.36,
+	damageMin = 240,
+	damageMax = 250,
+	baseXp = 2637,
+	baseHAM = 7200,
+	baseHAMmax = 8800,
 	armor = 0,
-	resists = {0,0,0,0,0,0,0,0,-1},
+	resists = {15,15,40,15,15,15,15,-1,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -23,7 +23,7 @@ ds_297 = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK + KILLER,
-	optionsBitmask = CONVERSABLE,
+	optionsBitmask = NONE,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_tie_fighter_m.iff"},
@@ -31,14 +31,16 @@ ds_297 = Creature:new {
 
 	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)
 	-- Unarmed should be put on secondary unless the mobile doesn't use weapons, in which case "unarmed" should be put primary and "none" as secondary
-	primaryWeapon = "imperial_weapons_medium",
-	secondaryWeapon = "unarmed",
-	conversationTemplate = "corvetteDS297ConvoTemplate",
-	
+	primaryWeapon = "unarmed",
+	secondaryWeapon = "none",
+	thrownWeapon = "thrown_weapons",
+
+	conversationTemplate = "",
+
 	-- primaryAttacks and secondaryAttacks should be separate skill groups specific to the weapon type listed in primaryWeapon and secondaryWeapon
 	-- Use merge() to merge groups in creatureskills.lua together. If a weapon is set to "none", set the attacks variable to empty brackets
-	primaryAttacks = merge(brawlermaster,marksmanmaster), 
-	secondaryAttacks = { }
+	primaryAttacks = carbineermaster,
+	secondaryAttacks = {}
 }
 
-CreatureTemplates:addCreatureTemplate(ds_297, "ds_297")
+CreatureTemplates:addCreatureTemplate(tie_pilot, "tie_pilot")
