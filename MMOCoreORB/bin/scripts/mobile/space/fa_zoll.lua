@@ -23,7 +23,7 @@ fa_zoll = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = AIENABLED + JTLINTERESTING,
+	optionsBitmask = JTLINTERESTING,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/space_imperial_tier2_naboo.iff"},

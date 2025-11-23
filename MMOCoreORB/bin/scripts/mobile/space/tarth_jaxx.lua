@@ -26,7 +26,7 @@ tarth_jaxx = Creature:new {
 	optionsBitmask = AIENABLED + JTLINTERESTING + CONVERSABLE,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/space_greeter_coronet_shipwright_indifferent.iff"},
+	templates = {"object/mobile/space_greeter_coronet_shipwright_impatient.iff"},
 	lootGroups = {},
 
 	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)

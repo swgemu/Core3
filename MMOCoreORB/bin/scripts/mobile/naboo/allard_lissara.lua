@@ -24,7 +24,7 @@ allard_lissara = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = AIENABLED + INTERESTING + CONVERSABLE + INVULNERABLE,
+	optionsBitmask = INTERESTING + CONVERSABLE + INVULNERABLE,
 	diet = HERBIVORE,
 
 	templates = {

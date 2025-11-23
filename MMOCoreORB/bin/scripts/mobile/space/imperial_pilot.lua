@@ -23,10 +23,10 @@ imperial_pilot = Creature:new {
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
-	optionsBitmask = AIENABLED + JTLINTERESTING,
+	optionsBitmask = JTLINTERESTING,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_stranded_imperial_pilot.iff"},
+	templates = {"object/mobile/dressed_noble_fat_zabrak_male_01.iff"},
 	lootGroups = {
 		{
 			groups = {
