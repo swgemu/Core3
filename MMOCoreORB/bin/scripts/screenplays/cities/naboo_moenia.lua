@@ -59,6 +59,9 @@ NabooMoeniaScreenPlay = CityScreenPlay:new {
 		{"medic",60,54.4,-0.5,42.7,-120,4215413, "npc_consoling"},
 		{"trainer_shipwright",60,-0.4,0.6,67.1,-177,4215410, "neutral"},
 
+		--JTL Greeter
+		{"bertos_goodner", 60, 4803.3,4.1,-4697.6, 113, 0, ""},
+
 		{"informant_npc_lvl_1",0,4652,3.8,-4749,0,0, ""},
 		{"informant_npc_lvl_1",0,4744,3.8,-4847,0,0, ""},
 		{"informant_npc_lvl_1",0,4825,3.8,-4829, 235,0, ""},

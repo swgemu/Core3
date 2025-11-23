@@ -91,6 +91,7 @@ CreatureTemplateManager::CreatureTemplateManager() : Logger("CreatureTemplateMan
 	lua->setGlobalInt("NAME_SCOUTTROOPER", NameManagerType::SCOUTTROOPER);
 	lua->setGlobalInt("NAME_DARKTROOPER", NameManagerType::DARKTROOPER);
 	lua->setGlobalInt("NAME_SWAMPTROOPER", NameManagerType::SWAMPTROOPER);
+	lua->setGlobalInt("NAME_TIEPILOT", NameManagerType::TIEPILOT);
 
 	lua->setGlobalInt("MOB_HERBIVORE", AiAgent::MOB_HERBIVORE);
 	lua->setGlobalInt("MOB_CARNIVORE", AiAgent::MOB_CARNIVORE);
