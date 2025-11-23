@@ -23,7 +23,7 @@ logro_elsin = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = NONE,
-	optionsBitmask = AIENABLED,
+	optionsBitmask = AIENABLED + JTLINTERESTING,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_tie_fighter_m.iff"},
