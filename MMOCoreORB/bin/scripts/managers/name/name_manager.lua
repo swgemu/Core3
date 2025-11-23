@@ -26,6 +26,7 @@ stormtrooperPrefixes = { "GK", "LK", "RK", "TK", "VK" };
 scouttrooperPrefixes = { "SX", "GX", "VX", "CX", "NX" };
 darktrooperPrefixes = { "JLB", "RAR", "KNP", "BCP", "RTZ" };
 swamptrooperPrefixes = { "GL", "TL", "RL", "NL", "CL" };
+tiepilotPrefixes = { "DS" };
 
 filterWords = {
 	{ "\\b[a@][a@]rrb[a@]\\b", DECLINED_FICT_RESERVED }, -- Aarrba

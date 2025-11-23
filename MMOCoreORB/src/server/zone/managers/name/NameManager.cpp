@@ -84,6 +84,7 @@ void NameManager::loadConfigData(bool reload) {
 		scouttrooperPrefixes.removeAll();
 		darktrooperPrefixes.removeAll();
 		swamptrooperPrefixes.removeAll();
+		tiepilotPrefixes.removeAll();
 		regexFilters.removeAll();
 	}
 
@@ -179,6 +180,12 @@ void NameManager::loadConfigData(bool reload) {
 	luaObject = lua->getGlobalObject("swamptrooperPrefixes");
 	for (int i = 1; i <= luaObject.getTableSize(); ++i)
 		swamptrooperPrefixes.add(luaObject.getStringAt(i));
+
+	luaObject.pop();
+
+	luaObject = lua->getGlobalObject("tiepilotPrefixes");
+	for (int i = 1; i <= luaObject.getTableSize(); ++i)
+		tiepilotPrefixes.add(luaObject.getStringAt(i));
 
 	luaObject.pop();
 
@@ -501,7 +508,7 @@ const String NameManager::makeCreatureName(int type, int species) const {
 	auto data = getSpeciesData(species);
 
 	// Generated imperial trooper names do not need to be checked. Covers all Imperial Trooper types
-	if (type >= NameManagerType::STORMTROOPER && type <= NameManagerType::SWAMPTROOPER) {
+	if (type >= NameManagerType::STORMTROOPER && type <= NameManagerType::TIEPILOT) {
 		name = makeImperialTrooperName(type);
 	// R-Droid names do not need to be checked
 	} else if (type >= NameManagerType::R2 && type <= NameManagerType::DROID_RA7) {
@@ -539,6 +546,14 @@ String NameManager::makeImperialTrooperName(int type) const {
 		name += darktrooperPrefixes.get(System::random(darktrooperPrefixes.size() - 1));
 	else if (type == NameManagerType::SWAMPTROOPER)
 		name += swamptrooperPrefixes.get(System::random(swamptrooperPrefixes.size() - 1));
+	else if (type == NameManagerType::TIEPILOT) {
+		int prefixIndex = 0;
+		if (tiepilotPrefixes.size() > 1) {
+			prefixIndex = System::random(tiepilotPrefixes.size() - 1);
+		}
+
+		name += tiepilotPrefixes.get(prefixIndex);
+	}
 
 	name += "-";
 	name += String::valueOf(1 + System::random(898));

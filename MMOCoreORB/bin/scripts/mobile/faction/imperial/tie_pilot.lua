@@ -1,17 +1,17 @@
-tarth_jaxx = Creature:new {
-	objectName = "@npc_spawner_n:tarth_jaxx",
-	socialGroup = "townsperson",
-	faction = "townsperson",
+tie_pilot = Creature:new {
+	randomNameType = NAME_TIEPILOT,
+	socialGroup = "imperial",
 	mobType = MOB_NPC,
-	level = 19,
-	chanceHit = 0.33,
-	damageMin = 180,
-	damageMax = 190,
-	baseXp = 1257,
-	baseHAM = 4500,
-	baseHAMmax = 5500,
+	faction = "imperial",
+	level = 25,
+	chanceHit = 0.36,
+	damageMin = 240,
+	damageMax = 250,
+	baseXp = 2637,
+	baseHAM = 7200,
+	baseHAMmax = 8800,
 	armor = 0,
-	resists = {0,0,0,0,0,0,0,0,-1},
+	resists = {15,15,40,15,15,15,15,-1,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -22,23 +22,25 @@ tarth_jaxx = Creature:new {
 	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = NONE,
-	creatureBitmask = NONE,
-	optionsBitmask = AIENABLED + JTLINTERESTING + CONVERSABLE,
+	creatureBitmask = PACK + KILLER,
+	optionsBitmask = NONE,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/space_greeter_coronet_shipwright_impatient.iff"},
+	templates = {"object/mobile/dressed_tie_fighter_m.iff"},
 	lootGroups = {},
 
 	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)
 	-- Unarmed should be put on secondary unless the mobile doesn't use weapons, in which case "unarmed" should be put primary and "none" as secondary
 	primaryWeapon = "unarmed",
 	secondaryWeapon = "none",
-	conversationTemplate = "tarth_jaxx_convo_template",
+	thrownWeapon = "thrown_weapons",
+
+	conversationTemplate = "",
 
 	-- primaryAttacks and secondaryAttacks should be separate skill groups specific to the weapon type listed in primaryWeapon and secondaryWeapon
 	-- Use merge() to merge groups in creatureskills.lua together. If a weapon is set to "none", set the attacks variable to empty brackets
-	primaryAttacks = {},
-	secondaryAttacks = { }
+	primaryAttacks = carbineermaster,
+	secondaryAttacks = {}
 }
 
-CreatureTemplates:addCreatureTemplate(tarth_jaxx, "tarth_jaxx")
+CreatureTemplates:addCreatureTemplate(tie_pilot, "tie_pilot")

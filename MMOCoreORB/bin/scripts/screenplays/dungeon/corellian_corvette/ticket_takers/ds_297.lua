@@ -1,6 +1,5 @@
 
-
-ds_297 = { planetName = "naboo", npcTemplate = "ds_297", x = 2447.5, z = 292.0, y = -3898.0, direction = -141, cellID = 0, position = SIT }
+ds_297 = { planetName = "naboo", npcTemplate = "ds_297", x = 2447.5, z = 292.0, y = -3898.0, direction = -141, cellID = 0, mood = "npc_sitting_chair" }
 
 ticketTakerDS297 = CorvetteTicketTakerLogic:new {
 	numberOfActs = 1,
