@@ -9,6 +9,11 @@
  */
 
 #include "TransactionLog.h"
+
+#ifdef WITH_SWGREALMS_API
+#include "server/login/SWGRealmsAPI.h"
+#endif
+
 #include "server/ServerCore.h"
 #include "server/zone/Zone.h"
 #include "server/zone/ZoneServer.h"
@@ -445,6 +450,15 @@ void TransactionLog::initializeCommonSceneObject(const String& key, SceneObject*
 
 	mTransaction[key] = obj->getObjectID();
 
+	// Add galaxyId for ANY object with a zone (not just players)
+	auto zone = obj->getZone();
+	if (zone != nullptr) {
+		auto zoneServer = zone->getZoneServer();
+		if (zoneServer != nullptr) {
+			mTransaction[key + "GalaxyId"] = zoneServer->getGalaxyID();
+		}
+	}
+
 	auto creo = obj->asCreatureObject();
 
 	if (creo == nullptr) {
@@ -459,11 +473,7 @@ void TransactionLog::initializeCommonSceneObject(const String& key, SceneObject*
 	auto player = creo->getPlayerObject();
 
 	if (player != nullptr) {
-		auto zoneServer = creo->getZoneServer();
-		if (zoneServer != nullptr) {
-			mTransaction[key + "GalaxyId"] = zoneServer->getGalaxyID();
-		}
-
+		// GalaxyId already added above for all objects
 		mTransaction[key + "AccountId"] = player->getAccountID();
 
 		String networkIP = "0.0.0.0";
@@ -756,6 +766,9 @@ void TransactionLog::writeLog() {
 
 	mLogged = true;
 
+	// Compose log entry (used for both file and streaming)
+	String logEntry = composeLogEntry();
+
 	if (mError.length() > 0) {
 		mState["errorMessage"] = mError.toString();
 	}
@@ -813,7 +826,16 @@ void TransactionLog::writeLog() {
 		mState["verbose"] = true;
 	}
 
-	trxLog.info() << composeLogEntry();
+	// Write to local file (always)
+	trxLog.info() << logEntry;
+
+#ifdef WITH_SWGREALMS_API
+	// Stream to SWGRealms (if enabled)
+	auto api = SWGRealmsAPI::instance();
+	if (api != nullptr) {
+		api->publishTrxLog(getTrxID(), logEntry);
+	}
+#endif // WITH_SWGREALMS_API
 }
 
 SceneObject* TransactionLog::getTrxParticipant(SceneObject* obj, SceneObject* defaultValue) {

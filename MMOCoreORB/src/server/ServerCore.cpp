@@ -826,6 +826,7 @@ void ServerCore::initialize() {
 		if (ConfigManager::instance()->getString("Core3.Login.API.BaseURL", "").length() > 0) {
 			if (configManager != nullptr) {
 				swgRealmsAPI->notifyGalaxyStart(configManager->getZoneGalaxyID());
+				swgRealmsAPI->scheduleMetricsPublish();
 			}
 		}
 #endif // WITH_SWGREALMS_API
