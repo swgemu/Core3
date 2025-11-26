@@ -149,6 +149,7 @@ PlayerManagerImplementation::PlayerManagerImplementation(ZoneServer* zoneServer,
 	setGlobalLogging(true);
 	setLogging(false);
 
+#ifndef WITH_SWGREALMS_API
 	if (ServerCore::truncateDatabases()) {
 		try {
 			const static String query = "TRUNCATE TABLE characters";
@@ -160,6 +161,7 @@ PlayerManagerImplementation::PlayerManagerImplementation(ZoneServer* zoneServer,
 			error(e.getMessage());
 		}
 	}
+#endif // !WITH_SWGREALMS_API
 
 	loadNameMap();
 

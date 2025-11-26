@@ -2,6 +2,7 @@
 				Copyright <SWGEmu>
 		See file COPYING for copying conditions.*/
 
+#ifndef WITH_SWGREALMS_API
 #ifndef SERVERDATABASE_H_
 #define SERVERDATABASE_H_
 
@@ -38,3 +39,4 @@ private:
 };
 
 #endif /*SERVERDATABASE_H_*/
+#endif // !WITH_SWGREALMS_API

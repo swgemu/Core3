@@ -19,6 +19,10 @@
 #include "gtest/gtest.h"
 #endif
 
+#ifdef WITH_SWGREALMS_API
+#include "server/login/SWGRealmsAPI.h"
+#endif
+
 #include "engine/orb/db/DOBObjectManager.h"
 
 int main(int argc, char* argv[]) {
@@ -68,6 +72,9 @@ int main(int argc, char* argv[]) {
 
 			ret = RUN_ALL_TESTS();
 
+#ifdef WITH_SWGREALMS_API
+			SWGRealmsAPI::finalizeInstance();
+#endif
 			ObjectManager::instance()->shutdown();
 #endif
 		} else if (arguments.contains("dumpNavMeshesToFile")) {
@@ -87,7 +94,12 @@ int main(int argc, char* argv[]) {
 		System::err << "unreported exception caught main()" << endl;
 	}
 
+#ifdef WITH_SWGREALMS_API
+	// Known bug in cpprestsdk with websockets can't kill the final resolver_service_base thread
+	_exit(ret);
+#else
 	pthread_exit(&ret);
+#endif
 
 	return 0;
 }

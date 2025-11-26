@@ -48,7 +48,9 @@ namespace engine {
 class ServerCore : public Core, public Logger {
 	Pipe consoleCommandPipe;
 	conf::ConfigManager* configManager;
+#ifndef WITH_SWGREALMS_API
 	ServerDatabase* database;
+#endif // !WITH_SWGREALMS_API
 	MantisDatabase* mantisDatabase;
 	DistributedObjectBroker* orb;
 	Reference<server::login::LoginServer*> loginServer;
@@ -135,7 +137,9 @@ public:
 		return arguments.contains(arg);
 	}
 
+#ifndef WITH_SWGREALMS_API
 	static int getSchemaVersion();
+#endif // !WITH_SWGREALMS_API
 };
 
 #endif /*SERVERCORE_H_*/

@@ -70,7 +70,9 @@ ServerCore::ServerCore(bool truncateDatabases, const SortedVector<String>& args)
 	zoneServerRef = nullptr;
 	statusServer = nullptr;
 	pingServer = nullptr;
+#ifndef WITH_SWGREALMS_API
 	database = nullptr;
+#endif // !WITH_SWGREALMS_API
 	mantisDatabase = nullptr;
 #ifdef WITH_REST_API
 	restServer = nullptr;
@@ -666,7 +668,9 @@ void ServerCore::initialize() {
 	try {
 		ObjectManager* objectManager = ObjectManager::instance();
 
+#ifndef WITH_SWGREALMS_API
 		database = new ServerDatabase(configManager);
+#endif // !WITH_SWGREALMS_API
 
 		mantisDatabase = new MantisDatabase(configManager);
 
@@ -826,6 +830,7 @@ void ServerCore::initialize() {
 		if (ConfigManager::instance()->getString("Core3.Login.API.BaseURL", "").length() > 0) {
 			if (configManager != nullptr) {
 				swgRealmsAPI->notifyGalaxyStart(configManager->getZoneGalaxyID());
+				swgRealmsAPI->scheduleMetricsPublish();
 			}
 		}
 #endif // WITH_SWGREALMS_API
@@ -989,17 +994,22 @@ void ServerCore::shutdown() {
 			swgRealmsAPI->notifyGalaxyShutdown();
 		}
 
+		info(true) << "Finalize SWGRealmsAPI...";
 		swgRealmsAPI->finalizeInstance();
+		swgRealmsAPI = nullptr;
+		info(true) << "Finalized SWGRealmsAPI...";
 	}
 #endif // WITH_SWGREALMS_API
 
 	configManager = nullptr;
 	metricsManager = nullptr;
 
+#ifndef WITH_SWGREALMS_API
 	if (database != nullptr) {
 		delete database;
 		database = nullptr;
 	}
+#endif // !WITH_SWGREALMS_API
 
 	if (mantisDatabase != nullptr) {
 		delete mantisDatabase;
@@ -1120,12 +1130,14 @@ void ServerCore::processConfig() {
 		warning("missing config file.. loading default values");
 }
 
+#ifndef WITH_SWGREALMS_API
 int ServerCore::getSchemaVersion() {
 	if (instance != nullptr && instance->database != nullptr)
 		return instance->database->getSchemaVersion();
 
 	return -1;
 }
+#endif // !WITH_SWGREALMS_API
 
 coredetail::ConsoleReaderService::ConsoleReaderService(ServerCore* serverCoreInstance) : ServiceThread("ConsoleReader"), core(serverCoreInstance) {
 }

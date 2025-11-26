@@ -106,7 +106,7 @@ void GroundZoneImplementation::stopManagers() {
 void GroundZoneImplementation::clearZone() {
 	Locker zonelocker(_this.getReferenceUnsafeStaticCast());
 
-	info("clearing zone", true);
+	info(true) << "clearing zone";
 
 	creatureManager->unloadSpawnAreas();
 
@@ -116,6 +116,9 @@ void GroundZoneImplementation::clearZone() {
 	zonelocker.release();
 
 	auto iterator = tbl.iterator();
+	auto totalObjects = tbl.size();
+	int countDestroyed = 0;
+	Time now, last_rpt;
 
 	while (iterator.hasNext()) {
 		ManagedReference<SceneObject*> sceno = iterator.getNextValue();
@@ -123,6 +126,15 @@ void GroundZoneImplementation::clearZone() {
 		if (sceno != nullptr) {
 			Locker locker(sceno);
 			sceno->destroyObjectFromWorld(false);
+			countDestroyed++;
+		}
+
+		now.updateToCurrentTime();
+		int delta = now.getTime() - last_rpt.getTime();
+
+		if (delta > 5) {
+			last_rpt.updateToCurrentTime();
+			info(true) << "Cleared " << countDestroyed << " of " << totalObjects << " object(s)";
 		}
 	}
 
