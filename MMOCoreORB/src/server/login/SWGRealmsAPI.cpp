@@ -132,16 +132,30 @@ SWGRealmsAPI::SWGRealmsAPI() {
 
 	httpClient = new http_client(baseURL.toCharArray(), client_config);
 
+	streamer = new SWGRealmsStreamer(baseURL, apiToken, galaxyID, debugLevel);
+
 	info(true) << "Starting " << toString();
 }
 
 SWGRealmsAPI::~SWGRealmsAPI() {
+	// Stop the cpprest threadpool's io_service and shut down resolver threads
+	auto& ioService = crossplat::threadpool::shared_instance().service();
+	ioService.stop();
+
+	// Notify fork_prepare to stop and join the resolver service worker threads
+	// This must be done before deleting clients that might spawn new resolver work
+	ioService.notify_fork(boost::asio::execution_context::fork_prepare);
+
+	if (streamer != nullptr) {
+		delete streamer;
+		streamer = nullptr;
+	}
+
 	if (httpClient != nullptr) {
 		delete httpClient;
 		httpClient = nullptr;
 	}
 
-	crossplat::threadpool::shared_instance().service().stop();
 	info(true) << "Shutdown";
 }
 
@@ -500,7 +514,7 @@ bool SWGRealmsAPI::consoleCommand(const String& arguments) {
 			<< "\tdisable - Disable SWGRealms API" << endl
 			<< "\tstatus - SWGRealms API status" << endl
 			<< "\tdryrun {off} - Control dry run setting" << endl
-			<< "\tdebug {level} - Set debug level" << endl
+			<< "\tdebug {level} - Set debug logLevel (0-5)" << endl
 			;
 		return true;
 	} else if (subcmd == "enable") {
@@ -539,14 +553,20 @@ bool SWGRealmsAPI::consoleCommand(const String& arguments) {
 		}
 
 		return true;
-	} else if (subcmd == "debug" || subcmd == "debuglevel") {
-		int newDebugLevel = 9;
+	} else if (subcmd == "debug" || subcmd == "debuglevel" || subcmd == "loglevel") {
+		int newDebugLevel = 5;
 
 		if (tokenizer.hasMoreTokens()) {
 			newDebugLevel = tokenizer.getIntToken();
 		}
 
 		debugLevel = newDebugLevel;
+
+		setLogLevel(static_cast<Logger::LogLevel>(debugLevel));
+
+		if (streamer != nullptr) {
+			streamer->setLogLevel(static_cast<Logger::LogLevel>(debugLevel));
+		}
 
 		info(true) << "DebugLevel set to " << debugLevel << " by console command.";
 
@@ -614,6 +634,11 @@ JSONSerializationType SWGRealmsAPI::getStatsAsJSON() const {
 	stats["failOpen"] = failOpen;
 	stats["dryRun"] = dryRun;
 	stats["debugLevel"] = debugLevel;
+
+	// Add streaming stats if enabled
+	if (streamer != nullptr) {
+		stats["streaming"] = streamer->getStatsAsJSON();
+	}
 
 	return stats;
 }
@@ -2045,6 +2070,710 @@ Optional<Galaxy> SWGRealmsAPI::getGalaxyEntry(uint32 galaxyID) {
 	}
 
 	return parseGalaxyFromJSON(result->getRawJSON());
+}
+
+// Streaming API proxy methods
+
+void SWGRealmsAPI::publish(const String& channel, const String& key, const String& payloadJson) {
+	if (streamer != nullptr) {
+		streamer->publish(channel, key, payloadJson);
+	}
+}
+
+void SWGRealmsAPI::publishTrxLog(const String& trxId, const String& payloadJson) {
+	if (streamer != nullptr) {
+		streamer->publish("trxlog", trxId, payloadJson);
+	}
+}
+
+bool SWGRealmsAPI::isStreamConnected() const {
+	return streamer != nullptr && streamer->isConnected();
+}
+
+int SWGRealmsAPI::getStreamPendingCount() const {
+	return streamer != nullptr ? streamer->getPendingCount() : 0;
+}
+
+// Metrics publishing
+
+#include "server/zone/managers/statistics/StatisticsManager.h"
+
+/**
+ * Periodic task to publish server metrics via SWGRealms streaming API.
+ * Config: Core3.Login.API.MetricsInterval (seconds, default 600, 0 = disabled)
+ */
+class SWGRealmsMetricsTask : public Task, public Logger {
+private:
+	int intervalMs;
+
+public:
+	SWGRealmsMetricsTask(int intervalSec) : Task(), Logger("SWGRealmsMetricsTask") {
+		intervalMs = intervalSec * 1000;
+	}
+
+	void run() {
+		if (intervalMs <= 0) {
+			return;
+		}
+
+		auto api = SWGRealmsAPI::instance();
+		if (api == nullptr) {
+			reschedule(intervalMs);
+			return;
+		}
+
+		try {
+			auto statsManager = StatisticsManager::instance();
+			if (statsManager != nullptr) {
+				// Build metrics JSON
+				JSONSerializationType metrics = statsManager->getAsJSON();
+
+				Time now;
+				metrics["@timestamp"] = now.getFormattedTimeFull();
+				metrics["@timestampMs"] = now.getMiliTime();
+				metrics["swgrealms"] = api->getStatsAsJSON();
+
+				// Generate unique key (microseconds, hex)
+				uint64 microTime = now.getMikroTime();
+				char keyBuf[32];
+				snprintf(keyBuf, sizeof(keyBuf), "%014llx", (unsigned long long)microTime);
+
+				api->publish("metrics", String(keyBuf), String(metrics.dump()));
+			}
+		} catch (Exception& e) {
+			error() << "Failed to publish metrics: " << e.getMessage();
+		}
+
+		reschedule(intervalMs);
+	}
+};
+
+const TaskQueue* SWGRealmsAPI::getCustomQueue() {
+	static auto customQueue = []() {
+		return Core::getTaskManager()->initializeCustomQueue("SWGRealmsWorker", 1);
+	}();
+
+	return customQueue;
+}
+
+void SWGRealmsAPI::scheduleMetricsPublish() {
+	int intervalSec = ConfigManager::instance()->getInt("Core3.Login.API.MetricsInterval", 600);
+
+#ifndef NDEBUG
+	// Check range if not a debug / development build
+	if (intervalSec < 30) {
+		intervalSec = 30; // Can't be faster than this
+	}
+
+	if (intervalSec > 3600) {
+		intervalSec = 3600; // Can't be longer than this
+	}
+#endif
+
+	if (streamer == nullptr) {
+		info(true) << "Metrics publishing disabled (streaming not enabled)";
+		return;
+	}
+
+	Reference<SWGRealmsMetricsTask*> task = new SWGRealmsMetricsTask(intervalSec);
+	task->setCustomTaskQueue(getCustomQueue()->getName());
+	task->schedule(intervalSec * 1000);
+
+	info(true) << "Scheduled metrics publishing every " << intervalSec << " seconds";
+}
+
+// ============================================================================
+// SWGRealmsStreamer Implementation
+// ============================================================================
+
+using namespace engine::db::berkeley;
+using namespace web::websockets::client;
+
+constexpr uint64 SWGRealmsStreamer::MAX_WAL_SIZE;
+constexpr uint64 SWGRealmsStreamer::GC_AFTER_HOURS;
+
+SWGRealmsStreamer::SWGRealmsStreamer(const String& baseURL, const String& token, int galaxy, int debugLevel) : walDatabase() {
+	setLoggingName("SWGRealmsStreamer");
+	setFileLogger("log/swgrealms_stream.log", true, ConfigManager::instance()->getRotateLogAtStart());
+	setLogSynchronized(true);
+	setRotateLogSizeMB(ConfigManager::instance()->getRotateLogSizeMB());
+	setLogToConsole(false);
+	setGlobalLogging(false);
+	setLogging(true);
+	setLogLevel(static_cast<Logger::LogLevel>(debugLevel));
+
+	apiToken = token;
+	galaxyID = galaxy;
+
+	if (apiToken.beginsWith("Bearer ")) {
+		apiToken = apiToken.subString(7);
+	}
+
+	wsURL = "";
+	if (!baseURL.isEmpty()) {
+		String url = baseURL;
+		if (url.endsWith("/")) {
+			url = url.subString(0, url.length() - 1);
+		}
+		if (url.beginsWith("https://")) {
+			wsURL = "wss://" + url.subString(8) + "/v1/core3/stream?galaxy_id=" + String::valueOf(galaxyID);
+		} else if (url.beginsWith("http://")) {
+			wsURL = "ws://" + url.subString(7) + "/v1/core3/stream?galaxy_id=" + String::valueOf(galaxyID);
+		}
+	}
+
+	wsURL = ConfigManager::instance()->getString("Core3.Login.API.StreamURL", wsURL);
+	enabled = !wsURL.isEmpty() && !apiToken.isEmpty();
+
+	wsClient = nullptr;
+	connected = false;
+	reconnectDelay = 1;
+	reconnectScheduled = false;
+	walPendingCount = 0;
+	publishedCount = 0;
+	ackedCount = 0;
+	errorCount = 0;
+	inFlightCount = 0;
+
+	if (!enabled) {
+		warning() << "WebSocket URL or API token not configured, streaming disabled";
+		return;
+	}
+
+	info(true) << "Streaming to " << wsURL << " (galaxy " << galaxyID << ")";
+
+	walEnvPath = "log/wal";
+	walDbPath = "stream_wal.db";
+
+	try {
+		File walDir(walEnvPath);
+		if (!walDir.exists()) {
+			if (!walDir.mkdir()) {
+				throw Exception("Failed to create WAL directory: " + walEnvPath);
+			}
+		}
+
+		EnvironmentConfig envConfig;
+		envConfig.setAllowCreate(true);
+		envConfig.setInitializeLocking(true);
+		envConfig.setInitializeLogging(true);
+		envConfig.setInitializeCache(true);
+		envConfig.setThreaded(true);
+		envConfig.setThreadCount(64);
+		envConfig.setLogAutoRemove(true);
+		envConfig.setMaxLogFileSize(10 * 1024 * 1024);
+		envConfig.setTransactional(true);
+		envConfig.setPrivate(false);
+		envConfig.setRecover(true);
+		envConfig.setRegister(false);
+
+		walEnvironment = new Environment(walEnvPath, envConfig);
+		info() << "WAL environment created: " << walEnvPath;
+
+		DatabaseConfig dbConfig;
+		dbConfig.setAllowCreate(true);
+		dbConfig.setType(DatabaseType::HASH);
+
+		auto initDb = walEnvironment->openDatabase(nullptr, walDbPath, "", dbConfig);
+		info() << "WAL database initialized: " << walDbPath;
+
+		try {
+			auto cursor = initDb->openCursor(nullptr);
+			DatabaseEntry key, value;
+			int count = 0;
+			while (cursor->getNext(&key, &value, LockMode::DEFAULT) == 0) {
+				count++;
+			}
+			cursor->close();
+			delete cursor;
+			walPendingCount.set(count);
+			if (count > 0) {
+				warning() << "WAL has " << count << " pending events from previous run";
+			}
+		} catch (Exception& e) {
+			info() << "WAL is empty (first run)";
+		}
+
+		initDb->close(false);
+		delete initDb;
+
+	} catch (Exception& e) {
+		error() << "Failed to create WAL environment: " << e.getMessage();
+		enabled = false;
+		return;
+	}
+
+	try {
+		websocket_client_config wsConfig;
+		wsConfig.headers().add(U("Authorization"), U(("Bearer " + apiToken).toCharArray()));
+		wsConfig.set_validate_certificates(false);
+
+		wsClient = new websocket_callback_client(wsConfig);
+
+		wsClient->set_message_handler([this](const websocket_incoming_message& msg) {
+			this->onMessage(msg);
+		});
+
+		wsClient->set_close_handler([this](websocket_close_status status, const utility::string_t& reason, const std::error_code& ec) {
+			this->onClose(status, reason, ec);
+		});
+
+		connectWebSocket();
+
+	} catch (std::exception& e) {
+		error() << "Failed to initialize WebSocket client: " << e.what();
+		enabled = false;
+		return;
+	}
+
+	info() << "SWGRealms Streamer initialized: " << wsURL << " (galaxy " << galaxyID << ")";
+}
+
+SWGRealmsStreamer::~SWGRealmsStreamer() {
+	enabled = false;
+
+	if (wsClient != nullptr) {
+		try {
+			// Initiate close but don't wait - this breaks the epoll_wait in the ws thread
+			wsClient->close();
+			// Brief sleep to let the close propagate to the io_service thread
+			Thread::sleep(100);
+			// DON'T delete wsClient - cpprestsdk's destructor calls close().wait()
+			// which hangs forever. Intentionally leak; _exit() will clean up.
+			wsClient = nullptr;
+		} catch (std::exception& e) {
+			error() << "Error closing WebSocket: " << e.what();
+		}
+	}
+
+	// Close thread-local database handle if open on this thread
+	auto db = walDatabase.get();
+	if (db != nullptr) {
+		try {
+			db->close(false);
+			delete db;
+			walDatabase.set(nullptr);
+		} catch (...) {
+			// Ignore errors during shutdown
+		}
+	}
+
+	if (walEnvironment != nullptr) {
+		walEnvironment->close();
+		delete walEnvironment;
+		walEnvironment = nullptr;
+	}
+
+	info() << "Shutdown: published=" << publishedCount.get() << ", acked=" << ackedCount.get()
+	       << ", pending=" << walPendingCount.get();
+}
+
+BerkeleyDatabase* SWGRealmsStreamer::getWALHandle() {
+	auto db = walDatabase.get();
+
+	if (db == nullptr) {
+		DatabaseConfig config;
+		config.setAllowCreate(true);
+		config.setType(DatabaseType::HASH);
+
+		try {
+			db = walEnvironment->openDatabase(nullptr, walDbPath, "", config);
+			walDatabase.set(db);
+			auto currentThread = Thread::getCurrentThread();
+			if (currentThread != nullptr) {
+				debug() << "Opened WAL database handle for thread " << currentThread->getName();
+			} else {
+				debug() << "Opened WAL database handle";
+			}
+		} catch (const Exception& e) {
+			error() << "Failed to open WAL database";
+			throw;
+		} catch (const std::exception& e) {
+			error() << "Failed to open WAL database: " << e.what();
+			throw;
+		} catch (...) {
+			error() << "Failed to open WAL database (unknown exception)";
+			throw;
+		}
+	}
+
+	return db;
+}
+
+void SWGRealmsStreamer::publish(const String& channel, const String& key, const String& payloadJson) {
+	if (!enabled) {
+		return;
+	}
+
+	try {
+		appendToWAL(channel, key, payloadJson);
+		if (connected) {
+			sendMessage(channel, key, payloadJson);
+		} else {
+			debug() << "WebSocket disconnected, event buffered: " << channel << ":" << key;
+		}
+	} catch (Exception& e) {
+		error() << "Failed to publish event " << channel << ":" << key << ": " << e.getMessage();
+		errorCount.increment();
+	}
+}
+
+void SWGRealmsStreamer::appendToWAL(const String& channel, const String& key, const String& payloadJson) {
+	try {
+		String compositeKey = channel + ":" + key;
+		DatabaseEntry dbKey((uint8*)compositeKey.toCharArray(), compositeKey.length());
+		DatabaseEntry dbValue((uint8*)payloadJson.toCharArray(), payloadJson.length());
+		getWALHandle()->put(nullptr, &dbKey, &dbValue);
+		getWALHandle()->sync();
+		walPendingCount.increment();
+	} catch (Exception& e) {
+		error() << "WAL append failed for " << channel << ":" << key << ": " << e.getMessage();
+		throw;
+	}
+}
+
+void SWGRealmsStreamer::removeFromWAL(const String& channel, const String& key) {
+	try {
+		String compositeKey = channel + ":" + key;
+		DatabaseEntry dbKey((uint8*)compositeKey.toCharArray(), compositeKey.length());
+		int ret = getWALHandle()->del(nullptr, &dbKey);
+		if (ret == 0) {
+			walPendingCount.decrement();
+			getWALHandle()->sync();
+		}
+	} catch (Exception& e) {
+		error() << "WAL remove failed for " << channel << ":" << key << ": " << e.getMessage();
+	}
+}
+
+Vector<Pair<String, String>> SWGRealmsStreamer::getAllPendingFromWAL() {
+	Locker lock(&syncMutex);
+	Vector<Pair<String, String>> result;
+
+	try {
+		auto cursor = getWALHandle()->openCursor(nullptr);
+		DatabaseEntry key, value;
+		while (cursor->getNext(&key, &value, LockMode::DEFAULT) == 0) {
+			String compositeKey((char*)key.getData(), key.getSize());
+			String payload((char*)value.getData(), value.getSize());
+			result.add(Pair<String, String>(compositeKey, payload));
+		}
+		cursor->close();
+		delete cursor;
+	} catch (Exception& e) {
+		error() << "WAL iteration failed: " << e.getMessage();
+	}
+
+	return result;
+}
+
+void SWGRealmsStreamer::garbageCollect() {
+	Locker lock(&syncMutex);
+	Time cutoff;
+	cutoff.addMiliTime(-GC_AFTER_HOURS * 3600 * 1000);
+	int removedCount = 0;
+
+	try {
+		auto cursor = getWALHandle()->openCursor(nullptr);
+		DatabaseEntry key, value;
+
+		while (cursor->getNext(&key, &value, LockMode::DEFAULT) == 0) {
+			String compositeKey((char*)key.getData(), key.getSize());
+			int colonPos = compositeKey.indexOf(':');
+			if (colonPos < 0) continue;
+
+			String keyPart = compositeKey.subString(colonPos + 1);
+			uint64 trxMikroTime = parseTimestampFromKey(keyPart);
+
+			if (trxMikroTime < cutoff.getMikroTime()) {
+				cursor->del();
+				walPendingCount.decrement();
+				removedCount++;
+			}
+		}
+
+		cursor->close();
+		delete cursor;
+
+		if (removedCount > 0) {
+			warning() << "WAL GC: Removed " << removedCount << " events older than " << GC_AFTER_HOURS << " hours";
+		}
+	} catch (Exception& e) {
+		error() << "WAL GC failed: " << e.getMessage();
+	}
+}
+
+uint64 SWGRealmsStreamer::parseTimestampFromKey(const String& key) {
+	if (key.length() < 14) {
+		return 0;
+	}
+	String hexStr = key.subString(0, 14);
+	return strtoull(hexStr.toCharArray(), nullptr, 16);
+}
+
+void SWGRealmsStreamer::connectWebSocket() {
+	if (!enabled) {
+		return;
+	}
+
+	{
+		Locker lock(&reconnectMutex);
+		reconnectScheduled = false;
+	}
+
+	try {
+		if (wsClient != nullptr) {
+			delete wsClient;
+			wsClient = nullptr;
+		}
+
+		websocket_client_config wsConfig;
+		wsConfig.headers().add(U("Authorization"), U(("Bearer " + apiToken).toCharArray()));
+		wsConfig.set_validate_certificates(false);
+
+		wsClient = new websocket_callback_client(wsConfig);
+
+		wsClient->set_message_handler([this](const websocket_incoming_message& msg) {
+			this->onMessage(msg);
+		});
+
+		wsClient->set_close_handler([this](websocket_close_status status, const utility::string_t& reason, const std::error_code& ec) {
+			this->onClose(status, reason, ec);
+		});
+
+		info() << "WebSocket connecting to " << wsURL;
+
+		wsClient->connect(U(wsURL.toCharArray())).then([this]() {
+			this->onOpen();
+		}).then([this](pplx::task<void> task) {
+			try {
+				task.wait();
+			} catch (std::exception& e) {
+				this->onFail(e);
+			}
+		});
+
+	} catch (std::exception& e) {
+		error() << "WebSocket connect failed: " << e.what();
+		scheduleReconnect();
+	}
+}
+
+void SWGRealmsStreamer::disconnectWebSocket() {
+	if (wsClient != nullptr && connected) {
+		try {
+			wsClient->close().wait();
+		} catch (std::exception& e) {
+			error() << "WebSocket disconnect failed: " << e.what();
+		}
+	}
+}
+
+void SWGRealmsStreamer::sendMessage(const String& channel, const String& key, const String& payloadJson) {
+	if (!connected || wsClient == nullptr) {
+		return;
+	}
+
+	try {
+		StringBuffer msg;
+		msg << channel << "\t" << key << "\t" << payloadJson << "\n";
+
+		websocket_outgoing_message outMsg;
+		outMsg.set_utf8_message(msg.toString().toCharArray());
+
+		wsClient->send(outMsg).then([this, channel, key](pplx::task<void> task) {
+			try {
+				task.wait();
+				publishedCount.increment();
+				inFlightCount.increment();
+				int inFlight = inFlightCount.get();
+				if (inFlight > 1000) {
+					warning() << "High in-flight count: " << inFlight << " (slow ACKs or network issue)";
+				} else if (inFlight > 100 && inFlight % 100 == 0) {
+					info() << "In-flight count: " << inFlight;
+				}
+			} catch (std::exception& e) {
+				error() << "WebSocket send failed for " << channel << ":" << key << ": " << e.what();
+				errorCount.increment();
+			}
+		});
+
+	} catch (std::exception& e) {
+		error() << "WebSocket send failed for " << channel << ":" << key << ": " << e.what();
+		errorCount.increment();
+	}
+}
+
+void SWGRealmsStreamer::scheduleReconnect() {
+	if (!enabled) {
+		return;
+	}
+
+	Locker lock(&reconnectMutex);
+
+	if (reconnectScheduled) {
+		debug() << "Reconnect already scheduled, skipping";
+		return;
+	}
+
+	reconnectScheduled = true;
+	reconnectDelay = Math::min(reconnectDelay * 2, 60);
+
+	warning() << "Scheduling reconnect in " << reconnectDelay << " seconds";
+
+	Core::getTaskManager()->scheduleTask([this]() {
+		connectWebSocket();
+	}, "WebSocketReconnect", reconnectDelay * 1000);
+}
+
+void SWGRealmsStreamer::replayWAL() {
+	auto pending = getAllPendingFromWAL();
+
+	if (pending.size() == 0) {
+		info() << "WAL replay: no pending events";
+		return;
+	}
+
+	info() << "WAL replay: sending " << pending.size() << " pending events";
+
+	for (int i = 0; i < pending.size(); i++) {
+		const auto& pair = pending.get(i);
+		const String& compositeKey = pair.first;
+		const String& payload = pair.second;
+
+		int colonPos = compositeKey.indexOf(':');
+		if (colonPos < 0) {
+			warning() << "  Skipping malformed WAL key: " << compositeKey;
+			continue;
+		}
+
+		String channel = compositeKey.subString(0, colonPos);
+		String key = compositeKey.subString(colonPos + 1);
+
+		info() << "  Replaying [" << (i+1) << "/" << pending.size() << "]: " << compositeKey;
+		sendMessage(channel, key, payload);
+	}
+
+	info() << "WAL replay complete: sent " << pending.size() << " events";
+}
+
+void SWGRealmsStreamer::onOpen() {
+	info() << "WebSocket connected to " << wsURL;
+
+	connected = true;
+	reconnectDelay = 1;
+
+	{
+		Locker lock(&reconnectMutex);
+		reconnectScheduled = false;
+	}
+
+	Core::getTaskManager()->executeTask([this]() {
+		replayWAL();
+	}, "WALReplay", "slowQueue");
+}
+
+void SWGRealmsStreamer::onClose(websocket_close_status status, const utility::string_t& reason, const std::error_code& ec) {
+	warning() << "WebSocket closed: " << reason.c_str() << " (code " << ec.value() << ")";
+	connected = false;
+	scheduleReconnect();
+}
+
+void SWGRealmsStreamer::onFail(const std::exception& e) {
+	error() << "WebSocket connection failed: " << e.what();
+	connected = false;
+	scheduleReconnect();
+}
+
+void SWGRealmsStreamer::onMessage(const websocket_incoming_message& msg) {
+	try {
+		if (msg.message_type() != websocket_message_type::text_message) {
+			const char* typeNames[] = {"open", "close", "ping", "pong", "message", "upgrade", "noop"};
+			int type = (int)msg.message_type();
+			const char* typeName = (type >= 0 && type <= 6) ? typeNames[type] : "unknown";
+			debug() << "Ignoring WebSocket " << typeName << " frame (type " << type << ")";
+			return;
+		}
+
+		msg.extract_string().then([this](pplx::task<std::string> task) {
+			try {
+				std::string payload = task.get();
+
+				if (payload.empty() || payload == "[]") {
+					debug() << "Received keep-alive (empty payload)";
+					return;
+				}
+
+				web::json::value ackJson;
+				try {
+					ackJson = web::json::value::parse(utility::conversions::to_string_t(payload));
+				} catch (web::json::json_exception& e) {
+					error() << "Failed to parse ACK JSON: " << e.what() << " - Payload: [" << payload.c_str() << "]";
+					return;
+				}
+
+				if (!ackJson.has_field(U("channel")) || !ackJson.has_field(U("key")) || !ackJson.has_field(U("status"))) {
+					error() << "Invalid ACK format (missing channel, key or status): " << payload.c_str();
+					return;
+				}
+
+				String channel = utility::conversions::to_utf8string(ackJson[U("channel")].as_string()).c_str();
+				String key = utility::conversions::to_utf8string(ackJson[U("key")].as_string()).c_str();
+				String status = utility::conversions::to_utf8string(ackJson[U("status")].as_string()).c_str();
+
+				if (status == "ok" || status == "duplicate_ok") {
+					removeFromWAL(channel, key);
+					ackedCount.increment();
+					inFlightCount.decrement();
+					debug() << "ACK received for " << channel << ":" << key << " (status: " << status << ")";
+				} else {
+					String errorMsg = "";
+					if (ackJson.has_field(U("message"))) {
+						errorMsg = utility::conversions::to_utf8string(ackJson[U("message")].as_string()).c_str();
+					}
+					error() << "Event rejected: " << channel << ":" << key << " status=" << status << " message=" << errorMsg;
+				}
+
+			} catch (Exception& e) {
+				error() << "Failed to parse ACK: " << e.getMessage();
+			} catch (std::exception& e) {
+				error() << "Failed to parse ACK: " << e.what();
+			}
+		});
+
+	} catch (std::exception& e) {
+		error() << "Failed to extract message: " << e.what();
+	}
+}
+
+JSONSerializationType SWGRealmsStreamer::getStatsAsJSON() const {
+	JSONSerializationType stats;
+	stats["enabled"] = enabled;
+	stats["connected"] = connected;
+	stats["wsURL"] = wsURL.toCharArray();
+	stats["galaxyID"] = galaxyID;
+	stats["walPending"] = walPendingCount.get();
+	stats["published"] = publishedCount.get();
+	stats["acked"] = ackedCount.get();
+	stats["inFlight"] = inFlightCount.get();
+	stats["errors"] = errorCount.get();
+	stats["reconnectDelay"] = reconnectDelay;
+	return stats;
+}
+
+String SWGRealmsStreamer::toString() const {
+	StringBuffer buf;
+	buf << "SWGRealmsStreamer " << this << " ["
+	    << "enabled: " << enabled << ", "
+	    << "connected: " << connected << ", "
+	    << "wsURL: " << wsURL << ", "
+	    << "galaxyID: " << galaxyID << ", "
+	    << "walPending: " << walPendingCount << ", "
+	    << "inFlight: " << inFlightCount << ", "
+	    << "published: " << publishedCount << ", "
+	    << "acked: " << ackedCount << ", "
+	    << "errors: " << errorCount << "]";
+	return buf.toString();
 }
 
 #endif // WITH_SWGREALMS_API

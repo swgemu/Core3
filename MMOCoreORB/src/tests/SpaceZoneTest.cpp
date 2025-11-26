@@ -26,7 +26,9 @@ using ::testing::An;
 
 class SpaceZoneTest : public ::testing::Test {
 protected:
+#ifndef WITH_SWGREALMS_API
 	ServerDatabase* database = nullptr;
+#endif // !WITH_SWGREALMS_API
 	Reference<ZoneServer*> zoneServer;
 	Reference<SpaceZone*> spaceZone;
 	Reference<ZoneProcessServer*> processServer;
@@ -96,7 +98,9 @@ public:
 		ConfigManager::instance()->setProgressMonitors(false);
 		auto configManager = ConfigManager::instance();
 
+#ifndef WITH_SWGREALMS_API
 		database = new ServerDatabase(configManager);
+#endif // !WITH_SWGREALMS_API
 		zoneServer = new ZoneServer(configManager);
 		processServer = new ZoneProcessServer(zoneServer);
 		spaceZone = new SpaceZone(processServer, "test_space_zone");
@@ -107,10 +111,12 @@ public:
 
 	void TearDown() {
 		// Perform clean up of common constructs here.
+#ifndef WITH_SWGREALMS_API
 		if (database != nullptr) {
 			delete database;
 			database = nullptr;
 		}
+#endif // !WITH_SWGREALMS_API
 
 		if (playerManager != nullptr) {
 			playerManager->finalize();

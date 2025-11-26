@@ -17,7 +17,9 @@ namespace test {
 class CreatureObjectTest : public ::testing::Test {
 protected:
 	const String skillWithSneakAbility = "combat_rifleman_speed_03";
+#ifndef WITH_SWGREALMS_API
 	ServerDatabase* database = nullptr;
+#endif // !WITH_SWGREALMS_API
 	Reference<ZoneServer*> zoneServer;
 	Reference<GroundZone*> groundZone;
 	Reference<ZoneProcessServer*> processServer;
@@ -31,7 +33,9 @@ public:
 		ConfigManager::instance()->setProgressMonitors(false);
 		auto configManager = ConfigManager::instance();
 
+#ifndef WITH_SWGREALMS_API
 		database = new ServerDatabase(configManager);
+#endif // !WITH_SWGREALMS_API
 		zoneServer = new ZoneServer(configManager);
 		processServer = new ZoneProcessServer(zoneServer);
 		groundZone = new GroundZone(processServer, "test_zone");
@@ -43,10 +47,12 @@ public:
 
 	~CreatureObjectTest() {
 		// Clean up.
+#ifndef WITH_SWGREALMS_API
 		if (database != nullptr) {
 			delete database;
 			database = nullptr;
 		}
+#endif // !WITH_SWGREALMS_API
 
 		groundZone = nullptr;
 		processServer = nullptr;

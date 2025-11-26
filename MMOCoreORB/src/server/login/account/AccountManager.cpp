@@ -33,6 +33,7 @@ AccountManager::AccountManager(LoginServer* loginserv) : Logger("AccountManager"
 	setLogging(false);
 	setGlobalLogging(false);
 
+#ifndef WITH_SWGREALMS_API
 	if (ServerCore::truncateDatabases()) {
 		try {
 			String query = "TRUNCATE TABLE characters";
@@ -44,6 +45,7 @@ AccountManager::AccountManager(LoginServer* loginserv) : Logger("AccountManager"
 			error(e.getMessage());
 		}
 	}
+#endif // !WITH_SWGREALMS_API
 }
 
 AccountManager::~AccountManager() {
