@@ -11,6 +11,7 @@
 #include "system/thread/atomic/AtomicLong.h"
 #include "engine/log/Logger.h"
 #include "server/zone/managers/creature/AiMap.h"
+#include "server/zone/managers/space/SpaceAiMap.h"
 
 class StatisticsManager : public Singleton<StatisticsManager>, public Logger, public Object {
 	const static int CONSOLE_REPORT_INTERVAL = 1000;
@@ -164,6 +165,12 @@ public:
 
 		if (aimap != nullptr) {
 			json["ai"] = aimap->getStatsAsJSON();
+		}
+
+		auto spaceAiMap = SpaceAiMap::instance();
+
+		if (spaceAiMap != nullptr) {
+			json["spaceAi"] = spaceAiMap->getStatsAsJSON();
 		}
 
 		JSONSerializationType core;
