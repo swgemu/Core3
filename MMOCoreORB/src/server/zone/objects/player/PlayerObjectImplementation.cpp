@@ -252,39 +252,51 @@ void PlayerObjectImplementation::notifyLoadFromDatabase() {
 	clientLastMovementStamp = 0;
 }
 
-void PlayerObjectImplementation::unloadSpawnedChildren(bool petsOnly) {
+void PlayerObjectImplementation::unloadSpawnedChildren(bool skipShips) {
 	ManagedReference<CreatureObject*> player = dynamic_cast<CreatureObject*>(parent.get().get());
 
-	if (player == nullptr)
+	if (player == nullptr) {
 		return;
+	}
 
 	ManagedReference<SceneObject*> datapad = player->getSlottedObject("datapad");
 
-	if (datapad == nullptr)
+	if (datapad == nullptr) {
 		return;
+	}
+
+	// info(true) << player->getDisplayedName() << " calling -- PlayerObjectImplementation::unloadSpawnedChildren() -- Contained Objects Size: " << datapad->getContainerObjectsSize();
 
 	Vector<ManagedReference<ControlDevice*> > devicesToStore;
 
 	for (int i = 0; i < datapad->getContainerObjectsSize(); ++i) {
 		ManagedReference<SceneObject*> object = datapad->getContainerObject(i);
 
-		if (object == nullptr || !object->isControlDevice())
+		if (object == nullptr || !object->isControlDevice()) {
 			continue;
+		}
 
 		ControlDevice* device = cast<ControlDevice*>(object.get());
 
-		if (device == nullptr)
+		if (device == nullptr) {
 			continue;
+		}
 
-		// Do not force store ships when player is not in the space zone
-		if (device->isShipControlDevice()) {
-			if (petsOnly)
+		bool isShipDevice = device->isShipControlDevice();
+
+		// Check for storing only pets
+		if (skipShips && isShipDevice) {
+			continue;
+		}
+
+		// Do not force store ships when it is not in the space zone
+		if (isShipDevice) {
+			auto ship = device->getControlledObject();
+
+			// Ship has already been removed from the space zone
+			if (ship == nullptr || ship->getLocalZone() == nullptr) {
 				continue;
-
-			auto zone = player->getZone();
-
-			if (zone != nullptr && !zone->isSpaceZone())
-				continue;
+			}
 		}
 
 		devicesToStore.add(device);
@@ -292,8 +304,9 @@ void PlayerObjectImplementation::unloadSpawnedChildren(bool petsOnly) {
 
 	StoreSpawnedChildrenTask* task = new StoreSpawnedChildrenTask(player, std::move(devicesToStore));
 
-	if (task != nullptr)
+	if (task != nullptr) {
 		task->execute();
+	}
 }
 
 void PlayerObjectImplementation::setLastLogoutWorldPosition() {
@@ -310,19 +323,38 @@ Vector3 PlayerObjectImplementation::getLastLogoutWorldPosition() const {
 }
 
 void PlayerObjectImplementation::unload() {
-	debug("unloading player");
-
 	ManagedReference<CreatureObject*> creature = dynamic_cast<CreatureObject*>(parent.get().get());
 
-	MissionManager* missionManager = creature->getZoneServer()->getMissionManager();
-	missionManager->deactivateMissions(creature);
+	if (creature == nullptr) {
+		error() << "PlayerCreature parent was null during PlayerObjectImplementation::unload. -- PlayerObjectID: " << getObjectID();
+		return;
+	}
 
+	auto zoneServer = creature->getZoneServer();
+
+	if (zoneServer == nullptr) {
+		return;
+	}
+
+	debug() << creature->getDisplayedName() << " calling -- PlayerObjectImplementation::unload()";
+	// info(true) << creature->getDisplayedName() << " calling -- PlayerObjectImplementation::unload()";
+
+	// Deactivate the players mission
+	auto missionManager = zoneServer->getMissionManager();
+
+	if (missionManager != nullptr) {
+		missionManager->deactivateMissions(creature);
+	}
+
+	// Check to see if creature is riding a mount, though they should no longer be due to unloadSpawnedChildren, this should only appy now to players in multipassenger vehicles
 	if (creature->isRidingMount()) {
 		creature->executeObjectControllerAction(STRING_HASHCODE("dismount"));
 	}
 
+	// Try to store any spawned pets, ships or vehicles
 	unloadSpawnedChildren();
 
+	// Remove player from active areas
 	SortedVector<ManagedReference<ActiveArea*>>* activeAreas = creature->getActiveAreas();
 
 	if (activeAreas != nullptr) {
@@ -336,7 +368,6 @@ void PlayerObjectImplementation::unload() {
 		}
 
 		if (creature->isInNoCombatArea()) {
-			Locker lock(creature);
 			creature->setInNoCombatArea(false);
 		}
 	}
@@ -347,13 +378,13 @@ void PlayerObjectImplementation::unload() {
 	}
 
 	ManagedReference<SceneObject*> creoParent = creature->getParent().get();
+	auto zone = creature->getZone();
 
-	Zone* zone = creature->getZone();
-
+	// Store players saved parent and location
 	if (zone != nullptr) {
 		String zoneName = zone->getZoneName();
 
-		// Player is in space and being unloaded
+		// Player is in a ship in space, send them back to their launch location
 		if (zone->isSpaceZone()) {
 			zoneName = launchPoint.getGoundZoneName();
 
@@ -380,16 +411,21 @@ void PlayerObjectImplementation::unload() {
 		creature->destroyObjectFromWorld(true);
 	}
 
+	// Clear combat
 	creature->clearCombatState(true);
 
+	// Clear Special Appearance
 	creature->setAlternateAppearance("", false);
 
+	// Stop dancing or playing music
 	creature->stopEntertaining();
 
+	// Cancel active trade session
 	ManagedReference<TradeSession*> tradeContainer = creature->getActiveSession(SessionFacadeType::TRADE).castTo<TradeSession*>();
 
-	if (tradeContainer != nullptr)
+	if (tradeContainer != nullptr) {
 		creature->dropActiveSession(SessionFacadeType::TRADE);
+	}
 
 	//Remove player from Chat Manager and all rooms.
 	ManagedReference<ChatManager*> chatManager = getZoneServer()->getChatManager();
@@ -399,8 +435,10 @@ void PlayerObjectImplementation::unload() {
 
 		for (int i = 0; i < chatRooms.size(); i++) {
 			ManagedReference<ChatRoom*> room = chatManager->getChatRoom(chatRooms.get(i));
+
 			if (room != nullptr) {
 				Locker clocker(room, creature);
+
 				room->removePlayer(creature, true);
 			}
 		}
@@ -410,8 +448,9 @@ void PlayerObjectImplementation::unload() {
 
 	GroupObject* group = creature->getGroup();
 
-	if (group != nullptr)
+	if (group != nullptr) {
 		GroupManager::instance()->leaveGroup(group, creature);
+	}
 
 	/*StringBuffer msg;
 	msg << "remaining play ref count: " << asPlayerObject()->getReferenceCount();

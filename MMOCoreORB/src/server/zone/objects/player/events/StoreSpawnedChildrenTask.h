@@ -69,12 +69,13 @@ public:
 
 				// info(true) << "StoreSpawnedChildrenTask -- executing StoreShipTask - for Ship Device: " << shipDevice->getDisplayedName();
 
-				if (storeTask != nullptr)
+				if (storeTask != nullptr) {
 					storeTask->execute();
+				}
 			} else {
-				Locker deviceLocker(controlDevice);
+				Locker deviceLocker(controlDevice, player);
+
 				controlDevice->storeObject(player, true);
-			}
 		}
 	}
 };

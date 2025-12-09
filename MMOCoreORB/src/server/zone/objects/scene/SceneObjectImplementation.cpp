@@ -295,7 +295,7 @@ BaseMessage* SceneObjectImplementation::link(uint64 objectID, uint32 containment
 void SceneObjectImplementation::destroyObjectFromDatabase(bool destroyContainedObjects) {
 	debug() << "deleting from database";
 
-	fatal(!isPlayerCreature()) << "attempting to delete a player creature from database";
+	fatal(!isPlayerCreature()) << "attempting to delete a player creature from database -- " << getDisplayedName() << " ID: " << getObjectID();
 
 	containerObjects.cancelUnloadTask();
 
@@ -415,10 +415,28 @@ void SceneObjectImplementation::notifyLoadFromDatabase() {
 			if (obj->getParent() != asSceneObject()) {
 				obj->setParent(asSceneObject(), false);
 
-				if (obj->isPlayerCreature())
+				// Changing the containment type of players on their load will fail to remove them from the proper slot, thus making them stuck in the parent. This is wrong.
+				/*
+				if (obj->isPlayerCreature()) {
 					obj->setContainmentType(5);
-				else
+				} else {
 					obj->setContainmentType(4);
+				}
+				*/
+
+				if (!obj->isPlayerCreature()) {
+					obj->setContainmentType(4);
+				} else {
+					if (isVehicleObject()) {
+						obj->setContainmentType(PlayerArrangement::RIDER);
+					} else if (isPilotChair()) {
+						obj->setContainmentType(PlayerArrangement::SHIP_PILOT_POB);
+					} else if (isOperationsChair()) {
+						obj->setContainmentType(PlayerArrangement::SHIP_OPERATIONS_POB);
+					} else if (isCellObject()) {
+						obj->setContainmentType(-1);
+					}
+				}
 			}
 		}
 
