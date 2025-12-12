@@ -24,7 +24,10 @@ void PlayerZoneComponent::notifyInsertToZone(SceneObject* sceneObject, Zone* new
 
 			if (ghost != nullptr) {
 				String zoneName = newZone->getZoneName();
-				ghost->setSavedTerrainName(zoneName);
+
+				if (!zoneName.isEmpty()) {
+					ghost->setSavedTerrainName(zoneName);
+				}
 			}
 
 			// Remove MaskScent state from concealed players when their buff is for a different zone
