@@ -33,27 +33,29 @@ void PlayerSpaceZoneComponent::notifyInsertToZone(SceneObject* sceneObject, Spac
 }
 
 void PlayerSpaceZoneComponent::notifyInsert(SceneObject* sceneObject, TreeEntry* entry) const {
-	SceneObject* scno = static_cast<SceneObject*>(entry);
+	SceneObject* entrySceneO = static_cast<SceneObject*>(entry);
 
-	if (scno == sceneObject)
+	if (entrySceneO == nullptr || entrySceneO == sceneObject) {
 		return;
-
-	// info(true) << "PlayerSpaceZoneComponent::notifyInsert -- " << scno->getDisplayedName();
-
-	if (scno->isTangibleObject()) {
-		TangibleObject* tano = scno->asTangibleObject();
-
-		if (tano->isInvisible())
-			return;
 	}
 
-	ManagedReference<SceneObject*> parent = scno->getParent().get();
+	// info(true) << "PlayerSpaceZoneComponent::notifyInsert -- " << entrySceneO->getDisplayedName();
+
+	if (entrySceneO->isTangibleObject()) {
+		TangibleObject* tano = entrySceneO->asTangibleObject();
+
+		if (tano->isInvisible()) {
+			return;
+		}
+	}
+
+	ManagedReference<SceneObject*> parent = entrySceneO->getParent().get();
 
 	if (parent != nullptr) {
 		return;
 	}
 
-	scno->sendTo(sceneObject, true, false);
+	entrySceneO->sendTo(sceneObject, true, false);
 }
 
 void PlayerSpaceZoneComponent::notifyDissapear(SceneObject* sceneObject, TreeEntry* entry) const {

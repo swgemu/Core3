@@ -59,42 +59,8 @@ public:
 			removeDroid(ship, player);
 		}
 
-		// Copy list of the players onboard for removal
-		Vector<uint64> playersOnBoard = ship->getPlayersOnBoard();
-
-#ifdef DEBUG_SHIP_STORE
-		info(true) << "StoreShipTask seeing " << playersOnBoard.size() << " player(s) on board.";
-#endif
-
-		// This function should remove all players in the ship.
-		for (int i = playersOnBoard.size() - 1; i >= 0; --i) {
-			auto shipMemberID = playersOnBoard.get(i);
-			auto shipMember = cast<CreatureObject*>(zoneServer->getObject(shipMemberID).get());
-
-			if (shipMember == nullptr) {
-				continue;
-			}
-
-			try {
-				// Cross lock the player for removal
-				Locker playerLock(shipMember, ship);
-
-				//remove droid commands from the ghost
-				auto crewGhost = shipMember->getPlayerObject();
-
-				if (crewGhost != nullptr)
-					crewGhost->removeDroidCommands();
-
-				if (!removePlayer(shipMember, zoneName, coordinates)) {
-					error() << "Failed to remove player from Ship - ShipID: " << ship->getObjectID() << " Player ID: " << shipMember->getObjectID();
-					return;
-				}
-			} catch (...) {
-				error() << "Failed to remove player from Ship - ShipID: " << ship->getObjectID() << " Player ID: " << shipMember->getObjectID();
-			}
-
-			playersOnBoard.remove(i);
-		}
+		// Make sure no players remain in the ship
+		ship->removeAllPlayersFromShip();
 
 		// Clear Staff Speed
 		ship->setStaffShipSpeed(0.f);
@@ -132,6 +98,7 @@ public:
 		}
 	}
 
+	/*
 	// Player is locked coming into this function
 	bool removePlayer(CreatureObject* player, String newZoneName, Vector3 location) {
 #ifdef DEBUG_SHIP_STORE
@@ -171,6 +138,7 @@ public:
 
 		return true;
 	}
+	*/
 
 	bool removeDroid(ShipObject* ship, CreatureObject* player) {
 		if (ship == nullptr || player == nullptr) {
