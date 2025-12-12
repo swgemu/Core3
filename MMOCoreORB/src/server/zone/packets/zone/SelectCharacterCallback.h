@@ -217,7 +217,7 @@ public:
 			player->info(true) << "SelectCharacterCallback -- Sending Player into Ship or child of a ship";
 #endif
 
-			playerParent->transferObject(player, playerArrangement, false, false, true);
+			playerParent->transferObject(player, playerArrangement, false, false, false);
 			player->sendToOwner(true);
 
 			if (playerParent->isShipObject()) {

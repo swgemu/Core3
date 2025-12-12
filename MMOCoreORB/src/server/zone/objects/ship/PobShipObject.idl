@@ -285,4 +285,7 @@ class PobShipObject extends ShipObject {
 	public native void removeDamagedInteriorComponent(unsigned long interiorComponentID);
 
 	public native boolean hasActivePlasmaLeaks();
+
+	@preLocked
+	public native void removeAllPlayersFromShip();
 }
