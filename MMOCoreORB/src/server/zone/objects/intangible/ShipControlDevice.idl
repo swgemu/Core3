@@ -18,9 +18,6 @@ include system.util.Vector;
 
 @json
 class ShipControlDevice extends ControlDevice {
-	public static final int LANDSHIP = 1;
-	public static final int LAUNCHSHIP = 128;
-
 	protected int shipType;
 
 	@dereferenced
