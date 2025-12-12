@@ -14,6 +14,7 @@ import engine.service.proto.BaseMessage;
 import server.zone.objects.ship.ai.ShipAiAgent;
 import system.util.SortedVector;
 import system.lang.String;
+import system.thread.Mutex;
 
 include server.zone.TreeEntry;
 include server.zone.objects.scene.SceneObject;
@@ -428,6 +429,9 @@ class ShipObject extends TangibleObject {
 	@rawTemplate(value = "uint32, uint32, 'SHIP', 6, 15")
 	@dereferenced
 	protected DeltaAutoMap componentCRCs;
+
+	@dereferenced
+	protected transient Mutex playersOnBoardMutex;
 
 	@dereferenced
 	protected Vector<unsigned long> playersOnBoard;
@@ -1695,7 +1699,12 @@ class ShipObject extends TangibleObject {
 	@preLocked
 	public abstract native void destroyObjectFromDatabase(boolean destroyContainedObjects = false);
 
+	@preLocked
+	public abstract native void removeAllPlayersFromShip();
+
 	public native CreatureObject getPilot();
+
+	public native CreatureObject getShipGunner();
 
 	public native CreatureObject getShipOperator();
 
