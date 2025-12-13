@@ -75,7 +75,10 @@ public:
 
 		bool bIsUpdated = object->_isUpdated();
 		int rCount = object.get()->getReferenceCount();
-		uint64 parentID = object->getParentID();
+		auto containmentType = object->getContainmentType();
+
+		auto parent = object->getParent().get();
+		auto rootParent = object->getRootParent();
 
 		uint32 covSize = 0;
 		auto closeObjectsVector = object->getCloseObjects();
@@ -87,15 +90,27 @@ public:
 		StringBuffer msg;
 		msg << endl << "General Object Information:" << endl << endl <<
 		"Object ID: " << objectID << endl << endl <<
-		"Parent ID: " << parentID << endl <<
+		"Class Name: " << object->_getClassName() << endl <<
 		"Child Objects Size: " << object->getChildObjects()->size() << endl <<
 		"Close Objects Vector COV Size: " << covSize << endl <<
+		"ContainmentType: " << containmentType << endl;
 
-		endl << // Spacer
+		if (parent != nullptr) {
+			msg << "Parent: " << parent->getDisplayedName() << " ID: " << parent->getObjectID() << " Parent Class: " << parent->_getClassName() << endl;
+		} else {
+			msg << "Parent: null" << endl;
+		}
+
+		if (rootParent != nullptr) {
+			msg << "Root Parent: " << rootParent->getDisplayedName() << " ID: " << rootParent->getObjectID() << " Root Parent Class: " << rootParent->_getClassName() << endl;
+		} else {
+			msg << "Root Parent: null" << endl;
+		}
+
+		msg << endl << // Spacer
 
 		"Object Type: " << object->getGameObjectType() << endl <<
 		"Object Name String: " << nameString << endl <<
-		"_className: " << object->_getClassName() << endl <<
 		"Template Path: " << object->getObjectTemplate()->getFullTemplateString() << endl <<
 
 		endl << // Spacer
