@@ -1726,6 +1726,38 @@ void ShipObjectImplementation::removeAllPlayersFromShip() {
 
 		shipGunner->switchZone(launchZone, launchLoc.getX(), launchLoc.getZ(), launchLoc.getY(), 0, false, -1);
 	}
+
+	// Final check, just incase a player made it into ship container
+	for (int i = 0; i < getContainerObjectsSize(); ++i) {
+		ManagedReference<SceneObject*> object = getContainerObject(i);
+
+		if (object == nullptr || !object->isPlayerCreature()) {
+			continue;
+		}
+
+		auto player = object->asCreatureObject();
+
+		if (player == nullptr) {
+			continue;
+		}
+
+		Locker contClock(player, thisShip);
+
+		// Remove droid commands from the player object
+		auto ghost = player->getPlayerObject();
+
+		if (ghost != nullptr) {
+			ghost->removeDroidCommands();
+		}
+
+		// Clear the Players Space States
+		player->clearSpaceStates();
+
+		// Clear the Players Space Mission Objects
+		player->removeAllSpaceMissionObjects(false);
+
+		player->switchZone(launchZone, launchLoc.getX(), launchLoc.getZ(), launchLoc.getY(), 0, false, -1);
+	}
 }
 
 CreatureObject* ShipObjectImplementation::getPilot() {
