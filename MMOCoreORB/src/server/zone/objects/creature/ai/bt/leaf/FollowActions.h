@@ -245,23 +245,30 @@ public:
 
 class UpdateRangeToFollow : public Behavior {
 public:
-	UpdateRangeToFollow(const String& className, const uint32 id, const LuaObject& args)
-			: Behavior(className, id, args) {
+	UpdateRangeToFollow(const String& className, const uint32 id, const LuaObject& args) : Behavior(className, id, args) {
 	}
 
-	UpdateRangeToFollow(const UpdateRangeToFollow& a)
-			: Behavior(a) {
+	UpdateRangeToFollow(const UpdateRangeToFollow& a) : Behavior(a) {
 	}
 
 	Behavior::Status execute(AiAgent* agent, unsigned int startIdx = 0) const {
 		ManagedReference<SceneObject*> followCopy = agent->getFollowObject().get();
-		if (followCopy == nullptr)
+
+		if (followCopy == nullptr) {
 			return FAILURE;
+		}
 
 		Locker clocker(followCopy, agent);
 
-		float dist = agent->getDistanceTo(followCopy) - followCopy->getTemplateRadius() - agent->getTemplateRadius();
-		agent->writeBlackboard("followRange", BlackboardData(dist));
+		float followRange = agent->getDistanceTo(followCopy) - followCopy->getTemplateRadius() - agent->getTemplateRadius();
+
+#ifdef DEBUG_AI
+		if (agent->peekBlackboard("aiDebug") && agent->readBlackboard("aiDebug") == true) {
+			agent->info(true) << "UpdateRangeToFollow -- followRange: " << followRange;
+		}
+#endif // DEBUG_AI
+
+		agent->writeBlackboard("followRange", BlackboardData(followRange));
 
 		return SUCCESS;
 	}

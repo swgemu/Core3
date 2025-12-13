@@ -2999,6 +2999,13 @@ void AiAgentImplementation::runBehaviorTree() {
 
 #ifdef DEBUG_AI
 		bool alwaysActive = ConfigManager::instance()->getAiAgentLoadTesting();
+
+		bool sendDebug = peekBlackboard("aiDebug") && readBlackboard("aiDebug") == true;
+
+		if (sendDebug) {
+			printf("\n\n\n");
+			info(true) << getDisplayedName() << " - ID: " << getObjectID() << " runBehaviorTree -- called";
+		}
 #else // DEBUG_AI
 		bool alwaysActive = false;
 #endif // DEBUG_AI
@@ -3018,19 +3025,21 @@ void AiAgentImplementation::runBehaviorTree() {
 		Time startTime;
 		startTime.updateToCurrentTime();
 
-		if (peekBlackboard("aiDebug") && readBlackboard("aiDebug") == true)
+		if (sendDebug)
 			info("Performing root behavior: " + rootBehavior->print(), true);
 #endif // DEBUG_AI
 
 		// activate AI
 		Behavior::Status actionStatus = rootBehavior->doAction(asAiAgent());
 
-		if (actionStatus == Behavior::RUNNING)
+		if (actionStatus == Behavior::RUNNING) {
 			popRunningChain(); // don't keep root in the running chain
+		}
 
 #ifdef DEBUG_AI
-		if (peekBlackboard("aiDebug") && readBlackboard("aiDebug") == true)
+		if (sendDebug) {
 			info("rootBehavior->doAction() took " + String::valueOf((int)startTime.miliDifference()) + "ms to complete.", true);
+		}
 #endif // DEBUG_AI
 
 		activateAiBehavior(true);
