@@ -6043,7 +6043,6 @@ void PlayerManagerImplementation::confirmVeteranReward(CreatureObject* player, i
 	} else {
 		generateVeteranReward(player);
 	}
-
 }
 
 void PlayerManagerImplementation::generateVeteranReward(CreatureObject* player) {
@@ -6095,7 +6094,9 @@ void PlayerManagerImplementation::generateVeteranReward(CreatureObject* player) 
 	}
 
 	VeteranReward reward = veteranRewards.get(rewardSession->getSelectedRewardIndex());
-	Reference<SceneObject*> rewardSceno = server->createObject(reward.getTemplateFile().hashCode(), 1);
+	uint32 rewardHash = reward.getTemplateFile().hashCode();
+
+	Reference<SceneObject*> rewardSceno = server->createObject(rewardHash, 1);
 
 	if (rewardSceno == nullptr) {
 		player->sendSystemMessage("@veteran:reward_error"); //	The reward could not be granted.
@@ -6122,7 +6123,12 @@ void PlayerManagerImplementation::generateVeteranReward(CreatureObject* player) 
 	// Record reward in all characters registered to the account
 	GalaxyAccountInfo* accountInfo = account->getGalaxyAccountInfo(player->getZoneServer()->getGalaxyName());
 
-	accountInfo->addChosenVeteranReward(rewardSession->getMilestone(), reward.getTemplateFile());
+	// sorosuub_space_yacht_deed
+	if (reward.isJtlReward()) {
+		accountInfo->addChosenVeteranReward(1, reward.getTemplateFile());
+	} else {
+		accountInfo->addChosenVeteranReward(rewardSession->getMilestone(), reward.getTemplateFile());
+	}
 
 	cancelVeteranRewardSession(player);
 
@@ -6147,6 +6153,7 @@ int PlayerManagerImplementation::getEligibleMilestone(PlayerObject *ghost, Accou
 	// Return the first milestone for which the player is eligible and has not already claimed
 	for (int i = 0; i < veteranRewardMilestones.size(); i++) {
 		milestone = veteranRewardMilestones.get(i);
+
 		if (accountAge >= milestone && ghost->getChosenVeteranReward(milestone).isEmpty()) {
 			return milestone;
 		}

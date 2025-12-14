@@ -68,12 +68,23 @@ public:
 
 		for (int i = 0; i < object->getArrangementDescriptorSize(); ++i) {
 			const Vector<String>* descriptors = object->getArrangementDescriptor(i);
+
 			for (int j = 0; j < descriptors->size(); ++j) {
 				const String& descriptor = descriptors->get(j);
 
 				if (descriptor == "inventory" || descriptor == "datapad" || descriptor == "default_weapon" || descriptor == "mission_bag" || descriptor == "ghost" || descriptor == "bank" || descriptor == "hair")
 					return GENERALERROR;
 			}
+		}
+
+		// Prevent destruction of Sorosuub Yacht Reward
+		if (object->getServerObjectCRC() == STRING_HASHCODE("object/tangible/space/veteran_reward/sorosuub_space_yacht_deed.iff")) {
+			StringIdChatParameter message("error_message", "unable_to_destroy"); // "The object %TT is a special item and cannot be destroyed."
+			message.setTT(object->getDisplayedName());
+
+			creature->sendSystemMessage(message);
+
+			return GENERALERROR;
 		}
 
 		TransactionLog trx(creature, TrxCode::SERVERDESTROYOBJECT, object);
