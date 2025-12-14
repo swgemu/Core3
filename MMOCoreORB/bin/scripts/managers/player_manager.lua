@@ -90,7 +90,7 @@ veteranRewards = {
 	{templateFile = "object/tangible/veteran_reward/frn_couch_falcon_section_s01.iff", milestone=180, oneTime=false, description="@veteran_new:falconchair", jtlReward = false},
 	{templateFile = "object/tangible/veteran_reward/frn_vet_tie_fighter_toy.iff", milestone=180, oneTime=false, description="@veteran_new:mini_tiefighter", jtlReward = false},
 	{templateFile = "object/tangible/veteran_reward/frn_vet_x_wing_toy.iff", milestone=180, oneTime=false, description="@veteran_new:mini_xwing", jtlReward = false},
-	{templateFile = "object/tangible/space/veteran_reward/sorosuub_space_yacht_deed.iff", milestone=180, oneTime=false, description="@veteran_new:sorosuub", jtlReward = true},
+	{templateFile = "object/tangible/space/veteran_reward/sorosuub_space_yacht_deed.iff", milestone=180, oneTime=true, description="@veteran_new:sorosuub", jtlReward = true},
 
 	-- 270 Day Rewards
 	{templateFile = "object/tangible/deed/vehicle_deed/speederbike_flash_deed.iff", milestone=270, oneTime=true, jtlReward = false},
