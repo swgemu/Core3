@@ -703,9 +703,19 @@ void ShipObjectImplementation::notifyRemoveFromZone() {
 }
 
 void ShipObjectImplementation::updateZone(bool lightUpdate, bool sendPackets) {
-	updatePlayersInShip(lightUpdate, sendPackets);
-
 	SceneObjectImplementation::updateZone(lightUpdate, sendPackets);
+
+	Reference<ShipObject*> shipRef = asShipObject();
+
+	Core::getTaskManager()->executeTask([shipRef, lightUpdate, sendPackets] () {
+		if (shipRef == nullptr) {
+			return;
+		}
+
+		Locker locker(shipRef);
+
+		shipRef->updatePlayersInShip(lightUpdate, sendPackets, true);
+	}, "UpdatePlayersInShipLambda");
 
 #ifdef DEBUG_COV
 	if (isPlayerShip()) {
@@ -716,8 +726,8 @@ void ShipObjectImplementation::updateZone(bool lightUpdate, bool sendPackets) {
 #endif // DEBUG_COV
 }
 
-void ShipObjectImplementation::updatePlayersInShip(bool lightUpdate, bool sendPackets) {
-	if (getLocalZone() == nullptr) {
+void ShipObjectImplementation::updatePlayersInShip(bool lightUpdate, bool sendPackets, bool skipPilot) {
+	if (!isShipLaunched()) {
 		return;
 	}
 
@@ -727,9 +737,13 @@ void ShipObjectImplementation::updatePlayersInShip(bool lightUpdate, bool sendPa
 		return;
 	}
 
-	Locker lock(&playersOnBoardMutex);
+	uint64 pilotID = 0;
+	auto pilot = getPilot();
 
 	const auto& worldPosition = getWorldPosition();
+	auto thisShip = asShipObject();
+
+	Locker lock(&playersOnBoardMutex);
 
 	for (int i = 0; i < playersOnBoard.size(); ++i) {
 		auto shipMemberID = playersOnBoard.get(i);
@@ -739,15 +753,11 @@ void ShipObjectImplementation::updatePlayersInShip(bool lightUpdate, bool sendPa
 			continue;
 		}
 
-		Locker clock(shipMember, asShipObject());
+		Locker clock(shipMember, thisShip);
 
 		auto parent = shipMember->getParent().get();
 
-		if (parent == nullptr) {
-			continue;
-		}
-
-		if (parent == asShipObject()) {
+		if (parent != nullptr && parent == thisShip) {
 			shipMember->setPosition(worldPosition.getX(), worldPosition.getZ(), worldPosition.getY());
 		}
 

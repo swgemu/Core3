@@ -660,12 +660,6 @@ void PobShipObjectImplementation::updateZone(bool lightUpdate, bool sendPackets)
 	ShipObjectImplementation::updateZone(lightUpdate, sendPackets);
 }
 
-void PobShipObjectImplementation::updatePlayersInShip(bool lightUpdate, bool sendPackets) {
-	//info(true) << "PobShipObjectImplementation::updatePlayersInShip - " << getDisplayedName();
-
-	ShipObjectImplementation::updatePlayersInShip(lightUpdate, sendPackets);
-}
-
 void PobShipObjectImplementation::sendTo(SceneObject* sceneO, bool doClose, bool forceLoadContainer) {
 	if (sceneO == nullptr) {
 		return;

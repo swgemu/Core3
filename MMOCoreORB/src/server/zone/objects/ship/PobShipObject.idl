@@ -109,8 +109,6 @@ class PobShipObject extends ShipObject {
 	@dirty
 	public native abstract void onEnter(CreatureObject player);
 
-	public native void updatePlayersInShip(boolean lightUpdate, boolean sendPackets = true);
-
 	@local
 	public native void updateZone(boolean lightUpdate, boolean sendPackets = true);
 
