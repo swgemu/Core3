@@ -656,6 +656,14 @@ class SceneObject extends TreeEntry implements Logger, Metrics {
 
 	public native abstract void teleport(float newPositionX, float newPositionZ, float newPositionY, unsigned long parentID = 0);
 
+	@local
+	public native void updateWorldPosition(boolean initialize = false);
+
+	@dirty
+	@local
+	@dereferenced
+	public native Vector3 getWorldPosition();
+
 	/**
 	 * Updates the direction of this object, and braodcasts DataTransform with the update
 	 */

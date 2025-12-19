@@ -286,4 +286,8 @@ class PobShipObject extends ShipObject {
 
 	@preLocked
 	public native void removeAllPlayersFromShip();
+
+	@local
+	@dereferenced
+	public abstract native Vector3 getObjectLocationInShip(SceneObject object, @dereferenced final Vector3 objectPosition);
 }

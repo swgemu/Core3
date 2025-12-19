@@ -1931,7 +1931,7 @@ class ShipObject extends TangibleObject {
 
 	@local
 	@dereferenced
-	public native Vector3 getPlayerLocationInShip(@dereferenced final Vector3 playerPosition);
+	public abstract native Vector3 getObjectLocationInShip(SceneObject object, @dereferenced final Vector3 objectPosition);
 
 	@local
 	public native unsigned int getTimerTaskCrc() {

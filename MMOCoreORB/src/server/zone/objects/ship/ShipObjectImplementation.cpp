@@ -2802,6 +2802,6 @@ float ShipObjectImplementation::getNextRotation() {
 	return shipTransform.getNextRotation();
 }
 
-Vector3 ShipObjectImplementation::getPlayerLocationInShip(const Vector3& playerPosition) {
-	return SpaceMath::getGlobalVector(playerPosition, conjugateMatrix) + getWorldPosition();
+Vector3 ShipObjectImplementation::getObjectLocationInShip(SceneObject* object, const Vector3& objectPosition) {
+	return getWorldPosition();
 }

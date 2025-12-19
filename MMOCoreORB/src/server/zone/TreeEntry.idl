@@ -325,6 +325,7 @@ class TreeEntry extends Observable {
 
 	public native abstract void setPosition(float x, float z, float y);
 
+	@local
 	public native abstract void updateWorldPosition(boolean initialize = false);
 
 	@read

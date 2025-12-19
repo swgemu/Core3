@@ -27,6 +27,8 @@
 #include "server/zone/packets/chat/ChatSystemMessage.h"
 #include "server/zone/objects/ship/ShipComponentFlag.h"
 
+#define DEBUG_WORLD_POSITION
+
 void PobShipObjectImplementation::notifyLoadFromDatabase() {
 	// info(true) << "PobShipObjectImplementation::notifyLoadFromDatabase() called -- Ship: " << getDisplayedName();
 
@@ -1602,4 +1604,32 @@ Vector3 PobShipObjectImplementation::getLaunchPointInCell(const String& cellName
 	Vector3 location(locations.get(random));
 
 	return location;
+}
+
+Vector3 PobShipObjectImplementation::getObjectLocationInShip(SceneObject* object, const Vector3& objectPosition) {
+	// Start by setting the final interior position as the objects passed from TreeEntry
+	Vector3 finalPosition(objectPosition.getX(), objectPosition.getY(), objectPosition.getZ());
+
+	if (object != nullptr) {
+		auto parent = object->getParent().get();
+
+		// Parent is not a cell, so we use the parent
+		if (parent != nullptr && !parent->isCellObject()) {
+			finalPosition = parent->getPosition();
+#ifndef DEBUG_WORLD_POSITION
+		}
+	}
+#else // DEBUG_WORLD_POSITION
+			if (isPlayerCreature()) {
+				info(true) << getDisplayedName() << " -- POB Ship using parent coordinates to calculate object position: " << finalPosition.toString();
+			}
+		} else {
+			if (isPlayerCreature()) {
+				info(true) << getDisplayedName() << " -- POB Ship using object coordinates to calculate object position: " << finalPosition.toString();
+			}
+		}
+	}
+#endif // DEBUG_WORLD_POSITION
+
+	return SpaceMath::getGlobalVector(finalPosition, conjugateMatrix) + getWorldPosition();
 }

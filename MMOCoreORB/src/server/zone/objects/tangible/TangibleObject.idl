@@ -248,11 +248,6 @@ class TangibleObject extends SceneObject {
 	@local
 	public native void notifyInsert(TreeEntry entry);
 
-	@dirty
-	@local
-	@dereferenced
-	public native abstract Vector3 getWorldPosition();
-
 	/**
 	 * Calls the appropriate UI Listener Function
 	 * @pre { this object is locked, object is locked }

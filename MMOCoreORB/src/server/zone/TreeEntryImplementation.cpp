@@ -435,70 +435,11 @@ void TreeEntryImplementation::setPosition(float x, float z, float y) {
 }
 
 void TreeEntryImplementation::updateWorldPosition(bool initialize) {
-#ifdef DEBUG_WORLD_POSITION
-	auto sceneO = static_cast<SceneObject*>(_this.getReferenceUnsafeStaticCast());
-#endif // DEBUG_WORLD_POSITION
-
-	auto root = static_cast<SceneObject*>(getRootParentUnsafe());
-
 	Vector3 worldPosition = getPosition();
 
-	if (root != nullptr) {
-		if (root->isBuildingObject()) {
-			float rootRad = -root->getDirection()->getRadians();
-			float rootCos = cos(rootRad);
-			float rootSin = sin(rootRad);
-
-			float localX = getPositionX();
-			float localY = getPositionY();
-			float localZ = getPositionZ();
-
-			float rotatedX = (localX * rootCos) - (localY * rootSin);
-			float rotatedY = (localX * rootSin) + (localY * rootCos);
-
-			float worldX = root->getPositionX() + rotatedX;
-			float worldY = root->getPositionY() + rotatedY;
-			float worldZ = root->getPositionZ() + localZ;
-
-#ifdef DEBUG_WORLD_POSITION
-			if (sceneO != nullptr && sceneO->isPlayerCreature())
-				Logger::console.info(true) << sceneO->getDisplayedName() << " -- Coordinates are using root building to calculate";
-#endif // DEBUG_WORLD_POSITION
-
-			worldPosition = Vector3(worldX, worldY, worldZ);
-		} else if (root->isPobShip()) {
-			auto ship = root->asShipObject();
-
-			if (ship != nullptr) {
-				worldPosition = ship->getPlayerLocationInShip(worldPosition);
-
-#ifdef DEBUG_WORLD_POSITION
-				if (sceneO != nullptr && sceneO->isPlayerCreature())
-					Logger::console.info(true) << sceneO->getDisplayedName() << " -- Coordinates are using root POB Ship to calculate";
-#endif // DEBUG_WORLD_POSITION
-			} else {
-				worldPosition = root->getPosition();
-			}
-		} else {
-			worldPosition = root->getPosition();
-		}
-	}
-
 	if (initialize) {
-#ifdef DEBUG_WORLD_POSITION
-		if (sceneO != nullptr && sceneO->isPlayerCreature()) {
-			Logger::console.info(true) << sceneO->getDisplayedName() << " -- INITIALIZING - World Coordinates to " << worldPosition.toString();
-		}
-#endif // DEBUG_WORLD_POSITION
-
 		worldCoordinates.initializePosition(worldPosition.getX(), worldPosition.getZ(), worldPosition.getY());
 	} else {
-#ifdef DEBUG_WORLD_POSITION
-		if (sceneO != nullptr && sceneO->isPlayerCreature()) {
-			Logger::console.info(true) << sceneO->getDisplayedName() << " -- UPDATING - World Coordinates to " << worldPosition.toString();
-		}
-#endif // DEBUG_WORLD_POSITION
-
 		worldCoordinates.setPosition(worldPosition.getX(), worldPosition.getZ(), worldPosition.getY());
 	}
 }
