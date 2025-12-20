@@ -528,10 +528,6 @@ class ShipObject extends TangibleObject {
 	@local
 	public native abstract void updateZone(boolean lightUpdate, boolean sendPackets = true);
 
-	@local
-	@preLocked
-	public abstract native void updatePlayersInShip(boolean lightUpdate, boolean sendPackets = true);
-
 	@dirty
 	public native void broadcastPvpStatusBitmask();
 	/*

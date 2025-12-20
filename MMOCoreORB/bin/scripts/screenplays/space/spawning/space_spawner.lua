@@ -5,7 +5,7 @@ SpaceSpawnerScreenPlay = ScreenPlay:new {
 
 	spaceZone = "",
 
-	SPAWN_NO_DELAY = false,
+	SPAWN_NO_DELAY = true,
 
 	SERVER_STARTUP_MIN = 120, -- Delay in seconds for spawns to start during server startup
 	SERVER_STARTUP_MAX = 300,
