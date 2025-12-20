@@ -149,6 +149,10 @@ public:
 			return updateError(pilot, "ghost-TP", false);
 		}
 
+		if (ghost->isOnLoadScreen()) {
+			return updateError(pilot, "ghost-Loading", false);
+		}
+
 		ManagedReference<SceneObject*> rootParent = pilot->getRootParent();
 
 		if (rootParent == nullptr) {

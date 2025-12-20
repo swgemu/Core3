@@ -52,6 +52,16 @@ void TreeEntryImplementation::addInRangeObject(TreeEntry* obj, bool doNotifyUpda
 	}
 #endif // DEBUG_TREE_ENTRY
 
+	auto objSceneO = static_cast<SceneObject*>(obj);
+	auto sceneO = static_cast<SceneObject*>(_this.getReferenceUnsafeStaticCast());
+
+	if (sceneO->isPlayerCreature() && !objSceneO->isSpaceStation() && (!sceneO->isInRange3d(objSceneO, 2048))) {
+		sceneO->info(true) << sceneO->getDisplayedName() << " --- TreeEntryImplementation::addInRangeObject -- OBJECT IS OUT OF RANGE -- Object " << objSceneO->getDisplayedName() << " Type: " << objSceneO->getGameObjectType() << " String Name: " << objSceneO->getObjectNameStringIdName();
+		sceneO->info(true) << "Distance: " << sceneO->getPosition().squaredDistanceTo(objSceneO->getWorldPosition()) << " My Ship World: " << sceneO->getWorldPosition().toString() << " Object Position: " << objSceneO->getWorldPosition().toString();
+
+		__asm__("int $3");
+	}
+
 	if (closeobjects != nullptr && closeobjects->put(obj) != -1) {
  		notifyInsert(obj);
 	} else if (doNotifyUpdate) {
