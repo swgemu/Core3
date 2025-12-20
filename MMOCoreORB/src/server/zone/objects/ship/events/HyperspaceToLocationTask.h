@@ -145,7 +145,7 @@ public:
 
 			Reference<ShipObject*> shipRef = shipObject;
 
-			Core::getTaskManager()->scheduleTask([shipRef] () {
+			Core::getTaskManager()->executeTask([shipRef] () {
 				if (shipRef == nullptr) {
 					return;
 				}
@@ -153,7 +153,7 @@ public:
 				Locker lock(shipRef);
 
 				shipRef->setHyperspacing(false);
-			}, "ShipRemoveHyperspaceLambda", 1000);
+			}, "ShipRemoveHyperspaceLambda");
 
 			return;
 		}

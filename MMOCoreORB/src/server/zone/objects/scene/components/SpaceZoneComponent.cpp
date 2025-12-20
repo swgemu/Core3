@@ -150,7 +150,8 @@ void SpaceZoneComponent::updateZoneWithParent(SceneObject* sceneObject, SceneObj
 	}
 
 	spaceZone->update(sceneObject);
-	spaceZone->inRange(sceneObject, spaceZone->getZoneObjectRange());
+	// spaceZone->inRange(sceneObject, sceneObject->getOutOfRangeDistance(0));
+	spaceZone->inRange(sceneObject, sceneObject->getOutOfRangeDistance(0));
 
 	spaceZone->unlock();
 
