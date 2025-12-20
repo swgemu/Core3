@@ -703,19 +703,7 @@ void ShipObjectImplementation::notifyRemoveFromZone() {
 }
 
 void ShipObjectImplementation::updateZone(bool lightUpdate, bool sendPackets) {
-	SceneObjectImplementation::updateZone(lightUpdate, sendPackets);
-
-	Reference<ShipObject*> shipRef = asShipObject();
-
-	Core::getTaskManager()->executeTask([shipRef, lightUpdate, sendPackets] () {
-		if (shipRef == nullptr) {
-			return;
-		}
-
-		Locker locker(shipRef);
-
-		shipRef->updatePlayersInShip(lightUpdate, sendPackets);
-	}, "UpdatePlayersInShipLambda");
+	TangibleObjectImplementation::updateZone(lightUpdate, sendPackets);
 
 #ifdef DEBUG_COV
 	if (isPlayerShip()) {
@@ -724,46 +712,6 @@ void ShipObjectImplementation::updateZone(bool lightUpdate, bool sendPackets) {
 		info(true) << "ShipObjectImplementation::updateZone -- Zone: " << (zone != nullptr ? zone->getZoneName() : "null zone");
 	}
 #endif // DEBUG_COV
-}
-
-void ShipObjectImplementation::updatePlayersInShip(bool lightUpdate, bool sendPackets) {
-	if (!isShipLaunched()) {
-		return;
-	}
-
-	auto zoneServer = getZoneServer();
-
-	if (zoneServer == nullptr) {
-		return;
-	}
-
-	const auto& worldPosition = getWorldPosition();
-	auto thisShip = asShipObject();
-
-	Locker lock(&playersOnBoardMutex);
-
-	for (int i = 0; i < playersOnBoard.size(); ++i) {
-		auto shipMemberID = playersOnBoard.get(i);
-		auto shipMember = cast<CreatureObject*>(zoneServer->getObject(shipMemberID).get());
-
-		if (shipMember == nullptr) {
-			continue;
-		}
-
-		Locker clock(shipMember, thisShip);
-
-		auto parent = shipMember->getParent().get();
-
-		if (parent == nullptr) {
-			continue;
-		}
-
-		if (parent == thisShip) {
-			shipMember->updateZoneWithParent(thisShip, lightUpdate, sendPackets);
-		} else {
-			shipMember->updateZoneWithParent(parent, lightUpdate, sendPackets);
-		}
-	}
 }
 
 void ShipObjectImplementation::broadcastPvpStatusBitmask() {
