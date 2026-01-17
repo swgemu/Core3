@@ -43,7 +43,8 @@ public:
 
 		// If we have a follow object, check if it is still valid then set as prospect
 		ManagedReference<SceneObject*> currObj = agent->getFollowObject().get();
-		if (currObj != nullptr) {
+
+		if (currObj != nullptr && agent->getHerdObserver().get() == nullptr) {
 			if (currObj->isCreatureObject() && isInvalidTarget(currObj->asCreatureObject(), agent)) {
 				if (!(agent->getCreatureBitmask() & ObjectFlag::FOLLOW)) {
 					agent->setFollowObject(nullptr);
