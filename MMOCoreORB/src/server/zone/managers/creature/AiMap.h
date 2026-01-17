@@ -457,6 +457,9 @@ private:
 		_REGISTERLEAF(CheckHasRangedWeapon);
 		_REGISTERLEAF(CheckHasMeleeWeapon);
 		_REGISTERLEAF(CheckIsSwimming);
+		_REGISTERLEAF(CheckIsHerdLeader);
+		_REGISTERLEAF(CheckFollowIsHerdLeader);
+		_REGISTERLEAF(CheckIsWaiting);
 		// action behaviors
 		_REGISTERLEAF(Dummy);
 		_REGISTERLEAF(GeneratePatrol);
@@ -489,6 +492,7 @@ private:
 		_REGISTERLEAF(PetReturn);
 		_REGISTERLEAF(ContrabandScan);
 		_REGISTERLEAF(FollowSquadLeader);
+		_REGISTERLEAF(FollowHerd);
 		_REGISTERLEAF(GetHealTarget);
 		_REGISTERLEAF(HealTarget);
 		_REGISTERLEAF(RestorePetPatrols);

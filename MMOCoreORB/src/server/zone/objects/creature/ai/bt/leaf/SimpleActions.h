@@ -404,6 +404,8 @@ public:
 			}
 		}
 
+		agent->info(true) << "setting wait: " << duration;
+
 		agent->setWait((uint64) abs(duration));
 		agent->writeBlackboard("isWaiting", true);
 
