@@ -113,6 +113,7 @@ public:
 		SHIPDISABLED,				// ManagedObject arg1 = playerShip that disabled agent, long arg2 = 0
 		SHIPDESTROYED,				// ManagedObject arg1 = destructing ship long arg2 = current squadron size, Uses: tracking specific ship destruction
 		INSPECTEDSHIP,				// ManagedObject arg1 = shipAgent that was inspected by player long arg2 = cargo string hashCode
+		HERD,						// ManagedObject arg1 = AiAgent, long arg2 = 0
 	};
 };
 

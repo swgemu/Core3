@@ -404,6 +404,9 @@ public:
 			}
 		}
 
+
+		agent->info(true) << "setting wait: " << duration << " Num of players in range: " << agent->getNumberOfPlayersInRange();
+
 		agent->setWait((uint64) abs(duration));
 		agent->writeBlackboard("isWaiting", true);
 

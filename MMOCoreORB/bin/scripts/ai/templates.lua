@@ -5,6 +5,7 @@ includeFile("deathWatch.lua")
 includeFile("enclaveSentinel.lua")
 includeFile("escort.lua")
 includeFile("eventControl.lua")
+includeFile("herd.lua")
 includeFile("pet.lua")
 includeFile("static.lua")
 includeFile("villageRaider.lua")
@@ -128,6 +129,10 @@ bitmaskLookup = {
 		{AWARE, "awareCrackdown"},
 		{IDLE, "idleEventcontrol"},
 		{LOOKAT, "lookCrackdown"}
+	}},
+
+	{HERD, {
+		{IDLE, "idleHerd"},
 	}},
 
 	{TEST, {
