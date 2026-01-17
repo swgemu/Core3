@@ -90,7 +90,7 @@ idlePet = {
 	{id="2297306633",	name="CheckMovementState",	pid="2159332246",	args={condition=PATROLLING}},
 	{id="2901314389",	name="WriteBlackboard",	pid="1196938563",	args={key="moveMode", val=WALK}},
 	{id="3579768154",	name="TreeSocket",	pid="1196938563",	args={slot=MOVE}},
-	{id="3694282813",	name="Wait",	pid="1196938563",	args={duration=5.0}},
+	{id="3694282813",	name="Wait",	pid="1196938563",	args={durationMax=10.0, durationMin=5.0}},
 	{id="673054985",	name="AlwaysSucceed",	pid="1196938563"},
 	{id="3420280652",	name="Sequence",	pid="673054985"},
 	{id="700494132",	name="Not",	pid="3420280652"},

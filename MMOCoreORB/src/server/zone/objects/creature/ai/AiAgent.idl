@@ -44,6 +44,7 @@ include engine.util.u3d.Vector3;
 import server.zone.objects.creature.ai.bt.BlackboardData;
 include server.zone.objects.creature.ai.bt.BlackboardDataMap;
 include server.zone.objects.area.ActiveArea;
+import server.zone.managers.creature.observers.CreatureHerdObserver;
 
 @mock
 @json
@@ -107,8 +108,9 @@ class AiAgent extends CreatureObject {
 	@weakReference
 	protected ActiveArea eventArea;
 
-	//DEBUG
-	protected boolean showNextMovementPosition;
+	@weakReference
+	protected transient CreatureHerdObserver herdObserver;
+
 	@dereferenced
 	protected Vector<SceneObject> movementMarkers;
 
@@ -116,14 +118,20 @@ class AiAgent extends CreatureObject {
 
 	@weakReference
 	private SceneObject followObject;
+
 	@weakReference
 	private SceneObject followStore;
+
 	private unsigned int movementState;
+
 	@dereferenced
 	private transient Mutex targetMutex;
+
 	@dereferenced
 	private transient Mutex behaviorEventMutex;
+
 	private int nextBehaviorInterval;
+
 	@dereferenced
 	private transient Mutex recoveryEventMutex;
 
@@ -155,6 +163,8 @@ class AiAgent extends CreatureObject {
 	protected boolean randomRespawn;
 
 	protected transient boolean hamRegenDisabled;
+
+	protected transient boolean patrolArrived;
 
 	protected float coordinateMin;
 	protected float coordinateMax;
@@ -202,7 +212,9 @@ class AiAgent extends CreatureObject {
 
 	protected transient boolean mindTricked;
 
-	public static final int BEHAVIORINTERVAL = 400; // msec
+	public static final int BEHAVIORINTERVALMIN = 400; // msec
+	public static final int BEHAVIORINTERVALMID = 700; // msec
+	public static final int BEHAVIORINTERVALMAX = 1000; // msec
 
 	public static final int DEFAULTAGGRORADIUS = 24;
 
@@ -253,18 +265,17 @@ class AiAgent extends CreatureObject {
 		minDamage = 0;
 		maxDamage = 0;
 
-		nextBehaviorInterval = BEHAVIORINTERVAL;
+		nextBehaviorInterval = BEHAVIORINTERVALMID;
 
 		reactionRank = 0;
 
 		convoTemplateCRC = 0;
 
-		showNextMovementPosition = true;
-
 		despawnOnNoPlayerInRange = false;
 
 		tauntable = true;
 		hamRegenDisabled = false;
+		patrolArrived = false;
 
 		loadedOutfit = false;
 
@@ -912,19 +923,8 @@ class AiAgent extends CreatureObject {
 		return movementState;
 	}
 
-	public void setMovementState(int state) {
-		synchronized (targetMutex) {
-			int oldState = movementState;
-
-			if (state != PATROLLING && state != WATCHING)
-				clearPatrolPoints();
-
-			movementState = state;
-
-			if (oldState == LEASHING || state == LEASHING)
-				broadcastPvpStatusBitmask();
-		}
-	}
+	@preLocked
+	public native void setMovementState(int state);
 
 	@dirty
 	@mock
@@ -948,9 +948,8 @@ class AiAgent extends CreatureObject {
 	public native void stopWaiting();
 
 	/**
-	 * Sees if our wait time is up (won't work for indefinite waits?)
+	 * Sees if our wait time is up
 	 **/
-	@read
 	public native boolean isWaiting();
 
 	@mock
@@ -1348,11 +1347,6 @@ class AiAgent extends CreatureObject {
 	@dirty
 	public native boolean hasLoot();
 
-	@preLocked
-	public void setShowNextPosition(boolean val) {
-		showNextMovementPosition = val;
-	}
-
 	@read
 	public native boolean isEventMob();
 
@@ -1383,6 +1377,18 @@ class AiAgent extends CreatureObject {
 		return eventArea;
 	}
 
+	@preLocked
+	public void setHerdObserver(CreatureHerdObserver observer) {
+		herdObserver = observer;
+	}
+
+	@read
+	@local
+	@weakReference
+	public CreatureHerdObserver getHerdObserver() {
+		return herdObserver;
+	}
+
 	/**
 	 * Sets the combat state
 	 * @pre { this object is locked }
@@ -1409,6 +1415,9 @@ class AiAgent extends CreatureObject {
 
 	@read
 	public native boolean isScoutCreature();
+
+	@read
+	public native boolean isHerdCreature();
 
 	@local
 	@dirty
@@ -1758,5 +1767,31 @@ class AiAgent extends CreatureObject {
 	@read
 	public boolean isAggroDelayPast() {
 		return aggroDelay.isPast();
+	}
+
+	@read
+	public boolean getPatrolArrived() {
+		/*
+		if (patrolArrived) {
+			Logger.info(true) << "getPatrolArrived -- returning TRUE";
+		} else {
+			Logger.info(true) << "getPatrolArrived -- returning FALSE";
+		}
+		*/
+
+		return patrolArrived;
+	}
+
+	@preLocked
+	public void setPatrolArrived(boolean val) {
+		/*
+		if (val) {
+			Logger.info(true) << "setPatrolArrived -- TRUE";
+		} else {
+			Logger.info(true) << "setPatrolArrived -- FALSE";
+		}
+		*/
+
+		patrolArrived = val;
 	}
 }

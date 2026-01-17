@@ -56,6 +56,6 @@ walkEscort = {
 	{id="1489268495",	name="Sequence",	pid="437268100"},
 	{id="4183990835",	name="WriteBlackboard",	pid="1489268495",	args={key="moveMode", val=WALK}},
 	{id="3093889889",	name="TreeSocket",	pid="1489268495",	args={slot=MOVE}},
-	{id="70283378",	name="Wait",	pid="437268100",	args={duration=-1.0}}}
+	{id="70283378",	name="Wait",	pid="437268100",	args={durationMax=-1.0, durationMin=-1.0}}}
 addAiTemplate("walkEscort", walkEscort)
 

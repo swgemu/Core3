@@ -10,3 +10,4 @@ awareVillageraider = {
 	{id="3058858261",	name="EraseBlackboard",	pid="3065616444",	args={param="aggroMod"}},
 	{id="2946449456",	name="EraseBlackboard",	pid="3065616444",	args={param="targetProspect"}}}
 addAiTemplate("awareVillageraider", awareVillageraider)
+

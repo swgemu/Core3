@@ -758,8 +758,14 @@ void LairObserverImplementation::spawnLairMobile(LairObject* lair, int spawnNumb
 
 				agent->setAITemplate();
 
+				float side = 1.f;
+
+				if (System::random(100) < 50) {
+					side = -1.f;
+				}
+
 				Vector3 formationOffset;
-				formationOffset.setX(2.0);
+				formationOffset.setX(side * (adultCreo->getTemplateRadius() + agent->getTemplateRadius()));
 				agent->writeBlackboard("formationOffset", formationOffset);
 			}
 		}

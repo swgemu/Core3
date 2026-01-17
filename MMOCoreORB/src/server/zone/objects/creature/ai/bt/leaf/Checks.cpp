@@ -14,6 +14,7 @@
 #include "server/zone/managers/reaction/ReactionManager.h"
 #include "server/zone/objects/tangible/components/droid/DroidHarvestModuleDataComponent.h"
 #include "server/zone/objects/creature/ai/DroidObject.h"
+#include "server/zone/managers/creature/observers/CreatureHerdObserver.h"
 
 // full template specializations need to go in cpp so they don't get
 // defined multiple times.
@@ -499,6 +500,10 @@ template<> bool CheckIsBaby::check(AiAgent* agent) const {
 	return (agent->getCreatureBitmask() & ObjectFlag::BABY) != 0;
 }
 
+template<> bool CheckArrivedAtPatrol::check(AiAgent* agent) const {
+	return agent->getPatrolArrived();
+}
+
 template<> bool CheckOwnerInRange::check(AiAgent* agent) const {
 	if (agent == nullptr || !agent->isPet())
 		return false;
@@ -704,12 +709,12 @@ template<> bool CheckShouldRest::check(AiAgent* agent) const {
 	if (restDelay == nullptr || !restDelay->isPast())
 		return false;
 
-	int restChance = 40; // % chance out of 100
+	int restChance = 5; // % chance out of 100
 	int restRoll = System::random(100);
 
 	// Chance is less than the roll, fail and add time to check again
 	if (restChance < restRoll) {
-		int delay = 45 * 1000; // Time in ms to delay checking again or resting again
+		int delay = 120 * 1000; // Time in ms to delay checking again or resting again
 
 		restDelay->updateToCurrentTime();
 		restDelay->addMiliTime(delay);
@@ -762,25 +767,66 @@ template<> bool CheckQueueSize::check(AiAgent* agent) const {
 }
 
 template<> bool CheckIsEscort::check(AiAgent* agent) const {
-	Locker lock(agent);
-
 	return agent->getCreatureBitmask() & ObjectFlag::ESCORT;
 }
 
 template<> bool CheckHasRangedWeapon::check(AiAgent* agent) const {
-	Locker lock(agent);
-
 	return agent->hasRangedWeapon();
 }
 
 template<> bool CheckHasMeleeWeapon::check(AiAgent* agent) const {
-	Locker lock(agent);
-
 	return agent->hasMeleeWeapon();
 }
 
 template<> bool CheckIsSwimming::check(AiAgent* agent) const {
-	Locker lock(agent);
-
 	return agent->isSwimming();
+}
+
+template<> bool CheckIsHerdLeader::check(AiAgent* agent) const {
+	if (agent == nullptr)
+		return false;
+
+	ManagedReference<CreatureHerdObserver*> herdObserver = agent->getHerdObserver();
+
+	if (herdObserver == nullptr)
+		return false;
+
+	AiAgent* herdLeader = herdObserver->getHerdLeader();
+
+	if (herdLeader != nullptr && herdLeader->getObjectID() == agent->getObjectID()) {
+		return true;
+	}
+
+	return false;
+}
+
+template<> bool CheckFollowIsHerdLeader::check(AiAgent* agent) const {
+	if (agent == nullptr)
+		return false;
+
+	ManagedReference<CreatureHerdObserver*> herdObserver = agent->getHerdObserver();
+
+	if (herdObserver == nullptr)
+		return false;
+
+	AiAgent* herdLeader = herdObserver->getHerdLeader();
+
+	if (herdLeader == nullptr)
+		return false;
+
+	auto followObject = agent->getFollowObject().get();
+
+	if (followObject != nullptr && herdLeader->getObjectID() == followObject->getObjectID()) {
+		return true;
+	}
+
+	return false;
+}
+
+template<> bool CheckIsWaiting::check(AiAgent* agent) const {
+	return agent->isWaiting();
+}
+
+template<> bool CheckHasHerdObserver::check(AiAgent* agent) const {
+	return agent->getHerdObserver() != nullptr;
 }

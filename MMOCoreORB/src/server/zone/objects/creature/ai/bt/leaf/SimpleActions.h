@@ -372,53 +372,57 @@ public:
 
 class Wait : public Behavior {
 public:
-	Wait(const String& className, const uint32 id, const LuaObject& args) : Behavior(className, id, args), duration(-1) {
+	Wait(const String& className, const uint32 id, const LuaObject& args) : Behavior(className, id, args), durationMin(-1), durationMax(-1) {
 		parseArgs(args);
 	}
 
-	Wait(const Wait& a) : Behavior(a), duration(a.duration) {
+	Wait(const Wait& a) : Behavior(a), durationMin(a.durationMin), durationMax(a.durationMax) {
 	}
 
 	Wait& operator=(const Wait& a) {
 		if (this == &a)
 			return *this;
+
 		Behavior::operator=(a);
-		duration = a.duration;
+
+		durationMin = a.durationMin;
+		durationMax = a.durationMax;
+
 		return *this;
 	}
 
 	void parseArgs(const LuaObject& args) {
-		duration = (int)(getArg<float>()(args, "duration") * 1000);
+		durationMin = (int)(getArg<float>()(args, "durationMin") * 1000);
+		durationMax = (int)(getArg<float>()(args, "durationMax") * 1000);
 	}
 
 	Behavior::Status execute(AiAgent* agent, unsigned int startIdx = 0) const {
 		// we don't need to check a value. Just checking to see if this value
 		// exists on the blackboard is fine since it can never be false
-		if (agent->peekBlackboard("isWaiting")) {
-			if (agent->isWaiting() || duration < 0) { // < 0 means indefinite wait
-				return RUNNING;
-			} else {
-				agent->eraseBlackboard("isWaiting");
-
-				return SUCCESS;
-			}
+		if (agent->isWaiting() || durationMin < 0) { // < 0 means indefinite wait
+			return RUNNING;
 		}
 
-		agent->setWait((uint64) abs(duration));
+		uint64 totalWait = System::random(abs(durationMax - durationMin)) + durationMin;
+
+		// agent->info(true) << "setting wait: " << totalWait << " Num of players in range: " << agent->getNumberOfPlayersInRange();
+
+		agent->setWait(totalWait);
 		agent->writeBlackboard("isWaiting", true);
 
-		return RUNNING;
+		return SUCCESS;
 	}
 
 	String print() const {
 		StringBuffer msg;
-		msg << className << "-" << duration;
+		msg << className << "- durationMin: " << durationMin << " durationMax: " << durationMax;
 
 		return msg.toString();
 	}
 
 private:
-	int duration;
+	int durationMin;
+	int durationMax;
 };
 
 class SetAlert : public Behavior {
