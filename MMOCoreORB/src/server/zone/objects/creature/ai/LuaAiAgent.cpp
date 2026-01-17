@@ -274,6 +274,8 @@ int LuaAiAgent::setNextPosition(lua_State* L) {
 int LuaAiAgent::setMovementState(lua_State* L) {
 	int state = lua_tonumber(L, -1);
 
+	Locker locker(realObject);
+
 	realObject->setMovementState(state);
 
 	return 0;

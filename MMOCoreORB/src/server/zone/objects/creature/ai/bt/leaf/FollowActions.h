@@ -12,6 +12,7 @@
 #include "server/zone/objects/tangible/threat/ThreatMap.h"
 #include "server/chat/ChatManager.h"
 #include "server/zone/managers/gcw/observers/SquadObserver.h"
+#include "server/zone/managers/creature/observers/CreatureHerdObserver.h"
 #include "server/zone/objects/player/FactionStatus.h"
 #include "server/zone/managers/reaction/ReactionManager.h"
 #include "server/zone/objects/creature/events/DroidHarvestTask.h"
@@ -825,6 +826,56 @@ public:
 
 		agent->addObjectFlag(ObjectFlag::FOLLOW);
 		agent->setFollowObject(squadLeader);
+
+		return SUCCESS;
+	}
+
+	String print() const {
+		StringBuffer msg;
+		msg << className << "-";
+
+		return msg.toString();
+	}
+};
+
+class FollowHerd : public Behavior {
+public:
+	FollowHerd(const String& className, const uint32 id, const LuaObject& args) : Behavior(className, id, args) {
+	}
+
+	FollowHerd(const FollowHerd& a) : Behavior(a) {
+	}
+
+	Behavior::Status execute(AiAgent* agent, unsigned int startIdx = 0) const {
+		if (agent == nullptr)
+			return FAILURE;
+
+		ManagedReference<CreatureHerdObserver*> herdObserver = agent->getHerdObserver();
+
+		if (herdObserver == nullptr)
+			return FAILURE;
+
+		AiAgent* herdLeader = herdObserver->getHerdLeader();
+
+		if (herdLeader == nullptr)
+			return FAILURE;
+
+		uint64 herdLeaderID = herdLeader->getObjectID();
+
+		if (herdLeaderID == agent->getObjectID())
+			return FAILURE;
+
+		ManagedReference<SceneObject*> followCopy = agent->getFollowObject().get();
+
+		if (followCopy != nullptr && followCopy->getObjectID() == herdLeaderID) {
+			return FAILURE;
+		}
+
+		Locker clocker(herdLeader, agent);
+
+		// agent->info(true) << "calling FollowHerd -- current follow target: " << (followCopy != nullptr ? followCopy->getDisplayedName() : "nullptr") << " MovementState: " << agent->getMovementState();
+
+		agent->setFollowObject(herdLeader);
 
 		return SUCCESS;
 	}
