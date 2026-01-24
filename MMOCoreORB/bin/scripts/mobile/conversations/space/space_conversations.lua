@@ -78,10 +78,10 @@ includeFile("conversations/space/rebel/arkon_squadron/arkon_convo.lua")
 includeFile("conversations/space/rebel/arkon_squadron/aqzow_convo.lua")
 
 -- Vortex Squadron
---includeFile("conversations/space/rebel/vortex_squadron/evin_convo.lua")
---includeFile("conversations/space/rebel/vortex_squadron/ezkiel_convo.lua")
---includeFile("conversations/space/rebel/vortex_squadron/v3fx_convo.lua")
---includeFile("conversations/space/rebel/vortex_squadron/vrovel_convo.lua")
+includeFile("conversations/space/rebel/vortex_squadron/evin_convo.lua")
+includeFile("conversations/space/rebel/vortex_squadron/ezkiel_convo.lua")
+includeFile("conversations/space/rebel/vortex_squadron/v3fx_convo.lua")
+includeFile("conversations/space/rebel/vortex_squadron/vrovel_convo.lua")
 
 -- Imperial Pilot
 
