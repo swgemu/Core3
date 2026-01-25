@@ -365,6 +365,8 @@ class ShipAiAgent extends FighterShipObject {
 	@local
 	public native float getNextSpeed();
 
+	public native float calculateActualMaxSpeed();
+
 	public native boolean setDisabledEngineSpeed();
 
 	@local

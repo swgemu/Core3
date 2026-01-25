@@ -38,7 +38,11 @@ public:
 		if (object == nullptr)
 			return;
 
-		Zone* zone = object->getZone();
+		auto zone = object->getZone();
+
+		if (zone == nullptr) {
+			return;
+		}
 
 		if(otherPressed) {
 			StringBuffer arguments;
@@ -48,18 +52,12 @@ public:
 			if (object->getParent().get() != nullptr) {
 				arguments << String::valueOf(object->getPositionX()) << " " << String::valueOf(object->getPositionY());
 
-				if (zone) {
-					arguments << " " << zone->getZoneName();
-				}
-
+				arguments << " " << zone->getZoneName();
 				arguments << " " << String::valueOf(object->getPositionZ());
 				arguments << " " << String::valueOf(object->getParentID());
 			} else {
 				arguments << String::valueOf(object->getWorldPositionX()) << " " << String::valueOf(object->getWorldPositionY());
-
-				if (zone) {
-					arguments << " " << zone->getZoneName();
-				}
+				arguments << " " << zone->getZoneName();
 			}
 
 			ManagedReference<ObjectController*> objectController = server->getObjectController();
@@ -67,19 +65,28 @@ public:
 
 		} else {
 			Reference<PlayerObject*> ghost = creature->getSlottedObject("ghost").castTo<PlayerObject*>();
-			ManagedReference<WaypointObject*> obj = server->createObject(0xc456e788, 1).castTo<WaypointObject*>();
+			ManagedReference<WaypointObject*> waypoint = server->createObject(0xc456e788, 1).castTo<WaypointObject*>();
 
-			Locker locker(obj);
+			if (waypoint == nullptr) {
+				return;
+			}
 
-			obj->setPlanetCRC(object->getPlanetCRC());
-			obj->setPosition(object->getWorldPositionX(), 0, object->getWorldPositionY());
+			Locker locker(waypoint);
 
-			obj->setColor(WaypointObject::COLOR_GREEN);
-			obj->setCustomObjectName(object->getDisplayedName(), false);
+			waypoint->setPlanetCRC(object->getPlanetCRC());
 
-			obj->setActive(true);
+			if (zone->isSpaceZone()) {
+				waypoint->setPosition(worldPosition.getX(), worldPosition.getZ(), worldPosition.getY());
+				waypoint->setColor(WaypointObject::COLOR_SPACE);
+			} else {
+				waypoint->setPosition(worldPosition.getX(), 0.f, worldPosition.getY());
+				waypoint->setColor(WaypointObject::COLOR_GREEN);
+			}
 
-			ghost->addWaypoint(obj, false, true);
+			waypoint->setCustomObjectName(object->getDisplayedName(), false);
+			waypoint->setActive(true);
+
+			ghost->addWaypoint(waypoint, false, true);
 		}
 	}
 };

@@ -10,14 +10,10 @@
 
 class FindObjectCommand : public QueueCommand {
 public:
-
-	FindObjectCommand(const String& name, ZoneProcessServer* server)
-		: QueueCommand(name, server) {
-
+	FindObjectCommand(const String& name, ZoneProcessServer* server) : QueueCommand(name, server) {
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
-
 		if (!checkStateMask(creature))
 			return INVALIDSTATE;
 
@@ -27,11 +23,17 @@ public:
 		if (!creature->isPlayerCreature())
 			return GENERALERROR;
 
+		auto zone = creature->getZone();
+
+		if (zone == nullptr) {
+			return GENERALERROR;
+		}
+
 		try {
 			StringTokenizer tokenizer(arguments.toString());
 
 			Reference<SceneObject*> targetObject = nullptr;
-			Reference<PlayerObject*> ghost = creature->getSlottedObject("ghost").castTo<PlayerObject*>();
+			Reference<PlayerObject*> ghost = creature->getPlayerObject();
 
 			if (!tokenizer.hasMoreTokens()) {
 				targetObject = server->getZoneServer()->getObject(creature->getTargetID());
@@ -41,25 +43,38 @@ public:
 
 					Vector3 worldPosition = targetObject->getWorldPosition();
 
-					ManagedReference<WaypointObject*> obj = server->getZoneServer()->createObject(0xc456e788, 1).castTo<WaypointObject*>();
+					ManagedReference<WaypointObject*> waypoint = server->getZoneServer()->createObject(0xc456e788, 1).castTo<WaypointObject*>();
 
-					Locker waypointGuard(obj);
+					if (waypoint == nullptr) {
+						return GENERALERROR;
+					}
 
-					obj->setPlanetCRC(targetObject->getPlanetCRC());
-					obj->setPosition(worldPosition.getX(), 0, worldPosition.getY());
-					obj->setActive(true);
+					Locker waypointGuard(waypoint);
 
-					ghost->addWaypoint(obj, false, true);
+					waypoint->setPlanetCRC(targetObject->getPlanetCRC());
+
+					if (zone->isSpaceZone()) {
+						waypoint->setPosition(worldPosition.getX(), worldPosition.getZ(), worldPosition.getY());
+						waypoint->setColor(WaypointObject::COLOR_SPACE);
+					} else {
+						waypoint->setPosition(worldPosition.getX(), 0.f, worldPosition.getY());
+					}
+
+					waypoint->setActive(true);
+
+					ghost->addWaypoint(waypoint, false, true);
+
 					return SUCCESS;
 				}
 			}
 
-			Zone* zone = creature->getZone();
-			if(zone == nullptr)
-				return GENERALERROR;
-
 			String objectFilter;
+
 			float range = zone->getMaxX() * 2;
+
+			if (zone->isSpaceZone()) {
+				range = ZoneServer::SPACESTATIONRANGE * 2.f;
+			}
 
 			tokenizer.getStringToken(objectFilter);
 
@@ -76,8 +91,10 @@ public:
 
 			StringBuffer results;
 
+			auto worldPosition = creature->getWorldPosition();
+
 			SortedVector<ManagedReference<TreeEntry*> > objects(512, 512);
-			zone->getInRangeObjects(creature->getPositionX(), creature->getPositionZ(), creature->getPositionY(), range, &objects, true);
+			zone->getInRangeObjects(worldPosition.getX(), worldPosition.getZ(), worldPosition.getY(), range, &objects, true);
 
 			for (int i = 0; i < objects.size(); ++i) {
 				ManagedReference<SceneObject*> object = cast<SceneObject*>(objects.get(i).get());
@@ -102,6 +119,7 @@ public:
 
 				results << name;
 				results << " (" << String::valueOf(object->getWorldPositionX());
+				results << ", " << String::valueOf(object->getWorldPositionZ());
 				results << ", " << String::valueOf(object->getWorldPositionY()) << ")";
 
 				findResults->addMenuItem(results.toString(), object->getObjectID());

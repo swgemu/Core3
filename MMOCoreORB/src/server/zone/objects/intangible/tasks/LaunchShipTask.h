@@ -54,7 +54,7 @@ public:
 			jtlZoneName = chosenZone;
 		}
 
-		if (jtlZoneName == "") {
+		if (jtlZoneName.isEmpty()) {
 			return;
 		}
 
