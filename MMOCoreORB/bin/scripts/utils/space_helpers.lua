@@ -618,6 +618,21 @@ function SpaceHelpers:addVortexSquadWaypoint(pPlayer)
 	PlayerObject(pGhost):addWaypoint("naboo", "@npc_spawner_n:v3_fx", "@npc_spawner_n:v3_fx", 4764, 0, -4795, WAYPOINT_BLUE, true, true, 0)
 end
 
+-- @param pPlayer pointer adds waypoint to the Rebel Havoc Squad Tier2 Trainer (Lady Viopa on Lok)
+function SpaceHelpers:addViopaWaypoint(pPlayer)
+	if (pPlayer == nil) then
+		return
+	end
+
+	local pGhost = CreatureObject(pPlayer):getPlayerObject()
+
+	if (pGhost == nil) then
+		return
+	end
+
+	PlayerObject(pGhost):addWaypoint("lok", "@npc_spawner_n:viopa", "@npc_spawner_n:viopa", -2, 4, -10, WAYPOINT_BLUE, true, true, 0)
+end
+
 -- @param pPlayer pointer adds waypoint to the Rebel Arkon's Havok Squad Tier1 Trainer
 function SpaceHelpers:addArkonSquadWaypoint(pPlayer)
 	if (pPlayer == nil) then
