@@ -157,7 +157,15 @@ int ShipControlDeviceImplementation::handleObjectMenuSelect(CreatureObject* play
 		}
 
 		shipManager->reDeedShip(player, _this.getReferenceUnsafeStaticCast());
-	} else if (isShipLaunched()) {
+	}
+
+	auto ghost = player->getPlayerObject();
+
+	if (ghost == nullptr || !ghost->isPrivileged()) {
+		return 1;
+	}
+
+	if (isShipLaunched()) {
 		if (selectedID == RadialOptions::PET_STORE) {
 			auto zone = zoneServer->getZone(storedZoneName);
 
@@ -173,42 +181,40 @@ int ShipControlDeviceImplementation::handleObjectMenuSelect(CreatureObject* play
 
 			return isShipLaunched() ? 1 : 0;
 		}
-	} else {
-		if (selectedID > RadialOptions::SERVER_MENU1) {
-			int spaceZoneIndex = selectedID - RadialOptions::SERVER_MENU1 - 1;
-			int spaceZoneCount = zoneServer->getSpaceZoneCount();
+	} else if (selectedID > RadialOptions::SERVER_MENU1) {
+		int spaceZoneIndex = selectedID - RadialOptions::SERVER_MENU1 - 1;
+		int spaceZoneCount = zoneServer->getSpaceZoneCount();
 
-			auto zone = (spaceZoneIndex < spaceZoneCount) ? zoneServer->getSpaceZone(spaceZoneIndex) : nullptr;
+		auto zone = (spaceZoneIndex < spaceZoneCount) ? zoneServer->getSpaceZone(spaceZoneIndex) : nullptr;
 
-			if (zone == nullptr) {
-				return 1;
-			}
-
-			Vector<uint64> groupVector;
-			auto group = player->getGroup();
-
-			if (group != nullptr) {
-				Locker groupClock(group, player);
-
-				for (int i = 0; i < group->getGroupSize(); i++) {
-					auto member = group->getGroupMember(i);
-
-					if (member == nullptr || member == player || !member->isPlayerCreature()) {
-						continue;
-					}
-
-					groupVector.add(member->getObjectID());
-				}
-			}
-
-			LaunchShipTask* launchTask = new LaunchShipTask(player, _this.getReferenceUnsafeStaticCast(), groupVector, zone->getZoneName());
-
-			if (launchTask != nullptr) {
-				launchTask->schedule(1000);
-			}
-
-			return 0;
+		if (zone == nullptr) {
+			return 1;
 		}
+
+		Vector<uint64> groupVector;
+		auto group = player->getGroup();
+
+		if (group != nullptr) {
+			Locker groupClock(group, player);
+
+			for (int i = 0; i < group->getGroupSize(); i++) {
+				auto member = group->getGroupMember(i);
+
+				if (member == nullptr || member == player || !member->isPlayerCreature()) {
+					continue;
+				}
+
+				groupVector.add(member->getObjectID());
+			}
+		}
+
+		LaunchShipTask* launchTask = new LaunchShipTask(player, _this.getReferenceUnsafeStaticCast(), groupVector, zone->getZoneName());
+
+		if (launchTask != nullptr) {
+			launchTask->schedule(1000);
+		}
+
+		return 0;
 	}
 
 	return 1;
@@ -304,7 +310,7 @@ void ShipControlDeviceImplementation::setStoredLocationData(CreatureObject* play
 		return;
 	}
 
-	auto travelPoint = planetManager->getNearestPlanetTravelPoint(player->getWorldPosition(), 128.f);
+	auto travelPoint = planetManager->getNearestPlanetTravelPoint(player->getWorldPosition());
 
 	if (travelPoint == nullptr) {
 		return;
