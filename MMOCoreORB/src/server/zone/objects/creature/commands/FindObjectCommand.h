@@ -10,14 +10,10 @@
 
 class FindObjectCommand : public QueueCommand {
 public:
-
-	FindObjectCommand(const String& name, ZoneProcessServer* server)
-		: QueueCommand(name, server) {
-
+	FindObjectCommand(const String& name, ZoneProcessServer* server) : QueueCommand(name, server) {
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
-
 		if (!checkStateMask(creature))
 			return INVALIDSTATE;
 
@@ -31,7 +27,7 @@ public:
 			StringTokenizer tokenizer(arguments.toString());
 
 			Reference<SceneObject*> targetObject = nullptr;
-			Reference<PlayerObject*> ghost = creature->getSlottedObject("ghost").castTo<PlayerObject*>();
+			Reference<PlayerObject*> ghost = creature->getPlayerObject();
 
 			if (!tokenizer.hasMoreTokens()) {
 				targetObject = server->getZoneServer()->getObject(creature->getTargetID());
@@ -55,11 +51,17 @@ public:
 			}
 
 			Zone* zone = creature->getZone();
-			if(zone == nullptr)
+
+			if (zone == nullptr)
 				return GENERALERROR;
 
 			String objectFilter;
+
 			float range = zone->getMaxX() * 2;
+
+			if (zone->isSpaceZone()) {
+				range = ZoneServer::SPACESTATIONRANGE * 2.f;
+			}
 
 			tokenizer.getStringToken(objectFilter);
 

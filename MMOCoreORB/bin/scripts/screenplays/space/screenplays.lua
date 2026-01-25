@@ -110,11 +110,26 @@ includeFile("space/conversations/rebel/jPaiBrekConvoHandler.lua")
 -- Crimson Phoenix Squadron
 includeFile("space/squadrons/CrimsonPhoenixSquadronScreenplay.lua")
 
--- Havoc Squadron
+--includeFile("space/conversations/rebel/crimson_phoenix_squadron/ekerConvoHandler.lua")
+--includeFile("space/conversations/rebel/crimson_phoenix_squadron/socunaConvoHandler.lua")
+--includeFile("space/conversations/rebel/crimson_phoenix_squadron/ulvawopConvoHandler.lua")
+--includeFile("space/conversations/rebel/crimson_phoenix_squadron/ufwolConvoHandler.lua")
+
+-- Havoc Squadron (Arkon)
 includeFile("space/squadrons/HavocSquadronScreenplay.lua")
+
+includeFile("space/conversations/rebel/havoc_squadron/kreezoConvoHandler.lua")
+--includeFile("space/conversations/rebel/havoc_squadron/viopaConvoHandler.lua")
+--includeFile("space/conversations/rebel/havoc_squadron/arkonConvoHandler.lua")
+--includeFile("space/conversations/rebel/havoc_squadron/aqzowConvoHandler.lua")
 
 -- Vortex Squadron
 includeFile("space/squadrons/VortexSquadronScreenplay.lua")
+
+--includeFile("space/conversations/rebel/vortex_squadron/evinConvoHandler.lua")
+--includeFile("space/conversations/rebel/vortex_squadron/ezkielConvoHandler.lua")
+--includeFile("space/conversations/rebel/vortex_squadron/v3fxConvoHandler.lua")
+--includeFile("space/conversations/rebel/vortex_squadron/vrovelConvoHandler.lua")
 
 
 -- Imperial
