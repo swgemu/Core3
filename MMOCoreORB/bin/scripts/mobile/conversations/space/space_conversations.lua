@@ -67,8 +67,22 @@ includeFile("conversations/space/neutral/rsf_squadron/dinge_convo.lua")
 -- Rebel Pilot
 
 -- Crimson Phoenix Squadron
--- Havoc Squadron
+--includeFile("conversations/space/rebel/crimson_phoenix_squadron/eker_convo.lua")
+--includeFile("conversations/space/rebel/crimson_phoenix_squadron/socuna_convo.lua")
+--includeFile("conversations/space/rebel/crimson_phoenix_squadron/ulvawop_convo.lua")
+--includeFile("conversations/space/rebel/crimson_phoenix_squadron/ufwol_convo.lua")
+
+-- Havoc Squadron (Arkon)
+includeFile("conversations/space/rebel/arkon_squadron/kreezo_convo.lua")
+--includeFile("conversations/space/rebel/arkon_squadron/viopa_convo.lua")
+--includeFile("conversations/space/rebel/arkon_squadron/arkon_convo.lua")
+--includeFile("conversations/space/rebel/arkon_squadron/aqzow_convo.lua")
+
 -- Vortex Squadron
+--includeFile("conversations/space/rebel/vortex_squadron/evin_convo.lua")
+--includeFile("conversations/space/rebel/vortex_squadron/ezkiel_convo.lua")
+--includeFile("conversations/space/rebel/vortex_squadron/v3fx_convo.lua")
+--includeFile("conversations/space/rebel/vortex_squadron/vrovel_convo.lua")
 
 -- Imperial Pilot
 
