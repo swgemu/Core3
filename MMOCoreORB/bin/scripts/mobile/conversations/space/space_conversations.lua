@@ -62,6 +62,7 @@ includeFile("conversations/space/neutral/corsec_squadron/turoldine_convo.lua")
 -- Smuggler Squadron
 
 -- RSF Squadron
+includeFile("conversations/space/neutral/rsf_squadron/rsf_tier1_convo.lua")
 
 -- Rebel Pilot
 
