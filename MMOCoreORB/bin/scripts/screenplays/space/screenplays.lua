@@ -100,6 +100,8 @@ includeFile("space/squadrons/SmugglerSquadronScreenplay.lua")
 -- RSF Squadron
 includeFile("space/squadrons/RsfSquadronScreenplay.lua")
 
+includeFile("space/conversations/neutral/rsf_squadron/rsfTier1ConvoHandler.lua")
+
 
 -- Rebel
 includeFile("space/conversations/rebel/jPaiBrekConvoHandler.lua")
