@@ -987,6 +987,10 @@ int ShipAiAgentImplementation::getTransformType() {
 		case ShipAiAgent::OBLIVIOUS:
 		case ShipAiAgent::WATCHING:
 		case ShipAiAgent::PATROLLING: {
+			if (shipBitmask & ShipFlag::ESCORT) {
+				return SpaceTransformType::FAST;
+			}
+
 			return SpaceTransformType::SLOW;
 		}
 		case ShipAiAgent::ATTACKING:
@@ -1121,10 +1125,39 @@ float ShipAiAgentImplementation::getNextSpeed() {
 	float speed = getActualMaxSpeed();
 
 	if (escortSpeed > 0.f) {
-		speed = Math::min(escortSpeed, speed);
+		speed = getEscortSpeed();
 	}
 
 	return speed;
+}
+
+float ShipAiAgentImplementation::calculateActualMaxSpeed() {
+	float engineSpeed = 0.f;
+
+	if (isComponentInstalled(Components::ENGINE)) {
+		engineSpeed = getEngineMaxSpeed() * calculateActualComponentEfficiency(Components::ENGINE);
+	}
+
+	float boosterSpeed = 0.f;
+
+	if (isComponentInstalled(Components::BOOSTER) && isBoosterActive()) {
+		boosterSpeed = getBoosterMaxSpeed() * calculateActualComponentEfficiency(Components::BOOSTER);
+	}
+
+	float chassisSpeed = getChassisSpeed();
+	float wingsOpenSpeed = getWingsOpenSpeed();
+
+	if (hasShipWings() && (getOptionsBitmask() & OptionBitmask::WINGS_OPEN) && wingsOpenSpeed > 0.f) {
+		auto chassisData = ShipManager::instance()->getChassisData(chassisDataName);
+
+		if (chassisData != nullptr) {
+			chassisSpeed *= wingsOpenSpeed;
+		}
+	}
+
+	engineSpeed = Math::max(engineSpeed, getEscortSpeed());
+
+	return Math::clamp(0.f, ((engineSpeed + boosterSpeed) * chassisSpeed), 512.f);
 }
 
 bool ShipAiAgentImplementation::setDisabledEngineSpeed() {

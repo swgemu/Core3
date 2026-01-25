@@ -1598,14 +1598,19 @@ class ShipObject extends TangibleObject {
 	@nativeStub
 	public native boolean isShipObject();
 
-	@dirty
+	@read
 	public boolean isHyperspacing() {
 		return hyperspacing;
 	}
 
-	@dirty
+	@read
 	public boolean hasShipWings() {
 		return hasWings;
+	}
+
+	@read
+	public float getWingsOpenSpeed() {
+		return wingsOpenSpeed;
 	}
 
 	@dirty
@@ -1802,7 +1807,7 @@ class ShipObject extends TangibleObject {
 
 	public native float calculateActualDecelerationRate();
 
-	public native float calculateActualMaxSpeed();
+	public abstract native float calculateActualMaxSpeed();
 
 	@dirty
 	public native abstract float getOutOfRangeDistance(unsigned long specialRangeObjectID = 0);
