@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d7cd077d_7ee1d6ef",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/space/conversations/neutral/rsf_squadron/rsfTier1ConvoHandler.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2026-01-26T01:47:32Z",
+      "side": 1,
+      "message": "Stick with the NPC name for the naming convention of the conversation and the handler. Example: rheadConvoHandler and rhea_convo",
+      "revId": "72feab237a29ad3fa4d1a95d71456c456ffa685f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f2b49f8a_0ab4ca01",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/space/squadrons/RsfSquadronScreenplay.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2026-01-26T01:47:32Z",
+      "side": 1,
+      "message": "Move the RsfSquadronScreenplay below the missions. Also need to add in the reset function for the npc that needs to be called in space_helpers.lua see https://review.swgemu.com/c/Core3/+/11041",
+      "revId": "72feab237a29ad3fa4d1a95d71456c456ffa685f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    }
+  ]
+}
