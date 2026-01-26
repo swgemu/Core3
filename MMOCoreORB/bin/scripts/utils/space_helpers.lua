@@ -463,10 +463,10 @@ function SpaceHelpers:surrenderPilot(pPlayer)
 	local pilotSquadron = PlayerObject(pGhost):getSquadronType()
 	local pilotProfession = ""
 
-	if (pilotSquadron == CORSEC_SQUADRON or pilotSquadron == SMUGGLER_SQUADRON or pilotSquadron == RSF_SQUADRON) then
+	-- Neutral Pilots
+	if (pilotSquadron == CORSEC_SQUADRON) then
 		pilotProfession = "neutralPilot"
 
-		-- All the Space Quests need to be reset here
 		-- Tier 1
 		CorsecSquadronScreenplay:resetRheaQuests(pPlayer)
 		-- Tier 2
@@ -475,11 +475,49 @@ function SpaceHelpers:surrenderPilot(pPlayer)
 		CorsecSquadronScreenplay:resetRamnaQuests(pPlayer)
 		-- Tier 4
 		CorsecSquadronScreenplay:resetTuroldineQuests(pPlayer)
+	elseif (pilotSquadron == SMUGGLER_SQUADRON) then
+		pilotProfession = "neutralPilot"
 
-	elseif (pilotSquadron == BLACK_EPSILON_SQUADRON or pilotSquadron == STORM_SQUADRON or pilotSquadron == INQUISITION_SQUADRON) then
-		pilotProfession = "imperialPilot"
-	elseif (pilotSquadron == HAVOC_SQUADRON or pilotSquadron == VORTEX_SQUADRON or pilotSquadron == CRIMSON_PHOENIX_SQUADRON) then
+		-- TODO: Add SmugglerSquadronScreenplay reset functions
+	elseif (pilotSquadron == RSF_SQUADRON) then
+		pilotProfession = "neutralPilot"
+
+		-- TODO: Add RSFSquadronScreenplay reset functions
+
+	-- Rebel Pilots
+	elseif (pilotSquadron == HAVOC_SQUADRON) then
 		pilotProfession = "rebelPilot"
+
+		-- Tier 1
+		HavocSquadronScreenplay:resetKreezoQuests(pPlayer)
+		-- Tier 2
+		HavocSquadronScreenplay:resetViopaQuests(pPlayer)
+		-- Tier 3
+		HavocSquadronScreenplay:resetArkonQuests(pPlayer)
+		-- Tier 4
+		HavocSquadronScreenplay:resetAqzowQuests(pPlayer)
+	elseif (pilotSquadron == VORTEX_SQUADRON) then
+		pilotProfession = "rebelPilot"
+
+		-- TODO: Add VortexSquadronScreenplay reset functions
+	elseif (pilotSquadron == CRIMSON_PHOENIX_SQUADRON) then
+		pilotProfession = "rebelPilot"
+
+		-- TODO: Add CrimsonPhoenixSquadronScreenplay reset functions
+
+	-- Imperial Pilots
+	elseif (pilotSquadron == BLACK_EPSILON_SQUADRON) then
+		pilotProfession = "imperialPilot"
+
+		-- TODO: Add BlackEpsilonSquadronScreenplay reset functions
+	elseif (pilotSquadron == STORM_SQUADRON) then
+		pilotProfession = "imperialPilot"
+
+		-- TODO: Add StormSquadronScreenplay reset functions
+	elseif (pilotSquadron == INQUISITION_SQUADRON) then
+		pilotProfession = "imperialPilot"
+
+		-- TODO: Add InquisitionSquadronScreenplay reset functions
 	end
 
 	local pilotSkills = self.pilotSkills[pilotProfession]
