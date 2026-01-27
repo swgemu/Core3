@@ -268,6 +268,256 @@ escort_duty_naboo_privateer_7 = SpaceDutyEscortScreenplay:new {
 registerScreenPlay("escort_duty_naboo_privateer_7", true)
 
 --[[
+	Tier 2 -- Captain Kaydine Main Missions
+]]
+
+-- Mission 1: Destroy (5 kills)
+
+destroy_naboo_privateer_13a = SpaceDestroyScreenplay:new {
+	className = "destroy_naboo_privateer_13a",
+
+	questName = "naboo_privateer_13a",
+	questType = "destroy",
+
+	questZone = "space_naboo",
+
+	creditReward = 5000,
+
+	sideQuest = false,
+	sideQuestType = "",
+
+	-- Screenplay Specific Variables
+	killsRequired = 5,
+
+	shipLocations = {},
+
+	shipTypes = {
+		"blacksun_ace_s04_tier2", "blacksun_ace_s04_tier3", "blacksun_aggressor_tier2", "blacksun_aggressor_tier3",
+		"blacksun_bomber_s01_tier2", "blacksun_bomber_s01_tier3", "blacksun_bomber_s02_tier2", "blacksun_bomber_s02_tier3",
+		"blacksun_fighter_s01_tier2", "blacksun_fighter_s01_tier3", "blacksun_fighter_s02_tier2", "blacksun_fighter_s02_tier3",
+		"blacksun_fighter_s03_tier2", "blacksun_fighter_s03_tier3", "blacksun_gunship_tier2", "blacksun_gunship_tier3",
+	},
+}
+
+registerScreenPlay("destroy_naboo_privateer_13a", true)
+
+-- Mission 2: Escort
+
+escort_naboo_privateer_14 = SpaceEscortScreenplay:new {
+	className = "escort_naboo_privateer_14",
+
+	questName = "naboo_privateer_14",
+	questType = "escort",
+
+	questZone = "space_naboo",
+
+	creditReward = 6000,
+
+	sideQuest = false,
+	sideQuestType = "",
+
+	-- Screenplay Specific Variables
+	escortShips = {"freighterheavy_tier3"},
+
+	escortPoints = {
+		{patrolPointName = "rsf_tier2_escort_1", zoneName = "space_naboo", x = 3500, z = 500, y = -2000, escortNumber = 1, radius = 250},
+		{patrolPointName = "rsf_tier2_escort_2", zoneName = "space_naboo", x = 4200, z = 300, y = -500, escortNumber = 2, radius = 250},
+		{patrolPointName = "rsf_tier2_escort_3", zoneName = "space_naboo", x = 5000, z = 100, y = 1000, escortNumber = 3, radius = 250},
+		{patrolPointName = "rsf_tier2_escort_4", zoneName = "space_naboo", x = 5500, z = -200, y = 2500, escortNumber = 4, radius = 250},
+	},
+
+	attackDelay = 180,
+
+	attackShips = {
+		{"blacksun_fighter_s02_tier2", "blacksun_fighter_s02_tier2", "blacksun_fighter_s03_tier2", "blacksun_bomber_s01_tier2"},
+	}
+}
+
+registerScreenPlay("escort_naboo_privateer_14", true)
+
+-- Mission 3: Inspect
+
+inspect_naboo_privateer_15 = SpaceInspectScreenplay:new {
+	className = "inspect_naboo_privateer_15",
+
+	questName = "naboo_privateer_15",
+	questType = "inspect",
+
+	questZone = "space_naboo",
+
+	creditReward = 7000,
+
+	sideQuest = false,
+	sideQuestType = "",
+
+	-- Screenplay Specific Variables
+	inspectTargets = {"blacksun_gunship_tier2"},
+	inspectCargo = "shipment_orders",
+
+	targetLocation = {x = 2500, z = 400, y = -3000},
+}
+
+registerScreenPlay("inspect_naboo_privateer_15", true)
+
+-- Mission 4: Assassinate
+
+assassinate_naboo_privateer_tier2_4a = SpaceAssassinateScreenplay:new {
+	className = "assassinate_naboo_privateer_tier2_4a",
+
+	questType = "assassinate",
+	questName = "naboo_privateer_tier2_4a",
+
+	questZone = "space_naboo",
+
+	creditReward = 10000,
+	itemReward = {
+		{species = {-1}, item = "object/tangible/ship/components/weapon/wpn_mission_reward_neutral_mandal_light_blaster.iff"},
+	},
+
+	sideQuest = false,
+	sideQuestType = "",
+
+	-- Screenplay Specific Variables
+	arrivalDelay = 7,
+	failTimer = 20,
+
+	assassinateSpawns = {
+		target = "blacksun_ace_s04_tier3",
+		escorts = {"blacksun_fighter_s02_tier2", "blacksun_fighter_s02_tier2", "blacksun_bomber_s01_tier2", "blacksun_bomber_s01_tier2", "blacksun_fighter_s03_tier3"},
+	},
+
+	targetPatrols = {
+		{patrolPointName = "rsf_tier2_assassinate_1", x = 1500, z = 600, y = -1500},
+		{patrolPointName = "rsf_tier2_assassinate_2", x = 2000, z = 400, y = -2000},
+	},
+}
+
+registerScreenPlay("assassinate_naboo_privateer_tier2_4a", true)
+
+-- Tier 2 Duty Missions
+
+destroy_duty_naboo_privateer_9 = SpaceDutyDestroyScreenplay:new {
+	className = "destroy_duty_naboo_privateer_9",
+
+	questName = "naboo_privateer_9",
+	questType = "destroy_duty",
+
+	questZone = "space_naboo",
+
+	creditReward = 100,
+
+	sideQuest = false,
+	sideQuestType = "",
+
+	-- Screenplay Specific Variables
+	dutyMissionLevel = 2,
+
+	shipLocations = {
+		{patrolPointName = "rsf_duty_patrol_1", x = 752, z = 659, y = -2444},
+		{patrolPointName = "rsf_duty_patrol_2", x = 2031, z = 887, y = -1759},
+		{patrolPointName = "rsf_duty_patrol_3", x = 2466, z = 854, y = -505},
+	},
+
+	shipTypes = {
+		"blacksun_fighter_s01_tier2", "blacksun_fighter_s02_tier2", "blacksun_fighter_s03_tier2",
+		"blacksun_bomber_s01_tier2", "blacksun_bomber_s02_tier2",
+	},
+}
+
+registerScreenPlay("destroy_duty_naboo_privateer_9", true)
+
+escort_duty_naboo_privateer_10 = SpaceDutyEscortScreenplay:new {
+	className = "escort_duty_naboo_privateer_10",
+
+	questName = "naboo_privateer_10",
+	questType = "escort_duty",
+
+	questZone = "space_naboo",
+
+	creditReward = 150,
+
+	sideQuest = false,
+	sideQuestType = "",
+
+	-- Screenplay Specific Variables
+	dutyMissionLevel = 2,
+
+	escortShips = {"freighterheavy_tier2", "freighterlight_tier2"},
+
+	escortPoints = {
+		{patrolPointName = "rsf_tier2_duty_escort_1", zoneName = "space_naboo", x = 1000, z = 500, y = -3000, escortNumber = 1, radius = 250},
+		{patrolPointName = "rsf_tier2_duty_escort_2", zoneName = "space_naboo", x = 2500, z = 300, y = -1500, escortNumber = 2, radius = 250},
+		{patrolPointName = "rsf_tier2_duty_escort_3", zoneName = "space_naboo", x = 4000, z = 100, y = 500, escortNumber = 3, radius = 250},
+	},
+
+	attackShips = {
+		{"blacksun_fighter_s01_tier2", "blacksun_fighter_s02_tier2"},
+		{"blacksun_fighter_s01_tier2", "blacksun_fighter_s02_tier2", "blacksun_fighter_s03_tier2"},
+	}
+}
+
+registerScreenPlay("escort_duty_naboo_privateer_10", true)
+
+destroy_duty_naboo_privateer_11 = SpaceDutyDestroyScreenplay:new {
+	className = "destroy_duty_naboo_privateer_11",
+
+	questName = "naboo_privateer_11",
+	questType = "destroy_duty",
+
+	questZone = "space_naboo",
+
+	creditReward = 125,
+
+	sideQuest = false,
+	sideQuestType = "",
+
+	-- Screenplay Specific Variables
+	dutyMissionLevel = 2,
+
+	shipLocations = {
+		{patrolPointName = "rsf_duty_patrol_4", x = 3500, z = 400, y = -1000},
+		{patrolPointName = "rsf_duty_patrol_5", x = 4000, z = 200, y = 500},
+		{patrolPointName = "rsf_duty_patrol_6", x = 4500, z = -100, y = 2000},
+	},
+
+	shipTypes = {
+		"blacksun_fighter_s02_tier2", "blacksun_fighter_s03_tier2",
+		"blacksun_bomber_s01_tier2", "blacksun_aggressor_tier2",
+	},
+}
+
+registerScreenPlay("destroy_duty_naboo_privateer_11", true)
+
+-- Note: Recovery duty not fully implemented in base code
+recovery_duty_naboo_privateer_12 = SpaceDutyDestroyScreenplay:new {
+	className = "recovery_duty_naboo_privateer_12",
+
+	questName = "naboo_privateer_12",
+	questType = "recovery_duty",
+
+	questZone = "space_naboo",
+
+	creditReward = 175,
+
+	sideQuest = false,
+	sideQuestType = "",
+
+	-- Screenplay Specific Variables
+	dutyMissionLevel = 2,
+
+	shipLocations = {
+		{patrolPointName = "rsf_recovery_1", x = 2000, z = 300, y = -2500},
+		{patrolPointName = "rsf_recovery_2", x = 3000, z = 500, y = -1500},
+	},
+
+	shipTypes = {
+		"blacksun_fighter_s01_tier2", "blacksun_fighter_s02_tier2",
+	},
+}
+
+registerScreenPlay("recovery_duty_naboo_privateer_12", true)
+
+--[[
 	RSF Squadron Screenplay
 ]]
 
@@ -285,6 +535,18 @@ RsfSquadronScreenplay = ScreenPlay:new {
 	-- Tier 1 Duty Quest Strings
 	QUEST_STRING_DUTY_4_1 = {type = "destroy_duty", name = "naboo_privateer_6"},
 	QUEST_STRING_DUTY_4_2 = {type = "escort_duty", name = "naboo_privateer_7"},
+
+	-- Tier 2 Quest Strings
+	TIER2_QUEST_STRING_1 = {type = "destroy", name = "naboo_privateer_13a"},
+	TIER2_QUEST_STRING_2 = {type = "escort", name = "naboo_privateer_14"},
+	TIER2_QUEST_STRING_3 = {type = "inspect", name = "naboo_privateer_15"},
+	TIER2_QUEST_STRING_4 = {type = "assassinate", name = "naboo_privateer_tier2_4a"},
+
+	-- Tier 2 Duty Quest Strings
+	TIER2_QUEST_STRING_DUTY_1 = {type = "destroy_duty", name = "naboo_privateer_9"},
+	TIER2_QUEST_STRING_DUTY_2 = {type = "escort_duty", name = "naboo_privateer_10"},
+	TIER2_QUEST_STRING_DUTY_3 = {type = "destroy_duty", name = "naboo_privateer_11"},
+	TIER2_QUEST_STRING_DUTY_4 = {type = "recovery_duty", name = "naboo_privateer_12"},
 }
 
 registerScreenPlay("RsfSquadronScreenplay", false)
@@ -330,4 +592,44 @@ function RsfSquadronScreenplay:resetDingeQuests(pPlayer)
 	escort_duty_naboo_privateer_7:resetQuest(pPlayer)
 	SpaceHelpers:clearSpaceQuest(pPlayer, self.QUEST_STRING_DUTY_4_1.type, self.QUEST_STRING_DUTY_4_1.name, false)
 	SpaceHelpers:clearSpaceQuest(pPlayer, self.QUEST_STRING_DUTY_4_2.type, self.QUEST_STRING_DUTY_4_2.name, false)
+end
+
+function RsfSquadronScreenplay:resetKaydineQuests(pPlayer)
+	if (pPlayer == nil) then
+		return
+	end
+
+	local pGhost = CreatureObject(pPlayer):getPlayerObject()
+
+	if (pGhost == nil) then
+		return
+	end
+
+	PlayerObject(pGhost):setPilotTier(2)
+
+	-- Mission 1
+	destroy_naboo_privateer_13a:resetQuest(pPlayer)
+	SpaceHelpers:clearSpaceQuest(pPlayer, self.TIER2_QUEST_STRING_1.type, self.TIER2_QUEST_STRING_1.name, false)
+
+	-- Mission 2
+	escort_naboo_privateer_14:resetQuest(pPlayer)
+	SpaceHelpers:clearSpaceQuest(pPlayer, self.TIER2_QUEST_STRING_2.type, self.TIER2_QUEST_STRING_2.name, false)
+
+	-- Mission 3
+	inspect_naboo_privateer_15:resetQuest(pPlayer)
+	SpaceHelpers:clearSpaceQuest(pPlayer, self.TIER2_QUEST_STRING_3.type, self.TIER2_QUEST_STRING_3.name, false)
+
+	-- Mission 4
+	assassinate_naboo_privateer_tier2_4a:resetQuest(pPlayer)
+	SpaceHelpers:clearSpaceQuest(pPlayer, self.TIER2_QUEST_STRING_4.type, self.TIER2_QUEST_STRING_4.name, false)
+
+	-- Duty Missions
+	destroy_duty_naboo_privateer_9:resetQuest(pPlayer)
+	escort_duty_naboo_privateer_10:resetQuest(pPlayer)
+	destroy_duty_naboo_privateer_11:resetQuest(pPlayer)
+	recovery_duty_naboo_privateer_12:resetQuest(pPlayer)
+	SpaceHelpers:clearSpaceQuest(pPlayer, self.TIER2_QUEST_STRING_DUTY_1.type, self.TIER2_QUEST_STRING_DUTY_1.name, false)
+	SpaceHelpers:clearSpaceQuest(pPlayer, self.TIER2_QUEST_STRING_DUTY_2.type, self.TIER2_QUEST_STRING_DUTY_2.name, false)
+	SpaceHelpers:clearSpaceQuest(pPlayer, self.TIER2_QUEST_STRING_DUTY_3.type, self.TIER2_QUEST_STRING_DUTY_3.name, false)
+	SpaceHelpers:clearSpaceQuest(pPlayer, self.TIER2_QUEST_STRING_DUTY_4.type, self.TIER2_QUEST_STRING_DUTY_4.name, false)
 end
