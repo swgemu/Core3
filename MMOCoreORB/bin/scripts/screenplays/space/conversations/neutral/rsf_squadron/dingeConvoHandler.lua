@@ -206,6 +206,11 @@ function dingeConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNpc, selec
 		end
 
 		return pClonedScreen
+	elseif (screenID == "go_to_tier2") then
+		-- Increment tier when player is sent to Kaydine
+		if (ghost:getPilotTier() == 1) then
+			ghost:incrementPilotTier()
+		end
 	elseif (screenID == "destroy_duty") then
 		destroy_duty_naboo_privateer_6:startQuest(pPlayer, pNpc)
 	elseif (screenID == "escort_duty") then

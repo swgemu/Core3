@@ -484,6 +484,8 @@ function SpaceHelpers:surrenderPilot(pPlayer)
 
 		-- Tier 1
 		RsfSquadronScreenplay:resetDingeQuests(pPlayer)
+		-- Tier 2
+		RsfSquadronScreenplay:resetKaydineQuests(pPlayer)
 
 	-- Rebel Pilots
 	elseif (pilotSquadron == HAVOC_SQUADRON) then
