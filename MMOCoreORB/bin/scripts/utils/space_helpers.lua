@@ -498,9 +498,9 @@ function SpaceHelpers:surrenderPilot(pPlayer)
 		-- Tier 2
 		HavocSquadronScreenplay:resetViopaQuests(pPlayer)
 		-- Tier 3
-		HavocSquadronScreenplay:resetArkonQuests(pPlayer)
-		-- Tier 4
 		HavocSquadronScreenplay:resetAqzowQuests(pPlayer)
+		-- Tier 4
+		HavocSquadronScreenplay:resetArkonQuests(pPlayer)
 	elseif (pilotSquadron == VORTEX_SQUADRON) then
 		pilotProfession = "rebelPilot"
 
@@ -632,7 +632,7 @@ function SpaceHelpers:addViopaWaypoint(pPlayer)
 		return
 	end
 
-	PlayerObject(pGhost):addWaypoint("lok", "@npc_spawner_n:viopa", "@npc_spawner_n:viopa", -2, 4, -10, WAYPOINT_BLUE, true, true, 0)
+	PlayerObject(pGhost):addWaypoint("lok", "@npc_spawner_n:viopa", "@npc_spawner_n:viopa", 472, 0, 4779, WAYPOINT_BLUE, true, true, 0)
 end
 
 -- @param pPlayer pointer adds waypoint to the Rebel Arkon's Havok Squad Tier1 Trainer

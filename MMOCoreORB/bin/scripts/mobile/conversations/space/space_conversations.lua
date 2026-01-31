@@ -76,7 +76,8 @@ includeFile("conversations/space/neutral/rsf_squadron/dulios_convo.lua")
 
 -- Havoc Squadron (Arkon)
 includeFile("conversations/space/rebel/havoc_squadron/kreezo_convo.lua")
---includeFile("conversations/space/rebel/havoc_squadron/viopa_convo.lua")
+includeFile("conversations/space/rebel/havoc_squadron/viopa_convo.lua")
+includeFile("conversations/space/rebel/havoc_squadron/vrak_convo.lua")
 --includeFile("conversations/space/rebel/havoc_squadron/arkon_convo.lua")
 --includeFile("conversations/space/rebel/havoc_squadron/aqzow_convo.lua")
 

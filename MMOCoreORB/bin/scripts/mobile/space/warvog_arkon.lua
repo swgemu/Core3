@@ -23,7 +23,7 @@ warvog_arkon = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = NONE,
-	optionsBitmask = AIENABLED + JTLINTERESTING,
+	optionsBitmask = AIENABLED + CONVERSABLE + JTLINTERESTING,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/space_rebel_tier4_warvog.iff"},

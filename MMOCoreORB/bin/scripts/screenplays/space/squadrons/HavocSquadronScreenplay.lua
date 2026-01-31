@@ -280,6 +280,7 @@ inspect_viopa_rebel_1 = SpaceInspectScreenplay:new {
 	sideQuest = true,
 	sideQuestType = "destroy_surpriseattack",
 	sideQuestName = "viopa_rebel_1",
+	sideQuestSplitType = SpaceQuestLogic.SIDE_QUEST_SPLIT_TYPES.COMPLETION,
 
 	inspectTargets = {"viopa_mission_1_shuttle"},
 	inspectCargo = "imperial_data",
@@ -563,7 +564,7 @@ recovery_corellia_rebel_tier3_1 = SpaceRecoveryScreenplay:new {
 	sideQuest = true,
 	sideQuestType = "patrol",
 	sideQuestName = "patrol_corellia_rebel_tier3_1_A",
-	sideQuestSplitType = "success",
+	sideQuestSplitType = SpaceQuestLogic.SIDE_QUEST_SPLIT_TYPES.COMPLETION,
 
 	arrivalDelay = 20,
 	recoveryDelay = 30,
@@ -615,7 +616,7 @@ inspect_corellia_rebel_tier3_2 = SpaceInspectScreenplay:new {
 	sideQuest = true,
 	sideQuestType = "delivery",
 	sideQuestName = "delivery_corellia_rebel_tier3_2_a",
-	sideQuestSplitType = "success",
+	sideQuestSplitType = SpaceQuestLogic.SIDE_QUEST_SPLIT_TYPES.COMPLETION,
 
 	inspectTargets = {"huttsmuggler"},
 	inspectCargo = "sector_recon_data",
@@ -639,7 +640,7 @@ delivery_corellia_rebel_tier3_3 = SpaceDeliveryScreenplay:new {
 	sideQuest = true,
 	sideQuestType = "assassinate",
 	sideQuestName = "assassinate_corellia_rebel_tier3_3_a",
-	sideQuestSplitType = "success",
+	sideQuestSplitType = SpaceQuestLogic.SIDE_QUEST_SPLIT_TYPES.COMPLETION,
 
 	pickupShip = "nym_smuggler",
 	deliveryShip = "reb_gunboat_tier3",
@@ -673,7 +674,7 @@ assassinate_corellia_rebel_tier3_4 = SpaceAssassinateScreenplay:new {
 	sideQuest = true,
 	sideQuestType = "patrol",
 	sideQuestName = "patrol_corellia_rebel_tier3_4_a",
-	sideQuestSplitType = "success",
+	sideQuestSplitType = SpaceQuestLogic.SIDE_QUEST_SPLIT_TYPES.COMPLETION,
 
 	arrivalDelay = 15,
 	failTimer = 20,
@@ -1170,6 +1171,7 @@ function HavocSquadronScreenplay:resetViopaQuests(pPlayer)
 
 	local playerID = SceneObject(pPlayer):getObjectID()
 
+	removeQuestStatus(playerID .. HavocSquadronScreenplay.TIER2_QUEST_STRING_1.name .. ":introduced")
 	removeQuestStatus(playerID .. HavocSquadronScreenplay.TIER2_QUEST_STRING_1.name .. ":attempted")
 	removeQuestStatus(playerID .. HavocSquadronScreenplay.TIER2_QUEST_STRING_2.name .. ":attempted")
 	removeQuestStatus(playerID .. HavocSquadronScreenplay.TIER2_QUEST_STRING_3.name .. ":attempted")
@@ -1178,6 +1180,7 @@ function HavocSquadronScreenplay:resetViopaQuests(pPlayer)
 	removeQuestStatus(playerID .. HavocSquadronScreenplay.TIER2_QUEST_STRING_2.name .. ":reward")
 	removeQuestStatus(playerID .. HavocSquadronScreenplay.TIER2_QUEST_STRING_3.name .. ":reward")
 	removeQuestStatus(playerID .. HavocSquadronScreenplay.TIER2_QUEST_STRING_4.name .. ":reward")
+	removeQuestStatus(playerID .. "HavocSquadron:viopaSmuggler")
 end
 
 function HavocSquadronScreenplay:resetArkonQuests(pPlayer)
