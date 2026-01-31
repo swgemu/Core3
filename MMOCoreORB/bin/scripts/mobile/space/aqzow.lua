@@ -23,7 +23,7 @@ aqzow = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = AIENABLED + JTLINTERESTING,
+	optionsBitmask = AIENABLED + CONVERSABLE + JTLINTERESTING,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/space_rebel_tier3_aqzow.iff"},

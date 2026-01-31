@@ -38,6 +38,8 @@ huttsmuggler = ShipAgent:new {
 	conversationTemplate = "",
 	conversationMobile = "",
 	conversationMessage = "", --Too Far Message
+
+	cargoString = "sector_recon_data",
 }
 
 ShipAgentTemplates:addShipAgentTemplate(huttsmuggler, "huttsmuggler")
