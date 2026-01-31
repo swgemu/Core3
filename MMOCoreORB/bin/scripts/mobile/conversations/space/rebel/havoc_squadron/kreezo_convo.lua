@@ -1287,11 +1287,23 @@ kreezo_convo:addScreen(kreezo_convo_escort_duty)
 -- Ground Forces
 kreezo_convo_ground_forces = ConvoScreen:new {
 	id = "ground_forces",
-	leftDialog = "@conversation/corellia_rebel_trainer_1:s_7fcd3228", -- dynamic
-	stopConversation = "true",
-	options = {}
+	leftDialog = "@conversation/corellia_rebel_trainer_1:s_28eea20", -- I didn't see that coming!  You're sure you know what you're getting into?  You could be opening yourself to attack when you least expect it... even as a covert operative.
+	stopConversation = "false",
+	animation = "slow_down",
+	options = {
+		{"@conversation/corellia_rebel_trainer_1:s_13d3df42", "boots_on_ground"}, -- I know
+	}
 }
 kreezo_convo:addScreen(kreezo_convo_ground_forces)
+
+kreezo_convo_boots_on_ground = ConvoScreen:new {
+	id = "boots_on_ground",
+	leftDialog = "@conversation/corellia_rebel_trainer_1:s_2098126f", -- Excellent!  The Rebel Alliance can use some more boots on the ground, too.  Go to a Rebel Recruiter and sign-up!  Heh... they can be hard to find, you know?  But I'm sure you'll manage.
+	stopConversation = "true",
+	animation = "pound_fist_chest",
+	options = {}
+}
+kreezo_convo:addScreen(kreezo_convo_boots_on_ground)
 
 -- Appreciate That
 kreezo_convo_appreciate = ConvoScreen:new {
