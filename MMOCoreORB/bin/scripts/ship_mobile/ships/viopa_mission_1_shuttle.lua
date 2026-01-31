@@ -32,6 +32,8 @@ viopa_mission_1_shuttle = ShipAgent:new {
 	conversationTemplate = "",
 	conversationMobile = "",
 	conversationMessage = "", --Too Far Message
+
+	cargoString = "imperial_data",
 }
 
 ShipAgentTemplates:addShipAgentTemplate(viopa_mission_1_shuttle, "viopa_mission_1_shuttle")
