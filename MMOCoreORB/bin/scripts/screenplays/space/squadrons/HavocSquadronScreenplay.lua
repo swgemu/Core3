@@ -1170,6 +1170,7 @@ function HavocSquadronScreenplay:resetViopaQuests(pPlayer)
 
 	local playerID = SceneObject(pPlayer):getObjectID()
 
+	removeQuestStatus(playerID .. HavocSquadronScreenplay.TIER2_QUEST_STRING_1.name .. ":introduced")
 	removeQuestStatus(playerID .. HavocSquadronScreenplay.TIER2_QUEST_STRING_1.name .. ":attempted")
 	removeQuestStatus(playerID .. HavocSquadronScreenplay.TIER2_QUEST_STRING_2.name .. ":attempted")
 	removeQuestStatus(playerID .. HavocSquadronScreenplay.TIER2_QUEST_STRING_3.name .. ":attempted")
