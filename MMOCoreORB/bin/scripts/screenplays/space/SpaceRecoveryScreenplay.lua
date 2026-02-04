@@ -676,9 +676,42 @@ function SpaceRecoveryScreenplay:assignRecoveryPoints(pRecoveryShip)
 		table.insert(pointsTable, flightPath[i].patrolPointName)
 	end
 
+	-- Switch from escort mode back to fixed patrol so ship follows the route
+	ShipAiAgent(pRecoveryShip):setFixedPatrol()
+
 	ShipAiAgent(pRecoveryShip):assignFixedPatrolPointsTable(pointsTable)
 
 	writeData(SceneObject(pRecoveryShip):getObjectID() .. ":" .. self.className .. ":recoveryShipProgress:", totalPoints)
+
+	-- Create waypoint for player showing escort destination
+	local missionOwnerID = ShipAiAgent(pRecoveryShip):getMissionOwnerID()
+	local pPlayer = getSceneObject(missionOwnerID)
+
+	if (pPlayer ~= nil and SceneObject(pPlayer):isPlayerCreature()) then
+		local pGhost = CreatureObject(pPlayer):getPlayerObject()
+
+		if (pGhost ~= nil and totalPoints > 0) then
+			local firstPoint = flightPath[1]
+
+			-- Clear any existing waypoint
+			SpaceHelpers:clearQuestWaypoint(pPlayer, self.className)
+
+			local waypointID = PlayerObject(pGhost):addWaypoint(self.questZone, "@spacequest/" .. self.questType .. "/" .. self.questName .. ":quest_escort_t", "", firstPoint.x, firstPoint.z, firstPoint.y, WAYPOINT_SPACE, true, true, WAYPOINTQUESTTASK)
+
+			local pWaypoint = getSceneObject(waypointID)
+
+			if (pWaypoint ~= nil) then
+				WaypointObject(pWaypoint):setQuestDetails("@spacequest/" .. self.questType .. "/" .. self.questName .. ":title_d")
+			end
+
+			-- Store the waypointID for cleanup
+			setQuestStatus(missionOwnerID .. ":" .. self.className .. ":waypointID", waypointID)
+
+			if (self.DEBUG_SPACE_RECOVERY) then
+				print(self.className .. ":assignRecoveryPoints -- Created escort waypoint for player at point 1")
+			end
+		end
+	end
 end
 
 function SpaceRecoveryScreenplay:spawnAttackWave(pRecoveryShip)
@@ -1160,6 +1193,37 @@ function SpaceRecoveryScreenplay:notifyEnteredQuestArea(pActiveArea, pShip)
 	if (shipProgress > 0) then
 		-- Write the escort ships progress
 		writeData(shipAgentID .. ":" .. self.className .. ":recoveryShipProgress:", shipProgress)
+
+		-- Update waypoint to next recovery point
+		local pGhost = CreatureObject(pPlayer):getPlayerObject()
+
+		if (pGhost ~= nil) then
+			local flightPath = self.recoveryPoints
+			local totalPoints = #flightPath
+			local nextPointIndex = totalPoints - shipProgress + 1
+
+			if (nextPointIndex <= totalPoints) then
+				local nextPoint = flightPath[nextPointIndex]
+
+				-- Clear existing waypoint
+				SpaceHelpers:clearQuestWaypoint(pPlayer, self.className)
+
+				local waypointID = PlayerObject(pGhost):addWaypoint(self.questZone, "@spacequest/" .. self.questType .. "/" .. self.questName .. ":quest_escort_t", "", nextPoint.x, nextPoint.z, nextPoint.y, WAYPOINT_SPACE, true, true, WAYPOINTQUESTTASK)
+
+				local pWaypoint = getSceneObject(waypointID)
+
+				if (pWaypoint ~= nil) then
+					WaypointObject(pWaypoint):setQuestDetails("@spacequest/" .. self.questType .. "/" .. self.questName .. ":title_d")
+				end
+
+				-- Store the waypointID for cleanup
+				setQuestStatus(missionOwnerID .. ":" .. self.className .. ":waypointID", waypointID)
+
+				if (self.DEBUG_SPACE_RECOVERY) then
+					print(self.className .. ":notifyEnteredQuestArea -- Updated waypoint to point " .. nextPointIndex)
+				end
+			end
+		end
 
 		return 0
 	end
