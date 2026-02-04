@@ -458,6 +458,12 @@ space_corellia = SpacePatrolPointTable:new {
 	{patrolPointName = "rebel_gunboat_patrol_03_03", x = 1488, z = 1562, y = -3194},
 	{patrolPointName = "rebel_gunboat_patrol_03_04", x = 48, z = 7162, y = -5626},
 	{patrolPointName = "rebel_gunboat_patrol_03_05", x = -2863, z = 5850, y = -5738},
+	-- RSF Tier 3 Mission 2e: Rescue RSF Madersim (escort to hyperspace in Corellia)
+	{patrolPointName = "corellia_privateer_tier3_rescue_escort_1", x = 3000, z = 1000, y = -500},
+	{patrolPointName = "corellia_privateer_tier3_rescue_escort_2", x = 3500, z = 800, y = -200},
+	{patrolPointName = "corellia_privateer_tier3_rescue_escort_3", x = 4000, z = 600, y = 100},
+	-- RSF Tier 3 Mission 2d: Space Battle (defend RSF ships in Corellia)
+	{patrolPointName = "corellia_privateer_tier3_space_battle_1", x = 4500, z = -1000, y = 400},
 }
 
 SpacePatrolPoints:addSpacePatrolPoints(space_corellia, "space_corellia")

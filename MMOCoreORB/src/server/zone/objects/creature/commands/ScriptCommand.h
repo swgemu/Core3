@@ -66,6 +66,85 @@ public:
 			String data = DirectorManager::instance()->getQuestStatus(key);
 
 			creature->sendSystemMessage("Value for queststatus using key " + key + " is: " + data);
+		} else if (cmdName == "clearallquests") {
+			ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
+			if (ghost != nullptr) {
+				// Clear quest data map
+				int questCount = ghost->getPlayerQuestsData()->size();
+				Vector<uint32> questCrcs;
+				for (int i = 0; i < questCount; i++) {
+					questCrcs.add(ghost->getPlayerQuestsData()->getKeyAt(i));
+				}
+				for (int i = 0; i < questCrcs.size(); i++) {
+					ghost->clearPlayerQuestData(questCrcs.get(i), false);
+				}
+
+				// Clear bit arrays
+				int bitCount = ghost->getActiveQuests()->bitCount();
+				for (int i = 0; i < bitCount; i++) {
+					ghost->clearActiveQuestsBit(i, false);
+					ghost->clearCompletedQuestsBit(i, false);
+				}
+				creature->sendSystemMessage("Cleared " + String::valueOf(questCrcs.size()) + " quests and " + String::valueOf(bitCount) + " bits. Relog to refresh client.");
+			}
+		} else if (cmdName == "setpilottier") {
+			if (!args.hasMoreTokens()) {
+				creature->sendSystemMessage("SYNTAX: /script setpilottier <tier>");
+				return INVALIDPARAMETERS;
+			}
+
+			int tier = args.getIntToken();
+
+			ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
+			if (ghost != nullptr) {
+				ghost->setPilotTier(tier);
+				creature->sendSystemMessage("Set pilot tier to: " + String::valueOf(tier));
+			}
+		} else if (cmdName == "setsquadron") {
+			if (!args.hasMoreTokens()) {
+				creature->sendSystemMessage("SYNTAX: /script setsquadron <squadronType>");
+				return INVALIDPARAMETERS;
+			}
+
+			int squadron = args.getIntToken();
+
+			ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
+			if (ghost != nullptr) {
+				ghost->setPilotSquadron(squadron);
+				creature->sendSystemMessage("Set squadron type to: " + String::valueOf(squadron));
+			}
+		} else if (cmdName == "setqueststatus") {
+			if (!args.hasMoreTokens()) {
+				creature->sendSystemMessage("SYNTAX: /script setqueststatus <key> <value>");
+				return INVALIDPARAMETERS;
+			}
+
+			String key = "";
+			args.getStringToken(key);
+
+			if (!args.hasMoreTokens()) {
+				creature->sendSystemMessage("SYNTAX: /script setqueststatus <key> <value>");
+				return INVALIDPARAMETERS;
+			}
+
+			String value = "";
+			args.getStringToken(value);
+
+			DirectorManager::instance()->setQuestStatus(key, value);
+
+			creature->sendSystemMessage("Set quest status: " + key + " = " + value);
+		} else if (cmdName == "removequeststatus") {
+			if (!args.hasMoreTokens()) {
+				creature->sendSystemMessage("SYNTAX: /script removequeststatus <key>");
+				return INVALIDPARAMETERS;
+			}
+
+			String key = "";
+			args.getStringToken(key);
+
+			DirectorManager::instance()->removeQuestStatus(key);
+
+			creature->sendSystemMessage("Removed quest status: " + key);
 		} else if (cmdName == "luaevents") {
 			if (!args.hasMoreTokens()) {
 				creature->sendSystemMessage("SYNTAX: /script luaevents <oid>");
