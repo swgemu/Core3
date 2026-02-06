@@ -1264,6 +1264,27 @@ space_dantooine = SpacePatrolPointTable:new {
 	{patrolPointName = "mining_route_1_07", x = 1427, z = -939, y = -2225},
 	{patrolPointName = "mining_route_1_08", x = 1382, z = -895, y = -2277},
 	{patrolPointName = "mining_route_1_09", x = 1352, z = -767, y = -2311},
+	-- RSF Tier 3 Mission 1: Capture Black Sun Assassin (Recovery Mission)
+	-- Pre-recovery patrol points (ship patrols here before player disables/captures)
+	{patrolPointName = "dantooine_privateer_tier3_recovery_point_1", x = -1500, z = 800, y = 2000},
+	{patrolPointName = "dantooine_privateer_tier3_recovery_point_2", x = -1200, z = 600, y = 2500},
+	{patrolPointName = "dantooine_privateer_tier3_recovery_point_3", x = -800, z = 400, y = 3000},
+	{patrolPointName = "dantooine_privateer_tier3_recovery_point_4", x = -400, z = 200, y = 3500},
+	-- Post-capture escort points (ship follows this route to hyperspace after capture)
+	{patrolPointName = "dantooine_privateer_tier3_recovery_point_5", x = 0, z = 0, y = 3800},
+	{patrolPointName = "dantooine_privateer_tier3_recovery_point_6", x = 500, z = -200, y = 4200},
+	{patrolPointName = "dantooine_privateer_tier3_recovery_point_7", x = 1000, z = -400, y = 4600},
+	{patrolPointName = "dantooine_privateer_tier3_recovery_point_8", x = 1500, z = -600, y = 5000},
+	-- RSF Tier 3 Mission 1b: Follow-up patrol (after capture, awaiting orders)
+	{patrolPointName = "dantooine_privateer_tier3_patrol_1", x = 2000, z = -500, y = 5500},
+	{patrolPointName = "dantooine_privateer_tier3_patrol_2", x = 2500, z = -700, y = 6000},
+	{patrolPointName = "dantooine_privateer_tier3_patrol_3", x = 3000, z = -900, y = 6500},
+	{patrolPointName = "dantooine_privateer_tier3_patrol_4", x = 3500, z = -1100, y = 7000},
+	-- RSF Tier 3 Mission 4a: Beldini assassinate patrol points
+	{patrolPointName = "dantooine_privateer_tier3_beldini_1", x = -2673, z = -2332, y = -502},
+	{patrolPointName = "dantooine_privateer_tier3_beldini_2", x = -4323, z = -3711, y = -844},
+	{patrolPointName = "dantooine_privateer_tier3_beldini_3", x = -5818, z = -4961, y = -1155},
+	{patrolPointName = "dantooine_privateer_tier3_beldini_4", x = -7473, z = -6718, y = -1559},
 }
 
 SpacePatrolPoints:addSpacePatrolPoints(space_dantooine, "space_dantooine")
