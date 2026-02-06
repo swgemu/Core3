@@ -996,6 +996,19 @@ space_naboo = SpacePatrolPointTable:new {
 	{patrolPointName = "commerce_route_1_02", x = 371, z = 1057, y = -1805},
 	{patrolPointName = "commerce_route_1_03", x = 785, z = 1161, y = -2395},
 	{patrolPointName = "commerce_route_1_04", x = 987, z = 1211, y = -2681},
+	-- RSF Tier 3 Mission 2: Escort Cadamo Sun (decoy freighter)
+	{patrolPointName = "naboo_privateer_tier3_escort_1", x = 2799, z = -362, y = -19},
+	{patrolPointName = "naboo_privateer_tier3_escort_2", x = 3281, z = 295, y = -818},
+	{patrolPointName = "naboo_privateer_tier3_escort_3", x = 3775, z = 743, y = -925},
+	{patrolPointName = "naboo_privateer_tier3_escort_4", x = 3895, z = 1220, y = -1913},
+	-- RSF Tier 3 Mission 1d: Assassinate (side quest from Dantooine)
+	{patrolPointName = "naboo_privateer_tier3_assassinate_1", x = 3500, z = -3000, y = -2000},
+	{patrolPointName = "naboo_privateer_tier3_assassinate_2", x = 4000, z = -2500, y = -1500},
+	-- RSF Tier 3 Mission 4a: Assassinate Beldini
+	{patrolPointName = "naboo_privateer_tier3_beldini_1", x = -2673, z = -2332, y = -502},
+	{patrolPointName = "naboo_privateer_tier3_beldini_2", x = -4323, z = -3711, y = -844},
+	{patrolPointName = "naboo_privateer_tier3_beldini_3", x = -5818, z = -4961, y = -1155},
+	{patrolPointName = "naboo_privateer_tier3_beldini_4", x = -7473, z = -6718, y = -1559},
 }
 
 SpacePatrolPoints:addSpacePatrolPoints(space_naboo, "space_naboo")
