@@ -1,0 +1,327 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3ed2b55f_f8ebb0f9",
+        "filename": "MMOCoreORB/bin/scripts/mobile/misc/mouse_droid.lua",
+        "patchSetId": 28
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2026-02-06T02:07:14Z",
+      "side": 1,
+      "message": "Mouse droids are used in various screenplays, setting them attackable will break all the other uses and its not necessary.",
+      "revId": "a960226cc75c24b6fcd1f58b5064818f5fe03d75",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff397fe7_ae5e5ea5",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tutorial/conversations/tutorialImperialBrokerConvoHandler.lua",
+        "patchSetId": 28
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2026-02-06T02:07:14Z",
+      "side": 1,
+      "message": "All of the animations in this handler and be added to the conversation template screens with:\nanimation \u003d \"\"\nplayerAnimation \u003d \"\"",
+      "revId": "a960226cc75c24b6fcd1f58b5064818f5fe03d75",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5cbc0f06_09342a21",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tutorial/tutorial.lua",
+        "patchSetId": 28
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2026-02-06T02:07:14Z",
+      "side": 1,
+      "message": "A couple notes:\n- Formatting mixed in with changes makes for much messier when review logical changes. Always split any formatting to a separate commit. Renaming of the screenplay name and the pointer names makes for a lot of excess changes when the goal is to make the tutorial functional as per vanilla 14.1.\n- For every writeData there needs to be a deleteData to clean it up or else it will leak during extended up times.\n- The activeAreas also need to be destroyed, as they too will leak.\n\nI would suggest adding a all of the above clean up to the destroyTutorial function, so everything is cleaned with the last thing being the destruction of the building itself.",
+      "revId": "a960226cc75c24b6fcd1f58b5064818f5fe03d75",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b99423d_c2f0721a",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tutorial/tutorial.lua",
+        "patchSetId": 28
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2026-02-06T02:07:14Z",
+      "side": 1,
+      "message": "Only nil check pointers.",
+      "revId": "a960226cc75c24b6fcd1f58b5064818f5fe03d75",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ffdffa7_7051f3a7",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tutorial/tutorial.lua",
+        "patchSetId": 28
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2026-02-06T02:07:14Z",
+      "side": 1,
+      "message": "If we are going to check against this CRC like this, then declare it in the screenplay header as a constant, like TUTORIAL_BUILDING_CRC \u003d 3369536646. Then check against self.TUTORIAL_BUILDING_CRC",
+      "revId": "a960226cc75c24b6fcd1f58b5064818f5fe03d75",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "92830c12_f5381211",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tutorial/tutorial.lua",
+        "patchSetId": 28
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2026-02-06T02:07:14Z",
+      "side": 1,
+      "message": "You are making this a persistent observer which could mean all sorts of issues later if it is never removed, like holding the player in memory (leak) every time they log in. Probably better to leave it as a non-persistent observer and reapply both if the player fails the finish the tutorial by logging out.",
+      "revId": "a960226cc75c24b6fcd1f58b5064818f5fe03d75",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc399101_1902a692",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tutorial/tutorial.lua",
+        "patchSetId": 28
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2026-02-06T02:07:14Z",
+      "side": 1,
+      "message": "If a player logs out in the room1 of the tutorial and server is restarted, this information will no longer be stored so cannot be recalled if they attempt to finish later. setQuestStatus is persistent, just will need to be removed later when the player finished the tutorial.",
+      "revId": "a960226cc75c24b6fcd1f58b5064818f5fe03d75",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff9f0d48_a57c6f00",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tutorial/tutorial.lua",
+        "patchSetId": 28
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2026-02-06T02:07:14Z",
+      "side": 1,
+      "message": "Does not matter here is the building is null you aren\u0027t using that pointer for anything, and thus the leak would be created on the PARENTCHANGED observer. You also aren\u0027t using the pBuilding pointer or the playerID at all in this function. All you need is a nil check on pPlayer and then drop the observers.",
+      "revId": "a960226cc75c24b6fcd1f58b5064818f5fe03d75",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1adacf3_904fc46f",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tutorial/tutorial.lua",
+        "patchSetId": 28
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2026-02-06T02:07:14Z",
+      "side": 1,
+      "message": "Whole function fails if one object is nil, not the best method. Though not nesting is preferred in most cases here it would be acceptable or you could use goto, which is like continue",
+      "revId": "a960226cc75c24b6fcd1f58b5064818f5fe03d75",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a99589b_a60b9ee1",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tutorial/tutorial.lua",
+        "patchSetId": 28
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2026-02-06T02:07:14Z",
+      "side": 1,
+      "message": "nil checking an ID again",
+      "revId": "a960226cc75c24b6fcd1f58b5064818f5fe03d75",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1fdfa7f2_1b2cef0e",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tutorial/tutorial.lua",
+        "patchSetId": 28
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2026-02-06T02:07:14Z",
+      "side": 1,
+      "message": "You only need to clear the players in this function. All of the objects will be handled when the structure is destroyed because it will destroy its container objects",
+      "revId": "a960226cc75c24b6fcd1f58b5064818f5fe03d75",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c2cba08a_e8ee960a",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tutorial/tutorial.lua",
+        "patchSetId": 28
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2026-02-06T02:07:14Z",
+      "side": 1,
+      "message": "Building should NOT be persistent, we do not need to destroy is the bdb",
+      "revId": "a960226cc75c24b6fcd1f58b5064818f5fe03d75",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2b56d3e_24c65adc",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tutorial/tutorial.lua",
+        "patchSetId": 28
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2026-02-06T02:07:14Z",
+      "side": 1,
+      "message": "The tutorial audio talks about the bazaar terminal and does not require the player to retrieve any items from it. Seems like this should stay as a bazaar terminal.",
+      "revId": "a960226cc75c24b6fcd1f58b5064818f5fe03d75",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b58cb7a_1293c5e5",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tutorial/tutorial.lua",
+        "patchSetId": 28
+      },
+      "lineNbr": 574,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2026-02-06T02:07:14Z",
+      "side": 1,
+      "message": "Extra line",
+      "revId": "a960226cc75c24b6fcd1f58b5064818f5fe03d75",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "47e38b08_256469fe",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tutorial/tutorial.lua",
+        "patchSetId": 28
+      },
+      "lineNbr": 818,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2026-02-06T02:07:14Z",
+      "side": 1,
+      "message": "Is this proper? checking room14 while in room8?",
+      "revId": "a960226cc75c24b6fcd1f58b5064818f5fe03d75",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f75f47d3_1c1c0d29",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tutorial/tutorial.lua",
+        "patchSetId": 28
+      },
+      "lineNbr": 1802,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2026-02-06T02:07:14Z",
+      "side": 1,
+      "message": "don\u0027t spawn an object, just set the agents next position.",
+      "revId": "a960226cc75c24b6fcd1f58b5064818f5fe03d75",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "887921cd_04dd7f7c",
+        "filename": "MMOCoreORB/src/server/zone/managers/player/creation/PlayerCreationManager.cpp",
+        "patchSetId": 28
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2026-02-06T02:07:14Z",
+      "side": 1,
+      "message": "This should be calling the configManager added function, instead this will read the config lua again.",
+      "revId": "a960226cc75c24b6fcd1f58b5064818f5fe03d75",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f6fae346_7707fe41",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/NewbieSelectStartingLocationCommand.h",
+        "patchSetId": 28
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2026-02-06T02:07:14Z",
+      "side": 1,
+      "message": "Locker cLock(waypoint, player);\nnewline",
+      "revId": "a960226cc75c24b6fcd1f58b5064818f5fe03d75",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e7df6e81_cad731ca",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/PlayerObjectImplementation.cpp",
+        "patchSetId": 28
+      },
+      "lineNbr": 3848,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2026-02-06T02:07:14Z",
+      "side": 1,
+      "message": "Same as the other added configManager function, you are reading the lua again instead of calling the function itself and you can just call this in the if statement since its only referenced once.",
+      "revId": "a960226cc75c24b6fcd1f58b5064818f5fe03d75",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    }
+  ]
+}

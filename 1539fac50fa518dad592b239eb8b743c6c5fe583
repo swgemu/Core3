@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "58c1f7a2_accb88cc",
+        "filename": "MMOCoreORB/bin/scripts/mobile/tutorial/tutorial_stormtrooper_filler.lua",
+        "patchSetId": 28
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2026-02-06T02:07:14Z",
+      "side": 0,
+      "message": "Don\u0027t remove, just leave invulnerable flag on it or NONE if you want the HAM bars to show.",
+      "revId": "1539fac50fa518dad592b239eb8b743c6c5fe583",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    }
+  ]
+}
