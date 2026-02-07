@@ -178,16 +178,16 @@ function kaydineConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNpc, sel
 		end
 
 		if (not CreatureObject(pPlayer):hasSkill("pilot_neutral_starships_02") and skillManager:fulfillsSkillPrerequisitesAndXp(pPlayer, "pilot_neutral_starships_02")) then
-			clonedConversation:addOption("@conversation/naboo_privateer_trainer_2:s_21", responseString .. "train_fighters") -- I am interested in advanced fighters.
+			clonedConversation:addOption("@conversation/naboo_privateer_trainer_2:s_45b71b4d", responseString .. "train_fighters") -- I am interested in advanced fighters.
 		end
 		if (not CreatureObject(pPlayer):hasSkill("pilot_neutral_weapons_02") and skillManager:fulfillsSkillPrerequisitesAndXp(pPlayer, "pilot_neutral_weapons_02")) then
-			clonedConversation:addOption("@conversation/naboo_privateer_trainer_2:s_5", responseString .. "train_components") -- I am interested in intermediate starship component use.
+			clonedConversation:addOption("@conversation/naboo_privateer_trainer_2:s_197f4f94", responseString .. "train_components") -- I am interested in intermediate starship component use.
 		end
 		if (not CreatureObject(pPlayer):hasSkill("pilot_neutral_procedures_02") and skillManager:fulfillsSkillPrerequisitesAndXp(pPlayer, "pilot_neutral_procedures_02")) then
-			clonedConversation:addOption("@conversation/naboo_privateer_trainer_2:s_44", responseString .. "train_techniques") -- I am interested in starship defense training.
+			clonedConversation:addOption("@conversation/naboo_privateer_trainer_2:s_8f5942fa", responseString .. "train_techniques") -- I am interested in starship defense training.
 		end
 		if (not CreatureObject(pPlayer):hasSkill("pilot_neutral_droid_02") and skillManager:fulfillsSkillPrerequisitesAndXp(pPlayer, "pilot_neutral_droid_02")) then
-			clonedConversation:addOption("@conversation/naboo_privateer_trainer_2:s_76", responseString .. "train_algorithms") -- I am interested in reactor engineering algorithms.
+			clonedConversation:addOption("@conversation/naboo_privateer_trainer_2:s_eff66f4d", responseString .. "train_algorithms") -- I am interested in reactor engineering algorithms.
 		end
 
 	-- Handle Skill box granting

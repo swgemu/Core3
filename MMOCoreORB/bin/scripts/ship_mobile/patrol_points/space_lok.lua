@@ -566,6 +566,13 @@ space_lok = SpacePatrolPointTable:new {
 	{patrolPointName = "trade_fed_station_patrol_12", x = 1272, z = -6135, y = -7037},
 	{patrolPointName = "trade_fed_station_patrol_13", x = 436, z = -5653, y = -6579},
 	{patrolPointName = "trade_fed_station_patrol_14", x = -1373, z = -4465, y = -5356},
+	-- RSF Tier 3 Mission 4b: Crystal Snake battle (Voria's Ember)
+	{patrolPointName = "lok_privateer_tier3_crystal_snake_battle", x = 3500, z = 1500, y = -2000},
+	-- RSF Tier 3 Mission 4f: Krayt's Bane assassinate patrol points
+	{patrolPointName = "lok_privateer_tier3_krayt_bane_1", x = 2500, z = 1200, y = -1500},
+	{patrolPointName = "lok_privateer_tier3_krayt_bane_2", x = 3000, z = 800, y = -1800},
+	{patrolPointName = "lok_privateer_tier3_krayt_bane_3", x = 3500, z = 400, y = -2100},
+	{patrolPointName = "lok_privateer_tier3_krayt_bane_4", x = 4000, z = 0, y = -2400},
 }
 
 SpacePatrolPoints:addSpacePatrolPoints(space_lok, "space_lok")
