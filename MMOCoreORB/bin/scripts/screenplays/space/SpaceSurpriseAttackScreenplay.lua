@@ -1,7 +1,7 @@
 SpaceSurpriseAttackScreenplay = SpaceQuestLogic:new {
 	className = "SpaceSurpriseAttackScreenplay",
 
-	DEBUG_SPACE_SURPRISE_ATTACK = false,
+	DEBUG_SPACE_SURPRISE_ATTACK = true,
 }
 
 function SpaceSurpriseAttackScreenplay:start()
