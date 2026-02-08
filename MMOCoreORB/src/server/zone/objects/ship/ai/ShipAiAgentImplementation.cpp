@@ -1746,8 +1746,26 @@ void ShipAiAgentImplementation::removeSpaceFactionEnemy(uint32 factionHash) {
 void ShipAiAgentImplementation::swapSpaceFactionAssociations() {
 	auto tempAllies = alliedFactions;
 
-	alliedFactions = enemyFactions;
-	enemyFactions = tempAllies;
+	alliedFactions.removeAll();
+
+	for (int i = enemyFactions.size() - 1; i >= 0 ; i--) {
+		alliedFactions.add(enemyFactions.get(i));
+
+		info(true) << "Adding new allied faction: " << enemyFactions.get(i) << " alliedFactions Size: " << alliedFactions.size();
+
+		enemyFactions.removeElementAt(i);
+	}
+
+	for (int i = tempAllies.size() - 1; i >= 0 ; i--) {
+		enemyFactions.add(tempAllies.get(i));
+
+		info(true) << "Adding new enemy faction: " << tempAllies.get(i) << " enemyFactions Size: " << enemyFactions.size();
+
+		enemyFactions.removeElementAt(i);
+	}
+
+	//alliedFactions = enemyFactions;
+	//enemyFactions = tempAllies;
 }
 
 bool ShipAiAgentImplementation::isAggressiveTo(TangibleObject* target) {

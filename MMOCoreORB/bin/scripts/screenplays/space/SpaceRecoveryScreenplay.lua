@@ -104,6 +104,9 @@ function SpaceRecoveryScreenplay:completeQuest(pPlayer, notifyClient)
 	-- Complete the Journal Quest
 	SpaceHelpers:completeSpaceQuest(pPlayer, self.questType, self.questName, notifyBool)
 
+	-- Remove quest waypoint
+	SpaceHelpers:clearQuestWaypoint(pPlayer, self.className)
+
 	-- Remove the zone entry observer
 	dropObserver(ZONESWITCHED, self.className, "enteredZone", pPlayer)
 
@@ -596,6 +599,11 @@ function SpaceRecoveryScreenplay:continueRecovery(pRecoveryShip)
 		return
 	end
 
+	if (ShipObject(pRecoveryShip):isShipDestroyed()) then
+		self:failQuest(pPlayer)
+		return
+	end
+
 	local pPlayerShip = SceneObject(pPlayer):getRootParent()
 
 	if (pPlayerShip == nil or not SceneObject(pPlayerShip):isShipObject()) then
@@ -620,17 +628,22 @@ function SpaceRecoveryScreenplay:continueRecovery(pRecoveryShip)
 	-- Drop it as a mission object for now
 	CreatureObject(pPlayer):removeSpaceMissionObject(recoveryAgentID, true)
 
-	-- Update the ships faction
-	ShipObject(pRecoveryShip):setShipFactionString(SpaceHelpers:getPlayerShipFactionString(pPlayer))
+	local playerShipFaction = SpaceHelpers:getPlayerShipFactionString(pPlayer)
 
+	if (self.DEBUG_SPACE_RECOVERY) then
+		print("Setting Recovery Ship Faction to player ship faction string: " .. playerShipFaction)
+	end
+
+	-- Update the ships faction
+	ShipObject(pRecoveryShip):setShipFactionString(playerShipFaction)
+
+	--ShipAiAgent(pRecoveryShip):addSpaceFactionAlly(playerShipFaction)
+	--ShipAiAgent(pRecoveryShip):removeSpaceFactionEnemy(playerShipFaction)
 	ShipAiAgent(pRecoveryShip):swapSpaceFactionAssociations()
 
 	-- Remove as enemy
-	ShipAiAgent(pRecoveryShip):removeEnemyShip(SceneObject(pPlayerShip):getObjectID())
 	TangibleObject(pRecoveryShip):clearPvpStatusBit(AGGRESSIVE)
-
-	-- Repair the ship
-	ShipAiAgent(pRecoveryShip):repairShipAgent(100)
+	ShipAiAgent(pRecoveryShip):removeEnemyShip(SceneObject(pPlayerShip):getObjectID())
 
 	-- Give Ship Escort Flag
 	ShipAiAgent(pRecoveryShip):setEscort()
@@ -645,8 +658,8 @@ function SpaceRecoveryScreenplay:continueRecovery(pRecoveryShip)
 	-- Broadcast we are a friendly now
 	TangibleObject(pRecoveryShip):broadcastPvpStatusBitmask()
 
-	-- Re-add to the mission object list
-	CreatureObject(pPlayer):addSpaceMissionObject(recoveryAgentID, true)
+	-- Repair the ship
+	ShipAiAgent(pRecoveryShip):repairShipAgent(100)
 
 	-- Assign the escort points
 	createEvent(10 * 1000, self.className, "assignRecoveryPoints", pRecoveryShip, "")
@@ -660,6 +673,19 @@ end
 function SpaceRecoveryScreenplay:assignRecoveryPoints(pRecoveryShip)
 	if (pRecoveryShip == nil) then
 		Logger:log(self.className .. ":assignRecoveryPoints -- pRecoveryShip is nil.", LT_ERROR)
+		return
+	end
+
+	local missionOwnerID = ShipAiAgent(pRecoveryShip):getMissionOwnerID()
+	local pPlayer = getSceneObject(missionOwnerID)
+
+	if (pPlayer == nil or SceneObject(pPlayer):isPlayerCreature()) then
+		Logger:log(self.className .. ":assignRecoveryPoints -- pPlayer is nil.", LT_ERROR)
+		return
+	end
+
+	if (ShipObject(pRecoveryShip):isShipDisabled()) then
+		self:failQuest(pPlayer)
 		return
 	end
 
@@ -680,33 +706,31 @@ function SpaceRecoveryScreenplay:assignRecoveryPoints(pRecoveryShip)
 
 	writeData(SceneObject(pRecoveryShip):getObjectID() .. ":" .. self.className .. ":recoveryShipProgress:", totalPoints)
 
+	-- Re-add to the mission object list
+	CreatureObject(pPlayer):addSpaceMissionObject(recoveryAgentID, true)
+
+	local pGhost = CreatureObject(pPlayer):getPlayerObject()
+
 	-- Create waypoint for player showing escort destination
-	local missionOwnerID = ShipAiAgent(pRecoveryShip):getMissionOwnerID()
-	local pPlayer = getSceneObject(missionOwnerID)
+	if (pGhost ~= nil and totalPoints > 0) then
+		local firstPoint = flightPath[1]
 
-	if (pPlayer ~= nil and SceneObject(pPlayer):isPlayerCreature()) then
-		local pGhost = CreatureObject(pPlayer):getPlayerObject()
+		-- Clear any existing waypoint
+		SpaceHelpers:clearQuestWaypoint(pPlayer, self.className)
 
-		if (pGhost ~= nil and totalPoints > 0) then
-			local firstPoint = flightPath[1]
+		local waypointID = PlayerObject(pGhost):addWaypoint(self.questZone, "@spacequest/" .. self.questType .. "/" .. self.questName .. ":quest_escort_t", "", firstPoint.x, firstPoint.z, firstPoint.y, WAYPOINT_SPACE, true, true, WAYPOINTQUESTTASK)
 
-			-- Clear any existing waypoint
-			SpaceHelpers:clearQuestWaypoint(pPlayer, self.className)
+		local pWaypoint = getSceneObject(waypointID)
 
-			local waypointID = PlayerObject(pGhost):addWaypoint(self.questZone, "@spacequest/" .. self.questType .. "/" .. self.questName .. ":quest_escort_t", "", firstPoint.x, firstPoint.z, firstPoint.y, WAYPOINT_SPACE, true, true, WAYPOINTQUESTTASK)
+		if (pWaypoint ~= nil) then
+			WaypointObject(pWaypoint):setQuestDetails("@spacequest/" .. self.questType .. "/" .. self.questName .. ":title_d")
+		end
 
-			local pWaypoint = getSceneObject(waypointID)
+		-- Store the waypointID for cleanup
+		setQuestStatus(missionOwnerID .. ":" .. self.className .. ":waypointID", waypointID)
 
-			if (pWaypoint ~= nil) then
-				WaypointObject(pWaypoint):setQuestDetails("@spacequest/" .. self.questType .. "/" .. self.questName .. ":title_d")
-			end
-
-			-- Store the waypointID for cleanup
-			setQuestStatus(missionOwnerID .. ":" .. self.className .. ":waypointID", waypointID)
-
-			if (self.DEBUG_SPACE_RECOVERY) then
-				print(self.className .. ":assignRecoveryPoints -- Created escort waypoint for player at point 1")
-			end
+		if (self.DEBUG_SPACE_RECOVERY) then
+			print(self.className .. ":assignRecoveryPoints -- Created escort waypoint for player at point 1")
 		end
 	end
 end
