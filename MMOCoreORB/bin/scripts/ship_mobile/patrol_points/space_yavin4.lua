@@ -670,6 +670,25 @@ space_yavin4 = SpacePatrolPointTable:new {
 	{patrolPointName = "nice_miners_1_06", x = -849, z = -5821, y = -5760},
 	{patrolPointName = "nice_miners_1_07", x = -1580, z = -5748, y = -5673},
 	{patrolPointName = "nice_miners_1_08", x = -2466, z = -5660, y = -5569},
+	-- RSF Tier 4 Mission 3b: Decoy Patrol
+	{patrolPointName = "yavin_privateer_tier4_patrol_3b_1", x = 2500, z = -300, y = -1500},
+	{patrolPointName = "yavin_privateer_tier4_patrol_3b_2", x = 3000, z = -100, y = -1000},
+	{patrolPointName = "yavin_privateer_tier4_patrol_3b_3", x = 3500, z = 100, y = -500},
+	{patrolPointName = "yavin_privateer_tier4_patrol_3b_4", x = 4000, z = 300, y = 0},
+	-- RSF Tier 4 Mission 4a: Space Battle Location
+	{patrolPointName = "yavin_privateer_tier4_battle_4a", x = 5000, z = 1000, y = -1500},
+	-- RSF Tier 4 Mission 4b: Escort Scanner
+	{patrolPointName = "yavin_privateer_tier4_escort_4b_1", x = 5500, z = 800, y = -1000},
+	{patrolPointName = "yavin_privateer_tier4_escort_4b_2", x = 6000, z = 600, y = -500},
+	{patrolPointName = "yavin_privateer_tier4_escort_4b_3", x = 6500, z = 400, y = 0},
+	{patrolPointName = "yavin_privateer_tier4_escort_4b_4", x = 7000, z = 200, y = 500},
+	-- RSF Tier 4 Mission 4c: Final Battle Location
+	{patrolPointName = "yavin_privateer_tier4_final_battle", x = 7500, z = 0, y = 1000},
+	-- RSF Tier 4 Duty Missions
+	{patrolPointName = "yavin_privateer_recovery_duty_1", x = 4000, z = 500, y = -1000},
+	{patrolPointName = "yavin_privateer_recovery_duty_2", x = 5000, z = 200, y = 0},
+	{patrolPointName = "yavin_privateer_rescue_duty_1", x = 5500, z = 300, y = 500},
+	{patrolPointName = "yavin_privateer_rescue_duty_2", x = 6000, z = 100, y = 1000},
 }
 
 SpacePatrolPoints:addSpacePatrolPoints(space_yavin4, "space_yavin4")

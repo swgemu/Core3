@@ -282,6 +282,9 @@ destroy_naboo_privateer_13a = SpaceDestroyScreenplay:new {
 	questZone = "space_naboo",
 
 	creditReward = 5000,
+	itemReward = {
+		{species = {-1}, item = "object/tangible/ship/components/booster/bst_mission_reward_neutral_mandal_m_series.iff"},
+	},
 
 	sideQuest = false,
 	sideQuestType = "",
@@ -311,7 +314,10 @@ escort_naboo_privateer_14 = SpaceEscortScreenplay:new {
 
 	questZone = "space_naboo",
 
-	creditReward = 6000,
+	creditReward = 5000,
+	itemReward = {
+		{species = {-1}, item = "object/tangible/ship/components/weapon/wpn_mission_reward_neutral_hk_military_blaster.iff"},
+	},
 
 	sideQuest = false,
 	sideQuestType = "",
@@ -345,7 +351,10 @@ inspect_naboo_privateer_15 = SpaceInspectScreenplay:new {
 
 	questZone = "space_naboo",
 
-	creditReward = 7000,
+	creditReward = 5000,
+	itemReward = {
+		{species = {-1}, item = "object/tangible/ship/components/shield_generator/shd_mission_reward_neutral_koensayr_ds23.iff"},
+	},
 
 	sideQuest = false,
 	sideQuestType = "",
@@ -369,9 +378,9 @@ assassinate_naboo_privateer_tier2_4a = SpaceAssassinateScreenplay:new {
 
 	questZone = "space_naboo",
 
-	creditReward = 10000,
+	creditReward = 5000,
 	itemReward = {
-		{species = {-1}, item = "object/tangible/ship/components/weapon/wpn_mission_reward_neutral_mandal_light_blaster.iff"},
+		{species = {-1}, item = "object/tangible/ship/components/droid_interface/ddi_mission_reward_neutral_sorosuub_w19.iff"},
 	},
 
 	sideQuest = false,
@@ -1110,6 +1119,540 @@ assassinate_naboo_privateer_tier3_4f = SpaceAssassinateScreenplay:new {
 registerScreenPlay("assassinate_naboo_privateer_tier3_4f", true)
 
 --[[
+	Tier 4 -- Diness Imler Main Missions
+]]
+
+-- Mission 1: Escort RSF Scanner (Endor) -> Escort Imperial Official (Endor)
+
+escort_naboo_privateer_tier4_1a = SpaceEscortScreenplay:new {
+	className = "escort_naboo_privateer_tier4_1a",
+
+	questName = "naboo_privateer_tier4_1a",
+	questType = "escort",
+
+	questZone = "space_endor",
+
+	creditReward = 0,
+
+	sideQuest = true,
+	sideQuestType = "escort",
+	sideQuestName = "naboo_privateer_tier4_1b",
+	sideQuestSplitType = SpaceQuestLogic.SIDE_QUEST_SPLIT_TYPES.COMPLETION,
+	sideQuestDelay = 3,
+
+	-- Escort the RSF Deep Space Scanner through Endor
+	escortShips = {"rsf_scanner_tier4"},
+
+	escortPoints = {
+		{patrolPointName = "endor_privateer_tier4_escort_1a_1", zoneName = "space_endor", x = 3000, z = 1500, y = -2000, escortNumber = 1, radius = 250},
+		{patrolPointName = "endor_privateer_tier4_escort_1a_2", zoneName = "space_endor", x = 3500, z = 1200, y = -1500, escortNumber = 2, radius = 250},
+		{patrolPointName = "endor_privateer_tier4_escort_1a_3", zoneName = "space_endor", x = 4000, z = 900, y = -1000, escortNumber = 3, radius = 250},
+		{patrolPointName = "endor_privateer_tier4_escort_1a_4", zoneName = "space_endor", x = 4500, z = 600, y = -500, escortNumber = 4, radius = 250},
+	},
+
+	attackDelay = 90,
+
+	-- 3 Tier 4 Kihraxz Black Sun Aggressor (per wiki)
+	attackShips = {
+		{"blacksun_aggressor_tier4", "blacksun_aggressor_tier4", "blacksun_aggressor_tier4"},
+	}
+}
+
+registerScreenPlay("escort_naboo_privateer_tier4_1a", true)
+
+escort_naboo_privateer_tier4_1b = SpaceEscortScreenplay:new {
+	className = "escort_naboo_privateer_tier4_1b",
+
+	questName = "naboo_privateer_tier4_1b",
+	questType = "escort",
+
+	questZone = "space_endor",
+
+	creditReward = 10000,
+	itemReward = {
+		{species = {-1}, item = "object/tangible/ship/components/booster/bst_mission_reward_neutral_mandal_q_series.iff"},
+	},
+
+	parentQuest = "escort_naboo_privateer_tier4_1a",
+	parentQuestType = "escort",
+	parentQuestName = "naboo_privateer_tier4_1a",
+
+	sideQuest = false,
+	sideQuestType = "",
+
+	-- Escort Imperial Lambda shuttle with official
+	escortShips = {"imp_lambda_shuttle_tier4"},
+
+	escortPoints = {
+		{patrolPointName = "endor_privateer_tier4_escort_1b_1", zoneName = "space_endor", x = 5000, z = 400, y = 0, escortNumber = 1, radius = 250},
+		{patrolPointName = "endor_privateer_tier4_escort_1b_2", zoneName = "space_endor", x = 5500, z = 200, y = 500, escortNumber = 2, radius = 250},
+		{patrolPointName = "endor_privateer_tier4_escort_1b_3", zoneName = "space_endor", x = 6000, z = 0, y = 1000, escortNumber = 3, radius = 250},
+		{patrolPointName = "endor_privateer_tier4_escort_1b_4", zoneName = "space_endor", x = 6500, z = -200, y = 1500, escortNumber = 4, radius = 250},
+	},
+
+	attackDelay = 120,
+
+	-- 4 A-wings + 3 X-wings (per wiki) - Rebel attackers
+	attackShips = {
+		{"reb_awing_tier4", "reb_awing_tier4", "reb_awing_tier4", "reb_awing_tier4"},
+		{"reb_xwing_tier4", "reb_xwing_tier4", "reb_xwing_tier4"},
+	}
+}
+
+registerScreenPlay("escort_naboo_privateer_tier4_1b", true)
+
+-- Mission 2: Inspect Freighter (Endor) -> Survive Attack -> Patrol -> Destroy Attack
+
+inspect_naboo_privateer_tier4_2a = SpaceInspectScreenplay:new {
+	className = "inspect_naboo_privateer_tier4_2a",
+
+	questName = "naboo_privateer_tier4_2a",
+	questType = "inspect",
+
+	questZone = "space_endor",
+
+	creditReward = 0,
+
+	sideQuest = true,
+	sideQuestType = "destroy_surpriseattack",
+	sideQuestName = "naboo_privateer_tier4_2b",
+	sideQuestSplitType = SpaceQuestLogic.SIDE_QUEST_SPLIT_TYPES.COMPLETION,
+	sideQuestDelay = 3,
+
+	-- Inspect heavy freighter for industrial supplies
+	inspectTargets = {"freighterheavy_tier4"},
+	inspectCargo = "industrial_supplies",
+
+	targetLocation = {x = 2000, z = 800, y = -3000},
+}
+
+registerScreenPlay("inspect_naboo_privateer_tier4_2a", true)
+
+destroy_surpriseattack_naboo_privateer_tier4_2b = SpaceSurpriseAttackScreenplay:new {
+	className = "destroy_surpriseattack_naboo_privateer_tier4_2b",
+
+	questName = "naboo_privateer_tier4_2b",
+	questType = "destroy_surpriseattack",
+
+	questZone = "space_endor",
+
+	parentQuest = "inspect_naboo_privateer_tier4_2a",
+	parentQuestType = "inspect",
+	parentQuestName = "naboo_privateer_tier4_2a",
+
+	sideQuest = true,
+	sideQuestType = "patrol",
+	sideQuestName = "naboo_privateer_tier4_2c",
+	sideQuestSplitType = SpaceQuestLogic.SIDE_QUEST_SPLIT_TYPES.COMPLETION,
+	sideQuestDelay = 3,
+
+	-- 5 Tier 4 Ixiyen Black Sun Vehement (per wiki)
+	surpriseAttackShips = {
+		zone = "space_endor",
+		spawns = {{count = 5, shipName = "blacksun_vehement_tier4"}},
+	},
+}
+
+registerScreenPlay("destroy_surpriseattack_naboo_privateer_tier4_2b", true)
+
+patrol_naboo_privateer_tier4_2c = SpacePatrolScreenplay:new {
+	className = "patrol_naboo_privateer_tier4_2c",
+
+	questName = "naboo_privateer_tier4_2c",
+	questType = "patrol",
+
+	questZone = "space_endor",
+
+	creditReward = 0,
+
+	parentQuest = "destroy_surpriseattack_naboo_privateer_tier4_2b",
+	parentQuestType = "destroy_surpriseattack",
+	parentQuestName = "naboo_privateer_tier4_2b",
+
+	sideQuest = true,
+	sideQuestType = "destroy_surpriseattack",
+	sideQuestName = "naboo_privateer_tier4_2d",
+	sideQuestSplitType = SpaceQuestLogic.SIDE_QUEST_SPLIT_TYPES.PATROL_POINT,
+
+	sideQuestPatrolStart = 3,
+	sideQuestDelay = 5,
+
+	-- Patrol Endor space until detecting hyperspace signatures
+	patrolPoints = {
+		{patrolPointName = "endor_privateer_tier4_patrol_2c_1", x = 2500, z = 600, y = -2500, patrolNumber = 1, radius = 150},
+		{patrolPointName = "endor_privateer_tier4_patrol_2c_2", x = 3000, z = 400, y = -2000, patrolNumber = 2, radius = 150},
+		{patrolPointName = "endor_privateer_tier4_patrol_2c_3", x = 3500, z = 200, y = -1500, patrolNumber = 3, radius = 150},
+		{patrolPointName = "endor_privateer_tier4_patrol_2c_4", x = 4000, z = 0, y = -1000, patrolNumber = 4, radius = 150},
+	},
+}
+
+registerScreenPlay("patrol_naboo_privateer_tier4_2c", true)
+
+destroy_surpriseattack_naboo_privateer_tier4_2d = SpaceSurpriseAttackScreenplay:new {
+	className = "destroy_surpriseattack_naboo_privateer_tier4_2d",
+
+	questName = "naboo_privateer_tier4_2d",
+	questType = "destroy_surpriseattack",
+
+	questZone = "space_endor",
+
+	creditReward = 10000,
+	itemReward = {
+		{species = {-1}, item = "object/tangible/ship/components/weapon/wpn_mission_reward_neutral_borstel_disruptor.iff"},
+	},
+
+	parentQuest = "patrol_naboo_privateer_tier4_2c",
+	parentQuestType = "patrol",
+	parentQuestName = "naboo_privateer_tier4_2c",
+
+	sideQuest = false,
+	sideQuestType = "",
+
+	-- 7 Tier 4 Kihraxz Black Sun Fighters (per wiki)
+	surpriseAttackShips = {
+		zone = "space_endor",
+		spawns = {{count = 7, shipName = "blacksun_fighter_s01_tier4"}},
+	},
+}
+
+registerScreenPlay("destroy_surpriseattack_naboo_privateer_tier4_2d", true)
+
+-- Mission 3: Delivery (Yavin) -> Patrol Decoy -> Survival (8 waves)
+
+delivery_naboo_privateer_tier4_3a = SpaceDeliveryScreenplay:new {
+	className = "delivery_naboo_privateer_tier4_3a",
+
+	questName = "naboo_privateer_tier4_3a",
+	questType = "delivery",
+
+	questZone = "space_yavin4",
+
+	creditReward = 0,
+
+	sideQuest = true,
+	sideQuestType = "patrol",
+	sideQuestName = "naboo_privateer_tier4_3b",
+	sideQuestSplitType = SpaceQuestLogic.SIDE_QUEST_SPLIT_TYPES.COMPLETION,
+	sideQuestDelay = 3,
+
+	-- Dock with Imperial Heavy Freighter, deliver to Imperial Transport
+	pickupShip = "imp_freighterheavy_tier4",
+	pickupLocation = {x = -2000, z = 1000, y = 3000},
+
+	deliveryShip = "imp_transport_tier4",
+	deliveryLocation = {x = 2000, z = -500, y = -2000},
+
+	-- Rebel A-wings attack during delivery run (per wiki: 3-4 A-wings per wave)
+	attackDelay = 60,
+	attackShips = {
+		{"reb_awing_tier4", "reb_awing_tier4", "reb_awing_tier4"},
+		{"reb_awing_tier4", "reb_awing_tier4", "reb_awing_tier4", "reb_awing_tier4"},
+	}
+}
+
+registerScreenPlay("delivery_naboo_privateer_tier4_3a", true)
+
+patrol_naboo_privateer_tier4_3b = SpacePatrolScreenplay:new {
+	className = "patrol_naboo_privateer_tier4_3b",
+
+	questName = "naboo_privateer_tier4_3b",
+	questType = "patrol",
+
+	questZone = "space_yavin4",
+
+	creditReward = 0,
+
+	parentQuest = "delivery_naboo_privateer_tier4_3a",
+	parentQuestType = "delivery",
+	parentQuestName = "naboo_privateer_tier4_3a",
+
+	sideQuest = true,
+	sideQuestType = "survival",
+	sideQuestName = "naboo_privateer_tier4_3c",
+	sideQuestSplitType = SpaceQuestLogic.SIDE_QUEST_SPLIT_TYPES.COMPLETION,
+	sideQuestDelay = 3,
+
+	-- Fly decoy patrol to split Rebel observation
+	patrolPoints = {
+		{patrolPointName = "yavin_privateer_tier4_patrol_3b_1", x = 2500, z = -300, y = -1500, patrolNumber = 1, radius = 150},
+		{patrolPointName = "yavin_privateer_tier4_patrol_3b_2", x = 3000, z = -100, y = -1000, patrolNumber = 2, radius = 150},
+		{patrolPointName = "yavin_privateer_tier4_patrol_3b_3", x = 3500, z = 100, y = -500, patrolNumber = 3, radius = 150},
+		{patrolPointName = "yavin_privateer_tier4_patrol_3b_4", x = 4000, z = 300, y = 0, patrolNumber = 4, radius = 150},
+	},
+}
+
+registerScreenPlay("patrol_naboo_privateer_tier4_3b", true)
+
+survival_naboo_privateer_tier4_3c = SpaceSurvivalScreenplay:new {
+	className = "survival_naboo_privateer_tier4_3c",
+
+	questName = "naboo_privateer_tier4_3c",
+	questType = "survival",
+
+	questZone = "space_yavin4",
+
+	creditReward = 10000,
+	itemReward = {
+		{species = {-1}, item = "object/tangible/ship/components/shield_generator/shd_mission_reward_neutral_armek_plasma_web.iff"},
+	},
+
+	parentQuest = "patrol_naboo_privateer_tier4_3b",
+	parentQuestType = "patrol",
+	parentQuestName = "naboo_privateer_tier4_3b",
+
+	sideQuest = false,
+	sideQuestType = "",
+
+	-- 8 waves of Black Sun attackers (per wiki)
+	survivalWaves = {
+		-- Waves 1-3: 3 Tier 4 Ixiyen Marauders each
+		{{count = 3, shipName = "blacksun_marauder_tier4"}},
+		{{count = 3, shipName = "blacksun_marauder_tier4"}},
+		{{count = 3, shipName = "blacksun_marauder_tier4"}},
+		-- Wave 4: 2 Tier 4 + 1 Tier 5 Kihraxz Fighters
+		{{count = 2, shipName = "blacksun_fighter_s01_tier4"}, {count = 1, shipName = "blacksun_fighter_s01_tier5"}},
+		-- Waves 5-6: 3 Tier 4 Ixiyen Vehement each
+		{{count = 3, shipName = "blacksun_vehement_tier4"}},
+		{{count = 3, shipName = "blacksun_vehement_tier4"}},
+		-- Waves 7-8: 2 Tier 4 + 1 Tier 5 Kihraxz Fighters each
+		{{count = 2, shipName = "blacksun_fighter_s01_tier4"}, {count = 1, shipName = "blacksun_fighter_s01_tier5"}},
+		{{count = 2, shipName = "blacksun_fighter_s01_tier4"}, {count = 1, shipName = "blacksun_fighter_s01_tier5"}},
+	},
+	waveDelay = 20,
+}
+
+registerScreenPlay("survival_naboo_privateer_tier4_3c", true)
+
+-- Mission 4: Space Battle (Yavin) -> Escort Scanner -> Final Battle (win/lose variants)
+
+space_battle_naboo_privateer_tier4_4a = SpaceBattleScreenplay:new {
+	className = "space_battle_naboo_privateer_tier4_4a",
+
+	questType = "space_battle",
+	questName = "naboo_privateer_tier4_4a",
+
+	questZone = "space_yavin4",
+
+	creditReward = 0,
+	itemReward = {},
+
+	sideQuest = true,
+	sideQuestType = "escort",
+	sideQuestName = "naboo_privateer_tier4_4b",
+	sideQuestSplitType = SpaceQuestLogic.SIDE_QUEST_SPLIT_TYPES.COMPLETION,
+	sideQuestDelay = 3,
+
+	-- Assist RSF forces against Black Sun in Yavin
+	battleLocation = {patrolPointName = "yavin_privateer_tier4_battle_4a", x = 5000, y = 1000, z = -1500},
+
+	supportShipsDelay = 45,
+	enemyShipsDelay = 75,
+
+	-- RSF support: 2 Dunelizards, 2 KSE Firespray, 1 Z-95 (per wiki)
+	supportShips = {"rsf_ace_tier4", "rsf_ace_tier4", "rsf_hunter_tier4", "rsf_hunter_tier4", "rsf_stinger_tier4"},
+	-- Black Sun: 3 Marauders, 2 Vehement, 2 Aggressors (per wiki)
+	enemyShips = {"blacksun_marauder_tier4", "blacksun_marauder_tier4", "blacksun_marauder_tier4", "blacksun_vehement_tier4", "blacksun_vehement_tier4", "blacksun_aggressor_tier4", "blacksun_aggressor_tier4"},
+}
+
+registerScreenPlay("space_battle_naboo_privateer_tier4_4a", true)
+
+escort_naboo_privateer_tier4_4b = SpaceEscortScreenplay:new {
+	className = "escort_naboo_privateer_tier4_4b",
+
+	questName = "naboo_privateer_tier4_4b",
+	questType = "escort",
+
+	questZone = "space_yavin4",
+
+	creditReward = 0,
+
+	parentQuest = "space_battle_naboo_privateer_tier4_4a",
+	parentQuestType = "space_battle",
+	parentQuestName = "naboo_privateer_tier4_4a",
+
+	sideQuest = true,
+	sideQuestType = "space_battle",
+	sideQuestName = "naboo_privateer_tier4_4c",
+	sideQuestSplitType = SpaceQuestLogic.SIDE_QUEST_SPLIT_TYPES.COMPLETION,
+	sideQuestDelay = 3,
+
+	-- Escort RSF Scanner to locate remaining Black Sun forces
+	escortShips = {"rsf_scanner_tier4"},
+
+	escortPoints = {
+		{patrolPointName = "yavin_privateer_tier4_escort_4b_1", zoneName = "space_yavin4", x = 5500, z = 800, y = -1000, escortNumber = 1, radius = 250},
+		{patrolPointName = "yavin_privateer_tier4_escort_4b_2", zoneName = "space_yavin4", x = 6000, z = 600, y = -500, escortNumber = 2, radius = 250},
+		{patrolPointName = "yavin_privateer_tier4_escort_4b_3", zoneName = "space_yavin4", x = 6500, z = 400, y = 0, escortNumber = 3, radius = 250},
+		{patrolPointName = "yavin_privateer_tier4_escort_4b_4", zoneName = "space_yavin4", x = 7000, z = 200, y = 500, escortNumber = 4, radius = 250},
+	},
+
+	attackDelay = 90,
+
+	-- First wave: 4 Tier 4 + 1 Tier 5 Kihraxz; Second: 2 Tier 5 Ixiyen + 1 Tier 5 Vehement (per wiki)
+	attackShips = {
+		{"blacksun_fighter_s01_tier4", "blacksun_fighter_s01_tier4", "blacksun_fighter_s01_tier4", "blacksun_fighter_s01_tier4", "blacksun_fighter_s01_tier5"},
+		{"blacksun_marauder_tier5", "blacksun_marauder_tier5", "blacksun_vehement_tier5"},
+	}
+}
+
+registerScreenPlay("escort_naboo_privateer_tier4_4b", true)
+
+-- Final battle has win/lose variants - using single quest that handles both outcomes
+space_battle_naboo_privateer_tier4_4c = SpaceBattleScreenplay:new {
+	className = "space_battle_naboo_privateer_tier4_4c",
+
+	questType = "space_battle",
+	questName = "naboo_privateer_tier4_4c",
+
+	questZone = "space_yavin4",
+
+	creditReward = 10000,
+	itemReward = {
+		{species = {-1}, item = "object/tangible/ship/components/engine/eng_mission_reward_neutral_haor_chall_military.iff"},
+	},
+
+	parentQuest = "escort_naboo_privateer_tier4_4b",
+	parentQuestType = "escort",
+	parentQuestName = "naboo_privateer_tier4_4b",
+
+	sideQuest = false,
+	sideQuestType = "",
+
+	-- Final battle against Black Sun in Yavin
+	battleLocation = {patrolPointName = "yavin_privateer_tier4_final_battle", x = 7500, y = 0, z = 1000},
+
+	supportShipsDelay = 30,
+	enemyShipsDelay = 60,
+
+	-- RSF + Rebel support: 2 Dunelizards, 2 Firespray, 3 Z-95, 3 Tier 5 X-wings (per wiki)
+	supportShips = {"rsf_ace_tier4", "rsf_ace_tier4", "rsf_hunter_tier4", "rsf_hunter_tier4", "rsf_stinger_tier4", "rsf_stinger_tier4", "rsf_stinger_tier4", "reb_xwing_tier5", "reb_xwing_tier5", "reb_xwing_tier5"},
+	-- Black Sun fleet: 2 Assault Gunboats, 2 Rihkxyrk Bombers, 2 Aggressors, 3 Vehement, 3 Marauders (per wiki)
+	enemyShips = {"blacksun_gunship_tier4", "blacksun_gunship_tier4", "blacksun_bomber_s01_tier4", "blacksun_bomber_s01_tier4", "blacksun_aggressor_tier4", "blacksun_aggressor_tier4", "blacksun_vehement_tier4", "blacksun_vehement_tier4", "blacksun_vehement_tier4", "blacksun_marauder_tier4", "blacksun_marauder_tier4", "blacksun_marauder_tier4"},
+}
+
+registerScreenPlay("space_battle_naboo_privateer_tier4_4c", true)
+
+-- Tier 4 Duty Missions
+
+destroy_duty_naboo_privateer_tier4_1 = SpaceDutyDestroyScreenplay:new {
+	className = "destroy_duty_naboo_privateer_tier4_1",
+
+	questName = "naboo_privateer_tier4_1",
+	questType = "destroy_duty",
+
+	questZone = "space_endor",
+
+	creditReward = 200,
+
+	sideQuest = false,
+	sideQuestType = "",
+
+	-- Destroy Black Sun pirates in Endor
+	dutyMissionLevel = 4,
+
+	shipLocations = {
+		{patrolPointName = "endor_privateer_duty_1", x = 3000, z = 1000, y = -2000},
+		{patrolPointName = "endor_privateer_duty_2", x = 4000, z = 500, y = -1000},
+		{patrolPointName = "endor_privateer_duty_3", x = 5000, z = 0, y = 0},
+	},
+
+	shipTypes = {
+		"blacksun_fighter_s01_tier4", "blacksun_fighter_s02_tier4", "blacksun_fighter_s03_tier4",
+		"blacksun_bomber_s01_tier4", "blacksun_aggressor_tier4",
+	},
+}
+
+registerScreenPlay("destroy_duty_naboo_privateer_tier4_1", true)
+
+escort_duty_naboo_privateer_tier4_1 = SpaceDutyEscortScreenplay:new {
+	className = "escort_duty_naboo_privateer_tier4_1",
+
+	questName = "naboo_privateer_tier4_1",
+	questType = "escort_duty",
+
+	questZone = "space_endor",
+
+	creditReward = 250,
+
+	sideQuest = false,
+	sideQuestType = "",
+
+	-- Escort mining freighter from Borvo the Hutt (per wiki)
+	dutyMissionLevel = 4,
+
+	escortShips = {"freighterheavy_tier4", "freighterlight_tier4"},
+
+	escortPoints = {
+		{patrolPointName = "endor_privateer_escort_duty_1", zoneName = "space_endor", x = 2500, z = 800, y = -2500, escortNumber = 1, radius = 250},
+		{patrolPointName = "endor_privateer_escort_duty_2", zoneName = "space_endor", x = 3500, z = 400, y = -1500, escortNumber = 2, radius = 250},
+		{patrolPointName = "endor_privateer_escort_duty_3", zoneName = "space_endor", x = 4500, z = 0, y = -500, escortNumber = 3, radius = 250},
+	},
+
+	attackShips = {
+		{"blacksun_fighter_s01_tier4", "blacksun_fighter_s02_tier4"},
+		{"blacksun_fighter_s01_tier4", "blacksun_fighter_s02_tier4", "blacksun_bomber_s01_tier4"},
+	}
+}
+
+registerScreenPlay("escort_duty_naboo_privateer_tier4_1", true)
+
+recovery_duty_naboo_privateer_tier4_1 = SpaceDutyDestroyScreenplay:new {
+	className = "recovery_duty_naboo_privateer_tier4_1",
+
+	questName = "naboo_privateer_tier4_1",
+	questType = "recovery_duty",
+
+	questZone = "space_yavin4",
+
+	creditReward = 300,
+
+	sideQuest = false,
+	sideQuestType = "",
+
+	-- Capture Ay'Nat outlaws in Yavin (per wiki)
+	dutyMissionLevel = 4,
+
+	shipLocations = {
+		{patrolPointName = "yavin_privateer_recovery_duty_1", x = 4000, z = 500, y = -1000},
+		{patrolPointName = "yavin_privateer_recovery_duty_2", x = 5000, z = 200, y = 0},
+	},
+
+	shipTypes = {
+		"aynat_outlaw_tier4", "aynat_enforcer_tier4", "aynat_intimidator_tier4",
+	},
+}
+
+registerScreenPlay("recovery_duty_naboo_privateer_tier4_1", true)
+
+rescue_duty_naboo_privateer_tier4_1 = SpaceDutyDestroyScreenplay:new {
+	className = "rescue_duty_naboo_privateer_tier4_1",
+
+	questName = "naboo_privateer_tier4_1",
+	questType = "rescue_duty",
+
+	questZone = "space_yavin4",
+
+	creditReward = 275,
+
+	sideQuest = false,
+	sideQuestType = "",
+
+	-- Rescue civilian freighter in Yavin (per wiki)
+	dutyMissionLevel = 4,
+
+	shipLocations = {
+		{patrolPointName = "yavin_privateer_rescue_duty_1", x = 5500, z = 300, y = 500},
+		{patrolPointName = "yavin_privateer_rescue_duty_2", x = 6000, z = 100, y = 1000},
+	},
+
+	shipTypes = {
+		"blacksun_fighter_s01_tier4", "blacksun_vehement_tier4",
+	},
+}
+
+registerScreenPlay("rescue_duty_naboo_privateer_tier4_1", true)
+
+--[[
 	RSF Squadron Screenplay
 ]]
 
@@ -1158,6 +1701,26 @@ RsfSquadronScreenplay = ScreenPlay:new {
 	TIER3_QUEST_STRING_4_SIDE2 = {type = "space_battle", name = "naboo_privateer_tier3_4b"},
 	TIER3_QUEST_STRING_4_SIDE3 = {type = "survival", name = "naboo_privateer_tier3_4c"},
 	TIER3_QUEST_STRING_4_SIDE4 = {type = "assassinate", name = "naboo_privateer_tier3_4f"},
+
+	-- Tier 4 Quest Strings
+	TIER4_QUEST_STRING_1 = {type = "escort", name = "naboo_privateer_tier4_1a"},
+	TIER4_QUEST_STRING_1_SIDE1 = {type = "escort", name = "naboo_privateer_tier4_1b"},
+	TIER4_QUEST_STRING_2 = {type = "inspect", name = "naboo_privateer_tier4_2a"},
+	TIER4_QUEST_STRING_2_SIDE1 = {type = "destroy_surpriseattack", name = "naboo_privateer_tier4_2b"},
+	TIER4_QUEST_STRING_2_SIDE2 = {type = "patrol", name = "naboo_privateer_tier4_2c"},
+	TIER4_QUEST_STRING_2_SIDE3 = {type = "destroy_surpriseattack", name = "naboo_privateer_tier4_2d"},
+	TIER4_QUEST_STRING_3 = {type = "delivery", name = "naboo_privateer_tier4_3a"},
+	TIER4_QUEST_STRING_3_SIDE1 = {type = "patrol", name = "naboo_privateer_tier4_3b"},
+	TIER4_QUEST_STRING_3_SIDE2 = {type = "survival", name = "naboo_privateer_tier4_3c"},
+	TIER4_QUEST_STRING_4 = {type = "space_battle", name = "naboo_privateer_tier4_4a"},
+	TIER4_QUEST_STRING_4_SIDE1 = {type = "escort", name = "naboo_privateer_tier4_4b"},
+	TIER4_QUEST_STRING_4_SIDE2 = {type = "space_battle", name = "naboo_privateer_tier4_4c"},
+
+	-- Tier 4 Duty Quest Strings
+	TIER4_QUEST_STRING_DUTY_1 = {type = "destroy_duty", name = "naboo_privateer_tier4_1"},
+	TIER4_QUEST_STRING_DUTY_2 = {type = "escort_duty", name = "naboo_privateer_tier4_1"},
+	TIER4_QUEST_STRING_DUTY_3 = {type = "recovery_duty", name = "naboo_privateer_tier4_1"},
+	TIER4_QUEST_STRING_DUTY_4 = {type = "rescue_duty", name = "naboo_privateer_tier4_1"},
 }
 
 registerScreenPlay("RsfSquadronScreenplay", false)
@@ -1323,4 +1886,72 @@ function RsfSquadronScreenplay:resetDuliosQuests(pPlayer)
 	removeQuestStatus(playerID .. RsfSquadronScreenplay.TIER3_QUEST_STRING_2.name .. ":reward")
 	removeQuestStatus(playerID .. RsfSquadronScreenplay.TIER3_QUEST_STRING_3.name .. ":reward")
 	removeQuestStatus(playerID .. RsfSquadronScreenplay.TIER3_QUEST_STRING_4.name .. ":reward")
+end
+
+function RsfSquadronScreenplay:resetImlerQuests(pPlayer)
+	if (pPlayer == nil) then
+		return
+	end
+
+	local pGhost = CreatureObject(pPlayer):getPlayerObject()
+
+	if (pGhost == nil) then
+		return
+	end
+
+	local playerID = CreatureObject(pPlayer):getObjectID()
+
+	PlayerObject(pGhost):setPilotTier(4)
+
+	-- Mission 1
+	escort_naboo_privateer_tier4_1a:resetQuest(pPlayer)
+	escort_naboo_privateer_tier4_1b:resetQuest(pPlayer)
+	SpaceHelpers:clearSpaceQuest(pPlayer, self.TIER4_QUEST_STRING_1.type, self.TIER4_QUEST_STRING_1.name, false)
+	SpaceHelpers:clearSpaceQuest(pPlayer, self.TIER4_QUEST_STRING_1_SIDE1.type, self.TIER4_QUEST_STRING_1_SIDE1.name, false)
+
+	-- Mission 2
+	inspect_naboo_privateer_tier4_2a:resetQuest(pPlayer)
+	destroy_surpriseattack_naboo_privateer_tier4_2b:resetQuest(pPlayer)
+	patrol_naboo_privateer_tier4_2c:resetQuest(pPlayer)
+	destroy_surpriseattack_naboo_privateer_tier4_2d:resetQuest(pPlayer)
+	SpaceHelpers:clearSpaceQuest(pPlayer, self.TIER4_QUEST_STRING_2.type, self.TIER4_QUEST_STRING_2.name, false)
+	SpaceHelpers:clearSpaceQuest(pPlayer, self.TIER4_QUEST_STRING_2_SIDE1.type, self.TIER4_QUEST_STRING_2_SIDE1.name, false)
+	SpaceHelpers:clearSpaceQuest(pPlayer, self.TIER4_QUEST_STRING_2_SIDE2.type, self.TIER4_QUEST_STRING_2_SIDE2.name, false)
+	SpaceHelpers:clearSpaceQuest(pPlayer, self.TIER4_QUEST_STRING_2_SIDE3.type, self.TIER4_QUEST_STRING_2_SIDE3.name, false)
+
+	-- Mission 3
+	delivery_naboo_privateer_tier4_3a:resetQuest(pPlayer)
+	patrol_naboo_privateer_tier4_3b:resetQuest(pPlayer)
+	survival_naboo_privateer_tier4_3c:resetQuest(pPlayer)
+	SpaceHelpers:clearSpaceQuest(pPlayer, self.TIER4_QUEST_STRING_3.type, self.TIER4_QUEST_STRING_3.name, false)
+	SpaceHelpers:clearSpaceQuest(pPlayer, self.TIER4_QUEST_STRING_3_SIDE1.type, self.TIER4_QUEST_STRING_3_SIDE1.name, false)
+	SpaceHelpers:clearSpaceQuest(pPlayer, self.TIER4_QUEST_STRING_3_SIDE2.type, self.TIER4_QUEST_STRING_3_SIDE2.name, false)
+
+	-- Mission 4
+	space_battle_naboo_privateer_tier4_4a:resetQuest(pPlayer)
+	escort_naboo_privateer_tier4_4b:resetQuest(pPlayer)
+	space_battle_naboo_privateer_tier4_4c:resetQuest(pPlayer)
+	SpaceHelpers:clearSpaceQuest(pPlayer, self.TIER4_QUEST_STRING_4.type, self.TIER4_QUEST_STRING_4.name, false)
+	SpaceHelpers:clearSpaceQuest(pPlayer, self.TIER4_QUEST_STRING_4_SIDE1.type, self.TIER4_QUEST_STRING_4_SIDE1.name, false)
+	SpaceHelpers:clearSpaceQuest(pPlayer, self.TIER4_QUEST_STRING_4_SIDE2.type, self.TIER4_QUEST_STRING_4_SIDE2.name, false)
+
+	-- Duty Missions
+	destroy_duty_naboo_privateer_tier4_1:resetQuest(pPlayer)
+	escort_duty_naboo_privateer_tier4_1:resetQuest(pPlayer)
+	recovery_duty_naboo_privateer_tier4_1:resetQuest(pPlayer)
+	rescue_duty_naboo_privateer_tier4_1:resetQuest(pPlayer)
+	SpaceHelpers:clearSpaceQuest(pPlayer, self.TIER4_QUEST_STRING_DUTY_1.type, self.TIER4_QUEST_STRING_DUTY_1.name, false)
+	SpaceHelpers:clearSpaceQuest(pPlayer, self.TIER4_QUEST_STRING_DUTY_2.type, self.TIER4_QUEST_STRING_DUTY_2.name, false)
+	SpaceHelpers:clearSpaceQuest(pPlayer, self.TIER4_QUEST_STRING_DUTY_3.type, self.TIER4_QUEST_STRING_DUTY_3.name, false)
+	SpaceHelpers:clearSpaceQuest(pPlayer, self.TIER4_QUEST_STRING_DUTY_4.type, self.TIER4_QUEST_STRING_DUTY_4.name, false)
+
+	-- Clear quest status tracking
+	removeQuestStatus(playerID .. RsfSquadronScreenplay.TIER4_QUEST_STRING_1.name .. ":attempted")
+	removeQuestStatus(playerID .. RsfSquadronScreenplay.TIER4_QUEST_STRING_2.name .. ":attempted")
+	removeQuestStatus(playerID .. RsfSquadronScreenplay.TIER4_QUEST_STRING_3.name .. ":attempted")
+	removeQuestStatus(playerID .. RsfSquadronScreenplay.TIER4_QUEST_STRING_4.name .. ":attempted")
+	removeQuestStatus(playerID .. RsfSquadronScreenplay.TIER4_QUEST_STRING_1.name .. ":reward")
+	removeQuestStatus(playerID .. RsfSquadronScreenplay.TIER4_QUEST_STRING_2.name .. ":reward")
+	removeQuestStatus(playerID .. RsfSquadronScreenplay.TIER4_QUEST_STRING_3.name .. ":reward")
+	removeQuestStatus(playerID .. RsfSquadronScreenplay.TIER4_QUEST_STRING_4.name .. ":reward")
 end

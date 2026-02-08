@@ -651,6 +651,28 @@ space_endor = SpacePatrolPointTable:new {
 	{patrolPointName = "scientists_route_1_20", x = 1232, z = -418, y = 2697},
 	{patrolPointName = "scientists_route_1_21", x = 912, z = -575, y = 2880},
 	{patrolPointName = "scientists_route_1_22", x = 693, z = -456, y = 2588},
+	-- RSF Tier 4 Mission 1a: Escort RSF Scanner
+	{patrolPointName = "endor_privateer_tier4_escort_1a_1", x = 3000, z = 1500, y = -2000},
+	{patrolPointName = "endor_privateer_tier4_escort_1a_2", x = 3500, z = 1200, y = -1500},
+	{patrolPointName = "endor_privateer_tier4_escort_1a_3", x = 4000, z = 900, y = -1000},
+	{patrolPointName = "endor_privateer_tier4_escort_1a_4", x = 4500, z = 600, y = -500},
+	-- RSF Tier 4 Mission 1b: Escort Imperial Official
+	{patrolPointName = "endor_privateer_tier4_escort_1b_1", x = 5000, z = 400, y = 0},
+	{patrolPointName = "endor_privateer_tier4_escort_1b_2", x = 5500, z = 200, y = 500},
+	{patrolPointName = "endor_privateer_tier4_escort_1b_3", x = 6000, z = 0, y = 1000},
+	{patrolPointName = "endor_privateer_tier4_escort_1b_4", x = 6500, z = -200, y = 1500},
+	-- RSF Tier 4 Mission 2c: Patrol Endor
+	{patrolPointName = "endor_privateer_tier4_patrol_2c_1", x = 2500, z = 600, y = -2500},
+	{patrolPointName = "endor_privateer_tier4_patrol_2c_2", x = 3000, z = 400, y = -2000},
+	{patrolPointName = "endor_privateer_tier4_patrol_2c_3", x = 3500, z = 200, y = -1500},
+	{patrolPointName = "endor_privateer_tier4_patrol_2c_4", x = 4000, z = 0, y = -1000},
+	-- RSF Tier 4 Duty Missions
+	{patrolPointName = "endor_privateer_duty_1", x = 3000, z = 1000, y = -2000},
+	{patrolPointName = "endor_privateer_duty_2", x = 4000, z = 500, y = -1000},
+	{patrolPointName = "endor_privateer_duty_3", x = 5000, z = 0, y = 0},
+	{patrolPointName = "endor_privateer_escort_duty_1", x = 2500, z = 800, y = -2500},
+	{patrolPointName = "endor_privateer_escort_duty_2", x = 3500, z = 400, y = -1500},
+	{patrolPointName = "endor_privateer_escort_duty_3", x = 4500, z = 0, y = -500},
 }
 
 SpacePatrolPoints:addSpacePatrolPoints(space_endor, "space_endor")
