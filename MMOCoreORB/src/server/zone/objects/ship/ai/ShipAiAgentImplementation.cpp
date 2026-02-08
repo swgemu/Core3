@@ -1746,8 +1746,23 @@ void ShipAiAgentImplementation::removeSpaceFactionEnemy(uint32 factionHash) {
 void ShipAiAgentImplementation::swapSpaceFactionAssociations() {
 	auto tempAllies = alliedFactions;
 
-	alliedFactions = enemyFactions;
-	enemyFactions = tempAllies;
+	alliedFactions.removeAll();
+
+	for (int i = enemyFactions.size() - 1; i >= 0 ; --i) {
+		alliedFactions.add(enemyFactions.get(i));
+
+		info(true) << "Adding new allied faction: " << enemyFactions.get(i) << " alliedFactions Size: " << alliedFactions.size();
+
+		enemyFactions.removeElementAt(i);
+	}
+
+	for (int i = tempAllies.size() - 1; i >= 0 ; --i) {
+		enemyFactions.add(tempAllies.get(i));
+
+		info(true) << "Adding new enemy faction: " << tempAllies.get(i) << " enemyFactions Size: " << enemyFactions.size();
+
+		enemyFactions.removeElementAt(i);
+	}
 }
 
 bool ShipAiAgentImplementation::isAggressiveTo(TangibleObject* target) {
@@ -1845,16 +1860,13 @@ bool ShipAiAgentImplementation::isAttackableBy(TangibleObject* attackerTano) {
 			return false;
 		}
 
-		bool isGroupedWith = false;
+		// If attacker is not the mission owner, check if attacker is grouped with the mission owner.
+		if (attackerOwner != missionOwner) {
+			auto group = missionOwner->getGroup();
 
-		ManagedReference<GroupObject*> group = missionOwner->getGroup();
-
-		if (group != nullptr && group->hasMember(attackerOwner)) {
-			isGroupedWith = true;
-		}
-
-		if (attackerOwner != missionOwner && !isGroupedWith) {
-			return false;
+			if (group == nullptr || !group->hasMember(attackerOwner)) {
+				return false;
+			}
 		}
 	}
 
