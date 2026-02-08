@@ -35,6 +35,8 @@ Luna<LuaShipObject>::RegType LuaShipObject::Register[] = {
 	{ "getSpawnPointBehindShip", &LuaShipObject::getSpawnPointBehindShip },
 	{ "isShipLaunched", &LuaShipObject::isShipLaunched },
 	{ "setCargoString", &LuaShipObject::setCargoString },
+	{ "isShipDisabled", &LuaShipObject::isShipDisabled },
+	{ "isShipDestroyed", &LuaShipObject::isShipDestroyed },
 
 	{ 0, 0}
 };
@@ -374,7 +376,7 @@ int LuaShipObject::setShipFactionString(lua_State* L) {
 
 	Locker lock(realObject);
 
-	realObject->setShipFactionString(factionString);
+	realObject->setShipFactionString(factionString, false);
 	realObject->broadcastPvpStatusBitmask();
 
 	return 0;
@@ -491,4 +493,20 @@ int LuaShipObject::setCargoString(lua_State* L) {
 	realObject->setCargoString(cargoString);
 
 	return 0;
+}
+
+int LuaShipObject::isShipDisabled(lua_State* L) {
+	bool isDisabled = realObject->isShipDisabled();
+
+	lua_pushboolean(L, isDisabled);
+
+	return 1;
+}
+
+int LuaShipObject::isShipDestroyed(lua_State* L) {
+	bool isDestroyed = realObject->isShipDestroyed();
+
+	lua_pushboolean(L, isDestroyed);
+
+	return 1;
 }
