@@ -7,7 +7,7 @@ registerScreenPlay("SpaceDeliveryScreenplay", false)
 
 --[[
 
-		Space Recovery Quest Functions
+		Space Delivery Quest Functions
 
 --]]
 

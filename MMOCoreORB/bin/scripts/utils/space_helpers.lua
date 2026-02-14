@@ -1453,6 +1453,16 @@ end
 -- @param minRange - min distance to find the location
 -- @param maxRange - max distance to find the location
 function SpaceHelpers:getRandomPositionInSphere(x, z, y, minRange, maxRange)
+	if x == nil or z == nil or y == nil or minRange == nil or maxRange == nil then
+		Logger:log("SpaceHelpers:getRandomPositionInSphere -- nil parameter passed. x: " .. tostring(x) .. " z: " .. tostring(z) .. " y: " .. tostring(y) .. " minRange: " .. tostring(minRange) .. " maxRange: " .. tostring(maxRange), LT_ERROR)
+
+		if x ~= nil and z ~= nil and y ~= nil then
+			return x, z, y
+		end
+
+		return nil
+	end
+
 	local bound = 7500
 	local minBound, maxBound = -bound, bound
 
