@@ -70,7 +70,6 @@ function SpaceBattleScreenplay:startQuest(pPlayer, pNpc)
 
 		-- Activate quest task 1
 		SpaceHelpers:activateSpaceQuestTask(pPlayer, self.questType, self.questName, 1, true)
-
 	end
 
 	-- Create inital observer for player entering Zone and to handle failing quest
