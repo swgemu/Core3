@@ -151,6 +151,10 @@ function SpaceRescueScreenplay:failQuest(pPlayer, notifyClient)
 		return
 	end
 
+	if (not SpaceHelpers:isSpaceQuestActive(pPlayer, self.questType, self.questName)) then
+		return
+	end
+
 	if (self.DEBUG_SPACE_RESCUE) then
 		print(self.className .. ":failQuest called -- QuestType: " .. self.questType .. " Quest Name: " .. self.questName)
 	end

@@ -29,12 +29,20 @@ SpaceQuestLogic = ScreenPlay:new {
 
 	-- Side Quest Bool
 	sideQuest = false,
+
 	-- Side Quest Type String
 	sideQuestType = "",
 	-- Side Quest Name String
 	sideQuestName = "",
+
+	-- Second Side Quest Type String
+	sideQuestType2 = "",
+	-- Second Side Quest Name String
+	sideQuestName2 = "",
+
 	-- Side Quest Split Type
 	sideQuestSplitType = 0,
+
 	-- Delay in seconds to trigger side quest when triggered
 	sideQuestDelay = 2, -- Time in seconds to wait to trigger side quest
 
@@ -108,4 +116,24 @@ end
 
 function SpaceQuestLogic:failQuest(pPlayer, notifyClient)
 
+end
+
+function SpaceQuestLogic:triggerCompletionSplitQuest(pPlayer)
+	local alertMessage = "@spacequest/" .. self.questType .. "/" .. self.questName .. ":split_quest_alert"
+
+	-- Split Quest Alert
+	createEvent(self.sideQuestDelay * 1000, "SpaceHelpers", "sendQuestAlert", pPlayer, alertMessage)
+
+	-- Trigger Sidequest
+	createEvent(self.sideQuestDelay * 1050, self.sideQuestType .. "_" .. self.sideQuestName, "startQuest", pPlayer, "")
+end
+
+function SpaceQuestLogic:triggerFailureSplitQuest(pPlayer)
+	local alertMessage = "@spacequest/" .. self.questType .. "/" .. self.questName .. ":split_quest_alert"
+
+	-- Split Quest Alert
+	createEvent(self.sideQuestDelay * 1000, "SpaceHelpers", "sendQuestAlert", pPlayer, alertMessage)
+
+	-- Trigger Sidequest
+	createEvent(self.sideQuestDelay * 1050, self.sideFailQuestType .. "_" .. self.sideFailQuestName, "startQuest", pPlayer, "")
 end
