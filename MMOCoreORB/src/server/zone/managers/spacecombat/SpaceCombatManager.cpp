@@ -521,34 +521,27 @@ float SpaceCombatManager::applyActiveComponentDamage(ShipObject* attackerShip, S
 		int resultSlot = result.getSlot(i);
 
 		if (resultSlot != Components::CHASSIS && defenderShip->isComponentTargetable(resultSlot)) {
-			float currentComponentHp = defenderShip->getCurrentHitpointsMap()->get(resultSlot);
-
-			// Trigger Ship Disabled Observer
-			if (!defenderDisabled && damage >= currentComponentHp && (resultSlot == Components::REACTOR || resultSlot == Components::ENGINE)) {
-				triggerDisabledObserver(attackerShip, defenderShip, false);
-			}
-
 			damage = applyComponentDamage(attackerShip, defenderShip, result, damage, resultSlot, deltaVector, messages);
 
 			if (damage <= 0.f) {
+				if (!defenderDisabled && defenderShip->isShipDisabled()) {
+					triggerDisabledObserver(attackerShip, defenderShip, false);
+				}
+
 				return damage;
 			}
 		}
 	}
 
 	if (targetSlot != Components::CHASSIS && defenderShip->isComponentTargetable(targetSlot)) {
-		float currentComponentHp = defenderShip->getCurrentHitpointsMap()->get(targetSlot);
-
-		// Trigger Ship Disabled Observer
-		if (!defenderDisabled && damage >= currentComponentHp && (targetSlot == Components::REACTOR || targetSlot == Components::ENGINE)) {
-			triggerDisabledObserver(attackerShip, defenderShip, true);
-
-			damage = currentComponentHp;
-		}
-
 		damage = applyComponentDamage(attackerShip, defenderShip, result, damage, targetSlot, deltaVector, messages);
 
 		if (damage <= 0.f) {
+			if (!defenderDisabled && defenderShip->isShipDisabled()) {
+				bool targetedCritical = (targetSlot == Components::REACTOR || targetSlot == Components::ENGINE);
+				triggerDisabledObserver(attackerShip, defenderShip, targetedCritical);
+			}
+
 			return damage;
 		}
 	}
@@ -557,6 +550,11 @@ float SpaceCombatManager::applyActiveComponentDamage(ShipObject* attackerShip, S
 
 	if (activeSlot != Components::CHASSIS) {
 		damage = applyComponentDamage(attackerShip, defenderShip, result, damage, activeSlot, deltaVector, messages);
+	}
+
+	if (!defenderDisabled && defenderShip->isShipDisabled()) {
+		bool targetedCritical = (targetSlot == Components::REACTOR || targetSlot == Components::ENGINE);
+		triggerDisabledObserver(attackerShip, defenderShip, targetedCritical);
 	}
 
 	return damage;
@@ -745,6 +743,8 @@ void SpaceCombatManager::triggerDisabledObserver(ShipObject* attackerShip, ShipO
 	if (attackerShip == nullptr || defenderShip == nullptr) {
 		return;
 	}
+
+	info(true) << "triggerDisabledObserver -- Attacker: " << attackerShip->getShipName() << " disabled Defender: " << defenderShip->getShipName() << " setInvulnerable: " << (setInvulnerable ? "true" : "false");
 
 	Reference<ShipObject*> attackerShipRef = attackerShip;
 	Reference<ShipObject*> defenderShipRef = defenderShip;
