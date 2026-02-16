@@ -14,7 +14,7 @@ SpaceEscortScreenplay = SpaceQuestLogic:new {
 	sideQuest = false,
 	sideQuestType = "",
 
-	DEBUG_SPACE_ESCORT = false,
+	DEBUG_SPACE_ESCORT = true,
 
 	escortRange = 1000,
 	escortSpeed = 20,
@@ -132,6 +132,10 @@ function SpaceEscortScreenplay:failQuest(pPlayer, notifyClient)
 		return
 	end
 
+	if (not SpaceHelpers:isSpaceQuestActive(pPlayer, self.questType, self.questName)) then
+		return
+	end
+
 	if (self.DEBUG_SPACE_ESCORT) then
 		print(self.className .. ":failQuest called -- QuestType: " .. self.questType .. " Quest Name: " .. self.questName)
 	end
@@ -165,13 +169,7 @@ function SpaceEscortScreenplay:failQuest(pPlayer, notifyClient)
 	end
 
 	if (self.sideQuest and (self.sideQuestSplitType == self.SIDE_QUEST_SPLIT_TYPES.FAILURE or self.sideQuestSplitType == self.SIDE_QUEST_SPLIT_TYPES.BIDIRECTIONAL)) then
-		local alertMessage = "@spacequest/" .. self.questType .. "/" .. self.questName .. ":split_quest_alert"
-
-		-- Split Quest Alert
-		createEvent(self.sideQuestDelay * 1000, "SpaceHelpers", "sendQuestAlert", pPlayer, alertMessage)
-
-		-- Trigger Sidequest
-		createEvent(self.sideQuestDelay * 1050, self.sideFailQuestType .. "_" .. self.sideFailQuestName, "startQuest", pPlayer, "")
+		self:triggerFailureSplitQuest(pPlayer)
 	end
 end
 

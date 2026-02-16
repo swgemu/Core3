@@ -72,19 +72,17 @@ function SpaceAssassinateScreenplay:completeQuest(pPlayer, notifyClient)
 	deleteStringVectorSharedMemory(playerID .. self.className .. ":targetShips:")
 
 	if (self.sideQuest and (self.sideQuestSplitType == self.SIDE_QUEST_SPLIT_TYPES.COMPLETION or self.sideQuestSplitType == self.SIDE_QUEST_SPLIT_TYPES.BIDIRECTIONAL)) then
-		local alertMessage = "@spacequest/" .. self.questType .. "/" .. self.questName .. ":split_quest_alert"
-
-		-- Split Quest Alert
-		createEvent(self.sideQuestDelay * 1000, "SpaceHelpers", "sendQuestAlert", pPlayer, alertMessage)
-
-		-- Trigger Sidequest
-		createEvent(self.sideQuestDelay * 1050, self.sideQuestType .. "_" .. self.sideQuestName, "startQuest", pPlayer, "")
+		self:triggerCompletionSplitQuest(pPlayer)
 	end
 end
 
 function SpaceAssassinateScreenplay:failQuest(pPlayer, notifyClient)
 	if (pPlayer == nil) then
 		Logger:log("Quest: " .. self.questName .. " Type: " .. self.questType .. " -- Failed to failQuest due to pPlayer being nil.", LT_ERROR)
+		return
+	end
+
+	if (not SpaceHelpers:isSpaceQuestActive(pPlayer, self.questType, self.questName)) then
 		return
 	end
 
@@ -130,13 +128,7 @@ function SpaceAssassinateScreenplay:failQuest(pPlayer, notifyClient)
 	end
 
 	if (self.sideQuest and (self.sideQuestSplitType == self.SIDE_QUEST_SPLIT_TYPES.FAILURE or self.sideQuestSplitType == self.SIDE_QUEST_SPLIT_TYPES.BIDIRECTIONAL)) then
-		local alertMessage = "@spacequest/" .. self.questType .. "/" .. self.questName .. ":split_quest_alert"
-
-		-- Split Quest Alert
-		createEvent(self.sideQuestDelay * 1000, "SpaceHelpers", "sendQuestAlert", pPlayer, alertMessage)
-
-		-- Trigger Sidequest
-		createEvent(self.sideQuestDelay * 1050, self.sideFailQuestType .. "_" .. self.sideFailQuestName, "startQuest", pPlayer, "")
+		self:triggerFailureSplitQuest(pPlayer)
 	end
 end
 
