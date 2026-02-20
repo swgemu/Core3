@@ -79,7 +79,7 @@ includeFile("conversations/space/rebel/havoc_squadron/kreezo_convo.lua")
 includeFile("conversations/space/rebel/havoc_squadron/viopa_convo.lua")
 includeFile("conversations/space/rebel/havoc_squadron/vrak_convo.lua")
 includeFile("conversations/space/rebel/havoc_squadron/aqzow_convo.lua")
---includeFile("conversations/space/rebel/havoc_squadron/arkon_convo.lua")
+includeFile("conversations/space/rebel/havoc_squadron/arkon_convo.lua")
 
 -- Vortex Squadron
 --includeFile("conversations/space/rebel/vortex_squadron/evin_convo.lua")
