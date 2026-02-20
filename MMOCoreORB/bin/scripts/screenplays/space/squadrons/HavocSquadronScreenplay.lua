@@ -1826,7 +1826,7 @@ destroy_corellia_rebel_master = SpaceDestroyScreenplay:new {
 
 registerScreenPlay("destroy_corellia_rebel_master", true)
 
--- Aqzow Duty Missions
+-- Arkon Duty Missions
 
 -- Escort Duty (Space Dathomir - Escort Nym freighters carrying loot from Imperial outpost raid)
 escort_duty_corellia_rebel_tier4_1 = SpaceDutyEscortScreenplay:new {
@@ -1919,7 +1919,7 @@ recovery_duty_corellia_rebel_tier4_1 = SpaceDutyRecoveryScreenplay:new {
 	sideQuest = false,
 	sideQuestType = "",
 
-	targetShip = "lambdashuttle_troop_transport_ace",
+	recoverShip = "lambdashuttle_troop_transport_ace",
 	targetArrivalDelay = 10,
 	recoveryDelay = 30,
 
@@ -1929,17 +1929,17 @@ recovery_duty_corellia_rebel_tier4_1 = SpaceDutyRecoveryScreenplay:new {
 	escortShips = {"imp_tie_interceptor_tier4"},
 
 	preRecoveryPoints = {
-		{patrolPointName = "corellia_rebel_tier4_1_recovery_duty_1", zoneName = "space_endor", escortNumber = 1, radius = 250},
-		{patrolPointName = "corellia_rebel_tier4_1_recovery_duty_2", zoneName = "space_endor", escortNumber = 2, radius = 250},
-		{patrolPointName = "corellia_rebel_tier4_1_recovery_duty_3", zoneName = "space_endor", escortNumber = 3, radius = 250},
-		{patrolPointName = "corellia_rebel_tier4_1_recovery_duty_4", zoneName = "space_endor", escortNumber = 4, radius = 250},
+		{patrolPointName = "corellia_rebel_tier4_1_recovery_duty_1", zoneName = "space_endor", x = -3500, z = 800, y = -4700, escortNumber = 1, radius = 250},
+		{patrolPointName = "corellia_rebel_tier4_1_recovery_duty_2", zoneName = "space_endor", x = -3484, z = 1675, y = -4689, escortNumber = 2, radius = 250},
+		{patrolPointName = "corellia_rebel_tier4_1_recovery_duty_3", zoneName = "space_endor", x = -3482, z = 2680, y = -4693, escortNumber = 3, radius = 250},
+		{patrolPointName = "corellia_rebel_tier4_1_recovery_duty_4", zoneName = "space_endor", x = -3510, z = 3821, y = -4710, escortNumber = 4, radius = 250},
 	},
 
 	recoveryPoints = {
-		{patrolPointName = "corellia_rebel_tier4_1_recovery_duty_5", zoneName = "space_endor", escortNumber = 1, radius = 250},
-		{patrolPointName = "corellia_rebel_tier4_1_recovery_duty_6", zoneName = "space_endor", escortNumber = 2, radius = 250},
-		{patrolPointName = "corellia_rebel_tier4_1_recovery_duty_7", zoneName = "space_endor", escortNumber = 3, radius = 250},
-		{patrolPointName = "corellia_rebel_tier4_1_recovery_duty_8", zoneName = "space_endor", escortNumber = 4, radius = 250},
+		{patrolPointName = "corellia_rebel_tier4_1_recovery_duty_5", zoneName = "space_endor", x = -4308, z = 2410, y = -4170, escortNumber = 1, radius = 250},
+		{patrolPointName = "corellia_rebel_tier4_1_recovery_duty_6", zoneName = "space_endor", x = -5138, z = 2114, y = -3706, escortNumber = 2, radius = 250},
+		{patrolPointName = "corellia_rebel_tier4_1_recovery_duty_7", zoneName = "space_endor", x = -6299, z = 1699, y = -3069, escortNumber = 3, radius = 250},
+		{patrolPointName = "corellia_rebel_tier4_1_recovery_duty_8", zoneName = "space_endor", x = -7338, z = 1328, y = -2499, escortNumber = 4, radius = 250},
 	},
 
 	attackDelay = 45,
@@ -2242,6 +2242,7 @@ function HavocSquadronScreenplay:resetArkonQuests(pPlayer)
 	local playerID = SceneObject(pPlayer):getObjectID()
 
 	removeQuestStatus(playerID .. "HavocSquadronScreenplay:StartedAqzow")
+	removeQuestStatus(playerID .. "HavocSquadronScreenplay:MetArkonTier4")
 
 	removeQuestStatus(playerID .. HavocSquadronScreenplay.TIER4_QUEST_STRING_1.name .. ":attempted")
 	removeQuestStatus(playerID .. HavocSquadronScreenplay.TIER4_QUEST_STRING_2.name .. ":attempted")
