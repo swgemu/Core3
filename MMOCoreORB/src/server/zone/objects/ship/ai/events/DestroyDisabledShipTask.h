@@ -51,7 +51,15 @@ public:
 			destroyTask->execute();
 		}
 
-		strongAgent->notifyObjectDestructionObservers(nullptr, 0, false);
+		Core::getTaskManager()->scheduleTask([strongAgent] () {
+			if (strongAgent == nullptr) {
+				return;
+			}
+
+			Locker lock(strongAgent);
+
+			strongAgent->notifyObjectDestructionObservers(nullptr, 0, true);
+		}, "notifyShipDestroyLambda", 200);
 	}
 
 	void schedule(uint64 delay = 0) {
