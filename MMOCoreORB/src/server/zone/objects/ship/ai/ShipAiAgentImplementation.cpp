@@ -1165,6 +1165,7 @@ bool ShipAiAgentImplementation::setDisabledEngineSpeed() {
 		shipTransform.setNextTransform(getPosition(), 0.f);
 	}
 
+	shipTransform.freezeRotation();
 	clearPatrolPoints();
 
 	return true;

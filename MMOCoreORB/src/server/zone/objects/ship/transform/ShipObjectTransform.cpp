@@ -87,6 +87,16 @@ void ShipObjectTransform::setNextTransform(const SpaceTransform& transform, int 
 	}
 }
 
+void ShipObjectTransform::freezeRotation() {
+	Locker lock(&mutex);
+
+	nextTransform.setRotation(currentTransform.getRotation());
+	nextTransform.setYprDelta(Vector3::ZERO);
+	currentTransform.setYprDelta(Vector3::ZERO);
+	previousTransform.setYprDelta(Vector3::ZERO);
+	nextRotation = 0.f;
+}
+
 void ShipObjectTransform::updateTransform(ShipObject* ship, bool lightUpdate, bool notifyClient) {
 	if (ship == nullptr || !isScheduled()) {
 		return;

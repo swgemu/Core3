@@ -59,6 +59,8 @@ public:
 
 	void setNextTransform(const SpaceTransform& transform, int model = SpaceTransformType::AUTO);
 
+	void freezeRotation();
+
 	void updateTransform(ShipObject* ship, bool lightUpdate = false, bool notifyClient = true);
 
 	void broadcastTransform(ShipObject* ship);
