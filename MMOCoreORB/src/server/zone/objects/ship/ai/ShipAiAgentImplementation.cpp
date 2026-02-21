@@ -37,6 +37,7 @@
 #include "server/zone/objects/ship/ai/events/ShipAiBehaviorEvent.h"
 #include "server/zone/objects/ship/ai/events/DespawnAiShipOnNoPlayersInRange.h"
 #include "server/zone/objects/ship/ai/events/DespawnShipAgentTask.h"
+#include "server/zone/objects/ship/ai/events/DestroyDisabledShipTask.h"
 #include "templates/params/ship/ShipFlag.h"
 #include "templates/params/creature/ObjectFlag.h"
 #include "server/zone/objects/ship/ai/events/RotationLookupTable.h"
@@ -1168,6 +1169,9 @@ bool ShipAiAgentImplementation::setDisabledEngineSpeed() {
 	shipTransform.freezeRotation();
 	clearPatrolPoints();
 
+	// info(true) << "setDisabledEngineSpeed -- scheduling destroy disabled for: " << getDisplayedName();
+	scheduleDestroyDisabled();
+
 	return true;
 }
 
@@ -2016,6 +2020,24 @@ void ShipAiAgentImplementation::scheduleDespawn(int timeToDespawn, bool force) {
 
 		addPendingTask("despawn", despawn, timeToDespawn * 1000);
 	}
+}
+
+void ShipAiAgentImplementation::scheduleDestroyDisabled() {
+	Reference<DestroyDisabledShipTask*> destroyTask = getPendingTask("destroy_disabled").castTo<DestroyDisabledShipTask*>();
+
+	if (destroyTask != nullptr) {
+		return;
+	}
+
+	destroyTask = new DestroyDisabledShipTask(asShipAiAgent());
+
+	if (destroyTask == nullptr) {
+		error() << "ShipAiAgent failed to create a destroy disabled task." << __FILE__ << ":" << __LINE__ << ":" << __FUNCTION__ << ": " << *_this.getReferenceUnsafeStaticCast();
+		return;
+	}
+
+	// info(true) << "scheduleDestroyDisabled -- task scheduled (300s) for: " << getDisplayedName();
+	addPendingTask("destroy_disabled", destroyTask, 300000);
 }
 
 void ShipAiAgentImplementation::setWait(int wait) {

@@ -768,6 +768,9 @@ class ShipAiAgent extends FighterShipObject {
 	public native void scheduleDespawn(int timeToDespawn, boolean force = false);
 
 	@preLocked
+	public native void scheduleDestroyDisabled();
+
+	@preLocked
 	public void clearDespawnEvent() {
 		despawnEvent = null;
 	}
