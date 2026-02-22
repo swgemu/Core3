@@ -1,0 +1,47 @@
+package server.zone.objects.tangible.misc;
+
+import server.zone.objects.tangible.TangibleObject;
+
+class ShipPaintKit extends TangibleObject {
+
+	@json
+	protected boolean primaryUsed;
+
+	@json
+	protected boolean secondaryUsed;
+
+	@json
+	protected int charges;
+
+	public ShipPaintKit() {
+		super();
+
+		primaryUsed = false;
+		secondaryUsed = false;
+		charges = 2;
+	}
+
+	public boolean getPrimaryUsed() {
+		return primaryUsed;
+	}
+
+	public void setPrimaryUsed(boolean value) {
+		primaryUsed = value;
+	}
+
+	public boolean getSecondaryUsed() {
+		return secondaryUsed;
+	}
+
+	public void setSecondaryUsed(boolean value) {
+		secondaryUsed = value;
+	}
+
+	public int getCharges (){
+		return charges;
+	}
+
+	public void setCharges(int value) {
+		charges = value;
+	}
+}

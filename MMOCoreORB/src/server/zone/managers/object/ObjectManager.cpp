@@ -374,6 +374,7 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<SpaceSpawnArea>(SceneObjectType::SPACESPAWNAREA);
 	objectFactory.registerObject<SpaceSpawner>(SceneObjectType::SPACESPAWNER);
 	objectFactory.registerObject<CreditChipObject>(SceneObjectType::CREDITCHIP);
+	objectFactory.registerObject<ShipPaintKit>(SceneObjectType::SHIPPAINTKIT);
 
 	objectFactory.registerObject<SpaceshipTerminal>(SceneObjectType::SPACETERMINAL);
 	objectFactory.registerObject<ShipObject>(SceneObjectType::SHIP);

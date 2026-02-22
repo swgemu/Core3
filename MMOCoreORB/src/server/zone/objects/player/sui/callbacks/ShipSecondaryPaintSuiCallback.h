@@ -9,17 +9,24 @@
 #define SHIPSECONDARYPAINTSUICALLBACK_H_
 
 #include "server/zone/objects/player/sui/SuiCallback.h"
+#include "server/zone/objects/player/sui/colorbox/SuiColorBox.h"
+#include "server/zone/objects/player/sui/listbox/SuiListBox.h"
+#include "server/zone/objects/player/sui/callbacks/ShipColorWithKitSuiCallback.h"
+#include "server/zone/objects/tangible/tool/ShipPaintKit.h"
+
 
 
 class ShipSecondaryPaintSuiCallback : public SuiCallback {
+	ManagedReference<ShipPaintKit*> customizationKit;
+
 public:
-	ShipSecondaryPaintSuiCallback(ZoneServer* serv) : SuiCallback(serv) {
+	ShipSecondaryPaintSuiCallback(ZoneServer* serv, ShipPaintKit* kit) : SuiCallback(serv), customizationKit(kit) {
 	}
 
 	void run(CreatureObject* creature, SuiBox* sui, uint32 eventIndex, Vector<UnicodeString>* args) {
 		bool cancelPressed = (eventIndex == 1);
 
-		if (creature == nullptr)
+		if (creature == nullptr || cancelPressed)
 			return;
 
 		ZoneServer* server = creature->getZoneServer();
@@ -27,19 +34,10 @@ public:
 		if (server == nullptr)
 			return;
 
-		if (!sui->isListBox() || args->size() <= 0 || cancelPressed)
+		if (!sui->isListBox() || args->size() <= 0)
 			return;
 
-		//Calculate the appropriate texture index to use based on the kit's string ID - e.g. texture_kit_s03 will use an index of 2
-		ManagedReference<SceneObject*> obj = sui->getUsingObject().get();
-		if (obj == nullptr)
-			return;
-
-		ManagedReference<TangibleObject*> customizationKit = obj->asTangibleObject();
-		if (customizationKit == nullptr)
-			return;
-
-		//Get the target ship from the SuiListBox, which has its object ID stored
+		// Get the target ship from the SuiListBox
 		SuiListBox* listbox = cast<SuiListBox*>(sui);
 
 		int idx = Integer::valueOf(args->get(0).toString());
@@ -52,19 +50,28 @@ public:
 			return;
 
 		TangibleObject* ship = object->asTangibleObject();
-		if ( ship != nullptr) {	
+
+		if (ship != nullptr && customizationKit != nullptr) {
+
+			if (customizationKit->getSecondaryUsed())
+				return;
+
 			String varKey = "/shared_owner/index_color_2";
 			ManagedReference<SuiColorBox*> cbox = new SuiColorBox(creature, SuiWindowType::CUSTOMIZE_KIT);
-			cbox->setCallback(new ColorWithKitSuiCallback(server, customizationKit));
+			cbox->setCallback(new ShipColorWithKitSuiCallback(server, customizationKit));
 			cbox->setColorPalette(varKey);
 			cbox->setUsingObject(ship);
+			cbox->setPromptTitle(varKey);
 
 			ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
-			ghost->closeSuiWindowType(SuiWindowType::CUSTOMIZE_KIT);
-			ghost->addSuiBox(cbox);
-			creature->sendMessage(cbox->generateMessage());
+
+			if (ghost != nullptr) {
+				ghost->closeSuiWindowType(SuiWindowType::CUSTOMIZE_KIT);
+				ghost->addSuiBox(cbox);
+				creature->sendMessage(cbox->generateMessage());
+			}
 		}
 	}
 };
 
-#endif /* SHIPTEXTURESUICALLBACK_H_ */
+#endif /* SHIPSECONDAYTEXTURESUICALLBACK_H_ */

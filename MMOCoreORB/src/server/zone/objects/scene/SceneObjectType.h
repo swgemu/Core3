@@ -399,6 +399,7 @@ public:
 	const static int SHIPREACTORSUBCOMPONENT = 0x40000018;
 	const static int SHIPSHIELDSUBCOMPONENT = 0x40000019;
 	const static int SHIPWEAPONSUBCOMPONENT = 0x40000020;
+	const static int SHIPPAINTKIT = 0x40000021;
 
 public:
 	static const String typeToString(int gameObjectType);
