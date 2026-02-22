@@ -15,21 +15,29 @@
 #include "server/zone/objects/player/sui/listbox/SuiListBox.h"
 #include "server/zone/objects/player/sui/callbacks/ShipPrimaryPaintSuiCallback.h"
 #include "server/zone/objects/player/sui/callbacks/ShipSecondaryPaintSuiCallback.h"
+#include "server/zone/objects/tangible/tool/ShipPaintKit.h"
 
 void StarshipPaintKitObjectMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) const {
+	ManagedReference<ShipPaintKit*> kit = cast<ShipPaintKit*>(sceneObject);
 
-	if (!sceneObject->isTangibleObject())
+	if (kit == nullptr)
 		return;
 
-	TangibleObject* tano = cast<TangibleObject*>(sceneObject);
-
-	if (tano == nullptr)
-		return;
+	Locker locker(kit);
 
 	if (sceneObject->isASubChildOf(player)) {
-		menuResponse->addRadialMenuItem(RadialOptions::SERVER_MENU1, 3, "@sui:set_color");
-		menuResponse->addRadialMenuItemToRadialID(RadialOptions::SERVER_MENU1, RadialOptions::SERVER_MENU2, 3, "@sui:color_ship_one");
-		menuResponse->addRadialMenuItemToRadialID(RadialOptions::SERVER_MENU1, RadialOptions::SERVER_MENU3, 3, "@sui:color_ship_two");
+		if (!kit->getPrimaryUsed() || !kit->getSecondaryUsed()) {
+			menuResponse->addRadialMenuItem(RadialOptions::SERVER_MENU1, 3, "@sui:set_color");
+
+			// Only show the option if that specific slot hasn't been used yet
+			if (!kit->getPrimaryUsed()) {
+				menuResponse->addRadialMenuItemToRadialID(RadialOptions::SERVER_MENU1, RadialOptions::SERVER_MENU2, 3, "@sui:color_ship_one");
+			}
+
+			if (!kit->getSecondaryUsed()) {
+				menuResponse->addRadialMenuItemToRadialID(RadialOptions::SERVER_MENU1, RadialOptions::SERVER_MENU3, 3, "@sui:color_ship_two");
+			}
+		}
 	}
 
 	TangibleObjectMenuComponent::fillObjectMenuResponse(sceneObject, menuResponse, player);
@@ -49,9 +57,17 @@ int StarshipPaintKitObjectMenuComponent::handleObjectMenuSelect(SceneObject* sce
 	if ((selectedID != RadialOptions::SERVER_MENU2) && (selectedID != RadialOptions::SERVER_MENU3))
 		return TangibleObjectMenuComponent::handleObjectMenuSelect(sceneObject, player, selectedID);
 
-	ManagedReference<TangibleObject*> kitTano = cast<TangibleObject*>(sceneObject);
+	ManagedReference<ShipPaintKit*> kit = cast<ShipPaintKit*>(sceneObject);
 
-	if (kitTano == nullptr)
+	if (kit == nullptr)
+		return 0;
+
+	Locker locker(kit);
+
+	if (selectedID == RadialOptions::SERVER_MENU2 && kit->getPrimaryUsed())
+		return 0;
+
+	if (selectedID == RadialOptions::SERVER_MENU3 && kit->getSecondaryUsed())
 		return 0;
 
 	ZoneServer* server = player->getZoneServer();
@@ -62,13 +78,13 @@ int StarshipPaintKitObjectMenuComponent::handleObjectMenuSelect(SceneObject* sce
 		ManagedReference<SuiListBox*> sui = new SuiListBox(player, SuiWindowType::SHIP_TEXTURE_SELECT);
 
 		if (selectedID == RadialOptions::SERVER_MENU2)
-			sui->setCallback(new ShipPrimaryPaintSuiCallback(server));
+			sui->setCallback(new ShipPrimaryPaintSuiCallback(server, kit));
 		else
-			sui->setCallback(new ShipSecondaryPaintSuiCallback(server));
+			sui->setCallback(new ShipSecondaryPaintSuiCallback(server, kit));
 
 		sui->setPromptTitle("@color_kit:pick_a_ship_title");
 		sui->setPromptText("@color_kit:pick_a_ship");
-		sui->setUsingObject(kitTano);
+		sui->setUsingObject(kit);
 		sui->setOkButton(true, "@color_kit:btn_color");
 
 		//Populate SUI box with listed ships
