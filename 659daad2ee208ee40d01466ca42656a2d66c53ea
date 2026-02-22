@@ -1,0 +1,361 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "87c1c173_ed98cdb9",
+        "filename": "MMOCoreORB/bin/scripts/object/tangible/ship/crafted/chassis/xwing_customization_kit.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2026-02-22T01:25:01Z",
+      "side": 1,
+      "message": "Use type 8257",
+      "revId": "659daad2ee208ee40d01466ca42656a2d66c53ea",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b0f1c62_363b85c8",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/sui/callbacks/ShipColorWithKitSuiCallback.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2026-02-22T01:25:01Z",
+      "side": 1,
+      "message": "Use a weak reference",
+      "revId": "659daad2ee208ee40d01466ca42656a2d66c53ea",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1bc63813_7d0bfcf3",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/sui/callbacks/ShipColorWithKitSuiCallback.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2026-02-22T01:25:01Z",
+      "side": 1,
+      "message": "Make this a return instead of nesting.",
+      "revId": "659daad2ee208ee40d01466ca42656a2d66c53ea",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b5945bd5_62a7e66b",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/sui/callbacks/ShipColorWithKitSuiCallback.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2026-02-22T01:25:01Z",
+      "side": 1,
+      "message": "Same here, if kit is null or not a ship, return. Then lock the kit and cross lock the ship to the kit.",
+      "revId": "659daad2ee208ee40d01466ca42656a2d66c53ea",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2297e8f1_458ce3fc",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/sui/callbacks/ShipColorWithKitSuiCallback.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2026-02-22T01:25:01Z",
+      "side": 1,
+      "message": "Remove for alternative above.",
+      "revId": "659daad2ee208ee40d01466ca42656a2d66c53ea",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "03fbe9f0_2c729153",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/sui/callbacks/ShipColorWithKitSuiCallback.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2026-02-22T01:25:01Z",
+      "side": 1,
+      "message": "Wont need this",
+      "revId": "659daad2ee208ee40d01466ca42656a2d66c53ea",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7fd02a4b_75abb3cd",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/sui/callbacks/ShipColorWithKitSuiCallback.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2026-02-22T01:25:01Z",
+      "side": 1,
+      "message": "This will be handled above.",
+      "revId": "659daad2ee208ee40d01466ca42656a2d66c53ea",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9d90447_673c3e4e",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/sui/callbacks/ShipColorWithKitSuiCallback.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2026-02-22T01:25:01Z",
+      "side": 1,
+      "message": "Wont need to track this.",
+      "revId": "659daad2ee208ee40d01466ca42656a2d66c53ea",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1abae36_3e8d5557",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/sui/callbacks/ShipColorWithKitSuiCallback.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2026-02-22T01:25:01Z",
+      "side": 1,
+      "message": "This checking should be moved above the setCustomizationVariable and add in returns if already used for that type, just in case the kit has already been used for the type that was sent.",
+      "revId": "659daad2ee208ee40d01466ca42656a2d66c53ea",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "19d14652_adce2526",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/sui/callbacks/ShipColorWithKitSuiCallback.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2026-02-22T01:25:01Z",
+      "side": 1,
+      "message": "Why are we force sending an ALM?",
+      "revId": "659daad2ee208ee40d01466ca42656a2d66c53ea",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0745444f_9920ddd7",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/sui/callbacks/ShipColorWithKitSuiCallback.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2026-02-22T01:25:01Z",
+      "side": 1,
+      "message": "This should destroy is both primary and secondary are used and also needs to be destroyed from the database",
+      "revId": "659daad2ee208ee40d01466ca42656a2d66c53ea",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8221c9de_b7eab9a8",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/sui/callbacks/ShipColorWithKitSuiCallback.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2026-02-22T01:25:01Z",
+      "side": 1,
+      "message": "No need to release the lock, the function is ending and the lock is released.",
+      "revId": "659daad2ee208ee40d01466ca42656a2d66c53ea",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4442eee1_4a018d76",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/sui/callbacks/ShipPrimaryPaintSuiCallback.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2026-02-22T01:25:01Z",
+      "side": 1,
+      "message": "SuiListBox was used before and not needed as an include",
+      "revId": "659daad2ee208ee40d01466ca42656a2d66c53ea",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "872b722a_bfceace5",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/sui/callbacks/ShipPrimaryPaintSuiCallback.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2026-02-22T01:25:01Z",
+      "side": 1,
+      "message": "Use a weak ref",
+      "revId": "659daad2ee208ee40d01466ca42656a2d66c53ea",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb869f7a_8152d66e",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/sui/callbacks/ShipPrimaryPaintSuiCallback.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2026-02-22T01:25:01Z",
+      "side": 1,
+      "message": "I know this was stacked before, but add a new line so we are not stacking declarations and conditionals. Also remove the nest here. If the kit or the ship is null/not a ship, just return.",
+      "revId": "659daad2ee208ee40d01466ca42656a2d66c53ea",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac06daa5_4a8769c6",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/sui/callbacks/ShipPrimaryPaintSuiCallback.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2026-02-22T01:25:01Z",
+      "side": 1,
+      "message": "If we are not sending the message if ghost is null, then you should get the ghost pointer and null check it further up and return. Then you can leave the ghost calls just before sending the colorbox",
+      "revId": "659daad2ee208ee40d01466ca42656a2d66c53ea",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6dd52e85_6fa55657",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/sui/callbacks/ShipSecondaryPaintSuiCallback.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2026-02-22T01:25:01Z",
+      "side": 1,
+      "message": "SuiListBox and SuiColorBox were used before and not needed as an include",
+      "revId": "659daad2ee208ee40d01466ca42656a2d66c53ea",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea092e4b_9c07bbdf",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/sui/callbacks/ShipSecondaryPaintSuiCallback.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2026-02-22T01:25:01Z",
+      "side": 1,
+      "message": "return here for if these are null or if the shipTano is not a ship to remove the nest.",
+      "revId": "659daad2ee208ee40d01466ca42656a2d66c53ea",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9e4ba0b4_c7cf3348",
+        "filename": "MMOCoreORB/src/server/zone/objects/scene/SceneObjectType.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 402,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2026-02-22T01:25:01Z",
+      "side": 1,
+      "message": "Since this is a tool, put it up with the other items similar to it using 0x2042",
+      "revId": "659daad2ee208ee40d01466ca42656a2d66c53ea",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ea030f8_df80c286",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/tool/ShipPaintKit.idl",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2026-02-22T01:25:01Z",
+      "side": 1,
+      "message": "@json above this to make them dumpable, you dont need it on each object member.",
+      "revId": "659daad2ee208ee40d01466ca42656a2d66c53ea",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d515c1d2_7bb1d8a9",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/tool/ShipPaintKit.idl",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2026-02-22T01:25:01Z",
+      "side": 1,
+      "message": "We don\u0027t need to track charges at all if each kit can only be used once for primary and secondary and that is tracked by the booleans above.",
+      "revId": "659daad2ee208ee40d01466ca42656a2d66c53ea",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    }
+  ]
+}
