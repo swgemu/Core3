@@ -1,0 +1,259 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e21a89b3_d417c5ec",
+        "filename": "MMOCoreORB/bin/scripts/object/tangible/ship/crafted/chassis/xwing_customization_kit.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2026-02-25T16:34:52Z",
+      "side": 1,
+      "message": "This need to be 8258. Did you test with your changes? This would break the objects",
+      "revId": "20564c3f2a2500b38a9b850e46f3e4446028c622",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c9b4663_1c922718",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/sui/callbacks/ShipColorWithKitSuiCallback.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2026-02-25T16:34:52Z",
+      "side": 1,
+      "message": "ManagedWeakReference",
+      "revId": "20564c3f2a2500b38a9b850e46f3e4446028c622",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb010f37_88734a3a",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/sui/callbacks/ShipColorWithKitSuiCallback.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2026-02-25T16:34:52Z",
+      "side": 1,
+      "message": "New line here",
+      "revId": "20564c3f2a2500b38a9b850e46f3e4446028c622",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f1c7be8_5ece76ac",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/sui/callbacks/ShipColorWithKitSuiCallback.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2026-02-25T16:34:52Z",
+      "side": 1,
+      "message": "new line here",
+      "revId": "20564c3f2a2500b38a9b850e46f3e4446028c622",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed08392a_4797b219",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/sui/callbacks/ShipPrimaryPaintSuiCallback.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2026-02-25T16:34:52Z",
+      "side": 1,
+      "message": "This builds successfully with this include removed.",
+      "revId": "20564c3f2a2500b38a9b850e46f3e4446028c622",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "403545d6_4f49c767",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/sui/callbacks/ShipPrimaryPaintSuiCallback.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2026-02-25T16:34:52Z",
+      "side": 1,
+      "message": "Same as the other ManagedWeakReference",
+      "revId": "20564c3f2a2500b38a9b850e46f3e4446028c622",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10629248_528b3219",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/sui/callbacks/ShipPrimaryPaintSuiCallback.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2026-02-25T16:34:52Z",
+      "side": 1,
+      "message": "reinterpret_cast --- NO\n\n● reinterpret_cast is a C++ cast operator that performs a low-level, bit-pattern\n  reinterpretation of a value from one type to another. It tells the compiler to treat the\n  underlying bits of an expression as if they were a different type, without any transformation\n   or safety checks.",
+      "revId": "20564c3f2a2500b38a9b850e46f3e4446028c622",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "064b0d42_3b9454e4",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/sui/callbacks/ShipPrimaryPaintSuiCallback.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2026-02-25T16:34:52Z",
+      "side": 1,
+      "message": "Nest was removed, still didn\u0027t add the new line.",
+      "revId": "20564c3f2a2500b38a9b850e46f3e4446028c622",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d6841e4_56bfde88",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/sui/callbacks/ShipPrimaryPaintSuiCallback.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2026-02-25T16:34:52Z",
+      "side": 1,
+      "message": "Move this check up right under the kit null check, then we skip everything else if the kit cannot be used anyway with a simple bool check.",
+      "revId": "20564c3f2a2500b38a9b850e46f3e4446028c622",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4a8c695_175963bd",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/sui/callbacks/ShipSecondaryPaintSuiCallback.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2026-02-25T16:34:52Z",
+      "side": 1,
+      "message": "ManagedWeakReference",
+      "revId": "20564c3f2a2500b38a9b850e46f3e4446028c622",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec9f038d_c5827b02",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/sui/callbacks/ShipSecondaryPaintSuiCallback.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2026-02-25T16:34:52Z",
+      "side": 1,
+      "message": "You remove a line under this to literally stack a declaration and a conditional when we should be doing the opposite for readability.",
+      "revId": "20564c3f2a2500b38a9b850e46f3e4446028c622",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f5414735_de9cd64d",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/sui/callbacks/ShipSecondaryPaintSuiCallback.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2026-02-25T16:34:52Z",
+      "side": 1,
+      "message": "Same, remove and don\u0027t use.",
+      "revId": "20564c3f2a2500b38a9b850e46f3e4446028c622",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ff33cf7_a25417a6",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/sui/callbacks/ShipSecondaryPaintSuiCallback.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2026-02-25T16:34:52Z",
+      "side": 1,
+      "message": "Same with this, move it up after the kit null check.",
+      "revId": "20564c3f2a2500b38a9b850e46f3e4446028c622",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "feb5f68d_ec170691",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/tool/ShipPaintKit.idl",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2026-02-25T16:34:52Z",
+      "side": 1,
+      "message": "@read",
+      "revId": "20564c3f2a2500b38a9b850e46f3e4446028c622",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d0f36a29_1911d3bf",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/tool/ShipPaintKit.idl",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2026-02-25T16:34:52Z",
+      "side": 1,
+      "message": "@read",
+      "revId": "20564c3f2a2500b38a9b850e46f3e4446028c622",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    }
+  ]
+}

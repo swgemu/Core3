@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "1d00908f_e0f4b8d7",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/sui/callbacks/ShipColorWithKitSuiCallback.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2026-02-25T16:34:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9b0f1c62_363b85c8",
+      "revId": "659daad2ee208ee40d01466ca42656a2d66c53ea",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1bc63813_7d0bfcf3",
         "filename": "MMOCoreORB/src/server/zone/objects/player/sui/callbacks/ShipColorWithKitSuiCallback.h",
         "patchSetId": 1
@@ -50,6 +68,24 @@
       "revId": "659daad2ee208ee40d01466ca42656a2d66c53ea",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de3053ae_d5e75700",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/sui/callbacks/ShipColorWithKitSuiCallback.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2026-02-25T16:34:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1bc63813_7d0bfcf3",
+      "revId": "659daad2ee208ee40d01466ca42656a2d66c53ea",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     },
     {
       "key": {
@@ -70,6 +106,24 @@
     },
     {
       "key": {
+        "uuid": "77a63d54_05654ba9",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/sui/callbacks/ShipColorWithKitSuiCallback.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2026-02-25T16:34:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b5945bd5_62a7e66b",
+      "revId": "659daad2ee208ee40d01466ca42656a2d66c53ea",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2297e8f1_458ce3fc",
         "filename": "MMOCoreORB/src/server/zone/objects/player/sui/callbacks/ShipColorWithKitSuiCallback.h",
         "patchSetId": 1
@@ -84,6 +138,24 @@
       "revId": "659daad2ee208ee40d01466ca42656a2d66c53ea",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ef61a20_a7a23a4f",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/sui/callbacks/ShipColorWithKitSuiCallback.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2026-02-25T16:34:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2297e8f1_458ce3fc",
+      "revId": "659daad2ee208ee40d01466ca42656a2d66c53ea",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     },
     {
       "key": {
@@ -104,6 +176,24 @@
     },
     {
       "key": {
+        "uuid": "1e32fbcd_fb1f935d",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/sui/callbacks/ShipColorWithKitSuiCallback.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2026-02-25T16:34:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "03fbe9f0_2c729153",
+      "revId": "659daad2ee208ee40d01466ca42656a2d66c53ea",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7fd02a4b_75abb3cd",
         "filename": "MMOCoreORB/src/server/zone/objects/player/sui/callbacks/ShipColorWithKitSuiCallback.h",
         "patchSetId": 1
@@ -118,6 +208,24 @@
       "revId": "659daad2ee208ee40d01466ca42656a2d66c53ea",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9010b9d_3e2b8004",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/sui/callbacks/ShipColorWithKitSuiCallback.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2026-02-25T16:34:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7fd02a4b_75abb3cd",
+      "revId": "659daad2ee208ee40d01466ca42656a2d66c53ea",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     },
     {
       "key": {
@@ -138,6 +246,24 @@
     },
     {
       "key": {
+        "uuid": "2605011b_63a186bb",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/sui/callbacks/ShipColorWithKitSuiCallback.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2026-02-25T16:34:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c9d90447_673c3e4e",
+      "revId": "659daad2ee208ee40d01466ca42656a2d66c53ea",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e1abae36_3e8d5557",
         "filename": "MMOCoreORB/src/server/zone/objects/player/sui/callbacks/ShipColorWithKitSuiCallback.h",
         "patchSetId": 1
@@ -152,6 +278,24 @@
       "revId": "659daad2ee208ee40d01466ca42656a2d66c53ea",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "679b82a9_83112ff9",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/sui/callbacks/ShipColorWithKitSuiCallback.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2026-02-25T16:34:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e1abae36_3e8d5557",
+      "revId": "659daad2ee208ee40d01466ca42656a2d66c53ea",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     },
     {
       "key": {
@@ -172,6 +316,24 @@
     },
     {
       "key": {
+        "uuid": "3a4804a9_ad103063",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/sui/callbacks/ShipColorWithKitSuiCallback.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2026-02-25T16:34:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "19d14652_adce2526",
+      "revId": "659daad2ee208ee40d01466ca42656a2d66c53ea",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0745444f_9920ddd7",
         "filename": "MMOCoreORB/src/server/zone/objects/player/sui/callbacks/ShipColorWithKitSuiCallback.h",
         "patchSetId": 1
@@ -189,6 +351,24 @@
     },
     {
       "key": {
+        "uuid": "f22eab9d_0e09f402",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/sui/callbacks/ShipColorWithKitSuiCallback.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2026-02-25T16:34:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0745444f_9920ddd7",
+      "revId": "659daad2ee208ee40d01466ca42656a2d66c53ea",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8221c9de_b7eab9a8",
         "filename": "MMOCoreORB/src/server/zone/objects/player/sui/callbacks/ShipColorWithKitSuiCallback.h",
         "patchSetId": 1
@@ -203,6 +383,24 @@
       "revId": "659daad2ee208ee40d01466ca42656a2d66c53ea",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb465941_5c0b1715",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/sui/callbacks/ShipColorWithKitSuiCallback.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2026-02-25T16:34:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8221c9de_b7eab9a8",
+      "revId": "659daad2ee208ee40d01466ca42656a2d66c53ea",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     },
     {
       "key": {
@@ -240,6 +438,24 @@
     },
     {
       "key": {
+        "uuid": "5a72b50e_42e395c0",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/sui/callbacks/ShipPrimaryPaintSuiCallback.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2026-02-25T16:34:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "872b722a_bfceace5",
+      "revId": "659daad2ee208ee40d01466ca42656a2d66c53ea",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cb869f7a_8152d66e",
         "filename": "MMOCoreORB/src/server/zone/objects/player/sui/callbacks/ShipPrimaryPaintSuiCallback.h",
         "patchSetId": 1
@@ -254,6 +470,24 @@
       "revId": "659daad2ee208ee40d01466ca42656a2d66c53ea",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8edecd8c_5269aad8",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/sui/callbacks/ShipPrimaryPaintSuiCallback.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2026-02-25T16:34:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb869f7a_8152d66e",
+      "revId": "659daad2ee208ee40d01466ca42656a2d66c53ea",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     },
     {
       "key": {
@@ -308,6 +542,24 @@
     },
     {
       "key": {
+        "uuid": "a4891b4c_7c6c07f1",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/sui/callbacks/ShipSecondaryPaintSuiCallback.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2026-02-25T16:34:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ea092e4b_9c07bbdf",
+      "revId": "659daad2ee208ee40d01466ca42656a2d66c53ea",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9e4ba0b4_c7cf3348",
         "filename": "MMOCoreORB/src/server/zone/objects/scene/SceneObjectType.h",
         "patchSetId": 1
@@ -322,6 +574,24 @@
       "revId": "659daad2ee208ee40d01466ca42656a2d66c53ea",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4506a66f_69b7b434",
+        "filename": "MMOCoreORB/src/server/zone/objects/scene/SceneObjectType.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 402,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2026-02-25T16:34:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9e4ba0b4_c7cf3348",
+      "revId": "659daad2ee208ee40d01466ca42656a2d66c53ea",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     },
     {
       "key": {
