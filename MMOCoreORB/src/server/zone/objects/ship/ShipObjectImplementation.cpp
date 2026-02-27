@@ -88,12 +88,17 @@ void ShipObjectImplementation::initializeTransientMembers() {
 void ShipObjectImplementation::notifyLoadFromDatabase() {
 	TangibleObjectImplementation::notifyLoadFromDatabase();
 
-	// info(true) << "ShipObjectImplementation::notifyLoadFromDatabase() called -- Ship: " << getDisplayedName();
+	info(true) << "ShipObjectImplementation::notifyLoadFromDatabase() called -- Ship: " << getDisplayedName();
 
 	auto zoneServer = getZoneServer();
 
+	if (zoneServer == nullptr) {
+		return;
+	}
+
+	/*
 	// This ship is launched when loading from DB. Auto store it
-	if (isShipLaunched() && zoneServer != nullptr) {
+	if (isShipLaunched()) {
 		auto shipDevice = cast<ShipControlDevice*>(zoneServer->getObject(controlDeviceID).get());
 		auto owner = getOwner().get();
 
@@ -111,13 +116,14 @@ void ShipObjectImplementation::notifyLoadFromDatabase() {
 
 			if (storeTask != nullptr) {
 				// Schedule this task out, giving plenty of time for players to load in first
-				storeTask->schedule(30 * 1000);
+				storeTask->schedule(10 * 1000);
 			}
 		}
-	} else {
-		// Make sure no players remain in any of the ships slots
-		removeAllPlayersFromShip();
 	}
+	*/
+
+	// Make sure no players remain in any of the ships slots
+	removeAllPlayersFromShip();
 }
 
 void ShipObjectImplementation::loadTemplateData(SharedObjectTemplate* templateData) {

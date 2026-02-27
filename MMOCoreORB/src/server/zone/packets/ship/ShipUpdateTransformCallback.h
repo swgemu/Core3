@@ -196,6 +196,16 @@ public:
 		// Release the pilot
 		pilotClock.release();
 
+		// Validate client position against ship's actual position
+		// On reconnect the client can send stale coordinates before fully loading the ship's authoritative state
+		const Vector3& shipPosition = ship->getPosition();
+		float sqrDistance = shipPosition.squaredDistanceTo(Vector3(positionX, positionY, positionZ));
+		float maxDistance = Math::max(ship->getActualMaxSpeed() * 10.f, 200.f);
+
+		if (sqrDistance > (maxDistance * maxDistance)) {
+			return synchronize(ship, pilot);
+		}
+
 		// Handle ship zone updates
 		if (isPositionUpdate(ship)) {
 			updatePosition(ship, pilot);
