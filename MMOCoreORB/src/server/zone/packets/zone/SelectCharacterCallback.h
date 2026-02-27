@@ -26,7 +26,7 @@
 #include "server/login/SWGRealmsAPI.h"
 #endif // WITH_SWGREALMS_API
 
-// #define DEBUG_SELECT_CHAR_CALLBACK
+#define DEBUG_SELECT_CHAR_CALLBACK
 
 class SelectCharacterCallback : public MessageCallback {
 	uint64 characterID;
@@ -45,9 +45,6 @@ public:
 		if (ghost == nullptr) {
 			return;
 		}
-
-		// Store all of the players spawned children: Pets & vehicles, except ships (bool)
-		ghost->unloadSpawnedChildren(true);
 
 		if (ghost->getAdminLevel() == 0 && (zoneServer->getConnectionCount() >= zoneServer->getServerCap())) {
 			client->sendMessage(new ErrorMessage("Login Error", "Server cap reached, please try again later", 0));
@@ -114,7 +111,9 @@ public:
 #ifdef DEBUG_SELECT_CHAR_CALLBACK
 		StringBuffer debugMsg;
 
-		debugMsg << "---------- SelectCharacterCallback ----------" << endl <<
+		debugMsg << endl <<
+		"=============================================" << endl <<
+		"---------- SelectCharacterCallback ----------" << endl <<
 		"Player: " << player->getDisplayedName() << endl <<
 		"Zone: " << zoneName << endl;
 #endif // DEBUG_SELECT_CHAR_CALLBACK
@@ -190,7 +189,7 @@ public:
 
 		if (playerParent != nullptr) {
 			debugMsg << "playerParent: " << playerParent->getObjectName()->getFullPath() << " ID: " << playerParent->getObjectID() << endl;
-			debugMsg << "playerParent Position - " << playerParent->getWorldPosition().toString();
+			debugMsg << "playerParent Position - " << playerParent->getWorldPosition().toString() << endl;
 		} else {
 			debugMsg << "playerParent: nullptr" << endl;
 		}
@@ -201,9 +200,11 @@ public:
 			debugMsg << "currentParent: nullptr" << endl;
 
 		if (rootParent != nullptr)
-			debugMsg << "rootParent: " << rootParent->getObjectName()->getFullPath() << " ID: " << rootParent->getObjectID();
+			debugMsg << "rootParent: " << rootParent->getObjectName()->getFullPath() << " ID: " << rootParent->getObjectID() << endl;
 		else
-			debugMsg << "rootParent: nullptr";
+			debugMsg << "rootParent: nullptr" << endl;
+
+		debugMsg << "=============================================" << endl << endl;
 
 		player->info(true) << debugMsg.toString();
 #endif
@@ -391,6 +392,9 @@ public:
 		}
 
 		SkillModManager::instance()->verifyWearableSkillMods(player);
+
+		// Store all of the players spawned children: Pets & vehicles, except ships (bool)
+		ghost->unloadSpawnedChildren(true);
 	}
 
 	void run() {

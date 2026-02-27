@@ -1087,6 +1087,8 @@ class PlayerObject extends IntangibleObject {
 	public native void setSavedTerrainName(final string name);
 
 	public void setSavedParentID(unsigned long id) {
+		Logger.info(true) << "setSavedParentID: " << id;
+
 		savedParentID = id;
 	}
 

@@ -26,7 +26,7 @@ public:
 
 		Locker locker(player);
 
-		// info(true) << "StoreSpawnedChildrenTask -- for " << player->getDisplayedName() << " Total Devices: " << devices.size();
+		info(true) << "StoreSpawnedChildrenTask -- for " << player->getDisplayedName() << " Total Devices: " << devices.size();
 
 		for (int i = 0; i < devices.size(); ++i) {
 			ManagedReference<ControlDevice*> controlDevice = devices.get(i).get();
@@ -67,7 +67,7 @@ public:
 
 				StoreShipTask* storeTask = new StoreShipTask(player, shipDevice, ghost->getSpaceLaunchZone(), ghost->getSpaceLaunchLocation());
 
-				// info(true) << "StoreSpawnedChildrenTask -- executing StoreShipTask - for Ship Device: " << shipDevice->getDisplayedName();
+				info(true) << "StoreSpawnedChildrenTask -- executing StoreShipTask - for Ship Device: " << shipDevice->getDisplayedName();
 
 				if (storeTask != nullptr) {
 					storeTask->execute();
