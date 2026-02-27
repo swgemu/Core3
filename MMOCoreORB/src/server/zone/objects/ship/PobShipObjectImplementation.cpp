@@ -588,6 +588,8 @@ int PobShipObjectImplementation::notifyObjectInsertedToChild(SceneObject* object
 
 				pobRef->addPlayerOnBoard(playerRef);
 			}, "PobAddPlayerOnBoard");
+
+			object->updateZoneWithParent(child, true, false);
 		}
 	} catch (Exception& e) {
 		error(e.getMessage());

@@ -265,7 +265,7 @@ void PlayerObjectImplementation::unloadSpawnedChildren(bool skipShips) {
 		return;
 	}
 
-	// info(true) << player->getDisplayedName() << " calling -- PlayerObjectImplementation::unloadSpawnedChildren() -- Contained Objects Size: " << datapad->getContainerObjectsSize();
+	info(true) << player->getDisplayedName() << " calling -- PlayerObjectImplementation::unloadSpawnedChildren() -- Contained Objects Size: " << datapad->getContainerObjectsSize();
 
 	Vector<ManagedReference<ControlDevice*> > devicesToStore;
 
@@ -298,6 +298,8 @@ void PlayerObjectImplementation::unloadSpawnedChildren(bool skipShips) {
 				continue;
 			}
 		}
+
+		info(true) << player->getDisplayedName() << " -- PlayerObjectImplementation::unloadSpawnedChildren() -- adding device to store: " << device->getDisplayedName();
 
 		devicesToStore.add(device);
 	}
@@ -337,7 +339,7 @@ void PlayerObjectImplementation::unload() {
 	}
 
 	debug() << creature->getDisplayedName() << " calling -- PlayerObjectImplementation::unload()";
-	// info(true) << creature->getDisplayedName() << " calling -- PlayerObjectImplementation::unload()";
+	info(true) << creature->getDisplayedName() << " calling -- PlayerObjectImplementation::unload()";
 
 	// Deactivate the players mission
 	auto missionManager = zoneServer->getMissionManager();
