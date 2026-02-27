@@ -15,6 +15,7 @@
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/guild/GuildObject.h"
 #include "server/zone/objects/tangible/terminal/Terminal.h"
+#include "server/zone/objects/cell/CellObject.h"
 #include "server/zone/packets/cell/UpdateCellPermissionsMessage.h"
 #include "server/zone/objects/ship/ai/ShipAiAgent.h"
 #include "server/zone/objects/tangible/item/CreditChipObject.h"
@@ -506,7 +507,7 @@ int PobShipObjectImplementation::notifyObjectInsertedToChild(SceneObject* object
 		_locker = new Locker(zone);
 	}
 
-	// info(true) << getDisplayedName() << " PobShipObjectImplementation::notifyObjectInsertedToChild -- object inserted: " << object->getDisplayedName() << " ID: " << object->getObjectID() << " Child: " << child->getObjectID() << " oldParent: " << (oldParent != nullptr ? oldParent->getObjectID() : 0);
+	info(true) << getDisplayedName() << " PobShipObjectImplementation::notifyObjectInsertedToChild -- object inserted: " << object->getDisplayedName() << " ID: " << object->getObjectID() << " Child: " << child->getObjectID() << " oldParent: " << (oldParent != nullptr ? oldParent->getObjectID() : 0);
 
 	try {
 		bool objectIsPlayer = object->isPlayerCreature();
@@ -533,6 +534,8 @@ int PobShipObjectImplementation::notifyObjectInsertedToChild(SceneObject* object
 			if (oldParent == nullptr || !oldRootIsPob || (oldParent != nullptr && (!oldParent->isCellObject() && !oldParent->isValidJtlParent()))) {
 				notifyObjectInsertedToZone(object);
 				hasEnteredRange = true;
+
+				info(true) << "notifyObjectInsertedToChild -- hasEnteredRange=true for " << object->getDisplayedName() << " oldParent: " << (oldParent != nullptr ? "not-null" : "null") << " oldRootIsPob: " << oldRootIsPob;
 			}
 
 			if (!objectIsPlayer) {
@@ -541,6 +544,27 @@ int PobShipObjectImplementation::notifyObjectInsertedToChild(SceneObject* object
 			}
 
 			if (hasEnteredRange) {
+				// Determine if this is a reconnecting player (LD). During reconnect,
+				// sendToOwner already sent all ship contents. Skip sendTo calls here
+				// to avoid flooding other players, but keep addInRangeObject for close objects setup.
+				bool isReconnect = false;
+
+				if (objectIsPlayer) {
+					auto ghost = object->asCreatureObject()->getPlayerObject();
+
+					if (ghost != nullptr && ghost->isTeleporting() && !ghost->isOnLoadScreen()) {
+						isReconnect = true;
+					}
+				}
+
+				// For player objects entering a cell, send cell permissions before cell contents
+				if (objectIsPlayer && child->isCellObject() && !isReconnect) {
+					auto childCell = static_cast<CellObject*>(child);
+					childCell->sendPermissionsTo(object->asCreatureObject(), true);
+				}
+
+				int childObjectsSent = 0;
+
 				for (int j = 0; j < child->getContainerObjectsSize(); ++j) {
 					ManagedReference<SceneObject*> containedObject = child->getContainerObject(j);
 
@@ -550,25 +574,46 @@ int PobShipObjectImplementation::notifyObjectInsertedToChild(SceneObject* object
 
 					if (containedObject->getCloseObjects() != nullptr) {
 						containedObject->addInRangeObject(object, false);
-						object->sendTo(containedObject, true, false);
+
+						if (!isReconnect) {
+							object->sendTo(containedObject, true, false);
+						}
 					} else {
 						containedObject->notifyInsert(object);
 					}
 
 					if (object->getCloseObjects() != nullptr) {
 						object->addInRangeObject(containedObject.get(), false);
-						containedObject->sendTo(object, true, false);
 
-						if (object->getClient() != nullptr && containedObject->isCreatureObject()) {
-							object->sendMessage(containedObject->link(child->getObjectID(), -1));
+						if (!isReconnect) {
+							// For JTL parents (pilot chair, operations chair, turret), send without
+							// slotted objects — occupants (creatures) are already sent to the new player
+							// by ShipObjectImplementation::notifyInsert via playersOnBoard. Sending them
+							// again via sendSlottedObjectsTo would cause duplicate SceneObjectCreateMessage
+							// packets, making the occupant invisible on the client.
+							if (containedObject->isValidJtlParent()) {
+								containedObject->sendWithoutContainerObjectsTo(object);
+							} else {
+								containedObject->sendTo(object, true, false);
+							}
+
+							if (object->getClient() != nullptr && containedObject->isCreatureObject()) {
+								object->sendMessage(containedObject->link(child->getObjectID(), -1));
+							}
 						}
 					} else {
 						object->notifyInsert(containedObject.get());
 					}
+
+					childObjectsSent++;
 				}
 
-				if (objectIsPlayer) {
-					onEnter(object->asCreatureObject());
+				info(true) << "notifyObjectInsertedToChild -- hasEnteredRange sent " << childObjectsSent << " child objects to " << object->getDisplayedName() << (isReconnect ? " (reconnect - sendTo skipped)" : "");
+
+				if (objectIsPlayer && !isReconnect) {
+					uint64 skipCell = child->isCellObject() ? child->getObjectID() : 0;
+					info(true) << "notifyObjectInsertedToChild -- calling onEnter for " << object->getDisplayedName() << " skipping child cell: " << skipCell;
+					onEnter(object->asCreatureObject(), skipCell);
 				}
 			}
 		}
@@ -588,6 +633,8 @@ int PobShipObjectImplementation::notifyObjectInsertedToChild(SceneObject* object
 
 				pobRef->addPlayerOnBoard(playerRef);
 			}, "PobAddPlayerOnBoard");
+
+			object->updateZoneWithParent(child, true, false);
 		}
 	} catch (Exception& e) {
 		error(e.getMessage());
@@ -598,7 +645,7 @@ int PobShipObjectImplementation::notifyObjectInsertedToChild(SceneObject* object
 		delete _locker;
 	}
 
-	// info(true) << getDisplayedName() << " PobShipObjectImplementation::notifyObjectInsertedToChild -- FINISHED object inserted: " << object->getDisplayedName() << " ID: " << object->getObjectID();
+	info(true) << getDisplayedName() << " PobShipObjectImplementation::notifyObjectInsertedToChild -- FINISHED object inserted: " << object->getDisplayedName() << " ID: " << object->getObjectID();
 
 	return ShipObjectImplementation::notifyObjectInsertedToChild(object, child, oldParent);
 }
@@ -611,23 +658,42 @@ int PobShipObjectImplementation::notifyObjectRemovedFromChild(SceneObject* objec
 	return 0;
 }
 
-void PobShipObjectImplementation::onEnter(CreatureObject* player) {
+void PobShipObjectImplementation::onEnter(CreatureObject* player, uint64 skipCellID) {
 	if (player == nullptr || !player->isPlayerCreature()) {
 		return;
 	}
 
-	// info(true) << "PobShipObjectImplementation::onEnter -- Ship ID: " << getObjectID() << " Player: " << player->getDisplayedName();
-
 	// Trigger POB ship entry observer
 	notifyObservers(ObserverEventType::ENTEREDPOBSHIP, player, 0);
 
-	// Player has entered the structure. Load objects in the structure for the player
+	// During reconnect (SelectCharacterCallback for LD player), the player is already
+	// sent all ship contents via sendToOwner -> sendTo. Sending them again here would
+	// flood the client with duplicate packets. For LD players, isTeleporting is true
+	// but isOnLoadScreen is false (zone != null). During switchZone, isOnLoadScreen
+	// is true and onEnter is needed to load cell contents for the new zone.
+	auto ghost = player->getPlayerObject();
+
+	if (ghost != nullptr && ghost->isTeleporting() && !ghost->isOnLoadScreen()) {
+		info(true) << "PobShipObjectImplementation::onEnter -- SKIPPED (reconnect) -- Ship ID: " << getObjectID() << " Player: " << player->getDisplayedName();
+		return;
+	}
+
+	info(true) << "PobShipObjectImplementation::onEnter -- Ship ID: " << getObjectID() << " Player: " << player->getDisplayedName() << " Total Cells: " << cells.size() << " skipCellID: " << skipCellID;
+
+	// Player has entered the ship, load ship objects for the player.
 	Reference<CreatureObject*> playerRef = player;
 
 	for (int i = 0; i < cells.size(); ++i) {
 		auto& cell = cells.get(i);
 
 		if (cell == nullptr) {
+			continue;
+		}
+
+		// Skip the cell the player was inserted into — hasEnteredRange already
+		// sent its contents synchronously so the client can exit the load screen.
+		if (skipCellID != 0 && cell->getObjectID() == skipCellID) {
+			info(true) << "onEnter -- skipping cell " << skipCellID << " (already sent by hasEnteredRange)";
 			continue;
 		}
 
@@ -638,10 +704,11 @@ void PobShipObjectImplementation::onEnter(CreatureObject* player) {
 
 			uint64 playerID = playerRef->getObjectID();
 
-			// cell->info(true) << "Loading Cell ID: " << cell->getObjectID() << " for player " << playerRef->getDisplayedName();
+			int objectsSent = 0;
 
-			cell->sendTo(playerRef, true);
+			// Client requires cell permissions before cell create message
 			cell->sendPermissionsTo(playerRef, true);
+			cell->sendTo(playerRef, true, false);
 
 			for (int j = 0; j < cell->getContainerObjectsSize(); ++j) {
 				auto child = cell->getContainerObject(j);
@@ -656,7 +723,34 @@ void PobShipObjectImplementation::onEnter(CreatureObject* player) {
 					child->notifyInsert(playerRef);
 				}
 
-				child->sendTo(playerRef, true, child->isValidJtlParent());
+				bool isJtlParent = child->isValidJtlParent();
+
+				// For JTL parents, send without slotted objects — occupants are already
+				// sent by ShipObjectImplementation::notifyInsert via playersOnBoard
+				if (isJtlParent) {
+					child->sendWithoutContainerObjectsTo(playerRef);
+				} else {
+					child->sendTo(playerRef, true, false);
+				}
+
+				if (isJtlParent) {
+					VectorMap<String, ManagedReference<SceneObject*>> jtlSlotted;
+					child->getSlottedObjects(jtlSlotted);
+
+					child->info(true) << "onEnter LoadPobShipLambda -- JTL Parent ID: " << child->getObjectID()
+						<< " type: " << child->getGameObjectType()
+						<< " slotted count: " << jtlSlotted.size()
+						<< " sending to: " << playerRef->getDisplayedName();
+
+					for (int k = 0; k < jtlSlotted.size(); ++k) {
+						auto jtlOccupant = jtlSlotted.get(k);
+						if (jtlOccupant != nullptr) {
+							child->info(true) << "  JTL Occupant[" << k << "]: " << jtlOccupant->getDisplayedName()
+								<< " ID: " << jtlOccupant->getObjectID()
+								<< " inOctree: " << jtlOccupant->isInOctree();
+						}
+					}
+				}
 
 				if (playerRef->getCloseObjects() != nullptr) {
 					playerRef->addInRangeObject(child, false);
@@ -665,9 +759,13 @@ void PobShipObjectImplementation::onEnter(CreatureObject* player) {
 				}
 
 				playerRef->sendTo(child, true, false);
+				objectsSent++;
 			}
-		}, "LoadPobShipLambda", ((i * 500) + 5000));
+
+			cell->info(true) << "onEnter LoadPobShipLambda -- Cell ID: " << cell->getObjectID() << " sent " << objectsSent << " objects to " << playerRef->getDisplayedName();
+		}, "LoadPobShipLambda", ((i * 200) + 1000));
 	}
+
 }
 
 void PobShipObjectImplementation::updateZone(bool lightUpdate, bool sendPackets) {
@@ -679,19 +777,38 @@ void PobShipObjectImplementation::sendTo(SceneObject* sceneO, bool doClose, bool
 		return;
 	}
 
-	// info(true) << "PobShipObjectImplementation::sendTo - " << getDisplayedName() << " sending to: " << sceneO->getDisplayedName();
-
 	auto player = sceneO->asCreatureObject();
 
 	if (player == nullptr) {
 		return;
 	}
 
+	info(true) << "PobShipObjectImplementation::sendTo - " << getDisplayedName() << " sending to: " << player->getDisplayedName() << " doClose: " << doClose << " forceLoad: " << forceLoadContainer;
+
 	ShipObjectImplementation::sendTo(player, doClose, forceLoadContainer);
+
+	// Skip sending cell contents during hyperspace or mid-zone-switch. During hyperspace,
+	// the ship enters the new zone first (triggering sendTo via inRange), but players
+	// haven't switched yet and don't have isTeleporting set. Once each player's switchZone
+	// fires, isTeleporting is set. In both cases, players will receive cell contents through
+	// notifyObjectInsertedToChild + onEnter when their own switchZone completes.
+	if (isHyperspacing()) {
+		info(true) << "PobShipObjectImplementation::sendTo - SKIPPED cell contents for " << player->getDisplayedName() << " (ship is hyperspacing)";
+		return;
+	}
+
+	auto ghost = player->getPlayerObject();
+
+	if (ghost != nullptr && ghost->isTeleporting()) {
+		info(true) << "PobShipObjectImplementation::sendTo - SKIPPED cell contents for " << player->getDisplayedName() << " (player is teleporting)";
+		return;
+	}
 
 	bool isLaunched = isShipLaunched();
 
 	auto closeObjects = player->getCloseObjects();
+
+	int totalObjectsSent = 0;
 
 	// for some reason client doesnt like when you send cell creatures while sending cells?
 	for (int i = 0; i < cells.size(); ++i) {
@@ -716,10 +833,14 @@ void PobShipObjectImplementation::sendTo(SceneObject* sceneO, bool doClose, bool
 				continue;
 			}
 
-			if (containerObject->isCreatureObject() || (closeObjects != nullptr && closeObjects->contains(containerObject.get())))
+			if (containerObject->isCreatureObject() || (closeObjects != nullptr && closeObjects->contains(containerObject.get()))) {
 				containerObject->sendTo(player, true, false);
+				totalObjectsSent++;
+			}
 		}
 	}
+
+	info(true) << "PobShipObjectImplementation::sendTo - COMPLETE - sent " << totalObjectsSent << " cell objects to " << player->getDisplayedName();
 }
 
 void PobShipObjectImplementation::sendContainerObjectsTo(SceneObject* sceneO, bool forceLoad) {
@@ -739,16 +860,28 @@ void PobShipObjectImplementation::sendContainerObjectsTo(SceneObject* sceneO, bo
 	bool isLaunched = isShipLaunched();
 	bool pobIsRoot = sceneO->getRootParent() == asPobShip();
 
+	// Skip sending cell contents during hyperspace or mid-zone-switch.
+	// Players receive cell contents through notifyObjectInsertedToChild + onEnter.
+	bool skipContents = isHyperspacing();
+
+	if (!skipContents) {
+		auto ghost = player->getPlayerObject();
+
+		if (ghost != nullptr && ghost->isTeleporting()) {
+			skipContents = true;
+		}
+	}
+
 	for (int i = 0; i < cells.size(); ++i) {
 		auto& cell = cells.get(i);
 
-		// info(true) << "PobShipObject -- Sending Cell #" << i << " to Player: " << sceneO->getDisplayedName();
-
-		cell->sendTo(player, true);
+		// Client requires cell permissions before cell create message
 		cell->sendPermissionsTo(player, true);
+		cell->sendTo(player, true);
 
-		// Do not send the contents of the ships cells to the player unless they are inside the ship
-		if (!isLaunched || !pobIsRoot) {
+		// Skip cell contents during hyperspace/zone-switch (onEnter handles contents),
+		// or when ship is not launched, or player is not inside the ship
+		if (skipContents || !isLaunched || !pobIsRoot) {
 			continue;
 		}
 
@@ -762,12 +895,8 @@ void PobShipObjectImplementation::sendContainerObjectsTo(SceneObject* sceneO, bo
 			uint64 objectID = object->getObjectID();
 
 			if (objectID == playerId || objectID == player->getParentID()) {
-				// info(true) << "PobShipObject -- Sending Cell #" << i << " SKIPPING item #" << j << " Object: " << object->getDisplayedName();
-
 				continue;
 			}
-
-			// info(true) << "PobShipObject -- Sending Cell #" << i << " sending item #" << j << " Object: " << object->getDisplayedName() << " to Player: " <<  sceneO->getDisplayedName();
 
 			object->sendTo(player, true);
 		}
