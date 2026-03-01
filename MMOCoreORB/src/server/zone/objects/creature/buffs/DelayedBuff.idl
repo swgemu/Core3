@@ -15,7 +15,7 @@ include system.util.Vector;
 class DelayedBuff extends Buff {
 	protected int usesRemaining;
 	protected CreatureObject player;
-	protected DelayedBuffObserver observer;
+	protected transient DelayedBuffObserver observer;
 
 	@dereferenced
 	protected Vector<int> eventTypes;

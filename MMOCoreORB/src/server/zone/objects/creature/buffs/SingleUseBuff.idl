@@ -12,7 +12,7 @@ import server.zone.objects.creature.buffs.SingleUseBuffObserver;
 
 @json
 class SingleUseBuff extends Buff {
-	protected SingleUseBuffObserver observer;
+	protected transient SingleUseBuffObserver observer;
 	protected CreatureObject player;
 	protected unsigned int commandCRC;
 

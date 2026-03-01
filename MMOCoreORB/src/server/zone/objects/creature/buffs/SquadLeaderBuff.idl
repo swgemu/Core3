@@ -16,8 +16,8 @@ include server.zone.objects.scene.SceneObjectType;
 
 @json
 class SquadLeaderBuff extends Buff {
-	protected SquadLeaderBuffObserver playerObserver;
-	protected SquadLeaderBuffObserver leaderObserver;
+	protected transient SquadLeaderBuffObserver playerObserver;
+	protected transient SquadLeaderBuffObserver leaderObserver;
 	protected CreatureObject player;
 	protected CreatureObject leader;
 
