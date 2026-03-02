@@ -55,11 +55,29 @@ private:
 	uint32 accountID;
 	bool accountIDOnly;
 
+	// Parsed data stored by parse() on HTTP thread, applied by applyToAccount() on Engine3 thread
+	bool dataParsed;
+	uint32 parsedStationID;
+	String parsedUsername;
+	bool parsedActive;
+	uint32 parsedAdminLevel;
+	uint32 parsedCreated;
+	uint32 parsedBanExpires;
+	String parsedBanReason;
+	uint32 parsedBanAdmin;
+	Time parsedValidUntil;
+
 public:
 	AccountResult(Reference<account::Account*> acc);
 	AccountResult();
 
 	bool parse() override;
+
+	// Apply parsed account data on an Engine3 thread where Locker works correctly.
+	// Must NOT be called from boost::asio/cpprestsdk HTTP threads because
+	// Thread::getCurrentThread() returns nullptr on non-Engine3 threads,
+	// causing Locker to skip locking (nullptr == nullptr evaluates as "already locked").
+	bool applyToAccount();
 
 	inline uint32 getAccountID() const {
 		return accountID;
@@ -857,16 +875,34 @@ AccountResult::AccountResult(Reference<Account*> acc) {
 	account = acc;
 	accountID = 0;
 	accountIDOnly = false;
+	dataParsed = false;
+	parsedStationID = 0;
+	parsedActive = false;
+	parsedAdminLevel = 0;
+	parsedCreated = 0;
+	parsedBanExpires = 0;
+	parsedBanAdmin = 0;
 }
 
 AccountResult::AccountResult() {
 	account = nullptr;
 	accountID = 0;
 	accountIDOnly = true;  // This is for getAccountID() calls
+	dataParsed = false;
+	parsedStationID = 0;
+	parsedActive = false;
+	parsedAdminLevel = 0;
+	parsedCreated = 0;
+	parsedBanExpires = 0;
+	parsedBanAdmin = 0;
 }
 
 bool AccountResult::parse() {
-	// Parse account data from jsonData
+	// Parse account data from jsonData into member variables only.
+	// Do NOT lock or mutate the Account here - this runs on a boost::asio HTTP thread
+	// where Thread::getCurrentThread() returns nullptr, causing Locker to skip locking
+	// (nullptr == nullptr evaluates as "already locked by current thread").
+	// Account mutation is deferred to applyToAccount() which runs on an Engine3 thread.
 	if (jsonData.is_null()) {
 		return false;
 	}
@@ -890,67 +926,43 @@ bool AccountResult::parse() {
 			return true;
 		}
 
-		// Parse full account data into Account object
+		// Parse full account data into member variables
 		if (!accountObj.has_field(U("station_id")) || !accountObj.has_field(U("username")) ||
 		    !accountObj.has_field(U("active"))) {
 			return false;
 		}
 
-		uint32 stationID = accountObj[U("station_id")].as_integer();
-		String username = conversions::to_utf8string(accountObj[U("username")].as_string());
-		bool active = accountObj[U("active")].as_bool();
-		uint32 adminLevel = accountObj.has_field(U("admin_level")) ? accountObj[U("admin_level")].as_integer() : 0;
-		uint32 created = accountObj.has_field(U("created")) ? accountObj[U("created")].as_integer() : 0;
+		parsedStationID = accountObj[U("station_id")].as_integer();
+		parsedUsername = conversions::to_utf8string(accountObj[U("username")].as_string());
+		parsedActive = accountObj[U("active")].as_bool();
+		parsedAdminLevel = accountObj.has_field(U("admin_level")) ? accountObj[U("admin_level")].as_integer() : 0;
+		parsedCreated = accountObj.has_field(U("created")) ? accountObj[U("created")].as_integer() : 0;
 
 		// Ban fields
-		uint32 banExpires = 0;
-		String banReason = "";
-		uint32 banAdmin = 0;
-
 		if (accountObj.has_field(U("ban_expires"))) {
-			banExpires = accountObj[U("ban_expires")].as_integer();
+			parsedBanExpires = accountObj[U("ban_expires")].as_integer();
 		}
 
 		if (accountObj.has_field(U("ban_reason"))) {
-			banReason = conversions::to_utf8string(accountObj[U("ban_reason")].as_string());
+			parsedBanReason = conversions::to_utf8string(accountObj[U("ban_reason")].as_string());
 		}
 
 		if (accountObj.has_field(U("ban_admin"))) {
-			banAdmin = accountObj[U("ban_admin")].as_integer();
+			parsedBanAdmin = accountObj[U("ban_admin")].as_integer();
 		}
 
 		// Parse valid_until for caching
-		Time validUntil;
 		if (jsonData.has_field(U("valid_until"))) {
 			if (jsonData[U("valid_until")].is_number()) {
 				uint64 timestamp = jsonData[U("valid_until")].as_number().to_uint64();
-				validUntil = Time((uint32)timestamp);
+				parsedValidUntil = Time((uint32)timestamp);
 			} else if (jsonData[U("valid_until")].is_string()) {
 				String isoTimestamp = conversions::to_utf8string(jsonData[U("valid_until")].as_string());
-				validUntil = Time::fromISO8601(isoTimestamp);
+				parsedValidUntil = Time::fromISO8601(isoTimestamp);
 			}
 		}
 
-		// Update account object
-		Locker locker(account);
-		account->setAccountID(accountID);
-		account->setStationID(stationID);
-		account->setUsername(username);
-		account->setActive(active);
-		account->setAdminLevel(adminLevel);
-		account->setTimeCreated(created);
-		account->setBanExpires(banExpires);
-		account->setBanReason(banReason);
-		account->setBanAdmin(banAdmin);
-		account->setAccountDataValidUntil(validUntil);
-
-		// Set default TTL if none provided
-		if (account->getAccountDataValidUntil()->getTime() == 0) {
-			Time defaultTTL;
-			defaultTTL.addMiliTime(300000); // 5 minute default
-			account->setAccountDataValidUntil(defaultTTL);
-		}
-
+		dataParsed = true;
 		return true;
 
 	} catch (const web::json::json_exception&) {
@@ -958,6 +970,34 @@ bool AccountResult::parse() {
 	} catch (const std::exception&) {
 		return false;
 	}
+}
+
+bool AccountResult::applyToAccount() {
+	if (!dataParsed || account == nullptr) {
+		return false;
+	}
+
+	Locker locker(account);
+
+	account->setAccountID(accountID);
+	account->setStationID(parsedStationID);
+	account->setUsername(parsedUsername);
+	account->setActive(parsedActive);
+	account->setAdminLevel(parsedAdminLevel);
+	account->setTimeCreated(parsedCreated);
+	account->setBanExpires(parsedBanExpires);
+	account->setBanReason(parsedBanReason);
+	account->setBanAdmin(parsedBanAdmin);
+	account->setAccountDataValidUntil(parsedValidUntil);
+
+	// Set default TTL if none provided
+	if (account->getAccountDataValidUntil()->getTime() == 0) {
+		Time defaultTTL;
+		defaultTTL.addMiliTime(300000); // 5 minute default
+		account->setAccountDataValidUntil(defaultTTL);
+	}
+
+	return true;
 }
 
 bool SWGRealmsAPI::apiCallBlocking(Reference<SWGRealmsAPIResult*> result, const String& path, const String& method,
@@ -1060,6 +1100,8 @@ void SWGRealmsAPI::updateClientIPAddress(ZoneClientSession* client, const Sessio
 	}
 }
 
+// WARNING: This function uses Locker which is unsafe on non-Engine3 threads (boost::asio).
+// Only call from Engine3 threads.
 bool SWGRealmsAPI::parseAccountFromJSON(const String& jsonStr, Reference<Account*> account, String& errorMessage) {
 	if (account == nullptr) {
 		errorMessage = "Account reference is null";
@@ -1167,7 +1209,15 @@ bool SWGRealmsAPI::getAccountDataBlocking(uint32 accountID, Reference<Account*> 
 	pathBuffer << "/v1/core3/galaxy/" << galaxyID << "/account/" << accountID;
 
 	Reference<AccountResult*> result = new AccountResult(account);
-	return apiCallBlocking(result.castTo<SWGRealmsAPIResult*>(), pathBuffer.toString(), "GET", "", errorMessage);
+
+	if (!apiCallBlocking(result.castTo<SWGRealmsAPIResult*>(), pathBuffer.toString(), "GET", "", errorMessage)) {
+		return false;
+	}
+
+	// Apply parsed account data here on the Engine3 calling thread where Locker works correctly.
+	// AccountResult::parse() only extracts JSON into member variables without mutating the Account,
+	// because it runs on a boost::asio HTTP thread where Thread::getCurrentThread() is nullptr.
+	return result->applyToAccount();
 }
 
 uint32 SWGRealmsAPI::getAccountID(const String& username, String& errorMessage) {
