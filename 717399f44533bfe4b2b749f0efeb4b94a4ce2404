@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8dfad4ad_3a924fdd",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/sui/callbacks/ShipColorWithKitSuiCallback.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2026-03-02T01:05:32Z",
+      "side": 1,
+      "message": "The lock does need to be above the varKey check because we are mutating the kit in those checks.",
+      "revId": "717399f44533bfe4b2b749f0efeb4b94a4ce2404",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "60318681_bd7cf4e5",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/sui/callbacks/ShipPrimaryPaintSuiCallback.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2026-03-02T01:05:32Z",
+      "side": 1,
+      "message": "null check list box",
+      "revId": "717399f44533bfe4b2b749f0efeb4b94a4ce2404",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    }
+  ]
+}
