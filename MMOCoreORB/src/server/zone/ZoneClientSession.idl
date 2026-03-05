@@ -16,6 +16,7 @@ include engine.log.LoggerHelperStream;
 include system.util.SynchronizedVectorMap;
 include server.zone.objects.scene.variables.PendingTasksMap;
 include server.zone.objects.scene.variables.OrderedTaskExecutioner;
+include engine.log.Logger;
 
 @dirty
 class ZoneClientSession extends ManagedObject {
@@ -40,6 +41,11 @@ class ZoneClientSession extends ManagedObject {
 
 	boolean disconnecting;
 
+	transient boolean packetLogging;
+
+	@dereferenced
+	transient protected Logger packetLogger;
+
 	@dereferenced
 	protected Time commandSpamCooldown;
 
@@ -59,6 +65,9 @@ class ZoneClientSession extends ManagedObject {
 	public native void resetPacketCheckupTime();
 
 	public native void closeConnection(boolean lockPlayer, boolean doLock = true);
+
+	public native void startPacketLogging(final string playerName);
+	public native void stopPacketLogging();
 
 	public native void setupLogging();
 	public native void info(final string msg, boolean force = false);

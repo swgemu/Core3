@@ -299,6 +299,8 @@ void PlayerObjectImplementation::unloadSpawnedChildren(bool skipShips) {
 			}
 		}
 
+		// info(true) << player->getDisplayedName() << " -- PlayerObjectImplementation::unloadSpawnedChildren() -- adding device to store: " << device->getDisplayedName();
+
 		devicesToStore.add(device);
 	}
 
