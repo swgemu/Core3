@@ -27,9 +27,11 @@ public:
 		insertLong(creo->getObjectID());
 		insertAscii("terrain/" + zone->getZoneName() + ".trn"); //terrain name
 
-	 	insertFloat(creo->getWorldPositionX()); //X
-	 	insertFloat(creo->getWorldPositionZ()); //Z
-	 	insertFloat(creo->getWorldPositionY()); //Y
+		Vector3 worldPosition = creo->getWorldPosition();
+
+	 	insertFloat(worldPosition.getX()); //X
+	 	insertFloat(worldPosition.getZ()); //Z
+	 	insertFloat(worldPosition.getY()); //Y
 
 		uint32 crc = creo->getClientObjectCRC();
 		String file = TemplateManager::instance()->getTemplateFile(crc);

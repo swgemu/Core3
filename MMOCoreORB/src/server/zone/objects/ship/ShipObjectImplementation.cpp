@@ -92,8 +92,13 @@ void ShipObjectImplementation::notifyLoadFromDatabase() {
 
 	auto zoneServer = getZoneServer();
 
+	if (zoneServer == nullptr) {
+		return;
+	}
+
+	/*
 	// This ship is launched when loading from DB. Auto store it
-	if (isShipLaunched() && zoneServer != nullptr) {
+	if (isShipLaunched()) {
 		auto shipDevice = cast<ShipControlDevice*>(zoneServer->getObject(controlDeviceID).get());
 		auto owner = getOwner().get();
 
@@ -111,13 +116,14 @@ void ShipObjectImplementation::notifyLoadFromDatabase() {
 
 			if (storeTask != nullptr) {
 				// Schedule this task out, giving plenty of time for players to load in first
-				storeTask->schedule(30 * 1000);
+				storeTask->schedule(10 * 1000);
 			}
 		}
-	} else {
-		// Make sure no players remain in any of the ships slots
-		removeAllPlayersFromShip();
 	}
+	*/
+
+	// Make sure no players remain in any of the ships slots
+	removeAllPlayersFromShip();
 }
 
 void ShipObjectImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
@@ -567,6 +573,8 @@ void ShipObjectImplementation::notifyInsert(TreeEntry* object) {
 			return;
 		}
 
+		bool hyperspacing = isHyperspacing();
+
 		Locker lock(&playersOnBoardMutex);
 
 		for (int i = 0; i < playersOnBoard.size(); ++i) {
@@ -579,25 +587,49 @@ void ShipObjectImplementation::notifyInsert(TreeEntry* object) {
 
 			// info(true) << "Ship: " << getDisplayedName() << " updating shipMember: " << shipMember->getDisplayedName();
 
-			// Update the Ship member
-			if (shipMember->getCloseObjects() != nullptr) {
-				shipMember->addInRangeObject(sceneO, false);
-			} else {
-				shipMember->notifyInsert(sceneO);
-			}
+			// During hyperspace, skip ALL sends and use raw COV puts instead of
+			// addInRangeObject. addInRangeObject unconditionally calls notifyInsert
+			// for new entries, which triggers PlayerSpaceZoneComponent::notifyInsert
+			// → sendTo, sending creates to players BEFORE their CmdStartScene.
+			// Raw COV puts silently add objects without triggering any sends.
+			// After hyperspacing clears, notifyInsertToZone rebuilds COVs properly.
+			bool skipMemberSend = hyperspacing;
 
-			if (shipMember != sceneO) {
-				shipMember->sendTo(sceneO, true, false);
+			if (skipMemberSend) {
+				auto memberCOV = shipMember->getCloseObjects();
 
-				// Update the Object with the ship member
-				if (sceneO->getCloseObjects() != nullptr) {
-					sceneO->addInRangeObject(shipMember, false);
-				} else {
-					sceneO->notifyInsert(shipMember);
+				if (memberCOV != nullptr) {
+					memberCOV->put(sceneO);
 				}
 
-				if (sceneO->getParent() != nullptr) {
-					sceneO->sendTo(shipMember, true, false);
+				if (shipMember != sceneO) {
+					auto sceneCOV = sceneO->getCloseObjects();
+
+					if (sceneCOV != nullptr) {
+						sceneCOV->put(shipMember);
+					}
+				}
+			} else {
+				// Update the Ship member
+				if (shipMember->getCloseObjects() != nullptr) {
+					shipMember->addInRangeObject(sceneO, false);
+				} else {
+					shipMember->notifyInsert(sceneO);
+				}
+
+				if (shipMember != sceneO) {
+					shipMember->sendTo(sceneO, true, false);
+
+					// Update the Object with the ship member
+					if (sceneO->getCloseObjects() != nullptr) {
+						sceneO->addInRangeObject(shipMember, false);
+					} else {
+						sceneO->notifyInsert(shipMember);
+					}
+
+					if (sceneO->getParent() != nullptr) {
+						sceneO->sendTo(shipMember, true, false);
+					}
 				}
 			}
 		}
@@ -705,6 +737,18 @@ void ShipObjectImplementation::notifyRemoveFromZone() {
 void ShipObjectImplementation::updateZone(bool lightUpdate, bool sendPackets) {
 	TangibleObjectImplementation::updateZone(lightUpdate, sendPackets);
 
+	Reference<ShipObject*> shipRef = asShipObject();
+
+	Core::getTaskManager()->executeTask([shipRef, lightUpdate, sendPackets]() {
+		if (shipRef == nullptr) {
+			return;
+		}
+
+		Locker lock(shipRef);
+
+		shipRef->updatePlayersInShip(lightUpdate, sendPackets);
+	}, "UpdatePlayersInShipTask");
+
 #ifdef DEBUG_COV
 	if (isPlayerShip()) {
 		auto zone = getLocalZone();
@@ -712,6 +756,45 @@ void ShipObjectImplementation::updateZone(bool lightUpdate, bool sendPackets) {
 		info(true) << "ShipObjectImplementation::updateZone -- Zone: " << (zone != nullptr ? zone->getZoneName() : "null zone");
 	}
 #endif // DEBUG_COV
+}
+
+void ShipObjectImplementation::updatePlayersInShip(bool lightUpdate, bool sendPackets) {
+	if (isShipLaunched()) {
+		return;
+	}
+
+	auto zoneServer = getZoneServer();
+
+	if (zoneServer == nullptr) {
+		return;
+	}
+
+	Locker lock(&playersOnBoardMutex);
+
+	const auto& worldPosition = getWorldPosition();
+
+	for (int i = 0; i < playersOnBoard.size(); ++i) {
+		auto shipMemberID = playersOnBoard.get(i);
+		auto shipMember = cast<CreatureObject*>(zoneServer->getObject(shipMemberID).get());
+
+		if (shipMember == nullptr) {
+			continue;
+		}
+
+		Locker clock(shipMember, asShipObject());
+
+		auto parent = shipMember->getParent().get();
+
+		if (parent == nullptr) {
+			continue;
+		}
+
+		if (parent == asShipObject()) {
+			shipMember->setPosition(worldPosition.getX(), worldPosition.getZ(), worldPosition.getY());
+		}
+
+		shipMember->updateZoneWithParent(parent, lightUpdate, sendPackets);
+	}
 }
 
 void ShipObjectImplementation::broadcastPvpStatusBitmask() {
@@ -2324,7 +2407,7 @@ bool ShipObjectImplementation::isShipDestroyed() {
 	return getChassisCurrentHealth() <= 0.f;
 }
 
-bool ShipObjectImplementation::isShipDocking() {
+bool ShipObjectImplementation::isShipDocking() const {
 	return optionsBitmask & OptionBitmask::DOCKING;
 }
 
