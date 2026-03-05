@@ -43,6 +43,7 @@
 
 object_tangible_shipcontrol_shipcontrol_corvette = object_tangible_shipcontrol_shared_shipcontrol_corvette:new {
 	objectMenuComponent = "PilotSeatMenuComponent",
+	containerComponent = "ShipStationContainerComponent",
 }
 
 ObjectTemplates:addTemplate(object_tangible_shipcontrol_shipcontrol_corvette, "object/tangible/shipcontrol/shipcontrol_corvette.iff")

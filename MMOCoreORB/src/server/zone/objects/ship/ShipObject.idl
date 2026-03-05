@@ -528,6 +528,8 @@ class ShipObject extends TangibleObject {
 	@local
 	public native abstract void updateZone(boolean lightUpdate, boolean sendPackets = true);
 
+	public abstract native void updatePlayersInShip(boolean lightUpdate, boolean sendPackets = true);
+
 	@dirty
 	public native void broadcastPvpStatusBitmask();
 	/*
@@ -1793,6 +1795,7 @@ class ShipObject extends TangibleObject {
 
 	public native boolean isShipDestroyed();
 
+	@read
 	public native boolean isShipDocking();
 
 	public native boolean isComponentInstalled(unsigned int slot);

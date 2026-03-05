@@ -138,7 +138,7 @@ void SpaceZoneComponent::updateZoneWithParent(SceneObject* sceneObject, SceneObj
 
 	Locker _locker(spaceZone);
 
-	if (oldParent == nullptr) {
+	if (oldParent == nullptr || oldParent != newParent) {
 		newParent->transferObject(sceneObject, sceneObject->getContainmentType(), true);
 
 		spaceZone->unlock();
@@ -258,18 +258,18 @@ void SpaceZoneComponent::switchZone(SceneObject* sceneObject, const String& newT
 	sceneObject->incrementMovementCounter();
 
 	if (newParent != nullptr) {
-		// info(true) << "SpaceZoneComponent::switchZone -- starting transfer into new parent... ";
+		info(true) << "SpaceZoneComponent::switchZone -- starting transfer into new parent... ";
 
 		if (newParent->transferObject(sceneObject, playerArrangement, false, false, false)) {
 			sceneObject->sendToOwner(true);
 
-			// info(true) << "SpaceZoneComponent::switchZone transferred into Parent: " << newParent->getDisplayedName() << " Player: " << sceneObject->getDisplayedName() << " Containment Type: " << playerArrangement << " X: " << newPositionX << " Z: " << newPositionZ << " Y: " << newPositionY;
+			info(true) << "SpaceZoneComponent::switchZone transferred into Parent: " << newParent->getDisplayedName() << " Player: " << sceneObject->getDisplayedName() << " Containment Type: " << playerArrangement << " X: " << newPositionX << " Z: " << newPositionZ << " Y: " << newPositionY;
 
 			if (newParent->isPilotChair() || newParent->isCellObject() || newParent->isShipTurret() || newParent->isOperationsChair()) {
 				auto rootParent = newParent->getRootParent();
 
 				if (rootParent != nullptr) {
-					// info(true) << "SpaceZoneComponent::switchZone notifying root parent: " << rootParent->getDisplayedName();
+					info(true) << "SpaceZoneComponent::switchZone notifying root parent: " << rootParent->getDisplayedName();
 
 					rootParent->notifyObjectInsertedToChild(sceneObject, newParent, nullptr);
 				}
@@ -307,21 +307,7 @@ void SpaceZoneComponent::destroyObjectFromWorld(SceneObject* sceneObject, bool s
 	Zone* spaceZone = sceneObject->getLocalZone();
 
 	if (par != nullptr) {
-		// uint64 parentID = sceneObject->getParentID();
 		par->removeObject(sceneObject, nullptr, false);
-
-		/*
-		if (par->isCellObject()) {
-			ManagedReference<BuildingObject*> build = par->getParent().get().castTo<BuildingObject*>();
-
-			if (build != nullptr) {
-				CreatureObject* creature = sceneObject->asCreatureObject();
-
-				if (creature != nullptr)
-					build->onExit(creature, parentID);
-			}
-		}
-		*/
 
 		sceneObject->notifyObservers(ObserverEventType::OBJECTREMOVEDFROMZONE, sceneObject, 0);
 	} else if (spaceZone != nullptr) {
