@@ -43,6 +43,7 @@
 
 object_tangible_shipcontrol_shipoperations_falcon = object_tangible_shipcontrol_shared_shipoperations_falcon:new {
 	objectMenuComponent = "ShipOperationsMenuComponent",
+	containerComponent = "ShipStationContainerComponent",
 }
 
 ObjectTemplates:addTemplate(object_tangible_shipcontrol_shipoperations_falcon, "object/tangible/shipcontrol/shipoperations_falcon.iff")

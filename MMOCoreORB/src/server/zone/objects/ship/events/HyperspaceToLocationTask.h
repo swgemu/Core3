@@ -7,6 +7,10 @@
 
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/ship/ShipObject.h"
+#include "server/zone/ZoneClientSession.h"
+
+
+#define DEBUG_HYPERSPACE_PACKETS
 
 class HyperspaceToLocationTask : public Task {
 	WeakReference<CreatureObject*> play;
@@ -88,6 +92,10 @@ public:
 			return;
 		}
 		case 9: {
+#ifdef DEBUG_HYPERSPACE_PACKETS
+			startPacketLoggingForShip(shipObject);
+#endif // DEBUG_HYPERSPACE_PACKETS
+
 			// Randomize and set the location.
 			location.setX(location.getX() + System::random(100.f));
 			location.setZ(location.getZ() + System::random(100.f));
@@ -99,12 +107,15 @@ public:
 			return;
 		}
 		case 10: {
-			// Switch the ships zone
+			// Switch the ships zone - passengers in cells travel with the ship automatically
 			shipObject->switchZone(zoneName, location.getX(), location.getZ(), location.getY());
 
-			// Switch all remaining players onboard the ship
+			// Phase 1: Clear stale close objects and send scene reset to all passengers.
+			// The SWG client needs time to process CmdStartScene (scene reset / terrain load)
+			// before receiving SceneObjectCreate messages. If Creates arrive in the same UDP
+			// frame as CmdStartScene, the client may crash due to async scene initialization.
+			// Phase 2 (case 11) sends the scene objects after a short delay.
 			int totalPlayers = shipObject->getTotalPlayersOnBoard();
-			auto zoneServer = shipObject->getZoneServer();
 
 			for (int i = 0; i < totalPlayers; i++) {
 				auto shipMember = shipObject->getPlayerOnBoard(i);
@@ -116,35 +127,65 @@ public:
 				try {
 					Locker memberLock(shipMember, shipObject);
 
-					Vector3 memberPosition = shipMember->getPosition();
-					uint64 parentID = shipMember->getParentID();
+					auto closeObjects = shipMember->getCloseObjects();
 
-					// shipObject->info(true) << "Transferring Ship Member: " << shipMember->getDisplayedName() << " To Position: " << memberPosition.toString() << " ID: " << parentID;
-
-					const Quaternion* direction = nullptr;
-
-					if (parentID != shipObject->getObjectID() && zoneServer != nullptr) {
-						auto parentObject = zoneServer->getObject(parentID);
-
-						if (parentObject != nullptr) {
-							direction = parentObject->getDirection();
-						}
-					} else {
-						direction = shipObject->getDirection();
+					if (closeObjects != nullptr) {
+						closeObjects->removeAll();
 					}
 
-					if (direction != nullptr) {
-						shipMember->setDirection(direction->getW(), direction->getX(), direction->getY(), direction->getZ());
-					}
-
-					shipMember->switchZone(zoneName, memberPosition.getX(), memberPosition.getZ(), memberPosition.getY(), parentID, false, shipMember->getContainmentType());
+					shipMember->sendSceneResetToOwner();
 				} catch (...) {
-					shipMember->error() << "Failed to transport player onboard ship in hyperspace - ShipID: " << shipObject->getObjectID() << " Ship Member ID: " << shipMember->getObjectID();
+					shipMember->error() << "Failed to send scene reset during hyperspace - ShipID: " << shipObject->getObjectID() << " Ship Member ID: " << shipMember->getObjectID();
+				}
+			}
+
+			// Give clients 200ms to process CmdStartScene before scene objects arrive
+			reschedule(200);
+			return;
+		}
+		case 11: {
+			// Phase 2: Send scene objects to all passengers after CmdStartScene delay
+			int totalPlayers = shipObject->getTotalPlayersOnBoard();
+
+			for (int i = 0; i < totalPlayers; i++) {
+				auto shipMember = shipObject->getPlayerOnBoard(i);
+
+				if (shipMember == nullptr) {
+					continue;
+				}
+
+				try {
+					Locker memberLock(shipMember, shipObject);
+
+					auto client = shipMember->getClient();
+
+					if (client == nullptr) {
+						continue;
+					}
+
+					ManagedReference<SceneObject*> rootParent = shipMember->getRootParent();
+
+					if (rootParent != nullptr) {
+						rootParent->sendTo(shipMember, true);
+					}
+
+					auto group = shipMember->getGroup();
+
+					if (group != nullptr) {
+						group->sendTo(shipMember, true);
+					}
+
+					client->resetPacketCheckupTime();
+				} catch (...) {
+					shipMember->error() << "Failed to send scene objects during hyperspace - ShipID: " << shipObject->getObjectID() << " Ship Member ID: " << shipMember->getObjectID();
 				}
 			}
 
 			Reference<ShipObject*> shipRef = shipObject;
 
+			// Delay must outlast all onEnter lambdas which schedule at
+			// ((cellIndex * 200) + 1000)ms. For a ship with 20 cells that's
+			// up to 4800ms. Use 6000ms to be safe.
 			Core::getTaskManager()->scheduleTask([shipRef] () {
 				if (shipRef == nullptr) {
 					return;
@@ -153,12 +194,113 @@ public:
 				Locker lock(shipRef);
 
 				shipRef->setHyperspacing(false);
-			}, "ShipRemoveHyperspaceLambda", 1000);
+			}, "ShipRemoveHyperspaceLambda", 6000);
+
+#ifdef DEBUG_HYPERSPACE_PACKETS
+			// Delay packet logging stop to capture post-hyperspace sends
+			Reference<ShipObject*> logShipRef = shipObject;
+			WeakReference<CreatureObject*> logPlayRef = play;
+
+			Core::getTaskManager()->scheduleTask([logShipRef, logPlayRef] () {
+				if (logShipRef == nullptr) {
+					return;
+				}
+
+				auto zoneServer = logShipRef->getZoneServer();
+				if (zoneServer == nullptr) return;
+
+				auto pilot = logPlayRef.get();
+				if (pilot != nullptr) {
+					auto client = pilot->getClient();
+					if (client != nullptr) client->stopPacketLogging();
+				}
+
+				int totalPlayers = logShipRef->getTotalPlayersOnBoard();
+				for (int i = 0; i < totalPlayers; i++) {
+					auto member = logShipRef->getPlayerOnBoard(i);
+					if (member == nullptr || member == pilot) continue;
+					auto client = member->getClient();
+					if (client != nullptr) client->stopPacketLogging();
+				}
+			}, "StopPacketLoggingDelayed", 12000);
+#endif // DEBUG_HYPERSPACE_PACKETS
 
 			return;
 		}
 		}
 	}
+
+#ifdef DEBUG_HYPERSPACE_PACKETS
+	void startPacketLoggingForShip(ShipObject* shipObject) {
+		auto zoneServer = shipObject->getZoneServer();
+
+		if (zoneServer == nullptr) {
+			return;
+		}
+
+		// Log for pilot
+		auto pilot = play.get();
+
+		if (pilot != nullptr) {
+			auto client = pilot->getClient();
+
+			if (client != nullptr) {
+				client->startPacketLogging(pilot->getFirstName());
+			}
+		}
+
+		// Log for all passengers
+		int totalPlayers = shipObject->getTotalPlayersOnBoard();
+
+		for (int i = 0; i < totalPlayers; i++) {
+			auto member = shipObject->getPlayerOnBoard(i);
+
+			if (member == nullptr || member == pilot) {
+				continue;
+			}
+
+			auto client = member->getClient();
+
+			if (client != nullptr) {
+				client->startPacketLogging(member->getFirstName());
+			}
+		}
+	}
+
+	void stopPacketLoggingForShip(ShipObject* shipObject) {
+		auto zoneServer = shipObject->getZoneServer();
+
+		if (zoneServer == nullptr) {
+			return;
+		}
+
+		auto pilot = play.get();
+
+		if (pilot != nullptr) {
+			auto client = pilot->getClient();
+
+			if (client != nullptr) {
+				client->stopPacketLogging();
+			}
+		}
+
+		int totalPlayers = shipObject->getTotalPlayersOnBoard();
+
+		for (int i = 0; i < totalPlayers; i++) {
+			auto member = shipObject->getPlayerOnBoard(i);
+
+			if (member == nullptr || member == pilot) {
+				continue;
+			}
+
+			auto client = member->getClient();
+
+			if (client != nullptr) {
+				client->stopPacketLogging();
+			}
+		}
+	}
+#endif // DEBUG_HYPERSPACE_PACKETS
 };
 
 #endif // CORE3_HYPERSPACETOLOCATIONTASK_H
