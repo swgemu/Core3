@@ -15,6 +15,7 @@
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/guild/GuildObject.h"
 #include "server/zone/objects/tangible/terminal/Terminal.h"
+#include "server/zone/objects/cell/CellObject.h"
 #include "server/zone/packets/cell/UpdateCellPermissionsMessage.h"
 #include "server/zone/objects/ship/ai/ShipAiAgent.h"
 #include "server/zone/objects/tangible/item/CreditChipObject.h"
@@ -506,7 +507,7 @@ int PobShipObjectImplementation::notifyObjectInsertedToChild(SceneObject* object
 		_locker = new Locker(zone);
 	}
 
-	// info(true) << getDisplayedName() << " PobShipObjectImplementation::notifyObjectInsertedToChild -- object inserted: " << object->getDisplayedName() << " ID: " << object->getObjectID() << " Child: " << child->getObjectID() << " oldParent: " << (oldParent != nullptr ? oldParent->getObjectID() : 0);
+	info(true) << getDisplayedName() << " PobShipObjectImplementation::notifyObjectInsertedToChild -- object inserted: " << object->getDisplayedName() << " ID: " << object->getObjectID() << " Child: " << child->getObjectID() << " oldParent: " << (oldParent != nullptr ? oldParent->getObjectID() : 0);
 
 	try {
 		bool objectIsPlayer = object->isPlayerCreature();
@@ -533,6 +534,8 @@ int PobShipObjectImplementation::notifyObjectInsertedToChild(SceneObject* object
 			if (oldParent == nullptr || !oldRootIsPob || (oldParent != nullptr && (!oldParent->isCellObject() && !oldParent->isValidJtlParent()))) {
 				notifyObjectInsertedToZone(object);
 				hasEnteredRange = true;
+
+				info(true) << "notifyObjectInsertedToChild -- hasEnteredRange=true for " << object->getDisplayedName() << " oldParent: " << (oldParent != nullptr ? "not-null" : "null") << " oldRootIsPob: " << oldRootIsPob;
 			}
 
 			if (!objectIsPlayer) {
@@ -541,6 +544,29 @@ int PobShipObjectImplementation::notifyObjectInsertedToChild(SceneObject* object
 			}
 
 			if (hasEnteredRange) {
+				// Determine if this is a reconnecting player (LD). During reconnect,
+				// sendToOwner already sent all ship contents. Skip sendTo calls here
+				// to avoid flooding other players, but keep addInRangeObject for close objects setup.
+				bool isReconnect = false;
+
+				if (objectIsPlayer) {
+					auto ghost = object->asCreatureObject()->getPlayerObject();
+
+					if (ghost != nullptr && ghost->isTeleporting() && !ghost->isOnLoadScreen()) {
+						isReconnect = true;
+					}
+				}
+
+				bool hyperspacing = isHyperspacing();
+
+				// For player objects entering a cell, send cell permissions before cell contents
+				if (objectIsPlayer && child->isCellObject() && !isReconnect) {
+					auto childCell = static_cast<CellObject*>(child);
+					childCell->sendPermissionsTo(object->asCreatureObject(), true);
+				}
+
+				int childObjectsSent = 0;
+
 				for (int j = 0; j < child->getContainerObjectsSize(); ++j) {
 					ManagedReference<SceneObject*> containedObject = child->getContainerObject(j);
 
@@ -548,27 +574,56 @@ int PobShipObjectImplementation::notifyObjectInsertedToChild(SceneObject* object
 						continue;
 					}
 
+					// During hyperspace, skip sendTo for creature objects. Other players
+					// in this cell haven't had their switchZone called yet — their clients
+					// are still in the old zone. Sending creates between them crashes the
+					// client. They will be properly sent by the onEnter async lambdas
+					// (which fire after all synchronous switchZones complete) and during
+					// their own switchZone -> sendToOwner -> notifyObjectInsertedToChild.
+					// During hyperspace, skip ALL sendTo calls. Cell contents were already
+					// sent by sendContainerObjectsTo during sendToOwner. JTL parent sendTo
+					// includes sendSlottedObjectsTo which sends occupants who may not have
+					// switched zones yet — premature creates crash the client. Inter-player
+					// visibility is deferred to onEnter async lambdas (1000ms+).
+					bool skipSend = isReconnect || hyperspacing;
+
 					if (containedObject->getCloseObjects() != nullptr) {
 						containedObject->addInRangeObject(object, false);
-						object->sendTo(containedObject, true, false);
+
+						if (!skipSend) {
+							object->sendTo(containedObject, true, false);
+						}
 					} else {
 						containedObject->notifyInsert(object);
 					}
 
 					if (object->getCloseObjects() != nullptr) {
 						object->addInRangeObject(containedObject.get(), false);
-						containedObject->sendTo(object, true, false);
 
-						if (object->getClient() != nullptr && containedObject->isCreatureObject()) {
-							object->sendMessage(containedObject->link(child->getObjectID(), -1));
+						if (!skipSend) {
+							containedObject->sendTo(object, true, false);
+
+							if (object->getClient() != nullptr && containedObject->isCreatureObject()) {
+								object->sendMessage(containedObject->link(child->getObjectID(), -1));
+							}
 						}
 					} else {
 						object->notifyInsert(containedObject.get());
 					}
+
+					childObjectsSent++;
 				}
 
-				if (objectIsPlayer) {
-					onEnter(object->asCreatureObject());
+				info(true) << "notifyObjectInsertedToChild -- hasEnteredRange sent " << childObjectsSent << " child objects to " << object->getDisplayedName() << (isReconnect ? " (reconnect - sendTo skipped)" : "") << (hyperspacing ? " (hyperspace - all sendTo skipped)" : "");
+
+				if (objectIsPlayer && !isReconnect) {
+					// During hyperspace, don't skip the player's cell in onEnter.
+					// We skipped ALL sends above (to avoid premature/duplicate creates),
+					// so onEnter must handle inter-player visibility for ALL cells,
+					// including the one the player was inserted into.
+					uint64 skipCell = (!hyperspacing && child->isCellObject()) ? child->getObjectID() : 0;
+					info(true) << "notifyObjectInsertedToChild -- calling onEnter for " << object->getDisplayedName() << " skipping child cell: " << skipCell;
+					onEnter(object->asCreatureObject(), skipCell);
 				}
 			}
 		}
@@ -588,6 +643,8 @@ int PobShipObjectImplementation::notifyObjectInsertedToChild(SceneObject* object
 
 				pobRef->addPlayerOnBoard(playerRef);
 			}, "PobAddPlayerOnBoard");
+
+			object->updateZoneWithParent(child, true, false);
 		}
 	} catch (Exception& e) {
 		error(e.getMessage());
@@ -598,7 +655,7 @@ int PobShipObjectImplementation::notifyObjectInsertedToChild(SceneObject* object
 		delete _locker;
 	}
 
-	// info(true) << getDisplayedName() << " PobShipObjectImplementation::notifyObjectInsertedToChild -- FINISHED object inserted: " << object->getDisplayedName() << " ID: " << object->getObjectID();
+	info(true) << getDisplayedName() << " PobShipObjectImplementation::notifyObjectInsertedToChild -- FINISHED object inserted: " << object->getDisplayedName() << " ID: " << object->getObjectID();
 
 	return ShipObjectImplementation::notifyObjectInsertedToChild(object, child, oldParent);
 }
@@ -611,18 +668,31 @@ int PobShipObjectImplementation::notifyObjectRemovedFromChild(SceneObject* objec
 	return 0;
 }
 
-void PobShipObjectImplementation::onEnter(CreatureObject* player) {
+void PobShipObjectImplementation::onEnter(CreatureObject* player, uint64 skipCellID) {
 	if (player == nullptr || !player->isPlayerCreature()) {
 		return;
 	}
 
-	// info(true) << "PobShipObjectImplementation::onEnter -- Ship ID: " << getObjectID() << " Player: " << player->getDisplayedName();
-
 	// Trigger POB ship entry observer
 	notifyObservers(ObserverEventType::ENTEREDPOBSHIP, player, 0);
 
-	// Player has entered the structure. Load objects in the structure for the player
+	// During reconnect (SelectCharacterCallback for LD player), the player is already
+	// sent all ship contents via sendToOwner -> sendTo. Sending them again here would
+	// flood the client with duplicate packets. For LD players, isTeleporting is true
+	// but isOnLoadScreen is false (zone != null). During switchZone, isOnLoadScreen
+	// is true and onEnter is needed to load cell contents for the new zone.
+	auto ghost = player->getPlayerObject();
+
+	if (ghost != nullptr && ghost->isTeleporting() && !ghost->isOnLoadScreen()) {
+		info(true) << "PobShipObjectImplementation::onEnter -- SKIPPED (reconnect) -- Ship ID: " << getObjectID() << " Player: " << player->getDisplayedName();
+		return;
+	}
+
+	info(true) << "PobShipObjectImplementation::onEnter -- Ship ID: " << getObjectID() << " Player: " << player->getDisplayedName() << " Total Cells: " << cells.size() << " skipCellID: " << skipCellID;
+
+	// Player has entered the ship, load ship objects for the player.
 	Reference<CreatureObject*> playerRef = player;
+	bool hyperspacing = isHyperspacing();
 
 	for (int i = 0; i < cells.size(); ++i) {
 		auto& cell = cells.get(i);
@@ -631,17 +701,31 @@ void PobShipObjectImplementation::onEnter(CreatureObject* player) {
 			continue;
 		}
 
-		Core::getTaskManager()->scheduleTask([playerRef, cell] () {
+		// Skip the cell the player was inserted into — hasEnteredRange already
+		// sent its contents synchronously so the client can exit the load screen.
+		if (skipCellID != 0 && cell->getObjectID() == skipCellID) {
+			info(true) << "onEnter -- skipping cell " << skipCellID << " (already sent by hasEnteredRange)";
+			continue;
+		}
+
+		Core::getTaskManager()->scheduleTask([playerRef, cell, hyperspacing] () {
 			if (playerRef == nullptr || cell == nullptr) {
 				return;
 			}
 
 			uint64 playerID = playerRef->getObjectID();
 
-			// cell->info(true) << "Loading Cell ID: " << cell->getObjectID() << " for player " << playerRef->getDisplayedName();
+			int objectsSent = 0;
 
-			cell->sendTo(playerRef, true);
-			cell->sendPermissionsTo(playerRef, true);
+			// During hyperspace, cells and non-creature objects were already sent
+			// by sendContainerObjectsTo during sendToOwner. Only send:
+			// 1. JTL parent occupants (slotted creatures now switched to new zone)
+			// 2. Creatures directly in cells (also now switched)
+			// Non-hyperspace: full cell send as before.
+			if (!hyperspacing) {
+				cell->sendPermissionsTo(playerRef, true);
+				cell->sendWithoutContainerObjectsTo(playerRef);
+			}
 
 			for (int j = 0; j < cell->getContainerObjectsSize(); ++j) {
 				auto child = cell->getContainerObject(j);
@@ -656,7 +740,15 @@ void PobShipObjectImplementation::onEnter(CreatureObject* player) {
 					child->notifyInsert(playerRef);
 				}
 
-				child->sendTo(playerRef, true, child->isValidJtlParent());
+				if (!hyperspacing) {
+					// Normal entry: send cell contents to the entering player
+					child->sendTo(playerRef, true, false);
+				}
+				// During hyperspace: sendContainerObjectsTo (called from sendToOwner
+				// with forceLoad=true) already sent ALL cell contents including JTL
+				// parents and their slotted occupants via the normal path. Sending
+				// them again here would create duplicate creates without an intervening
+				// destroy, crashing the client. Only COV setup and reverse sends below.
 
 				if (playerRef->getCloseObjects() != nullptr) {
 					playerRef->addInRangeObject(child, false);
@@ -664,10 +756,17 @@ void PobShipObjectImplementation::onEnter(CreatureObject* player) {
 					playerRef->notifyInsert(child);
 				}
 
-				playerRef->sendTo(child, true, false);
+				// Send the target player to the cell object (for inter-player visibility)
+				if (!hyperspacing || child->isCreatureObject()) {
+					playerRef->sendTo(child, true, false);
+				}
+				objectsSent++;
 			}
-		}, "LoadPobShipLambda", ((i * 500) + 5000));
+
+			cell->info(true) << "onEnter LoadPobShipLambda -- Cell ID: " << cell->getObjectID() << " sent " << objectsSent << " objects to " << playerRef->getDisplayedName();
+		}, "LoadPobShipLambda", ((i * 200) + 1000));
 	}
+
 }
 
 void PobShipObjectImplementation::updateZone(bool lightUpdate, bool sendPackets) {
@@ -679,19 +778,32 @@ void PobShipObjectImplementation::sendTo(SceneObject* sceneO, bool doClose, bool
 		return;
 	}
 
-	// info(true) << "PobShipObjectImplementation::sendTo - " << getDisplayedName() << " sending to: " << sceneO->getDisplayedName();
-
 	auto player = sceneO->asCreatureObject();
 
 	if (player == nullptr) {
 		return;
 	}
 
+	info(true) << "PobShipObjectImplementation::sendTo - " << getDisplayedName() << " sending to: " << player->getDisplayedName() << " doClose: " << doClose << " forceLoad: " << forceLoadContainer;
+
 	ShipObjectImplementation::sendTo(player, doClose, forceLoadContainer);
+
+	// During hyperspace, skip the explicit creature loop below. Cell contents
+	// (including creatures and JTL parent slotted objects) are already handled by
+	// sendContainerObjectsTo — either the normal path (forceLoad=true from
+	// sendToOwner) or the skipContents path (forceLoad=false from ship zone
+	// transfer). Running this loop would create duplicate creates that crash
+	// the client.
+	if (isHyperspacing()) {
+		info(true) << "PobShipObjectImplementation::sendTo - SKIPPED cell creature loop for " << player->getDisplayedName() << " (hyperspace, forceLoad=" << forceLoadContainer << ")";
+		return;
+	}
 
 	bool isLaunched = isShipLaunched();
 
 	auto closeObjects = player->getCloseObjects();
+
+	int totalObjectsSent = 0;
 
 	// for some reason client doesnt like when you send cell creatures while sending cells?
 	for (int i = 0; i < cells.size(); ++i) {
@@ -716,10 +828,14 @@ void PobShipObjectImplementation::sendTo(SceneObject* sceneO, bool doClose, bool
 				continue;
 			}
 
-			if (containerObject->isCreatureObject() || (closeObjects != nullptr && closeObjects->contains(containerObject.get())))
+			if (containerObject->isCreatureObject() || (closeObjects != nullptr && closeObjects->contains(containerObject.get()))) {
 				containerObject->sendTo(player, true, false);
+				totalObjectsSent++;
+			}
 		}
 	}
+
+	info(true) << "PobShipObjectImplementation::sendTo - COMPLETE - sent " << totalObjectsSent << " cell objects to " << player->getDisplayedName();
 }
 
 void PobShipObjectImplementation::sendContainerObjectsTo(SceneObject* sceneO, bool forceLoad) {
@@ -739,15 +855,74 @@ void PobShipObjectImplementation::sendContainerObjectsTo(SceneObject* sceneO, bo
 	bool isLaunched = isShipLaunched();
 	bool pobIsRoot = sceneO->getRootParent() == asPobShip();
 
+	// During hyperspace ship zone transfer (forceLoad=false), skip cell contents —
+	// players haven't switched zones yet and already have these objects loaded.
+	// During player sendToOwner (forceLoad=true), cell contents are needed.
+	bool skipContents = isHyperspacing() && !forceLoad;
+
 	for (int i = 0; i < cells.size(); ++i) {
 		auto& cell = cells.get(i);
 
-		// info(true) << "PobShipObject -- Sending Cell #" << i << " to Player: " << sceneO->getDisplayedName();
-
-		cell->sendTo(player, true);
+		// Client requires cell permissions before cell create message
 		cell->sendPermissionsTo(player, true);
 
-		// Do not send the contents of the ships cells to the player unless they are inside the ship
+		// During hyperspace, send cell creates without triggering the cell's own
+		// sendContainerObjectsTo (which would send ALL children through the base
+		// SceneObject path, bypassing our hyperspace guards and sending creatures
+		// who haven't switched zones yet). Then explicitly send cell contents,
+		// skipping OTHER creatures but allowing the target player through.
+		//
+		// The player's own baselines must be sent here — they arrive either as:
+		//   1. A slotted object of a JTL parent (chair->sendTo includes slotted pilot)
+		//   2. Directly via player->sendTo(player) if the player is in the cell
+		//
+		// Other creatures (players who haven't had switchZone called) are skipped —
+		// they will be handled during their own switchZone sequence.
+		if (skipContents) {
+			cell->sendWithoutContainerObjectsTo(player);
+
+			for (int j = 0; j < cell->getContainerObjectsSize(); ++j) {
+				auto object = cell->getContainerObject(j);
+
+				if (object == nullptr) {
+					continue;
+				}
+
+				// Skip other creatures (players who haven't switched zones yet)
+				// but allow the target player through — they need their own baselines
+				if (object->isCreatureObject() && object->getObjectID() != playerId) {
+					continue;
+				}
+
+				// For JTL parents (pilot chair, ops chair, turret): sendTo includes
+				// sendSlottedObjectsTo which sends the chair's slotted occupant. If
+				// that occupant is ANOTHER player who hasn't switched zones yet, the
+				// receiving client gets a premature create. When the occupant later
+				// switches zones and is sent again (no destroy in between), the
+				// duplicate create crashes the client.
+				//
+				// Fix: only use full sendTo for the player's OWN JTL parent (so their
+				// baselines come through the slotted chain). For all other JTL parents,
+				// use sendWithoutContainerObjectsTo which sends create + baselines
+				// without slotted occupants — those occupants will be sent during
+				// their own switchZone sequence.
+				if (object->isValidJtlParent()) {
+					if (object->getObjectID() == player->getParentID()) {
+						object->sendTo(player, true);
+					} else {
+						object->sendWithoutContainerObjectsTo(player);
+					}
+				} else {
+					object->sendTo(player, true);
+				}
+			}
+
+			continue;
+		}
+
+		cell->sendTo(player, true);
+
+		// Skip cell contents when ship is not launched or player is not inside the ship
 		if (!isLaunched || !pobIsRoot) {
 			continue;
 		}
@@ -762,12 +937,8 @@ void PobShipObjectImplementation::sendContainerObjectsTo(SceneObject* sceneO, bo
 			uint64 objectID = object->getObjectID();
 
 			if (objectID == playerId || objectID == player->getParentID()) {
-				// info(true) << "PobShipObject -- Sending Cell #" << i << " SKIPPING item #" << j << " Object: " << object->getDisplayedName();
-
 				continue;
 			}
-
-			// info(true) << "PobShipObject -- Sending Cell #" << i << " sending item #" << j << " Object: " << object->getDisplayedName() << " to Player: " <<  sceneO->getDisplayedName();
 
 			object->sendTo(player, true);
 		}
