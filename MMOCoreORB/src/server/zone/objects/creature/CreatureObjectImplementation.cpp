@@ -289,7 +289,7 @@ void CreatureObjectImplementation::sendToOwner(bool doClose) {
 		return;
 	}
 
-	// info(true) << getDisplayedName() << " sendToOwner -- START";
+	info(true) << getDisplayedName() << " sendToOwner -- START";
 
 	setMovementCounter(0);
 
@@ -310,6 +310,7 @@ void CreatureObjectImplementation::sendToOwner(bool doClose) {
 	ManagedReference<SceneObject*> rootParent = getRootParent();
 
 	if (rootParent != nullptr) {
+		info(true) << getDisplayedName() << " sendToOwner -- sending rootParent: " << rootParent->getDisplayedName() << " ID: " << rootParent->getObjectID();
 		rootParent->sendTo(asCreatureObject(), true);
 	} else {
 		sendTo(asCreatureObject(), doClose);
@@ -321,6 +322,10 @@ void CreatureObjectImplementation::sendToOwner(bool doClose) {
 
 	SortedVector<TreeEntry*> closeObjects;
 	vec->safeCopyTo(closeObjects);
+
+	info(true) << getDisplayedName() << " sendToOwner -- sending " << closeObjects.size() << " close objects";
+
+	int closeObjectsSent = 0;
 
 	for (int i = 0; i < closeObjects.size(); ++i) {
 		SceneObject* obj = static_cast<SceneObject*> (closeObjects.get(i));
@@ -339,6 +344,7 @@ void CreatureObjectImplementation::sendToOwner(bool doClose) {
 		}
 
 		sendTo(obj, true, false);
+		closeObjectsSent++;
 	}
 
 	if (group != nullptr) {
@@ -347,7 +353,7 @@ void CreatureObjectImplementation::sendToOwner(bool doClose) {
 
 	owner->resetPacketCheckupTime();
 
-	// info(true) << getDisplayedName() << " sendToOwner -- COMPLETE";
+	info(true) << getDisplayedName() << " sendToOwner -- COMPLETE -- sent " << closeObjectsSent << " close objects";
 }
 
 void CreatureObjectImplementation::sendBaselinesTo(SceneObject* player) {
@@ -3039,37 +3045,40 @@ void CreatureObjectImplementation::updateGroupMFDPositions() {
 void CreatureObjectImplementation::notifySelfPositionUpdate() {
 	auto zone = getZoneUnsafe();
 
-	if (zone != nullptr && hasState(CreatureState::ONFIRE)) {
-		PlanetManager* planetManager = zone->getPlanetManager();
+	if (zone != nullptr && zone->isGroundZone()) {
 
-		if (planetManager != nullptr) {
-			TerrainManager* terrainManager = planetManager->getTerrainManager();
+		if (hasState(CreatureState::ONFIRE)) {
+			PlanetManager* planetManager = zone->getPlanetManager();
 
-			if (terrainManager != nullptr) {
-				float waterHeight;
+			if (planetManager != nullptr) {
+				TerrainManager* terrainManager = planetManager->getTerrainManager();
 
-				CreatureObject* creature = asCreatureObject();
+				if (terrainManager != nullptr) {
+					float waterHeight;
 
-				if (parent == nullptr && terrainManager->getWaterHeight(getPositionX(), getPositionY(), waterHeight)) {
-					if ((getPositionZ() + getSwimHeight() - waterHeight < 0.2)) {
-						Reference<CreatureObject*> strongRef = asCreatureObject();
+					CreatureObject* creature = asCreatureObject();
 
-						Core::getTaskManager()->executeTask([strongRef] () {
-							Locker locker(strongRef);
+					if (parent == nullptr && terrainManager->getWaterHeight(getPositionX(), getPositionY(), waterHeight)) {
+						if ((getPositionZ() + getSwimHeight() - waterHeight < 0.2)) {
+							Reference<CreatureObject*> strongRef = asCreatureObject();
 
-							if (strongRef->hasState(CreatureState::ONFIRE))
-								strongRef->healDot(CreatureState::ONFIRE, 100);
-						}, "CreoPositionUpdateHealFireLambda");
+							Core::getTaskManager()->executeTask([strongRef] () {
+								Locker locker(strongRef);
+
+								if (strongRef->hasState(CreatureState::ONFIRE))
+									strongRef->healDot(CreatureState::ONFIRE, 100);
+							}, "CreoPositionUpdateHealFireLambda");
+						}
 					}
 				}
 			}
 		}
-	}
 
-	if (cooldownTimerMap->isPast("groupMFDUpdate")) {
-		cooldownTimerMap->updateToCurrentAndAddMili("groupMFDUpdate", 2000);
+		if (cooldownTimerMap->isPast("groupMFDUpdate")) {
+			cooldownTimerMap->updateToCurrentAndAddMili("groupMFDUpdate", 2000);
 
-		updateGroupMFDPositions();
+			updateGroupMFDPositions();
+		}
 	}
 
 	updateLocomotion();
