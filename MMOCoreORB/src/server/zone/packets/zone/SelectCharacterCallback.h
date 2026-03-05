@@ -21,6 +21,7 @@
 #include "server/zone/objects/player/events/DisconnectClientEvent.h"
 #include "server/zone/managers/collision/CollisionManager.h"
 #include "templates/params/creature/PlayerArrangement.h"
+#include "server/zone/packets/object/DataTransform.h"
 
 #ifdef WITH_SWGREALMS_API
 #include "server/login/SWGRealmsAPI.h"
@@ -45,9 +46,6 @@ public:
 		if (ghost == nullptr) {
 			return;
 		}
-
-		// Store all of the players spawned children: Pets & vehicles, except ships (bool)
-		ghost->unloadSpawnedChildren(true);
 
 		if (ghost->getAdminLevel() == 0 && (zoneServer->getConnectionCount() >= zoneServer->getServerCap())) {
 			client->sendMessage(new ErrorMessage("Login Error", "Server cap reached, please try again later", 0));
@@ -114,7 +112,9 @@ public:
 #ifdef DEBUG_SELECT_CHAR_CALLBACK
 		StringBuffer debugMsg;
 
-		debugMsg << "---------- SelectCharacterCallback ----------" << endl <<
+		debugMsg << endl << endl <<
+		"=============================================" << endl <<
+		"---------- SelectCharacterCallback ----------" << endl <<
 		"Player: " << player->getDisplayedName() << endl <<
 		"Zone: " << zoneName << endl;
 #endif // DEBUG_SELECT_CHAR_CALLBACK
@@ -190,7 +190,7 @@ public:
 
 		if (playerParent != nullptr) {
 			debugMsg << "playerParent: " << playerParent->getObjectName()->getFullPath() << " ID: " << playerParent->getObjectID() << endl;
-			debugMsg << "playerParent Position - " << playerParent->getWorldPosition().toString();
+			debugMsg << "playerParent Position - " << playerParent->getWorldPosition().toString() << endl;
 		} else {
 			debugMsg << "playerParent: nullptr" << endl;
 		}
@@ -201,9 +201,11 @@ public:
 			debugMsg << "currentParent: nullptr" << endl;
 
 		if (rootParent != nullptr)
-			debugMsg << "rootParent: " << rootParent->getObjectName()->getFullPath() << " ID: " << rootParent->getObjectID();
+			debugMsg << "rootParent: " << rootParent->getObjectName()->getFullPath() << " ID: " << rootParent->getObjectID() << endl;
 		else
-			debugMsg << "rootParent: nullptr";
+			debugMsg << "rootParent: nullptr" << endl;
+
+		debugMsg << "=============================================" << endl << endl;
 
 		player->info(true) << debugMsg.toString();
 #endif
@@ -223,6 +225,12 @@ public:
 			playerParent->transferObject(player, playerArrangement, false, false, false);
 			player->sendToOwner(true);
 
+			// Reset onLoadScreen after sendToOwner so notifyObjectInsertedToChild
+			// detects this as a reconnect (isTeleporting && !isOnLoadScreen).
+			// isOnLoadScreen may be left true from a hyperspace switchZone if the
+			// client crashed before sending a position update.
+			ghost->setOnLoadScreen(false);
+
 			if (playerParent->isShipObject()) {
 				rootParent = playerParent;
 			} else {
@@ -231,6 +239,11 @@ public:
 
 			if (rootParent != nullptr) {
 				rootParent->notifyObjectInsertedToChild(player, playerParent, nullptr);
+
+				// Send the ship's authoritative position to the reconnecting player to prevent the client
+				// from briefly using stale cached coordinates before its first transform is processed.
+				auto data = new DataTransform(rootParent);
+				player->sendMessage(data);
 
 #ifdef DEBUG_SELECT_CHAR_CALLBACK
 				player->info(true) << "SelectCharacterCallback -- rootParent Ship - Notified player has been inserted.";
@@ -391,6 +404,9 @@ public:
 		}
 
 		SkillModManager::instance()->verifyWearableSkillMods(player);
+
+		// Store all of the players spawned children: Pets & vehicles, except ships (bool)
+		ghost->unloadSpawnedChildren(true);
 	}
 
 	void run() {

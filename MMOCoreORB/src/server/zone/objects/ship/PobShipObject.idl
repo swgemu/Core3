@@ -107,7 +107,7 @@ class PobShipObject extends ShipObject {
 	public native int notifyObjectRemovedFromChild(SceneObject object, SceneObject child);
 
 	@dirty
-	public native abstract void onEnter(CreatureObject player);
+	public native abstract void onEnter(CreatureObject player, unsigned long skipCellID = 0);
 
 	@local
 	public native void updateZone(boolean lightUpdate, boolean sendPackets = true);

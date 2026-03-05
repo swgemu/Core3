@@ -96,6 +96,7 @@
 #include "server/zone/SpaceZoneContainerComponent.h"
 #include "server/zone/objects/ship/components/ShipContainerComponent.h"
 #include "server/zone/objects/ship/components/PobShipContainerComponent.h"
+#include "server/zone/objects/ship/components/ShipStationContainerComponent.h"
 #include "server/zone/objects/structure/components/StructureContainerComponent.h"
 #include "server/zone/objects/tangible/components/ElevatorMenuComponent.h"
 #include "server/zone/objects/tangible/components/ElevatorUpMenuComponent.h"
@@ -243,6 +244,7 @@ ComponentManager::ComponentManager() {
 
 	components.put("ShipContainerComponent", new ShipContainerComponent());
 	components.put("PobShipContainerComponent", new PobShipContainerComponent());
+	components.put("ShipStationContainerComponent", new ShipStationContainerComponent());
 
 	components.put("VendorContainerComponent", new VendorContainerComponent());
 	components.put("DroidContainerComponent", new DroidContainerComponent());

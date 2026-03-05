@@ -310,6 +310,25 @@ class CreatureObject extends TangibleObject {
 	public native void sendToOwner(boolean doClose = true);
 
 	/**
+	 * Sends only the scene reset portion of sendToOwner (CmdStartScene, ParametersMessage, GuildBaselines)
+	 * Used during hyperspace to separate scene reset from object sends, giving the client
+	 * time to process the scene change before receiving SceneObjectCreate messages
+	 * @pre { this object is locked }
+	 * @post { this object is locked, owner received scene reset packets }
+	 */
+	@dirty
+	public native void sendSceneResetToOwner();
+
+	/**
+	 * Sends only the scene objects portion of sendToOwner (rootParent, close objects, group)
+	 * Used after sendSceneResetToOwner with a delay to give the client time to process CmdStartScene
+	 * @pre { this object is locked }
+	 * @post { this object is locked, owner received scene objects }
+	 */
+	@dirty
+	public native void sendObjectsToOwner(boolean doClose = true);
+
+	/**
 	 * Sends a system message to the client of this object
 	 * @pre {}
 	 * @post { this object received the message }

@@ -1793,6 +1793,7 @@ class ShipObject extends TangibleObject {
 
 	public native boolean isShipDestroyed();
 
+	@read
 	public native boolean isShipDocking();
 
 	public native boolean isComponentInstalled(unsigned int slot);
