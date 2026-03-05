@@ -12,6 +12,9 @@
 #include "server/zone/objects/player/events/DisconnectClientEvent.h"
 #include "server/zone/managers/player/PlayerManager.h"
 
+#include <cstdio>
+#include <sys/stat.h>
+
 ZoneClientSessionImplementation::ZoneClientSessionImplementation(BaseClientProxy* session)
 		:  ManagedObjectImplementation() {
 	ZoneClientSessionImplementation::session = session;
@@ -25,6 +28,7 @@ ZoneClientSessionImplementation::ZoneClientSessionImplementation(BaseClientProxy
 	accountID = 0;
 
 	disconnecting = false;
+	packetLogging = false;
 
 	commandCount = 0;
 
@@ -94,7 +98,70 @@ void ZoneClientSessionImplementation::disconnect() {
 }
 
 void ZoneClientSessionImplementation::sendMessage(BasePacket* msg) {
+	if (packetLogging && msg != nullptr && msg->size() >= 10) {
+		int hdrOffset = msg->parseShort(0) == 0x0900 ? 4 : 0;
+
+		if ((int)msg->size() > hdrOffset + 6) {
+			uint16 opcodeCount = msg->parseShort(hdrOffset);
+			uint32 messageCRC = msg->parseInt(hdrOffset + 2);
+
+			char crcBuf[32];
+			snprintf(crcBuf, sizeof(crcBuf), "0x%04X crc=0x%08X", opcodeCount, messageCRC);
+
+			StringBuffer logMsg;
+			logMsg << "PKT size=" << msg->size() << " opcount=" << crcBuf << " hex=";
+
+			int dumpLen = msg->size() > 128 ? 128 : (int)msg->size();
+			char hexBuf[4];
+
+			for (int i = 0; i < dumpLen; ++i) {
+				snprintf(hexBuf, sizeof(hexBuf), "%02X ", (unsigned char)msg->parseByte(i));
+				logMsg << hexBuf;
+			}
+
+			if (msg->size() > 128) {
+				logMsg << "...(truncated)";
+			}
+
+			packetLogger.info(logMsg.toString(), true);
+		}
+	}
+
 	session->sendPacket(msg);
+}
+
+void ZoneClientSessionImplementation::startPacketLogging(const String& playerName) {
+	if (packetLogging) {
+		return;
+	}
+
+	mkdir("log/packets", 0755);
+
+	Time now;
+
+	StringBuffer logFilename;
+	logFilename << "log/packets/" << playerName << "_" << now.getFormattedTime("%Y%m%d_%H%M%S") << ".log";
+
+	packetLogger.setFileLogger(logFilename.toString(), false, false);
+	packetLogger.setLogToConsole(false);
+	packetLogger.setGlobalLogging(false);
+	packetLogger.setLogLevel(Logger::INFO);
+	packetLogger.setLogLevelToFile(false);
+
+	packetLogging = true;
+
+	packetLogger.info("Packet logging started for " + playerName, true);
+}
+
+void ZoneClientSessionImplementation::stopPacketLogging() {
+	if (!packetLogging) {
+		return;
+	}
+
+	packetLogger.info("Packet logging stopped", true);
+
+	packetLogging = false;
+	packetLogger.closeFileLogger();
 }
 
 //this needs to be run in a different thread
