@@ -388,13 +388,7 @@ public:
 		for (int i = 0; i < playerCopy.size(); ++i) {
 			auto entry = static_cast<SceneObject*>(playerCopy.get(i).get());
 
-			if (entry->getZone() == nullptr) {
-				msg << i << " cov error: !zone: " << entry->getDisplayedName() << endl;
-			}
-
-			if (entry->getNode() == nullptr) {
-				msg << i << " tree error: !node: " << entry->getDisplayedName() << " Position: " << entry->getWorldPosition().toString() << endl;
-			}
+			msg << "#" << i << " " << entry->getDisplayedName() << " Zone: " << (entry->getLocalZone() == nullptr ? "nullptr" : "in zone") << " Node: " << (entry->getNode() == nullptr ? "nullptr" : "has node") << " Position: " << entry->getWorldPosition().toString() << endl;
 		}
 
 		msg << endl << "inRangeCov: " << inRange.size() << endl;

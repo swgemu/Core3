@@ -364,14 +364,17 @@ void SceneObjectImplementation::sendTo(SceneObject* player, bool doClose, bool f
 	if ((isClientObject() && !forceSend) || !sendToClient || player == nullptr || player->getClient() == nullptr)
 		return;
 
-	/*
-	if (isVehicleObject() || isPlayerCreature()) {
-		StringBuffer msgInfo;
-		msgInfo << getDisplayedName() << " sendTo --- Parent: ";
-		msgInfo << (getParent().get() != nullptr ? getParent().get()->getDisplayedName() : "nullptr") << " ";
-		msgInfo << " ID: " << getObjectID() << " to " << player->getDisplayedName();
-		info(true)  << msgInfo.toString();
-	}*/
+	if (isPlayerCreature()) {
+		auto parentRef = getParent().get();
+		if (parentRef != nullptr && parentRef->isValidJtlParent()) {
+			info(true) << "sendTo -- pilot/occupant " << getDisplayedName()
+				<< " ID: " << getObjectID()
+				<< " parent: " << parentRef->getDisplayedName()
+				<< " parentID: " << parentRef->getObjectID()
+				<< " containmentType: " << containmentType
+				<< " sending to: " << player->getDisplayedName();
+		}
+	}
 
 	BaseMessage* msg = new SceneObjectCreateMessage(asSceneObject());
 	player->sendMessage(msg);
