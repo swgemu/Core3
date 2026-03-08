@@ -440,6 +440,11 @@ TEST_F(StringBooleanSearchTest, EndsWithFullString) {
 	EXPECT_TRUE(s.endsWith("exact"));
 }
 
+TEST_F(StringBooleanSearchTest, EndsWithLargerString) {
+	String s("exact");
+	EXPECT_FALSE(s.endsWith("exact1"));
+}
+
 // =============================================================================
 // 7. Concatenation
 // =============================================================================
