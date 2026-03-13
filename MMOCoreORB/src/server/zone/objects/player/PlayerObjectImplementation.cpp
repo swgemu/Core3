@@ -67,6 +67,7 @@
 #include "server/zone/managers/visibility/VisibilityManager.h"
 #include "server/zone/managers/jedi/JediManager.h"
 #include "server/zone/objects/player/events/ForceRegenerationEvent.h"
+#include "server/zone/objects/player/events/JediLogoutTask.h"
 #include "server/login/account/AccountManager.h"
 #include "templates/creature/SharedCreatureObjectTemplate.h"
 #include "server/zone/objects/player/sessions/survey/SurveySession.h"
@@ -1875,14 +1876,8 @@ void PlayerObjectImplementation::notifyOffline() {
 
 	playerCreature->notifyObservers(ObserverEventType::LOGGEDOUT);
 
-	//Logout from jedi manager
-	JediManager::instance()->onPlayerLoggedOut(playerCreature);
-
-	// Screenplay logout triggers
-	Lua* lua = DirectorManager::instance()->getLuaInstance();
-	Reference<LuaFunction*> luaOnPlayerLoggedOut = lua->createFunction("PlayerTriggers", "playerLoggedOut", 0);
-	*luaOnPlayerLoggedOut << playerCreature;
-	luaOnPlayerLoggedOut->callFunction();
+	Reference<JediLogoutTask*> jediLogoutTask = new JediLogoutTask(playerCreature);
+	jediLogoutTask->execute();
 
 	MissionManager* missionManager = getZoneServer()->getMissionManager();
 
