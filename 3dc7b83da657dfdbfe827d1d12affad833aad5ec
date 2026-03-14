@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "120c21e6_7aa33eda",
+        "filename": "MMOCoreORB/src/server/zone/managers/gcw/GCWManagerImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 650,
+      "author": {
+        "id": 4976
+      },
+      "writtenOn": "2026-03-14T19:48:31Z",
+      "side": 1,
+      "message": "BaseData is already null checked in the called function.\n\nvoid GCWManagerImplementation::checkVulnerabilityData(BuildingObject* building) {\n\tDestructibleBuildingDataComponent* baseData \u003d getDestructibleBuildingData(building);\n\n\tif (baseData \u003d\u003d nullptr) {\n\t\terror(\"ERROR:  could not get base data for base\");\n\t\treturn;\n\t}",
+      "revId": "3dc7b83da657dfdbfe827d1d12affad833aad5ec",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": true
+    }
+  ]
+}
