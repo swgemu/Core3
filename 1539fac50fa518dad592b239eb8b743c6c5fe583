@@ -16,6 +16,24 @@
       "revId": "1539fac50fa518dad592b239eb8b743c6c5fe583",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b0fadbf1_1713929b",
+        "filename": "MMOCoreORB/bin/scripts/mobile/tutorial/tutorial_stormtrooper_filler.lua",
+        "patchSetId": 28
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 5147
+      },
+      "writtenOn": "2026-03-27T11:10:00Z",
+      "side": 0,
+      "message": "I just moved it below creatureBitmask to match the other files, and added AIENABLED.",
+      "parentUuid": "58c1f7a2_accb88cc",
+      "revId": "1539fac50fa518dad592b239eb8b743c6c5fe583",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     }
   ]
 }

@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "9aa49d20_e404f5a4",
+        "filename": "MMOCoreORB/bin/scripts/mobile/misc/mouse_droid.lua",
+        "patchSetId": 28
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 5147
+      },
+      "writtenOn": "2026-03-27T11:10:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3ed2b55f_f8ebb0f9",
+      "revId": "a960226cc75c24b6fcd1f58b5064818f5fe03d75",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ff397fe7_ae5e5ea5",
         "filename": "MMOCoreORB/bin/scripts/screenplays/tutorial/conversations/tutorialImperialBrokerConvoHandler.lua",
         "patchSetId": 28
@@ -33,6 +51,24 @@
       "revId": "a960226cc75c24b6fcd1f58b5064818f5fe03d75",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3f80e5cd_4a9f512c",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tutorial/conversations/tutorialImperialBrokerConvoHandler.lua",
+        "patchSetId": 28
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 5147
+      },
+      "writtenOn": "2026-03-27T11:10:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ff397fe7_ae5e5ea5",
+      "revId": "a960226cc75c24b6fcd1f58b5064818f5fe03d75",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     },
     {
       "key": {
@@ -70,6 +106,24 @@
     },
     {
       "key": {
+        "uuid": "1dbfe7ae_ffaba74e",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tutorial/tutorial.lua",
+        "patchSetId": 28
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 5147
+      },
+      "writtenOn": "2026-03-27T11:10:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3b99423d_c2f0721a",
+      "revId": "a960226cc75c24b6fcd1f58b5064818f5fe03d75",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ffdffa7_7051f3a7",
         "filename": "MMOCoreORB/bin/scripts/screenplays/tutorial/tutorial.lua",
         "patchSetId": 28
@@ -84,6 +138,24 @@
       "revId": "a960226cc75c24b6fcd1f58b5064818f5fe03d75",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff6f1a1f_f8d652fa",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tutorial/tutorial.lua",
+        "patchSetId": 28
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 5147
+      },
+      "writtenOn": "2026-03-27T11:10:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ffdffa7_7051f3a7",
+      "revId": "a960226cc75c24b6fcd1f58b5064818f5fe03d75",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     },
     {
       "key": {
@@ -138,6 +210,24 @@
     },
     {
       "key": {
+        "uuid": "89bf09b7_3368e283",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tutorial/tutorial.lua",
+        "patchSetId": 28
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 5147
+      },
+      "writtenOn": "2026-03-27T11:10:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ff9f0d48_a57c6f00",
+      "revId": "a960226cc75c24b6fcd1f58b5064818f5fe03d75",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e1adacf3_904fc46f",
         "filename": "MMOCoreORB/bin/scripts/screenplays/tutorial/tutorial.lua",
         "patchSetId": 28
@@ -172,6 +262,24 @@
     },
     {
       "key": {
+        "uuid": "6e56fd96_04f9a94c",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tutorial/tutorial.lua",
+        "patchSetId": 28
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 5147
+      },
+      "writtenOn": "2026-03-27T11:10:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a99589b_a60b9ee1",
+      "revId": "a960226cc75c24b6fcd1f58b5064818f5fe03d75",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1fdfa7f2_1b2cef0e",
         "filename": "MMOCoreORB/bin/scripts/screenplays/tutorial/tutorial.lua",
         "patchSetId": 28
@@ -186,6 +294,24 @@
       "revId": "a960226cc75c24b6fcd1f58b5064818f5fe03d75",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10b756c4_d21d0bd7",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tutorial/tutorial.lua",
+        "patchSetId": 28
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 5147
+      },
+      "writtenOn": "2026-03-27T11:10:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1fdfa7f2_1b2cef0e",
+      "revId": "a960226cc75c24b6fcd1f58b5064818f5fe03d75",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     },
     {
       "key": {
@@ -206,6 +332,24 @@
     },
     {
       "key": {
+        "uuid": "004c4721_6aecd871",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tutorial/tutorial.lua",
+        "patchSetId": 28
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 5147
+      },
+      "writtenOn": "2026-03-27T11:10:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c2cba08a_e8ee960a",
+      "revId": "a960226cc75c24b6fcd1f58b5064818f5fe03d75",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e2b56d3e_24c65adc",
         "filename": "MMOCoreORB/bin/scripts/screenplays/tutorial/tutorial.lua",
         "patchSetId": 28
@@ -220,6 +364,24 @@
       "revId": "a960226cc75c24b6fcd1f58b5064818f5fe03d75",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b40c045f_acc69380",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tutorial/tutorial.lua",
+        "patchSetId": 28
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 5147
+      },
+      "writtenOn": "2026-03-27T11:10:00Z",
+      "side": 1,
+      "message": "I changed it due to the comments that were in the tutorial when I started, but agree about the audio. Changed back.",
+      "parentUuid": "e2b56d3e_24c65adc",
+      "revId": "a960226cc75c24b6fcd1f58b5064818f5fe03d75",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     },
     {
       "key": {
@@ -240,6 +402,24 @@
     },
     {
       "key": {
+        "uuid": "acf55bdf_7b232654",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tutorial/tutorial.lua",
+        "patchSetId": 28
+      },
+      "lineNbr": 574,
+      "author": {
+        "id": 5147
+      },
+      "writtenOn": "2026-03-27T11:10:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0b58cb7a_1293c5e5",
+      "revId": "a960226cc75c24b6fcd1f58b5064818f5fe03d75",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "47e38b08_256469fe",
         "filename": "MMOCoreORB/bin/scripts/screenplays/tutorial/tutorial.lua",
         "patchSetId": 28
@@ -254,6 +434,24 @@
       "revId": "a960226cc75c24b6fcd1f58b5064818f5fe03d75",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6caad201_b6f3172c",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tutorial/tutorial.lua",
+        "patchSetId": 28
+      },
+      "lineNbr": 818,
+      "author": {
+        "id": 5147
+      },
+      "writtenOn": "2026-03-27T11:10:00Z",
+      "side": 1,
+      "message": "Yes. room14 is the hallway between room7 and room8. Seems to have been added to the client as an afterthought. Ref: lines 797, 803, \u0026 821.",
+      "parentUuid": "47e38b08_256469fe",
+      "revId": "a960226cc75c24b6fcd1f58b5064818f5fe03d75",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     },
     {
       "key": {
@@ -274,6 +472,24 @@
     },
     {
       "key": {
+        "uuid": "34615047_d3dafcdc",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tutorial/tutorial.lua",
+        "patchSetId": 28
+      },
+      "lineNbr": 1802,
+      "author": {
+        "id": 5147
+      },
+      "writtenOn": "2026-03-27T11:10:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f75f47d3_1c1c0d29",
+      "revId": "a960226cc75c24b6fcd1f58b5064818f5fe03d75",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "887921cd_04dd7f7c",
         "filename": "MMOCoreORB/src/server/zone/managers/player/creation/PlayerCreationManager.cpp",
         "patchSetId": 28
@@ -288,6 +504,24 @@
       "revId": "a960226cc75c24b6fcd1f58b5064818f5fe03d75",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "970ee05e_ec06ba38",
+        "filename": "MMOCoreORB/src/server/zone/managers/player/creation/PlayerCreationManager.cpp",
+        "patchSetId": 28
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 5147
+      },
+      "writtenOn": "2026-03-27T11:10:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "887921cd_04dd7f7c",
+      "revId": "a960226cc75c24b6fcd1f58b5064818f5fe03d75",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     },
     {
       "key": {
@@ -308,6 +542,24 @@
     },
     {
       "key": {
+        "uuid": "4c3efcfb_b67a7bfa",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/NewbieSelectStartingLocationCommand.h",
+        "patchSetId": 28
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 5147
+      },
+      "writtenOn": "2026-03-27T11:10:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f6fae346_7707fe41",
+      "revId": "a960226cc75c24b6fcd1f58b5064818f5fe03d75",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e7df6e81_cad731ca",
         "filename": "MMOCoreORB/src/server/zone/objects/player/PlayerObjectImplementation.cpp",
         "patchSetId": 28
@@ -322,6 +574,24 @@
       "revId": "a960226cc75c24b6fcd1f58b5064818f5fe03d75",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9d6ea12_be3e396b",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/PlayerObjectImplementation.cpp",
+        "patchSetId": 28
+      },
+      "lineNbr": 3848,
+      "author": {
+        "id": 5147
+      },
+      "writtenOn": "2026-03-27T11:10:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e7df6e81_cad731ca",
+      "revId": "a960226cc75c24b6fcd1f58b5064818f5fe03d75",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     }
   ]
 }
