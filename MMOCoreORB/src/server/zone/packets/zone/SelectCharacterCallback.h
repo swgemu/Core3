@@ -123,6 +123,8 @@ public:
 			ErrorMessage* errMsg = new ErrorMessage("Login Error", "The planet where your character was stored is disabled!", 0x0);
 			client->sendMessage(errMsg);
 
+			player->error() << "Player: " << player->getFirstName() << " ID: " << player->getObjectID() << " attempted to connect to Zone: " << zoneName << " which is disabled.";
+
 #ifdef DEBUG_SELECT_CHAR_CALLBACK
 			player->info(true) << debugMsg.toString();
 #endif // DEBUG_SELECT_CHAR_CALLBACK
