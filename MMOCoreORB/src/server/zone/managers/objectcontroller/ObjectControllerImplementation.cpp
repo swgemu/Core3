@@ -143,7 +143,7 @@ float ObjectControllerImplementation::activateCommand(CreatureObject* object, un
 
 	int errorNumber = queueCommand->doQueueCommand(object, targetID, arguments);
 
-#if NDEBUG
+#ifdef WITH_DEV_MODE
 	if(object->isPlayerCreature()) {
 		String name = "unknown";
 
@@ -162,7 +162,7 @@ float ObjectControllerImplementation::activateCommand(CreatureObject* object, un
 
 		info(true) << "\033[32;40m" << object->getDisplayedName() << "(" << object->getObjectID() << ") /" << queueCommand->getQueueCommandName() << ": target=" << name << "; arguments=[" << arguments.toString() << "]; actionCount=" << actionCount << "; addToQueue= " << queueCommand->addToCombatQueue() << "\033[0m";
 	}
-#endif
+#endif // WITH_DEV_MODE
 
 	/// Remove Skillmods if any
 	for (int i = 0; i < queueCommand->getSkillModSize(); ++i) {

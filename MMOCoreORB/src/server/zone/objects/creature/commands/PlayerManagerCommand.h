@@ -100,9 +100,9 @@ public:
 
 				player->sendMessage(suiBox2->generateMessage());
 			}
-#ifdef NDEBUG
+#ifdef WITH_DEV_MODE
 			Logger::console.info(true) << "\033[32;40m" << __FILE__ << ":" << __LINE__ << " dumpcov results:\n" << resp << "\033[0m";
-#endif
+#endif // WITH_DEV_MODE
 			return 0;
 		} else if (command == "bench") {
 			Reference<CreatureObject*> creo = player;

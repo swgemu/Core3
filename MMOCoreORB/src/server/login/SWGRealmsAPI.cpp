@@ -2228,8 +2228,8 @@ const TaskQueue* SWGRealmsAPI::getCustomMetricsQueue() {
 void SWGRealmsAPI::scheduleMetricsPublish() {
 	int intervalSec = ConfigManager::instance()->getInt("Core3.Login.API.MetricsInterval", 600);
 
-#ifndef NDEBUG
-	// Check range if not a debug / development build
+#ifndef WITH_DEV_MODE
+	// Check range if not a development build
 	if (intervalSec < 30) {
 		intervalSec = 30; // Can't be faster than this
 	}
@@ -2237,7 +2237,7 @@ void SWGRealmsAPI::scheduleMetricsPublish() {
 	if (intervalSec > 3600) {
 		intervalSec = 3600; // Can't be longer than this
 	}
-#endif
+#endif // !WITH_DEV_MODE
 
 	if (streamer == nullptr) {
 		info(true) << "Metrics publishing disabled (streaming not enabled)";

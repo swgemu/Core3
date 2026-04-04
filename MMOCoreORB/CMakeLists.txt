@@ -69,6 +69,7 @@ option(ENABLE_BUILD_CLIENT "Enables core3client build" ON)
 option(ENABLE_JEMALLOC_LINK "Enables jemalloc linking if found" ON)
 option(ENABLE_MULTITHREADED_LINKER "Enables ld.gold/lld with --threads check and use" OFF)
 option(ENABLE_LOCKFREE_BCLIENT_BUFFERS "Enables lock free base client buffers, requires boost thread" OFF) #needs to match engine3
+option(ENABLE_DEV_MODE "Enables developer instrumentation, verbose tracing, and relaxed config validation" OFF)
 option(DUMP_ALL_CMAKE_VARIABLES "Prints all cmake variables" OFF)
 
 # Set cmake paths
@@ -106,6 +107,11 @@ if (${CMAKE_BUILD_TYPE} STREQUAL "Debug")
 	message(STATUS "Compiling with AI debug enabled")
 	add_definitions(-DDEBUG_AI)
 	add_definitions(-DDEBUG_SHIP_AI)
+endif()
+
+if (ENABLE_DEV_MODE)
+    message(STATUS "Compiling with developer mode enabled")
+    add_definitions(-DWITH_DEV_MODE)
 endif()
 
 if (ENABLE_SWGREALMS)

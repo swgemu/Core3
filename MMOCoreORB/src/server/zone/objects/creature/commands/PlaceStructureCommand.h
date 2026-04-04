@@ -114,9 +114,9 @@ public:
 				StringIdChatParameter param("player_structure", "city_too_close"); // You cannot place here. It is too close to %TO.
 				param.setTO(conflict->getDisplayedName());
 				creature->sendSystemMessage(param);
-#ifdef NDEBUG
+#ifdef WITH_DEV_MODE
 				Logger::console.info(true) << "\033[41;30m" << __FUNCTION__ << " at " << placementLoc << " conflict = " << *conflict << "\033[0m";
-#endif
+#endif // WITH_DEV_MODE
 				return GENERALERROR;
 			}
 		} catch (Exception& e) {
