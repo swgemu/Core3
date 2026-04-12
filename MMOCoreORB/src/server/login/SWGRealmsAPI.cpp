@@ -262,15 +262,18 @@ void SWGRealmsAPI::apiCall(Reference<SWGRealmsAPIResult*> result, const String& 
 			try {
 				resp = task.get();
 				API_TRACE(result, "http_response_received");
-			} catch (const http_exception& e) {
-				error() << logPrefix << apiPath << " HTTP Exception caught: " << e.what();
+			} catch (const std::exception& e) {
+				error() << logPrefix << apiPath << " Exception caught: " << e.what();
 				failed = true;
 			}
 
-			if (failed || resp.status_code() != 200) {
+			int status = failed ? 0 : resp.status_code();
+			result->setDebugValue("http_status", String::valueOf(status));
+
+			if (failed || status != 200) {
 				incrementErrorCount();
 
-				error() << logPrefix << "HTTP Status " << resp.status_code() << " returned.";
+				error() << logPrefix << "HTTP Status " << status << " returned.";
 
 				auto json_err = json::value();
 
@@ -284,7 +287,7 @@ void SWGRealmsAPI::apiCall(Reference<SWGRealmsAPIResult*> result, const String& 
 					buf << "Exception caught handling request, ";
 				}
 
-				buf << "http_response.status_code() == " << resp.status_code();
+				buf << "http_response.status_code() == " << status;
 
 				json_err[U("details")] = json::value::string(U(buf.toString().toCharArray()));
 
@@ -295,64 +298,82 @@ void SWGRealmsAPI::apiCall(Reference<SWGRealmsAPIResult*> result, const String& 
 		}).then([this, src, method, apiPath, result, startTime](pplx::task<json::value> task) {
 			auto logPrefix = result->getClientTrxId() + " " + src + ": ";
 			auto result_json = json::value();
-			bool failed = false;
 
 			try {
 				result_json = task.get();
-			} catch (const http_exception& e) {
-				error() << logPrefix << " " << apiPath << " HTTP Exception caught reading body: " << e.what();
-				failed = true;
+			} catch (const std::exception& e) {
+				error() << logPrefix << " " << apiPath << " Exception caught reading body: " << e.what();
 			}
 
-			if (result_json.is_null()) {
-				incrementErrorCount();
-				error() << logPrefix << "Null JSON result from server.";
-				result->setAction(SWGRealmsAPIResult::ApprovalAction::TEMPFAIL);
-				result->setTitle("Temporary Server Error");
-				result->setMessage("If the error continues please contact support and mention error code = K");
-			} else {
-				result->setJSONObject(result_json);
-
-				if (result_json.has_field("action")) {
-					result->setAction(String(result_json[U("action")].as_string().c_str()));
-				} else if (failOpen) {
-					warning() << logPrefix << "Missing action from result, failing to ALLOW: JSON: " << result_json.serialize().c_str();
-					result->setAction(SWGRealmsAPIResult::ApprovalAction::ALLOW);
-				} else {
+			// Wrap body processing so any unexpected exception still reaches the
+			// callback scheduling path below - blocking callers must not hang.
+			try {
+				if (result_json.is_null()) {
 					incrementErrorCount();
+					error() << logPrefix << "Null JSON result from server.";
 					result->setAction(SWGRealmsAPIResult::ApprovalAction::TEMPFAIL);
 					result->setTitle("Temporary Server Error");
-					result->setMessage("If the error continues please contact support and mention error code = L");
-					result->setDetails("Missing action field from server");
-				}
+					result->setMessage("If the error continues please contact support and mention error code = K");
+				} else {
+					result->setJSONObject(result_json);
 
-				if (result_json.has_field("title")) {
-					result->setTitle(String(result_json[U("title")].as_string().c_str()));
-				}
-
-				if (result_json.has_field("message")) {
-					result->setMessage(String(result_json[U("message")].as_string().c_str()));
-				}
-
-				if (result_json.has_field("details")) {
-					result->setDetails(String(result_json[U("details")].as_string().c_str()));
-				}
-
-				if (result_json.has_field("debug")) {
-					auto debug = result_json[U("debug")];
-
-					if (debug.has_field("trx_id")) {
-						result->setDebugValue("trx_id", String(debug[U("trx_id")].as_string().c_str()));
+					if (result_json.has_field("action")) {
+						result->setAction(String(result_json[U("action")].as_string().c_str()));
+					} else if (failOpen) {
+						warning() << logPrefix << "Missing action from result, failing to ALLOW: JSON: " << result_json.serialize().c_str();
+						result->setAction(SWGRealmsAPIResult::ApprovalAction::ALLOW);
+					} else {
+						incrementErrorCount();
+						result->setAction(SWGRealmsAPIResult::ApprovalAction::TEMPFAIL);
+						result->setTitle("Temporary Server Error");
+						result->setMessage("If the error continues please contact support and mention error code = L");
+						result->setDetails("Missing action field from server");
 					}
 
-					if (debug.has_field("req_time_ms")) {
-						result->setDebugValue("req_time_ms", String::valueOf(debug[U("req_time_ms")].as_integer()));
+					if (result_json.has_field("title")) {
+						result->setTitle(String(result_json[U("title")].as_string().c_str()));
 					}
-				}
 
-				// Call subclass parse() to extract type-specific fields
-				result->parse();
-				API_TRACE(result, "json_parsed");
+					if (result_json.has_field("message")) {
+						result->setMessage(String(result_json[U("message")].as_string().c_str()));
+					}
+
+					if (result_json.has_field("details")) {
+						result->setDetails(String(result_json[U("details")].as_string().c_str()));
+					}
+
+					if (result_json.has_field("debug")) {
+						auto debug = result_json[U("debug")];
+
+						if (debug.has_field("trx_id")) {
+							result->setDebugValue("trx_id", String(debug[U("trx_id")].as_string().c_str()));
+						}
+
+						if (debug.has_field("req_time_ms")) {
+							result->setDebugValue("req_time_ms", String::valueOf(debug[U("req_time_ms")].as_integer()));
+						}
+					}
+
+					// A parse failure on a success response means the server sent malformed
+					// data - degrade to TEMPFAIL so callers see it instead of using a
+					// half-populated object.
+					if (!result->parse() && result->isActionAllowed()) {
+						incrementErrorCount();
+						error() << logPrefix << "Response parse() failed on ALLOW response: " << result_json.serialize().c_str();
+						result->setAction(SWGRealmsAPIResult::ApprovalAction::TEMPFAIL);
+						result->setTitle("Temporary Server Error");
+						result->setMessage("Failed to parse API response body");
+						result->setDetails("Subclass parse() rejected response JSON");
+					}
+
+					API_TRACE(result, "json_parsed");
+				}
+			} catch (const std::exception& e) {
+				incrementErrorCount();
+				error() << logPrefix << "Unhandled exception processing response: " << e.what();
+				result->setAction(SWGRealmsAPIResult::ApprovalAction::TEMPFAIL);
+				result->setTitle("Temporary Server Error");
+				result->setMessage(String("Unhandled exception processing response: ") + e.what());
 			}
 
 			result->setElapsedTimeMS(startTime.miliDifference());
@@ -933,6 +954,7 @@ bool AccountResult::parse() {
 
 		// Update account object
 		Locker locker(account);
+
 		account->setAccountID(accountID);
 		account->setStationID(stationID);
 		account->setUsername(username);
@@ -960,8 +982,7 @@ bool AccountResult::parse() {
 	}
 }
 
-bool SWGRealmsAPI::apiCallBlocking(Reference<SWGRealmsAPIResult*> result, const String& path, const String& method,
-                                    const String& body, String& errorMessage) {
+bool SWGRealmsAPI::apiCallBlocking(Reference<SWGRealmsAPIResult*> result, const String& path, const String& method, const String& body, String& errorMessage) {
 	if (!apiEnabled) {
 		errorMessage = "SWGRealms API is not enabled";
 		return false;
@@ -975,6 +996,7 @@ bool SWGRealmsAPI::apiCallBlocking(Reference<SWGRealmsAPIResult*> result, const 
 	// Update peak if needed
 	int current = outstandingBlockingCalls.get();
 	int peak = peakConcurrentCalls.get();
+
 	while (current > peak) {
 		if (peakConcurrentCalls.compareAndSet(peak, current)) {
 			break;
@@ -1000,19 +1022,22 @@ bool SWGRealmsAPI::apiCallBlocking(Reference<SWGRealmsAPIResult*> result, const 
 	apiCall(result, "apiCallBlocking", path, method, body);
 
 	// Wait for result with timeout using result's members
-	Locker lock(&result->blockingMutex);
-	if (!result->blockingReceived) {
-		Time timeout;
-		timeout.addMiliTime(apiTimeoutMs);
+	bool timedOut = false;
+	{
+		Locker lock(&result->blockingMutex);
 
-		if (result->blockingCondition.timedWait(&result->blockingMutex, &timeout) != 0) {
-			warning() << result->getClientTrxId() << " TIMEOUT after " << apiTimeoutMs << "ms waiting for callback [path=" << path << "]";
-			errorMessage = "Timeout waiting for API response";
-			return false;
+		if (!result->blockingReceived) {
+			Time timeout;
+			timeout.addMiliTime(apiTimeoutMs);
+
+			if (result->blockingCondition.timedWait(&result->blockingMutex, &timeout) != 0) {
+				warning() << result->getClientTrxId() << " TIMEOUT after " << apiTimeoutMs << "ms waiting for callback [path=" << path << "]";
+				timedOut = true;
+			}
 		}
 	}
 
-	// Update statistics before return
+	// Update statistics on every return path (including timeout).
 	outstandingBlockingCalls.decrement();
 
 	uint64 elapsed = startTime.miliDifference();
@@ -1042,9 +1067,38 @@ bool SWGRealmsAPI::apiCallBlocking(Reference<SWGRealmsAPIResult*> result, const 
 		latency_500plus.increment();
 	}
 
+	if (timedOut) {
+		StringBuffer msg;
+		msg << "Timeout waiting for API response [path=" << path
+			<< " elapsed_ms=" << elapsed
+			<< " timeout_ms=" << apiTimeoutMs << "]";
+		errorMessage = msg.toString();
+		return false;
+	}
+
 	// Check result status
 	if (!result->isActionAllowed()) {
-		errorMessage = result->getMessage(true);
+		StringBuffer msg;
+		msg << "[action=" << result->actionToString(result->getAction());
+
+		const String& httpStatus = result->getDebugValue("http_status");
+		if (!httpStatus.isEmpty()) {
+			msg << " http_status=" << httpStatus;
+		}
+
+		const String& trxId = result->getDebugValue("trx_id");
+		if (!trxId.isEmpty()) {
+			msg << " trx_id=" << trxId;
+		}
+
+		msg << " elapsed_ms=" << elapsed << "] " << result->getMessage(false);
+
+		const String& details = result->getDetails();
+		if (!details.isEmpty()) {
+			msg << " (" << details << ")";
+		}
+
+		errorMessage = msg.toString();
 		return false;
 	}
 
