@@ -132,7 +132,7 @@ This will install the latest and symlink all the files to /usr/bin so CMake find
 
         mkdir -p ~/workspace
         cd ~/workspace
-        git clone https://review.swgemu.com/Core3
+        git clone https://github.com/swgemu/Core3.git
 
   * Build Core3 For Development
 
