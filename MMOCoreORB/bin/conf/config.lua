@@ -43,6 +43,14 @@
 -- 0 = false, 1 = true
 
 Core3 = {
+	------SWG Remastered External Auth------
+	-- When ExternalAuthUrl is non-empty, the login server treats the password
+	-- field as a launcher-minted ticket and POSTs it to the auth service, which
+	-- is AUTHORITATIVE for station_id. Empty = local username/password auth.
+	-- Set the real ExternalAuthSecret in config-local.lua, never commit it.
+	ExternalAuthUrl = "",
+	ExternalAuthSecret = "",
+
 	------Server Make Options------
 	MakeLogin = 1,
 	MakeZone = 1,

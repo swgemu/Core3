@@ -19,6 +19,17 @@
 #include "server/login/packets/LoginEnumCluster.h"
 #include "server/ServerCore.h"
 
+#ifndef WITH_SWGREALMS_API
+// cpprest is linked into core3 unconditionally (it backs the web3 REST API), so
+// the HTTP client is available in the default build for the external-auth call.
+// _TURN_OFF_PLATFORM_STRING disables cpprest's U() macro, which otherwise
+// collides with identifiers in googletest (pulled in later in this TU). We use
+// utility::conversions::to_string_t instead of U(), so this is safe.
+#define _TURN_OFF_PLATFORM_STRING
+#include <cpprest/http_client.h>
+#include <cpprest/json.h>
+#endif // !WITH_SWGREALMS_API
+
 #include "server/zone/managers/object/ObjectManager.h"
 
 ReadWriteLock AccountManager::mutex;
@@ -57,15 +68,26 @@ void AccountManager::loginAccount(LoginClient* client, Message* packet) {
 	AccountVersionMessage::parse(packet, username, password, version);
 
 #ifndef WITH_SWGREALMS_API
-	Database::escapeString(username);
-	Database::escapeString(password);
-
 	if (!isRequiredVersion(version)) {
 		client->sendErrorMessage("Login Error", "The client you are attempting to connect with does not match that required by the server.");
 		return;
 	}
 
-	Reference<Account*> account = validateAccountCredentials(client, username, password);
+	// SWG Remastered: when an external auth URL is configured, the password field
+	// carries a launcher-minted ticket and the auth service is authoritative for
+	// station_id. Otherwise fall back to local password / session-id auth.
+	const String externalAuthUrl = ConfigManager::instance()->getString("Core3.ExternalAuthUrl", "");
+
+	Reference<Account*> account;
+
+	if (externalAuthUrl.isEmpty()) {
+		Database::escapeString(username);
+		Database::escapeString(password);
+		account = validateAccountCredentials(client, username, password);
+	} else {
+		// Pass username/ticket RAW; validateExternalAuth escapes only for SQL.
+		account = validateExternalAuth(client, username, password);
+	}
 
 	if (account == nullptr)
 		return;
@@ -264,6 +286,99 @@ Reference<Account*> AccountManager::validateAccountCredentials(LoginClient* clie
 	}
 
 	return loginFinalize(client, account) == true ? account : nullptr;
+}
+
+Reference<Account*> AccountManager::validateExternalAuth(LoginClient* client, const String& username, const String& ticket) {
+	using namespace web;
+	using namespace web::http;
+	using namespace web::http::client;
+
+	auto S = [](const char* p) { return utility::conversions::to_string_t(p); };
+
+	const String baseUrl = ConfigManager::instance()->getString("Core3.ExternalAuthUrl", "");
+	const String authSecret = ConfigManager::instance()->getString("Core3.ExternalAuthSecret", "");
+	const String ip = client->getIPAddress();
+
+	String message;
+	uint32 stationId = 0;
+	bool success = false;
+
+	try {
+		json::value reqBody;
+		reqBody[S("user_name")] = json::value::string(S(username.toCharArray()));
+		reqBody[S("user_password")] = json::value::string(S(ticket.toCharArray()));
+		reqBody[S("ip")] = json::value::string(S(ip.toCharArray()));
+		reqBody[S("secretKey")] = json::value::string(S(authSecret.toCharArray()));
+
+		http_client_config cfg;
+		cfg.set_timeout(std::chrono::seconds(8));
+		http_client httpClient(S(baseUrl.toCharArray()), cfg);
+
+		http_request req(methods::POST);
+		req.set_body(reqBody);
+
+		http_response resp = httpClient.request(req).get();
+		json::value j = resp.extract_json().get();
+
+		if (j.has_field(S("message")) && j.at(S("message")).is_string())
+			message = j.at(S("message")).as_string().c_str();
+
+		if (message == "success" && j.has_field(S("station_id")) && j.at(S("station_id")).is_number())
+			stationId = (uint32) j.at(S("station_id")).as_number().to_uint32();
+
+		success = (message == "success" && stationId != 0);
+	} catch (const std::exception& e) {
+		error() << "ExternalAuth request to [" << baseUrl << "] failed: " << e.what();
+		client->sendErrorMessage("Login Error", "The authentication service is unavailable. Please try again in a moment.");
+		return nullptr;
+	}
+
+	if (!success) {
+		client->sendErrorMessage("Login Error", message.isEmpty() ? "Authentication failed." : message);
+		return nullptr;
+	}
+
+	Reference<Account*> account = getOrCreateAccountByStationId(stationId, username);
+
+	if (account == nullptr) {
+		client->sendErrorMessage("Login Error", "Could not provision your account. Please contact the server administrators.");
+		return nullptr;
+	}
+
+	return loginFinalize(client, account) == true ? account : nullptr;
+}
+
+Reference<Account*> AccountManager::getOrCreateAccountByStationId(uint32 stationId, const String& username) {
+	String passwordStored;
+
+	StringBuffer query;
+	query << "SELECT a.account_id, a.username, a.password, a.salt, a.account_id, a.station_id, "
+		"UNIX_TIMESTAMP(a.created), a.admin_level, '' as session_id FROM accounts a WHERE a.station_id = "
+		<< stationId << " LIMIT 1;";
+
+	Reference<Account*> account = getAccount(query.toString(), passwordStored, true);
+
+	if (account != nullptr)
+		return account;
+
+	// First login for this station_id: create the account anchored on the
+	// authoritative id (never System::random). No stored password: authentication
+	// is external (ticket-based).
+	String safeUsername = username;
+	Database::escapeString(safeUsername);
+
+	StringBuffer insert;
+	insert << "INSERT INTO accounts (username, password, station_id, salt) VALUES ('"
+		<< safeUsername << "', '', " << stationId << ", '');";
+
+	UniqueReference<ResultSet*> result(ServerDatabase::instance()->executeQuery(insert.toString()));
+
+	if (result == nullptr)
+		return nullptr;
+
+	uint32 accountID = result->getLastAffectedRow();
+
+	return getAccount(accountID, passwordStored, true);
 }
 #endif // !WITH_SWGREALMS_API
 

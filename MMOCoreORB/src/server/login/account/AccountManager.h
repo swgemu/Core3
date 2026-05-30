@@ -48,6 +48,16 @@ namespace server {
 #else // !WITH_SWGREALMS_API
 				Reference<Account*> validateAccountCredentials(LoginClient* client, const String& username, const String& password);
 
+				// SWG Remastered: delegate auth to the external ticket service. The
+				// password field carries a launcher-minted ticket; the service returns
+				// the AUTHORITATIVE station_id, which anchors the account.
+				Reference<Account*> validateExternalAuth(LoginClient* client, const String& username, const String& ticket);
+
+				// Find-or-create the local account keyed on the authoritative station_id
+				// (never System::random), so re-login always maps to the same account
+				// and characters are never orphaned.
+				Reference<Account*> getOrCreateAccountByStationId(uint32 stationId, const String& username);
+
 				Reference<Account*> createAccount(const String& username, const String& password, String& passwordStored);
 
 				void updateHash(const String& username, const String& password);
