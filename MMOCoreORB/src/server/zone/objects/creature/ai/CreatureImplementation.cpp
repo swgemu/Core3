@@ -448,7 +448,7 @@ void CreatureImplementation::setPetLevel(int newLevel) {
 
 	CreatureObjectImplementation::setLevel(newLevel);
 
-	if (getCreatureTemplate() == nullptr) {
+	if (npcTemplate == nullptr) {
 		return;
 	}
 
@@ -458,8 +458,16 @@ void CreatureImplementation::setPetLevel(int newLevel) {
 
 	int baseLevel = getTemplateLevel();
 
-	float minDmg = calculateAttackMinDamage(baseLevel);
-	float maxDmg = calculateAttackMaxDamage(baseLevel);
+	float minDmg, maxDmg;
+	auto creatureDeed = getPetDeed();
+
+	if (creatureDeed != nullptr) {
+		minDmg = creatureDeed->getMinDamage();
+		maxDmg = creatureDeed->getMaxDamage();
+	} else {
+		minDmg = npcTemplate->getDamageMin();
+		maxDmg = npcTemplate->getDamageMax();
+	}
 
 	float ratio = ((float)newLevel) / (float)baseLevel;
 	minDmg *= ratio;
