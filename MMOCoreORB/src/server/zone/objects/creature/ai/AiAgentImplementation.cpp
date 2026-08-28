@@ -2207,6 +2207,18 @@ void AiAgentImplementation::notifyDespawn(Zone* zone) {
 	cancelRecoveryEvent();
 	wipeBlackboard();
 
+	// Cancel any still-pending DespawnCreatureTask. Despawn paths that call this
+	// function directly (building teardown, GM despawn, despawn-on-no-player,
+	// mission cleanup) leave that task scheduled; it then fires with
+	// zone == nullptr and re-enters this function -- a second CREATUREDESPAWNED
+	// to the home lair, which schedules a duplicate respawn/spawn. This is a
+	// no-op when called from DespawnCreatureTask::run itself (the task removes
+	// itself first). cancel() is best-effort: a task a worker has already
+	// dequeued blocks on the agent lock and runs anyway, so a rare duplicate
+	// CREATUREDESPAWNED survives -- bounded (one extra lair mobile, capped by
+	// spawnLimit).
+	removePendingTask("despawn");
+
 	clearQueueActions(false);
 
 	clearPatrolPoints();
@@ -2227,8 +2239,27 @@ void AiAgentImplementation::notifyDespawn(Zone* zone) {
 		inventory->setContainerOwnerID(0);
 	}
 
-	if (npcTemplate == nullptr)
+	// Destroy the weapons before this early return. DespawnCreatureTask's null-zone branch
+	// used to call destroyAllWeapons() itself and skip notifyDespawn; routing it through
+	// notifyDespawn puts that call after this guard, so an agent whose template never loaded
+	// would keep its weapons -- and the weapon's savedRootParent is a strong reference to its
+	// owning agent, which is the retention this change exists to break. npcTemplate is only
+	// set in loadTemplateData(), so the case is rare, but the old guard existed because it
+	// happens.
+	//
+	// This is the only early return between function entry and the unconditional
+	// destroyAllWeapons() below, so covering it here is sufficient, and the two calls are
+	// mutually exclusive -- no invocation reaches both. Hoisting the call above the guard
+	// would therefore buy no additional coverage while reordering weapon destruction ahead of
+	// the threat and inventory cleanup for every agent.
+	//
+	// On this branch the zone is already gone, so the weapons' destroyObjectFromWorld calls
+	// return immediately and the effect is simply to clear the agent's weapon references.
+	if (npcTemplate == nullptr) {
+		destroyAllWeapons();
+
 		return;
+	}
 
 	Locker locker(&despawnMutex);
 
@@ -2273,7 +2304,7 @@ void AiAgentImplementation::notifyDespawn(Zone* zone) {
 
 	notifyObservers(ObserverEventType::CREATUREDESPAWNED);
 
-	if (respawnTimer > 0) {
+	if (respawnTimer > 0 && zone != nullptr) {
 		float respawn = respawnTimer * 1000;
 
 		if (randomRespawn) {
@@ -2323,9 +2354,23 @@ void AiAgentImplementation::notifyDespawn(Zone* zone) {
 			CreatureHerdObserver* herdObserver = cast<CreatureHerdObserver*>(observers.get(i).get());
 
 			if (herdObserver != nullptr) {
+				// The retention cycle is HERD registration <-> herdMembers, both
+				// strong: the observer's herdMembers Vector holds a
+				// ManagedReference back to this agent, and this agent's observer
+				// map holds the observer. removeMember + dropObserver together
+				// break it; with only the dropObserver, every herd agent
+				// reaching this branch stayed in memory forever, pinning its
+				// weapons, inventory container and CreditObject with it.
+				// (AiAgent::herdObserver itself is a @weakReference -- clearing
+				// it below is hygiene, not cycle-breaking.)
+				herdObserver->removeMember(asAiAgent());
 				dropObserver(ObserverEventType::HERD, herdObserver);
 			}
 		}
+	}
+
+	if (getHerdObserver() != nullptr) {
+		setHerdObserver(nullptr);
 	}
 
 	// Remove any buffs from the Agent
