@@ -33,7 +33,15 @@ public:
 		agent->removePendingTask("despawn");
 
 		if (zone == nullptr) {
-			agent->destroyAllWeapons();
+			// This early return used to destroy the weapons and skip notifyDespawn
+			// entirely -- no observer drops, no herd unhook, no defender cleanup --
+			// leaving every registration standing on an agent that had already left
+			// the world. notifyDespawn tolerates a null zone (its self-respawn
+			// schedule is guarded on a valid zone) and destroys the weapons itself.
+			// A still-alive home lair gets CREATUREDESPAWNED first and may
+			// legitimately respawn the agent (the lair owns its population
+			// bookkeeping).
+			agent->notifyDespawn(nullptr);
 
 			return;
 		}

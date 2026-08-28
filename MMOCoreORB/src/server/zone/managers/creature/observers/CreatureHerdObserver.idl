@@ -22,6 +22,12 @@ class CreatureHerdObserver extends Observer implements Logger {
 	@dereferenced
 	protected Vector<AiAgent> herdMembers;
 
+	// LOCK-ORDER INVARIANT: callers may take herdLock while holding an agent
+	// lock (removeMember/addMember run on every despawn/spawn path), so code
+	// holding herdLock must never take a plain Locker(member) -- only the
+	// cross-locker Locker(member, &herdLock), which releases herdLock while it
+	// spins. A plain member lock inside a herdLock region creates an ABBA
+	// deadlock.
 	@dereferenced
 	protected transient Mutex herdLock;
 

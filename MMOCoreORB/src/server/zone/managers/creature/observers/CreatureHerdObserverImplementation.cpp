@@ -81,6 +81,13 @@ void CreatureHerdObserverImplementation::despawnHerd() {
 	int size = herdMembers.size();
 
 	for (int i = size - 1; i >= 0; --i) {
+		// The cross-locker below releases herdLock while it spins on a contended
+		// member lock, so removeMember (now called on every despawn path) can
+		// shrink herdMembers mid-iteration -- a stale index here would read out
+		// of bounds. Re-check before each get.
+		if (i >= herdMembers.size())
+			continue;
+
 		auto member = herdMembers.get(i);
 
 		if (member == nullptr || member->isInCombat())
@@ -123,6 +130,13 @@ bool CreatureHerdObserverImplementation::restHerd() {
 	bool anyRested = false;
 
 	for (int i = 0; i < size; ++i) {
+		// Cross-locker can release herdLock mid-spin; re-check the index --
+		// removeMember on another thread can shrink herdMembers under this loop.
+		// continue (not break): one concurrent removal must not abandon the rest
+		// of the herd.
+		if (i >= herdMembers.size())
+			continue;
+
 		auto member = herdMembers.get(i);
 
 		if (member == nullptr || member->isDead() || member->isInCombat())
@@ -172,6 +186,13 @@ bool CreatureHerdObserverImplementation::stopHerdRest() {
 	bool anyWoken = false;
 
 	for (int i = 0; i < size; ++i) {
+		// Cross-locker can release herdLock mid-spin; re-check the index --
+		// removeMember on another thread can shrink herdMembers under this loop.
+		// continue (not break): one concurrent removal must not abandon the rest
+		// of the herd.
+		if (i >= herdMembers.size())
+			continue;
+
 		auto member = herdMembers.get(i);
 
 		if (member == nullptr || member->isDead())
