@@ -1710,13 +1710,16 @@ void SceneObjectImplementation::createChildObjects() {
 }
 
 void SceneObjectImplementation::destroyChildObjects() {
-	int size = childObjects.size();
+	// By index, from the end: with the old get(0) loop a null entry at index 0 made every
+	// iteration read the same null and skip the remaining children. A null should not be
+	// here (dangling OIDs are dropped when the vector loads); if one is, remove it.
+	for (int i = childObjects.size() - 1; i >= 0; --i) {
+		ManagedReference<SceneObject*> child = childObjects.get(i);
 
-	for (int i = 0; i < size; i++) {
-		ManagedReference<SceneObject*> child = childObjects.get(0);
-
-		if (child == nullptr)
+		if (child == nullptr) {
+			childObjects.remove(i);
 			continue;
+		}
 
 		Locker clocker(child, asSceneObject());
 
