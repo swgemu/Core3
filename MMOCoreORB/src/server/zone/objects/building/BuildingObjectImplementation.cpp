@@ -294,6 +294,19 @@ Vector3 BuildingObjectImplementation::getEjectionPoint() {
 }
 
 void BuildingObjectImplementation::notifyRemoveFromZone() {
+	// This runs on EVERY removal from a zone -- structure destruction, but also the zone clear
+	// at a normal shutdown, for every building in the world -- so it must never delete anything
+	// from the database itself. What it does do is DETACH: it empties each cell and childObjects
+	// below, so by the time destroyObjectFromDatabase() walks those containers they are already
+	// empty and the child rows (terminals, signs, camp furniture) and force-destroyed cell
+	// contents survive forever (~325k orphaned rows found on one long-running server).
+	// Remember what is detached here; only destroyObjectFromDatabase(), which the
+	// permanent-destruction paths call next, deletes it and clears the list. Never clear it
+	// HERE: once the containers below are emptied this list is the only record of what they
+	// held, so a second zone removal before the database removal (a remove/re-insert cycle)
+	// must add to it, not wipe it. Duplicates are rejected.
+	teardownDetachedObjects.setNoDuplicateInsertPlan();
+
 	for (int i = 0; i < cells.size(); ++i) {
 		auto& cell = cells.get(i);
 
@@ -308,6 +321,18 @@ void BuildingObjectImplementation::notifyRemoveFromZone() {
 				VendorManager::instance()->destroyVendor(obj->asTangibleObject(), "building removed from world");
 			} else {
 				obj->destroyObjectFromWorld(true);
+
+				// Record ITEMS only. Creatures are never the building's to delete: players are
+				// teleported out before the row goes (destroyObjectFromDatabase below, and
+				// DestroyStructureTask before it), the zone clear at shutdown detaches whatever
+				// is still inside and deletes nothing, and a vehicle, mount or screenplay NPC in
+				// a cell has its own owner and lifecycle (isPet() is false for all of them, so a
+				// pet-only exclusion would delete a parked vehicle's row and, through the
+				// slotted-object cascade, try to delete its rider). The leak is furniture,
+				// terminals, stations and elevators -- tangible items.
+				if (!obj->isCreatureObject()) {
+					teardownDetachedObjects.put(obj);
+				}
 			}
 
 			objLocker.release();
@@ -341,6 +366,16 @@ void BuildingObjectImplementation::notifyRemoveFromZone() {
 		}
 
 		child->destroyObjectFromWorld(true);
+	}
+
+	// Remember the child objects before removeAll() forgets them (see the top of this
+	// function). childCreatureObjects need nothing: they are not persisted.
+	for (int i = 0; i < childObjects.size(); ++i) {
+		auto child = childObjects.get(i);
+
+		if (child != nullptr) {
+			teardownDetachedObjects.put(child);
+		}
 	}
 
 	childObjects.removeAll();
@@ -786,6 +821,48 @@ void BuildingObjectImplementation::destroyObjectFromDatabase(
 			}
 		}
 	}
+
+	// Delete what notifyRemoveFromZone() detached -- child objects and forced-out cell
+	// contents. The callers that destroy a structure for good run destroyObjectFromWorld()
+	// first (DestroyStructureTask, camps via StructureManager::destroyStructure), which empties
+	// childObjects and the cells before the walk in SceneObjectImplementation::
+	// destroyObjectFromDatabase() can reach them. The zone clear at shutdown detaches too but
+	// never calls this, so nothing is deleted there. A building destroyed database-first still
+	// has its containers, the base walk deletes them, and this list is empty. The sign is
+	// deleted at its own site below and skipped here; a player row is never deleted (fatal in
+	// the base class) and creatures are never recorded (see notifyRemoveFromZone).
+	if (destroyContainedObjects) {
+		for (int i = teardownDetachedObjects.size() - 1; i >= 0; --i) {
+			auto detached = teardownDetachedObjects.get(i);
+
+			if (detached == nullptr || detached->isPlayerCreature()) {
+				continue;
+			}
+
+			if (signObject != nullptr && detached->getObjectID() == signObject->getObjectID()) {
+				continue;
+			}
+
+			Locker locker(detached);
+
+			// Detaching (destroyObjectFromWorld -> removeObject) nulls the parent. A listed
+			// object that has a parent again was re-homed after the detach (an admin recovered
+			// it into an inventory or another structure between the world removal and this
+			// call), so it is no longer ours to delete. Checked under the item's lock.
+			if (detached->getParent().get() != nullptr) {
+				continue;
+			}
+
+			detached->destroyObjectFromDatabase(true);
+		}
+	} else if (teardownDetachedObjects.size() > 0) {
+		// No building caller passes false. If one ever does, the detached rows are NOT deleted
+		// and the orphan leak is back on that path -- say so where it can be seen.
+		error() << "destroyObjectFromDatabase(false) on a building with " << teardownDetachedObjects.size()
+			<< " detached child/cell objects: their rows are NOT deleted (orphan leak on this path)";
+	}
+
+	teardownDetachedObjects.removeAll();
 
 	StructureObjectImplementation::destroyObjectFromDatabase(
 			destroyContainedObjects);
@@ -1770,13 +1847,16 @@ bool BuildingObjectImplementation::hasTemplateChildCreatures() const {
 }
 
 void BuildingObjectImplementation::destroyChildObjects() {
-	int size = childObjects.size();
+	// By index, from the end: with the old get(0) loop a null entry at index 0 made every
+	// iteration read the same null and skip the remaining children. A null should not be
+	// here (dangling OIDs are dropped when the vector loads); if one is, remove it.
+	for (int i = childObjects.size() - 1; i >= 0; --i) {
+		ManagedReference<SceneObject*> child = childObjects.get(i);
 
-	for (int i = 0; i < size; i++) {
-		ManagedReference<SceneObject*> child = childObjects.get(0);
-
-		if (child == nullptr)
+		if (child == nullptr) {
+			childObjects.remove(i);
 			continue;
+		}
 
 		Locker clocker(child, asBuildingObject());
 
@@ -1785,7 +1865,7 @@ void BuildingObjectImplementation::destroyChildObjects() {
 		child->destroyObjectFromWorld(true);
 	}
 
-	size = childCreatureObjects.size();
+	int size = childCreatureObjects.size();
 
 	for (int i = 0; i < size; i++) {
 		ManagedReference<CreatureObject*> child = childCreatureObjects.get(0);
