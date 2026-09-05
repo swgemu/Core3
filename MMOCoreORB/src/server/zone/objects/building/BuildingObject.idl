@@ -52,6 +52,12 @@ class BuildingObject extends StructureObject {
 	@dereferenced
 	protected SortedVector<CreatureObject> childCreatureObjects;
 
+	// What notifyRemoveFromZone() detached (child objects and forced-out cell contents), so
+	// destroyObjectFromDatabase() can delete their rows after the containers have been
+	// emptied. Transient: it only lives between the world removal and the database removal.
+	@dereferenced
+	protected transient SortedVector<SceneObject> teardownDetachedObjects;
+
 	@dereferenced
 	protected transient SynchronizedSortedVector<unsigned long> registeredPlayerIdList;
 
