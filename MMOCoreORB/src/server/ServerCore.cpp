@@ -334,11 +334,24 @@ void ServerCore::registerConsoleCommmands() {
 		}
 
 		if (zoneServer != nullptr) {
+			// Arm the predicate BEFORE the task is queued, so the wait below covers the
+			// ShutdownTask THIS invocation created. signalShutdown is also reachable from
+			// the ORB surface (ZoneServer.idl timedShutdown), and a latch left set by such
+			// a call would make this wait fall straight through and tear down while the
+			// operator's own flags were still unpublished.
+			shutdownBlockMutex.lock();
+
+			shutdownSignalled = false;
+
+			shutdownBlockMutex.unlock();
+
 			zoneServer->timedShutdown(minutes, flags);
 
 			shutdownBlockMutex.lock();
 
-			waitCondition.wait(&shutdownBlockMutex);
+			while (!shutdownSignalled) {
+				waitCondition.wait(&shutdownBlockMutex);
+			}
 
 			shutdownBlockMutex.unlock();
 		}
@@ -641,11 +654,17 @@ void ServerCore::initializeCoreContext() {
 }
 
 void ServerCore::signalShutdown(ShutdownFlags flags) {
-	nextShutdownFlags = flags;
-
 	shutdownBlockMutex.lock();
 
-	waitCondition.broadcast(&shutdownBlockMutex);
+	// Both the flags and the predicate are published under the same mutex the waiter
+	// holds, so a waiter that arrives after the wakeup still sees them and does not wait.
+	nextShutdownFlags = flags;
+	shutdownSignalled = true;
+
+	// signal(), not broadcast(): there is exactly one waiter, and this Condition's
+	// doSignal latches when waiterCount == 0 while doBroadcast discards the wakeup. The
+	// predicate is what closes the race; the latch is defence in depth at no cost.
+	waitCondition.signal(&shutdownBlockMutex);
 
 	shutdownBlockMutex.unlock();
 }

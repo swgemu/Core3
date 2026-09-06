@@ -68,6 +68,12 @@ class ServerCore : public Core, public Logger {
 	Mutex shutdownBlockMutex;
 	Condition waitCondition;
 
+	// The predicate for waitCondition. A condition variable has no memory of a broadcast
+	// with no waiter, and signalShutdown() can run on a task worker BEFORE the console
+	// thread becomes a waiter (timedShutdown(0) queues ShutdownTask rather than running
+	// it inline), so a bare wait() can park the main thread forever.
+	bool shutdownSignalled = false;
+
 public:
 	enum CommandResult {
 		SUCCESS = 0,
