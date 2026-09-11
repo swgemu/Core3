@@ -70,6 +70,7 @@
 #include "server/login/account/AccountManager.h"
 #include "templates/creature/SharedCreatureObjectTemplate.h"
 #include "server/zone/objects/player/sessions/survey/SurveySession.h"
+#include "server/zone/objects/player/sessions/crafting/CraftingSession.h"
 
 #include "server/zone/objects/tangible/deed/eventperk/EventPerkDeed.h"
 #include "server/zone/managers/player/QuestInfo.h"
@@ -1894,6 +1895,15 @@ void PlayerObjectImplementation::notifyOffline() {
 
 	if (session != nullptr) {
 		session->cancelSession();
+	}
+
+	// Cancel an open crafting session at offline, like survey. Zone removal already
+	// cancels active sessions (ZoneContainerComponent::removeObject), so this only makes
+	// the cancel prompt instead of waiting for the link-dead character to leave the
+	// world; clearSession is what removes the prototype's persistent children.
+	ManagedReference<CraftingSession*> craftingSession = playerCreature->getActiveSession(SessionFacadeType::CRAFTING).castTo<CraftingSession*>();
+	if (craftingSession != nullptr) {
+		craftingSession->cancelSession();
 	}
 
 	logSessionStats(true);
