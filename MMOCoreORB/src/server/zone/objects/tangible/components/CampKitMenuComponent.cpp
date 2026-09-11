@@ -273,7 +273,8 @@ int CampKitMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, Creat
 
 		// Create active area
 		String areaPath = "object/camp_area.iff";
-		ManagedReference<CampSiteActiveArea*> campArea = (zoneServer->createObject(areaPath.hashCode(), 1)).castTo<CampSiteActiveArea*>();
+		// Transient like the camp itself: a camp never survives a restart, so nothing about it belongs in the database.
+		ManagedReference<CampSiteActiveArea*> campArea = (zoneServer->createObject(areaPath.hashCode(), 0)).castTo<CampSiteActiveArea*>();
 
 		if (campArea == nullptr) {
 			campObject->destroyObjectFromWorld(true);
