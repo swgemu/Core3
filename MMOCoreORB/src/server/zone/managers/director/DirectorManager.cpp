@@ -3300,7 +3300,10 @@ int DirectorManager::createObserver(lua_State* L) {
 	if (sceneObject == nullptr)
 		return 0;
 
-	ManagedReference<ScreenPlayObserver*> observer = dynamic_cast<ScreenPlayObserver*>(ObjectManager::instance()->createObject("ScreenPlayObserver", persistence, ""));
+	// An empty database name gives the OID prefix 0, which is clientobjects.db, the world
+	// snapshot database. Persistent observers stored there are lost whenever clientobjects.db
+	// is rebuilt for a snapshot change. Existing ones keep loading by their OID prefix.
+	ManagedReference<ScreenPlayObserver*> observer = dynamic_cast<ScreenPlayObserver*>(ObjectManager::instance()->createObject("ScreenPlayObserver", persistence, persistence != 0 ? "sceneobjects" : ""));
 	observer->setScreenPlay(play);
 	observer->setScreenKey(key);
 	observer->setObserverType(ObserverType::SCREENPLAY);
