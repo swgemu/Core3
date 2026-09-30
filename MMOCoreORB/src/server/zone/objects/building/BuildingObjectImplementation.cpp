@@ -793,8 +793,7 @@ void BuildingObjectImplementation::destroyObjectFromDatabase(
 	if (!destroyContainedObjects)
 		return;
 
-	ManagedReference<SceneObject*> deed = getZoneServer()->getObject(
-			deedObjectID);
+	ManagedReference<SceneObject*> deed = getZoneServer()->getObject(getDeedObjectID());
 
 	if (deed != nullptr)
 		deed->destroyObjectFromDatabase(true);

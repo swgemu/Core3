@@ -37,8 +37,6 @@ class BuildingObject extends StructureObject {
 
 	protected SignObject signObject;
 
-	protected unsigned long deedObjectID;
-
 	protected int accessFee;
 	protected int accessDuration;
 	protected transient unsigned int lastAccessFeeChange;
@@ -81,8 +79,6 @@ class BuildingObject extends StructureObject {
 		accessFee = 0;
 		accessDuration = 0;
 		lastAccessFeeChange = 0;
-
-		deedObjectID = 0;
 
 		publicStructure = true;
 
