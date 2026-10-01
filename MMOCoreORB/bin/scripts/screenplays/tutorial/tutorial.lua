@@ -2033,7 +2033,7 @@ end
 
 -- Checks if room is complete
 function TutorialScreenPlay:isRoomComplete(pPlayer, roomName)
-	if (pPlayer == nil or roonName == nil or roomName == "") then
+	if (pPlayer == nil or roomName == nil or roomName == "") then
 		return false
 	end
 
@@ -2042,7 +2042,7 @@ end
 
 -- Checks if player is in a room
 function TutorialScreenPlay:isInRoom(pPlayer, roomName)
-	if (pPlayer == nil or roonName == nil or roomName == "") then
+	if (pPlayer == nil or roomName == nil or roomName == "") then
 		return false
 	end
 
