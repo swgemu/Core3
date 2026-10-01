@@ -263,6 +263,15 @@ int CraftingSessionImplementation::clearSession() {
 
 			if (craftingTool->isReady()) {
 				if (prototype->getParent() == craftingTool) {
+					// After assembly the persistent crafted_components pair lives in the
+					// prototype, not the tool, so the slot check above finds nothing; and the
+					// prototype is transient, so destroyObjectFromWorld deletes no rows. A
+					// cancel/abort/disconnect after assembly therefore stranded the pair in the
+					// database, and a station prototype's own persistent ingredient_hopper with
+					// it. Delete everything persistent under the prototype BEFORE
+					// destroyObjectFromWorld.
+					cascadeTransientPrototypeFromDatabase(prototype);
+
 					prototype->destroyObjectFromWorld(true);
 				}
 
