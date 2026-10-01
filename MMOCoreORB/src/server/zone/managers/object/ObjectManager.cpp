@@ -66,6 +66,8 @@ ObjectManager::ObjectManager(bool initializeTemplates) : DOBObjectManager() {
 	databaseManager->loadObjectDatabase("playerbounties", true);
 	databaseManager->loadObjectDatabase("mail", true);
 	databaseManager->loadObjectDatabase("chatrooms", true);
+	// Persistent screenplay observers. Loaded last so a new name takes the next id without shifting any above.
+	databaseManager->loadObjectDatabase("observers", true);
 
 	ObjectDatabaseManager::instance()->commitLocalTransaction();
 

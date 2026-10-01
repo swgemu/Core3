@@ -5,6 +5,7 @@
 
 #include "server/zone/managers/director/ScreenPlayObserver.h"
 #include "DirectorManager.h"
+#include "server/zone/managers/object/ObjectManager.h"
 #include "engine/lua/LuaPanicException.h"
 
 int ScreenPlayObserverImplementation::notifyObserverEvent(uint32 eventType, Observable* observable, ManagedObject* arg1, int64 arg2) {
@@ -38,6 +39,12 @@ int ScreenPlayObserverImplementation::notifyObserverEvent(uint32 eventType, Obse
 	}
 
 	//1 remove observer, 0 keep observer
+
+	// Returning 1 makes ObserverEventMap::notifyObservers drop this observer from the map, but
+	// nothing deleted its row, so the next save still wrote it and it was orphaned. Delete it here,
+	// as DirectorManager::dropObserver already does.
+	if (ret == 1 && isPersistent())
+		ObjectManager::instance()->destroyObjectFromDatabase(_this.getReferenceUnsafeStaticCast()->_getObjectID());
 
 	return ret;
 }
