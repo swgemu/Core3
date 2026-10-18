@@ -20,7 +20,7 @@ bantha_matriarch = Creature:new {
 	boneAmount = 320,
 	milkType = "milk_wild",
 	milk = 265,
-	tamingChance = 0,
+	tamingChance = 0.15,
 	ferocity = 4,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + HERD,
@@ -29,6 +29,7 @@ bantha_matriarch = Creature:new {
 
 	templates = {"object/mobile/matriarch_bantha.iff"},
 	hues = { 24, 25, 26, 27, 28, 29, 30, 31 },
+	controlDeviceTemplate = "object/intangible/pet/bantha_hue.iff",
 	scale = 1.25,
 	lootGroups = {},
 

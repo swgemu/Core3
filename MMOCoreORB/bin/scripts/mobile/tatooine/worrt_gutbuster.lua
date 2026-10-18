@@ -19,7 +19,7 @@ worrt_gutbuster = Creature:new {
 	boneType = "bone_mammal",
 	boneAmount = 4,
 	milk = 0,
-	tamingChance = 0,
+	tamingChance = 0.15,
 	ferocity = 0,
 	pvpBitmask = AGGRESSIVE + ATTACKABLE + ENEMY,
 	creatureBitmask = PACK,
@@ -28,6 +28,7 @@ worrt_gutbuster = Creature:new {
 
 	templates = {"object/mobile/worrt_hue.iff"},
 	hues = { 24, 25, 26, 27, 28, 29, 30, 31 },
+	controlDeviceTemplate = "object/intangible/pet/worrt_hue.iff",
 	scale = 4.5,
 	lootGroups = {},
 

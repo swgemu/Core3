@@ -19,13 +19,14 @@ jabba_rancor = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0.05,
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = NONE,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/rancor.iff"},
+	controlDeviceTemplate = "object/intangible/pet/rancor_hue.iff",
 	lootGroups = {},
 
 	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)

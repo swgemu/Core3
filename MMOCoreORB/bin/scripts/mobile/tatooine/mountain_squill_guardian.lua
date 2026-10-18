@@ -19,7 +19,7 @@ mountain_squill_guardian = Creature:new {
 	boneType = "bone_mammal",
 	boneAmount = 2,
 	milk = 0,
-	tamingChance = 0,
+	tamingChance = 0.15,
 	ferocity = 10,
 	pvpBitmask = AGGRESSIVE + ATTACKABLE + ENEMY,
 	creatureBitmask = PACK,
@@ -28,6 +28,7 @@ mountain_squill_guardian = Creature:new {
 
 	templates = {"object/mobile/mountain_squill.iff"},
 	hues = { 0, 1, 2, 3, 4, 5, 6, 7 },
+	controlDeviceTemplate = "object/intangible/pet/squill_hue.iff",
 	scale = 1.2,
 	lootGroups = {},
 

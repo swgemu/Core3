@@ -20,7 +20,7 @@ tusken_bantha = Creature:new {
 	boneAmount = 375,
 	milkType = "milk_domesticated",
 	milk = 235,
-	tamingChance = 0,
+	tamingChance = 0.15,
 	ferocity = 2,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK,
@@ -29,6 +29,7 @@ tusken_bantha = Creature:new {
 
 	templates = {"object/mobile/bantha_saddle_hue.iff"},
 	hues = { 8, 9, 10, 11, 12, 13, 14, 15 },
+	controlDeviceTemplate = "object/intangible/pet/bantha_hue.iff",
 	scale = 1.25,
 	lootGroups = {},
 

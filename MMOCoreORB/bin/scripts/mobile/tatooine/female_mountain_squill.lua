@@ -19,7 +19,7 @@ female_mountain_squill = Creature:new {
 	boneType = "bone_mammal",
 	boneAmount = 2,
 	milk = 0,
-	tamingChance = 0,
+	tamingChance = 0.15,
 	ferocity = 8,
 	pvpBitmask = AGGRESSIVE + ATTACKABLE + ENEMY,
 	creatureBitmask = PACK,
@@ -28,6 +28,7 @@ female_mountain_squill = Creature:new {
 
 	templates = {"object/mobile/mountain_squill.iff"},
 	hues = { 24, 25, 26, 27, 28, 29, 30, 31 },
+	controlDeviceTemplate = "object/intangible/pet/squill_hue.iff",
 	scale = 1.1,
 	lootGroups = {},
 

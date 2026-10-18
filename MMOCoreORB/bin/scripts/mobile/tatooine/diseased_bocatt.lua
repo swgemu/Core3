@@ -19,7 +19,7 @@ diseased_bocatt = Creature:new {
 	boneType = "bone_mammal",
 	boneAmount = 4,
 	milk = 0,
-	tamingChance = 0,
+	tamingChance = 0.25,
 	ferocity = 0,
 	pvpBitmask = AGGRESSIVE + ATTACKABLE + ENEMY,
 	creatureBitmask = PACK + STALKER,
@@ -28,6 +28,7 @@ diseased_bocatt = Creature:new {
 
 	templates = {"object/mobile/bocatt_hue.iff"},
 	hues = { 24, 25, 26, 27, 28, 29, 30, 31 },
+	controlDeviceTemplate = "object/intangible/pet/bocatt_hue.iff",
 	scale = 0.8,
 	lootGroups = {},
 

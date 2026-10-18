@@ -20,7 +20,7 @@ dim_u_bantha = Creature:new {
 	boneAmount = 250,
 	milkType = "milk_wild",
 	milk = 250,
-	tamingChance = 0,
+	tamingChance = 0.2,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + HERD,
@@ -29,6 +29,7 @@ dim_u_bantha = Creature:new {
 
 	templates = {"object/mobile/bantha_hue.iff"},
 	hues = { 0, 1, 2, 3, 4, 5, 6, 7 },
+	controlDeviceTemplate = "object/intangible/pet/bantha_hue.iff",
 	scale = 0.95,
 	lootGroups = {},
 

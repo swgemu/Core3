@@ -19,7 +19,7 @@ stormtrooper_dewback = Creature:new {
 	boneType = "bone_mammal",
 	boneAmount = 250,
 	milk = 0,
-	tamingChance = 0,
+	tamingChance = 0.15,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK,
@@ -29,6 +29,7 @@ stormtrooper_dewback = Creature:new {
 	templates = {"object/mobile/dewback_hue.iff"},
 	hues = { 24, 25, 26, 27, 28, 29, 30, 31 },
 	scale = 1.2,
+	controlDeviceTemplate = "object/intangible/pet/dewback_hue.iff",
 	lootGroups = {},
 
 	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)

@@ -19,7 +19,7 @@ mountain_squill_hunter = Creature:new {
 	boneType = "bone_mammal",
 	boneAmount = 1,
 	milk = 0,
-	tamingChance = 0,
+	tamingChance = 0.15,
 	ferocity = 6,
 	pvpBitmask = AGGRESSIVE + ATTACKABLE + ENEMY,
 	creatureBitmask = PACK,
@@ -28,6 +28,7 @@ mountain_squill_hunter = Creature:new {
 
 	templates = {"object/mobile/mountain_squill.iff"},
 	hues = { 16, 17, 18, 19, 20, 21, 22, 23 },
+	controlDeviceTemplate = "object/intangible/pet/squill_hue.iff",
 	scale = 1.05,
 	lootGroups = {},
 

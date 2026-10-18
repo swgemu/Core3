@@ -19,7 +19,7 @@ krayt_dragon_grand = Creature:new {
 	boneType = "bone_mammal",
 	boneAmount = 905,
 	milk = 0,
-	tamingChance = 0,
+	tamingChance = 0.05,
 	ferocity = 30,
 	pvpBitmask = AGGRESSIVE + ATTACKABLE + ENEMY,
 	creatureBitmask = PACK + KILLER + STALKER,
@@ -29,6 +29,7 @@ krayt_dragon_grand = Creature:new {
 
 	templates = {"object/mobile/krayt_dragon_hue.iff"},
 	hues = { 16, 17, 18, 19, 20, 21, 22, 23 },
+	controlDeviceTemplate = "object/intangible/pet/pet_control.iff",
 
 	lootGroups = {
 		{

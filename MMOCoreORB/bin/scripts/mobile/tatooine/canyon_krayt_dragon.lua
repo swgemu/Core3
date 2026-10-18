@@ -19,7 +19,7 @@ canyon_krayt_dragon = Creature:new {
 	boneType = "bone_mammal",
 	boneAmount = 675,
 	milk = 0,
-	tamingChance = 0,
+	tamingChance = 0.05,
 	ferocity = 20,
 	pvpBitmask = AGGRESSIVE + ATTACKABLE + ENEMY,
 	creatureBitmask = PACK + KILLER + STALKER,
@@ -29,6 +29,7 @@ canyon_krayt_dragon = Creature:new {
 
 	templates = {"object/mobile/canyon_krayt_dragon.iff"},
 	hues = { 8, 9, 10, 11, 12, 13, 14, 15 },
+	controlDeviceTemplate = "object/intangible/pet/pet_control.iff",
 
 	lootGroups = {
 		{

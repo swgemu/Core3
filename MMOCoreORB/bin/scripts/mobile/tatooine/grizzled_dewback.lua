@@ -19,7 +19,7 @@ grizzled_dewback = Creature:new {
 	boneType = "bone_mammal",
 	boneAmount = 210,
 	milk = 0,
-	tamingChance = 0,
+	tamingChance = 0.15,
 	ferocity = 6,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK,
@@ -28,6 +28,7 @@ grizzled_dewback = Creature:new {
 
 	templates = {"object/mobile/dewback_hue.iff"},
 	hues = { 8, 9, 10, 11, 12, 13, 14, 15 },
+	controlDeviceTemplate = "object/intangible/pet/dewback_hue.iff",
 	scale = 1.15,
 	lootGroups = {},
 
