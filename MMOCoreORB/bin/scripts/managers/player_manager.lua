@@ -45,34 +45,34 @@
 -----------------------------------
 
 onlineCharactersPerAccount = 2 --How many characters are allowed online from a single account.
-allowSameAccountPvpRatingCredit = 0
+allowSameAccountPvpRatingCredit = 1
 
 --Blue frog / GM buff values
-performanceBuff = 1100
-medicalBuff = 2200
-performanceDuration = 7200 -- in seconds
-medicalDuration = 7200 -- in seconds
+performanceBuff = 5100
+medicalBuff = 5200
+performanceDuration = 10800 -- in seconds
+medicalDuration = 10800 -- in seconds
 
 --Sets the experience multiplier while grouped
-groupExpMultiplier = 1.2
+groupExpMultiplier = 4.2
 
 --Sets a global experience multiplier
-globalExpMultiplier = 1.0
+globalExpMultiplier = 3.0
 
 --Sets the base number of control devices of each type that a player can have in their datapad at once
 --For creature pets, A Creature Handler will have the base number + their stored pets skill mod as limit
-baseStoredCreaturePets = 2
-baseStoredFactionPets = 3
-baseStoredDroids = 5
-baseStoredVehicles = 3
-baseStoredShips = 3
+baseStoredCreaturePets = 10
+baseStoredFactionPets = 10
+baseStoredDroids = 10
+baseStoredVehicles = 10
+baseStoredShips = 10
 
 -----------------------------------
 --VETERAN REWARDS CONFIG
 -----------------------------------
-veteranRewardMilestones = {90, 180, 270, 360, 450, 540, 630, 720, 810, 900, 990, 1080} --days, must be sorted low to high
+veteranRewardMilestones = {15, 30, 45, 60, 75, 90, 105, 120, 135, 150, 165, 180} --days, must be sorted low to high
 
-veteranRewardAdditionalMilestones = 360 --frequency, in days, of additional milestones (beyond the established ones)
+veteranRewardAdditionalMilestones = 30 --frequency, in days, of additional milestones (beyond the established ones)
 
 veteranRewards = {
 	-- 90 Day Rewards
