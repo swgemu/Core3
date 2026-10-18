@@ -771,12 +771,14 @@ function recruiterScreenplay:handleGoOnLeave(pPlayer)
 		return
 	end
 
+	deleteData(CreatureObject(pPlayer):getObjectID() .. ":changingFactionStatus")
+
 	if (CreatureObject(pPlayer):hasSkill("force_rank_light_novice") or CreatureObject(pPlayer):hasSkill("force_rank_dark_novice")) then
+		CreatureObject(pPlayer):setFutureFactionStatus(-1)
 		CreatureObject(pPlayer):sendSystemMessage("@faction_recruiter:jedi_cant_resign")
 		return
 	end
 
-	deleteData(CreatureObject(pPlayer):getObjectID() .. ":changingFactionStatus")
 	CreatureObject(pPlayer):setFactionStatus(0)
 end
 
@@ -785,12 +787,20 @@ function recruiterScreenplay:handleGoCovert(pPlayer)
 		return
 	end
 
+	deleteData(CreatureObject(pPlayer):getObjectID() .. ":changingFactionStatus")
+	SceneObject(pPlayer):cancelPendingTask("recruiterScreenplay", "handleGoCovert")
+
 	if (CreatureObject(pPlayer):hasSkill("force_rank_light_novice") or CreatureObject(pPlayer):hasSkill("force_rank_dark_novice")) then
+		CreatureObject(pPlayer):setFutureFactionStatus(-1)
 		CreatureObject(pPlayer):sendSystemMessage("@faction_recruiter:jedi_cant_go_covert")
 		return
 	end
 
-	deleteData(CreatureObject(pPlayer):getObjectID() .. ":changingFactionStatus")
+	-- Status was set elsewhere since the request (declare, clone, HQ), drop the stale change
+	if (not CreatureObject(pPlayer):isChangingFactionStatus()) then
+		return
+	end
+
 	CreatureObject(pPlayer):setFactionStatus(1)
 end
 
@@ -804,19 +814,23 @@ function recruiterScreenplay:handleResign(pPlayer)
 		return
 	end
 
+	local playerID = CreatureObject(pPlayer):getObjectID()
+
+	deleteData(playerID .. ":changingFactionStatus")
+	SceneObject(pPlayer):cancelPendingTask("recruiterScreenplay", "handleResign")
+
 	if (CreatureObject(pPlayer):hasSkill("force_rank_light_novice") or CreatureObject(pPlayer):hasSkill("force_rank_dark_novice")) then
+		CreatureObject(pPlayer):setFutureFactionStatus(-1)
 		CreatureObject(pPlayer):sendSystemMessage("@faction_recruiter:jedi_cant_resign")
 		return
 	end
 
-	local playerID = CreatureObject(pPlayer):getObjectID()
 	local pGhost = CreatureObject(pPlayer):getPlayerObject()
 
 	if (pGhost == nil) then
 		return
 	end
 
-	deleteData(playerID .. ":changingFactionStatus")
 	local oldFaction = CreatureObject(pPlayer):getFaction()
 	local oldFactionName = self:getFactionFromHashCode(oldFaction)
 	local covertOvert = useCovertOvert()

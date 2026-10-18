@@ -206,6 +206,10 @@ function RecruiterConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNpc, s
 		deleteData(CreatureObject(pPlayer):getObjectID() .. ":changingFactionStatus")
 		SceneObject(pPlayer):cancelPendingTask("recruiterScreenplay", "handleResign")
 	elseif (screenID == "declare_complete") then
+		if (SceneObject(pPlayer):hasPendingTask("recruiterScreenplay", "handleGoCovert")) then
+			SceneObject(pPlayer):cancelPendingTask("recruiterScreenplay", "handleGoCovert")
+		end
+
 		CreatureObject(pPlayer):setFutureFactionStatus(2)
 		writeData(CreatureObject(pPlayer):getObjectID() .. ":changingFactionStatus", 1)
 		createEvent(1000, "recruiterScreenplay", "handleGoOvert", pPlayer, "")
@@ -218,6 +222,9 @@ function RecruiterConvoHandler:runScreenHandlers(pConvTemplate, pPlayer, pNpc, s
 		if (SceneObject(pPlayer):hasPendingTask("recruiterScreenplay", "handleGoCovert")) then
 			SceneObject(pPlayer):cancelPendingTask("recruiterScreenplay", "handleGoCovert")
 		end
+
+		CreatureObject(pPlayer):setFutureFactionStatus(1)
+		writeData(CreatureObject(pPlayer):getObjectID() .. ":changingFactionStatus", 1)
 
 		local timer = recruiterScreenplay.covertOvertResignTime * 60 * 1000 -- Minutes
 
@@ -238,7 +245,9 @@ function RecruiterConvoHandler:getInitialScreen(pPlayer, pNpc, pConvTemplate)
 	local faction = CreatureObject(pPlayer):getFaction()
 	local factionStanding = PlayerObject(pGhost):getFactionStanding(recruiterScreenplay:getRecruiterFaction(pNpc))
 
-	if (CreatureObject(pPlayer):isChangingFactionStatus() and readData(CreatureObject(pPlayer):getObjectID() .. ":changingFactionStatus") ~= 1) then
+	-- Stuck status repair, skipped while a covert request is still pending
+	if (CreatureObject(pPlayer):isChangingFactionStatus() and readData(CreatureObject(pPlayer):getObjectID() .. ":changingFactionStatus") ~= 1
+		and not SceneObject(pPlayer):hasPendingTask("recruiterScreenplay", "handleGoCovert")) then
 		recruiterScreenplay:handleGoCovert(pPlayer)
 	end
 
