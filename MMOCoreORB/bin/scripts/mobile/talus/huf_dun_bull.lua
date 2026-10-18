@@ -19,7 +19,7 @@ huf_dun_bull = Creature:new {
 	boneType = "bone_mammal",
 	boneAmount = 1000,
 	milk = 0,
-	tamingChance = 0,
+	tamingChance = 0.15,
 	ferocity = 7,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + HERD,
@@ -28,6 +28,7 @@ huf_dun_bull = Creature:new {
 
 	templates = {"object/mobile/huf_dun_hue.iff"},
 	hues = { 16, 17, 18, 19, 20, 21, 22, 23 },
+	controlDeviceTemplate = "object/intangible/pet/huf_dun_hue.iff",
 	scale = 1.1,
 	lootGroups = {},
 

@@ -19,7 +19,7 @@ mire_marauder = Creature:new {
 	boneType = "bone_mammal",
 	boneAmount = 140,
 	milk = 0,
-	tamingChance = 0,
+	tamingChance = 0.1,
 	ferocity = 12,
 	pvpBitmask = AGGRESSIVE + ATTACKABLE + ENEMY,
 	creatureBitmask = PACK + KILLER + STALKER,
@@ -28,6 +28,7 @@ mire_marauder = Creature:new {
 
 	templates = {"object/mobile/minor_sludge_panther.iff"},
 	hues = { 0, 1, 2, 3, 4, 5, 6, 7 },
+	controlDeviceTemplate = "object/intangible/pet/corellian_sand_panther_hue.iff",
 	scale = 1.4,
 	lootGroups = {},
 

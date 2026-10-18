@@ -19,7 +19,7 @@ giant_decay_mite_guardian = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0,
+	tamingChance = 0.15,
 	ferocity = 0,
 	pvpBitmask = AGGRESSIVE + ATTACKABLE + ENEMY,
 	creatureBitmask = PACK,
@@ -27,6 +27,8 @@ giant_decay_mite_guardian = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/decay_mite.iff"},
+	hues = { 16, 17, 18, 19, 20, 21, 22, 23 },
+	controlDeviceTemplate = "object/intangible/pet/bark_mite_hue.iff",
 	scale = 2,
 	lootGroups = {},
 

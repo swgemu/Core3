@@ -19,7 +19,7 @@ clipped_fynock = Creature:new {
 	boneType = "bone_avian",
 	boneAmount = 7,
 	milk = 0,
-	tamingChance = 0,
+	tamingChance = 0.25,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK,
@@ -28,6 +28,7 @@ clipped_fynock = Creature:new {
 
 	templates = {"object/mobile/clipped_fynock.iff"},
 	hues = { 24, 25, 26, 27, 28, 29, 30, 31 },
+	controlDeviceTemplate = "object/intangible/pet/fynock_hue.iff",
 	scale = 0.9,
 	lootGroups = {},
 

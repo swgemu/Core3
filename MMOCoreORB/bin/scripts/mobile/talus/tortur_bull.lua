@@ -19,7 +19,7 @@ tortur_bull = Creature:new {
 	boneType = "bone_mammal",
 	boneAmount = 1000,
 	milk = 0,
-	tamingChance = 0,
+	tamingChance = 0.15,
 	ferocity = 10,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + HERD,
@@ -28,6 +28,7 @@ tortur_bull = Creature:new {
 
 	templates = {"object/mobile/torton_hue.iff"},
 	hues = { 24, 25, 26, 27, 28, 29, 30, 31 },
+	controlDeviceTemplate = "object/intangible/pet/torton_hue.iff",
 	scale = 1.1,
 	lootGroups = {},
 

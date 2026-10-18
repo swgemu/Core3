@@ -19,7 +19,7 @@ giant_fynock = Creature:new {
 	boneType = "bone_avian",
 	boneAmount = 55,
 	milk = 0,
-	tamingChance = 0,
+	tamingChance = 0.15,
 	ferocity = 9,
 	pvpBitmask = AGGRESSIVE + ATTACKABLE + ENEMY,
 	creatureBitmask = PACK + KILLER,
@@ -28,6 +28,7 @@ giant_fynock = Creature:new {
 
 	templates = {"object/mobile/fynock_hue.iff"},
 	hues = { 8, 9, 10, 11, 12, 13, 14, 15 },
+	controlDeviceTemplate = "object/intangible/pet/fynock_hue.iff",
 	scale = 4,
 	lootGroups = {},
 

@@ -19,7 +19,7 @@ glutted_fynock_queen = Creature:new {
 	boneType = "bone_avian",
 	boneAmount = 20,
 	milk = 0,
-	tamingChance = 0,
+	tamingChance = 0.15,
 	ferocity = 0,
 	pvpBitmask = AGGRESSIVE + ATTACKABLE + ENEMY,
 	creatureBitmask = PACK + HERD + KILLER,
@@ -28,6 +28,7 @@ glutted_fynock_queen = Creature:new {
 
 	templates = {"object/mobile/glutted_fynock_queen.iff"},
 	hues = { 16, 17, 18, 19, 20, 21, 22, 23 },
+	controlDeviceTemplate = "object/intangible/pet/fynock_hue.iff",
 	scale = 1.25,
 	lootGroups = {},
 

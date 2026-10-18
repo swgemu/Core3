@@ -19,7 +19,7 @@ ravenous_rasp = Creature:new {
 	boneType = "bone_avian",
 	boneAmount = 15,
 	milk = 0,
-	tamingChance = 0,
+	tamingChance = 0.15,
 	ferocity = 0,
 	pvpBitmask = AGGRESSIVE + ATTACKABLE + ENEMY,
 	creatureBitmask = PACK + HERD + KILLER + STALKER,
@@ -28,6 +28,7 @@ ravenous_rasp = Creature:new {
 
 	templates = {"object/mobile/flite_rasp_hue.iff"},
 	hues = { 8, 9, 10, 11, 12, 13, 14, 15 },
+	controlDeviceTemplate = "object/intangible/pet/plumed_rasp_hue.iff",
 	scale = 1.25,
 	lootGroups = {},
 

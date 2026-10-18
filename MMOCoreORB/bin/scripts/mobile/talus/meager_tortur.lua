@@ -19,7 +19,7 @@ meager_tortur = Creature:new {
 	boneType = "bone_mammal",
 	boneAmount = 650,
 	milk = 0,
-	tamingChance = 0,
+	tamingChance = 0.15,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = HERD,
@@ -28,6 +28,7 @@ meager_tortur = Creature:new {
 
 	templates = {"object/mobile/meager_tortur.iff"},
 	hues = { 8, 9, 10, 11, 12, 13, 14, 15 },
+	controlDeviceTemplate = "object/intangible/pet/torton_hue.iff",
 	scale = 0.85,
 	lootGroups = {},
 
