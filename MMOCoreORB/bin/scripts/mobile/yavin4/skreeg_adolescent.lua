@@ -19,7 +19,7 @@ skreeg_adolescent = Creature:new {
 	boneType = "bone_mammal",
 	boneAmount = 7,
 	milk = 0,
-	tamingChance = 0,
+	tamingChance = 0.25,
 	ferocity = 0,
 	pvpBitmask = AGGRESSIVE + ATTACKABLE + ENEMY,
 	creatureBitmask = PACK,
@@ -28,6 +28,7 @@ skreeg_adolescent = Creature:new {
 
 	templates = {"object/mobile/skreeg_adolescent.iff"},
 	hues = { 8, 9, 10, 11, 12, 13, 14, 15 },
+	controlDeviceTemplate = "object/intangible/pet/skreeg_hue.iff",
 	scale = 0.8,
 	lootGroups = {},
 

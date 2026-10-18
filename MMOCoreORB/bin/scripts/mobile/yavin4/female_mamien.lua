@@ -20,7 +20,7 @@ female_mamien = Creature:new {
 	boneAmount = 20,
 	milkType = "milk_wild",
 	milk = 20,
-	tamingChance = 0,
+	tamingChance = 0.2,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK,
@@ -29,6 +29,7 @@ female_mamien = Creature:new {
 
 	templates = {"object/mobile/mamien_hue.iff"},
 	hues = { 0, 1, 2, 3, 4, 5, 6, 7 },
+	controlDeviceTemplate = "object/intangible/pet/mamien_hue.iff",
 	scale = 0.95,
 	lootGroups = {},
 

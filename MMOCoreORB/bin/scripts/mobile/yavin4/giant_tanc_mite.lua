@@ -19,7 +19,7 @@ giant_tanc_mite = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0,
+	tamingChance = 0.2,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + HERD,
@@ -28,6 +28,7 @@ giant_tanc_mite = Creature:new {
 
 	templates = {"object/mobile/giant_tanc_mite.iff"},
 	hues = { 24, 25, 26, 27, 28, 29, 30, 31 },
+	controlDeviceTemplate = "object/intangible/pet/tanc_mite_hue.iff",
 	scale = 1.4,
 	lootGroups = {},
 

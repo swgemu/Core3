@@ -19,7 +19,7 @@ woolamander_harrower = Creature:new {
 	boneType = "bone_mammal",
 	boneAmount = 20,
 	milk = 0,
-	tamingChance = 0,
+	tamingChance = 0.15,
 	ferocity = 0,
 	pvpBitmask = AGGRESSIVE + ATTACKABLE + ENEMY,
 	creatureBitmask = PACK + HERD + KILLER,
@@ -28,6 +28,7 @@ woolamander_harrower = Creature:new {
 
 	templates = {"object/mobile/woolamander_hue.iff"},
 	hues = { 24, 25, 26, 27, 28, 29, 30, 31 },
+	controlDeviceTemplate = "object/intangible/pet/woolamander_hue.iff",
 	scale = 1.25,
 	lootGroups = {
 		{

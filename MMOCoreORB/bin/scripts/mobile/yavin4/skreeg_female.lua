@@ -19,7 +19,7 @@ skreeg_female = Creature:new {
 	boneType = "bone_mammal",
 	boneAmount = 7,
 	milk = 0,
-	tamingChance = 0,
+	tamingChance = 0.2,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK,
@@ -28,6 +28,7 @@ skreeg_female = Creature:new {
 
 	templates = {"object/mobile/skreeg_hue.iff"},
 	hues = { 0, 1, 2, 3, 4, 5, 6, 7 },
+	controlDeviceTemplate = "object/intangible/pet/skreeg_hue.iff",
 	scale = 0.95,
 	lootGroups = {},
 

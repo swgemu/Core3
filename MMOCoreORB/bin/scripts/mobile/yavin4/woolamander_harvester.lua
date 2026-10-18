@@ -19,7 +19,7 @@ woolamander_harvester = Creature:new {
 	boneType = "bone_mammal",
 	boneAmount = 40,
 	milk = 0,
-	tamingChance = 0,
+	tamingChance = 0.15,
 	ferocity = 0,
 	pvpBitmask = AGGRESSIVE + ATTACKABLE + ENEMY,
 	creatureBitmask = PACK + HERD,
@@ -28,6 +28,7 @@ woolamander_harvester = Creature:new {
 
 	templates = {"object/mobile/woolamander_hue.iff"},
 	hues = { 8, 9, 10, 11, 12, 13, 14, 15 },
+	controlDeviceTemplate = "object/intangible/pet/woolamander_hue.iff",
 	scale = 1.1,
 	lootGroups = {},
 

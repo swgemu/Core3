@@ -19,7 +19,7 @@ kliknik_dark_queen = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0,
+	tamingChance = 0.15,
 	ferocity = 0,
 	pvpBitmask = AGGRESSIVE + ATTACKABLE + ENEMY,
 	creatureBitmask = PACK,
@@ -28,6 +28,7 @@ kliknik_dark_queen = Creature:new {
 
 	templates = {"object/mobile/kliknik_queen.iff"},
 	hues = { 24, 25, 26, 27, 28, 29, 30, 31 },
+	controlDeviceTemplate = "object/intangible/pet/kliknik_hue.iff",
 	scale = 1.2,
 	lootGroups = {
 		{

@@ -19,7 +19,7 @@ male_mawgax = Creature:new {
 	boneType = "bone_avian",
 	boneAmount = 55,
 	milk = 0,
-	tamingChance = 0,
+	tamingChance = 0.15,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + HERD,
@@ -28,6 +28,7 @@ male_mawgax = Creature:new {
 
 	templates = {"object/mobile/mawgax_hue.iff"},
 	hues = { 0, 1, 2, 3, 4, 5, 6, 7 },
+	controlDeviceTemplate = "object/intangible/pet/mawgax_hue.iff",
 	scale = 1.05,
 	lootGroups = {},
 

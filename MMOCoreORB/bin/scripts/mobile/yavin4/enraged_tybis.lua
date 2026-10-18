@@ -19,7 +19,7 @@ enraged_tybis = Creature:new {
 	boneType = "bone_mammal",
 	boneAmount = 105,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0.1,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + HERD,
@@ -27,6 +27,7 @@ enraged_tybis = Creature:new {
 
 	templates = {"object/mobile/tybis_hue.iff"},
 	hues = { 0, 1, 2, 3, 4, 5, 6, 7 },
+	controlDeviceTemplate = "object/intangible/pet/tybis_hue.iff",
 	scale = 1.15,
 	lootGroups = {},
 

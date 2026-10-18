@@ -19,7 +19,7 @@ woolamander_gatherer = Creature:new {
 	boneType = "bone_mammal",
 	boneAmount = 20,
 	milk = 0,
-	tamingChance = 0,
+	tamingChance = 0.2,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = HERD + STALKER,
@@ -28,6 +28,7 @@ woolamander_gatherer = Creature:new {
 
 	templates = {"object/mobile/woolamander_hue.iff"},
 	hues = { 0, 1, 2, 3, 4, 5, 6, 7 },
+	controlDeviceTemplate = "object/intangible/pet/woolamander_hue.iff",
 	scale = 1.05,
 	lootGroups = {},
 

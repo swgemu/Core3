@@ -19,7 +19,7 @@ crystal_snake = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.0,
+	tamingChance = 0.2,
 	ferocity = 0,
 	pvpBitmask = AGGRESSIVE + ATTACKABLE + ENEMY,
 	creatureBitmask = PACK,
@@ -27,6 +27,7 @@ crystal_snake = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/crystal_snake.iff"},
+	controlDeviceTemplate = "object/intangible/pet/crystal_snake.iff",
 	lootGroups = {},
 
 	-- Primary and secondary weapon should be different types (rifle/carbine, carbine/pistol, rifle/unarmed, etc)

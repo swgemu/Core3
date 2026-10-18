@@ -20,7 +20,7 @@ female_tybis = Creature:new {
 	boneAmount = 105,
 	milkType = "milk_wild",
 	milk = 100,
-	tamingChance = 0,
+	tamingChance = 0.2,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + HERD,
@@ -29,6 +29,7 @@ female_tybis = Creature:new {
 
 	templates = {"object/mobile/tybis_hue.iff"},
 	hues = { 24, 25, 26, 27, 28, 29, 30, 31 },
+	controlDeviceTemplate = "object/intangible/pet/tybis_hue.iff",
 	scale = 0.95,
 	lootGroups = {},
 
@@ -40,7 +41,7 @@ female_tybis = Creature:new {
 	
 	-- primaryAttacks and secondaryAttacks should be separate skill groups specific to the weapon type listed in primaryWeapon and secondaryWeapon
 	-- Use merge() to merge groups in creatureskills.lua together. If a weapon is set to "none", set the attacks variable to empty brackets
-	primaryAttacks = {},
+	primaryAttacks = { {"posturedownattack",""} },
 	secondaryAttacks = { }
 }
 

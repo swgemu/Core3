@@ -19,7 +19,7 @@ feral_mutant_gackle_stalker = Creature:new {
 	boneType = "bone_avian",
 	boneAmount = 9,
 	milk = 0,
-	tamingChance = 0,
+	tamingChance = 0.15,
 	ferocity = 0,
 	pvpBitmask = AGGRESSIVE + ATTACKABLE + ENEMY,
 	creatureBitmask = PACK + HERD + STALKER,
@@ -28,6 +28,7 @@ feral_mutant_gackle_stalker = Creature:new {
 
 	templates = {"object/mobile/gackle_bat_hue.iff"},
 	hues = { 16, 17, 18, 19, 20, 21, 22, 23 },
+	controlDeviceTemplate = "object/intangible/pet/gackle_bat_hue.iff",
 	scale = 1.2,
 	lootGroups = {},
 

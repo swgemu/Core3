@@ -19,7 +19,7 @@ tanc_mite_warrior = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0,
+	tamingChance = 0.15,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + HERD,
@@ -28,6 +28,7 @@ tanc_mite_warrior = Creature:new {
 
 	templates = {"object/mobile/tanc_mite_hue.iff"},
 	hues = { 16, 17, 18, 19, 20, 21, 22, 23 },
+	controlDeviceTemplate = "object/intangible/pet/tanc_mite_hue.iff",
 	scale = 1.2,
 	lootGroups = {},
 
@@ -39,7 +40,7 @@ tanc_mite_warrior = Creature:new {
 
 	-- primaryAttacks and secondaryAttacks should be separate skill groups specific to the weapon type listed in primaryWeapon and secondaryWeapon
 	-- Use merge() to merge groups in creatureskills.lua together. If a weapon is set to "none", set the attacks variable to empty brackets
-	primaryAttacks = { {"stunattack",""} },
+	primaryAttacks = { {"stunattack",""}, {"mediumdisease",""} },
 	secondaryAttacks = { {"stunattack",""} }
 }
 

@@ -19,7 +19,7 @@ male_tybis = Creature:new {
 	boneType = "bone_mammal",
 	boneAmount = 125,
 	milk = 0,
-	tamingChance = 0,
+	tamingChance = 0.1,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + HERD,
@@ -28,6 +28,7 @@ male_tybis = Creature:new {
 
 	templates = {"object/mobile/tybis_hue.iff"},
 	hues = { 16, 17, 18, 19, 20, 21, 22, 23 },
+	controlDeviceTemplate = "object/intangible/pet/tybis_hue.iff",
 	scale = 1.05,
 	lootGroups = {},
 

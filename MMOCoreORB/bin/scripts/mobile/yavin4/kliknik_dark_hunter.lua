@@ -19,7 +19,7 @@ kliknik_dark_hunter = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0,
+	tamingChance = 0.15,
 	ferocity = 0,
 	pvpBitmask = AGGRESSIVE + ATTACKABLE + ENEMY,
 	creatureBitmask = PACK + KILLER + STALKER,
@@ -28,6 +28,7 @@ kliknik_dark_hunter = Creature:new {
 
 	templates = {"object/mobile/kliknik_hue.iff"},
 	hues = { 8, 9, 10, 11, 12, 13, 14, 15 },
+	controlDeviceTemplate = "object/intangible/pet/kliknik_hue.iff",
 	scale = 1.15,
 	lootGroups = {
 		{

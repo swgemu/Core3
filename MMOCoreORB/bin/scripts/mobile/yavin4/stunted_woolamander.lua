@@ -19,7 +19,7 @@ stunted_woolamander = Creature:new {
 	boneType = "bone_mammal",
 	boneAmount = 20,
 	milk = 0,
-	tamingChance = 0,
+	tamingChance = 0.1,
 	ferocity = 0,
 	pvpBitmask = AGGRESSIVE + ATTACKABLE + ENEMY,
 	creatureBitmask = PACK,
@@ -27,6 +27,7 @@ stunted_woolamander = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/woolamander_hue.iff"},
+	controlDeviceTemplate = "object/intangible/pet/woolamander_hue.iff",
 	scale = 0.75,
 	lootGroups = {},
 

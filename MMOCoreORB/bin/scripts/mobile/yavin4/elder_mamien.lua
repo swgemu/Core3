@@ -19,7 +19,7 @@ elder_mamien = Creature:new {
 	boneType = "bone_mammal",
 	boneAmount = 18,
 	milk = 0,
-	tamingChance = 0,
+	tamingChance = 0.15,
 	ferocity = 0,
 	pvpBitmask = AGGRESSIVE + ATTACKABLE + ENEMY,
 	creatureBitmask = PACK + HERD,
@@ -28,6 +28,7 @@ elder_mamien = Creature:new {
 
 	templates = {"object/mobile/mamien_hue.iff"},
 	hues = { 16, 17, 18, 19, 20, 21, 22, 23 },
+	controlDeviceTemplate = "object/intangible/pet/mamien_hue.iff",
 	scale = 1.1,
 	lootGroups = {},
 
