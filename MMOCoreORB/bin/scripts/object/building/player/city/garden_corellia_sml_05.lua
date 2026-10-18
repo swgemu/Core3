@@ -51,7 +51,7 @@ object_building_player_city_garden_corellia_sml_05 = object_building_player_city
 	
 	width = 3,
 	cityRankRequired = 1,
-	cityMaintenanceBase = 10000,
+	cityMaintenanceBase = 100,
 	abilityRequired = "place_small_garden",
 	groundZoneComponent = "StructureZoneComponent",
 	dataObjectComponent = "DecorationDataComponent",

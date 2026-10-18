@@ -48,8 +48,8 @@ object_building_player_city_cityhall_corellia = object_building_player_city_shar
 	groundZoneComponent = "CityHallZoneComponent",
 	cityRankRequired = 0,
 	uniqueStructure = true,
-	cityMaintenanceBase = 35000,
-	cityMaintenanceRate = 25000,
+	cityMaintenanceBase = 350,
+	cityMaintenanceRate = 250,
 	abilityRequired = "place_cityhall",
 	skillMods = {
 		{"private_buff_mind", 100},

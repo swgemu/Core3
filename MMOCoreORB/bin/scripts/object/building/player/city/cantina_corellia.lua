@@ -43,7 +43,7 @@
 
 object_building_player_city_cantina_corellia = object_building_player_city_shared_cantina_corellia:new {
 	lotSize = 5,
-	baseMaintenanceRate = 50,
+	baseMaintenanceRate = 25,
 	allowedZones = {"corellia", "talus"},
 	length = 7,
 	width = 7,
@@ -52,9 +52,9 @@ object_building_player_city_cantina_corellia = object_building_player_city_share
 	limitToOnePerCity = 0,
 	abilityRequired = "place_cantina",
 	skillMods = {
-		{"private_buff_mind", 100},
-		{"private_medical_rating", 100},
-		{"private_med_battle_fatigue", 5},
+		{"private_buff_mind", 120},
+		{"private_medical_rating", 120},
+		{"private_med_battle_fatigue", 100},
 		{"private_safe_logout", 1}
 	},
 	groundZoneComponent = "StructureZoneComponent",

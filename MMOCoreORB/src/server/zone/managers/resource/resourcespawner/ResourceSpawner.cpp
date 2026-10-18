@@ -601,7 +601,7 @@ int ResourceSpawner::randomizeValue(int min, int max) {
 	if (min > lowerGateOverride)
 		min = lowerGateOverride;
 
-	int randomStat = System::random(max - min) + min;
+	int randomStat = 1000; //System::random(max - min) + min;
 
 	if (spawnThrottling < 90) {
 		int breakpoint = ((spawnThrottling * (max - min)) / 100) + min;

@@ -43,7 +43,7 @@
 
 object_building_player_city_hospital_tatooine = object_building_player_city_shared_hospital_tatooine:new {
 	lotSize = 3,
-	baseMaintenanceRate = 50,
+	baseMaintenanceRate = 25,
 	allowedZones = {"dantooine", "lok", "tatooine"},
 	length = 5,
 	width = 5,
@@ -52,7 +52,7 @@ object_building_player_city_hospital_tatooine = object_building_player_city_shar
 	abilityRequired = "place_hospital",
 	groundZoneComponent = "StructureZoneComponent",
 	skillMods = {
-		{"private_medical_rating", 100},
+		{"private_medical_rating", 120},
 		{"private_med_wound_health", 100},
 		{"private_med_wound_action", 100},
 		{"private_safe_logout", 1},

@@ -44,8 +44,8 @@
 object_installation_manufacture_food_factory = object_installation_manufacture_shared_food_factory:new {
 	templateType = FACTORY,
 	lotSize = 1,
-	baseMaintenanceRate = 50,
-	basePowerRate = 50,
+	baseMaintenanceRate = 5,
+	basePowerRate = 5,
 	width = 3,
 	length = 3,
 	objectMenuComponent = "FactoryObjectMenuComponent",

@@ -44,7 +44,7 @@
 object_building_player_player_house_tatooine_small_style_02 = object_building_player_shared_player_house_tatooine_small_style_02:new {
 	lotSize = 2,
 	publicStructure = 0,
-	baseMaintenanceRate = 16,
+	baseMaintenanceRate = 6,
 	allowedZones = {"dantooine", "lok", "tatooine"},
 	skillMods = {
 		{"private_medical_rating", 100},
