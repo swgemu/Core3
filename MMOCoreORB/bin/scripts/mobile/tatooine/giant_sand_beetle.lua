@@ -28,7 +28,7 @@ giant_sand_beetle = Creature:new {
 
 	templates = {"object/mobile/giant_sand_beetle.iff"},
 	hues = { 8, 9, 10, 11, 12, 13, 14, 15 },
-	controlDeviceTemplate = "object/intangible/pet/rock_mite_hue.iff"
+	controlDeviceTemplate = "object/intangible/pet/rock_mite_hue.iff",
 	scale = 4,
 	lootGroups = {},
 
