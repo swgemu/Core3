@@ -1025,6 +1025,7 @@ String ObjectManager::getInfo() {
 
 void ObjectManager::onUpdateModifiedObjectsToDatabase(int flags) {
 	galaxyId = -1;
+	charactersSaved = nullptr;
 
 	if (server != nullptr && server->getZoneServer() != nullptr) {
 		galaxyId = server->getZoneServer()->getGalaxyID();
@@ -1032,9 +1033,10 @@ void ObjectManager::onUpdateModifiedObjectsToDatabase(int flags) {
 #ifndef WITH_SWGREALMS_API
 		//characters_dirty chars
 		try {
-			const static auto query = "SELECT * FROM characters_dirty WHERE galaxy_id = " + String::valueOf(galaxyId);
+			StringBuffer query;
+			query << "SELECT character_oid, account_id, galaxy_id, firstname, surname, race, gender, template, UNIX_TIMESTAMP(creation_date) FROM characters_dirty WHERE galaxy_id = " << galaxyId;
 
-			charactersSaved = ServerDatabase::instance()->executeQuery(query);
+			charactersSaved = ServerDatabase::instance()->executeQuery(query.toString());
 		} catch (const Exception& e) {
 			error(e.getMessage());
 		}
@@ -1055,7 +1057,7 @@ void ObjectManager::onCommitData() {
 	if (charactersSaved != nullptr) {
 		try {
 			StringBuffer query;
-			query << "REPLACE INTO characters (character_oid, account_id, galaxy_id, firstname, surname, race, gender, template) VALUES";
+			query << "REPLACE INTO characters (character_oid, account_id, galaxy_id, firstname, surname, race, gender, template, creation_date) VALUES";
 
 			StringBuffer deleteQuery;
 			deleteQuery << "DELETE FROM characters_dirty WHERE ";
@@ -1070,10 +1072,24 @@ void ObjectManager::onCommitData() {
 					deleteQuery << " OR ";
 				}
 
+				const char* created = charactersSaved->getString(8);
+				bool createdIsNumeric = created != nullptr && created[0] != '\0' && !(created[0] == '0' && created[1] == '\0');
+
+				for (const char* cursor = created; createdIsNumeric && *cursor != '\0'; ++cursor) {
+					if (*cursor < '0' || *cursor > '9')
+						createdIsNumeric = false;
+				}
+
 				query << "(" << charactersSaved->getUnsignedLong(0) << ", " << charactersSaved->getInt(1) << ", "
 						<< charactersSaved->getInt(2) << ", " << "\'" << String(charactersSaved->getString(3)).escapeString() << "\', "
 						<< "\'" << String(charactersSaved->getString(4)).escapeString() << "\', " << charactersSaved->getInt(5) << ", "
-						<< charactersSaved->getInt(6) << ", \'" << String(charactersSaved->getString(7)).escapeString() << "')";
+						<< charactersSaved->getInt(6) << ", \'" << String(charactersSaved->getString(7)).escapeString() << "', ";
+
+				// A zero or missing timestamp is not a real creation time. Keep the row by using NOW().
+				if (createdIsNumeric)
+					query << "FROM_UNIXTIME(" << created << "))";
+				else
+					query << "NOW())";
 
 				deleteQuery << "character_oid = " << charactersSaved->getUnsignedLong(0) << " AND galaxy_id = " << galaxyId;
 
@@ -1082,11 +1098,13 @@ void ObjectManager::onCommitData() {
 			}
 
 			if (count > 0) {
-				ServerDatabase::instance()->executeStatement(query.toString());
-				ServerDatabase::instance()->executeStatement(deleteQuery.toString());
+				// Run the replace to completion before deleting the staging rows.
+				// The previous async delete still ran when the replace failed, which dropped the character.
+				UniqueReference<ResultSet*> replaceResult(ServerDatabase::instance()->executeQuery(query.toString()));
+				UniqueReference<ResultSet*> deleteResult(ServerDatabase::instance()->executeQuery(deleteQuery.toString()));
 			}
 		} catch (Exception& e) {
-			System::out << e.getMessage();
+			error(e.getMessage());
 		}
 	}
 #else // WITH_SWGREALMS_API

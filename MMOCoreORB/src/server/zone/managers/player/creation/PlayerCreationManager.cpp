@@ -531,18 +531,28 @@ bool PlayerCreationManager::createCharacter(ClientCreateCharacterCallback* callb
 
 #ifndef WITH_SWGREALMS_API
 	try {
+		// creation_date must be supplied. Strict SQL modes reject the insert when the
+		// column has no default, and that failure used to be reported as success.
 		StringBuffer query;
 		query
-				<< "INSERT INTO `characters_dirty` (`character_oid`, `account_id`, `galaxy_id`, `firstname`, `surname`, `race`, `gender`, `template`)"
+				<< "INSERT INTO `characters_dirty` (`character_oid`, `account_id`, `galaxy_id`, `firstname`, `surname`, `race`, `gender`, `template`, `creation_date`)"
 				<< " VALUES (" << playerCreature->getObjectID() << ","
 				<< client->getAccountID() << "," << zoneServer.get()->getGalaxyID()
 				<< "," << "'" << firstName.escapeString() << "','"
 				<< lastName.escapeString() << "'," << raceID << "," << 0 << ",'"
-				<< raceFile.escapeString() << "')";
+				<< raceFile.escapeString() << "', NOW())";
 
-		ServerDatabase::instance()->executeStatement(query);
+		UniqueReference<ResultSet*> insertResult(ServerDatabase::instance()->executeQuery(query));
 	} catch (const DatabaseException& e) {
 		error(e.getMessage());
+
+		playerCreature->destroyObjectFromWorld(false);
+		playerCreature->destroyPlayerCreatureFromDatabase(true);
+
+		ClientCreateCharacterFailed* failMsg = new ClientCreateCharacterFailed("name_declined_retry");
+		client->sendMessage(failMsg);
+
+		return false;
 	}
 
 	ClientCreateCharacterSuccess* msg = new ClientCreateCharacterSuccess(

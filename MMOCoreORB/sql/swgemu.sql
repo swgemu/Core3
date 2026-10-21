@@ -214,7 +214,7 @@ CREATE TABLE  `swgemu`.`characters` (
   `race` tinyint(2) NOT NULL DEFAULT '0',
   `gender` tinyint(1) NOT NULL DEFAULT '0',
   `template` tinytext NOT NULL,
-  `creation_date` TIMESTAMP NOT NULL,
+  `creation_date` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`character_oid`),
   KEY `acc_idx` (`account_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
@@ -243,7 +243,7 @@ CREATE TABLE  `swgemu`.`characters_dirty` (
   `race` tinyint(2) NOT NULL DEFAULT '0',
   `gender` tinyint(1) NOT NULL DEFAULT '0',
   `template` tinytext NOT NULL,
-  `creation_date` TIMESTAMP NOT NULL,
+  `creation_date` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`character_oid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -271,7 +271,8 @@ CREATE TABLE  `swgemu`.`deleted_characters` (
   `race` tinyint(2) NOT NULL DEFAULT '0',
   `gender` tinyint(1) NOT NULL DEFAULT '0',
   `template` tinytext NOT NULL,
-  `creation_date` TIMESTAMP NOT NULL,
+  `creation_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `db_deleted` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`character_oid`),
   KEY `acc_idx` (`account_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
@@ -13552,11 +13553,10 @@ CREATE TABLE  `swgemu`.`account_ips` (
   PRIMARY KEY (`idaccount_ips`)
 ) ENGINE=MyISAM AUTO_INCREMENT=1099 DEFAULT CHARSET=latin1;
 
-ALTER TABLE `swgemu`.`deleted_characters` ADD COLUMN `db_deleted` BOOLEAN  NOT NULL DEFAULT 0 AFTER `creation_date`;
-
--- Newer versions require these to have defaults
-ALTER TABLE `characters` MODIFY COLUMN `creation_date` timestamp DEFAULT CURRENT_TIMESTAMP;
-ALTER TABLE `characters_dirty` MODIFY COLUMN `creation_date` timestamp DEFAULT CURRENT_TIMESTAMP;
+-- Newer versions require these to have defaults. Databases imported before these
+-- lines existed are updated at startup (schema versions 1009-1012).
+ALTER TABLE `characters` MODIFY COLUMN `creation_date` timestamp NULL DEFAULT CURRENT_TIMESTAMP;
+ALTER TABLE `characters_dirty` MODIFY COLUMN `creation_date` timestamp NULL DEFAULT CURRENT_TIMESTAMP;
 ALTER TABLE `deleted_characters` MODIFY COLUMN `creation_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;

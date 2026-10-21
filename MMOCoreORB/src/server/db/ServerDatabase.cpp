@@ -141,5 +141,42 @@ void ServerDatabase::updateDatabaseSchema() {
 	alterDatabase(1008,
 		"ALTER TABLE `account_log` MODIFY COLUMN `ip_address` VARCHAR(64);"
 	);
+
+	// Strict sql_mode rejects inserts that omit creation_date when the column has no default.
+	// That dropped new characters out of the character list after logout.
+	alterDatabase(1009,
+		"ALTER TABLE `characters` MODIFY COLUMN `creation_date` timestamp NULL DEFAULT CURRENT_TIMESTAMP"
+	);
+
+	alterDatabase(1010,
+		"ALTER TABLE `characters_dirty` MODIFY COLUMN `creation_date` timestamp NULL DEFAULT CURRENT_TIMESTAMP"
+	);
+
+	alterDatabase(1011,
+		"ALTER TABLE `deleted_characters` MODIFY COLUMN `creation_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"
+	);
+
+	if (dbSchemaVersion < 1012) {
+		bool hasDbDeleted = false;
+
+		try {
+			UniqueReference<ResultSet*> result(instance()->executeQuery(
+				"SELECT COUNT(*) FROM information_schema.COLUMNS WHERE TABLE_SCHEMA = DATABASE() AND TABLE_NAME = 'deleted_characters' AND COLUMN_NAME = 'db_deleted'"));
+
+			if (result != nullptr && result->next() && result->getString(0) != nullptr)
+				hasDbDeleted = result->getInt(0) > 0;
+		} catch (const Exception& e) {
+			error(e.getMessage());
+		}
+
+		if (hasDbDeleted) {
+			// Fresh imports already have the column from swgemu.sql. Still advance the version.
+			alterDatabase(1012, "SELECT 1");
+		} else {
+			alterDatabase(1012,
+				"ALTER TABLE `deleted_characters` ADD COLUMN `db_deleted` TINYINT(1) NOT NULL DEFAULT 0 AFTER `creation_date`"
+			);
+		}
+	}
 }
 #endif // !WITH_SWGREALMS_API
