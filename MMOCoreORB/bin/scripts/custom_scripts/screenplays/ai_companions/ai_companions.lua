@@ -18,11 +18,15 @@ AiCompanions = ScreenPlay:new {
 	HEAR_RANGE = 25,           -- matches the server's spatial chat observer range
 	OWNER_LOSE_RANGE = 200,    -- companion gives up following past this distance
 	ASSIST_RANGE = 60,
+	MAX_PARTY = 3,             -- most companions one player can have following at once
 
 	nextRequestId = 1,
 	responseOffset = 0,
 	tickCount = 0,
-	state = {}, -- botKey -> runtime state
+	state = {},     -- botKey -> runtime state
+	idToKey = {},   -- spawned object id -> botKey
+	cfgByKey = {},  -- botKey -> config
+	allBots = {},   -- hand-written bots below + generated roster (roster.lua)
 
 	-- Add or edit bots here. Each needs a matching template in custom_scripts/mobile/ai_companions.lua
 	-- and a persona of the same key in tools/ai_companions_sidecar/personas.json
@@ -87,10 +91,7 @@ local function hasWord(msg, words)
 end
 
 function AiCompanions:botCfg(key)
-	for i = 1, #self.bots do
-		if self.bots[i].key == key then return self.bots[i] end
-	end
-	return nil
+	return self.cfgByKey[key]
 end
 
 function AiCompanions:getBot(key)
@@ -114,8 +115,28 @@ function AiCompanions:start()
 		f:close()
 	end
 
+	-- merge hand-written bots with the generated roster; roster bots take their chat flavour from an archetype
+	self.allBots = {}
 	for i = 1, #self.bots do
-		local cfg = self.bots[i]
+		self.allBots[#self.allBots + 1] = self.bots[i]
+	end
+	if AiCompanionsRoster ~= nil then
+		local seen = {}
+		for i = 1, #self.bots do seen[self.bots[i].key] = true end
+		for i = 1, #AiCompanionsRoster.bots do
+			local b = AiCompanionsRoster.bots[i]
+			local arch = AiCompanionsRoster.archetypes[b.arch]
+			if arch ~= nil and not seen[b.key] then
+				seen[b.key] = true
+				b.activities, b.acks, b.customName = arch.activities, arch.acks, b.name
+				self.allBots[#self.allBots + 1] = b
+			end
+		end
+	end
+
+	for i = 1, #self.allBots do
+		local cfg = self.allBots[i]
+		self.cfgByKey[cfg.key] = cfg
 		self.state[cfg.key] = {
 			id = nil, mode = "roam", owner = nil,
 			level = cfg.level, xp = 0, activity = pick(cfg.activities),
@@ -137,9 +158,16 @@ function AiCompanions:spawnBot(cfg)
 	end
 
 	local st = self.state[cfg.key]
+	if st.id ~= nil then self.idToKey[st.id] = nil end
 	st.id = SceneObject(pBot):getObjectID()
+	self.idToKey[st.id] = cfg.key
 	st.mode = "roam"
 	st.owner = nil
+
+	-- roster bots share archetype templates, so the individual name is applied here
+	if cfg.customName ~= nil then
+		CreatureObject(pBot):setCustomObjectName(cfg.customName)
+	end
 
 	AiAgent(pBot):setHomeLocation(cfg.x, cfg.z, cfg.y, 0)
 	createObserver(SPATIALCHAT, "AiCompanions", "onChat", pBot)
@@ -163,7 +191,8 @@ function AiCompanions:onChat(pBot, pChatMessage, playerID)
 	local raw = getChatMessage(pChatMessage)
 	local msg = string.lower(raw or "")
 	local firstName = string.lower(string.match(cfg.name, "^(%S+)"))
-	local addressed = string.find(msg, firstName, 1, true) ~= nil
+	-- whole-word match so short names ("Una", "Nia") don't fire on words like "fun" or "tennis"
+	local addressed = string.find(msg, "%f[%a]" .. firstName .. "%f[%A]") ~= nil
 	local isOwner = (st.owner == playerID)
 
 	-- only react if spoken to by name, or spoken to by our current partner
@@ -178,10 +207,15 @@ function AiCompanions:onChat(pBot, pChatMessage, playerID)
 end
 
 function AiCompanions:keyForBot(botID)
-	for key, st in pairs(self.state) do
-		if st.id == botID then return key end
+	return self.idToKey[botID]
+end
+
+function AiCompanions:partySize(playerID)
+	local n = 0
+	for _, st in pairs(self.state) do
+		if st.owner == playerID then n = n + 1 end
 	end
-	return nil
+	return n
 end
 
 local FOLLOW_WORDS  = {"follow me", "come with me", "come along", "let's go", "lets go", "join me", "join us", "adventure", "tag along"}
@@ -194,6 +228,10 @@ function AiCompanions:handleCommand(cfg, st, pBot, pPlayer, playerID, msg, isOwn
 	if st.owner ~= nil and not isOwner then return false end
 
 	if hasWord(msg, FOLLOW_WORDS) then
+		if not isOwner and self:partySize(playerID) >= self.MAX_PARTY then
+			spatialChat(pBot, "You've got a crowd already. Maybe next time.")
+			return true
+		end
 		st.owner = playerID
 		st.mode = "follow"
 		self:applyFollow(pBot, pPlayer)
@@ -326,26 +364,28 @@ function AiCompanions:tick()
 	self.tickCount = self.tickCount + 1
 	self:pollResponses()
 
-	for i = 1, #self.bots do
-		local cfg = self.bots[i]
+	for i = 1, #self.allBots do
+		local cfg = self.allBots[i]
 		local st = self.state[cfg.key]
 		local pBot = self:getBot(cfg.key)
 
 		if pBot == nil then
-			-- dead or despawned: respawn at home roughly every 60s
-			if isZoneEnabled(cfg.zone) and self.tickCount % 30 == 0 then
+			-- dead or despawned: respawn at home roughly every 60s (staggered per bot)
+			if isZoneEnabled(cfg.zone) and (self.tickCount + i) % 30 == 0 then
 				st.owner, st.mode = nil, "roam"
 				self:spawnBot(cfg)
 			end
 		else
-			self:tickBot(cfg, st, pBot)
+			self:tickBot(cfg, st, pBot, i)
 		end
 	end
 
 	createEvent(self.TICK_MS, "AiCompanions", "tick", nil, "")
 end
 
-function AiCompanions:tickBot(cfg, st, pBot)
+function AiCompanions:tickBot(cfg, st, pBot, index)
+	local phase = self.tickCount + index -- staggers work across bots so they don't all act on the same tick
+
 	if st.owner ~= nil then
 		local pOwner = getSceneObject(st.owner)
 		local lost = (pOwner == nil)
@@ -366,7 +406,7 @@ function AiCompanions:tickBot(cfg, st, pBot)
 	end
 
 	-- ambient life: every ~20s pick a new activity, wander, earn "xp" and occasionally level up
-	if self.tickCount % 10 == 0 then
+	if phase % 10 == 0 then
 		st.activity = pick(cfg.activities)
 		st.xp = st.xp + getRandomNumber(5, 20)
 		if st.xp >= st.level * 40 then
@@ -376,7 +416,7 @@ function AiCompanions:tickBot(cfg, st, pBot)
 		end
 	end
 
-	if self.tickCount % 5 == 0 and AiAgent(pBot):getPatrolPointsSize() == 0 and getRandomNumber(100) <= 60 then
+	if phase % 5 == 0 and AiAgent(pBot):getPatrolPointsSize() == 0 and getRandomNumber(100) <= 60 then
 		local nx = cfg.x + getRandomNumber(-cfg.roam, cfg.roam)
 		local ny = cfg.y + getRandomNumber(-cfg.roam, cfg.roam)
 		AiAgent(pBot):setNextPosition(nx, getTerrainHeight(pBot, nx, ny), ny, 0)
