@@ -239,6 +239,7 @@ bool ContainerComponent::transferObject(SceneObject* sceneObject, SceneObject* o
 	}
 
 	ManagedReference<SceneObject*> objParent = object->getParent().get();
+	ManagedReference<SceneObject*> volumeParent = objParent;
 
 	// Record the volume the client already has before the parent changes.
 	// Items inside a stored backpack then report volume 0, so the inventory bar does not grow.
@@ -367,6 +368,23 @@ bool ContainerComponent::transferObject(SceneObject* sceneObject, SceneObject* o
 	}
 
 	contLocker.release();
+
+	// One containment packet subtracts and adds the same volume. When that volume
+	// has to change, drop the old parent first so the client subtracts the old
+	// value, publish the new value, then add the object.
+	if (notifyClient) {
+		if (TangibleObject* tangible = asInventoryTangible(object)) {
+			int sent = tangible->getLastSentInventoryVolume();
+			int desired = tangible->getContainerVolumeContribution();
+			bool volumeChanged = sent >= 0 && sent != desired;
+
+			if (volumeChanged && volumeParent != nullptr && volumeParent != sceneObject)
+				volumeParent->broadcastMessage(object->link((uint64) 0, 0xFFFFFFFF), true);
+
+			if (volumeChanged)
+				tangible->pushInventoryVolume();
+		}
+	}
 
 	if ((containmentType >= 4) && (objZone == nullptr)) {
 		sceneObject->broadcastObject(object, true);

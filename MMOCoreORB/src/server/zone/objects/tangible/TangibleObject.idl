@@ -572,10 +572,22 @@ class TangibleObject extends SceneObject {
 	public native int getContainerVolumeContribution();
 
 	@dirty
+	public int getLastSentInventoryVolume() {
+		return lastSentInventoryVolume;
+	}
+
+	@dirty
 	public native void rememberInventoryVolume();
 
 	@dirty
 	public native void updateInventoryVolume(boolean beforeContainmentUpdate);
+
+	/**
+	 * Publish this object's volume now.
+	 * A containment move subtracts and adds the same volume, so a change has to be sent while the object is uncontained.
+	 */
+	@dirty
+	public native void pushInventoryVolume();
 
 	@dirty
 	public native void markInventoryVolumeSent();

@@ -897,6 +897,40 @@ void TangibleObjectImplementation::fillAttributeList(AttributeListMessage* alm, 
 	}
 }
 
+namespace {
+uint32 tangibleBaseline3Type(TangibleObject* tano) {
+	if (tano->isWeaponObject())
+		return 0x5745414F; // WEAO
+
+	if (tano->isResourceContainer())
+		return 0x52434E4F; // RCNO
+
+	if (tano->isFactoryCrate())
+		return 0x46435954; // FCYT
+
+	if (tano->isCreatureObject())
+		return 0x4352454F; // CREO
+
+	if (tano->isInstallationObject())
+		return 0x494E534F; // INSO
+
+	return 0x54414E4F; // TANO
+}
+
+void broadcastInventoryVolume(TangibleObjectImplementation* self, int volume) {
+	TangibleObject* tano = self->asTangibleObject();
+
+	if (tano == nullptr)
+		return;
+
+	TangibleObjectDeltaMessage3* delta = new TangibleObjectDeltaMessage3(tano, tangibleBaseline3Type(tano));
+	delta->updateVolume(volume);
+	delta->close();
+
+	self->broadcastMessage(delta, true);
+}
+}
+
 int TangibleObjectImplementation::getContainerVolumeContribution() {
 	if (isNestedInsidePlayerStorageContainer())
 		return 0;
@@ -928,11 +962,7 @@ void TangibleObjectImplementation::updateInventoryVolume(bool beforeContainmentU
 		bool decreasing = desired < lastSentInventoryVolume;
 
 		if (decreasing == beforeContainmentUpdate) {
-			TangibleObjectDeltaMessage3* delta = new TangibleObjectDeltaMessage3(asTangibleObject());
-			delta->updateVolume(desired);
-			delta->close();
-
-			broadcastMessage(delta, true);
+			broadcastInventoryVolume(this, desired);
 			lastSentInventoryVolume = desired;
 		}
 	}
@@ -948,6 +978,16 @@ void TangibleObjectImplementation::updateInventoryVolume(bool beforeContainmentU
 		if (tangible != nullptr)
 			tangible->updateInventoryVolume(beforeContainmentUpdate);
 	}
+}
+
+void TangibleObjectImplementation::pushInventoryVolume() {
+	int desired = getContainerVolumeContribution();
+
+	if (lastSentInventoryVolume < 0 || desired == lastSentInventoryVolume)
+		return;
+
+	broadcastInventoryVolume(this, desired);
+	lastSentInventoryVolume = desired;
 }
 
 void TangibleObjectImplementation::markInventoryVolumeSent() {
